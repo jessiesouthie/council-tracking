@@ -41,8 +41,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "docs"))
-import parser  # noqa: E402
+from . import parser  # noqa: E402
 
 from .normalize import (  # noqa: E402
     load_members,
