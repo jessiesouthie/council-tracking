@@ -1,0 +1,661 @@
+{
+  "meeting": {
+    "id": 143,
+    "date": "2024-09-03",
+    "source_file": "2024-09-03__143.pdf",
+    "motion_count": 14,
+    "ord_count": 29,
+    "res_count": 7
+  },
+  "motions": [
+    {
+      "id": 770,
+      "meeting_id": 143,
+      "date": "2024-09-03",
+      "page": 4,
+      "agenda_ref": "13.E.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving an Amendment to the Commercial Lease Agreement between Star West Eagle Mountain Properties LLC and Eagle Mountain City. Staff answered questions posed by the Council regarding other office space solutions including mobile offices and purchase options, and how many office spaces the proposed agreement will add. Eagle Mountain City Council Meeting – September 3, 2024 Page 2 of 15",
+      "motion": "Councilmember Gray moved to approve the appointment of Angeline Washburn as a Youth Council Advisory for a one-year term through June 2025. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "personnel"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 771,
+      "meeting_id": 143,
+      "date": "2024-09-03",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the appointment of Nathan Washburn as a Youth Council Advisory for a one-year term thro…",
+      "motion": "Councilmember Gray moved to approve the appointment of Nathan Washburn as a Youth Council Advisory for a one-year term through June 2025. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "personnel"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 772,
+      "meeting_id": 143,
+      "date": "2024-09-03",
+      "page": 5,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Wood moved to approve the Consent Agenda, moving item 12.B. to the scheduled items for further discussion, and amending the effective date for item 13.B. to the date of closing. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 773,
+      "meeting_id": 143,
+      "date": "2024-09-03",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table the Eagle Square Commercial Preliminary Plat",
+      "motion": "Councilmember Gray moved to table the Eagle Square Commercial Preliminary Plat. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 774,
+      "meeting_id": 143,
+      "date": "2024-09-03",
+      "page": 7,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Approving the First Amendment to the Fiscal Year 2024-2025 Annual Budget",
+      "motion": "Councilmember Wright moved to approve an Ordinance of Eagle Mountain City, Utah, Approving the First Amendment to the Fiscal Year 2024-2025 Annual Budget. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 775,
+      "meeting_id": 143,
+      "date": "2024-09-03",
+      "page": 7,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapters 17.25 Residential Zones, 17.35 Commercial Zones, and 17.37 Business Park Zones with the following change: 1. The amendment in 17.25.050(G), 17.35.050(G), and 17.37.050(G) be amended to read, “No permanent structures near natural washes shall be built in the watercourse plus 75 feet from the center of the flowline, or a 50-foot buffer on either side, as measured out from the top of the wash, whichever is greater, to be determined by the City Engineer or designee. Additionally, no earthwork, excavation, or earth removal shall occur within the watercourse plus 75 feet from the center of the flowline, or a 50-foot buffer on either side of the top-of-bank as determined by determined by the City Engineer or designee.” Councilmember Clark seconded the motion",
+      "motion": "Councilmember Wood moved to approve an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapters 17.25 Residential Zones, 17.35 Commercial Zones, and 17.37 Business Park Zones with the following change: 1. The amendment in 17.25.050(G), 17.35.050(G), and 17.37.050(G) be amended to read, “No permanent structures near natural washes shall be built in the watercourse plus 75 feet from the center of the flowline, or a 50-foot buffer on either side, as measured out from the top of the wash, whichever is greater, to be determined by the City Engineer or designee. Additionally, no earthwork, excavation, or earth removal shall occur within the watercourse plus 75 feet from the center of the flowline, or a 50-foot buffer on either side of the top-of-bank as determined by determined by the City Engineer or designee.” Councilmember Clark seconded the motion.",
+      "outcome": "",
+      "tags": [
+        "parks",
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 776,
+      "meeting_id": 143,
+      "date": "2024-09-03",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as the Enyo Battery Property from the Airpark Zone to the Agriculture Zone",
+      "motion": "Councilmember Burnham moved to approve an Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as the Enyo Battery Property from the Airpark Zone to the Agriculture Zone. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 777,
+      "meeting_id": 143,
+      "date": "2024-09-03",
+      "page": 9,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code, Repealing and Replacing Chapter 17.40 Industrial Zone, and Amending Chapters 17.20 Agriculture Zone and 17.38 Commercial Storage Zone with the following changes: 1. 17.20.020 Land Use Table: a. Equestrian Center be changed from Permitted to Special; b. The Windmills line be amended to include language stating “Windmills, if exclusively secondary/accessory to an AG use”; c. Utility, Public or Private be changed from Permitted to blank; 2. 17.37.020 Land Use Table Utility, Public or Private be changed from Permitted to blank; and 3. 17.38.060(E) retain the maximum of six allowed number of moving vehicles, and include “(e.g., vans, box trucks, trailers, etc.)",
+      "motion": "Councilmember Wood moved to approve an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code, Repealing and Replacing Chapter 17.40 Industrial Zone, and Amending Chapters 17.20 Agriculture Zone and 17.38 Commercial Storage Zone with the following changes: 1. 17.20.020 Land Use Table: a. Equestrian Center be changed from Permitted to Special; b. The Windmills line be amended to include language stating “Windmills, if exclusively secondary/accessory to an AG use”; c. Utility, Public or Private be changed from Permitted to blank; 2. 17.37.020 Land Use Table Utility, Public or Private be changed from Permitted to blank; and 3. 17.38.060(E) retain the maximum of six allowed number of moving vehicles, and include “(e.g., vans, box trucks, trailers, etc.). Councilmember Gray seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning",
+        "infrastructure",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 778,
+      "meeting_id": 143,
+      "date": "2024-09-03",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code to Enact Section 17.60.155 Lot Size Mixture (R Lots)",
+      "motion": "Councilmember Wood moved to table an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code to Enact Section 17.60.155 Lot Size Mixture (R Lots). Councilmember Wright seconded the motion.",
+      "outcome": "passed with a vote of 4:1.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "No"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 779,
+      "meeting_id": 143,
+      "date": "2024-09-03",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 17.10 Definitions, and Sections 16.35.090 Privacy Fencing, 17.60.120 General Fencing Provisions, and 17.60.130 Chain Link Fencing",
+      "motion": "Councilmember Wood moved to approve an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 17.10 Definitions, and Sections 16.35.090 Privacy Fencing, 17.60.120 General Fencing Provisions, and 17.60.130 Chain Link Fencing. Councilmember Gray seconded the motion.",
+      "outcome": "",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 780,
+      "meeting_id": 143,
+      "date": "2024-09-03",
+      "page": 11,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the General Plan Land Use Map for Certain Lands Known as the Berry Property",
+      "motion": "Councilmember Wright moved to approve an Ordinance of Eagle Mountain City, Utah, Amending the General Plan Land Use Map for Certain Lands Known as the Berry Property. Councilmember Wood seconded the motion.",
+      "outcome": "",
+      "tags": [
+        "zoning"
+      ],
+      "votes": []
+    },
+    {
+      "id": 781,
+      "meeting_id": 143,
+      "date": "2024-09-03",
+      "page": 12,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as the Berry Property from Agriculture to Foothill Residential",
+      "motion": "Councilmember Burnham moved to approve an Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as the Berry Property from Agriculture to Foothill Residential. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a vote of 4:1.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "No"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 782,
+      "meeting_id": 143,
+      "date": "2024-09-03",
+      "page": 13,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the General Plan or Future Land Use Map for Certain Lands Located within the Eagle Mountain Properties Master Plan Area with the following designations: Property Future Land Use Designation 1 CC 2 AG/RD2 3 Parks and Open Space 4 Parks and Open Space 5 Parks and Open Space 6 Parks and Open Space 7 Foothill Residential Foothill Residential/Parks and 8 Open Space 9 Foothill Residential Foothill Residential/Parks and 10 Open Space 11 CC Business Park/Light Industry, & 12 Parks and Open Space 13 Parks and Open Space 14 AG/RD2 15 AG/RD2 16 Business Park/Light Industry 17 Business Park/Light Industry 19 AG/RD1 20 Business Park/Light Industry 21 CC Business Park/Light Industry & 22 Parks and Open Space 23 CC 24 CC 25 CC 26 CC 27 CC 28 CC Councilmember Gray seconded the motion",
+      "motion": "Councilmember Wright moved to approve an Ordinance of Eagle Mountain City, Utah, Amending the General Plan or Future Land Use Map for Certain Lands Located within the Eagle Mountain Properties Master Plan Area with the following designations: Property Future Land Use Designation 1 CC 2 AG/RD2 3 Parks and Open Space 4 Parks and Open Space 5 Parks and Open Space 6 Parks and Open Space 7 Foothill Residential Foothill Residential/Parks and 8 Open Space 9 Foothill Residential Foothill Residential/Parks and 10 Open Space 11 CC Business Park/Light Industry, & 12 Parks and Open Space 13 Parks and Open Space 14 AG/RD2 15 AG/RD2 16 Business Park/Light Industry 17 Business Park/Light Industry 19 AG/RD1 20 Business Park/Light Industry 21 CC Business Park/Light Industry & 22 Parks and Open Space 23 CC 24 CC 25 CC 26 CC 27 CC 28 CC Councilmember Gray seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning",
+        "parks"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 783,
+      "meeting_id": 143,
+      "date": "2024-09-03",
+      "page": 14,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Located within the Eagle Mountain Properties Master Plan Area. Property Zone 1 CN 2 AG 3 AG 4 AG 5 AG 6 AG 7 AG 8 AG 9 AG 10 AG 11 LMD 12 AG 13 AG 14 AG 15 AG 16 AG 17 AG 19 AG 20 LMD 21 AG 22 AG 23 CN 24 CN 25 CN 26 CN 27 CN 28 CN Councilmember Wood seconded the motion",
+      "motion": "Councilmember Wright moved to approve an Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Located within the Eagle Mountain Properties Master Plan Area. Property Zone 1 CN 2 AG 3 AG 4 AG 5 AG 6 AG 7 AG 8 AG 9 AG 10 AG 11 LMD 12 AG 13 AG 14 AG 15 AG 16 AG 17 AG 19 AG 20 LMD 21 AG 22 AG 23 CN 24 CN 25 CN 26 CN 27 CN 28 CN Councilmember Wood seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 3,
+      "line_text": "14.A. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Approving"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 3,
+      "line_text": "14.D. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 6,
+      "line_text": "14.A. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Approving"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 6,
+      "line_text": "to amend its budget to appropriate funds for increased expenses. The proposed ordinance is the first"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Wright moved to approve an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 7,
+      "line_text": "14.B. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Wood moved to approve an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 8,
+      "line_text": "AMENDED MOTION: Councilmember Wood moved to approve an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 8,
+      "line_text": "14.C. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Rezoning"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 8,
+      "line_text": "Senior Planner Robert Hobbs presented the item. The proposed ordinance rezones approximately 160"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Burnham moved to approve an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 9,
+      "line_text": "14.D. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Wood moved to approve an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 9,
+      "line_text": "14.E. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 10,
+      "line_text": "MOTION: Councilmember Wood moved to table an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 10,
+      "line_text": "14.F. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 10,
+      "line_text": "MOTION: Councilmember Wood moved to approve an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 10,
+      "line_text": "AMENDED MOTION: Councilmember Wood moved to approve an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 11,
+      "line_text": "15.A. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 11,
+      "line_text": "Planner Steven Lehmitz presented the item. The proposed ordinance amends the General Plan Land Use"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 11,
+      "line_text": "MOTION: Councilmember Wright moved to approve an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 11,
+      "line_text": "AMENDED MOTION: Councilmember Wright moved to approve an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 11,
+      "line_text": "15.B. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Rezoning"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 12,
+      "line_text": "MOTION: Councilmember Burnham moved to approve an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 12,
+      "line_text": "16.A. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 12,
+      "line_text": "Senior Planner Robert Hobbs presented the item. The proposed ordinance includes multiple Future Land"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 13,
+      "line_text": "MOTION: Councilmember Wright moved to approve an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 14,
+      "line_text": "16.B. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Rezoning"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 14,
+      "line_text": "MOTION: Councilmember Wright moved to approve an Ordinance of Eagle Mountain City, Utah,"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 2,
+      "line_text": "13.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an Amended"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 2,
+      "line_text": "13.E. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an Amendment to"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 5,
+      "line_text": "13.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Appointing Laura LaRue as the"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 5,
+      "line_text": "13.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an Amended"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 5,
+      "line_text": "13.C. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving a Purchase"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 5,
+      "line_text": "13.D. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an Interlocal"
+    },
+    {
+      "source_file": "2024-09-03__143.pdf",
+      "meeting_date": "2024-09-03",
+      "page": 5,
+      "line_text": "13.E. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an Amendment to"
+    }
+  ]
+}

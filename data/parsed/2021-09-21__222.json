@@ -1,0 +1,91 @@
+{
+  "meeting": {
+    "id": 222,
+    "date": "2021-09-21",
+    "source_file": "2021-09-21__222.pdf",
+    "motion_count": 3,
+    "ord_count": 3,
+    "res_count": 1
+  },
+  "motions": [
+    {
+      "id": 418,
+      "meeting_id": 222,
+      "date": "2021-09-21",
+      "page": 10,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Burnham moved to approve the consent agenda, removing item 10.A. at the request of the applicant and removing item 13.A. and placing it as a scheduled item. Councilmember Curtis seconded the motion. Those voting aye: Donna Burnham, Melissa Clark, Colby Curtis, and Carolyn Love.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "consent"
+      ],
+      "votes": []
+    },
+    {
+      "id": 419,
+      "meeting_id": 222,
+      "date": "2021-09-21",
+      "page": 12,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the site plan for SilverLake 32 with the following conditions: 1. Collector road fencin…",
+      "motion": "Councilmember Love moved to approve the site plan for SilverLake 32 with the following conditions: 1. Collector road fencing consistent with existing collector road fencing in SilverLake shall be constructed along the rear and side lot lines of any unit that does or will abut Golden Eagle Road prior to issuance of a certificate of occupancy; 2. Four additional parking stalls shall be required for SilverLake 32 and/or five additional parking stalls shall be provided for SilverLake 31 and 32; 3. The amount of water-wise landscaping shall be increased by replacing the turf behind buildings, in park strips, and other areas that are not very useable as play areas; 4. Rear and side elevations shall include similar materials as the front elevations; 5. The right-of-way shall be consistent with the 43-foot right-of-way requirements approved for Plat 31 including five-foot sidewalks and 28 feet of pavement; and 6. Eighteen inches of masonry shall wrap around to the side of the units as required by the master development agreement. Councilmember Curtis seconded the motion. Those voting aye: Donna Burnham, Melissa Clark, Colby Curtis, and Carolyn Love. The motion passed with a unanimous vote. SCHEDULED ITEMS 14. ORDINANCE",
+      "outcome": "",
+      "tags": [
+        "zoning",
+        "development",
+        "infrastructure",
+        "parks"
+      ],
+      "votes": []
+    },
+    {
+      "id": 420,
+      "meeting_id": 222,
+      "date": "2021-09-21",
+      "page": 13,
+      "agenda_ref": "14.A.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 13.20.050 Rates and Fees. Assistant to the City Administrator Evan Berrett presented the item. The proposal adds “Accounts for utility services shall be in the name of the property owner,” to EMMC 13.20.050 Rates and fees to facilitate the existing requirement that “each property connected to service shall be liable for the payment of all charges and each property owner accepts service on the terms required herein.” The primary objectives of the amendment are to enable Utility Billing staff to work directly with landlords to increase communication, reduce temporary service disruptions, prevent issues with unpaid bills when renters move away, and to retain up-to-date landlord contact information to help Neighborhood Improvement officers resolve issues faster and help landlords be aware of issues with their tenants or property. The change of account ownership will require some changes to how accounts are managed through the implementation of a new landlord utility service agreement. Landlords who still wish to have tenants pay utility bills directly will sign an agreement authorizing this arrangement. Utility applications will include questions asking if the applicant is a property owner or tenant. The answer Eagle Mountain City Council Meeting – September 21, 2021 Page 12 of 15 will create paths of tasks or information requests as necessary. Staff will create a process to allow for landlords to receive the monthly bills in addition to the tenants. The impacts for property owners and tenants will vary depending on preference. The property owners will be more involved in the billing of utilities, may need to provide or update contact information with the City, and/or will become liable for unpaid bills. Tenants may see landlords seeking to change rental contracts, see landlords taking ownership of utilities and increasing rent to compensate, and/or will not be able to start or stop services independently. The goal of the hybrid incentive method is to turn rental dwelling licensing into a system that landlords want to participate in. Billing in the landlord names solves issues with unpaid utility bills, greatly increasing general participation. Mr. Berrett verified that the City would allow a six-month grace period to inform landlords and bring rental properties into compliance prior to full enactment of the requirements. The Planning Department staff has assisted with identifying rental properties to assist with notification efforts. Councilmember Love expressed support of the program as the City should not be responsible for unpaid utilities and appreciates the plans for notification to the landlords when utilities go unpaid as the landlords have better mechanisms to collect the money. Councilmember Curtis commended staff for their work and the program. Mayor Pro Tempore Clark stated she is excited about the program and appreciates staff efforts; however, she expressed concern regarding the burden to renters that are unaware of the process when trying to sign up for utilities, resulting in residents going several days without water. Mr. Berrett said that the City hopes for the nonstandard rental situations to improve; unfortunately, the City is unable to do much to intervene. The new online application process provides tenants information to assist them with navigating the process. Discussion ensued regarding tenant responsibility in obtaining information regarding the City’s utility process, the process eliminating more issues than it creates, and utilities potentially remaining active during the transition of tenants due to the utilities remaining in the landowner’s name.",
+      "motion": "Councilmember Burnham moved to approve an ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code Section 13.50.050 Rates and Fees. Councilmember Love seconded the motion. Those voting aye: Donna Burnham, Melissa Clark, Colby Curtis, and Carolyn Love.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "infrastructure",
+        "code"
+      ],
+      "votes": []
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2021-09-21__222.pdf",
+      "meeting_date": "2021-09-21",
+      "page": 12,
+      "line_text": "14. ORDINANCE"
+    },
+    {
+      "source_file": "2021-09-21__222.pdf",
+      "meeting_date": "2021-09-21",
+      "page": 12,
+      "line_text": "14.A. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Amending the Eagle"
+    },
+    {
+      "source_file": "2021-09-21__222.pdf",
+      "meeting_date": "2021-09-21",
+      "page": 13,
+      "line_text": "MOTION: Councilmember Burnham moved to approve an ordinance of Eagle"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2021-09-21__222.pdf",
+      "meeting_date": "2021-09-21",
+      "page": 1,
+      "line_text": "program. The projects include a resolution to Well #1, transmission lines preventing work on"
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Meetings · Council Tracking</title>
+    <meta name="theme-color" content="#31452E" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CT</span>
+        <div><h1>Council Tracking</h1><p class="city">Eagle Mountain, UT</p></div>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" data-nav="index.html">Home</a>
+        <a href="meetings.html" data-nav="meetings.html">Meetings</a>
+        <a href="motions.html" data-nav="motions.html">Motions</a>
+        <a href="members.html" data-nav="members.html">Members</a>
+        <span class="nav-divider" aria-hidden="true"></span>
+        <a href="upload/" data-nav="upload">Upload</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <div id="content"></div>
+    </main>
+
+    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
+
+    <script src="site.js"></script>
+    <script>
+      (async () => {
+        const data = await CT.loadData();
+        const params = CT.paramsFromUrl();
+        const root = document.getElementById("content");
+
+        if (params.id) {
+          renderMeeting(data, parseInt(params.id, 10), root);
+        } else {
+          renderList(data, root);
+        }
+      })();
+
+      function renderList(data, root) {
+        // Group motions by meeting once, up-front.
+        const motionsByMeeting = new Map();
+        for (const m of data.motions) {
+          if (!motionsByMeeting.has(m.meeting_id)) motionsByMeeting.set(m.meeting_id, []);
+          motionsByMeeting.get(m.meeting_id).push(m);
+        }
+
+        const years = [...new Set(data.meetings.map(m => m.date.slice(0,4)))].sort((a,b) => b.localeCompare(a));
+        const yearOpts = `<option value="">All years</option>` + years.map(y => `<option>${y}</option>`).join("");
+        root.innerHTML = `
+          <h1 class="page-title">Meetings</h1>
+          <p class="page-sub">${data.meetings.length} meetings on file. Each card lists the motions decided that night — click anywhere on a card to dig in.</p>
+          <div class="toolbar">
+            <input id="q" class="input" type="search" placeholder="Search motion titles or date…" autocomplete="off" />
+            <select id="year" class="select" aria-label="Filter by year">${yearOpts}</select>
+            <span id="result-count" class="muted nowrap" style="font-size:13px" aria-live="polite"></span>
+          </div>
+          <div id="grid" class="meeting-grid"></div>
+        `;
+
+        const q = document.getElementById("q");
+        const yearSel = document.getElementById("year");
+        const grid = document.getElementById("grid");
+        const rc = document.getElementById("result-count");
+
+        function paint() {
+          const filt = q.value.trim().toLowerCase();
+          const yy = yearSel.value;
+          const list = data.meetings.filter(m => {
+            if (yy && m.date.slice(0,4) !== yy) return false;
+            if (!filt) return true;
+            if (m.date.includes(filt)) return true;
+            const ms = motionsByMeeting.get(m.id) || [];
+            return ms.some(mo =>
+              (mo.item_title||"").toLowerCase().includes(filt) ||
+              (mo.business_type||"").toLowerCase().includes(filt) ||
+              (mo.motion||"").toLowerCase().includes(filt)
+            );
+          });
+          rc.textContent = `${list.length} meeting${list.length===1?"":"s"}`;
+
+          grid.innerHTML = list.map(m => renderMeetingCard(data, m, motionsByMeeting.get(m.id) || [], filt))
+                               .join("") || `<p class="muted">No meetings match.</p>`;
+
+          grid.querySelectorAll('.meeting-card').forEach(card => {
+            const go = () => { location.href = `meetings.html?id=${card.dataset.id}`; };
+            card.addEventListener('click', (e) => {
+              if (e.target.closest('a')) return;
+              go();
+            });
+            card.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+            });
+          });
+        }
+        q.addEventListener("input", paint);
+        yearSel.addEventListener("change", paint);
+        paint();
+      }
+
+      function voteSplit(motion) {
+        let y=0,n=0,o=0;
+        for (const v of (motion.votes||[])) {
+          const x = (v.vote||"").toLowerCase();
+          if (x === "yes") y++;
+          else if (x === "no" || x === "nay") n++;
+          else o++;
+        }
+        return {y,n,o};
+      }
+
+      function shortenTitle(s, max=72) {
+        s = CT.cleanTitle(s || "");
+        if (!s) return "(no title)";
+        return s.length > max ? s.slice(0, max-1) + "…" : s;
+      }
+
+      function highlight(text, q) {
+        if (!q) return CT.escapeHtml(text);
+        const safe = CT.escapeHtml(text);
+        const idx = safe.toLowerCase().indexOf(q.toLowerCase());
+        if (idx === -1) return safe;
+        const end = idx + q.length;
+        return safe.slice(0, idx) + `<mark>${safe.slice(idx, end)}</mark>` + safe.slice(end);
+      }
+
+      function renderMeetingCard(data, meeting, motions, query) {
+        // If query matched a motion title, surface those first.
+        let ordered = motions;
+        if (query) {
+          ordered = [...motions].sort((a,b) => {
+            const aHit = ((a.item_title||"") + " " + (a.motion||"")).toLowerCase().includes(query) ? 0 : 1;
+            const bHit = ((b.item_title||"") + " " + (b.motion||"")).toLowerCase().includes(query) ? 0 : 1;
+            return aHit - bHit;
+          });
+        }
+        const PREVIEW = 5;
+        const preview = ordered.slice(0, PREVIEW);
+        const remaining = ordered.length - preview.length;
+
+        const items = preview.map(mo => {
+          const sp = voteSplit(mo);
+          const splitTxt = (mo.votes||[]).length
+            ? `<span class="mono muted" title="${sp.y} yes · ${sp.n} no${sp.o?` · ${sp.o} other`:''}">${sp.y}-${sp.n}${sp.o?`-${sp.o}`:''}</span>`
+            : '<span class="muted" style="font-size:11px">no roll call</span>';
+          // (Tag chips removed from the preview list to keep rows scannable;
+          // full tag set is on the meeting detail page.)
+          return `
+            <li class="motion-line">
+              <span class="motion-line-outcome">${CT.outcomePill(mo.outcome)}</span>
+              <span class="motion-line-title">${highlight(shortenTitle(mo.item_title), query)}</span>
+              <span class="motion-line-meta">${splitTxt}</span>
+            </li>`;
+        }).join("");
+
+        return `
+          <article class="meeting-card" data-id="${meeting.id}" tabindex="0" role="link" aria-label="Meeting on ${CT.fmtDate(meeting.date)}">
+            <header class="meeting-card-head">
+              <div>
+                <div class="meeting-date">${CT.fmtDate(meeting.date)}</div>
+                <div class="muted" style="font-size:12px">${meeting.motion_count} motion${meeting.motion_count===1?"":"s"} · ${meeting.ord_count} ord. lines · ${meeting.res_count} res. lines</div>
+              </div>
+              <a class="muted" href="meetings.html?id=${meeting.id}" aria-label="Open meeting ${CT.fmtDate(meeting.date)}">Open →</a>
+            </header>
+            ${motions.length === 0 ? '<p class="muted" style="margin:8px 0 0">No motions parsed.</p>' : `
+              <ul class="motion-line-list">${items}</ul>
+              ${remaining > 0 ? `<p class="muted" style="margin:8px 0 0;font-size:12px">+ ${remaining} more motion${remaining===1?"":"s"}</p>` : ""}
+            `}
+          </article>
+        `;
+      }
+
+      async function renderMeeting(data, id, root) {
+        const meeting = data._byMeetingId[id];
+        if (!meeting) {
+          root.innerHTML = `<div class="error-block">No meeting found with id ${id}.</div>`;
+          return;
+        }
+        // Per-meeting JSON has the full ord/res line list
+        const detailUrl = `data/parsed/${meeting.source_file.replace(/\.pdf$/, ".json")}`;
+        let detail = null;
+        try {
+          const r = await fetch("../" + detailUrl).catch(() => fetch(detailUrl));
+          detail = await r.json();
+        } catch {}
+
+        const motions = data.motions.filter(m => m.meeting_id === id);
+        root.innerHTML = `
+          <p style="margin-top:0"><a href="meetings.html">← All meetings</a></p>
+          <h1 class="page-title">${CT.fmtDate(meeting.date)}</h1>
+          <p class="page-sub">${motions.length} motion${motions.length === 1 ? "" : "s"} · ${meeting.ord_count} ordinance lines · ${meeting.res_count} resolution lines · <span class="mono muted">${CT.escapeHtml(meeting.source_file)}</span></p>
+
+          <section class="section">
+            <h2>Motions</h2>
+            <div id="motions"></div>
+          </section>
+
+          ${detail ? `
+            <section class="section">
+              <h2>Ordinance mentions (${detail.ordinances.length})</h2>
+              <details><summary class="muted" style="cursor:pointer">Show lines</summary>
+                <ul style="list-style:none;padding:0;margin-top:6px;font-size:13px">
+                ${detail.ordinances.map(o => `<li style="padding:3px 0;border-bottom:1px dashed var(--border)"><span class="mono muted">p.${o.page}</span> ${CT.escapeHtml(o.line_text)}</li>`).join("")}
+                </ul>
+              </details>
+            </section>
+            <section class="section">
+              <h2>Resolution mentions (${detail.resolutions.length})</h2>
+              <details><summary class="muted" style="cursor:pointer">Show lines</summary>
+                <ul style="list-style:none;padding:0;margin-top:6px;font-size:13px">
+                ${detail.resolutions.map(o => `<li style="padding:3px 0;border-bottom:1px dashed var(--border)"><span class="mono muted">p.${o.page}</span> ${CT.escapeHtml(o.line_text)}</li>`).join("")}
+                </ul>
+              </details>
+            </section>
+          ` : ""}
+        `;
+
+        document.getElementById("motions").innerHTML = motions.map(renderMotionCard.bind(null, data)).join("") ||
+          `<p class="muted">No motions parsed for this meeting.</p>`;
+      }
+
+      function renderMotionCard(data, m) {
+        const voteList = (m.votes || []).map(v =>
+          CT.voteChip(CT.memberName(data, v.member_id), v.vote)
+        ).join(" ");
+        const tagHtml = CT.tagChips(data, m.tags);
+        return `
+          <details class="motion-row" style="border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;background:var(--bg-elev)">
+            <summary style="padding:12px 14px">
+              <div style="display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap">
+                <span class="mono muted" style="min-width:36px">p.${m.page||"—"}</span>
+                <span class="mono muted" style="min-width:48px">${CT.escapeHtml(m.agenda_ref || "")}</span>
+                <span style="flex:1;min-width:200px"><strong>${CT.escapeHtml(CT.cleanTitle(m.item_title) || "(no title)")}</strong></span>
+                ${CT.outcomePill(m.outcome)}
+              </div>
+              <div style="margin-top:6px">${tagHtml}</div>
+            </summary>
+            <div class="motion-detail">
+              <p class="m-text">${CT.escapeHtml(m.motion || "(no motion text)")}</p>
+              <div>${voteList || '<span class="muted">No roll call recorded</span>'}</div>
+            </div>
+          </details>
+        `;
+      }
+    </script>
+  </body>
+</html>

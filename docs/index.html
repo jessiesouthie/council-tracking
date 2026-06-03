@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Eagle Mountain Council Tracking</title>
+    <meta name="description" content="See every motion and roll-call vote from Eagle Mountain City Council meetings, searchable by topic, member, or date." />
+    <meta name="theme-color" content="#31452E" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CT</span>
+        <div>
+          <h1>Council Tracking</h1>
+          <p class="city">Eagle Mountain, UT</p>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" data-nav="index.html">Home</a>
+        <a href="meetings.html" data-nav="meetings.html">Meetings</a>
+        <a href="motions.html" data-nav="motions.html">Motions</a>
+        <a href="members.html" data-nav="members.html">Members</a>
+        <span class="nav-divider" aria-hidden="true"></span>
+        <a href="upload/" data-nav="upload">Upload</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <h1 class="hero-title">What did the Eagle Mountain City Council decide?</h1>
+        <p class="hero-sub">Search every motion and roll-call vote going back to <span id="earliest-year">—</span>.</p>
+        <form class="hero-search" action="motions.html" method="get" role="search">
+          <input
+            class="input hero-input"
+            type="search"
+            name="q"
+            placeholder="Search by topic, motion text, or agenda item…"
+            autocomplete="off"
+            aria-label="Search motions"
+          />
+          <button class="btn" type="submit">Search</button>
+        </form>
+        <div class="hero-tags" id="hero-tags"></div>
+      </section>
+
+      <section class="section" id="recent-section">
+        <div class="section-head">
+          <h2>Recent meetings</h2>
+          <a href="meetings.html" class="muted nowrap">All meetings →</a>
+        </div>
+        <div class="meeting-grid" id="recent-grid"></div>
+      </section>
+
+      <section class="section" id="members-section">
+        <div class="section-head">
+          <h2>Council</h2>
+          <a href="members.html" class="muted nowrap">Full directory →</a>
+        </div>
+        <div id="member-current"></div>
+        <details id="member-past-wrap" hidden>
+          <summary class="muted" style="cursor:pointer;margin-top:14px;font-size:13px">Past members</summary>
+          <div id="member-past" style="margin-top:12px"></div>
+        </details>
+      </section>
+
+      <section class="section" id="stats-section">
+        <h2>Dataset at a glance</h2>
+        <div class="cards" id="summary-cards"></div>
+      </section>
+
+      <div class="boot-block" id="loading"><div class="spinner-sm"></div><span>Loading dataset…</span></div>
+    </main>
+
+    <footer class="footer">
+      <span>Data from the Eagle Mountain CivicClerk public portal · last refreshed <span id="generated-at">—</span></span>
+    </footer>
+
+    <script src="site.js"></script>
+    <script>
+      (async () => {
+        const data = await CT.loadData().catch((e) => {
+          document.getElementById("loading").outerHTML =
+            `<div class="error-block">Failed to load dataset: ${CT.escapeHtml(e.message)}</div>`;
+          throw e;
+        });
+        document.getElementById("loading").hidden = true;
+
+        document.getElementById("generated-at").textContent = data.generated_at.replace("T", " ").replace("Z", " UTC");
+
+        const earliest = data.meetings[data.meetings.length - 1]?.date || "";
+        document.getElementById("earliest-year").textContent = earliest.slice(0,4) || "—";
+
+        // Hero topic chips — top 6 topics by motion count
+        const tagsSorted = data.tags.filter(t => t.motion_count > 0)
+                                    .sort((a,b) => b.motion_count - a.motion_count)
+                                    .slice(0, 6);
+        document.getElementById("hero-tags").innerHTML =
+          `<span class="muted" style="margin-right:6px;font-size:13px">Popular topics:</span>` +
+          tagsSorted.map(t =>
+            `<a class="tag accent" href="motions.html?tag=${encodeURIComponent(t.id)}">${CT.escapeHtml(t.label)} <span class="muted">${t.motion_count}</span></a>`
+          ).join("");
+
+        // Recent meetings — first 3 as full cards
+        const motionsByMeeting = new Map();
+        for (const m of data.motions) {
+          if (!motionsByMeeting.has(m.meeting_id)) motionsByMeeting.set(m.meeting_id, []);
+          motionsByMeeting.get(m.meeting_id).push(m);
+        }
+        const recent = data.meetings.slice(0, 3);
+        document.getElementById("recent-grid").innerHTML = recent.map(m =>
+          renderMeetingCard(m, motionsByMeeting.get(m.id) || [])
+        ).join("");
+        document.querySelectorAll('.meeting-card').forEach(card => {
+          const go = () => { location.href = `meetings.html?id=${card.dataset.id}`; };
+          card.addEventListener('click', (e) => { if (e.target.closest('a')) return; go(); });
+          card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+        });
+
+        // Council members — current vs past split
+        const current = data.members.filter(m => !m.tenure_end);
+        const past = data.members.filter(m => m.tenure_end);
+        document.getElementById("member-current").innerHTML = renderMemberRow(current, data);
+        if (past.length) {
+          document.getElementById("member-past-wrap").hidden = false;
+          document.getElementById("member-past").innerHTML = renderMemberRow(past, data, true);
+        }
+
+        // Dataset stats
+        const c = data.counts;
+        document.getElementById("summary-cards").innerHTML = `
+          <div class="stat-card"><div class="label">Meetings</div><div class="value">${c.meetings}</div><div class="delta">${CT.fmtDate(earliest)} → ${CT.fmtDate(data.meetings[0]?.date)}</div></div>
+          <div class="stat-card"><div class="label">Motions</div><div class="value">${c.motions.toLocaleString()}</div><div class="delta">${c.votes.toLocaleString()} individual votes</div></div>
+          <div class="stat-card"><div class="label">Ordinance mentions</div><div class="value">${c.ord_lines.toLocaleString()}</div></div>
+          <div class="stat-card"><div class="label">Resolution mentions</div><div class="value">${c.res_lines.toLocaleString()}</div></div>
+        `;
+      })();
+
+      function voteSplit(motion) {
+        let y=0,n=0,o=0;
+        for (const v of (motion.votes||[])) {
+          const x = (v.vote||"").toLowerCase();
+          if (x === "yes") y++;
+          else if (x === "no" || x === "nay") n++;
+          else o++;
+        }
+        return {y,n,o};
+      }
+      function shortenTitle(s, max=72) {
+        s = CT.cleanTitle(s || "");
+        if (!s) return "(no title)";
+        return s.length > max ? s.slice(0, max-1) + "…" : s;
+      }
+      function renderMeetingCard(meeting, motions) {
+        const PREVIEW = 5;
+        const preview = motions.slice(0, PREVIEW);
+        const remaining = motions.length - preview.length;
+        const items = preview.map(mo => {
+          const sp = voteSplit(mo);
+          const split = (mo.votes||[]).length
+            ? `<span class="mono muted" title="${sp.y} yes · ${sp.n} no${sp.o?` · ${sp.o} other`:''}">${sp.y}-${sp.n}${sp.o?`-${sp.o}`:''}</span>`
+            : '<span class="muted" style="font-size:11px">no roll call</span>';
+          return `<li class="motion-line">
+            <span class="motion-line-outcome">${CT.outcomePill(mo.outcome)}</span>
+            <span class="motion-line-title">${CT.escapeHtml(shortenTitle(mo.item_title))}</span>
+            <span class="motion-line-meta">${split}</span>
+          </li>`;
+        }).join("");
+        return `
+          <article class="meeting-card" data-id="${meeting.id}" tabindex="0" role="link" aria-label="Meeting on ${CT.fmtDate(meeting.date)}">
+            <header class="meeting-card-head">
+              <div>
+                <div class="meeting-date">${CT.fmtDate(meeting.date)}</div>
+                <div class="muted" style="font-size:12px">${meeting.motion_count} motion${meeting.motion_count===1?"":"s"} · ${meeting.ord_count} ord. lines · ${meeting.res_count} res. lines</div>
+              </div>
+              <a class="muted" href="meetings.html?id=${meeting.id}" aria-label="Open meeting ${CT.fmtDate(meeting.date)}">Open →</a>
+            </header>
+            ${motions.length === 0 ? '<p class="muted" style="margin:8px 0 0">No motions parsed.</p>' : `
+              <ul class="motion-line-list">${items}</ul>
+              ${remaining > 0 ? `<p class="muted" style="margin:8px 0 0;font-size:12px">+ ${remaining} more motion${remaining===1?"":"s"}</p>` : ""}
+            `}
+          </article>
+        `;
+      }
+      function renderMemberRow(members, data, dim=false) {
+        if (!members.length) return '<p class="muted">None on file.</p>';
+        return `<div class="member-row${dim ? ' dim' : ''}">${members.map(m => {
+          const s = data.stats.by_member[m.id] || { total:0, yes_rate:0 };
+          const tenure = dim ? `${CT.fmtDate(m.tenure_start)} – ${CT.fmtDate(m.tenure_end)}` : `since ${CT.fmtDate(m.tenure_start)}`;
+          return `
+            <a class="member-tile" href="member.html?id=${encodeURIComponent(m.id)}">
+              <div class="member-avatar" aria-hidden="true">${CT.escapeHtml(initials(m.name))}</div>
+              <div class="member-info">
+                <div class="member-name">${CT.escapeHtml(m.name)}</div>
+                <div class="member-role">${CT.escapeHtml(m.role)} · <span class="muted">${tenure}</span></div>
+                <div class="member-stat">${s.total} votes · ${(s.yes_rate*100).toFixed(0)}% yes</div>
+              </div>
+            </a>`;
+        }).join("")}</div>`;
+      }
+      function initials(name) {
+        const p = (name||"").split(/\s+/).filter(Boolean);
+        return ((p[0]||"")[0] + (p[p.length-1]||"")[0] || "?").toUpperCase();
+      }
+    </script>
+  </body>
+</html>

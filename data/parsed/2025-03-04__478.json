@@ -1,0 +1,225 @@
+{
+  "meeting": {
+    "id": 478,
+    "date": "2025-03-04",
+    "source_file": "2025-03-04__478.pdf",
+    "motion_count": 4,
+    "ord_count": 3,
+    "res_count": 12
+  },
+  "motions": [
+    {
+      "id": 870,
+      "meeting_id": 478,
+      "date": "2025-03-04",
+      "page": 4,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Wright moved to approve the Consent Agenda, removing items 12.C. and 12.D. from the agenda and placing them after Item 13.A. on the regular agenda. Councilmember Rich Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 871,
+      "meeting_id": 478,
+      "date": "2025-03-04",
+      "page": 5,
+      "agenda_ref": "13.A.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Approving the Enyo Development Agreement",
+      "motion": "Councilmember Wright moved to adopt an Ordinance of Eagle Mountain City, Utah, Approving the Enyo Development Agreement as presented in the agenda packet. Councilmember Wood seconded the motion.",
+      "outcome": "",
+      "tags": [
+        "development"
+      ],
+      "votes": []
+    },
+    {
+      "id": 872,
+      "meeting_id": 478,
+      "date": "2025-03-04",
+      "page": 6,
+      "agenda_ref": "12.C.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Adopting the Downtown Plan",
+      "motion": "Councilmember Burnham moved to adopt the Resolution of Eagle Mountain City, Utah Adopting the Downtown Master Plan. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a vote of 3:2.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "No"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "No"
+        }
+      ]
+    },
+    {
+      "id": 873,
+      "meeting_id": 478,
+      "date": "2025-03-04",
+      "page": 7,
+      "agenda_ref": "12.D.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Supporting the Creation of a Utah Inland Port Authority Project Area in Eagle Mountain City",
+      "motion": "Councilmember Clark moved to table the Resolution, Supporting the Creation of a Utah Inland Port Authority Project Area in Eagle Mountain City, for further discussion. Councilmember Rich Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 5,
+      "line_text": "13.A. ORDINANCE - An Ordinance of Eagle Mountain City, Utah, Approving the Enyo Development"
+    },
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 5,
+      "line_text": "MOTION: Councilmember Wright moved to adopt an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 5,
+      "line_text": "AMENDED MOTION: Councilmember Wright moved to adopt an Ordinance of Eagle Mountain City,"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 2,
+      "line_text": "felt would improve the program. Staff will return with a resolution with the proposed changes on the City"
+    },
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 2,
+      "line_text": "12.C. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Adopting the Downtown Master"
+    },
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 2,
+      "line_text": "12.D. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Supporting the Creation of a Utah"
+    },
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 3,
+      "line_text": "12.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving the Second Amendment"
+    },
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 4,
+      "line_text": "12.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving the Second Amendment"
+    },
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 4,
+      "line_text": "12.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving a Contract Renewal"
+    },
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 6,
+      "line_text": "12.C. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Adopting the Downtown Plan"
+    },
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Burnham moved to adopt the Resolution of Eagle Mountain City, Utah"
+    },
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 6,
+      "line_text": "12.D. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Supporting the Creation of a Utah"
+    },
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 6,
+      "line_text": "Evan Berrett presented the item, noting the resolution text he used for the Resolution that the City"
+    },
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 6,
+      "line_text": "project area plan and budget with the Utah Inland Port Authority (UIPA). The updated resolution amends"
+    },
+    {
+      "source_file": "2025-03-04__478.pdf",
+      "meeting_date": "2025-03-04",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Clark moved to table the Resolution, Supporting the Creation of a"
+    }
+  ]
+}

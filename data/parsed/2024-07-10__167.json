@@ -1,0 +1,67 @@
+{
+  "meeting": {
+    "id": 167,
+    "date": "2024-07-10",
+    "source_file": "2024-07-10__167.pdf",
+    "motion_count": 1,
+    "ord_count": 0,
+    "res_count": 3
+  },
+  "motions": [
+    {
+      "id": 753,
+      "meeting_id": 167,
+      "date": "2024-07-10",
+      "page": 1,
+      "agenda_ref": "2.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Determining the Final Applicants for the City Manager Position. Mayor Westmoreland presented the item and explained that the City Council discussed the candidates brought forward by the recruiting firm and created a short list of applicants to interview. Scott Krim with Colin Baenziger and Associates also provided information to the Council regarding the interview process.",
+      "motion": "Councilmember Wood moved to approve a Resolution of Eagle Mountain City, Utah, Determining the Final Applicants for the City Manager Position with the following applicants: Rose Beverly, David Fraser, Mike Morris, Steve Mumford, Mark Morris, Steve Mumford, Mark Rooney, and Cliff Strachan. Councilmember Wright seconded the motion.",
+      "outcome": "passed unanimously.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2024-07-10__167.pdf",
+      "meeting_date": "2024-07-10",
+      "page": 1,
+      "line_text": "2. RESOLUTION"
+    },
+    {
+      "source_file": "2024-07-10__167.pdf",
+      "meeting_date": "2024-07-10",
+      "page": 1,
+      "line_text": "2.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Determining the Final"
+    },
+    {
+      "source_file": "2024-07-10__167.pdf",
+      "meeting_date": "2024-07-10",
+      "page": 1,
+      "line_text": "MOTION: Councilmember Wood moved to approve a Resolution of Eagle Mountain City,"
+    }
+  ]
+}

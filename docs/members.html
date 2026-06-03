@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Members · Council Tracking</title>
+    <meta name="theme-color" content="#31452E" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CT</span>
+        <div><h1>Council Tracking</h1><p class="city">Eagle Mountain, UT</p></div>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" data-nav="index.html">Home</a>
+        <a href="meetings.html" data-nav="meetings.html">Meetings</a>
+        <a href="motions.html" data-nav="motions.html">Motions</a>
+        <a href="members.html" data-nav="members.html">Members</a>
+        <span class="nav-divider" aria-hidden="true"></span>
+        <a href="upload/" data-nav="upload">Upload</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <h1 class="page-title">Council members</h1>
+      <p class="page-sub">Roll-call vote totals and how often each pair voted the same way.</p>
+
+      <section class="section">
+        <h2>Roll-call totals</h2>
+        <div class="tablewrap">
+          <table class="data">
+            <thead>
+              <tr><th>Member</th><th>Role</th><th>Tenure</th><th class="text-right">Total votes</th><th class="text-right">Yes</th><th class="text-right">No</th><th class="text-right">Abstain</th><th class="text-right">Yes rate</th></tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Voting agreement</h2>
+        <p class="muted" style="margin-top:0;font-size:13px">How often each pair voted the same way (yes/no) on motions where both were recorded. Pairs with under 10 shared votes are hidden.</p>
+        <div class="agreement-controls">
+          <label class="muted" style="font-size:13px">
+            Sort:
+            <select id="sort" class="select" style="margin-left:6px;min-height:32px;font-size:13px;padding:4px 8px">
+              <option value="desc">Most aligned first</option>
+              <option value="asc">Most divergent first</option>
+            </select>
+          </label>
+        </div>
+        <ul id="pair-list" class="pair-list"></ul>
+      </section>
+    </main>
+
+    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
+
+    <script src="site.js"></script>
+    <script>
+      (async () => {
+        const data = await CT.loadData();
+        renderRows(data);
+        renderPairs(data);
+        document.getElementById("sort").addEventListener("change", () => renderPairs(data));
+      })();
+
+      function renderRows(data) {
+        const members = data.members.filter(m => m.role === "Councilmember" || m.role === "Mayor");
+        const rows = members.map(m => {
+          const s = data.stats.by_member[m.id] || { total:0,yes:0,no:0,nay:0,abstain:0,excused:0,absent:0,yes_rate:0 };
+          const opposed = s.no + (s.nay || 0);
+          return `
+            <tr class="clickable" data-href="member.html?id=${encodeURIComponent(m.id)}">
+              <td><a href="member.html?id=${encodeURIComponent(m.id)}"><strong>${CT.escapeHtml(m.name)}</strong></a></td>
+              <td>${CT.escapeHtml(m.role)}</td>
+              <td class="muted nowrap">${CT.fmtDate(m.tenure_start)}${m.tenure_end ? "&ndash; " + CT.fmtDate(m.tenure_end) : "&ndash; present"}</td>
+              <td class="text-right mono">${s.total}</td>
+              <td class="text-right mono" style="color:var(--ok)">${s.yes}</td>
+              <td class="text-right mono" style="color:var(--danger)">${opposed}</td>
+              <td class="text-right mono muted">${s.abstain + s.excused + s.absent}</td>
+              <td class="text-right mono">${(s.yes_rate*100).toFixed(0)}%</td>
+            </tr>
+          `;
+        }).join("");
+        document.getElementById("rows").innerHTML = rows;
+        document.querySelectorAll('#rows tr.clickable').forEach(tr => {
+          tr.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') return;
+            location.href = tr.dataset.href;
+          });
+        });
+      }
+
+      const MIN_SHARED = 10;
+
+      function renderPairs(data) {
+        const sortDir = document.getElementById("sort").value || "desc";
+
+        const active = data.members.filter(m =>
+          (m.role === "Councilmember" || m.role === "Mayor") &&
+          (data.stats.by_member[m.id]?.total || 0) >= 5
+        );
+        const idToMember = Object.fromEntries(active.map(m => [m.id, m]));
+
+        const pairs = [];
+        for (const key of Object.keys(data.stats.agreement)) {
+          const [aId, bId] = key.split("|");
+          if (!idToMember[aId] || !idToMember[bId]) continue;
+          const n = data.stats.agreement_n[key] || 0;
+          if (n < MIN_SHARED) continue;
+          pairs.push({
+            a: idToMember[aId],
+            b: idToMember[bId],
+            frac: data.stats.agreement[key],
+            n,
+          });
+        }
+        pairs.sort((x, y) => sortDir === "desc" ? y.frac - x.frac : x.frac - y.frac);
+
+        const ul = document.getElementById("pair-list");
+        if (pairs.length === 0) {
+          ul.innerHTML = '<li class="muted">Not enough overlapping vote data yet.</li>';
+          return;
+        }
+
+        // Read palette ramp endpoints from CSS custom properties so the
+        // bar follows light/dark mode automatically.
+        const css = getComputedStyle(document.documentElement);
+        const lo = css.getPropertyValue("--bar-lo").trim() || "#B5341F";
+        const hi = css.getPropertyValue("--bar-hi").trim() || "#31452E";
+
+        ul.innerHTML = pairs.map(p => {
+          const pct = (p.frac * 100).toFixed(0);
+          const loW = ((1 - p.frac) * 100).toFixed(0);
+          const hiW = (p.frac * 100).toFixed(0);
+          // Perceptual mix between the two palette endpoints; falls back
+          // gracefully on browsers without color-mix() support.
+          const barColor = `color-mix(in oklch, ${lo} ${loW}%, ${hi} ${hiW}%)`;
+          return `
+            <li class="pair">
+              <a class="pair-member left" href="member.html?id=${encodeURIComponent(p.a.id)}">
+                <span class="pair-avatar">${CT.escapeHtml(initials(p.a.name))}</span>
+                <span class="pair-name">${CT.escapeHtml(p.a.name)}</span>
+              </a>
+              <div class="pair-bar-wrap" title="${p.a.name} & ${p.b.name} agreed on ${pct}% of ${p.n} shared roll calls">
+                <div class="pair-bar" style="width:${pct}%;background:${barColor}"></div>
+                <span class="pair-meta">
+                  <span class="pair-pct">${pct}%</span>
+                  <span class="pair-n">n=${p.n}</span>
+                </span>
+              </div>
+              <a class="pair-member right" href="member.html?id=${encodeURIComponent(p.b.id)}">
+                <span class="pair-name">${CT.escapeHtml(p.b.name)}</span>
+                <span class="pair-avatar">${CT.escapeHtml(initials(p.b.name))}</span>
+              </a>
+            </li>
+          `;
+        }).join("");
+      }
+
+      function initials(name) {
+        const p = (name||"").split(/\s+/).filter(Boolean);
+        return ((p[0]||"")[0] + (p[p.length-1]||"")[0] || "?").toUpperCase();
+      }
+    </script>
+  </body>
+</html>

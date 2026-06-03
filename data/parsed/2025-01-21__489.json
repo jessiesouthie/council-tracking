@@ -1,0 +1,249 @@
+{
+  "meeting": {
+    "id": 489,
+    "date": "2025-01-21",
+    "source_file": "2025-01-21__489.pdf",
+    "motion_count": 5,
+    "ord_count": 4,
+    "res_count": 10
+  },
+  "motions": [
+    {
+      "id": 844,
+      "meeting_id": 489,
+      "date": "2025-01-21",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Appoint Jacob Adams to the Youth Council fulfilling a term through June 30, 2025",
+      "motion": "Councilmember Grey moved to appoint Jacob Adams to the Youth Council fulfilling a term through June 30, 2025. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "personnel"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 845,
+      "meeting_id": 489,
+      "date": "2025-01-21",
+      "page": 4,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Wood moved to approve the consent agenda, removing Items 11.C. and 11.E. from the consent agenda and placing them at the end of the scheduled items for further discussion. Councilmember Burnham seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 846,
+      "meeting_id": 489,
+      "date": "2025-01-21",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Title 17 Energy-Related Code Amendments",
+      "motion": "Councilmember Wood moved to table an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Title 17 Energy-Related Code Amendments. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 847,
+      "meeting_id": 489,
+      "date": "2025-01-21",
+      "page": 6,
+      "agenda_ref": "11.C.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the Purchase Agreement with Ivory Homes and SITLA to purchase 20.99 acres of Land for a Future Civic Campus",
+      "motion": "Councilmember Wood moved to adopt a Resolution of Eagle Mountain City, Utah, Approving the Purchase Agreement with Ivory Homes and SITLA to purchase 20.99 acres of Land for a Future Civic Campus with the following changes: 1. Amending references to Fionnuala Kofoed, City Recorder to the new City Recorder, Gina Olsen 2. Strike any restriction/language on commercial size restrictions. Councilmember Clark seconded the motion. Discussion took place regarding the size restrictions, drive-throughs/deed restrictions, and what would be considered a “Public Works” facility.",
+      "outcome": "",
+      "tags": [
+        "procurement"
+      ],
+      "votes": []
+    },
+    {
+      "id": 848,
+      "meeting_id": 489,
+      "date": "2025-01-21",
+      "page": 7,
+      "agenda_ref": "11.E.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving an Agreement to Provide Lobbying Services",
+      "motion": "Councilmember Wright moved to adopt a Resolution of Eagle Mountain City, Utah, Approving an Agreement to Provide Lobbying Services for one year at a rate of $60,000 annually. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-01-21__489.pdf",
+      "meeting_date": "2025-01-21",
+      "page": 5,
+      "line_text": "12.A. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending the"
+    },
+    {
+      "source_file": "2025-01-21__489.pdf",
+      "meeting_date": "2025-01-21",
+      "page": 5,
+      "line_text": "The proposed ordinance amends Eagle Mountain Municipal Code 17.10 Definitions adding energy-related"
+    },
+    {
+      "source_file": "2025-01-21__489.pdf",
+      "meeting_date": "2025-01-21",
+      "page": 5,
+      "line_text": "Mayor Westmoreland provided comments regarding the ordinance and technology in energy."
+    },
+    {
+      "source_file": "2025-01-21__489.pdf",
+      "meeting_date": "2025-01-21",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Wood moved to table an Ordinance of Eagle Mountain City, Utah,"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2025-01-21__489.pdf",
+      "meeting_date": "2025-01-21",
+      "page": 4,
+      "line_text": "11.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving the Second Amendment"
+    },
+    {
+      "source_file": "2025-01-21__489.pdf",
+      "meeting_date": "2025-01-21",
+      "page": 4,
+      "line_text": "11.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving the Fourth Amendment"
+    },
+    {
+      "source_file": "2025-01-21__489.pdf",
+      "meeting_date": "2025-01-21",
+      "page": 4,
+      "line_text": "11.C. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving the the Purchase"
+    },
+    {
+      "source_file": "2025-01-21__489.pdf",
+      "meeting_date": "2025-01-21",
+      "page": 4,
+      "line_text": "11.D. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving a Purchase Agreement"
+    },
+    {
+      "source_file": "2025-01-21__489.pdf",
+      "meeting_date": "2025-01-21",
+      "page": 4,
+      "line_text": "11.E. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving an Agreement to"
+    },
+    {
+      "source_file": "2025-01-21__489.pdf",
+      "meeting_date": "2025-01-21",
+      "page": 6,
+      "line_text": "11.C. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving the Purchase"
+    },
+    {
+      "source_file": "2025-01-21__489.pdf",
+      "meeting_date": "2025-01-21",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Wood moved to adopt a Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-01-21__489.pdf",
+      "meeting_date": "2025-01-21",
+      "page": 6,
+      "line_text": "AMENDED MOTION: Councilmember Wood moved to table a Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-01-21__489.pdf",
+      "meeting_date": "2025-01-21",
+      "page": 7,
+      "line_text": "11.E. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving an Agreement to"
+    },
+    {
+      "source_file": "2025-01-21__489.pdf",
+      "meeting_date": "2025-01-21",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Wright moved to adopt a Resolution of Eagle Mountain City, Utah,"
+    }
+  ]
+}

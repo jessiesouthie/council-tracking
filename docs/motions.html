@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Motions · Council Tracking</title>
+    <meta name="theme-color" content="#31452E" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CT</span>
+        <div><h1>Council Tracking</h1><p class="city">Eagle Mountain, UT</p></div>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" data-nav="index.html">Home</a>
+        <a href="meetings.html" data-nav="meetings.html">Meetings</a>
+        <a href="motions.html" data-nav="motions.html">Motions</a>
+        <a href="members.html" data-nav="members.html">Members</a>
+        <span class="nav-divider" aria-hidden="true"></span>
+        <a href="upload/" data-nav="upload">Upload</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <h1 class="page-title">Motions</h1>
+      <p class="page-sub">Every council motion on file. Search across titles and motion text; refine by topic, member, outcome, or year.</p>
+
+      <div class="search-bar">
+        <input id="q" class="input hero-input" type="search" placeholder="Search motion titles or text…" autocomplete="off" aria-label="Search motions" />
+      </div>
+
+      <div class="filter-strip">
+        <details class="filter-group" id="filter-tag">
+          <summary>Topic <span class="filter-summary muted" id="filter-tag-label">All</span></summary>
+          <div class="filter-options" id="tag-options"></div>
+        </details>
+        <details class="filter-group" id="filter-member">
+          <summary>Member <span class="filter-summary muted" id="filter-member-label">Any</span></summary>
+          <div class="filter-options" id="member-options"></div>
+        </details>
+        <details class="filter-group" id="filter-outcome">
+          <summary>Outcome <span class="filter-summary muted" id="filter-outcome-label">Any</span></summary>
+          <div class="filter-options" id="outcome-options">
+            <label><input type="radio" name="outcome" value=""> Any</label>
+            <label><input type="radio" name="outcome" value="passed"> Passed</label>
+            <label><input type="radio" name="outcome" value="failed"> Failed</label>
+            <label><input type="radio" name="outcome" value="other"> Other</label>
+          </div>
+        </details>
+        <details class="filter-group" id="filter-year">
+          <summary>Year <span class="filter-summary muted" id="filter-year-label">All</span></summary>
+          <div class="filter-options" id="year-options"></div>
+        </details>
+        <button id="clear-all" class="btn ghost" type="button" hidden>Clear all</button>
+      </div>
+
+      <div id="active-chips" class="active-chips" aria-live="polite"></div>
+      <p id="result-count" class="muted" style="font-size:13px;margin:0 0 12px" aria-live="polite"></p>
+
+      <div id="rows"></div>
+      <div id="pager" class="pager"></div>
+    </main>
+
+    <footer class="footer"><span>Data from the Eagle Mountain CivicClerk portal</span></footer>
+
+    <script src="site.js"></script>
+    <script>
+      const PAGE_SIZE = 25;
+      let page = 1;
+      const state = { q: "", tag: "", member: "", outcome: "", year: "" };
+      let dataRef = null;
+
+      (async () => {
+        const data = await CT.loadData();
+        dataRef = data;
+
+        // Tag options
+        const tagWrap = document.getElementById("tag-options");
+        tagWrap.innerHTML = '<label><input type="radio" name="tag" value=""> All topics</label>' +
+          data.tags.filter(t => t.motion_count > 0)
+                   .sort((a,b) => b.motion_count - a.motion_count)
+                   .map(t => `<label><input type="radio" name="tag" value="${t.id}"> ${CT.escapeHtml(t.label)} <span class="muted">(${t.motion_count})</span></label>`)
+                   .join("");
+
+        // Member options
+        const memWrap = document.getElementById("member-options");
+        memWrap.innerHTML = '<label><input type="radio" name="member" value=""> Any member</label>' +
+          data.members
+            .filter(m => m.role === "Councilmember" || m.role === "Mayor")
+            .map(m => `<label><input type="radio" name="member" value="${m.id}"> ${CT.escapeHtml(m.name)} <span class="muted">(${m.role})</span></label>`)
+            .join("");
+
+        // Year options
+        const years = [...new Set(data.motions.map(m => (m.date||"").slice(0,4)).filter(Boolean))]
+                       .sort((a,b) => b.localeCompare(a));
+        const yearWrap = document.getElementById("year-options");
+        yearWrap.innerHTML = '<label><input type="radio" name="year" value=""> All years</label>' +
+          years.map(y => `<label><input type="radio" name="year" value="${y}"> ${y}</label>`).join("");
+
+        // Hydrate from URL
+        const params = CT.paramsFromUrl();
+        for (const k of ["q","tag","member","outcome","year"]) if (params[k]) state[k] = params[k];
+        document.getElementById("q").value = state.q;
+        applyStateToControls();
+
+        // Wire events
+        document.getElementById("q").addEventListener("input", (e) => {
+          state.q = e.target.value.trim();
+          page = 1; paint(); syncUrl();
+        });
+        for (const name of ["tag","member","outcome","year"]) {
+          document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+            r.addEventListener("change", (e) => {
+              if (e.target.checked) {
+                state[name] = e.target.value;
+                page = 1;
+                document.getElementById(`filter-${name}`).removeAttribute("open");
+                paint(); syncUrl();
+              }
+            });
+          });
+        }
+        document.getElementById("clear-all").addEventListener("click", () => {
+          for (const k of ["q","tag","member","outcome","year"]) state[k] = "";
+          document.getElementById("q").value = "";
+          applyStateToControls();
+          page = 1; paint(); syncUrl();
+        });
+
+        paint();
+      })();
+
+      function applyStateToControls() {
+        for (const name of ["tag","member","outcome","year"]) {
+          document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+            r.checked = (r.value === state[name]);
+          });
+        }
+        updateFilterLabels();
+      }
+
+      function updateFilterLabels() {
+        const data = dataRef;
+        const tagLbl = state.tag ? CT.tagLabel(data, state.tag) : "All";
+        const memLbl = state.member ? CT.memberName(data, state.member) : "Any";
+        const outLbl = state.outcome ? cap(state.outcome) : "Any";
+        const yrLbl  = state.year || "All";
+        document.getElementById("filter-tag-label").textContent = tagLbl;
+        document.getElementById("filter-member-label").textContent = memLbl;
+        document.getElementById("filter-outcome-label").textContent = outLbl;
+        document.getElementById("filter-year-label").textContent = yrLbl;
+      }
+
+      function syncUrl() {
+        const p = new URLSearchParams();
+        for (const k of ["q","tag","member","outcome","year"]) if (state[k]) p.set(k, state[k]);
+        history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p.toString() : ""));
+      }
+
+      function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+      function activeChips() {
+        const data = dataRef;
+        const chips = [];
+        if (state.q) chips.push({ k: "q", label: `Search: “${state.q}”` });
+        if (state.tag) chips.push({ k: "tag", label: `Topic: ${CT.tagLabel(data, state.tag)}` });
+        if (state.member) chips.push({ k: "member", label: `Member: ${CT.memberName(data, state.member)}` });
+        if (state.outcome) chips.push({ k: "outcome", label: `Outcome: ${cap(state.outcome)}` });
+        if (state.year) chips.push({ k: "year", label: `Year: ${state.year}` });
+        return chips;
+      }
+
+      function paint() {
+        const data = dataRef;
+        const q = state.q.toLowerCase();
+
+        const filt = data.motions.filter(m => {
+          if (state.year && (m.date||"").slice(0,4) !== state.year) return false;
+          if (state.tag && !(m.tags||[]).includes(state.tag)) return false;
+          if (state.outcome && CT.classifyOutcome(m.outcome) !== state.outcome) return false;
+          if (state.member && !(m.votes||[]).some(v => v.member_id === state.member)) return false;
+          if (q) {
+            const hay = ((m.item_title||"") + " " + (m.motion||"") + " " + (m.agenda_ref||"") + " " + (m.business_type||"")).toLowerCase();
+            if (!hay.includes(q)) return false;
+          }
+          return true;
+        });
+
+        // Chips
+        const chips = activeChips();
+        document.getElementById("active-chips").innerHTML = chips.length === 0 ? "" :
+          chips.map(c => `<button class="chip-remove" data-k="${c.k}" type="button" aria-label="Remove filter: ${CT.escapeHtml(c.label)}">${CT.escapeHtml(c.label)} <span aria-hidden="true">×</span></button>`).join("");
+        document.querySelectorAll(".chip-remove").forEach(b => {
+          b.addEventListener("click", () => {
+            state[b.dataset.k] = "";
+            if (b.dataset.k === "q") document.getElementById("q").value = "";
+            applyStateToControls();
+            page = 1; paint(); syncUrl();
+          });
+        });
+        document.getElementById("clear-all").hidden = chips.length === 0;
+        updateFilterLabels();
+
+        document.getElementById("result-count").textContent =
+          `${filt.length.toLocaleString()} motion${filt.length === 1 ? "" : "s"}`;
+
+        const start = (page - 1) * PAGE_SIZE;
+        const slice = filt.slice(start, start + PAGE_SIZE);
+        const rows = document.getElementById("rows");
+        rows.innerHTML = slice.map(m => renderMotionRow(data, m, state.member)).join("") ||
+          `<div class="empty-block"><p><strong>No motions match.</strong></p><p class="muted">Try clearing a filter, or <a href="motions.html">start over</a>.</p></div>`;
+
+        const pages = Math.max(1, Math.ceil(filt.length / PAGE_SIZE));
+        const pager = document.getElementById("pager");
+        if (pages > 1) {
+          pager.innerHTML = `
+            <button class="btn ghost" id="prev" ${page<=1 ? "disabled" : ""}>← Prev</button>
+            <span class="muted" style="font-size:13px">Page ${page} of ${pages}</span>
+            <button class="btn ghost" id="next" ${page>=pages ? "disabled" : ""}>Next →</button>
+          `;
+          document.getElementById("prev").onclick = () => { if (page > 1) { page--; paint(); window.scrollTo(0,0); } };
+          document.getElementById("next").onclick = () => { if (page < pages) { page++; paint(); window.scrollTo(0,0); } };
+        } else pager.innerHTML = "";
+      }
+
+      function voteSplit(motion) {
+        let y=0,n=0,o=0;
+        for (const v of (motion.votes||[])) {
+          const x = (v.vote||"").toLowerCase();
+          if (x === "yes") y++;
+          else if (x === "no" || x === "nay") n++;
+          else o++;
+        }
+        return { y, n, o, total: y + n + o };
+      }
+
+      function renderVoteBar(sp) {
+        if (sp.total === 0) return '<span class="muted" style="font-size:11px">no roll call</span>';
+        const pct = (x) => sp.total ? (x / sp.total * 100) : 0;
+        return `
+          <span class="vote-split" title="${sp.y} yes · ${sp.n} no · ${sp.o} other">
+            <span class="vote-split-bar">
+              ${sp.y ? `<span class="seg yes" style="width:${pct(sp.y)}%"></span>` : ""}
+              ${sp.n ? `<span class="seg no" style="width:${pct(sp.n)}%"></span>` : ""}
+              ${sp.o ? `<span class="seg other" style="width:${pct(sp.o)}%"></span>` : ""}
+            </span>
+            <span class="vote-split-text mono">${sp.y}-${sp.n}${sp.o ? `-${sp.o}` : ""}</span>
+          </span>`;
+      }
+
+      function renderMotionRow(data, m, highlightMember) {
+        const sp = voteSplit(m);
+        const voteList = (m.votes || []).map(v => {
+          const name = CT.memberName(data, v.member_id);
+          const cls = highlightMember && v.member_id === highlightMember ? ' style="outline:2px solid var(--accent)"' : '';
+          return `<span class="vote-chip"${cls}>${CT.escapeHtml(name)}<span class="v ${(v.vote||'').toLowerCase()}">${CT.escapeHtml(v.vote)}</span></span>`;
+        }).join(" ");
+        const tags = (m.tags||[]).map(t =>
+          `<a class="tag" href="motions.html?tag=${encodeURIComponent(t)}">${CT.escapeHtml(CT.tagLabel(data, t))}</a>`
+        ).join("");
+        return `
+          <details class="motion-row">
+            <summary>
+              <div class="motion-row-head">
+                <div class="motion-row-meta">
+                  <span class="nowrap mono muted">${CT.fmtDate(m.date)}</span>
+                  <a href="meetings.html?id=${m.meeting_id}" class="muted" style="font-size:12px">meeting</a>
+                  ${m.agenda_ref ? `<span class="mono muted">${CT.escapeHtml(m.agenda_ref)}</span>` : ""}
+                </div>
+                <h3 class="motion-row-title">${CT.escapeHtml(CT.cleanTitle(m.item_title) || "(no title)")}</h3>
+                <div class="motion-row-foot">
+                  ${CT.outcomePill(m.outcome)}
+                  ${renderVoteBar(sp)}
+                  <span class="motion-row-tags">${tags}</span>
+                </div>
+              </div>
+            </summary>
+            <div class="motion-detail">
+              <p class="m-text">${CT.escapeHtml(m.motion || "(no motion text)")}</p>
+              <div>${voteList || '<span class="muted">No roll call recorded</span>'}</div>
+            </div>
+          </details>
+        `;
+      }
+    </script>
+  </body>
+</html>

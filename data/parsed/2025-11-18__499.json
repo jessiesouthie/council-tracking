@@ -1,0 +1,362 @@
+{
+  "meeting": {
+    "id": 499,
+    "date": "2025-11-18",
+    "source_file": "2025-11-18__499.pdf",
+    "motion_count": 7,
+    "ord_count": 10,
+    "res_count": 6
+  },
+  "motions": [
+    {
+      "id": 1002,
+      "meeting_id": 499,
+      "date": "2025-11-18",
+      "page": 2,
+      "agenda_ref": "2.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of the Board of Canvassers Certifying the Official Canvassers' Report of the November 4, 2025 General Municipal Election for Eagle Mountain City, Utah",
+      "motion": "Boardmember Burnham moved that the Board of Canvassers adopt a Resolution verifying and ratifying the canvass results of the 2025 Municipal General Election; accept the report of the Election Official and certify the election results; and declare Jared R. Gray elected as the Four-year Mayor; Brett L. Wright and Craig Whiting elected as Four-year City Councilmembers; and certify that Proposition 8 (RAP Tax) was approved by voters and is therefore officially adopted. Boardmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1003,
+      "meeting_id": 499,
+      "date": "2025-11-18",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Adjourn the Canvass meeting. Boardmember Wood seconded the motion",
+      "motion": "Boardmember Wright moved to adjourn the Canvass meeting. Boardmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1004,
+      "meeting_id": 499,
+      "date": "2025-11-18",
+      "page": 6,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Wright moved to approve the Consent Agenda and removing 13.A. and placing it on the Scheduled Items for further discussion and also removing Item 14.C. completely from the agenda. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1005,
+      "meeting_id": 499,
+      "date": "2025-11-18",
+      "page": 7,
+      "agenda_ref": "13.A.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Repealing and Reenacting Eagle Mountain Municipal Code Section 15.10.280 Regarding Traffic Control and Road Closures",
+      "motion": "Councilmember Clark moved to adopt an Ordinance of Eagle Mountain City, Utah, Repealing and Reenacting Eagle Mountain Municipal Code Section 15.10.280 Regarding Traffic Control and Road Closures updating Subsection B as follows: • A traffic control plan and communications plan for notifying residents shall be submitted to the City for review and approval no less than seven (7) calendar days prior to any scheduled work within the public right-of-way. • All traffic control plans shall comply with the most recent edition of the Utah MUTCD and applicable City standards. • Work shall not commence until the City has reviewed and approved the traffic control plan, communications plan, and issued a permit. • Notification of the City Engineer, or designee, shall be provided a minimum of three (3) business days (Monday through Friday) prior to the start of the activity. Example: If work is scheduled to begin on a Monday, notification must be provided no later than the preceding Wednesday. • Contractors shall be responsible for maintaining approved traffic control in good working order and in compliance with applicable standards for the duration of the work. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1006,
+      "meeting_id": 499,
+      "date": "2025-11-18",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Adding the Water Use and Preservation Plan, an Appendix to the 2018 Eagle Mountain General Plan",
+      "motion": "Councilmember Wright moved to adopt an Ordinance of Eagle Mountain City, Utah, Adding the Water Use and Preservation Plan, an Appendix to the 2018 Eagle Mountain General Plan. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning",
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1007,
+      "meeting_id": 499,
+      "date": "2025-11-18",
+      "page": 9,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending EMMC 16.30.090.C.5.b.iii, Connectivity Standards, and EMMC 17.100.050.C.3, Site Plan Development Standards",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending EMMC 16.30.090.C.5.b.iii, Connectivity Standards, and EMMC 17.100.050.C.3, Site Plan Development Standards. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1008,
+      "meeting_id": 499,
+      "date": "2025-11-18",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 17.80 Sign Regulations and Sign Permits adding that height recommendation be “from natural grade”",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 17.80 Sign Regulations and Sign Permits adding that height recommendation be “from natural grade”. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 5,
+      "line_text": "13.A. ORDINANCE - An Ordinance of Eagle Mountain City, Utah, Repealing and Reenacting"
+    },
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 6,
+      "line_text": "13.A. ORDINANCE - An Ordinance of Eagle Mountain City, Utah, Repealing and Reenacting"
+    },
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Clark moved to adopt an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 7,
+      "line_text": "15.A. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 8,
+      "line_text": "15.B. ORDINANCE / PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Adding"
+    },
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Wright moved to adopt an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 9,
+      "line_text": "15.C. ORDINANCE / PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 9,
+      "line_text": "15.D. ORDINANCE / PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City,"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 1,
+      "line_text": "2.A. RESOLUTION - A Resolution of the Board of Canvassers Certifying the Official"
+    },
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 2,
+      "line_text": "MOTION: Boardmember Burnham moved that the Board of Canvassers adopt a Resolution"
+    },
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 5,
+      "line_text": "14.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Amending the Eagle"
+    },
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 6,
+      "line_text": "14.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Repealing and Replacing"
+    },
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 6,
+      "line_text": "14.C. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving a"
+    },
+    {
+      "source_file": "2025-11-18__499.pdf",
+      "meeting_date": "2025-11-18",
+      "page": 6,
+      "line_text": "14.D. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Amending Various"
+    }
+  ]
+}

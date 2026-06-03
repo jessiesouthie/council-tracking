@@ -1,0 +1,83 @@
+{
+  "meeting": {
+    "id": 347,
+    "date": "2024-04-29",
+    "source_file": "2024-04-29__347.pdf",
+    "motion_count": 3,
+    "ord_count": 0,
+    "res_count": 2
+  },
+  "motions": [
+    {
+      "id": 734,
+      "meeting_id": 347,
+      "date": "2024-04-29",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Adopt ResolutÍon R24-28 approuÍng an lnterlocal Agreement for the CreatÍon of a School District…",
+      "motion": "CouncÍlmember Carn moved to adopt ResolutÍon R24-28 approuÍng an lnterlocal Agreement for the CreatÍon of a School District between Eagle Mountain Citg, the CÍtg of Saratoga SprÍngs, and FaÍrfÍeld Town dated Aprí|29, 2024, and to support and acknowledge the lnterlocal Agreement between AlpÍne, HÍghlan{ Cedar Hills, Lehi, and AmerÍcan Fork creatÍng a central school dÍstrÍct CouncÍlmember Barton seconded the motÍon. Barton",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [],
+      "raw_voters": [
+        {
+          "name": "Audreg",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 735,
+      "meeting_id": 347,
+      "date": "2024-04-29",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Adopt ResolutÍon Rl7-2O24 approuing an lnterlocal Agreement for the CreatÍon of a School Dlstri…",
+      "motion": "CouncÍlmember Wood moved to adopt ResolutÍon Rl7-2O24 approuing an lnterlocal Agreement for the CreatÍon of a School Dlstrict between Eagle Mountaln Cltg, the Cltg of Saratoga SprÍngs, and FaÍrfield Town dated AprÍ|29, 2024, and to support and acknowledge the lnterlocal Agreement between Alpine, HÍghland, Cedar HÍlls, LehÍ, and AmerÍcan ForR creatÍng a central school dlstrict CouncÍlmember Clark seconded the motÍon. Burnham",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 736,
+      "meeting_id": 347,
+      "date": "2024-04-29",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Adopt Resolution R2O24-12 approving an lnterlocal Agreement between Eagle MountaÍn Citg, the CÍ…",
+      "motion": "CouncÍlmember Thomas moved to adopt Resolution R2O24-12 approving an lnterlocal Agreement between Eagle MountaÍn Citg, the CÍtg of Saratoga Springs, and Falrfield Town for the CreatÍon of a School DÍstñct dated Aprí|29, 2024, and to support and acknowledge the lnterlocal Agreement between Alplne, HÍghland, Cedar Hills, LehÍ, and American Fork creat¡ng a central school distrlct CouncÍlmember Panek seconded the motÍon.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [],
+      "raw_voters": [
+        {
+          "name": "Richard Cameron",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2024-04-29__347.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "6. RESOLUTION - A Resolution of Eagle Mountain Citg, Utah, Approving an lnterlocalAgreement"
+    },
+    {
+      "source_file": "2024-04-29__347.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "MOTION: CouncÍlmember Thomas moved to adopt Resolution R2O24-12 approving an"
+    }
+  ]
+}

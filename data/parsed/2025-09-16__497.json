@@ -1,0 +1,368 @@
+{
+  "meeting": {
+    "id": 497,
+    "date": "2025-09-16",
+    "source_file": "2025-09-16__497.pdf",
+    "motion_count": 7,
+    "ord_count": 7,
+    "res_count": 10
+  },
+  "motions": [
+    {
+      "id": 975,
+      "meeting_id": 497,
+      "date": "2025-09-16",
+      "page": 5,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Clark moved to approve the Consent Agenda removing item 14.A. to be placed on the Scheduled Items for further discussion. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 976,
+      "meeting_id": 497,
+      "date": "2025-09-16",
+      "page": 5,
+      "agenda_ref": "14.A.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Approving a Development Agreement with Mountainland Supply",
+      "motion": "Councilmember Wright moved to adopt an Ordinance of Eagle Mountain City, Utah, Approving a Development Agreement with Mountainland Supply. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 977,
+      "meeting_id": 497,
+      "date": "2025-09-16",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Authorizing the Disposal of Significant City-Owned Real Property Pursuant to Eagle Mountain Municipal Code Chapter 3.30 and using the price of the land at $45,000 per acre ($1.03 per square foot) nothing the parcel does not require additional water rights",
+      "motion": "Councilmember Burnham moved to adopt a Resolution of Eagle Mountain City, Utah, Authorizing the Disposal of Significant City-Owned Real Property Pursuant to Eagle Mountain Municipal Code Chapter 3.30 and using the price of the land at $45,000 per acre ($1.03 per square foot) nothing the parcel does not require additional water rights. Councilmember Clark seconded the motion.",
+      "outcome": "failed for lack of a majority vote, 1:4.",
+      "tags": [
+        "infrastructure",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "No"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "No"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "No"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "No"
+        }
+      ]
+    },
+    {
+      "id": 978,
+      "meeting_id": 497,
+      "date": "2025-09-16",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Authorizing the Disposal of Significant City-Owned Real Property Pursuant to Eagle Mountain Municipal Code Chapter 3.30 and directed Staff to work on refining water requirements and draft a policy to ensure consistent review of future Land Disposal Applications",
+      "motion": "Councilmember Wright moved to table a Resolution of Eagle Mountain City, Utah, Authorizing the Disposal of Significant City-Owned Real Property Pursuant to Eagle Mountain Municipal Code Chapter 3.30 and directed Staff to work on refining water requirements and draft a policy to ensure consistent review of future Land Disposal Applications. Councilmember Wood seconded the motion.",
+      "outcome": "failed for lack of a majority vote, 2:3.",
+      "tags": [
+        "infrastructure",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "No"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "No"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "No"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 979,
+      "meeting_id": 497,
+      "date": "2025-09-16",
+      "page": 7,
+      "agenda_ref": "",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Authorizing the Disposal of Significant City-Owned Real Property Pursuant to Eagle Mountain Municipal Code Chapter 3.30 with a sales price of $95,000 per acre ($2.18 per square foot)",
+      "motion": "Councilmember Gray moved to adopt a Resolution of Eagle Mountain City, Utah, Authorizing the Disposal of Significant City-Owned Real Property Pursuant to Eagle Mountain Municipal Code Chapter 3.30 with a sales price of $95,000 per acre ($2.18 per square foot). Councilmember Clark seconded the motion.",
+      "outcome": "passed with a 3:2 vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "No"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "No"
+        }
+      ]
+    },
+    {
+      "id": 980,
+      "meeting_id": 497,
+      "date": "2025-09-16",
+      "page": 7,
+      "agenda_ref": "16.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah Approving a Settlement Agreement with Meritage Homes This item was removed from the agenda at the request of Meritage Homes. 17. LEGISLATIVE ITEMS 17.A. UPDATE – Legislative Priorities List Management and Policy Analyst John Magness discussed updates on the Legislative Priorities List.",
+      "motion": "Councilmember Clark moved to add drafting a Telecommunications Ordinance and/or Franchise Agreement to the Legislative Priorities List. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 981,
+      "meeting_id": 497,
+      "date": "2025-09-16",
+      "page": 7,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Add drafting a policy for code adoption to guide Staff in evaluating Land Disposal Applications…",
+      "motion": "Councilmember Wright moved to add drafting a policy for code adoption to guide Staff in evaluating Land Disposal Applications to the Legislative Priorities List. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 4,
+      "line_text": "14.A. ORDINANCE - An Ordinance of Eagle Mountain City, Utah, Approving a Development"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 5,
+      "line_text": "14.B. ORDINANCE - An Ordinance of Eagle Mountain City, Utah, Approving a Franchise Agreement"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 5,
+      "line_text": "14.C. ORDINANCE - An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain City"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 5,
+      "line_text": "14. ORDINANCE"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 5,
+      "line_text": "14.A. ORDINANCE - An Ordinance of Eagle Mountain City, Utah, Approving a Development"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 5,
+      "line_text": "MOTION: Councilmember Wright moved to adopt an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Clark moved to add drafting a Telecommunications Ordinance and/or"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 2,
+      "line_text": "13.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Updating Sections of the Eagle"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 2,
+      "line_text": "13.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Awarding the Bid for the EMC"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 4,
+      "line_text": "13.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Updating Sections of the Eagle"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 4,
+      "line_text": "13.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Awarding the Bid for the EMC"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 5,
+      "line_text": "15. RESOLUTION/PUBLIC HEARING"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 6,
+      "line_text": "15.A. RESOLUTION/PUBLIC HEARING - A Resolution of Eagle Mountain City, Utah, Authorizing"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Burnham moved to adopt a Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Wright moved to table a Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Gray moved to adopt a Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-09-16__497.pdf",
+      "meeting_date": "2025-09-16",
+      "page": 7,
+      "line_text": "16.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah Approving a Settlement"
+    }
+  ]
+}

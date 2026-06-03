@@ -1,0 +1,67 @@
+{
+  "meeting": {
+    "id": 472,
+    "date": "2024-10-24",
+    "source_file": "2024-10-24__472.pdf",
+    "motion_count": 1,
+    "ord_count": 0,
+    "res_count": 3
+  },
+  "motions": [
+    {
+      "id": 810,
+      "meeting_id": 472,
+      "date": "2024-10-24",
+      "page": 2,
+      "agenda_ref": "3.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Extending an Offer for the Position of City Manager and Authorizing the Mayor to Negotiate an Employment Agreement.",
+      "motion": "Councilmember Wood moved to approve a Resolution of Eagle Mountain City, Utah, Extending an Offer for the Position of City Manager and Authorizing the Mayor and Eagle Mountain City Council Meeting – October 24, 2024 Page 1 of 2 Councilmember Wright to Negotiate an Employment Agreement. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2024-10-24__472.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "3. RESOLUTION"
+    },
+    {
+      "source_file": "2024-10-24__472.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "3.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Extending an Offer for the Position"
+    },
+    {
+      "source_file": "2024-10-24__472.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "MOTION: Councilmember Wood moved to approve a Resolution of Eagle Mountain City, Utah,"
+    }
+  ]
+}

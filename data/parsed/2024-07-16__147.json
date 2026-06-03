@@ -1,0 +1,268 @@
+{
+  "meeting": {
+    "id": 147,
+    "date": "2024-07-16",
+    "source_file": "2024-07-16__147.pdf",
+    "motion_count": 4,
+    "ord_count": 12,
+    "res_count": 6
+  },
+  "motions": [
+    {
+      "id": 755,
+      "meeting_id": 147,
+      "date": "2024-07-16",
+      "page": 4,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Clark moved to approve the Consent Agenda, moving item 9.A. WDG Website Services Change Order #1 to the Scheduled Items for further discussion. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 756,
+      "meeting_id": 147,
+      "date": "2024-07-16",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the WDG Website Services Change Order #1 with the following change: Everything after th…",
+      "motion": "Councilmember Burnham moved to approve the WDG Website Services Change Order #1 with the following change: Everything after the first sentence in Section 2 will be removed and replaced with, “While this estimate is prepared with precision and with the details provided to WDG during the estimation, WDG has the right to account for unknown variables that may affect the final budget, timeline, or fee structure.” Councilmember Clark seconded the motion. The recording of the discussion regarding the motion can be found online here at 01:51:40.",
+      "outcome": "passed with a vote of 4:1.",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "No"
+        }
+      ]
+    },
+    {
+      "id": 757,
+      "meeting_id": 147,
+      "date": "2024-07-16",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 17.55.120 Tables, Regarding Parking Requirements for Hotel, Motel, and Breakfast Uses",
+      "motion": "Councilmember Burnham moved to approve an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 17.55.120 Tables, Regarding Parking Requirements for Hotel, Motel, and Breakfast Uses. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 758,
+      "meeting_id": 147,
+      "date": "2024-07-16",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending Eagle Mountain Municipal Code to Enact Chapter 17.69 Second Kitchens or Kitchenettes",
+      "motion": "Councilmember Wood moved to approve An Ordinance of Eagle Mountain City, Utah, Amending Eagle Mountain Municipal Code to Enact Chapter 17.69 Second Kitchens or Kitchenettes. Councilmember Gray seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 2,
+      "line_text": "municipal councils of each jurisdiction would have to adopt an ordinance approving the boundary"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 3,
+      "line_text": "13.A. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Amending the Eagle"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 3,
+      "line_text": "Economic Development Director Evan Berrett presented the item. The proposed ordinance"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 3,
+      "line_text": "13.B. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Amending the Eagle"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 3,
+      "line_text": "Planner Steven Lehmitz presented the item. The proposed ordinance enacts EMMC 17.69 Second"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 5,
+      "line_text": "13.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 5,
+      "line_text": "The proposed ordinance amends Table 17.55.120(c) Required Parking by Land Use to change the"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 6,
+      "line_text": "licensing, and determined to approve the ordinance as presented."
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Burnham moved to approve an Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 6,
+      "line_text": "13.B. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 6,
+      "line_text": "The proposed ordinance enacts EMMC 17.69 Second Kitchens or Kitchenettes, which clarifies"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Wood moved to approve An Ordinance of Eagle Mountain"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 2,
+      "line_text": "12.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 2,
+      "line_text": "The proposed resolution is a housekeeping item that adds an appendix detailing the City's impact"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 2,
+      "line_text": "12.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Confirming the Intent"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 2,
+      "line_text": "60 days after the adoption of the resolution. Following their respective public hearings, the"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 4,
+      "line_text": "12.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving an"
+    },
+    {
+      "source_file": "2024-07-16__147.pdf",
+      "meeting_date": "2024-07-16",
+      "page": 4,
+      "line_text": "12.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Confirming the Intent"
+    }
+  ]
+}

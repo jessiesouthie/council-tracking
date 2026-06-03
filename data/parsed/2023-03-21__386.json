@@ -1,0 +1,180 @@
+{
+  "meeting": {
+    "id": 386,
+    "date": "2023-03-21",
+    "source_file": "2023-03-21__386.pdf",
+    "motion_count": 5,
+    "ord_count": 4,
+    "res_count": 11
+  },
+  "motions": [
+    {
+      "id": 622,
+      "meeting_id": 386,
+      "date": "2023-03-21",
+      "page": 10,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Burnham moved to approve the consent agenda removing items 12.A. and 13.A. and placing them as scheduled items. Councilmember Gray seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☒ Colby Curtis ☐ Colby Curtis ☐ Colby Curtis ☐ Colby Curtis ☒ Jared Gray ☐ Jared Gray ☐ Jared Gray ☐ Jared Gray ☒ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☒ Brett Wright ☐ Brett Wright ☐ Brett Wright ☐ Brett Wright",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": []
+    },
+    {
+      "id": 623,
+      "meeting_id": 386,
+      "date": "2023-03-21",
+      "page": 11,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve a site plan for a 100-foot monolithic cell tower for AT&T with the following conditions…",
+      "motion": "Councilmember Burnham moved to approve a site plan for a 100-foot monolithic cell tower for AT&T with the following conditions: 1. The tower shall be allowed to be a 100-foot tall monolithic cell tower instead of a light pole in the location desired and be configured as shown on the submitted plans; 2. The tower’s equipment enclosure shall be allowed to be placed south of the tower abutting a parking lot; 3. The black, chain link fencing enclosing the equipment yard shall be allowed to be 8 feet tall; 4. A lightning rod shall be permitted atop the tower; and 5. An emergency backup generator shall be approved to be a part of the tower’s equipment. Eagle Mountain City Council Meeting – March 21, 2023 Page 11 of 15 Councilmember Gray seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☐ Colby Curtis ☒ Colby Curtis ☐ Colby Curtis ☐ Colby Curtis ☒ Jared Gray ☐ Jared Gray ☐ Jared Gray ☐ Jared Gray ☒ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☐ Brett Wright ☒ Brett Wright ☐ Brett Wright ☐ Brett Wright",
+      "outcome": "passed with a vote of 3:2.",
+      "tags": [
+        "development",
+        "public_safety"
+      ],
+      "votes": []
+    },
+    {
+      "id": 624,
+      "meeting_id": 386,
+      "date": "2023-03-21",
+      "page": 12,
+      "agenda_ref": "13.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Amending the Eagle Mountain City Consolidated Fee Schedule. As requested by the City Council during the work session, Grants Coordinator/Management Analyst Natalie Winterton presented updated wording to change the heading for Section 9.2 to read “Parking Violations; Blocking Streets and/or Sidewalks Illegally.” Councilmember Love reviewed the verbiage revisions she requested during the work session.",
+      "motion": "Councilmember Love moved to approve a resolution of Eagle Mountain City, Utah, amending the Eagle Mountain City Consolidated Fee Schedule with the following changes: 1. Amend the title to Section 9.2 to read, “Parking Violations; Blocking Streets and/or Sidewalks Illegally;” 2. Strike “or after special arrangements have been made subject to the provisions of Section 22.5.5 below,” from Section 22.5.3 to remove the reference to the former 22.5.5; and 3. Add the word “only” to the first sentence in 22.5.4 to read, “Customers will be charged a $50.00 fee to turn utilities on for only three business days.” Councilmember Wright seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☒ Colby Curtis ☐ Colby Curtis ☐ Colby Curtis ☐ Colby Curtis ☒ Jared Gray ☐ Jared Gray ☐ Jared Gray ☐ Jared Gray ☒ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☒ Brett Wright ☐ Brett Wright ☐ Brett Wright ☐ Brett Wright",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 625,
+      "meeting_id": 386,
+      "date": "2023-03-21",
+      "page": 13,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code, Chapter 17.65 Home Businesses",
+      "motion": "Councilmember Burnham moved to approve an ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code, Chapter 17.65 Home Businesses. Councilmember Gray seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☒ Colby Curtis ☐ Colby Curtis ☐ Colby Curtis ☐ Colby Curtis ☒ Jared Gray ☐ Jared Gray ☐ Jared Gray ☐ Jared Gray ☒ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☒ Brett Wright ☐ Brett Wright ☐ Brett Wright ☐ Brett Wright",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 626,
+      "meeting_id": 386,
+      "date": "2023-03-21",
+      "page": 14,
+      "agenda_ref": "16.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving an Economic Development Master Plan.",
+      "motion": "Councilmember Wright moved to approve a resolution of Eagle Mountain City, Utah, approving an Economic Development Master Plan removing Chapter Thirteen. Councilmember Curtis seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☒ Colby Curtis ☐ Colby Curtis ☐ Colby Curtis ☐ Colby Curtis ☒ Jared Gray ☐ Jared Gray ☐ Jared Gray ☐ Jared Gray ☒ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☒ Brett Wright ☐ Brett Wright ☐ Brett Wright ☐ Brett Wright",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": []
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 13,
+      "line_text": "14.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain, City, Utah,"
+    },
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 13,
+      "line_text": "15. ORDINANCE/PUBLIC HEARING"
+    },
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 13,
+      "line_text": "15.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah"
+    },
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 13,
+      "line_text": "MOTION: Councilmember Burnham moved to approve an ordinance of Eagle Mountain"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 5,
+      "line_text": "13.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Amending the"
+    },
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 5,
+      "line_text": "13.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an"
+    },
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 5,
+      "line_text": "16. RESOLUTION"
+    },
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 5,
+      "line_text": "16.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an"
+    },
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 10,
+      "line_text": "13.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Amending the"
+    },
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 10,
+      "line_text": "13.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an"
+    },
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 12,
+      "line_text": "13.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Amending the"
+    },
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 12,
+      "line_text": "MOTION: Councilmember Love moved to approve a resolution of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 14,
+      "line_text": "16. RESOLUTION"
+    },
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 14,
+      "line_text": "16.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an"
+    },
+    {
+      "source_file": "2023-03-21__386.pdf",
+      "meeting_date": "2023-03-21",
+      "page": 14,
+      "line_text": "MOTION: Councilmember Wright moved to approve a resolution of Eagle Mountain"
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Member · Council Tracking</title>
+    <meta name="theme-color" content="#31452E" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CT</span>
+        <div><h1>Council Tracking</h1><p class="city">Eagle Mountain, UT</p></div>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" data-nav="index.html">Home</a>
+        <a href="meetings.html" data-nav="meetings.html">Meetings</a>
+        <a href="motions.html" data-nav="motions.html">Motions</a>
+        <a href="members.html" data-nav="members.html">Members</a>
+        <span class="nav-divider" aria-hidden="true"></span>
+        <a href="upload/" data-nav="upload">Upload</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <div id="content"></div>
+    </main>
+
+    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
+
+    <script src="site.js"></script>
+    <script>
+      (async () => {
+        const data = await CT.loadData();
+        const id = CT.paramsFromUrl().id;
+        const member = data._byMemberId[id];
+        const root = document.getElementById("content");
+        if (!member) {
+          root.innerHTML = `<div class="error-block">No member with id <code>${CT.escapeHtml(id||"")}</code>. <a href="members.html">Back to members.</a></div>`;
+          return;
+        }
+        const s = data.stats.by_member[id] || { total:0,yes:0,no:0,nay:0,abstain:0,excused:0,absent:0,yes_rate:0,by_tag:{} };
+        const opposed = s.no + (s.nay || 0);
+        const myMotions = data.motions.filter(m => (m.votes||[]).some(v => v.member_id === id))
+                                       .sort((a,b) => (b.date||"").localeCompare(a.date||""));
+
+        // agreement with each other member
+        const others = data.members.filter(m => m.id !== id && (m.role === "Councilmember" || m.role === "Mayor"));
+        const ag = others.map(o => {
+          const pair = [id, o.id].sort().join("|");
+          return { id:o.id, name:o.name, role:o.role, frac:data.stats.agreement[pair], n:data.stats.agreement_n[pair]||0 };
+        }).filter(x => x.frac != null && x.n >= 10).sort((a,b) => b.frac - a.frac);
+
+        const byTag = s.by_tag || {};
+        const tagRows = Object.entries(byTag).sort((a,b) => b[1]-a[1])
+          .map(([tid,c]) => ({ tid, label: CT.tagLabel(data, tid), count: c }))
+          .slice(0, 20);
+
+        root.innerHTML = `
+          <p style="margin-top:0"><a href="members.html">← All members</a></p>
+          <h1 class="page-title">${CT.escapeHtml(member.name)}</h1>
+          <p class="page-sub">${CT.escapeHtml(member.role)} · ${CT.fmtDate(member.tenure_start)}${member.tenure_end ? " – " + CT.fmtDate(member.tenure_end) : " – present"}${member.previous_role ? ` · ${CT.escapeHtml(member.previous_role)}` : ""}</p>
+
+          <section class="section">
+            <div class="cards">
+              <div class="stat-card"><div class="label">Total votes</div><div class="value">${s.total}</div></div>
+              <div class="stat-card"><div class="label">Yes</div><div class="value" style="color:var(--ok)">${s.yes}</div></div>
+              <div class="stat-card"><div class="label">No</div><div class="value" style="color:var(--danger)">${opposed}</div></div>
+              <div class="stat-card"><div class="label">Yes rate</div><div class="value">${(s.yes_rate*100).toFixed(0)}%</div><div class="delta">of decisive votes</div></div>
+              <div class="stat-card"><div class="label">Abstain / excused / absent</div><div class="value muted" style="font-size:18px">${s.abstain} / ${s.excused} / ${s.absent}</div></div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Agreement with colleagues</h2>
+            ${ag.length ? `
+              <div class="tablewrap"><table class="data">
+                <thead><tr><th>Member</th><th class="text-right">Agreement</th><th class="text-right">Shared votes</th><th></th></tr></thead>
+                <tbody>
+                  ${ag.map(x => `
+                    <tr>
+                      <td><a href="member.html?id=${encodeURIComponent(x.id)}">${CT.escapeHtml(x.name)}</a> <span class="muted">· ${CT.escapeHtml(x.role)}</span></td>
+                      <td class="text-right mono"><strong>${(x.frac*100).toFixed(0)}%</strong></td>
+                      <td class="text-right mono muted">${x.n}</td>
+                      <td><div class="agreement-bar" style="width:${(x.frac*100).toFixed(0)}%;background:var(--accent);height:6px;border-radius:3px;margin-top:6px"></div></td>
+                    </tr>
+                  `).join("")}
+                </tbody>
+              </table></div>` : '<p class="muted">Not enough overlapping votes to compute agreement yet.</p>'}
+          </section>
+
+          <section class="section">
+            <h2>By topic</h2>
+            ${tagRows.length ? `
+              <div class="tablewrap"><table class="data">
+                <thead><tr><th>Topic</th><th class="text-right">Motions voted on</th></tr></thead>
+                <tbody>
+                  ${tagRows.map(r => `<tr><td><a href="motions.html?member=${encodeURIComponent(id)}&tag=${encodeURIComponent(r.tid)}">${CT.escapeHtml(r.label)}</a></td><td class="text-right mono">${r.count}</td></tr>`).join("")}
+                </tbody>
+              </table></div>` : '<p class="muted">No tagged motions in their record yet.</p>'}
+          </section>
+
+          <section class="section">
+            <h2>Recent votes <span class="muted" style="font-size:12px;font-weight:400">(showing 50; <a href="motions.html?member=${encodeURIComponent(id)}">filter all motions →</a>)</span></h2>
+            <div id="recent-votes"></div>
+          </section>
+        `;
+
+        document.getElementById("recent-votes").innerHTML = myMotions.slice(0,50).map(m => {
+          const my = (m.votes||[]).find(v => v.member_id === id);
+          const v = (my?.vote || "").toLowerCase();
+          return `
+            <details class="motion-row" style="border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;background:var(--bg-elev)">
+              <summary style="padding:12px 14px">
+                <div style="display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap">
+                  <span class="nowrap mono muted">${CT.fmtDate(m.date)}</span>
+                  <span class="vote-chip"><span class="v ${v}">${CT.escapeHtml(my?.vote || "—")}</span></span>
+                  <span style="flex:1;min-width:200px"><strong>${CT.escapeHtml(CT.cleanTitle(m.item_title) || "(no title)")}</strong></span>
+                  ${CT.outcomePill(m.outcome)}
+                </div>
+              </summary>
+              <div class="motion-detail">
+                <p class="m-text">${CT.escapeHtml(m.motion || "")}</p>
+                <div>${(m.votes||[]).map(v => CT.voteChip(CT.memberName(data, v.member_id), v.vote)).join(" ")}</div>
+              </div>
+            </details>
+          `;
+        }).join("");
+      })();
+    </script>
+  </body>
+</html>

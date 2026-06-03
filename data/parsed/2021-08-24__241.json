@@ -1,0 +1,42 @@
+{
+  "meeting": {
+    "id": 241,
+    "date": "2021-08-24",
+    "source_file": "2021-08-24__241.pdf",
+    "motion_count": 2,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 409,
+      "meeting_id": 241,
+      "date": "2021-08-24",
+      "page": 2,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Clark moved to approve the consent agenda. Councilmember Burnham seconded the motion. Those voting aye: Donna Burnham, Melissa Clark, Colby Curtis, and Carolyn Love. The motion passed with a unanimous vote. 5. ADJOURNMENT",
+      "outcome": "",
+      "tags": [
+        "consent"
+      ],
+      "votes": []
+    },
+    {
+      "id": 410,
+      "meeting_id": 241,
+      "date": "2021-08-24",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Ødjourn the meeting at 5:13 p.m. Boørd Member Love seconded the motion. Those voting aye: Donnø…",
+      "motion": "Board Member Clark moved that the Board of Canvassers verify the results of the election by ratifying the results of the canvass; accept the report of the Election Official and certify the election results; and declare City Council candidates Brett Wright, Rich Wood, Donna Rivera Burnham, and Jason Allen eligible to be on the ballot and nominated for the General Municipal Election on November 2, 2021. Board Member Love seconded the motion. Those voting aye: Donna Burnham, Melissa Clark, Colby Curtis, and Carolyn Love. The motion passed with a unanimous vote. 8. ADJOURNMENT Eagle Mountain City Council Meeting – August 24, 2021 Page 2 of 3 MOTIONz Boørd Member Clark moved to ødjourn the meeting at 5:13 p.m. Boørd Member Love seconded the motion. Those voting aye: Donnø Burnham, Melissø Clark, Colby Curtis, ønd Carolyn Love. The motion pøssed with ø unanimous vote.",
+      "outcome": "",
+      "tags": [],
+      "votes": []
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

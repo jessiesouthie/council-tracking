@@ -1,0 +1,375 @@
+{
+  "meeting": {
+    "id": 481,
+    "date": "2025-06-03",
+    "source_file": "2025-06-03__481.pdf",
+    "motion_count": 7,
+    "ord_count": 16,
+    "res_count": 2
+  },
+  "motions": [
+    {
+      "id": 921,
+      "meeting_id": 481,
+      "date": "2025-06-03",
+      "page": 5,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Clark moved to approve the Consent Agenda. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 922,
+      "meeting_id": 481,
+      "date": "2025-06-03",
+      "page": 7,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Approving the Steeplechase South Subdivision Second Plat Amendment (877 N Pony Express Parkway)",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Approving the Steeplechase South Subdivision Second Plat Amendment (877 N Pony Express Parkway). Councilmember Gray seconded the motion.",
+      "outcome": "passed with a unanimous 4:0 vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 923,
+      "meeting_id": 481,
+      "date": "2025-06-03",
+      "page": 7,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 16.35.140 for Right of Way Profile Illustrations",
+      "motion": "Councilmember Burnham moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 16.35.140 for Right of Way Profile Illustrations. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous 4:0 vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 924,
+      "meeting_id": 481,
+      "date": "2025-06-03",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 16.35.090 Privacy Screening, Section 17.40.020 Land Use Table, and Section 17.60.120 General Fencing Provisions",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 16.35.090 Privacy Screening, Section 17.40.020 Land Use Table, and Section 17.60.120 General Fencing Provisions. Councilmember Gray seconded the motion.",
+      "outcome": "passed with a unanimous 4:0 vote.",
+      "tags": [
+        "zoning",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 925,
+      "meeting_id": 481,
+      "date": "2025-06-03",
+      "page": 8,
+      "agenda_ref": "16.A.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City Amending the Eagle Mountain Municipal Code Purchasing Policy Section 3.20.030 (H) to Modify the Approval Process for Change Orders",
+      "motion": "Councilmember Gray moved to adopt an Ordinance of Eagle Mountain City Amending the Eagle Mountain Municipal Code Purchasing Policy Section 3.20.030 (H) to Modify the Approval Process for Change Orders. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous 4:0 vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 926,
+      "meeting_id": 481,
+      "date": "2025-06-03",
+      "page": 9,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Add traffic calming measures and traffic related actions to the Legislative Priorities List",
+      "motion": "Councilmember Wood moved to add traffic calming measures and traffic related actions to the Legislative Priorities List. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 927,
+      "meeting_id": 481,
+      "date": "2025-06-03",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Add discussions with public safety partners and the Public Safety Director to include a Youth C…",
+      "motion": "Councilmember Clark moved to add discussions with public safety partners and the Public Safety Director to include a Youth Court, Justice Court and other public Eagle Mountain City Council Agenda – June 3. 2025 Page 9 of 11 safety measures to the Legislative Priorities List. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 2,
+      "line_text": "15.B. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Approving"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 2,
+      "line_text": "15.C. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 3,
+      "line_text": "Senior Planner Robert Hobbs presented the proposal to enact an ordinance amending Title 16,"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 3,
+      "line_text": "15.D. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 3,
+      "line_text": "Senior Planner Rober Hobbs presented the ordinance which amends EMMC Section 16.35.90"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 3,
+      "line_text": "16.A. ORDINANCE - An Ordinance of Eagle Mountain City Amending the Eagle Mountain"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 6,
+      "line_text": "15.B. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Approving"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 7,
+      "line_text": "15.C. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 7,
+      "line_text": "Senior Planner Rober Hobbs presented the proposal to enact an ordinance amending Title 16,"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Burnham moved to adopt an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 7,
+      "line_text": "15.D. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 7,
+      "line_text": "Senior Planner Rober Hobbs presented the ordinance which amends EMMC Section 16.35.90"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 8,
+      "line_text": "16.A. ORDINANCE - An Ordinance of Eagle Mountain City Amending the Eagle Mountain"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Gray moved to adopt an Ordinance of Eagle Mountain City"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 5,
+      "line_text": "14.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Adopting the Mountainland"
+    },
+    {
+      "source_file": "2025-06-03__481.pdf",
+      "meeting_date": "2025-06-03",
+      "page": 5,
+      "line_text": "14.B. RESOLUTION - A Resolution of Eagle Mountain City, Supporting Eagle Mountain City’s"
+    }
+  ]
+}

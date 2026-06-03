@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Upload Minutes · Council Tracking</title>
+    <meta name="description" content="Admin: parse council meeting minutes (PDF / TXT) in your browser — motions, roll-call votes, ordinances and resolutions." />
+    <meta name="theme-color" content="#31452E" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" href="../icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <link rel="stylesheet" href="../site.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="../index.html" style="text-decoration:none;color:inherit">
+        <span class="brand-mark" aria-hidden="true">CT</span>
+        <div>
+          <h1>Council Tracking</h1>
+          <p class="city">Upload &amp; parse minutes</p>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="../index.html">Home</a>
+        <a href="../meetings.html">Meetings</a>
+        <a href="../motions.html">Motions</a>
+        <a href="../members.html">Members</a>
+        <span class="nav-divider"></span>
+        <a href="index.html" class="active">Upload</a>
+      </nav>
+      <div class="topbar-actions">
+        <button id="install-btn" class="btn ghost" hidden>Install app</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="boot" class="boot">
+        <div class="boot-inner">
+          <div class="spinner" aria-hidden="true"></div>
+          <div>
+            <p class="boot-title">Loading parser…</p>
+            <p class="boot-sub" id="boot-status">Starting Pyodide (first load is ~15&nbsp;MB; cached after that).</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="workspace" hidden>
+        <div
+          id="dropzone"
+          class="dropzone"
+          tabindex="0"
+          role="button"
+          aria-label="Drop .pdf or .txt files here, or click to pick"
+        >
+          <input id="filepicker" type="file" accept=".pdf,.txt,application/pdf,text/plain" multiple hidden />
+          <div class="dropzone-inner">
+            <div class="dropzone-icon" aria-hidden="true">⬆</div>
+            <p class="dropzone-primary">Drop council minutes here</p>
+            <p class="dropzone-secondary">or click to choose <code>.pdf</code> or <code>.txt</code> files</p>
+          </div>
+        </div>
+
+        <div id="toolbar" class="toolbar" hidden>
+          <input
+            id="filter"
+            class="filter-input"
+            type="search"
+            placeholder="Filter motions by title, type, or text…"
+            autocomplete="off"
+          />
+          <div class="toolbar-buttons">
+            <button id="download-xlsx" class="btn">Download all as XLSX</button>
+            <button id="clear-all" class="btn ghost">Clear results</button>
+          </div>
+        </div>
+
+        <div id="results" class="results" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Runs entirely in your browser — no file leaves your device.</span>
+    </footer>
+
+    <template id="card-template">
+      <article class="card" data-key="">
+        <header class="card-head">
+          <div>
+            <h2 class="card-title"></h2>
+            <p class="card-sub"><span class="card-date"></span><span class="dot">·</span><span class="card-counts"></span></p>
+          </div>
+          <button class="btn ghost card-remove" aria-label="Remove this file">Remove</button>
+        </header>
+
+        <section class="card-section">
+          <h3>Motions</h3>
+          <div class="table-wrap">
+            <table class="motions-table">
+              <thead>
+                <tr>
+                  <th>Page</th>
+                  <th>Agenda ref</th>
+                  <th>Type</th>
+                  <th>Item</th>
+                  <th>Outcome</th>
+                </tr>
+              </thead>
+              <tbody class="motions-body"></tbody>
+            </table>
+          </div>
+          <p class="empty-msg motions-empty" hidden>No motions parsed.</p>
+        </section>
+
+        <details class="card-section">
+          <summary><h3>Ordinance lines <span class="count ord-count"></span></h3></summary>
+          <ul class="line-list ord-list"></ul>
+        </details>
+
+        <details class="card-section">
+          <summary><h3>Resolution lines <span class="count res-count"></span></h3></summary>
+          <ul class="line-list res-list"></ul>
+        </details>
+      </article>
+    </template>
+
+    <template id="motion-row-template">
+      <tr class="motion-row">
+        <td class="m-page"></td>
+        <td class="m-ref"></td>
+        <td class="m-type"></td>
+        <td class="m-title"></td>
+        <td class="m-outcome"></td>
+      </tr>
+      <tr class="motion-detail-row" hidden>
+        <td colspan="5">
+          <div class="motion-detail">
+            <p class="m-text"></p>
+            <div class="rollcall">
+              <h4>Roll call</h4>
+              <ul class="rollcall-list"></ul>
+              <p class="empty-msg rollcall-empty" hidden>No roll-call recorded.</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

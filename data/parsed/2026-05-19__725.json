@@ -1,0 +1,381 @@
+{
+  "meeting": {
+    "id": 725,
+    "date": "2026-05-19",
+    "source_file": "2026-05-19__725.pdf",
+    "motion_count": 8,
+    "ord_count": 5,
+    "res_count": 8
+  },
+  "motions": [
+    {
+      "id": 1094,
+      "meeting_id": 725,
+      "date": "2026-05-19",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the appointment of Chad Decoursey for Planning Commission for a one -year vacated term…",
+      "motion": "Councilmember Huish moved to approve the appointment of Chad Decoursey for Planning Commission for a one -year vacated term beginning May 2026 t hrough March 202 7. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "personnel"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1095,
+      "meeting_id": 725,
+      "date": "2026-05-19",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the appointment of Laura Jensen for Planning Commission Alternate for a three -year ter…",
+      "motion": "Councilmember Clark moved to approve the appointment of Laura Jensen for Planning Commission Alternate for a three -year term beginning May 2026 through March 2029. Councilmember Whiting seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "personnel"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1096,
+      "meeting_id": 725,
+      "date": "2026-05-19",
+      "page": 7,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Clark moved to approve the Consent Agenda , including correcting a typo in Item 14.A. to reflect 2026 -2027 and removing Item 14.B. for placement under Scheduled Items on the current agenda. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1097,
+      "meeting_id": 725,
+      "date": "2026-05-19",
+      "page": 8,
+      "agenda_ref": "14.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving a Memorandum of Agreement with Ivory Homes.",
+      "motion": "Councilmember Wood moved to approve a Resolution of Eagle Mountain City, Utah, Approving a Memorandum of Agreement with Ivory Homes with the following amendments in section (e): • Revise the language from “will” to “may” in the sentence, “The City may consider providing benefits to the Developer… ”; and • Remove subsection (i) “reduced water requirements per lot .” Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1098,
+      "meeting_id": 725,
+      "date": "2026-05-19",
+      "page": 9,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending Eagle Mountain Municipal Code Chapter 17.10.030 Definitions and 17.25.040 Residential Development Standards",
+      "motion": "Councilmember Wood moved to deny an Ordinance of Eagle Mountain City, Utah, Amending Eagle Mountain Municipal Code Chapter 17.10.030 Definitions and 17.25.040 Residential Development Standards . Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1099,
+      "meeting_id": 725,
+      "date": "2026-05-19",
+      "page": 9,
+      "agenda_ref": "16.A.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Approving the Flagship Homes Development Agreement.",
+      "motion": "Councilmember Whiting moved to adopt an Ordinance of Eagle Mountain City, Utah, Approving the Flagship Homes Development Agreement. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1100,
+      "meeting_id": 725,
+      "date": "2026-05-19",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Add pricing of concreate forms to the Legislative Priorities List",
+      "motion": "Councilmember Wood moved to add pricing of concreate forms to the Legislative Priorities List . Councilmember Huish seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1101,
+      "meeting_id": 725,
+      "date": "2026-05-19",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Add to the Legislative Priorities List a direction for staff to work with the City Council to d…",
+      "motion": "Councilmember Wright moved to add to the Legislative Priorities List a direction for staff to work with the City Council to develop a policy regarding paper water rights and prioritization dates. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2026-05-19__725.pdf",
+      "meeting_date": "2026-05-19",
+      "page": 3,
+      "line_text": "15.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain Municipal"
+    },
+    {
+      "source_file": "2026-05-19__725.pdf",
+      "meeting_date": "2026-05-19",
+      "page": 8,
+      "line_text": "15.A. ORDINANCE /PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-05-19__725.pdf",
+      "meeting_date": "2026-05-19",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Wood moved to deny an Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2026-05-19__725.pdf",
+      "meeting_date": "2026-05-19",
+      "page": 9,
+      "line_text": "16.A. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Approving the"
+    },
+    {
+      "source_file": "2026-05-19__725.pdf",
+      "meeting_date": "2026-05-19",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Whiting moved to adopt an Ordinance of Eagle Mountain"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2026-05-19__725.pdf",
+      "meeting_date": "2026-05-19",
+      "page": 3,
+      "line_text": "14.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving a"
+    },
+    {
+      "source_file": "2026-05-19__725.pdf",
+      "meeting_date": "2026-05-19",
+      "page": 7,
+      "line_text": "14.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Correcting a"
+    },
+    {
+      "source_file": "2026-05-19__725.pdf",
+      "meeting_date": "2026-05-19",
+      "page": 7,
+      "line_text": "Scrivener’s Error in Resolution No. 2026 -31, A Resolution Accepting the Eagle"
+    },
+    {
+      "source_file": "2026-05-19__725.pdf",
+      "meeting_date": "2026-05-19",
+      "page": 7,
+      "line_text": "14.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving a"
+    },
+    {
+      "source_file": "2026-05-19__725.pdf",
+      "meeting_date": "2026-05-19",
+      "page": 7,
+      "line_text": "14.C. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Initiating the City’s"
+    },
+    {
+      "source_file": "2026-05-19__725.pdf",
+      "meeting_date": "2026-05-19",
+      "page": 8,
+      "line_text": "14. RESOLUTION"
+    },
+    {
+      "source_file": "2026-05-19__725.pdf",
+      "meeting_date": "2026-05-19",
+      "page": 8,
+      "line_text": "14.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving a"
+    },
+    {
+      "source_file": "2026-05-19__725.pdf",
+      "meeting_date": "2026-05-19",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Wood moved to approve a Resolution of Eagle Mountain"
+    }
+  ]
+}

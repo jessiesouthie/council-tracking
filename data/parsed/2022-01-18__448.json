@@ -1,0 +1,392 @@
+{
+  "meeting": {
+    "id": 448,
+    "date": "2022-01-18",
+    "source_file": "2022-01-18__448.pdf",
+    "motion_count": 15,
+    "ord_count": 19,
+    "res_count": 3
+  },
+  "motions": [
+    {
+      "id": 480,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Adjourn work session and convene policy session to consider item 19.A",
+      "motion": "Councilmember Wright moved to adjourn work session and convene policy session to consider item 19.A. Councilmember Love seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Colby Curtis, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote. 19. MOTION 19.A. MOTION – Appointment of a City Councilmember as Mayor Pro Tempore. Eagle Mountain City Council Meeting – January 18, 2022 Page 1 of 24",
+      "outcome": "",
+      "tags": [
+        "personnel"
+      ],
+      "votes": []
+    },
+    {
+      "id": 481,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Elect Carolyn Love as Mayor Pro Tempore 2022 pursuant to Utah Code 10-3b-302(2)(ii)(a)",
+      "motion": "Councilmember Wright moved to elect Carolyn Love as Mayor Pro Tempore 2022 pursuant to Utah Code 10-3b-302(2)(ii)(a). Councilmember Curtis seconded the motion. Councilmember Wright requested clarification regarding the process for appointing or electing a Mayor Pro Tempore as he had not received an answer to his request for explanation via email prior to the meeting. He requested for the emails to be entered into the record. See attached. Discussion ensued regarding Utah Code 10-3b-302(2): “(a) If the mayor is absent or unable or refuses to act, the council may elect a member of the council as mayor pro tempore,” and Eagle Mountain City R-09-1998 Acting Administrative Rules and Regulations for the Conduct of Meetings of the Town Council Section A(4), “Mayor ProTem: In the event of the absence or the disability of the Mayor, the Mayor shall appoint another Council member to serve as the Mayor until the Mayor returns. In such event, the Mayor ProTem shall have all the powers to perform the functions and duties assigned to the Mayor,” clarifying that the Mayor has the authority to select an appointee for Mayor Pro Tempore to be approved or denied at the discretion of the Council. In light of the discussion, Councilmember Wright withdrew his motion.",
+      "outcome": "",
+      "tags": [
+        "personnel"
+      ],
+      "votes": []
+    },
+    {
+      "id": 482,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the appointment of Carolyn Love as Mayor Pro Tempore for 2022",
+      "motion": "Councilmember Burnham moved to approve the appointment of Carolyn Love as Mayor Pro Tempore for 2022. Councilmember Curtis seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Colby Curtis, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote.",
+      "outcome": "",
+      "tags": [
+        "personnel"
+      ],
+      "votes": []
+    },
+    {
+      "id": 483,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 11,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Curtis moved to approve the consent agenda. Councilmember Wright seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Colby Curtis, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote. SCHEDULED ITEMS 14. EAGLE RIDGE 14.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah, Amending the General Plan Map and Rezoning Certain Lands known as Eagle Ridge. Items 14.A. and 14.B were presented and discussed concurrently. Mr. Jensen reviewed the item as presented during work session. Discussion ensued regarding concerns with the lots having sufficient area for the redundant septic drainage fields and whether the areas with higher, unbuildable grades would be unsuitable for a drainage field. City Engineer Chris Trusty explained that the size of the drainage fields is dependent on the percolation rates of the area. Until those tests are conducted, the City would be unable to know the amount of area required. Mr. Jensen explained that Utah County Health Department approval of the drainage fields is required. Applicant representative Kim Rindlisbacher explained they wanted to get the City approval of the rezone before working with the health department. Prior to the final plat, they will ensure the area is sufficient for the drainage requirements. They enlarged the cul-de-sac area to increase the available turn radius and received approval from the Fire Department. Arrangements for an additional City water tank are in place if needed. Mayor Pro Tempore Love opened the public hearing at 7:27 p.m. The City received an email from Tanya Anderson against the proposal listing concerns with the project due to the cul-de-sac length, precipitation runoff retention, the lack of open space, omission of mailbox locations, limited access, and additional housing increasing traffic congestion. Eagle Mountain City Council Meeting – January 18, 2022 Page 11 of 23 Mayor Pro Tempore Love closed the public hearing at 7:28 p.m. Mayor Pro Tempore Love explained that given the configuration of the project, it is appropriate to waive the connectivity requirements and grant an exemption to cul-de-sac lengths. She confirmed with staff that the RD1 Zone does not have open space requirements. Mr. Trusty said the plan is to install bench drains along the western side of the project, both sides of the road will have drainage swells, and the project will be required to provide retention for the subdivision for an 80 percental storm event. Staff has worked with their engineer to address drainage and the subdivisions will discharge into a detention pond that has not had any issues. Mr. Jensen said that staff will work with the United States Post Office to determine if a community mailbox site and pullout should be required.",
+      "outcome": "",
+      "tags": [
+        "zoning",
+        "development",
+        "infrastructure",
+        "parks",
+        "public_safety",
+        "consent"
+      ],
+      "votes": []
+    },
+    {
+      "id": 484,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 12,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the Eagle Ridge General Plan Amendment to Agricultural/Rural Density Two and the rezone…",
+      "motion": "Councilmember Burnham moved to approve the Eagle Ridge General Plan Amendment to Agricultural/Rural Density Two and the rezone to RD1. Councilmember Wright seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Colby Curtis, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote. 14.B. MOTION – Eagle Ridge Preliminary Plat",
+      "outcome": "",
+      "tags": [
+        "zoning"
+      ],
+      "votes": []
+    },
+    {
+      "id": 485,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 12,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the General Plan Map, Approving a Master Development Plan, and Rezoning Certain Lands known as Eagle Quest. Items 15.A. and 15.B. were presented and discussed concurrently. Mr. Jensen reviewed the item as presented during work session. Applicant representative Josh Cummings acknowledged that while straightening Old Airport Road benefits their project, they believe it is also a benefit to the City as the alignment would provide connectivity efficiencies for future development, direct traffic away from Lake Mountain Road, increases safety, and optimizes traffic light spacing and intersection angles. They are amenable to the Planning Commission recommendations to adjust the amount of open space provided, add community mailbox locations, adjust the unit types to balance the R1, R2, and R3 zoning, and add Eagle Mountain City Council Meeting – January 18, 2022 Page 12 of 23 a row of RD2 units. They feel their proposal is appropriate as the density is lower than other projects approved for the Neighborhood Residential One land use designation",
+      "motion": "Councilmember Wright moved to approve the preliminary plat for Eagle Ridge with the condition that should the United States Postal Service determine that community mailboxes are necessary, the applicant shall work with staff to provide a cluster mailbox location and pullout. Councilmember Curtis seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Colby Curtis, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote. 15. EAGLE QUEST 15.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah, Amending the General Plan Map, Approving a Master Development Plan, and Rezoning Certain Lands known as Eagle Quest. Items 15.A. and 15.B. were presented and discussed concurrently. Mr. Jensen reviewed the item as presented during work session. Applicant representative Josh Cummings acknowledged that while straightening Old Airport Road benefits their project, they believe it is also a benefit to the City as the alignment would provide connectivity efficiencies for future development, direct traffic away from Lake Mountain Road, increases safety, and optimizes traffic light spacing and intersection angles. They are amenable to the Planning Commission recommendations to adjust the amount of open space provided, add community mailbox locations, adjust the unit types to balance the R1, R2, and R3 zoning, and add Eagle Mountain City Council Meeting – January 18, 2022 Page 12 of 23 a row of RD2 units. They feel their proposal is appropriate as the density is lower than other projects approved for the Neighborhood Residential One land use designation. Mayor Pro Tempore Love opened the public hearing at 7:48 p.m. Dave Shippen, one of the owners of the property to the north, stated he submitted emails expressing their concerns with the proposed alignment for Old Airport Road. They request for the City to uphold the General Plan alignment as the proposed alignment would place burden on their property and create difficulties for their development. He stated that their preliminary plans include access to the northwest corner of the Eagle Quest development to address Council concerns discussed during work session. Mayor Pro Tempore Love closed the public hearing at 7:51 p.m. Councilmember Wright expressed his preference for the original, General Plan alignment. He cited a portion of the Planning Commission meeting minutes to identify concerns discussed during their meeting to provide context. Councilmembers Wright, Gray, and Curtis expressed their support for requiring the alignment of Old Airport Road as specified in the General Plan and Transportation Map, especially in light of the impact on the property owner to the north and as the most beneficial to the City overall. Councilmember Burnham concurred especially in light of City Engineer Chris Trusty's comments and concerns with high speed on the road during inclement weather. Mayor Pro Tempore Love said after considerations discussed in the meeting and her conversations with the property owners outside of the meeting, her greatest concerns are the angles at the intersection at the southern border of the property to the north and the access to the northeast corner of Eagle Quest both of which have been addressed by the northern property owner. The Council determined to table the item with the following feedback to the applicant: • Redesign the project with the General Plan alignment of Old Airport Road; • Support of the Planning Commission recommendations; • Desired and appropriate density and unit type variety; and • Possibly allowing the 152-foot right-of-way to be counted as one or two transition steps between the lots on the east and west, depending upon the overall density and potential animal rights conflicts. Mr. Cummings noted that their property is burdened with an 8% dedication of roads not required for their development and they are providing an additional, unrequired twelve feet of road width to accommodate homes backing onto Aviator Avenue in the Sunset Flats development. He reiterated their safety concerns with the General Plan road alignment and with one of the two required connections to the northeast corner being across Old Airport Road. They are amenable to providing a church site. They would like for the road and power corridor to be able to count as a buffer. He noted that many of the adjacent five-acre lots are unbuildable and that the requirements will result with properties with animal rights being located across from properties without animal Eagle Mountain City Council Meeting – January 18, 2022 Page 13 of 23 rights. It was his opinion that the plans had changed over the years and at this stage, safety should be the main consideration regarding the road alignment.",
+      "outcome": "",
+      "tags": [
+        "zoning",
+        "development",
+        "infrastructure",
+        "parks"
+      ],
+      "votes": []
+    },
+    {
+      "id": 486,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 14,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table the Eagle Quest Master Development Plan, rezone, and General Plan amendment",
+      "motion": "Councilmember Curtis moved to table the Eagle Quest Master Development Plan, rezone, and General Plan amendment. Councilmember Wright seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Colby Curtis, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote. 15.B. MOTION – Eagle Quest Preliminary Plat",
+      "outcome": "",
+      "tags": [
+        "zoning"
+      ],
+      "votes": []
+    },
+    {
+      "id": 487,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 14,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the General Plan Map, Approving a Master Development Plan, and Rezoning Certain Lands known as Triumph. Items 16.A. and 16.B. were presented and discussed concurrently. Planning Manager Robert Hobbs reviewed the item as presented during work session. Discussion ensued clarifying that the Foothill Residential Zone has a quarter-acre minimum lot size requirement and a half-acre minimum, average lot size requirement and the current proposal meets the minimum lot size; however, the average lot size is .48 acres which is under the half-acre requirement. Mr. Hobbs explained that the average lot size decreased when the applicant added nine additional lots to accommodate an existing house into the subdivision. The open space for the project is identified as Parcel B. The property is buffered along the west by a 600-foot-wide utility corridor. Applicant representative Scot Hazard said that due to the small market for animal uses and the potential for conflicts, he does not intend to grant animal rights for the development. If the Council feels strongly about the average lot size, he is willing to make adjustments to bring the development into compliance. He explained that the reduction of the number of lots to accommodate the dedication of the roadways also impacted the average lot size",
+      "motion": "Councilmember Burnham moved to table the preliminary plat for Eagle Quest. Councilmember Curtis seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Colby Curtis, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote. 16. TRIUMPH 16.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah, Amending the General Plan Map, Approving a Master Development Plan, and Rezoning Certain Lands known as Triumph. Items 16.A. and 16.B. were presented and discussed concurrently. Planning Manager Robert Hobbs reviewed the item as presented during work session. Discussion ensued clarifying that the Foothill Residential Zone has a quarter-acre minimum lot size requirement and a half-acre minimum, average lot size requirement and the current proposal meets the minimum lot size; however, the average lot size is .48 acres which is under the half-acre requirement. Mr. Hobbs explained that the average lot size decreased when the applicant added nine additional lots to accommodate an existing house into the subdivision. The open space for the project is identified as Parcel B. The property is buffered along the west by a 600-foot-wide utility corridor. Applicant representative Scot Hazard said that due to the small market for animal uses and the potential for conflicts, he does not intend to grant animal rights for the development. If the Council feels strongly about the average lot size, he is willing to make adjustments to bring the development into compliance. He explained that the reduction of the number of lots to accommodate the dedication of the roadways also impacted the average lot size. Councilmember Wright stated that as the General Plan designates the area for an Agricultural Rural Density Two product, for half-acre and one-acre lots; although he is willing to entertain an amendment to Foothill Residential, the average lot size minimum should be met. He expressed appreciation for Mr. Hazard working with the existing homeowner. Eagle Mountain City Council Meeting – January 18, 2022 Page 14 of 23 Mayor Pro Tempore Love opened the public hearing at 8:35 p.m. Marion Bingham, the owner of the existing home in the development, stated he met with Mr. Hazard and reached a compromise for his property. Mayor Pro Tempore Love closed the public hearing at 8:36 p.m.",
+      "outcome": "",
+      "tags": [
+        "zoning",
+        "development",
+        "infrastructure",
+        "parks"
+      ],
+      "votes": []
+    },
+    {
+      "id": 488,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 15,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An ordinance of Eagle Mountain City, Utah, amending the General Plan Map to Foothill Residential, rezoning certain lands known as Triumph to Foothill Residential, and approving the master development plan",
+      "motion": "Councilmember Wright moved to approve an ordinance of Eagle Mountain City, Utah, amending the General Plan Map to Foothill Residential, rezoning certain lands known as Triumph to Foothill Residential, and approving the master development plan. Councilmember Burnham seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Colby Curtis, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote. 16.B. MOTION – Triumph Preliminary Plat",
+      "outcome": "",
+      "tags": [
+        "zoning"
+      ],
+      "votes": []
+    },
+    {
+      "id": 489,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 15,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapters 17.10 Definitions, 17.75 Standards for Special Uses, 17.20 Agriculture Zone, 17.35 Commercial Zone, 17.37 Business Park Zone, 17.40 Industrial Zone, and 17.23 Open Space Zones, Relating to Indoor and Outdoor Shooting Ranges. Mr. Jensen presented the item. The RTI Overlay currently allows indoor shooting ranges but there is no definition or standards for any type of shooting range in Municipal Code. This ordinance has been drafted to allow for indoor shooting ranges in the City as special uses in appropriate areas. This ordinance also creates an Outdoor Shooting Range Overlay Zone, which the City Council Eagle Mountain City Council Meeting – January 18, 2022 Page 15 of 23 may apply to any property where outdoor shooting ranges are deemed appropriate. Staff presented a draft of this ordinance to the Planning Commission on October 26, 2021, where it was tabled and a number of changes were requested. Staff met with industry experts and drafted changes and held a second public hearing on the proposed change on November 9, 2021, where it received a recommendation of approval. The previous amendment had standards for special use for indoor and outdoor shooting ranges. The outdoor shooting ranges have been removed and added as an overlay zone to protect against shooting ranges on five-acre lots in residential areas. The overlay could be applied in any location in the City deemed appropriate by the Council. Exploding targets are discouraged but allowed at the discretion of the shooting range owner with the owner assuming liability for any resulting damages",
+      "motion": "Councilmember Wright moved to approve the preliminary plat for Triumph with the following conditions: 1. The project shall be developed in accordance with the approved preliminary plat of/for the same, including the dedication of requisite City rights-of-way; 2. The project shall comply with any requirement(s) from the Eagle Mountain City Engineer as are, or may be, set forth for the project; 3. The open space development in the project’s common lots shall comply with requirements listed in EMMC 16.35.105; 4. The developer’s engineer shall correct any spelling, grammar, punctuation, and numbering errors that may be evident on the plat face and/or in the proposed project plat development notes; and 5. The applicant shall work with staff to adjust the project to meet the Foothill Residential minimum and average lot size requirements. Councilmember Curtis seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Colby Curtis, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote. 17. ORDINANCES / PUBLIC HEARINGS 17.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapters 17.10 Definitions, 17.75 Standards for Special Uses, 17.20 Agriculture Zone, 17.35 Commercial Zone, 17.37 Business Park Zone, 17.40 Industrial Zone, and 17.23 Open Space Zones, Relating to Indoor and Outdoor Shooting Ranges. Mr. Jensen presented the item. The RTI Overlay currently allows indoor shooting ranges but there is no definition or standards for any type of shooting range in Municipal Code. This ordinance has been drafted to allow for indoor shooting ranges in the City as special uses in appropriate areas. This ordinance also creates an Outdoor Shooting Range Overlay Zone, which the City Council Eagle Mountain City Council Meeting – January 18, 2022 Page 15 of 23 may apply to any property where outdoor shooting ranges are deemed appropriate. Staff presented a draft of this ordinance to the Planning Commission on October 26, 2021, where it was tabled and a number of changes were requested. Staff met with industry experts and drafted changes and held a second public hearing on the proposed change on November 9, 2021, where it received a recommendation of approval. The previous amendment had standards for special use for indoor and outdoor shooting ranges. The outdoor shooting ranges have been removed and added as an overlay zone to protect against shooting ranges on five-acre lots in residential areas. The overlay could be applied in any location in the City deemed appropriate by the Council. Exploding targets are discouraged but allowed at the discretion of the shooting range owner with the owner assuming liability for any resulting damages. Councilmember Wright expressed appreciation to Mayor Westmoreland for assigning Councilmember Curtis and him the responsibility of reviewing the standards with staff to address the concerns discussed during previous meetings. Mayor Pro Tempore Love opened the public hearing at 8:44 p.m. The City received emails from Jordan Freeman, Michael Ruoho, Rick Clayton, Crystal Perry, and Russel Hansen in support of the item. Mayor Pro Tempore Love closed the public hearing at 8:45 p.m. Discussion ensued clarifying that the standards, per the definitions, permit commercial, not private, residential ranges in the Agricultural Zone.",
+      "outcome": "",
+      "tags": [
+        "zoning",
+        "development",
+        "parks",
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 490,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 16,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code Chapters 17.10 Definitions, 17.75 Standards for Special Uses, 17.20 Agriculture Zone, 17.35 Commercial Zone, 17.37 Business Park Zone, 17.40 Industrial Zone, and 17.23 Open Space Zones, relating to indoor and outdoor shooting ranges",
+      "motion": "Councilmember Wright moved to approve an ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code Chapters 17.10 Definitions, 17.75 Standards for Special Uses, 17.20 Agriculture Zone, 17.35 Commercial Zone, 17.37 Business Park Zone, 17.40 Industrial Zone, and 17.23 Open Space Zones, relating to indoor and outdoor shooting ranges. Councilmember Burnham seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Colby Curtis, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote. 17.B. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah, Approving an Amendment to the Eagle Mountain Municipal Code Chapter 17.80 Sign Regulations and Sign Permits Regarding Monument Signs. Mr. Jensen presented the item. The proposed development code amendment is an applicant- proposed Municipal Code amendment to allow for taller monument and combined monument signs. The applicant is proposing changes to the maximum height of monument signs to allow for taller signs while making no changes to the amount of sign copy permitted. The proposed changes include amendments to EMMC 17.80.070(B) to allow a combined monument sign at each drive access onto a street, increase the maximum height for combined monument signs from 10 feet to 20 feet, and remove the requirement for brick, rock, or stone along the vertical edge of combined monument signs. The proposed changes to EMMC 17.80.070(C) would increase the maximum Eagle Mountain City Council Meeting – January 18, 2022 Page 16 of 23 height of individual monument signs from 5 feet to 6 feet and allow design elements on individual monument signs to increase from 6.5 feet to 8 feet. The Planning Commission voted 4 to 0, with one absentee, to recommend approval of the following changes to 17.80: 1. EMMC 17.80.070(B) shall be amended to allow a combined monument sign at each drive access onto a street; 2. EMMC 17.80.070(C) be amended to increase the maximum height for individual monument signs to six feet; 3. EMMC 17.80.070(C) be amended to allow design elements on individual monument signs up to eight feet; and 4. References to the Airpark Zone shall be removed from EMMC 17.80 and the numbers shall be adjusted accordingly. Applicant Bill Gaskill stated they wanted to clarify that one sign is allowed per entrance as it is unclear in current standards and to be allowed the same amount of sign copy space as currently permitted but to be able to reorient the size vertically to increase readability. The sign company requested to exclude masonry from signs as the current style trend is now metal. They are open to the material preference of the Council. For reference and comparison, Cedar Valley School has a 20-foot-high sign and the Macey’s building will be 35 to 36 feet high. Only permitting one sign per frontage penalizes large shopping centers and tenants located at the rear of the property. They are requesting to place signs at their entrances and not in the public right-of-way. Some tenants have expressed that their interest in developing in Eagle Mountain is contingent upon signage. Mayor Pro Tempore Love stated that she would consider allowing 20-feet tall signs in close proximity to a building of similar or greater height. Mayor Pro Tempore Love opened the public hearing at 9:05 p.m. As there were no comments, she closed the hearing. Councilmember Burnham agreed with Mayor Pro Tempore Love regarding sign and building proportionally and feels that tall signs, that are narrow, are less imposing. Councilmember Curtis stated his opposition to the Planning Commission recommendation to allow a combined monument sign at each drive access onto a street and is in favor of the current standard of one sign per frontage. He suggested limiting the number of signs to two per frontage. He is in favor of stricter standards than most cities for aesthetical congruence including the masonry sign motif as it is a part of the uniqueness of the City. He prefers to grant exemptions for individual projects rather than amending Municipal Code due to uncertainty about how the requested changes would impact other, smaller projects. Councilmember Wright said he is amenable to allowing one sign per entrance; however, he is willing to compromise and limit the number of signs to two per frontage. He clarified that the Planning Commission recommendations intentionally excluded the request to remove the use of stone, rock, or brick material on the base and vertically along at least one side with the intention to retain the requirement. Eagle Mountain City Council Meeting – January 18, 2022 Page 17 of 23 Councilmember Burnham expressed concern with balancing aesthetics, functionally and visibility. Although she recognizes the desire for continuity, she feels that the existing requirements would be inappropriate and not in harmony with the characteristics of some areas in the City, and she is against legislating preference. She is willing to limit the signs to two per frontage as a compromise. Mayor Pro Tempore Love said that she thinks that businesses will update the masonry element resulting in signs different than those currently in the City. Thus, she would prefer to allow signs that are in harmony with the building. Due to Councilmembers Curtis, Wright, and Gray expressing objections to permitting a 20-foot combined monument sign, the Councilmembers discussed other potential sign height increases with consideration of proximity and proportion to the associated commercial building. Councilmember Gray expressed his preference to retain the existing standards; however, he is amenable to allowing some changes as long as the signs are not permitted in locations that create an impediment to large vehicles. Since similar requests had been denied in the past, his preference is to retain the standards as much as possible, for fairness and consistency.",
+      "outcome": "",
+      "tags": [
+        "development",
+        "infrastructure",
+        "parks",
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 491,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 18,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An ordinance of Eagle Mountain City, Utah, approving an amendment to the Eagle Mountain Municipal Code Chapter 17.80 Sign Regulations and Sign Permits regarding monument signs with the following conditions: 1. EMMC 17.80.070(B) shall be amended to allow up to two combined monument signs on each frontage; 2. EMMC 17.80.070(C)(1) shall be amended to increase the maximum height for individual monument signs to six feet; 3. EMMC 17.80.070(C)(2) shall be amended to allow design elements on individual monument signs up to eight feet; 4. References to the Airpark zone shall be removed from EMMC 17.80 and the numbers shall be adjusted accordingly; 5. EMMC 17.80.070(B)(3) and EMMC 17.80.070(C)(3) requiring each sign to contain stone, rock, or brick at the base and vertically along at least one side shall be removed; and 6. EMMC 18.80.070(B)(1) shall be amended to permit the maximum height of a combined monument sign of up to 16 feet",
+      "motion": "Councilmember Burnham moved to approve an ordinance of Eagle Mountain City, Utah, approving an amendment to the Eagle Mountain Municipal Code Chapter 17.80 Sign Regulations and Sign Permits regarding monument signs with the following conditions: 1. EMMC 17.80.070(B) shall be amended to allow up to two combined monument signs on each frontage; 2. EMMC 17.80.070(C)(1) shall be amended to increase the maximum height for individual monument signs to six feet; 3. EMMC 17.80.070(C)(2) shall be amended to allow design elements on individual monument signs up to eight feet; 4. References to the Airpark zone shall be removed from EMMC 17.80 and the numbers shall be adjusted accordingly; 5. EMMC 17.80.070(B)(3) and EMMC 17.80.070(C)(3) requiring each sign to contain stone, rock, or brick at the base and vertically along at least one side shall be removed; and 6. EMMC 18.80.070(B)(1) shall be amended to permit the maximum height of a combined monument sign of up to 16 feet. Mayor Pro Tempore Love seconded the motion. Those voting aye: Donna Burnham and Carolyn Love. Those voting nay: Jared Gray, Colby Curtis, and Brett Wright. The motion failed with a vote of 2:3.",
+      "outcome": "",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 492,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 18,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An ordinance of Eagle Mountain City, Utah, approving an amendment to the Eagle Mountain Municipal Code Chapter 17.80 Sign Regulations and Sign Permits regarding monument signs with the following conditions: 1. EMMC 17.80.070(B) shall be amended to allow up to two combined monument signs on each frontage; Eagle Mountain City Council Meeting – January 18, 2022 Page 18 of 23 2. EMMC 17.80.070(C)(1) shall be amended to increase the maximum height for individual monument signs to six feet; 3. EMMC 17.80.070(C)(2) shall be amended to allow design elements on individual monument signs up to eight feet; and 4. References to the Airpark zone shall be removed from EMMC 17.80 and the numbers shall be adjusted accordingly",
+      "motion": "Councilmember Curtis moved to approve an ordinance of Eagle Mountain City, Utah, approving an amendment to the Eagle Mountain Municipal Code Chapter 17.80 Sign Regulations and Sign Permits regarding monument signs with the following conditions: 1. EMMC 17.80.070(B) shall be amended to allow up to two combined monument signs on each frontage; Eagle Mountain City Council Meeting – January 18, 2022 Page 18 of 23 2. EMMC 17.80.070(C)(1) shall be amended to increase the maximum height for individual monument signs to six feet; 3. EMMC 17.80.070(C)(2) shall be amended to allow design elements on individual monument signs up to eight feet; and 4. References to the Airpark zone shall be removed from EMMC 17.80 and the numbers shall be adjusted accordingly. Councilmember Wright seconded the motion. Those voting aye: Jared Gray, Colby Curtis, Carolyn Love, and Brett Wright. Those voting nay: Donna Burnham. The motion carried with a vote of 4:1. Councilmember Burnham explained her dissention was due to her desire to compromise on the height of the sign. 17.C. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 17.48 Regional Technical Industry Overlay Zone. Mr. Mumford presented the item. The RTI Overlay Zone is intended to promote large-scale development of technological, clean industrial, distribution, and high-tech manufacturing uses. The zone allows properties that have received the overlay to go through a streamlined approval process if they permanently employ over 100 people or include a minimum of 100,000 square feet of building floor area in the first phase of development. The RTI Overlay has been utilized for Facebook, Tyson, and Google and has an automatic repeal date of May 31, 2022. The City received an Award of Merit from the Utah Chapter of the American Planning Association for the overlay. A letter of support from Economic Development Director Aaron Sanborn lists the benefits of the overlay including time savings, uncertainty reduction, and improved perception. The overlay sets Eagle Mountain apart from other cities. The staff-proposed amendments to Chapter 17.48 include removing the repeal date, adding that the City Council member serving as the Planning Commission liaison shall also serve as the Development Review Committee (DRC) liaison for projects within the RTI Overlay, the application process shall require a final rather than preliminary plat if the party is subdividing the property as part of the project, that allowed uses in EMMC 17.48.040 that may have a significant impact on the City’s utilities or infrastructure may be prohibited at the discretion of the City, and removing the permitted building height of five stories or approximately 50 feet to require building height approval based upon the specific use and potential impacts to neighboring properties. The Planning Commission reviewed the item on December 14, 2021, and recommended approval with modifications with a vote of 3 to 1, with one absentee, with the following changes: 1. EMMC 17.48.020 be modified to add the chair of the Planning Commission to the Development Review Committee for the RTI Overlay projects; 2. EMMC 17.48.020 be modified to include “his/her designee;” and 3. EMMC 17.48.120 be modified to automatically repeal on May 31, 2027, with a required review by the Planning Commission and City Council in 2026 at or near the four-year mark. Eagle Mountain City Council Meeting – January 18, 2022 Page 19 of 23 Discussion ensued clarifying the current height limitations and the ability for the DRC to approve other heights. Councilmember Burnham expressed concern with the Planning Commission liaison’s ability to attend DRC meetings due to work conflicts as the meetings are generally held from 1:00 p.m. to 3:00 p.m. on workdays. Mr. Mumford explained that if the approval of the project falls outside of the regularly scheduled DRC meeting, a special meeting might be called, and the materials can be made available, and feedback can be provided digitally. Mr. Mumford explained that if the RTI Overlay Zone were repealed, parcels that the overlay has currently been applied to would revert to the underlying zoning approved for those properties. Existing, approved projects would retain the terms of their individual agreements. Mayor Pro Tempore Love opened the public hearing at 9:50 p.m. As there were no comments, she closed the hearing. Councilmember Curtis stated that he feels that the RTI Overlay Zone has achieved its purpose and goals. He expressed concern about residents being excluded from the process. He feels that the overlay should be repealed and that the City should focus on attracting other uses like hospitals or educational centers such as colleges. Mayor Pro Tempore Love stated the City could focus on attracting various use types as different parts of the City are designated for specific uses. Councilmember Burnham said that Eagle Mountain needs to continue to attract employment opportunities within the City to ease the burden of infrastructure caused by commuter traffic. She recommended extending the overlay for an additional two years as she feels its purpose and goals have not yet been fully realized. Discussion ensued regarding preventing additional data centers and other high-water users from developing in the City. City Administrator Paul Jerome clarified that the standards state that the City and Council may prohibit any use that is undesired or deemed to have a significant impact on utilities or infrastructure. Councilmember Wright stated he feels the overlay has mostly fulfilled its purpose; however, it may still have more left to accomplish. He inquired what type of companies have expressed interest in the overlay. He feels that 100 employees may be too few and concurs with concerns regarding the public process while recognizing creating an expedited process attracts companies. He would be amenable to either repealing the standards or amending them to better attract desired uses. He is not in favor of retaining the existing standards without addressing the public input concerns. Councilmember Gray stated he is uncertain regarding the goal and purpose of the overlay. Depending upon what the City hopes to accomplish with the overlay, he would support having the Eagle Mountain City Council Meeting – January 18, 2022 Page 20 of 23 standards repealed or extended for two years to accommodate a desired, interested business. He feels the limited public input and the streamlined process put the City at risk. Mr. Sanborn said the overlay zone was created to bring in companies that provide a lot of jobs and highly-capitalized projects. The overlay has been successful with large corporations selecting Eagle Mountain. He thinks the overlay still offers great benefit in allowing the overlay to continue to aid the City in attracting users. It has opened doors for economic development. Consumer goods, manufacturing, aerospace, medical technology, and others have all expressed interest due to the speed to market provided with the overlay. The overlay can work in tandem with interests in recruiting medical and educational uses. Mayor Pro Tempore Love suggested assigning two Councilmembers to work with staff to address concerns with the overlay to be presented and discussed at a future meeting. Discussion ensued regarding concerns with the broad allowances in the standards and the public process, repealing or extending the automatic repeal date, setting a date to review the standards should the chapter be retained, and identifying the City’s economic goals and adjusting the overlay to promote those goals. Mr. Jerome said that due to entities with water rights that have not approached the City regarding agreements, it may be beneficial to extend the repeal date. Councilmember Burnham noted that some businesses have held DRC meetings regarding potential projects for the City and have expressed interest in the overlay. Mr. Mumford said that one project, in particular, has been in discussions with the City for several years and they are awaiting the outcome of the review of the RTI Overlay prior to investing additional funds to move forward due to fear the overlay will be repealed during the middle of their application. Another entity has requested a rezone for the application of the RTI Overlay Zone.",
+      "outcome": "",
+      "tags": [
+        "zoning",
+        "infrastructure",
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 493,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 21,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code Chapter 17.48 Regional Technical Industry Overlay Zone with the following changes: 1. EMMC 17.48.020 be modified to add the chair of the Planning Commission to the Development Review Committee for the RTI Overlay projects; 2. EMMC 17.48.020 be modified to include “his/her designee;” and 3. EMMC 17.48.120 be modified to automatically repeal on November 30, 2023, with a required review by the Planning Commission and City Council at or near May 31, 2023",
+      "motion": "Councilmember Burnham moved to approve an ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code Chapter 17.48 Regional Technical Industry Overlay Zone with the following changes: 1. EMMC 17.48.020 be modified to add the chair of the Planning Commission to the Development Review Committee for the RTI Overlay projects; 2. EMMC 17.48.020 be modified to include “his/her designee;” and 3. EMMC 17.48.120 be modified to automatically repeal on November 30, 2023, with a required review by the Planning Commission and City Council at or near May 31, 2023. Mayor Pro Tempore Love seconded the motion. Those voting aye: Donna Burnham. Those voting nay: Jared Gray, Colby Curtis, Carolyn Love, and Brett Wright. The motion failed with a vote of 1:4. Eagle Mountain City Council Meeting – January 18, 2022 Page 21 of 23",
+      "outcome": "",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 494,
+      "meeting_id": 448,
+      "date": "2022-01-18",
+      "page": 22,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code Chapter 17.48 Regional Technical Industry Overlay Zone to a future meeting",
+      "motion": "Councilmember Wright moved to table an ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code Chapter 17.48 Regional Technical Industry Overlay Zone to a future meeting. Councilmember Curtis seconded the motion. Those voting aye: Jared Gray, Colby Curtis, Carolyn Love, and Brett Wright. Those voting nay: Donna Burnham. The motion carried with a vote of 4:1. The Council determined for Councilmembers Burnham and Wright to work with the Planning Commission and staff on amendments to the standards. 18. RESOLUTIONS",
+      "outcome": "",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 6,
+      "line_text": "14.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 7,
+      "line_text": "15.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 8,
+      "line_text": "16.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 11,
+      "line_text": "14.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 12,
+      "line_text": "15.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 14,
+      "line_text": "16.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 15,
+      "line_text": "MOTION: Councilmember Wright moved to approve an ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 15,
+      "line_text": "17.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 15,
+      "line_text": "is no definition or standards for any type of shooting range in Municipal Code. This ordinance has"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 15,
+      "line_text": "This ordinance also creates an Outdoor Shooting Range Overlay Zone, which the City Council"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 16,
+      "line_text": "a draft of this ordinance to the Planning Commission on October 26, 2021, where it was tabled and"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 16,
+      "line_text": "MOTION: Councilmember Wright moved to approve an ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 16,
+      "line_text": "17.B. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 18,
+      "line_text": "MOTION: Councilmember Burnham moved to approve an ordinance of Eagle"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 18,
+      "line_text": "MOTION: Councilmember Curtis moved to approve an ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 19,
+      "line_text": "17.C. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 21,
+      "line_text": "MOTION: Councilmember Burnham moved to approve an ordinance of Eagle"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 22,
+      "line_text": "MOTION: Councilmember Wright moved to table an ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 24,
+      "line_text": "1. Has the process outlined in the state code referenced above been modified by ordinance,"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 22,
+      "line_text": "18.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah Amending the"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 22,
+      "line_text": "resolution amends the Eagle Mountain Consolidated Fee Schedule for water, wastewater (sewer),"
+    },
+    {
+      "source_file": "2022-01-18__448.pdf",
+      "meeting_date": "2022-01-18",
+      "page": 24,
+      "line_text": "resolution or some other means by EMC? If so, can you please provide me with the"
+    }
+  ]
+}

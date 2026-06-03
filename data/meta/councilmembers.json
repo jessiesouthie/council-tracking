@@ -1,0 +1,73 @@
+{
+  "_doc": "Canonical councilmember records. The `aliases` list maps every name variant we have seen in the parsed minutes (incl. OCR typos like 'Brett Wight') to a single canonical id. Add a new entry whenever a new council member joins; extend `aliases` when the OCR introduces a new mis-spelling.",
+  "members": [
+    {
+      "id": "brett-wright",
+      "name": "Brett Wright",
+      "role": "Councilmember",
+      "tenure_start": "2024-01-01",
+      "tenure_end": null,
+      "aliases": ["Brett Wright", "Brett Wight"]
+    },
+    {
+      "id": "melissa-clark",
+      "name": "Melissa Clark",
+      "role": "Councilmember",
+      "tenure_start": "2024-01-01",
+      "tenure_end": null,
+      "aliases": ["Melissa Clark", "Meliss Clark"]
+    },
+    {
+      "id": "rich-wood",
+      "name": "Rich Wood",
+      "role": "Councilmember",
+      "tenure_start": "2024-01-01",
+      "tenure_end": null,
+      "aliases": ["Rich Wood"]
+    },
+    {
+      "id": "jared-gray",
+      "name": "Jared Gray",
+      "role": "Mayor",
+      "tenure_start": "2026-01-01",
+      "tenure_end": null,
+      "previous_role": "Councilmember 2024-2025",
+      "aliases": ["Jared Gray", "Jared Gray*", "Jared Grag", "Mayor Gray"]
+    },
+    {
+      "id": "donna-burnham",
+      "name": "Donna Burnham",
+      "role": "Councilmember",
+      "tenure_start": "2024-01-01",
+      "tenure_end": "2025-12-31",
+      "aliases": ["Donna Burnham", "Donna"]
+    },
+    {
+      "id": "craig-whiting",
+      "name": "Craig Whiting",
+      "role": "Councilmember",
+      "tenure_start": "2026-01-01",
+      "tenure_end": null,
+      "aliases": ["Craig Whiting"]
+    },
+    {
+      "id": "zachory-huish",
+      "name": "Zachory Huish",
+      "role": "Councilmember",
+      "tenure_start": "2026-01-01",
+      "tenure_end": null,
+      "aliases": ["Zachory Huish"]
+    },
+    {
+      "id": "tom-westmoreland",
+      "name": "Tom Westmoreland",
+      "role": "Mayor",
+      "tenure_start": "2024-01-01",
+      "tenure_end": "2025-12-31",
+      "aliases": ["Tom Westmoreland", "Mayor Westmorland"]
+    }
+  ],
+  "ignore": [
+    "Yes", "No", "Abstain", "Audreg", "Richard Cameron"
+  ]
+}

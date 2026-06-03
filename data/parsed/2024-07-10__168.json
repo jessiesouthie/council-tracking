@@ -1,0 +1,50 @@
+{
+  "meeting": {
+    "id": 168,
+    "date": "2024-07-10",
+    "source_file": "2024-07-10__168.pdf",
+    "motion_count": 1,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 754,
+      "meeting_id": 168,
+      "date": "2024-07-10",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Adopt a Proclamation of the Mayor of Eagle Mountain City Regarding Short-Term Water Prohibition…",
+      "motion": "Councilmember Gray moved to adopt a Proclamation of the Mayor of Eagle Mountain City Regarding Short-Term Water Prohibitions on the Outdoor Use of Water in a Portion of Eagle Mountain City, selecting option 2 as the area in which the outdoor use of water is prohibited, and allowing individuals to provide water to animals, hand watered gardens, and drip irrigation. Councilmember Wood seconded the motion.",
+      "outcome": "passed unanimously.",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

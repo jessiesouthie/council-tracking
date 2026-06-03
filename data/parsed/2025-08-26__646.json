@@ -1,0 +1,55 @@
+{
+  "meeting": {
+    "id": 646,
+    "date": "2025-08-26",
+    "source_file": "2025-08-26__646.pdf",
+    "motion_count": 1,
+    "ord_count": 0,
+    "res_count": 1
+  },
+  "motions": [
+    {
+      "id": 968,
+      "meeting_id": 646,
+      "date": "2025-08-26",
+      "page": 2,
+      "agenda_ref": "2.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of the Board of Canvassers Certifying the Official Canvassers' Report of the August 12, 2025 Municipal Primary Election for Eagle Mountain City, Utah City Recorder Gina Olsen presented the results of the 2025 Municipal Primary Election. The Utah County Elections Office has verified the ballots from the Primary Election with the following results:  26,930 ballots were mailed and a total of 6,866 were returned for a 25.5% return rate.  23 provisional ballots were issued, of which 2 were not counted due to incomplete information on the provisional ballot form.  124 ballots were returned but not counted due to missing signatures (3), signature discrepancies (3), or returned past postmark deadline (116), other reasons (2).  310 residents voted in person on Election Day (or an early vote center).  5 UOCAVA ballots were issued and returned through Enhanced Voting.",
+      "motion": "Councilmember Gray moved that the Board of Canvassers verify the results of the 2025 Municipal Primary Election by ratifying the results of the canvass; accept the report of the Election Official and certify the election results; and declare Four-year Mayoral candidates Melissa Clark and Jared R. Gray; and Four-year City Council candidates Emily Buss, Brett L Wright, Craig Whiting, and Charlotte Ducos eligible to be on the ballot and nominated for the General Municipal Election on November 4, 2025. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2025-08-26__646.pdf",
+      "meeting_date": "2025-08-26",
+      "page": 1,
+      "line_text": "2.A. RESOLUTION - A Resolution of the Board of Canvassers Certifying the Official"
+    }
+  ]
+}

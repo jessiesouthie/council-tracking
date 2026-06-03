@@ -1,0 +1,109 @@
+{
+  "meeting": {
+    "id": 483,
+    "date": "2025-08-05",
+    "source_file": "2025-08-05__483.pdf",
+    "motion_count": 2,
+    "ord_count": 0,
+    "res_count": 4
+  },
+  "motions": [
+    {
+      "id": 953,
+      "meeting_id": 483,
+      "date": "2025-08-05",
+      "page": 5,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Wright moved to approve the Consent Agenda. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 954,
+      "meeting_id": 483,
+      "date": "2025-08-05",
+      "page": 6,
+      "agenda_ref": "14.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving and Authorizing the Execution of an Interlocal Cooperation Agreement for Participation in the Utah Valley HOME Consortium",
+      "motion": "Councilmember Wright moved to adopt a Resolution of Eagle Mountain City, Utah, Approving and Authorizing the Execution of an Interlocal Cooperation Agreement for Participation in the Utah Valley HOME Consortium. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a 4:1 vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "No"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2025-08-05__483.pdf",
+      "meeting_date": "2025-08-05",
+      "page": 5,
+      "line_text": "12.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Authorizing Extended"
+    },
+    {
+      "source_file": "2025-08-05__483.pdf",
+      "meeting_date": "2025-08-05",
+      "page": 5,
+      "line_text": "14.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving and"
+    },
+    {
+      "source_file": "2025-08-05__483.pdf",
+      "meeting_date": "2025-08-05",
+      "page": 5,
+      "line_text": "resolution to join the Utah Valley HOME Consortium, enabling access to HUD funding for"
+    },
+    {
+      "source_file": "2025-08-05__483.pdf",
+      "meeting_date": "2025-08-05",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Wright moved to adopt a Resolution of Eagle Mountain"
+    }
+  ]
+}

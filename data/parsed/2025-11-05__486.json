@@ -1,0 +1,288 @@
+{
+  "meeting": {
+    "id": 486,
+    "date": "2025-11-05",
+    "source_file": "2025-11-05__486.pdf",
+    "motion_count": 5,
+    "ord_count": 5,
+    "res_count": 11
+  },
+  "motions": [
+    {
+      "id": 997,
+      "meeting_id": 486,
+      "date": "2025-11-05",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Adopt a Proclamation of Eagle Mountain City, Utah, Proclaiming November 2025 as Hunger Awarenes…",
+      "motion": "Councilmember Gray moved to adopt a Proclamation of Eagle Mountain City, Utah, Proclaiming November 2025 as Hunger Awareness Month. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 998,
+      "meeting_id": 486,
+      "date": "2025-11-05",
+      "page": 5,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Wright moved to approve the Consent Agenda and to also include the “Conditions of Approval on Intersection Improvements”, provided by Staff, for Item 12.A. for the John Hancock Charter School West Campus. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure",
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 999,
+      "meeting_id": 486,
+      "date": "2025-11-05",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the Wastewater Master Plan and Impact Fee Facilities Plan (IFFP)",
+      "motion": "Councilmember Wood moved to approve a Resolution of Eagle Mountain City, Utah, Approving the Wastewater Master Plan and Impact Fee Facilities Plan (IFFP). Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1000,
+      "meeting_id": 486,
+      "date": "2025-11-05",
+      "page": 7,
+      "agenda_ref": "16.A.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Adopting the Sweetwater #4 Community Reinvestment Area Project Area Plan, as Approved by the Redevelopment Agency of Eagle Mountain City, as the Official Community Reinvestment Project Area Plan for the Project Area and Directing that Notice of the Adoption be Given as Required by Statute",
+      "motion": "Councilmember Clark moved to adopt an Ordinance of Eagle Mountain City, Utah, Adopting the Sweetwater #4 Community Reinvestment Area Project Area Plan, as Approved by the Redevelopment Agency of Eagle Mountain City, as the Official Community Reinvestment Project Area Plan for the Project Area and Directing that Notice of the Adoption be Given as Required by Statute. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a 4:1 vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "No"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1001,
+      "meeting_id": 486,
+      "date": "2025-11-05",
+      "page": 7,
+      "agenda_ref": "16.B.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Eagle Mountain City, Utah for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area",
+      "motion": "Councilmember Wright moved to approve a Resolution of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Eagle Mountain City, Utah for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 5,
+      "line_text": "14.A. ORDINANCE - An Ordinance of Eagle Mountain City, Utah, Reenacting the Eagle"
+    },
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 6,
+      "line_text": "16.A. ORDINANCE - An Ordinance of Eagle Mountain City, Utah, Adopting the"
+    },
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 6,
+      "line_text": "Director of Legislative and Strategic Services Evan Berrett outlined that this ordinance adopts"
+    },
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 6,
+      "line_text": "Redevelopment Agency of Eagle Mountain City. Adoption of this ordinance formally designates"
+    },
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Clark moved to adopt an Ordinance of Eagle Mountain City,"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 2,
+      "line_text": "13.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving the"
+    },
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 2,
+      "line_text": "13.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah Approving the Commercial"
+    },
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 2,
+      "line_text": "Housing Coordinator Kiara Polee explained that the proposed resolution would adopt the"
+    },
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 2,
+      "line_text": "15.A. RESOLUTION/PUBLIC HEARING - A Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 5,
+      "line_text": "13.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving the"
+    },
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 5,
+      "line_text": "13.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah Approving the"
+    },
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 5,
+      "line_text": "13.C. RESOLUTION - A Resolution of Eagle Mountain City, Utah Approving an Escrow"
+    },
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 5,
+      "line_text": "15.A. RESOLUTION/PUBLIC HEARING - A Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Wood moved to approve a Resolution of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 7,
+      "line_text": "16.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving an Interlocal"
+    },
+    {
+      "source_file": "2025-11-05__486.pdf",
+      "meeting_date": "2025-11-05",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Wright moved to approve a Resolution of Eagle Mountain City,"
+    }
+  ]
+}

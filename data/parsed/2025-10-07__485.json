@@ -1,0 +1,518 @@
+{
+  "meeting": {
+    "id": 485,
+    "date": "2025-10-07",
+    "source_file": "2025-10-07__485.pdf",
+    "motion_count": 10,
+    "ord_count": 10,
+    "res_count": 15
+  },
+  "motions": [
+    {
+      "id": 982,
+      "meeting_id": 485,
+      "date": "2025-10-07",
+      "page": 5,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Wood moved to approve the Consent Agenda removing items 13.A., 14.A., and 14.C., and placing them on the scheduled items for further discussion and completely removing Item 14.B. from the agenda. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous 4:0 vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 983,
+      "meeting_id": 485,
+      "date": "2025-10-07",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Deny a request by Cadence Homes to amend an approved site plan pertaining to the Hidden Hollow…",
+      "motion": "Councilmember Wood moved to deny a request by Cadence Homes to amend an approved site plan pertaining to the Hidden Hollow clubhouse amenity, substituting a gym and additional lawn games for the swimming pool. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a 3:1 vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "No"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 984,
+      "meeting_id": 485,
+      "date": "2025-10-07",
+      "page": 6,
+      "agenda_ref": "14.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah Approving a Reimbursement Agreement for Crosswalk Access at Woodhaven Boulevard and Pony Express Parkway",
+      "motion": "Councilmember Wood moved to adopt a Resolution of Eagle Mountain City, Utah, Approving a Reimbursement Agreement for Crosswalk Access at Woodhaven Boulevard and Pony Express Parkway and direct Staff to address unsafe conditions in winter. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous 4:0 vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 985,
+      "meeting_id": 485,
+      "date": "2025-10-07",
+      "page": 7,
+      "agenda_ref": "14.C.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Amending the Consolidated Fee Schedule",
+      "motion": "Councilmember Burnham moved to adopt a Resolution of Eagle Mountain City, Utah, Amending the Consolidated Fee Schedule Appendix A only. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous 4:0 vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 986,
+      "meeting_id": 485,
+      "date": "2025-10-07",
+      "page": 7,
+      "agenda_ref": "",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the First Amendment to the Fiscal Year 2025-2026 Annual Budget",
+      "motion": "Councilmember Wood moved to adopt a Resolution of Eagle Mountain City, Utah, Approving the First Amendment to the Fiscal Year 2025-2026 Annual Budget. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous 4:0 vote.",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 987,
+      "meeting_id": 485,
+      "date": "2025-10-07",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Authorizing the Disposal of Significant City-Owned Real Property Pursuant to Eagle Mountain Municipal Code Chapter 3.30 at $3.44 per square foot and to work out financing options with Staff",
+      "motion": "Councilmember Wood moved to adopt a Resolution of Eagle Mountain City, Utah, Authorizing the Disposal of Significant City-Owned Real Property Pursuant to Eagle Mountain Municipal Code Chapter 3.30 at $3.44 per square foot and to work out financing options with Staff. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous 4:0 vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 988,
+      "meeting_id": 485,
+      "date": "2025-10-07",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance Of Eagle Mountain City, Utah, Amending Rush Creek Industrial Phase A, Plat 1, Lot 102 and Lot 111",
+      "motion": "Councilmember Wood moved to adopt an Ordinance Of Eagle Mountain City, Utah, Amending Rush Creek Industrial Phase A, Plat 1, Lot 102 and Lot 111. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous 4:0 vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 989,
+      "meeting_id": 485,
+      "date": "2025-10-07",
+      "page": 9,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending Eagle Mountain Municipal Code Chapter 17.72, Commercial and Multifamily Design Standards to bring back final changes from the discussion October 21, 2025 City Council meeting",
+      "motion": "Councilmember Wood moved to table an Ordinance of Eagle Mountain City, Utah, Amending Eagle Mountain Municipal Code Chapter 17.72, Commercial and Multifamily Design Standards to bring back final changes from the discussion October 21, 2025 City Council meeting. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous 4:0 vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 990,
+      "meeting_id": 485,
+      "date": "2025-10-07",
+      "page": 10,
+      "agenda_ref": "17.A.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Approving a Franchise Agreement with Zayo Group, LLC",
+      "motion": "Councilmember Burnham moved to adopt an Ordinance of Eagle Mountain City, Utah, Approving a Franchise Agreement with Zayo Group, LLC. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous 4:0 vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 991,
+      "meeting_id": 485,
+      "date": "2025-10-07",
+      "page": 10,
+      "agenda_ref": "17.B.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah Approving a Franchise Agreement for SummitIG Fiber, LLC",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Approving a Franchise Agreement for SummitIG Fiber, LLC. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous 4:0 vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 6,
+      "line_text": "addition of a reference to Ordinance 10-2025, which partially suspends the transportation impact fee for"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 8,
+      "line_text": "16.A. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance Of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 9,
+      "line_text": "16.B. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 9,
+      "line_text": "Senior Planner David Stroud outlined that the ordinance would amend Title 17, which is related to"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Wood moved to table an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 9,
+      "line_text": "17.A. ORDINANCE - An Ordinance of Eagle Mountain City, Utah, Approving a Franchise"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Burnham moved to adopt an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 10,
+      "line_text": "17.B. ORDINANCE - An Ordinance of Eagle Mountain City, Utah Approving a Franchise"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 10,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah,"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 2,
+      "line_text": "14.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah Approving a"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 2,
+      "line_text": "14.D. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving an"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 2,
+      "line_text": "14.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Establishing an"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 4,
+      "line_text": "14.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah Approving a"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 4,
+      "line_text": "14.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Establishing an"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 4,
+      "line_text": "14.C. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Amending the"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 4,
+      "line_text": "14.D. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving an"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 6,
+      "line_text": "14.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah Approving a"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Wood moved to adopt a Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 6,
+      "line_text": "14.C. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Amending the"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Burnham moved to adopt a Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 7,
+      "line_text": "15.A. RESOLUTION/PUBLIC HEARING - A Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Wood moved to adopt a Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 7,
+      "line_text": "15.B. RESOLUTION/PUBLIC HEARING - A Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-10-07__485.pdf",
+      "meeting_date": "2025-10-07",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Wood moved to adopt a Resolution of Eagle Mountain City, Utah,"
+    }
+  ]
+}

@@ -1,0 +1,576 @@
+{
+  "meeting": {
+    "id": 479,
+    "date": "2025-04-01",
+    "source_file": "2025-04-01__479.pdf",
+    "motion_count": 13,
+    "ord_count": 10,
+    "res_count": 7
+  },
+  "motions": [
+    {
+      "id": 881,
+      "meeting_id": 479,
+      "date": "2025-04-01",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Adopt a Proclamation of Eagle Mountain City, Utah, Proclaiming April 25, 2025 as Arbor Day",
+      "motion": "Councilmember Burnham moved to adopt a Proclamation of Eagle Mountain City, Utah, Proclaiming April 25, 2025 as Arbor Day. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 882,
+      "meeting_id": 479,
+      "date": "2025-04-01",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Adopt a Proclamation of Eagle Mountain City, Utah, Proclaiming April as Financial Literacy Month",
+      "motion": "Councilmember Gray moved to adopt a Proclamation of Eagle Mountain City, Utah, Proclaiming April as Financial Literacy Month. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 883,
+      "meeting_id": 479,
+      "date": "2025-04-01",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the appointment of Marian Burningham for a three year term, through December 31, 2027,…",
+      "motion": "Councilmember Wright moved to approve the appointment of Marian Burningham for a three year term, through December 31, 2027, to the Cemetery Advisory Board. Councilmember Gray seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "personnel"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 884,
+      "meeting_id": 479,
+      "date": "2025-04-01",
+      "page": 6,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Wright moved to approve the Consent Agenda, removing item 14.A. to be addressed in the scheduled items. Councilmember Wood seconded the motion. Councilmember Gray requested that the correction to the minutes be included in the motion. AMENDED MOTION: Councilmember Wright moved to approve the Consent Agenda removing 14.A. to be addressed in the scheduled items and including the adjustments to the March 18, 2025 minutes as noted from Councilmember Gray in the Work Session. Councilmember Wood seconded the amended motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 885,
+      "meeting_id": 479,
+      "date": "2025-04-01",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the UTA Park and ride Site Plan as presented",
+      "motion": "Councilmember Wood moved to approve the UTA Park and ride Site Plan as presented. Councilmember Gray seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "parks"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 886,
+      "meeting_id": 479,
+      "date": "2025-04-01",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Releasing a Permanent Sanitary Sewer Easement and Retaining a Temporary Sanitary Sewer Easement",
+      "motion": "Councilmember Wood moved to adopt a Resolution of Eagle Mountain City, Utah, Releasing a Permanent Sanitary Sewer Easement and Retaining a Temporary Sanitary Sewer Easement. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 887,
+      "meeting_id": 479,
+      "date": "2025-04-01",
+      "page": 9,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the General Plan Future Land Use Map for Certain Lands Known as Big Eagle 7",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the General Plan Future Land Use Map for Certain Lands Known as Big Eagle 7. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 888,
+      "meeting_id": 479,
+      "date": "2025-04-01",
+      "page": 9,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as Big Eagle 7 to industrial base zoning and apply the RTI overlay zone",
+      "motion": "Councilmember Wright moved to adopt An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as Big Eagle 7 to industrial base zoning and apply the RTI overlay zone. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 889,
+      "meeting_id": 479,
+      "date": "2025-04-01",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Title 17, Zoning as presented in the updated packet",
+      "motion": "Councilmember Wright moved to adopt An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Title 17, Zoning as presented in the updated packet. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 890,
+      "meeting_id": 479,
+      "date": "2025-04-01",
+      "page": 10,
+      "agenda_ref": "19.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Supporting the Creation of a Utah Inland Port Authority Project Area in Eagle Mountain City",
+      "motion": "Councilmember Burnham moved to approve A Resolution of Eagle Mountain City, Utah, Supporting the Creation of a Utah Inland Port Authority Project Area in Eagle Mountain City. Councilmember Clark seconded the motion.",
+      "outcome": "failed for lack of majority vote; 2:3.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "No"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "No"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "No"
+        }
+      ]
+    },
+    {
+      "id": 891,
+      "meeting_id": 479,
+      "date": "2025-04-01",
+      "page": 11,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Adopt implementation of the MBR technology solution and the use of CM/CG construction methodolo…",
+      "motion": "Councilmember Burnham moved to adopt implementation of the MBR technology solution and the use of CM/CG construction methodology for the proposed sewer treatment facility. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 892,
+      "meeting_id": 479,
+      "date": "2025-04-01",
+      "page": 12,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "",
+      "motion": "Councilmember Wright moved authorize staff to begin analysis and preparation for a potential future action to place a Recreation, Arts, and Parks (RAP) Sales Tax question on the 2025 Municipal Election ballot. Councilmember Wood seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "parks"
+      ],
+      "votes": [
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 893,
+      "meeting_id": 479,
+      "date": "2025-04-01",
+      "page": 13,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "The Completed Section of the Legislative Priority List and also add Design of City Hall and oth…",
+      "motion": "Councilmember Burnham moved that the City Hall Land Acquisition and Mortgage Assistance Program items be moved to the Completed Section of the Legislative Priority List and also add Design of City Hall and other uses within Phase 1 of the Downtown Plan as a High Priority to the list. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "18.A. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "City Planner Steven Lehmitz presented the proposed ordinance that amends the General Plan"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "18.A. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "18.B. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Rezoning"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "This is a related ordinance which amends the zoning from Agriculture to Industrial and applies the"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Wright moved to adopt An Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "18.C. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 10,
+      "line_text": "Senior Planner, Robert Hobbs presented a proposal to enact an ordinance amending Title 17,"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 10,
+      "line_text": "MOTION: Councilmember Wright moved to adopt An Ordinance of Eagle Mountain City,"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "15.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving an Interlocal"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "17.A. RESOLUTION/PUBLIC HEARING - A Resolution of Eagle Mountain City, Utah, Releasing a"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 6,
+      "line_text": "15.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving an Interlocal"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "17.A. RESOLUTION/PUBLIC HEARING - A Resolution of Eagle Mountain City, Utah, Releasing a"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Wood moved to adopt a Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 10,
+      "line_text": "19.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Supporting the Creation of a"
+    },
+    {
+      "source_file": "2025-04-01__479.pdf",
+      "meeting_date": "",
+      "page": 10,
+      "line_text": "MOTION: Councilmember Burnham moved to approve A Resolution of Eagle Mountain City,"
+    }
+  ]
+}

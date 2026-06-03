@@ -1,0 +1,264 @@
+{
+  "meeting": {
+    "id": 498,
+    "date": "2025-10-21",
+    "source_file": "2025-10-21__498.pdf",
+    "motion_count": 5,
+    "ord_count": 8,
+    "res_count": 3
+  },
+  "motions": [
+    {
+      "id": 992,
+      "meeting_id": 498,
+      "date": "2025-10-21",
+      "page": 5,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Wright moved to approve the Consent Agenda. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 993,
+      "meeting_id": 498,
+      "date": "2025-10-21",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Remand the Ordinance Amending the Eagle Mountain Municipal Code Title 6 and Title 17 to Establi…",
+      "motion": "Councilmember Gray moved to remand the Ordinance Amending the Eagle Mountain Municipal Code Title 6 and Title 17 to Establish Standards for Alternative Animal Management Plans and Update Related Zoning Provisions back to the Planning Commission to review additional changes. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 994,
+      "meeting_id": 498,
+      "date": "2025-10-21",
+      "page": 7,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Approving the Development Agreement with Stadion, LLC (aka Meta)",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Approving the Development Agreement with Stadion, LLC (aka Meta). Councilmember Wright seconded the motion.",
+      "outcome": "passed with a 4:1 vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "No"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 995,
+      "meeting_id": 498,
+      "date": "2025-10-21",
+      "page": 7,
+      "agenda_ref": "16.B.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the Third Amendment to the Water and Sewer Agreement with Stadion, LLC (aka Meta)",
+      "motion": "Councilmember Wright moved to adopt a Resolution of Eagle Mountain City, Utah, Approving the Third Amendment to the Water and Sewer Agreement with Stadion, LLC (aka Meta). Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 996,
+      "meeting_id": 498,
+      "date": "2025-10-21",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Approving the Development Agreement with Meritage Homes at Harmony Subdivision",
+      "motion": "Councilmember Wright moved to adopt an Ordinance of Eagle Mountain City, Utah, Approving the Development Agreement with Meritage Homes at Harmony Subdivision. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning",
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-10-21__498.pdf",
+      "meeting_date": "2025-10-21",
+      "page": 3,
+      "line_text": "15.A. ORDINANCE / PUBLIC HEARING - An Ordinance Amending the Eagle Mountain"
+    },
+    {
+      "source_file": "2025-10-21__498.pdf",
+      "meeting_date": "2025-10-21",
+      "page": 5,
+      "line_text": "13.A. ORDINANCE - An Ordinance of Eagle Mountain City, Utah, Amending Eagle"
+    },
+    {
+      "source_file": "2025-10-21__498.pdf",
+      "meeting_date": "2025-10-21",
+      "page": 6,
+      "line_text": "15.A. ORDINANCE / PUBLIC HEARING - An Ordinance Amending the Eagle Mountain"
+    },
+    {
+      "source_file": "2025-10-21__498.pdf",
+      "meeting_date": "2025-10-21",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Gray moved to remand the Ordinance Amending the Eagle"
+    },
+    {
+      "source_file": "2025-10-21__498.pdf",
+      "meeting_date": "2025-10-21",
+      "page": 7,
+      "line_text": "16.A. ORDINANCE / DEVELOPMENT AGREEMENT - An Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2025-10-21__498.pdf",
+      "meeting_date": "2025-10-21",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2025-10-21__498.pdf",
+      "meeting_date": "2025-10-21",
+      "page": 8,
+      "line_text": "17.A. ORDINANCE / DEVELOPMENT AGREEMENT - An Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2025-10-21__498.pdf",
+      "meeting_date": "2025-10-21",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Wright moved to adopt an Ordinance of Eagle Mountain City,"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2025-10-21__498.pdf",
+      "meeting_date": "2025-10-21",
+      "page": 5,
+      "line_text": "He noted that on August 19, 2025, the City Council adopted a Resolution to place the RAP Tax"
+    },
+    {
+      "source_file": "2025-10-21__498.pdf",
+      "meeting_date": "2025-10-21",
+      "page": 7,
+      "line_text": "16.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving the Third"
+    },
+    {
+      "source_file": "2025-10-21__498.pdf",
+      "meeting_date": "2025-10-21",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Wright moved to adopt a Resolution of Eagle Mountain City,"
+    }
+  ]
+}

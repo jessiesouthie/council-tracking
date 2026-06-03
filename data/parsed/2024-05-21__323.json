@@ -1,0 +1,32 @@
+{
+  "meeting": {
+    "id": 323,
+    "date": "2024-05-21",
+    "source_file": "2024-05-21__323.pdf",
+    "motion_count": 1,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 741,
+      "meeting_id": 323,
+      "date": "2024-05-21",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Adjourn the meetÍng at 4:55 p.m",
+      "motion": "CouncÍlmember Grag moved to adjourn the meetÍng at 4:55 p.m. Councilmember Wood seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

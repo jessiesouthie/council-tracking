@@ -1,0 +1,291 @@
+{
+  "meeting": {
+    "id": 420,
+    "date": "2022-02-15",
+    "source_file": "2022-02-15__420.pdf",
+    "motion_count": 7,
+    "ord_count": 9,
+    "res_count": 17
+  },
+  "motions": [
+    {
+      "id": 499,
+      "meeting_id": 420,
+      "date": "2022-02-15",
+      "page": 11,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Burnham moved to approve the consent agenda, approving item 12.B. with the new elevations presented to the Council during the meeting and approving item 12.C., removing the requirement for an awning over the back door, changing the tan stucco to a light gray, and changing the red on the back to a red blade taller than the roofline, similar to the blade on the front elevation. Councilmember Gray seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote. SCHEDULED ITEMS 14. EAGLE MOUNTAIN DATA CAMPUS 14.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands known as Eagle Mountain Data Campus. 14.B. DISCUSSION – Eagle Mountain Data Campus Concept Plan Items 14.A. and 14.B. were presented and discussed after item 16.A. Planning Manager Robert Hobbs reviewed the item as presented during work session. Discussion ensued regarding the impact of the rezone on the taxable income on the land, clarifying that if the land is currently classified as greenbelt the property taxes would remain the same. Mayor Westmoreland opened the public hearing at 7:54 p.m. As there were no comments, he closed the hearing. Discussion ensued regarding concerns with approving the rezone prior to the pending amendments to the Regional Technology and Industry (RTI) Overlay Zone. Applicant representative Corey Berg explained that two groups are actively pursuing projects. One group desires to close on 1 ½ acres of land and begin developing soon; should the rezone not be approved tonight, they would potentially lose the interested buyer. He believes that the group intends to build a data center and they are aware of the water use concerns. The remainder of the property will remain as greenbelt and be utilized as a sod farm until developed. Councilmember Gray stated after consideration, he would be in favor of retaining an amended RTI Overlay rather than repealing the zone. Councilmember Love inquired if traffic, water, and buffering concerns could be addressed as conditions of this approval. Eagle Mountain City Council Meeting – February 15, 2022 Page 11 of 19 Assistant City Administrator/Community Development Director Steve Mumford explained that specific concerns and the offsetting of the impact to the City infrastructure and resources would be addressed in a development agreement or with site plan approvals. The provision of any incentives would require a development agreement. Councilmember Wright stated he would prefer to table the application until the RTI Overlay amendment is finalized. Mr. Mumford clarified that the approval of the rezone would place the RTI Overlay zone on the property, allowing applicants to submit a site plan or request an agreement to allow the standards permitted in the RTI Zone. Mr. Berg stated the site plan application is not anticipated until the end of April. The buyer is considering properties outside of Eagle Mountain. Should the rezone not be approved, the buyer might choose a different city. Councilmember Wright said that due to the time constraints with the project, he would be willing to consider approval of the rezone.",
+      "outcome": "",
+      "tags": [
+        "zoning",
+        "development",
+        "infrastructure",
+        "consent"
+      ],
+      "votes": []
+    },
+    {
+      "id": 500,
+      "meeting_id": 420,
+      "date": "2022-02-15",
+      "page": 12,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An ordinance of Eagle Mountain, City, Utah rezoning certain lands knowns as Eagle Mountain Data Campus as presented",
+      "motion": "Councilmember Gray moved to approve an ordinance of Eagle Mountain, City, Utah rezoning certain lands knowns as Eagle Mountain Data Campus as presented. Councilmember Love seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote. 15. RUSH CREEK 15.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands known as Rush Creek. Items 15.A. and 15.B. were presented and discussed concurrently. Mr. Hobbs presented the item. In July of 2021, a General Plan amendment changed the designation of the 38.80-acre property from Employment Center/Campus to Business Park/Light Industry. The applicant has now applied for a rezone from Agriculture/Rural Density to Light Manufacturing/Distribution (LMD) and preliminary plat approval for a 15-lot industrial subdivision. The Planning Commission recommended approval of the rezone and preliminary plat during the January 25, 2022 meeting with following conditions: 1. The project shall provide a 20-foot-wide buffer at its eastern end in lieu of the 15-feet buffer shown on the plat; 2. The 20-foot wide north-south trail buffer on the eastern side of the property shall be zoned OS-N; and Eagle Mountain City Council Meeting – February 15, 2022 Page 12 of 19 3. The project shall comply with any requirements from the City Engineer, including submittal of a traffic analysis prior to applying for a final plat approval. Mr. Hobbs verified that Parcel A is a retention pond area and the cul-de-sac would accommodate industrial vehicle traffic. Discussion ensued regarding the following items: • Transition standards for industrial and residential properties; • Providing only the OS-N Zone as compatible buffering between the zones; • Whether to consider the collector road as a buffer; and • The benefits, potential issues, and usability of a 20-foot OS-N buffer. Mr. Hobbs noted that Municipal Code does not include width requirements for buffer zones. Applicant representative Dan Ford said they felt the masonry wall and a 15-foot open space area would be a sufficient buffer. Councilmember Gray stated that he is in favor of the project as he feels that there are insufficient spaces available for this type of product in the State. He expressed concern with the proposed trail and wall due to safety and maintenance problems. He would rather have the burden of buffering fall on the residentially zoned property that will be building after this project. Mayor Westmoreland opened the public hearing at 8:25 p.m. As there were no comments, he closed the hearing. Mr. Ford explained that their intention is to connect the open space buffer to the School and Institutional Trust Lands Administration regional trail system. Discussion ensued regarding the possible plans for the trail system in the area and concerns regarding trails adjacent to industrial uses.",
+      "outcome": "",
+      "tags": [
+        "zoning",
+        "development",
+        "infrastructure",
+        "parks",
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 501,
+      "meeting_id": 420,
+      "date": "2022-02-15",
+      "page": 13,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An ordinance of Eagle Mountain City, Utah, rezoning certain lands known as Rush Creek to the LMD Zone",
+      "motion": "Councilmember Gray moved to approve an ordinance of Eagle Mountain City, Utah, rezoning certain lands known as Rush Creek to the LMD Zone. Councilmember Wright seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote. 15.B. MOTION – Rush Creek Preliminary Plat",
+      "outcome": "",
+      "tags": [
+        "zoning"
+      ],
+      "votes": []
+    },
+    {
+      "id": 502,
+      "meeting_id": 420,
+      "date": "2022-02-15",
+      "page": 13,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the Rush Creek preliminary plat with the condition that the project shall comply with a…",
+      "motion": "Councilmember Gray moved to approve the Rush Creek preliminary plat with the condition that the project shall comply with any requirements from the City Engineer, including submittal of a traffic analysis prior to applying for final plat approval. Councilmember Wright seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Carolyn Love, and Brett Wright.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning",
+        "infrastructure"
+      ],
+      "votes": []
+    },
+    {
+      "id": 503,
+      "meeting_id": 420,
+      "date": "2022-02-15",
+      "page": 14,
+      "agenda_ref": "16.A.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending Eagle Mountain Municipal Code Chapter 6.10 Animal Zoning Regulations. This item was presented and discussed prior to item 14.A. Senior Planner Tayler Jensen summarized the changes made to the language since the last review of the item on February 1, 2022, and explained the reasonable person standard. • Changes to Table 6.10.090: o Removal of the setback from residence or periodically inhabited buildings column o Clarification of the language to say “3 or more acres” o Reduction of the fenced area required for horse/mule and buffalo from 22,000 square feet for 1 to 4 animals to 2,500 square feet per animal o Restoration of minimums for pigs and buffalo • The addition of a reasonable person standard on what constitutes half an animal for either miniature breeds or offspring • Clarification that pigs do not count towards the maximum animal points until they are weaned Mr. Jensen noted that other changes include the removal of references to the Airpark Zone resulting in the renumbering of sections, and clarification that chickens, ducks, and similar fowl are exempted from these regulations and are allowed per the EMMC 17.25.030 Residential Lane Use Table. Councilmember Love verified that the two pigs are allowed on ½ to .99 acres, four on 1 to 1.99 acres, six on 2 to 2.99 acres, and eight on more than 3 acres; the minimum lot size pigs are allowed on is a ½ acre, and the minimum lot size buffalo are allowed on is 1 acre. Councilmember Burnham said that residents have expressed concern regarding offspring counts and recommended not counting any offspring until they are weaned. The Council determined to exclude counting offspring until they are weaned and to retain counting offspring as a half unit until they reach a size of greater than half the size of an average adult for that animal type.",
+      "motion": "Councilmember Burnham moved to approve an ordinance of Eagle Mountain City, Utah, amending Eagle Mountain Municipal Code Chapter 6.10 Animal Zoning Regulations with the following changes: 1. EMMC Table 6.10.090 shall be amended to allow two pigs on ½ to 0.99 acres, four on 1 to 1.99 acres, six on 2 to 2.99 acres, and eight on Eagle Mountain City Council Meeting – February 15, 2022 Page 14 of 19 more than three acres; pigs shall be allowed on is a minimum of a ½ acre; and buffalo shall be allowed on a minimum of 1 acre; and 2. Any animal that a reasonable person would define as ½ size (or smaller) of an average adult animal shall count as a ½ unit including offspring and miniature animals. Offspring shall not count towards maximum numbers until weaned offspring do not count until weened. Councilmember Wright seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote. 17. RESOLUTIONS",
+      "outcome": "",
+      "tags": [
+        "zoning",
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 504,
+      "meeting_id": 420,
+      "date": "2022-02-15",
+      "page": 16,
+      "agenda_ref": "17.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the Second Amended and Restated Oquirrh Mountain Master Development Agreement. Mr. Mumford presented the item. The second amendment to the Oquirrh Mountain Master Development Plan and rezone were approved by the City Council on October 19, 2021. Paragraph 7.2 of the master development agreement (MDA) details the park improvement timing and park escrow. The petroglyph park and hillside park are required to be completed prior to the recording of a plat containing the 130th residential lot. Language was added to allow for partial release of park escrow upon completion of park areas. The project is divided into two phases. The hillsides are part of the wildlife corridor overlay zone and must comply with the standards in EMMC 17.49. The zoning map has been updated to reflect the correct frontage and setback zoning standards. Mr. Mumford stated that the Pony Express Regional Trailhead has an existing parking lot in the area. Previous plans intended for a park south of the existing church in the completed subdivision east of the project. The petroglyph park will have parking and sidewalks connecting the parking to the trail system. Signage for the other parking area can direct residents to the petroglyph park. Plans for the future park can be amended to serve as trailhead parking if additional parking is needed for buses and larger vehicles. Councilmember Gray said that as the neighborhood is close to regional parks, he would prefer additional parking for the unique natural and historical aspects of the area rather than playground equipment. Councilmember Love said although she agrees with Councilmember Gray’s sentiments, playgrounds are needed for toddlers in closer proximity to their homes. Mr. Mumford clarified that the MDA sets the timing for the park amenities; the design and amenities will be determined during plat approvals. Park escrows have been allowed in the past. However, developers were requesting partial releases of funds as portions of the parks were completed, and the inspecting and processing burden to staff became onerous and unsustainable. The City now requires full completion or substantial progress for escrow releases and retains 10% of the project cost in escrow for the warranty period. Eagle Mountain City Council Meeting – February 15, 2022 Page 15 of 19 Discussion ensued regarding previous and current City practices regarding the release of park escrow funds and options for developers. Applicant representative Nick Mason explained that they build their parks and amenities prior to selling homes. Mr. Mumford clarified that the developer has expressed concern with completing the parks for Phase 1 with the City holding the escrow for those improvements until the completion of the full project. He recommended retaining at least a warranty or partial amount of the escrow until all park improvements are completed. Discussion ensued regarding the partial park escrow fund releases and potential compromises. Mr. Mason stated they would be amenable to one partial park escrow release and requested that any amendment excludes the requirement for an additional approval by City Council. Mr. Cook stated that the language requires 100% completion of the park prior to any release of escrow funds and the MDA has the additional protection that all park projects must be completed prior to the recording of the plat with the 130th lot.",
+      "motion": "Councilmember Burnham moved to approve a resolution of Eagle Mountain City, Utah, approving the second amended and restated Oquirrh Mountain Master Development Agreement with the following changes: 1. Language shall be added to allow for one pro-rata park escrow reduction; and 2. The zoning map exhibit that is attached to the master development agreement shall be amended to match the approved development standards for the RC units including the five-foot side and ten-foot garage side setbacks and any other necessary clarifications. Councilmember Love seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote.",
+      "outcome": "",
+      "tags": [
+        "zoning",
+        "development",
+        "parks"
+      ],
+      "votes": []
+    },
+    {
+      "id": 505,
+      "meeting_id": 420,
+      "date": "2022-02-15",
+      "page": 17,
+      "agenda_ref": "17.B.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Authorizing the Issuance and Sale of Not More Than $20,000,000 Aggregate Principal Amount of Sales Tax Revenue Bonds, Series 2022; Fixing the Maximum Aggregate Principal Amount of the Bonds; The Maximum Number of Years Over Which the Bonds May Mature, the Maximum Interest Rate Which the Bonds May Bear, and the Maximum Discount From Par at Which the Bonds May be Sold; Providing for the Publication of a Notice of Public Hearing and Bonds to be Issued; Providing for the Running of a Contest Period; Authorizing the Execution by the City of a General and Supplemental Indenture of Trust, and Other Documents Necessary for the Issuance of the Series 2022 Bonds; Authorizing the Taking of All Other Actions Necessary to the Consummation of the Transaction Contemplated by this Resolution; and Related Matters. Eagle Mountain City Council Meeting – February 15, 2022 Page 16 of 19 Mr. Jerome reviewed the projects to be funded by the bond discussed during work session and reminded the body that the bond will not result in a tax increase. The parameters could be extended to repair a waterline in Cedar Pass Ranch; however, the waterline is not impact fee-eligible. Although issues have caused road damage, repairs would not require the removal of the road. Another option would be to space out the repairs over several years resulting in less of an impact on the City budget. The estimated cost of the repairs would be $1,000,000 to $2,000,000. The interest rate on the bond is estimated at 2.5% which historically is lower than inflation. Director of Administrative Services/City Recorder Fionnuala Kofoed explained the history of the waterline. The installation was completed in the early days of the City during a period when inspectors were changed, and the waterline was completed and buried prior to inspection. The line has been problematic and a plan needs to be put in place for the City to be insurable. Councilmember Gray stated his support to add the waterline due to the impact of utilities on the health, safety, and welfare of residents, and providing sound infrastructure is one of the primary responsibilities of the City. Mayor Westmoreland noted that construction costs are likely to increase and bonding, especially at low-interest rates, might not be an option in the future. The Council discussed options and the scope of the planned projects resulting in the decision to set the maximum aggregate principal amount of the sale tax revenue bond at $22,000,000 with the intention to use a lesser amount of the bond once the cost of the included projects is determined. Councilmember Gray disclosed that he has worked with WW Clyde in the past and there is a possibility he could be hired for a project associated with the bond funds.",
+      "motion": "Councilmember Burnham moved to approve a resolution of Eagle Mountain City, Utah, authorizing the issuance and sale of not more than $22,000,000 aggregate principal amount of sales tax revenue bonds, series 2022; fixing the maximum aggregate principal amount of the bonds; the maximum number of years over which the bonds may mature, the maximum interest rate which the bonds may bear, and the maximum discount from par at which the bonds may be sold; providing for the publication of a notice of public hearing and bonds to be issued; providing for the running of a contest period; authorizing the execution by the City of a general and supplemental indenture of trust, and other documents necessary for the issuance of the series 2022 bonds; authorizing the taking of all other actions necessary to the consummation of the transaction contemplated by this resolution; and related matters setting a public hearing for March 15, 2022; and changing paragraph 2 on page 2 to “finance road, water, and sewer system, improvements.” Councilmember Gray seconded the motion. Discussion ensued regarding increasing the aggregate principal amount of sales tax revenue bonds to $25,000,000 and the impact on the length of the term of the bond and the interest cost should the full amount be borrowed. Eagle Mountain City Council Meeting – February 15, 2022 Page 17 of 19 AMENDED MOTION: Councilmember Burnham moved to approve a resolution of Eagle Mountain City, Utah, authorizing the issuance and sale of not more than $25,000,000 aggregate principal amount of sales tax revenue bonds, series 2022; fixing the maximum aggregate principal amount of the bonds; the maximum number of years over which the bonds may mature, the maximum interest rate which the bonds may bear, and the maximum discount from par at which the bonds may be sold; providing for the publication of a notice of public hearing and bonds to be issued; providing for the running of a contest period; authorizing the execution by the City of a general and supplemental indenture of trust, and other documents necessary for the issuance of the series 2022 bonds; authorizing the taking of all other actions necessary to the consummation of the transaction contemplated by this resolution; and related matters setting a public hearing for March 15, 2022; and changing paragraph 2 on page 2 to “finance road, water, and sewer system improvements.” Councilmember Gray seconded the motion. Those voting aye: Donna Burnham, Jared Gray, Carolyn Love, and Brett Wright. The motion passed with a unanimous vote. 18. CITY COUNCIL/MAYOR'S BUSINESS None. 19. CITY COUNCIL BOARD LIAISON REPORTS Councilmember Wright Councilmember Wright asked if a resident will soon be appointed to the Parks and Recreation Advisory Board. Councilmember Love None. Councilmember Burnham Councilmember Burnham stated that the Senior Citizen Advisory Council has a vacancy. Councilmember Gray None. 20. COMMUNICATION ITEMS 20.A. Upcoming Planning Items 21. ADJOURNMENT",
+      "outcome": "",
+      "tags": [
+        "development",
+        "budget",
+        "infrastructure",
+        "parks"
+      ],
+      "votes": []
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 5,
+      "line_text": "14.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 9,
+      "line_text": "animal code ordinance changes John Hubbard, Bettina Cameron, David Corneal, Kelli Riem,"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 11,
+      "line_text": "14.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 12,
+      "line_text": "MOTION: Councilmember Gray moved to approve an ordinance of Eagle Mountain,"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 12,
+      "line_text": "15.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 13,
+      "line_text": "MOTION: Councilmember Gray moved to approve an ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 14,
+      "line_text": "16. ORDINANCE"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 14,
+      "line_text": "16.A. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Amending Eagle"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 14,
+      "line_text": "MOTION: Councilmember Burnham moved to approve an ordinance of Eagle"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 2,
+      "line_text": "• Staff is still working towards a resolution for the issue with the organisms that break down the"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 5,
+      "line_text": "13. RESOLUTION"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 5,
+      "line_text": "13.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah Authorizing"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 6,
+      "line_text": "17.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Authorizing"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 7,
+      "line_text": "to the Consummation of the Transaction Contemplated by this Resolution;"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 7,
+      "line_text": "resolution, sets forth the maximums for the par amount of the bond not to exceed $20,000,000, the"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 7,
+      "line_text": "resolution will also appoint the designated officers, allowing two of the following four individuals,"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 10,
+      "line_text": "13. RESOLUTION"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 11,
+      "line_text": "13.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah Authorizing the"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 15,
+      "line_text": "17.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving the"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 16,
+      "line_text": "MOTION: Councilmember Burnham moved to approve a resolution of Eagle Mountain"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 16,
+      "line_text": "17.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Authorizing the"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 16,
+      "line_text": "Resolution; and Related Matters."
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 17,
+      "line_text": "MOTION: Councilmember Burnham moved to approve a resolution of Eagle Mountain"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 17,
+      "line_text": "consummation of the transaction contemplated by this resolution; and related"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 18,
+      "line_text": "AMENDED MOTION: Councilmember Burnham moved to approve a resolution of Eagle"
+    },
+    {
+      "source_file": "2022-02-15__420.pdf",
+      "meeting_date": "2022-02-15",
+      "page": 18,
+      "line_text": "consummation of the transaction contemplated by this resolution; and related"
+    }
+  ]
+}

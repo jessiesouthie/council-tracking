@@ -1,0 +1,238 @@
+{
+  "meeting": {
+    "id": 339,
+    "date": "2024-05-07",
+    "source_file": "2024-05-07__339.pdf",
+    "motion_count": 4,
+    "ord_count": 7,
+    "res_count": 15
+  },
+  "motions": [
+    {
+      "id": 737,
+      "meeting_id": 339,
+      "date": "2024-05-07",
+      "page": 9,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "CouncÍlmemþer Grag moved to approve the consent agenda removing Ítem 12.C. for future conslderatÍon and addÍng an annual reuÍew to Ítem l2.E CouncÍlmember Burnham seconded the motÍon.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 738,
+      "meeting_id": 339,
+      "date": "2024-05-07",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve a resolutÍon of Eagle MountaÍn CÍþ, Utah, tentatÍvelg adoptÍng the Eagle MountaÍn CÍtg…",
+      "motion": "Councìlmember Burnham moved to approve a resolutÍon of Eagle MountaÍn CÍþ, Utah, tentatÍvelg adoptÍng the Eagle MountaÍn CÍtg TentatÍve Budget for Fiscal Year 2024-2025 and settÍng a publlc hearÍng for adoption of the final budget on June 4, 2024. CouncÍlmember Grag seconded the motÍon. Councilmember Wright requested that the public record reflect that although he will vote upon the budget as a whole, he will recuse himself from ang discussion and vote upon the public art element approval in the future should his compang desire to submit a proposal for the project.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Absent"
+        }
+      ]
+    },
+    {
+      "id": 739,
+      "meeting_id": 339,
+      "date": "2024-05-07",
+      "page": 13,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve an ordinance of Eagle MountaÍn Cltg Utah, enact¡ng Eagle Mountaln MunÍclpal Code Chapte…",
+      "motion": "Councílmember Wrlght moved to approve an ordinance of Eagle MountaÍn Cltg Utah, enact¡ng Eagle Mountaln MunÍclpal Code Chapter 2.2O CompensatÍon Schedule of Statutorg Offfcers. CouncÍlmember Grag seconded the motÍon.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 740,
+      "meeting_id": 339,
+      "date": "2024-05-07",
+      "page": 14,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve an ordìnance of Eagle MountaÍn CÍtg, lltah, amending Eagle MountaÍn MunÍcipal Code Titl…",
+      "motion": "Councilmember Grag moved to approve an ordìnance of Eagle MountaÍn CÍtg, lltah, amending Eagle MountaÍn MunÍcipal Code Title 15, BuÍldÍng and ConstructÍon. CouncÍlmember Wrþht seconded the motÍon. Burnham",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 11,
+      "line_text": "13.8 ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain Citg, Utah,"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 11,
+      "line_text": "CouncÍlmember Grag moved to approve an ordinance of Eagle MountaÍn CiA, Uþh,"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 12,
+      "line_text": "13.C. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain Citg, Utah,"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 13,
+      "line_text": "ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain Citg Utah, Enacting"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 13,
+      "line_text": "mag set compensation schedules bg ordinance, but the new law changes this to a mandatorg"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 13,
+      "line_text": "MOTION: Councílmember Wrlght moved to approve an ordinance of Eagle MountaÍn Cltg"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 13,
+      "line_text": "13.E. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain Citg, Utah,"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "where the Citg Council acts as trustees. The creation of an LBA involves passing a Council resolution,"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "filing necessarU paperwork with the State, and ultimatelg approving a resolution to officiallg establish"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "12.8 RESOLUTION - A Resolution of Eagle Mountain Citg, Utah, Approving an"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 5,
+      "line_text": "12.C. RESOLUTION - A Resolution of Eagle Mountain Citg, Utah, Amending the Eagle"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 5,
+      "line_text": "12.8. RESOLUTION - A Resolution of Eagle Mountain Citg, Utah, Proclaiming Eagle"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 5,
+      "line_text": "and financial implications. He proposed reviewing the resolution everg few gears."
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 5,
+      "line_text": "RESOLUTION - A Resolution of Eagle Mountain Citg, Utah, Amending the Eagle"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "12.A. RESOLUTION - A Resolution of Eagle Mountain Citg, Utah, Amending the Purchase"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "12.8 RESOLUTION - A Resolution of Eagle Mountain Citg, Utah, Approving an Agreement"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "12.C. RESOLUTION - A Resolution of Eagle Mountain Citg, Utah, Amending the Eagle"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "12.D RESOLUTION - A Resolution of Eagle Mountain Citg, Utah, Authorizing the Finance"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "12.E. RESOLUTION - A Resolution of Eagle Mountain Citg, Utah, Proclaiming Eagle Mountain"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "12.F RESOLUTION - A Resolution of Eagle Mountain Citg, Utah, Amending the Eagle"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "12.G RESOLUTION - A Resolution of Eagle Mountain Citg, Utah, Consenting to the"
+    },
+    {
+      "source_file": "2024-05-07__339.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "13.A. RESOLUTION/PUBLIC HEARING - A Resolution of Eagle Mountain Citg, Utah,"
+    }
+  ]
+}

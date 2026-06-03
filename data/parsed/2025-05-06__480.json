@@ -1,0 +1,444 @@
+{
+  "meeting": {
+    "id": 480,
+    "date": "2025-05-06",
+    "source_file": "2025-05-06__480.pdf",
+    "motion_count": 9,
+    "ord_count": 11,
+    "res_count": 9
+  },
+  "motions": [
+    {
+      "id": 904,
+      "meeting_id": 480,
+      "date": "2025-05-06",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the appointment of Jessi Call as a Youth Council Committee Advisor beginning immediatel…",
+      "motion": "Councilmember Wright moved to approve the appointment of Jessi Call as a Youth Council Committee Advisor beginning immediately through June 30, 2026. Councilmember Gray seconded the motion.",
+      "outcome": "passed with a unanimous vote of 4:0.",
+      "tags": [
+        "personnel"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 905,
+      "meeting_id": 480,
+      "date": "2025-05-06",
+      "page": 6,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Gray moved to approve the Consent Agenda noting the amount of the Change Order is $47,930 on Item 12.A and removing Item 15.C. for no action. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote of 4:0.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 906,
+      "meeting_id": 480,
+      "date": "2025-05-06",
+      "page": 7,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the General Plan Future Land Use Map for Certain Lands Known as Cedar Valley Holbrook from Business Park/Light Industry to Foothill Residential on 73.03 acres of property located in the north side of SR-73, south of 8000 North and west of Airport Road, preserving approximately 15 acres of commercial land near the SR-73 freeway and the Airport Road intersection. The motion died for lack of a second",
+      "motion": "Councilmember Gray moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the General Plan Future Land Use Map for Certain Lands Known as Cedar Valley Holbrook from Business Park/Light Industry to Foothill Residential on 73.03 acres of property located in the north side of SR-73, south of 8000 North and west of Airport Road, preserving approximately 15 acres of commercial land near the SR-73 freeway and the Airport Road intersection. The motion died for lack of a second.",
+      "outcome": "",
+      "tags": [
+        "zoning",
+        "infrastructure",
+        "parks"
+      ],
+      "votes": []
+    },
+    {
+      "id": 907,
+      "meeting_id": 480,
+      "date": "2025-05-06",
+      "page": 7,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the General Plan Future Land Use Map for Certain Lands Known as Cedar Valley Holbrook from Business Park/Light Industry to Foothill Residential on 73.03 acres of property located in the north side of SR-73, south of 8000 North and west of Airport Road",
+      "motion": "Councilmember Wright moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the General Plan Future Land Use Map for Certain Lands Known as Cedar Valley Holbrook from Business Park/Light Industry to Foothill Residential on 73.03 acres of property located in the north side of SR-73, south of 8000 North and west of Airport Road. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a 3:1 vote.",
+      "tags": [
+        "zoning",
+        "infrastructure",
+        "parks"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "No"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 908,
+      "meeting_id": 480,
+      "date": "2025-05-06",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as Cedar Valley Holbrook from Agriculture to Foothill Residential with the condition that Wildlife Corridor fencing be marked on the west side to comply with the Wildlife Corridor requirement",
+      "motion": "Councilmember Burnham moved to adopt an Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as Cedar Valley Holbrook from Agriculture to Foothill Residential with the condition that Wildlife Corridor fencing be marked on the west side to comply with the Wildlife Corridor requirement. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a 3:1 vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "No"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 909,
+      "meeting_id": 480,
+      "date": "2025-05-06",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Title 17 Relating to Political Signage",
+      "motion": "Councilmember Wright moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Title 17 Relating to Political Signage. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote of 4:0.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 910,
+      "meeting_id": 480,
+      "date": "2025-05-06",
+      "page": 9,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Approving the Sixth Amendment to the 2024-2025 Fiscal Year Annual Budget, adding $20,000 to the Special Events budget line item to allow flexibility on selecting a utility task vehicle (UTV)",
+      "motion": "Councilmember Burnham moved to adopt an Ordinance of Eagle Mountain City, Utah, Approving the Sixth Amendment to the 2024-2025 Fiscal Year Annual Budget, adding $20,000 to the Special Events budget line item to allow flexibility on selecting a utility task vehicle (UTV). Councilmember Gray seconded the motion.",
+      "outcome": "passed with a unanimous vote of 4:0.",
+      "tags": [
+        "budget",
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 911,
+      "meeting_id": 480,
+      "date": "2025-05-06",
+      "page": 10,
+      "agenda_ref": "17.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Adopting the Eagle Mountain City Tentative Budget for Fiscal Year 2025-2026 and Setting a Public Hearing for the Final Budget on June 3, 2025",
+      "motion": "Councilmember Wright moved to adopt a Resolution of Eagle Mountain City, Utah, Adopting the Eagle Mountain City Tentative Budget for Fiscal Year 2025- 2026 and Setting a Public Hearing for the Final Budget on June 3, 2025. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote of 4:0.",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 912,
+      "meeting_id": 480,
+      "date": "2025-05-06",
+      "page": 11,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the META Site Road Completion and Cross-Section Adjustment with specific adjustments as…",
+      "motion": "Councilmember Gray moved to approve the META Site Road Completion and Cross-Section Adjustment with specific adjustments as outlined by staff: • Change the 8' wide sidewalk to a 5' wide sidewalk. • Change the 8' parking lane to a 12' drive lane (2' of this will be the gutter until the road is built out). • Leave a 1' buffer zone at the property line for constructability. • Use the 8' parkstrip as a drainage swale. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote of 4:0.",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Excused"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 6,
+      "line_text": "16.A. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Gray moved to adopt an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Wright moved to adopt an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 7,
+      "line_text": "16.B. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Rezoning"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Burnham moved to adopt an Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 8,
+      "line_text": "16.C. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 8,
+      "line_text": "Policy Analyst John Magness presented a proposal to enact an Ordinance amending Title 17 Chapter"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Wright moved to adopt an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 9,
+      "line_text": "16.D. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Approving"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 9,
+      "line_text": "to amend its budget to appropriate funds for increased expenses. The proposed ordinance is the"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Burnham moved to adopt an Ordinance of Eagle Mountain"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 5,
+      "line_text": "15.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Awarding the Bid for the Off-"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 5,
+      "line_text": "15.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Awarding the Bid for the Parks,"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 6,
+      "line_text": "15.C. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving and Authorizing the"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 6,
+      "line_text": "15.D. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Adopting Firework Restrictions"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 6,
+      "line_text": "15.E. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Amending the Eagle Mountain"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 6,
+      "line_text": "15.F. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Appointing a Member"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 9,
+      "line_text": "17.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Adopting the Eagle Mountain"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 9,
+      "line_text": "Director of Administrative Services Kimberly Ruesch presented the item. The proposed resolution is"
+    },
+    {
+      "source_file": "2025-05-06__480.pdf",
+      "meeting_date": "2025-05-06",
+      "page": 10,
+      "line_text": "MOTION: Councilmember Wright moved to adopt a Resolution of Eagle Mountain City,"
+    }
+  ]
+}

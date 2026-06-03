@@ -1,0 +1,285 @@
+{
+  "meeting": {
+    "id": 491,
+    "date": "2025-03-18",
+    "source_file": "2025-03-18__491.pdf",
+    "motion_count": 7,
+    "ord_count": 0,
+    "res_count": 9
+  },
+  "motions": [
+    {
+      "id": 874,
+      "meeting_id": 491,
+      "date": "2025-03-18",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Adopt a Proclamation of Eagle Mountain City, Utah, Proclaiming March 2025 as Multiple Sclerosis…",
+      "motion": "Councilmember Wood moved to adopt a Proclamation of Eagle Mountain City, Utah, Proclaiming March 2025 as Multiple Sclerosis (MS) Awareness Month. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 875,
+      "meeting_id": 491,
+      "date": "2025-03-18",
+      "page": 5,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Burnham moved to approve the Consent Agenda removing items 12.A., 12.B., 12.C. and 13.C. from the agenda and moving them to the scheduled items. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 876,
+      "meeting_id": 491,
+      "date": "2025-03-18",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table the Master Site Plan for Pinnacles B-3",
+      "motion": "Councilmember Wright moved to table the Master Site Plan for Pinnacles B-3. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 877,
+      "meeting_id": 491,
+      "date": "2025-03-18",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Deny the Preliminary Plat, Harmony 13",
+      "motion": "Councilmember Wood moved to deny the Preliminary Plat, Harmony 13. Councilmember Gray seconded the motion.",
+      "outcome": "passed with a 4:1 vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "No"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 878,
+      "meeting_id": 491,
+      "date": "2025-03-18",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Deny the Harmony 14 Preliminary Plat",
+      "motion": "Councilmember Wood moved to deny the Harmony 14 Preliminary Plat. Councilmember Gray seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "donna-burnham",
+          "vote": "No"
+        }
+      ]
+    },
+    {
+      "id": 879,
+      "meeting_id": 491,
+      "date": "2025-03-18",
+      "page": 7,
+      "agenda_ref": "13.C.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the First Amendment to the Eagle Quest East Master Development Agreement This item was discussed before Item 12.A.",
+      "motion": "Councilmember Burnham moved to adopt a Resolution Approving the First Amendment to the Eagle Quest East Master Development Agreement. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a 4:1 vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "No"
+        }
+      ]
+    },
+    {
+      "id": 880,
+      "meeting_id": 491,
+      "date": "2025-03-18",
+      "page": 8,
+      "agenda_ref": "14.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving an Agreement with the Valley Crossroads Chamber of Commerce for the ShopFestTM Utah event",
+      "motion": "Councilmember Burnham moved to adopt a Resolution of Eagle Mountain City, Utah, Approving an Agreement with the Valley Crossroads Chamber of Commerce for the ShopFestTM Utah Event with the following changes: 1. In section five, changing the word “Chamber” to the word “City”, 2. In section ten, changing the term from five years to ten years, ending in 2035, 3. Add a “meet to confer” provision, 4. Change signature from Melissa Clark to Matt Everett, Chamber Treasurer, and 5. All future provisions for amendments to be in writing. Councilmember Wood seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2025-03-18__491.pdf",
+      "meeting_date": "2025-03-18",
+      "page": 3,
+      "line_text": "13.C RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving the First Amendment to"
+    },
+    {
+      "source_file": "2025-03-18__491.pdf",
+      "meeting_date": "2025-03-18",
+      "page": 3,
+      "line_text": "agreement. Councilmember Wood requested Resolution 13.C. be removed from the consent agenda and"
+    },
+    {
+      "source_file": "2025-03-18__491.pdf",
+      "meeting_date": "2025-03-18",
+      "page": 4,
+      "line_text": "13.A. RESOLUTION - A Resolution Approving Amendments to the Eagle Mountain Mortgage"
+    },
+    {
+      "source_file": "2025-03-18__491.pdf",
+      "meeting_date": "2025-03-18",
+      "page": 4,
+      "line_text": "13.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah, approving the Saddle Junction"
+    },
+    {
+      "source_file": "2025-03-18__491.pdf",
+      "meeting_date": "2025-03-18",
+      "page": 5,
+      "line_text": "13.C. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving the First"
+    },
+    {
+      "source_file": "2025-03-18__491.pdf",
+      "meeting_date": "2025-03-18",
+      "page": 7,
+      "line_text": "13.C. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving the First"
+    },
+    {
+      "source_file": "2025-03-18__491.pdf",
+      "meeting_date": "2025-03-18",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Burnham moved to adopt a Resolution Approving the First"
+    },
+    {
+      "source_file": "2025-03-18__491.pdf",
+      "meeting_date": "2025-03-18",
+      "page": 8,
+      "line_text": "14.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving an Agreement with"
+    },
+    {
+      "source_file": "2025-03-18__491.pdf",
+      "meeting_date": "2025-03-18",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Burnham moved to adopt a Resolution of Eagle Mountain City, Utah,"
+    }
+  ]
+}

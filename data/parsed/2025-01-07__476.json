@@ -1,0 +1,574 @@
+{
+  "meeting": {
+    "id": 476,
+    "date": "2025-01-07",
+    "source_file": "2025-01-07__476.pdf",
+    "motion_count": 11,
+    "ord_count": 21,
+    "res_count": 8
+  },
+  "motions": [
+    {
+      "id": 833,
+      "meeting_id": 476,
+      "date": "2025-01-07",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "",
+      "motion": "Councilmember Wood nominates Councilmember Brett Wright as Mayor Pro Tempore for 2025. Councilmember Gray seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 834,
+      "meeting_id": 476,
+      "date": "2025-01-07",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the appointment of Adam Jacobs for a three year term, through 2027, to the Library Advi…",
+      "motion": "Councilmember Clark moved to approve the appointment of Adam Jacobs for a three year term, through 2027, to the Library Advisory Board. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "personnel"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 835,
+      "meeting_id": 476,
+      "date": "2025-01-07",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the appointment of Benjamin Perez for a three year term, through 2027, to the Library A…",
+      "motion": "Councilmember Clark moved to approve the appointment of Benjamin Perez for a three year term, through 2027, to the Library Advisory Board. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "personnel"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 836,
+      "meeting_id": 476,
+      "date": "2025-01-07",
+      "page": 7,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Clark moved to adopt the Consent Agenda. Councilmember Wood seconded the motion. Councilmembers clarified the changes to the Consent Agenda that were made during the Work Session in relation to the fiscal year financial audit. AMENDED MOTION: Councilmember Clark moved to adopt the Consent Agenda with the changes as discussed in Work Session to the audit. Councilmember Wood seconded the motion. Councilmembers clarified changes to the Consent Agenda to include the appointment of City Recorder Gina Olsen. AMENDED MOTION: Councilmember Clark moved to adopt the Consent Agenda with the changes as discussed in Work Session to the audit and appointing Gina Olsen as Eagle Mountain City Recorder. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "budget",
+        "personnel",
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 837,
+      "meeting_id": 476,
+      "date": "2025-01-07",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the General Plan Future Land Use Map for Certain Lands Known as Cedar Corners Phase 5 and continue the Public Hearing",
+      "motion": "Councilmember Wood moved to table an Ordinance of Eagle Mountain City, Utah, Amending the General Plan Future Land Use Map for Certain Lands Known as Cedar Corners Phase 5 and continue the Public Hearing. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 838,
+      "meeting_id": 476,
+      "date": "2025-01-07",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as Cedar Corners Phase 5 and continue the Public Hearing",
+      "motion": "Councilmember Wood moved to table an Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as Cedar Corners Phase 5 and continue the Public Hearing. Councilmember Clark seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 839,
+      "meeting_id": 476,
+      "date": "2025-01-07",
+      "page": 9,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 17.25.060 Projection into Setbacks",
+      "motion": "Councilmember Burnham moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 17.25.060 Projection into Setbacks. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 840,
+      "meeting_id": 476,
+      "date": "2025-01-07",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 16.10.080 Criteria for Approval of MDAs and changing section F to read “Expired or otherwise terminated agreements upon expiration or termination of a Master Development Agreement or a Development Agreement that zoned property, the Planning Director shall initiate proceedings to rezone the land.” Also, enacting Section 17.90.090 Rezone Initiation Post Development Agreement Expiration or Termination with the following change in 17.90.090 to read “Expired or otherwise terminated agreements upon expiration or termination of a Master Development Agreement or a Development Agreement that zoned property, the Planning Director shall initiate proceedings to rezone the land.” Councilmember Burnham seconded the motion",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 16.10.080 Criteria for Approval of MDAs and changing section F to read “Expired or otherwise terminated agreements upon expiration or termination of a Master Development Agreement or a Development Agreement that zoned property, the Planning Director shall initiate proceedings to rezone the land.” Also, enacting Section 17.90.090 Rezone Initiation Post Development Agreement Expiration or Termination with the following change in 17.90.090 to read “Expired or otherwise terminated agreements upon expiration or termination of a Master Development Agreement or a Development Agreement that zoned property, the Planning Director shall initiate proceedings to rezone the land.” Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning",
+        "development",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 841,
+      "meeting_id": 476,
+      "date": "2025-01-07",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 17.100.050 Site Plan Development Standards clarifying the method of measuring and also clarifying from the distance of existing right-of-way, not existing curb, and a diagram to give direction to that effect",
+      "motion": "Councilmember Wood moved to table an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 17.100.050 Site Plan Development Standards clarifying the method of measuring and also clarifying from the distance of existing right-of-way, not existing curb, and a diagram to give direction to that effect. Councilmember Gray seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "infrastructure",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 842,
+      "meeting_id": 476,
+      "date": "2025-01-07",
+      "page": 11,
+      "agenda_ref": "17.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Authorizing Staff to Engage the Services of a Third-Party Broker for Major Land Acquisition and Disposal of Significant Land.",
+      "motion": "Councilmember Wood moved to adopt a Resolution of Eagle Mountain City, Utah, Authorizing Staff to Engage the Services of a Third-Party Real Estate Brokerage or Real Estate Attorney for Major Land Acquisition and Disposal of Significant Real Property in accordance with the changes stated. Councilmember Gray seconded the motion.",
+      "outcome": "passed 4:1.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "No"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 843,
+      "meeting_id": 476,
+      "date": "2025-01-07",
+      "page": 12,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table the Assignment of City Council Board Liaisons position and continue with our 2024 assignm…",
+      "motion": "Councilmember Clark moved to table the Assignment of City Council Board Liaisons position and continue with our 2024 assignments until such time that the Mayor can meet with councilmembers to determine the new assignments. Councilmember Burnham seconded the motion. Eagle Mountain City Council Agenda – January 7, 2025 Page 11 of 13 Councilmember Wood requested that the City Manager prepare a list of all potential boards and commissions for City Council review. AMENDED MOTION: Councilmember Clark moved to table the Assignment of City Council Board Liaisons position and continue with our 2024 assignments until such time that the Mayor can meet with councilmembers to determine the new assignments and request our City Manager meet with the Mayor and prepare a list for City Council of all potential boards and commissions that the City wants a liaison. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 1,
+      "line_text": "15.B. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 2,
+      "line_text": "Planner Steven Lehmitz introduced the proposed ordinance which amends Municipal Code to"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 2,
+      "line_text": "16.A. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 2,
+      "line_text": "Planner Steven Lehmitz presented the proposed ordinance which amends Eagle Mountain Municipal"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 2,
+      "line_text": "16.B. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 2,
+      "line_text": "Senior Planner Robert Hobbs presented proposed ordinance which amends Municipal Code to"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 2,
+      "line_text": "16.C. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 2,
+      "line_text": "Planner Brandon Larsen presented the proposed ordinance which amends Municipal Code to define"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 8,
+      "line_text": "15.A. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Wood moved to table an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 8,
+      "line_text": "15.B. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Rezoning"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Wood moved to table an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 9,
+      "line_text": "16.A. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 9,
+      "line_text": "Planner Steven Lehmitz presented a proposed ordinance to amend the Eagle Mountain Municipal"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Burnham moved to adopt an Ordinance of Eagle Mountain City,"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 9,
+      "line_text": "16.B. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 9,
+      "line_text": "Senior Planner Robert Hobbs presented the proposed ordinance that amends the Municipal Code"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 10,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 10,
+      "line_text": "16.C. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 10,
+      "line_text": "Senior Planner David Stroud presented the proposed ordinance that amends the Municipal Code to"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 10,
+      "line_text": "MOTION: Councilmember Wood moved to table an Ordinance of Eagle Mountain City, Utah,"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 2,
+      "line_text": "17.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Authorizing Staff to Engage"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 2,
+      "line_text": "for land acquisition and discussed changes to the Resolution."
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 7,
+      "line_text": "14.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving an Amended"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 7,
+      "line_text": "14.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving a Contract with"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 7,
+      "line_text": "14.C. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Appointing the Eagle Mountain"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 11,
+      "line_text": "17.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Authorizing Staff to Engage"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 11,
+      "line_text": "Councilmember Wood changed 17.A. title as follows: Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-01-07__476.pdf",
+      "meeting_date": "2025-01-07",
+      "page": 11,
+      "line_text": "MOTION: Councilmember Wood moved to adopt a Resolution of Eagle Mountain City,"
+    }
+  ]
+}

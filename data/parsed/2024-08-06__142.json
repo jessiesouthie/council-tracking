@@ -1,0 +1,161 @@
+{
+  "meeting": {
+    "id": 142,
+    "date": "2024-08-06",
+    "source_file": "2024-08-06__142.pdf",
+    "motion_count": 3,
+    "ord_count": 0,
+    "res_count": 7
+  },
+  "motions": [
+    {
+      "id": 760,
+      "meeting_id": 142,
+      "date": "2024-08-06",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Appoint Joshua Biagio to the Library Advisory Board, completing a term through December 2025",
+      "motion": "Councilmember Clark moved to appoint Joshua Biagio to the Library Advisory Board, completing a term through December 2025. Councilmember Gray seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "personnel"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 761,
+      "meeting_id": 142,
+      "date": "2024-08-06",
+      "page": 5,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Gray moved to approve the Consent Agenda. Councilmember Wood seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 762,
+      "meeting_id": 142,
+      "date": "2024-08-06",
+      "page": 6,
+      "agenda_ref": "15.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the Proposal for the Creation of a New School District, Pursuant to Utah Code 53G-3-301.4, Scheduling Final Action on the Creation of a New School District, and Related Matters. This item was presented prior to the Consent Agenda.",
+      "motion": "Councilmember Gray moved to adopt a Resolution of Eagle Mountain City, Utah, Approving an Amendment to the Adobe Value Incentive Plan Terms and Conditions. Councilmember Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2024-08-06__142.pdf",
+      "meeting_date": "2024-08-06",
+      "page": 5,
+      "line_text": "14.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an"
+    },
+    {
+      "source_file": "2024-08-06__142.pdf",
+      "meeting_date": "2024-08-06",
+      "page": 5,
+      "line_text": "Adobe. The resolution commits the City for three years and accepts the terms of the 3-year VIP"
+    },
+    {
+      "source_file": "2024-08-06__142.pdf",
+      "meeting_date": "2024-08-06",
+      "page": 5,
+      "line_text": "14.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Amending the Eagle"
+    },
+    {
+      "source_file": "2024-08-06__142.pdf",
+      "meeting_date": "2024-08-06",
+      "page": 5,
+      "line_text": "14.C. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving a"
+    },
+    {
+      "source_file": "2024-08-06__142.pdf",
+      "meeting_date": "2024-08-06",
+      "page": 5,
+      "line_text": "14.D. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an Interlocal"
+    },
+    {
+      "source_file": "2024-08-06__142.pdf",
+      "meeting_date": "2024-08-06",
+      "page": 6,
+      "line_text": "15.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving the Proposal"
+    },
+    {
+      "source_file": "2024-08-06__142.pdf",
+      "meeting_date": "2024-08-06",
+      "page": 6,
+      "line_text": "MOTION: Councilmember Gray moved to adopt a Resolution of Eagle Mountain City,"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "_doc": "Topic tagging rules. Each tag matches a motion if any of its keyword patterns occurs in the agenda item title or motion text (case-insensitive). Edit freely — tags rebuild on the next ingest run.",
+  "tags": [
+    {
+      "id": "zoning",
+      "label": "Zoning & Land Use",
+      "keywords": [
+        "rezone", "rezoning", "zone change", "zoning",
+        "subdivision", "plat", "preliminary plat", "final plat",
+        "annexation", "annex", "conditional use", "variance",
+        "general plan", "land use"
+      ]
+    },
+    {
+      "id": "development",
+      "label": "Development Agreements",
+      "keywords": [
+        "development agreement", "developer", "applicant", "site plan",
+        "density bonus", "impact fee"
+      ]
+    },
+    {
+      "id": "budget",
+      "label": "Budget & Finance",
+      "keywords": [
+        "budget", "appropriation", "fiscal year", "tentative budget",
+        "final budget", "tax rate", "certified tax", "truth in taxation",
+        "audit", "expenditure", "capital improvement", "cip", "bond"
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "label": "Public Works & Infrastructure",
+      "keywords": [
+        "water", "sewer", "wastewater", "stormwater", "drainage",
+        "road", "street", "intersection", "traffic", "transportation",
+        "utility", "easement", "right-of-way", "pavement"
+      ]
+    },
+    {
+      "id": "parks",
+      "label": "Parks & Recreation",
+      "keywords": [
+        "park", "trail", "open space", "recreation", "athletic",
+        "playground", "pavilion"
+      ]
+    },
+    {
+      "id": "public_safety",
+      "label": "Public Safety",
+      "keywords": [
+        "police", "fire", "ems", "emergency", "ambulance", "patrol",
+        "law enforcement"
+      ]
+    },
+    {
+      "id": "personnel",
+      "label": "Personnel & Appointments",
+      "keywords": [
+        "appoint", "appointment", "ratify appointment", "resignation",
+        "salary", "compensation", "personnel"
+      ]
+    },
+    {
+      "id": "procurement",
+      "label": "Contracts & Procurement",
+      "keywords": [
+        "professional services agreement", "purchase agreement",
+        "interlocal agreement", "memorandum of understanding", "mou",
+        "award the bid", "award contract", "rfp"
+      ]
+    },
+    {
+      "id": "code",
+      "label": "Municipal Code Amendments",
+      "keywords": [
+        "municipal code", "amend chapter", "amend section",
+        "amending section", "title", "code amendment"
+      ]
+    },
+    {
+      "id": "consent",
+      "label": "Consent Agenda",
+      "keywords": ["consent agenda"]
+    },
+    {
+      "id": "executive_session",
+      "label": "Closed / Executive Session",
+      "keywords": [
+        "executive session", "closed session", "section 52-4-205"
+      ]
+    }
+  ]
+}

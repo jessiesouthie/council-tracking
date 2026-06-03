@@ -1,0 +1,164 @@
+{
+  "meeting": {
+    "id": 400,
+    "date": "2023-03-07",
+    "source_file": "2023-03-07__400.pdf",
+    "motion_count": 4,
+    "ord_count": 11,
+    "res_count": 3
+  },
+  "motions": [
+    {
+      "id": 618,
+      "meeting_id": 400,
+      "date": "2023-03-07",
+      "page": 8,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Love moved to approve the consent agenda with the change to condition one of the amended motion for the Lower Hidden Valley Master Development Agreement on page 18 of the minutes to state unit transfer to a single pod shall not exceed 10%. Councilmember Wright seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☐ Colby Curtis ☐ Colby Curtis ☐ Colby Curtis ☒ Colby Curtis ☒ Jared Gray ☐ Jared Gray ☐ Jared Gray ☐ Jared Gray ☒ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☒ Brett Wright ☐ Brett Wright ☐ Brett Wright ☐ Brett Wright",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "consent"
+      ],
+      "votes": []
+    },
+    {
+      "id": 619,
+      "meeting_id": 400,
+      "date": "2023-03-07",
+      "page": 8,
+      "agenda_ref": "14.A.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Approving the First Amendment to the Pole Canyon Master Development (AKA Firefly). This item was removed from the agenda at the applicant’s request and was not discussed during the meeting.",
+      "motion": "Councilmember Burnham moved to approve an ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code, Chapter 17.25 Residential Zones and Chapter 17.72 Commercial and Multifamily Design Standards. Councilmember Wright seconded the motion. Eagle Mountain City Council Meeting – March 7, 2023 Page 8 of 12 Discussion clarified that the standards apply to personal, single-lot projects in addition to developments. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☐ Colby Curtis ☐ Colby Curtis ☐ Colby Curtis ☒ Colby Curtis ☒ Jared Gray ☐ Jared Gray ☐ Jared Gray ☐ Jared Gray ☒ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☒ Brett Wright ☐ Brett Wright ☐ Brett Wright ☐ Brett Wright",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 620,
+      "meeting_id": 400,
+      "date": "2023-03-07",
+      "page": 10,
+      "agenda_ref": "15.B.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code, Chapters 10.10 Parking. Grants Coordinator/Management Analyst Natalie Winterton reviewed the changes requested by the City Council during the work session that differ from the proposed amendment in the packet materials: 1. 10.10.30 – It is unlawful to leave any vehicle parked continuously on a public street for longer than 72 hours without being moved having been driven a distance of at least 400 feet before returning to the same location; 2. 10.10.090(B) – “Commercial vehicle” means a tractor or motor vehicle at or exceeding a rated capacity of 2.5 tons, trailer, or semi-trailer used or maintained for the transportation of persons or property that operates: 1. As a carrier for hire, compensation, or profit; 2. As a carrier to transport the vehicle owner’s goods or property in furtherance of the owner’s commercial enterprise; or 3. As a food cart or food truck; 3. 10.10.090(F)(5) – remove completely and adjust the numbering accordingly rather than removing van and adding boat as presented in the packet materials; and 4. 10.10.100(A)(2) – Agricultural vehicle, recreational vehicle, or occupied or empty trailer, within the front yard area (excluding a paved or gravel driveway) of any residential zone of the city. Ms. Winterton clarified that she had discussed the definitions of commercial vehicles with the Planning Commission in regard to a different amendment. Changes to this chapter do not require Planning Commission review. Councilmember Gray suggested allowing commercial vehicles up to 2.5 tons and amending the prohibition to state vehicles over 2.5 tons. The Council supported amending EMMC 10.10.090(B) to a “vehicle exceeding a rated capacity of 2.5 tons.” Councilmember Wright confirmed with Mayor Westmoreland that he is comfortable with the enforcement of the proposed changes. Eagle Mountain City Council Meeting – March 7, 2023 Page 9 of 12",
+      "motion": "Councilmember Gray moved to approve an ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code, Chapters 10.10 Parking as presented with the corrective changes. Councilmember Burnham seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☐ Colby Curtis ☐ Colby Curtis ☐ Colby Curtis ☒ Colby Curtis ☒ Jared Gray ☐ Jared Gray ☐ Jared Gray ☐ Jared Gray ☒ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☒ Brett Wright ☐ Brett Wright ☐ Brett Wright ☐ Brett Wright",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure",
+        "personnel",
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 621,
+      "meeting_id": 400,
+      "date": "2023-03-07",
+      "page": 10,
+      "agenda_ref": "15.C.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Authorizing the Public Bodies of Eagle Mountain City to Conduct Electronic Meetings, Establishing an Anchor Location and Determining how a Quorum is Calculated. Director of Administrative Services/City Recorder Fionnuala Kofoed reviewed the item as presented during work session.",
+      "motion": "Councilmember Love moved to approve an ordinance of Eagle Mountain City, Utah, Enacting Eagle Mountain Municipal Code Section 2.15.110 Electronic Meetings, authorizing the Public Bodies of Eagle Mountain City to Conduct Electronic Meetings, Establishing an Anchor Location and Determining how a Quorum is Calculated. Councilmember Gray seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☐ Donna Burnham ☐ Colby Curtis ☐ Colby Curtis ☐ Colby Curtis ☒ Colby Curtis ☒ Jared Gray ☐ Jared Gray ☐ Jared Gray ☐ Jared Gray ☒ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☐ Carolyn Love ☒ Brett Wright ☐ Brett Wright ☐ Brett Wright ☐ Brett Wright",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2023-03-07__400.pdf",
+      "meeting_date": "2023-03-07",
+      "page": 4,
+      "line_text": "15.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2023-03-07__400.pdf",
+      "meeting_date": "2023-03-07",
+      "page": 4,
+      "line_text": "15.B. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Amending the Eagle"
+    },
+    {
+      "source_file": "2023-03-07__400.pdf",
+      "meeting_date": "2023-03-07",
+      "page": 5,
+      "line_text": "15.C. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Authorizing the"
+    },
+    {
+      "source_file": "2023-03-07__400.pdf",
+      "meeting_date": "2023-03-07",
+      "page": 5,
+      "line_text": "Ms. Kofoed presented the item. The ordinance establishes City Hall as the anchor location and"
+    },
+    {
+      "source_file": "2023-03-07__400.pdf",
+      "meeting_date": "2023-03-07",
+      "page": 8,
+      "line_text": "14.A. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Approving the First"
+    },
+    {
+      "source_file": "2023-03-07__400.pdf",
+      "meeting_date": "2023-03-07",
+      "page": 8,
+      "line_text": "15.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2023-03-07__400.pdf",
+      "meeting_date": "2023-03-07",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Burnham moved to approve an ordinance of Eagle"
+    },
+    {
+      "source_file": "2023-03-07__400.pdf",
+      "meeting_date": "2023-03-07",
+      "page": 9,
+      "line_text": "15.B. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Amending the Eagle"
+    },
+    {
+      "source_file": "2023-03-07__400.pdf",
+      "meeting_date": "2023-03-07",
+      "page": 10,
+      "line_text": "MOTION: Councilmember Gray moved to approve an ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2023-03-07__400.pdf",
+      "meeting_date": "2023-03-07",
+      "page": 10,
+      "line_text": "15.C. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Authorizing the"
+    },
+    {
+      "source_file": "2023-03-07__400.pdf",
+      "meeting_date": "2023-03-07",
+      "page": 10,
+      "line_text": "MOTION: Councilmember Love moved to approve an ordinance of Eagle Mountain"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2023-03-07__400.pdf",
+      "meeting_date": "2023-03-07",
+      "page": 3,
+      "line_text": "13.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Establishing a Policy"
+    },
+    {
+      "source_file": "2023-03-07__400.pdf",
+      "meeting_date": "2023-03-07",
+      "page": 4,
+      "line_text": "Councilmember Love verified with staff that the resolution establishes existing procedures, rather"
+    },
+    {
+      "source_file": "2023-03-07__400.pdf",
+      "meeting_date": "2023-03-07",
+      "page": 8,
+      "line_text": "13.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Establishing a Policy"
+    }
+  ]
+}

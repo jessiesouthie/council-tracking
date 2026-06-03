@@ -1,0 +1,90 @@
+{
+  "meeting": {
+    "id": 463,
+    "date": "2024-01-02",
+    "source_file": "2024-01-02__463.pdf",
+    "motion_count": 3,
+    "ord_count": 2,
+    "res_count": 3
+  },
+  "motions": [
+    {
+      "id": 687,
+      "meeting_id": 463,
+      "date": "2024-01-02",
+      "page": 8,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "CouncÍlmember Burnham moved to approve the consent agenda wÍth the followÍng changes: 1. ltem 9.8. - Stadion LLC shall donate the trees Ín the contract or a cash equÍvalent to the cost of the trees to the CÍtg to plant the trees elsewhere Ín the cru; 2. ltem 9.C. a. A S4O,OOO donatÍon from Comcast or an equivatent totat shatt be added to the agreement as a fee-Ín-lÍeu to be used for park Ímprovements; b. Staff shall work with Vanguard Ranches Golf Course, LLC to renegotÍate the agreement; and 3. ltem IO.A. - the calendar shall be adopted as amended in the work sessÍon to remove the Tuesdag, March 5h meetÍng, and add meetings to Wednesdag, March dh, and Wednesday, November 6th. Councilmember Clark seconded the motion. Eagle Mountain City Council Meeting - January 2,2024 Page 8 of 11 Those Voting Yes Those Voting No Those Abstaining Those Absent X tr tr E Donna Burnham Donna Burnham Donna Burnham Donna Burnham X n tr tr Melissa Clark Melissa Clark Melissa Clark Melissa Clark tr E tr X Jared Grag Jared Grag Jared Grag Jared Grag X tr E tr Rich Wood Rich Wood Rich Wood Rich Wood A tr tr tr Brett Wright Brett Wright Brett Wright Brett Wright",
+      "outcome": "passed wÍth a unanÍmous vote.",
+      "tags": [
+        "parks",
+        "consent"
+      ],
+      "votes": []
+    },
+    {
+      "id": 688,
+      "meeting_id": 463,
+      "date": "2024-01-02",
+      "page": 9,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve an ordÍnance of Eagle Mountain Citg, Utah, adoptÍng Amendment #3 to the FÍscal Year 2O2…",
+      "motion": "CouncÍlmember Wrþht moved to approve an ordÍnance of Eagle Mountain Citg, Utah, adoptÍng Amendment #3 to the FÍscal Year 2O23-2024 Annual Budget CouncÍlmember Wood seconded the motion. Eagle Mountain City Council Meeting - January 2,2024 Page I of 11 Those Voting Yes Those Voting No Those Abstaining Those Absent X tr n tr Donna Burnham Donna Burnham Donna Burnham Donna Burnham E EI E E Melissa Clark Melissa Clark Melissa Clark Melissa Clark X tr n tr Jared Grag Jared Grag Jared Grag Jared Grag A tr tr E Rich Wood Rich Wood Rich Wood Rich Wood X Brett Wright tr Brett Wright E Brett Wright tr Brett Wright The motÍon passed wÍth a unanimous vote. 13 BID AWARDS 13.4. BID AWARD - WDG (Web Development Group) Platforms - New Citg Website",
+      "outcome": "",
+      "tags": [
+        "budget"
+      ],
+      "votes": []
+    },
+    {
+      "id": 689,
+      "meeting_id": 463,
+      "date": "2024-01-02",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve a bÍd award to Web Development Group (W'DF) Platforms for a new CÍtg WebsÍte Ín the amo…",
+      "motion": "CouncÍlmember Burnham moved to approve a bÍd award to Web Development Group (W'DF) Platforms for a new CÍtg WebsÍte Ín the amount of Sí35,OOO and to allow staff to work out an agreement wÍth the approprÍate pagment schedule. CouncÍlmember Wood seconded the motÍon. Those Voting Yes Those Voting No Those Abstaining Those Absent X tr E E Donna Burnham Donna Burnham Donna Burnham Donna Burnham X tr tr tr Melissa Clark Melissa Clark Melissa Clark Melissa Clark X tr tr tr Jared Grag Jared Grag Jared Grag Jared Grag X tr D D Rich Wood Rich Wood Rich Wood Rich Wood X Brett Wright tl Brett Wright EI Brett Wright tr Brett Wright The motÍon passed wÍth a unanÍmous vote. 14. LEGISLATIVE ITEMS Director of Legislative Affairs Cliff Strachan stated that staff is reviewing the Legislative Priorities List in an effort to expand and simplifg the list. He will update the ranking of the items based on the feedback from the new Councilmembers. Councilmember Wood suggested holding a work session meeting to discuss and prioritize the items as a joint Council. Discussion ensued regarding possible methods to discuss and rank the list, the upcoming joint council meeting with State Legislators on Januarg 6,2024, and advancing Citg priorities with the Legislature. 15. COMMUNICATION ITEMS .16. ADJOURNMENT",
+      "outcome": "",
+      "tags": [],
+      "votes": []
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2024-01-02__463.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "12.4. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain Citg, Utah,"
+    },
+    {
+      "source_file": "2024-01-02__463.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "12.A. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain Citg, Utah,"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2024-01-02__463.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "11.4. RESOLUTION - Timpanogos Special Service District Reorganization"
+    },
+    {
+      "source_file": "2024-01-02__463.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "11.4. RESOLUTION"
+    },
+    {
+      "source_file": "2024-01-02__463.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "RESOLUTION - Timpanogos Special Service District Reorganization"
+    }
+  ]
+}
