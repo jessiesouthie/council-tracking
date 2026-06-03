@@ -2,7 +2,7 @@
 // - App shell: precache + cache-first (versioned).
 // - Pyodide CDN: stale-while-revalidate into a separate, long-lived bucket.
 
-const SHELL_CACHE = "council-shell-v13";
+const SHELL_CACHE = "council-shell-v14";
 const PYODIDE_CACHE = "council-pyodide-v1";
 const DATA_CACHE = "council-data-v1";
 
@@ -17,14 +17,9 @@ const SHELL_ASSETS = [
   "member.html",
   "site.css",
   "site.js",
-  "parser.py",
   "manifest.webmanifest",
   "icons/icon-192.png",
   "icons/icon-512.png",
-  "upload/",
-  "upload/index.html",
-  "upload/app.js",
-  "upload/styles.css",
 ];
 
 self.addEventListener("install", (event) => {

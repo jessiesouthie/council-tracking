@@ -8,7 +8,6 @@
   async function loadData() {
     if (CACHE.data) return CACHE.data;
     if (loadPromise) return loadPromise;
-    // Use ./data.json so it works whether the page is at /, /upload/, etc.
     const dataUrl = new URL("data.json", document.baseURI).toString();
     loadPromise = fetch(dataUrl)
       .then((r) => {
@@ -26,7 +25,6 @@
     return loadPromise;
   }
 
-  // Service worker registration — same scope/path as the existing /upload/ PWA.
   async function registerServiceWorker() {
     if (!("serviceWorker" in navigator)) return;
     try {
