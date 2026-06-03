@@ -59,6 +59,11 @@ def make_member_resolver(members_doc: dict):
     return resolve
 
 
+def make_ignore_check(members_doc: dict):
+    ignore = {_norm_name(x) for x in (members_doc.get("ignore") or [])}
+    return lambda name: _norm_name(name) in ignore
+
+
 def make_tagger(tags_doc: dict):
     rules = []
     for t in tags_doc.get("tags", []):

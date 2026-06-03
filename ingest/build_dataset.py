@@ -46,6 +46,7 @@ from . import parser  # noqa: E402
 from .normalize import (  # noqa: E402
     load_members,
     load_tags,
+    make_ignore_check,
     make_member_resolver,
     make_tagger,
 )
@@ -71,7 +72,7 @@ def event_id_from_name(name: str) -> int | None:
     return None
 
 
-def normalize_motion(raw_motion: dict, resolve, tag) -> tuple[dict, list[dict]]:
+def normalize_motion(raw_motion: dict, resolve, tag, is_ignored) -> tuple[dict, list[dict]]:
     """Convert a parser summary row into the public schema. Roll-call membership
     is reconstructed from the legacy `roll_call` string ("Name: Vote; …")."""
     votes: list[dict] = []
@@ -89,7 +90,7 @@ def normalize_motion(raw_motion: dict, resolve, tag) -> tuple[dict, list[dict]]:
         mid = resolve(name)
         if mid:
             votes.append({"member_id": mid, "vote": vote})
-        elif name:
+        elif name and not is_ignored(name):
             unresolved.append({"name": name, "vote": vote})
 
     text = " ".join([
@@ -134,6 +135,7 @@ def main() -> int:
     members_doc = load_members()
     tags_doc = load_tags()
     resolve = make_member_resolver(members_doc)
+    is_ignored = make_ignore_check(members_doc)
     tag = make_tagger(tags_doc)
 
     pdfs = sorted(RAW_DIR.glob("*.pdf"))
@@ -178,7 +180,7 @@ def main() -> int:
         }
 
         for rm in r.get("motions", []):
-            norm, unresolved = normalize_motion(rm, resolve, tag)
+            norm, unresolved = normalize_motion(rm, resolve, tag, is_ignored)
             motion_uid += 1
             entry = {
                 "id": motion_uid,
