@@ -108,11 +108,49 @@
 
   function highlightActiveNav() {
     const here = location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll(".nav a[data-nav]").forEach((a) => {
+    document.querySelectorAll("[data-nav]").forEach((a) => {
       if (a.dataset.nav === here || (here === "" && a.dataset.nav === "index.html")) {
         a.classList.add("active");
         a.setAttribute("aria-current", "page");
       }
+    });
+  }
+
+  // Inject the mobile bottom tab bar once per page. Hidden via CSS on desktop.
+  function mountTabbar() {
+    if (document.querySelector("nav.tabbar")) return;
+    const tabs = [
+      { href: "index.html",    label: "Home" },
+      { href: "meetings.html", label: "Meetings" },
+      { href: "motions.html",  label: "Motions" },
+      { href: "members.html",  label: "Members" },
+    ];
+    const nav = document.createElement("nav");
+    nav.className = "tabbar";
+    nav.setAttribute("aria-label", "Primary (mobile)");
+    nav.innerHTML = tabs
+      .map(
+        (t) =>
+          `<a href="${t.href}" data-nav="${t.href}"><span class="tab-ico" aria-hidden="true"></span><span class="tab-lbl">${t.label}</span></a>`
+      )
+      .join("");
+    document.body.appendChild(nav);
+  }
+
+  // Close any open mobile filter sheet when the user taps outside it.
+  // (Sheets are <details class="filter-group">; on mobile the panel is fixed
+  // to the viewport bottom, and the backdrop is rendered by body::after.)
+  function wireSheetDismiss() {
+    document.addEventListener("click", (e) => {
+      const open = document.querySelectorAll("details.filter-group[open]");
+      if (!open.length) return;
+      open.forEach((d) => {
+        if (!d.contains(e.target)) d.removeAttribute("open");
+      });
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      document.querySelectorAll("details.filter-group[open]").forEach((d) => d.removeAttribute("open"));
     });
   }
 
@@ -121,9 +159,11 @@
     return Object.fromEntries(u.searchParams.entries());
   }
 
-  // Boot every page: paint nav highlight + register SW.
+  // Boot every page: mount mobile nav, paint nav highlight, register SW.
   document.addEventListener("DOMContentLoaded", () => {
+    mountTabbar();
     highlightActiveNav();
+    wireSheetDismiss();
     registerServiceWorker();
   });
 

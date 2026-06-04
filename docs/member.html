@@ -76,15 +76,15 @@
           <section class="section">
             <h2>Agreement with colleagues</h2>
             ${ag.length ? `
-              <div class="tablewrap"><table class="data">
+              <div class="tablewrap"><table class="data" data-mobile="cards">
                 <thead><tr><th>Member</th><th class="text-right">Agreement</th><th class="text-right">Shared votes</th><th></th></tr></thead>
                 <tbody>
                   ${ag.map(x => `
                     <tr>
-                      <td><a href="member.html?id=${encodeURIComponent(x.id)}">${CT.escapeHtml(x.name)}</a> <span class="muted">· ${CT.escapeHtml(x.role)}</span></td>
-                      <td class="text-right mono"><strong>${(x.frac*100).toFixed(0)}%</strong></td>
-                      <td class="text-right mono muted">${x.n}</td>
-                      <td><div class="agreement-bar" style="width:${(x.frac*100).toFixed(0)}%;background:var(--accent);height:6px;border-radius:3px;margin-top:6px"></div></td>
+                      <td data-role="title" data-label="Member"><a href="member.html?id=${encodeURIComponent(x.id)}">${CT.escapeHtml(x.name)}</a> <span class="muted">· ${CT.escapeHtml(x.role)}</span></td>
+                      <td data-label="Agreement" class="text-right mono"><strong>${(x.frac*100).toFixed(0)}%</strong></td>
+                      <td data-label="Shared votes" class="text-right mono muted">${x.n}</td>
+                      <td data-label="Bar"><div class="agreement-bar" style="width:${(x.frac*100).toFixed(0)}%;background:var(--accent);height:6px;border-radius:3px;margin-top:6px"></div></td>
                     </tr>
                   `).join("")}
                 </tbody>

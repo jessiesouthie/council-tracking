@@ -27,6 +27,19 @@
   --radius: 10px;
   --radius-sm: 6px;
   --max-w: 1100px;
+
+  /* Mobile rhythm */
+  --tabbar-h: 60px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-left:   env(safe-area-inset-left, 0px);
+  --safe-right:  env(safe-area-inset-right, 0px);
+
+  /* Tab-bar glyph masks (hand-tuned 24px line icons; current-color via mask). */
+  --ico-home:     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M3 11 12 3l9 8'/><path d='M5 10v10h14V10'/><path d='M10 20v-6h4v6'/></svg>");
+  --ico-calendar: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><rect x='3.5' y='5' width='17' height='15' rx='2'/><path d='M3.5 10h17'/><path d='M8 3v4M16 3v4'/><circle cx='8.5' cy='14' r='0.9' fill='black' stroke='none'/><circle cx='12' cy='14' r='0.9' fill='black' stroke='none'/><circle cx='15.5' cy='14' r='0.9' fill='black' stroke='none'/></svg>");
+  --ico-gavel:    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M14.5 3.5l6 6'/><path d='M11 7l6 6'/><path d='M8 10l6 6'/><path d='M4.5 13.5l6 6'/><path d='M3 21h10'/></svg>");
+  --ico-people:   url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='9' cy='9' r='3.2'/><path d='M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6'/><circle cx='17' cy='8' r='2.6'/><path d='M15.5 14.2c2.6.5 4.5 2.8 4.5 5.6'/></svg>");
   --serif: "EB Garamond", Georgia, "Times New Roman", serif;
   --sans:  "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
 
@@ -241,7 +254,7 @@ h1.page-title, h2.page-title {
   margin: 0 0 12px;
 }
 
-.cards { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+.cards { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr)); }
 .stat-card {
   background: var(--bg-elev);
   border: 1px solid var(--border);
@@ -534,7 +547,7 @@ details.motion-row[open] {
 /* ---------- Member tiles (home + directory teaser) ---------- */
 .member-row {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
   gap: 12px;
 }
 .member-row.dim .member-tile { opacity: 0.78; }
@@ -578,7 +591,9 @@ details.motion-row[open] {
 /* ---------- Meetings list (card layout) ---------- */
 .meeting-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  /* min(380px, 100%) guarantees the column shrinks below 380 on narrow
+     viewports instead of forcing the page to scroll horizontally. */
+  grid-template-columns: repeat(auto-fill, minmax(min(380px, 100%), 1fr));
   gap: 16px;
 }
 .meeting-card {
@@ -956,13 +971,371 @@ details.motion-row .motion-detail {
   .pair-bar-wrap { min-width: 0; }
 }
 
-@media (max-width: 700px) {
-  .topbar { padding: 10px 14px; }
-  main { padding: 18px 14px; }
-  .nav { order: 3; flex-basis: 100%; justify-content: flex-start; gap: 0; }
-  .nav a { padding: 8px 12px; font-size: 13px; min-height: 40px; }
-  h1.page-title, h2.page-title { font-size: 28px; }
-  .stat-card .value { font-size: 26px; }
+/* =========================================================
+   MOBILE TAB BAR (injected by site.js as <nav class="tabbar">)
+   ========================================================= */
+.tabbar { display: none; }
+
+@media (max-width: 760px) {
+  /* ---- Topbar shrinks to brand only; primary nav moves to bottom ---- */
+  .topbar {
+    padding: 10px 14px;
+    padding-left:  max(14px, var(--safe-left));
+    padding-right: max(14px, var(--safe-right));
+    padding-top:   max(10px, calc(var(--safe-top) * 0.5 + 8px));
+    gap: 10px;
+    /* Make the bar visually lighter — it's purely identity on mobile. */
+    border-bottom-color: var(--border);
+  }
+  .topbar .nav { display: none; }
+  .brand-mark { width: 28px; height: 28px; font-size: 11px; border-radius: 6px; }
+  .brand h1 { font-size: 17px; padding-bottom: 3px; }
+  .brand h1::after { width: 18px; }
+  .brand .city { font-size: 10px; margin-top: 2px; }
+
+  /* ---- Main padding + room for the fixed bottom tabbar ---- */
+  main {
+    padding: 18px 16px;
+    padding-left:  max(16px, var(--safe-left));
+    padding-right: max(16px, var(--safe-right));
+    padding-bottom: calc(var(--tabbar-h) + var(--safe-bottom) + 18px);
+  }
+  .footer {
+    /* Keep the footer above the tabbar by also pushing it up. */
+    padding-bottom: calc(16px + var(--tabbar-h) + var(--safe-bottom));
+  }
+
+  /* ---- The bottom tab bar itself ---- */
+  .tabbar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 20;
+    background: color-mix(in oklab, var(--bg-elev) 92%, transparent);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-top: 1px solid var(--border);
+    padding-bottom: var(--safe-bottom);
+    box-shadow: 0 -1px 0 rgba(49,69,46,.04), 0 -10px 24px rgba(49,69,46,.06);
+  }
+  .tabbar a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-height: var(--tabbar-h);
+    padding: 6px 4px 8px;
+    color: var(--fg-muted);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tabbar a:hover { text-decoration: none; color: var(--fg-soft); }
+  .tabbar a.active, .tabbar a[aria-current="page"] {
+    color: var(--accent);
+  }
+  .tabbar a.active::after,
+  .tabbar a[aria-current="page"]::after {
+    /* Park-sign accent stripe — same micro-language as the brand wordmark. */
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--highlight);
+  }
+  .tabbar .tab-ico {
+    width: 24px;
+    height: 24px;
+    display: block;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+            mask-position: center;
+    -webkit-mask-size: 22px 22px;
+            mask-size: 22px 22px;
+  }
+  .tabbar a[data-nav="index.html"]    .tab-ico { -webkit-mask-image: var(--ico-home);     mask-image: var(--ico-home); }
+  .tabbar a[data-nav="meetings.html"] .tab-ico { -webkit-mask-image: var(--ico-calendar); mask-image: var(--ico-calendar); }
+  .tabbar a[data-nav="motions.html"]  .tab-ico { -webkit-mask-image: var(--ico-gavel);    mask-image: var(--ico-gavel); }
+  .tabbar a[data-nav="members.html"]  .tab-ico { -webkit-mask-image: var(--ico-people);   mask-image: var(--ico-people); }
+
+  /* ---- Hero scaling ---- */
+  .hero { padding: 18px 0 22px; margin-bottom: 24px; }
+  .hero-title { font-size: 30px; max-width: none; }
+  .hero-sub { font-size: 15px; margin-bottom: 16px; }
+  .hero-search {
+    flex-direction: column;
+    gap: 8px;
+    max-width: none;
+  }
+  .hero-input { min-height: 48px; font-size: 16px; width: 100%; }
+  .hero-search .btn { width: 100%; min-height: 48px; justify-content: center; }
+  .hero-tags { gap: 6px; }
+  .hero-tags .tag { padding: 6px 12px; font-size: 12px; }
+  .hero-tags > span.muted { width: 100%; margin: 0 0 2px !important; }
+
+  /* ---- Page titles + sections ---- */
+  h1.page-title, h2.page-title { font-size: 26px; line-height: 1.12; }
+  .page-sub { font-size: 14px; margin-bottom: 20px; }
+  .section { margin-bottom: 28px; }
+  .section-head { gap: 10px; }
+
+  /* ---- Stat cards ---- */
+  .cards { gap: 10px; }
+  .stat-card { padding: 14px; }
+  .stat-card .value { font-size: 24px; }
+  .stat-card .label { font-size: 10px; }
+
+  /* ---- Inputs / buttons — bigger tap targets, 16px to prevent iOS zoom ---- */
+  .input, .select {
+    font-size: 16px;
+    min-height: 44px;
+    width: 100%;
+  }
+  .input { min-width: 0; }
+  .btn { min-height: 44px; }
+  .toolbar { gap: 8px; row-gap: 10px; }
+  .toolbar > .input { flex-basis: 100%; }
+  .toolbar > .select { flex: 1; min-width: 140px; width: auto; }
+  /* Result-count drops to its own row so it never gets sliced by a sibling. */
+  .toolbar > #result-count { flex-basis: 100%; margin-top: -2px; }
+
+  /* ---- Tags, pills, vote chips — finger-sized ---- */
+  .tag { padding: 4px 10px; font-size: 12px; }
+  .vote-chip { padding: 4px 10px; font-size: 12.5px; }
+  .pill { padding: 3px 10px; font-size: 11px; }
+
+  /* ---- Meeting cards ---- */
+  .meeting-grid { gap: 12px; }
+  .meeting-card { padding: 14px 14px 16px; border-radius: 12px; }
+  .meeting-date { font-size: 20px; }
+  /* Tap target for the "Open →" link on each meeting card. */
+  .meeting-card-head a { font-size: 14px; padding: 6px 4px; margin: -6px -4px; }
+  .motion-line {
+    /* Stack outcome + title on one row, meta on a second; keeps long titles legible. */
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 10px;
+    row-gap: 2px;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+  .motion-line-outcome { grid-row: 1; grid-column: 1; }
+  .motion-line-title   { grid-row: 1; grid-column: 2; }
+  .motion-line-meta    { grid-row: 2; grid-column: 1 / -1; padding-left: 0; }
+
+  /* ---- Motion rows ---- */
+  details.motion-row > summary { padding: 14px; }
+  .motion-row-title { font-size: 15px; }
+  .motion-row-meta { gap: 6px 10px; font-size: 11.5px; }
+  .motion-row-foot { gap: 8px; }
+  details.motion-row .motion-detail { padding: 12px 14px 14px; }
+  .motion-detail .m-text { font-size: 14px; }
+
+  /* ---- Vote split bar a bit wider for thumbs to read ---- */
+  .vote-split-bar { width: 64px; }
+
+  /* ---- Members directory tiles ---- */
+  .member-tile { padding: 14px; border-radius: 12px; }
+  .member-avatar { width: 44px; height: 44px; font-size: 14px; }
+  .member-name { font-size: 16px; }
+
+  /* =====================================================
+     TABLES → STACKED CARDS on mobile
+     Applies to <table class="data" data-mobile="cards">.
+     Each <td> uses its data-label attr as a label column.
+     ===================================================== */
+  table.data[data-mobile="cards"] { display: block; background: transparent; }
+  table.data[data-mobile="cards"] thead { display: none; }
+  table.data[data-mobile="cards"] tbody { display: block; }
+  table.data[data-mobile="cards"] tr {
+    display: block;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+  }
+  table.data[data-mobile="cards"] tr.clickable {
+    transition: border-color 150ms ease, transform 150ms ease;
+  }
+  table.data[data-mobile="cards"] tr.clickable:active {
+    transform: scale(0.995);
+    border-color: var(--accent);
+    background: var(--bg-elev);
+  }
+  table.data[data-mobile="cards"] td {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 14px;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--border);
+    text-align: right;
+  }
+  table.data[data-mobile="cards"] td:last-child { border-bottom: none; }
+  table.data[data-mobile="cards"] td.text-right { text-align: right; }
+  table.data[data-mobile="cards"] td::before {
+    content: attr(data-label);
+    color: var(--fg-muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    flex: none;
+    text-align: left;
+  }
+  /* "Title" cell — the member name — promoted to a card heading row. */
+  table.data[data-mobile="cards"] td[data-role="title"] {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    margin-bottom: 6px;
+  }
+  table.data[data-mobile="cards"] td[data-role="title"]::before { display: none; }
+  table.data[data-mobile="cards"] td[data-role="title"] {
+    justify-content: flex-start;
+    text-align: left;
+    font-size: 16px;
+  }
+  table.data[data-mobile="cards"] td[data-role="title"] strong { font-size: 16px; }
+  /* Inline agreement bar inside member-detail table — give it room as its own row */
+  table.data[data-mobile="cards"] td .agreement-bar {
+    width: 100% !important;
+    margin-top: 8px !important;
+  }
+  table.data[data-mobile="cards"] td[data-label="Bar"] {
+    display: block;
+    padding-top: 4px;
+  }
+  table.data[data-mobile="cards"] td[data-label="Bar"]::before { display: none; }
+  table.data[data-mobile="cards"] td[data-label="Bar"] .agreement-bar {
+    height: 8px !important;
+    border-radius: 4px !important;
+  }
+
+  /* Tables that stay in scroll mode get nicer overflow on mobile */
+  .tablewrap {
+    border-radius: 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* =====================================================
+     MOTIONS FILTER STRIP → bottom sheet on mobile
+     The four <details class="filter-group"> elements expand
+     into a sheet anchored to the viewport bottom instead of
+     a clipped absolute dropdown.
+     ===================================================== */
+  .filter-strip {
+    gap: 6px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    margin-left: -16px;
+    margin-right: -16px;
+    padding: 0 16px 4px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .filter-strip::-webkit-scrollbar { display: none; }
+  .filter-group { flex: none; }
+  .filter-group > summary {
+    padding: 10px 14px;
+    min-height: 40px;
+    font-size: 13px;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+  }
+  .filter-group { border-radius: 999px; background: var(--bg-elev); }
+  .filter-group[open] > summary {
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-fg);
+    border-color: var(--accent);
+  }
+  .filter-group[open] > summary .filter-summary { color: var(--accent-fg); opacity: 0.85; }
+  .filter-options {
+    position: fixed;
+    inset: auto 0 0 0;
+    top: auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-width: 0;
+    max-height: 70vh;
+    padding: 14px 14px calc(14px + var(--safe-bottom));
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 -8px 32px rgba(49,69,46,.22);
+    z-index: 30;
+    /* Slide-up entrance — feels native, respects reduced-motion. */
+    animation: sheet-up 220ms cubic-bezier(.2,.8,.2,1);
+  }
+  .filter-options::before {
+    /* Sheet drag handle (visual only). */
+    content: "";
+    display: block;
+    width: 38px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--border-strong);
+    margin: 2px auto 10px;
+  }
+  .filter-options label {
+    padding: 12px 12px;
+    font-size: 15px;
+    min-height: 44px;
+    border-radius: 10px;
+  }
+  /* Backdrop behind any open sheet */
+  body:has(.filter-group[open])::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(27,32,26,.35);
+    z-index: 25;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    pointer-events: none;
+  }
+  @keyframes sheet-up {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
+
+  /* "Clear all" sits below the filter row, not inline */
+  #clear-all { width: 100%; margin-top: 6px; justify-content: center; }
+  .active-chips { gap: 6px; margin: 8px 0 10px; }
+  .chip-remove { padding: 8px 14px; font-size: 13px; min-height: 36px; }
+
+  /* ---- Agreement pair list — stack on mobile (existing rules at 700px) ---- */
+  .pair { padding: 12px 14px; border-radius: 12px; }
+  .pair-bar-wrap { height: 26px; }
+
+  /* ---- Pager buttons go full-width-ish ---- */
+  .pager { flex-wrap: wrap; }
+  .pager .btn { flex: 1; min-width: 40%; justify-content: center; }
+
+  /* ---- Skip link respects safe-area ---- */
+  .skip-link { left: max(8px, var(--safe-left)); top: max(8px, var(--safe-top)); }
+}
+
+/* Slightly tighter at the very narrowest phones */
+@media (max-width: 380px) {
+  main { padding-left: 12px; padding-right: 12px; }
+  .hero-title { font-size: 26px; }
+  h1.page-title { font-size: 24px; }
+  .brand .city { display: none; }
+  .tabbar a { font-size: 10.5px; }
+  .meeting-date { font-size: 18px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

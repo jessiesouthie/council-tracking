@@ -31,7 +31,7 @@
       <section class="section">
         <h2>Roll-call totals</h2>
         <div class="tablewrap">
-          <table class="data">
+          <table class="data" data-mobile="cards">
             <thead>
               <tr><th>Member</th><th>Role</th><th>Tenure</th><th class="text-right">Total votes</th><th class="text-right">Yes</th><th class="text-right">No</th><th class="text-right">Abstain</th><th class="text-right">Yes rate</th></tr>
             </thead>
@@ -77,14 +77,14 @@
             (prior.length ? `<div class="muted" style="font-size:11px;margin-top:2px">prior: ${prior.map(t => `${CT.escapeHtml(t.role)} ${termYears(t)}`).join(", ")}</div>` : "");
           return `
             <tr class="clickable" data-href="member.html?id=${encodeURIComponent(m.id)}">
-              <td><a href="member.html?id=${encodeURIComponent(m.id)}"><strong>${CT.escapeHtml(m.name)}</strong></a></td>
-              <td>${CT.escapeHtml(m.role)}</td>
-              <td class="muted nowrap">${tenureCell}</td>
-              <td class="text-right mono">${s.total}</td>
-              <td class="text-right mono" style="color:var(--ok)">${s.yes}</td>
-              <td class="text-right mono" style="color:var(--danger)">${opposed}</td>
-              <td class="text-right mono muted">${s.abstain + s.excused + s.absent}</td>
-              <td class="text-right mono">${(s.yes_rate*100).toFixed(0)}%</td>
+              <td data-role="title" data-label="Member"><a href="member.html?id=${encodeURIComponent(m.id)}"><strong>${CT.escapeHtml(m.name)}</strong></a></td>
+              <td data-label="Role">${CT.escapeHtml(m.role)}</td>
+              <td data-label="Tenure" class="muted nowrap">${tenureCell}</td>
+              <td data-label="Total votes" class="text-right mono">${s.total}</td>
+              <td data-label="Yes" class="text-right mono" style="color:var(--ok)">${s.yes}</td>
+              <td data-label="No" class="text-right mono" style="color:var(--danger)">${opposed}</td>
+              <td data-label="Abstain" class="text-right mono muted">${s.abstain + s.excused + s.absent}</td>
+              <td data-label="Yes rate" class="text-right mono">${(s.yes_rate*100).toFixed(0)}%</td>
             </tr>
           `;
         }).join("");
