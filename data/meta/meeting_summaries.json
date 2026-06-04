@@ -1,0 +1,177 @@
+{
+  "comment": "Hand-written one-paragraph summaries for meetings where the parser found no motions. Keyed by event_id (the integer after '__' in the PDF filename). The build script merges 'type' and 'summary' onto each meeting record so the site can display them on otherwise-empty cards.",
+  "summaries": {
+    "435": {
+      "type": "Budget Visioning Meeting",
+      "summary": "Off-site visioning session at Wasatch Wing and Clay. Each councilmember walked through their top FY2020 budget priorities — school-zone traffic and parking enforcement, communication and emergency preparedness, transportation (Pony Express Parkway, public transit), parks build-out, zoning and housing, utilities automation, and reserve-fund discipline. No formal action taken."
+    },
+    "388": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "236": {
+      "type": "Joint Work Session — Saratoga Springs / Cedar Fort / Fairfield",
+      "summary": "Tri-city work session with Saratoga Springs, Cedar Fort, and Fairfield plus state legislators and UDOT. Shawn Seager (Mountainland Association of Governments) presented the 2019–2050 Regional Transportation Plan. Discussion only — no policy decisions were made."
+    },
+    "434": {
+      "type": "Strategic Planning Conference (electronic)",
+      "summary": "All-day virtual strategic planning conference. Staff briefed Council on strategic planning fundamentals and core values, the City's long-term financial position, parks and trails build-out, long-term water planning, the water-rate study, transportation (Wride Memorial Highway, Airport Road, transit study), and downtown/future-planning priorities. Discussion-only — Council direction was provided but no votes were taken."
+    },
+    "425": {
+      "type": "Budget Work Session (electronic)",
+      "summary": "Department-by-department FY2022 budget walk-through. Sheriff's Office requested two to three sworn officers; Special Events, PIO, Recorder's Office, Utility Billing, Finance, IT, Economic Development, Parks, Public Utilities, Streets, Library, and Fleet each presented personnel, equipment, and capital needs (Downtown Master Plan, Trails Master Plan, Outdoor Recreation Grant trailhead, vote-by-mail elections, lectern and digital signage upgrades, etc.)."
+    },
+    "317": {
+      "type": "Budget Work Session",
+      "summary": "FY2021–22 budget discussion. Topics included Class C road-fund decrease, festival funding, MDA-review process, Sheriff's Office support and VIPS equipment, paving Wasatch Wing and Clay Road, the truck/equipment storage building, and a proposal to raise the General Fund reserve from 25% to 35% (or 27.5%) to balance bonding against project priorities (sewer plant expansion, Mid Valley Road, Well One, public-safety building land)."
+    },
+    "385": {
+      "type": "Special Session — Budget Assumptions Work Session",
+      "summary": "Finance Director walked Council through proposed budget assumptions: property-tax revenue per capita, the 3% wage placeholder, Mayor/Council compensation, URS contribution change, and the impact of City growth on department staffing. Significant discussion on Sheriff's Department staffing (goal of one officer per 1,800 residents), bringing the City Attorney in-house, and adding an executive management analyst and content-marketing writer."
+    },
+    "367": {
+      "type": "Special Session — Budget Assumptions Work Session",
+      "summary": "Capital Projects review for FY2023. Council discussed reallocating Well 1 funds to a new well, petroglyph fencing, a potential new library/community center near Cory Wride Memorial Park, library-certification grant funding, paving the Community Development yard, City Hall land acquisition, a City Facilities Master Plan, City Center streetscape landscaping, the Wasatch Wing and Clay interlocal cost share, and water/sewer impact-fee project status."
+    },
+    "334": {
+      "type": "Special Session — Budget Assumptions Work Session",
+      "summary": "Capital-projects ranking with ~$10.8M of unallocated General Fund balance. Discussion covered a Long-Term Facilities Plan consultant; right-of-way for Mid Valley Road, Hidden Valley Parkway, and Lone Tree Parkway to Old Airport Road; the High-T intersection and traffic signals at Stone Bridge Lane and Woodhaven Boulevard; wastewater headworks expansion and rapid-infiltration basin rehab; Pony Express Regional Trail addition to the impact-fee plan; and three additional Sheriff's positions (with a fourth advocated for January)."
+    },
+    "320": {
+      "type": "Special Session — Budget Work Session",
+      "summary": "Finance Director presented mid-cycle budget changes. Discussion covered fleet-vehicle needs and the optimum fleet size, a citizen response-management software contract (≈$30,500 initial / ~$21,000/yr), raising the previously-approved sewer treatment plant headworks budget from $2M to $3M, and the Wastewater Fund land-purchase option agreement."
+    },
+    "462": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "441": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "427": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "415": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "346": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "331": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "291": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "279": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "269": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "251": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "214": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "203": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "193": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "438": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "409": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "381": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "362": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "354": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "333": {
+      "type": "Special Session — Budget Work Session",
+      "summary": "Finance Director presented the FY2025 tentative budget rollout. Highlights: 14 new positions (~$930K wages and benefits — 9 full-time, 2 part-time, 3 seasonal), a 3% market adjustment plus bringing all employees to 85% of pay-band midpoint (~$300K), $1.49M of one-time funding and equipment requests, OpenGov financial software cost trade-offs (~$100K/yr + $95K implementation), Mayor/Council compensation review, 2025 fireworks funding from reserves, and converting the long-range planner to full-time."
+    },
+    "315": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "310": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "302": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "294": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "166": {
+      "type": "City Council Meeting",
+      "summary": "Minutes are available only as a scanned (image-only) PDF, so no text could be extracted for a summary. Open the source PDF on the CivicClerk portal to view the meeting contents."
+    },
+    "469": {
+      "type": "Special Session — Joint Work Session with the Planning Commission",
+      "summary": "Joint work session with the Planning Commission. Planning Director Brandon Larson introduced consultants from GSBS Architecture for a discussion on the General Plan Future Land Use Map (FLUM), separating land-use and transportation maps, MDA coverage (~60%), open-space categories, and walkable-community planning. Elizabeth Fewkes presented the General Plan outline, and MHTN Architects presented updates to the Downtown Area Plan."
+    },
+    "580": {
+      "type": "Joint Work Session — Regional Transportation",
+      "summary": "Multi-city work session at Fox Hollow Golf Course (American Fork) with Cedar Fort, Fairfield, Lehi, Saratoga Springs, UTA, and UDOT. UDOT and Hales Engineering presented the Point-of-the-Mountain and north Utah Lake transportation focus areas, projecting ~670,000 buildout population and proposing a collector-distributor system on I-15. Discussion centered on growth-projection accuracy, EIS coordination through MAG, and the need for a unified priority list and timeline. Minutes provided by American Fork City."
+    },
+    "582": {
+      "type": "Budget Work Session",
+      "summary": "City Manager Ben Reeves opened the FY2026 budget cycle by outlining Eagle Mountain's six Strategic Goals: Diverse Economic Growth, Robust Infrastructure Networks, Unique Reputational Evolution, Proactive Generational Planning, Interactive Environmental Stewardship, and Dynamic Service Enhancement. Discussion-only — no votes taken."
+    },
+    "583": {
+      "type": "Budget Work Session",
+      "summary": "Director of Administrative Services Kimberly Ruesch reviewed the FY2026 revenue picture — YTD budget amendments through the 4th amendment, revenues vs. expenditures by fund, General Fund revenue by major type, and revenue assumptions. Council discussed additional funding options: Recreation/Arts/Parks (RAP) Tax, Library Tax, Transportation Utility Fund (TUF), and Municipal Energy Tax (MET). Council then adjourned to and returned from closed session before adjourning the meeting."
+    },
+    "584": {
+      "type": "Budget Work Session",
+      "summary": "Personnel-focused budget session. HR Manager Valenzuela and Administrative Services Director Ruesch reviewed the compensation plan, market adjustments, benefits, retirement, personnel requests, the Utah County Sheriff's contract, and one-time expense requests, including a recent salary survey. Finance/Management Analyst Dela Pena walked Council through utility-rate scenarios that could support additional personnel, followed by discussion of a potential RAP Tax."
+    },
+    "743": {
+      "type": "Special Session — Budget Work Session",
+      "summary": "Chief Deputy Sheriff Erik Knutzen presented Sheriff's Office options for the upcoming budget, including potential additional deputy positions. Assistant City Engineer David Salazar proposed road and infrastructure projects: SR-73 improvements and the High \"T\" intersection, the trailhead and Pony Express Parkway signal, Silverlake and Woodhaven turn lanes, Ranches Parkway median removal, Pole Canyon and Pony Express Parkway, Mt. Airey widening, and a South City Connectivity Study."
+    },
+    "746": {
+      "type": "Strategic and Budget Planning Retreat (St. George)",
+      "summary": "Two-day retreat at the Hilton Garden Inn in St. George. Council immediately entered closed session, then reconvened for substantive work on the Strategic Vision, Mission, and Values; revenue generation; the budget; Council-initiated priorities; governmental authority; economic-development direction; and review/purge of the Legislative Priorities List. Mayor Gray also briefed Council on Unified Fire Authority and Unified Fire Service Authority context."
+    },
+    "744": {
+      "type": "Special Session — Budget Work Session",
+      "summary": "FY2027 capital-project preview. City Engineer Vince Hogge presented water, wastewater, and stormwater projects in progress. Assistant Public Works Director Zac Hilton covered parks projects and FY2027 plans. Deputy City Manager Steve Mumford discussed facilities and administration projects for 2027. Council then adjourned to closed session before adjourning from the conference room."
+    },
+    "748": {
+      "type": "Special Session — Budget Work Session",
+      "summary": "Mayor Gray read the Proposed Property Tax Impact Schedule (the tentative FY2026–27 budget includes a proposed property-tax increase for public safety). Staff and Council then reviewed the tentative FY2026–27 budget with primary focus on tentative employee position requests, operational needs, department priorities, and the related financial impacts."
+    }
+  }
+}

@@ -160,6 +160,12 @@
             </li>`;
         }).join("");
 
+        const typeLine = meeting.type
+          ? `<div class="meeting-type">${CT.escapeHtml(meeting.type)}</div>`
+          : "";
+        const emptyBody = meeting.summary
+          ? `${typeLine}<p class="meeting-summary">${CT.escapeHtml(meeting.summary)}</p>`
+          : '<p class="muted" style="margin:8px 0 0">No motions parsed.</p>';
         return `
           <article class="meeting-card" data-id="${meeting.id}" tabindex="0" role="link" aria-label="Meeting on ${CT.fmtDate(meeting.date)}">
             <header class="meeting-card-head">
@@ -169,7 +175,7 @@
               </div>
               <a class="muted" href="meetings.html?id=${meeting.id}" aria-label="Open meeting ${CT.fmtDate(meeting.date)}">Open →</a>
             </header>
-            ${motions.length === 0 ? '<p class="muted" style="margin:8px 0 0">No motions parsed.</p>' : `
+            ${motions.length === 0 ? emptyBody : `
               <ul class="motion-line-list">${items}</ul>
               ${remaining > 0 ? `<p class="muted" style="margin:8px 0 0;font-size:12px">+ ${remaining} more motion${remaining===1?"":"s"}</p>` : ""}
             `}
@@ -192,10 +198,19 @@
         } catch {}
 
         const motions = data.motions.filter(m => m.meeting_id === id);
+        const typeLine = meeting.type
+          ? `<p class="meeting-type" style="margin:0 0 4px">${CT.escapeHtml(meeting.type)}</p>`
+          : "";
+        const summarySection = meeting.summary
+          ? `<section class="section"><h2>Summary</h2><p class="meeting-summary">${CT.escapeHtml(meeting.summary)}</p></section>`
+          : "";
         root.innerHTML = `
           <p style="margin-top:0"><a href="meetings.html">← All meetings</a></p>
+          ${typeLine}
           <h1 class="page-title">${CT.fmtDate(meeting.date)}</h1>
           <p class="page-sub">${motions.length} motion${motions.length === 1 ? "" : "s"} · ${meeting.ord_count} ordinance lines · ${meeting.res_count} resolution lines · <span class="mono muted">${CT.escapeHtml(meeting.source_file)}</span></p>
+
+          ${summarySection}
 
           <section class="section">
             <h2>Motions</h2>

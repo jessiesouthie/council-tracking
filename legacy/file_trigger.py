@@ -14,8 +14,9 @@ import sys
 import time
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parent
-DEFAULT_EXTRACT = PROJECT_ROOT / "extract_meeting.py"
+SCRIPT_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPT_DIR.parent
+DEFAULT_EXTRACT = SCRIPT_DIR / "extract_meeting.py"
 DEFAULT_WATCH = PROJECT_ROOT / "data" / "pdfs"
 DEFAULT_OUT = PROJECT_ROOT / "output" / "eagle_mountain_extract.xlsx"
 

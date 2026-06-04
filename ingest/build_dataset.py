@@ -54,6 +54,25 @@ from .normalize import (  # noqa: E402
 RAW_DIR = ROOT / "data" / "raw"
 PARSED_DIR = ROOT / "data" / "parsed"
 DOCS_DATA = ROOT / "docs" / "data.json"
+SUMMARIES_FILE = ROOT / "data" / "meta" / "meeting_summaries.json"
+
+
+def load_meeting_summaries() -> dict[int, dict]:
+    """Hand-written summaries for meetings the parser left empty (no motions).
+    Keyed by integer event_id; values carry 'type' and 'summary' strings."""
+    if not SUMMARIES_FILE.exists():
+        return {}
+    raw = json.loads(SUMMARIES_FILE.read_text())
+    out: dict[int, dict] = {}
+    for eid, entry in (raw.get("summaries") or {}).items():
+        try:
+            out[int(eid)] = {
+                "type": entry.get("type") or "",
+                "summary": entry.get("summary") or "",
+            }
+        except ValueError:
+            continue
+    return out
 
 
 def parse_one(pdf: Path) -> dict:
@@ -137,6 +156,7 @@ def main() -> int:
     resolve = make_member_resolver(members_doc)
     is_ignored = make_ignore_check(members_doc)
     tag = make_tagger(tags_doc)
+    summaries = load_meeting_summaries()
 
     pdfs = sorted(RAW_DIR.glob("*.pdf"))
     if args.only:
@@ -169,6 +189,11 @@ def main() -> int:
             "ord_count": len(r.get("ordinances", [])),
             "res_count": len(r.get("resolutions", [])),
         }
+        # Hand-written summary for meetings the parser couldn't read motions from.
+        # Applied even when motions are non-empty so curated context survives a re-parse.
+        if eid in summaries:
+            meeting_record["type"] = summaries[eid]["type"]
+            meeting_record["summary"] = summaries[eid]["summary"]
         meetings.append(meeting_record)
 
         # per-meeting full payload, including raw ord/res lines for drill-in
@@ -283,7 +308,7 @@ def main() -> int:
             for t in tags_doc["tags"]
         ],
         "meetings": sorted(meetings, key=lambda m: m["date"], reverse=True),
-        "motions": motions,
+        "motions": sorted(motions, key=lambda m: (m["date"], m["id"]), reverse=True),
         "stats": {
             "by_member": by_member,
             "by_tag_year": {k: dict(v) for k, v in by_tag_year.items()},

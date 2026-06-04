@@ -616,6 +616,20 @@ details.motion-row[open] {
   white-space: nowrap;
   padding-top: 4px;
 }
+.meeting-type {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 4px 0 6px;
+}
+.meeting-summary {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text);
+}
 
 .motion-line-list {
   list-style: none;

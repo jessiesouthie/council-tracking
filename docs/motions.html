@@ -187,7 +187,7 @@
             if (!hay.includes(q)) return false;
           }
           return true;
-        });
+        }).sort((a,b) => (b.date||"").localeCompare(a.date||"") || b.id - a.id);
 
         // Chips
         const chips = activeChips();
