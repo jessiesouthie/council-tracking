@@ -61,7 +61,7 @@
         root.innerHTML = `
           <p style="margin-top:0"><a href="members.html">← All members</a></p>
           <h1 class="page-title">${CT.escapeHtml(member.name)}</h1>
-          <p class="page-sub">${CT.escapeHtml(member.role)} · ${CT.fmtDate(member.tenure_start)}${member.tenure_end ? " – " + CT.fmtDate(member.tenure_end) : " – present"}${member.previous_role ? ` · ${CT.escapeHtml(member.previous_role)}` : ""}</p>
+          ${renderTerms(member)}
 
           <section class="section">
             <div class="cards">
@@ -128,6 +128,19 @@
             </details>
           `;
         }).join("");
+
+        function renderTerms(m) {
+          const terms = m.terms || [];
+          if (!terms.length) {
+            return `<p class="page-sub">${CT.escapeHtml(m.role || "")}</p>`;
+          }
+          const fmt = (t) => `${CT.escapeHtml(t.role)} · ${CT.fmtDate(t.start)}${t.end ? " – " + CT.fmtDate(t.end) : " – present"}`;
+          const [head, ...rest] = terms;
+          const prior = rest.length
+            ? `<p class="page-sub muted" style="margin-top:2px">Previously: ${rest.map(fmt).join(" · ")}</p>`
+            : "";
+          return `<p class="page-sub">${fmt(head)}</p>${prior}`;
+        }
       })();
     </script>
   </body>

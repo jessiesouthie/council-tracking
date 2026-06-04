@@ -191,6 +191,8 @@
         return `<div class="member-row${dim ? ' dim' : ''}">${members.map(m => {
           const s = data.stats.by_member[m.id] || { total:0, yes_rate:0 };
           const tenure = dim ? `${CT.fmtDate(m.tenure_start)} – ${CT.fmtDate(m.tenure_end)}` : `since ${CT.fmtDate(m.tenure_start)}`;
+          const prior = (m.terms || []).slice(1);
+          const priorLine = prior.length ? `<div class="member-stat muted">Prior: ${prior.map(t => `${CT.escapeHtml(t.role)} ${yearRange(t)}`).join(", ")}</div>` : "";
           return `
             <a class="member-tile" href="member.html?id=${encodeURIComponent(m.id)}">
               <div class="member-avatar" aria-hidden="true">${CT.escapeHtml(initials(m.name))}</div>
@@ -198,9 +200,15 @@
                 <div class="member-name">${CT.escapeHtml(m.name)}</div>
                 <div class="member-role">${CT.escapeHtml(m.role)} · <span class="muted">${tenure}</span></div>
                 <div class="member-stat">${s.total} votes · ${(s.yes_rate*100).toFixed(0)}% yes</div>
+                ${priorLine}
               </div>
             </a>`;
         }).join("")}</div>`;
+      }
+      function yearRange(term) {
+        const a = (term.start || "").slice(0,4);
+        const b = term.end ? (term.end || "").slice(0,4) : "present";
+        return a && a === b ? a : `${a}–${b}`;
       }
       function initials(name) {
         const p = (name||"").split(/\s+/).filter(Boolean);

@@ -72,11 +72,14 @@
         const rows = members.map(m => {
           const s = data.stats.by_member[m.id] || { total:0,yes:0,no:0,nay:0,abstain:0,excused:0,absent:0,yes_rate:0 };
           const opposed = s.no + (s.nay || 0);
+          const prior = (m.terms || []).slice(1);
+          const tenureCell = `${CT.fmtDate(m.tenure_start)}${m.tenure_end ? "&ndash; " + CT.fmtDate(m.tenure_end) : "&ndash; present"}` +
+            (prior.length ? `<div class="muted" style="font-size:11px;margin-top:2px">prior: ${prior.map(t => `${CT.escapeHtml(t.role)} ${termYears(t)}`).join(", ")}</div>` : "");
           return `
             <tr class="clickable" data-href="member.html?id=${encodeURIComponent(m.id)}">
               <td><a href="member.html?id=${encodeURIComponent(m.id)}"><strong>${CT.escapeHtml(m.name)}</strong></a></td>
               <td>${CT.escapeHtml(m.role)}</td>
-              <td class="muted nowrap">${CT.fmtDate(m.tenure_start)}${m.tenure_end ? "&ndash; " + CT.fmtDate(m.tenure_end) : "&ndash; present"}</td>
+              <td class="muted nowrap">${tenureCell}</td>
               <td class="text-right mono">${s.total}</td>
               <td class="text-right mono" style="color:var(--ok)">${s.yes}</td>
               <td class="text-right mono" style="color:var(--danger)">${opposed}</td>
@@ -164,6 +167,12 @@
       function initials(name) {
         const p = (name||"").split(/\s+/).filter(Boolean);
         return ((p[0]||"")[0] + (p[p.length-1]||"")[0] || "?").toUpperCase();
+      }
+
+      function termYears(t) {
+        const a = (t.start || "").slice(0,4);
+        const b = t.end ? (t.end || "").slice(0,4) : "present";
+        return a && a === b ? a : `${a}–${b}`;
       }
     </script>
   </body>

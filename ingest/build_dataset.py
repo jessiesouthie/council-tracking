@@ -12,7 +12,9 @@ Schema of docs/data.json:
     "generated_at": ISO timestamp,
     "source": "Eagle Mountain CivicClerk portal",
     "counts": { meetings, motions, votes, ord_lines, res_lines },
-    "members": [{id,name,role,tenure_start,tenure_end,previous_role?}],
+    "members": [{id,name,role,tenure_start,tenure_end,
+                 terms:[{role,start,end}]}],   # terms newest-first; top-level
+                                               # role/tenure_* mirror terms[0]
     "tags":    [{id,label}],
     "meetings":[{id,date,name,source_file,motion_count,ord_count,res_count}],
     "motions": [
@@ -299,10 +301,7 @@ def main() -> int:
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "source": "Eagle Mountain CivicClerk portal",
         "counts": counts,
-        "members": [
-            {k: v for k, v in m.items() if k != "aliases"}
-            for m in members_doc["members"]
-        ],
+        "members": [_member_for_output(m) for m in members_doc["members"]],
         "tags": [
             {"id": t["id"], "label": t["label"], "motion_count": tag_counts.get(t["id"], 0)}
             for t in tags_doc["tags"]
@@ -334,6 +333,24 @@ def main() -> int:
         for n, c in sorted(all_unresolved.items(), key=lambda kv: -kv[1])[:10]:
             print(f"  {n!r:35s}  x{c}")
     return 0
+
+
+def _member_for_output(m: dict) -> dict:
+    """Build the public member record. Terms are sorted newest-first so
+    consumers can treat terms[0] as the current/most-recent service, and the
+    legacy top-level role/tenure_* fields mirror that entry."""
+    terms = sorted(
+        m.get("terms") or [],
+        key=lambda t: (t.get("start") or ""),
+        reverse=True,
+    )
+    out = {"id": m["id"], "name": m["name"], "terms": terms}
+    if terms:
+        cur = terms[0]
+        out["role"] = cur.get("role") or ""
+        out["tenure_start"] = cur.get("start")
+        out["tenure_end"] = cur.get("end")
+    return out
 
 
 def _agreeable(vote: str) -> str:

@@ -1,69 +1,74 @@
 {
-  "_doc": "Canonical councilmember records. The `aliases` list maps every name variant we have seen in the parsed minutes (incl. OCR typos like 'Brett Wight') to a single canonical id. Add a new entry whenever a new council member joins; extend `aliases` when the OCR introduces a new mis-spelling.",
+  "_doc": "Canonical councilmember records. Each member carries a `terms` array so people who held more than one role (e.g. Jared Gray served as a councilmember before becoming mayor) keep the full history. Term dates are derived from public sources (Eagle Mountain City government pages, certified Utah County election results, candidate websites, and council meeting minutes). Utah municipal terms run Jan 1 of the year after the November election; appointments use the actual swearing-in date when known. The `aliases` list maps every name variant we have seen in the parsed minutes (incl. OCR typos like 'Brett Wight') to a single canonical id. Add a new entry whenever a new council member joins; extend `aliases` when the OCR introduces a new mis-spelling; append to `terms` when someone changes role.",
   "members": [
     {
       "id": "brett-wright",
       "name": "Brett Wright",
-      "role": "Councilmember",
-      "tenure_start": "2024-01-01",
-      "tenure_end": null,
+      "terms": [
+        { "role": "Councilmember", "start": "2022-01-01", "end": "2025-12-31" },
+        { "role": "Councilmember", "start": "2026-01-01", "end": "2029-12-31" }
+      ],
       "aliases": ["Brett Wright", "Brett Wight"]
     },
     {
       "id": "melissa-clark",
       "name": "Melissa Clark",
-      "role": "Councilmember",
-      "tenure_start": "2024-01-01",
-      "tenure_end": null,
+      "terms": [
+        { "role": "Councilmember", "start": "2018-01-01", "end": "2021-12-31" },
+        { "role": "Councilmember", "start": "2024-01-01", "end": "2027-12-31" }
+      ],
       "aliases": ["Melissa Clark", "Meliss Clark"]
     },
     {
       "id": "rich-wood",
       "name": "Rich Wood",
-      "role": "Councilmember",
-      "tenure_start": "2024-01-01",
-      "tenure_end": null,
+      "terms": [
+        { "role": "Councilmember", "start": "2024-01-01", "end": "2027-12-31" }
+      ],
       "aliases": ["Rich Wood"]
     },
     {
       "id": "jared-gray",
       "name": "Jared Gray",
-      "role": "Mayor",
-      "tenure_start": "2026-01-01",
-      "tenure_end": null,
-      "previous_role": "Councilmember 2024-2025",
+      "terms": [
+        { "role": "Councilmember", "start": "2020-01-01", "end": "2023-12-31" },
+        { "role": "Councilmember", "start": "2024-01-01", "end": "2025-12-31" },
+        { "role": "Mayor", "start": "2026-01-01", "end": "2029-12-31" }
+      ],
       "aliases": ["Jared Gray", "Jared Gray*", "Jared Grag", "Mayor Gray"]
     },
     {
       "id": "donna-burnham",
       "name": "Donna Burnham",
-      "role": "Councilmember",
-      "tenure_start": "2024-01-01",
-      "tenure_end": "2025-12-31",
+      "terms": [
+        { "role": "Councilmember", "start": "2018-01-01", "end": "2021-12-31" },
+        { "role": "Councilmember", "start": "2022-01-01", "end": "2025-12-31" }
+      ],
       "aliases": ["Donna Burnham", "Donna"]
     },
     {
       "id": "craig-whiting",
       "name": "Craig Whiting",
-      "role": "Councilmember",
-      "tenure_start": "2026-01-01",
-      "tenure_end": null,
+      "terms": [
+        { "role": "Councilmember", "start": "2026-01-01", "end": "2029-12-31" }
+      ],
       "aliases": ["Craig Whiting"]
     },
     {
       "id": "zachory-huish",
       "name": "Zachory Huish",
-      "role": "Councilmember",
-      "tenure_start": "2026-01-01",
-      "tenure_end": null,
+      "terms": [
+        { "role": "Councilmember", "start": "2026-01-15", "end": "2027-12-31", "note": "Appointed Jan 15, 2026 to fill Jared Gray's unexpired council seat." }
+      ],
       "aliases": ["Zachory Huish"]
     },
     {
       "id": "tom-westmoreland",
       "name": "Tom Westmoreland",
-      "role": "Mayor",
-      "tenure_start": "2024-01-01",
-      "tenure_end": "2025-12-31",
+      "terms": [
+        { "role": "Mayor", "start": "2018-01-01", "end": "2021-12-31" },
+        { "role": "Mayor", "start": "2022-01-01", "end": "2025-12-31" }
+      ],
       "aliases": ["Tom Westmoreland", "Mayor Westmorland"]
     }
   ],
