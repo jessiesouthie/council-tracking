@@ -104,13 +104,13 @@
             `<a class="tag accent" href="motions.html?tag=${encodeURIComponent(t.id)}">${CT.escapeHtml(t.label)} <span class="muted">${t.motion_count}</span></a>`
           ).join("");
 
-        // Recent meetings — first 3 as full cards
+        // Recent meetings — first 4 as full cards
         const motionsByMeeting = new Map();
         for (const m of data.motions) {
           if (!motionsByMeeting.has(m.meeting_id)) motionsByMeeting.set(m.meeting_id, []);
           motionsByMeeting.get(m.meeting_id).push(m);
         }
-        const recent = data.meetings.slice(0, 3);
+        const recent = data.meetings.slice(0, 4);
         document.getElementById("recent-grid").innerHTML = recent.map(m =>
           renderMeetingCard(m, motionsByMeeting.get(m.id) || [])
         ).join("");
@@ -178,6 +178,7 @@
               </div>
               <a class="muted" href="meetings.html?id=${meeting.id}" aria-label="Open meeting ${CT.fmtDate(meeting.date)}">Open →</a>
             </header>
+            ${meeting.summary ? `<p class="meeting-summary" style="margin:8px 0 0">${CT.escapeHtml(meeting.summary)}</p>` : ''}
             ${motions.length === 0 ? '<p class="muted" style="margin:8px 0 0">No motions parsed.</p>' : `
               <ul class="motion-line-list">${items}</ul>
               ${remaining > 0 ? `<p class="muted" style="margin:8px 0 0;font-size:12px">+ ${remaining} more motion${remaining===1?"":"s"}</p>` : ""}
