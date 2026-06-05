@@ -121,8 +121,8 @@
         });
 
         // Council members — current vs past split
-        const current = data.members.filter(m => !m.tenure_end);
-        const past = data.members.filter(m => m.tenure_end);
+        const current = data.members.filter(m => CT.isCurrentMember(m));
+        const past = data.members.filter(m => !CT.isCurrentMember(m));
         document.getElementById("member-current").innerHTML = renderMemberRow(current, data);
         if (past.length) {
           document.getElementById("member-past-wrap").hidden = false;

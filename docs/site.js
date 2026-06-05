@@ -65,6 +65,14 @@
     return String(s).replace(BOILERPLATE, "$1 ").replace(/\s+/g, " ").trim();
   }
 
+  // A member is "current" if their most recent term hasn't ended yet.
+  // ISO YYYY-MM-DD strings compare correctly lexicographically.
+  function isCurrentMember(m) {
+    if (!m?.tenure_end) return true;
+    const today = new Date().toISOString().slice(0, 10);
+    return m.tenure_end >= today;
+  }
+
   function fmtDate(iso) {
     if (!iso) return "";
     try {
@@ -173,6 +181,7 @@
     memberName,
     tagLabel,
     cleanTitle,
+    isCurrentMember,
     fmtDate,
     classifyOutcome,
     outcomePill,

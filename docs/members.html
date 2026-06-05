@@ -68,7 +68,9 @@
       })();
 
       function renderRows(data) {
-        const members = data.members.filter(m => m.role === "Councilmember" || m.role === "Mayor");
+        const members = data.members.filter(m =>
+          (m.role === "Councilmember" || m.role === "Mayor") && CT.isCurrentMember(m)
+        );
         const rows = members.map(m => {
           const s = data.stats.by_member[m.id] || { total:0,yes:0,no:0,nay:0,abstain:0,excused:0,absent:0,yes_rate:0 };
           const opposed = s.no + (s.nay || 0);
@@ -104,6 +106,7 @@
 
         const active = data.members.filter(m =>
           (m.role === "Councilmember" || m.role === "Mayor") &&
+          CT.isCurrentMember(m) &&
           (data.stats.by_member[m.id]?.total || 0) >= 5
         );
         const idToMember = Object.fromEntries(active.map(m => [m.id, m]));
