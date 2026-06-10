@@ -4,9 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Member · Council Tracking</title>
-    <meta name="theme-color" content="#31452E" />
+    <meta name="description" content="Roll-call voting record and agreement scores for an Eagle Mountain City Council member." />
+    <meta name="theme-color" content="#31452E" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1B201A" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Council Tracking" />
+    <meta property="og:title" content="Member · Council Tracking" />
+    <meta property="og:description" content="Roll-call voting record and agreement scores for an Eagle Mountain City Council member." />
+    <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Member · Council Tracking" />
+    <meta name="twitter:description" content="Roll-call voting record and agreement scores for an Eagle Mountain City Council member." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Lato:wght@400;700&display=swap" />
     <link rel="stylesheet" href="site.css" />
   </head>
   <body>
@@ -14,7 +27,7 @@
     <header class="topbar">
       <a class="brand" href="index.html">
         <span class="brand-mark" aria-hidden="true">CT</span>
-        <div><h1>Council Tracking</h1><p class="city">Eagle Mountain, UT</p></div>
+        <div><p class="brand-title">Council Tracking</p><p class="city">Eagle Mountain, UT</p></div>
       </a>
       <nav class="nav" aria-label="Primary">
         <a href="index.html" data-nav="index.html">Home</a>
@@ -41,6 +54,10 @@
           root.innerHTML = `<div class="error-block">No member with id <code>${CT.escapeHtml(id||"")}</code>. <a href="members.html">Back to members.</a></div>`;
           return;
         }
+        CT.setMeta({
+          title: `${member.name} · Council Tracking`,
+          description: `Roll-call voting record, agreement scores, and vote history for ${member.name} on the Eagle Mountain City Council.`,
+        });
         const s = data.stats.by_member[id] || { total:0,yes:0,no:0,nay:0,abstain:0,excused:0,absent:0,yes_rate:0,by_tag:{} };
         const opposed = s.no + (s.nay || 0);
         const myMotions = data.motions.filter(m => (m.votes||[]).some(v => v.member_id === id))
@@ -77,7 +94,7 @@
             <h2>Agreement with colleagues</h2>
             ${ag.length ? `
               <div class="tablewrap"><table class="data" data-mobile="cards">
-                <thead><tr><th>Member</th><th class="text-right">Agreement</th><th class="text-right">Shared votes</th><th></th></tr></thead>
+                <thead><tr><th>Member</th><th class="text-right">Agreement</th><th class="text-right">Shared votes</th><th><span class="sr-only">Agreement bar</span></th></tr></thead>
                 <tbody>
                   ${ag.map(x => `
                     <tr>

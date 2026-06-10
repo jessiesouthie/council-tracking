@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Lato:wght@400;700&display=swap');
+/* Fonts are loaded via <link rel="preconnect"> + <link rel="stylesheet"> in each
+   page <head> (not @import here) so the font request doesn't wait on this CSS to
+   parse first — shaving a hop off the render-blocking chain. */
 
 :root {
   /* Eagle Mountain palette: forest #31452E / cream #F2E9D8 / orange #D9753B / charcoal #3D403C.
@@ -157,7 +159,7 @@ a:hover { text-decoration: underline; }
   letter-spacing: .5px;
   font-size: 12px;
 }
-.brand h1 {
+.brand .brand-title {
   font-family: var(--serif);
   font-size: 20px;
   font-weight: 600;
@@ -167,7 +169,7 @@ a:hover { text-decoration: underline; }
   position: relative;
   padding-bottom: 4px;
 }
-.brand h1::after {
+.brand .brand-title::after {
   /* Park-sign accent stripe: tiny burnt-orange rule under the wordmark. */
   content: "";
   display: block;
@@ -346,8 +348,15 @@ table.data thead th {
   font-weight: 700;
 }
 table.data tr:last-child td { border-bottom: none; }
-table.data tbody tr.clickable { cursor: pointer; }
+table.data tbody tr.clickable { cursor: pointer; position: relative; }
 table.data tbody tr.clickable:hover { background: var(--accent-soft); }
+/* Stretch the row's title link across the whole row so the keyboard-reachable
+   anchor and the mouse row-click target are one and the same. */
+table.data tbody tr.clickable td[data-role="title"] a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
 
 .tag {
   display: inline-block;
@@ -433,6 +442,20 @@ table.data tbody tr.clickable:hover { background: var(--accent-soft); }
   color: var(--danger);
   padding: 14px 18px;
   border-radius: var(--radius);
+}
+
+/* Visually hidden but available to screen readers (e.g. labels for icon-only
+   or otherwise empty table headers). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .muted { color: var(--fg-muted); }
@@ -597,6 +620,7 @@ details.motion-row[open] {
   gap: 16px;
 }
 .meeting-card {
+  position: relative;
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -604,6 +628,19 @@ details.motion-row[open] {
   box-shadow: var(--shadow);
   cursor: pointer;
   transition: border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+/* Stretched-link pattern: the "Open" link is the single real anchor, but its
+   ::after covers the whole card so the entire surface is clickable for mouse
+   while keyboard/SR users get exactly one semantic link (no nested-link role). */
+.meeting-card .card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.meeting-card:has(.card-link:focus-visible) {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
 .meeting-card:hover {
   border-color: var(--accent);
@@ -989,8 +1026,8 @@ details.motion-row .motion-detail {
   }
   .topbar .nav { display: none; }
   .brand-mark { width: 28px; height: 28px; font-size: 11px; border-radius: 6px; }
-  .brand h1 { font-size: 17px; padding-bottom: 3px; }
-  .brand h1::after { width: 18px; }
+  .brand .brand-title { font-size: 17px; padding-bottom: 3px; }
+  .brand .brand-title::after { width: 18px; }
   .brand .city { font-size: 10px; margin-top: 2px; }
 
   /* ---- Main padding + room for the fixed bottom tabbar ---- */

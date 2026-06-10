@@ -167,6 +167,31 @@
     return Object.fromEntries(u.searchParams.entries());
   }
 
+  // Update the document title + description on data-driven pages so deep links
+  // (a member, a single meeting) share with meaningful titles instead of the
+  // generic static one. Keeps og:/twitter: in sync for social previews.
+  function setMetaTag(selector, attr, key, content) {
+    let el = document.head.querySelector(selector);
+    if (!el) {
+      el = document.createElement("meta");
+      el.setAttribute(attr, key);
+      document.head.appendChild(el);
+    }
+    el.setAttribute("content", content);
+  }
+  function setMeta({ title, description } = {}) {
+    if (title) {
+      document.title = title;
+      setMetaTag('meta[property="og:title"]', "property", "og:title", title);
+      setMetaTag('meta[name="twitter:title"]', "name", "twitter:title", title);
+    }
+    if (description) {
+      setMetaTag('meta[name="description"]', "name", "description", description);
+      setMetaTag('meta[property="og:description"]', "property", "og:description", description);
+      setMetaTag('meta[name="twitter:description"]', "name", "twitter:description", description);
+    }
+  }
+
   // Boot every page: mount mobile nav, paint nav highlight, register SW.
   document.addEventListener("DOMContentLoaded", () => {
     mountTabbar();
@@ -188,5 +213,6 @@
     voteChip,
     tagChips,
     paramsFromUrl,
+    setMeta,
   };
 })();

@@ -5,10 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Eagle Mountain Council Tracking</title>
     <meta name="description" content="See every motion and roll-call vote from Eagle Mountain City Council meetings, searchable by topic, member, or date." />
-    <meta name="theme-color" content="#31452E" />
+    <meta name="theme-color" content="#31452E" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1B201A" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Council Tracking" />
+    <meta property="og:title" content="Eagle Mountain Council Tracking" />
+    <meta property="og:description" content="See every motion and roll-call vote from Eagle Mountain City Council meetings, searchable by topic, member, or date." />
+    <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Eagle Mountain Council Tracking" />
+    <meta name="twitter:description" content="See every motion and roll-call vote from Eagle Mountain City Council meetings, searchable by topic, member, or date." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Lato:wght@400;700&display=swap" />
     <link rel="stylesheet" href="site.css" />
   </head>
   <body>
@@ -17,7 +29,7 @@
       <a class="brand" href="index.html">
         <span class="brand-mark" aria-hidden="true">CT</span>
         <div>
-          <h1>Council Tracking</h1>
+          <p class="brand-title">Council Tracking</p>
           <p class="city">Eagle Mountain, UT</p>
         </div>
       </a>
@@ -114,11 +126,6 @@
         document.getElementById("recent-grid").innerHTML = recent.map(m =>
           renderMeetingCard(m, motionsByMeeting.get(m.id) || [])
         ).join("");
-        document.querySelectorAll('.meeting-card').forEach(card => {
-          const go = () => { location.href = `meetings.html?id=${card.dataset.id}`; };
-          card.addEventListener('click', (e) => { if (e.target.closest('a')) return; go(); });
-          card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
-        });
 
         // Council members — current vs past split
         const current = data.members.filter(m => CT.isCurrentMember(m));
@@ -170,13 +177,13 @@
           </li>`;
         }).join("");
         return `
-          <article class="meeting-card" data-id="${meeting.id}" tabindex="0" role="link" aria-label="Meeting on ${CT.fmtDate(meeting.date)}">
+          <article class="meeting-card">
             <header class="meeting-card-head">
               <div>
                 <div class="meeting-date">${CT.fmtDate(meeting.date)}</div>
                 <div class="muted" style="font-size:12px">${meeting.motion_count} motion${meeting.motion_count===1?"":"s"} · ${meeting.ord_count} ord. lines · ${meeting.res_count} res. lines</div>
               </div>
-              <a class="muted" href="meetings.html?id=${meeting.id}" aria-label="Open meeting ${CT.fmtDate(meeting.date)}">Open →</a>
+              <a class="muted card-link" href="meetings.html?id=${meeting.id}" aria-label="Open meeting ${CT.fmtDate(meeting.date)}">Open →</a>
             </header>
             ${meeting.summary ? `<p class="meeting-summary" style="margin:8px 0 0">${CT.escapeHtml(meeting.summary)}</p>` : ''}
             ${motions.length === 0 ? '<p class="muted" style="margin:8px 0 0">No motions parsed.</p>' : `
