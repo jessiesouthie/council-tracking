@@ -1,0 +1,151 @@
+{
+  "meeting": {
+    "id": 564,
+    "date": "2025-11-12",
+    "source_file": "2025-11-12__564.pdf",
+    "motion_count": 3,
+    "ord_count": 2,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 252,
+      "meeting_id": 564,
+      "date": "2025-11-12",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of October 28, 2025, Planning Commission meeting. Commissioner Strong secon…",
+      "motion": "Commissioner Whiting moved to approve the minutes of October 28, 2025, Planning Commission meeting. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 253,
+      "meeting_id": 564,
+      "date": "2025-11-12",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., General Plan Amendment – Moderate Income H…",
+      "motion": "Commissioner Whiting moved to recommend approval to the City Council of Item 7.A., General Plan Amendment – Moderate Income Housing. Commissioner Hess seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 254,
+      "meeting_id": 564,
+      "date": "2025-11-12",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.B., Alternative Animal Management Plans and Ot…",
+      "motion": "Commissioner Whiting moved to recommend approval to the City Council of Item 7.B., Alternative Animal Management Plans and Other Zoning Provisions, with the change that the Planning Commission is the revocation authority instead of the planning director or the code enforcement officer. Commissioner Free seconded the motion.",
+      "outcome": "passed with a 4-1 vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "No"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Excused"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-11-12__564.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "conflicting with the City’s dark sky ordinance."
+    },
+    {
+      "source_file": "2025-11-12__564.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "to moderate income housing or the adoption of a land use ordinance that requires 10% or more of new residential"
+    }
+  ],
+  "resolutions": []
+}

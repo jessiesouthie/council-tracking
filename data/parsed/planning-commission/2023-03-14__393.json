@@ -1,0 +1,58 @@
+{
+  "meeting": {
+    "id": 393,
+    "date": "2023-03-14",
+    "source_file": "2023-03-14__393.pdf",
+    "motion_count": 3,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 98,
+      "meeting_id": 393,
+      "date": "2023-03-14",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the February 28, 2023 minutes. Commissioner Strong seconded the motion. Those Voting Ye…",
+      "motion": "Commissioner Pengra moved to approve the February 28, 2023 minutes. Commissioner Strong seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent □ □ □ 181 Jason Allen Jason Allen Jason Allen Jason Allen □ □ □ 181 Jeremy Bergener Jeremy Bergener Jeremy Bergener Jeremy Bergener □ □ □ 181 Matthew Everett Matthew Everett Matthew Everett Matthew Everett □ □ □ 181 Chris Pengra Chris Pengra Chris Pengra Chris Pengra □ □ □ 181 Brent Strong Brent Strong Brent Strong Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": []
+    },
+    {
+      "id": 99,
+      "meeting_id": 393,
+      "date": "2023-03-14",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of an amendment to Eagle Mountain Municipal Code 17.55.0…",
+      "motion": "Commissioner Bergener moved to recommend approval to the City Council of an amendment to Eagle Mountain Municipal Code 17.55.080 changing \"adjacent on the right-of-way line\" within the first sentence within 17.55.0S0(A) to \"adjacent to the right-of-way line.\" Commissioner Strong seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent □ □ □ 181 Jason Allen Jason Allen Jason Allen Jason Allen □ □ □ 181 Jeremy Bergener Jeremy Bergener Jeremy Bergener Jeremy Bergener □ □ □ 181 Matthew Everett Matthew Everett Matthew Everett Matthew Everett □ □ □ 181 Chris Pengra Chris Pengra Chris Pengra Chris Pengra □ □ □ 181 Brent Strong Brent Strong Brent Strong Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure",
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 100,
+      "meeting_id": 393,
+      "date": "2023-03-14",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of an amendment to Eagle Mountain Municipal Code Section…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of an amendment to Eagle Mountain Municipal Code Sections 17.20.050, 17.25.040, and 17.40.040. Commissioner Everett seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent □ □ □ � Jason Allen Jason Allen Jason Allen Jason Allen □ □ □ � Jeremy Bergener Jeremy Bergener Jeremy Bergener Jeremy Bergener □ □ □ � Matthew Everett Matthew Everett Matthew Everett Matthew Everett □ □ □ � Chris Pengra Chris Pengra Chris Pengra Chris Pengra □ □ □ � Brent Strong Brent Strong Brent Strong Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

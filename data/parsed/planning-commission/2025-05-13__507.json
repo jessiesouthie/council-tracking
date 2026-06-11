@@ -1,0 +1,318 @@
+{
+  "meeting": {
+    "id": 507,
+    "date": "2025-05-13",
+    "source_file": "2025-05-13__507.pdf",
+    "motion_count": 7,
+    "ord_count": 7,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 182,
+      "meeting_id": 507,
+      "date": "2025-05-13",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes. Commissioner Allen seconded the motion",
+      "motion": "Commissioner Whiting moved to approve the minutes. Commissioner Allen seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 183,
+      "meeting_id": 507,
+      "date": "2025-05-13",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "",
+      "motion": "Commissioner Whiting motions to approve Item 7. A. Atkinson Accessory Dwelling Unit Exception. Commissioner Allen seconded the Motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 184,
+      "meeting_id": 507,
+      "date": "2025-05-13",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the General Plan Future Land Use Map for Certain Lands Known as Steeplechase South. Commissioner Strong seconded the motion",
+      "motion": "Commissioner Whiting moved to forward a positive recommendation to the City Council on Item 7. B. An Ordinance of Eagle Mountain City, Utah, Amending the General Plan Future Land Use Map for Certain Lands Known as Steeplechase South. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 185,
+      "meeting_id": 507,
+      "date": "2025-05-13",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7. C. Site Plan- The District Lot 3. Commissione…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7. C. Site Plan- The District Lot 3. Commissioner Hess seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 186,
+      "meeting_id": 507,
+      "date": "2025-05-13",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 16.35.140 Diagrams. Commissioner Strong seconded the motion",
+      "motion": "Commissioner Whiting moved to forward a positive recommendation to the City Council on Item 7.D. An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 16.35.140 Diagrams. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 187,
+      "meeting_id": 507,
+      "date": "2025-05-13",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 17.40.020 Land Use Table. Commissioner Fox seconded the motion",
+      "motion": "Commissioner Hess moved to forward a positive recommendation to the City Council of Item 7.E. An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 17.40.020 Land Use Table. Commissioner Fox seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "zoning",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 188,
+      "meeting_id": 507,
+      "date": "2025-05-13",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Forward a positive recommendation to the City Council on Item 7. F. Harmony DA Section 7 and 8.…",
+      "motion": "Commissioner Strong moved to forward a positive recommendation to the City Council on Item 7. F. Harmony DA Section 7 and 8. Commissioner Allen seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-05-13__507.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "7. B. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending the"
+    },
+    {
+      "source_file": "2025-05-13__507.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "Item 7. B. An Ordinance of Eagle Mountain City, Utah, Amending the General Plan Future"
+    },
+    {
+      "source_file": "2025-05-13__507.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "7.D. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending the Eagle"
+    },
+    {
+      "source_file": "2025-05-13__507.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "Presentation Summary Points: Presented by Senior Planner, Robert Hobbs. A proposal to enact an ordinance"
+    },
+    {
+      "source_file": "2025-05-13__507.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "Item 7.D. An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain"
+    },
+    {
+      "source_file": "2025-05-13__507.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "7. E. ORDINANCE/PUBLIC HEARING - An Ordinance of Eagle Mountain City, Utah, Amending the Eagle"
+    },
+    {
+      "source_file": "2025-05-13__507.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "Item 7.E. An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain"
+    }
+  ],
+  "resolutions": []
+}

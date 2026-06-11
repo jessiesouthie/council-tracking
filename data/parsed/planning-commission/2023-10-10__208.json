@@ -1,0 +1,42 @@
+{
+  "meeting": {
+    "id": 208,
+    "date": "2023-10-10",
+    "source_file": "2023-10-10__208.pdf",
+    "motion_count": 2,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 157,
+      "meeting_id": 208,
+      "date": "2023-10-10",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the September 26, 2023 minutes as amended. Commissioner Fox seconded the motion. Those…",
+      "motion": "Commissioner Everett moved to approve the September 26, 2023 minutes as amended. Commissioner Fox seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Robert Fox ☒ Brent Strong ☐ Brent Strong ☐ Brent Strong ☐ Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": []
+    },
+    {
+      "id": 158,
+      "meeting_id": 208,
+      "date": "2023-10-10",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of the amendment to Cedar Pass Ranch Plat F. Commissione…",
+      "motion": "Commissioner Bergener moved to recommend approval to the City Council of the amendment to Cedar Pass Ranch Plat F. Commissioner Allen seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Brent Strong ☒ Brent Strong ☐ Brent Strong ☐ Brent Strong",
+      "outcome": "passed with a vote of 4:1.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": []
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

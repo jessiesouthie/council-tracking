@@ -1,0 +1,72 @@
+{
+  "meeting": {
+    "id": 254,
+    "date": "2023-08-08",
+    "source_file": "2023-08-08__254.pdf",
+    "motion_count": 4,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 153,
+      "meeting_id": 254,
+      "date": "2023-08-08",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the July 25, 2023 minutes as amended. Commissioner Bergener seconded the motion. Those…",
+      "motion": "Commissioner Everett moved to approve the July 25, 2023 minutes as amended. Commissioner Bergener seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Brent Strong ☐ Brent Strong ☐ Brent Strong ☒ Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": []
+    },
+    {
+      "id": 154,
+      "meeting_id": 254,
+      "date": "2023-08-08",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of an amendment to Eagle Mountain Municipal Code Title 1…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of an amendment to Eagle Mountain Municipal Code Title 17.80.080(C) Off- Premise Ladder Signs (Inserts). Commissioner Bergener seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Robert Fox ☒ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Brent Strong ☐ Brent Strong ☐ Brent Strong ☒ Brent Strong",
+      "outcome": "passed with a vote of 3:1.",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 155,
+      "meeting_id": 254,
+      "date": "2023-08-08",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of amendments to Eagle Mountain Municipal Code Chapters…",
+      "motion": "Commissioner Bergener moved to recommend approval to the City Council of amendments to Eagle Mountain Municipal Code Chapters 13.75.110, 13.75.150, and 15.50.70. Commissioner Allen seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Robert Fox Eagle Mountain Planning Commission Meeting – August 8, 2023 Page 5 of 7 ☐ Brent Strong ☐ Brent Strong ☐ Brent Strong ☒ Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 156,
+      "meeting_id": 254,
+      "date": "2023-08-08",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of the site plan for Eagle Mountain Pet Care. Commission…",
+      "motion": "Commissioner Fox moved to recommend approval to the City Council of the site plan for Eagle Mountain Pet Care. Commissioner Allen seconded the motion. Eagle Mountain Planning Commission Meeting – August 8, 2023 Page 6 of 7 Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Brent Strong ☐ Brent Strong ☐ Brent Strong ☒ Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": []
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

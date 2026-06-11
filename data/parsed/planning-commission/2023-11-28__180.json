@@ -1,0 +1,181 @@
+{
+  "meeting": {
+    "id": 180,
+    "date": "2023-11-28",
+    "source_file": "2023-11-28__180.pdf",
+    "motion_count": 8,
+    "ord_count": 8,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 159,
+      "meeting_id": 180,
+      "date": "2023-11-28",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the November 14, 2023 minutes. Commissioner Strong seconded the motion. Eagle Mountain…",
+      "motion": "Commissioner Bergener moved to approve the November 14, 2023 minutes. Commissioner Strong seconded the motion. Eagle Mountain Planning Commission Meeting – November 28, 2023 Page 2 of 13 Those Voting Yes Those Voting No Those Abstaining Those Absent ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Robert Fox ☒ Brent Strong ☐ Brent Strong ☐ Brent Strong ☐ Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": []
+    },
+    {
+      "id": 160,
+      "meeting_id": 180,
+      "date": "2023-11-28",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of the site plan for Firefly NPA 8 A3. Commissioner Ever…",
+      "motion": "Commissioner Fox moved to recommend approval to the City Council of the site plan for Firefly NPA 8 A3. Commissioner Everett seconded the motion. Eagle Mountain Planning Commission Meeting – November 28, 2023 Page 3 of 13 Those Voting Yes Those Voting No Those Abstaining Those Absent ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Robert Fox ☒ Brent Strong ☐ Brent Strong ☐ Brent Strong ☐ Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": []
+    },
+    {
+      "id": 161,
+      "meeting_id": 180,
+      "date": "2023-11-28",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table an amendment to Eagle Mountain Municipal Code 17.49 to the next meeting to give staff tim…",
+      "motion": "Commissioner Everett moved to table an amendment to Eagle Mountain Municipal Code 17.49 to the next meeting to give staff time to work on the language and to implement the requested changes. Commissioner Fox seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Robert Fox ☒ Brent Strong ☐ Brent Strong ☐ Brent Strong ☐ Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 162,
+      "meeting_id": 180,
+      "date": "2023-11-28",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of the amendments to Eagle Mountain Municipal Code Title…",
+      "motion": "Commissioner Strong moved to recommend approval to the City Council of the amendments to Eagle Mountain Municipal Code Title 17. Commissioner Everett seconded the motion. Eagle Mountain Planning Commission Meeting – November 28, 2023 Page 6 of 13 Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Robert Fox ☒ Brent Strong ☐ Brent Strong ☐ Brent Strong ☐ Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 163,
+      "meeting_id": 180,
+      "date": "2023-11-28",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of the amendments to Eagle Mountain Municipal Code 17.75…",
+      "motion": "Commissioner Fox moved to recommend approval to the City Council of the amendments to Eagle Mountain Municipal Code 17.75.069 and 17.55.130. Commissioner Allen seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Matthew Everett ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Brent Strong ☒ Brent Strong ☐ Brent Strong ☐ Brent Strong",
+      "outcome": "passed with a vote of 3:2.",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 164,
+      "meeting_id": 180,
+      "date": "2023-11-28",
+      "page": 9,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of the amendments to Eagle Mountain Municipal Code Secti…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of the amendments to Eagle Mountain Municipal Code Section 17.10.030 and Chapter 17.60 striking Section 17.60.120(K)(4), “ Installation requirements. No electric fence shall be installed or used unless it is completely surrounded by a non-electrical fence or wall that is not less than 6’ in height save in the case where the fence serves to contain livestock – in which case the fence may be no higher than 6’,” and renumber the following sections accordingly. Commissioner Strong seconded the motion. AMENDED MOTION: Commissioner Allen moved to recommend approval to the City Council of the amendments to Eagle Mountain Municipal Code Section 17.10.030 and Chapter 17.60 with the following changes: 1. Strike Section 17.60.120(K)(4), “Installation requirements. No electric fence shall be installed or used unless it is completely surrounded by a non-electrical fence or wall that is not less than 6’ in height save in the case where the fence serves to contain livestock – in which case the fence may be no higher than 6’,” and renumber the following sections accordingly; and 2. Add a note to 17.60.120(A) referencing livestock standards that permit wire as acceptable fencing for agricultural uses. Commissioner Strong seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Robert Fox ☒ Brent Strong ☐ Brent Strong ☐ Brent Strong ☐ Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 165,
+      "meeting_id": 180,
+      "date": "2023-11-28",
+      "page": 11,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of the amendments to Eagle Mountain Municipal Code as fo…",
+      "motion": "Commissioner Everett moved to recommend approval to the City Council of the amendments to Eagle Mountain Municipal Code as follows: 1. 17.10.030 Definitions as presented; 2. 16.50 Lot Line Adjustments as presented; and 3. Have staff add language in the appropriate section of 16.50.030 regarding requiring a legal description of the lot line change prepared by a publicly licensed surveyor to be presented to the City Council. Commissioner Allen seconded the motion. AMENDED MOTION: Commissioner Everett moved to recommend approval to the City Council of Eagle Mountain Municipal Code as follows: 1. 17.10.030 Definitions as presented; 2. 16.50 Lot Line Adjustments as presented; 3. Have staff add language in the appropriate section of 16.50.030 regarding requiring a legal description of the lot line change prepared by a publicly licensed surveyor to be presented to the City Council; 4. 16.55.040 Approval Process and Exceptions with the changes that are presented in the staff report; and 5. Staff may bring section 16.50.030, which was not included in the staff report, to the Planning Commission for additional review if they feel it is necessary. Commissioner Allen seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Robert Fox ☒ Brent Strong ☐ Brent Strong ☐ Brent Strong ☐ Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 166,
+      "meeting_id": 180,
+      "date": "2023-11-28",
+      "page": 12,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of the amendments to Eagle Mountain Municipal Code 17.10…",
+      "motion": "Commissioner Bergener moved to recommend approval to the City Council of the amendments to Eagle Mountain Municipal Code 17.10 and 17.25.040 as drafted. Commissioner Allen seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Robert Fox ☐ Brent Strong ☒ Brent Strong ☐ Brent Strong ☐ Brent Strong",
+      "outcome": "passed with a vote of 4:1.",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2023-11-28__180.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "6.B. ACTION – Wildlife Corridor Overlay Zone – Ordinance"
+    },
+    {
+      "source_file": "2023-11-28__180.pdf",
+      "meeting_date": "",
+      "page": 6,
+      "line_text": "6.C. ACTION/PUBLIC HEARING – Official Zoning Map Adoption – Ordinance"
+    },
+    {
+      "source_file": "2023-11-28__180.pdf",
+      "meeting_date": "",
+      "page": 6,
+      "line_text": "Ordinance"
+    },
+    {
+      "source_file": "2023-11-28__180.pdf",
+      "meeting_date": "",
+      "page": 7,
+      "line_text": "6.E. ACTION – Drive-Thru – Ordinance"
+    },
+    {
+      "source_file": "2023-11-28__180.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "6.F. ACTION – Fencing – Ordinance"
+    },
+    {
+      "source_file": "2023-11-28__180.pdf",
+      "meeting_date": "",
+      "page": 10,
+      "line_text": "6.G. ACTION – Lot Line Adjustments – Ordinance"
+    },
+    {
+      "source_file": "2023-11-28__180.pdf",
+      "meeting_date": "",
+      "page": 11,
+      "line_text": "6.H. ACTION – Livestock – Ordinance"
+    },
+    {
+      "source_file": "2023-11-28__180.pdf",
+      "meeting_date": "",
+      "page": 12,
+      "line_text": "6.I. ACTION ITEM/PUBLIC HEARING – Landscape Ordinance Amending the Eagle"
+    }
+  ],
+  "resolutions": []
+}

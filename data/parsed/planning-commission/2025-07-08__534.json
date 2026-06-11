@@ -1,0 +1,184 @@
+{
+  "meeting": {
+    "id": 534,
+    "date": "2025-07-08",
+    "source_file": "2025-07-08__534.pdf",
+    "motion_count": 5,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 206,
+      "meeting_id": 534,
+      "date": "2025-07-08",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of the June 24, 2025, Planning Commission Meeting. Commissioner Whiting sec…",
+      "motion": "Commissioner Hess moved to approve the minutes of the June 24, 2025, Planning Commission Meeting. Commissioner Whiting seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 207,
+      "meeting_id": 534,
+      "date": "2025-07-08",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Site Plan Code Amendments, EMMC 17.00. Com…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.A., Site Plan Code Amendments, EMMC 17.00. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 208,
+      "meeting_id": 534,
+      "date": "2025-07-08",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.B., Amended Preliminary Plat Marketplace 4, in…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.B., Amended Preliminary Plat Marketplace 4, including the condition to correct the minor red lines in the final plat review. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 209,
+      "meeting_id": 534,
+      "date": "2025-07-08",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table Item 7.C., Animal, Exceptions, Public Hearings, and Appeals Code Amendment, until the Jul…",
+      "motion": "Commissioner Allen moved to table Item 7.C., Animal, Exceptions, Public Hearings, and Appeals Code Amendment, until the July 22, 2025, meeting. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 210,
+      "meeting_id": 534,
+      "date": "2025-07-08",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.D., Meta/Available Storage Cell Tower Site Pla…",
+      "motion": "Commissioner Whiting moved to recommend approval to the City Council of Item 7.D., Meta/Available Storage Cell Tower Site Plan. Commissioner Fox seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

@@ -1,0 +1,274 @@
+{
+  "meeting": {
+    "id": 533,
+    "date": "2025-06-10",
+    "source_file": "2025-06-10__533.pdf",
+    "motion_count": 6,
+    "ord_count": 4,
+    "res_count": 1
+  },
+  "motions": [
+    {
+      "id": 191,
+      "meeting_id": 533,
+      "date": "2025-06-10",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes with the correction of the meeting adjourned at 6:36 p.m. and not 7:36 p.m.…",
+      "motion": "Commissioner Whiting moved to approve the minutes with the correction of the meeting adjourned at 6:36 p.m. and not 7:36 p.m. Commissioner Hess seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Absent"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 192,
+      "meeting_id": 533,
+      "date": "2025-06-10",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of 7. A. Athletic Facility Signs, with two recommendatio…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of 7. A. Athletic Facility Signs, with two recommendations. First, under the definition 17.80.160 to include: a sign attached to a fence surrounding and immediately adjacent to an athletic facility can be facing the interior or exterior of the athletic facility. Second, 17.80.120(R) to include: all signs must be attached to the fence, scoreboard, or bleachers and may not extend above the fence, scoreboard, or bleachers. Commissioner Allen seconded the motion, with the changes noted.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "parks"
+      ],
+      "votes": [
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 193,
+      "meeting_id": 533,
+      "date": "2025-06-10",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of 7. B. with the addition that 1-2 vehicles/RVs, not ti…",
+      "motion": "Commissioner Whiting moved to recommend approval to the City Council of 7. B. with the addition that 1-2 vehicles/RVs, not titled to the owner, may be parked on the property as long as it meets all other requirements. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a 4 to 1 vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Absent"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "No"
+        }
+      ]
+    },
+    {
+      "id": 194,
+      "meeting_id": 533,
+      "date": "2025-06-10",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7. C. Commissioner Allen seconded the motion",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7. C. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Absent"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 195,
+      "meeting_id": 533,
+      "date": "2025-06-10",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7D Commissioner Hess seconded the motion",
+      "motion": "Commissioner Whiting moved to recommend approval to the City Council of Item 7D Commissioner Hess seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Absent"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 196,
+      "meeting_id": 533,
+      "date": "2025-06-10",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table consideration of the Transportation Master Plan/IFFP and the Public Hearing to be left op…",
+      "motion": "Commissioner Allen moved to table consideration of the Transportation Master Plan/IFFP and the Public Hearing to be left open until the June 24, 2025, Planning Commission meeting. Commissioner Whiting seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Absent"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-06-10__533.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "7. A. An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code"
+    },
+    {
+      "source_file": "2025-06-10__533.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "7. B. An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code"
+    },
+    {
+      "source_file": "2025-06-10__533.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "7. C. An Ordinance of Eagle Mountain City, Utah, Approving the Fourth Amendment to Porter's"
+    },
+    {
+      "source_file": "2025-06-10__533.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "7.D. An Ordinance of Eagle Mountain City, Utah, Approving the Fourth Amendment to Porter's"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2025-06-10__533.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "Approval of this application must include adoption of a resolution by the Council,"
+    }
+  ]
+}

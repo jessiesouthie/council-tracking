@@ -1,0 +1,73 @@
+{
+  "meeting": {
+    "id": 365,
+    "date": "2021-04-13",
+    "source_file": "2021-04-13__365.pdf",
+    "motion_count": 3,
+    "ord_count": 2,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 48,
+      "meeting_id": 365,
+      "date": "2021-04-13",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the March 23, 2021 minutes as amended. Commissioner Pengra seconded the motion. Those v…",
+      "motion": "Commissioner Wright moved to approve the March 23, 2021 minutes as amended. Commissioner Pengra seconded the motion. Those voting aye: Jeremy Bergener, Matthew Everett, Christopher Pengra, and Brett Wright.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": []
+    },
+    {
+      "id": 49,
+      "meeting_id": 365,
+      "date": "2021-04-13",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of the preliminary plat and master site plan for Overlan…",
+      "motion": "Commissioner Pengra moved to recommend approval to the City Council of the preliminary plat and master site plan for Overland Village Two Phase A with the following conditions: Eagle Mountain Planning Commission Meeting – April 13, 2021 Page 8 of 15 1. Individual site plans are not required for the townhomes in this plat; 2. The applicant shall submit plans for mailbox locations, including pullouts or temporary parking areas to improve traffic flow; 3. Privacy fencing, in compliance with EMMC 17.60.110, shall be installed along Pony Express Parkway and Airport Road; and 4. Lighting shall comply with the dark sky ordinance. Commissioner Wright requested for the motion to include conditions requiring compliance with the dark sky ordinance and installation of the masonry wall. Commissioner Pengra clarified he intentionally excluded the requirement for the design of the mailbox structure to be in keeping with the architecture of the development due to the variance in design in the project and his personal belief that standard mailbox aesthetics are sufficient. Commissioner Wright seconded the motion. Those voting aye: Jeremy Bergener, Matthew Everett, Christopher Pengra, and Brett Wright. The motion passed with a unanimous vote. The Commission also noted that the applicant stated they plan to continue the masonry wall from Village One with this portion along the east and south borders of the development. 6.B. PUBLIC HEARING – EMMC 17.25 Residential Zones Code Amendment Mr. Kane presented the item. Recent development project proposals have brought to light some potential revisions to EMMC 17.25 Residential Zones. EMMC 17.25 establishes a number of residential districts that are primarily either single-family or multifamily. The MF1 zone allows for “twin homes, duplexes, triplexes, and townhomes with no more than six units per building,” as well as “footprint” single-family dwellings. This amendment recommends the removal of single-family dwellings as a permitted use in the MF1 zone, resulting in the RC zone becoming the densest single-family residential district allowing a minimum lot size of 4,500 square feet and an average lot size of 6,000 square feet. EMMC 17.25 also establishes development standards for all the residential districts including minimum lot size, minimum lot frontage, maximum building heights, and setbacks. Just over half of the single-family zoning districts include both a minimum and average lot size. This amendment recommends adding a minimum lot size of three-quarter acres for the RD2 zone. The amendment removes “for ’footprint’ single-family homes (not on fee simple lots; sometimes defined as patio homes” from EMMC 17.25.020(E)(2), single-family dwellings as a permitted use in the MF1 column on the 17.25.030 land use table, and single-family detached from the Type of Housing row and MF1 column on the 17.25.040 residential development standards table. The amendment adds “and an average lot size of three-quarter-acre (32,670 square feet) is required” to EMMC 17.25.020(B)(2) and “3/4 Acre (32,670 sq ft)” to the RD2 column of the Minimum Average Lot Size row on the 17.25.040 residential development standards table. The Eagle Mountain Planning Commission Meeting – April 13, 2021 Page 9 of 15 amendment acknowledges that the recommendations remove a table footnote resulting in a numbering change to the remaining footnotes. Commissioner Wright opened the public hearing at 7:37 p.m. No comments were submitted to the City Recorder's Office and no public was in attendance to make comment. As there were no comments, Commissioner Wright closed the hearing.",
+      "outcome": "",
+      "tags": [
+        "zoning",
+        "development",
+        "infrastructure",
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 50,
+      "meeting_id": 365,
+      "date": "2021-04-13",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of the amendment to Eagle Mountain Municipal Code 17.25…",
+      "motion": "Commissioner Everett moved to recommend approval to the City Council of the amendment to Eagle Mountain Municipal Code 17.25 Residential Zones. Commissioner Bergener seconded the motion. Those voting aye: Jeremy Bergener, Matthew Everett, Christopher Pengra, and Brett Wright.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2021-04-13__365.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "4. Lighting shall comply with the dark sky ordinance."
+    },
+    {
+      "source_file": "2021-04-13__365.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "the dark sky ordinance and installation of the masonry wall."
+    }
+  ],
+  "resolutions": []
+}

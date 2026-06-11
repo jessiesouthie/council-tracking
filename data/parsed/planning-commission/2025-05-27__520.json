@@ -1,0 +1,96 @@
+{
+  "meeting": {
+    "id": 520,
+    "date": "2025-05-27",
+    "source_file": "2025-05-27__520.pdf",
+    "motion_count": 2,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 189,
+      "meeting_id": 520,
+      "date": "2025-05-27",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes. Commissioner Hess seconded the motion",
+      "motion": "Commissioner Whiting moved to approve the minutes. Commissioner Hess seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Absent"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 190,
+      "meeting_id": 520,
+      "date": "2025-05-27",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Forward a positive recommendation to the Council of Item 7. A. Temporary Site Plan - Sweetwater…",
+      "motion": "Commissioner Hess moved to forward a positive recommendation to the Council of Item 7. A. Temporary Site Plan - Sweetwater Stake Center for a period of 18 months. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Absent"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

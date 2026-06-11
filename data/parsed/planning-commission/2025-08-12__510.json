@@ -1,0 +1,313 @@
+{
+  "meeting": {
+    "id": 510,
+    "date": "2025-08-12",
+    "source_file": "2025-08-12__510.pdf",
+    "motion_count": 8,
+    "ord_count": 1,
+    "res_count": 1
+  },
+  "motions": [
+    {
+      "id": 218,
+      "meeting_id": 510,
+      "date": "2025-08-12",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of the July 22, 2025, Planning Commission Meeting. Commissioner Hess second…",
+      "motion": "Commissioner Strong moved to approve the minutes of the July 22, 2025, Planning Commission Meeting. Commissioner Hess seconded the motion.",
+      "outcome": "passed with 5 votes and one abstention.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Abstain"
+        }
+      ]
+    },
+    {
+      "id": 219,
+      "meeting_id": 510,
+      "date": "2025-08-12",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table Item 7.A. Monument Signs on Commercial Properties Fronting SR-73, until the next Planning…",
+      "motion": "Commissioner Strong moved to table Item 7.A. Monument Signs on Commercial Properties Fronting SR-73, until the next Planning Commission meeting to give staff more time to work on the project. Commissioner Fox seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 220,
+      "meeting_id": 510,
+      "date": "2025-08-12",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve Item 7.B., Redemption Hill Parking Exception. Commissioner Hess seconded the motion",
+      "motion": "Commissioner Whiting moved to approve Item 7.B., Redemption Hill Parking Exception. Commissioner Hess seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 221,
+      "meeting_id": 510,
+      "date": "2025-08-12",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.C., Ranches Academy Addition Site Plan. Commis…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.C., Ranches Academy Addition Site Plan. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 222,
+      "meeting_id": 510,
+      "date": "2025-08-12",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table Item 7.D., ASD Elementary 133 Preliminary Plat and Site Plan, until they are ready to com…",
+      "motion": "Commissioner Allen moved to table Item 7.D., ASD Elementary 133 Preliminary Plat and Site Plan, until they are ready to come back with a rezone. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "zoning",
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 223,
+      "meeting_id": 510,
+      "date": "2025-08-12",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table Item 7.E., Horizon Master Community, until it is re- noticed as a development agreement.…",
+      "motion": "Commissioner Allen moved to table Item 7.E., Horizon Master Community, until it is re- noticed as a development agreement. Commissioner Whiting seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 224,
+      "meeting_id": 510,
+      "date": "2025-08-12",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table Item 7.F., John Hancock Charter School-Master Site Plan Revisit. Commissioner Strong seco…",
+      "motion": "Commissioner Allen moved to table Item 7.F., John Hancock Charter School-Master Site Plan Revisit. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 225,
+      "meeting_id": 510,
+      "date": "2025-08-12",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.G., Culinary Water Master Plan and IFFP, and I…",
+      "motion": "Commissioner Strong moved to recommend approval to the City Council of Item 7.G., Culinary Water Master Plan and IFFP, and Item 7.H., Wastewater Master Plan and IFFP. Commissioner Hess seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-08-12__510.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "Staff recommend that the City Council discuss the adoption of an ordinance amending Chapter 17.80. of"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2025-08-12__510.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "Presentation Summary Points: Recommendation to table [again] - pending resolution of Lake Mountain Road's"
+    }
+  ]
+}

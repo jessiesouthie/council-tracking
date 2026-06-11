@@ -1,0 +1,55 @@
+{
+  "meeting": {
+    "id": 192,
+    "date": "2022-11-08",
+    "source_file": "2022-11-08__192.pdf",
+    "motion_count": 3,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 74,
+      "meeting_id": 192,
+      "date": "2022-11-08",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the October 25, 2022 minutes. Commissioner Allen seconded the motion. Those Voting Yes…",
+      "motion": "Commissioner Pengra moved to approve the October 25, 2022 minutes. Commissioner Allen seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent Eagle Mountain Special Planning Commission Meeting – November 8, 2022 Page 1 of 4 ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Chris Pengra ☐ Chris Pengra ☐ Chris Pengra ☐ Chris Pengra ☒ Erin Wells ☐ Erin Wells ☐ Erin Wells ☐ Erin Wells",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": []
+    },
+    {
+      "id": 75,
+      "meeting_id": 192,
+      "date": "2022-11-08",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Continue the item and the public hearing until the December 13, 2022 meeting. Commissioner Alle…",
+      "motion": "Commissioner Everett moved to continue the item and the public hearing until the December 13, 2022 meeting. Commissioner Allen seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Chris Pengra ☐ Chris Pengra ☐ Chris Pengra ☐ Chris Pengra ☒ Erin Wells ☐ Erin Wells ☐ Erin Wells ☐ Erin Wells",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": []
+    },
+    {
+      "id": 76,
+      "meeting_id": 192,
+      "date": "2022-11-08",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council to amend Plat 1 of The Village at Porters Crossing to va…",
+      "motion": "Commissioner Pengra moved to recommend approval to the City Council to amend Plat 1 of The Village at Porters Crossing to vacate lot 3 with the amendment that four individual lots be created for each townhome and the creation of Plat 3. Commissioner Wells seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Chris Pengra ☐ Chris Pengra ☐ Chris Pengra ☐ Chris Pengra ☒ Erin Wells ☐ Erin Wells ☐ Erin Wells ☐ Erin Wells",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": []
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

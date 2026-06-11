@@ -1,0 +1,306 @@
+{
+  "meeting": {
+    "id": 547,
+    "date": "2025-07-22",
+    "source_file": "2025-07-22__547.pdf",
+    "motion_count": 7,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 211,
+      "meeting_id": 547,
+      "date": "2025-07-22",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of the July 8, 2025, Planning Commission Meeting. Commissioner Strong secon…",
+      "motion": "Commissioner Whiting moved to approve the minutes of the July 8, 2025, Planning Commission Meeting. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 212,
+      "meeting_id": 547,
+      "date": "2025-07-22",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Amending the Eagle Mountain Municipal Code…",
+      "motion": "Commissioner Whiting moved to recommend approval to the City Council of Item 7.A., Amending the Eagle Mountain Municipal Code Consolidated Free Schedule, excluding any references to illegal dumping and tabling the illegal dumping section until the next Planning Commission Meeting. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 213,
+      "meeting_id": 547,
+      "date": "2025-07-22",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table Item 7.B, Animal, Exceptions, Public Hearings, and Appeals Code Amendment until the next…",
+      "motion": "Commissioner Strong moved to table Item 7.B, Animal, Exceptions, Public Hearings, and Appeals Code Amendment until the next Planning Commission Meeting, to give the Staff to revisit the Animal, ADU, and Home Business tables. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 214,
+      "meeting_id": 547,
+      "date": "2025-07-22",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.C., Preliminary Plat Code Amendment. Commissio…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.C., Preliminary Plat Code Amendment. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 215,
+      "meeting_id": 547,
+      "date": "2025-07-22",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.D., Final Plat Code Amendment. Commissioner Al…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.D., Final Plat Code Amendment. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 216,
+      "meeting_id": 547,
+      "date": "2025-07-22",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.E., Brylee Commercial Lot 3 Site Plan. Commiss…",
+      "motion": "Commissioner Whiting moved to recommend approval to the City Council of Item 7.E., Brylee Commercial Lot 3 Site Plan. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 217,
+      "meeting_id": 547,
+      "date": "2025-07-22",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.F., Pony Express Medical with the two conditio…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.F., Pony Express Medical with the two conditions that the red lines on the landscape plan have or will be made, as well as the identifications on the plans for the architectural exterior treatments to be completed. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Excused"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

@@ -1,0 +1,317 @@
+{
+  "meeting": {
+    "id": 577,
+    "date": "2025-11-25",
+    "source_file": "2025-11-25__577.pdf",
+    "motion_count": 7,
+    "ord_count": 2,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 255,
+      "meeting_id": 577,
+      "date": "2025-11-25",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of November 12, 2025, Planning Commission meeting with 2 corrections, that…",
+      "motion": "Commissioner Whiting moved to approve the minutes of November 12, 2025, Planning Commission meeting with 2 corrections, that the Policy Session start time is changed to the correct time and that on Item 7.A. Commissioner Fox’s vote is changed from “no” to “excused”. Commissioner Strong seconded the motion. Eagle Mountain Planning Commission Meeting – November 25, 2025 Page 1 of 7",
+      "outcome": "passed with 4 yes and 1 abstention vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Abstain"
+        }
+      ]
+    },
+    {
+      "id": 256,
+      "meeting_id": 577,
+      "date": "2025-11-25",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Master Site Plan - Firefly NPA 9 Phase A,…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.A., Master Site Plan - Firefly NPA 9 Phase A, with the noted recommendations from Staff included in the Agenda. Commissioner Whiting seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 257,
+      "meeting_id": 577,
+      "date": "2025-11-25",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve Item 7.B., Firefly NPA 9 Phase A Preliminary Plat, with the noted recommendations from…",
+      "motion": "Commissioner Strong moved to approve Item 7.B., Firefly NPA 9 Phase A Preliminary Plat, with the noted recommendations from Staff included in the Agenda. Commissioner Fox seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 258,
+      "meeting_id": 577,
+      "date": "2025-11-25",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.C., Spring Run Plaza MDP and Rezone, with righ…",
+      "motion": "Commissioner Whiting moved to recommend approval to the City Council of Item 7.C., Spring Run Plaza MDP and Rezone, with rights-of-way containing roads A and B, be rezoned as agriculture. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 259,
+      "meeting_id": 577,
+      "date": "2025-11-25",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.D., Ordinance Amending Noticing Requirements i…",
+      "motion": "Commissioner Whiting moved to recommend approval to the City Council of Item 7.D., Ordinance Amending Noticing Requirements in EMMC 16.05, 16.55, and 17.05. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 260,
+      "meeting_id": 577,
+      "date": "2025-11-25",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.E., White Hills Rezone, with the Staff conditi…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.E., White Hills Rezone, with the Staff condition as noted and changing parcels in White Hills County Estates A to RA2, and J & J Ranches be changed to Agriculture. Commissioner Whiting seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 261,
+      "meeting_id": 577,
+      "date": "2025-11-25",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.F., Amending the General Plan for Eagle Mounta…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.F., Amending the General Plan for Eagle Mountain's Annexation Policy Declaration, with the recommendation of extending Area 1 to Utah Lake. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-11-25__577.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "7.D. Ordinance Amending Noticing Requirements in EMMC 16.05, 16.55, and 17.05"
+    },
+    {
+      "source_file": "2025-11-25__577.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "Ordinance Amending Noticing Requirements in EMMC 16.05, 16.55, and 17.05."
+    }
+  ],
+  "resolutions": []
+}

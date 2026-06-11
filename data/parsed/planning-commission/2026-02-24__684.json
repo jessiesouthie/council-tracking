@@ -1,0 +1,92 @@
+{
+  "meeting": {
+    "id": 684,
+    "date": "2026-02-24",
+    "source_file": "2026-02-24__684.pdf",
+    "motion_count": 2,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 280,
+      "meeting_id": 684,
+      "date": "2026-02-24",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of February 10, 2026, Planning Commission meeting with the date correction…",
+      "motion": "Commissioner Lane moved to approve the minutes of February 10, 2026, Planning Commission meeting with the date correction in the footer. Commissioner Allen seconded the motion.",
+      "outcome": "passed with 3 in favor and one abstention.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Abstain"
+        }
+      ]
+    },
+    {
+      "id": 281,
+      "meeting_id": 684,
+      "date": "2026-02-24",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Williams Development Agreement. Commission…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.A., Williams Development Agreement. Commissioner DeCoursey seconded the motion.",
+      "outcome": "passed with 3 in favor and 1 against.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "No"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

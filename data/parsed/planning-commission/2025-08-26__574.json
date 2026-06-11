@@ -1,0 +1,101 @@
+{
+  "meeting": {
+    "id": 574,
+    "date": "2025-08-26",
+    "source_file": "2025-08-26__574.pdf",
+    "motion_count": 2,
+    "ord_count": 2,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 226,
+      "meeting_id": 574,
+      "date": "2025-08-26",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of the August 12, 2025 Planning Commission meeting. Commissioner Fox second…",
+      "motion": "Commissioner Whiting moved to approve the minutes of the August 12, 2025 Planning Commission meeting. Commissioner Fox seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 227,
+      "meeting_id": 574,
+      "date": "2025-08-26",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Consolidated Fee Schedule. Commissioner Hess seconded the motion",
+      "motion": "Commissioner Strong moved to recommend approval to the City Council of Item 7.A. An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Consolidated Fee Schedule. Commissioner Hess seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-08-26__574.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "7. A. An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code"
+    },
+    {
+      "source_file": "2025-08-26__574.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code"
+    }
+  ],
+  "resolutions": []
+}

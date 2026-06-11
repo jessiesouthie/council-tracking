@@ -1,0 +1,101 @@
+{
+  "meeting": {
+    "id": 161,
+    "date": "2024-09-24",
+    "source_file": "2024-09-24__161.pdf",
+    "motion_count": 2,
+    "ord_count": 2,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 180,
+      "meeting_id": 161,
+      "date": "2024-09-24",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the September 10, 2024 minutes with the changes to the Reports of Action, as noted. Com…",
+      "motion": "Commissioner Whiting moved to approve the September 10, 2024 minutes with the changes to the Reports of Action, as noted. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 181,
+      "meeting_id": 161,
+      "date": "2024-09-24",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of the Dutch Bros Site Plan with the following condition…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of the Dutch Bros Site Plan with the following conditions: 1. The internal roadway in Area A is completed before a certificate of occupancy is issued (Marketplace ARMDA); and 2. The external wall in Area A is completed before a certificate of occupancy is issued (Marketplace ARMDA). Commissioner Fox seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2024-09-24__161.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "directs the adoption of a land use ordinance requiring 10% or more of new residential development in certain"
+    },
+    {
+      "source_file": "2024-09-24__161.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "December 31, 2024, to adopt this ordinance. Staff has begun preliminary research and engaged with the City"
+    }
+  ],
+  "resolutions": []
+}

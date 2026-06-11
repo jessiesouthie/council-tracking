@@ -1,0 +1,78 @@
+{
+  "meeting": {
+    "id": 440,
+    "date": "2023-01-24",
+    "source_file": "2023-01-24__440.pdf",
+    "motion_count": 4,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 91,
+      "meeting_id": 440,
+      "date": "2023-01-24",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the December 13, 2002 and January 10, 2023 minutes. Commissioner Allen seconded the mot…",
+      "motion": "Commissioner Pengra moved to approve the December 13, 2002 and January 10, 2023 minutes. Commissioner Allen seconded the motion. Commissioner Everett informed staff that Councilmember Brett Wright had been in attendance during the January 10, 2023 meeting. AMENDED MOTION: Commissioner Pengra moved to approve the December 13, 2002 and January 10, 2023 minutes as amended. Commissioner Allen seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Chris Pengra ☐ Chris Pengra ☐ Chris Pengra ☐ Chris Pengra ☒ Brent Strong ☐ Brent Strong ☐ Brent Strong ☐ Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": []
+    },
+    {
+      "id": 92,
+      "meeting_id": 440,
+      "date": "2023-01-24",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of the Firefly Master Development Plan and Master Develo…",
+      "motion": "Commissioner Pengra moved to recommend approval to the City Council of the Firefly Master Development Plan and Master Development Agreement striking Exhibit E which allows for expedited approvals and that Municipal Code shall override in the case of a dispute. Commissioner Everett seconded the motion. Commissioner Everett requested for Commissioner Pengra to amend the motion to include conditions requiring current standards for side and front setbacks, current road widths, and frontage widths to be applied to this application and for any revisions deemed worthy by the City Attorney to be included with this recommendation to the City Council. Commissioner Pengra declined the addition as the City Attorney can include his recommendations with the item without it being a condition of approval and because he does not want to include items he has not reviewed. After discussion explored the benefits and safety, parking, and economic impacts of requiring the project to meet current Municipal Code standards for setbacks, frontages, and road widths, Commissioner Pengra declined to add a condition to the motion stipulating adherence to those standards as he feels the proposed project is preferable to the original plan and requiring adherence to those standards would increase the price of the units in a challenging housing market. Commissioner Allen asked for the inclusion of a condition recommending that Exhibit E allowing for the expedited approvals be stricken from the agreement. The Commission reviewed and discussed concerns with Exhibit E and the proposed approval bodies. Mr. Mumford explained that staff’s primary concern with Exhibit E is addressed with Footnote 1, “If immediately adjacent to an individually Platted Residential Dwelling unit that has been sold to resident (and not separated by a road or other open space) then Planning Commission review and approval is required.” Commissioner Pengra stated that he is willing to amend his motion to remove Exhibit E to prevent burdening staff with the responsibility for decisions with potential political impacts. AMENDED MOTION: Commissioner Pengra moved to recommend approval to the City Council of the Firefly Master Development Plan and Master Development Agreement with the following conditions: Eagle Mountain City Planning Commission Meeting – January 24, 2023 Page 5 of 10 1. Exhibit E shall be stricken from the agreement and the approval process shall follow Municipal Code; and 2. Municipal Code shall govern in the case of a dispute between Municipal Code and the master development agreement. Commissioner Everett seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☐ Jason Allen ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Matthew Everett ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Chris Pengra ☐ Chris Pengra ☐ Chris Pengra ☐ Chris Pengra ☐ Brent Strong ☒ Brent Strong ☐ Brent Strong ☐ Brent Strong",
+      "outcome": "failed with a vote of 2 to 3.",
+      "tags": [
+        "development",
+        "infrastructure",
+        "parks",
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 93,
+      "meeting_id": 440,
+      "date": "2023-01-24",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of the Firefly Master Development Agreement with the fol…",
+      "motion": "Commissioner Bergener moved to recommend approval to the City Council of the Firefly Master Development Agreement with the following conditions: 1. The setbacks, frontages, and road widths shall conform with Municipal Code; 2. Exhibit E allowing for an expedited review process shall be stricken from the agreement; and 3. Municipal Code shall govern in the case of a dispute between Municipal Code and the master development agreement. Commissioner Allen seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Chris Pengra ☐ Chris Pengra ☐ Chris Pengra ☐ Chris Pengra ☒ Brent Strong ☐ Brent Strong ☐ Brent Strong ☐ Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "infrastructure",
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 94,
+      "meeting_id": 440,
+      "date": "2023-01-24",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of the amendments to Eagle Mountain Municipal Code as fo…",
+      "motion": "Commissioner Pengra moved to recommend approval to the City Council of the amendments to Eagle Mountain Municipal Code as follows: 1. Section 15.10.390 Street Lighting shall be amended as shown; 2. Section 17.25.040 Residential Development Standards shall be amended as presented; 3. The sixth line in Section 17.25.050 Generally Applicable Provisions shall be amended to read, “Variations in exterior materials (fiber cement siding, board and batten or vertical siding, stone, brick, stucco) and/or colors are recommended;” and 4. Section 17.72.040 shall be amended as presented. Commissioner Bergener seconded the motion. Commissioner Bergener noted that Section 17.25.040 needed to be added to the motion. AMENDED MOTION: Commissioner Pengra moved to recommend approval to the City Council of the amendments to Eagle Mountain Municipal Code as follows: 1. Section 15.10.390 Street Lighting shall be amended and reflect the corrections made by staff during the meeting to require streetlights to be local streets and 150 to 250 feet of separation on collector and arterial streets and 250 to 350 apart along rural and local streets; Eagle Mountain City Planning Commission Meeting – January 24, 2023 Page 8 of 10 2. Section 15.70.090 Underground Distribution for New Subdivisions shall be amended as presented; 3. Section 17.25.040 Residential Development Standards shall be amended as presented; 4. The sixth line in Section 17.25.050 Generally Applicable Provisions shall be amended to read, “Variations in exterior materials (fiber cement siding, board and batten or vertical siding, stone, brick, stucco) and/or colors are recommended;” and 5. Section 17.72.040 shall be amended as presented. Commissioner Bergener seconded the motion. Those Voting Yes Those Voting No Those Abstaining Those Absent ☒ Jason Allen ☐ Jason Allen ☐ Jason Allen ☐ Jason Allen ☒ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☐ Jeremy Bergener ☒ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☐ Matthew Everett ☒ Chris Pengra ☐ Chris Pengra ☐ Chris Pengra ☐ Chris Pengra ☒ Brent Strong ☐ Brent Strong ☐ Brent Strong ☐ Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure",
+        "code"
+      ],
+      "votes": []
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

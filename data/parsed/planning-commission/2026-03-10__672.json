@@ -1,0 +1,203 @@
+{
+  "meeting": {
+    "id": 672,
+    "date": "2026-03-10",
+    "source_file": "2026-03-10__672.pdf",
+    "motion_count": 5,
+    "ord_count": 1,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 282,
+      "meeting_id": 672,
+      "date": "2026-03-10",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of February 24, 2026, Planning Commission meeting. Commissioner Lane second…",
+      "motion": "Commissioner Allen moved to approve the minutes of February 24, 2026, Planning Commission meeting. Commissioner Lane seconded the motion.",
+      "outcome": "passed with 4 yes and 2 abstentions.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Abstain"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Abstain"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 283,
+      "meeting_id": 672,
+      "date": "2026-03-10",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 8.A., Firefly NPA 8 Phase B Plat 4 Townhomes Sit…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 8.A., Firefly NPA 8 Phase B Plat 4 Townhomes Site Plan, with the noted condition in the staff report. Commissioner Lane seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "zoning",
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 284,
+      "meeting_id": 672,
+      "date": "2026-03-10",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve Item 8.B., Overland Village 2 Phase B Preliminary Plat, with the conditions that correc…",
+      "motion": "Commissioner Strong moved to approve Item 8.B., Overland Village 2 Phase B Preliminary Plat, with the conditions that correct street names and inlet box re-locations be added. Commissioner Hess seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "zoning",
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 285,
+      "meeting_id": 672,
+      "date": "2026-03-10",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 8.C., EMMC Section 8.15 Noise Amendment, with co…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 8.C., EMMC Section 8.15 Noise Amendment, with condition #2: The following language shall be added as 8.15.070(B)(5) Future Zoning Changes. Compliance with the maximum permissible sound levels established in Table 8.15.070(1) shall be determined based on the zoning classifications of adjacent properties in effect at the time of approval of the development that creates the sound source. A development that complies with the standards in effect at the time of approval shall not be required to modify or mitigate sound due solely to a subsequent zoning change on an adjacent property. If an adjacent property is subsequently rezoned to a zoning classification with a more restrictive maximum permissible sound level, the property subject to the rezoning shall be responsible for implementing any necessary mitigation to meet the applicable standards. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 286,
+      "meeting_id": 672,
+      "date": "2026-03-10",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 8.D., EMMC 17.15 Roles and Dutie, with the condi…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 8.D., EMMC 17.15 Roles and Dutie, with the condition to provide information on how other cities handle appointments. Commissioner Lane seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2026-03-10__672.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "video and meeting minutes, vested rights, exceptions, zoning ordinance change, zoning estoppel,"
+    }
+  ],
+  "resolutions": []
+}

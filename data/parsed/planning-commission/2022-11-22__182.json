@@ -1,0 +1,55 @@
+{
+  "meeting": {
+    "id": 182,
+    "date": "2022-11-22",
+    "source_file": "2022-11-22__182.pdf",
+    "motion_count": 2,
+    "ord_count": 2,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 77,
+      "meeting_id": 182,
+      "date": "2022-11-22",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the November 8, 2022 minutes. Commissioner Allen seconded the motion. Those Voting Yes…",
+      "motion": "Commissioner Wells moved to approve the November 8, 2022 minutes. Commissioner Allen seconded the motion. Those Voting Yes Those Voting No Those Abstøining Those Absenl tr tr tr tr Joson Allen Jøson Allen Jason Allen Jason Allen tr tr D E Jeremy Bergener Jeremy Bergener Jeremy Bergener Jeremy Bergener E tr tr tr Matthew Everett Møtthew Everelt Matthew Everett Matlhew Everett n tr tr tr Chris Pengra Chris Pengra Chris Pengra Chrís Pengrø tr Erin Wells tr Erin Wells tr Erin tVells tr Erin Wells Eagle Mountain Planning Commission Meeting - November 22,2022 Page I of7 □ □ □ 181 Brent Strong Brent Strong Brent Strong Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": []
+    },
+    {
+      "id": 78,
+      "meeting_id": 182,
+      "date": "2022-11-22",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table an amendment to Chapter 9 Moderate Income Housing of the City's General Plan to allow sta…",
+      "motion": "Commissioner Everett moved to table an amendment to Chapter 9 Moderate Income Housing of the City's General Plan to allow staff to draft timelines and benchmarks for the recommended strategies based upon the discussions during the Joint City Council and Planning Commission and Planning Commission meetings and to present the draft standards at the December 13, 2022 meeting for Planning Commission review and recommendation. Commissioner Allen seconded the motion. Eagle Mountain Planning Commission Meeting - November 22, 2022 Page 5 of7 Those Voting Yes Those Voting No Those Abstaining Those Absent □ □ □ igi Jason Allen Jason Allen Jason Allen Jason Allen □ □ □ Jeremy Bergener Jeremy Bergener Jeremy Bergener igi Jeremy Bergener □ □ □ igi Matthew Everett Matthew Everett Matthew Everett Matthew Everett □ □ □ Chris Pengra Chris Pengra Chris Pengra igi Chris Pengra □ □ □ igi Erin Wells Erin Wells Erin Wells Erin Wells □ □ □ igi Brent Strong Brent Strong Brent Strong Brent Strong",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": []
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2022-11-22__182.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "adoption of a land use ordinance that requires 10% or more of new residential development"
+    },
+    {
+      "source_file": "2022-11-22__182.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "adoption of a land use ordinance that requires 10% or more of new residential development"
+    }
+  ],
+  "resolutions": []
+}

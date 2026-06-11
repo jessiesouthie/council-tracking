@@ -1,0 +1,337 @@
+{
+  "meeting": {
+    "id": 671,
+    "date": "2026-02-10",
+    "source_file": "2026-02-10__671.pdf",
+    "motion_count": 8,
+    "ord_count": 1,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 272,
+      "meeting_id": 671,
+      "date": "2026-02-10",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of December 9, 2026, Planning Commission meeting. Commissioner Free seconde…",
+      "motion": "Commissioner Strong moved to approve the minutes of December 9, 2026, Planning Commission meeting. Commissioner Free seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 273,
+      "meeting_id": 671,
+      "date": "2026-02-10",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of January 13, 2026, Planning Commission meeting with the correction of Com…",
+      "motion": "Commissioner Free moved to approve the minutes of January 13, 2026, Planning Commission meeting with the correction of Commissioner Allen leading the Pledge of Allegiance to Commissioner Hess. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 274,
+      "meeting_id": 671,
+      "date": "2026-02-10",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of 7.A., One Call Auto Site Plan. Commissioner Lane seco…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of 7.A., One Call Auto Site Plan. Commissioner Lane seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 275,
+      "meeting_id": 671,
+      "date": "2026-02-10",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.B., Consolidated Fee Schedule for Site Plan Am…",
+      "motion": "Commissioner Strong moved to recommend approval to the City Council of Item 7.B., Consolidated Fee Schedule for Site Plan Amendment. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 276,
+      "meeting_id": 671,
+      "date": "2026-02-10",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Forward a negative recommendation to the City Council of Item 7.C., Fence Code Amendment. Commi…",
+      "motion": "Commissioner Free moved to forward a negative recommendation to the City Council of Item 7.C., Fence Code Amendment. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 277,
+      "meeting_id": 671,
+      "date": "2026-02-10",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.D., Overland Master Development Agreement, wit…",
+      "motion": "Commissioner Free moved to recommend approval to the City Council of Item 7.D., Overland Master Development Agreement, with the request to look at lighting requirements and get them closer to City Code. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 278,
+      "meeting_id": 671,
+      "date": "2026-02-10",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.E., QTS- SCL 2 Rezone. Commissioner Allen seco…",
+      "motion": "Commissioner Strong moved to recommend approval to the City Council of Item 7.E., QTS- SCL 2 Rezone. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 279,
+      "meeting_id": 671,
+      "date": "2026-02-10",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.F., code amendment for the Wildland Urban Inte…",
+      "motion": "Commissioner DeCoursey moved to recommend approval to the City Council of Item 7.F., code amendment for the Wildland Urban Interface Area Map. Commissioner Lane seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Excused"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2026-02-10__671.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "wood and vinyl fences do not cause damage to city property, suggesting differentiation in the ordinance."
+    }
+  ],
+  "resolutions": []
+}

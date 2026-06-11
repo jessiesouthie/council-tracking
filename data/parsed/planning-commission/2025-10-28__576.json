@@ -1,0 +1,188 @@
+{
+  "meeting": {
+    "id": 576,
+    "date": "2025-10-28",
+    "source_file": "2025-10-28__576.pdf",
+    "motion_count": 5,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 247,
+      "meeting_id": 576,
+      "date": "2025-10-28",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of the October 14, 2025 Planning Commission meeting. Commissioner Whiting s…",
+      "motion": "Commissioner Strong moved to approve the minutes of the October 14, 2025 Planning Commission meeting. Commissioner Whiting seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 248,
+      "meeting_id": 576,
+      "date": "2025-10-28",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Lower Hidden Valley Master Development Pla…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.A., Lower Hidden Valley Master Development Plan Amendment-Trails at Hidden Valley, with the following conditions: 1. To look at who is responsible for putting up the fence for the wildlife corridor and that the City investigate the comments from the Eagle Mountain Nature and Wildlife Alliance and that corridor. 2. The Preliminary Plats be divided into subsections versus one whole plat and that phasing changes be considered by the City Council, possibly switching Phase two and one. 3. That staff investigates whether or not the ridge line protection overlay applies to this property. Commissioner Hess seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "No"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "No"
+        }
+      ]
+    },
+    {
+      "id": 249,
+      "meeting_id": 576,
+      "date": "2025-10-28",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.B., 17.64: Alternative Energy Overlay Zone wit…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.B., 17.64: Alternative Energy Overlay Zone with the condition to exclude the use of water-cooled natural gas power plant. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "No"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 250,
+      "meeting_id": 576,
+      "date": "2025-10-28",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve Item 7.C., Firefly NPA 6 Phase, with the condition that the screening wall meets code a…",
+      "motion": "Commissioner Allen moved to approve Item 7.C., Firefly NPA 6 Phase, with the condition that the screening wall meets code and the agreement. Commissioner Hess seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 251,
+      "meeting_id": 576,
+      "date": "2025-10-28",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.D., Interconnectivity Code Amendment, with the…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.D., Interconnectivity Code Amendment, with the condition to apply to the CN, CC, CR, MEC, and OP zones. Commissioner Whiting seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

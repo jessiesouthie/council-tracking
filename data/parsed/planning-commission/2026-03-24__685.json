@@ -1,0 +1,103 @@
+{
+  "meeting": {
+    "id": 685,
+    "date": "2026-03-24",
+    "source_file": "2026-03-24__685.pdf",
+    "motion_count": 2,
+    "ord_count": 3,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 287,
+      "meeting_id": 685,
+      "date": "2026-03-24",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of March 10, 2026, Planning Commission meeting. Commissioner Strong seconde…",
+      "motion": "Commissioner Lane moved to approve the minutes of March 10, 2026, Planning Commission meeting. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 288,
+      "meeting_id": 685,
+      "date": "2026-03-24",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Ordinance Amending EMMC 17.72.040, HVAC Sc…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.A., Ordinance Amending EMMC 17.72.040, HVAC Screening Requirements, recommending: 1. Polyethylene material be added as a materials option. 2. Remove landscaping as a screening option. 3. The screening must be within 6 inches of the ground. 4. All supporting lines and attachments be painted to match the wall color. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Mandy Lance",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2026-03-24__685.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "2.A. Agenda Item 7.A. Ordinance Amending EMMC 17.72.040. HVAC Screening Requirements"
+    },
+    {
+      "source_file": "2026-03-24__685.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "7.A. Ordinance Amending EMMC 17.72.040. HVAC Screening Requirements"
+    },
+    {
+      "source_file": "2026-03-24__685.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "Ordinance Amending EMMC 17.72.040, HVAC Screening Requirements, recommending:"
+    }
+  ],
+  "resolutions": []
+}

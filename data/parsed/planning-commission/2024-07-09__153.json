@@ -1,0 +1,138 @@
+{
+  "meeting": {
+    "id": 153,
+    "date": "2024-07-09",
+    "source_file": "2024-07-09__153.pdf",
+    "motion_count": 3,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 176,
+      "meeting_id": 153,
+      "date": "2024-07-09",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes. Commissioner Whiting seconded the motion",
+      "motion": "Commissioner Hess moved to approve the minutes. Commissioner Whiting seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Absent"
+        }
+      ]
+    },
+    {
+      "id": 177,
+      "meeting_id": 153,
+      "date": "2024-07-09",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval of the Ranches Crossing Preliminary Plat to the City Council, with the sugge…",
+      "motion": "Commissioner Hess moved to recommend approval of the Ranches Crossing Preliminary Plat to the City Council, with the suggestion that the City Council and staff consider how eliminating access across Ranches Parkway may affect the parcel’s development. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Absent"
+        }
+      ]
+    },
+    {
+      "id": 178,
+      "meeting_id": 153,
+      "date": "2024-07-09",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval of the Ranches Crossing Drive- through Site Plan to the City Council, with t…",
+      "motion": "Commissioner Whiting moved to recommend approval of the Ranches Crossing Drive- through Site Plan to the City Council, with the condition that the parking is relocated behind the building. Commissioner Allen seconded the motion. AMENDED MOTION: Commissioner Whiting moved to recommend approval of the Ranches Crossing Drive-through Site Plan to the City Council, with the conditions that the parking is relocated behind the building, and limiting the site plan to a single drive-through. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Absent"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

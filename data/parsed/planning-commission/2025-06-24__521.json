@@ -1,0 +1,417 @@
+{
+  "meeting": {
+    "id": 521,
+    "date": "2025-06-24",
+    "source_file": "2025-06-24__521.pdf",
+    "motion_count": 9,
+    "ord_count": 6,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 197,
+      "meeting_id": 521,
+      "date": "2025-06-24",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of the June 10, 2025, Planning Commission Meeting. Commissioner Whiting sec…",
+      "motion": "Commissioner Hess moved to approve the minutes of the June 10, 2025, Planning Commission Meeting. Commissioner Whiting seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 198,
+      "meeting_id": 521,
+      "date": "2025-06-24",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A. with recommendations that Project 19 connec…",
+      "motion": "Commissioner Whiting moved to recommend approval to the City Council of Item 7.A. with recommendations that Project 19 connect to Airport Road, Project 128 be removed completely, and that the comments from the Eagle Mountain Nature and Wildlife Alliance be included. Commissioner Strong seconded the motion.",
+      "outcome": "did not pass with a 2 to 2 vote and one abstained.",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "No"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "No"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Abstain"
+        }
+      ]
+    },
+    {
+      "id": 199,
+      "meeting_id": 521,
+      "date": "2025-06-24",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A. with recommendations that the comments from…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.A. with recommendations that the comments from the Eagle Mountain Nature and Wildlife Alliance be included. Commissioner Hess seconded the motion.",
+      "outcome": "passed with a 3 to 2 vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "No"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "No"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 200,
+      "meeting_id": 521,
+      "date": "2025-06-24",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table Item 7.B., Richard’s Animal Management Plan, until the July 8, 2025, meeting. Commissione…",
+      "motion": "Commissioner Allen moved to table Item 7.B., Richard’s Animal Management Plan, until the July 8, 2025, meeting. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 201,
+      "meeting_id": 521,
+      "date": "2025-06-24",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table Item 7.C., A Proposed Amendment for Establishing Standards for Alternative Animal Managem…",
+      "motion": "Commissioner Allen moved to table Item 7.C., A Proposed Amendment for Establishing Standards for Alternative Animal Management Plans, until the July 8, 2025, meeting. Commissioner Fox seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 202,
+      "meeting_id": 521,
+      "date": "2025-06-24",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.D., Title 17 Amendments to Require Parking Lot…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.D., Title 17 Amendments to Require Parking Lots be in Proximity to Uses and to Standards Governing Shared Parking Arrangements, Commissioner Hess seconded the motion.",
+      "outcome": "passed with a 4 to 1 vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "No"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 203,
+      "meeting_id": 521,
+      "date": "2025-06-24",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.E., EMMC 17 Amendments to Drive-Thru Lanes. Co…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.E., EMMC 17 Amendments to Drive-Thru Lanes. Commissioner Whiting seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 204,
+      "meeting_id": 521,
+      "date": "2025-06-24",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.F., Table 17 Changes to Required Setbacks for…",
+      "motion": "Commissioner Strong moved to recommend approval to the City Council of Item 7.F., Table 17 Changes to Required Setbacks for Structures Housing Animals. Commissioner Hess seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 205,
+      "meeting_id": 521,
+      "date": "2025-06-24",
+      "page": 7,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.G., Title 17 Amendments to Definitions and Con…",
+      "motion": "Commissioner Fox moved to recommend approval to the City Council of Item 7.G., Title 17 Amendments to Definitions and Controls Pertaining to Property Frontage. Commissioner Whiting seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Craig Whiting",
+          "vote": "Yes"
+        },
+        {
+          "name": "Robert Fox",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2025-06-24__521.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "7. C. An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code"
+    },
+    {
+      "source_file": "2025-06-24__521.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "7.D. An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code"
+    },
+    {
+      "source_file": "2025-06-24__521.pdf",
+      "meeting_date": "",
+      "page": 5,
+      "line_text": "7. E. An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code"
+    },
+    {
+      "source_file": "2025-06-24__521.pdf",
+      "meeting_date": "",
+      "page": 6,
+      "line_text": "7. F. An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code"
+    },
+    {
+      "source_file": "2025-06-24__521.pdf",
+      "meeting_date": "",
+      "page": 6,
+      "line_text": "ordinance draft to the City Council."
+    },
+    {
+      "source_file": "2025-06-24__521.pdf",
+      "meeting_date": "",
+      "page": 6,
+      "line_text": "7. G. An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code"
+    }
+  ],
+  "resolutions": []
+}
