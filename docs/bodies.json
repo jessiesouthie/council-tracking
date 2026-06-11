@@ -1,0 +1,20 @@
+[
+  {
+    "id": "city-council",
+    "label": "City Council",
+    "data_file": "data.json",
+    "default": true
+  },
+  {
+    "id": "planning-commission",
+    "label": "Planning Commission",
+    "data_file": "data.planning-commission.json",
+    "default": false
+  },
+  {
+    "id": "community-services-board",
+    "label": "Community Services Board",
+    "data_file": "data.community-services-board.json",
+    "default": false
+  }
+]

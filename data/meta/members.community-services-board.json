@@ -1,0 +1,7 @@
+{
+  "_doc": "Community Services Board members, same schema as councilmembers.json. The CSB is not on the CivicClerk portal — its minutes PDFs are dropped by hand into data/raw/community-services-board/ (named '<YYYY-MM-DD>__<n>.pdf'). To populate this registry: drop in some PDFs, run `python -m ingest.build_dataset --body community-services-board`, read the 'Top unresolved voters' report, and add an entry per board member. Until names are added here votes stay unresolved and per-member stats are empty.",
+  "members": [],
+  "ignore": [
+    "Yes", "No", "Abstain"
+  ]
+}

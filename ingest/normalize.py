@@ -21,8 +21,11 @@ ROOT = Path(__file__).resolve().parent.parent
 META = ROOT / "data" / "meta"
 
 
-def load_members() -> dict:
-    return json.loads((META / "councilmembers.json").read_text())
+def load_members(filename: str = "councilmembers.json") -> dict:
+    """Load a body's member registry from data/meta/<filename>. Defaults to the
+    City Council roster; other bodies pass their own (e.g.
+    "members.planning-commission.json")."""
+    return json.loads((META / filename).read_text())
 
 
 def load_tags() -> dict:

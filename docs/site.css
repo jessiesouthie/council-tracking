@@ -222,6 +222,31 @@ a:hover { text-decoration: underline; }
 
 .topbar-actions { display: flex; align-items: center; gap: 8px; }
 
+/* Government-body switcher: sits between the brand and the primary nav. */
+.body-switch {
+  flex: none;
+  min-height: 40px;
+  padding: 6px 30px 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-muted);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  /* chevron */
+  background-image: linear-gradient(45deg, transparent 50%, var(--fg-muted) 50%),
+                    linear-gradient(135deg, var(--fg-muted) 50%, transparent 50%);
+  background-position: right 14px center, right 9px center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+.body-switch:hover { border-color: var(--accent); }
+.body-switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
 main {
   flex: 1;
   width: 100%;
@@ -1025,6 +1050,8 @@ details.motion-row .motion-detail {
     border-bottom-color: var(--border);
   }
   .topbar .nav { display: none; }
+  /* Switcher stays (nav moves to the bottom tabbar); keep it compact. */
+  .body-switch { min-height: 36px; font-size: 12px; padding: 5px 26px 5px 10px; max-width: 52vw; }
   .brand-mark { width: 28px; height: 28px; font-size: 11px; border-radius: 6px; }
   .brand .brand-title { font-size: 17px; padding-bottom: 3px; }
   .brand .brand-title::after { width: 18px; }

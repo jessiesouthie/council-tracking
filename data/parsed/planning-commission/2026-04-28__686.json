@@ -1,0 +1,211 @@
+{
+  "meeting": {
+    "id": 686,
+    "date": "2026-04-28",
+    "source_file": "2026-04-28__686.pdf",
+    "motion_count": 5,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 7,
+      "meeting_id": 686,
+      "date": "2026-04-28",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of April 14, 2026, Planning Commission meeting. Commissioner Strong seconde…",
+      "motion": "Commissioner Allen moved to approve the minutes of April 14, 2026, Planning Commission meeting. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "meeting_id": 686,
+      "date": "2026-04-28",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Wildlife Urban Interface Code Amendment, w…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.A., Wildlife Urban Interface Code Amendment, with the following changes: 1. Remove the language of rear setback and have it apply to the setback that's next to the WUI boundary. 2. That the code also be applied to primary and accessory structures. Commissioner Free seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "meeting_id": 686,
+      "date": "2026-04-28",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table Item 7.B., EMMC Chapter 16.15 – Concept Plans, until the May 12, 2026 Planning Commission…",
+      "motion": "Commissioner Strong moved to table Item 7.B., EMMC Chapter 16.15 – Concept Plans, until the May 12, 2026 Planning Commission meeting. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "meeting_id": 686,
+      "date": "2026-04-28",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.C., Preliminary Plat – Spring Run Plaza, with…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.C., Preliminary Plat – Spring Run Plaza, with the following conditions: 1. The Master Development Agreement is approved and executed. 2. The right turn lane be extended to the service drive. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning",
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "meeting_id": 686,
+      "date": "2026-04-28",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.D., Spring Run Plaza Master Development Agreem…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.D., Spring Run Plaza Master Development Agreement, with the recommendation that the right turn lane be extended to the service drive. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "mandy-lane",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

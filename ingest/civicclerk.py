@@ -24,11 +24,15 @@ from typing import Iterator
 
 import requests
 
+# Every body we crawl lives on Eagle Mountain's single CivicClerk portal, so the
+# base URL is a module constant. If a future body lives on a different portal,
+# promote BASE into the body config (see ingest/bodies.py).
 BASE = "https://eaglemountainut.api.civicclerk.com/v1"
 USER_AGENT = "council-tracking/0.1 (+https://github.com/jessiesouthie/Council-Tracking)"
 
-# Eagle Mountain's CivicClerk category for council meetings. If the category
-# label ever shifts ("City Council" -> "City Council Meetings" etc.) update here.
+# Default CivicClerk category. Callers pass other categories (e.g. "Planning
+# Commission") for non-council bodies. If a label ever shifts ("City Council" ->
+# "City Council Meetings" etc.) update the body config in ingest/bodies.py.
 COUNCIL_CATEGORY = "City Council"
 
 # Published-file type for approved minutes (observed from the API payload).
@@ -41,8 +45,11 @@ def _session() -> requests.Session:
     return s
 
 
-def list_council_events(session: requests.Session | None = None) -> Iterator[dict]:
-    """Yield every published Council event the API exposes, newest first.
+def list_council_events(
+    session: requests.Session | None = None,
+    category: str = COUNCIL_CATEGORY,
+) -> Iterator[dict]:
+    """Yield every published event in `category` the API exposes, newest first.
 
     The API silently caps each response at ~15 rows regardless of $top, so we
     advance $skip by the page length we actually received and stop when the
@@ -59,7 +66,7 @@ def list_council_events(session: requests.Session | None = None) -> Iterator[dic
                 "$top": 100,  # server may ignore but doesn't hurt
                 "$skip": skip,
                 "$orderby": "eventDate desc",
-                "$filter": f"categoryName eq '{COUNCIL_CATEGORY}'",
+                "$filter": f"categoryName eq '{category}'",
             },
             timeout=30,
         )

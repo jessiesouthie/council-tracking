@@ -1,0 +1,56 @@
+{
+  "_doc": "Planning Commission members (commissioners), same schema as councilmembers.json. The Planning Commission is a separate body from City Council with different people. Names below were bootstrapped from the roll-call rolls in the parsed Planning Commission minutes (the build's 'Top unresolved voters' report). Term dates are NOT yet researched — each commissioner currently carries a single open-ended `terms` entry (null start/end) so they resolve and show as current; fill in real appointment/term dates from Eagle Mountain's published Planning Commission roster when available. Extend `aliases` whenever OCR introduces a new spelling.",
+  "members": [
+    {
+      "id": "jason-allen",
+      "name": "Jason Allen",
+      "terms": [
+        { "role": "Commissioner", "start": null, "end": null }
+      ],
+      "aliases": ["Jason Allen"]
+    },
+    {
+      "id": "bryan-free",
+      "name": "Bryan Free",
+      "terms": [
+        { "role": "Commissioner", "start": null, "end": null }
+      ],
+      "aliases": ["Bryan Free", "Brian Free"]
+    },
+    {
+      "id": "brent-strong",
+      "name": "Brent Strong",
+      "terms": [
+        { "role": "Commissioner", "start": null, "end": null }
+      ],
+      "aliases": ["Brent Strong"]
+    },
+    {
+      "id": "rod-hess",
+      "name": "Rod Hess",
+      "terms": [
+        { "role": "Commissioner", "start": null, "end": null }
+      ],
+      "aliases": ["Rod Hess"]
+    },
+    {
+      "id": "mandy-lane",
+      "name": "Mandy Lane",
+      "terms": [
+        { "role": "Commissioner", "start": null, "end": null }
+      ],
+      "aliases": ["Mandy Lane"]
+    },
+    {
+      "id": "chad-decoursey",
+      "name": "Chad DeCoursey",
+      "terms": [
+        { "role": "Commissioner", "start": null, "end": null }
+      ],
+      "aliases": ["Chad DeCoursey", "Chad Decoursey"]
+    }
+  ],
+  "ignore": [
+    "Yes", "No", "Abstain"
+  ]
+}

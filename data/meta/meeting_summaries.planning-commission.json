@@ -1,0 +1,4 @@
+{
+  "_doc": "Hand-written summaries for Planning Commission meetings the parser left empty (no motions). Keyed by CivicClerk event id (the <eventId> in the raw filename). Same shape as meeting_summaries.json.",
+  "summaries": {}
+}

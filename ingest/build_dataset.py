@@ -3,14 +3,21 @@ Parse every PDF in data/raw/, apply member normalization and topic tagging,
 write per-meeting JSONs to data/parsed/, and roll the whole archive up into
 docs/data.json (the file the public site reads).
 
-  python -m ingest.build_dataset
+  python -m ingest.build_dataset                       # default body (City Council)
+  python -m ingest.build_dataset --body planning-commission
+  python -m ingest.build_dataset --all-bodies          # rebuild every body + bodies.json
   python -m ingest.build_dataset --only 2026-05-05__712.pdf
 
-Schema of docs/data.json:
+Each body rolls up to its own docs/data<.id>.json (City Council keeps the legacy
+docs/data.json). With --all-bodies a docs/bodies.json index is also emitted for
+the site's body switcher.
+
+Schema of each docs/data*.json:
 
   {
     "generated_at": ISO timestamp,
     "source": "Eagle Mountain CivicClerk portal",
+    "body": body id, "body_label": human label,
     "counts": { meetings, motions, votes, ord_lines, res_lines },
     "members": [{id,name,role,tenure_start,tenure_end,
                  terms:[{role,start,end}]}],   # terms newest-first; top-level
@@ -43,7 +50,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-from . import parser  # noqa: E402
+from . import bodies, parser  # noqa: E402
 
 from .normalize import (  # noqa: E402
     load_members,
@@ -53,18 +60,16 @@ from .normalize import (  # noqa: E402
     make_tagger,
 )
 
-RAW_DIR = ROOT / "data" / "raw"
-PARSED_DIR = ROOT / "data" / "parsed"
-DOCS_DATA = ROOT / "docs" / "data.json"
-SUMMARIES_FILE = ROOT / "data" / "meta" / "meeting_summaries.json"
+DOCS_DIR = ROOT / "docs"
+BODIES_INDEX = DOCS_DIR / "bodies.json"
 
 
-def load_meeting_summaries() -> dict[int, dict]:
+def load_meeting_summaries(summaries_file: Path) -> dict[int, dict]:
     """Hand-written summaries for meetings the parser left empty (no motions).
     Keyed by integer event_id; values carry 'type' and 'summary' strings."""
-    if not SUMMARIES_FILE.exists():
+    if not summaries_file.exists():
         return {}
-    raw = json.loads(SUMMARIES_FILE.read_text())
+    raw = json.loads(summaries_file.read_text())
     out: dict[int, dict] = {}
     for eid, entry in (raw.get("summaries") or {}).items():
         try:
@@ -83,14 +88,25 @@ def parse_one(pdf: Path) -> dict:
 
 
 def event_id_from_name(name: str) -> int | None:
-    # "<YYYY-MM-DD>__<eventId>.pdf"
+    # "<YYYY-MM-DD>__<eventId>.pdf" — the eventId is the CivicClerk id for
+    # crawled bodies. Manual drop-in PDFs should follow the same convention
+    # ("<YYYY-MM-DD>__<n>.pdf"); if a filename lacks a numeric suffix we fall
+    # back to a stable hash of the stem so multiple manual meetings don't all
+    # collapse to id 0 and overwrite each other.
     stem = Path(name).stem
     if "__" in stem:
         try:
             return int(stem.split("__", 1)[1])
         except ValueError:
-            return None
-    return None
+            pass
+    return _stable_id(stem)
+
+
+def _stable_id(stem: str) -> int:
+    """Deterministic positive id from a filename stem (manual-body fallback)."""
+    import hashlib
+    h = hashlib.sha1(stem.encode("utf-8")).hexdigest()
+    return int(h[:12], 16)
 
 
 def normalize_motion(raw_motion: dict, resolve, tag, is_ignored) -> tuple[dict, list[dict]]:
@@ -147,27 +163,35 @@ def classify_outcome(outcome: str) -> str:
     return "other"
 
 
-def main() -> int:
-    p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--only", default=None,
-                   help="parse just one filename in data/raw/ (for debugging)")
-    args = p.parse_args()
+def build_one(body: dict, only: str | None = None) -> int:
+    """Parse one body's raw PDFs and roll them up into its docs/data*.json."""
+    raw_dir = bodies.raw_dir(body)
+    parsed_dir = bodies.parsed_dir(body)
+    docs_data = bodies.data_file(body)
 
-    members_doc = load_members()
+    members_doc = load_members(body["members"])
     tags_doc = load_tags()
     resolve = make_member_resolver(members_doc)
     is_ignored = make_ignore_check(members_doc)
     tag = make_tagger(tags_doc)
-    summaries = load_meeting_summaries()
+    summaries = load_meeting_summaries(bodies.summaries_path(body))
 
-    pdfs = sorted(RAW_DIR.glob("*.pdf"))
-    if args.only:
-        pdfs = [p for p in pdfs if p.name == args.only]
+    print(f"\n== {body['label']} ({body['id']}) ==")
+    # A missing/empty raw dir is fine — we still emit a valid empty dataset so
+    # the switcher always has a file to load (e.g. a manual body with no PDFs yet).
+    # Manual bodies may supply .txt as well as .pdf (the parser reads both).
+    pdfs = (
+        sorted([*raw_dir.glob("*.pdf"), *raw_dir.glob("*.txt")])
+        if raw_dir.exists()
+        else []
+    )
+    if only:
+        pdfs = [p for p in pdfs if p.name == only]
         if not pdfs:
-            print(f"no match in data/raw/ for {args.only!r}", file=sys.stderr)
+            print(f"no match in {raw_dir.relative_to(ROOT)} for {only!r}", file=sys.stderr)
             return 1
 
-    PARSED_DIR.mkdir(parents=True, exist_ok=True)
+    parsed_dir.mkdir(parents=True, exist_ok=True)
 
     meetings: list[dict] = []
     motions: list[dict] = []
@@ -222,7 +246,7 @@ def main() -> int:
             motions.append(entry)
             per_meeting["motions"].append(entry)
 
-        (PARSED_DIR / f"{pdf.stem}.json").write_text(
+        (parsed_dir / f"{pdf.stem}.json").write_text(
             json.dumps(per_meeting, indent=2, ensure_ascii=False)
         )
 
@@ -300,6 +324,8 @@ def main() -> int:
     out = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "source": "Eagle Mountain CivicClerk portal",
+        "body": body["id"],
+        "body_label": body["label"],
         "counts": counts,
         "members": [_member_for_output(m) for m in members_doc["members"]],
         "tags": [
@@ -320,19 +346,62 @@ def main() -> int:
         )[:50]),
     }
 
-    DOCS_DATA.parent.mkdir(parents=True, exist_ok=True)
-    DOCS_DATA.write_text(json.dumps(out, ensure_ascii=False))
-    size_kb = DOCS_DATA.stat().st_size / 1024
+    docs_data.parent.mkdir(parents=True, exist_ok=True)
+    docs_data.write_text(json.dumps(out, ensure_ascii=False))
+    size_kb = docs_data.stat().st_size / 1024
     print(
-        f"Wrote {DOCS_DATA.relative_to(ROOT)} ({size_kb:.0f} KB)  "
+        f"  Wrote {docs_data.relative_to(ROOT)} ({size_kb:.0f} KB)  "
         f"meetings={counts['meetings']}  motions={counts['motions']}  "
         f"votes={counts['votes']}"
     )
     if all_unresolved:
-        print(f"Top unresolved voters (consider adding to councilmembers.json):")
+        print(f"  Top unresolved voters (consider adding to {body['members']}):")
         for n, c in sorted(all_unresolved.items(), key=lambda kv: -kv[1])[:10]:
-            print(f"  {n!r:35s}  x{c}")
+            print(f"    {n!r:35s}  x{c}")
     return 0
+
+
+def write_bodies_index() -> None:
+    """Emit docs/bodies.json — the id→file map the site's switcher reads."""
+    index = [
+        {
+            "id": b["id"],
+            "label": b["label"],
+            "data_file": Path(b["data_file"]).name,
+            "default": bool(b.get("default")),
+        }
+        for b in bodies.all_bodies()
+    ]
+    DOCS_DIR.mkdir(parents=True, exist_ok=True)
+    BODIES_INDEX.write_text(json.dumps(index, ensure_ascii=False, indent=2))
+    print(f"\nWrote {BODIES_INDEX.relative_to(ROOT)} ({len(index)} bodies)")
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--body", default=None,
+                   help="body id to build (default: the default body)")
+    p.add_argument("--all-bodies", action="store_true",
+                   help="rebuild every body and emit docs/bodies.json")
+    p.add_argument("--only", default=None,
+                   help="parse just one filename in the body's raw dir (for debugging)")
+    args = p.parse_args()
+
+    if args.all_bodies:
+        targets = bodies.all_bodies()
+    elif args.body:
+        targets = [bodies.get_body(args.body)]
+    else:
+        targets = [bodies.default_body()]
+
+    rc = 0
+    for body in targets:
+        rc |= build_one(body, only=args.only)
+
+    # Always (re)write the index when building more than one body so the site
+    # can discover every dataset; harmless to refresh on single-body builds too.
+    write_bodies_index()
+    return rc
 
 
 def _member_for_output(m: dict) -> dict:

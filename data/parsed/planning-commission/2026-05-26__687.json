@@ -1,0 +1,77 @@
+{
+  "meeting": {
+    "id": 687,
+    "date": "2026-05-26",
+    "source_file": "2026-05-26__687.pdf",
+    "motion_count": 2,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 12,
+      "meeting_id": 687,
+      "date": "2026-05-26",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of May 12, 2026, Planning Commission meeting. Commissioner Strong seconded…",
+      "motion": "Commissioner Allen moved to approve the minutes of May 12, 2026, Planning Commission meeting. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "meeting_id": 687,
+      "date": "2026-05-26",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Deny Item 7.A., Variance – Pony Express Business Park with the following findings: 1. The prope…",
+      "motion": "Commissioner DeCoursey moved to deny Item 7.A., Variance – Pony Express Business Park with the following findings: 1. The property appears to retain reasonable buildable area, and a viable commercial use without the requested variances. 2. Denial does not deprive the property of rights possessed by similarly situated properties. 3. The public interest may be better served through compliance with the wash setback retaining wall and drive-through circulation standards. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "zoning",
+        "parks"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

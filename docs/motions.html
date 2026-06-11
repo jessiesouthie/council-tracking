@@ -169,6 +169,9 @@
 
       function syncUrl() {
         const p = new URLSearchParams();
+        // Preserve the active body so filtering doesn't reset the switcher.
+        const body = CT.currentBody();
+        if (body && body !== "city-council") p.set("body", body);
         for (const k of ["q","tag","member","outcome","year"]) if (state[k]) p.set(k, state[k]);
         history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p.toString() : ""));
       }

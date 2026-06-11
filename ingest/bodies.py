@@ -1,0 +1,110 @@
+"""
+Registry of the government bodies the tracker covers — the single source of
+truth shared by the crawl, the dataset build, and (via the generated
+docs/bodies.json) the public site's body switcher.
+
+Each body has one of two sources:
+  "civicclerk" — crawled from the CivicClerk OData portal by `category` name.
+  "manual"     — no crawl; minutes PDFs are dropped into the body's raw_dir by
+                 hand (named "<YYYY-MM-DD>__<n>.pdf") and parsed like the rest.
+
+City Council keeps the original flat paths (data/raw, data/parsed, docs/data.json)
+so existing files and links never move. New bodies nest under per-body subdirs
+and get their own docs/data.<id>.json, loaded on demand by the site.
+
+Helpers:
+  all_bodies()        -> list[dict]            every body config
+  get_body(body_id)   -> dict                  one config (raises on unknown id)
+  default_body()      -> dict                  the body served when none is chosen
+  raw_dir(body)       -> Path                  resolved against the repo root
+  parsed_dir(body)    -> Path
+  data_file(body)     -> Path
+  members_path(body)  -> Path                  data/meta/<members file>
+  summaries_path(body)-> Path                  data/meta/<summaries file>
+"""
+
+from __future__ import annotations
+
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+META = ROOT / "data" / "meta"
+
+# Order here is the order the switcher shows them in; the `default` body leads.
+BODIES: list[dict] = [
+    {
+        "id": "city-council",
+        "label": "City Council",
+        "source": "civicclerk",
+        "category": "City Council",
+        "members": "councilmembers.json",
+        "summaries": "meeting_summaries.json",
+        "raw_dir": "data/raw",                      # legacy flat paths
+        "parsed_dir": "data/parsed",
+        "data_file": "docs/data.json",              # legacy URL preserved
+        "default": True,
+    },
+    {
+        "id": "planning-commission",
+        "label": "Planning Commission",
+        "source": "civicclerk",
+        "category": "Planning Commission",
+        "members": "members.planning-commission.json",
+        "summaries": "meeting_summaries.planning-commission.json",
+        "raw_dir": "data/raw/planning-commission",
+        "parsed_dir": "data/parsed/planning-commission",
+        "data_file": "docs/data.planning-commission.json",
+        "default": False,
+    },
+    {
+        "id": "community-services-board",
+        "label": "Community Services Board",
+        "source": "manual",                          # no CivicClerk category — PDFs dropped in
+        "category": None,
+        "members": "members.community-services-board.json",
+        "summaries": "meeting_summaries.community-services-board.json",
+        "raw_dir": "data/raw/community-services-board",
+        "parsed_dir": "data/parsed/community-services-board",
+        "data_file": "docs/data.community-services-board.json",
+        "default": False,
+    },
+]
+
+
+def all_bodies() -> list[dict]:
+    return BODIES
+
+
+def get_body(body_id: str) -> dict:
+    for b in BODIES:
+        if b["id"] == body_id:
+            return b
+    valid = ", ".join(b["id"] for b in BODIES)
+    raise KeyError(f"unknown body {body_id!r}; valid ids: {valid}")
+
+
+def default_body() -> dict:
+    for b in BODIES:
+        if b.get("default"):
+            return b
+    return BODIES[0]
+
+
+def raw_dir(body: dict) -> Path:
+    return ROOT / body["raw_dir"]
+
+
+def parsed_dir(body: dict) -> Path:
+    return ROOT / body["parsed_dir"]
+
+
+def data_file(body: dict) -> Path:
+    return ROOT / body["data_file"]
+
+
+def members_path(body: dict) -> Path:
+    return META / body["members"]
+
+
+def summaries_path(body: dict) -> Path:
+    return META / body["summaries"]

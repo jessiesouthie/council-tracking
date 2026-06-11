@@ -2,7 +2,7 @@
 // - App shell: precache + cache-first (versioned).
 // - Pyodide CDN: stale-while-revalidate into a separate, long-lived bucket.
 
-const SHELL_CACHE = "council-shell-v15";
+const SHELL_CACHE = "council-shell-v16";
 const PYODIDE_CACHE = "council-pyodide-v1";
 const DATA_CACHE = "council-data-v1";
 
@@ -56,8 +56,9 @@ self.addEventListener("fetch", (event) => {
   }
 
   if (url.origin === self.location.origin) {
-    // data.json updates each ingest run — prefer fresh, fall back to cached.
-    if (url.pathname.endsWith("/data.json") || url.pathname === "/data.json") {
+    // Per-body datasets (data.json, data.<body>.json) and the bodies index
+    // update each ingest run — prefer fresh, fall back to cached.
+    if (/\/data(\.[\w-]+)?\.json$/.test(url.pathname) || /\/bodies\.json$/.test(url.pathname)) {
       event.respondWith(staleWhileRevalidate(req, DATA_CACHE));
       return;
     }

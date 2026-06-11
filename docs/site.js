@@ -2,27 +2,80 @@
 // Loads docs/data.json once and exposes helpers via `window.CT`.
 
 (() => {
-  const CACHE = {};
-  let loadPromise = null;
+  const DEFAULT_BODY = "city-council";
+  const BODY_KEY = "ct_body";
+
+  // Per-body caches so switching bodies in-session reloads the right dataset
+  // instead of returning the first one fetched.
+  const DATA_CACHE = {};   // body id -> parsed dataset
+  const DATA_PROMISE = {}; // body id -> in-flight fetch promise
+  let bodiesPromise = null;
+
+  // Which body is active: ?body= wins (and is remembered), else the stored
+  // preference, else the default. Writing the param through to localStorage
+  // keeps the selection sticky across links that drop the query string.
+  function currentBody() {
+    try {
+      const p = new URL(location.href).searchParams.get("body");
+      if (p) {
+        try { localStorage.setItem(BODY_KEY, p); } catch {}
+        return p;
+      }
+      const stored = localStorage.getItem(BODY_KEY);
+      if (stored) return stored;
+    } catch {}
+    return DEFAULT_BODY;
+  }
+
+  // Load the body index (id -> data_file). Falls back to the legacy single
+  // body so the site keeps working even if bodies.json is missing.
+  async function loadBodies() {
+    if (bodiesPromise) return bodiesPromise;
+    const url = new URL("bodies.json", document.baseURI).toString();
+    bodiesPromise = fetch(url)
+      .then((r) => (r.ok ? r.json() : null))
+      .catch(() => null)
+      .then((list) =>
+        Array.isArray(list) && list.length
+          ? list
+          : [{ id: DEFAULT_BODY, label: "City Council", data_file: "data.json", default: true }]
+      );
+    return bodiesPromise;
+  }
+
+  async function dataFileFor(bodyId) {
+    const list = await loadBodies();
+    const hit = list.find((b) => b.id === bodyId);
+    if (hit) return hit.data_file;
+    const def = list.find((b) => b.default) || list[0];
+    return def ? def.data_file : "data.json";
+  }
+
+  function indexData(d) {
+    d._byMemberId = Object.fromEntries(d.members.map((m) => [m.id, m]));
+    d._byTagId = Object.fromEntries(d.tags.map((t) => [t.id, t]));
+    d._byMeetingId = Object.fromEntries(d.meetings.map((m) => [m.id, m]));
+    return d;
+  }
 
   async function loadData() {
-    if (CACHE.data) return CACHE.data;
-    if (loadPromise) return loadPromise;
-    const dataUrl = new URL("data.json", document.baseURI).toString();
-    loadPromise = fetch(dataUrl)
-      .then((r) => {
-        if (!r.ok) throw new Error(`data.json HTTP ${r.status}`);
-        return r.json();
-      })
-      .then((d) => {
-        // Build a few indexes the pages will reuse.
-        d._byMemberId = Object.fromEntries(d.members.map((m) => [m.id, m]));
-        d._byTagId = Object.fromEntries(d.tags.map((t) => [t.id, t]));
-        d._byMeetingId = Object.fromEntries(d.meetings.map((m) => [m.id, m]));
-        CACHE.data = d;
-        return d;
-      });
-    return loadPromise;
+    const body = currentBody();
+    if (DATA_CACHE[body]) return DATA_CACHE[body];
+    if (DATA_PROMISE[body]) return DATA_PROMISE[body];
+    DATA_PROMISE[body] = (async () => {
+      const file = await dataFileFor(body);
+      let r = await fetch(new URL(file, document.baseURI).toString());
+      // Unknown body or missing file → fall back to the default body's data.
+      if (!r.ok && body !== DEFAULT_BODY) {
+        const defFile = await dataFileFor(DEFAULT_BODY);
+        r = await fetch(new URL(defFile, document.baseURI).toString());
+      }
+      if (!r.ok) throw new Error(`data file HTTP ${r.status}`);
+      const d = indexData(await r.json());
+      DATA_CACHE[body] = d;
+      return d;
+    })();
+    return DATA_PROMISE[body];
   }
 
   async function registerServiceWorker() {
@@ -192,16 +245,102 @@
     }
   }
 
-  // Boot every page: mount mobile nav, paint nav highlight, register SW.
+  // Append ?body= to a same-origin in-site link, preserving any existing query.
+  function linkBody(href, body = currentBody()) {
+    try {
+      const u = new URL(href, location.href);
+      if (u.origin !== location.origin) return href;
+      u.searchParams.set("body", body);
+      return u.pathname + u.search + u.hash;
+    } catch {
+      return href;
+    }
+  }
+
+  // When a non-default body is active, rewrite the static in-site links present
+  // at boot (topbar nav, mobile tabbar, brand) so navigation stays in-body even
+  // if the link author didn't add ?body=. Dynamically-rendered links rely on the
+  // localStorage fallback in currentBody() instead.
+  function decorateBodyLinks() {
+    const body = currentBody();
+    if (body === DEFAULT_BODY) return;
+    document.querySelectorAll("a[href]").forEach((a) => {
+      const href = a.getAttribute("href");
+      if (!href || /^(https?:|mailto:|tel:|#)/i.test(href)) return;
+      try {
+        const u = new URL(href, location.href);
+        if (u.origin !== location.origin) return;
+        const isPage = u.pathname.endsWith(".html") || u.pathname.endsWith("/");
+        if (!isPage || u.searchParams.get("body")) return;
+        u.searchParams.set("body", body);
+        a.setAttribute("href", u.pathname + u.search + u.hash);
+      } catch {}
+    });
+  }
+
+  // Inject the body switcher into the topbar (between brand and primary nav).
+  // Hidden when there's only one body so the single-body site is unchanged.
+  async function mountBodySwitch() {
+    const topbar = document.querySelector("header.topbar");
+    if (!topbar || topbar.querySelector(".body-switch")) return;
+    const list = await loadBodies();
+    if (!list || list.length <= 1) return;
+    const cur = currentBody();
+    const sel = document.createElement("select");
+    sel.className = "body-switch";
+    sel.setAttribute("aria-label", "Choose government body");
+    sel.innerHTML = list
+      .map(
+        (b) =>
+          `<option value="${escapeHtml(b.id)}"${b.id === cur ? " selected" : ""}>${escapeHtml(
+            b.label
+          )}</option>`
+      )
+      .join("");
+    sel.value = cur; // no-op if cur isn't a listed body; first option stays selected
+    sel.addEventListener("change", () => {
+      const id = sel.value;
+      try { localStorage.setItem(BODY_KEY, id); } catch {}
+      location.href = linkBody("index.html", id);
+    });
+    const nav = topbar.querySelector("nav.nav");
+    topbar.insertBefore(sel, nav || null);
+  }
+
+  // Reflect the active body in page chrome for non-default bodies. The default
+  // (City Council) view is left exactly as authored.
+  async function applyBodyChrome() {
+    if (currentBody() === DEFAULT_BODY) return;
+    let data;
+    try { data = await loadData(); } catch { return; }
+    const label = data.body_label;
+    if (!label) return;
+    document.querySelectorAll(".topbar .city").forEach((el) => {
+      el.textContent = `Eagle Mountain, UT · ${label}`;
+    });
+    // Homepage hero headline names the body explicitly; keep it accurate.
+    document.querySelectorAll(".hero-title").forEach((el) => {
+      if (/City Council/.test(el.textContent)) {
+        el.textContent = el.textContent.replace(/City Council/g, label);
+      }
+    });
+  }
+
+  // Boot every page: mount switcher + mobile nav, paint nav highlight, register SW.
   document.addEventListener("DOMContentLoaded", () => {
+    mountBodySwitch();
     mountTabbar();
     highlightActiveNav();
+    decorateBodyLinks();
+    applyBodyChrome();
     wireSheetDismiss();
     registerServiceWorker();
   });
 
   window.CT = {
     loadData,
+    currentBody,
+    linkBody,
     escapeHtml,
     memberName,
     tagLabel,

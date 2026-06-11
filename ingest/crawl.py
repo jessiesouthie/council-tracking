@@ -1,13 +1,19 @@
 """
-Crawl the CivicClerk API and download every approved Council Minutes PDF
-that we don't already have in data/raw/.
+Crawl the CivicClerk API and download every approved Minutes PDF that we don't
+already have, for one body or all of them.
 
-  python -m ingest.crawl                # incremental (skip files already present)
-  python -m ingest.crawl --full         # re-download even if present
+  python -m ingest.crawl                       # default body (City Council), incremental
+  python -m ingest.crawl --body planning-commission
+  python -m ingest.crawl --all-bodies          # every CivicClerk-sourced body
+  python -m ingest.crawl --full                # re-download even if present
   python -m ingest.crawl --since 2024-01-01
 
-Files land at:
-  data/raw/<YYYY-MM-DD>__<eventId>.pdf
+Files land at each body's raw dir, e.g.:
+  data/raw/<YYYY-MM-DD>__<eventId>.pdf                       (City Council, legacy flat)
+  data/raw/planning-commission/<YYYY-MM-DD>__<eventId>.pdf
+
+Manual-source bodies (e.g. Community Services Board) have no CivicClerk category
+and are skipped here — their PDFs are dropped into the raw dir by hand.
 """
 
 from __future__ import annotations
@@ -17,15 +23,14 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import civicclerk
+from . import bodies, civicclerk
 
 ROOT = Path(__file__).resolve().parent.parent
-RAW_DIR = ROOT / "data" / "raw"
 
 
-def raw_path_for(event_date: str, event_id: int) -> Path:
+def raw_path_for(raw_dir: Path, event_date: str, event_id: int) -> Path:
     iso_day = event_date[:10]
-    return RAW_DIR / f"{iso_day}__{event_id}.pdf"
+    return raw_dir / f"{iso_day}__{event_id}.pdf"
 
 
 def parse_iso_day(s: str | None) -> datetime | None:
@@ -34,23 +39,15 @@ def parse_iso_day(s: str | None) -> datetime | None:
     return datetime.strptime(s[:10], "%Y-%m-%d").replace(tzinfo=timezone.utc)
 
 
-def main() -> int:
-    p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--full", action="store_true",
-                   help="re-download files that already exist locally")
-    p.add_argument("--since", metavar="YYYY-MM-DD", default=None,
-                   help="ignore events before this date")
-    p.add_argument("--limit", type=int, default=None,
-                   help="stop after N downloads (useful for testing)")
-    args = p.parse_args()
-
-    since = parse_iso_day(args.since)
-    session = civicclerk._session()
-
+def crawl_body(body: dict, *, since, full: bool, limit: int | None,
+               session) -> tuple[int, list[tuple[int, str]]]:
+    """Download a single body's approved minutes. Returns (downloaded, failures)."""
+    raw_dir = bodies.raw_dir(body)
     seen = downloaded = skipped_present = skipped_nofile = skipped_old = 0
     failures: list[tuple[int, str]] = []
 
-    for ev in civicclerk.list_council_events(session=session):
+    print(f"\n== {body['label']} ({body['id']}) ==", flush=True)
+    for ev in civicclerk.list_council_events(session=session, category=body["category"]):
         seen += 1
         eid = ev["id"]
         ed = ev.get("eventDate") or ""
@@ -65,8 +62,8 @@ def main() -> int:
             skipped_nofile += 1
             continue
 
-        dest = raw_path_for(ed, eid)
-        if dest.exists() and not args.full:
+        dest = raw_path_for(raw_dir, ed, eid)
+        if dest.exists() and not full:
             skipped_present += 1
             continue
 
@@ -79,17 +76,58 @@ def main() -> int:
             failures.append((eid, f"download failed: {exc}"))
             continue
 
-        if args.limit is not None and downloaded >= args.limit:
+        if limit is not None and downloaded >= limit:
             break
 
     print(
-        f"\nDone. seen={seen} downloaded={downloaded} "
+        f"  seen={seen} downloaded={downloaded} "
         f"skipped_present={skipped_present} skipped_no_minutes={skipped_nofile} "
         f"skipped_old={skipped_old} failures={len(failures)}"
     )
-    for eid, msg in failures:
+    return downloaded, failures
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--body", default=None,
+                   help="body id to crawl (default: the default body)")
+    p.add_argument("--all-bodies", action="store_true",
+                   help="crawl every CivicClerk-sourced body")
+    p.add_argument("--full", action="store_true",
+                   help="re-download files that already exist locally")
+    p.add_argument("--since", metavar="YYYY-MM-DD", default=None,
+                   help="ignore events before this date")
+    p.add_argument("--limit", type=int, default=None,
+                   help="stop after N downloads per body (useful for testing)")
+    args = p.parse_args()
+
+    if args.all_bodies:
+        targets = bodies.all_bodies()
+    elif args.body:
+        targets = [bodies.get_body(args.body)]
+    else:
+        targets = [bodies.default_body()]
+
+    since = parse_iso_day(args.since)
+    session = civicclerk._session()
+
+    total_downloaded = 0
+    all_failures: list[tuple[int, str]] = []
+    for body in targets:
+        if body.get("source") != "civicclerk":
+            print(f"\n== {body['label']} ({body['id']}) == skipped "
+                  f"(source={body.get('source')!r}; drop PDFs into "
+                  f"{body['raw_dir']}/ by hand)", flush=True)
+            continue
+        n, failures = crawl_body(body, since=since, full=args.full,
+                                 limit=args.limit, session=session)
+        total_downloaded += n
+        all_failures.extend(failures)
+
+    print(f"\nDone. total downloaded={total_downloaded} failures={len(all_failures)}")
+    for eid, msg in all_failures:
         print(f"  ! event {eid}: {msg}", file=sys.stderr)
-    return 0 if not failures else 1
+    return 0 if not all_failures else 1
 
 
 if __name__ == "__main__":
