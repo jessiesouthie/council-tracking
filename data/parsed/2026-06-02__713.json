@@ -1,0 +1,253 @@
+{
+  "meeting": {
+    "id": 713,
+    "date": "2026-06-02",
+    "source_file": "2026-06-02__713.pdf",
+    "motion_count": 4,
+    "ord_count": 5,
+    "res_count": 12
+  },
+  "motions": [
+    {
+      "id": 1114,
+      "meeting_id": 713,
+      "date": "2026-06-02",
+      "page": 8,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Whiting moved to approve the Consent Agenda with the addition of “trails” under Article II, Scope of Review, on Item 13.C. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1115,
+      "meeting_id": 713,
+      "date": "2026-06-02",
+      "page": 9,
+      "agenda_ref": "",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Considering the Disposal of a Portion of Utah County Parcel #45:326:0109, Designated as “Significant Real Property” Pursuant to Eagle Mountain Municipal Code 3.30.060 and 3.30.070 as presented in the packet and including the following: • Setting the price at $2.07 sq/foo t; and • The applicant will bear all costs associated with the item, including survey fees and any other fees related to the disposition",
+      "motion": "Councilmember Whiting moved to a pprove a Resolution of Eagle Mountain City, Utah, Considering the Disposal of a Portion of Utah County Parcel #45:326:0109, Designated as “Significant Real Property” Pursuant to Eagle Mountain Municipal Code 3.30.060 and 3.30.070 as presented in the packet and including the following: • Setting the price at $2.07 sq/foo t; and • The applicant will bear all costs associated with the item, including survey fees and any other fees related to the disposition . Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1116,
+      "meeting_id": 713,
+      "date": "2026-06-02",
+      "page": 9,
+      "agenda_ref": "16.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the Pledge of any portion of the City’s Sales and Use Taxes to the Proposed Issuance of the Redevelopment Agency’s Sales Tax and Tax Increment Revenue Bonds, Series 2026 (the “Bonds” ) and Authorizing the Execution of Related Pledge and Bond Documents Thereto and all other Actions Required to Pledge Sales and Use Taxes to the Bonds.",
+      "motion": "Councilmember Whiting moved to a pprove a Resolution of Eagle Mountain City, Utah, Approving the Pledge of any Portion of the City’s Sales and Use Taxes to the Proposed Issuance of the Redevelopment Agency’s Sales Tax ad Tax Increment Revenue Bonds, Series 2026 (the “Bonds”) and Authorizing the Execution of Related Pledge and Bond Documents Thereto and all other Actions Required to Pledge Sales and Use Taxes to the Bonds. Councilmember Clark seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Abstain"
+        }
+      ]
+    },
+    {
+      "id": 1117,
+      "meeting_id": 713,
+      "date": "2026-06-02",
+      "page": 11,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Add evaluation of speed bumps and speed tables be added to the Legislative Priorities List",
+      "motion": "Councilmember Whiting moved to add evaluation of speed bumps and speed tables be added to the Legislative Priorities List . Councilmember Huish seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "14.A. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Repealing and"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "14.B. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Approving a"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "14.A. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Repealing and"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "14.B. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Approving a"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 10,
+      "line_text": "17.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain Utah,"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "13.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Authorizing the"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "13.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving a Service"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "13.C. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving the"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "16.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving the"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 7,
+      "line_text": "13.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Authorizing the"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 7,
+      "line_text": "13.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving a Service"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "13.C. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving the"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "15. RESOLUTION/PUBLIC HEARING"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "15.A. RESOLUTION/PUBLIC HEARING – A Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Whiting moved to a pprove a Resolution of Eagle"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "16.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving the"
+    },
+    {
+      "source_file": "2026-06-02__713.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Whiting moved to a pprove a Resolution of Eagle"
+    }
+  ]
+}
