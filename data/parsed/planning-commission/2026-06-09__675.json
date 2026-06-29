@@ -1,0 +1,179 @@
+{
+  "meeting": {
+    "id": 675,
+    "date": "2026-06-09",
+    "source_file": "2026-06-09__675.pdf",
+    "motion_count": 4,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 302,
+      "meeting_id": 675,
+      "date": "2026-06-09",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of May 26, 2026, Planning Commission meeting, with the one correction of Co…",
+      "motion": "Commissioner Strong moved to approve the minutes of May 26, 2026, Planning Commission meeting, with the one correction of Commissioner Jensen being changed to the Alternate Commissioner. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 303,
+      "meeting_id": 675,
+      "date": "2026-06-09",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Senior Housing Overlay Zone with the follo…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.A., Senior Housing Overlay Zone with the following changes: 1. The Senior Housing Overlay Zone municipal code location shall be amended from Chapter 17.55 to Chapter 17.44; 2. 17.44.060(H): shall be amended to state, “Accessory Dwelling Units. Accessory dwelling units are prohibited within developments governed by the SHO unless permitted per Utah Code Title 10;” and 3. EMMC 17.25.030 Land Use Table: the RA1, RA2, RD1, RD2, and FR zones shall be marked with an asterisk and footnote, excluding them from qualifying for a density- incentive/bonus. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 304,
+      "meeting_id": 675,
+      "date": "2026-06-09",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.C., Eagle Quest Master Development Agreement S…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.C., Eagle Quest Master Development Agreement Second Amendment. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 305,
+      "meeting_id": 675,
+      "date": "2026-06-09",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.D., Consolidated Fee Schedule with the followi…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.D., Consolidated Fee Schedule with the following changes: 1. Two deletions as suggested by Staff, as follows: delete the asterisk next to \"Owner Building Infrastructure Protection Deposit,\" as well as the language: \"*Deposits will be held by the City for a total of 180 days,\" both of which are in Section 13.4. Eagle Mountain Planning Commission Meeting – June 9, 2026 Page 4 of 5 2. The correction Commissioner DeCoursey identified as follows: Fix the following apparently incomplete portion of a footnote in Section 13.3: “This cost shall include supervision, overhead, equipment, hourly wages, and fringe benefits of the employees... .” Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Excused"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}
