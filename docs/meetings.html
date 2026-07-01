@@ -234,7 +234,11 @@
         const typeLine = meeting.type
           ? `<p class="meeting-type" style="margin:0 0 4px">${CT.escapeHtml(meeting.type)}</p>`
           : "";
-        const summarySection = meeting.summary
+        // When we have an enriched summary from the recording it supersedes the
+        // short minutes blurb: promote the transcript section to the primary
+        // slot (above motions) and drop the redundant short summary. Meetings
+        // without a transcript keep the short minutes summary as before.
+        const summarySection = (!txEntry && meeting.summary)
           ? `<section class="section"><h2>Summary</h2><p class="meeting-summary">${CT.escapeHtml(meeting.summary)}</p></section>`
           : "";
         root.innerHTML = `
@@ -243,9 +247,9 @@
           <h1 class="page-title">${CT.fmtDate(meeting.date)}</h1>
           <p class="page-sub">${motions.length} motion${motions.length === 1 ? "" : "s"} · ${meeting.ord_count} ordinance lines · ${meeting.res_count} resolution lines · <span class="mono muted">${CT.escapeHtml(meeting.source_file)}</span></p>
 
-          ${summarySection}
-
           ${txEntry ? '<div id="transcript-slot"></div>' : ''}
+
+          ${summarySection}
 
           <section class="section">
             <h2>Motions</h2>
