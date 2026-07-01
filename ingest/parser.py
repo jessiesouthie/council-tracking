@@ -36,6 +36,26 @@ _MOTION = re.compile(r"^MOTION:\s*(.*)$", re.IGNORECASE)
 
 _OUTCOME = re.compile(r"^The motion\s+(.+?)(?:\.\s*)?$", re.IGNORECASE)
 
+# Fallback for narrative minutes (e.g. transcript-derived) where the outcome is
+# embedded mid-sentence in the motion body ("… seconded. The motion passed
+# unanimously. …") rather than on its own trailing line after a roll call.
+_OUTCOME_INLINE = re.compile(
+    r"\bthe motion\s+(passed|failed|carried|did not pass|did not carry)([^.;]*)",
+    re.IGNORECASE,
+)
+
+
+def _outcome_from_motion_text(motion_text: str) -> str:
+    """Best-effort outcome pulled from the motion sentence itself. Only used
+    when no explicit trailing outcome line was found."""
+    m = _OUTCOME_INLINE.search(motion_text or "")
+    if not m:
+        return ""
+    phrase = re.sub(r"\s+", " ", (m.group(1) + m.group(2)).strip())
+    if phrase and not re.search(r"[.!]$", phrase):
+        phrase += "."
+    return phrase
+
 STOP_TITLES = re.compile(
     r"^The recording of the (?:discussion|motion) can be found", re.IGNORECASE
 )
@@ -395,6 +415,9 @@ def _parse_motions(
             if not motion_text and mm:
                 motion_text = mm.group(0)
 
+            if not outcome:
+                outcome = _outcome_from_motion_text(motion_text)
+
             if votes or motion_text or outcome:
                 block = MotionBlock(
                     source_file=source_name,
@@ -435,8 +458,8 @@ def _should_exclude_adjourn_or_closed_session(block: MotionBlock) -> bool:
     ):
         return True
     if re.search(
-        r"adjourn the meeting|moved to adjourn the meeting|"
-        r"adjourn at \d{1,2}:\d{2}|moved to adjourn at",
+        r"moved to adjourn\b|adjourn the meeting|"
+        r"adjourn(?:ed)? at \d{1,2}:\d{2}",
         t,
     ) and "closed session" not in t:
         return True
