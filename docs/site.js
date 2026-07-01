@@ -78,6 +78,25 @@
     return DATA_PROMISE[body];
   }
 
+  // Load the transcript manifest (docs/transcripts/index.json): body id -> list
+  // of {id, date, summary_file, text_file, media_url, ...}. Cached; returns {}
+  // if the file is missing so pages degrade gracefully to no-transcript.
+  let transcriptsPromise = null;
+  async function loadTranscripts() {
+    if (transcriptsPromise) return transcriptsPromise;
+    const url = new URL("transcripts/index.json", document.baseURI).toString();
+    transcriptsPromise = fetch(url)
+      .then((r) => (r.ok ? r.json() : {}))
+      .catch(() => ({}));
+    return transcriptsPromise;
+  }
+
+  // Transcript entries for a body (default: the active one), newest first.
+  async function transcriptsForBody(body = currentBody()) {
+    const idx = await loadTranscripts();
+    return Array.isArray(idx[body]) ? idx[body] : [];
+  }
+
   async function registerServiceWorker() {
     if (!("serviceWorker" in navigator)) return;
     try {
@@ -339,6 +358,8 @@
 
   window.CT = {
     loadData,
+    loadTranscripts,
+    transcriptsForBody,
     currentBody,
     linkBody,
     escapeHtml,

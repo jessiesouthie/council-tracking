@@ -44,20 +44,22 @@
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
 
     <script src="site.js"></script>
+    <script src="vendor/marked.min.js"></script>
     <script>
       (async () => {
-        const data = await CT.loadData();
+        const [data, txList] = await Promise.all([CT.loadData(), CT.transcriptsForBody()]);
+        const txById = new Map(txList.map((t) => [t.id, t]));
         const params = CT.paramsFromUrl();
         const root = document.getElementById("content");
 
         if (params.id) {
-          renderMeeting(data, parseInt(params.id, 10), root);
+          renderMeeting(data, parseInt(params.id, 10), root, txById);
         } else {
-          renderList(data, root);
+          renderList(data, root, txById);
         }
       })();
 
-      function renderList(data, root) {
+      function renderList(data, root, txById = new Map()) {
         // Group motions by meeting once, up-front.
         const motionsByMeeting = new Map();
         for (const m of data.motions) {
@@ -65,7 +67,20 @@
           motionsByMeeting.get(m.meeting_id).push(m);
         }
 
-        const years = [...new Set(data.meetings.map(m => m.date.slice(0,4)))].sort((a,b) => b.localeCompare(a));
+        // Meetings that have a transcript but no parsed minutes yet (e.g. the
+        // minutes haven't been published). Surface them so the recording is
+        // browsable immediately, ahead of the official record.
+        const known = new Set(data.meetings.map(m => m.id));
+        const transcriptOnly = [...txById.values()]
+          .filter(t => !known.has(t.id))
+          .map(t => ({
+            id: t.id, date: t.date, source_file: null,
+            motion_count: 0, ord_count: 0, res_count: 0,
+            type: t.title, transcript_only: true,
+          }));
+        const meetings = [...transcriptOnly, ...data.meetings];
+
+        const years = [...new Set(meetings.map(m => m.date.slice(0,4)))].sort((a,b) => b.localeCompare(a));
         const yearOpts = `<option value="">All years</option>` + years.map(y => `<option>${y}</option>`).join("");
         root.innerHTML = `
           <h1 class="page-title">Meetings</h1>
@@ -86,7 +101,7 @@
         function paint() {
           const filt = q.value.trim().toLowerCase();
           const yy = yearSel.value;
-          const list = data.meetings.filter(m => {
+          const list = meetings.filter(m => {
             if (yy && m.date.slice(0,4) !== yy) return false;
             if (!filt) return true;
             if (m.date.includes(filt)) return true;
@@ -99,7 +114,7 @@
           });
           rc.textContent = `${list.length} meeting${list.length===1?"":"s"}`;
 
-          grid.innerHTML = list.map(m => renderMeetingCard(data, m, motionsByMeeting.get(m.id) || [], filt))
+          grid.innerHTML = list.map(m => renderMeetingCard(data, m, motionsByMeeting.get(m.id) || [], filt, txById.get(m.id)))
                                .join("") || `<p class="muted">No meetings match.</p>`;
         }
         q.addEventListener("input", paint);
@@ -133,7 +148,7 @@
         return safe.slice(0, idx) + `<mark>${safe.slice(idx, end)}</mark>` + safe.slice(end);
       }
 
-      function renderMeetingCard(data, meeting, motions, query) {
+      function renderMeetingCard(data, meeting, motions, query, txEntry) {
         // If query matched a motion title, surface those first.
         let ordered = motions;
         if (query) {
@@ -165,15 +180,23 @@
         const typeLine = meeting.type
           ? `<div class="meeting-type">${CT.escapeHtml(meeting.type)}</div>`
           : "";
-        const emptyBody = meeting.summary
-          ? `${typeLine}<p class="meeting-summary">${CT.escapeHtml(meeting.summary)}</p>`
-          : '<p class="muted" style="margin:8px 0 0">No motions parsed.</p>';
+        const txBadge = txEntry
+          ? `<span class="tx-badge" title="Full audio transcript + summary from the recording">🎙 Transcript</span>`
+          : "";
+        const countsLine = meeting.transcript_only
+          ? `<div class="muted" style="font-size:12px">Recording available · official minutes pending</div>`
+          : `<div class="muted" style="font-size:12px">${meeting.motion_count} motion${meeting.motion_count===1?"":"s"} · ${meeting.ord_count} ord. lines · ${meeting.res_count} res. lines</div>`;
+        const emptyBody = meeting.transcript_only
+          ? '<p class="muted" style="margin:8px 0 0">Minutes not published yet — open to read the enriched summary generated from the recording.</p>'
+          : (meeting.summary
+              ? `${typeLine}<p class="meeting-summary">${CT.escapeHtml(meeting.summary)}</p>`
+              : '<p class="muted" style="margin:8px 0 0">No motions parsed.</p>');
         return `
           <article class="meeting-card">
             <header class="meeting-card-head">
               <div>
-                <div class="meeting-date">${CT.fmtDate(meeting.date)}</div>
-                <div class="muted" style="font-size:12px">${meeting.motion_count} motion${meeting.motion_count===1?"":"s"} · ${meeting.ord_count} ord. lines · ${meeting.res_count} res. lines</div>
+                <div class="meeting-date">${CT.fmtDate(meeting.date)} ${txBadge}</div>
+                ${countsLine}
               </div>
               <a class="muted card-link" href="meetings.html?id=${meeting.id}" aria-label="Open meeting ${CT.fmtDate(meeting.date)}">Open →</a>
             </header>
@@ -185,9 +208,13 @@
         `;
       }
 
-      async function renderMeeting(data, id, root) {
+      async function renderMeeting(data, id, root, txById = new Map()) {
+        const txEntry = txById.get(id);
         const meeting = data._byMeetingId[id];
         if (!meeting) {
+          // Not in the parsed dataset. If we have a transcript for it (minutes
+          // not published yet), render a transcript-only meeting page.
+          if (txEntry) return renderTranscriptOnly(id, txEntry, root);
           root.innerHTML = `<div class="error-block">No meeting found with id ${id}.</div>`;
           return;
         }
@@ -218,6 +245,8 @@
 
           ${summarySection}
 
+          ${txEntry ? '<div id="transcript-slot"></div>' : ''}
+
           <section class="section">
             <h2>Motions</h2>
             <div id="motions"></div>
@@ -245,6 +274,103 @@
 
         document.getElementById("motions").innerHTML = motions.map(renderMotionCard.bind(null, data)).join("") ||
           `<p class="muted">No motions parsed for this meeting.</p>`;
+
+        if (txEntry) renderTranscriptSection(txEntry, document.getElementById("transcript-slot"));
+      }
+
+      // A meeting we only have a recording for (no parsed minutes yet).
+      function renderTranscriptOnly(id, entry, root) {
+        CT.setMeta({
+          title: `${CT.fmtDate(entry.date)} meeting · Council Tracking`,
+          description: `Transcript and summary generated from the ${CT.fmtDate(entry.date)} Eagle Mountain meeting recording.`,
+        });
+        root.innerHTML = `
+          <p style="margin-top:0"><a href="meetings.html">← All meetings</a></p>
+          <p class="meeting-type" style="margin:0 0 4px">${CT.escapeHtml(entry.title || "")}</p>
+          <h1 class="page-title">${CT.fmtDate(entry.date)}</h1>
+          <p class="page-sub">Official minutes for this meeting aren't published yet. Everything below was generated from the meeting recording.</p>
+          <div id="transcript-slot"></div>
+        `;
+        renderTranscriptSection(entry, document.getElementById("transcript-slot"));
+      }
+
+      // Renders the "Transcript & summary" section: the enriched prose summary
+      // (markdown) plus a searchable full transcript. Fetches are relative to
+      // the docs root, so they work both locally and on GitHub Pages.
+      function renderTranscriptSection(entry, mount) {
+        if (!mount || !entry) return;
+        mount.innerHTML = `
+          <section class="section transcript-block">
+            <div class="tx-head">
+              <h2>Transcript &amp; summary <span class="tx-tag">from recording</span></h2>
+              <div class="meta-strip">
+                ${entry.duration ? `<span class="chip">🎙️ ${CT.escapeHtml(entry.duration)}</span>` : ""}
+                ${entry.words ? `<span class="chip">📝 ${entry.words.toLocaleString()} words</span>` : ""}
+                ${entry.media_url ? `<span class="chip"><a href="${entry.media_url}" target="_blank" rel="noopener">▶ Watch on CivicClerk ↗</a></span>` : ""}
+              </div>
+            </div>
+            <p class="proto-note">Generated automatically from the audio recording — not the official minutes. Speaker names are inferred from roll-call context.</p>
+            <div id="tx-summary" class="md-body"><p class="loading">Loading summary…</p></div>
+            <details class="tx-full">
+              <summary>Full transcript</summary>
+              <div class="tx-tools">
+                <input id="tx-q" class="input" type="search" placeholder="Search the transcript…" autocomplete="off" />
+                <span id="tx-count" class="muted"></span>
+              </div>
+              <div id="tx-box"><p class="loading">Loading transcript…</p></div>
+            </details>
+          </section>`;
+        loadSummaryMd(entry.summary_file, document.getElementById("tx-summary"));
+        loadTranscriptText(entry.text_file);
+      }
+
+      async function loadSummaryMd(path, el) {
+        try {
+          const r = await fetch(new URL(path, document.baseURI).toString());
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+          const md = await r.text();
+          el.innerHTML = window.marked
+            ? marked.parse(md, { gfm: true })
+            : `<pre style="white-space:pre-wrap">${CT.escapeHtml(md)}</pre>`;
+        } catch (e) {
+          el.innerHTML = `<p class="muted">Couldn't load the summary (${CT.escapeHtml(String(e.message || e))}).</p>`;
+        }
+      }
+
+      async function loadTranscriptText(path) {
+        const box = document.getElementById("tx-box");
+        const q = document.getElementById("tx-q");
+        const count = document.getElementById("tx-count");
+        let lines = [];
+        try {
+          const r = await fetch(new URL(path, document.baseURI).toString());
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+          lines = (await r.text()).split("\n").map(s => s.trim()).filter(Boolean);
+        } catch (e) {
+          box.innerHTML = `<p class="muted">Couldn't load the transcript (${CT.escapeHtml(String(e.message || e))}).</p>`;
+          return;
+        }
+        const CAP = 4000;
+        function hl(text, f) {
+          const safe = CT.escapeHtml(text);
+          if (!f) return safe;
+          const idx = safe.toLowerCase().indexOf(f);
+          if (idx === -1) return safe;
+          return safe.slice(0, idx) + `<mark>${safe.slice(idx, idx + f.length)}</mark>` + safe.slice(idx + f.length);
+        }
+        function paint(filter) {
+          const f = (filter || "").trim().toLowerCase();
+          const shown = f ? lines.filter(l => l.toLowerCase().includes(f)) : lines;
+          const slice = shown.slice(0, CAP);
+          box.innerHTML = slice.map(l => `<p>${hl(l, f)}</p>`).join("")
+            || `<p class="muted">No lines match “${CT.escapeHtml(f)}”.</p>`;
+          count.textContent = f
+            ? `${shown.length.toLocaleString()} matching line${shown.length === 1 ? "" : "s"}${shown.length > CAP ? ` (showing ${CAP})` : ""}`
+            : `${lines.length.toLocaleString()} lines`;
+        }
+        let t;
+        q.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => paint(q.value), 120); });
+        paint("");
       }
 
       function renderMotionCard(data, m) {
