@@ -2,7 +2,7 @@
 // - App shell: precache + cache-first (versioned).
 // - Pyodide CDN: stale-while-revalidate into a separate, long-lived bucket.
 
-const SHELL_CACHE = "council-shell-v16";
+const SHELL_CACHE = "council-shell-v17";
 const PYODIDE_CACHE = "council-pyodide-v1";
 const DATA_CACHE = "council-data-v1";
 
@@ -57,8 +57,16 @@ self.addEventListener("fetch", (event) => {
 
   if (url.origin === self.location.origin) {
     // Per-body datasets (data.json, data.<body>.json) and the bodies index
-    // update each ingest run — prefer fresh, fall back to cached.
-    if (/\/data(\.[\w-]+)?\.json$/.test(url.pathname) || /\/bodies\.json$/.test(url.pathname)) {
+    // update each ingest run — prefer fresh, fall back to cached. The
+    // transcripts manifest and the summary/transcript files it points to also
+    // change when meetings are published or re-summarized, so treat the whole
+    // transcripts/ tree the same way — otherwise cache-first pins a stale
+    // manifest and newly published meetings never surface for returning users.
+    if (
+      /\/data(\.[\w-]+)?\.json$/.test(url.pathname) ||
+      /\/bodies\.json$/.test(url.pathname) ||
+      /\/transcripts\//.test(url.pathname)
+    ) {
       event.respondWith(staleWhileRevalidate(req, DATA_CACHE));
       return;
     }
