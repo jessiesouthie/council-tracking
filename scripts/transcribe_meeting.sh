@@ -14,7 +14,10 @@
 #
 # Usage:
 #   scripts/transcribe_meeting.sh <EVENT_ID> [--body city-council]
-#                                            [--force] [--resummarize]
+#                                            [--force] [--resummarize] [--no-summary]
+#
+#   --no-summary   transcribe + publish only; skip the summary (uses NO Claude
+#                  credits). Run again later without the flag to add the summary.
 #
 # Requirements: ffmpeg, whisper-cli (brew install ffmpeg whisper-cpp),
 #               claude CLI (for the summary), python3.
@@ -28,6 +31,7 @@ cd "$ROOT"
 BODY="city-council"
 FORCE=0
 RESUMMARIZE=0
+NO_SUMMARY=0
 EVENT_ID=""
 API_BASE="${COUNCIL_API_BASE:-https://eaglemountainut.api.civicclerk.com/v1}"
 PORTAL="${COUNCIL_PORTAL:-https://eaglemountainut.portal.civicclerk.com}"
@@ -41,12 +45,13 @@ while [ $# -gt 0 ]; do
     --body)        BODY="$2"; shift 2;;
     --force)       FORCE=1; shift;;
     --resummarize) RESUMMARIZE=1; shift;;
+    --no-summary)  NO_SUMMARY=1; shift;;
     -h|--help)     grep '^#' "$0" | sed 's/^# \{0,1\}//'; exit 0;;
     -*)            echo "unknown flag: $1" >&2; exit 2;;
     *)             EVENT_ID="$1"; shift;;
   esac
 done
-[ -n "$EVENT_ID" ] || { echo "usage: $0 <EVENT_ID> [--body <id>] [--force] [--resummarize]" >&2; exit 2; }
+[ -n "$EVENT_ID" ] || { echo "usage: $0 <EVENT_ID> [--body <id>] [--force] [--resummarize] [--no-summary]" >&2; exit 2; }
 
 say() { printf '\033[1;32m▸ %s\033[0m\n' "$*"; }
 die() { printf '\033[1;31m✗ %s\033[0m\n' "$*" >&2; exit 1; }
@@ -127,7 +132,10 @@ else
 fi
 
 # ---- 4. enriched summary via the claude CLI ----
-if [ "$RESUMMARIZE" = 1 ] || [ ! -f "$SUMMARY" ]; then
+if [ "$NO_SUMMARY" = 1 ]; then
+  say "Skipping summary (--no-summary). Transcript will still be published; run again"
+  echo "   without --no-summary later to add the AI summary."
+elif [ "$RESUMMARIZE" = 1 ] || [ ! -f "$SUMMARY" ]; then
   if [ "$HAVE_CLAUDE" = 0 ]; then
     echo "⚠ 'claude' CLI not found — skipping summary. Transcript is still published." >&2
   else
