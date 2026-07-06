@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 627,
+      "id": 608,
       "meeting_id": 361,
       "date": "2023-04-18",
       "page": 12,
@@ -28,7 +28,7 @@
       "votes": []
     },
     {
-      "id": 628,
+      "id": 609,
       "meeting_id": 361,
       "date": "2023-04-18",
       "page": 12,
@@ -43,7 +43,7 @@
       "votes": []
     },
     {
-      "id": 629,
+      "id": 610,
       "meeting_id": 361,
       "date": "2023-04-18",
       "page": 14,
@@ -58,7 +58,7 @@
       "votes": []
     },
     {
-      "id": 630,
+      "id": 611,
       "meeting_id": 361,
       "date": "2023-04-18",
       "page": 16,
@@ -66,14 +66,14 @@
       "business_type": "Ordinance",
       "item_title": "An ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code, Section 17.60.160 Zone Transitions using the staff recommendations. The motion failed for lack of a second",
       "motion": "Councilmember Burnham moved to approve an ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code, Section 17.60.160 Zone Transitions using the staff recommendations. The motion failed for lack of a second.",
-      "outcome": "",
+      "outcome": "failed for lack of a second.",
       "tags": [
         "code"
       ],
       "votes": []
     },
     {
-      "id": 631,
+      "id": 612,
       "meeting_id": 361,
       "date": "2023-04-18",
       "page": 16,
@@ -88,7 +88,7 @@
       "votes": []
     },
     {
-      "id": 632,
+      "id": 613,
       "meeting_id": 361,
       "date": "2023-04-18",
       "page": 18,
@@ -105,7 +105,7 @@
       "votes": []
     },
     {
-      "id": 633,
+      "id": 614,
       "meeting_id": 361,
       "date": "2023-04-18",
       "page": 20,
@@ -118,7 +118,7 @@
       "votes": []
     },
     {
-      "id": 634,
+      "id": 615,
       "meeting_id": 361,
       "date": "2023-04-18",
       "page": 21,
@@ -133,7 +133,7 @@
       "votes": []
     },
     {
-      "id": 635,
+      "id": 616,
       "meeting_id": 361,
       "date": "2023-04-18",
       "page": 21,

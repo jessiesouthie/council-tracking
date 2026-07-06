@@ -3,13 +3,13 @@
     "id": 177,
     "date": "2023-12-05",
     "source_file": "2023-12-05__177.pdf",
-    "motion_count": 24,
+    "motion_count": 23,
     "ord_count": 13,
     "res_count": 5
   },
   "motions": [
     {
-      "id": 663,
+      "id": 643,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 2,
@@ -22,20 +22,7 @@
       "votes": []
     },
     {
-      "id": 664,
-      "meeting_id": 177,
-      "date": "2023-12-05",
-      "page": 2,
-      "agenda_ref": "",
-      "business_type": "Other / consent / misc.",
-      "item_title": "Adjourn the Board of canvassers at 3:54 p.m. Board Member CurtÍs seconded the motion, Those Vot…",
-      "motion": "Board Member wrþht moved to adjourn the Board of canvassers at 3:54 p.m. Board Member CurtÍs seconded the motion, Those Voting Yes Those Voting No Those AbstaínÍng Those Absent E Donna Burnham tr Donna Burnham tr Donna Burnham tr DonnaBurnham E¡ Colbg CurtÍs tr Colbg CurtÍs tr Colbg CurtÍs tr Colbg CurtÍs tr Jared Grag D Jared Grag tr Jared Grag A Jared Grag E Carolgn Love n Carolgn Love tr Carolgn Love tr Carolgn Love E Brett Wrþht n Brett Wrþht tr Brett Wrþht tr Brett Wright",
-      "outcome": "passed with a unanimous vote.",
-      "tags": [],
-      "votes": []
-    },
-    {
-      "id": 665,
+      "id": 644,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 10,
@@ -50,7 +37,7 @@
       "votes": []
     },
     {
-      "id": 666,
+      "id": 645,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 10,
@@ -65,7 +52,7 @@
       "votes": []
     },
     {
-      "id": 667,
+      "id": 646,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 10,
@@ -80,7 +67,7 @@
       "votes": []
     },
     {
-      "id": 668,
+      "id": 647,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 11,
@@ -95,7 +82,7 @@
       "votes": []
     },
     {
-      "id": 669,
+      "id": 648,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 11,
@@ -108,7 +95,7 @@
       "votes": []
     },
     {
-      "id": 670,
+      "id": 649,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 12,
@@ -121,7 +108,7 @@
       "votes": []
     },
     {
-      "id": 671,
+      "id": 650,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 12,
@@ -136,7 +123,7 @@
       "votes": []
     },
     {
-      "id": 672,
+      "id": 651,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 14,
@@ -152,7 +139,7 @@
       "votes": []
     },
     {
-      "id": 673,
+      "id": 652,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 14,
@@ -167,7 +154,7 @@
       "votes": []
     },
     {
-      "id": 674,
+      "id": 653,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 15,
@@ -180,7 +167,7 @@
       "votes": []
     },
     {
-      "id": 675,
+      "id": 654,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 15,
@@ -195,7 +182,7 @@
       "votes": []
     },
     {
-      "id": 676,
+      "id": 655,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 15,
@@ -208,7 +195,7 @@
       "votes": []
     },
     {
-      "id": 677,
+      "id": 656,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 16,
@@ -221,7 +208,7 @@
       "votes": []
     },
     {
-      "id": 678,
+      "id": 657,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 16,
@@ -236,7 +223,7 @@
       "votes": []
     },
     {
-      "id": 679,
+      "id": 658,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 17,
@@ -251,7 +238,7 @@
       "votes": []
     },
     {
-      "id": 680,
+      "id": 659,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 18,
@@ -266,7 +253,7 @@
       "votes": []
     },
     {
-      "id": 681,
+      "id": 660,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 19,
@@ -281,7 +268,7 @@
       "votes": []
     },
     {
-      "id": 682,
+      "id": 661,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 21,
@@ -296,7 +283,7 @@
       "votes": []
     },
     {
-      "id": 683,
+      "id": 662,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 22,
@@ -313,7 +300,7 @@
       "votes": []
     },
     {
-      "id": 684,
+      "id": 663,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 23,
@@ -328,7 +315,7 @@
       "votes": []
     },
     {
-      "id": 685,
+      "id": 664,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 23,
@@ -341,7 +328,7 @@
       "votes": []
     },
     {
-      "id": 686,
+      "id": 665,
       "meeting_id": 177,
       "date": "2023-12-05",
       "page": 24,

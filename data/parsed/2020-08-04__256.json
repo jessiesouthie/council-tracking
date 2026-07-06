@@ -3,13 +3,13 @@
     "id": 256,
     "date": "2020-08-04",
     "source_file": "2020-08-04__256.pdf",
-    "motion_count": 6,
+    "motion_count": 5,
     "ord_count": 5,
     "res_count": 5
   },
   "motions": [
     {
-      "id": 238,
+      "id": 229,
       "meeting_id": 256,
       "date": "2020-08-04",
       "page": 9,
@@ -24,7 +24,7 @@
       "votes": []
     },
     {
-      "id": 239,
+      "id": 230,
       "meeting_id": 256,
       "date": "2020-08-04",
       "page": 11,
@@ -37,7 +37,7 @@
       "votes": []
     },
     {
-      "id": 240,
+      "id": 231,
       "meeting_id": 256,
       "date": "2020-08-04",
       "page": 12,
@@ -45,7 +45,7 @@
       "business_type": "Other / consent / misc.",
       "item_title": "Approve a Resolutíon of Eagle Mountain Cíty, Utah, Approving a Cooperatíve Agreement Between th…",
       "motion": "Councílmember Curtis moved to approve a Resolutíon of Eagle Mountain Cíty, Utah, Approving a Cooperatíve Agreement Between the Utah Depørtment of Trønsportøtion and Eagle Mountaín Círyfor the Placement of Two Engíne Brøkes Restricted Sigrrs on Wride Memorial HÍghway. Councilmember Love seconded the motíon\" Those votíng øye: Donnø Burnhøm, Melissa Clark, Colby Curtß, ønd Carolyn Love. Those votíng nay: Jøred Gray. The motion carried wíth ø vote of 4:1. Mayor Westmoreland rejoined the meeting at 8:27 p.m. I3. ORDINANCES 13.4\" ORDINANCE - An Ordinartc:e ol Ëagle lVlountain City, [Jta.h, Rezoning the Marketplace al Ëagle Mountain f'own Center Property to a Mix of Commcrcial Community, MIìl, ancl MF\"2. Assistant Administrator/Community Development Director Steve Mumford reviewed the item presented during the work session and explained that the rezone request had been amended to rezone the entire property to Commercial Community with the understanding the applicant intends to bring forward a site plan and rezone request for a residential development in the northern portion of the property at a future date.",
-      "outcome": "",
+      "outcome": "carried wíth ø vote of 4:1.",
       "tags": [
         "zoning",
         "development"
@@ -53,7 +53,7 @@
       "votes": []
     },
     {
-      "id": 241,
+      "id": 232,
       "meeting_id": 256,
       "date": "2020-08-04",
       "page": 12,
@@ -66,7 +66,7 @@
       "votes": []
     },
     {
-      "id": 242,
+      "id": 233,
       "meeting_id": 256,
       "date": "2020-08-04",
       "page": 13,
@@ -79,19 +79,6 @@
         "public_safety",
         "personnel"
       ],
-      "votes": []
-    },
-    {
-      "id": 243,
-      "meeting_id": 256,
-      "date": "2020-08-04",
-      "page": 15,
-      "agenda_ref": "",
-      "business_type": "Other / consent / misc.",
-      "item_title": "Adjourn the meetíng at 9:00 p.m",
-      "motion": "Councílmember Gray moved to adjourn the meetíng at 9:00 p.m. Councilmember Curtß seconded the motion. Those votÍng aye: Donna Burnhøm, Melìssa Clark, Colby Curtís, føred Gray, and Carolyn Love. The motíon passed wíth a unanímous vote.",
-      "outcome": "",
-      "tags": [],
       "votes": []
     }
   ],

@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 261,
+      "id": 250,
       "meeting_id": 200,
       "date": "2020-10-20",
       "page": 12,
@@ -28,7 +28,7 @@
       "votes": []
     },
     {
-      "id": 262,
+      "id": 251,
       "meeting_id": 200,
       "date": "2020-10-20",
       "page": 13,
@@ -45,7 +45,7 @@
       "votes": []
     },
     {
-      "id": 263,
+      "id": 252,
       "meeting_id": 200,
       "date": "2020-10-20",
       "page": 14,
@@ -64,7 +64,7 @@
       "votes": []
     },
     {
-      "id": 264,
+      "id": 253,
       "meeting_id": 200,
       "date": "2020-10-20",
       "page": 15,
@@ -83,7 +83,7 @@
       "votes": []
     },
     {
-      "id": 265,
+      "id": 254,
       "meeting_id": 200,
       "date": "2020-10-20",
       "page": 18,
@@ -102,7 +102,7 @@
       "votes": []
     },
     {
-      "id": 266,
+      "id": 255,
       "meeting_id": 200,
       "date": "2020-10-20",
       "page": 21,
@@ -110,7 +110,7 @@
       "business_type": "Other / consent / misc.",
       "item_title": "Ødjourn the meetíng øt 9:36 p.m",
       "motion": "Councilmember Grøy moved to ødjourn the meetíng øt 9:36 p.m. Councilmember Clørk se:conded the motion. Those voting aye: Donna Bu,rnham, Melßsa Clark, Colby Curtís, Jared Gray, and Carolyn Love\" The motion passed wíth ø unanímous vote\"",
-      "outcome": "",
+      "outcome": "passed wíth ø unanímous vote\".",
       "tags": [],
       "votes": []
     }

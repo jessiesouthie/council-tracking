@@ -3,53 +3,13 @@
     "id": 533,
     "date": "2025-06-10",
     "source_file": "2025-06-10__533.pdf",
-    "motion_count": 6,
+    "motion_count": 5,
     "ord_count": 4,
     "res_count": 1
   },
   "motions": [
     {
-      "id": 191,
-      "meeting_id": 533,
-      "date": "2025-06-10",
-      "page": 2,
-      "agenda_ref": "",
-      "business_type": "Other / consent / misc.",
-      "item_title": "Approve the minutes with the correction of the meeting adjourned at 6:36 p.m. and not 7:36 p.m.…",
-      "motion": "Commissioner Whiting moved to approve the minutes with the correction of the meeting adjourned at 6:36 p.m. and not 7:36 p.m. Commissioner Hess seconded the motion.",
-      "outcome": "passed with a unanimous vote.",
-      "tags": [],
-      "votes": [
-        {
-          "member_id": "brent-strong",
-          "vote": "Absent"
-        },
-        {
-          "member_id": "bryan-free",
-          "vote": "Yes"
-        },
-        {
-          "member_id": "jason-allen",
-          "vote": "Yes"
-        },
-        {
-          "member_id": "rod-hess",
-          "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Yes"
-        },
-        {
-          "name": "Robert Fox",
-          "vote": "Yes"
-        }
-      ]
-    },
-    {
-      "id": 192,
+      "id": 188,
       "meeting_id": 533,
       "date": "2025-06-10",
       "page": 2,
@@ -75,7 +35,7 @@
       ]
     },
     {
-      "id": 193,
+      "id": 189,
       "meeting_id": 533,
       "date": "2025-06-10",
       "page": 3,
@@ -115,7 +75,7 @@
       ]
     },
     {
-      "id": 194,
+      "id": 190,
       "meeting_id": 533,
       "date": "2025-06-10",
       "page": 4,
@@ -155,7 +115,7 @@
       ]
     },
     {
-      "id": 195,
+      "id": 191,
       "meeting_id": 533,
       "date": "2025-06-10",
       "page": 4,
@@ -195,7 +155,7 @@
       ]
     },
     {
-      "id": 196,
+      "id": 192,
       "meeting_id": 533,
       "date": "2025-06-10",
       "page": 5,

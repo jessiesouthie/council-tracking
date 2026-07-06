@@ -3,13 +3,13 @@
     "id": 225,
     "date": "2020-09-15",
     "source_file": "2020-09-15__225.pdf",
-    "motion_count": 3,
+    "motion_count": 2,
     "ord_count": 0,
     "res_count": 2
   },
   "motions": [
     {
-      "id": 253,
+      "id": 243,
       "meeting_id": 225,
       "date": "2020-09-15",
       "page": 10,
@@ -29,7 +29,7 @@
       "votes": []
     },
     {
-      "id": 254,
+      "id": 244,
       "meeting_id": 225,
       "date": "2020-09-15",
       "page": 15,
@@ -41,19 +41,6 @@
       "tags": [
         "parks"
       ],
-      "votes": []
-    },
-    {
-      "id": 255,
-      "meeting_id": 225,
-      "date": "2020-09-15",
-      "page": 15,
-      "agenda_ref": "",
-      "business_type": "Other / consent / misc.",
-      "item_title": "Adjourn the meetíng øt 9:24 p.ru Councílmember Curtis seconded the motíon. Those votÍng aye: Do…",
-      "motion": "Councilmember Clørk moved to adjourn the meetíng øt 9:24 p.ru Councílmember Curtis seconded the motíon. Those votÍng aye: Donna Eagle Mountain City Council Meeting - September 15,2020 Page 15 of 16 B urnham, Melìssø Clark, Colby C urtß, and Cørolyn Love. The motion pøssed wíth a unanímous vote.",
-      "outcome": "",
-      "tags": [],
       "votes": []
     }
   ],

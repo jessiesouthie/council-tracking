@@ -3,13 +3,13 @@
     "id": 499,
     "date": "2025-11-18",
     "source_file": "2025-11-18__499.pdf",
-    "motion_count": 7,
+    "motion_count": 6,
     "ord_count": 10,
     "res_count": 6
   },
   "motions": [
     {
-      "id": 1002,
+      "id": 980,
       "meeting_id": 499,
       "date": "2025-11-18",
       "page": 2,
@@ -43,41 +43,7 @@
       ]
     },
     {
-      "id": 1003,
-      "meeting_id": 499,
-      "date": "2025-11-18",
-      "page": 2,
-      "agenda_ref": "",
-      "business_type": "Other / consent / misc.",
-      "item_title": "Adjourn the Canvass meeting. Boardmember Wood seconded the motion",
-      "motion": "Boardmember Wright moved to adjourn the Canvass meeting. Boardmember Wood seconded the motion.",
-      "outcome": "passed with a unanimous vote.",
-      "tags": [],
-      "votes": [
-        {
-          "member_id": "brett-wright",
-          "vote": "Yes"
-        },
-        {
-          "member_id": "donna-burnham",
-          "vote": "Yes"
-        },
-        {
-          "member_id": "jared-gray",
-          "vote": "Yes"
-        },
-        {
-          "member_id": "melissa-clark",
-          "vote": "Yes"
-        },
-        {
-          "member_id": "rich-wood",
-          "vote": "Yes"
-        }
-      ]
-    },
-    {
-      "id": 1004,
+      "id": 981,
       "meeting_id": 499,
       "date": "2025-11-18",
       "page": 6,
@@ -113,7 +79,7 @@
       ]
     },
     {
-      "id": 1005,
+      "id": 982,
       "meeting_id": 499,
       "date": "2025-11-18",
       "page": 7,
@@ -150,7 +116,7 @@
       ]
     },
     {
-      "id": 1006,
+      "id": 983,
       "meeting_id": 499,
       "date": "2025-11-18",
       "page": 8,
@@ -187,7 +153,7 @@
       ]
     },
     {
-      "id": 1007,
+      "id": 984,
       "meeting_id": 499,
       "date": "2025-11-18",
       "page": 9,
@@ -223,7 +189,7 @@
       ]
     },
     {
-      "id": 1008,
+      "id": 985,
       "meeting_id": 499,
       "date": "2025-11-18",
       "page": 10,
