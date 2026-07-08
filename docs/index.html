@@ -122,7 +122,21 @@
           if (!motionsByMeeting.has(m.meeting_id)) motionsByMeeting.set(m.meeting_id, []);
           motionsByMeeting.get(m.meeting_id).push(m);
         }
-        const recent = data.meetings.slice(0, 4);
+        // Meetings with a published recording but no parsed minutes yet (e.g. the
+        // official minutes lag the transcript). Surface them here too so the
+        // newest recording shows on the homepage, not just on the Meetings page.
+        const txList = await CT.transcriptsForBody().catch(() => []);
+        const known = new Set(data.meetings.map(m => m.id));
+        const transcriptOnly = txList
+          .filter(t => !known.has(t.id))
+          .map(t => ({
+            id: t.id, date: t.date, source_file: null,
+            motion_count: 0, ord_count: 0, res_count: 0,
+            type: t.title, transcript_only: true,
+          }));
+        const allMeetings = [...transcriptOnly, ...data.meetings]
+          .sort((a, b) => b.date.localeCompare(a.date));
+        const recent = allMeetings.slice(0, 4);
         document.getElementById("recent-grid").innerHTML = recent.map(m =>
           renderMeetingCard(m, motionsByMeeting.get(m.id) || [])
         ).join("");
@@ -176,20 +190,29 @@
             <span class="motion-line-meta">${split}</span>
           </li>`;
         }).join("");
+        const badge = meeting.transcript_only
+          ? ` <span class="tx-badge" title="Full audio transcript + summary from the recording">🎙 Transcript</span>`
+          : "";
+        const metaLine = meeting.transcript_only
+          ? `Recording available · official minutes pending`
+          : `${meeting.motion_count} motion${meeting.motion_count===1?"":"s"} · ${meeting.ord_count} ord. lines · ${meeting.res_count} res. lines`;
+        const body = meeting.transcript_only
+          ? '<p class="muted" style="margin:8px 0 0">Minutes not published yet — open to read the enriched summary generated from the recording.</p>'
+          : (motions.length === 0 ? '<p class="muted" style="margin:8px 0 0">No motions parsed.</p>' : `
+              <ul class="motion-line-list">${items}</ul>
+              ${remaining > 0 ? `<p class="muted" style="margin:8px 0 0;font-size:12px">+ ${remaining} more motion${remaining===1?"":"s"}</p>` : ""}
+            `);
         return `
           <article class="meeting-card">
             <header class="meeting-card-head">
               <div>
-                <div class="meeting-date">${CT.fmtDate(meeting.date)}</div>
-                <div class="muted" style="font-size:12px">${meeting.motion_count} motion${meeting.motion_count===1?"":"s"} · ${meeting.ord_count} ord. lines · ${meeting.res_count} res. lines</div>
+                <div class="meeting-date">${CT.fmtDate(meeting.date)}${badge}</div>
+                <div class="muted" style="font-size:12px">${metaLine}</div>
               </div>
               <a class="muted card-link" href="meetings.html?id=${meeting.id}" aria-label="Open meeting ${CT.fmtDate(meeting.date)}">Open →</a>
             </header>
             ${meeting.summary ? `<p class="meeting-summary" style="margin:8px 0 0">${CT.escapeHtml(meeting.summary)}</p>` : ''}
-            ${motions.length === 0 ? '<p class="muted" style="margin:8px 0 0">No motions parsed.</p>' : `
-              <ul class="motion-line-list">${items}</ul>
-              ${remaining > 0 ? `<p class="muted" style="margin:8px 0 0;font-size:12px">+ ${remaining} more motion${remaining===1?"":"s"}</p>` : ""}
-            `}
+            ${body}
           </article>
         `;
       }
