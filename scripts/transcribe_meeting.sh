@@ -247,6 +247,9 @@ Produce these sections, with this exact structure and numbering:
 
 Then **Elected officials present** and **Key staff/presenters** lines (bold labels).
 
+## Motions at a Glance
+A Markdown TABLE with columns: # | Agenda ref | Motion | Moved / Seconded | Vote | Result — one row per motion, in the order they occurred. Include ONLY motions on which a vote was actually taken, procedural ones included (closed session, consent agenda, adjournment). Do NOT include informal consensus, direction to staff, hearings closed without action, or items merely discussed — those stay in §3 only. Give the tally as "5-0" when stated, otherwise "Voice vote"; name members only where the transcript records how they voted. Result is Passed or Failed. If no vote of any kind was taken, replace the table with the single italic line *No motions were voted on.* Every row must be consistent with §3.
+
 ## 1. Meeting Map
 A Markdown TABLE with columns: Agenda ref | Topic | ~Start (elapsed) | One-line note — one row per distinct item/topic. After the table, a short "Discussed but NOT on the agenda" line and an "On agenda but little/no discussion" line.
 
