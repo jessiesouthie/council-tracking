@@ -1,0 +1,225 @@
+{
+  "_comment": "Proposed property tax increase, tracked per fiscal year. Every figure here is transcribed from a source meeting; `evidence` names where. Rates are decimal multipliers applied to taxable value, matching the Truth-in-Taxation schedule read into the record.",
+  "body": "city-council",
+  "fiscal_year": "2026-27",
+  "fiscal_year_label": "FY2026–27",
+  "status": "proposed",
+  "purpose": "Public safety — the Utah County Sheriff's Office Eagle Mountain Division, including deputies added to keep pace with the city's growth.",
+
+  "residential_ratio": 0.55,
+  "residential_ratio_note": "Utah taxes a primary residence on 55% of market value. Business, rental, and secondary property is taxed on the full value.",
+
+  "rates": {
+    "current": {
+      "rate": 0.000534,
+      "label": "Current rate",
+      "note": "On today's bills",
+      "revenue": 2839998
+    },
+    "certified_2026": {
+      "rate": 0.00053,
+      "rate_display": "0.000530",
+      "label": "2026 certified rate",
+      "note": "The Truth-in-Taxation comparison basis",
+      "derivation": "The city never published this as a rate; it is implied by its own Truth-in-Taxation notice. A $314.03 rise on a $488,000 primary residence against the 0.001700 proposal gives 0.000530 — which reproduces both the noticed $314.03 and the noticed 220.9% exactly. Utah County delivered the recalculated certified rate on June 22, after the June 16 schedule was read."
+    },
+    "proposed": {
+      "rate": 0.0017,
+      "rate_display": "0.001700",
+      "label": "Proposed FY2026–27",
+      "note": "Public safety · +220.9% over the certified rate",
+      "pct": 220.9,
+      "pct_basis": "Increase over the 2026 certified rate of 0.000530. This is the figure in the city's Truth-in-Taxation notice, and it measures the rate, not collections.",
+      "revenue": 9798139,
+      "derivation": "Confirmed twice over by the schedule read on June 16: a $500,000 primary residence at $467.43 in total city tax, and an average business at $4,341.62 on a $2,554,303 market value, each independently imply a rate of 0.0016997 — 0.001700 at the six decimal places the city publishes. The same rate reconciles with the 2026 Truth-in-Taxation notice."
+    },
+    "tentative": {
+      "rate": 0.00184233,
+      "rate_display": "0.001842",
+      "label": "Tentative schedule, read May 26",
+      "note": "Superseded by the 0.001700 proposal",
+      "revenue": 9798139,
+      "derivation": "Implied by the schedule read into the record on May 26: 0.000534 × (9,798,139 ÷ 2,839,998). Reproduces that schedule's own examples exactly — a $500,000 primary residence at $146.85 now and $506.64 proposed, an increase of $359.79. The certified rate has since been recalculated and the proposal set at 0.001700."
+    }
+  },
+
+  "revenue_increase": 6958141,
+  "revenue_ratio_pct": 245,
+  "revenue_ratio_note": "The schedule's own revenue figures — $2,839,998 today against $9,798,139 proposed — are a 245% increase. That is a larger number than the 220.9% the city notices, because the notice compares rates against the certified rate rather than comparing collections.",
+
+  "as_read": {
+    "meeting_id": 726,
+    "date": "2026-06-16",
+    "pct": 218,
+    "note": "On June 16 the mayor read the increase as 218%. That is 0.001700 measured against 0.000534, the rate then in effect — the county had not yet returned the recalculated certified rate, which he noted was due on June 22. Against that recalculated 0.000530 the same proposal is the 220.9% now noticed.",
+    "examples_note": "The worked examples the mayor read aloud on June 16, transcribed from the recording. They are cents off what 0.001700 gives exactly, because the city computed them from the unrounded rate before rounding it to six decimals for publication.",
+    "home": {
+      "market_value": 500000,
+      "proposed": 467.43,
+      "increase": 320.58
+    },
+    "business": {
+      "market_value": 2554303,
+      "proposed": 4341.62,
+      "increase": 2977.62
+    }
+  },
+
+  "source": {
+    "meeting_id": 726,
+    "date": "2026-06-16",
+    "speaker": "Mayor Jared Gray",
+    "quote": "Eagle Mountain City will consider an increase to its property tax rate to generate an additional $6,958,141… Eagle Mountain City's current property tax rate is 0.000534… The estimated increase to Eagle Mountain City's property tax revenue is 218%… The affected budget is the Sheriff contract.",
+    "quote_note": "Read as item 17.B. The mayor prefaced it: the schedule was current as of June 11, because Utah County would not return the actual certified figure until June 22.",
+    "transcript": "transcripts/city-council/2026-06-16__726.txt",
+    "minutes": "The approved minutes for June 16 record that the schedule was read, but do not reprint its figures. The numbers above are transcribed from the meeting recording.",
+    "minutes_approved": "2026-07-07",
+    "superseded_source": {
+      "meeting_id": 748,
+      "date": "2026-05-26",
+      "quote": "Eagle Mountain City will consider an increase to its property tax rate to generate an additional $6,958,141… Eagle Mountain's current property tax rate is 0.000534. The estimated increase to Eagle Mountain property tax revenue is 245%.",
+      "note": "The May 26 read of the tentative schedule, which implied a rate of 0.001842."
+    }
+  },
+
+  "meetings": [
+    {
+      "id": 712,
+      "date": "2026-05-05",
+      "group": "record",
+      "kind": "Action taken",
+      "title": "Council declares intent to raise property tax",
+      "note": "Three resolutions in one night: accepted the FY2026–27 tentative budget, acknowledged the Budget Officer's statement of a proposed increase, and declared intent to raise revenue above the certified rate. Mayor Gray read the impact schedule here for the first time; the minutes record that he read it but do not reprint the figures. Both August hearings were set at this meeting.",
+      "items": [
+        {
+          "ref": "17.A.",
+          "text": "Accepting the tentative budget; setting the interim-budget hearing for June 16 and the budget-adoption hearing for August 18, 2026",
+          "outcome": "Passed unanimously"
+        },
+        {
+          "ref": "17.B.",
+          "text": "Acknowledging the Budget Officer's statement of a proposed property tax increase (Truth-in-Taxation compliance); schedule read into the record",
+          "outcome": "Passed unanimously"
+        },
+        {
+          "ref": "17.C.",
+          "text": "Declaring intent to increase property tax revenue, providing notice, and setting the Truth-in-Taxation hearing for August 6, 2026 at 6:00 PM",
+          "outcome": "Passed unanimously"
+        }
+      ]
+    },
+    {
+      "id": 748,
+      "date": "2026-05-26",
+      "group": "record",
+      "kind": "Read into the record",
+      "title": "Mayor reads the tentative tax impact schedule",
+      "note": "The required Truth-in-Taxation impact schedule was read aloud: a 245% increase in city property tax revenue, earmarked for the Sheriff's contract. Council then reviewed the tentative budget. No votes taken. These figures implied a rate of 0.001842 and were superseded on June 16.",
+      "transcript": true
+    },
+    {
+      "id": 713,
+      "date": "2026-06-02",
+      "group": "record",
+      "kind": "Read into the record",
+      "title": "Schedule read a third time; budget manager presents the tentative budget",
+      "note": "Taken up under a heading marked “no action taken.” The minutes record that Mayor Gray read the Property Tax Impact Schedule but do not reprint its figures, so it is not possible to say from the record whether this was the 245% schedule or an early version of the revised one. There is no recording transcript for this meeting.",
+      "items": [
+        {
+          "ref": "18.A.",
+          "text": "Information — Proposed Property Tax Impact Schedule, read into the record",
+          "outcome": "No vote taken"
+        },
+        {
+          "ref": "18.B.",
+          "text": "FY2026–27 budget discussion; Budget Manager Terrence Dela Pena presented the proposed tentative budget",
+          "outcome": "No vote taken"
+        }
+      ]
+    },
+
+    {
+      "id": 726,
+      "date": "2026-06-16",
+      "group": "record",
+      "kind": "Action taken",
+      "title": "Council adopts the interim budget and the proposed certified tax rate",
+      "note": "The night the real number reached the record. Mayor Gray read the Proposed Tax Impact Schedule — the 0.001700 rate the city is actually proposing — and Council then took public comment and adopted it, 4–1. Minutes approved July 7, 2026. The minutes note that the schedule was read but do not reprint its figures; those are transcribed from the recording.",
+      "transcript": true,
+      "items": [
+        {
+          "ref": "17.B.",
+          "text": "Proposed Tax Impact Schedule read into the record (information only)",
+          "outcome": "No vote taken"
+        },
+        {
+          "ref": "17.C.",
+          "text": "Resolution adopting the FY2026–27 interim budget and the proposed certified tax rate; discontinuing DebtBook services",
+          "outcome": "Passed 4–1, Huish opposed"
+        }
+      ]
+    },
+    {
+      "id": null,
+      "date": "2026-08-06",
+      "group": "hearing",
+      "kind": "Upcoming",
+      "title": "Truth-in-Taxation hearing",
+      "note": "The statutory hearing on the increase itself, at 6:00 PM. Set by resolution 17.C. on May 5, when Council declared its intent to raise revenue above the certified rate. Public comment is taken before the rate is set.",
+      "upcoming": true
+    },
+    {
+      "id": null,
+      "date": "2026-08-18",
+      "group": "hearing",
+      "kind": "Upcoming",
+      "title": "Budget adoption hearing",
+      "note": "Where the FY2026–27 budget is finally adopted. Set by resolution 17.A. on May 5. What passed on June 16 was an interim budget; this is the final one. Public comment is taken.",
+      "upcoming": true
+    },
+
+    {
+      "id": 743,
+      "date": "2026-04-14",
+      "group": "context",
+      "kind": "Budget work session",
+      "title": "Sheriff's Office presents deputy options",
+      "note": "Chief Deputy Sheriff Erik Knutzen laid out staffing options, including additional deputies — the spending the increase is meant to fund. The increase itself was not named.",
+      "no_mention": true
+    },
+    {
+      "id": 746,
+      "date": "2026-04-22",
+      "group": "context",
+      "kind": "Planning retreat",
+      "title": "Council works through revenue generation",
+      "note": "Two-day strategic and budget retreat in St. George covering revenue generation and the budget. The increase itself was not named in the minutes.",
+      "no_mention": true
+    },
+    {
+      "id": 744,
+      "date": "2026-04-28",
+      "group": "context",
+      "kind": "Budget work session",
+      "title": "Capital projects walkthrough",
+      "note": "Staff walked Council through the water, wastewater, and stormwater projects in the proposed budget. Other taxes come up as funding sources — the RAP tax, the transient room tax, sales-tax exactions — but the full transcript never once mentions property tax.",
+      "transcript": true,
+      "no_mention": true
+    }
+  ],
+
+  "groups": {
+    "record": {
+      "label": "On the record",
+      "note": "Meetings where the increase was formally acted on or read into the record. The schedule has been read four times."
+    },
+    "hearing": {
+      "label": "Still to come",
+      "note": "Two separate hearings remain, and the rate is not final until they are done."
+    },
+    "context": {
+      "label": "Leading up to it",
+      "note": "Budget sessions that shaped the proposal without naming it."
+    }
+  }
+}

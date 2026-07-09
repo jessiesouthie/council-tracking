@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Property Tax Estimator — Eagle Mountain Council Tracking</title>
+    <meta name="description" content="See what Eagle Mountain's proposed property tax increase would cost you, and every council meeting where it was discussed." />
+    <meta name="theme-color" content="#31452E" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1B201A" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Council Tracking" />
+    <meta property="og:title" content="Property Tax Estimator — Eagle Mountain Council Tracking" />
+    <meta property="og:description" content="See what Eagle Mountain's proposed property tax increase would cost you, and every council meeting where it was discussed." />
+    <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Property Tax Estimator — Eagle Mountain Council Tracking" />
+    <meta name="twitter:description" content="See what Eagle Mountain's proposed property tax increase would cost you, and every council meeting where it was discussed." />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Lato:wght@400;700&display=swap" />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CT</span>
+        <div>
+          <p class="brand-title">Council Tracking</p>
+          <p class="city">Eagle Mountain, UT</p>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" data-nav="index.html">Home</a>
+        <a href="meetings.html" data-nav="meetings.html">Meetings</a>
+        <a href="motions.html" data-nav="motions.html">Motions</a>
+        <a href="members.html" data-nav="members.html">Members</a>
+        <a href="tax.html" data-nav="tax.html">Tax</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <div id="content"></div>
+    </main>
+
+    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
+
+    <script src="site.js"></script>
+    <script>
+      (async () => {
+        const root = document.getElementById("content");
+        const grab = (f) =>
+          fetch(new URL(f, document.baseURI))
+            .then((r) => (r.ok ? r.json() : null))
+            .catch(() => null);
+        // The county comparison is a nice-to-have; the page still works without it.
+        const [tax, county] = await Promise.all([grab("data.tax.json"), grab("data.tax-county.json")]);
+
+        if (!tax) {
+          root.innerHTML = `<h1 class="page-title">Property tax</h1>
+            <p class="page-sub">Tax data couldn't be loaded. Reload the page to try again.</p>`;
+          return;
+        }
+
+        // The estimator only describes the City Council's levy. Other bodies
+        // on this site don't set a property tax rate, so say so rather than
+        // showing council numbers under a planning-commission heading.
+        if (CT.currentBody() !== tax.body) {
+          root.innerHTML = `<h1 class="page-title">Property tax</h1>
+            <p class="page-sub">Only the City Council sets a property tax rate. Switch to City Council to use the estimator.</p>`;
+          return;
+        }
+
+        render(tax, county, root);
+      })();
+
+      const usd = (n) =>
+        "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const usd0 = (n) => "$" + Math.round(n).toLocaleString("en-US");
+      const commas = (n) => n.toLocaleString("en-US");
+
+      function render(tax, county, root) {
+        const CURRENT = tax.rates.current.rate;
+        const PROPOSED = tax.rates.proposed.rate;
+        const RATIO = tax.residential_ratio;
+
+        root.innerHTML = `
+          <h1 class="page-title">What would the proposed tax increase cost you?</h1>
+          <p class="page-sub">
+            Eagle Mountain is weighing a property tax increase for ${CT.escapeHtml(tax.fiscal_year_label)}.
+            Enter what your property is worth to see the city's share of your bill at each rate the
+            Council is considering — then read where the decision has been made so far.
+          </p>
+
+          <div class="tax-layout">
+            <div class="tax-main">
+              ${estimatorHtml(tax)}
+              ${scheduleHtml(tax)}
+              ${county ? countyHtml(county) : ""}
+              ${sourceHtml(tax)}
+            </div>
+            <aside class="tax-rail" aria-labelledby="rail-title">
+              <h2 class="rail-title" id="rail-title">Where this was decided</h2>
+              <p class="rail-sub">Every meeting the increase has moved through, in the order it happened.</p>
+              ${railHtml(tax)}
+            </aside>
+          </div>
+        `;
+
+        wireEstimator({ CURRENT, PROPOSED, RATIO, tax });
+        if (county) {
+          wireChartTabs();
+          wireChartTooltips();
+        }
+      }
+
+      /* ---------------- estimator ---------------- */
+
+      function estimatorHtml(tax) {
+        const cur = tax.rates.current;
+        const prop = tax.rates.proposed;
+        return `
+        <section class="tax-tool" aria-labelledby="tool-title">
+          <h2 class="tool-title" id="tool-title">Estimate your bill</h2>
+
+          <div class="tool-grid">
+            <div class="tool-inputs">
+              <div class="field">
+                <span class="flabel" id="lbl-type">Property type</span>
+                <div class="seg" role="group" aria-labelledby="lbl-type">
+                  <input type="radio" name="ptype" id="pt-home" value="primary" checked />
+                  <label for="pt-home">Primary residence</label>
+                  <input type="radio" name="ptype" id="pt-biz" value="other" />
+                  <label for="pt-biz">Business or rental</label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="flabel" for="mv">Market value</label>
+                <div class="valuerow">
+                  <span class="dollar" aria-hidden="true">$</span>
+                  <input class="value" id="mv" type="text" inputmode="numeric" value="500,000" aria-describedby="mv-help" />
+                </div>
+                <input type="range" id="mv-range" min="100000" max="1500000" step="5000" value="500000" aria-label="Market value" />
+                <div class="rangeends" id="mv-help"><span>$100k</span><span>$1.5M</span></div>
+              </div>
+
+              <div class="field">
+                <span class="flabel" id="lbl-rate">Tax rate</span>
+                <div class="rates" role="radiogroup" aria-labelledby="lbl-rate">
+                  <div class="rate">
+                    <input type="radio" name="rate" id="r-current" value="current" />
+                    <label for="r-current">
+                      <span class="dot" aria-hidden="true"></span>
+                      <span>
+                        <span class="rname">${CT.escapeHtml(cur.label)}</span>
+                        <span class="rmeta">${CT.escapeHtml(cur.note)}</span>
+                      </span>
+                      <span class="rrate">${cur.rate.toFixed(6)}</span>
+                    </label>
+                  </div>
+
+                  <div class="rate is-proposed">
+                    <input type="radio" name="rate" id="r-proposed" value="proposed" checked />
+                    <label for="r-proposed">
+                      <span class="dot" aria-hidden="true"></span>
+                      <span>
+                        <span class="rname">${CT.escapeHtml(prop.label)}</span>
+                        <span class="rmeta">${CT.escapeHtml(prop.note)}</span>
+                      </span>
+                      <span class="rrate">${CT.escapeHtml(prop.rate_display)}</span>
+                    </label>
+                  </div>
+
+                  <div class="rate is-custom">
+                    <input type="radio" name="rate" id="r-custom" value="custom" />
+                    <label for="r-custom">
+                      <span class="dot" aria-hidden="true"></span>
+                      <span>
+                        <span class="rname">Try another rate</span>
+                        <span class="rmeta" id="custom-meta">Drag to explore</span>
+                      </span>
+                      <span class="rrate" id="custom-rate">0.001100</span>
+                    </label>
+                    <div class="customwrap" id="customwrap" hidden>
+                      <input type="range" id="custom-range" min="0" max="3000" step="10" value="1100" aria-label="Custom tax rate" />
+                      <div class="rangeends"><span>0.000000</span><span>0.003000</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tool-result" aria-live="polite">
+              <p class="rlabel">Your city property tax</p>
+              <p class="bignum" id="res-total">$506.64</p>
+              <p class="permonth" id="res-month">$42.22 per month</p>
+              <div id="res-delta" class="delta up">
+                <span class="arrow" aria-hidden="true">▲</span>
+                <span id="res-delta-text">$359.79 more per year</span>
+              </div>
+
+              <div class="bars" aria-hidden="true">
+                <div class="bar now">
+                  <span class="bl">Current rate</span>
+                  <span class="track"><span class="fill" id="bar-now"></span></span>
+                  <span class="bv" id="bv-now">$146.85</span>
+                </div>
+                <div class="bar sel">
+                  <span class="bl" id="bl-sel">Proposed rate</span>
+                  <span class="track"><span class="fill" id="bar-sel"></span></span>
+                  <span class="bv" id="bv-sel">$506.64</span>
+                </div>
+              </div>
+
+              <div class="foot">
+                <p><strong>This is the city's share only.</strong> Your full bill also includes county, school district, and other district levies, which the city does not set.</p>
+                <p>${CT.escapeHtml(tax.residential_ratio_note)}</p>
+              </div>
+            </div>
+          </div>
+        </section>`;
+      }
+
+      function wireEstimator({ CURRENT, PROPOSED, RATIO }) {
+        const $ = (id) => document.getElementById(id);
+        const mv = $("mv"),
+          mvRange = $("mv-range"),
+          customWrap = $("customwrap"),
+          customRng = $("custom-range"),
+          customRate = $("custom-rate"),
+          customMeta = $("custom-meta");
+
+        const value = () => {
+          const n = parseInt(String(mv.value).replace(/[^0-9]/g, ""), 10);
+          return isNaN(n) ? 0 : n;
+        };
+        const ratio = () => ($("pt-home").checked ? RATIO : 1);
+        const chosen = () => {
+          const v = document.querySelector('input[name="rate"]:checked').value;
+          if (v === "current") return { rate: CURRENT, label: "Current rate" };
+          if (v === "proposed") return { rate: PROPOSED, label: "Proposed rate" };
+          return { rate: parseInt(customRng.value, 10) / 1e6, label: "Your rate" };
+        };
+
+        function paint() {
+          const taxable = value() * ratio();
+          const sel = chosen();
+          const now = taxable * CURRENT;
+          const tax = taxable * sel.rate;
+
+          $("res-total").textContent = usd(tax);
+          $("res-month").textContent = usd(tax / 12) + " per month";
+
+          const diff = tax - now;
+          const same = Math.abs(diff) < 0.005;
+          const d = $("res-delta");
+          d.className = "delta " + (same ? "same" : diff > 0 ? "up" : "down");
+          d.querySelector(".arrow").textContent = same ? "=" : diff > 0 ? "▲" : "▼";
+          $("res-delta-text").innerHTML = same
+            ? "Same as today"
+            : `${usd(Math.abs(diff))} ${diff > 0 ? "more" : "less"} per year ` +
+              `<span class="per">· ${usd(Math.abs(diff) / 12)}/mo</span>`;
+
+          const max = Math.max(now, tax, 0.01);
+          $("bar-now").style.width = (now / max) * 100 + "%";
+          $("bar-sel").style.width = (tax / max) * 100 + "%";
+          $("bv-now").textContent = usd(now);
+          $("bv-sel").textContent = usd(tax);
+          $("bl-sel").textContent = sel.label;
+
+          const cr = parseInt(customRng.value, 10) / 1e6;
+          customRate.textContent = cr.toFixed(6);
+          customMeta.textContent = usd(cr * 100000 * ratio()) + " per $100k of value";
+        }
+
+        mv.addEventListener("input", () => {
+          const n = value();
+          if (n >= +mvRange.min && n <= +mvRange.max) mvRange.value = n;
+          paint();
+        });
+        mv.addEventListener("blur", () => { mv.value = commas(value()); });
+        mvRange.addEventListener("input", () => {
+          mv.value = commas(parseInt(mvRange.value, 10));
+          paint();
+        });
+        document.querySelectorAll('input[name="ptype"]').forEach((el) =>
+          el.addEventListener("change", paint)
+        );
+        document.querySelectorAll('input[name="rate"]').forEach((el) =>
+          el.addEventListener("change", () => {
+            customWrap.hidden = !document.getElementById("r-custom").checked;
+            paint();
+          })
+        );
+        customRng.addEventListener("input", () => {
+          document.getElementById("r-custom").checked = true;
+          customWrap.hidden = false;
+          paint();
+        });
+
+        paint();
+      }
+
+      /* ---------------- the schedule as read ---------------- */
+
+      // The proposal Council adopted on June 16 (meeting #726, item 17.C). The
+      // headline percentage is the one on the city's Truth-in-Taxation notice,
+      // which measures the proposed rate against the 2026 certified rate — not
+      // against the rate on today's bills, and not against collections. Both of
+      // those give different numbers; the footnote reconciles all three.
+      function scheduleHtml(tax) {
+        const cur = tax.rates.current, cert = tax.rates.certified_2026, prop = tax.rates.proposed;
+        const home = tax.as_read.home, biz = tax.as_read.business;
+        // The proposed column reproduces the dollar figures the mayor read aloud rather
+        // than recomputing them from the rounded rate, so the table matches the record
+        // to the cent. The current column is arithmetic on a rate that is already exact.
+        const homeNow = home.market_value * tax.residential_ratio * cur.rate;
+        const bizNow = biz.market_value * cur.rate;
+        return `
+        <section class="section">
+          <h2>The schedule, as read into the record</h2>
+          <div class="tablewrap">
+            <table class="data schedule">
+              <thead>
+                <tr>
+                  <th scope="col">City property tax</th>
+                  <th scope="col" class="num">Current</th>
+                  <th scope="col" class="num">Proposed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="rowlabel">Tax rate</td>
+                  <td class="num">${cur.rate.toFixed(6)}</td>
+                  <td class="num">${CT.escapeHtml(prop.rate_display)}</td></tr>
+                <tr><td class="rowlabel">Revenue to the city</td>
+                  <td class="num">${usd0(cur.revenue)}</td>
+                  <td class="num">${usd0(prop.revenue)}</td></tr>
+                <tr><td class="rowlabel">Change in revenue</td>
+                  <td class="num">—</td>
+                  <td class="num">+${usd0(tax.revenue_increase)} (${tax.revenue_ratio_pct}%)</td></tr>
+                <tr><td class="rowlabel">Tax on a ${usd0(home.market_value)} home</td>
+                  <td class="num">${usd(homeNow)}</td>
+                  <td class="num">${usd(home.proposed)} <span class="rise">+${usd(home.increase)}</span></td></tr>
+                <tr><td class="rowlabel">Tax on the average business (${usd0(biz.market_value)})</td>
+                  <td class="num">${usd(bizNow)}</td>
+                  <td class="num">${usd(biz.proposed)} <span class="rise">+${usd(biz.increase)}</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="derivation">
+            <strong>The dollar figures are the ones read aloud.</strong>
+            ${CT.escapeHtml(tax.as_read.examples_note)}
+          </p>
+
+          <p class="superseded">
+            <strong>Three percentages, one proposal.</strong> The row above is the
+            ${tax.revenue_ratio_pct}% the city's own revenue figures give —
+            ${usd0(cur.revenue)} against ${usd0(prop.revenue)} in collections. The city's
+            Truth-in-Taxation notice instead says <strong>${prop.pct}%</strong>, because it
+            compares the proposed rate against the
+            <strong>2026 certified rate of ${CT.escapeHtml(cert.rate_display)}</strong> rather
+            than the ${cur.rate.toFixed(6)} on your current bill. And reading the schedule on
+            <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a> the mayor said
+            ${tax.as_read.pct}%, measured against that ${cur.rate.toFixed(6)} before the county
+            returned the recalculated certified rate. The rate itself,
+            ${CT.escapeHtml(prop.rate_display)}, is the same in all three.
+          </p>
+        </section>`;
+      }
+
+      // Provenance for the numbers above. Sits below the county comparison so the
+      // charts follow the schedule directly.
+      function sourceHtml(tax) {
+        return `
+        <section class="section">
+          <h2>Where these numbers come from</h2>
+
+          <blockquote class="record">
+            <p>“${CT.escapeHtml(tax.source.quote)}”</p>
+            <footer>
+              ${CT.escapeHtml(tax.source.speaker)}, reading the required tax schedule —
+              <a href="meetings.html?id=${tax.source.meeting_id}">meeting #${tax.source.meeting_id}, ${CT.fmtDate(tax.source.date)}</a>
+            </footer>
+          </blockquote>
+
+          <p class="derivation">
+            <strong>How the proposed rate checks out.</strong> ${CT.escapeHtml(tax.rates.proposed.derivation)}
+          </p>
+
+          <p class="derivation">
+            <strong>Minutes and recording.</strong> ${CT.escapeHtml(tax.source.minutes)}
+            Council approved the June 16 minutes on ${CT.fmtDate(tax.source.minutes_approved)}.
+          </p>
+        </section>`;
+      }
+
+      /* ---------------- county comparison charts ----------------
+         Two measures (a rate, and a percent change) never share one axis, so
+         they are two charts. Each is a single series: every bar the same
+         recessive ink, Eagle Mountain lifted out in the accent. The accent /
+         neutral pair clears CVD separation in both themes; the proposed
+         segment is told apart by texture and a direct label, not a second hue.
+      */
+
+      const EM = "Eagle Mountain";
+      const rate6 = (r) => r.toFixed(6);
+      function ordinal(n) {
+        if (n % 100 >= 11 && n % 100 <= 13) return n + "th";
+        return n + ({ 1: "st", 2: "nd", 3: "rd" }[n % 10] || "th");
+      }
+
+      function countyHtml(c) {
+        return `
+        <section class="county" aria-labelledby="county-title">
+          <div class="section-head">
+            <h2 id="county-title" class="county-title">How Eagle Mountain compares</h2>
+          </div>
+          <p class="county-lede">
+            Eagle Mountain levies the <strong>second-lowest city property tax rate</strong> of the
+            ${c.cities.length} municipalities in Utah County today. At the proposed rate it would have
+            the <strong>third-highest</strong>. It is also the largest increase any city in the county
+            is asking for this year, by a wide margin.
+          </p>
+
+          <div class="chart-tabs" role="tablist" aria-label="Comparison view">
+            <button role="tab" id="tab-rate" aria-controls="panel-rate" aria-selected="true" tabindex="0">
+              Rate today
+            </button>
+            <button role="tab" id="tab-inc" aria-controls="panel-inc" aria-selected="false" tabindex="-1">
+              Proposed increase
+            </button>
+          </div>
+
+          <div role="tabpanel" id="panel-rate" aria-labelledby="tab-rate">${rateChartHtml(c)}</div>
+          <div role="tabpanel" id="panel-inc" aria-labelledby="tab-inc" hidden>${increaseChartHtml(c)}</div>
+
+          <div class="county-notes">
+            <h3>About these numbers</h3>
+            <ul>${c.caveats.map((x) => `<li>${CT.escapeHtml(x)}</li>`).join("")}</ul>
+            <p class="src">
+              Rates: <a href="${c.rate_source.url}" rel="nofollow noopener">${CT.escapeHtml(c.rate_source.title)}</a>,
+              ${CT.escapeHtml(c.rate_source.publisher)}.
+              Proposed increases: <a href="${c.proposal_source.url}" rel="nofollow noopener">${CT.escapeHtml(c.proposal_source.publisher)}</a>,
+              reporting the ${c.proposal_year} truth-in-taxation notices.
+            </p>
+          </div>
+        </section>`;
+      }
+
+      // Both charts list the same cities in the same order, so toggling swaps the
+      // values in place instead of reshuffling the rows out from under the reader.
+      const cityOrder = (c) => [...c.cities].sort((a, b) => b.current_rate - a.current_rate);
+      const proposalFor = (c, name) => c.proposals.find((p) => p.city === name) || null;
+
+      /* --- chart 1: current rate only, no proposal --- */
+      function rateChartHtml(c) {
+        const rows = cityOrder(c);
+        const max = Math.max(...rows.map((r) => r.current_rate)) * 1.02;
+
+        const bars = rows
+          .map((r) => {
+            const isEM = r.name === EM;
+            const w = (r.current_rate / max) * 100;
+            const tip = `${r.name} — ${rate6(r.current_rate)}${r.mostly_other_county ? " (mostly Salt Lake Co.)" : ""}`;
+            return `
+              <div class="crow ${isEM ? "is-em" : ""}" data-tip="${CT.escapeHtml(tip)}" tabindex="0">
+                <span class="cname">${CT.escapeHtml(r.name)}${r.mostly_other_county ? '<span class="ast" aria-hidden="true">*</span>' : ""}</span>
+                <span class="ctrack">
+                  <span class="cbar ${isEM ? "cem" : ""}" style="width:${w}%"></span>
+                </span>
+                <span class="cval">${rate6(r.current_rate)}</span>
+              </div>`;
+          })
+          .join("");
+
+        return `
+        <figure class="chart">
+          <figcaption>
+            <h3>City property tax rate, today</h3>
+            <p>Utah County municipalities, city levy only. Eagle Mountain sits second from the bottom.</p>
+          </figcaption>
+          <div class="legend">
+            <span class="lg"><i class="sw sw-base"></i>Current rate</span>
+            <span class="lg"><i class="sw sw-em"></i>Eagle Mountain</span>
+          </div>
+          <div class="chart-body">${bars}</div>
+          <p class="chart-foot"><span aria-hidden="true">*</span> Levies in Utah County but lies mostly in Salt Lake County.</p>
+          ${tableView(["City", "Current rate"], rows.map((r) => [r.name, rate6(r.current_rate)]))}
+        </figure>`;
+      }
+
+      /* --- chart 2: where the proposals leave each city ---
+         Same 26 cities, same rate axis as chart 1, re-sorted by the rate each
+         city would end up at. Solid segment = today's rate; hatched segment =
+         the proposed increase on top of it.
+      */
+      const resultingRate = (c, city) => {
+        const p = proposalFor(c, city.name);
+        return p ? p.resulting_rate : city.current_rate;
+      };
+
+      function increaseChartHtml(c) {
+        const nowRank = new Map(cityOrder(c).map((x, i) => [x.name, i + 1]));
+        const rows = [...c.cities].sort((a, b) => resultingRate(c, b) - resultingRate(c, a));
+        const max = Math.max(...rows.map((r) => resultingRate(c, r))) * 1.02;
+        const proposing = c.proposals.length;
+
+        const bars = rows
+          .map((city, i) => {
+            const p = proposalFor(c, city.name);
+            const isEM = city.name === EM;
+            const res = resultingRate(c, city);
+            const wNow = (city.current_rate / max) * 100;
+            const wRes = (res / max) * 100;
+            const moved = nowRank.get(city.name) - (i + 1);
+
+            const mark = p && p.rate_source === "approximate" ? '<span class="ast" aria-hidden="true">‡</span>' : "";
+            const levy = p && p.levy ? '<span class="ast" aria-hidden="true">†</span>' : "";
+
+            const tip = p
+              ? `${city.name} — ${rate6(city.current_rate)} → ${rate6(res)} (+${p.pct}%, ${p.rate_source === "published" ? "published rate" : p.rate_source + " rate"}) · ${p.purpose}`
+              : `${city.name} — no increase proposed; holds at ${rate6(city.current_rate)}`;
+
+            return `
+              <div class="crow ${isEM ? "is-em" : ""} ${p ? "" : "no-prop"}" data-tip="${CT.escapeHtml(tip)}" tabindex="0">
+                <span class="cname">${CT.escapeHtml(city.name)}${levy}${mark}</span>
+                <span class="ctrack">
+                  ${p ? `<span class="cbar cprop ${isEM ? "cem" : ""}" style="width:${wRes}%"></span>` : ""}
+                  <span class="cbar ${isEM ? "cem" : ""}" style="width:${wNow}%"></span>
+                </span>
+                <span class="cval">
+                  ${rate6(res)}
+                  ${moved > 0 ? `<span class="cmove up" title="up ${moved} places">▲${moved}</span>` : ""}
+                </span>
+              </div>`;
+          })
+          .join("");
+
+        return `
+        <figure class="chart">
+          <figcaption>
+            <h3>Where the ${c.proposal_year} proposals would leave each city</h3>
+            <p>Same cities, same rate axis — re-sorted by the rate each would end up at.
+               ${proposing} of ${rows.length} are proposing an increase. Eagle Mountain would move from the
+               ${ordinal(rows.length - c.eagle_mountain.rank_current + 1)}-lowest rate in the county to the
+               ${ordinal(c.eagle_mountain.rank_proposed)}-highest.</p>
+          </figcaption>
+          <div class="legend">
+            <span class="lg"><i class="sw sw-base"></i>Rate today</span>
+            <span class="lg"><i class="sw sw-prop-neutral"></i>Proposed increase</span>
+            <span class="lg"><i class="sw sw-em"></i>Eagle Mountain</span>
+          </div>
+          <div class="chart-body">${bars}</div>
+          <p class="chart-foot">
+            <span aria-hidden="true">†</span> Raises a dedicated levy (library; public safety), not the general city rate.
+            <span aria-hidden="true">‡</span> Rests on a rounded dollar figure; approximate.
+            Only Eagle Mountain has published a proposed rate — the rest are derived from each city's
+            own noticed dollar impact.
+          </p>
+          ${tableView(
+            ["City", "Rate today", "Rate if it passes", "Increase"],
+            rows.map((city) => {
+              const p = proposalFor(c, city.name);
+              return [
+                city.name,
+                rate6(city.current_rate),
+                p ? rate6(p.resulting_rate) : rate6(city.current_rate),
+                p ? `+${p.pct}% (${p.rate_source})` : "No increase proposed",
+              ];
+            })
+          )}
+        </figure>`;
+      }
+
+      // Tabs: click, plus Left/Right/Home/End per the WAI-ARIA tabs pattern.
+      function wireChartTabs() {
+        const tabs = [...document.querySelectorAll('.chart-tabs [role="tab"]')];
+        if (!tabs.length) return;
+
+        const select = (tab) => {
+          tabs.forEach((t) => {
+            const on = t === tab;
+            t.setAttribute("aria-selected", String(on));
+            t.tabIndex = on ? 0 : -1;
+            document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+          });
+          tab.focus();
+        };
+
+        tabs.forEach((tab, i) => {
+          tab.addEventListener("click", () => select(tab));
+          tab.addEventListener("keydown", (e) => {
+            const k = e.key;
+            let next = null;
+            if (k === "ArrowRight") next = tabs[(i + 1) % tabs.length];
+            else if (k === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
+            else if (k === "Home") next = tabs[0];
+            else if (k === "End") next = tabs[tabs.length - 1];
+            if (next) {
+              e.preventDefault();
+              select(next);
+            }
+          });
+        });
+      }
+
+      // Every chart ships a table view — identity is never carried by color alone.
+      function tableView(head, rows) {
+        return `
+        <details class="tableview">
+          <summary>View as table</summary>
+          <div class="tablewrap">
+            <table class="data">
+              <thead><tr>${head.map((h) => `<th scope="col">${CT.escapeHtml(h)}</th>`).join("")}</tr></thead>
+              <tbody>${rows
+                .map((r) => `<tr>${r.map((cell) => `<td>${CT.escapeHtml(String(cell))}</td>`).join("")}</tr>`)
+                .join("")}</tbody>
+            </table>
+          </div>
+        </details>`;
+      }
+
+      // One shared tooltip element, positioned to the hovered/focused row.
+      function wireChartTooltips() {
+        const tip = document.createElement("div");
+        tip.className = "chart-tip";
+        tip.setAttribute("role", "status");
+        tip.hidden = true;
+        document.body.appendChild(tip);
+
+        const show = (row) => {
+          tip.textContent = row.dataset.tip;
+          tip.hidden = false;
+          const r = row.getBoundingClientRect();
+          const t = tip.getBoundingClientRect();
+          let left = r.left + window.scrollX + 12;
+          left = Math.min(left, window.scrollX + document.documentElement.clientWidth - t.width - 10);
+          tip.style.left = Math.max(window.scrollX + 6, left) + "px";
+          tip.style.top = r.top + window.scrollY - t.height - 8 + "px";
+        };
+        const hide = () => { tip.hidden = true; };
+
+        document.querySelectorAll(".crow[data-tip]").forEach((row) => {
+          row.addEventListener("mouseenter", () => show(row));
+          row.addEventListener("focus", () => show(row));
+          row.addEventListener("mouseleave", hide);
+          row.addEventListener("blur", hide);
+        });
+        window.addEventListener("scroll", hide, { passive: true });
+      }
+
+      /* ---------------- meeting rail ---------------- */
+
+      function railHtml(tax) {
+        const order = ["record", "hearing", "context"];
+        return order
+          .map((g) => {
+            const items = tax.meetings.filter((m) => m.group === g);
+            if (!items.length) return "";
+            const meta = tax.groups[g];
+            return `
+              <section class="rail-group rail-${g}">
+                <h3 class="rail-group-title">${CT.escapeHtml(meta.label)}</h3>
+                <p class="rail-group-note">${CT.escapeHtml(meta.note)}</p>
+                ${items.map(meetingCard).join("")}
+              </section>`;
+          })
+          .join("");
+      }
+
+      function meetingCard(m) {
+        const badges = [
+          m.transcript ? `<span class="mini-pill tx">Transcript</span>` : "",
+          m.upcoming ? `<span class="mini-pill up">Upcoming</span>` : "",
+          m.no_mention ? `<span class="mini-pill ctx">Context only</span>` : "",
+        ].join("");
+
+        const items = (m.items || [])
+          .map(
+            (it) => `
+            <li>
+              <span class="iref">${CT.escapeHtml(it.ref)}</span>
+              <span class="itext">${CT.escapeHtml(it.text)}</span>
+              <span class="iout ${/^passed/i.test(it.outcome) ? "ok" : "unk"}">${CT.escapeHtml(it.outcome)}</span>
+            </li>`
+          )
+          .join("");
+
+        const head = `
+          <div class="mc-head">
+            <span class="mc-kind">${CT.escapeHtml(m.kind)}</span>
+            <span class="mc-date">${CT.fmtDate(m.date)}</span>
+          </div>
+          <p class="mc-title">${CT.escapeHtml(m.title)}</p>
+          <p class="mc-note">${CT.escapeHtml(m.note)}</p>
+          ${items ? `<ul class="mc-items">${items}</ul>` : ""}
+          ${badges ? `<div class="mc-badges">${badges}</div>` : ""}
+        `;
+
+        // No meeting id means nothing to link to yet — a scheduled future
+        // hearing. Render it as a card, not a dead link.
+        if (m.id == null) {
+          return `<article class="tax-card is-upcoming">${head}</article>`;
+        }
+        return `<a class="tax-card" href="meetings.html?id=${m.id}">
+          ${head}
+          <span class="mc-go">Meeting #${m.id} <span aria-hidden="true">→</span></span>
+        </a>`;
+      }
+    </script>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 // - App shell: precache + cache-first (versioned).
 // - Pyodide CDN: stale-while-revalidate into a separate, long-lived bucket.
 
-const SHELL_CACHE = "council-shell-v19";
+const SHELL_CACHE = "council-shell-v20";
 const PYODIDE_CACHE = "council-pyodide-v1";
 const DATA_CACHE = "council-data-v1";
 
@@ -15,6 +15,7 @@ const SHELL_ASSETS = [
   "motions.html",
   "members.html",
   "member.html",
+  "tax.html",
   "site.css",
   "site.js",
   "manifest.webmanifest",

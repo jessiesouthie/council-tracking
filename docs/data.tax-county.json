@@ -1,0 +1,376 @@
+{
+  "_comment": "County-wide comparison. Current rates are the 2025 Final Adopted rate for each municipal taxing entity in Utah County (the rate levied on today's bills), read from the Utah State Tax Commission's Report 600. Proposed increases are the 2026 Truth-in-Taxation cycle. The two come from different sources and different years \u2014 see `caveats`.",
+  "rate_year": 2025,
+  "rate_basis": "Final adopted municipal rate \u2014 city levy only, excluding county, school district, and special districts.",
+  "rate_source": {
+    "title": "2025 Tax Rates by Tax Area, Report 600",
+    "publisher": "Utah State Tax Commission, Property Tax Division",
+    "url": "https://files.tax.utah.gov/propertytax/tax-rates/area-rates/taxarearates2025.pdf",
+    "retrieved": "2026-07-09"
+  },
+  "proposal_year": 2026,
+  "proposal_source": {
+    "title": "Why are your taxes increasing? Numerous Utah cities pursue property tax hikes",
+    "publisher": "KSL.com",
+    "url": "https://www.ksl.com/article/51546349/why-are-your-taxes-increasing-numerous-utah-cities-pursue-property-tax-hikes",
+    "retrieved": "2026-07-09"
+  },
+  "eagle_mountain": {
+    "current_rate": 0.000534,
+    "proposed_rate": 0.0017,
+    "proposed_rate_display": "0.001700",
+    "tentative_pct": 245,
+    "notice_pct": 220.9,
+    "rank_current": 25,
+    "rank_proposed": 3,
+    "total_cities": 26,
+    "tentative_rate": 0.00184233,
+    "tentative_rate_display": "0.001842"
+  },
+  "caveats": [
+    "Current rates are 2025 final adopted rates \u2014 the newest complete set the state publishes. 2026 rates are not certified until after the August hearings.",
+    "Eagle Mountain's tentative schedule (read May 26) implied a rate of 0.001842 and a 245% increase. The rate the city is actually proposing is 0.001700, a 220.9% increase measured against the newer certified rate. The charts use 0.001700.",
+    "Percent increases are the figures on each city's Truth-in-Taxation notice: the proposed rate measured against that city's certified rate. They are not increases in your total tax bill, and they are not the ratio of proposed collections to current collections — for Eagle Mountain that ratio is 245%, against a noticed 220.9%.",
+    "Highland's and Orem's proposals raise a dedicated levy (library; public safety), not the general city rate.",
+    "Draper and Bluffdale levy in Utah County but lie mostly in Salt Lake County.",
+    "Resulting rates are each city's current rate plus the rate increase implied by its own published figures (the dollar rise on its stated average home, over 55% of that home's value). This avoids assuming the noticed percentage applies to the general city rate \u2014 for Highland and Orem it does not. Tested against Eagle Mountain, the only city publishing a proposed rate, the method reproduces 0.001700. Rows marked \u2021 rest on a rounded dollar figure and are approximate."
+  ],
+  "cities": [
+    {
+      "name": "Vineyard",
+      "code": "3195",
+      "current_rate": 0.003796,
+      "certified_2025": 0.003796,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Woodland Hills",
+      "code": "3200",
+      "current_rate": 0.003093,
+      "certified_2025": 0.003093,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Provo",
+      "code": "3150",
+      "current_rate": 0.001678,
+      "certified_2025": 0.001599,
+      "raised_in_2025": true,
+      "mostly_other_county": false
+    },
+    {
+      "name": "American Fork",
+      "code": "3020",
+      "current_rate": 0.001532,
+      "certified_2025": 0.001532,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Mapleton",
+      "code": "3110",
+      "current_rate": 0.001456,
+      "certified_2025": 0.001456,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Santaquin",
+      "code": "3170",
+      "current_rate": 0.001409,
+      "certified_2025": 0.001302,
+      "raised_in_2025": true,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Payson",
+      "code": "3130",
+      "current_rate": 0.001299,
+      "certified_2025": 0.001098,
+      "raised_in_2025": true,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Alpine",
+      "code": "3010",
+      "current_rate": 0.001201,
+      "certified_2025": 0.001201,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Pleasant Grove",
+      "code": "3140",
+      "current_rate": 0.001179,
+      "certified_2025": 0.001179,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Lehi",
+      "code": "3090",
+      "current_rate": 0.001163,
+      "certified_2025": 0.001163,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Salem",
+      "code": "3160",
+      "current_rate": 0.001144,
+      "certified_2025": 0.001144,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Springville",
+      "code": "3190",
+      "current_rate": 0.001079,
+      "certified_2025": 0.001063,
+      "raised_in_2025": true,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Cedar Hills",
+      "code": "3040",
+      "current_rate": 0.001043,
+      "certified_2025": 0.001043,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Elk Ridge",
+      "code": "3050",
+      "current_rate": 0.00102,
+      "certified_2025": 0.00102,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Spanish Fork",
+      "code": "3180",
+      "current_rate": 0.000986,
+      "certified_2025": 0.000986,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Saratoga Springs",
+      "code": "3075",
+      "current_rate": 0.000976,
+      "certified_2025": 0.000976,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Goshen",
+      "code": "3070",
+      "current_rate": 0.000957,
+      "certified_2025": 0.000957,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Genola",
+      "code": "3060",
+      "current_rate": 0.000949,
+      "certified_2025": 0.000949,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Draper",
+      "code": "3045",
+      "current_rate": 0.000936,
+      "certified_2025": 0.000936,
+      "raised_in_2025": false,
+      "mostly_other_county": true
+    },
+    {
+      "name": "Bluffdale",
+      "code": "3025",
+      "current_rate": 0.000866,
+      "certified_2025": 0.000866,
+      "raised_in_2025": false,
+      "mostly_other_county": true
+    },
+    {
+      "name": "Lindon",
+      "code": "3100",
+      "current_rate": 0.000788,
+      "certified_2025": 0.000788,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Orem",
+      "code": "3120",
+      "current_rate": 0.000755,
+      "certified_2025": 0.000755,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Highland",
+      "code": "3080",
+      "current_rate": 0.00074,
+      "certified_2025": 0.00074,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Fairfield",
+      "code": "3055",
+      "current_rate": 0.000655,
+      "certified_2025": 0.000655,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Eagle Mountain",
+      "code": "3047",
+      "current_rate": 0.000534,
+      "certified_2025": 0.000534,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    },
+    {
+      "name": "Cedar Fort",
+      "code": "3030",
+      "current_rate": 0.000457,
+      "certified_2025": 0.000457,
+      "raised_in_2025": false,
+      "mostly_other_county": false
+    }
+  ],
+  "proposals": [
+    {
+      "city": "Eagle Mountain",
+      "pct": 220.9,
+      "revenue": 6740000,
+      "home_value": 488000,
+      "annual_increase": 314.03,
+      "purpose": "Sheriff's deputies / public safety",
+      "resulting_rate": 0.0017,
+      "resulting_rate_estimated": false,
+      "rate_source": "published",
+      "rate_delta": 0.00117
+    },
+    {
+      "city": "Saratoga Springs",
+      "pct": 54.0,
+      "revenue": 3100000,
+      "home_value": 550000,
+      "annual_increase": 165.92,
+      "purpose": "Fire and police services",
+      "resulting_rate": 0.001524,
+      "resulting_rate_estimated": true,
+      "rate_source": "derived",
+      "rate_delta": 0.000548
+    },
+    {
+      "city": "Highland",
+      "pct": 53.0,
+      "revenue": 171600,
+      "home_value": 1000000,
+      "annual_increase": 28.65,
+      "purpose": "Library staffing",
+      "levy": "Library levy, not the general city rate",
+      "resulting_rate": 0.000792,
+      "resulting_rate_estimated": true,
+      "rate_source": "derived",
+      "rate_delta": 5.2e-05
+    },
+    {
+      "city": "Cedar Hills",
+      "pct": 20.0,
+      "revenue": 150000,
+      "home_value": 678342,
+      "annual_increase": 56.0,
+      "approx": true,
+      "purpose": "Public safety contracts",
+      "resulting_rate": 0.001193,
+      "resulting_rate_estimated": true,
+      "rate_source": "approximate",
+      "rate_delta": 0.00015
+    },
+    {
+      "city": "Pleasant Grove",
+      "pct": 16.55,
+      "revenue": 683088,
+      "home_value": 570655,
+      "annual_increase": 50.0,
+      "approx": true,
+      "purpose": "Two police, three firefighters",
+      "resulting_rate": 0.001338,
+      "resulting_rate_estimated": true,
+      "rate_source": "approximate",
+      "rate_delta": 0.000159
+    },
+    {
+      "city": "Lehi",
+      "pct": 9.8,
+      "revenue": 1700000,
+      "home_value": 600000,
+      "annual_increase": 35.0,
+      "approx": true,
+      "purpose": "Police, fire, parks wages",
+      "resulting_rate": 0.001269,
+      "resulting_rate_estimated": true,
+      "rate_source": "approximate",
+      "rate_delta": 0.000106
+    },
+    {
+      "city": "American Fork",
+      "pct": 9.0,
+      "revenue": 660000,
+      "home_value": 492300,
+      "annual_increase": 34.0,
+      "approx": true,
+      "purpose": "Nine full-time firefighters",
+      "resulting_rate": 0.001658,
+      "resulting_rate_estimated": true,
+      "rate_source": "approximate",
+      "rate_delta": 0.000126
+    },
+    {
+      "city": "Orem",
+      "pct": 7.0,
+      "revenue": 450000,
+      "home_value": 513000,
+      "annual_increase": 11.85,
+      "purpose": "Two new police officers",
+      "levy": "Public-safety levy, not the general city rate",
+      "resulting_rate": 0.000797,
+      "resulting_rate_estimated": true,
+      "rate_source": "derived",
+      "rate_delta": 4.2e-05
+    },
+    {
+      "city": "Santaquin",
+      "pct": 3.4,
+      "revenue": 73407,
+      "home_value": 450000,
+      "annual_increase": 11.89,
+      "purpose": "Fire equipment, library",
+      "resulting_rate": 0.001457,
+      "resulting_rate_estimated": true,
+      "rate_source": "derived",
+      "rate_delta": 4.8e-05
+    },
+    {
+      "city": "Springville",
+      "pct": 3.0,
+      "revenue": 97000,
+      "home_value": 500000,
+      "annual_increase": 6.36,
+      "purpose": "Offset inflation costs",
+      "resulting_rate": 0.001102,
+      "resulting_rate_estimated": true,
+      "rate_source": "derived",
+      "rate_delta": 2.3e-05
+    }
+  ]
+}

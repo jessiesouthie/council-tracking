@@ -42,6 +42,7 @@
   --ico-calendar: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><rect x='3.5' y='5' width='17' height='15' rx='2'/><path d='M3.5 10h17'/><path d='M8 3v4M16 3v4'/><circle cx='8.5' cy='14' r='0.9' fill='black' stroke='none'/><circle cx='12' cy='14' r='0.9' fill='black' stroke='none'/><circle cx='15.5' cy='14' r='0.9' fill='black' stroke='none'/></svg>");
   --ico-gavel:    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M14.5 3.5l6 6'/><path d='M11 7l6 6'/><path d='M8 10l6 6'/><path d='M4.5 13.5l6 6'/><path d='M3 21h10'/></svg>");
   --ico-people:   url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='9' cy='9' r='3.2'/><path d='M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6'/><circle cx='17' cy='8' r='2.6'/><path d='M15.5 14.2c2.6.5 4.5 2.8 4.5 5.6'/></svg>");
+  --ico-receipt:  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M6 2.8h12v18.4l-2.4-1.6-2.4 1.6-2.4-1.6-2.4 1.6L6 19.6z'/><path d='M9.5 8h5'/><path d='M9.5 12h5'/></svg>");
   --serif: "EB Garamond", Georgia, "Times New Roman", serif;
   --sans:  "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
 
@@ -1072,7 +1073,7 @@ details.motion-row .motion-detail {
   /* ---- The bottom tab bar itself ---- */
   .tabbar {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     position: fixed;
     bottom: 0; left: 0; right: 0;
     z-index: 20;
@@ -1132,6 +1133,14 @@ details.motion-row .motion-detail {
   .tabbar a[data-nav="meetings.html"] .tab-ico { -webkit-mask-image: var(--ico-calendar); mask-image: var(--ico-calendar); }
   .tabbar a[data-nav="motions.html"]  .tab-ico { -webkit-mask-image: var(--ico-gavel);    mask-image: var(--ico-gavel); }
   .tabbar a[data-nav="members.html"]  .tab-ico { -webkit-mask-image: var(--ico-people);   mask-image: var(--ico-people); }
+  .tabbar a[data-nav="tax.html"]      .tab-ico { -webkit-mask-image: var(--ico-receipt);  mask-image: var(--ico-receipt); }
+
+  /* Five tabs instead of four — tighten the gutters so "Meetings" still fits
+     on a 320px screen without the label truncating. */
+  .tabbar a { padding-left: 2px; padding-right: 2px; letter-spacing: 0; }
+  @media (max-width: 360px) {
+    .tabbar a { font-size: 10px; }
+  }
 
   /* ---- Hero scaling ---- */
   .hero { padding: 18px 0 22px; margin-bottom: 24px; }
@@ -1469,3 +1478,632 @@ details.motion-row .motion-detail {
 }
 #tx-box p { margin: 0 0 .35rem; }
 .md-body .loading, #tx-box .loading { color: var(--fg-muted); font-style: italic; }
+
+/* =========================================================================
+   TAX ESTIMATOR (tax.html)
+   Two-column: estimator + "as read" table on the left, a rail of the
+   meetings the increase moved through on the right. All selectors are
+   scoped under .tax-layout / .tax-tool so they can't reach other pages.
+   ========================================================================= */
+
+.tax-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 34px;
+  align-items: start;
+}
+
+/* ---------- estimator card ---------- */
+.tax-tool {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 36px;
+}
+.tax-tool .tool-title {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--fg-muted);
+  margin: 0;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-muted);
+}
+.tax-tool .tool-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 260px);
+}
+.tax-tool .tool-inputs {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.tax-tool .tool-result {
+  padding: 18px;
+  background: var(--bg-muted);
+  border-left: 1px solid var(--border);
+}
+
+.tax-tool .flabel {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--fg-muted);
+  margin-bottom: 8px;
+}
+
+/* segmented control */
+.tax-tool .seg {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.tax-tool .seg input { position: absolute; opacity: 0; pointer-events: none; }
+.tax-tool .seg label {
+  text-align: center;
+  padding: 9px 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg-muted);
+  background: var(--bg-elev);
+  line-height: 1.25;
+  transition: background 140ms ease, color 140ms ease;
+}
+.tax-tool .seg label + label { border-left: 1px solid var(--border-strong); }
+.tax-tool .seg label:hover { background: var(--bg-muted); }
+.tax-tool .seg input:checked + label { background: var(--accent); color: var(--accent-fg); }
+.tax-tool .seg input:focus-visible + label { outline: 3px solid var(--accent); outline-offset: -3px; }
+
+/* market value */
+.tax-tool .valuerow { display: flex; align-items: baseline; gap: 6px; margin-bottom: 10px; }
+.tax-tool .valuerow .dollar { font-family: var(--serif); font-size: 26px; color: var(--fg-muted); }
+.tax-tool input.value {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  font-variant-numeric: tabular-nums;
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  border-bottom: 2px solid var(--border-strong);
+  background: transparent;
+  color: var(--fg);
+  padding: 0 0 3px;
+  border-radius: 0;
+}
+.tax-tool input.value:focus { outline: none; border-bottom-color: var(--accent); }
+
+.tax-tool input[type="range"] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 22px; margin: 0;
+  background: transparent; cursor: pointer;
+}
+.tax-tool input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px; border-radius: 999px; background: var(--border-strong);
+}
+.tax-tool input[type="range"]::-moz-range-track {
+  height: 4px; border-radius: 999px; background: var(--border-strong);
+}
+.tax-tool input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 18px; height: 18px; margin-top: -7px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg-elev);
+  box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+.tax-tool input[type="range"]::-moz-range-thumb {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg-elev);
+  box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+.tax-tool .rangeends {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: var(--fg-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* rate scenarios */
+.tax-tool .rates { display: flex; flex-direction: column; gap: 7px; }
+.tax-tool .rate { position: relative; }
+.tax-tool .rate input { position: absolute; opacity: 0; pointer-events: none; }
+.tax-tool .rate label {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elev);
+  cursor: pointer;
+  transition: border-color 140ms ease, background 140ms ease;
+}
+.tax-tool .rate label:hover { background: var(--bg-muted); }
+.tax-tool .rate .dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  display: grid; place-items: center;
+}
+.tax-tool .rate input:checked + label { border-color: var(--accent); background: var(--accent-soft); }
+.tax-tool .rate input:checked + label .dot { border-color: var(--accent); }
+.tax-tool .rate input:checked + label .dot::after {
+  content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+}
+.tax-tool .rate input:focus-visible + label { outline: 3px solid var(--accent); outline-offset: 2px; }
+.tax-tool .rate .rname { font-size: 13.5px; font-weight: 600; line-height: 1.2; display: block; }
+.tax-tool .rate .rmeta { font-size: 11.5px; color: var(--fg-muted); margin-top: 1px; display: block; }
+.tax-tool .rate .rrate {
+  font-family: var(--serif);
+  font-size: 15px; font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+/* the proposed rate is the number this page exists to explain */
+.tax-tool .rate.is-proposed input:checked + label { border-color: var(--highlight); background: var(--highlight-soft); }
+.tax-tool .rate.is-proposed input:checked + label .dot { border-color: var(--highlight-ink); }
+.tax-tool .rate.is-proposed input:checked + label .dot::after { background: var(--highlight-ink); }
+.tax-tool .rate.is-proposed .rrate { color: var(--highlight-ink); }
+.tax-tool .customwrap { padding: 2px 12px 10px; }
+.tax-tool .customwrap[hidden] { display: none; }
+
+/* result panel */
+.tax-tool .rlabel {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .07em;
+  color: var(--fg-muted);
+  margin: 0;
+}
+.tax-tool .bignum {
+  font-family: var(--serif);
+  font-size: 44px; font-weight: 600;
+  line-height: 1.02; letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  margin: 4px 0 2px;
+}
+.tax-tool .permonth {
+  margin: 0;
+  font-size: 12.5px; color: var(--fg-muted);
+  font-variant-numeric: tabular-nums;
+}
+.tax-tool .delta {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 12px;
+  padding: 5px 11px 5px 9px;
+  border-radius: 999px;
+  font-size: 13px; font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.tax-tool .delta.up { background: var(--highlight-soft); color: var(--highlight-ink); }
+.tax-tool .delta.down { background: var(--accent-soft); color: var(--fg-soft); }
+.tax-tool .delta.same { background: transparent; color: var(--fg-muted); border: 1px dashed var(--border-strong); }
+.tax-tool .delta .arrow { font-size: 11px; line-height: 1; }
+.tax-tool .delta .per { font-weight: 400; opacity: .8; }
+
+.tax-tool .bars { margin-top: 16px; display: flex; flex-direction: column; gap: 9px; }
+.tax-tool .bar { display: grid; grid-template-columns: 68px minmax(0, 1fr) 62px; align-items: center; gap: 8px; }
+.tax-tool .bar .bl { font-size: 11px; color: var(--fg-muted); line-height: 1.2; }
+.tax-tool .bar .track {
+  height: 9px; border-radius: 999px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.tax-tool .bar .fill { display: block; height: 100%; width: 0; border-radius: 999px; transition: width 320ms cubic-bezier(.4,0,.2,1); }
+.tax-tool .bar.now .fill { background: var(--accent); }
+.tax-tool .bar.sel .fill { background: var(--highlight); }
+.tax-tool .bar .bv { font-size: 12px; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
+
+.tax-tool .foot {
+  margin-top: 16px;
+  padding-top: 13px;
+  border-top: 1px solid var(--border);
+  font-size: 11.5px; line-height: 1.5; color: var(--fg-muted);
+}
+.tax-tool .foot p { margin: 0 0 7px; }
+.tax-tool .foot p:last-child { margin-bottom: 0; }
+.tax-tool .foot strong { color: var(--fg); font-weight: 700; }
+
+/* ---------- "as read" table + quote ---------- */
+table.data.schedule { font-variant-numeric: tabular-nums; }
+table.data.schedule .num { text-align: right; }
+table.data.schedule .rowlabel { font-weight: 600; }
+
+/* The rise a taxpayer actually feels, trailing the proposed figure it belongs to.
+   Nowrap keeps "+$320.58" off a line of its own on narrow screens. */
+table.data.schedule .rise {
+  display: inline-block;
+  margin-left: 8px;
+  white-space: nowrap;
+  font-size: 0.85em;
+  font-weight: 700;
+  color: var(--highlight-ink);
+}
+
+blockquote.record {
+  margin: 16px 0 0;
+  padding: 18px 20px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--highlight);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+blockquote.record p {
+  margin: 0 0 10px;
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--fg-soft);
+  max-width: 58ch;
+}
+blockquote.record footer { font-size: 12.5px; color: var(--fg-muted); }
+
+.derivation {
+  margin: 16px 0 0;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--fg-muted);
+  max-width: 72ch;
+}
+.derivation strong { color: var(--fg); }
+
+/* ---------- meeting rail ---------- */
+.tax-rail { position: sticky; top: 20px; }
+.rail-title {
+  font-family: var(--sans);
+  font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--fg-muted);
+  margin: 0 0 4px;
+}
+.rail-sub { margin: 0 0 16px; font-size: 12.5px; color: var(--fg-muted); }
+
+.rail-group { margin-bottom: 22px; }
+.rail-group-title {
+  font-family: var(--serif);
+  font-size: 17px; font-weight: 600;
+  margin: 0 0 2px;
+}
+.rail-group-note { margin: 0 0 10px; font-size: 11.5px; color: var(--fg-muted); line-height: 1.45; }
+
+.tax-card {
+  display: block;
+  color: inherit;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 12px 13px;
+  margin-bottom: 8px;
+  box-shadow: var(--shadow);
+  transition: border-color 140ms ease, transform 140ms ease;
+}
+a.tax-card:hover { text-decoration: none; border-left-color: var(--highlight); transform: translateX(2px); }
+a.tax-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.rail-context .tax-card { border-left-color: var(--border-strong); opacity: .82; }
+.tax-card.is-upcoming { border-left-style: dashed; border-left-color: var(--highlight); }
+
+.mc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 5px; }
+.mc-kind {
+  font-size: 9.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--highlight-ink);
+}
+.rail-context .mc-kind { color: var(--fg-muted); }
+.mc-date { font-size: 11px; color: var(--fg-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.mc-title { margin: 0 0 5px; font-family: var(--serif); font-size: 16.5px; font-weight: 600; line-height: 1.2; }
+.mc-note { margin: 0; font-size: 12px; line-height: 1.5; color: var(--fg-muted); }
+
+.mc-items { list-style: none; margin: 9px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.mc-items li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 6px;
+  font-size: 11.5px;
+  line-height: 1.4;
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+}
+.mc-items .iref { font-weight: 700; color: var(--fg-muted); font-variant-numeric: tabular-nums; }
+.mc-items .itext { color: var(--fg); }
+.mc-items .iout { grid-column: 2; font-size: 10.5px; font-weight: 700; }
+.mc-items .iout.ok { color: var(--ok); }
+.mc-items .iout.unk { color: var(--warn); }
+
+.mc-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.mini-pill {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase;
+  border: 1px solid currentColor;
+}
+.mini-pill.tx { color: var(--accent); }
+.mini-pill.up { color: var(--highlight-ink); }
+.mini-pill.ctx { color: var(--fg-muted); }
+
+.mc-go {
+  display: block;
+  margin-top: 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tax-tool .bar .fill { transition: none; }
+  a.tax-card:hover { transform: none; }
+}
+
+@media (max-width: 900px) {
+  .tax-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .tax-rail { position: static; }
+  .tax-tool .tool-grid { grid-template-columns: minmax(0, 1fr); }
+  .tax-tool .tool-result { border-left: 0; border-top: 1px solid var(--border); }
+}
+
+/* =========================================================================
+   COUNTY COMPARISON CHARTS (tax.html)
+   Emphasis encoding, not a categorical palette: every bar wears the same
+   recessive ink and Eagle Mountain is lifted out in the accent. The
+   accent/neutral pair was checked for colorblind separation against both
+   surfaces (protanopia ΔE 40 light / 32 dark). The proposed segment is
+   distinguished by texture + a direct label rather than a third hue.
+   ========================================================================= */
+
+.county {
+  margin-top: 44px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.county-title { font-family: var(--serif); font-size: 28px; font-weight: 600; margin: 0; letter-spacing: -0.015em; }
+.county-lede { margin: 6px 0 28px; font-size: 15px; color: var(--fg-muted); max-width: 68ch; line-height: 1.6; }
+.county-lede strong { color: var(--fg); font-weight: 700; }
+
+/* chart-local tokens: base = recessive ink, em = accent, prop = textured accent */
+.chart {
+  --c-base: #31452E;
+  --c-em:   #D9753B;
+  --c-grid: var(--border);
+  margin: 0 0 34px;
+  padding: 18px 20px 14px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+@media (prefers-color-scheme: dark) {
+  .chart { --c-base: #7C8878; --c-em: #E68B53; }
+}
+:root[data-theme="dark"] .chart { --c-base: #7C8878; --c-em: #E68B53; }
+:root[data-theme="light"] .chart { --c-base: #31452E; --c-em: #D9753B; }
+
+.chart figcaption { margin-bottom: 14px; }
+.chart figcaption h3 { font-family: var(--serif); font-size: 19px; font-weight: 600; margin: 0 0 3px; }
+.chart figcaption p { margin: 0; font-size: 12.5px; color: var(--fg-muted); max-width: 70ch; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px; }
+.legend .lg { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--fg-muted); }
+.legend .sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.legend .sw-base { background: var(--c-base); }
+.legend .sw-em { background: var(--c-em); }
+.legend .sw-prop-neutral {
+  background-color: var(--c-base);
+  background-image: repeating-linear-gradient(135deg, var(--bg-elev) 0 2px, transparent 2px 5px);
+}
+
+.chart-body { display: flex; flex-direction: column; gap: 2px; }
+
+.crow {
+  display: grid;
+  grid-template-columns: 116px minmax(0, 1fr) 74px;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  outline: none;
+}
+.crow:hover, .crow:focus-visible { background: var(--bg-muted); }
+.crow:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.cname { font-size: 12px; color: var(--fg-muted); text-align: right; line-height: 1.25; }
+.crow.is-em .cname { color: var(--fg); font-weight: 700; }
+.cname .ast { color: var(--fg-muted); margin-left: 1px; }
+
+.ctrack { position: relative; height: 14px; display: block; }
+.cbar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  background: var(--c-base);
+  border-radius: 0 4px 4px 0;   /* rounded data-end, anchored to baseline */
+  min-width: 2px;
+}
+.cbar.cem { background: var(--c-em); }
+
+/* The proposed-increase segment. Drawn full-width to the resulting rate and
+   sat behind the solid "today" bar, so the exposed tail is the increase.
+   Texture, not a third hue, tells it from the solid segment. */
+.cbar.cprop {
+  background-color: var(--c-base);
+  background-image: repeating-linear-gradient(135deg, var(--bg-elev) 0 2px, transparent 2px 5px);
+  opacity: .9;
+}
+.cbar.cprop.cem { background-color: var(--c-em); }
+
+/* 2px surface gap where the solid bar meets the textured one */
+.crow .cbar:not(.cprop) { box-shadow: 2px 0 0 var(--bg-elev); }
+.crow:hover .cbar:not(.cprop), .crow:focus-visible .cbar:not(.cprop) { box-shadow: 2px 0 0 var(--bg-muted); }
+
+.cflag {
+  position: absolute;
+  top: 50%;
+  transform: translate(6px, -50%);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--highlight-ink);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.cval {
+  font-size: 12px;
+  text-align: right;
+  color: var(--fg-muted);
+  font-variant-numeric: tabular-nums;
+}
+.crow.is-em .cval { color: var(--fg); font-weight: 700; }
+
+.chart-foot { margin: 12px 0 0; font-size: 11px; color: var(--fg-muted); }
+
+.tableview { margin-top: 12px; }
+.tableview summary {
+  cursor: pointer;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: .03em;
+}
+.tableview summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+.tableview .tablewrap { margin-top: 10px; }
+
+.chart-tip {
+  position: absolute;
+  z-index: 40;
+  max-width: 300px;
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--fg);
+  color: var(--bg-elev);
+  font-size: 12px;
+  line-height: 1.4;
+  pointer-events: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,.28);
+}
+.chart-tip[hidden] { display: none; }
+
+.county-notes { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--border); }
+.county-notes h3 {
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--fg-muted);
+  margin: 0 0 8px;
+}
+.county-notes ul { margin: 0 0 10px; padding-left: 18px; }
+.county-notes li { font-size: 12.5px; color: var(--fg-muted); line-height: 1.55; margin-bottom: 4px; max-width: 78ch; }
+.county-notes .src { margin: 0; font-size: 11.5px; color: var(--fg-muted); max-width: 78ch; }
+
+/* ---------- chart tabs + zero state (tax.html county section) ---------- */
+.chart-tabs {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  margin-bottom: 16px;
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+.chart-tabs [role="tab"] {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--fg-muted);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  padding: 7px 15px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease;
+}
+.chart-tabs [role="tab"]:hover { color: var(--fg); }
+.chart-tabs [role="tab"][aria-selected="true"] {
+  background: var(--bg-elev);
+  color: var(--fg);
+  box-shadow: 0 1px 2px rgba(0,0,0,.10);
+}
+.chart-tabs [role="tab"]:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+[role="tabpanel"][hidden] { display: none; }
+
+
+/* The charts now share the column with the meeting rail, so the label gutter
+   tightens and the bars animate when the toggle swaps panels. */
+.county .chart { padding: 16px 16px 12px; }
+.county .crow { grid-template-columns: 104px minmax(0, 1fr) 68px; gap: 8px; }
+.county .cbar { transition: width 260ms cubic-bezier(.4,0,.2,1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .county .cbar { transition: none; }
+}
+
+/* Ordered narrow → narrowest. Both selectors are `.county .crow`, so the later
+   block wins where they overlap; keep them in this order. */
+@media (max-width: 900px) {
+  .county .crow { grid-template-columns: 96px minmax(0, 1fr) 64px; }
+}
+@media (max-width: 620px) {
+  .county .crow { grid-template-columns: 84px minmax(0, 1fr) 58px; gap: 7px; }
+  .county .cname { font-size: 11px; }
+  .county .cflag { font-size: 9.5px; }
+  .county-title { font-size: 23px; }
+  .chart-tabs { display: flex; width: 100%; }
+  .chart-tabs [role="tab"] { flex: 1; padding: 8px 10px; }
+}
+
+
+/* Callout under the "as read" table: the record and the live proposal differ. */
+.superseded {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-left: 3px solid var(--highlight);
+  background: var(--highlight-soft);
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--fg);
+  max-width: 72ch;
+}
+.superseded strong { font-weight: 700; }
+
+
+/* Cities holding steady recede; they still show a real rate, so don't fade them out. */
+.crow.no-prop .cname, .crow.no-prop .cval { opacity: .72; }
+
+/* Rank movement, shown only where a city climbs. */
+.cmove {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--highlight-ink);
+  vertical-align: 1px;
+}
+.crow.is-em .cmove { color: var(--highlight-ink); }
+
+/* The value column now carries a rate plus an optional badge. */
+.county .crow { grid-template-columns: 104px minmax(0, 1fr) 92px; }
+@media (max-width: 900px) { .county .crow { grid-template-columns: 96px minmax(0, 1fr) 88px; } }
+@media (max-width: 620px) { .county .crow { grid-template-columns: 84px minmax(0, 1fr) 80px; gap: 7px; } }
