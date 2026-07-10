@@ -1478,17 +1478,17 @@ details.motion-row .motion-detail {
 
 /* =========================================================================
    TAX ESTIMATOR (tax.html)
-   A civic broadsheet. A dateline, then the answer set as the headline, then
-   four numbered chapters working down the main column — the estimate, the
-   record, the comparison, the provenance. The meetings the increase moved
-   through run as a dated spine on the right. All selectors are scoped under
-   .masthead / .tax-layout / .tax-tool / .chapter so they can't reach other
-   pages.
+   Estimator-first, and calm. A centered hero asks the question, the interactive
+   tool answers it, and everything else — the official schedule, the county
+   comparison, the paper trail, the meeting record — waits inside collapsible
+   panels the reader opens on demand. One quiet column, generous whitespace, and
+   a single dominant surface (the ink result banner). All selectors are scoped
+   under .tax-page / .tax-tool / .panel / .chart so they can't reach other pages.
    ========================================================================= */
 
 /* ---------- entrance ----------
    The page is injected after two fetches, so it arrives all at once. A short
-   staggered rise gives the chapters an order to be read in. Each keyframe ends
+   staggered rise gives the sections an order to be read in. Each keyframe ends
    on `transform: none` rather than translateY(0): a lingering transform would
    make .tax-tool a containing block and quietly break the sticky banner. */
 @keyframes ct-rise {
@@ -1497,59 +1497,76 @@ details.motion-row .motion-detail {
 }
 .reveal {
   animation: ct-rise 560ms cubic-bezier(.22,.7,.2,1) both;
-  animation-delay: calc(var(--i, 0) * 80ms);
+  animation-delay: calc(var(--i, 0) * 90ms);
 }
 
-/* ---------- masthead ---------- */
-.masthead { margin-bottom: 34px; }
-.masthead .page-sub { margin-bottom: 0; }
+/* One comfortable reading column, centered. */
+.tax-page { max-width: 720px; margin: 0 auto; }
 
-.dateline {
-  display: flex;
-  flex-wrap: wrap;
+/* ---------- hero ---------- */
+.tax-hero { text-align: center; margin: 6px 0 34px; }
+
+.tax-status {
+  display: inline-flex;
   align-items: center;
-  gap: 6px 10px;
-  margin: 0 0 12px;
-  font-size: 11.5px;
-  color: var(--fg-muted);
-}
-.dateline .dl-flag {
-  text-transform: uppercase;
-  letter-spacing: .09em;
-  font-weight: 700;
-  font-size: 10px;
-  padding: 3px 9px;
+  gap: 8px;
+  padding: 6px 14px;
   border-radius: 999px;
   background: var(--highlight-soft);
   color: var(--highlight-ink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .02em;
 }
-.dateline .dl-item { display: inline-flex; align-items: center; gap: 10px; }
-.dateline .dl-item::before {
-  content: "";
-  width: 3px; height: 3px; border-radius: 50%;
-  background: var(--border-strong);
+.tax-status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--highlight);
+  box-shadow: 0 0 0 0 var(--highlight);
+  animation: nh-ping 2.4s ease-out infinite;
 }
-.dateline .dl-item:first-of-type::before { display: none; }
-.dateline b { color: var(--fg); font-weight: 700; font-variant-numeric: tabular-nums; }
+@keyframes nh-ping {
+  0%       { box-shadow: 0 0 0 0 color-mix(in oklab, var(--highlight) 55%, transparent); }
+  70%,100% { box-shadow: 0 0 0 6px transparent; }
+}
 
-/* The one fact on the page a reader can still act on. */
-.nexthearing {
-  display: flex;
+.tax-h1 {
+  font-family: var(--serif);
+  font-size: clamp(30px, 5.2vw, 44px);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin: 17px 0 14px;
+}
+.tax-lede {
+  max-width: 52ch;
+  margin: 0 auto;
+  color: var(--fg-muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* The one fact a reader can still act on — a calm chip, not a banner. */
+.tax-next {
+  display: inline-flex;
   align-items: flex-start;
   gap: 10px;
-  margin: 18px 0 0;
-  padding: 11px 14px;
-  max-width: 72ch;
+  text-align: left;
+  max-width: 62ch;
+  margin: 24px auto 0;
+  padding: 11px 16px;
   border: 1px solid var(--border);
   border-left: 3px solid var(--highlight);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   background: var(--bg-elev);
+  box-shadow: var(--shadow);
   font-size: 13px;
   line-height: 1.5;
   color: var(--fg-muted);
 }
-.nexthearing b { color: var(--fg); font-weight: 700; }
-.nexthearing .nh-pulse {
+.tax-next b { color: var(--fg); font-weight: 700; }
+.tax-next .nh-pulse {
   flex: none;
   width: 8px; height: 8px;
   margin-top: 6px;
@@ -1558,65 +1575,14 @@ details.motion-row .motion-detail {
   box-shadow: 0 0 0 0 var(--highlight);
   animation: nh-ping 2.4s ease-out infinite;
 }
-@keyframes nh-ping {
-  0%       { box-shadow: 0 0 0 0 color-mix(in oklab, var(--highlight) 55%, transparent); }
-  70%,100% { box-shadow: 0 0 0 7px transparent; }
-}
 
-/* ---------- layout ---------- */
-.tax-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
-  gap: 40px;
-  align-items: start;
-}
-
-/* ---------- chapters ----------
-   Numbered by a CSS counter rather than by hand: the county comparison only
-   renders when its data loads, and hardcoded numerals would count 01, 02, 04
-   on the day that fetch fails. */
-.tax-main { counter-reset: chapter; }
-.tax-main .chapter { counter-increment: chapter; }
-.chapter-num::before { content: counter(chapter, decimal-leading-zero); }
-
-.chapter { margin: 0 0 54px; }
-.chapter:last-child { margin-bottom: 0; }
-.chapter-head { margin-bottom: 18px; }
-.chapter-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 11px; }
-.chapter-num {
-  font-family: var(--serif);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .12em;
-  color: var(--highlight-ink);
-  font-variant-numeric: tabular-nums;
-}
-.chapter-rule { flex: 1; height: 1px; background: var(--border); }
-/* Beats the global uppercase-eyebrow treatment of `.section h2`. */
-.chapter-head h2 {
-  font-family: var(--serif);
-  font-size: 27px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.15;
-  text-transform: none;
-  color: var(--fg);
-  margin: 0;
-}
-.chapter-note {
-  margin: 8px 0 0;
-  max-width: 68ch;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--fg-muted);
-}
-.chapter-note strong { color: var(--fg); font-weight: 700; }
-
-/* ---------- estimator card ----------
+/* ---------- estimator card (the hero tool) ----------
    The result banner is an ink panel, the one dominant surface on the page. Its
    colours are local tokens rather than --accent: in dark mode --accent is the
    burnt orange, and a full orange panel would shout. Both themes are picked so
    cream clears 10:1 and the accents clear AA. */
+.estimator { margin: 0 0 48px; }
+
 .tax-tool {
   --res-bg:   #2A3A27;
   --res-fg:   #F7F2E4;
@@ -1648,7 +1614,6 @@ details.motion-row .motion-detail {
    the banner's measured height, set in tax.html. */
 .tax-tool .field,
 .tax-tool .rate { scroll-margin-top: calc(var(--topbar-h, 62px) + var(--out-h, 230px) + 14px); }
-.chapter { scroll-margin-top: calc(var(--topbar-h, 62px) + 14px); }
 
 .tax-tool .tool-inputs {
   padding: 24px 22px;
@@ -1825,7 +1790,7 @@ details.motion-row .motion-detail {
   grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
   align-items: center;
   gap: 28px;
-  padding: 22px 24px;
+  padding: 24px 26px;
   background: var(--res-bg);
   color: var(--res-fg);
   border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;
@@ -1852,7 +1817,7 @@ details.motion-row .motion-detail {
 
 .tax-tool .bignum {
   font-family: var(--serif);
-  font-size: clamp(44px, 5.4vw, 66px);
+  font-size: clamp(46px, 5.6vw, 68px);
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.025em;
@@ -1921,6 +1886,88 @@ details.motion-row .motion-detail {
   min-width: 62px;
 }
 
+/* ---------- "the fuller picture" — disclosure panels ---------- */
+.learn { margin-top: 8px; }
+.learn-title {
+  font-family: var(--serif);
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-align: center;
+  margin: 0 0 7px;
+  color: var(--fg);
+}
+.learn-sub {
+  text-align: center;
+  max-width: 54ch;
+  margin: 0 auto 24px;
+  color: var(--fg-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+details.panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+  box-shadow: var(--shadow);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.panel > summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 17px 20px;
+  cursor: pointer;
+  list-style: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 140ms ease;
+}
+.panel > summary::-webkit-details-marker { display: none; }
+.panel > summary:hover { background: var(--bg-muted); }
+.panel > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; border-radius: var(--radius); }
+.panel-tt { flex: 1; min-width: 0; }
+.panel-tt b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 18px; font-weight: 600;
+  line-height: 1.2;
+  color: var(--fg);
+}
+.panel-tt span {
+  display: block;
+  margin-top: 3px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--fg-muted);
+}
+.panel-chev {
+  flex: none;
+  color: var(--fg-muted);
+  font-size: 15px;
+  line-height: 1;
+  transition: transform 220ms cubic-bezier(.4,0,.2,1);
+}
+details.panel[open] > summary .panel-chev { transform: rotate(180deg); }
+.panel-body { padding: 2px 20px 22px; }
+.panel-intro {
+  margin: 0 0 16px;
+  max-width: 72ch;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--fg-muted);
+}
+.panel-intro strong { color: var(--fg); font-weight: 700; }
+.panel-intro.county-lede { font-size: 14.5px; }
+
+/* Give an opening panel a gentle slide, so the accordion feels alive. */
+@keyframes panel-open {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+details.panel[open] > .panel-body { animation: panel-open 260ms cubic-bezier(.22,.7,.2,1); }
+
 /* ---------- "as read" table + quote ---------- */
 table.data.schedule { font-variant-numeric: tabular-nums; }
 table.data.schedule .num { text-align: right; }
@@ -1938,13 +1985,12 @@ table.data.schedule .rise {
 }
 
 blockquote.record {
-  margin: 16px 0 0;
+  margin: 0;
   padding: 18px 20px;
-  background: var(--bg-elev);
+  background: var(--bg-muted);
   border: 1px solid var(--border);
   border-left: 3px solid var(--highlight);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
 }
 blockquote.record p {
   margin: 0 0 10px;
@@ -1968,20 +2014,10 @@ blockquote.record footer { font-size: 12.5px; color: var(--fg-muted); }
 }
 .derivation strong { color: var(--fg); }
 
-/* ---------- meeting rail ----------
+/* ---------- meeting record ----------
    A chronology, drawn as one. Each group carries its own spine because the
    groups run by relevance, not by date: "leading up to it" is April and sits
    last, so a single continuous line would double back at the seam. */
-.tax-rail { position: sticky; top: calc(var(--topbar-h, 62px) + 20px); }
-.rail-title {
-  font-family: var(--sans);
-  font-size: 12px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .08em;
-  color: var(--fg-muted);
-  margin: 0 0 4px;
-}
-.rail-sub { margin: 0 0 20px; font-size: 12.5px; color: var(--fg-muted); line-height: 1.5; }
-
 .rail-group { margin-bottom: 26px; }
 .rail-group:last-child { margin-bottom: 0; }
 .rail-group-title {
@@ -1989,7 +2025,7 @@ blockquote.record footer { font-size: 12.5px; color: var(--fg-muted); }
   font-size: 17px; font-weight: 600;
   margin: 0 0 2px;
 }
-.rail-group-note { margin: 0 0 12px; font-size: 11.5px; color: var(--fg-muted); line-height: 1.45; }
+.rail-group-note { margin: 0 0 12px; font-size: 11.5px; color: var(--fg-muted); line-height: 1.45; max-width: 72ch; }
 
 .rail-line {
   position: relative;
@@ -2102,17 +2138,37 @@ a.tax-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px
   .tax-tool .bar .fill { transition: none; }
   .tax-tool .tool-out { transition: none; }
   .tax-tool .bignum.pulse { animation: none; }
-  .nexthearing .nh-pulse { animation: none; }
+  .tax-status-dot, .tax-next .nh-pulse { animation: none; }
+  details.panel[open] > .panel-body { animation: none; }
+  .panel-chev { transition: none; }
   a.tax-card:hover { transform: none; }
 }
 
-@media (max-width: 900px) {
-  .tax-layout { grid-template-columns: minmax(0, 1fr); gap: 34px; }
-  /* The rail is no longer beside anything; let it scroll with the page. */
-  .tax-rail { position: static; }
-  .chapter { margin-bottom: 44px; }
+@media (max-width: 620px) {
+  .tax-hero { margin-bottom: 28px; }
+  .tax-next { margin-top: 20px; }
 
-  /* The banner stacks but keeps pinning — on a phone that is the whole point. */
+  .tax-tool .tool-out { padding: 18px 16px; gap: 15px; }
+  .tax-tool .bignum { font-size: 40px; margin-top: 8px; }
+  .tax-tool .permonth { font-size: 12px; }
+
+  .tax-tool .tool-inputs { padding: 20px 16px; gap: 20px; }
+  /* Two fields side by side stop being two fields at this width. */
+  .tax-tool .input-pair { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .tax-tool .tool-foot { grid-template-columns: minmax(0, 1fr); gap: 7px; padding: 14px 16px; }
+
+  .learn-title { font-size: 22px; }
+  .panel > summary { padding: 15px 16px; gap: 12px; }
+  .panel-tt b { font-size: 16.5px; }
+  .panel-body { padding: 2px 16px 18px; }
+
+  .rail-line { padding-left: 22px; }
+  .rail-node { left: -22px; }
+}
+
+/* The banner stacks on narrow screens but keeps pinning — on a phone that is
+   the whole point. */
+@media (max-width: 700px) {
   .tax-tool .tool-out { grid-template-columns: minmax(0, 1fr); gap: 18px; }
   .tax-tool .out-compare {
     border-left: 0;
@@ -2120,29 +2176,6 @@ a.tax-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px
     padding-left: 0;
     padding-top: 16px;
   }
-  .tax-tool .tool-foot { grid-template-columns: minmax(0, 1fr); gap: 7px; }
-}
-
-@media (max-width: 620px) {
-  .masthead { margin-bottom: 26px; }
-  .chapter-head h2 { font-size: 23px; }
-  .chapter-note { font-size: 13.5px; }
-
-  .tax-tool .tool-out { padding: 18px 16px; gap: 15px; }
-  .tax-tool .bignum { font-size: 40px; margin-top: 8px; }
-  .tax-tool .permonth { font-size: 12px; }
-  .tax-tool .out-compare { padding-top: 14px; }
-  .tax-tool .bars { margin-top: 13px; gap: 7px; }
-  .tax-tool .bar { grid-template-columns: 54px minmax(0, 1fr) auto; gap: 8px; }
-  .tax-tool .bar .track { height: 7px; }
-
-  .tax-tool .tool-inputs { padding: 20px 16px; gap: 20px; }
-  /* Two fields side by side stop being two fields at this width. */
-  .tax-tool .input-pair { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-  .tax-tool .tool-foot { padding: 14px 16px; }
-
-  .rail-line { padding-left: 22px; }
-  .rail-node { left: -22px; }
 }
 
 /* =========================================================================
@@ -2159,12 +2192,11 @@ a.tax-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px
   --c-base: #31452E;
   --c-em:   #D9753B;
   --c-grid: var(--border);
-  margin: 0 0 34px;
+  margin: 0 0 20px;
   padding: 18px 20px 14px;
-  background: var(--bg-elev);
+  background: var(--bg-muted);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
 }
 @media (prefers-color-scheme: dark) {
   .chart { --c-base: #7C8878; --c-em: #E68B53; }
@@ -2183,21 +2215,21 @@ a.tax-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px
 .legend .sw-em { background: var(--c-em); }
 .legend .sw-prop-neutral {
   background-color: var(--c-base);
-  background-image: repeating-linear-gradient(135deg, var(--bg-elev) 0 2px, transparent 2px 5px);
+  background-image: repeating-linear-gradient(135deg, var(--bg-muted) 0 2px, transparent 2px 5px);
 }
 
 .chart-body { display: flex; flex-direction: column; gap: 2px; }
 
 .crow {
   display: grid;
-  grid-template-columns: 116px minmax(0, 1fr) 74px;
+  grid-template-columns: 104px minmax(0, 1fr) 92px;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   padding: 2px 4px;
   border-radius: 4px;
   outline: none;
 }
-.crow:hover, .crow:focus-visible { background: var(--bg-muted); }
+.crow:hover, .crow:focus-visible { background: var(--bg-elev); }
 .crow:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
 .cname { font-size: 12px; color: var(--fg-muted); text-align: right; line-height: 1.25; }
@@ -2211,6 +2243,7 @@ a.tax-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px
   background: var(--c-base);
   border-radius: 0 4px 4px 0;   /* rounded data-end, anchored to baseline */
   min-width: 2px;
+  transition: width 260ms cubic-bezier(.4,0,.2,1);
 }
 .cbar.cem { background: var(--c-em); }
 
@@ -2219,14 +2252,14 @@ a.tax-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px
    Texture, not a third hue, tells it from the solid segment. */
 .cbar.cprop {
   background-color: var(--c-base);
-  background-image: repeating-linear-gradient(135deg, var(--bg-elev) 0 2px, transparent 2px 5px);
+  background-image: repeating-linear-gradient(135deg, var(--bg-muted) 0 2px, transparent 2px 5px);
   opacity: .9;
 }
 .cbar.cprop.cem { background-color: var(--c-em); }
 
 /* 2px surface gap where the solid bar meets the textured one */
-.crow .cbar:not(.cprop) { box-shadow: 2px 0 0 var(--bg-elev); }
-.crow:hover .cbar:not(.cprop), .crow:focus-visible .cbar:not(.cprop) { box-shadow: 2px 0 0 var(--bg-muted); }
+.crow .cbar:not(.cprop) { box-shadow: 2px 0 0 var(--bg-muted); }
+.crow:hover .cbar:not(.cprop), .crow:focus-visible .cbar:not(.cprop) { box-shadow: 2px 0 0 var(--bg-elev); }
 
 .cval {
   font-size: 12px;
@@ -2264,7 +2297,7 @@ a.tax-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px
 }
 .chart-tip[hidden] { display: none; }
 
-.county-notes { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--border); }
+.county-notes { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--border); }
 .county-notes h3 {
   font-family: var(--sans);
   font-size: 11px; font-weight: 700;
@@ -2276,7 +2309,7 @@ a.tax-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px
 .county-notes li { font-size: 12.5px; color: var(--fg-muted); line-height: 1.55; margin-bottom: 4px; max-width: 78ch; }
 .county-notes .src { margin: 0; font-size: 11.5px; color: var(--fg-muted); max-width: 78ch; }
 
-/* ---------- chart tabs + zero state (tax.html county section) ---------- */
+/* ---------- chart tabs (county section) ---------- */
 .chart-tabs {
   display: inline-flex;
   gap: 2px;
@@ -2309,35 +2342,19 @@ a.tax-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px
 .chart-tabs [role="tab"]:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 [role="tabpanel"][hidden] { display: none; }
 
-
-/* The charts share the column with the meeting rail, so the label gutter
-   tightens and the bars animate when the toggle swaps panels. The value column
-   carries a rate plus an optional rank-movement badge, hence its width. */
-.county .chart { padding: 16px 16px 12px; }
-.county .crow { grid-template-columns: 104px minmax(0, 1fr) 92px; gap: 8px; }
-.county .cbar { transition: width 260ms cubic-bezier(.4,0,.2,1); }
-
 @media (prefers-reduced-motion: reduce) {
-  .county .cbar { transition: none; }
+  .cbar { transition: none; }
 }
 
-@media (max-width: 900px) {
-  .county .crow { grid-template-columns: 96px minmax(0, 1fr) 88px; }
-}
 @media (max-width: 620px) {
-  .county .crow { grid-template-columns: 84px minmax(0, 1fr) 80px; gap: 7px; }
-  .county .cname { font-size: 11px; }
+  .crow { grid-template-columns: 84px minmax(0, 1fr) 80px; gap: 7px; }
+  .cname { font-size: 11px; }
   .chart-tabs { display: flex; width: 100%; }
   .chart-tabs [role="tab"] { flex: 1; padding: 8px 10px; }
 }
 
-
 /* Cities holding steady recede; they still show a real rate, so don't fade them out. */
 .crow.no-prop .cname, .crow.no-prop .cval { opacity: .72; }
-
-/* The county chapter's charts sit closer to their head than a chapter body
-   normally would — the lede already did the introducing. */
-.county .chart-tabs { margin-top: 4px; }
 
 /* Rank movement, shown only where a city climbs. */
 .cmove {

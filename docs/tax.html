@@ -81,6 +81,16 @@
         "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const usd0 = (n) => "$" + Math.round(n).toLocaleString("en-US");
       const commas = (n) => n.toLocaleString("en-US");
+      const cap = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
+
+      /* =========================================================================
+         The page is built estimator-first: the headline asks a question, and the
+         tool that answers it is the very next thing. Everything else — the
+         official schedule, the county comparison, the paper trail, the meeting
+         record — is real and sourced, but it is supporting detail, so it lives in
+         calm collapsible panels the reader opens on demand rather than a wall of
+         tables on arrival.
+         ========================================================================= */
 
       function render(tax, county, root) {
         const CURRENT = tax.rates.current.rate;
@@ -88,29 +98,31 @@
         const RATIO = tax.residential_ratio;
 
         root.innerHTML = `
-          <header class="masthead">
-            ${datelineHtml(tax)}
-            <h1 class="page-title">What would the proposed tax increase cost you?</h1>
-            <p class="page-sub">
-              Eagle Mountain is weighing an increase to its city property tax. Enter what your
-              property is worth to see the city's share of your bill at each rate the Council is
-              considering — then read where the decision has been made so far.
-            </p>
-            ${nextHearingHtml(tax)}
-          </header>
+          <div class="tax-page">
+            <header class="tax-hero reveal">
+              ${statusHtml(tax)}
+              <h1 class="tax-h1">What would this cost you?</h1>
+              <p class="tax-lede">
+                Eagle Mountain wants to raise its city property tax to pay for more
+                sheriff's deputies. Put in what your home is worth to see the city's
+                share of your bill — what you pay now, and what's proposed.
+              </p>
+              ${nextHearingHtml(tax)}
+            </header>
 
-          <div class="tax-layout">
-            <div class="tax-main">
-              ${scheduleHtml(tax)}
-              ${estimatorHtml(tax)}
-              ${county ? countyHtml(county) : ""}
-              ${sourceHtml(tax)}
-            </div>
-            <aside class="tax-rail reveal" style="--i:1" aria-labelledby="rail-title">
-              <h2 class="rail-title" id="rail-title">Where this was decided</h2>
-              <p class="rail-sub">What is still ahead, then every meeting the increase has already moved through.</p>
-              ${railHtml(tax)}
-            </aside>
+            ${estimatorHtml(tax)}
+
+            <section class="learn reveal" style="--i:2" aria-labelledby="learn-title">
+              <h2 class="learn-title" id="learn-title">The fuller picture</h2>
+              <p class="learn-sub">
+                The estimate is the short version. Open any of these for where the
+                numbers come from and how the decision has moved so far.
+              </p>
+              ${schedulePanel(tax)}
+              ${county ? countyPanel(county) : ""}
+              ${sourcePanel(tax)}
+              ${recordPanel(tax)}
+            </section>
           </div>
         `;
 
@@ -123,23 +135,19 @@
         }
       }
 
-      /* ---------------- masthead ---------------- */
+      /* ---------------- hero ---------------- */
 
-      // A dateline, the way a paper would set one: what this is, whose money it
-      // is for, and the number the whole page is about — before any prose.
-      function datelineHtml(tax) {
+      // A small, friendly status line: what stage this is at, and for which year.
+      function statusHtml(tax) {
         const fy = tax.fiscal_year.replace("-", "–");
-        const purpose = tax.purpose.split("—")[0].trim();
         return `
-          <p class="dateline">
-            <span class="dl-flag">${CT.escapeHtml(tax.status)}</span>
-            <span class="dl-item">Fiscal year ${CT.escapeHtml(fy)}</span>
-            <span class="dl-item">${CT.escapeHtml(purpose)}</span>
-            <span class="dl-item">Rate <b>${CT.escapeHtml(tax.rates.proposed.rate_display)}</b></span>
-          </p>`;
+          <span class="tax-status">
+            <span class="tax-status-dot" aria-hidden="true"></span>
+            ${CT.escapeHtml(cap(tax.status))} increase · FY ${CT.escapeHtml(fy)}
+          </span>`;
       }
 
-      // The most actionable fact on the page: nothing is settled, and there is a
+      // The one fact a reader can still act on: nothing is settled, and there is a
       // date. Counts down from today, and disappears once both hearings are past.
       function nextHearingHtml(tax) {
         const today = new Date();
@@ -153,46 +161,20 @@
         const days = Math.round((asDate(next) - today) / 86400000);
         const when = days <= 0 ? "today" : days === 1 ? "tomorrow" : `in ${days} days`;
         return `
-          <p class="nexthearing">
+          <p class="tax-next">
             <span class="nh-pulse" aria-hidden="true"></span>
-            <span><b>Next up:</b> ${CT.escapeHtml(next.title)}, ${CT.fmtDate(next.date)} — ${when}.
-            The rate is not final until the hearings are done.</span>
+            <span><b>Next up · ${when}.</b> ${CT.escapeHtml(next.title)}, ${CT.fmtDate(next.date)}.
+            The rate isn't final until the hearings are done.</span>
           </p>`;
       }
 
-      /* ---------------- chapters ----------------
-         Numbered movements down the main column: the estimate, the record, the
-         comparison, the provenance. One head treatment for all of them, so the
-         reader always knows how deep into the argument they are.
-
-         The numeral comes from a CSS counter, not from here. The county
-         comparison only renders when its data loads, and a hardcoded number
-         would leave the page counting 01, 02, 04 on the day that fetch fails.
-      */
-      function chapterHead(title, noteHtml) {
-        return `
-          <div class="chapter-head">
-            <div class="chapter-eyebrow" aria-hidden="true">
-              <span class="chapter-num"></span>
-              <span class="chapter-rule"></span>
-            </div>
-            <h2>${title}</h2>
-            ${noteHtml ? `<p class="chapter-note">${noteHtml}</p>` : ""}
-          </div>`;
-      }
-
-      /* ---------------- estimator ---------------- */
+      /* ---------------- estimator (the hero tool) ---------------- */
 
       function estimatorHtml(tax) {
         const cur = tax.rates.current;
         const prop = tax.rates.proposed;
         return `
-        <section class="chapter chapter-tool" id="ch-estimate">
-          ${chapterHead(
-            "Estimate your bill",
-            "The schedule above uses a $500,000 home. Put your own value in, and switch between the rates."
-          )}
-
+        <section class="estimator reveal" style="--i:1" id="estimate">
           <div class="tax-tool">
             <span id="tool-sentinel" aria-hidden="true"></span>
 
@@ -242,7 +224,7 @@
                 </div>
 
                 <div class="field">
-                  <label class="flabel" for="mv">Market value</label>
+                  <label class="flabel" for="mv">What's it worth?</label>
                   <div class="valuerow">
                     <span class="dollar" aria-hidden="true">$</span>
                     <input class="value" id="mv" type="text" inputmode="numeric" value="500,000" aria-describedby="mv-help" />
@@ -253,7 +235,7 @@
               </div>
 
               <div class="field">
-                <span class="flabel" id="lbl-rate">Tax rate</span>
+                <span class="flabel" id="lbl-rate">Which rate?</span>
                 <div class="rates" role="radiogroup" aria-labelledby="lbl-rate">
                   <div class="rate">
                     <input type="radio" name="rate" id="r-current" value="current" />
@@ -299,7 +281,7 @@
             </div>
 
             <div class="tool-foot">
-              <p><strong>This is the city's share only.</strong> Your full bill also includes county, school district, and other district levies, which the city does not set.</p>
+              <p><strong>This is the city's share only.</strong> Your full bill also includes county, school district, and other levies the city doesn't set.</p>
               <p>${CT.escapeHtml(tax.residential_ratio_note)}</p>
             </div>
           </div>
@@ -485,19 +467,37 @@
         }
       }
 
-      /* ---------------- the schedule as read ---------------- */
+      /* ---------------- disclosure panels ----------------
+         Each panel is a native <details>: keyboard-operable, no JS to open, and
+         collapsed by default so the page arrives calm. The schedule opens first
+         so the section never reads as an empty stack of closed doors.
+      */
+      function panel(title, sub, bodyHtml, open) {
+        return `
+        <details class="panel"${open ? " open" : ""}>
+          <summary>
+            <span class="panel-tt">
+              <b>${title}</b>
+              <span>${sub}</span>
+            </span>
+            <span class="panel-chev" aria-hidden="true">▾</span>
+          </summary>
+          <div class="panel-body">${bodyHtml}</div>
+        </details>`;
+      }
 
-      // The schedule Mayor Gray read on June 16 (meeting #726, item 17.B), line
-      // item for line item, in his order.
-      //
-      // Two figures here refuse to be combined. The schedule states a revenue
-      // change of +$6,958,141 AND an "estimated increase to property tax
-      // revenue" of 218% — but $6,958,141 against $2,839,998 in collections is
-      // 245%, which is what the mayor read from this same schedule on May 26.
-      // The 218% is the ratio of the rates (0.001700 / 0.000534), not of the
-      // revenue. So they stay two rows. Printing "+$6,958,141 (218%)" would
-      // manufacture an arithmetic claim the record does not make.
-      function scheduleHtml(tax) {
+      /* ---------------- the schedule as read ----------------
+         The schedule Mayor Gray read on June 16 (meeting #726, item 17.B), line
+         item for line item, in his order.
+
+         Two figures here refuse to be combined. The schedule states a revenue
+         change of +$6,958,141 AND an "estimated increase to property tax
+         revenue" of 218% — but $6,958,141 against $2,839,998 in collections is
+         245%, which is what the mayor read from this same schedule on May 26.
+         The 218% is the ratio of the rates (0.001700 / 0.000534), not of the
+         revenue. So they stay two rows.
+      */
+      function schedulePanel(tax) {
         const cur = tax.rates.current, prop = tax.rates.proposed;
         const home = tax.as_read.home, biz = tax.as_read.business;
         // The proposed column reproduces the dollar figures the mayor read aloud rather
@@ -505,13 +505,11 @@
         // to the cent. The current column is arithmetic on a rate that is already exact.
         const homeNow = home.market_value * tax.residential_ratio * cur.rate;
         const bizNow = biz.market_value * cur.rate;
-        return `
-        <section class="chapter" id="ch-record">
-          ${chapterHead(
-            "The schedule, as read into the record",
-            `Every figure below is one Mayor Gray read aloud on
-             <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a>, transcribed from the recording.`
-          )}
+        const body = `
+          <p class="panel-intro">
+            Every figure below is one Mayor Gray read aloud on
+            <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a>, transcribed from the recording.
+          </p>
           <div class="tablewrap">
             <table class="data schedule">
               <thead>
@@ -542,20 +540,13 @@
                   <td class="num">${usd(biz.proposed)} <span class="rise">+${usd(biz.increase)}</span></td></tr>
               </tbody>
             </table>
-          </div>
-        </section>`;
+          </div>`;
+        return panel("The official schedule", "The six figures the city read into the record", body, true);
       }
 
-      // Provenance for the numbers above. Sits below the county comparison so the
-      // charts follow the schedule directly.
-      function sourceHtml(tax) {
-        return `
-        <section class="chapter reveal" style="--i:4" id="ch-sources">
-          ${chapterHead(
-            "Where these numbers come from",
-            "Every figure above traces to a meeting. Here is the recording it was read into, and the arithmetic that reproduces it."
-          )}
-
+      /* ---------------- the paper trail ---------------- */
+      function sourcePanel(tax) {
+        const body = `
           <blockquote class="record">
             <p>“${CT.escapeHtml(tax.source.quote)}”</p>
             <footer>
@@ -571,8 +562,8 @@
           <p class="derivation">
             <strong>Minutes and recording.</strong> ${CT.escapeHtml(tax.source.minutes)}
             Council approved the June 16 minutes on ${CT.fmtDate(tax.source.minutes_approved)}.
-          </p>
-        </section>`;
+          </p>`;
+        return panel("Where these numbers come from", "The quote on the record, and the arithmetic that reproduces it", body, false);
       }
 
       /* ---------------- county comparison charts ----------------
@@ -590,16 +581,14 @@
         return n + ({ 1: "st", 2: "nd", 3: "rd" }[n % 10] || "th");
       }
 
-      function countyHtml(c) {
-        return `
-        <section class="chapter county reveal" style="--i:3" id="ch-compare">
-          ${chapterHead(
-            "How Eagle Mountain compares",
-            `Eagle Mountain levies the <strong>second-lowest city property tax rate</strong> of the
-             ${c.cities.length} municipalities in Utah County today. At the proposed rate it would have
-             the <strong>third-highest</strong>. It is also the largest increase any city in the county
-             is asking for this year, by a wide margin.`
-          )}
+      function countyPanel(c) {
+        const body = `
+          <p class="panel-intro county-lede">
+            Eagle Mountain levies the <strong>second-lowest city property tax rate</strong> of the
+            ${c.cities.length} municipalities in Utah County today. At the proposed rate it would have
+            the <strong>third-highest</strong> — the largest increase any city in the county is asking
+            for this year, by a wide margin.
+          </p>
 
           <div class="chart-tabs" role="tablist" aria-label="Comparison view">
             <button role="tab" id="tab-rate" aria-controls="panel-rate" aria-selected="true" tabindex="0">
@@ -610,8 +599,10 @@
             </button>
           </div>
 
-          <div role="tabpanel" id="panel-rate" aria-labelledby="tab-rate">${rateChartHtml(c)}</div>
-          <div role="tabpanel" id="panel-inc" aria-labelledby="tab-inc" hidden>${increaseChartHtml(c)}</div>
+          <div class="county">
+            <div role="tabpanel" id="panel-rate" aria-labelledby="tab-rate">${rateChartHtml(c)}</div>
+            <div role="tabpanel" id="panel-inc" aria-labelledby="tab-inc" hidden>${increaseChartHtml(c)}</div>
+          </div>
 
           <div class="county-notes">
             <h3>About these numbers</h3>
@@ -622,8 +613,8 @@
               Proposed increases: <a href="${c.proposal_source.url}" rel="nofollow noopener">${CT.escapeHtml(c.proposal_source.publisher)}</a>,
               reporting the ${c.proposal_year} truth-in-taxation notices.
             </p>
-          </div>
-        </section>`;
+          </div>`;
+        return panel("How Eagle Mountain compares", `Its rate against the other ${c.cities.length - 1} cities in Utah County`, body, false);
       }
 
       // Both charts list the same cities in the same order, so toggling swaps the
@@ -828,15 +819,14 @@
         window.addEventListener("scroll", hide, { passive: true });
       }
 
-      /* ---------------- meeting rail ---------------- */
-
-      // Each group is its own spine, running chronologically within itself. The
-      // groups are ordered by relevance rather than by date — what is coming,
-      // what happened, what led up to it — so one continuous line across all
-      // three would run backwards at every seam.
-      function railHtml(tax) {
+      /* ---------------- the meeting record ----------------
+         A chronology, grouped by relevance rather than by date — what is coming,
+         what happened, what led up to it. Each group carries its own spine, so
+         one continuous line can't run backwards at a seam.
+      */
+      function recordPanel(tax) {
         const order = ["hearing", "record", "context"];
-        return order
+        const groups = order
           .map((g) => {
             const items = tax.meetings
               .filter((m) => m.group === g)
@@ -860,6 +850,7 @@
               </section>`;
           })
           .join("");
+        return panel("Every meeting it moved through", "Two hearings still ahead, then the full record and what led up to it", groups, false);
       }
 
       function meetingCard(m) {
