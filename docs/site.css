@@ -43,6 +43,7 @@
   --ico-gavel:    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M14.5 3.5l6 6'/><path d='M11 7l6 6'/><path d='M8 10l6 6'/><path d='M4.5 13.5l6 6'/><path d='M3 21h10'/></svg>");
   --ico-people:   url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='9' cy='9' r='3.2'/><path d='M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6'/><circle cx='17' cy='8' r='2.6'/><path d='M15.5 14.2c2.6.5 4.5 2.8 4.5 5.6'/></svg>");
   --ico-receipt:  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M6 2.8h12v18.4l-2.4-1.6-2.4 1.6-2.4-1.6-2.4 1.6L6 19.6z'/><path d='M9.5 8h5'/><path d='M9.5 12h5'/></svg>");
+  --ico-flow:     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='3.2' height='6'/><rect x='3' y='14' width='3.2' height='6'/><rect x='17.8' y='9' width='3.2' height='6'/><path d='M6.2 7h5c1.5 0 1.5 5 3 5h3.6'/><path d='M6.2 17h5c1.5 0 1.5-5 3-5'/></svg>");
   --serif: "EB Garamond", Georgia, "Times New Roman", serif;
   --sans:  "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
 
@@ -50,6 +51,14 @@
      JS interpolates between these in OKLCH via color-mix(). */
   --bar-lo: #B5341F;          /* rust */
   --bar-hi: #31452E;          /* forest */
+
+  /* Budget Sankey — six harmonised source hues on a forest→ochre ramp. Greens
+     against oranges/browns hold their separation under the common CVD types, so
+     ribbons stay tellable apart by fund without a second cue. --sk-node is the
+     recessive ink for target nodes (functions / departments). */
+  --sk-c0: #31452E;  --sk-c1: #D9753B;  --sk-c2: #5C7A4E;
+  --sk-c3: #B5651D;  --sk-c4: #71857F;  --sk-c5: #8A4517;
+  --sk-node: #C9BC9C;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -77,6 +86,11 @@
     --shadow:        0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.55);
     --bar-lo:        #E68969;
     --bar-hi:        #9CB387;
+
+    /* Sankey ramp, lifted for the dark forest ground; same six-way separation. */
+    --sk-c0: #7FA06A;  --sk-c1: #E68B53;  --sk-c2: #A8C08E;
+    --sk-c3: #D69A5A;  --sk-c4: #9BB0A6;  --sk-c5: #E0A06B;
+    --sk-node: #58634F;
   }
 }
 
@@ -1070,7 +1084,7 @@ details.motion-row .motion-detail {
   /* ---- The bottom tab bar itself ---- */
   .tabbar {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     position: fixed;
     bottom: 0; left: 0; right: 0;
     z-index: 20;
@@ -1131,6 +1145,7 @@ details.motion-row .motion-detail {
   .tabbar a[data-nav="motions.html"]  .tab-ico { -webkit-mask-image: var(--ico-gavel);    mask-image: var(--ico-gavel); }
   .tabbar a[data-nav="members.html"]  .tab-ico { -webkit-mask-image: var(--ico-people);   mask-image: var(--ico-people); }
   .tabbar a[data-nav="tax.html"]      .tab-ico { -webkit-mask-image: var(--ico-receipt);  mask-image: var(--ico-receipt); }
+  .tabbar a[data-nav="budget.html"]   .tab-ico { -webkit-mask-image: var(--ico-flow);     mask-image: var(--ico-flow); }
 
   /* Five tabs instead of four — tighten the gutters so "Meetings" still fits
      on a 320px screen without the label truncating. */
@@ -2367,3 +2382,136 @@ a.tax-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px
   vertical-align: 1px;
 }
 .crow.is-em .cmove { color: var(--highlight-ink); }
+
+/* =========================================================================
+   Budget spending page — two Sankey diagrams of the adopted budget.
+   The chart engine lives in budget.html; these are the styles it renders into.
+   Colour tokens (--sk-*) are defined with the palette at the top of the file so
+   both themes stay in sync.
+   ========================================================================= */
+.budget-page { max-width: 980px; margin: 0 auto; }
+
+.b-hero { margin: 8px 0 4px; }
+.b-eyebrow {
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em;
+  color: var(--highlight-ink); margin: 0 0 10px;
+}
+.b-h1 {
+  font-family: var(--serif); font-weight: 700; letter-spacing: -.01em;
+  font-size: clamp(30px, 5vw, 46px); line-height: 1.1; color: var(--fg-soft);
+  margin: 0; text-wrap: balance;
+}
+.b-lede {
+  font-family: var(--serif); font-size: clamp(17px, 2.4vw, 21px); line-height: 1.45;
+  color: var(--fg); max-width: 60ch; margin: 14px 0 0;
+}
+
+/* headline figures */
+.b-figures { display: flex; flex-wrap: wrap; gap: 14px; margin: 26px 0 0; }
+.b-fig {
+  flex: 1 1 150px; background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 15px 18px; box-shadow: var(--shadow);
+  display: flex; flex-direction: column;
+}
+.b-fig .k { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--fg-muted); }
+.b-fig .v {
+  font-family: var(--serif); font-weight: 700; font-size: 30px; color: var(--fg-soft);
+  margin-top: 4px; font-variant-numeric: tabular-nums;
+}
+.b-fig .d { font-size: 12.5px; color: var(--fg-muted); margin-top: 2px; }
+
+/* chart card */
+.b-chartcard {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); margin-top: 26px; overflow: hidden;
+}
+.b-chart-head {
+  display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: flex-end; justify-content: space-between;
+  padding: 20px 22px 15px; border-bottom: 1px solid var(--border);
+}
+.b-chart-head h2 { font-family: var(--serif); font-size: 22px; color: var(--fg-soft); margin: 0; }
+.b-chart-head p { margin: 6px 0 0; font-size: 13.5px; color: var(--fg-muted); max-width: 52ch; }
+
+.b-toggle {
+  display: inline-flex; background: var(--bg-muted); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 3px; gap: 2px; flex: 0 0 auto;
+}
+.b-toggle button {
+  border: 0; background: transparent; font-family: var(--sans); font-size: 13px; font-weight: 700;
+  color: var(--fg-muted); padding: 7px 12px; border-radius: 4px; cursor: pointer;
+}
+.b-toggle button[aria-pressed="true"] { background: var(--bg-elev); color: var(--fg-soft); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+.b-toggle button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.b-scroll { overflow-x: auto; padding: 10px 14px 4px; }
+svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
+
+.sk-cap {
+  fill: var(--fg-muted); font-family: var(--sans); font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em;
+}
+.sk-node-rect { stroke: var(--bg-elev); stroke-width: 1; }
+.sk-label { font-family: var(--sans); font-size: 13px; fill: var(--fg); }
+.sk-label.mid { font-weight: 700; fill: var(--fg-soft); }
+.sk-val { font-family: var(--sans); font-size: 11.5px; fill: var(--fg-muted); font-variant-numeric: tabular-nums; }
+.sk-leader { stroke: var(--border-strong); stroke-width: 1; fill: none; opacity: .7; }
+/* Clickable overview bars: a pointer, a hover lift, and a real focus ring. */
+.sk-clickable { cursor: pointer; }
+.sk-clickable:hover { stroke: var(--fg-soft); stroke-width: 2; }
+.sk-clickable:focus-visible { outline: none; stroke: var(--accent); stroke-width: 2.5; }
+
+/* Drill-down header: a back control + the focused node's name.
+   The explicit [hidden] guard beats this rule's own `display:flex`, which would
+   otherwise override the attribute's UA `display:none`. */
+.b-focus { display: flex; align-items: center; gap: 12px; padding: 12px 22px 0; }
+.b-focus[hidden] { display: none; }
+.b-back {
+  border: 1px solid var(--border-strong); background: var(--bg-muted); color: var(--fg-soft);
+  font-family: var(--sans); font-size: 13px; font-weight: 700; padding: 6px 12px;
+  border-radius: var(--radius-sm); cursor: pointer; flex: 0 0 auto;
+}
+.b-back:hover { background: var(--accent-soft); }
+.b-back:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.b-focus-title { font-family: var(--serif); font-size: 16px; color: var(--fg-soft); }
+.sk-link { fill-opacity: .42; stroke: none; transition: fill-opacity .12s ease; }
+.sk-link.hot { fill-opacity: .8; }
+.sk-link.dim { fill-opacity: .12; }
+@media (prefers-reduced-motion: reduce) { .sk-link { transition: none; } }
+
+.b-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 16px; padding: 12px 22px 18px; border-top: 1px solid var(--border); }
+.b-legend-lead { font-size: 12.5px; font-weight: 700; color: var(--fg-muted); }
+.b-legend .lg { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--fg-muted); }
+.b-legend .lg i { width: 13px; height: 13px; border-radius: 3px; display: inline-block; flex: 0 0 auto; }
+
+/* shared tooltip (one element, positioned to the pointer) */
+.sk-tip {
+  position: fixed; left: 0; top: 0; pointer-events: none; z-index: 60;
+  background: var(--fg-soft); color: var(--bg-elev); font-size: 12.5px; line-height: 1.4;
+  padding: 8px 11px; border-radius: 6px; box-shadow: var(--shadow); max-width: 260px;
+  opacity: 0; transition: opacity .1s ease;
+}
+.sk-tip.show { opacity: 1; }
+.sk-tip b { color: var(--bg-elev); font-weight: 700; }
+@media (prefers-reduced-motion: reduce) { .sk-tip { transition: none; } }
+
+.b-tableview { margin: 0; border-top: 1px solid var(--border); }
+.b-tableview > summary { cursor: pointer; padding: 13px 22px; font-weight: 700; font-size: 13.5px; color: var(--fg-soft); list-style-position: inside; }
+.b-tableview[open] > summary { border-bottom: 1px solid var(--border); }
+.b-tableview .tablewrap { overflow-x: auto; }
+.b-tableview .tablewrap + table, .b-tableview table + table { border-top: 8px solid var(--bg-muted); }
+
+/* caveats + source */
+.b-notes { margin-top: 26px; display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); }
+.b-note {
+  background: var(--bg-elev); border: 1px solid var(--border); border-left: 3px solid var(--highlight);
+  border-radius: var(--radius); padding: 14px 16px;
+}
+.b-note h3 { font-family: var(--sans); font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--fg-muted); margin: 0 0 6px; }
+.b-note p { margin: 0; font-size: 13.5px; color: var(--fg); }
+.b-src { margin-top: 22px; font-size: 13px; color: var(--fg-muted); }
+
+@media (max-width: 640px) {
+  .b-fig .v { font-size: 25px; }
+  .b-chart-head { padding: 16px 16px 13px; }
+  .b-legend { padding: 12px 16px 16px; }
+}

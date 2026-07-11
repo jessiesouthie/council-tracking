@@ -205,6 +205,7 @@
       { href: "motions.html",  label: "Motions" },
       { href: "members.html",  label: "Members" },
       { href: "tax.html",      label: "Tax" },
+      { href: "budget.html",   label: "Budget" },
     ];
     const nav = document.createElement("nav");
     nav.className = "tabbar";

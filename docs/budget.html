@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Budget Spending — Eagle Mountain Council Tracking</title>
+    <meta name="description" content="Follow every dollar of Eagle Mountain's FY2025 adopted budget — from the fund that holds it to the service it pays for — in an interactive Sankey diagram." />
+    <meta name="theme-color" content="#31452E" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1B201A" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Council Tracking" />
+    <meta property="og:title" content="Budget Spending — Eagle Mountain Council Tracking" />
+    <meta property="og:description" content="Follow every dollar of Eagle Mountain's FY2025 adopted budget — from the fund that holds it to the service it pays for — in an interactive Sankey diagram." />
+    <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Budget Spending — Eagle Mountain Council Tracking" />
+    <meta name="twitter:description" content="Follow every dollar of Eagle Mountain's FY2025 adopted budget — from the fund that holds it to the service it pays for." />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Lato:wght@400;700&display=swap" />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CT</span>
+        <div>
+          <p class="brand-title">Council Tracking</p>
+          <p class="city">Eagle Mountain, UT</p>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" data-nav="index.html">Home</a>
+        <a href="meetings.html" data-nav="meetings.html">Meetings</a>
+        <a href="motions.html" data-nav="motions.html">Motions</a>
+        <a href="members.html" data-nav="members.html">Members</a>
+        <a href="tax.html" data-nav="tax.html">Tax</a>
+        <a href="budget.html" data-nav="budget.html">Budget</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <div id="content"></div>
+    </main>
+
+    <footer class="footer"><span>Budget figures from the Eagle Mountain City ClearGov budget book</span></footer>
+
+    <div class="sk-tip" id="sk-tip" role="status" aria-live="off"></div>
+
+    <script src="site.js"></script>
+    <script>
+      (async () => {
+        const root = document.getElementById("content");
+        const data = await fetch(new URL("data.budget.json", document.baseURI))
+          .then((r) => (r.ok ? r.json() : null))
+          .catch(() => null);
+
+        if (!data) {
+          root.innerHTML = `<h1 class="page-title">Budget spending</h1>
+            <p class="page-sub">The budget data couldn't be loaded. Reload the page to try again.</p>`;
+          return;
+        }
+        // The budget is the City's; other bodies on this site don't adopt one.
+        if (CT.currentBody && CT.currentBody() !== "city-council") {
+          root.innerHTML = `<h1 class="page-title">Budget spending</h1>
+            <p class="page-sub">Only the City adopts a budget. Switch to City Council to explore it.</p>`;
+          return;
+        }
+        render(data, root);
+      })();
+
+      /* =========================================================================
+         The page answers one question — where does Eagle Mountain's money go? —
+         at two altitudes. First the whole $172.5M across every fund, so the scale
+         and the dominance of capital spending are unmissable. Then the General
+         Fund alone, traced revenue-in to service-out, because that is the fund of
+         the services residents recognise and the one the Council most directly
+         steers. Every figure is the city's own adopted line items; nothing here
+         is modelled or estimated.
+         ========================================================================= */
+
+      const usdC = (n) => "$" + Math.round(n).toLocaleString("en-US");
+      const short = (n) => {
+        if (n >= 1e6) return "$" + (n / 1e6).toFixed(n >= 1e7 ? 1 : 2) + "M";
+        if (n >= 1e3) return "$" + Math.round(n / 1e3) + "K";
+        return "$" + Math.round(n);
+      };
+      const pct = (v, t) => ((v / t) * 100).toFixed(1) + "%";
+      const cssv = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+      // Six harmonised source hues (forest → ochre); greens vs oranges hold CVD
+      // separation. Defined as tokens in site.css so both themes stay in sync.
+      const RAMP = ["--sk-c0", "--sk-c1", "--sk-c2", "--sk-c3", "--sk-c4", "--sk-c5"];
+
+      function render(data, root) {
+        const af = data.all_funds;
+        const gf = data.general_fund;
+        const T = data.total;
+        const topFund = af.funds[0];
+        const topUse = af.functions[0];
+        const personnel = af.objects.find((o) => o.name === "Personnel Services");
+        const fy = data.fiscal_year;
+
+        root.innerHTML = `
+          <div class="budget-page">
+            <header class="b-hero">
+              <p class="b-eyebrow">FY${CT.escapeHtml(fy)} Adopted Budget</p>
+              <h1 class="b-h1">Where Eagle Mountain plans to spend</h1>
+              <p class="b-lede">
+                Every dollar the city budgeted for ${CT.escapeHtml(fy)}, traced from the fund that
+                holds it to what it pays for. Follow any ribbon to see how much, and where it lands.
+              </p>
+              <div class="b-figures">
+                <div class="b-fig"><span class="k">Total appropriated</span><span class="v">${short(T)}</span><span class="d">across all six fund groups</span></div>
+                <div class="b-fig"><span class="k">Largest fund</span><span class="v">${short(topFund.total)}</span><span class="d">${CT.escapeHtml(topFund.name)} · ${pct(topFund.total, T)}</span></div>
+                <div class="b-fig"><span class="k">Biggest use</span><span class="v">${short(topUse.total)}</span><span class="d">${CT.escapeHtml(topUse.name)} · ${pct(topUse.total, T)}</span></div>
+                <div class="b-fig"><span class="k">On personnel</span><span class="v">${short(personnel.total)}</span><span class="d">wages &amp; benefits, all funds</span></div>
+              </div>
+            </header>
+
+            <!-- 1 · The whole budget -->
+            <section class="b-chartcard" aria-labelledby="af-title">
+              <div class="b-chart-head">
+                <div>
+                  <h2 id="af-title">The whole budget, all funds</h2>
+                  <p id="af-sub"></p>
+                </div>
+                <div class="b-toggle" role="group" aria-label="Choose the right-hand grouping">
+                  <button id="af-func" type="button" aria-pressed="true">By function</button>
+                  <button id="af-obj" type="button" aria-pressed="false">By type of spending</button>
+                </div>
+              </div>
+              <div class="b-focus" id="af-focus" hidden>
+                <button class="b-back" id="af-back" type="button"><span aria-hidden="true">←</span> All funds</button>
+                <span class="b-focus-title" id="af-focus-title"></span>
+              </div>
+              <div class="b-scroll">
+                <svg class="sankey" id="af-svg" role="img" aria-labelledby="af-svg-title"></svg>
+                <span id="af-svg-title" class="sr-only"></span>
+              </div>
+              <div class="b-legend" id="af-legend"></div>
+              ${tableDetails("af-table")}
+            </section>
+
+            <!-- 2 · The General Fund -->
+            <section class="b-chartcard" aria-labelledby="gf-title">
+              <div class="b-chart-head">
+                <div>
+                  <h2 id="gf-title">The General Fund, revenue to service</h2>
+                  <p>
+                    The ${short(gf.total)} General Fund pays for the day-to-day services residents see —
+                    police, parks, streets, planning, city hall. Here every dollar flows from where it
+                    comes in, through the fund, out to the service that spends it.
+                    Departments are grouped into service areas here; the table below lists each one.
+                  </p>
+                </div>
+              </div>
+              <div class="b-scroll">
+                <svg class="sankey" id="gf-svg" role="img" aria-labelledby="gf-svg-title"></svg>
+                <span id="gf-svg-title" class="sr-only">Sankey diagram of the Eagle Mountain General Fund, from revenue source through the fund to the department that spends it.</span>
+              </div>
+              <div class="b-legend" id="gf-legend"></div>
+              ${tableDetails("gf-table")}
+            </section>
+
+            <div class="b-notes">
+              <div class="b-note"><h3>What this shows</h3><p>Budgeted (adopted) spending — the plan the Council approved for the year, not final actuals. Every figure is the city's own budget line items, rolled up to fund, function, and department.</p></div>
+              <div class="b-note"><h3>About transfers</h3><p>“Interfund Transfers” move money between the city's own funds, so a small share of the ${short(T)} is counted once where it leaves and again where it arrives — inherent to any all-funds view.</p></div>
+              <div class="b-note"><h3>Why capital is so large</h3><p>Eagle Mountain is one of Utah's fastest-growing cities. The single biggest slice — ${short(topUse.total)} — builds roads, water, and facilities to keep pace, funded largely by impact fees and bonds rather than taxes.</p></div>
+            </div>
+
+            <p class="b-src">
+              Source: <a href="${data.source.url}" rel="nofollow noopener">${CT.escapeHtml(data.source.title)}</a>
+              (${CT.escapeHtml(data.source.publisher)}), adopted-budget line items. Compiled for Council Tracking.
+            </p>
+          </div>
+        `;
+
+        AF = af; AF_T = T;
+        renderAF();
+        drawGeneralFund(gf);
+
+        // Toggling the grouping resets any open drill-down (targets differ per mode).
+        document.getElementById("af-func").addEventListener("click", () => { afState = { view: "function", focus: null }; renderAF(); });
+        document.getElementById("af-obj").addEventListener("click", () => { afState = { view: "object", focus: null }; renderAF(); });
+        document.getElementById("af-back").addEventListener("click", () => { afState.focus = null; renderAF(); });
+
+        // Redraw on theme flips so token-driven colours refresh (keeps any drill state).
+        new MutationObserver(() => { renderAF(); drawGeneralFund(gf); })
+          .observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+      }
+
+      function tableDetails(id) {
+        return `
+          <details class="b-tableview">
+            <summary>View the numbers as a table</summary>
+            <div class="tablewrap" id="${id}"></div>
+          </details>`;
+      }
+
+      /* ---------------- all-funds chart: overview + click-to-drill ----------------
+         The overview is Fund → Function (or → expense type). Clicking any bar opens
+         a focused view of that node: for a function/type, the funds that feed it →
+         the node → its own line items and named capital projects; for a fund, the
+         fund → its line items. "← All funds" returns.
+      */
+      let AF = null, AF_T = 0;
+      let afState = { view: "function", focus: null }; // focus: {side:'fund'|'target', name}
+
+      const fundColorMap = () => new Map(AF.funds.map((n, i) => [n.name, cssv(RAMP[i % 6])]));
+
+      function renderAF() {
+        if (afState.focus) drawAfFocus();
+        else drawAfOverview();
+        document.getElementById("af-func").setAttribute("aria-pressed", String(afState.view === "function"));
+        document.getElementById("af-obj").setAttribute("aria-pressed", String(afState.view === "object"));
+        const bar = document.getElementById("af-focus");
+        bar.hidden = !afState.focus;
+        if (afState.focus) {
+          document.getElementById("af-focus-title").textContent =
+            afState.focus.side === "target"
+              ? `${afState.focus.name} — who funds it, and what it buys`
+              : `${afState.focus.name} — what it spends on`;
+        }
+      }
+
+      function drawAfOverview() {
+        const funcMode = afState.view === "function";
+        const rightNodes = funcMode ? AF.functions : AF.objects;
+        const links = (funcMode ? AF.links_fund_function : AF.links_fund_object).filter((l) => l.value > 0);
+        const fc = fundColorMap();
+        // Namespaced ids so a name shared across columns can't merge two nodes.
+        const cols = [
+          AF.funds.map((n) => ({ id: "L:" + n.name, name: n.name, total: n.total, color: fc.get(n.name), kind: "fund" })),
+          rightNodes.map((n) => ({ id: "R:" + n.name, name: n.name, total: n.total, color: cssv("--sk-node"), kind: "target" })),
+        ];
+        const edges = links.map((l) => ({ source: "L:" + l.source, target: "R:" + l.target, value: l.value, color: fc.get(l.source) }));
+        orderByBarycentre(cols[0], cols[1], edges);
+
+        drawSankey("af-svg", cols, edges, AF_T, {
+          colCaptions: ["Fund", funcMode ? "What it pays for" : "Type of spending"],
+          labelSides: ["end", "start"],
+          clickable: () => true,
+          onNodeClick: (node) => { afState.focus = { side: node.side, name: node.name }; renderAF(); },
+        });
+        legendFor("af-legend", cols[0], AF_T);
+        fillTable("af-table", ["Fund", funcMode ? "Function" : "Type of spending"], links, AF_T);
+        document.getElementById("af-sub").textContent =
+          (funcMode
+            ? "Left: the fund each dollar sits in. Right: the function it pays for."
+            : "Left: the fund each dollar sits in. Right: the kind of expense it becomes.") +
+          " Click any bar to open its line items and projects.";
+        document.getElementById("af-svg-title").textContent =
+          `Sankey diagram of Eagle Mountain FY budgeted spending by fund and ${funcMode ? "function" : "expense type"}. Each bar is clickable to drill into its line items.`;
+      }
+
+      function drillItemsFor(focus) {
+        if (focus.side === "fund") return AF.drill.byFund[focus.name] || [];
+        return (afState.view === "function" ? AF.drill.byFunction : AF.drill.byObject)[focus.name] || [];
+      }
+
+      function drawAfFocus() {
+        const fc = fundColorMap();
+        const f = afState.focus;
+        const items = drillItemsFor(f);
+        const itemColor = (it) => (it.c && fc.has(it.c) ? fc.get(it.c) : cssv("--sk-node"));
+
+        if (f.side === "target") {
+          const links = (afState.view === "function" ? AF.links_fund_function : AF.links_fund_object)
+            .filter((l) => l.target === f.name && l.value > 0);
+          const total = links.reduce((a, l) => a + l.value, 0);
+          const cols = [
+            links.map((l) => ({ id: "L:" + l.source, name: l.source, total: l.value, color: fc.get(l.source) })),
+            [{ id: "M", name: f.name, total, color: cssv("--accent") }],
+            items.map((it, i) => ({ id: "I:" + i, name: it.name, total: it.value, color: itemColor(it) })),
+          ];
+          const edges = [
+            ...links.map((l) => ({ source: "L:" + l.source, target: "M", value: l.value, color: fc.get(l.source) })),
+            ...items.map((it, i) => ({ source: "M", target: "I:" + i, value: it.value, color: itemColor(it) })),
+          ];
+          drawSankey("af-svg", cols, edges, total, {
+            colCaptions: ["Funded by", "", "Line items & projects"],
+            labelSides: ["end", "mid", "start"],
+            clickable: () => false,
+          });
+          legendFor("af-legend", cols[0], total);
+          fillTable("af-table", ["Line item / project", "Amount"], items.map((it) => ({ source: it.name, value: it.value })), total);
+        } else {
+          const F = AF.funds.find((x) => x.name === f.name);
+          const total = F.total, col = fc.get(f.name);
+          const cols = [
+            [{ id: "M", name: f.name, total, color: col }],
+            items.map((it, i) => ({ id: "I:" + i, name: it.name, total: it.value, color: col })),
+          ];
+          const edges = items.map((it, i) => ({ source: "M", target: "I:" + i, value: it.value, color: col }));
+          drawSankey("af-svg", cols, edges, total, {
+            colCaptions: [f.name, "Line items"],
+            labelSides: ["end", "start"],
+            clickable: () => false,
+          });
+          legendFor("af-legend", [{ name: f.name, total, color: col }], total);
+          fillTable("af-table", ["Line item", "Amount"], items.map((it) => ({ source: it.name, value: it.value })), total);
+        }
+        document.getElementById("af-svg-title").textContent =
+          `Focused Sankey of ${f.name}: its funding sources and the line items and projects it pays for.`;
+      }
+
+      /* ---------------- General Fund chart (3 columns: revenue → fund → dept) ---------------- */
+
+      function drawGeneralFund(gf) {
+        const T = gf.total;
+        const revColors = gf.revenue.map((n, i) => cssv(RAMP[i % 6]));
+        const cols = [
+          gf.revenue.map((n, i) => ({ id: "REV:" + n.name, name: n.name, total: n.total, color: revColors[i] })),
+          [{ id: "GF", name: "General Fund", total: T, color: cssv("--accent") }],
+          gf.departments.map((n) => ({ id: "DEP:" + n.name, name: n.name, total: n.total, color: cssv("--sk-node") })),
+        ];
+        const edges = [
+          ...gf.revenue.map((n, i) => ({ source: "REV:" + n.name, target: "GF", value: n.total, color: revColors[i] })),
+          // Money is fungible inside the fund, so outflows carry the fund's own
+          // accent rather than implying a revenue source maps to a department.
+          ...gf.departments.map((n) => ({ source: "GF", target: "DEP:" + n.name, value: n.total, color: cssv("--accent") })),
+        ];
+        drawSankey("gf-svg", cols, edges, T, {
+          colCaptions: ["Revenue in", "", "Service out"],
+          labelSides: ["end", "mid", "start"],
+        });
+        legendFor("gf-legend", cols[0], T, "Revenue source");
+        // The chart groups revenue and departments for legibility; the table
+        // lists every source and every one of the city's departments in full.
+        fillTable("gf-table", ["Revenue source", "Amount"], gf.revenue_detail.map((r) => ({ source: r.name, value: r.total })), T,
+          ["Department", "Amount"], gf.departments_detail.map((d) => ({ source: d.name, value: d.total })));
+      }
+
+      /* ---------------- the Sankey engine (generic, N columns) ----------------
+         A hand-written layout so the page carries no charting dependency, matching
+         the rest of the site. Widths are a single shared value→pixel scale, so a
+         ribbon means the same dollars in every column; because money is conserved,
+         each node's ribbons exactly fill its height.
+      */
+      function orderByBarycentre(leftCol, rightCol, edges) {
+        const idx = new Map(leftCol.map((n, i) => [n.id, i]));
+        const bary = new Map();
+        rightCol.forEach((r) => {
+          let s = 0, w = 0;
+          edges.filter((e) => e.target === r.id).forEach((e) => { s += (idx.get(e.source) ?? 0) * e.value; w += e.value; });
+          bary.set(r.id, w ? s / w : 1e9);
+        });
+        rightCol.sort((a, b) => bary.get(a.id) - bary.get(b.id) || b.total - a.total);
+      }
+
+      function drawSankey(svgId, cols, edges, TOTAL, opts) {
+        const svg = document.getElementById(svgId);
+        const W = 1100, nodeW = 15, gap = 11, topPad = 46, botPad = 12, drawH = svgId === "gf-svg" ? 600 : 560;
+        const H = drawH + topPad + botPad;
+        const LZONE = 200, RZONE = 210;
+        const C = cols.length;
+        // Column x positions: first hugs the left label zone, last the right one,
+        // any middle columns spaced evenly between.
+        const xs = cols.map((_, i) => Math.round(LZONE + (i / (C - 1)) * (W - LZONE - RZONE - nodeW)));
+
+        // One scale that fits the tightest column (the outer ones carry the gaps).
+        const s = Math.min(...cols.map((col) => (drawH - gap * (col.length - 1)) / TOTAL));
+        const nodeById = new Map();
+        cols.forEach((col, ci) => {
+          let y = topPad;
+          col.forEach((n) => {
+            n.x = xs[ci]; n.ci = ci; n.h = Math.max(1.5, n.total * s); n.y = y; y += n.h + gap;
+            nodeById.set(n.id, n);
+          });
+        });
+
+        const E = edges.map((e) => ({ ...e, S: nodeById.get(e.source), Tn: nodeById.get(e.target) })).filter((e) => e.S && e.Tn && e.value > 0);
+        // Stack ribbons on each node edge, ordered by the opposite endpoint's y.
+        const outOff = new Map(), inOff = new Map();
+        [...E].sort((a, b) => a.S.y - b.S.y || a.Tn.y - b.Tn.y).forEach((e) => {
+          const o = outOff.get(e.source) || 0; e.sy = e.S.y + o + (e.value * s) / 2; outOff.set(e.source, o + e.value * s);
+        });
+        [...E].sort((a, b) => a.Tn.y - b.Tn.y || a.S.y - b.S.y).forEach((e) => {
+          const o = inOff.get(e.target) || 0; e.ty = e.Tn.y + o + (e.value * s) / 2; inOff.set(e.target, o + e.value * s);
+        });
+
+        svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+        let out = "";
+        // column captions (in the reserved header band)
+        opts.colCaptions.forEach((cap, ci) => {
+          if (!cap) return;
+          const anchor = opts.labelSides[ci] === "end" ? "end" : opts.labelSides[ci] === "mid" ? "middle" : "start";
+          const cx = anchor === "end" ? xs[ci] + nodeW : anchor === "middle" ? xs[ci] + nodeW / 2 : xs[ci];
+          out += `<text class="sk-cap" x="${cx}" y="16" text-anchor="${anchor}">${esc(cap)}</text>`;
+        });
+        // ribbons (drawn first, under the nodes)
+        E.forEach((e, i) => {
+          const x0 = e.S.x + nodeW, x1 = e.Tn.x, t = e.value * s, xm = (x0 + x1) / 2;
+          const d = `M${x0},${e.sy - t / 2} C${xm},${e.sy - t / 2} ${xm},${e.ty - t / 2} ${x1},${e.ty - t / 2} `
+                  + `L${x1},${e.ty + t / 2} C${xm},${e.ty + t / 2} ${xm},${e.sy + t / 2} ${x0},${e.sy + t / 2} Z`;
+          out += `<path class="sk-link" data-src="${esc(e.S.name)}" data-tgt="${esc(e.Tn.name)}" data-val="${e.value}" d="${d}" fill="${e.color}">`
+               + `<title>${esc(e.S.name)} → ${esc(e.Tn.name)}: ${usdC(e.value)} (${pct(e.value, TOTAL)})</title></path>`;
+        });
+        // node rects (clickable ones get a button role + keyboard support)
+        cols.forEach((col) => {
+          col.forEach((n) => {
+            const click = opts.clickable && opts.clickable(n);
+            const attrs = click
+              ? ` class="sk-node-rect sk-clickable" tabindex="0" role="button" data-name="${esc(n.name)}" data-side="${n.kind === "fund" ? "fund" : "target"}" aria-label="${esc(n.name)}, ${usdC(n.total)} — open line items"`
+              : ` class="sk-node-rect"`;
+            const hint = click ? " · click to open line items" : "";
+            out += `<rect${attrs} x="${n.x}" y="${n.y}" width="${nodeW}" height="${n.h}" rx="2" fill="${n.color}">`
+                 + `<title>${esc(n.name)}: ${usdC(n.total)} · ${pct(n.total, TOTAL)}${hint}</title></rect>`;
+          });
+        });
+        // labels. Side columns get de-collided vertically (a thin node → its
+        // two-line label is taller than the node, so stacked labels would
+        // overlap); a leader line reconnects any label nudged off its node.
+        cols.forEach((col, ci) => {
+          const side = opts.labelSides[ci];
+          if (side === "mid") {
+            // Full-height middle node: label rides in the header band above it.
+            const n = col[0];
+            out += `<text class="sk-label mid" x="${n.x + nodeW / 2}" y="24" text-anchor="middle">${esc(n.name)}</text>`;
+            out += `<text class="sk-val mid" x="${n.x + nodeW / 2}" y="38" text-anchor="middle">${short(n.total)}</text>`;
+            return;
+          }
+          const anchor = side === "end" ? "end" : "start";
+          const lx = anchor === "end" ? -8 : nodeW + 8;         // relative to node x
+          const ly = spreadLabels(col, 27, topPad + 8, topPad + drawH - 8);
+          col.forEach((n) => {
+            const cy = n.y + n.h / 2, y = ly.get(n);
+            if (Math.abs(y - cy) > 2.5) {
+              const ex = anchor === "end" ? n.x : n.x + nodeW;   // node outer edge
+              const tx = n.x + lx + (anchor === "end" ? 5 : -5); // just shy of the text
+              out += `<path class="sk-leader" d="M${ex},${cy} L${tx},${y}" />`;
+            }
+            out += `<text class="sk-label" x="${n.x + lx}" y="${y}" text-anchor="${anchor}">${esc(n.name)}</text>`;
+            out += `<text class="sk-val" x="${n.x + lx}" y="${y + 13}" text-anchor="${anchor}">${short(n.total)}</text>`;
+          });
+        });
+        svg.innerHTML = out;
+        wireTips(svg, TOTAL);
+
+        // Drill-down: click or Enter/Space on a bar opens its line items.
+        if (opts.onNodeClick) {
+          svg.querySelectorAll(".sk-clickable").forEach((rc) => {
+            const fire = () => opts.onNodeClick({ name: rc.dataset.name, side: rc.dataset.side });
+            rc.addEventListener("click", fire);
+            rc.addEventListener("keydown", (e) => {
+              if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fire(); }
+            });
+          });
+        }
+      }
+
+      // Push overlapping labels apart while keeping them as close to their node
+      // centre as possible, then clamp inside [lo, hi]. Returns node → label-y.
+      function spreadLabels(col, minGap, lo, hi) {
+        const arr = col.map((n) => ({ n, y: n.y + n.h / 2 })).sort((a, b) => a.y - b.y);
+        for (let i = 1; i < arr.length; i++)
+          if (arr[i].y < arr[i - 1].y + minGap) arr[i].y = arr[i - 1].y + minGap;
+        if (arr.length) {
+          if (arr[arr.length - 1].y > hi) arr[arr.length - 1].y = hi;
+          for (let i = arr.length - 2; i >= 0; i--)
+            if (arr[i].y > arr[i + 1].y - minGap) arr[i].y = arr[i + 1].y - minGap;
+          if (arr[0].y < lo) arr[0].y = lo;
+        }
+        return new Map(arr.map((o) => [o.n, o.y]));
+      }
+
+      function esc(s) { return CT.escapeHtml(String(s)); }
+
+      // One shared tooltip; hovering a ribbon lifts it and dims the rest.
+      function wireTips(svg, TOTAL) {
+        const tip = document.getElementById("sk-tip");
+        const paths = [...svg.querySelectorAll(".sk-link")];
+        const move = (e) => {
+          const pad = 14, r = tip.getBoundingClientRect();
+          let x = e.clientX + pad, y = e.clientY + pad;
+          if (x + r.width > innerWidth) x = e.clientX - r.width - pad;
+          if (y + r.height > innerHeight) y = e.clientY - r.height - pad;
+          tip.style.left = x + "px"; tip.style.top = y + "px";
+        };
+        paths.forEach((p) => {
+          const show = (e) => {
+            paths.forEach((q) => { q.classList.add("dim"); q.classList.remove("hot"); });
+            p.classList.remove("dim"); p.classList.add("hot");
+            tip.innerHTML = `<b>${p.dataset.src}</b> → <b>${p.dataset.tgt}</b><br>${usdC(+p.dataset.val)} · ${pct(+p.dataset.val, TOTAL)} of the total`;
+            tip.classList.add("show"); move(e);
+          };
+          const hide = () => { paths.forEach((q) => q.classList.remove("dim", "hot")); tip.classList.remove("show"); };
+          p.addEventListener("mouseenter", show);
+          p.addEventListener("mousemove", move);
+          p.addEventListener("mouseleave", hide);
+        });
+      }
+
+      function legendFor(id, nodes, T, lead) {
+        document.getElementById(id).innerHTML =
+          (lead ? `<span class="b-legend-lead">${esc(lead)}:</span>` : "") +
+          nodes.map((n) => `<span class="lg"><i style="background:${n.color}"></i>${esc(n.name)} · ${short(n.total)}</span>`).join("");
+      }
+
+      // A table view for every chart — identity is never carried by colour alone.
+      function fillTable(id, head, rows, T, head2, rows2) {
+        const body = (rs) => rs.slice().sort((a, b) => b.value - a.value).map((l) =>
+          `<tr><td>${esc(l.source)}${l.target ? " → " + esc(l.target) : ""}</td><td class="num">${usdC(l.value)}</td><td class="num">${pct(l.value, T)}</td></tr>`).join("");
+        const table = (h, rs) => {
+          const flow = rs.some((r) => r.target);
+          const col1 = flow ? `${esc(h[0])} → ${esc(h[1])}` : esc(h[0]);
+          return `<table class="data"><thead><tr><th scope="col">${col1}</th><th scope="col" class="num">Budgeted</th><th scope="col" class="num">Share</th></tr></thead><tbody>${body(rs)}</tbody></table>`;
+        };
+        // The two-column charts pass link rows (source→target); the General Fund
+        // passes two flat lists (revenue, then departments) shown side by side.
+        const norm = (rs) => rs.map((r) => (r.target ? r : { source: r.source, value: r.value }));
+        let html = table(head, norm(rows));
+        if (head2) html += table(head2, norm(rows2));
+        document.getElementById(id).innerHTML = html;
+      }
+
+    </script>
+  </body>
+</html>
