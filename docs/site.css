@@ -2499,6 +2499,18 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
 .b-tableview[open] > summary { border-bottom: 1px solid var(--border); }
 .b-tableview .tablewrap { overflow-x: auto; }
 .b-tableview .tablewrap + table, .b-tableview table + table { border-top: 8px solid var(--bg-muted); }
+/* Drill table: the specific fund a line item sits in, and the lump-line caveat. */
+.b-where { display: block; font-size: 11.5px; color: var(--fg-muted); margin-top: 1px; }
+.b-tablenote { margin: 0; padding: 12px 22px 16px; font-size: 12.5px; color: var(--fg-muted); line-height: 1.5; }
+.b-tablenote em { font-style: italic; color: var(--fg); }
+/* Reconciliation: how much of a category is named vs. a pooled appropriation. */
+.b-recon {
+  margin: 0; padding: 14px 22px; font-size: 13px; line-height: 1.55; color: var(--fg);
+  background: var(--bg-muted); border-top: 1px solid var(--border);
+}
+.b-recon strong { color: var(--fg-soft); font-variant-numeric: tabular-nums; }
+.b-recon em { font-style: italic; }
+.data tr.is-lump td { background: color-mix(in oklab, var(--highlight-soft) 55%, transparent); }
 
 /* caveats + source */
 .b-notes { margin-top: 26px; display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); }

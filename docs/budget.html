@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Lato:wght@400;700&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260711" />
+    <link rel="stylesheet" href="site.css?v=20260711b" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -51,7 +51,7 @@
 
     <div class="sk-tip" id="sk-tip" role="status" aria-live="off"></div>
 
-    <script src="site.js?v=20260711"></script>
+    <script src="site.js?v=20260711b"></script>
     <script>
       (async () => {
         const root = document.getElementById("content");
@@ -248,6 +248,7 @@
         });
         legendFor("af-legend", cols[0], AF_T);
         fillTable("af-table", ["Fund", funcMode ? "Function" : "Type of spending"], links, AF_T);
+        setTableSummary("View the numbers as a table");
         document.getElementById("af-sub").textContent =
           (funcMode
             ? "Left: the fund each dollar sits in. Right: the function it pays for."
@@ -262,10 +263,20 @@
         return (afState.view === "function" ? AF.drill.byFunction : AF.drill.byObject)[focus.name] || [];
       }
 
+      // The diagram stays legible at ~12 rows; the table below carries the full
+      // itemisation. Everything past the 11th line folds into one "Other" ribbon.
+      function capForSankey(items, n) {
+        if (items.length <= n) return items;
+        const head = items.slice(0, n - 1);
+        const restVal = items.slice(n - 1).reduce((a, x) => a + x.value, 0);
+        return [...head, { name: "Other line items", value: restVal, c: null, f: null }];
+      }
+
       function drawAfFocus() {
         const fc = fundColorMap();
         const f = afState.focus;
-        const items = drillItemsFor(f);
+        const items = drillItemsFor(f);                 // full list (up to ~40 + Other)
+        const shown = capForSankey(items, 12);          // legible subset for the diagram
         const itemColor = (it) => (it.c && fc.has(it.c) ? fc.get(it.c) : cssv("--sk-node"));
 
         if (f.side === "target") {
@@ -275,11 +286,11 @@
           const cols = [
             links.map((l) => ({ id: "L:" + l.source, name: l.source, total: l.value, color: fc.get(l.source) })),
             [{ id: "M", name: f.name, total, color: cssv("--accent") }],
-            items.map((it, i) => ({ id: "I:" + i, name: it.name, total: it.value, color: itemColor(it) })),
+            shown.map((it, i) => ({ id: "I:" + i, name: it.name, total: it.value, color: itemColor(it) })),
           ];
           const edges = [
             ...links.map((l) => ({ source: "L:" + l.source, target: "M", value: l.value, color: fc.get(l.source) })),
-            ...items.map((it, i) => ({ source: "M", target: "I:" + i, value: it.value, color: itemColor(it) })),
+            ...shown.map((it, i) => ({ source: "M", target: "I:" + i, value: it.value, color: itemColor(it) })),
           ];
           drawSankey("af-svg", cols, edges, total, {
             colCaptions: ["Funded by", "", "Line items & projects"],
@@ -287,25 +298,66 @@
             clickable: () => false,
           });
           legendFor("af-legend", cols[0], total);
-          fillTable("af-table", ["Line item / project", "Amount"], items.map((it) => ({ source: it.name, value: it.value })), total);
+          fillDrillTable("af-table", items, total, "target");
         } else {
           const F = AF.funds.find((x) => x.name === f.name);
           const total = F.total, col = fc.get(f.name);
           const cols = [
             [{ id: "M", name: f.name, total, color: col }],
-            items.map((it, i) => ({ id: "I:" + i, name: it.name, total: it.value, color: col })),
+            shown.map((it, i) => ({ id: "I:" + i, name: it.name, total: it.value, color: col })),
           ];
-          const edges = items.map((it, i) => ({ source: "M", target: "I:" + i, value: it.value, color: col }));
+          const edges = shown.map((it, i) => ({ source: "M", target: "I:" + i, value: it.value, color: col }));
           drawSankey("af-svg", cols, edges, total, {
             colCaptions: [f.name, "Line items"],
             labelSides: ["end", "start"],
             clickable: () => false,
           });
           legendFor("af-legend", [{ name: f.name, total, color: col }], total);
-          fillTable("af-table", ["Line item", "Amount"], items.map((it) => ({ source: it.name, value: it.value })), total);
+          fillDrillTable("af-table", items, total, "fund");
         }
+        setTableSummary(items.length > 12
+          ? `See all ${items.length} line items in the table`
+          : "See the line items in the table");
         document.getElementById("af-svg-title").textContent =
           `Focused Sankey of ${f.name}: its funding sources and the line items and projects it pays for.`;
+      }
+
+      // Generic line names that are pooled appropriations, not named projects —
+      // the city budgets these as a single amount spent on projects as they arise.
+      const LUMP = new Set(["Capital Projects", "Capital Outlay"]);
+
+      // Drill table: every line item with its specific fund, a per-row "pooled"
+      // marker, and a reconciliation of how much is itemised vs. pooled — so a
+      // reader can see every dollar is accounted for even where a name isn't.
+      function fillDrillTable(id, items, total, side) {
+        let pooled = 0;
+        const rows = items.slice().sort((a, b) => b.value - a.value).map((it) => {
+          const isLump = LUMP.has(it.name);
+          if (isLump) pooled += it.value;
+          const where = it.f
+            ? `<span class="b-where">${esc(it.f)}${isLump ? " · pooled, not itemised" : ""}</span>`
+            : "";
+          return `<tr${isLump ? ' class="is-lump"' : ""}><td>${esc(it.name)}${where}</td>`
+            + `<td class="num">${usdC(it.value)}</td><td class="num">${pct(it.value, total)}</td></tr>`;
+        }).join("");
+        const h = side === "target" ? "Line item / project" : "Line item";
+        const itemised = total - pooled;
+        const recon = pooled > 0
+          ? `<p class="b-recon"><strong>${short(itemised)}</strong> is itemised to named line items;
+             <strong>${short(pooled)}</strong> (${pct(pooled, total)}) is pooled lump appropriations —
+             chiefly the impact-fee <em>“Capital Projects”</em> and <em>“Capital Outlay”</em> lines the
+             city budgets as a single amount and spends on projects as they come up. Every dollar is
+             appropriated; not every dollar is pre-assigned to a named project.</p>`
+          : "";
+        document.getElementById(id).innerHTML =
+          `<table class="data"><thead><tr><th scope="col">${h}</th><th scope="col" class="num">Budgeted</th><th scope="col" class="num">Share</th></tr></thead><tbody>${rows}</tbody></table>`
+          + recon
+          + `<p class="b-tablenote">Each row is a line item from the adopted budget, shown with the specific fund it sits in. Projects carried in the books at $0 this year are omitted.</p>`;
+      }
+
+      function setTableSummary(text) {
+        const s = document.getElementById("af-table")?.closest("details")?.querySelector("summary");
+        if (s) s.textContent = text;
       }
 
       /* ---------------- General Fund chart (3 columns: revenue → fund → dept) ---------------- */
