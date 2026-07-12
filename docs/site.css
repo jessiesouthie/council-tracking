@@ -264,6 +264,10 @@ a:hover { text-decoration: underline; }
 
 main {
   flex: 1;
+  /* min-width:0 lets this flex-column child shrink to the viewport instead of
+     growing to fit wide content (e.g. the budget Sankey), so descendant
+     overflow-x:auto scroll containers actually clip and scroll on mobile. */
+  min-width: 0;
   width: 100%;
   max-width: var(--max-w);
   margin: 0 auto;
@@ -2443,8 +2447,11 @@ a.tax-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px
 .b-toggle button[aria-pressed="true"] { background: var(--bg-elev); color: var(--fg-soft); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
 .b-toggle button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
-.b-scroll { overflow-x: auto; padding: 10px 14px 4px; }
+.b-scroll { overflow-x: auto; padding: 10px 14px 4px; -webkit-overflow-scrolling: touch; }
 svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
+
+/* Scroll affordance for the wide chart — only shown on narrow screens. */
+.b-swipe { display: none; }
 
 .sk-cap {
   fill: var(--fg-muted); font-family: var(--sans); font-size: 11px; font-weight: 700;
@@ -2523,7 +2530,43 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
 .b-src { margin-top: 22px; font-size: 13px; color: var(--fg-muted); }
 
 @media (max-width: 640px) {
-  .b-fig .v { font-size: 25px; }
-  .b-chart-head { padding: 16px 16px 13px; }
+  /* Headline figures: a tidy 2-up grid instead of uneven flex wrapping. */
+  .b-figures { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+  .b-fig { padding: 13px 14px; }
+  .b-fig .v { font-size: 24px; }
+  .b-fig .d { font-size: 12px; }
+
+  /* Chart header stacks; the toggle spans the width with equal-width buttons
+     so both grouping options are comfortable tap targets. */
+  .b-chartcard { margin-top: 20px; }
+  .b-chart-head { flex-direction: column; align-items: stretch; gap: 12px; padding: 16px 16px 14px; }
+  .b-chart-head h2 { font-size: 20px; }
+  .b-toggle { width: 100%; }
+  .b-toggle button { flex: 1 1 0; padding: 9px 8px; text-align: center; }
+
+  .b-focus { padding: 12px 16px 0; flex-wrap: wrap; }
+  .b-focus-title { font-size: 15px; }
+
+  /* The Sankey is inherently wide; render it large enough to stay legible and
+     let it scroll sideways rather than shrinking labels into illegibility. */
+  .b-scroll { padding: 10px 12px 4px; }
+  svg.sankey { min-width: 880px; }
+  #gf-svg { min-width: 940px; }
+  .sk-label { font-size: 15px; }
+  .sk-val { font-size: 13px; }
+  .sk-cap { font-size: 12px; }
+  .sk-label.mid { font-size: 15px; }
+
+  .b-swipe {
+    display: block; margin: 0; padding: 8px 16px 2px;
+    font-size: 12px; font-style: italic; color: var(--fg-muted);
+  }
+  .b-swipe span { font-style: normal; color: var(--highlight-ink); }
+
   .b-legend { padding: 12px 16px 16px; }
+  .b-tableview > summary,
+  .b-tablenote,
+  .b-recon { padding-left: 16px; padding-right: 16px; }
+
+  .b-notes { grid-template-columns: 1fr; margin-top: 20px; }
 }
