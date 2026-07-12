@@ -197,26 +197,85 @@
   }
 
   // Inject the mobile bottom tab bar once per page. Hidden via CSS on desktop.
+  // A bottom bar should hold at most ~5 destinations, so the primary pages sit
+  // on the bar and the rest live in a "More" sheet — every page stays reachable.
+  const TABBAR_PRIMARY = [
+    { href: "index.html",    label: "Home" },
+    { href: "meetings.html", label: "Meetings" },
+    { href: "members.html",  label: "Members" },
+  ];
+  const TABBAR_MORE = [
+    { href: "motions.html", label: "Motions" },
+    { href: "tax.html",     label: "Tax" },
+    { href: "budget.html",  label: "Budget" },
+  ];
+
+  function row(t) {
+    return `<a href="${t.href}" data-nav="${t.href}"><span class="tab-ico" aria-hidden="true"></span><span class="tab-lbl">${t.label}</span></a>`;
+  }
+
   function mountTabbar() {
     if (document.querySelector("nav.tabbar")) return;
-    const tabs = [
-      { href: "index.html",    label: "Home" },
-      { href: "meetings.html", label: "Meetings" },
-      { href: "motions.html",  label: "Motions" },
-      { href: "members.html",  label: "Members" },
-      { href: "tax.html",      label: "Tax" },
-      { href: "budget.html",   label: "Budget" },
-    ];
+    const here = location.pathname.split("/").pop() || "index.html";
+    const onMorePage = TABBAR_MORE.some((t) => t.href === here);
+
     const nav = document.createElement("nav");
     nav.className = "tabbar";
     nav.setAttribute("aria-label", "Primary (mobile)");
-    nav.innerHTML = tabs
-      .map(
-        (t) =>
-          `<a href="${t.href}" data-nav="${t.href}"><span class="tab-ico" aria-hidden="true"></span><span class="tab-lbl">${t.label}</span></a>`
-      )
-      .join("");
+    nav.innerHTML =
+      TABBAR_PRIMARY.map(row).join("") +
+      `<button type="button" class="tab-more${onMorePage ? " active" : ""}"
+         aria-haspopup="true" aria-expanded="false" aria-controls="more-sheet">
+         <span class="tab-ico" aria-hidden="true"></span><span class="tab-lbl">More</span>
+       </button>`;
     document.body.appendChild(nav);
+
+    // The overflow sheet + its backdrop. Both start hidden; the .open class is
+    // added a frame after un-hiding so the slide/fade transitions actually run.
+    const backdrop = document.createElement("div");
+    backdrop.className = "more-backdrop";
+    backdrop.hidden = true;
+
+    const sheet = document.createElement("div");
+    sheet.className = "more-sheet";
+    sheet.id = "more-sheet";
+    sheet.hidden = true;
+    sheet.setAttribute("role", "dialog");
+    sheet.setAttribute("aria-modal", "true");
+    sheet.setAttribute("aria-label", "More pages");
+    sheet.innerHTML =
+      `<div class="more-sheet-grip" aria-hidden="true"></div>` +
+      TABBAR_MORE.map(row).join("");
+    document.body.append(backdrop, sheet);
+
+    const btn = nav.querySelector(".tab-more");
+    const open = () => {
+      backdrop.hidden = false;
+      sheet.hidden = false;
+      // Next frame → run transitions from the hidden starting state.
+      requestAnimationFrame(() => {
+        backdrop.classList.add("open");
+        sheet.classList.add("open");
+      });
+      btn.setAttribute("aria-expanded", "true");
+    };
+    const close = () => {
+      backdrop.classList.remove("open");
+      sheet.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+      const done = () => { backdrop.hidden = true; sheet.hidden = true; };
+      // Hide after the slide-out; fall back if transitionend doesn't fire.
+      sheet.addEventListener("transitionend", done, { once: true });
+      setTimeout(done, 300);
+    };
+    const toggle = () => (btn.getAttribute("aria-expanded") === "true" ? close() : open());
+
+    btn.addEventListener("click", toggle);
+    backdrop.addEventListener("click", close);
+    sheet.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") close();
+    });
   }
 
   // Close any open mobile filter sheet when the user taps outside it.

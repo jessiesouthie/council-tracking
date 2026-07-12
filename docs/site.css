@@ -44,6 +44,7 @@
   --ico-people:   url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='9' cy='9' r='3.2'/><path d='M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6'/><circle cx='17' cy='8' r='2.6'/><path d='M15.5 14.2c2.6.5 4.5 2.8 4.5 5.6'/></svg>");
   --ico-receipt:  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M6 2.8h12v18.4l-2.4-1.6-2.4 1.6-2.4-1.6-2.4 1.6L6 19.6z'/><path d='M9.5 8h5'/><path d='M9.5 12h5'/></svg>");
   --ico-flow:     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='3.2' height='6'/><rect x='3' y='14' width='3.2' height='6'/><rect x='17.8' y='9' width='3.2' height='6'/><path d='M6.2 7h5c1.5 0 1.5 5 3 5h3.6'/><path d='M6.2 17h5c1.5 0 1.5-5 3-5'/></svg>");
+  --ico-more:     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black' stroke='none'><circle cx='5' cy='12' r='1.7'/><circle cx='12' cy='12' r='1.7'/><circle cx='19' cy='12' r='1.7'/></svg>");
   --serif: "EB Garamond", Georgia, "Times New Roman", serif;
   --sans:  "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
 
@@ -1088,7 +1089,7 @@ details.motion-row .motion-detail {
   /* ---- The bottom tab bar itself ---- */
   .tabbar {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     position: fixed;
     bottom: 0; left: 0; right: 0;
     z-index: 20;
@@ -1099,7 +1100,8 @@ details.motion-row .motion-detail {
     padding-bottom: var(--safe-bottom);
     box-shadow: 0 -1px 0 rgba(49,69,46,.04), 0 -10px 24px rgba(49,69,46,.06);
   }
-  .tabbar a {
+  .tabbar a,
+  .tabbar .tab-more {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1115,12 +1117,23 @@ details.motion-row .motion-detail {
     position: relative;
     -webkit-tap-highlight-color: transparent;
   }
-  .tabbar a:hover { text-decoration: none; color: var(--fg-soft); }
-  .tabbar a.active, .tabbar a[aria-current="page"] {
+  /* The More trigger is a <button>; strip its native chrome so it matches the
+     tab links exactly. */
+  .tabbar .tab-more {
+    background: none;
+    border: 0;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .tabbar a:hover,
+  .tabbar .tab-more:hover { text-decoration: none; color: var(--fg-soft); }
+  .tabbar a.active, .tabbar a[aria-current="page"],
+  .tabbar .tab-more.active {
     color: var(--accent);
   }
   .tabbar a.active::after,
-  .tabbar a[aria-current="page"]::after {
+  .tabbar a[aria-current="page"]::after,
+  .tabbar .tab-more.active::after {
     /* Park-sign accent stripe — same micro-language as the brand wordmark. */
     content: "";
     position: absolute;
@@ -1132,7 +1145,8 @@ details.motion-row .motion-detail {
     border-radius: 1px;
     background: var(--highlight);
   }
-  .tabbar .tab-ico {
+  .tabbar .tab-ico,
+  .more-sheet .tab-ico {
     width: 24px;
     height: 24px;
     display: block;
@@ -1144,18 +1158,72 @@ details.motion-row .motion-detail {
     -webkit-mask-size: 22px 22px;
             mask-size: 22px 22px;
   }
-  .tabbar a[data-nav="index.html"]    .tab-ico { -webkit-mask-image: var(--ico-home);     mask-image: var(--ico-home); }
-  .tabbar a[data-nav="meetings.html"] .tab-ico { -webkit-mask-image: var(--ico-calendar); mask-image: var(--ico-calendar); }
-  .tabbar a[data-nav="motions.html"]  .tab-ico { -webkit-mask-image: var(--ico-gavel);    mask-image: var(--ico-gavel); }
-  .tabbar a[data-nav="members.html"]  .tab-ico { -webkit-mask-image: var(--ico-people);   mask-image: var(--ico-people); }
-  .tabbar a[data-nav="tax.html"]      .tab-ico { -webkit-mask-image: var(--ico-receipt);  mask-image: var(--ico-receipt); }
-  .tabbar a[data-nav="budget.html"]   .tab-ico { -webkit-mask-image: var(--ico-flow);     mask-image: var(--ico-flow); }
+  /* Icon masks keyed by destination, so a row looks the same whether it lives
+     on the bar or in the More sheet. */
+  [data-nav="index.html"]    .tab-ico { -webkit-mask-image: var(--ico-home);     mask-image: var(--ico-home); }
+  [data-nav="meetings.html"] .tab-ico { -webkit-mask-image: var(--ico-calendar); mask-image: var(--ico-calendar); }
+  [data-nav="motions.html"]  .tab-ico { -webkit-mask-image: var(--ico-gavel);    mask-image: var(--ico-gavel); }
+  [data-nav="members.html"]  .tab-ico { -webkit-mask-image: var(--ico-people);   mask-image: var(--ico-people); }
+  [data-nav="tax.html"]      .tab-ico { -webkit-mask-image: var(--ico-receipt);  mask-image: var(--ico-receipt); }
+  [data-nav="budget.html"]   .tab-ico { -webkit-mask-image: var(--ico-flow);     mask-image: var(--ico-flow); }
+  .tabbar .tab-more .tab-ico { -webkit-mask-image: var(--ico-more); mask-image: var(--ico-more); }
 
-  /* Five tabs instead of four — tighten the gutters so "Meetings" still fits
-     on a 320px screen without the label truncating. */
-  .tabbar a { padding-left: 2px; padding-right: 2px; letter-spacing: 0; }
+  /* Four tabs — comfortable on a 320px screen without truncation. */
+  .tabbar a, .tabbar .tab-more { padding-left: 2px; padding-right: 2px; letter-spacing: 0; }
   @media (max-width: 360px) {
-    .tabbar a { font-size: 10px; }
+    .tabbar a, .tabbar .tab-more { font-size: 10px; }
+  }
+
+  /* ---- "More" overflow sheet (holds the pages that don't fit on the bar) ---- */
+  .more-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 25;
+    background: rgba(31, 41, 30, 0.44);
+    opacity: 0;
+    transition: opacity 0.18s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .more-sheet {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 30;
+    background: var(--bg-elev);
+    border-top: 1px solid var(--border);
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    padding: 8px 12px calc(14px + var(--safe-bottom));
+    box-shadow: 0 -8px 32px rgba(31, 41, 30, 0.18);
+    transform: translateY(100%);
+    transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .more-sheet[hidden], .more-backdrop[hidden] { display: none; }
+  /* .open is toggled a frame after un-hiding so the transition runs. */
+  .more-backdrop.open { opacity: 1; }
+  .more-sheet.open { transform: translateY(0); }
+  .more-sheet-grip {
+    width: 36px; height: 4px;
+    border-radius: 2px;
+    background: var(--border);
+    margin: 4px auto 10px;
+  }
+  .more-sheet a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 10px;
+    min-height: 52px;
+    color: var(--fg);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 12px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .more-sheet a:hover { text-decoration: none; background: var(--bg-muted); }
+  .more-sheet a.active, .more-sheet a[aria-current="page"] { color: var(--accent); }
+  @media (prefers-reduced-motion: reduce) {
+    .more-backdrop, .more-sheet { transition: none; }
   }
 
   /* ---- Hero scaling ---- */
@@ -1494,6 +1562,17 @@ details.motion-row .motion-detail {
 }
 #tx-box p { margin: 0 0 .35rem; }
 .md-body .loading, #tx-box .loading { color: var(--fg-muted); font-style: italic; }
+
+/* Diarized transcripts render one block per speaker turn: a colored name label
+   above the line it introduces. --spk is set inline, per speaker letter. */
+#tx-box.tx-diarized { line-height: 1.55; }
+.tx-turn { margin: 0 0 .7rem; padding-left: 10px; border-left: 2px solid var(--spk, var(--border)); }
+.tx-turn .tx-spk {
+  display: block; font-size: 11.5px; font-weight: 700; letter-spacing: .02em;
+  text-transform: uppercase; color: var(--spk, var(--fg-muted)); margin-bottom: 1px;
+}
+.tx-turn .tx-line { display: block; }
+.tx-turn .tx-spk[title] { cursor: help; }
 
 /* =========================================================================
    TAX ESTIMATOR (tax.html)
