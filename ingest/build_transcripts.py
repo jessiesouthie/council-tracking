@@ -30,6 +30,8 @@ OUT_ROOT = ROOT / "docs" / "transcripts"
 # Filename is "<YYYY-MM-DD>__<eventId>"; mirrors data/raw + data/parsed naming.
 STEM_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})__(\d+)$")
 SRT_TS_RE = re.compile(r"-->\s*(\d{2}):(\d{2}):(\d{2})")
+# A cloud (AssemblyAI) transcript prefixes every line with a diarized turn label.
+SPEAKER_RE = re.compile(r"^Speaker [A-Z]+:")
 
 # CivicClerk public portal for Eagle Mountain; event id -> media page.
 PORTAL_MEDIA = "https://eaglemountainut.portal.civicclerk.com/event/{id}/media"
@@ -75,7 +77,21 @@ def build() -> dict:
             shutil.copyfile(summary, out_dir / summary.name)
             shutil.copyfile(txt, out_dir / txt.name)
 
-            words = len(txt.read_text(encoding="utf-8", errors="ignore").split())
+            text = txt.read_text(encoding="utf-8", errors="ignore")
+            # Cloud transcripts carry per-turn "Speaker X:" labels; on-device
+            # Whisper ones don't. The site renders diarized turns as grouped
+            # speaker blocks, so tell it which transcripts have them.
+            diarized = any(SPEAKER_RE.match(ln) for ln in text.splitlines())
+
+            # A hand/AI-built letter->name map (data/…/<stem>.speakers.json) lets
+            # the site show inferred real names instead of "Speaker A". Optional;
+            # unmapped letters stay as "Speaker X" in the UI.
+            speakers_file = None
+            speakers_src = src_dir / f"{stem}.speakers.json"
+            if diarized and speakers_src.exists():
+                shutil.copyfile(speakers_src, out_dir / speakers_src.name)
+                speakers_file = f"transcripts/{bid}/{speakers_src.name}"
+
             entries.append({
                 "id": event_id,
                 "date": date,
@@ -83,9 +99,11 @@ def build() -> dict:
                 "title": f"{body['label']} Meeting",
                 "summary_file": f"transcripts/{bid}/{summary.name}",
                 "text_file": f"transcripts/{bid}/{txt.name}",
+                "speakers_file": speakers_file,
+                "diarized": diarized,
                 "media_url": PORTAL_MEDIA.format(id=event_id),
                 "duration": _duration_from_srt(src_dir / f"{stem}.srt"),
-                "words": words,
+                "words": len(text.split()),
             })
         if entries:
             entries.sort(key=lambda e: e["date"], reverse=True)

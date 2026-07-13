@@ -1,0 +1,11 @@
+{
+  "A": {"name": "Mayor Jared Gray", "basis": "calls the meeting to order at 3:06, recognizes speakers, and records the adjournment motion (moved by Wood, seconded by Whiting); addressed as 'Mayor'"},
+  "C": {"name": "Councilmember Brett Wright", "basis": "in his '5th budget season,' recalls funding two more deputies than Chief McDowell asked for and praises the engineer's proactive planning; Mayor cues 'Brett had a comment'"},
+  "D": {"name": "David (City Engineer)", "basis": "delivers the entire FY27 transportation / 5-year capital plan presentation, says it's his 'first time with the budget cycle,' addressed as 'David'"},
+  "E": {"name": "Councilmember Melissa Clark", "basis": "raises e-bikes/community-policing (chief answers 'Councilmember Clark'), gives the 55/45 tax and master-offense-list / justice-court remarks"},
+  "F": {"name": "Chief Deputy Eric Knutson", "basis": "delivers the Sheriff's Office staffing-request presentation ('We are your police department'); addressed as 'Eric' and 'Chief,' referenced as Knutson"},
+  "G": {"name": "Mr. Reeves (City Administrator)", "basis": "frames the 'revenue problem not expense problem,' explains truth-in-taxation timing and data-center agreements, defers 'how we get there' to the next meeting; refers to Kimberly in the third person"},
+  "H": {"name": "Councilmember Zac Huish", "basis": "backup-unit and animal-control questions, the 'almost 20 years' resident with flat city property taxes, and the Airport Road pathway question (Mayor: 'Councilmember Herish talked to me about right-of-way on Airport Road')"},
+  "I": {"name": "Councilmember Rich Wood", "basis": "asks the growth-vs-crime question, gives the 'public safety is an afterthought' speech, addressed as 'Rich' and 'Councilmember Wood'"},
+  "J": {"name": "Kimberly (Finance Director)", "basis": "introduces the transportation/capital-plan segment, recognizes finance staffer Chris Waldron, hands off to David, and has the personal hard stop at 5"}
+}

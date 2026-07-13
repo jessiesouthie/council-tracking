@@ -1,15 +1,43 @@
 {
   "city-council": [
     {
+      "id": 714,
+      "date": "2026-07-07",
+      "stem": "2026-07-07__714",
+      "title": "City Council Meeting",
+      "summary_file": "transcripts/city-council/2026-07-07__714.summary.md",
+      "text_file": "transcripts/city-council/2026-07-07__714.txt",
+      "speakers_file": "transcripts/city-council/2026-07-07__714.speakers.json",
+      "diarized": true,
+      "media_url": "https://eaglemountainut.portal.civicclerk.com/event/714/media",
+      "duration": "6h 54m",
+      "words": 72144
+    },
+    {
       "id": 726,
       "date": "2026-06-16",
       "stem": "2026-06-16__726",
       "title": "City Council Meeting",
       "summary_file": "transcripts/city-council/2026-06-16__726.summary.md",
       "text_file": "transcripts/city-council/2026-06-16__726.txt",
+      "speakers_file": null,
+      "diarized": false,
       "media_url": "https://eaglemountainut.portal.civicclerk.com/event/726/media",
       "duration": "4h 44m",
       "words": 48091
+    },
+    {
+      "id": 713,
+      "date": "2026-06-02",
+      "stem": "2026-06-02__713",
+      "title": "City Council Meeting",
+      "summary_file": "transcripts/city-council/2026-06-02__713.summary.md",
+      "text_file": "transcripts/city-council/2026-06-02__713.txt",
+      "speakers_file": "transcripts/city-council/2026-06-02__713.speakers.json",
+      "diarized": true,
+      "media_url": "https://eaglemountainut.portal.civicclerk.com/event/713/media",
+      "duration": "2h 39m",
+      "words": 26631
     },
     {
       "id": 748,
@@ -18,6 +46,8 @@
       "title": "City Council Meeting",
       "summary_file": "transcripts/city-council/2026-05-26__748.summary.md",
       "text_file": "transcripts/city-council/2026-05-26__748.txt",
+      "speakers_file": "transcripts/city-council/2026-05-26__748.speakers.json",
+      "diarized": true,
       "media_url": "https://eaglemountainut.portal.civicclerk.com/event/748/media",
       "duration": "2h 22m",
       "words": 24626
@@ -29,6 +59,8 @@
       "title": "City Council Meeting",
       "summary_file": "transcripts/city-council/2026-04-28__744.summary.md",
       "text_file": "transcripts/city-council/2026-04-28__744.txt",
+      "speakers_file": null,
+      "diarized": false,
       "media_url": "https://eaglemountainut.portal.civicclerk.com/event/744/media",
       "duration": "2h 07m",
       "words": 21685
@@ -40,6 +72,8 @@
       "title": "City Council Meeting",
       "summary_file": "transcripts/city-council/2026-04-14__743.summary.md",
       "text_file": "transcripts/city-council/2026-04-14__743.txt",
+      "speakers_file": "transcripts/city-council/2026-04-14__743.speakers.json",
+      "diarized": true,
       "media_url": "https://eaglemountainut.portal.civicclerk.com/event/743/media",
       "duration": "2h 01m",
       "words": 23230

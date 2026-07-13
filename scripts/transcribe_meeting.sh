@@ -15,13 +15,19 @@
 # Usage:
 #   scripts/transcribe_meeting.sh <EVENT_ID> [--body city-council]
 #                                [--force] [--resummarize] [--no-summary] [--cloud]
+#                                [--audio <path>]
 #
 #   --no-summary   transcribe + publish only; skip the summary (uses NO Claude
 #                  credits). Run again later without the flag to add the summary.
+#   --audio PATH   transcribe this local audio/video file instead of downloading
+#                  the portal recording. Useful when the recording is huge or not
+#                  posted yet. The file is read, never modified or deleted.
 #   --cloud        transcribe via AssemblyAI with speaker diarization instead of
 #                  local Whisper. Needs an API key in
 #                  ~/.config/council-tracking/assemblyai.key (or $ASSEMBLYAI_API_KEY).
 #                  ~$0.15/hr (~$1/meeting). Default is free local Whisper.
+#                  Recordings too large for AssemblyAI to fetch (>5.5 GB) have
+#                  their audio extracted with ffmpeg and uploaded instead.
 #
 # Requirements: ffmpeg, whisper-cli (brew install ffmpeg whisper-cpp),
 #               claude CLI (for the summary), python3.
@@ -38,6 +44,7 @@ RESUMMARIZE=0
 NO_SUMMARY=0
 CLOUD=0
 EVENT_ID=""
+AUDIO=""
 ASSEMBLYAI_KEYFILE="${COUNCIL_ASSEMBLYAI_KEYFILE:-$HOME/.config/council-tracking/assemblyai.key}"
 API_BASE="${COUNCIL_API_BASE:-https://eaglemountainut.api.civicclerk.com/v1}"
 PORTAL="${COUNCIL_PORTAL:-https://eaglemountainut.portal.civicclerk.com}"
@@ -53,12 +60,14 @@ while [ $# -gt 0 ]; do
     --resummarize) RESUMMARIZE=1; shift;;
     --no-summary)  NO_SUMMARY=1; shift;;
     --cloud)       CLOUD=1; shift;;
+    --audio)       AUDIO="$2"; shift 2;;
     -h|--help)     grep '^#' "$0" | sed 's/^# \{0,1\}//'; exit 0;;
     -*)            echo "unknown flag: $1" >&2; exit 2;;
     *)             EVENT_ID="$1"; shift;;
   esac
 done
-[ -n "$EVENT_ID" ] || { echo "usage: $0 <EVENT_ID> [--body <id>] [--force] [--resummarize] [--no-summary] [--cloud]" >&2; exit 2; }
+[ -n "$EVENT_ID" ] || { echo "usage: $0 <EVENT_ID> [--body <id>] [--force] [--resummarize] [--no-summary] [--cloud] [--audio <path>]" >&2; exit 2; }
+[ -z "$AUDIO" ] || [ -f "$AUDIO" ] || { echo "--audio: no such file: $AUDIO" >&2; exit 2; }
 
 say() { printf '\033[1;32m▸ %s\033[0m\n' "$*"; }
 die() { printf '\033[1;31m✗ %s\033[0m\n' "$*" >&2; exit 1; }
@@ -107,7 +116,9 @@ PY
 )
 
 [ "$DATE" != "NONE" ] || die "event $EVENT_ID not found on the portal"
-[ "$MP4" != "NONE" ]  || die "event $EVENT_ID has no recording yet (mediaSourcePathMp4 empty)"
+if [ -z "$AUDIO" ]; then
+  [ "$MP4" != "NONE" ] || die "event $EVENT_ID has no recording yet (mediaSourcePathMp4 empty); supply one with --audio <path>"
+fi
 
 STEM="${DATE}__${EVENT_ID}"
 DIR="data/transcripts/$BODY"
@@ -127,12 +138,34 @@ fi
 # ---- 2 + 3. transcribe ----
 if [ "$FORCE" = 1 ] || [ ! -f "$TXT" ]; then
   if [ "$CLOUD" = 1 ]; then
-    # AssemblyAI reads the CivicClerk recording URL directly (no upload) and
-    # returns diarized turns. Writes speaker-labeled .txt plus .srt/.vtt.
+    # AssemblyAI normally reads the CivicClerk recording URL directly (no
+    # upload) and returns diarized turns. It refuses to fetch a remote file
+    # over AAI_MAX, so for long meetings we strip the video track locally and
+    # upload audio-only instead. Writes speaker-labeled .txt plus .srt/.vtt.
+    AAI_MAX=5500000000
+    if [ -n "$AUDIO" ]; then
+      # Caller supplied the media. Upload it as-is; never delete their file.
+      say "Using supplied audio: $AUDIO ($(du -h "$AUDIO" | cut -f1))"
+      CLOUD_SRC="upload:$AUDIO"
+    else
+      CLOUD_SRC="$MP4"
+      REMOTE_LEN="$(curl -fsSI "$MP4" | awk 'tolower($1) == "content-length:" { print $2 + 0 }')"
+      if [ -n "$REMOTE_LEN" ] && [ "$REMOTE_LEN" -ge "$AAI_MAX" ]; then
+        command -v ffmpeg >/dev/null \
+          || die "recording is $((REMOTE_LEN / 1000000)) MB, over AssemblyAI's fetch limit; ffmpeg is needed to extract the audio"
+        say "Recording is $((REMOTE_LEN / 1000000)) MB — over AssemblyAI's fetch limit."
+        say "Extracting audio locally (streaming; a long meeting can take a few minutes) …"
+        M4A="$DIR/$STEM.m4a"
+        ffmpeg -y -nostdin -loglevel error -i "$MP4" -vn -ac 1 -ar 16000 -c:a aac -b:a 64k "$M4A" \
+          || die "ffmpeg audio extraction failed"
+        say "Audio extracted: $(du -h "$M4A" | cut -f1) — uploading to AssemblyAI."
+        CLOUD_SRC="upload:$M4A"
+      fi
+    fi
     say "Transcribing via AssemblyAI (with speaker diarization) …"
-    python3 - "$API_KEY" "$MP4" "$TXT" "$DIR/$STEM.srt" "$DIR/$STEM.vtt" <<'PY'
-import json, sys, time, urllib.request, urllib.error
-key, audio_url, txt_path, srt_path, vtt_path = sys.argv[1:6]
+    python3 - "$API_KEY" "$CLOUD_SRC" "$TXT" "$DIR/$STEM.srt" "$DIR/$STEM.vtt" <<'PY'
+import json, os, sys, time, urllib.request, urllib.error
+key, audio_src, txt_path, srt_path, vtt_path = sys.argv[1:6]
 BASE = "https://api.assemblyai.com/v2"
 hdr = {"authorization": key, "content-type": "application/json"}
 
@@ -145,6 +178,24 @@ def call(method, url, data=None, raw=False):
             return b if raw else json.loads(b)
     except urllib.error.HTTPError as e:
         sys.exit(f"AssemblyAI HTTP {e.code}: {e.read().decode(errors='ignore')[:300]}")
+
+def upload(path):
+    size = os.path.getsize(path)
+    with open(path, "rb") as fh:
+        req = urllib.request.Request(
+            f"{BASE}/upload", data=fh, method="POST",
+            headers={"authorization": key, "content-length": str(size)})
+        try:
+            with urllib.request.urlopen(req, timeout=3600) as r:
+                return json.loads(r.read())["upload_url"]
+        except urllib.error.HTTPError as e:
+            sys.exit(f"AssemblyAI upload HTTP {e.code}: {e.read().decode(errors='ignore')[:300]}")
+
+if audio_src.startswith("upload:"):
+    audio_url = upload(audio_src[len("upload:"):])
+    print(f"  uploaded; audio_url={audio_url}", flush=True)
+else:
+    audio_url = audio_src
 
 job = call("POST", f"{BASE}/transcript",
            {"audio_url": audio_url, "speaker_labels": True, "language_code": "en_us"})
@@ -179,9 +230,10 @@ for path, ext in ((srt_path, "srt"), (vtt_path, "vtt")):
 print(f"  {len(utt)} speaker turns", flush=True)
 PY
     [ -s "$TXT" ] || die "AssemblyAI transcription produced no text"
+    if [ -n "${M4A:-}" ]; then rm -f "$M4A"; fi
   else
     say "Extracting audio (streaming from CivicClerk; a long meeting can take a few minutes) …"
-    ffmpeg -y -nostdin -loglevel error -i "$MP4" -vn -ac 1 -ar 16000 -c:a pcm_s16le "$WAV" \
+    ffmpeg -y -nostdin -loglevel error -i "${AUDIO:-$MP4}" -vn -ac 1 -ar 16000 -c:a pcm_s16le "$WAV" \
       || die "ffmpeg audio extraction failed"
 
     say "Transcribing on-device (whisper.cpp) …"
@@ -240,35 +292,44 @@ KNOWN ROSTER (correct these common Whisper mishearings):
 Attribute discussion to a named member only when the transcript makes it clear
 (explicit names, or roll-call context); otherwise say "a councilmember."
 
-Produce these sections, with this exact structure and numbering:
+Write PLAINLY. Prefer the short word to the long one, expand an acronym the first
+time it appears, and keep paragraphs under ~120 words. The reader is a resident,
+not a clerk — so no in-house jargon and no section numbers in the prose.
 
-# Enriched Meeting Summary — Eagle Mountain <BODY> , <DATE>
-*One italic attribution line: note it was generated automatically from the audio, that times are approximate elapsed-recording times, and that speaker attribution without diarization is imperfect.*
+Do NOT emit a title/H1 and do NOT emit a standing disclaimer about automatic
+generation or approximate times: the web page renders the meeting title and
+carries that notice itself, so both would only be duplicated.
 
-Then **Elected officials present** and **Key staff/presenters** lines (bold labels).
+Produce exactly these sections, in this order, with these exact headings:
 
-## Motions at a Glance
-A Markdown TABLE with columns: # | Agenda ref | Motion | Moved / Seconded | Vote | Result — one row per motion, in the order they occurred. Include ONLY motions on which a vote was actually taken, procedural ones included (closed session, consent agenda, adjournment). Do NOT include informal consensus, direction to staff, hearings closed without action, or items merely discussed — those stay in §3 only. Give the tally as "5-0" when stated, otherwise "Voice vote"; name members only where the transcript records how they voted. Result is Passed or Failed. If no vote of any kind was taken, replace the table with the single italic line *No motions were voted on.* Every row must be consistent with §3.
+**In short:** 2–4 plain-English sentences (~70 words max) opening the document —
+what this meeting was for, and what actually came of it. This is the only thing
+many readers will read. No jargon, no acronyms, no cross-references.
 
-## 1. Meeting Map
+Then a **Present:** line (elected officials, noting who was excused or remote)
+and a **Staff:** line (staff and presenters, each with their role in parentheses).
+
+## Decisions
+A Markdown TABLE with columns: # | Agenda ref | Motion | Moved / Seconded | Vote | Result — one row per motion, in the order they occurred. Include ONLY motions on which a vote was actually taken, procedural ones included (closed session, consent agenda, adjournment). Give the tally as "5-0" when stated, otherwise "Voice vote"; name members only where the transcript records how they voted. Result is Passed or Failed. If no vote of any kind was taken, replace the table with the single italic line *No motions were voted on.*
+
+Then, ONLY if the body settled something without voting on it, a bulleted list under the bold lead **Settled without a vote:** — consensus, direction to staff, deferrals, questions left open. Each bullet is a complete sentence. Never restate a motion that is already a row in the table above; a reader should not meet the same decision twice.
+
+## Meeting map
 A Markdown TABLE with columns: Agenda ref | Topic | ~Start (elapsed) | One-line note — one row per distinct item/topic. After the table, a short "Discussed but NOT on the agenda" line and an "On agenda but little/no discussion" line.
 
-## 2. Per-Item Enrichment
-For each substantive item, a `### <ref> — <title>` heading followed by 1–3 explanatory PARAGRAPHS that open by stating what the item is and why it was before the body, then narrate the debate, concerns, and staff answers.
+## What was discussed
+For each substantive item, a `### <ref> — <title>` heading followed by 1–3 explanatory PARAGRAPHS that open by stating what the item is and why it was before the body, then narrate the debate, concerns, and staff answers. This is the substance of the page — do not thin it out.
 
-## 3. Decisions & Votes
-A numbered list; each entry a complete sentence (motion, mover/seconder if stated, outcome, vote split).
-
-## 4. Notable Moments
+## Notable moments
 A bulleted list; each bullet a short **bold lead-in.** then a self-contained sentence or two (public comments, disagreements, off-agenda items).
 
-## 5. Transcript Quality Notes
-Brief prose: likely misheard proper nouns, speaker-attribution limits, and audio-unclear spots.
-
-## 6. Minutes-vs-Recording Contrast
+## What the minutes leave out
 2–3 items, each showing "*Minutes would say:*" vs. "*Recording captures:*" as a short paragraph.
 
-Output ONLY the Markdown document, starting at the `# Enriched Meeting Summary` H1. No preamble or commentary.
+## About this transcript
+Brief plain prose: likely misheard proper nouns, speaker-attribution limits, and audio-unclear spots.
+
+Output ONLY the Markdown document, starting at the `**In short:**` line. No preamble or commentary.
 PROMPT
 )
 
@@ -279,12 +340,13 @@ PROMPT
         printf '=== FULL TRANSCRIPT ===\n'
         cat "$TXT"
       } | claude -p > "$SUMMARY.tmp" && [ -s "$SUMMARY.tmp" ]; then
-        # Trim anything before the first H1, just in case.
+        # Trim any preamble before the lede, just in case. The document now opens
+        # on "**In short:**" — there is no H1, because the page supplies the title.
         python3 - "$SUMMARY.tmp" "$SUMMARY" <<'PY'
 import sys
 src, dst = sys.argv[1], sys.argv[2]
 t = open(src, encoding="utf-8").read()
-i = t.find("# Enriched Meeting Summary")
+i = t.find("**In short:**")
 open(dst, "w", encoding="utf-8").write(t[i:] if i >= 0 else t)
 PY
         rm -f "$SUMMARY.tmp"
