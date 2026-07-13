@@ -42,7 +42,9 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Consent agenda approved, one item held back",
+      "summary": "The council approved the routine consent agenda, but set aside item 10.A. for a later decision."
     },
     {
       "id": 1069,
@@ -57,7 +59,9 @@
       "tags": [
         "development"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Move to delay city land decision withdrawn",
+      "summary": "A proposal to delay the decision on parcel #46:536:0430 and have the applicant seek a better solution with neighbors and city staff was withdrawn."
     },
     {
       "id": 1070,
@@ -91,7 +95,9 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Sale of city land parcel rejected",
+      "summary": "The council turned down a proposal to dispose of part of a city-owned parcel (#46:536:0430), land the city classifies as significant real property."
     },
     {
       "id": 1071,
@@ -128,7 +134,9 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Screening rules for apartment buildings delayed",
+      "summary": "The council delayed new rules on screening heat pumps and equipment at apartment buildings, asking for revisions to spacing and airflow standards before the rules return."
     },
     {
       "id": 1072,
@@ -164,7 +172,9 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "New rules for weathering-steel fences",
+      "summary": "The city tightened fence rules, requiring weathering steel be at least 1/8 inch thick, banning corrugated panels, and dropping an annual sealing requirement."
     }
   ],
   "ordinances": [

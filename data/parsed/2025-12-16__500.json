@@ -42,7 +42,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Approve the consent agenda, minus two items",
+      "summary": "The council approved its routine consent agenda in one vote but pulled two items out to be discussed separately later in the meeting."
     },
     {
       "id": 998,
@@ -78,7 +80,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Approve site plan for Firefly area 9.A",
+      "summary": "The city approved the master site plan for a section of the Firefly development known as NPA 9.A; no further details were given."
     },
     {
       "id": 999,
@@ -112,7 +116,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Delay land swap with the state in Overland area",
+      "summary": "The council delayed a decision on a land exchange with the state land agency SITLA involving properties in the Overland area."
     },
     {
       "id": 1000,
@@ -148,7 +154,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Delay new rules for alternative energy projects",
+      "summary": "The council put off a decision on a new zoning chapter that would create an overlay zone for alternative energy projects."
     },
     {
       "id": 1001,
@@ -184,7 +192,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Set final zoning for the White Hills area",
+      "summary": "The council assigned permanent zoning to White Hills, including one commercial parcel, two farm parcels, and ten more set aside for rural agriculture."
     },
     {
       "id": 1002,
@@ -220,7 +230,9 @@
           "member_id": "rich-wood",
           "vote": "No"
         }
-      ]
+      ],
+      "headline": "Update code sections on newspaper notices",
+      "summary": "The council amended two sections of city code dealing with newspaper notices, though the motion itself gives no detail on what changed."
     },
     {
       "id": 1003,
@@ -256,7 +268,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Approve the Pacific Springs development agreement",
+      "summary": "The city approved a development agreement for the Pacific Springs project, setting the terms the developer will have to follow."
     },
     {
       "id": 1004,
@@ -292,7 +306,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Put Walmart-area sidewalk on priorities list",
+      "summary": "The council added money for a new sidewalk on SR-73 and Spring Run near Walmart to its list of legislative priorities."
     }
   ],
   "ordinances": [

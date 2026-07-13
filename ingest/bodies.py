@@ -21,6 +21,10 @@ Helpers:
   data_file(body)     -> Path
   members_path(body)  -> Path                  data/meta/<members file>
   summaries_path(body)-> Path                  data/meta/<summaries file>
+
+Motion summaries (data/meta/<motion_summaries file>) are resolved by
+ingest.summarize_motions.cache_path(), which falls back to a conventional name
+if a body omits the key.
 """
 
 from __future__ import annotations
@@ -39,6 +43,7 @@ BODIES: list[dict] = [
         "category": "City Council",
         "members": "councilmembers.json",
         "summaries": "meeting_summaries.json",
+        "motion_summaries": "motion_summaries.json",
         "raw_dir": "data/raw",                      # legacy flat paths
         "parsed_dir": "data/parsed",
         "data_file": "docs/data.json",              # legacy URL preserved
@@ -51,6 +56,7 @@ BODIES: list[dict] = [
         "category": "Planning Commission",
         "members": "members.planning-commission.json",
         "summaries": "meeting_summaries.planning-commission.json",
+        "motion_summaries": "motion_summaries.planning-commission.json",
         "raw_dir": "data/raw/planning-commission",
         "parsed_dir": "data/parsed/planning-commission",
         "data_file": "docs/data.planning-commission.json",
@@ -63,6 +69,7 @@ BODIES: list[dict] = [
         "category": None,
         "members": "members.community-services-board.json",
         "summaries": "meeting_summaries.community-services-board.json",
+        "motion_summaries": "motion_summaries.community-services-board.json",
         "raw_dir": "data/raw/community-services-board",
         "parsed_dir": "data/parsed/community-services-board",
         "data_file": "docs/data.community-services-board.json",

@@ -38,7 +38,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Jason Allen joins the Planning Commission",
+      "summary": "The council appointed Jason Allen to the Planning Commission, which reviews development and zoning proposals, for a three-year term through December 2028."
     },
     {
       "id": 1006,
@@ -70,7 +72,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Brent Strong joins the Planning Commission",
+      "summary": "The council appointed Brent Strong to the Planning Commission, which reviews development and zoning proposals, for a three-year term through December 2028."
     },
     {
       "id": 1007,
@@ -102,7 +106,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Bryan Free joins the Planning Commission",
+      "summary": "The council appointed Bryan Free to the Planning Commission, which reviews development and zoning proposals, for a one-year term through December 2026."
     },
     {
       "id": 1008,
@@ -134,7 +140,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Susan Allen appointed Senior Advisor",
+      "summary": "The council signed off on appointing Susan Allen as Senior Advisor for a three-year term running January 2026 through December 2028."
     },
     {
       "id": 1009,
@@ -166,7 +174,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Susan Allen appointed Senior Advisor",
+      "summary": "The council signed off on appointing Susan Allen as Senior Advisor for a three-year term running January 2026 through December 2028."
     },
     {
       "id": 1010,
@@ -198,7 +208,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Consent agenda passed, one item pulled",
+      "summary": "The council approved its routine consent items, pulled item 13.A for a later meeting, and corrected the December 16 minutes to show a 3:0 vote."
     },
     {
       "id": 1011,
@@ -230,7 +242,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "New citywide fence and screening rules",
+      "summary": "The city rewrote its general fencing and screening rules, changing the standards property owners must meet when putting up fences or screening walls."
     },
     {
       "id": 1012,
@@ -266,7 +280,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Bid to reject Hidden Hollow amenity swap",
+      "summary": "The council weighed flatly rejecting the Hidden Hollow amenity exchange site plan change rather than leaving it tabled for a later look."
     },
     {
       "id": 1013,
@@ -302,7 +318,9 @@
           "member_id": "rich-wood",
           "vote": "No"
         }
-      ]
+      ],
+      "headline": "Hidden Hollow amenity swap put on hold",
+      "summary": "The council set aside a proposed change to the Hidden Hollow site plan that would swap out planned amenities, delaying any decision to a later date."
     },
     {
       "id": 1014,
@@ -334,7 +352,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Melissa Clark named mayor pro tempore",
+      "summary": "The council named Councilmember Melissa Clark as mayor pro tempore, the member who steps in to lead when the mayor is unavailable."
     }
   ],
   "ordinances": [

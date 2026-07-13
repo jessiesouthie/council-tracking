@@ -27,7 +27,9 @@ Schema of each docs/data*.json:
     "motions": [
       {id,meeting_id,date,page,agenda_ref,business_type,item_title,
        motion,outcome,tags:[tag_id],votes:[{member_id,vote}],
-       raw_voters:[{name,vote}]   # only names that failed to resolve
+       headline,summary,           # plain-English, from ingest.summarize_motions;
+                                   # absent for motions not summarized yet
+       raw_voters:[{name,vote}]    # only names that failed to resolve
       }
     ],
     "stats": {
@@ -50,7 +52,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-from . import bodies, parser  # noqa: E402
+from . import bodies, parser, summarize_motions  # noqa: E402
 
 from .normalize import (  # noqa: E402
     load_members,
@@ -175,6 +177,9 @@ def build_one(body: dict, only: str | None = None) -> int:
     is_ignored = make_ignore_check(members_doc)
     tag = make_tagger(tags_doc)
     summaries = load_meeting_summaries(bodies.summaries_path(body))
+    # Optional — absent until `python -m ingest.summarize_motions` has been run.
+    # Missing or partial is fine: the site falls back to the cleaned motion title.
+    motion_plain = summarize_motions.load_cache(summarize_motions.cache_path(body))
 
     print(f"\n== {body['label']} ({body['id']}) ==")
     # A missing/empty raw dir is fine — we still emit a valid empty dataset so
@@ -239,6 +244,15 @@ def build_one(body: dict, only: str | None = None) -> int:
                 "date": mdate,
                 **norm,
             }
+            # Plain-English headline/summary, if `ingest.summarize_motions` has
+            # cached one for this motion. Keyed by content hash, so the lookup
+            # survives the motion-id renumbering a back-filled PDF would cause.
+            plain = motion_plain.get(summarize_motions.motion_key(entry))
+            if plain:
+                if plain.get("headline"):
+                    entry["headline"] = plain["headline"]
+                if plain.get("summary"):
+                    entry["summary"] = plain["summary"]
             if unresolved:
                 entry["raw_voters"] = unresolved
                 for u in unresolved:

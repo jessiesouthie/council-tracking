@@ -40,7 +40,9 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Public comment moved later in the meeting",
+      "summary": "The council pushed its public comment period to later in the same meeting."
     },
     {
       "id": 1016,
@@ -72,7 +74,9 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Routine items taken up in a single vote",
+      "summary": "The council handled its consent agenda of routine items together, with a spelling correction to the minutes of the January 6, 2026 meeting."
     },
     {
       "id": 1017,
@@ -108,7 +112,9 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "New sign rules for data centers",
+      "summary": "The city changed its sign rules to cover directional signs for data centers and other large-scale development projects."
     },
     {
       "id": 1018,
@@ -144,7 +150,9 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "New rules for building on slopes put on hold",
+      "summary": "The council delayed a decision on changing the city's rules for development on slopes."
     },
     {
       "id": 1019,
@@ -180,7 +188,9 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Mayor's powers held until after public comment",
+      "summary": "The council set aside the rewrite of the mayor's powers and duties until later in the same meeting, so it could hear public comment first."
     },
     {
       "id": 1020,
@@ -220,7 +230,9 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Changes to the mayor's powers put on hold",
+      "summary": "The council delayed a decision on rewriting the section of city code that spells out the mayor's powers and duties."
     },
     {
       "id": 1021,
@@ -260,7 +272,9 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Rewrite of city government rules put on hold",
+      "summary": "The council delayed a decision on replacing Title 2 of the city code, the section that sets out how city government is run."
     }
   ],
   "ordinances": [
