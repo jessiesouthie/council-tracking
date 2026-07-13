@@ -42,7 +42,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Routine consent items approved",
+      "summary": "The council passed its batch of routine consent items, pulling the Mountainland Supply development agreement out for separate discussion.",
+      "impact": "This is routine housekeeping — nothing changes for residents. The one item worth a real debate was taken out and voted on separately."
     },
     {
       "id": 954,
@@ -78,7 +81,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Development deal with Mountainland Supply",
+      "summary": "The city approved a development agreement with Mountainland Supply, the contract that spells out the terms of the company's project.",
+      "impact": "Nothing changes for residents right now. This locks in terms between the city and one company before it builds; the motion does not say where the site is or what is planned."
     },
     {
       "id": 955,
@@ -115,7 +121,10 @@
           "member_id": "rich-wood",
           "vote": "No"
         }
-      ]
+      ],
+      "headline": "Proposal to sell the land at $45,000 an acre",
+      "summary": "A proposed alternative price of $45,000 per acre, or $1.03 per square foot, for the same city land, on the grounds that the parcel needs no extra water rights.",
+      "impact": "This was the cheaper of the two prices floated for the same parcel. Either way, the price affects the city's books, not anything you pay or do."
     },
     {
       "id": 956,
@@ -152,7 +161,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Proposal to pause the land sale over water rules",
+      "summary": "A proposal to put the land sale on hold while staff tightened the water requirements and wrote a policy for reviewing future land sales.",
+      "impact": "This was a procedural move to slow the sale down and settle the water question first. Nothing about it would have changed anything for residents directly."
     },
     {
       "id": 957,
@@ -188,7 +200,10 @@
           "member_id": "rich-wood",
           "vote": "No"
         }
-      ]
+      ],
+      "headline": "Sell city land at $95,000 an acre",
+      "summary": "The city approved selling a piece of city-owned property at $95,000 per acre, or $2.18 per square foot.",
+      "impact": "Nothing changes day to day for residents. The city is turning a parcel it owns into cash at a set price; the motion does not say which parcel or who is buying it."
     },
     {
       "id": 958,
@@ -222,7 +237,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Add a telecom ordinance to the city's to-do list",
+      "summary": "The council added drafting a telecommunications ordinance, a franchise agreement, or both to its list of legislative priorities.",
+      "impact": "Nothing changes today. This is a placeholder for rules the city intends to write later; any actual ordinance would have to come back to the council."
     },
     {
       "id": 959,
@@ -256,7 +274,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Write rules for selling city-owned land",
+      "summary": "The council put drafting a policy to guide staff in reviewing applications to buy city-owned land on its list of legislative priorities.",
+      "impact": "Nothing changes for you now. It commits the city to writing rules later for how it handles requests to buy land it owns, which would come back to the council for a vote."
     }
   ],
   "ordinances": [

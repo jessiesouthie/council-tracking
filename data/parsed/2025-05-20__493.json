@@ -42,7 +42,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Emily Hoehne appointed to the Library Advisory Board",
+      "summary": "The council appointed Emily Hoehne to the Library Advisory Board, with a term running immediately through the end of 2025.",
+      "impact": "Routine housekeeping — nothing changes for residents. It fills a seat on the board that advises the city on the library, through December 31, 2025."
     },
     {
       "id": 892,
@@ -79,7 +82,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Consent agenda passed, one fee raised to $2,000",
+      "summary": "The council approved its batch of routine items, raising one fee from $250 to $2,000 and requiring a purchase agreement be signed by May 27, 2025.",
+      "impact": "Mostly housekeeping. The one item with teeth is the fee that went from $250 to $2,000, though the motion does not say who pays it. Three items were pulled out for separate debate."
     },
     {
       "id": 893,
@@ -113,7 +119,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "City hires a firm to run its C-PACE program",
+      "summary": "The city hired Sustainable Real Estate Solutions to provide administrative and professional services for C-PACE projects; the motion states no dollar figure.",
+      "impact": "Nothing changes for residents — this is the city bringing in an outside firm to handle administrative work. The motion does not say what it costs or which projects are covered."
     },
     {
       "id": 894,
@@ -126,7 +135,10 @@
       "motion": "Councilmember Wood moved to deny a Resolution of Eagle Mountain City, Utah, Approving and Authorizing the Execution of an Interlocal Cooperation Agreement for Participation in the Utah Valley HOME Consortium.",
       "outcome": "died for lack of a second.",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "Proposal to reject the HOME Consortium agreement",
+      "summary": "A competing proposal asked the council to turn down, rather than approve, the agreement to join the Utah Valley HOME Consortium.",
+      "impact": "Nothing here touches residents directly — it is an alternative to the same HOME Consortium item the council took up separately."
     },
     {
       "id": 895,
@@ -160,7 +172,10 @@
           "member_id": "rich-wood",
           "vote": "No"
         }
-      ]
+      ],
+      "headline": "Eagle Mountain joins the Utah Valley HOME Consortium",
+      "summary": "The city agreed to join the Utah Valley HOME Consortium, a cooperative agreement with other local governments; the motion does not spell out what participation costs or provides.",
+      "impact": "Nothing changes for you day to day — this is an agreement between governments. The motion gives no dollar figure or program details, so we cannot say what it will deliver."
     },
     {
       "id": 896,
@@ -197,7 +212,10 @@
           "member_id": "rich-wood",
           "vote": "No"
         }
-      ]
+      ],
+      "headline": "Change to the Harmony subdivision agreement",
+      "summary": "The council approved a first change to the development agreement for the Harmony subdivision; the motion does not say what the change involves.",
+      "impact": "The motion text gives no details, so there is nothing concrete to report. It affects the terms between the city and the Harmony developer, not anything you do day to day."
     },
     {
       "id": 897,
@@ -233,7 +251,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Open space plan adopted, backyard trail dropped",
+      "summary": "The council adopted a plan for managing the city's open space and wildlife habitat, minus a proposed walking path that would have run behind homes on Autumn Lane.",
+      "impact": "If you live between Autumn Lane and East Harvest Lane, the trail that would have passed behind your backyard is off the table. Language on semi-truck parking was also removed, and goats will graze as needed rather than on a set schedule."
     },
     {
       "id": 898,
@@ -269,7 +290,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Formal default notice to Lennar over Ault Farms",
+      "summary": "The city formally notified builder Lennar Homes that it has broken terms of the Ault Farms master development agreement.",
+      "impact": "The motion doesn't say which terms were broken or what follows. Nothing changes day to day for residents; this is the city putting a builder on formal notice over the Ault Farms project."
     }
   ],
   "ordinances": [

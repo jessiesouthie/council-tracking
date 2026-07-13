@@ -43,8 +43,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve the consent agenda, minus two items",
-      "summary": "The council approved its routine consent agenda in one vote but pulled two items out to be discussed separately later in the meeting."
+      "headline": "Approve the consent agenda, pulling two items",
+      "summary": "The council passed its consent agenda in one vote, but pulled items 12.A and 13.A out for separate discussion.",
+      "impact": "Routine housekeeping — nothing changes for residents. The consent agenda is the batch of uncontroversial items the council handles in a single vote."
     },
     {
       "id": 998,
@@ -81,8 +82,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve site plan for Firefly area 9.A",
-      "summary": "The city approved the master site plan for a section of the Firefly development known as NPA 9.A; no further details were given."
+      "headline": "Approve the site plan for Firefly area 9.A",
+      "summary": "The city approved the master site plan for neighborhood 9.A of the Firefly development, which lays out how that area gets built.",
+      "impact": "This clears the way for construction in that piece of Firefly. If you live nearby, expect building activity; the motion itself doesn't say how many homes or what type."
     },
     {
       "id": 999,
@@ -117,8 +119,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Delay land swap with the state in Overland area",
-      "summary": "The council delayed a decision on a land exchange with the state land agency SITLA involving properties in the Overland area."
+      "headline": "Delay a land swap with the state in Overland",
+      "summary": "The council held off on approving a land exchange with SITLA, the state trust lands agency, covering property in the Overland area.",
+      "impact": "No land changes hands yet. This is a property trade between the city and a state agency, and it will come back to the council another night."
     },
     {
       "id": 1000,
@@ -156,7 +159,8 @@
         }
       ],
       "headline": "Delay new rules for alternative energy projects",
-      "summary": "The council put off a decision on a new zoning chapter that would create an overlay zone for alternative energy projects."
+      "summary": "The council put off a decision on a new zoning chapter that would set where alternative energy projects can be built.",
+      "impact": "Nothing changes for now — today's rules stay in place until the council picks the item back up. Anyone planning an energy project in the city is still working under the existing code."
     },
     {
       "id": 1001,
@@ -194,7 +198,8 @@
         }
       ],
       "headline": "Set final zoning for the White Hills area",
-      "summary": "The council assigned permanent zoning to White Hills, including one commercial parcel, two farm parcels, and ten more set aside for rural agriculture."
+      "summary": "The city assigned permanent zoning to White Hills, making one parcel neighborhood commercial, two agricultural, and ten more rural agricultural.",
+      "impact": "If you own land in White Hills, this fixes what you're allowed to build on it — mostly farming and large-lot rural uses, plus one small commercial parcel. Elsewhere in the city, nothing changes."
     },
     {
       "id": 1002,
@@ -231,8 +236,9 @@
           "vote": "No"
         }
       ],
-      "headline": "Update code sections on newspaper notices",
-      "summary": "The council amended two sections of city code dealing with newspaper notices, though the motion itself gives no detail on what changed."
+      "headline": "Change newspaper notice rules in city code",
+      "summary": "The city amended the newspaper-notice sections of its subdivision and zoning codes, chapters 16.05 and 17.05.",
+      "impact": "This is legal housekeeping about how the city publishes its notices. The motion doesn't spell out the change, and nothing shifts for residents day to day."
     },
     {
       "id": 1003,
@@ -270,7 +276,8 @@
         }
       ],
       "headline": "Approve the Pacific Springs development agreement",
-      "summary": "The city approved a development agreement for the Pacific Springs project, setting the terms the developer will have to follow."
+      "summary": "The city approved a development agreement for Pacific Springs, the contract that sets the terms for what the developer can build.",
+      "impact": "Nothing changes day to day. The agreement locks in the ground rules for a future project, so any effect on traffic or neighbors arrives when building actually starts."
     },
     {
       "id": 1004,
@@ -307,8 +314,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Put Walmart-area sidewalk on priorities list",
-      "summary": "The council added money for a new sidewalk on SR-73 and Spring Run near Walmart to its list of legislative priorities."
+      "headline": "Push for a sidewalk on SR-73 near Walmart",
+      "summary": "The council added construction money for a sidewalk on SR-73 and Spring Run near Walmart to the city's legislative priorities list.",
+      "impact": "Nothing is built yet — this puts the sidewalk on the city's priority list, not into a funded project. If it goes ahead, people walking to Walmart along SR-73 would get a sidewalk."
     }
   ],
   "ordinances": [

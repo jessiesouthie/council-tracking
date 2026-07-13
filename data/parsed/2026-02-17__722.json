@@ -43,8 +43,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine items approved together on the consent agenda",
-      "summary": "The council approved its consent agenda, a bundle of routine items passed in a single vote; the record does not list which items were included."
+      "headline": "Routine consent items approved in one vote",
+      "summary": "The council passed its consent agenda, the batch of routine items voted through together; this record doesn't list which items were included.",
+      "impact": "Consent agendas hold the routine business the council doesn't debate individually. Nothing in this record points to a change residents would notice."
     },
     {
       "id": 1031,
@@ -81,8 +82,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Second round of changes to this year's budget",
-      "summary": "The city amended its 2025-26 budget for the second time this year, though the motion itself does not say which amounts changed."
+      "headline": "Mid-year change to this year's city budget",
+      "summary": "The council approved a second amendment to the 2025–26 city budget, adopted as presented; the motion lists no figures or specific changes.",
+      "impact": "A mid-year budget amendment can move real money, but this record doesn't say what changed. To see whether anything you use is affected, you'd need the budget document itself."
     },
     {
       "id": 1032,
@@ -119,8 +121,9 @@
           "vote": "Abstain"
         }
       ],
-      "headline": "Borrow up to $230M for water and sewer work",
-      "summary": "The city authorized issuing up to $230 million in water and sewer bonds, debt that would be paid back out of water and sewer revenue."
+      "headline": "Up to $220M in water and sewer bonds",
+      "summary": "The city authorized borrowing up to $220 million — the motion as read said $230 million — by selling water and sewer revenue bonds.",
+      "impact": "Before the bonds are sold, the city must publish notice of a public hearing and allow a window in which the sale can be legally challenged. Revenue bonds are repaid from water and sewer bills, not property taxes."
     },
     {
       "id": 1033,
@@ -157,8 +160,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Adopt a wildfire-risk map for homes near open land",
-      "summary": "The city adopted an official map of its wildland-urban interface, the areas where homes sit next to open, wildfire-prone land, and updated the related code."
+      "headline": "New wildfire-risk map for homes next to open land",
+      "summary": "The city adopted an official Wildland Urban Interface map — the areas where homes back onto undeveloped wildland — and amended the related section of city code.",
+      "impact": "If your property backs onto open land, it may now fall inside the mapped interface area. The motion doesn't spell out what rules come with that."
     },
     {
       "id": 1034,
@@ -188,8 +192,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Merge five city boards into one Community Services Board",
-      "summary": "The council took up folding the parks, sports, cemetery, veterans and economic development boards into a single Community Services Board."
+      "headline": "Merge five city boards into one",
+      "summary": "The council considered folding the parks, recreation sports, cemetery, veterans, and economic development boards into a single Community Services Board.",
+      "impact": "If you volunteer on one of those five boards, they would be replaced by one combined board. For everyone else, nothing changes day to day."
     }
   ],
   "ordinances": [

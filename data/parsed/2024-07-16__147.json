@@ -42,7 +42,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Routine consent items approved",
+      "summary": "The council approved its batch of routine consent items, pulling the WDG website change order out for separate discussion.",
+      "impact": "This is routine housekeeping — nothing changes for residents."
     },
     {
       "id": 734,
@@ -78,7 +81,10 @@
           "member_id": "rich-wood",
           "vote": "No"
         }
-      ]
+      ],
+      "headline": "Change order approved for city website work",
+      "summary": "The council approved a change order with its website contractor, WDG, after rewriting the cost language to let WDG adjust for unknown variables.",
+      "impact": "Nothing changes for residents — this is contract paperwork for the city's website. The reworded clause does give the contractor room to revise the budget, timeline, or fees if surprises come up."
     },
     {
       "id": 735,
@@ -114,7 +120,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Parking rules changed for hotels and B&Bs",
+      "summary": "The council changed how many parking spaces hotels, motels, and bed-and-breakfasts are required to provide.",
+      "impact": "This affects people building or running lodging businesses in the city. For residents, nothing changes day to day."
     },
     {
       "id": 736,
@@ -150,7 +159,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "New city rules for second kitchens in homes",
+      "summary": "The council added a new chapter to city code setting rules for second kitchens or kitchenettes in homes.",
+      "impact": "This matters if you're thinking about adding a second kitchen — say for a basement apartment or an in-law setup. It is now governed by city code, so check the rules before you build. Everyone else is unaffected."
     }
   ],
   "ordinances": [

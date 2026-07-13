@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260713g" />
+    <link rel="stylesheet" href="site.css?v=20260713k" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -45,7 +45,7 @@
 
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
 
-    <script src="site.js?v=20260713g"></script>
+    <script src="site.js?v=20260713k"></script>
     <script>
       (async () => {
         const data = await CT.loadData();
@@ -131,19 +131,19 @@
           const my = (m.votes||[]).find(v => v.member_id === id);
           const v = (my?.vote || "").toLowerCase();
           return `
-            <details class="motion-row" style="border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;background:var(--bg-elev)">
-              <summary style="padding:12px 14px">
-                <div style="display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap">
-                  <span class="nowrap mono muted">${CT.fmtDate(m.date)}</span>
-                  <span class="vote-chip"><span class="v ${v}">${CT.escapeHtml(my?.vote || "—")}</span></span>
-                  <span style="flex:1;min-width:200px"><strong>${CT.escapeHtml(CT.cleanTitle(m.item_title) || "(no title)")}</strong></span>
-                  ${CT.outcomePill(m.outcome)}
+            <details class="motion-row" id="m${m.id}">
+              <summary>
+                <div class="motion-row-head">
+                  <div class="motion-row-meta">
+                    <span class="nowrap mono muted">${CT.fmtDate(m.date)}</span>
+                    <span class="vote-chip">voted<span class="v ${v}">${CT.escapeHtml(my?.vote || "—")}</span></span>
+                  </div>
+                  <h3 class="motion-row-title">${CT.escapeHtml(CT.motionTitle(m))}</h3>
+                  ${m.summary ? `<p class="motion-row-sub">${CT.escapeHtml(m.summary)}</p>` : ""}
+                  <div class="motion-row-foot">${CT.outcomePill(m.outcome)}</div>
                 </div>
               </summary>
-              <div class="motion-detail">
-                <p class="m-text">${CT.escapeHtml(m.motion || "")}</p>
-                <div>${(m.votes||[]).map(v => CT.voteChip(CT.memberName(data, v.member_id), v.vote)).join(" ")}</div>
-              </div>
+              ${CT.motionDetail(data, m, { highlightMember: id })}
             </details>
           `;
         }).join("");

@@ -43,8 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Jay Johnson joins Community Services Board",
-      "summary": "The council appointed Jay Johnson to a one-year term on the Community Services Board, running April 2026 through March 2027."
+      "headline": "Jay Johnson joins the Community Services Board",
+      "summary": "The council appointed Jay Johnson to a one-year term on the Community Services Board, from April 2026 through March 2027.",
+      "impact": "Nothing changes for residents — this is a volunteer appointment to an advisory board.",
+      "significance": "routine"
     },
     {
       "id": 1036,
@@ -82,7 +84,9 @@
         }
       ],
       "headline": "ShaRee Curtis joins Community Services Board",
-      "summary": "The council appointed ShaRee Curtis to a two-year term on the Community Services Board, running April 2026 through March 2028."
+      "summary": "The council appointed ShaRee Curtis to a two-year term on the Community Services Board, from April 2026 through March 2028.",
+      "impact": "Nothing changes for residents — this is a volunteer appointment to an advisory board.",
+      "significance": "routine"
     },
     {
       "id": 1037,
@@ -120,7 +124,9 @@
         }
       ],
       "headline": "Charlotte Ducos joins Community Services Board",
-      "summary": "The council appointed Charlotte Ducos to a two-year term on the Community Services Board, running April 2026 through March 2028."
+      "summary": "The council appointed Charlotte Ducos to a two-year term on the Community Services Board, from April 2026 through March 2028.",
+      "impact": "Nothing changes for residents — this is a volunteer appointment to an advisory board.",
+      "significance": "routine"
     },
     {
       "id": 1038,
@@ -157,8 +163,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Steve Conger joins Community Services Board",
-      "summary": "The council appointed Steve Conger to a three-year term on the Community Services Board, running April 2026 through March 2029."
+      "headline": "Steve Conger joins the Community Services Board",
+      "summary": "The council appointed Steve Conger to a three-year term on the Community Services Board, from April 2026 through March 2029.",
+      "impact": "Nothing changes for residents — this is a volunteer appointment to an advisory board.",
+      "significance": "routine"
     },
     {
       "id": 1039,
@@ -196,7 +204,9 @@
         }
       ],
       "headline": "Jessie Southworth joins Community Services Board",
-      "summary": "The council appointed Jessie Southworth to a three-year term on the Community Services Board, running April 2026 through March 2029."
+      "summary": "The council appointed Jessie Southworth to a three-year term on the Community Services Board, from April 2026 through March 2029.",
+      "impact": "Nothing changes for residents — this is a volunteer appointment to an advisory board.",
+      "significance": "routine"
     },
     {
       "id": 1040,
@@ -233,8 +243,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Debra Kimbrough joins Senior Advisory Board",
-      "summary": "The council appointed Debra Kimbrough to a three-year term on the Senior Advisory Board, running April 2026 through March 2029."
+      "headline": "Debra Kimbrough joins the Senior Advisory Board",
+      "summary": "The council appointed Debra Kimbrough to a three-year term on the Senior Advisory Board, from April 2026 through March 2029.",
+      "impact": "Nothing changes for residents — this fills a volunteer seat on a board that advises the council rather than making decisions.",
+      "significance": "routine"
     },
     {
       "id": 1041,
@@ -267,8 +279,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve the consent agenda",
-      "summary": "The council approved its consent agenda, a batch of routine items passed in one vote; the individual items are not listed in the motion."
+      "headline": "Consent agenda approved",
+      "summary": "The council approved its consent agenda, the group of items passed together in a single vote without separate discussion.",
+      "impact": "Nothing changes for residents on its own — this is the routine business the council clears in one vote.",
+      "significance": "routine"
     },
     {
       "id": 1042,
@@ -305,8 +319,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Delay changes to Overland development deal",
-      "summary": "The council postponed a fifth amendment to the Overland master development agreement and will take it up at a future meeting."
+      "headline": "Overland development changes put on hold",
+      "summary": "The council delayed a decision on the fifth amendment to the Overland master development agreement and will take it up at a future meeting.",
+      "impact": "Nothing changes for now — the existing Overland agreement stays as written until the council revisits the amendment.",
+      "significance": "routine"
     },
     {
       "id": 1043,
@@ -345,8 +361,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Hire consultant to study Eagle's Landing market",
-      "summary": "The city hired Economic & Planning Systems for a one-to-three-month market study of Eagle's Landing, a large commercial project planned along Pony Express Parkway."
+      "headline": "Hire a consultant to study Eagle's Landing",
+      "summary": "The city hired Economic & Planning Systems to run a market study for Eagle's Landing, a large commercial project planned on Pony Express Parkway north of downtown.",
+      "impact": "Nothing changes for you now. The study, expected to take one to three months, will help the city decide whether to use a TIF bond to pay for roads and utilities at the site.",
+      "significance": "routine"
     },
     {
       "id": 1044,
@@ -362,8 +380,10 @@
         "code"
       ],
       "votes": [],
-      "headline": "No action on rejecting the fence rules",
-      "summary": "A proposal to reject the fencing code changes outright was raised but never taken up, so no decision was made on it."
+      "headline": "Move to reject fence rules found no support",
+      "summary": "A proposal to reject the fencing code changes outright drew no support and died without coming to a vote.",
+      "impact": "Nothing changes for residents. The fencing rules were neither rejected nor adopted here, and this proposal never reached a vote.",
+      "significance": "routine"
     },
     {
       "id": 1045,
@@ -400,8 +420,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Delay changes to the city's fence rules",
-      "summary": "The council put off changes to the city's fencing rules and sent them back for more discussion at a future work session."
+      "headline": "Fence rule changes put on hold",
+      "summary": "The council delayed a decision on changes to the city's fencing rules and sent them back for discussion at a future work session.",
+      "impact": "The current fence rules still apply — nothing changes for your yard yet. The proposal is expected to come back at a later meeting.",
+      "significance": "routine"
     },
     {
       "id": 1046,
@@ -438,8 +460,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Rezone land known as QTS-SCL 2",
-      "summary": "The city approved a zoning change for the property known as QTS-SCL 2; the motion does not state the acreage or the new zone."
+      "headline": "Rezone the land known as QTS-SCL 2",
+      "summary": "The council approved a zoning change for the land known as QTS-SCL 2; the motion does not state the acreage or the new zoning.",
+      "impact": "The change resets what can legally be built on that property. The record here does not say where the land is or what the new zoning allows.",
+      "significance": "notable"
     },
     {
       "id": 1047,
@@ -476,8 +500,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Update rules for building on steep slopes",
-      "summary": "The council rewrote four sections of city code covering slope development, the rules for building on hillside land, and fixed a typo."
+      "headline": "New rules for building on steep slopes",
+      "summary": "The city rewrote four sections of its code governing development on steep slopes, changing how hillside land may be built on.",
+      "impact": "If you own hillside land or plan to build on a slope, the rules for what you can put there have changed. Residents on flatter ground are unaffected.",
+      "significance": "notable"
     },
     {
       "id": 1048,
@@ -514,8 +540,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Change fees for site plan amendments",
-      "summary": "The council updated the city's fee schedule for site plan amendments; the motion does not state the new amounts."
+      "headline": "Change the fee for site plan amendments",
+      "summary": "The council amended the city fee schedule to change what it charges for site plan amendments; the motion does not state the new amount.",
+      "impact": "This touches builders and businesses that want to change an already-approved site plan, not ordinary homeowners. The record does not say what the fee now costs.",
+      "significance": "notable"
     },
     {
       "id": 1049,
@@ -553,7 +581,9 @@
         }
       ],
       "headline": "Create a Senior Citizens Advisory Board",
-      "summary": "The city created a Senior Citizens Advisory Board, giving older residents a standing group in city government."
+      "summary": "The city created a Senior Citizens Advisory Board by adding a new chapter to the municipal code.",
+      "impact": "Nothing changes day to day. Older residents now have a formal board that can bring their concerns to the council; the seats are filled by separate appointments.",
+      "significance": "routine"
     },
     {
       "id": 1050,
@@ -591,8 +621,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve gas power plant deal, with conditions",
-      "summary": "The city approved a development agreement for a natural gas generation project, requiring simple-cycle technology, operation within five years, and trees along Pony Express Parkway."
+      "headline": "Gas power plant approved on Pony Express Parkway",
+      "summary": "The city approved a development agreement with Will-Power UT for a natural gas power plant, limited to simple-cycle technology and required to be running within five years.",
+      "impact": "A gas-fired power plant is now cleared to be built, with trees required along Pony Express Parkway. If you live nearby, expect construction within the next five years unless the company gets an extension.",
+      "significance": "notable"
     },
     {
       "id": 1051,
@@ -627,8 +659,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Support America250 and a local Utah250 committee",
-      "summary": "The city backed the America250 Utah effort and formally recognized an Eagle Mountain Utah250 community committee."
+      "headline": "Support America250 and a local anniversary group",
+      "summary": "The city backed America250 Utah and formally recognized an Eagle Mountain committee to mark the nation's 250th anniversary.",
+      "impact": "Nothing changes day to day. You may see the committee plan anniversary events, but the resolution itself is a statement of support and commits no money.",
+      "significance": "routine"
     },
     {
       "id": 1052,
@@ -663,8 +697,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Study bitcoin as a way to pay the city",
-      "summary": "The council added studying bitcoin as a payment method for the city to its list of legislative priorities."
+      "headline": "Study letting people pay the city in bitcoin",
+      "summary": "The council added a study of whether the city could accept bitcoin as a form of payment to its legislative priorities list.",
+      "impact": "Nothing changes for you yet — you still cannot pay the city in bitcoin. This only puts the idea on the list of things to look into.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

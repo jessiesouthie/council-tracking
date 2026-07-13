@@ -42,7 +42,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Vote on the city's road plan delayed",
+      "summary": "The council delayed adopting the Transportation Master Plan, the long-range blueprint guiding how the city's roads are built and improved.",
+      "impact": "No road project is funded or approved by this, and the plan is still on the shelf. Nothing changes for your commute until the council takes it up again."
     },
     {
       "id": 914,
@@ -62,7 +65,10 @@
           "member_id": "donna-burnham",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Parking rule changes face rejection",
+      "summary": "The council moved to reject proposed changes to the city's parking rules; the record does not show whether that rejection was finalized.",
+      "impact": "The city's existing parking rules stay in force for now, so nothing changes about how parking is handled today."
     },
     {
       "id": 915,
@@ -98,7 +104,10 @@
           "member_id": "rich-wood",
           "vote": "No"
         }
-      ]
+      ],
+      "headline": "Routine consent items approved",
+      "summary": "The council approved its consent agenda, the bundle of routine items voted on together; the record does not list which items were in the bundle.",
+      "impact": "This is routine housekeeping and nothing changes for residents. Because the items are not listed in the record, we can't tell you exactly what was in this batch."
     },
     {
       "id": 916,
@@ -132,7 +141,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Sale of a 0.156-acre city parcel delayed",
+      "summary": "The council delayed a decision on disposing of a 0.156-acre piece of city property, Utah County parcel 49:601:0080, and on the terms of that sale.",
+      "impact": "This is a small sliver of land and it remains city-owned for now. Nothing changes for residents while the decision waits."
     },
     {
       "id": 917,
@@ -168,7 +180,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Sale of 20.35 acres of Bypass Road land delayed",
+      "summary": "The council delayed a decision on disposing of up to 20.35 acres of city-owned land known as the Bypass Road.",
+      "impact": "The land stays in the city's hands for now, and nothing changes on the ground until the council brings the item back."
     },
     {
       "id": 918,
@@ -204,7 +219,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Sign rule changes set aside",
+      "summary": "The council took up a move to shelve proposed changes to the city's sign rules and sign permits; the record does not show a final result.",
+      "impact": "The current sign rules stay as they are. If you own a business and are planning a new sign, today's permit requirements still apply."
     },
     {
       "id": 919,
@@ -238,7 +256,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Zayo fiber franchise agreement put on hold",
+      "summary": "The council delayed a decision on a franchise agreement with Zayo Group, LLC, pushing the item to a future meeting rather than approving it.",
+      "impact": "Nothing changes for you right now. The agreement is not in effect, and the council will have to take it up again before anything happens."
     }
   ],
   "ordinances": [

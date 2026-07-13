@@ -42,7 +42,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Approve the batch of routine consent items",
+      "summary": "The council approved its consent agenda, the group of routine items passed together in one vote; the individual items are not listed in this record.",
+      "impact": "This is routine housekeeping — nothing changes for residents."
     },
     {
       "id": 790,
@@ -78,7 +81,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "New city rules for easements on private land",
+      "summary": "The city added a new easements chapter to its code and updated related definitions, setting written rules for easements where none existed before.",
+      "impact": "This mostly affects developers and property owners dealing with easements on their land, who now have explicit city rules to follow. For most residents, nothing changes day to day."
     },
     {
       "id": 791,
@@ -91,7 +97,10 @@
       "motion": "Councilmember Burnham moved to approve a Resolution of Eagle Mountain City, Utah, accepting the Galloway report as a guideline for future adoption of the Eagle Mountain City Facilities Master Plan. The motion died for a lack of a second.",
       "outcome": "",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "No action on a city facilities master plan",
+      "summary": "The council took no action on a proposal to use the Galloway report as a guideline toward a future city facilities master plan.",
+      "impact": "Nothing changes for residents. The city still has no adopted facilities master plan, and the council would have to take the question up again."
     },
     {
       "id": 792,
@@ -125,7 +134,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Adopt a public art plan for the city",
+      "summary": "The city adopted a public art plan to guide how Eagle Mountain approaches public art going forward.",
+      "impact": "Nothing changes for you day to day. The plan sets direction only — it does not fund, buy, or place any specific piece of art."
     },
     {
       "id": 793,
@@ -161,7 +173,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Put the city's residential zoning rules up for review",
+      "summary": "The council added a review of Eagle Mountain's residential zoning rules, Chapter 17.25 of the city code, to its list of legislative priorities.",
+      "impact": "Nothing changes yet. This only puts the rules governing homes and lots in line for a future look, and any actual change would have to come back to the council."
     }
   ],
   "ordinances": [

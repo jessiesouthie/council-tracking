@@ -64,7 +64,7 @@
   --radius: 10px;
   --radius-sm: 6px;
   --radius-card: 18px;   /* the redesign's roomier card */
-  --max-w: 1100px;
+  --max-w: 1080px;
 
   /* Mobile rhythm */
   --tabbar-h: 60px;
@@ -649,9 +649,12 @@ details.motion-row[open] {
    of the council's recent verdicts. Everything else recedes to serve that.
    ========================================================================= */
 
+/* The front page runs a touch narrower than the data pages. It is a reading
+   page, not a table, and the decision cards want a column they can fill rather
+   than a measure they leave half empty. */
 .home main,
 main.home {
-  max-width: 780px;
+  max-width: 920px;
 }
 
 /* Paper. A fractal-noise grain sits behind the content (never over the type, so
@@ -676,6 +679,9 @@ body.home-paper::before {
 }
 
 /* ---------- Hero ---------- */
+/* No cap here: the title, sub and search pill carry their own measures and stay
+   centred, so the ledger below them is free to fill the column and line up with
+   the decision cards. */
 .hero {
   text-align: center;
   padding: 54px 0 38px;
@@ -730,7 +736,9 @@ body.home-paper::before {
   line-height: 1.03;
   letter-spacing: -0.035em;   /* Inter opens up at display size; pull it back in */
   color: var(--fg-soft);
-  max-width: 12ch;
+  /* Wide enough to hold "Every council vote," on one line, so the marked phrase
+     lands on a line of its own underneath. */
+  max-width: 20ch;
   margin: 0 auto 18px;
   text-wrap: balance;
 }
@@ -1035,7 +1043,6 @@ body.home-paper::before {
   line-height: 1.6;
   color: var(--fg);
   margin: 0 0 16px;
-  max-width: 62ch;
 }
 .decision-summary strong { color: var(--fg-soft); font-weight: 600; }
 .decision-summary.is-raw {
@@ -1045,6 +1052,37 @@ body.home-paper::before {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* "What it means for you" on the homepage card — the reason a resident stops here.
+   Same amber civic voice as the impact block inside an opened motion. */
+.decision-impact {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--fg);
+  margin: 0 0 16px;
+  padding: 10px 12px;
+  background: var(--accent-tint);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  text-wrap: pretty;
+}
+.decision-impact-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  margin-bottom: 3px;
+}
+.decision-more {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+.decision-card:hover .decision-more { text-decoration: underline; }
 
 .decision-card .pill {
   font-size: 11.5px;
@@ -1209,8 +1247,12 @@ body.home-paper::before {
 
 .council-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
+}
+/* Three across only while there is room for a name plus its vote line. */
+@media (max-width: 900px) {
+  .council-grid { grid-template-columns: repeat(2, 1fr); }
 }
 .council-card {
   display: flex;
@@ -1272,12 +1314,11 @@ body.home-paper::before {
   }
 }
 
-@media (max-width: 700px) {
-  .home main, main.home { max-width: 100%; }
-}
-
 @media (max-width: 600px) {
   .hero { padding: 36px 0 30px; }
+  /* No room for "Every council vote," on one line here — pull the measure back
+     in so the marked phrase still gets a line to itself. */
+  .hero-title { max-width: 12ch; }
   .hero-sub { font-size: 16px; }
   .hero-search {
     flex-wrap: wrap;
@@ -1433,6 +1474,9 @@ body.home-paper::before {
   font-size: 13.5px;
 }
 .motion-line:last-child { border-bottom: none; }
+/* Housekeeping items recede in the meeting-card preview too, so the decisions that
+   reach residents are what a reader's eye lands on first. */
+.motion-line.is-routine .motion-line-title { color: var(--fg-muted); }
 .motion-line-outcome { flex: none; }
 .motion-line-title { color: var(--fg-soft); line-height: 1.35; }
 .motion-line-title mark {
@@ -1599,14 +1643,192 @@ details.motion-row > summary::-webkit-details-marker { display: none; }
 details.motion-row .motion-detail {
   border-top: 1px solid var(--border);
   background: var(--bg-muted);
-  padding: 14px 16px 16px;
+  padding: 16px;
   margin: 0;
 }
 .motion-detail .m-text {
-  margin: 0 0 12px;
+  margin: 0;
   white-space: pre-wrap;
   font-size: 14px;
   line-height: 1.55;
+  color: var(--fg);
+}
+
+/* The one-line summary under a row title: what was decided, before you open it. */
+.motion-row-sub {
+  margin: 0 0 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--fg);
+  max-width: 68ch;
+}
+
+/* ---------- Expanded motion detail: decided → impact → roll call → legalese ----------
+   Order is the point. A resident opens a motion to learn what it means for them, so
+   the plain-English read comes first and the recorded wording sits behind a
+   disclosure at the bottom, available but not in the way. */
+.motion-detail .m-lead {
+  margin: 0 0 14px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--fg-soft);
+  font-weight: 500;
+  max-width: 66ch;
+  text-wrap: pretty;
+}
+
+/* Amber, not green: this is the civic voice, and on this site green means "voted
+   yes". A green impact box would read as "this passed", which is a different claim. */
+.m-impact {
+  background: var(--accent-tint);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 12px 14px;
+  margin: 0 0 16px;
+}
+.m-impact-label {
+  margin: 0 0 5px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+.m-impact-text {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--fg);
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+
+.m-pending {
+  margin: 0 0 14px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  max-width: 64ch;
+}
+
+.m-block { margin: 0 0 14px; }
+.m-block-label {
+  margin: 0 0 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.m-outcome-line {
+  margin: 0 0 8px;
+  font-size: 14.5px;
+  color: var(--fg-soft);
+  font-weight: 500;
+}
+.m-votes { display: flex; flex-wrap: wrap; gap: 6px; }
+.vote-chip.is-focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* The clerk's wording — kept, but folded away. */
+.m-official {
+  border-top: 1px solid var(--border-strong);
+  padding-top: 12px;
+}
+.m-official > summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--fg-muted);
+  padding: 2px 0;
+}
+.m-official > summary::-webkit-details-marker { display: none; }
+.m-official > summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 6px;
+  transition: transform 140ms ease;
+}
+.m-official[open] > summary::before { transform: rotate(90deg); }
+.m-official > summary:hover { color: var(--accent-ink); }
+.m-official .m-text {
+  margin-top: 10px;
+  font-size: 13.5px;
+  color: var(--fg-muted);
+}
+.m-official .m-title-raw { margin-top: 8px; }
+
+/* A motion arrived at by deep link — a brief "here it is", not a permanent state. */
+details.motion-row.is-linked {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-tint);
+}
+
+/* ---------- Significance: routine vs. affects-residents ----------
+   Roughly four in five council motions are housekeeping. Rather than hide them
+   (the record has to stay complete), the chip carries that signal: "Routine" vs
+   "Affects residents". The card itself stays a card — a routine row keeps the
+   white fill, just softened, so it reads as quieter without dissolving into the
+   page. Recede, never disappear — contrast stays AA. */
+.sig-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.sig-chip.notable {
+  background: var(--accent-tint);
+  color: var(--accent-ink);
+  box-shadow: inset 0 0 0 1px rgba(182, 116, 26, .28);
+}
+.sig-chip.routine {
+  background: var(--bg-muted);
+  color: var(--fg-muted);
+  box-shadow: inset 0 0 0 1px var(--border-strong);
+}
+
+details.motion-row.is-routine {
+  background: color-mix(in srgb, var(--bg-elev) 75%, transparent);
+  border-color: var(--hairline);
+}
+details.motion-row.is-routine .motion-row-title {
+  font-weight: 500;
+  font-size: 14.5px;
+  color: var(--fg);
+}
+details.motion-row.is-routine .motion-row-sub { color: var(--fg-muted); }
+/* Hover and open restore full presence — de-emphasis is for scanning, and must not
+   make a routine motion feel harder to read once you have chosen to look at it. */
+details.motion-row.is-routine:hover,
+details.motion-row.is-routine[open] {
+  background: var(--bg-elev);
+  border-color: var(--border-strong);
+}
+details.motion-row.is-routine[open] .motion-row-title { color: var(--fg-soft); }
+
+/* The one that reaches a resident: a quiet amber edge, no shouting. */
+details.motion-row.is-notable { border-left: 3px solid var(--accent); }
+
+/* Routine impact: stated plainly, not in the amber callout. The callout has to keep
+   meaning "this one lands on you". */
+.m-impact-routine {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--fg-muted);
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+.m-impact-routine-label {
+  font-weight: 600;
   color: var(--fg);
 }
 
@@ -2235,17 +2457,16 @@ details.motion-row .motion-detail {
   box-shadow: var(--shadow-hair);
 }
 /* The waveform: the card's one piece of atmosphere, and the only thing on the
-   page that says "audio". It sits in the well the lede's measure leaves open on
-   the right, bleeds off the edge, and stays under the content. */
+   page that says "audio". It rides the gap between the kicker and the stats —
+   the one band of the card the full-width text never crosses — and is the first
+   thing dropped when the row gets tight. */
 .sum-wave {
-  position: absolute; right: -24px; bottom: 26px; z-index: 0;
-  width: 300px; height: 48px;
+  flex: 1 1 90px; min-width: 0; max-width: 300px; height: 26px;
   fill: var(--accent); opacity: .22;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 55%);
-          mask-image: linear-gradient(90deg, transparent, #000 55%);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 30%, #000 70%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 30%, #000 70%, transparent);
   pointer-events: none;
 }
-.sum-head > *:not(.sum-wave) { position: relative; z-index: 1; }
 .sum-head-top {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: 10px 16px;
@@ -2285,7 +2506,7 @@ details.motion-row .motion-detail {
 .sum-lede-slot { margin: 16px 0 0; }
 .sum-lede-slot.is-empty { margin: 0; }
 .sum-lede {
-  max-width: 60ch; margin: 0;
+  margin: 0;
   font-family: var(--display);
   font-size: 20px; line-height: 1.5; letter-spacing: -0.011em;
   color: var(--fg-soft);
@@ -2336,7 +2557,7 @@ details.motion-row .motion-detail {
    (who was remote, who was excused, who stepped out before a vote). It repeats
    the names, so it's sized and coloured as a footnote to the chips above it. */
 .cast-note {
-  margin: 9px 0 0; max-width: 74ch;
+  margin: 9px 0 0;
   font-size: 12.5px; line-height: 1.55; color: var(--fg-muted);
 }
 .cast-staff { margin-top: 10px; font-size: 13px; }
@@ -2353,16 +2574,22 @@ details.motion-row .motion-detail {
 }
 .cast-staff[open] > summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
 .cast-staff > summary:hover { color: var(--accent-ink); }
-.cast-staff p { margin: 8px 0 0; max-width: 78ch; line-height: 1.6; color: var(--fg); }
+.cast-staff p { margin: 8px 0 0; line-height: 1.6; color: var(--fg); }
 @media (prefers-reduced-motion: reduce) { .cast-staff > summary::after { transition: none; } }
 
 /* The caveat, demoted to the foot of the card where it belongs. */
 .sum-note {
   display: flex; gap: 8px; align-items: flex-start;
   margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--hairline);
-  max-width: 76ch; font-size: 12.5px; line-height: 1.5; color: var(--fg-muted);
+  font-size: 12.5px; line-height: 1.5; color: var(--fg-muted);
 }
 .sum-note svg { width: 15px; height: 15px; flex: none; margin-top: 1px; opacity: .8; }
+
+/* ---- the motions, seated between the head card and the write-up ------------
+   The decisions are what most readers came for, so they sit directly under the
+   card that says what the meeting was and who was there, rather than below
+   several thousand words of summary. */
+.sum-motions { margin: 0 0 26px; }
 
 /* ---- the tab rail: pins under the topbar, tracks the reading position ------
    A floating rail rather than a full-bleed bar — it reads as a control that
@@ -2420,14 +2647,11 @@ details.motion-row .motion-detail {
   text-transform: none; letter-spacing: -0.01em;
   color: var(--fg-soft);
 }
-/* Prose is held to a readable measure by default. Decisions and What was
-   discussed run the full column instead: they're reference sections people scan
-   and cross-check rather than read start-to-finish, and their content (motion
-   wording, the "settled without a vote" list, per-item narration) reads better
-   ranged against the decision cards above it than indented away from them. */
-.sum-prose { max-width: 68ch; }
-.sum-sec.is-decisions .sum-prose,
-.sum-sec.is-discussed .sum-prose { max-width: none; }
+/* Every part of the summary runs the full column — nothing is held back to a
+   narrower measure. It's a reference document people scan and cross-check, and
+   the prose reads better ranged against the cards and tables above it than
+   indented away from them. */
+.sum-prose { max-width: none; }
 .sum-prose > :first-child { margin-top: 0; }
 .sum-prose > :last-child { margin-bottom: 0; }
 /* The "### <ref> — <title>" item headings inside "What was discussed". */
@@ -2452,6 +2676,33 @@ details.motion-row .motion-detail {
 }
 .dec-meta dd { margin: 0; font-size: 13px; color: var(--fg); }
 .dec > .pill { flex: none; }
+
+/* ---- what the table can't hold: "Settled without a vote", and footnotes ----
+   These sit under the decision cards and used to butt straight into them. Give
+   them air, a rule to sit behind, and a label that reads as a subhead of
+   Decisions rather than as another decision. */
+.dec-rest { display: grid; gap: 26px; margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--hairline); }
+/* Standing on its own — the vote table it used to be ruled off from is gone,
+   replaced by the motion cards from the minutes further up the page. */
+.dec-rest.is-standalone { margin-top: 0; padding-top: 0; border-top: 0; }
+.dec-note-h {
+  margin: 0 0 12px;
+  font-family: var(--sans);
+  font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--fg-muted);
+}
+/* A hollow marker: agreed on, but no vote was ever taken — deliberately not the
+   filled outcome pill the roll-call decisions above it carry. */
+.dec-note .md-body ul { list-style: none; display: grid; gap: 12px; margin: 0; padding: 0; }
+.dec-note .md-body li { position: relative; padding-left: 22px; line-height: 1.6; }
+.dec-note .md-body li::before {
+  content: ""; position: absolute; left: 0; top: .55em;
+  width: 8px; height: 8px; border-radius: 50%;
+  border: 1.6px solid color-mix(in srgb, var(--accent) 62%, transparent);
+}
+.dec-note .md-body > p { line-height: 1.6; }
+.dec-note .md-body > :first-child { margin-top: 0; }
+.dec-note .md-body > :last-child { margin-bottom: 0; }
 
 /* ---- meeting map: a timeline down the recording ---- */
 .map-cap { margin: -6px 0 14px; font-size: 12.5px; color: var(--fg-muted); }
@@ -2478,7 +2729,6 @@ details.motion-row .motion-detail {
 .map-note { margin: 3px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--fg-muted); }
 
 /* ---- notable moments ---- */
-.sum-sec.is-moments .sum-prose { max-width: none; }
 .sum-sec.is-moments ul { list-style: none; display: grid; gap: 10px; margin: 0; padding: 0; }
 .sum-sec.is-moments li {
   margin: 0; padding: 13px 16px;
@@ -2526,7 +2776,7 @@ details.motion-row .motion-detail {
 }
 .sum-about[open] > summary::before { transform: rotate(45deg); }
 .sum-about > summary:hover { color: var(--fg-soft); }
-.sum-about .sum-prose { max-width: 72ch; padding: 0 16px 16px; font-size: 13.5px; }
+.sum-about .sum-prose { padding: 0 16px 16px; font-size: 13.5px; }
 
 @media (prefers-reduced-motion: reduce) {
   .sum-about > summary::before { transition: none; }
@@ -2535,11 +2785,12 @@ details.motion-row .motion-detail {
 @media (max-width: 620px) {
   .contrast { grid-template-columns: 1fr; }
 }
+/* The waveform is atmosphere, and atmosphere is the first thing to go when the
+   row it rides in starts to wrap. */
+@media (max-width: 900px) { .sum-wave { display: none; } }
+
 @media (max-width: 560px) {
   .sum-head { padding: 16px 15px 14px; border-radius: var(--radius); }
-  /* The waveform is atmosphere, and atmosphere is the first thing to go when the
-     card has to carry the same content in half the width. */
-  .sum-wave { display: none; }
   .sum-head-top { gap: 10px; }
   .sum-meta { width: 100%; }
   /* Watch is the primary action — give it the full row rather than a stub. */

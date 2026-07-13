@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260713g" />
+    <link rel="stylesheet" href="site.css?v=20260713k" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -41,7 +41,7 @@
 
     <main id="main">
       <h1 class="page-title">Motions</h1>
-      <p class="page-sub">Every council motion on file. Search across titles and motion text; refine by topic, member, outcome, or year.</p>
+      <p class="page-sub">Every council motion on file, in plain English. Open one to see what was decided and what it means for you — or set <strong>Impact</strong> to “Affects residents” to skip the routine business.</p>
 
       <div class="search-bar">
         <input id="q" class="input" type="search" placeholder="Search motion titles or text…" autocomplete="off" aria-label="Search motions" />
@@ -65,6 +65,14 @@
             <label><input type="radio" name="outcome" value="other"> Other</label>
           </div>
         </details>
+        <details class="filter-group" id="filter-sig">
+          <summary>Impact <span class="filter-summary muted" id="filter-sig-label">All</span></summary>
+          <div class="filter-options" id="sig-options">
+            <label><input type="radio" name="sig" value=""> All motions</label>
+            <label><input type="radio" name="sig" value="notable"> Affects residents</label>
+            <label><input type="radio" name="sig" value="routine"> Routine business</label>
+          </div>
+        </details>
         <details class="filter-group" id="filter-year">
           <summary>Year <span class="filter-summary muted" id="filter-year-label">All</span></summary>
           <div class="filter-options" id="year-options"></div>
@@ -81,11 +89,16 @@
 
     <footer class="footer"><span>Data from the Eagle Mountain CivicClerk portal</span></footer>
 
-    <script src="site.js?v=20260713g"></script>
+    <script src="site.js?v=20260713k"></script>
     <script>
       const PAGE_SIZE = 25;
       let page = 1;
-      const state = { q: "", tag: "", member: "", outcome: "", year: "" };
+      let jumped = false, scrolled = false; // deep-link (?id=) is a one-shot
+      // `id` isn't a filter — it's a deep link to one motion (from a homepage
+      // decision card, or a shared URL). It opens that row and pages to it.
+      const state = { q: "", tag: "", member: "", outcome: "", year: "", sig: "", id: "" };
+      const RADIO_KEYS = ["tag", "member", "outcome", "year", "sig"];
+      const FILTER_KEYS = ["q", ...RADIO_KEYS];
       let dataRef = null;
 
       (async () => {
@@ -117,7 +130,7 @@
 
         // Hydrate from URL
         const params = CT.paramsFromUrl();
-        for (const k of ["q","tag","member","outcome","year"]) if (params[k]) state[k] = params[k];
+        for (const k of [...FILTER_KEYS, "id"]) if (params[k]) state[k] = params[k];
         document.getElementById("q").value = state.q;
         applyStateToControls();
 
@@ -126,7 +139,7 @@
           state.q = e.target.value.trim();
           page = 1; paint(); syncUrl();
         });
-        for (const name of ["tag","member","outcome","year"]) {
+        for (const name of RADIO_KEYS) {
           document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
             r.addEventListener("change", (e) => {
               if (e.target.checked) {
@@ -139,7 +152,7 @@
           });
         }
         document.getElementById("clear-all").addEventListener("click", () => {
-          for (const k of ["q","tag","member","outcome","year"]) state[k] = "";
+          for (const k of FILTER_KEYS) state[k] = "";
           document.getElementById("q").value = "";
           applyStateToControls();
           page = 1; paint(); syncUrl();
@@ -149,13 +162,15 @@
       })();
 
       function applyStateToControls() {
-        for (const name of ["tag","member","outcome","year"]) {
+        for (const name of RADIO_KEYS) {
           document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
             r.checked = (r.value === state[name]);
           });
         }
         updateFilterLabels();
       }
+
+      const SIG_LABEL = { notable: "Affects residents", routine: "Routine" };
 
       function updateFilterLabels() {
         const data = dataRef;
@@ -167,6 +182,7 @@
         document.getElementById("filter-member-label").textContent = memLbl;
         document.getElementById("filter-outcome-label").textContent = outLbl;
         document.getElementById("filter-year-label").textContent = yrLbl;
+        document.getElementById("filter-sig-label").textContent = SIG_LABEL[state.sig] || "All";
       }
 
       function syncUrl() {
@@ -174,7 +190,7 @@
         // Preserve the active body so filtering doesn't reset the switcher.
         const body = CT.currentBody();
         if (body && body !== "city-council") p.set("body", body);
-        for (const k of ["q","tag","member","outcome","year"]) if (state[k]) p.set(k, state[k]);
+        for (const k of FILTER_KEYS) if (state[k]) p.set(k, state[k]);
         history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p.toString() : ""));
       }
 
@@ -187,6 +203,7 @@
         if (state.tag) chips.push({ k: "tag", label: `Topic: ${CT.tagLabel(data, state.tag)}` });
         if (state.member) chips.push({ k: "member", label: `Member: ${CT.memberName(data, state.member)}` });
         if (state.outcome) chips.push({ k: "outcome", label: `Outcome: ${cap(state.outcome)}` });
+        if (state.sig) chips.push({ k: "sig", label: `Impact: ${SIG_LABEL[state.sig] || state.sig}` });
         if (state.year) chips.push({ k: "year", label: `Year: ${state.year}` });
         return chips;
       }
@@ -199,9 +216,15 @@
           if (state.year && (m.date||"").slice(0,4) !== state.year) return false;
           if (state.tag && !(m.tags||[]).includes(state.tag)) return false;
           if (state.outcome && CT.classifyOutcome(m.outcome) !== state.outcome) return false;
+          // An un-summarized motion has no significance yet, so it matches neither
+          // filter — it is unclassified, not "routine".
+          if (state.sig && m.significance !== state.sig) return false;
           if (state.member && !(m.votes||[]).some(v => v.member_id === state.member)) return false;
           if (q) {
-            const hay = ((m.item_title||"") + " " + (m.motion||"") + " " + (m.agenda_ref||"") + " " + (m.business_type||"")).toLowerCase();
+            // Search what the reader can actually see, which now leads with the
+            // plain-English headline/summary — not just the legalese underneath.
+            const hay = [m.headline, m.summary, m.impact, m.item_title, m.motion, m.agenda_ref, m.business_type]
+              .filter(Boolean).join(" ").toLowerCase();
             if (!hay.includes(q)) return false;
           }
           return true;
@@ -225,11 +248,28 @@
         document.getElementById("result-count").textContent =
           `${filt.length.toLocaleString()} motion${filt.length === 1 ? "" : "s"}`;
 
+        // A deep-linked motion can sit on any page of the result set. Jump to its
+        // page on the first paint, then hand control back to normal paging.
+        if (state.id && !jumped) {
+          jumped = true;
+          const idx = filt.findIndex(m => String(m.id) === state.id);
+          if (idx >= 0) page = Math.floor(idx / PAGE_SIZE) + 1;
+        }
+
         const start = (page - 1) * PAGE_SIZE;
         const slice = filt.slice(start, start + PAGE_SIZE);
         const rows = document.getElementById("rows");
         rows.innerHTML = slice.map(m => renderMotionRow(data, m, state.member)).join("") ||
           `<div class="empty-block"><p><strong>No motions match.</strong></p><p class="muted">Try clearing a filter, or <a href="motions.html">start over</a>.</p></div>`;
+
+        if (state.id && !scrolled) {
+          const el = document.getElementById("m" + state.id);
+          if (el) {
+            scrolled = true;
+            el.classList.add("is-linked");
+            el.scrollIntoView({ block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+          }
+        }
 
         const pages = Math.max(1, Math.ceil(filt.length / PAGE_SIZE));
         const pager = document.getElementById("pager");
@@ -271,24 +311,25 @@
 
       function renderMotionRow(data, m, highlightMember) {
         const sp = voteSplit(m);
-        const voteList = (m.votes || []).map(v => {
-          const name = CT.memberName(data, v.member_id);
-          const cls = highlightMember && v.member_id === highlightMember ? ' style="outline:2px solid var(--accent)"' : '';
-          return `<span class="vote-chip"${cls}>${CT.escapeHtml(name)}<span class="v ${(v.vote||'').toLowerCase()}">${CT.escapeHtml(v.vote)}</span></span>`;
-        }).join(" ");
         const tags = (m.tags||[]).map(t =>
           `<a class="tag" href="motions.html?tag=${encodeURIComponent(t)}">${CT.escapeHtml(CT.tagLabel(data, t))}</a>`
         ).join("");
+        // Lead with the plain-English headline; the legalese agenda title moves
+        // into the expanded detail, where it belongs.
+        const open = String(m.id) === state.id;
+        const cls = CT.isRoutine(m) ? " is-routine" : CT.isNotable(m) ? " is-notable" : "";
         return `
-          <details class="motion-row">
+          <details class="motion-row${cls}" id="m${m.id}"${open ? " open" : ""}>
             <summary>
               <div class="motion-row-head">
                 <div class="motion-row-meta">
                   <span class="nowrap mono muted">${CT.fmtDate(m.date)}</span>
                   <a href="meetings.html?id=${m.meeting_id}" class="muted" style="font-size:12px">meeting</a>
                   ${m.agenda_ref ? `<span class="mono muted">${CT.escapeHtml(m.agenda_ref)}</span>` : ""}
+                  ${CT.significanceChip(m)}
                 </div>
-                <h3 class="motion-row-title">${CT.escapeHtml(CT.cleanTitle(m.item_title) || "(no title)")}</h3>
+                <h3 class="motion-row-title">${CT.escapeHtml(CT.motionTitle(m))}</h3>
+                ${m.summary ? `<p class="motion-row-sub">${CT.escapeHtml(m.summary)}</p>` : ""}
                 <div class="motion-row-foot">
                   ${CT.outcomePill(m.outcome)}
                   ${renderVoteBar(sp)}
@@ -296,10 +337,7 @@
                 </div>
               </div>
             </summary>
-            <div class="motion-detail">
-              <p class="m-text">${CT.escapeHtml(m.motion || "(no motion text)")}</p>
-              <div>${voteList || '<span class="muted">No roll call recorded</span>'}</div>
-            </div>
+            ${CT.motionDetail(data, m, { highlightMember })}
           </details>
         `;
       }

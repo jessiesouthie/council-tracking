@@ -43,8 +43,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine items approved in a single vote",
-      "summary": "The council approved its consent agenda of routine items in one vote, with changes to one item that had been discussed earlier in the work session."
+      "headline": "Routine consent items approved in one vote",
+      "summary": "The council approved its consent agenda, a batch of routine items passed together, with a change to one item worked out earlier in the work session.",
+      "impact": "This is routine housekeeping — nothing here changes for residents. The minutes do not list which items were in the batch."
     },
     {
       "id": 1074,
@@ -81,8 +82,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Draft 2026-27 budget accepted, hearings set",
-      "summary": "The city accepted its tentative budget for fiscal year 2026-2027 and set public hearings for June 16 and August 18, 2026, before final adoption."
+      "headline": "Draft 2026-27 budget accepted, hearings scheduled",
+      "summary": "The council accepted the city's tentative budget for fiscal year 2026-2027 and set public hearings for June 16 and August 18, 2026.",
+      "impact": "Nothing changes day to day — this is the routine first step in the budget process. If you want a say in next year's spending, those two hearing dates are your chance."
     },
     {
       "id": 1075,
@@ -119,8 +121,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Tax impact figures for the proposed increase accepted",
-      "summary": "The city acknowledged the budget officer's statement on the proposed property tax increase and the schedule showing how it would affect property owners."
+      "headline": "City logs the figures behind a possible tax increase",
+      "summary": "The council formally acknowledged the budget officer's statement of a proposed property tax increase and the schedule showing what it would mean for property owners.",
+      "impact": "This is a required paperwork step in the tax increase process — nothing changes for you yet. The decision on whether to actually raise the rate comes later."
     },
     {
       "id": 1076,
@@ -147,8 +150,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Notice of a proposed property tax increase",
-      "summary": "The council took up a formal notice that it intends to raise property tax revenue and hold a required public hearing before any increase takes effect."
+      "headline": "Notice given of a proposed property tax increase",
+      "summary": "The council took up a resolution declaring the city's intent to raise property tax revenue and setting the public hearing required before any increase can happen.",
+      "impact": "Nothing changes yet — this is the notice step. Before the city can raise property taxes, it must hold a public hearing where residents can speak for or against it."
     },
     {
       "id": 1077,
@@ -186,8 +190,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Parks master plan adopted, Sweetwater Park added",
-      "summary": "The city adopted its long-range plan for parks, trails and open space, and added the cost of Sweetwater Park to the projects funded by impact fees."
+      "headline": "Parks plan adopted, Sweetwater Park cost added",
+      "summary": "The council adopted the parks, trails, and open space master plan and added the cost of Sweetwater Park to the list of projects impact fees are meant to fund.",
+      "impact": "This is the roadmap for future parks and trails and the project list that fees on new homes help pay for. Nothing gets built yet and nothing changes on your bill today."
     },
     {
       "id": 1078,
@@ -225,8 +230,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Official zoning assigned to Brandon Park area",
-      "summary": "The city updated its zoning and future land use maps to give the Brandon Park area formal zoning designations, clarifying what can be built there."
+      "headline": "Zoning map updated for the Brandon Park area",
+      "summary": "The city formally recorded existing zoning designations for the Brandon Park area on its official zoning map and future land use map.",
+      "impact": "This is a bookkeeping fix that puts zoning already in use onto the official maps. If you own property in Brandon Park, your designation is now clearly on the record."
     },
     {
       "id": 1079,
@@ -263,8 +269,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Updated design standards for shops and apartments",
-      "summary": "The city adopted new design standards governing how commercial buildings and apartments must look when they are built in Eagle Mountain."
+      "headline": "Design standards updated for shops and apartments",
+      "summary": "The council adopted changes to the city's design standards for commercial and apartment buildings, approving them as presented without detailing them in the motion.",
+      "impact": "These rules apply to future commercial and apartment projects, so builders deal with them directly, not current homeowners. The minutes do not say what specifically changed."
     },
     {
       "id": 1080,
@@ -302,8 +309,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "New rules for parking, landscaping and screening",
-      "summary": "The city updated its parking and landscaping rules, requiring screening plants next to homes to be 3½ feet tall when planted and to stay green year-round."
+      "headline": "New screening rules between homes and parking lots",
+      "summary": "The city rewrote its parking and landscaping rules, requiring plants that screen homes to be 3.5 feet tall when planted and to stay green year-round.",
+      "impact": "You would notice this on new commercial and apartment projects next to houses: thicker, evergreen screening from day one instead of thin or bare hedges. Developers carry the cost."
     },
     {
       "id": 1081,
@@ -340,8 +348,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Development deal set for Spring Run Plaza",
-      "summary": "The city approved the master agreement governing Spring Run Plaza, capping required landscaping strips at 10 feet and allowing engineered retaining walls over 6 feet without tiering."
+      "headline": "Spring Run Plaza deal: less landscaping, taller walls",
+      "summary": "The council approved the development agreement for Spring Run Plaza, capping required landscaping at 10 feet wide and allowing engineered retaining walls over 6 feet without stepping them back.",
+      "impact": "This sets the rules the developer must follow. Neighbors may see a narrower planted buffer and taller, single-face retaining walls, though stacked boulder or rock walls are not allowed."
     },
     {
       "id": 1082,
@@ -378,8 +387,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "First plans approved for 27-acre Spring Run Plaza",
-      "summary": "The city signed off on early plans for a 27.35-acre development at Spring Run Parkway and Cory B. Wride Memorial Highway, starting with six lots on 8.15 acres."
+      "headline": "Spring Run Plaza: 6 lots approved on 27-acre site",
+      "summary": "The city signed off on the first layout for Spring Run Plaza, a 27.35-acre commercial site at Spring Run Parkway and Cory B. Wride Memorial Highway.",
+      "impact": "If you live or drive near that corner, expect work to start on the first 8.15 acres. Two lots stay empty for now, and the city has to revisit the plans before those are built."
     }
   ],
   "ordinances": [

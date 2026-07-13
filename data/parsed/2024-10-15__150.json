@@ -21,7 +21,10 @@
       "tags": [
         "consent"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Routine consent items passed in one vote",
+      "summary": "The council approved its consent agenda, a batch of routine items handled together in a single vote; the record here does not list them.",
+      "impact": "Routine housekeeping — nothing changes for residents."
     },
     {
       "id": 782,
@@ -57,7 +60,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "City budget amended to $156 million",
+      "summary": "The council amended this year's city budget for the third time, setting the total at $155,990,118.",
+      "impact": "This is the city's routine mid-year rebalancing of its spending plan — it does not by itself change your tax rate or utility bills. It matters mainly for tracking where the city's money goes."
     },
     {
       "id": 783,
@@ -94,7 +100,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Delay new easement rules until November",
+      "summary": "The council delayed a decision on new easement rules until November 6, asking the city attorney to define \"conservation easement\" and change who approves each kind.",
+      "impact": "Nothing changes now. Easements mainly matter to developers and property owners setting land aside; under the proposed changes, the Planning Commission would approve conservation easements and the council would approve golf-course ones."
     },
     {
       "id": 784,
@@ -128,7 +137,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Update the city's fee schedule",
+      "summary": "The council approved changes to the city's consolidated fee schedule; the motion does not say which fees changed.",
+      "impact": "The record doesn't say which fees moved or by how much, so we can't tell you whether anything you pay goes up. Worth checking the city's fee schedule if you're pulling a permit or paying for a city service."
     },
     {
       "id": 785,
@@ -162,7 +174,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Set up a city fund for affordable housing",
+      "summary": "The city created a separate Affordable Housing Fund to hold and track money set aside for affordable housing.",
+      "impact": "This is a bookkeeping step — no money is committed and nothing changes for you now. It gives the city a dedicated account to use if affordable-housing dollars come in later."
     },
     {
       "id": 786,
@@ -198,7 +213,10 @@
           "member_id": "rich-wood",
           "vote": "No"
         }
-      ]
+      ],
+      "headline": "New historic zoning rules added to city code",
+      "summary": "The city created a historic-zone category in its zoning code, dropping one subsection before adopting it.",
+      "impact": "Nothing changes for most residents today — this only sets up the rules. It would matter to you only if a property you own or live near is later designated historic."
     },
     {
       "id": 787,
@@ -234,7 +252,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Study housing data and plan new west-side roads",
+      "summary": "The council added housing-data collection and planning for new south- and west-side road corridors, including one west of Mid Valley, to its legislative priorities list.",
+      "impact": "Nothing changes yet — this only puts the items on the city's list to research and take to state lawmakers. If corridors near Mid Valley or the IHC property are eventually built, west-side drivers are who it would affect."
     }
   ],
   "ordinances": [

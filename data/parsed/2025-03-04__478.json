@@ -42,7 +42,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Routine items approved; two pulled for debate",
+      "summary": "The council approved its consent agenda in a single vote, but pulled the downtown plan and inland port resolutions out to be discussed separately later that night.",
+      "impact": "This is procedural housekeeping — nothing changes for residents. It only meant the downtown plan and inland port items each got their own discussion instead of passing without one."
     },
     {
       "id": 849,
@@ -57,7 +60,10 @@
       "tags": [
         "development"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Development agreement with Enyo",
+      "summary": "The council took up an ordinance approving a development agreement with Enyo, with the terms set out in the meeting packet rather than in the motion itself.",
+      "impact": "The motion gives no details, so there is nothing here that tells you what Enyo would build, where, or when. The specifics live in the agenda packet."
     },
     {
       "id": 850,
@@ -91,7 +97,10 @@
           "member_id": "rich-wood",
           "vote": "No"
         }
-      ]
+      ],
+      "headline": "Downtown master plan adopted",
+      "summary": "The council adopted the Downtown Master Plan, the city's guiding document for how Eagle Mountain's downtown area should develop.",
+      "impact": "You won't see anything change on the ground yet. The plan is the blueprint the city will measure future downtown projects against, so it shapes what gets built there over time."
     },
     {
       "id": 851,
@@ -125,7 +134,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Inland port proposal put on hold",
+      "summary": "The council set aside a resolution supporting a Utah Inland Port Authority project area in Eagle Mountain, holding it for further discussion at a later meeting.",
+      "impact": "Nothing is settled — no port area is created for now. If you have a view on an inland port in Eagle Mountain, the item is still open and will come back to the council."
     }
   ],
   "ordinances": [

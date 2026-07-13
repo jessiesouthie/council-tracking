@@ -44,7 +44,8 @@
         }
       ],
       "headline": "Consent agenda approved, one item held back",
-      "summary": "The council approved the routine consent agenda, but set aside item 10.A. for a later decision."
+      "summary": "The council approved its consent agenda of routine items in a single vote, pulling item 10.A. out and delaying it.",
+      "impact": "This is routine housekeeping — nothing changes for residents. The item that was pulled will come back to the council another night."
     },
     {
       "id": 1069,
@@ -60,8 +61,9 @@
         "development"
       ],
       "votes": [],
-      "headline": "Move to delay city land decision withdrawn",
-      "summary": "A proposal to delay the decision on parcel #46:536:0430 and have the applicant seek a better solution with neighbors and city staff was withdrawn."
+      "headline": "Motion on the same land request withdrawn",
+      "summary": "A move to delay the same city-owned parcel decision, and to have the applicant work with neighbors and city staff on another option, was withdrawn before any vote.",
+      "impact": "Nothing was decided here — the proposal was pulled back the same night, so nothing changes for residents."
     },
     {
       "id": 1070,
@@ -96,8 +98,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Sale of city land parcel rejected",
-      "summary": "The council turned down a proposal to dispose of part of a city-owned parcel (#46:536:0430), land the city classifies as significant real property."
+      "headline": "City rejects sale of a piece of city-owned land",
+      "summary": "The council turned down a proposal to dispose of part of a city-owned parcel in Utah County that the city had flagged as significant property.",
+      "impact": "The land stays in the city's hands. This matters to whoever wanted the parcel and to the neighbors around it; for the rest of the city, nothing changes."
     },
     {
       "id": 1071,
@@ -135,8 +138,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Screening rules for apartment buildings delayed",
-      "summary": "The council delayed new rules on screening heat pumps and equipment at apartment buildings, asking for revisions to spacing and airflow standards before the rules return."
+      "headline": "Delay on screening rules for apartment buildings",
+      "summary": "The council delayed a decision on how apartment buildings must screen equipment like heat pumps, sending it back to be reworked on screening standards and spacing for airflow.",
+      "impact": "Nothing changes for you now. This one is aimed at apartment developers, and the rewritten version comes back to the council later."
     },
     {
       "id": 1072,
@@ -173,8 +177,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "New rules for weathering-steel fences",
-      "summary": "The city tightened fence rules, requiring weathering steel be at least 1/8 inch thick, banning corrugated panels, and dropping an annual sealing requirement."
+      "headline": "Metal fence rules: thicker steel, no corrugated panels",
+      "summary": "The city tightened its fence rules, requiring weathering steel at least 1/8 inch thick, banning corrugated panels, and dropping the yearly sealing requirement.",
+      "impact": "If you put up a metal fence, the steel must be at least 1/8 inch thick, corrugated panels are out, and a drip edge is needed where panels sit near concrete. The city checks this when you pull the permit."
     }
   ],
   "ordinances": [

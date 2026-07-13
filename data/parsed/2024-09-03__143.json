@@ -42,7 +42,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Appoint Angeline Washburn to the Youth Council",
+      "summary": "The council appointed Angeline Washburn as a Youth Council Advisory for a one-year term running through June 2025.",
+      "impact": "Nothing changes for residents. This is a volunteer appointment to the city's youth council."
     },
     {
       "id": 749,
@@ -78,7 +81,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Appoint Nathan Washburn to the Youth Council",
+      "summary": "The council appointed Nathan Washburn as a Youth Council Advisory for a one-year term running through June 2025.",
+      "impact": "Nothing changes for residents. This is a volunteer appointment to the city's youth council."
     },
     {
       "id": 750,
@@ -114,7 +120,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Approve the routine consent items in one vote",
+      "summary": "The council approved its consent agenda, pulling one item out for separate discussion and changing another item's effective date to the date of closing.",
+      "impact": "Routine housekeeping — this is the batch of items council members agreed needed no debate. Nothing here changes for residents."
     },
     {
       "id": 751,
@@ -150,7 +159,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Delay the Eagle Square commercial plans",
+      "summary": "The council delayed a decision on the preliminary plat — the proposed lot layout — for the Eagle Square commercial development.",
+      "impact": "Nothing is approved or blocked yet; the project returns on a later agenda. No change for residents in the meantime."
     },
     {
       "id": 752,
@@ -186,7 +198,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Amend this year's city budget",
+      "summary": "The council approved the first amendment to the city's 2024-2025 annual budget; the motion itself names no dollar figures.",
+      "impact": "This is a routine mid-year adjustment. The motion does not say what money moved or how much, and nothing changes for residents day to day."
     },
     {
       "id": 753,
@@ -202,7 +217,10 @@
         "parks",
         "code"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Keep buildings and digging back from natural washes",
+      "summary": "The council took up a rule keeping buildings and earthwork back from natural washes: 75 feet from the flow line's center or 50 feet from the bank, whichever is greater.",
+      "impact": "If you own or build on a lot beside a natural wash, this would shrink the area you can build or excavate on, with the city engineer setting the exact line."
     },
     {
       "id": 754,
@@ -238,7 +256,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Rezone the Enyo battery site to agriculture",
+      "summary": "The council rezoned the land known as the Enyo Battery property out of the airpark zone and into the agriculture zone.",
+      "impact": "Nothing changes for residents today. It resets what can be built on that one property going forward."
     },
     {
       "id": 755,
@@ -276,7 +297,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Rewrite industrial zoning; limit windmills and storage",
+      "summary": "The council replaced the industrial zoning chapter and tightened farm-zone rules: equestrian centers now need special approval, windmills only as farm accessories, storage yards capped at six moving vehicles.",
+      "impact": "This affects landowners and businesses, not households. An equestrian center on agricultural land now needs special approval, and a commercial storage yard may keep at most six moving vehicles such as vans, box trucks, or trailers."
     },
     {
       "id": 756,
@@ -312,7 +336,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Delay new rules on mixing lot sizes",
+      "summary": "The council put off a decision on a proposed rule requiring a mixture of lot sizes in residential development.",
+      "impact": "No change for now. If the rule comes back and passes, it would mainly shape how builders lay out lots in new neighborhoods."
     },
     {
       "id": 757,
@@ -327,7 +354,10 @@
       "tags": [
         "code"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Rewrite the rules on fences, including chain link",
+      "summary": "The council considered rewriting the city's fence rules, covering privacy fences, general fencing standards, chain link fencing, and the definitions behind them.",
+      "impact": "If you plan to put up a fence, these rules decide what you can build. The motion does not spell out what changed, so check the current code with the city before you buy materials."
     },
     {
       "id": 758,
@@ -342,7 +372,10 @@
       "tags": [
         "zoning"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Update the land use map for the Berry Property",
+      "summary": "The council took up a change to the city's long-range land use map for the Berry Property; the record does not show how the vote ended.",
+      "impact": "This is the map-keeping half of the Berry Property rezoning — paperwork that keeps the city's long-range plan lined up with its zoning. Nothing changes day to day."
     },
     {
       "id": 759,
@@ -378,7 +411,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Rezone the Berry Property for foothill homes",
+      "summary": "The council rezoned the Berry Property from agriculture to foothill residential, opening land previously set aside for farming to housing.",
+      "impact": "If you live near this land, expect homes rather than farmland here in time. The vote does not approve any specific project, builder, or number of houses."
     },
     {
       "id": 760,
@@ -415,7 +451,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Redraw the long-term land use map for 27 properties",
+      "summary": "The council approved new long-range land-use labels for 27 properties, marking large stretches for parks and open space, business park and light industry, and commercial use.",
+      "impact": "Nothing changes on the ground now. This is the map the city consults when someone later proposes development there, so it signals where parks, homes, and industry may eventually go."
     },
     {
       "id": 761,
@@ -435,7 +474,10 @@
           "member_id": "donna-burnham",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Rezone 27 properties in the Eagle Mountain Properties area",
+      "summary": "The council took up a zoning change covering 27 properties in the Eagle Mountain Properties master plan area, most set to agriculture and several to commercial.",
+      "impact": "This touches the owners of those parcels, not the rest of the city. The record does not show how the vote ended, so nothing here is settled."
     }
   ],
   "ordinances": [

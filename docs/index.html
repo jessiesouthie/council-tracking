@@ -4,24 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Civic Roll Call — Eagle Mountain City Council</title>
-    <meta name="description" content="Your council, every vote, in plain English. See what the Eagle Mountain City Council decided, who voted how, and what it means for you." />
+    <meta name="description" content="Every Eagle Mountain City Council vote, clearly explained. Search decisions, see who voted how, and understand what changed." />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Civic Roll Call" />
     <meta property="og:title" content="Civic Roll Call — Eagle Mountain City Council" />
-    <meta property="og:description" content="Your council, every vote, in plain English. See what the Eagle Mountain City Council decided, who voted how, and what it means for you." />
+    <meta property="og:description" content="Every Eagle Mountain City Council vote, clearly explained. Search decisions, see who voted how, and understand what changed." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Civic Roll Call — Eagle Mountain City Council" />
-    <meta name="twitter:description" content="Your council, every vote, in plain English. See what the Eagle Mountain City Council decided, who voted how, and what it means for you." />
+    <meta name="twitter:description" content="Every Eagle Mountain City Council vote, clearly explained. Search decisions, see who voted how, and understand what changed." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260713g" />
+    <link rel="stylesheet" href="site.css?v=20260713k" />
   </head>
   <body class="home-paper">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -47,10 +47,10 @@
       <section class="hero">
         <p class="hero-eyebrow reveal" style="--i:0">Eagle Mountain · Public record</p>
         <h1 class="hero-title reveal" style="--i:1">
-          Your council, every vote, in <span class="mark">plain English</span>.
+          Every council vote, <span class="mark">clearly explained</span>.
         </h1>
         <p class="hero-sub reveal" style="--i:2">
-          No jargon. See what was decided, who voted how, and what it means for you.
+          Search decisions, see who voted how, and understand what changed.
         </p>
 
         <form class="hero-search reveal" style="--i:3" action="motions.html" method="get" role="search">
@@ -109,7 +109,7 @@
       <span>Data from the Eagle Mountain CivicClerk public portal · last refreshed <span id="generated-at">—</span></span>
     </footer>
 
-    <script src="site.js?v=20260713g"></script>
+    <script src="site.js?v=20260713k"></script>
     <script>
       (async () => {
         const data = await CT.loadData().catch((e) => {
@@ -281,14 +281,17 @@
       }
 
       function renderDecisions(data) {
-        // Newest first. Prefer motions we have a plain-English headline for — the
-        // whole point of these cards is that they read as English, and an
-        // un-summarized motion falls back to the legalese title.
+        // Newest first, then by what a resident would actually want on the homepage.
+        // Most council business is housekeeping, so leading with "the three most
+        // recent motions" tends to surface three board appointments. Prefer decisions
+        // flagged as reaching residents; fall back through summarized-but-routine to
+        // un-summarized, so these cards are never empty.
         const sorted = [...data.motions].sort((a, b) =>
           b.date.localeCompare(a.date) || b.id - a.id
         );
         const picked = [
-          ...sorted.filter(m => m.headline),
+          ...sorted.filter(m => CT.isNotable(m)),
+          ...sorted.filter(m => m.headline && !CT.isNotable(m)),
           ...sorted.filter(m => !m.headline),
         ].slice(0, 3);
 
@@ -315,7 +318,7 @@
         const sp = voteSplit(m);
         const outcome = outcomeLabel(m, sp);
         const topic = (m.tags || []).map(t => CT.tagLabel(data, t)).filter(Boolean)[0];
-        const title = m.headline || CT.cleanTitle(m.item_title) || "(no title)";
+        const title = CT.motionTitle(m);
 
         // Fall back to the recorded motion text when the LLM pass hasn't reached this
         // motion yet — clamped to two lines, and marked so it reads as secondary.
@@ -329,16 +332,23 @@
           .map(x => CT.escapeHtml(x))
           .join(`<span class="dot">·</span>`);
 
+        // Land on the decision itself — opened, with its impact and roll call —
+        // not at the top of a meeting page the reader then has to search.
+        const href = `meetings.html?id=${encodeURIComponent(m.meeting_id)}#m${m.id}`;
+
         return `
-          <a class="decision-card is-${outcome.cls} reveal" style="--i:${7 + i}"
-             href="meetings.html?id=${encodeURIComponent(m.meeting_id)}">
+          <a class="decision-card is-${outcome.cls} reveal" style="--i:${7 + i}" href="${href}">
             <div class="decision-top">
               <span class="decision-meta">${meta}</span>
               <span class="pill ${outcome.cls}">${CT.escapeHtml(outcome.text)}</span>
             </div>
             <h3 class="decision-title">${CT.escapeHtml(title)}</h3>
             ${body}
+            ${m.impact && CT.isNotable(m)
+                ? `<p class="decision-impact"><span class="decision-impact-label">What it means for you</span>${CT.escapeHtml(m.impact)}</p>`
+                : ""}
             ${rollcall(data, m)}
+            <span class="decision-more">Read the full decision <span aria-hidden="true">→</span></span>
           </a>`;
       }
 

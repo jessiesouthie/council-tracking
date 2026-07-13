@@ -42,7 +42,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Appoint Susan Allen to the Senior Advisory Board",
+      "summary": "The council appointed Susan Allen to the Senior Advisory Board, with her term running through December 31, 2025.",
+      "impact": "This is a routine appointment to a volunteer advisory board. Nothing changes for residents."
     },
     {
       "id": 934,
@@ -78,7 +81,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Approve the consent agenda, pull two items out",
+      "summary": "The council approved its consent agenda in a single vote, pulling the Transportation Master Plan and a rezone fee reduction request out for separate discussion.",
+      "impact": "This is routine housekeeping. The two pulled items were taken up and voted on separately later in the same meeting."
     },
     {
       "id": 935,
@@ -114,7 +120,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Adopt the city's Transportation Master Plan",
+      "summary": "The council adopted a Transportation Master Plan, the long-range blueprint guiding how Eagle Mountain's road network is built out.",
+      "impact": "Nothing changes on the ground right now. The plan sets the roadmap the city will follow when it decides which streets to build or widen in the years ahead."
     },
     {
       "id": 936,
@@ -150,7 +159,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Deny a discount on a rezone application fee",
+      "summary": "The council refused a request to cut one applicant's rezone application fee from $1,350 to $760.",
+      "impact": "The applicant, Steve McCleery, pays the full $1,350. For everyone else, the standard rezone fee stays exactly as it is."
     },
     {
       "id": 937,
@@ -186,7 +198,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Update the rules for subdivision plats",
+      "summary": "The council amended the city code chapters covering preliminary and final subdivision plats, the steps a developer follows to split land into lots.",
+      "impact": "This is process detail for developers and city staff working through subdivision approvals. Nothing changes day to day for residents."
     },
     {
       "id": 938,
@@ -222,7 +237,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Update site plan rules, minus one proposed change",
+      "summary": "The council updated the city's site plan rules but dropped a proposed provision covering swaps of a building's exterior finish from one approved material to another.",
+      "impact": "This is process detail for builders and developers going through site plan review, and the rules on changing exterior materials stay as they were. Nothing changes for residents."
     },
     {
       "id": 939,
@@ -258,7 +276,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Adopt the Youth Council rewrite with the mayor voting",
+      "summary": "The council re-adopted the Youth Council code rewrite, this time with the mayor taking part, moving youth member appointments from the city manager to the Youth Council's Committee of Advisors.",
+      "impact": "This is the corrected version of the same decision made earlier in the meeting. It affects Youth Council members and their advisors, not other residents."
     },
     {
       "id": 940,
@@ -294,7 +315,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Sell 0.156 acres of city land to nearby owners",
+      "summary": "The city approved selling a 0.156-acre piece of city-owned property to the adjoining landowners, with the whole sale to be finalized by February 19, 2026.",
+      "impact": "This affects only the property owners whose lots border that parcel. They must apply together, buy their piece, and have fences on the correct lot line within six months. No one else is touched."
     },
     {
       "id": 941,
@@ -328,7 +352,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Put a 0.1% sales tax for parks and arts on the ballot",
+      "summary": "The council asked voters to decide on November 4, 2025 whether to add a 0.1% sales tax funding recreation, cultural, botanical, and zoo facilities and organizations.",
+      "impact": "You get the final say at the ballot box in November. If it passes, you would pay an extra 10 cents on every $100 spent in the city, and that money could only go to recreation and cultural facilities."
     },
     {
       "id": 942,
@@ -362,7 +389,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Push for archery shooting at the Rodeo Grounds",
+      "summary": "The council added allowing archery shooting at the Rodeo Grounds to the city's legislative priorities list.",
+      "impact": "Nothing changes at the Rodeo Grounds for now. Being on the priorities list only means the city intends to pursue it, not that archery is allowed there yet."
     },
     {
       "id": 943,
@@ -398,7 +428,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Redo the Youth Council vote to include the mayor",
+      "summary": "The council reopened its Youth Council code rewrite after the city attorney said the mayor had not been included in the vote as city code requires.",
+      "impact": "This is a paperwork fix to a vote taken minutes earlier in the same meeting. Nothing changes for residents."
     },
     {
       "id": 944,
@@ -438,7 +471,10 @@
           "member_id": "tom-westmoreland",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Rewrite the rules for the city's Youth Council",
+      "summary": "The council rewrote the Youth Council chapter of city code, shifting the power to appoint youth members from the city manager to the Youth Council's Committee of Advisors.",
+      "impact": "This touches only the teens who serve on the Youth Council and the adults who advise them. Nothing changes for other residents."
     },
     {
       "id": 945,
@@ -472,7 +508,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Ask the state to open mortgage help to veterans",
+      "summary": "The council added expanding the mortgage assistance program to cover veterans and active-duty military public servants to the city's legislative priority list.",
+      "impact": "Nothing changes yet — the priority list is a set of asks the city carries to state lawmakers. Veterans and military families would only see help if that request is acted on."
     }
   ],
   "ordinances": [

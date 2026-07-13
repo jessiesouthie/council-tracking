@@ -27,8 +27,10 @@ Schema of each docs/data*.json:
     "motions": [
       {id,meeting_id,date,page,agenda_ref,business_type,item_title,
        motion,outcome,tags:[tag_id],votes:[{member_id,vote}],
-       headline,summary,           # plain-English, from ingest.summarize_motions;
-                                   # absent for motions not summarized yet
+       headline,summary,impact,    # plain-English, from ingest.summarize_motions;
+       significance,               # "notable"|"routine" — drives how the site ranks
+                                   # and de-emphasizes items. All absent for motions
+                                   # not summarized yet.
        raw_voters:[{name,vote}]    # only names that failed to resolve
       }
     ],
@@ -244,15 +246,14 @@ def build_one(body: dict, only: str | None = None) -> int:
                 "date": mdate,
                 **norm,
             }
-            # Plain-English headline/summary, if `ingest.summarize_motions` has
-            # cached one for this motion. Keyed by content hash, so the lookup
+            # Plain-English headline/summary/impact, if `ingest.summarize_motions`
+            # has cached them for this motion. Keyed by content hash, so the lookup
             # survives the motion-id renumbering a back-filled PDF would cause.
             plain = motion_plain.get(summarize_motions.motion_key(entry))
             if plain:
-                if plain.get("headline"):
-                    entry["headline"] = plain["headline"]
-                if plain.get("summary"):
-                    entry["summary"] = plain["summary"]
+                for field in ("headline", "summary", "impact", "significance"):
+                    if plain.get(field):
+                        entry[field] = plain[field]
             if unresolved:
                 entry["raw_voters"] = unresolved
                 for u in unresolved:

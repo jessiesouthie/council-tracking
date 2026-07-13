@@ -42,7 +42,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Routine consent items approved in one vote",
+      "summary": "The council approved its consent agenda, dropping one item from the agenda entirely and pulling three others out for separate discussion.",
+      "impact": "This is procedural — a single vote covering routine items. Nothing here changes for residents."
     },
     {
       "id": 763,
@@ -79,7 +82,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Eagle Square shopping center layout approved",
+      "summary": "The city approved the preliminary layout for the Eagle Square commercial development, requiring a traffic study to determine where its Pony Express Parkway entrance goes.",
+      "impact": "A commercial development moves ahead off Pony Express Parkway. The condition requires the south entrance to line up with the intersection across the road, based on the traffic study."
     },
     {
       "id": 764,
@@ -92,7 +98,10 @@
       "motion": "Councilmember Wood moved to approve a Resolution of Eagle Mountain City, Utah, Approving an Agreement for Six Wayfinding Signs with Impact Signs. Councilmember Wright seconded the motion.",
       "outcome": "",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "Six new wayfinding signs",
+      "summary": "The council took up an agreement with Impact Signs to supply six wayfinding signs for the city.",
+      "impact": "If it goes ahead, six signs directing people around the city get installed. The motion does not say where they go or what they cost."
     },
     {
       "id": 765,
@@ -126,7 +135,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Affordable housing plan put on hold",
+      "summary": "The council delayed adopting the city's affordable housing plan, sending it back with changes to be brought to a future meeting.",
+      "impact": "No affordable housing policy takes effect yet. If you have been following this plan, it returns to the council after revisions."
     },
     {
       "id": 766,
@@ -163,7 +175,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Long-range map redrawn for the same 17 parcels",
+      "summary": "The city updated its long-range land use map for the same 17 properties: community commercial on twelve, parks and open space on four, foothill residential on one.",
+      "impact": "The land use map is the city's long-term plan for what goes where. This keeps it consistent with the zoning change, and you will see nothing different on the ground today."
     },
     {
       "id": 767,
@@ -199,7 +214,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "17 parcels rezoned near The Ranches",
+      "summary": "The city rezoned 17 properties in The Ranches and Eagle Mountain Properties areas: twelve for neighborhood commercial, two agricultural, two open space, one foothill residential.",
+      "impact": "This clears the way for shops and businesses on most of these parcels instead of homes, and sets two areas aside as open space. Nothing is built yet — zoning only sets what is allowed."
     },
     {
       "id": 768,
@@ -235,7 +253,10 @@
           "member_id": "rich-wood",
           "vote": "No"
         }
-      ]
+      ],
+      "headline": "Mid-year change to this year's city budget",
+      "summary": "The city approved a second round of changes to its 2024-2025 budget; the motion itself does not say what was moved or added.",
+      "impact": "A budget amendment shifts money between city accounts partway through the year. The motion gives no detail on the specific spending, so there is nothing here for you to act on."
     },
     {
       "id": 769,
@@ -251,7 +272,10 @@
         "zoning",
         "parks"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Rose Ranch: farmland to housing zones",
+      "summary": "The council took up a plan to rezone the Rose Ranch land from farmland to the R2 and R3 housing zones, with conditions attached.",
+      "impact": "If it goes ahead, this land shifts from farmland to housing. The conditions require raised crosswalks on the Pony Express Trail, a historical marker, and the trail finished as usable space."
     },
     {
       "id": 770,
@@ -288,7 +312,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Street width rules held for a second look",
+      "summary": "The council delayed changes to the city's right-of-way diagrams, asking staff to return with recommendations on curb, gutter and a sidewalk for rural 50-foot roads.",
+      "impact": "Nothing changes yet. These diagrams set how wide new streets are and whether they get sidewalks, so this mainly affects future subdivisions, not streets you already drive."
     },
     {
       "id": 771,
@@ -324,7 +351,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Council rejects changes to residential zone rules",
+      "summary": "The council turned down proposed changes to the definitions and residential zoning chapters of the city code.",
+      "impact": "Nothing changes — the rules for residential zones stay exactly as they were."
     },
     {
       "id": 772,
@@ -360,7 +390,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Noise and nuisance rules sent back to staff",
+      "summary": "The council delayed changes to the city's nuisance and noise rules, asking staff to revise them and bring them back at the next meeting.",
+      "impact": "The current noise and nuisance rules stay in force for now. Any change to how the city handles complaints has to wait for a revised version."
     },
     {
       "id": 773,
@@ -396,7 +429,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Update the city's public art rules",
+      "summary": "The city changed the public art chapter of its municipal code; the motion does not say what the changes were.",
+      "impact": "Nothing changes day to day. These rules govern how the city itself handles public art, not anything a resident has to do."
     },
     {
       "id": 774,
@@ -432,7 +468,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Council cleans up its own priorities list",
+      "summary": "The council marked its review of conditional uses in the zoning code as finished and dropped a tabled item on lot sizes from its priorities list.",
+      "impact": "This is housekeeping about the council's own to-do list — nothing changes for residents."
     }
   ],
   "ordinances": [

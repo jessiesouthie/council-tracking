@@ -13,8 +13,16 @@ that council be notified…"). The site's job is to say what the council actuall
 decided, so each motion gets:
 
   headline — a short plain-language title      ("Widen Pony Express Parkway")
-  summary  — one sentence on what it means     ("The city approved $2.4M to add
-                                                lanes and ease rush-hour traffic…")
+  summary  — one sentence on what was decided  ("The city approved $2.4M to add
+                                                lanes on the main route out of town.")
+  impact   — what it means for residents       ("Expect construction delays on Pony
+                                                Express through 2027; after that the
+                                                morning backup at Ranches Parkway
+                                                should ease.")
+
+The `impact` field is the one residents actually came for, and it is also the easiest
+to fake. It must stay honest: plenty of motions are pure housekeeping, and for those
+the right answer is to say so plainly rather than to invent a consequence.
 
 Design notes, following the conventions already in this repo:
 
@@ -117,19 +125,61 @@ For EACH numbered motion below, produce:
                Bad:  "Ordinance 2026-14"  (means nothing to a resident)
                      "An Ordinance of Eagle Mountain City, Utah, amending…"  (legalese)
 
-  "summary"  — ONE sentence, at most 30 words, saying what the council actually did
-               and why it matters to a resident. Lead with the decision, not the
-               procedure. Include the concrete figure (dollars, acres, percent,
-               units) when the motion states one.
-               Good: "The city approved $2.4M to add lanes and ease rush-hour
-                      traffic on the main route into the valley."
+  "summary"  — ONE sentence, at most 30 words, saying what the council actually did.
+               Lead with the decision, not the procedure. Include the concrete figure
+               (dollars, acres, percent, units) when the motion states one.
+               Good: "The city approved $2.4M to add lanes on Pony Express Parkway,
+                      the main route out of the valley."
                Bad:  "The council voted to adopt the ordinance as presented."
+
+  "impact"   — ONE or TWO sentences, at most 45 words, on what this means for an
+               ordinary resident: what changes, who it touches, what they will see,
+               pay, or have to do, and when. Address the reader as "you" where it fits,
+               and be concrete about WHO is affected — the whole city, one
+               neighborhood, homeowners, developers, a single business.
+               Good: "Expect lane closures on Pony Express through 2027. Once it opens,
+                      the morning backup at Ranches Parkway should ease."
+               Good: "Nothing changes day to day — this is the routine paperwork the
+                      city files to keep the grant money flowing."
+               Bad:  "This decision may have various impacts on the community."  (says nothing)
+               Bad:  "Residents will benefit from improved services."  (invented)
+
+  "significance" — exactly one of "notable" or "routine". This is a routing decision,
+               not a compliment: the site uses it to push housekeeping into the
+               background so the decisions that actually reach a resident stand out.
+
+               "notable" — a resident's money, property, neighborhood, services, or
+                 rights are touched. Taxes and fees; utility rates; a budget that
+                 commits real dollars to a real thing; rezoning, annexation, or a
+                 development agreement; road and park projects; an ordinance that
+                 changes what you may do on your own property; large contracts;
+                 anything affecting police, fire, water, or sewer service.
+
+               "routine" — the machinery of governing. Approving minutes or an
+                 agenda; setting a public hearing date; reappointing someone to a
+                 board; ceremonial items and proclamations; tabling or continuing an
+                 item; renewing a routine contract; interfund bookkeeping that moves
+                 money between accounts without changing what the city does.
+
+               When genuinely torn, choose "routine". The cost of wrongly demoting one
+               decision is that a resident has to scroll; the cost of marking
+               everything "notable" is that the flag stops meaning anything at all.
+
+HONESTY ABOUT IMPACT — the most important rule on this page.
+Most motions are procedural: approving minutes, setting a public hearing date, renewing
+a routine contract, appointing someone to a board. A resident feels nothing. When that
+is the case, SAY SO plainly ("This is routine housekeeping — nothing changes for
+residents") instead of manufacturing a consequence. A truthful "this one doesn't affect
+you" is more useful than an invented effect, and inventing effects would destroy the
+credibility of the whole site. Never inflate a small item into a big one.
 
 RULES
 - Ground every word ONLY in the motion text below. Do NOT invent figures, names,
   addresses, dollar amounts, or effects that are not stated. If the motion is too
   thin to say anything concrete, write a summary that plainly says what little was
-  decided — never pad it with invented specifics.
+  decided — never pad it with invented specifics. This applies double to "impact":
+  if the motion does not support a claim about what residents will see or pay, do
+  not make one.
 - Describe the DECISION, not the parliamentary mechanics. Do not write "Councilmember
   X moved to…" or "seconded" or "the motion carried".
 - Do not state the vote count or the outcome — the page already shows those next to
@@ -140,11 +190,12 @@ RULES
 - Use plain words: "zoning change" not "rezone application"; "apartments" not
   "multi-family residential units"; "sewer plant" not "wastewater treatment facility".
 
-Output ONLY a JSON object mapping each motion's number (as a string) to an object
-with "headline" and "summary". No markdown, no code fence, no commentary.
+Output ONLY a JSON object mapping each motion's number (as a string) to an object with
+"headline", "summary", "impact", and "significance". No markdown, no code fence, no
+commentary.
 
 Example of the exact output shape:
-{"1": {"headline": "Widen Pony Express Parkway", "summary": "The city approved $2.4M to add lanes and ease rush-hour traffic on the main route into the valley."}}
+{"1": {"headline": "Widen Pony Express Parkway", "summary": "The city approved $2.4M to add lanes on Pony Express Parkway, the main route out of the valley.", "impact": "Expect lane closures through 2027. Once it opens, the morning backup at Ranches Parkway should ease.", "significance": "notable"}, "2": {"headline": "March minutes approved", "summary": "The council approved the minutes of its March 4 meeting.", "impact": "Nothing changes for residents — this is the record-keeping step that makes the last meeting official.", "significance": "routine"}}
 """
 
 
@@ -196,18 +247,43 @@ def clean(text: str, limit: int) -> str:
     return text[:limit].rstrip(" ,;:")
 
 
+SIGNIFICANCE = ("notable", "routine")
+
+
+def clean_significance(value: str) -> str:
+    """Anything the model didn't say exactly becomes "routine". The flag only earns
+    its keep if "notable" is a claim something had to satisfy — a typo or an
+    invented third tier defaulting to "notable" would quietly inflate the site."""
+    v = str(value or "").strip().lower()
+    return v if v in SIGNIFICANCE else "routine"
+
+
 def summarize_meeting(meeting_date: str, motions: list[dict]) -> dict[str, dict]:
-    """-> {motion_key: {"headline":…, "summary":…}} for the motions in one meeting."""
+    """-> {motion_key: {headline, summary, impact, significance}} for one meeting."""
     reply = call_claude(build_prompt(meeting_date, motions))
     out: dict[str, dict] = {}
     for i, m in enumerate(motions, 1):
         got = reply.get(str(i)) or {}
         headline = clean(got.get("headline"), 80)
         summary = clean(got.get("summary"), 320)
+        impact = clean(got.get("impact"), 400)
         if not headline and not summary:
             continue
-        out[motion_key(m)] = {"headline": headline, "summary": summary}
+        out[motion_key(m)] = {
+            "headline": headline,
+            "summary": summary,
+            "impact": impact,
+            "significance": clean_significance(got.get("significance")),
+        }
     return out
+
+
+def is_stale(entry: dict) -> bool:
+    """True if a cached entry predates a field the site now renders, so a plain
+    re-run tops it up. Without this, motions summarized before `impact` and
+    `significance` existed would keep their old entry until someone passed --force —
+    and --force would also overwrite hand-corrected text, which we don't want."""
+    return not entry.get("impact") or entry.get("significance") not in SIGNIFICANCE
 
 
 def run_body(body: dict, args: argparse.Namespace) -> int:
@@ -246,7 +322,15 @@ def run_body(body: dict, args: argparse.Namespace) -> int:
         motions = by_meeting.get(meeting["id"], [])
         if not motions:
             continue
-        pending = motions if args.force else [m for m in motions if motion_key(m) not in cache]
+        pending = (
+            motions
+            if args.force
+            else [
+                m
+                for m in motions
+                if motion_key(m) not in cache or is_stale(cache[motion_key(m)])
+            ]
+        )
         skipped += len(motions) - len(pending)
         if pending:
             todo.append((meeting, pending))

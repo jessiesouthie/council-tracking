@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260713g" />
+    <link rel="stylesheet" href="site.css?v=20260713k" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -45,7 +45,7 @@
 
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
 
-    <script src="site.js?v=20260713g"></script>
+    <script src="site.js?v=20260713k"></script>
     <script src="vendor/marked.min.js"></script>
     <script>
       (async () => {
@@ -109,9 +109,8 @@
             if (m.date.includes(filt)) return true;
             const ms = motionsByMeeting.get(m.id) || [];
             return ms.some(mo =>
-              (mo.item_title||"").toLowerCase().includes(filt) ||
-              (mo.business_type||"").toLowerCase().includes(filt) ||
-              (mo.motion||"").toLowerCase().includes(filt)
+              [mo.headline, mo.summary, mo.impact, mo.item_title, mo.business_type, mo.motion]
+                .filter(Boolean).join(" ").toLowerCase().includes(filt)
             );
           });
           rc.textContent = `${list.length} meeting${list.length===1?"":"s"}`;
@@ -135,8 +134,10 @@
         return {y,n,o};
       }
 
-      function shortenTitle(s, max=72) {
-        s = CT.cleanTitle(s || "");
+      // Prefer the plain-English headline on the meeting cards too, so the list a
+      // resident scans reads the same as the decision they open.
+      function shortenTitle(motion, max=72) {
+        const s = CT.motionTitle(motion);
         if (!s) return "(no title)";
         return s.length > max ? s.slice(0, max-1) + "…" : s;
       }
@@ -151,14 +152,16 @@
       }
 
       function renderMeetingCard(data, meeting, motions, query, txEntry) {
-        // If query matched a motion title, surface those first.
+        // If the query matched a motion, surface those first. Absent a query, the
+        // preview only has room for five of them, so spend that room on the
+        // decisions that reach residents rather than on board appointments.
         let ordered = motions;
         if (query) {
-          ordered = [...motions].sort((a,b) => {
-            const aHit = ((a.item_title||"") + " " + (a.motion||"")).toLowerCase().includes(query) ? 0 : 1;
-            const bHit = ((b.item_title||"") + " " + (b.motion||"")).toLowerCase().includes(query) ? 0 : 1;
-            return aHit - bHit;
-          });
+          const hit = (m) => [m.headline, m.summary, m.impact, m.item_title, m.motion]
+            .filter(Boolean).join(" ").toLowerCase().includes(query) ? 0 : 1;
+          ordered = [...motions].sort((a,b) => hit(a) - hit(b));
+        } else {
+          ordered = [...motions].sort((a,b) => (CT.isNotable(b) ? 1 : 0) - (CT.isNotable(a) ? 1 : 0));
         }
         const PREVIEW = 5;
         const preview = ordered.slice(0, PREVIEW);
@@ -172,9 +175,9 @@
           // (Tag chips removed from the preview list to keep rows scannable;
           // full tag set is on the meeting detail page.)
           return `
-            <li class="motion-line">
+            <li class="motion-line${CT.isRoutine(mo) ? " is-routine" : ""}">
               <span class="motion-line-outcome">${CT.outcomePill(mo.outcome)}</span>
-              <span class="motion-line-title">${highlight(shortenTitle(mo.item_title), query)}</span>
+              <span class="motion-line-title">${highlight(shortenTitle(mo), query)}</span>
               <span class="motion-line-meta">${splitTxt}</span>
             </li>`;
         }).join("");
@@ -247,6 +250,11 @@
         // summary's own Decisions section already accounts for the night. Keep
         // the empty-state line only when there's no summary to stand in for it.
         const showMotions = motions.length > 0 || !txEntry;
+        const motionsBlock = showMotions ? `
+          <section class="section sum-motions">
+            <h2>Motions</h2>
+            <div id="motions"></div>
+          </section>` : "";
         root.innerHTML = `
           <p style="margin-top:0"><a href="meetings.html">← All meetings</a></p>
           ${typeLine}
@@ -257,11 +265,7 @@
 
           ${summarySection}
 
-          ${showMotions ? `
-            <section class="section">
-              <h2>Motions</h2>
-              <div id="motions"></div>
-            </section>` : ""}
+          ${txEntry ? "" : motionsBlock}
 
           ${detail && detail.ordinances.length ? `
             <section class="section">
@@ -283,12 +287,22 @@
             </section>` : ""}
         `;
 
+        // With a recording, the motions belong directly under the head card that
+        // says what the meeting was and who was in the room — the decisions are
+        // what most readers came for, and they shouldn't sit below several
+        // thousand words of write-up. Mount the transcript section first so its
+        // slot exists to seat them in.
+        if (txEntry) {
+          renderTranscriptSection(txEntry, document.getElementById("transcript-slot"), data, motions);
+          const slot = document.getElementById("sum-motions-slot");
+          if (slot) slot.innerHTML = motionsBlock;
+        }
+
         if (showMotions) {
           document.getElementById("motions").innerHTML = motions.map(renderMotionCard.bind(null, data)).join("") ||
             `<p class="muted">No motions parsed for this meeting.</p>`;
+          openLinkedMotion();
         }
-
-        if (txEntry) renderTranscriptSection(txEntry, document.getElementById("transcript-slot"), data, motions);
       }
 
       // A meeting we only have a recording for (no parsed minutes yet).
@@ -431,7 +445,54 @@
               </li>`;
           }).join("") + `</ul>`;
         }
-        return html + (rest ? prose(rest) : "");
+        return html + (rest ? renderDecisionRest(rest) : "");
+      }
+
+      // The label the summary gives the no-roll-call list. It's a bold line inside
+      // the Decisions section normally, and the section's own heading once the
+      // vote table has been dropped in favour of the minutes.
+      const SETTLED = "Settled without a vote";
+
+      // Drop a standalone "**Label:**" line — used when that label has been
+      // promoted to the section heading and would otherwise print twice.
+      function stripLabel(md, label) {
+        const want = slug(label);
+        return md.split("\n").filter((ln) => {
+          const h = /^\*\*(.+?):?\*\*\s*$/.exec(ln.trim());
+          return !(h && slug(h[1]) === want);
+        }).join("\n").trim();
+      }
+
+      // What sits under the motion table: usually "**Settled without a vote:**"
+      // and a list of the things the council agreed on with no roll call ever
+      // taken, plus the odd footnote. Rendered as-is it ran straight into the
+      // bottom of the last decision card, its heading indistinguishable from the
+      // list under it. So each bold label line becomes a real subhead with its own
+      // block, and the list gets hollow markers — agreed, but never voted on.
+      //
+      // Standalone: the same content as its own section, with no table above it to
+      // be ruled off from.
+      const renderSettled = (md) => renderDecisionRest(md, true);
+      function renderDecisionRest(rest, standalone = false) {
+        const blocks = [];
+        let cur = { title: null, lines: [] };
+        for (const ln of rest.split("\n")) {
+          const h = /^\*\*(.+?):?\*\*\s*$/.exec(ln.trim());
+          if (!h) { cur.lines.push(ln); continue; }
+          blocks.push(cur);
+          cur = { title: h[1], lines: [] };
+        }
+        blocks.push(cur);
+
+        const html = blocks.map((b) => {
+          const body = b.lines.join("\n").trim();
+          if (!b.title && !body) return "";
+          return `<div class="dec-note">
+                    ${b.title ? `<h3 class="dec-note-h">${CT.escapeHtml(b.title)}</h3>` : ""}
+                    ${body ? prose(body) : ""}
+                  </div>`;
+        }).join("");
+        return html ? `<div class="dec-rest${standalone ? " is-standalone" : ""}">${html}</div>` : "";
       }
 
       // The meeting map: a timeline down the recording, so a reader can see the
@@ -503,12 +564,15 @@
         if (k === "notable-moments") return "moments";
         return "prose";
       }
-      const RENDERER = { decisions: renderDecisions, map: renderMap, contrast: renderContrast };
+      const RENDERER = {
+        decisions: renderDecisions, settled: renderSettled, map: renderMap, contrast: renderContrast,
+      };
 
       // Short rail labels. The section keeps its full heading; the tab only has to
       // be recognisable at a glance and survive a 360px screen.
       const TAB_LABEL = {
         decisions: "Decisions",
+        settled: "Settled without a vote",
         map: "Meeting map",
         discussed: "Discussion",
         contrast: "Minutes vs. recording",
@@ -520,7 +584,7 @@
       function sectionCount(kind, md) {
         if (kind === "decisions" || kind === "map") return (extractTable(md).rows || []).length;
         if (kind === "discussed") return (md.match(/^###\s/gm) || []).length;
-        if (kind === "moments")   return (md.match(/^\s*[-*]\s/gm) || []).length;
+        if (kind === "moments" || kind === "settled") return (md.match(/^\s*[-*]\s/gm) || []).length;
         if (kind === "contrast")  return (md.match(/\*Minutes would say:\*/gi) || []).length;
         return 0;
       }
@@ -603,24 +667,41 @@
         const { head, secs } = splitSections(md);
         const f = headFields(head);
         const lede = f["in-short"];
+        // When the minutes have been published, the motion cards above are the
+        // official account of every vote taken — so the recording's own vote
+        // table is the same night told twice, and it goes. What it can't say
+        // stays: the things the council settled by consensus, with no roll call
+        // ever taken. Those become a section of their own.
+        const haveMinutes = motions.length > 0;
 
         const toc = [];
         const body = secs.map((s) => {
-          const kind = sectionKind(s.title);
-          const id = "sec-" + slug(s.title).replace(/^\d+-/, "");
+          let kind = sectionKind(s.title);
+          let title = s.title;
+          let secMd = s.md;
+
+          if (kind === "decisions" && haveMinutes) {
+            const settled = stripLabel(extractTable(s.md).rest, SETTLED);
+            if (!settled) return "";   // the table was all it had — nothing left to show
+            kind = "settled";
+            title = SETTLED;
+            secMd = settled;
+          }
+
+          const id = "sec-" + slug(title).replace(/^\d+-/, "");
           // The caveats matter for trust but not for reading — park them behind
           // a disclosure at the foot rather than in the reading flow.
           if (kind === "about") {
             return `<details class="sum-about">
-                      <summary>${CT.escapeHtml(s.title)}</summary>
-                      ${prose(s.md)}
+                      <summary>${CT.escapeHtml(title)}</summary>
+                      ${prose(secMd)}
                     </details>`;
           }
-          toc.push({ id, label: TAB_LABEL[kind] || s.title, count: sectionCount(kind, s.md) });
+          toc.push({ id, label: TAB_LABEL[kind] || title, count: sectionCount(kind, secMd) });
           const render = RENDERER[kind] || prose;
           return `<section class="sum-sec is-${kind}" id="${id}">
-                    <h2 class="sum-sec-h">${CT.escapeHtml(s.title)}</h2>
-                    ${render(s.md)}
+                    <h2 class="sum-sec-h">${CT.escapeHtml(title)}</h2>
+                    ${render(secMd)}
                   </section>`;
         }).join("");
 
@@ -707,9 +788,9 @@
         mount.innerHTML = `
           <section class="section summary">
             <div class="sum-head">
-              ${WAVEFORM}
               <div class="sum-head-top">
                 <p class="sum-kicker">From the recording</p>
+                ${WAVEFORM}
                 <div class="sum-meta">
                   ${entry.duration ? `<span class="sum-stat">${ICON.clock}${CT.escapeHtml(entry.duration)}</span>` : ""}
                   ${entry.words ? `<button type="button" class="sum-stat sum-stat-btn" data-tx-open title="Read the full transcript">${ICON.words}${entry.words.toLocaleString()} words${ICON.expand}</button>` : ""}
@@ -722,6 +803,8 @@
               <div id="sum-cast-slot"></div>
               <p class="sum-note">${ICON.info}<span>Written up automatically from the audio — this is not the official record. Speakers are inferred from roll call, so attribution can be wrong.</span></p>
             </div>
+
+            <div id="sum-motions-slot"></div>
 
             <div id="sum-toc-slot"></div>
             <div id="sum-body"></div>
@@ -904,27 +987,44 @@
       }
 
       function renderMotionCard(data, m) {
-        const voteList = (m.votes || []).map(v =>
-          CT.voteChip(CT.memberName(data, v.member_id), v.vote)
-        ).join(" ");
         const tagHtml = CT.tagChips(data, m.tags);
+        const cls = CT.isRoutine(m) ? " is-routine" : CT.isNotable(m) ? " is-notable" : "";
         return `
-          <details class="motion-row" style="border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;background:var(--bg-elev)">
-            <summary style="padding:12px 14px">
-              <div style="display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap">
-                <span class="mono muted" style="min-width:36px">p.${m.page||"—"}</span>
-                <span class="mono muted" style="min-width:48px">${CT.escapeHtml(m.agenda_ref || "")}</span>
-                <span style="flex:1;min-width:200px"><strong>${CT.escapeHtml(CT.cleanTitle(m.item_title) || "(no title)")}</strong></span>
-                ${CT.outcomePill(m.outcome)}
+          <details class="motion-row${cls}" id="m${m.id}">
+            <summary>
+              <div class="motion-row-head">
+                <div class="motion-row-meta">
+                  <span class="mono muted">p.${m.page||"—"}</span>
+                  ${m.agenda_ref ? `<span class="mono muted">${CT.escapeHtml(m.agenda_ref)}</span>` : ""}
+                  ${CT.significanceChip(m)}
+                </div>
+                <h3 class="motion-row-title">${CT.escapeHtml(CT.motionTitle(m))}</h3>
+                ${m.summary ? `<p class="motion-row-sub">${CT.escapeHtml(m.summary)}</p>` : ""}
+                <div class="motion-row-foot">
+                  ${CT.outcomePill(m.outcome)}
+                  <span class="motion-row-tags">${tagHtml}</span>
+                </div>
               </div>
-              <div style="margin-top:6px">${tagHtml}</div>
             </summary>
-            <div class="motion-detail">
-              <p class="m-text">${CT.escapeHtml(m.motion || "(no motion text)")}</p>
-              <div>${voteList || '<span class="muted">No roll call recorded</span>'}</div>
-            </div>
+            ${CT.motionDetail(data, m)}
           </details>
         `;
+      }
+
+      // Deep link from a homepage decision card: meetings.html?id=<meeting>#m<motion>.
+      // The motions are painted after the fetch resolves, so the browser's own
+      // fragment scroll has already run and found nothing — do it ourselves.
+      function openLinkedMotion() {
+        const hash = location.hash;
+        if (!/^#m\d+$/.test(hash)) return;
+        const el = document.querySelector(hash);
+        if (!el) return;
+        el.open = true;
+        el.classList.add("is-linked");
+        el.scrollIntoView({
+          block: "center",
+          behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        });
       }
     </script>
   </body>

@@ -42,7 +42,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Jacob Adams appointed to the Youth Council",
+      "summary": "The council appointed Jacob Adams to the Youth Council, filling a seat that runs through June 30, 2025.",
+      "impact": "Nothing changes for residents — this fills one volunteer seat on the city's youth group for the rest of a term."
     },
     {
       "id": 823,
@@ -70,7 +73,10 @@
           "member_id": "melissa-clark",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Routine items approved, two pulled for debate",
+      "summary": "The council handled its routine consent items in one vote, first pulling the civic campus land purchase and the lobbying contract out for separate discussion.",
+      "impact": "This is housekeeping — nothing changes for residents. It only decides which items get debated on their own instead of being passed in a batch."
     },
     {
       "id": 824,
@@ -106,7 +112,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Energy code changes put on hold",
+      "summary": "The council delayed a decision on energy-related amendments to Title 17, the city's development code.",
+      "impact": "Nothing changes for now. The current rules stay in place until the council takes this back up, and any effect would land mainly on people planning new development."
     },
     {
       "id": 825,
@@ -121,7 +130,10 @@
       "tags": [
         "procurement"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Buy 20.99 acres for a future civic campus",
+      "summary": "The council took up an agreement to buy 20.99 acres from Ivory Homes and SITLA for a future civic campus, with commercial size limits struck.",
+      "impact": "Nothing changes for you right now — this is land for city buildings someday, with no design, cost, or timeline decided here. Removing the size limit would allow larger commercial buildings as part of the deal."
     },
     {
       "id": 826,
@@ -155,7 +167,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "City hires a lobbyist for $60,000 a year",
+      "summary": "The city approved a one-year agreement for lobbying services at a cost of $60,000 annually.",
+      "impact": "Nothing changes day to day — this is $60,000 of city money spent on outside representation for Eagle Mountain, and you won't see a direct effect at home."
     }
   ],
   "ordinances": [

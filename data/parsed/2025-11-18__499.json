@@ -41,8 +41,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Certify 2025 election results and RAP tax",
-      "summary": "The council certified the November 4 election, declaring Jared R. Gray mayor, Brett L. Wright and Craig Whiting councilmembers, and confirming voters approved the RAP tax."
+      "headline": "2025 election results certified; RAP tax passes",
+      "summary": "The council certified the November 4 election results, declaring Jared R. Gray mayor and Brett L. Wright and Craig Whiting councilmembers, and confirming voters approved the RAP tax.",
+      "impact": "The election is now official: Gray serves a four-year term as mayor, Wright and Whiting four-year terms on the council, and the RAP tax you voted on is formally adopted."
     },
     {
       "id": 981,
@@ -79,8 +80,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve routine items, pull two for later",
-      "summary": "The council approved its batch of routine business but pulled the road-closure ordinance out for full discussion and dropped another item from the agenda entirely."
+      "headline": "Consent agenda approved, two items pulled",
+      "summary": "The council approved its batch of routine items, pulling the road-closure ordinance out for full discussion and dropping another item from the agenda entirely.",
+      "impact": "This is routine housekeeping — nothing changes for residents. It only decides which items get debated individually and which are passed together in one block."
     },
     {
       "id": 982,
@@ -118,8 +120,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Tighter rules for road closures and construction",
-      "summary": "Crews working in city streets must now file a traffic-control and resident-notification plan at least seven days ahead, get a permit, and notify the city engineer three business days before starting."
+      "headline": "Contractors must warn residents before road work",
+      "summary": "The city now requires contractors to submit a traffic control plan and a resident-notification plan seven days before any work in a public road, and to get a permit first.",
+      "impact": "If a crew is going to close or dig up your street, the city now requires a plan for notifying you before the work starts. Contractors must also keep cones and signs in good order for the whole job."
     },
     {
       "id": 983,
@@ -157,8 +160,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Adopt a citywide water conservation plan",
-      "summary": "The city added a Water Use and Preservation Plan to its long-range General Plan, setting official policy on how Eagle Mountain manages and conserves its water."
+      "headline": "Adopt a citywide water use and preservation plan",
+      "summary": "The city added a Water Use and Preservation Plan as an appendix to its long-range General Plan, the document that guides future growth decisions.",
+      "impact": "This is a planning document, not a new rule — your water bill and watering rules do not change because of it. It is meant to steer the city's future water decisions."
     },
     {
       "id": 984,
@@ -195,8 +199,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Update street-connection and site plan rules",
-      "summary": "The city amended its development code sections governing how new streets must connect to one another and the standards new site plans must meet."
+      "headline": "Tweak to street-connection and site plan rules",
+      "summary": "The council amended two technical sections of the development code, one covering how streets connect to each other and one covering site plan standards.",
+      "impact": "Nothing changes for you day to day — these are the rules builders and engineers follow when laying out new streets and projects. The motion gives no further detail."
     },
     {
       "id": 985,
@@ -234,7 +239,8 @@
         }
       ],
       "headline": "Sign height now measured from natural grade",
-      "summary": "The city changed its sign rules so a sign's allowed height is measured from the natural ground level, closing a loophole for signs built on raised earth."
+      "summary": "The city changed its sign rules so a sign's height is measured from the natural ground level beneath it rather than from a raised or built-up base.",
+      "impact": "This only matters if you are applying for a sign permit — a business, developer, or church, for example. For everyone else, nothing changes."
     }
   ],
   "ordinances": [

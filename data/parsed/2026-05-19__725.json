@@ -43,8 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Chad Decoursey fills Planning Commission vacancy",
-      "summary": "The council appointed Chad Decoursey to a vacated Planning Commission seat for a one-year term running from May 2026 through March 2027."
+      "headline": "Chad Decoursey joins the Planning Commission",
+      "summary": "The council appointed Chad Decoursey to fill a vacated Planning Commission seat, a roughly one-year term running from May 2026 through March 2027.",
+      "impact": "Nothing changes for residents right away, though the Planning Commission is the board that reviews zoning and new development before it reaches the council.",
+      "significance": "routine"
     },
     {
       "id": 1084,
@@ -82,7 +84,9 @@
         }
       ],
       "headline": "Laura Jensen named Planning Commission alternate",
-      "summary": "The council appointed Laura Jensen as an alternate on the Planning Commission for a three-year term running from May 2026 through March 2029."
+      "summary": "The council appointed Laura Jensen as an alternate on the Planning Commission for a three-year term running from May 2026 to March 2029.",
+      "impact": "Nothing changes day to day. Alternates step in when a regular commissioner is absent from the board that reviews zoning and development proposals.",
+      "significance": "routine"
     },
     {
       "id": 1085,
@@ -119,8 +123,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine consent items approved with two changes",
-      "summary": "The council approved its batch of routine items, correcting a date to 2026-2027 on one and pulling another out for separate discussion later in the meeting."
+      "headline": "Consent agenda approved",
+      "summary": "The council approved its consent agenda of grouped items, correcting a typo to read 2026-2027 and pulling one item out for separate discussion.",
+      "impact": "This is routine housekeeping — nothing changes for residents. It's the single batch vote that clears uncontested items in one go.",
+      "significance": "routine"
     },
     {
       "id": 1086,
@@ -158,8 +164,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Ivory Homes deal approved, water break dropped",
-      "summary": "The city approved an agreement with Ivory Homes after weakening its pledge of developer benefits from \"will\" to \"may\" and removing a proposed cut to per-lot water requirements."
+      "headline": "Ivory Homes agreement approved, water break cut",
+      "summary": "The city approved an agreement with builder Ivory Homes but removed a proposed break on per-lot water requirements and downgraded promised city benefits to something it \"may\" consider.",
+      "impact": "Ivory Homes will have to meet the city's normal water requirement for each lot rather than a reduced one, and any city incentives are now optional rather than guaranteed.",
+      "significance": "notable"
     },
     {
       "id": 1087,
@@ -196,8 +204,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Changes to home-building rules rejected",
-      "summary": "The council rejected proposed changes to the city's definitions and residential development standards, leaving the existing rules for home building unchanged."
+      "headline": "Change to home-building rules rejected",
+      "summary": "The council turned down a proposed change to the city's definitions and residential development standards, leaving the current rules for building homes in place.",
+      "impact": "Nothing changes — the rules governing what can be built on residential lots stay as they are, and builders and homeowners keep working under the existing standards.",
+      "significance": "notable"
     },
     {
       "id": 1088,
@@ -235,7 +245,9 @@
         }
       ],
       "headline": "Development agreement with Flagship Homes approved",
-      "summary": "The city approved a development agreement with homebuilder Flagship Homes; the motion itself does not spell out the terms of the deal."
+      "summary": "The city approved a development agreement with homebuilder Flagship Homes; the motion itself names no location, acreage, or number of homes.",
+      "impact": "A development agreement locks in the terms a builder must follow before it breaks ground. The motion doesn't say where this project sits or how many homes it covers, so the effect on any one neighborhood is unclear.",
+      "significance": "notable"
     },
     {
       "id": 1089,
@@ -270,8 +282,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Concrete form pricing added to legislative to-do list",
-      "summary": "The council added the pricing of concrete forms to its list of legislative priorities for staff to take up."
+      "headline": "Add concrete form pricing to the priorities list",
+      "summary": "The council added the pricing of concrete forms to the city's legislative priorities list for staff to look into.",
+      "impact": "Nothing changes for residents — this just flags a topic for future discussion, with no decision or cost attached to it yet.",
+      "significance": "routine"
     },
     {
       "id": 1090,
@@ -308,8 +322,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Water rights policy added to legislative to-do list",
-      "summary": "The council directed staff to work with it on a policy covering paper water rights and prioritization dates, adding the task to the city's legislative priorities."
+      "headline": "Study a policy on paper water rights",
+      "summary": "The council directed staff to work with them on a policy covering paper water rights and priority dates, adding it to the city's legislative priorities list.",
+      "impact": "Nothing changes yet — this only puts the topic on the city's to-do list. Any actual water rights policy would have to come back to the council later.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

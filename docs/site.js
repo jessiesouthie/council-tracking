@@ -163,15 +163,172 @@
     return "other";
   }
 
-  function outcomePill(outcome) {
+  // The parser writes "(outcome not found)" when it can't read a result line out of
+  // the minutes — a sentinel, not a fact about the meeting. It must never reach the
+  // page as if it were the recorded outcome.
+  function isUnknownOutcome(s) {
+    const o = (s || "").trim();
+    return !o || /not found/i.test(o);
+  }
+
+  // Turn the clerk's phrasing ("carried with a vote of 4:1.") into a label.
+  function outcomeWord(outcome) {
     const cls = classifyOutcome(outcome);
-    const label = cls === "other" ? (outcome || "—") : cls;
+    if (cls === "passed") return "Passed";
+    if (cls === "failed") return "Failed";
+    const raw = String(outcome || "").trim().replace(/\.$/, "");
+    return raw ? raw.charAt(0).toUpperCase() + raw.slice(1) : "Decided";
+  }
+
+  function outcomePill(outcome) {
+    if (isUnknownOutcome(outcome)) {
+      return `<span class="pill other" title="The minutes don’t record a result for this motion">Not recorded</span>`;
+    }
+    const cls = classifyOutcome(outcome);
+    const label = cls === "other" ? outcomeWord(outcome) : cls;
     return `<span class="pill ${cls}">${escapeHtml(label)}</span>`;
   }
 
   function voteChip(member, vote) {
     const v = (vote || "").toLowerCase();
     return `<span class="vote-chip">${escapeHtml(member)}<span class="v ${v}">${escapeHtml(vote)}</span></span>`;
+  }
+
+  // --- motion presentation ---
+  //
+  // A motion carries two registers: the legalese the clerk recorded ("An Ordinance
+  // of Eagle Mountain City, Utah, amending Municipal Code 16.15…") and the
+  // plain-English headline/summary/impact from ingest.summarize_motions. Residents
+  // came for the second one, so it leads and the official wording is tucked behind
+  // a disclosure. Motions the LLM pass hasn't reached yet have neither, and fall
+  // back to the cleaned title with the recorded text shown outright — the page must
+  // still work for all 1,098 motions, not just the summarized ones.
+
+  // Where the parser's item/motion split failed, item_title can run to thousands of
+  // characters of swallowed narrative ("…Mr. Pili read from Utah Code Title 53-2a-205…").
+  // A summarized motion has a headline and never hits this; an un-summarized one must
+  // still not render an <h3> the length of a page. The full text stays in the detail.
+  const TITLE_MAX = 140;
+
+  function titleIsOversized(m) {
+    return !m.headline && (cleanTitle(m.item_title) || "").length > TITLE_MAX;
+  }
+
+  // Most council business is housekeeping. The summarizer flags each motion
+  // "notable" or "routine" so the handful of decisions that actually reach a
+  // resident's money, property, or neighborhood aren't buried under 900 board
+  // appointments. Un-summarized motions are neither — we don't know yet, and
+  // guessing "routine" would hide them.
+  function isRoutine(m) {
+    return m.significance === "routine";
+  }
+  function isNotable(m) {
+    return m.significance === "notable";
+  }
+
+  function significanceChip(m) {
+    if (isNotable(m)) return `<span class="sig-chip notable">Affects residents</span>`;
+    if (isRoutine(m)) return `<span class="sig-chip routine">Routine</span>`;
+    return "";
+  }
+
+  function motionTitle(m) {
+    if (m.headline) return m.headline;
+    const t = cleanTitle(m.item_title) || "";
+    if (!t) return "(no title)";
+    if (t.length <= TITLE_MAX) return t;
+    const cut = t.slice(0, TITLE_MAX);
+    const at = cut.lastIndexOf(" ");
+    return (at > 60 ? cut.slice(0, at) : cut).replace(/[,;:.\s]+$/, "") + "…";
+  }
+
+  function voteTally(m) {
+    let yes = 0, no = 0, other = 0;
+    for (const v of m.votes || []) {
+      const x = (v.vote || "").toLowerCase();
+      if (x === "yes" || x === "aye") yes++;
+      else if (x === "no" || x === "nay") no++;
+      else other++;
+    }
+    return { yes, no, other, total: yes + no + other };
+  }
+
+  // "Passed unanimously, 5–0." — one line a reader can take at face value, instead
+  // of a pill they have to decode against a bar chart. Where the minutes are silent,
+  // it says so plainly rather than guessing or leaking a parser sentinel.
+  function outcomeSentence(m) {
+    const t = voteTally(m);
+    const tally = `${t.yes}–${t.no}${t.other ? `–${t.other}` : ""}`;
+
+    if (isUnknownOutcome(m.outcome)) {
+      return t.total === 0
+        ? "The minutes don’t record a result or a roll-call vote for this motion."
+        : `The minutes don’t state the result. The roll call was ${tally}.`;
+    }
+
+    const cls = classifyOutcome(m.outcome);
+    if (t.total === 0) return `${outcomeWord(m.outcome)} — no roll-call vote was recorded.`;
+    if (cls === "passed" && t.no === 0 && t.other === 0) return `Passed unanimously, ${t.yes}–0.`;
+
+    const parts = [`${t.yes} yes`, `${t.no} no`];
+    if (t.other) parts.push(`${t.other} other`);
+    return `${outcomeWord(m.outcome)} ${tally} (${parts.join(", ")}).`;
+  }
+
+  // The expanded body of a motion — shared by the motions list, the meeting page,
+  // and the member page so a decision reads identically wherever it is clicked.
+  function motionDetail(data, m, { highlightMember = "" } = {}) {
+    const decided = m.summary
+      ? `<p class="m-lead">${escapeHtml(m.summary)}</p>`
+      : "";
+
+    // The amber callout has to *mean* something. If every motion got one, including
+    // the 900 that change nothing, it would stop reading as "pay attention" and
+    // become page furniture. So the callout is reserved for motions explicitly flagged
+    // notable — everything else, routine *or not yet classified*, states its impact
+    // plainly and quietly. Loud is earned, never the default.
+    const impact = m.impact
+      ? (isNotable(m)
+          ? `<div class="m-impact">
+               <p class="m-impact-label">What it means for residents</p>
+               <p class="m-impact-text">${escapeHtml(m.impact)}</p>
+             </div>`
+          : `<p class="m-impact-routine"><span class="m-impact-routine-label">What it means for you:</span> ${escapeHtml(m.impact)}</p>`)
+      : "";
+
+    // No plain-English pass yet: say so, so a blank space doesn't read as "this
+    // decision had no effect".
+    const pending = !m.summary && !m.impact
+      ? `<p class="m-pending muted">A plain-English summary of this decision hasn’t been written yet. The official wording the clerk recorded is below.</p>`
+      : "";
+
+    const chips = (m.votes || [])
+      .map((v) => {
+        const on = highlightMember && v.member_id === highlightMember ? " is-focus" : "";
+        const name = escapeHtml(memberName(data, v.member_id));
+        const vote = escapeHtml(v.vote || "");
+        return `<span class="vote-chip${on}">${name}<span class="v ${(v.vote || "").toLowerCase()}">${vote}</span></span>`;
+      })
+      .join(" ");
+
+    const rollcall = `
+      <div class="m-block">
+        <p class="m-block-label">How they voted</p>
+        <p class="m-outcome-line">${escapeHtml(outcomeSentence(m))}</p>
+        ${chips ? `<div class="m-votes">${chips}</div>` : ""}
+      </div>`;
+
+    // Open by default only when it is the sole thing we have to show.
+    const official = `
+      <details class="m-official"${pending ? " open" : ""}>
+        <summary>Official wording as recorded</summary>
+        <p class="m-text">${escapeHtml(m.motion || "(no motion text)")}</p>
+        ${m.item_title && (m.headline || titleIsOversized(m))
+            ? `<p class="m-text m-title-raw"><span class="muted">Agenda title:</span> ${escapeHtml(m.item_title)}</p>`
+            : ""}
+      </details>`;
+
+    return `<div class="motion-detail">${decided}${impact}${pending}${rollcall}${official}</div>`;
   }
 
   function tagChips(data, tagIds, accent = false) {
@@ -430,8 +587,16 @@
     isCurrentMember,
     fmtDate,
     classifyOutcome,
+    isUnknownOutcome,
+    isRoutine,
+    isNotable,
+    significanceChip,
     outcomePill,
     voteChip,
+    voteTally,
+    outcomeSentence,
+    motionTitle,
+    motionDetail,
     tagChips,
     paramsFromUrl,
     setMeta,

@@ -42,7 +42,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Routine consent agenda approved",
+      "summary": "The council approved its consent agenda, the batch of routine items passed together in a single vote without separate discussion.",
+      "impact": "This is routine housekeeping — nothing changes for residents. The motion as recorded doesn't list which items were in the batch."
     },
     {
       "id": 971,
@@ -79,7 +82,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Animal rules sent back to Planning Commission",
+      "summary": "The council sent proposed rules on alternative animal management plans, and the related zoning changes, back to the Planning Commission for more review.",
+      "impact": "If you keep animals on your property, nothing changes yet. The proposal goes back for revisions and would have to return to the council before any new rules take effect."
     },
     {
       "id": 972,
@@ -115,7 +121,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Development deal for Meta's project",
+      "summary": "The city approved a development agreement with Stadion, LLC, the company name Meta uses locally, setting the terms for its project here.",
+      "impact": "This sets the ground rules Meta has to build under. The motion lists no dollar figures, acreage or timeline, so it doesn't tell you what you'll see or pay."
     },
     {
       "id": 973,
@@ -151,7 +160,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Change the water and sewer deal with Meta",
+      "summary": "The city approved a third amendment to its water and sewer agreement with Stadion, LLC, the company name Meta uses locally.",
+      "impact": "The motion doesn't spell out what the amendment changes, so nothing here says your water service or bill is affected. It matters most if you follow the city's water arrangements with Meta."
     },
     {
       "id": 974,
@@ -188,7 +200,10 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Development deal for Harmony subdivision",
+      "summary": "The city approved a development agreement with homebuilder Meritage Homes covering the Harmony subdivision.",
+      "impact": "The agreement locks in the terms Meritage has to build to. Nothing changes day to day for current residents — it matters mainly if you live near the site or plan to buy there."
     }
   ],
   "ordinances": [

@@ -43,8 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine items approved, with trails added",
-      "summary": "The council approved its batch of routine items, adding trails to the scope of review in one of them before signing off."
+      "headline": "Consent agenda approved, with trails added",
+      "summary": "The council approved its consent agenda, adding \"trails\" to the scope of review in one of the items it covered.",
+      "impact": "This is routine housekeeping — the consent agenda bundles uncontested items into one vote, and nothing here changes for residents.",
+      "significance": "routine"
     },
     {
       "id": 1092,
@@ -82,8 +84,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Sell city land at $2.07 per square foot",
-      "summary": "The city agreed to sell part of a city-owned parcel at $2.07 per square foot, with the buyer covering survey fees and all other costs."
+      "headline": "City land sold at $2.07 a square foot",
+      "summary": "The city approved selling part of a city-owned parcel in Utah County at $2.07 per square foot, with the buyer paying all related costs.",
+      "impact": "Most residents will notice nothing. The buyer covers the survey and other fees, so the sale costs the city nothing and moves a piece of public land into private hands.",
+      "significance": "notable"
     },
     {
       "id": 1093,
@@ -112,8 +116,10 @@
           "vote": "Abstain"
         }
       ],
-      "headline": "Pledge city sales tax to redevelopment bonds",
-      "summary": "The council took up pledging part of the city's sales and use tax revenue to help repay bonds the Redevelopment Agency plans to issue in 2026."
+      "headline": "Sales tax pledged to back redevelopment bonds",
+      "summary": "The council took up a resolution pledging part of the city's sales tax revenue to repay bonds the city's redevelopment agency plans to issue in 2026.",
+      "impact": "No new tax and no bill for you. The city would be promising some of its sales tax income to bondholders, money that would otherwise be free for other city spending.",
+      "significance": "notable"
     },
     {
       "id": 1094,
@@ -148,8 +154,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Study speed bumps and speed tables",
-      "summary": "The council added evaluating speed bumps and speed tables to its Legislative Priorities List, flagging traffic calming as an issue the city will take up."
+      "headline": "Speed bumps added to council's study list",
+      "summary": "The council added an evaluation of speed bumps and speed tables to its Legislative Priorities List.",
+      "impact": "Nothing changes on your street. This only puts the question of speed bumps and speed tables on the council's list of things to look at later.",
+      "significance": "routine"
     }
   ],
   "ordinances": [
