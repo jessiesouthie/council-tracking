@@ -1,35 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="home">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Eagle Mountain Council Tracking</title>
-    <meta name="description" content="See every motion and roll-call vote from Eagle Mountain City Council meetings, searchable by topic, member, or date." />
-    <meta name="theme-color" content="#31452E" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#1B201A" media="(prefers-color-scheme: dark)" />
+    <title>Civic Roll Call — Eagle Mountain City Council</title>
+    <meta name="description" content="Your council, every vote, in plain English. See what the Eagle Mountain City Council decided, who voted how, and what it means for you." />
+    <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Council Tracking" />
-    <meta property="og:title" content="Eagle Mountain Council Tracking" />
-    <meta property="og:description" content="See every motion and roll-call vote from Eagle Mountain City Council meetings, searchable by topic, member, or date." />
+    <meta property="og:site_name" content="Civic Roll Call" />
+    <meta property="og:title" content="Civic Roll Call — Eagle Mountain City Council" />
+    <meta property="og:description" content="Your council, every vote, in plain English. See what the Eagle Mountain City Council decided, who voted how, and what it means for you." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Eagle Mountain Council Tracking" />
-    <meta name="twitter:description" content="See every motion and roll-call vote from Eagle Mountain City Council meetings, searchable by topic, member, or date." />
+    <meta name="twitter:title" content="Civic Roll Call — Eagle Mountain City Council" />
+    <meta name="twitter:description" content="Your council, every vote, in plain English. See what the Eagle Mountain City Council decided, who voted how, and what it means for you." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Lato:wght@400;700&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260711e" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
+    <link rel="stylesheet" href="site.css?v=20260713g" />
   </head>
-  <body>
+  <body class="home-paper">
     <a href="#main" class="skip-link">Skip to main content</a>
     <header class="topbar">
       <a class="brand" href="index.html">
-        <span class="brand-mark" aria-hidden="true">CT</span>
+        <span class="brand-mark" aria-hidden="true">C</span>
         <div>
-          <p class="brand-title">Council Tracking</p>
+          <p class="brand-title">Roll Call</p>
           <p class="city">Eagle Mountain, UT</p>
         </div>
       </a>
@@ -45,45 +45,61 @@
 
     <main id="main">
       <section class="hero">
-        <h1 class="hero-title">What did the Eagle Mountain City Council decide?</h1>
-        <p class="hero-sub">Search every motion and roll-call vote going back to <span id="earliest-year">—</span>.</p>
-        <form class="hero-search" action="motions.html" method="get" role="search">
-          <input
-            class="input hero-input"
-            type="search"
-            name="q"
-            placeholder="Search by topic, motion text, or agenda item…"
-            autocomplete="off"
-            aria-label="Search motions"
-          />
+        <p class="hero-eyebrow reveal" style="--i:0">Eagle Mountain · Public record</p>
+        <h1 class="hero-title reveal" style="--i:1">
+          Your council, every vote, in <span class="mark">plain English</span>.
+        </h1>
+        <p class="hero-sub reveal" style="--i:2">
+          No jargon. See what was decided, who voted how, and what it means for you.
+        </p>
+
+        <form class="hero-search reveal" style="--i:3" action="motions.html" method="get" role="search">
+          <div class="hero-field">
+            <svg class="search-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="11" cy="11" r="6.5" />
+              <path d="M16 16l4.5 4.5" />
+            </svg>
+            <label class="sr-only" for="q">Search decisions by topic, motion text, or agenda item</label>
+            <input
+              class="hero-input"
+              id="q"
+              name="q"
+              type="search"
+              placeholder="Try “taxes” or “new park”"
+              autocomplete="off"
+            />
+          </div>
           <button class="btn" type="submit">Search</button>
         </form>
-        <div class="hero-tags" id="hero-tags"></div>
-      </section>
 
-      <section class="section" id="recent-section">
-        <div class="section-head">
-          <h2>Recent meetings</h2>
-          <a href="meetings.html" class="muted nowrap">All meetings →</a>
+        <p class="quick-topics reveal" style="--i:4" id="quick-topics"></p>
+
+        <div class="ledger reveal" style="--i:5">
+          <div class="ledger-stats" id="ledger-stats"></div>
+          <div class="pulse" id="pulse" hidden>
+            <div class="pulse-bars" id="pulse-bars"></div>
+            <div class="pulse-cap">
+              <span id="pulse-cap-left"></span>
+              <span id="pulse-cap-right"></span>
+            </div>
+          </div>
         </div>
-        <div class="meeting-grid" id="recent-grid"></div>
       </section>
 
-      <section class="section" id="members-section">
-        <div class="section-head">
-          <h2>Council</h2>
-          <a href="members.html" class="muted nowrap">Full directory →</a>
+      <section class="section" id="decisions-section">
+        <div class="section-head reveal" style="--i:6">
+          <h2 id="decisions-title">Latest decisions</h2>
+          <a href="motions.html">See all →</a>
         </div>
-        <div id="member-current"></div>
-        <details id="member-past-wrap" hidden>
-          <summary class="muted" style="cursor:pointer;margin-top:14px;font-size:13px">Past members</summary>
-          <div id="member-past" style="margin-top:12px"></div>
-        </details>
+        <div class="decision-list" id="decision-list"></div>
       </section>
 
-      <section class="section" id="stats-section">
-        <h2>Dataset at a glance</h2>
-        <div class="cards" id="summary-cards"></div>
+      <section class="section" id="council-section">
+        <div class="section-head">
+          <h2>Current council</h2>
+          <a href="members.html">Full directory →</a>
+        </div>
+        <div id="council"></div>
       </section>
 
       <div class="boot-block" id="loading"><div class="spinner-sm"></div><span>Loading dataset…</span></div>
@@ -93,7 +109,7 @@
       <span>Data from the Eagle Mountain CivicClerk public portal · last refreshed <span id="generated-at">—</span></span>
     </footer>
 
-    <script src="site.js?v=20260711d"></script>
+    <script src="site.js?v=20260713g"></script>
     <script>
       (async () => {
         const data = await CT.loadData().catch((e) => {
@@ -103,148 +119,274 @@
         });
         document.getElementById("loading").hidden = true;
 
-        document.getElementById("generated-at").textContent = data.generated_at.replace("T", " ").replace("Z", " UTC");
+        document.getElementById("generated-at").textContent =
+          data.generated_at.replace("T", " ").replace("Z", " UTC");
 
-        const earliest = data.meetings[data.meetings.length - 1]?.date || "";
-        document.getElementById("earliest-year").textContent = earliest.slice(0,4) || "—";
-
-        // Hero topic chips — top 6 topics by motion count
-        const tagsSorted = data.tags.filter(t => t.motion_count > 0)
-                                    .sort((a,b) => b.motion_count - a.motion_count)
-                                    .slice(0, 6);
-        document.getElementById("hero-tags").innerHTML =
-          `<span class="muted" style="margin-right:6px;font-size:13px">Popular topics:</span>` +
-          tagsSorted.map(t =>
-            `<a class="tag accent" href="motions.html?tag=${encodeURIComponent(t.id)}">${CT.escapeHtml(t.label)} <span class="muted">${t.motion_count}</span></a>`
-          ).join("");
-
-        // Recent meetings — first 4 as full cards
-        const motionsByMeeting = new Map();
-        for (const m of data.motions) {
-          if (!motionsByMeeting.has(m.meeting_id)) motionsByMeeting.set(m.meeting_id, []);
-          motionsByMeeting.get(m.meeting_id).push(m);
-        }
-        // Meetings with a published recording but no parsed minutes yet (e.g. the
-        // official minutes lag the transcript). Surface them here too so the
-        // newest recording shows on the homepage, not just on the Meetings page.
-        const txList = await CT.transcriptsForBody().catch(() => []);
-        const known = new Set(data.meetings.map(m => m.id));
-        const transcriptOnly = txList
-          .filter(t => !known.has(t.id))
-          .map(t => ({
-            id: t.id, date: t.date, source_file: null,
-            motion_count: 0, ord_count: 0, res_count: 0,
-            type: t.title, transcript_only: true,
-          }));
-        const allMeetings = [...transcriptOnly, ...data.meetings]
-          .sort((a, b) => b.date.localeCompare(a.date));
-        const recent = allMeetings.slice(0, 4);
-        document.getElementById("recent-grid").innerHTML = recent.map(m =>
-          renderMeetingCard(m, motionsByMeeting.get(m.id) || [])
-        ).join("");
-
-        // Council members — current vs past split
-        const current = data.members.filter(m => CT.isCurrentMember(m));
-        const past = data.members.filter(m => !CT.isCurrentMember(m));
-        document.getElementById("member-current").innerHTML = renderMemberRow(current, data);
-        if (past.length) {
-          document.getElementById("member-past-wrap").hidden = false;
-          document.getElementById("member-past").innerHTML = renderMemberRow(past, data, true);
-        }
-
-        // Dataset stats
-        const c = data.counts;
-        document.getElementById("summary-cards").innerHTML = `
-          <div class="stat-card"><div class="label">Meetings</div><div class="value">${c.meetings}</div><div class="delta">${CT.fmtDate(earliest)} → ${CT.fmtDate(data.meetings[0]?.date)}</div></div>
-          <div class="stat-card"><div class="label">Motions</div><div class="value">${c.motions.toLocaleString()}</div><div class="delta">${c.votes.toLocaleString()} individual votes</div></div>
-          <div class="stat-card"><div class="label">Ordinance mentions</div><div class="value">${c.ord_lines.toLocaleString()}</div></div>
-          <div class="stat-card"><div class="label">Resolution mentions</div><div class="value">${c.res_lines.toLocaleString()}</div></div>
-        `;
+        renderTopics(data);
+        renderLedger(data);
+        renderDecisions(data);
+        renderCouncil(data);
       })();
 
-      function voteSplit(motion) {
-        let y=0,n=0,o=0;
-        for (const v of (motion.votes||[])) {
-          const x = (v.vote||"").toLowerCase();
-          if (x === "yes") y++;
-          else if (x === "no" || x === "nay") n++;
-          else o++;
-        }
-        return {y,n,o};
+      // A quiet way into the record for someone who does not know what to search
+      // for. Deliberately understated — it must not compete with the ledger.
+      function renderTopics(data) {
+        const top = data.tags
+          .filter(t => t.motion_count > 0)
+          .sort((a, b) => b.motion_count - a.motion_count)
+          .slice(0, 3);
+        document.getElementById("quick-topics").innerHTML =
+          `<span class="qt-lab">Or browse</span>` +
+          top.map(t =>
+            `<a href="motions.html?tag=${encodeURIComponent(t.id)}">${CT.escapeHtml(t.label)}</a>`
+          ).join(`<span class="qt-sep">·</span>`);
       }
-      function shortenTitle(s, max=72) {
-        s = CT.cleanTitle(s || "");
-        if (!s) return "(no title)";
-        return s.length > max ? s.slice(0, max-1) + "…" : s;
+
+      /* ---------- Ledger: the three numbers + the pulse ---------- */
+
+      const PULSE_N = 60;
+
+      function renderLedger(data) {
+        const c = data.counts;
+        const o = data.stats.by_outcome || {};
+        // Pass rate is over motions whose outcome the minutes actually record. A third
+        // of the archive has no readable outcome line, and folding those into the
+        // denominator would understate the pass rate rather than leave it unknown.
+        const decided = (o.passed || 0) + (o.failed || 0);
+        const passRate = decided ? Math.round((o.passed / decided) * 100) : null;
+
+        const stats = [
+          { num: c.votes.toLocaleString(), lab: "votes tracked" },
+          { num: c.meetings.toLocaleString(), lab: "meetings" },
+        ];
+        if (passRate !== null) stats.push({ num: `${passRate}%`, lab: "passed" });
+
+        document.getElementById("ledger-stats").innerHTML = stats.map(s => `
+          <div class="ledger-stat">
+            <div class="num">${CT.escapeHtml(s.num)}</div>
+            <div class="lab">${CT.escapeHtml(s.lab)}</div>
+          </div>
+        `).join("");
+
+        renderPulse(data);
       }
-      function renderMeetingCard(meeting, motions) {
-        const PREVIEW = 5;
-        const preview = motions.slice(0, PREVIEW);
-        const remaining = motions.length - preview.length;
-        const items = preview.map(mo => {
-          const sp = voteSplit(mo);
-          const split = (mo.votes||[]).length
-            ? `<span class="mono muted" title="${sp.y} yes · ${sp.n} no${sp.o?` · ${sp.o} other`:''}">${sp.y}-${sp.n}${sp.o?`-${sp.o}`:''}</span>`
-            : '<span class="muted" style="font-size:11px">no roll call</span>';
-          return `<li class="motion-line">
-            <span class="motion-line-outcome">${CT.outcomePill(mo.outcome)}</span>
-            <span class="motion-line-title">${CT.escapeHtml(shortenTitle(mo.item_title))}</span>
-            <span class="motion-line-meta">${split}</span>
-          </li>`;
-        }).join("");
-        const badge = meeting.transcript_only
-          ? ` <span class="tx-badge" title="Full audio transcript + summary from the recording">🎙 Transcript</span>`
-          : "";
-        const metaLine = meeting.transcript_only
-          ? `Recording available · official minutes pending`
-          : `${meeting.motion_count} motion${meeting.motion_count===1?"":"s"} · ${meeting.ord_count} ord. lines · ${meeting.res_count} res. lines`;
-        const body = meeting.transcript_only
-          ? '<p class="muted" style="margin:8px 0 0">Minutes not published yet — open to read the enriched summary generated from the recording.</p>'
-          : (motions.length === 0 ? '<p class="muted" style="margin:8px 0 0">No motions parsed.</p>' : `
-              <ul class="motion-line-list">${items}</ul>
-              ${remaining > 0 ? `<p class="muted" style="margin:8px 0 0;font-size:12px">+ ${remaining} more motion${remaining===1?"":"s"}</p>` : ""}
-            `);
-        return `
-          <article class="meeting-card">
-            <header class="meeting-card-head">
-              <div>
-                <div class="meeting-date">${CT.fmtDate(meeting.date)}${badge}</div>
-                <div class="muted" style="font-size:12px">${metaLine}</div>
-              </div>
-              <a class="muted card-link" href="meetings.html?id=${meeting.id}" aria-label="Open meeting ${CT.fmtDate(meeting.date)}">Open →</a>
-            </header>
-            ${meeting.summary ? `<p class="meeting-summary" style="margin:8px 0 0">${CT.escapeHtml(meeting.summary)}</p>` : ''}
-            ${body}
-          </article>
-        `;
-      }
-      function renderMemberRow(members, data, dim=false) {
-        if (!members.length) return '<p class="muted">None on file.</p>';
-        return `<div class="member-row${dim ? ' dim' : ''}">${members.map(m => {
-          const s = data.stats.by_member[m.id] || { total:0, yes_rate:0 };
-          const tenure = dim ? `${CT.fmtDate(m.tenure_start)} – ${CT.fmtDate(m.tenure_end)}` : `since ${CT.fmtDate(m.tenure_start)}`;
-          const prior = (m.terms || []).slice(1);
-          const priorLine = prior.length ? `<div class="member-stat muted">Prior: ${prior.map(t => `${CT.escapeHtml(t.role)} ${yearRange(t)}`).join(", ")}</div>` : "";
+
+      // One tick per recent motion, each a stacked yes/no column. Almost every
+      // motion here passes, so a flat "did it pass" strip would just be a green
+      // wall. Stacking the split instead means the eye lands on the handful of
+      // votes somebody actually argued about — which is the interesting part.
+      function renderPulse(data) {
+        const recent = [...data.motions]
+          .sort((a, b) => a.date.localeCompare(b.date) || a.id - b.id)
+          .slice(-PULSE_N);
+        if (recent.length < 10) return;
+
+        let dissented = 0;
+        const ticks = recent.map(m => {
+          const sp = voteSplit(m);
+          const k = CT.classifyOutcome(m.outcome);
+          const total = sp.yes + sp.no + sp.other;
+          if (!total) {
+            const t = `${CT.fmtDate(m.date)} — no roll call recorded`;
+            return `<span class="tick blank" title="${CT.escapeHtml(t)}"></span>`;
+          }
+          if (sp.no > 0) dissented++;
+
+          const title = `${CT.fmtDate(m.date)} — ${sp.yes} yes, ${sp.no} no${
+            k === "failed" ? " (failed)" : ""}`;
+          const seg = (n, c) => n ? `<span class="${c}" style="flex:${n}"></span>` : "";
           return `
-            <a class="member-tile" href="member.html?id=${encodeURIComponent(m.id)}">
-              <div class="member-avatar" aria-hidden="true">${CT.escapeHtml(initials(m.name))}</div>
-              <div class="member-info">
-                <div class="member-name">${CT.escapeHtml(m.name)}</div>
-                <div class="member-role">${CT.escapeHtml(m.role)} · <span class="muted">${tenure}</span></div>
-                <div class="member-stat">${s.total} votes · ${(s.yes_rate*100).toFixed(0)}% yes</div>
-                ${priorLine}
+            <span class="tick ${k}" title="${CT.escapeHtml(title)}">
+              ${seg(sp.no, "n")}${seg(sp.yes + sp.other, "y")}
+            </span>`;
+        }).join("");
+
+        document.getElementById("pulse-bars").innerHTML = ticks;
+
+        const first = CT.fmtDate(recent[0].date);
+        const last = CT.fmtDate(recent[recent.length - 1].date);
+        document.getElementById("pulse-cap-left").innerHTML =
+          `Last ${recent.length} motions · ${CT.escapeHtml(first)} → ${CT.escapeHtml(last)}`;
+        document.getElementById("pulse-cap-right").innerHTML = dissented
+          ? `<b>${dissented}</b> drew a no vote`
+          : `no one voted no`;
+
+        document.getElementById("pulse").hidden = false;
+      }
+
+      /* ---------- Decision cards ---------- */
+
+      const MONTHS = ["January","February","March","April","May","June",
+                      "July","August","September","October","November","December"];
+
+      function voteSplit(motion) {
+        let yes = 0, no = 0, other = 0;
+        for (const v of motion.votes || []) {
+          const x = (v.vote || "").toLowerCase();
+          if (x === "yes") yes++;
+          else if (x === "no" || x === "nay") no++;
+          else other++;
+        }
+        return { yes, no, other };
+      }
+
+      // "Passed 4–1" / "Failed 2–3" — en-dash, and the count only when we have one.
+      function outcomeLabel(motion, sp) {
+        const cls = CT.classifyOutcome(motion.outcome);
+        const word = cls === "passed" ? "Passed" : cls === "failed" ? "Failed" : "Recorded";
+        const counted = sp.yes + sp.no > 0 ? ` ${sp.yes}–${sp.no}` : "";
+        return { cls, text: word + counted };
+      }
+
+      function initials(name) {
+        const p = (name || "").split(/\s+/).filter(Boolean);
+        return ((p[0] || "")[0] + (p[p.length - 1] || "")[0] || "?").toUpperCase();
+      }
+
+      function voteClass(vote) {
+        const v = (vote || "").toLowerCase();
+        if (v === "yes") return "yes";
+        if (v === "no" || v === "nay") return "no";
+        return "other";
+      }
+
+      // The roll call, by name. This is the site's reason to exist: not "4–1" but
+      // which four — so the front page names them rather than drawing a bar.
+      function rollcall(data, motion) {
+        const votes = motion.votes || [];
+        if (!votes.length) {
+          return `<div class="rollcall"><span class="rollcall-none">No roll-call vote recorded.</span></div>`;
+        }
+        // Yes, then no, then everything else — the dissent should never be buried.
+        const order = { yes: 0, no: 1, other: 2 };
+        const sorted = [...votes].sort(
+          (a, b) => order[voteClass(a.vote)] - order[voteClass(b.vote)]
+        );
+        const chips = sorted.map(v => {
+          const name = CT.memberName(data, v.member_id) || v.member_id;
+          const k = voteClass(v.vote);
+          const said = k === "yes" ? "voted yes" : k === "no" ? "voted no" : CT.escapeHtml(v.vote || "did not vote");
+          return `
+            <span class="vote-name ${k}" title="${CT.escapeHtml(name)} ${said}">
+              <span class="ini" aria-hidden="true">${CT.escapeHtml(initials(name))}</span>
+              <span>${CT.escapeHtml(name.split(/\s+/).slice(-1)[0])}</span>
+            </span>`;
+        }).join("");
+
+        return `
+          <div class="rollcall">
+            <span class="rollcall-label">Roll call</span>
+            ${chips}
+          </div>`;
+      }
+
+      function renderDecisions(data) {
+        // Newest first. Prefer motions we have a plain-English headline for — the
+        // whole point of these cards is that they read as English, and an
+        // un-summarized motion falls back to the legalese title.
+        const sorted = [...data.motions].sort((a, b) =>
+          b.date.localeCompare(a.date) || b.id - a.id
+        );
+        const picked = [
+          ...sorted.filter(m => m.headline),
+          ...sorted.filter(m => !m.headline),
+        ].slice(0, 3);
+
+        // Keep the design's "This month at City Hall" voice, but only when it is
+        // true — minutes are published weeks late, so most of the year the newest
+        // decision is not from this month.
+        const newest = picked[0]?.date;
+        if (newest) {
+          const d = new Date(newest + "T12:00:00Z");
+          const now = new Date();
+          const thisMonth =
+            d.getUTCFullYear() === now.getFullYear() && d.getUTCMonth() === now.getMonth();
+          document.getElementById("decisions-title").textContent = thisMonth
+            ? "This month at City Hall"
+            : `Latest decisions · ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+        }
+
+        document.getElementById("decision-list").innerHTML =
+          picked.map((m, i) => renderDecisionCard(data, m, i)).join("") ||
+          `<p class="muted">No motions on file yet.</p>`;
+      }
+
+      function renderDecisionCard(data, m, i) {
+        const sp = voteSplit(m);
+        const outcome = outcomeLabel(m, sp);
+        const topic = (m.tags || []).map(t => CT.tagLabel(data, t)).filter(Boolean)[0];
+        const title = m.headline || CT.cleanTitle(m.item_title) || "(no title)";
+
+        // Fall back to the recorded motion text when the LLM pass hasn't reached this
+        // motion yet — clamped to two lines, and marked so it reads as secondary.
+        const body = m.summary
+          ? `<p class="decision-summary">${CT.escapeHtml(m.summary)}</p>`
+          : m.motion
+            ? `<p class="decision-summary is-raw">${CT.escapeHtml(m.motion)}</p>`
+            : "";
+
+        const meta = [CT.fmtDate(m.date), topic].filter(Boolean)
+          .map(x => CT.escapeHtml(x))
+          .join(`<span class="dot">·</span>`);
+
+        return `
+          <a class="decision-card is-${outcome.cls} reveal" style="--i:${7 + i}"
+             href="meetings.html?id=${encodeURIComponent(m.meeting_id)}">
+            <div class="decision-top">
+              <span class="decision-meta">${meta}</span>
+              <span class="pill ${outcome.cls}">${CT.escapeHtml(outcome.text)}</span>
+            </div>
+            <h3 class="decision-title">${CT.escapeHtml(title)}</h3>
+            ${body}
+            ${rollcall(data, m)}
+          </a>`;
+      }
+
+      /* ---------- Council ---------- */
+
+      function renderCouncil(data) {
+        const current = data.members.filter(m => CT.isCurrentMember(m));
+        const mayor = current.find(m => /mayor/i.test(m.role));
+        const rest = current.filter(m => m !== mayor);
+
+        const since = (m) => (m.terms?.[m.terms.length - 1]?.start || m.tenure_start || "").slice(0, 4);
+
+        const mayorCard = mayor ? `
+          <a class="mayor-card" href="member.html?id=${encodeURIComponent(mayor.id)}">
+            <span class="mayor-avatar" aria-hidden="true">${CT.escapeHtml(initials(mayor.name))}</span>
+            <div>
+              <div class="mayor-name">
+                <span class="n">${CT.escapeHtml(mayor.name)}</span>
+                <span class="tag-mayor">Mayor</span>
+              </div>
+              <div class="mayor-line">Presides over meetings and votes to break ties${
+                since(mayor) ? ` · in office since ${CT.escapeHtml(since(mayor))}` : ""
+              }</div>
+            </div>
+          </a>` : "";
+
+        // Eagle Mountain's council is elected at large, so there is no district to
+        // show. How often a member sides with the majority is the more telling number,
+        // and it is the one the rest of the site is built to answer.
+        const cards = rest.map(m => {
+          const s = data.stats.by_member[m.id] || { total: 0, yes_rate: 0 };
+          const line = [
+            since(m) ? `Since ${CT.escapeHtml(since(m))}` : null,
+            s.total ? `${s.total} votes` : null,
+            s.total ? `${Math.round(s.yes_rate * 100)}% yes` : null,
+          ].filter(Boolean).join(" · ");
+          return `
+            <a class="council-card" href="member.html?id=${encodeURIComponent(m.id)}">
+              <span class="council-avatar" aria-hidden="true">${CT.escapeHtml(initials(m.name))}</span>
+              <div class="who">
+                <div class="n">${CT.escapeHtml(m.name)}</div>
+                <div class="r">${line}</div>
               </div>
             </a>`;
-        }).join("")}</div>`;
-      }
-      function yearRange(term) {
-        const a = (term.start || "").slice(0,4);
-        const b = term.end ? (term.end || "").slice(0,4) : "present";
-        return a && a === b ? a : `${a}–${b}`;
-      }
-      function initials(name) {
-        const p = (name||"").split(/\s+/).filter(Boolean);
-        return ((p[0]||"")[0] + (p[p.length-1]||"")[0] || "?").toUpperCase();
+        }).join("");
+
+        document.getElementById("council").innerHTML =
+          mayorCard + `<div class="council-grid">${cards}</div>`;
       }
     </script>
   </body>

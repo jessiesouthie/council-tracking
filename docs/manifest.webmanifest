@@ -5,8 +5,8 @@
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#FBFAF3",
-  "theme_color": "#31452E",
+  "background_color": "#F7F4EC",
+  "theme_color": "#FFFDF8",
   "orientation": "any",
   "categories": ["productivity", "government"],
   "icons": [

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Meetings · Council Tracking</title>
     <meta name="description" content="Browse every Eagle Mountain City Council meeting and the motions decided each night." />
-    <meta name="theme-color" content="#31452E" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#1B201A" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Council Tracking" />
     <meta property="og:title" content="Meetings · Council Tracking" />
@@ -19,15 +19,15 @@
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Lato:wght@400;700&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260711e" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
+    <link rel="stylesheet" href="site.css?v=20260713g" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
     <header class="topbar">
       <a class="brand" href="index.html">
-        <span class="brand-mark" aria-hidden="true">CT</span>
-        <div><p class="brand-title">Council Tracking</p><p class="city">Eagle Mountain, UT</p></div>
+        <span class="brand-mark" aria-hidden="true">C</span>
+        <div><p class="brand-title">Roll Call</p><p class="city">Eagle Mountain, UT</p></div>
       </a>
       <nav class="nav" aria-label="Primary">
         <a href="index.html" data-nav="index.html">Home</a>
@@ -45,7 +45,7 @@
 
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
 
-    <script src="site.js?v=20260711d"></script>
+    <script src="site.js?v=20260713g"></script>
     <script src="vendor/marked.min.js"></script>
     <script>
       (async () => {
@@ -216,7 +216,7 @@
         if (!meeting) {
           // Not in the parsed dataset. If we have a transcript for it (minutes
           // not published yet), render a transcript-only meeting page.
-          if (txEntry) return renderTranscriptOnly(id, txEntry, root);
+          if (txEntry) return renderTranscriptOnly(id, txEntry, root, data);
           root.innerHTML = `<div class="error-block">No meeting found with id ${id}.</div>`;
           return;
         }
@@ -243,6 +243,10 @@
         const summarySection = (!txEntry && meeting.summary)
           ? `<section class="section"><h2>Summary</h2><p class="meeting-summary">${CT.escapeHtml(meeting.summary)}</p></section>`
           : "";
+        // An empty "Motions" heading under a full summary is just noise — the
+        // summary's own Decisions section already accounts for the night. Keep
+        // the empty-state line only when there's no summary to stand in for it.
+        const showMotions = motions.length > 0 || !txEntry;
         root.innerHTML = `
           <p style="margin-top:0"><a href="meetings.html">← All meetings</a></p>
           ${typeLine}
@@ -253,12 +257,13 @@
 
           ${summarySection}
 
-          <section class="section">
-            <h2>Motions</h2>
-            <div id="motions"></div>
-          </section>
+          ${showMotions ? `
+            <section class="section">
+              <h2>Motions</h2>
+              <div id="motions"></div>
+            </section>` : ""}
 
-          ${detail ? `
+          ${detail && detail.ordinances.length ? `
             <section class="section">
               <h2>Ordinance mentions (${detail.ordinances.length})</h2>
               <details><summary class="muted" style="cursor:pointer">Show lines</summary>
@@ -266,7 +271,8 @@
                 ${detail.ordinances.map(o => `<li style="padding:3px 0;border-bottom:1px dashed var(--border)"><span class="mono muted">p.${o.page}</span> ${CT.escapeHtml(o.line_text)}</li>`).join("")}
                 </ul>
               </details>
-            </section>
+            </section>` : ""}
+          ${detail && detail.resolutions.length ? `
             <section class="section">
               <h2>Resolution mentions (${detail.resolutions.length})</h2>
               <details><summary class="muted" style="cursor:pointer">Show lines</summary>
@@ -274,18 +280,19 @@
                 ${detail.resolutions.map(o => `<li style="padding:3px 0;border-bottom:1px dashed var(--border)"><span class="mono muted">p.${o.page}</span> ${CT.escapeHtml(o.line_text)}</li>`).join("")}
                 </ul>
               </details>
-            </section>
-          ` : ""}
+            </section>` : ""}
         `;
 
-        document.getElementById("motions").innerHTML = motions.map(renderMotionCard.bind(null, data)).join("") ||
-          `<p class="muted">No motions parsed for this meeting.</p>`;
+        if (showMotions) {
+          document.getElementById("motions").innerHTML = motions.map(renderMotionCard.bind(null, data)).join("") ||
+            `<p class="muted">No motions parsed for this meeting.</p>`;
+        }
 
-        if (txEntry) renderTranscriptSection(txEntry, document.getElementById("transcript-slot"));
+        if (txEntry) renderTranscriptSection(txEntry, document.getElementById("transcript-slot"), data, motions);
       }
 
       // A meeting we only have a recording for (no parsed minutes yet).
-      function renderTranscriptOnly(id, entry, root) {
+      function renderTranscriptOnly(id, entry, root, data) {
         CT.setMeta({
           title: `${CT.fmtDate(entry.date)} meeting · Council Tracking`,
           description: `Transcript and summary generated from the ${CT.fmtDate(entry.date)} Eagle Mountain meeting recording.`,
@@ -297,65 +304,565 @@
           <p class="page-sub">Official minutes for this meeting aren't published yet. Everything below was generated from the meeting recording.</p>
           <div id="transcript-slot"></div>
         `;
-        renderTranscriptSection(entry, document.getElementById("transcript-slot"));
+        renderTranscriptSection(entry, document.getElementById("transcript-slot"), data, []);
       }
 
-      // Renders the "Transcript & summary" section: the enriched prose summary
-      // (markdown) plus a searchable full transcript. Fetches are relative to
-      // the docs root, so they work both locally and on GitHub Pages.
-      function renderTranscriptSection(entry, mount) {
+      // ---------------------------------------------------------------------
+      // The enriched summary.
+      //
+      // The source is one long Markdown document (up to ~9,500 words). Dumping
+      // it through marked() in a single pass gives the reader an undifferentiated
+      // wall — so instead we split it on its H2s and hand each section to a
+      // renderer that knows what that section *is*: motions become decision rows
+      // with outcome pills, the meeting map becomes a timeline, and the
+      // minutes-vs-recording pairs become side-by-side contrast cards. Anything
+      // unrecognised still renders as plain prose, so an off-format summary
+      // degrades instead of breaking.
+      // ---------------------------------------------------------------------
+
+      // A 1.8-stroke line set, matching the tab-bar glyphs. (Emoji were standing
+      // in here; they render inconsistently across platforms and can't take a
+      // colour from the palette.)
+      const ICON = {
+        clock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`,
+        words: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 11h16M4 16h9"/></svg>`,
+        play:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>`,
+        expand:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg>`,
+        close: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>`,
+        info:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="7.8" r=".9" fill="currentColor" stroke="none"/></svg>`,
+      };
+
+      // A decorative waveform behind the summary head — the one visual cue that
+      // says "this came off an audio recording, not off a page". Deterministic
+      // (no rand), aria-hidden, and dropped entirely on small screens.
+      const WAVEFORM = (() => {
+        const bars = [];
+        for (let i = 0; i < 56; i++) {
+          const n = Math.abs(Math.sin(i * 1.7) * Math.cos(i * 0.55) + Math.sin(i * 0.31) * 0.4);
+          const h = 3 + Math.min(1, n) * 19;
+          bars.push(`<rect x="${i * 6}" y="${(24 - h) / 2}" width="2.6" height="${h.toFixed(1)}" rx="1.3"/>`);
+        }
+        return `<svg class="sum-wave" viewBox="0 0 336 24" preserveAspectRatio="none" aria-hidden="true">${bars.join("")}</svg>`;
+      })();
+
+      const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+      const mdBlock  = (m) => (window.marked ? marked.parse(m, { gfm: true }) : `<pre style="white-space:pre-wrap">${CT.escapeHtml(m)}</pre>`);
+      const mdInline = (m) => (window.marked ? marked.parseInline(m, { gfm: true }) : CT.escapeHtml(m));
+      const prose    = (m) => `<div class="md-body sum-prose">${mdBlock(m)}</div>`;
+
+      // Split the document into the material above the first H2 (lede + cast)
+      // and the H2 sections. A leading H1 is dropped: the page already prints
+      // the meeting's title and date, so rendering it again just repeats them.
+      function splitSections(md) {
+        const head = [], secs = [];
+        let cur = null;
+        for (const ln of md.split("\n")) {
+          const h2 = /^##\s+(.+?)\s*$/.exec(ln);
+          if (h2) { cur = { title: h2[1], lines: [] }; secs.push(cur); continue; }
+          if (/^#\s/.test(ln)) continue;
+          (cur ? cur.lines : head).push(ln);
+        }
+        for (const s of secs) s.md = s.lines.join("\n").trim();
+        return { head: head.join("\n").trim(), secs };
+      }
+
+      // The head is a run of "**Label:** value" lines (a value may wrap onto the
+      // following lines). Returns them keyed by slugified label.
+      function headFields(head) {
+        const out = {};
+        let key = null;
+        for (const raw of head.split("\n")) {
+          const ln = raw.trim();
+          const m = /^\*\*(.+?):?\*\*\s*(.*)$/.exec(ln);
+          if (m) { key = slug(m[1]); out[key] = m[2]; continue; }
+          if (!ln) { key = null; continue; }
+          if (key) out[key] += " " + ln;
+        }
+        return out;
+      }
+
+      // Pull the first GFM table out of a section, returning its cells plus the
+      // Markdown that surrounded it.
+      function extractTable(md) {
+        const lines = md.split("\n");
+        const cells = (l) => l.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map((s) => s.trim());
+        let start = -1;
+        for (let i = 0; i < lines.length - 1; i++) {
+          if (/^\s*\|/.test(lines[i]) && /^\s*\|[\s:|-]+\|\s*$/.test(lines[i + 1])) { start = i; break; }
+        }
+        if (start === -1) return { header: null, rows: null, rest: md };
+        let end = start + 2;
+        while (end < lines.length && /^\s*\|/.test(lines[end])) end++;
+        return {
+          header: cells(lines[start]),
+          rows: lines.slice(start + 2, end).map(cells),
+          rest: [...lines.slice(0, start), ...lines.slice(end)].join("\n").trim(),
+        };
+      }
+
+      // Column lookup by fuzzy header name, so a small wording drift in the
+      // generated table ("Vote" vs "Vote tally") doesn't blank out a column.
+      const colFinder = (header) => (...names) =>
+        header ? header.findIndex((h) => names.some((n) => slug(h).includes(n))) : -1;
+
+      // Motions: one row per vote taken. The outcome pill reuses the site's vote
+      // colours, so "passed" is the same green here as everywhere else.
+      function renderDecisions(md) {
+        const { header, rows, rest } = extractTable(md);
+        let html = "";
+        if (rows && rows.length) {
+          const col = colFinder(header);
+          const iRef = col("agenda", "ref"), iMotion = col("motion"), iMoved = col("moved", "second"),
+                iVote = col("vote"), iResult = col("result");
+          const val = (r, i) => (i >= 0 && r[i] && r[i] !== "—" ? r[i] : "");
+          html += `<ul class="dec-list">` + rows.map((r) => {
+            const moved = val(r, iMoved), vote = val(r, iVote), result = val(r, iResult), ref = val(r, iRef);
+            return `
+              <li class="dec">
+                <div class="dec-body">
+                  <p class="dec-motion">${mdInline(val(r, iMotion) || r[0] || "")}</p>
+                  <dl class="dec-meta">
+                    ${ref ? `<div><dt>Item</dt><dd>${mdInline(ref)}</dd></div>` : ""}
+                    ${moved ? `<div><dt>Moved / seconded</dt><dd>${mdInline(moved)}</dd></div>` : ""}
+                    ${vote ? `<div><dt>Vote</dt><dd>${mdInline(vote)}</dd></div>` : ""}
+                  </dl>
+                </div>
+                ${result ? CT.outcomePill(result) : ""}
+              </li>`;
+          }).join("") + `</ul>`;
+        }
+        return html + (rest ? prose(rest) : "");
+      }
+
+      // The meeting map: a timeline down the recording, so a reader can see the
+      // shape of a six-hour night at a glance and know where to scrub to.
+      function renderMap(md) {
+        const { header, rows, rest } = extractTable(md);
+        let html = "";
+        if (rows && rows.length) {
+          // The old standing disclaimer carried this caveat; it has to keep being
+          // said somewhere, and it belongs next to the times it qualifies.
+          html += `<p class="map-cap">Approximate positions in the recording, not clock times.</p>`;
+          const col = colFinder(header);
+          const iRef = col("agenda", "ref"), iTopic = col("topic"), iStart = col("start"), iNote = col("note");
+          const val = (r, i) => (i >= 0 && r[i] ? r[i] : "");
+          html += `<ol class="map-list">` + rows.map((r) => {
+            const note = val(r, iNote), ref = val(r, iRef);
+            return `
+              <li class="map-item">
+                <span class="map-time mono">${CT.escapeHtml(val(r, iStart).replace(/^~/, ""))}</span>
+                <div class="map-body">
+                  <p class="map-topic">${mdInline(val(r, iTopic))}${ref ? ` <span class="map-ref">${CT.escapeHtml(ref)}</span>` : ""}</p>
+                  ${note ? `<p class="map-note">${mdInline(note)}</p>` : ""}
+                </div>
+              </li>`;
+          }).join("") + `</ol>`;
+        }
+        return html + (rest ? prose(rest) : "");
+      }
+
+      // "What the minutes leave out": each paragraph pairs the official record
+      // against the recording. Setting the two side by side is the whole point of
+      // the section, so render it as a contrast rather than as running text.
+      function renderContrast(md) {
+        // The two halves of a pair may arrive in one paragraph or in two, and the
+        // items are sometimes divided by a `---` rule. Split on the markers
+        // themselves rather than on blank lines, so either layout parses.
+        const chunks = md.replace(/^\s*---+\s*$/gm, "").split(/\*Minutes would say:\*/i);
+        const intro = chunks.shift().trim();
+        const pairs = [];
+        for (const c of chunks) {
+          const m = /([\s\S]*?)\*Recording captures:\*([\s\S]*)/i.exec(c);
+          if (m) pairs.push({ minutes: m[1].trim(), rec: m[2].trim() });
+        }
+        if (!pairs.length) return prose(md);
+        const others = intro ? [intro] : [];
+        return pairs.map((c) => `
+          <div class="contrast">
+            <div class="contrast-side">
+              <p class="contrast-lab">Minutes would say</p>
+              <p class="contrast-txt">${mdInline(c.minutes)}</p>
+            </div>
+            <div class="contrast-side is-rec">
+              <p class="contrast-lab">Recording captures</p>
+              <p class="contrast-txt">${mdInline(c.rec)}</p>
+            </div>
+          </div>`).join("") + (others.length ? prose(others.join("\n\n")) : "");
+      }
+
+      // Map a heading to a renderer. Matching is loose so the older summaries
+      // (numbered headings: "## 1. Meeting Map", "## 5. Transcript Quality
+      // Notes") keep rendering until they're regenerated.
+      function sectionKind(title) {
+        const k = slug(title).replace(/^\d+-/, "");
+        if (k === "decisions" || k === "motions-at-a-glance") return "decisions";
+        if (k === "meeting-map") return "map";
+        if (k === "what-was-discussed" || k === "per-item-enrichment") return "discussed";
+        if (k.includes("minutes")) return "contrast";
+        if (k.includes("transcript")) return "about";
+        if (k === "notable-moments") return "moments";
+        return "prose";
+      }
+      const RENDERER = { decisions: renderDecisions, map: renderMap, contrast: renderContrast };
+
+      // Short rail labels. The section keeps its full heading; the tab only has to
+      // be recognisable at a glance and survive a 360px screen.
+      const TAB_LABEL = {
+        decisions: "Decisions",
+        map: "Meeting map",
+        discussed: "Discussion",
+        contrast: "Minutes vs. recording",
+        moments: "Moments",
+      };
+
+      // How many things are in a section, counted off the Markdown itself so the
+      // tab can carry a number ("Decisions 6") without the renderer reporting back.
+      function sectionCount(kind, md) {
+        if (kind === "decisions" || kind === "map") return (extractTable(md).rows || []).length;
+        if (kind === "discussed") return (md.match(/^###\s/gm) || []).length;
+        if (kind === "moments")   return (md.match(/^\s*[-*]\s/gm) || []).length;
+        if (kind === "contrast")  return (md.match(/\*Minutes would say:\*/gi) || []).length;
+        return 0;
+      }
+
+      // ---- who was in the room -------------------------------------------------
+      //
+      // The "**Present:**" line is a sentence, not a list ("…Councilmembers Brett
+      // Wright and Zac Huish took part remotely…"), so it's not safe to chop into
+      // chips. Instead we go the other way: take the council roster serving on the
+      // meeting date and keep the members the night can actually vouch for — they
+      // cast a recorded vote, or the summary names them. Nobody is ever *asserted*
+      // absent, and the sentence itself is kept whenever it carries a caveat the
+      // chips can't (remote, excused, stepped away).
+      const initials = (name) => name.trim().split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+
+      function rosterOn(data, date) {
+        const list = (data && data.members) || [];
+        return list
+          .map((m) => {
+            const term = (m.terms || []).find((t) => (!t.start || t.start <= date) && (!t.end || t.end >= date));
+            return term ? { ...m, seatRole: term.role || m.role || "" } : null;
+          })
+          .filter(Boolean);
+      }
+
+      const ATTENDANCE_CAVEAT = /remote|virtual|excused|absent|by (?:video|phone)|electronic|stepped (?:away|out)|left (?:the|early)|did not|arriv|join(?:ed)? late|recus/i;
+
+      function buildCast(f, entry, data, motions) {
+        const present = f["present"] || f["elected-officials-present"] || "";
+        const staff   = f["staff"]   || f["key-staff-presenters"] || "";
+        if (!present && !staff) return "";
+
+        const voted = new Set();
+        for (const mo of motions || []) for (const v of mo.votes || []) if (v.member_id) voted.add(v.member_id);
+
+        const hay = present.toLowerCase();
+        const named = (m) => {
+          const last = m.name.trim().split(/\s+/).pop().toLowerCase();
+          return hay.includes(m.name.toLowerCase()) || new RegExp(`\\b${last}\\b`).test(hay);
+        };
+        const seated = rosterOn(data, entry.date)
+          .filter((m) => voted.has(m.id) || named(m))
+          .sort((a, b) => (/mayor/i.test(b.seatRole) ? 1 : 0) - (/mayor/i.test(a.seatRole) ? 1 : 0)
+                       || a.name.localeCompare(b.name));
+
+        const chips = seated.map((m) => `
+          <a class="cast-chip" href="member.html?id=${encodeURIComponent(m.id)}">
+            <span class="cast-ava" aria-hidden="true">${CT.escapeHtml(initials(m.name))}</span>
+            <span class="cast-who">
+              <span class="cast-name">${CT.escapeHtml(m.name)}</span>
+              <span class="cast-role">${CT.escapeHtml(m.seatRole || "Councilmember")}</span>
+            </span>
+          </a>`).join("");
+
+        // Chips only stand in for the sentence when the sentence says nothing more
+        // than "these people were here".
+        const keepSentence = !chips || ATTENDANCE_CAVEAT.test(present);
+
+        return `
+          <div class="sum-cast">
+            ${chips ? `
+              <div class="cast-row">
+                <p class="cast-lab">In the room</p>
+                <div class="cast-chips">${chips}</div>
+              </div>` : ""}
+            ${present && keepSentence ? `
+              <p class="cast-note">${mdInline(present)}</p>` : ""}
+            ${staff ? `
+              <details class="cast-staff">
+                <summary>Staff and presenters named</summary>
+                <p>${mdInline(staff)}</p>
+              </details>` : ""}
+          </div>`;
+      }
+
+      // Returns the four parts of the summary separately so the page can seat the
+      // lede and the cast inside the head card, pin the tab rail below it, and let
+      // the long body scroll under both.
+      function buildSummary(md, entry, data, motions) {
+        const { head, secs } = splitSections(md);
+        const f = headFields(head);
+        const lede = f["in-short"];
+
+        const toc = [];
+        const body = secs.map((s) => {
+          const kind = sectionKind(s.title);
+          const id = "sec-" + slug(s.title).replace(/^\d+-/, "");
+          // The caveats matter for trust but not for reading — park them behind
+          // a disclosure at the foot rather than in the reading flow.
+          if (kind === "about") {
+            return `<details class="sum-about">
+                      <summary>${CT.escapeHtml(s.title)}</summary>
+                      ${prose(s.md)}
+                    </details>`;
+          }
+          toc.push({ id, label: TAB_LABEL[kind] || s.title, count: sectionCount(kind, s.md) });
+          const render = RENDERER[kind] || prose;
+          return `<section class="sum-sec is-${kind}" id="${id}">
+                    <h2 class="sum-sec-h">${CT.escapeHtml(s.title)}</h2>
+                    ${render(s.md)}
+                  </section>`;
+        }).join("");
+
+        const tabs = toc.length > 1 ? `
+          <nav class="sum-toc" aria-label="Jump to a section">
+            <div class="sum-toc-rail">
+              ${toc.map((t) => `
+                <a href="#${t.id}">${CT.escapeHtml(t.label)}${t.count ? `<span class="toc-n">${t.count}</span>` : ""}</a>
+              `).join("")}
+            </div>
+          </nav>` : "";
+
+        return {
+          lede: lede ? `<p class="sum-lede">${mdInline(lede)}</p>` : "",
+          cast: buildCast(f, entry, data, motions),
+          tabs,
+          body,
+        };
+      }
+
+      // Light up the tab for the section the reader is currently in, and keep that
+      // tab in view on a rail that scrolls sideways.
+      function wireToc(root) {
+        const nav = root.querySelector(".sum-toc");
+        if (!nav) return;
+        const rail = nav.querySelector(".sum-toc-rail");
+        const smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        // Scroll the section into view ourselves: the default hash jump lands the
+        // heading under the pinned rail on some browsers, and this keeps the URL
+        // clean of a hash the reader didn't ask for.
+        nav.addEventListener("click", (e) => {
+          const a = e.target.closest("a");
+          if (!a) return;
+          const sec = root.querySelector(a.getAttribute("href"));
+          if (!sec) return;
+          e.preventDefault();
+          sec.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+        });
+
+        if (!("IntersectionObserver" in window)) return;
+        const links = new Map([...nav.querySelectorAll("a")].map((a) => [a.getAttribute("href").slice(1), a]));
+        const secs = [...root.querySelectorAll(".sum-sec")].filter((s) => links.has(s.id));
+        if (!secs.length) return;
+        const visible = new Set();
+        let current = null;
+        const io = new IntersectionObserver((entries) => {
+          for (const e of entries) e.isIntersecting ? visible.add(e.target.id) : visible.delete(e.target.id);
+          // Topmost visible section wins, so the tab tracks the reading position
+          // rather than whichever section happened to fire last.
+          const active = secs.find((s) => visible.has(s.id));
+          for (const [id, a] of links) a.classList.toggle("is-active", !!active && id === active.id);
+          if (active && active.id !== current && rail) {
+            current = active.id;
+            const a = links.get(active.id);
+            // Nudge the rail so the live tab is never parked off-screen — but only
+            // the rail, never the page.
+            rail.scrollTo({
+              left: Math.max(0, a.offsetLeft - rail.clientWidth / 2 + a.offsetWidth / 2),
+              behavior: smooth ? "smooth" : "auto",
+            });
+          }
+        }, { rootMargin: "-30% 0px -55% 0px" });
+        secs.forEach((s) => io.observe(s));
+      }
+
+      // Pin the contents rail just under the topbar. Measured rather than
+      // hard-coded — the same trick tax.html uses.
+      function syncTopbar() {
+        const bar = document.querySelector(".topbar");
+        document.documentElement.style.setProperty(
+          "--topbar-h", (bar ? Math.round(bar.getBoundingClientRect().height) : 62) + "px");
+      }
+
+      // Renders the summary section: the enriched summary (structured from
+      // Markdown) plus a searchable full transcript. Fetches are relative to the
+      // docs root, so they work both locally and on GitHub Pages.
+      //
+      // The transcript is 20k+ words — far longer than the summary it supports —
+      // so it lives in a modal rather than inline: the word-count pill and the
+      // foot button both open it, and it only loads the first time it's asked for.
+      function renderTranscriptSection(entry, mount, data, motions) {
         if (!mount || !entry) return;
         mount.innerHTML = `
-          <section class="section transcript-block">
-            <div class="tx-head">
-              <h2>Transcript &amp; summary <span class="tx-tag">from recording</span></h2>
-              <div class="meta-strip">
-                ${entry.duration ? `<span class="chip">🎙️ ${CT.escapeHtml(entry.duration)}</span>` : ""}
-                ${entry.words ? `<span class="chip">📝 ${entry.words.toLocaleString()} words</span>` : ""}
-                ${entry.media_url ? `<span class="chip"><a href="${entry.media_url}" target="_blank" rel="noopener">▶ Watch on CivicClerk ↗</a></span>` : ""}
+          <section class="section summary">
+            <div class="sum-head">
+              ${WAVEFORM}
+              <div class="sum-head-top">
+                <p class="sum-kicker">From the recording</p>
+                <div class="sum-meta">
+                  ${entry.duration ? `<span class="sum-stat">${ICON.clock}${CT.escapeHtml(entry.duration)}</span>` : ""}
+                  ${entry.words ? `<button type="button" class="sum-stat sum-stat-btn" data-tx-open title="Read the full transcript">${ICON.words}${entry.words.toLocaleString()} words${ICON.expand}</button>` : ""}
+                  ${entry.media_url ? `<a class="sum-watch" href="${entry.media_url}" target="_blank" rel="noopener">${ICON.play}Watch the recording</a>` : ""}
+                </div>
               </div>
+              <div id="sum-lede-slot" class="sum-lede-slot">
+                <span class="sum-skel"></span><span class="sum-skel"></span><span class="sum-skel is-last"></span>
+              </div>
+              <div id="sum-cast-slot"></div>
+              <p class="sum-note">${ICON.info}<span>Written up automatically from the audio — this is not the official record. Speakers are inferred from roll call, so attribution can be wrong.</span></p>
             </div>
-            <p class="proto-note">Generated automatically from the audio recording — not the official minutes. Speaker names are inferred from roll-call context.</p>
-            <div id="tx-summary" class="md-body"><p class="loading">Loading summary…</p></div>
-            <details class="tx-full">
-              <summary>Full transcript</summary>
+
+            <div id="sum-toc-slot"></div>
+            <div id="sum-body"></div>
+
+            <div class="tx-full">
+              <button type="button" class="tx-open" data-tx-open>${ICON.words}Read the full transcript</button>
+            </div>
+
+            <dialog id="tx-modal" class="tx-modal" aria-labelledby="tx-modal-h">
+              <header class="tx-modal-head">
+                <div>
+                  <h2 id="tx-modal-h">Full transcript</h2>
+                  <p class="muted">${CT.fmtDate(entry.date)}${entry.duration ? ` · ${CT.escapeHtml(entry.duration)}` : ""} · automatic, not the official record</p>
+                </div>
+                <button type="button" class="tx-modal-x" data-tx-close aria-label="Close transcript">${ICON.close}</button>
+              </header>
               <div class="tx-tools">
                 <input id="tx-q" class="input" type="search" placeholder="Search the transcript…" autocomplete="off" />
                 <span id="tx-count" class="muted"></span>
               </div>
-              <div id="tx-box"><p class="loading">Loading transcript…</p></div>
-            </details>
+              <div id="tx-box" class="tx-modal-body"><p class="loading">Loading transcript…</p></div>
+            </dialog>
           </section>`;
-        loadSummaryMd(entry.summary_file, document.getElementById("tx-summary"));
-        loadTranscriptText(entry.text_file);
+        syncTopbar();
+        addEventListener("resize", syncTopbar, { passive: true });
+        loadSummary(entry, mount, data, motions);
+        wireTranscriptModal(entry, mount);
       }
 
-      async function loadSummaryMd(path, el) {
+      // Opens/closes the transcript dialog and loads the transcript on first open.
+      function wireTranscriptModal(entry, root) {
+        const dlg = root.querySelector("#tx-modal");
+        if (!dlg) return;
+        let loaded = false;
+        const open = () => {
+          if (!loaded) { loaded = true; loadTranscriptText(entry.text_file, entry.speakers_file); }
+          // <dialog> doesn't stop the page behind it from scrolling; pin it.
+          document.documentElement.classList.add("has-modal");
+          dlg.showModal();
+          const q = dlg.querySelector("#tx-q");
+          // Don't steal focus into a keyboard on touch — it covers the transcript.
+          if (q && !matchMedia("(pointer: coarse)").matches) q.focus();
+        };
+        const close = () => dlg.close();
+        root.querySelectorAll("[data-tx-open]").forEach((b) => b.addEventListener("click", open));
+        dlg.querySelectorAll("[data-tx-close]").forEach((b) => b.addEventListener("click", close));
+        // Click on the backdrop (i.e. outside the dialog's own box) closes it.
+        dlg.addEventListener("click", (e) => {
+          const r = dlg.getBoundingClientRect();
+          const inside = e.clientX >= r.left && e.clientX <= r.right
+                      && e.clientY >= r.top  && e.clientY <= r.bottom;
+          if (!inside) close();
+        });
+        dlg.addEventListener("close", () => document.documentElement.classList.remove("has-modal"));
+      }
+
+      async function loadSummary(entry, root, data, motions) {
+        const ledeEl = root.querySelector("#sum-lede-slot");
+        const castEl = root.querySelector("#sum-cast-slot");
+        const tocEl  = root.querySelector("#sum-toc-slot");
+        const bodyEl = root.querySelector("#sum-body");
+
+        let md;
         try {
-          const r = await fetch(new URL(path, document.baseURI).toString());
+          const r = await fetch(new URL(entry.summary_file, document.baseURI).toString());
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
-          const md = await r.text();
-          el.innerHTML = window.marked
-            ? marked.parse(md, { gfm: true })
-            : `<pre style="white-space:pre-wrap">${CT.escapeHtml(md)}</pre>`;
+          md = await r.text();
         } catch (e) {
-          el.innerHTML = `<p class="muted">Couldn't load the summary (${CT.escapeHtml(String(e.message || e))}).</p>`;
+          ledeEl.innerHTML = `<p class="muted">Couldn't load the summary (${CT.escapeHtml(String(e.message || e))}).</p>`;
+          return;
+        }
+        // A summary that doesn't fit the expected shape is still worth reading:
+        // fall back to plain rendered Markdown rather than showing nothing.
+        try {
+          const s = buildSummary(md, entry, data, motions);
+          ledeEl.innerHTML = s.lede;
+          ledeEl.classList.toggle("is-empty", !s.lede);
+          castEl.innerHTML = s.cast;
+          // Replace the placeholder rather than fill it: a sticky element only
+          // sticks inside its own parent's box, and a wrapper the height of the
+          // rail is no box at all. As a direct child of .summary the rail stays
+          // pinned for as long as there's summary left to read.
+          tocEl.outerHTML = s.tabs;
+          bodyEl.innerHTML = s.body;
+          wireToc(root);
+        } catch {
+          ledeEl.innerHTML = "";
+          bodyEl.innerHTML = prose(md);
         }
       }
 
-      async function loadTranscriptText(path) {
+      // Each cloud transcript line looks like "Speaker A: some text". On-device
+      // (Whisper) transcripts have no such prefix — those fall back to prose.
+      const TURN_RE = /^Speaker ([A-Z]+):\s*(.*)$/;
+      // Stable, legible accent per speaker letter (spread around the hue wheel).
+      // A curated warm-palette ramp rather than a spin around the hue wheel: the
+      // rainbow it used to generate clashed with the cream ground, and its greens
+      // and reds collided with the only two hues on this site that carry meaning
+      // (a vote passed / a vote failed). Still stable per speaker letter.
+      const SPEAKER_HUES = [
+        "#8A5312", "#2F6D8C", "#1F8A5B", "#9A3F6B",
+        "#5B5E9E", "#A0611F", "#3F7A4A", "#8C4130",
+      ];
+      function speakerColor(letter) {
+        const i = letter.charCodeAt(0) - 65;               // A -> 0
+        return SPEAKER_HUES[((i % SPEAKER_HUES.length) + SPEAKER_HUES.length) % SPEAKER_HUES.length];
+      }
+
+      async function loadTranscriptText(path, speakersPath) {
         const box = document.getElementById("tx-box");
         const q = document.getElementById("tx-q");
         const count = document.getElementById("tx-count");
-        let lines = [];
-        try {
-          const r = await fetch(new URL(path, document.baseURI).toString());
-          if (!r.ok) throw new Error(`HTTP ${r.status}`);
-          lines = (await r.text()).split("\n").map(s => s.trim()).filter(Boolean);
-        } catch (e) {
-          box.innerHTML = `<p class="muted">Couldn't load the transcript (${CT.escapeHtml(String(e.message || e))}).</p>`;
+
+        // The speaker map (letter -> {name, basis}) is optional and best-effort;
+        // fetch it alongside the transcript and don't fail the transcript if it
+        // 404s. Unmapped letters render as "Speaker X".
+        const [txRes, spkMap] = await Promise.all([
+          fetch(new URL(path, document.baseURI).toString())
+            .then(r => (r.ok ? r.text() : Promise.reject(new Error(`HTTP ${r.status}`)))),
+          speakersPath
+            ? fetch(new URL(speakersPath, document.baseURI).toString())
+                .then(r => (r.ok ? r.json() : {})).catch(() => ({}))
+            : Promise.resolve({}),
+        ]).catch(e => [e]);
+        if (txRes instanceof Error) {
+          box.innerHTML = `<p class="muted">Couldn't load the transcript (${CT.escapeHtml(String(txRes.message || txRes))}).</p>`;
           return;
         }
+
+        const rawLines = txRes.split("\n").map(s => s.trim()).filter(Boolean);
+        // Turn each line into {letter, name, text}. For undiarized transcripts
+        // letter is null and the block renders as a plain paragraph.
+        const turns = rawLines.map(l => {
+          const m = TURN_RE.exec(l);
+          if (!m) return { letter: null, name: null, text: l };
+          const letter = m[1];
+          const entry = (spkMap && spkMap[letter]) || null;
+          return { letter, name: entry && entry.name, basis: entry && entry.basis, text: m[2] };
+        });
+        const diarized = turns.some(t => t.letter);
+
         const CAP = 4000;
         function hl(text, f) {
           const safe = CT.escapeHtml(text);
@@ -364,16 +871,33 @@
           if (idx === -1) return safe;
           return safe.slice(0, idx) + `<mark>${safe.slice(idx, idx + f.length)}</mark>` + safe.slice(idx + f.length);
         }
+        function label(t) {
+          return t.name || (t.letter ? `Speaker ${t.letter}` : "");
+        }
+        function renderTurn(t, f) {
+          if (!t.letter) return `<p>${hl(t.text, f)}</p>`;
+          const color = speakerColor(t.letter);
+          const title = t.basis ? ` title="${CT.escapeHtml(t.basis)}"` : "";
+          return `<div class="tx-turn" style="--spk:${color}">`
+            + `<span class="tx-spk"${title}>${CT.escapeHtml(label(t))}</span>`
+            + `<span class="tx-line">${hl(t.text, f)}</span></div>`;
+        }
         function paint(filter) {
           const f = (filter || "").trim().toLowerCase();
-          const shown = f ? lines.filter(l => l.toLowerCase().includes(f)) : lines;
+          // Match on the spoken text and on the speaker label, so searching a
+          // name (e.g. "mayor") surfaces that person's turns.
+          const shown = f
+            ? turns.filter(t => t.text.toLowerCase().includes(f) || label(t).toLowerCase().includes(f))
+            : turns;
           const slice = shown.slice(0, CAP);
-          box.innerHTML = slice.map(l => `<p>${hl(l, f)}</p>`).join("")
+          box.innerHTML = slice.map(t => renderTurn(t, f)).join("")
             || `<p class="muted">No lines match “${CT.escapeHtml(f)}”.</p>`;
+          const noun = diarized ? "turn" : "line";
           count.textContent = f
-            ? `${shown.length.toLocaleString()} matching line${shown.length === 1 ? "" : "s"}${shown.length > CAP ? ` (showing ${CAP})` : ""}`
-            : `${lines.length.toLocaleString()} lines`;
+            ? `${shown.length.toLocaleString()} matching ${noun}${shown.length === 1 ? "" : "s"}${shown.length > CAP ? ` (showing ${CAP})` : ""}`
+            : `${turns.length.toLocaleString()} ${noun}${turns.length === 1 ? "" : "s"}`;
         }
+        box.classList.toggle("tx-diarized", diarized);
         let t;
         q.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => paint(q.value), 120); });
         paint("");

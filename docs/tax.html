@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Property Tax Estimator — Eagle Mountain Council Tracking</title>
     <meta name="description" content="See what Eagle Mountain's proposed property tax increase would cost you, and every council meeting where it was discussed." />
-    <meta name="theme-color" content="#31452E" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#1B201A" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Council Tracking" />
     <meta property="og:title" content="Property Tax Estimator — Eagle Mountain Council Tracking" />
@@ -20,16 +20,16 @@
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Lato:wght@400;700&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260711e" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
+    <link rel="stylesheet" href="site.css?v=20260713g" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
     <header class="topbar">
       <a class="brand" href="index.html">
-        <span class="brand-mark" aria-hidden="true">CT</span>
+        <span class="brand-mark" aria-hidden="true">C</span>
         <div>
-          <p class="brand-title">Council Tracking</p>
+          <p class="brand-title">Roll Call</p>
           <p class="city">Eagle Mountain, UT</p>
         </div>
       </a>
@@ -49,7 +49,7 @@
 
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
 
-    <script src="site.js?v=20260711d"></script>
+    <script src="site.js?v=20260713g"></script>
     <script>
       (async () => {
         const root = document.getElementById("content");
@@ -268,13 +268,22 @@
                       <span class="dot" aria-hidden="true"></span>
                       <span>
                         <span class="rname">Try another rate</span>
-                        <span class="rmeta" id="custom-meta">Drag to explore</span>
+                        <span class="rmeta" id="custom-meta">Type a rate, or drag</span>
                       </span>
                       <span class="rrate" id="custom-rate">0.001100</span>
                     </label>
                     <div class="customwrap" id="customwrap" hidden>
+                      <div class="customedit">
+                        <label class="clabel" for="custom-num">Rate</label>
+                        <div class="cnum">
+                          <button type="button" class="cstep" id="custom-down" aria-label="Lower the rate">−</button>
+                          <input id="custom-num" class="crate" type="text" inputmode="decimal"
+                                 value="0.001100" aria-describedby="custom-help" />
+                          <button type="button" class="cstep" id="custom-up" aria-label="Raise the rate">+</button>
+                        </div>
+                      </div>
                       <input type="range" id="custom-range" min="0" max="3000" step="10" value="1100" aria-label="Custom tax rate" />
-                      <div class="rangeends"><span>0.000000</span><span>0.003000</span></div>
+                      <div class="rangeends" id="custom-help"><span>0.000000</span><span>0.003000</span></div>
                     </div>
                   </div>
                 </div>
@@ -300,10 +309,29 @@
           mvRange = $("mv-range"),
           customWrap = $("customwrap"),
           customRng = $("custom-range"),
+          customNum = $("custom-num"),
           customRate = $("custom-rate"),
           customMeta = $("custom-meta"),
           bignum = $("res-total"),
           srOut = $("res-sr");
+
+        // The custom rate is kept here, in millionths, rather than read back off
+        // the slider: the slider snaps to its 0.000010 step, and a rate someone
+        // typed out by hand should survive to its last digit.
+        const RATE_MAX = parseInt(customRng.max, 10);
+        const STEP = parseInt(customRng.step, 10);
+        let customMicro = parseInt(customRng.value, 10);
+
+        // `typed` keeps a half-finished entry ("0.0" on the way to "0.0018")
+        // from being reformatted out from under the cursor.
+        const setCustom = (micro, typed) => {
+          customMicro = Math.min(Math.max(Math.round(micro), 0), RATE_MAX);
+          customRng.value = customMicro;
+          $("r-custom").checked = true;
+          customWrap.hidden = false;
+          if (!typed) customNum.value = (customMicro / 1e6).toFixed(6);
+          paint();
+        };
 
         const value = () => {
           const n = parseInt(String(mv.value).replace(/[^0-9]/g, ""), 10);
@@ -314,7 +342,7 @@
           const v = document.querySelector('input[name="rate"]:checked').value;
           if (v === "current") return { rate: CURRENT, name: "current rate", bar: "Current" };
           if (v === "proposed") return { rate: PROPOSED, name: "proposed rate", bar: "Proposed" };
-          return { rate: parseInt(customRng.value, 10) / 1e6, name: "rate you picked", bar: "Yours" };
+          return { rate: customMicro / 1e6, name: "rate you picked", bar: "Yours" };
         };
 
         // The visible number updates on every slider tick; the announcement waits
@@ -359,9 +387,14 @@
           $("bv-sel").textContent = usd(tax);
           $("bl-sel").textContent = sel.bar;
 
-          const cr = parseInt(customRng.value, 10) / 1e6;
+          // Unopened, the row has to advertise that it is editable at all; once
+          // it's the chosen scenario, the space is better spent on what the rate
+          // means in dollars.
+          const cr = customMicro / 1e6;
           customRate.textContent = cr.toFixed(6);
-          customMeta.textContent = usd(cr * 100000 * ratio()) + " per $100k of value";
+          customMeta.textContent = $("r-custom").checked
+            ? usd(cr * 100000 * ratio()) + " per $100k of value"
+            : "Type a rate, or drag";
 
           announce(
             `Your city property tax at the ${sel.name} is ${usd(tax)} per year, ` +
@@ -401,11 +434,27 @@
             pulse();
           })
         );
-        customRng.addEventListener("input", () => {
-          document.getElementById("r-custom").checked = true;
-          customWrap.hidden = false;
-          paint();
+        customRng.addEventListener("input", () => setCustom(parseInt(customRng.value, 10)));
+
+        customNum.addEventListener("input", () => {
+          const n = parseFloat(String(customNum.value).replace(/[^0-9.]/g, ""));
+          if (isNaN(n)) return; // an empty or half-typed field isn't a rate yet
+          setCustom(n * 1e6, true);
         });
+        // Tidy the field to six places only once they're done with it, and never
+        // leave a cleared field standing in for a rate that is still in effect.
+        customNum.addEventListener("blur", () => {
+          customNum.value = (customMicro / 1e6).toFixed(6);
+        });
+        customNum.addEventListener("keydown", (e) => {
+          const dir = e.key === "ArrowUp" ? 1 : e.key === "ArrowDown" ? -1 : 0;
+          if (!dir) return;
+          e.preventDefault();
+          setCustom(customMicro + dir * (e.shiftKey ? STEP * 10 : STEP));
+        });
+
+        $("custom-up").addEventListener("click", () => setCustom(customMicro + STEP));
+        $("custom-down").addEventListener("click", () => setCustom(customMicro - STEP));
 
         paint();
         srOut.textContent = ""; // don't announce the initial render
@@ -457,7 +506,7 @@
         attach();
         window.addEventListener("resize", remeasure);
 
-        // Measuring once is a race. The topbar grows when EB Garamond replaces
+        // Measuring once is a race. The topbar grows when Inter replaces
         // the fallback and the brand wraps to two lines, and it grows again if
         // the body switcher rewraps — either way the banner would pin behind a
         // bar taller than the height we recorded.
