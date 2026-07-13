@@ -1,8 +1,20 @@
 // Council Tracking service worker.
-// - App shell: precache + cache-first (versioned).
+// - App shell: precache + stale-while-revalidate.
 // - Pyodide CDN: stale-while-revalidate into a separate, long-lived bucket.
+//
+// The shell used to be cache-first, which meant a cached site.css/site.js/*.html was
+// served forever and only ever replaced when SHELL_CACHE was renamed by hand. That
+// bump got missed (b60b08e and aa7b701 both shipped CSS with no bump), so returning
+// visitors kept being served old styling — the page would visibly snap back to the
+// previous design on refresh. Stale-while-revalidate removes the footgun: the cached
+// copy still answers instantly, but every load also refetches in the background, so a
+// change lands on the next visit whether or not anyone remembers to touch this file.
+//
+// SHELL_CACHE is therefore no longer load-bearing for correctness — it's just the
+// precache namespace. Bumping it is now only a way to force a one-time flush, which
+// is exactly what the bump below does for everyone still pinned to a stale v32.
 
-const SHELL_CACHE = "council-shell-v32";
+const SHELL_CACHE = "council-shell-v33";
 const PYODIDE_CACHE = "council-pyodide-v1";
 const DATA_CACHE = "council-data-v1";
 
@@ -16,6 +28,7 @@ const SHELL_ASSETS = [
   "members.html",
   "member.html",
   "tax.html",
+  "budget.html",
   "site.css",
   "site.js",
   "manifest.webmanifest",
@@ -71,30 +84,14 @@ self.addEventListener("fetch", (event) => {
       event.respondWith(staleWhileRevalidate(req, DATA_CACHE));
       return;
     }
-    event.respondWith(cacheFirst(req, SHELL_CACHE));
+    // The shell (html/css/js/icons) gets the same treatment as the data: serve the
+    // cached copy for an instant paint, but always refetch so the next load is current.
+    event.respondWith(staleWhileRevalidate(req, SHELL_CACHE));
     return;
   }
 
   // Other cross-origin: just go to network.
 });
-
-async function cacheFirst(req, cacheName) {
-  const cache = await caches.open(cacheName);
-  const hit = await cache.match(req, { ignoreSearch: false });
-  if (hit) return hit;
-  try {
-    const res = await fetch(req);
-    if (res.ok) cache.put(req, res.clone());
-    return res;
-  } catch (err) {
-    // If we have an entry for the navigation root, serve it as fallback.
-    if (req.mode === "navigate") {
-      const fallback = await cache.match("./");
-      if (fallback) return fallback;
-    }
-    throw err;
-  }
-}
 
 async function staleWhileRevalidate(req, cacheName) {
   const cache = await caches.open(cacheName);
@@ -105,5 +102,18 @@ async function staleWhileRevalidate(req, cacheName) {
       return res;
     })
     .catch(() => null);
-  return cached || (await network) || Response.error();
+
+  if (cached) return cached;
+
+  const res = await network;
+  if (res) return res;
+
+  // Offline, and nothing cached for this exact URL. Fall back to the precached shell
+  // root so a navigation still lands on something instead of erroring. (Only ever
+  // true for navigations — data and Pyodide requests aren't navigate-mode.)
+  if (req.mode === "navigate") {
+    const fallback = await cache.match("./");
+    if (fallback) return fallback;
+  }
+  return Response.error();
 }
