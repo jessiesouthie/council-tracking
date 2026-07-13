@@ -171,9 +171,23 @@
 
       /* ---------------- estimator (the hero tool) ---------------- */
 
+      // The default scenario: a $500,000 primary residence at the proposed rate.
+      // The markup ships with these figures already filled in rather than a set
+      // of hardcoded placeholders that JS overwrites a moment later — a stale
+      // number that corrects itself in front of the reader reads as a glitch,
+      // and it's the one number this page exists to state.
+      const DEFAULT_VALUE = 500000;
+
       function estimatorHtml(tax) {
         const cur = tax.rates.current;
         const prop = tax.rates.proposed;
+        const taxable = DEFAULT_VALUE * tax.residential_ratio;
+        const d = {
+          now: taxable * cur.rate,
+          sel: taxable * prop.rate,
+        };
+        d.diff = d.sel - d.now;
+        d.fill = (n) => (n / Math.max(d.now, d.sel, 0.01)) * 100;
         return `
         <section class="estimator reveal" style="--i:1" id="estimate">
           <div class="tax-tool">
@@ -187,26 +201,27 @@
                 <p class="rlabel">
                   Your city property tax at the <span class="scen" id="res-scenario">proposed rate</span>
                 </p>
-                <p class="bignum" id="res-total">$506.64</p>
-                <p class="permonth" id="res-month">$42.22 per month</p>
+                <p class="bignum" id="res-total">${usd(d.sel)}</p>
+                <p class="permonth" id="res-month">${usd(d.sel / 12)} per month</p>
               </div>
 
               <div class="out-compare">
                 <div id="res-delta" class="delta up">
                   <span class="arrow" aria-hidden="true">▲</span>
-                  <span id="res-delta-text">$359.79 more per year</span>
+                  <span id="res-delta-text">${usd(d.diff)} more per year
+                    <span class="per">· ${usd(d.diff / 12)}/mo</span></span>
                 </div>
 
                 <div class="bars" aria-hidden="true">
                   <div class="bar now">
                     <span class="bl">Today</span>
-                    <span class="track"><span class="fill" id="bar-now"></span></span>
-                    <span class="bv" id="bv-now">$146.85</span>
+                    <span class="track"><span class="fill" id="bar-now" style="width:${d.fill(d.now)}%"></span></span>
+                    <span class="bv" id="bv-now">${usd(d.now)}</span>
                   </div>
                   <div class="bar sel">
                     <span class="bl" id="bl-sel">Proposed</span>
-                    <span class="track"><span class="fill" id="bar-sel"></span></span>
-                    <span class="bv" id="bv-sel">$506.64</span>
+                    <span class="track"><span class="fill" id="bar-sel" style="width:${d.fill(d.sel)}%"></span></span>
+                    <span class="bv" id="bv-sel">${usd(d.sel)}</span>
                   </div>
                 </div>
               </div>
@@ -228,9 +243,9 @@
                   <label class="flabel" for="mv">What's it worth?</label>
                   <div class="valuerow">
                     <span class="dollar" aria-hidden="true">$</span>
-                    <input class="value" id="mv" type="text" inputmode="numeric" value="500,000" aria-describedby="mv-help" />
+                    <input class="value" id="mv" type="text" inputmode="numeric" value="${commas(DEFAULT_VALUE)}" aria-describedby="mv-help" />
                   </div>
-                  <input type="range" id="mv-range" min="100000" max="3000000" step="5000" value="500000" aria-label="Market value" />
+                  <input type="range" id="mv-range" min="100000" max="3000000" step="5000" value="${DEFAULT_VALUE}" aria-label="Market value" />
                   <div class="rangeends" id="mv-help"><span>$100k</span><span>$3M</span></div>
                 </div>
               </div>
@@ -407,12 +422,15 @@
 
         // A changed scenario is a different answer, not a nudged one — say so.
         // Slider drags are excluded: a pulse per tick would be a strobe.
+        // Named `numflash`, not `pulse`: the home page's motion ledger already
+        // owns `.pulse` as a boxed component, and sharing the name dropped the
+        // figure into a padded grey block for the length of the animation.
         const pulse = () => {
-          bignum.classList.remove("pulse");
+          bignum.classList.remove("numflash");
           void bignum.offsetWidth; // restart the animation
-          bignum.classList.add("pulse");
+          bignum.classList.add("numflash");
         };
-        bignum.addEventListener("animationend", () => bignum.classList.remove("pulse"));
+        bignum.addEventListener("animationend", () => bignum.classList.remove("numflash"));
 
         mv.addEventListener("input", () => {
           const n = value();
@@ -540,15 +558,23 @@
          The schedule Mayor Gray read on June 16 (meeting #726, item 17.B), line
          item for line item, in his order.
 
-         Two figures here refuse to be combined. The schedule states a revenue
-         change of +$6,958,141 AND an "estimated increase to property tax
-         revenue" of 218% — but $6,958,141 against $2,839,998 in collections is
-         245%, which is what the mayor read from this same schedule on May 26.
-         The 218% is the ratio of the rates (0.001700 / 0.000534), not of the
-         revenue. So they stay two rows.
+         The percentage line is the one figure not reproduced as spoken. The
+         mayor read 218%, which is 0.001700 against 0.000534 — the rate then in
+         effect, because the county had not yet returned the recalculated
+         certified rate. Against the 0.000530 it did return on June 22, the same
+         proposal is 220.9%, and that is the number in the city's own
+         Truth-in-Taxation notice. So the row states the percentage the proposed
+         rate actually carries, and the note under the table says what was read
+         aloud and why the two differ.
+
+         Note it is a rate-to-rate figure either way. The schedule's own revenue
+         lines — $2,839,998 against $9,798,139 — imply 245%, a different measure
+         (tax.revenue_ratio_pct), which is why this row is not labelled as a
+         change in revenue.
       */
       function schedulePanel(tax) {
         const cur = tax.rates.current, prop = tax.rates.proposed;
+        const certified = tax.rates.certified_2026;
         const home = tax.as_read.home, biz = tax.as_read.business;
         // The proposed column reproduces the dollar figures the mayor read aloud rather
         // than recomputing them from the rounded rate, so the table matches the record
@@ -557,8 +583,10 @@
         const bizNow = biz.market_value * cur.rate;
         const body = `
           <p class="panel-intro">
-            Every figure below is one Mayor Gray read aloud on
+            The schedule Mayor Gray read aloud on
             <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a>, transcribed from the recording.
+            The percentage is the one line stated against the certified rate the county
+            returned afterwards, rather than as he read it — the note under the table has both.
           </p>
           <div class="tablewrap">
             <table class="data schedule">
@@ -579,9 +607,9 @@
                 <tr><td class="rowlabel">New revenue to the city</td>
                   <td class="num">—</td>
                   <td class="num">+${usd0(tax.revenue_increase)}</td></tr>
-                <tr><td class="rowlabel">Estimated increase to property tax revenue</td>
+                <tr><td class="rowlabel">Increase over the certified rate <span class="ast" aria-hidden="true">*</span></td>
                   <td class="num">—</td>
-                  <td class="num">${tax.as_read.pct}%</td></tr>
+                  <td class="num">+${prop.pct}%</td></tr>
                 <tr><td class="rowlabel">Tax on a ${usd0(home.market_value)} home</td>
                   <td class="num">${usd(homeNow)}</td>
                   <td class="num">${usd(home.proposed)} <span class="rise">+${usd(home.increase)}</span></td></tr>
@@ -590,8 +618,18 @@
                   <td class="num">${usd(biz.proposed)} <span class="rise">+${usd(biz.increase)}</span></td></tr>
               </tbody>
             </table>
-          </div>`;
-        return panel("The official schedule", "The six figures the city read into the record", body, true);
+          </div>
+          <p class="chart-foot schedule-foot">
+            <span aria-hidden="true">*</span>
+            <strong>+${prop.pct}%</strong> is the proposed ${CT.escapeHtml(prop.rate_display)} against the
+            ${CT.escapeHtml(certified.rate_display)} certified rate — the comparison the city's own
+            Truth-in-Taxation notice uses. Mayor Gray read this line as ${tax.as_read.pct}% on June 16,
+            measured against the ${cur.rate.toFixed(6)} rate then in effect; the county did not return the
+            recalculated certified rate until June 22, after the schedule was read.
+            Either way it is a comparison of rates, not of collections — the schedule's own revenue lines,
+            ${usd0(cur.revenue)} against ${usd0(prop.revenue)}, work out to ${tax.revenue_ratio_pct}%.
+          </p>`;
+        return panel("The official schedule", "The six lines of the city's Truth-in-Taxation schedule", body, true);
       }
 
       /* ---------------- the paper trail ---------------- */

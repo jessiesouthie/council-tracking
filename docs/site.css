@@ -3057,7 +3057,7 @@ html.has-modal { overflow: hidden; }
   from { opacity: .45; transform: translateY(3px); }
   to   { opacity: 1;   transform: none; }
 }
-.tax-tool .bignum.pulse { animation: ct-numpulse 260ms cubic-bezier(.22,.7,.2,1); }
+.tax-tool .bignum.numflash { animation: ct-numpulse 260ms cubic-bezier(.22,.7,.2,1); }
 
 .tax-tool .permonth {
   margin: 7px 0 0;
@@ -3194,6 +3194,12 @@ details.panel[open] > .panel-body { animation: panel-open 260ms cubic-bezier(.22
 table.data.schedule { font-variant-numeric: tabular-nums; }
 table.data.schedule .num { text-align: right; }
 table.data.schedule .rowlabel { font-weight: 600; }
+table.data.schedule .rowlabel .ast { color: var(--fg-muted); font-weight: 400; }
+
+/* The percentage line is the one figure not reproduced as spoken, so it carries
+   its basis with it rather than leaving the reader to reconcile two numbers. */
+.schedule-foot { margin-top: 12px; font-size: 11.5px; line-height: 1.55; }
+.schedule-foot strong { color: var(--fg); font-weight: 700; }
 
 /* The rise a taxpayer actually feels, trailing the proposed figure it belongs to.
    Nowrap keeps "+$320.58" off a line of its own on narrow screens. */
@@ -3359,7 +3365,7 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   .reveal { animation: none; }
   .tax-tool .bar .fill { transition: none; }
   .tax-tool .tool-out { transition: none; }
-  .tax-tool .bignum.pulse { animation: none; }
+  .tax-tool .bignum.numflash { animation: none; }
   .tax-status-dot, .tax-next .nh-pulse { animation: none; }
   details.panel[open] > .panel-body { animation: none; }
   .panel-chev { transition: none; }
