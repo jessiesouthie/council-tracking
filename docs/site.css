@@ -4090,6 +4090,9 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
   box-shadow: var(--shadow), var(--shadow-lift);
   overflow: hidden;
 }
+/* The display:flex above outranks the UA's [hidden] rule, so panel.hidden
+   wouldn't hide it without this guard (same pattern as .boot-block / .b-focus). */
+.agent-panel[hidden] { display: none; }
 
 .agent-head {
   display: flex;
