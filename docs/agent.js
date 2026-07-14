@@ -104,21 +104,45 @@
     const input = panel.querySelector(".agent-input");
     let busy = false;
 
-    function open() {
+    // Persist the open state + conversation for this browsing session, so an
+    // active chat survives navigation between pages. sessionStorage (not local)
+    // means a fresh visit starts minimized rather than popping open unbidden.
+    const STORE_KEY = "ct_agent_v1";
+    let history = []; // [{ r:"u", t } | { r:"b", md, s }]
+    function save() {
+      try {
+        sessionStorage.setItem(
+          STORE_KEY,
+          JSON.stringify({ open: !panel.hidden, msgs: history })
+        );
+      } catch {}
+    }
+    function loadSaved() {
+      try {
+        return JSON.parse(sessionStorage.getItem(STORE_KEY) || "null");
+      } catch {
+        return null;
+      }
+    }
+
+    function open(opts) {
       panel.hidden = false;
       launcher.setAttribute("aria-expanded", "true");
       if (!log.childElementCount) greet();
-      setTimeout(() => input.focus(), 40);
+      if (!opts || !opts.silent) setTimeout(() => input.focus(), 40);
+      save();
     }
     // Minimize: tuck the panel back to the launcher, keeping the conversation.
     function minimize() {
       panel.hidden = true;
       launcher.setAttribute("aria-expanded", "false");
       launcher.focus();
+      save();
     }
     // Close: minimize AND clear, so reopening starts a fresh conversation.
     function close() {
       log.innerHTML = "";
+      history = [];
       minimize();
     }
     launcher.addEventListener("click", () => (panel.hidden ? open() : minimize()));
@@ -137,6 +161,30 @@
       return el;
     }
 
+    function renderSources(botEl, sources) {
+      if (!sources || !sources.length) return;
+      const seen = new Set();
+      const ok = (u) => /^(https?:\/\/|[\w.\-]+\.html|\.?\/)/.test(u);
+      const items = sources
+        .filter((s) => s.url && ok(s.url) && !seen.has(s.url) && seen.add(s.url))
+        .slice(0, 5)
+        .map((s) => `<a href="${esc(s.url)}">${esc(s.title)}</a>`)
+        .join("");
+      const src = document.createElement("div");
+      src.className = "agent-sources";
+      src.innerHTML = `<span>Sources</span>${items}`;
+      botEl.appendChild(src);
+    }
+
+    // Repaint a saved conversation into the panel (markdown is re-rendered
+    // through the same safe path, so nothing untrusted is inserted as HTML).
+    function restore(msgs) {
+      for (const m of msgs || []) {
+        if (m.r === "u") bubble("user", esc(m.t));
+        else renderSources(bubble("bot", renderMarkdown(m.md || "")), m.s);
+      }
+    }
+
     function greet() {
       bubble(
         "bot",
@@ -153,6 +201,8 @@
       busy = true;
       input.value = "";
       bubble("user", esc(question));
+      history.push({ r: "u", t: question });
+      save();
       const botEl = bubble("bot", '<span class="agent-typing"><i></i><i></i><i></i></span>');
 
       if (!configured) {
@@ -205,25 +255,18 @@
             }
           }
         }
-        botEl.innerHTML = renderMarkdown(answer || "_(no answer)_");
-        if (sources.length) {
-          const seen = new Set();
-          const items = sources
-            .filter((s) => s.url && !seen.has(s.url) && seen.add(s.url))
-            .slice(0, 5)
-            .map((s) => `<a href="${esc(s.url)}">${esc(s.title)}</a>`)
-            .join("");
-          const src = document.createElement("div");
-          src.className = "agent-sources";
-          src.innerHTML = `<span>Sources</span>${items}`;
-          botEl.appendChild(src);
-        }
+        const finalMd = answer || "_(no answer)_";
+        botEl.innerHTML = renderMarkdown(finalMd);
+        renderSources(botEl, sources);
+        history.push({ r: "b", md: finalMd, s: sources });
       } catch (err) {
-        botEl.innerHTML = renderMarkdown(
-          "Sorry — something went wrong (" + esc(err.message) + "). Please try again."
-        );
+        const errMd =
+          "Sorry — something went wrong (" + esc(err.message) + "). Please try again.";
+        botEl.innerHTML = renderMarkdown(errMd);
+        history.push({ r: "b", md: errMd, s: [] });
       } finally {
         busy = false;
+        save();
         log.scrollTop = log.scrollHeight;
       }
     }
@@ -233,6 +276,14 @@
       const q = input.value.trim();
       if (q) ask(q);
     });
+
+    // Rehydrate this session's conversation + open state across page loads.
+    const saved = loadSaved();
+    if (saved) {
+      history = Array.isArray(saved.msgs) ? saved.msgs : [];
+      restore(history);
+      if (saved.open) open({ silent: true });
+    }
   }
 
   if (document.readyState === "loading")
