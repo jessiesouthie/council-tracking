@@ -33,6 +33,12 @@
   --accent-soft:   #F5EAD8;  /* pale amber tint — active nav, row hover */
   --accent-tint:   rgba(182, 116, 26, .10);  /* eyebrow + tag backgrounds */
 
+  /* App-icon colours. These are the icon's, not the palette's — they stay put in dark
+     mode so the brand mark reads as the same object as the installed icon. */
+  --mark-bg:       #111111;  /* icon tile ground */
+  --mark-fg:       #FFFFFF;  /* lead dot + lead bar */
+  --mark-dim:      #A0A0A0;  /* trailing bars */
+
   /* Attention, distinct from both brand and vote colours: a highlighter gold.
      Used for search hits and "look here" chips, where amber would read as a link
      and green/red would read as a vote. */
@@ -229,6 +235,12 @@ a:hover { text-decoration: underline; }
   color: inherit;
 }
 .brand:hover { text-decoration: none; }
+/* Brand mark: the same roll-call glyph as icons/icon-512.png, inlined as SVG so the
+   header and the installed app icon are recognisably one object. The tile keeps the
+   icon's near-black ground in both themes rather than following the palette — an
+   icon that changes colour with the OS theme stops being an icon. The glyph's own
+   amber is literally --accent (the artwork was drawn in #B6741A), so it tracks the
+   palette's light/dark amber for free. */
 .brand-mark {
   display: inline-flex;
   align-items: center;
@@ -236,11 +248,17 @@ a:hover { text-decoration: underline; }
   width: 32px;
   height: 32px;
   border-radius: 9px;
-  background: var(--accent);
-  color: var(--accent-fg);
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 15px;
+  background: var(--mark-bg);
+}
+/* viewBox is the icon's own 512 grid, so the glyph sits at exactly the inset it has
+   in the PNG — no re-centring by hand. */
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.brand-mark .m-accent { fill: var(--accent); }
+.brand-mark .m-fg     { fill: var(--mark-fg); }
+.brand-mark .m-dim    { fill: var(--mark-dim); }
+@media (prefers-color-scheme: dark) {
+  /* The tile sits only a few points off the dark topbar — a hairline keeps its edge. */
+  .brand-mark { box-shadow: inset 0 0 0 1px rgb(255 255 255 / .10); }
 }
 .brand .brand-title {
   font-family: var(--display);
@@ -1984,7 +2002,7 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
   .topbar .nav { display: none; }
   /* Switcher stays (nav moves to the bottom tabbar); keep it compact. */
   .body-switch { min-height: 36px; font-size: 12px; padding: 5px 26px 5px 10px; max-width: 52vw; }
-  .brand-mark { width: 28px; height: 28px; font-size: 11px; border-radius: 6px; }
+  .brand-mark { width: 28px; height: 28px; border-radius: 6px; }
   .brand .brand-title { font-size: 17px; padding-bottom: 3px; }
   .brand .brand-title::after { width: 18px; }
   .brand .city { font-size: 10px; margin-top: 2px; }
