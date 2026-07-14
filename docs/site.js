@@ -111,6 +111,17 @@
     }
   }
 
+  // Load the "ask about this site" chat widget once per page. Kept in its own
+  // file (agent.js) so the widget can evolve without touching this core script.
+  function mountAgent() {
+    if (document.getElementById("ct-agent-js")) return;
+    const s = document.createElement("script");
+    s.id = "ct-agent-js";
+    s.src = "agent.js?v=20260713k";
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+
   // --- helpers ---
 
   function escapeHtml(s) {
@@ -572,6 +583,7 @@
     applyBodyChrome();
     wireSheetDismiss();
     registerServiceWorker();
+    mountAgent();
   });
 
   window.CT = {

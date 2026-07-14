@@ -1,0 +1,22 @@
+# Cloudflare Worker config for the Civic Roll Call site agent.
+# Deploy with:  npx wrangler deploy   (from the worker/ directory)
+# See worker/README.md for the full go-live walkthrough.
+
+name = "civic-roll-call-agent"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+# Jessieoborn@gmail.com's Cloudflare account.
+account_id = "b9275329e66ae5f3c9d1ab5071f8ade1"
+
+[vars]
+# Where the Worker fetches the knowledge corpus (published by the weekly ingest).
+CORPUS_URL = "https://civicrollcall.com/agent-corpus.json"
+# The site origin allowed to call this Worker (CORS). Set to your dev origin
+# too if testing locally, or leave as the production site.
+ALLOWED_ORIGIN = "https://civicrollcall.com"
+# Claude model. Default is cost/latency-tuned for a public widget; change to
+# "claude-opus-4-8" for maximum quality.
+MODEL = "claude-sonnet-5"
+
+# ANTHROPIC_API_KEY is a SECRET, not a var — never put it here.
+# Set it with:  npx wrangler secret put ANTHROPIC_API_KEY
