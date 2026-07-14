@@ -59,7 +59,10 @@ async function loadCorpus(env) {
   if (CORPUS_PROMISE) return CORPUS_PROMISE;
   const url = env.CORPUS_URL || DEFAULTS.CORPUS_URL;
   CORPUS_PROMISE = (async () => {
-    const r = await fetch(url, { cf: { cacheTtl: 300, cacheEverything: true } });
+    // Only cache successful responses at the edge — cacheEverything would pin a
+    // transient 404 (e.g. before the corpus is first published) for its whole
+    // TTL. Per-isolate CORPUS memo below avoids most refetches anyway.
+    const r = await fetch(url, { cf: { cacheTtlByStatus: { "200-299": 300, "300-599": 0 } } });
     if (!r.ok) throw new Error(`corpus fetch failed: ${r.status}`);
     const raw = await r.json();
     const docs = raw.docs.map((d) => ({ ...d, _tokens: tokenize(d.title + " " + d.text) }));
@@ -79,7 +82,12 @@ async function loadCorpus(env) {
     const avgdl = docs.reduce((s, d) => s + d._tokens.length, 0) / (N || 1);
     CORPUS = { docs, idf, avgdl, bodies: raw.bodies || [] };
     return CORPUS;
-  })();
+  })().catch((e) => {
+    // Don't let a failed load poison the isolate — clear the promise so the
+    // next request retries instead of replaying the rejection forever.
+    CORPUS_PROMISE = null;
+    throw e;
+  });
   return CORPUS_PROMISE;
 }
 
