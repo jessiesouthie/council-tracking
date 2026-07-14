@@ -81,7 +81,12 @@
     panel.innerHTML = `
       <div class="agent-head">
         <div class="agent-title">Ask about Eagle Mountain</div>
-        <button type="button" class="agent-close" aria-label="Close">&times;</button>
+        <div class="agent-actions">
+          <button type="button" class="agent-hbtn agent-min" aria-label="Minimize">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <button type="button" class="agent-hbtn agent-close" aria-label="Close and clear conversation">&times;</button>
+        </div>
       </div>
       <div class="agent-log" tabindex="-1"></div>
       <form class="agent-form">
@@ -105,15 +110,22 @@
       if (!log.childElementCount) greet();
       setTimeout(() => input.focus(), 40);
     }
-    function close() {
+    // Minimize: tuck the panel back to the launcher, keeping the conversation.
+    function minimize() {
       panel.hidden = true;
       launcher.setAttribute("aria-expanded", "false");
       launcher.focus();
     }
-    launcher.addEventListener("click", () => (panel.hidden ? open() : close()));
+    // Close: minimize AND clear, so reopening starts a fresh conversation.
+    function close() {
+      log.innerHTML = "";
+      minimize();
+    }
+    launcher.addEventListener("click", () => (panel.hidden ? open() : minimize()));
+    panel.querySelector(".agent-min").addEventListener("click", minimize);
     panel.querySelector(".agent-close").addEventListener("click", close);
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && !panel.hidden) close();
+      if (e.key === "Escape" && !panel.hidden) minimize();
     });
 
     function bubble(who, html) {

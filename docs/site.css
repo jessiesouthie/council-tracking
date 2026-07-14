@@ -4100,18 +4100,31 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
   background: var(--bg-raised);
 }
 .agent-title { font-weight: 700; color: var(--fg-soft); font-size: 15px; }
-.agent-close {
+.agent-actions { display: flex; align-items: center; gap: 2px; }
+.agent-hbtn {
   border: none;
   background: transparent;
   color: var(--fg-muted);
-  font-size: 24px;
   line-height: 1;
   width: 34px;
   height: 34px;
   border-radius: var(--radius-sm);
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
-.agent-close:hover { background: var(--bg-muted); color: var(--fg-soft); }
+.agent-hbtn:hover { background: var(--bg-muted); color: var(--fg-soft); }
+.agent-close { font-size: 24px; }
+.agent-min svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
 .agent-log {
   flex: 1;
