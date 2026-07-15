@@ -3,69 +3,76 @@
    parse first — shaving a hop off the render-blocking chain. */
 
 :root {
-  /* Civic Roll Call palette: cream #F7F4EC / amber #B6741A / pass-green #1F8A5B /
-     fail-red #D9563A / ink #1A201B.
+  /* Civic Roll Call — "Navy as ink" palette: warm near-white paper #FDFCF8 /
+     deep navy #141E2E for structure / ochre #A2650F for links & highlights /
+     pass-green #1F8A5B / fail-red #D9563A.
 
-     Amber is the civic voice (brand, links, buttons, active nav). Green and red are
-     reserved for one job only — how a vote went — so a green thing on this site
-     always means "yes/passed" and never just "branded".
+     Two accents with distinct jobs. Navy is the primary voice — brand mark,
+     buttons, focus weight, emphasis ink. Ochre is the secondary voice — text
+     links, tags, small highlights — so a link reads as a link and never as a
+     button. Green and red stay reserved for one job only: how a vote went.
 
-     Contrast: amber is a *fill* colour, not a text colour. #B6741A is only 3.5:1 on
-     cream, so it may carry large display numbers (≥24px, needs 3:1) and coloured
-     areas, but never body-size text. Small text uses --accent-ink (5.7:1) and
-     buttons fill with --accent-strong so white text on them clears 4.5:1. Same
+     Contrast: navy fills and ink are dark enough to carry text on paper. Ochre
+     for small text uses --link (#A2650F, deeper for legibility on white); the
+     lighter --warm (#B6741A) is a *fill/mark* colour, not body-size text. Same
      split for red: --danger fills, --danger-ink writes. */
-  --bg:            #F7F4EC;  /* warm cream — page bg */
+  --bg:            #FDFCF8;  /* near-white paper, faint warmth — page bg */
   --bg-elev:       #FFFFFF;  /* white — cards */
-  --bg-raised:     #FFFDF8;  /* barely-warm white — topbar, footer */
-  --bg-muted:      #F1ECDF;  /* muted areas, table heads, idle chips */
-  --fg:            #3F4A43;  /* body text (~8.4:1 on cream — AAA) */
-  --fg-soft:       #1A201B;  /* ink — headings, display type, emphasis */
-  --fg-muted:      #626D64;  /* meta (~4.9:1 on cream — AA) */
-  --border:        #E7E2D5;  /* card border */
+  --bg-raised:     #FFFFFF;  /* pure white — topbar, footer (cards separate) */
+  --bg-muted:      #F4F1E9;  /* muted areas, table heads, idle chips */
+  --fg:            #39424B;  /* body text — warm slate */
+  --fg-soft:       #141E2E;  /* deep navy ink — headings, display, emphasis */
+  --fg-muted:      #606A66;  /* meta / timestamps */
+  --border:        #E6E0D2;  /* card border */
   --border-strong: #DDD4BF;  /* inputs, dividers */
-  --hairline:      #ECE7DA;  /* unfilled track (vote bar, meters) */
+  --hairline:      #EFEADD;  /* unfilled track (vote bar, meters) */
 
-  --accent:        #B6741A;  /* amber — fills, rules, brand mark, large numbers */
-  --accent-strong: #A2650F;  /* darker amber — button fill (white on it = 4.8:1) */
-  --accent-ink:    #8A5312;  /* amber for small text / links (5.7:1 on cream) */
-  --accent-fg:     #FFFFFF;  /* white on amber */
-  --accent-soft:   #F5EAD8;  /* pale amber tint — active nav, row hover */
-  --accent-tint:   rgba(182, 116, 26, .10);  /* eyebrow + tag backgrounds */
+  --accent:        #172338;  /* deep navy — primary button fill, rules, brand */
+  --accent-strong: #101B2C;  /* darker navy — button hover / pressed */
+  --accent-ink:    #0C1524;  /* deepest navy — emphasis text on light */
+  --accent-fg:     #FDFCF8;  /* paper on navy */
+  --accent-soft:   #E7E9EE;  /* pale navy tint — active nav, row hover */
+  --accent-tint:   rgba(20, 30, 46, .08);  /* eyebrow + tag backgrounds */
+
+  /* Secondary accent — warm ochre for links, tags and small marks. */
+  --link:          #A2650F;  /* text links (deeper for legibility on white) */
+  --link-strong:   #8A5312;  /* link hover */
+  --warm:          #B6741A;  /* underlines, small marks, active-nav accent */
+  --warm-soft:     #F5EAD8;  /* tag / highlight fills */
+  --warm-ink:      #8A5312;  /* text on --warm-soft */
 
   /* App-icon colours. These are the icon's, not the palette's — they stay put in dark
      mode so the brand mark reads as the same object as the installed icon. */
-  --mark-bg:       #141E2E;  /* icon tile ground */
+  --mark-bg:       #141E2E;  /* icon tile ground — navy ink */
   --mark-fg:       #FFFFFF;  /* lead dot + lead bar */
   --mark-dim:      #A0A0A0;  /* trailing bars */
 
   /* Attention, distinct from both brand and vote colours: a highlighter gold.
-     Used for search hits and "look here" chips, where amber would read as a link
-     and green/red would read as a vote. */
+     Used for search hits and "look here" chips. */
   --highlight:     #E8B93E;
   --highlight-fg:  #2A2103;
   --highlight-soft:#FAECC4;
-  --highlight-ink: #7A5A0B;  /* 5.8:1 on cream */
+  --highlight-ink: #7A5A0B;
 
   --ok:            #1F8A5B;  /* pass / yes */
   --ok-ink:        #0E3D27;  /* pass pill text */
   --ok-soft:       #D6F0E0;  /* pass pill bg */
   --danger:        #D9563A;  /* fail / no */
-  --danger-ink:    #7A2417;  /* fail pill text (6.2:1 on cream) */
+  --danger-ink:    #7A2417;  /* fail pill text */
   --danger-soft:   #F7DCD4;  /* fail pill bg */
   --warn:          #8A5312;  /* unknown outcome — reads as ink, not as a vote */
-  --avatar-tint:   #EEF4EE;  /* member avatar circle */
-  --ok-deep:       #1B7C51;  /* yes circle — white on it clears AA (5.2:1) */
-  --danger-deep:   #C94A30;  /* no circle  — white on it clears AA (4.7:1) */
+  --avatar-tint:   #EEF0F4;  /* member avatar circle — nudged cool to match navy */
+  --ok-deep:       #1B7C51;  /* yes circle — white on it clears AA */
+  --danger-deep:   #C94A30;  /* no circle  — white on it clears AA */
   --focus:         #2B6CFF;  /* focus ring — deliberately outside the palette */
 
   /* Warm-tinted elevation. Everything that casts a shadow or a scrim derives from
      --shadow-rgb so nothing reintroduces the old forest-green haze by hand. */
-  --shadow-rgb:    82 66 34;
-  --shadow-hair:   0 1px 0 #EFE8D6;                        /* the card's seated edge */
+  --shadow-rgb:    20 30 46;
+  --shadow-hair:   0 1px 0 #EFEADD;                        /* the card's seated edge */
   --shadow:        0 1px 2px rgb(var(--shadow-rgb) / .05), 0 8px 24px rgb(var(--shadow-rgb) / .09);
   --shadow-lift:   0 6px 20px -12px rgb(var(--shadow-rgb) / .35);  /* card hover */
-  --scrim:         rgb(38 32 18 / .44);                    /* modal/sheet backdrop */
+  --scrim:         rgb(20 30 46 / .44);                    /* navy-tinted backdrop */
 
   --radius: 10px;
   --radius-sm: 6px;
@@ -186,8 +193,8 @@ body { min-height: 100vh; display: flex; flex-direction: column; }
 
 h1, h2, h3, .serif { font-family: var(--serif); letter-spacing: -0.02em; }
 
-a { color: var(--accent-ink); text-decoration: none; }
-a:hover { text-decoration: underline; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-strong); text-decoration: underline; }
 
 /* Accessible focus ring — visible on every interactive element. */
 :focus-visible {
@@ -4150,7 +4157,7 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
 .agent-msg p:last-child { margin-bottom: 0; }
 .agent-msg ul { margin: 4px 0; padding-left: 20px; }
 .agent-msg li { margin: 2px 0; }
-.agent-msg a { color: var(--accent-ink); text-decoration: underline; }
+.agent-msg a { color: var(--link); text-decoration: underline; }
 .agent-msg code {
   background: var(--bg-muted);
   padding: 1px 5px;
