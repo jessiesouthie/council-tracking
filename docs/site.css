@@ -35,7 +35,7 @@
 
   /* App-icon colours. These are the icon's, not the palette's — they stay put in dark
      mode so the brand mark reads as the same object as the installed icon. */
-  --mark-bg:       #111111;  /* icon tile ground */
+  --mark-bg:       #141E2E;  /* icon tile ground */
   --mark-fg:       #FFFFFF;  /* lead dot + lead bar */
   --mark-dim:      #A0A0A0;  /* trailing bars */
 
