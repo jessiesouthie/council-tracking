@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Appoint Susan Allen to the Senior Advisory Board",
-      "summary": "The council appointed Susan Allen to the Senior Advisory Board, with her term running through December 31, 2025.",
-      "impact": "This is a routine appointment to a volunteer advisory board. Nothing changes for residents."
+      "headline": "Susan Allen joins the Senior Advisory Board",
+      "summary": "The council appointed Susan Allen to the Senior Advisory Board for a term running through December 31, 2025.",
+      "impact": "Nothing changes for residents — this fills a seat on a volunteer advisory board through the end of the year.",
+      "significance": "routine"
     },
     {
       "id": 934,
@@ -82,9 +83,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve the consent agenda, pull two items out",
-      "summary": "The council approved its consent agenda in a single vote, pulling the Transportation Master Plan and a rezone fee reduction request out for separate discussion.",
-      "impact": "This is routine housekeeping. The two pulled items were taken up and voted on separately later in the same meeting."
+      "headline": "Consent agenda approved, two items pulled",
+      "summary": "The council approved its consent agenda but pulled the Transportation Master Plan and a fee reduction request out for separate discussion.",
+      "impact": "Nothing changes for residents — this is the housekeeping step that clears routine items in one vote and sets two aside for fuller debate.",
+      "significance": "routine"
     },
     {
       "id": 935,
@@ -121,9 +123,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Adopt the city's Transportation Master Plan",
-      "summary": "The council adopted a Transportation Master Plan, the long-range blueprint guiding how Eagle Mountain's road network is built out.",
-      "impact": "Nothing changes on the ground right now. The plan sets the roadmap the city will follow when it decides which streets to build or widen in the years ahead."
+      "headline": "Transportation Master Plan adopted",
+      "summary": "The council adopted the Transportation Master Plan, the city's long-range blueprint for which roads Eagle Mountain builds and widens as it grows.",
+      "impact": "Nothing changes on your street tomorrow, but this plan is what the city points to when deciding which roads get built or widened and what developers must put in.",
+      "significance": "notable"
     },
     {
       "id": 936,
@@ -160,9 +163,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Deny a discount on a rezone application fee",
-      "summary": "The council refused a request to cut one applicant's rezone application fee from $1,350 to $760.",
-      "impact": "The applicant, Steve McCleery, pays the full $1,350. For everyone else, the standard rezone fee stays exactly as it is."
+      "headline": "Discount on a rezone fee turned down",
+      "summary": "The council declined Steve McCleery's request to cut the fee for his rezone application from $1,350 to $760.",
+      "impact": "Only the applicant is affected — he pays the full $1,350. The city's rezone application fee is unchanged for everyone else.",
+      "significance": "routine"
     },
     {
       "id": 937,
@@ -199,9 +203,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Update the rules for subdivision plats",
-      "summary": "The council amended the city code chapters covering preliminary and final subdivision plats, the steps a developer follows to split land into lots.",
-      "impact": "This is process detail for developers and city staff working through subdivision approvals. Nothing changes day to day for residents."
+      "headline": "Subdivision plat rules amended",
+      "summary": "The council amended the city's rules for preliminary and final plats — the approval steps land must clear before it can be split into lots.",
+      "impact": "This changes the process for developers and anyone subdividing land; the motion does not spell out what the new rules require. Existing homeowners see no change.",
+      "significance": "notable"
     },
     {
       "id": 938,
@@ -238,9 +243,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Update site plan rules, minus one proposed change",
-      "summary": "The council updated the city's site plan rules but dropped a proposed provision covering swaps of a building's exterior finish from one approved material to another.",
-      "impact": "This is process detail for builders and developers going through site plan review, and the rules on changing exterior materials stay as they were. Nothing changes for residents."
+      "headline": "Site plan rules updated for new development",
+      "summary": "The council updated the city's site plan rules but left out a proposed change covering the swap of one approved exterior building material for another.",
+      "impact": "This touches builders and businesses going through site plan review, who must still get sign-off to change approved exterior materials. If you are not developing property, nothing changes for you.",
+      "significance": "notable"
     },
     {
       "id": 939,
@@ -277,9 +283,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Adopt the Youth Council rewrite with the mayor voting",
-      "summary": "The council re-adopted the Youth Council code rewrite, this time with the mayor taking part, moving youth member appointments from the city manager to the Youth Council's Committee of Advisors.",
-      "impact": "This is the corrected version of the same decision made earlier in the meeting. It affects Youth Council members and their advisors, not other residents."
+      "headline": "Youth Council rules adopted with mayor voting",
+      "summary": "With the mayor included in the vote, the council adopted the rewritten Youth Council rules, shifting appointment of youth members to a committee of advisors.",
+      "impact": "This affects the teens on the Youth Council and how they are chosen. Nothing changes for other residents.",
+      "significance": "routine"
     },
     {
       "id": 940,
@@ -316,9 +323,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Sell 0.156 acres of city land to nearby owners",
-      "summary": "The city approved selling a 0.156-acre piece of city-owned property to the adjoining landowners, with the whole sale to be finalized by February 19, 2026.",
-      "impact": "This affects only the property owners whose lots border that parcel. They must apply together, buy their piece, and have fences on the correct lot line within six months. No one else is touched."
+      "headline": "City to sell a small parcel to adjoining owners",
+      "summary": "The city approved selling 0.156 acres of city-owned land to the owners of the neighboring lots, with the sale to be finished by February 19, 2026.",
+      "impact": "Only the owners of the adjoining lots are affected. They can buy the parcels together on one application, and within six months their fences must sit on the correct lot line or be removed.",
+      "significance": "notable"
     },
     {
       "id": 941,
@@ -353,9 +361,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Put a 0.1% sales tax for parks and arts on the ballot",
-      "summary": "The council asked voters to decide on November 4, 2025 whether to add a 0.1% sales tax funding recreation, cultural, botanical, and zoo facilities and organizations.",
-      "impact": "You get the final say at the ballot box in November. If it passes, you would pay an extra 10 cents on every $100 spent in the city, and that money could only go to recreation and cultural facilities."
+      "headline": "RAP tax question goes to voters in November",
+      "summary": "The council put a 0.1% sales tax for recreation, arts, and cultural facilities on the November 4, 2025 ballot.",
+      "impact": "You decide this one at the polls. If it passes, you would pay an extra 10 cents on every $100 spent in the city, with the money going to recreation and cultural facilities.",
+      "significance": "notable"
     },
     {
       "id": 942,
@@ -390,9 +399,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Push for archery shooting at the Rodeo Grounds",
-      "summary": "The council added allowing archery shooting at the Rodeo Grounds to the city's legislative priorities list.",
-      "impact": "Nothing changes at the Rodeo Grounds for now. Being on the priorities list only means the city intends to pursue it, not that archery is allowed there yet."
+      "headline": "Push to allow archery at the Rodeo Grounds",
+      "summary": "The council added allowing archery shooting at the city's Rodeo Grounds to its legislative priorities list.",
+      "impact": "Nothing changes at the Rodeo Grounds for now. This puts archery on the city's list of things to pursue; it does not by itself open a place to shoot.",
+      "significance": "routine"
     },
     {
       "id": 943,
@@ -429,9 +439,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Redo the Youth Council vote to include the mayor",
-      "summary": "The council reopened its Youth Council code rewrite after the city attorney said the mayor had not been included in the vote as city code requires.",
-      "impact": "This is a paperwork fix to a vote taken minutes earlier in the same meeting. Nothing changes for residents."
+      "headline": "Youth Council vote redone to include the mayor",
+      "summary": "The council reopened its vote on the Youth Council rules after the city attorney said city code requires the mayor to be included in it.",
+      "impact": "This is a procedural do-over to make the vote valid. The ordinance itself did not change, and nothing changes for residents.",
+      "significance": "routine"
     },
     {
       "id": 944,
@@ -472,9 +483,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Rewrite the rules for the city's Youth Council",
-      "summary": "The council rewrote the Youth Council chapter of city code, shifting the power to appoint youth members from the city manager to the Youth Council's Committee of Advisors.",
-      "impact": "This touches only the teens who serve on the Youth Council and the adults who advise them. Nothing changes for other residents."
+      "headline": "Youth Council rules rewritten",
+      "summary": "The council rewrote the rules for the city's Youth Council, moving the power to appoint youth members from the city manager to a committee of advisors.",
+      "impact": "This affects the teens who serve on the Youth Council and the adults who run it. Nothing changes for other residents.",
+      "significance": "routine"
     },
     {
       "id": 945,
@@ -509,9 +521,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Ask the state to open mortgage help to veterans",
-      "summary": "The council added expanding the mortgage assistance program to cover veterans and active-duty military public servants to the city's legislative priority list.",
-      "impact": "Nothing changes yet — the priority list is a set of asks the city carries to state lawmakers. Veterans and military families would only see help if that request is acted on."
+      "headline": "Ask lawmakers to open mortgage aid to veterans",
+      "summary": "The council put expanding the mortgage assistance program to veterans, active-duty military, and public servants on its list of state legislative priorities.",
+      "impact": "Nothing changes yet — this only tells state lawmakers what Eagle Mountain wants. Any actual home-buying help for veterans and military families would have to come from the Legislature.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

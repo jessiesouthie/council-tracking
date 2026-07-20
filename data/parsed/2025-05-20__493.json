@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Emily Hoehne appointed to the Library Advisory Board",
-      "summary": "The council appointed Emily Hoehne to the Library Advisory Board, with a term running immediately through the end of 2025.",
-      "impact": "Routine housekeeping — nothing changes for residents. It fills a seat on the board that advises the city on the library, through December 31, 2025."
+      "headline": "Emily Hoehne joins the Library Advisory Board",
+      "summary": "The council appointed Emily Hoehne to the Library Advisory Board for a term running through December 31, 2025.",
+      "impact": "Nothing changes for residents — this fills a seat on the volunteer board that advises on the library, through the end of the year.",
+      "significance": "routine"
     },
     {
       "id": 892,
@@ -84,8 +85,9 @@
         }
       ],
       "headline": "Consent agenda passed, one fee raised to $2,000",
-      "summary": "The council approved its batch of routine items, raising one fee from $250 to $2,000 and requiring a purchase agreement be signed by May 27, 2025.",
-      "impact": "Mostly housekeeping. The one item with teeth is the fee that went from $250 to $2,000, though the motion does not say who pays it. Three items were pulled out for separate debate."
+      "summary": "The council approved its bundle of routine items after pulling three out for separate debate, and raised one fee from $250 to $2,000.",
+      "impact": "Whoever pays that fee will now owe $2,000 instead of $250, and one purchase agreement had to be signed by May 27. The motion doesn't say what the fee covers, so most residents will see no change.",
+      "significance": "notable"
     },
     {
       "id": 893,
@@ -120,9 +122,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "City hires a firm to run its C-PACE program",
-      "summary": "The city hired Sustainable Real Estate Solutions to provide administrative and professional services for C-PACE projects; the motion states no dollar figure.",
-      "impact": "Nothing changes for residents — this is the city bringing in an outside firm to handle administrative work. The motion does not say what it costs or which projects are covered."
+      "headline": "Outside firm hired to run C-PACE projects",
+      "summary": "The city hired Sustainable Real Estate Solutions to provide administrative and professional services for its C-PACE projects.",
+      "impact": "Nothing changes day to day for residents — this hands the paperwork for C-PACE projects to an outside firm. The motion doesn't say what the city will pay for the service.",
+      "significance": "routine"
     },
     {
       "id": 894,
@@ -136,9 +139,10 @@
       "outcome": "died for lack of a second.",
       "tags": [],
       "votes": [],
-      "headline": "Proposal to reject the HOME Consortium agreement",
-      "summary": "A competing proposal asked the council to turn down, rather than approve, the agreement to join the Utah Valley HOME Consortium.",
-      "impact": "Nothing here touches residents directly — it is an alternative to the same HOME Consortium item the council took up separately."
+      "headline": "Push to reject the HOME Consortium deal",
+      "summary": "The council did not take up a proposal to reject the Utah Valley HOME Consortium agreement, which it approved on a separate motion.",
+      "impact": "Nothing changes for residents — this was an attempt to turn down the consortium agreement rather than sign it, and it went no further.",
+      "significance": "routine"
     },
     {
       "id": 895,
@@ -173,9 +177,10 @@
           "vote": "No"
         }
       ],
-      "headline": "Eagle Mountain joins the Utah Valley HOME Consortium",
-      "summary": "The city agreed to join the Utah Valley HOME Consortium, a cooperative agreement with other local governments; the motion does not spell out what participation costs or provides.",
-      "impact": "Nothing changes for you day to day — this is an agreement between governments. The motion gives no dollar figure or program details, so we cannot say what it will deliver."
+      "headline": "City joins Utah Valley HOME Consortium",
+      "summary": "Eagle Mountain agreed to join the Utah Valley HOME Consortium by signing a cooperation agreement with other local governments.",
+      "impact": "Nothing changes day to day. This is the paperwork that puts Eagle Mountain into a regional partnership with neighboring governments; the motion itself commits no money and starts no program.",
+      "significance": "routine"
     },
     {
       "id": 896,
@@ -213,9 +218,10 @@
           "vote": "No"
         }
       ],
-      "headline": "Change to the Harmony subdivision agreement",
-      "summary": "The council approved a first change to the development agreement for the Harmony subdivision; the motion does not say what the change involves.",
-      "impact": "The motion text gives no details, so there is nothing concrete to report. It affects the terms between the city and the Harmony developer, not anything you do day to day."
+      "headline": "Harmony development agreement amended",
+      "summary": "The council approved the first amendment to the development agreement covering the Harmony preliminary plat.",
+      "impact": "This changes the terms the Harmony developer must build to. The motion doesn't say what was changed, so it gives you nothing concrete about what will look different on the ground.",
+      "significance": "notable"
     },
     {
       "id": 897,
@@ -253,8 +259,9 @@
         }
       ],
       "headline": "Open space plan adopted, backyard trail dropped",
-      "summary": "The council adopted a plan for managing the city's open space and wildlife habitat, minus a proposed walking path that would have run behind homes on Autumn Lane.",
-      "impact": "If you live between Autumn Lane and East Harvest Lane, the trail that would have passed behind your backyard is off the table. Language on semi-truck parking was also removed, and goats will graze as needed rather than on a set schedule."
+      "summary": "The council adopted the city's natural open space and wildlife habitat plan, but cut a walking path planned behind homes between Autumn Lane and East Harvest Lane.",
+      "impact": "Homeowners along Autumn Lane and East Harvest Lane will not get a path behind their backyards, though the land stays classified as open space. The plan also drops its semi-truck parking language and lets goat grazing run as needed rather than on a fixed schedule.",
+      "significance": "notable"
     },
     {
       "id": 898,
@@ -291,9 +298,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Formal default notice to Lennar over Ault Farms",
-      "summary": "The city formally notified builder Lennar Homes that it has broken terms of the Ault Farms master development agreement.",
-      "impact": "The motion doesn't say which terms were broken or what follows. Nothing changes day to day for residents; this is the city putting a builder on formal notice over the Ault Farms project."
+      "headline": "Lennar put on notice over Ault Farms agreement",
+      "summary": "The city formally notified Lennar Homes that it is in default on specific terms of the Ault Farms master development agreement.",
+      "impact": "If you live in or near Ault Farms, this is the city pressing the builder to meet commitments it agreed to. The motion doesn't say which terms were missed or what happens next.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

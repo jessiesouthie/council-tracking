@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve routine items, pull four for debate",
-      "summary": "The council approved its batch of routine consent items, pulling four — including the civic campus land purchase and the QTS agreement — out for separate discussion.",
-      "impact": "This is routine housekeeping and nothing changes for residents. It only means four items got their own debate instead of passing quietly in a bundle."
+      "headline": "Consent agenda approved, four items pulled",
+      "summary": "The council approved its consent agenda after pulling four items out of it for separate discussion.",
+      "impact": "This is routine housekeeping — nothing changes for residents. The four pulled items were taken up individually later in the meeting.",
+      "significance": "routine"
     },
     {
       "id": 828,
@@ -76,9 +77,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Delay a change order on the Firefly water tank",
-      "summary": "The council set aside a second change order for the Firefly 4MG tank rather than deciding it at this meeting.",
-      "impact": "Nothing changes for residents right now — the tank project's cost change is simply waiting for a future meeting."
+      "headline": "Firefly tank change order put on hold",
+      "summary": "The council delayed a decision on the second change order for the Firefly 4MG tank project.",
+      "impact": "Nothing changes for residents right now — the item comes back to the council at a later meeting.",
+      "significance": "routine"
     },
     {
       "id": 829,
@@ -115,9 +117,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve a Verizon communications tower",
-      "summary": "The city signed off on the site plan for a Verizon communications tower, clearing the way for it to be built.",
-      "impact": "If you live near the site you will see a tower go up, though the motion doesn't say where it goes. For the rest of the city, nothing changes."
+      "headline": "Verizon cell tower site plan approved",
+      "summary": "The city approved the site plan for a Verizon communications tower.",
+      "impact": "If you live near the site, a new tower is cleared to go up. The motion doesn't say where in the city it will stand.",
+      "significance": "notable"
     },
     {
       "id": 830,
@@ -154,9 +157,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Amend the QTS development agreement",
-      "summary": "The council approved the first amendment to the city's development agreement with QTS; the motion does not state what the amendment changes.",
-      "impact": "Nothing in this motion points to a change residents would feel — it is a contract adjustment between the city and one developer. The specifics live in the amendment, not the motion."
+      "headline": "QTS development agreement amended",
+      "summary": "The council approved the first amendment to the city's development agreement with QTS; the motion doesn't say what the amendment changes.",
+      "impact": "A development agreement sets what a company may build and what it owes the city, so changes here can matter. The record doesn't say what was changed.",
+      "significance": "notable"
     },
     {
       "id": 831,
@@ -193,9 +197,10 @@
           "vote": "No"
         }
       ],
-      "headline": "Buy 21 acres for a future civic campus",
-      "summary": "The city approved an agreement with Ivory Homes and SITLA to buy 20.99 acres of land for a future civic campus.",
-      "impact": "This locks in the land for city buildings down the road. Nothing gets built yet — what goes on the site, and what it costs, would come back to the council separately."
+      "headline": "City buys 21 acres for a future civic campus",
+      "summary": "The city agreed to buy 20.99 acres of land from Ivory Homes and SITLA for a future civic campus.",
+      "impact": "The city now has land set aside for future civic buildings. Nothing is built yet — the motion doesn't say what will go there, what it cost, or when.",
+      "significance": "notable"
     },
     {
       "id": 832,
@@ -233,9 +238,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Change water rules for new development",
-      "summary": "The city rewrote the part of its development code covering water rights and concept plans, adopting the change with amendments made during the meeting.",
-      "impact": "This lands on developers bringing new projects forward, who will have to meet the revised water-rights and concept-plan requirements. Nothing changes day to day for people already living here."
+      "headline": "Water rights rules for new development changed",
+      "summary": "The council amended the city code covering water rights and concept plans, adopting the changes discussed at the meeting.",
+      "impact": "This lands mainly on developers and landowners bringing new projects forward; what they must supply before approval is changing. Nothing changes for existing homes or your water bill.",
+      "significance": "notable"
     },
     {
       "id": 833,
@@ -272,9 +278,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Four sections of the zoning code amended",
-      "summary": "The council amended four sections of the city's zoning code; the motion lists only the section numbers and does not say what the changes do.",
-      "impact": "There is nothing in this motion that tells a resident what actually changed — only section numbers. The substance is in the ordinance itself, not in what was voted on here."
+      "headline": "Four zoning code sections updated",
+      "summary": "The council amended four sections of the city's zoning code; the motion gives no detail on what the changes actually do.",
+      "impact": "We can't tell you what changed — the record names only section numbers. They sit in Title 17, the zoning rules that govern what can be built and where.",
+      "significance": "notable"
     },
     {
       "id": 834,
@@ -311,9 +318,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "New rules for outdoor RV and trailer storage",
-      "summary": "The city rewrote the standards governing outdoor storage of recreational vehicles and trailers, updating the chapter of the code that treats it as a special use.",
-      "impact": "If you store an RV, boat, or trailer outdoors — or run a storage lot — the rules you follow have changed. The motion itself doesn't spell out how, so check the updated code chapter before you park."
+      "headline": "New standards for RV and trailer storage",
+      "summary": "The council rewrote the city's rules for outdoor storage of recreational vehicles and trailers, changing the standards that apply to that use.",
+      "impact": "This touches properties used to store RVs and trailers outdoors — storage yard owners and operators more than ordinary homeowners. The record doesn't spell out the new requirements, so check the updated chapter before relying on the old rules.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

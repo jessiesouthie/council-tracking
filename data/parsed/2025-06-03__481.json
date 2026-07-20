@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve the consent agenda",
-      "summary": "The council approved its consent agenda, the batch of routine items passed together in a single vote; the record does not list the individual items.",
-      "impact": "Routine housekeeping — nothing here changes for residents."
+      "headline": "Consent agenda approved",
+      "summary": "The council approved its consent agenda, the batch of items passed together without separate discussion; the motion does not list what was included.",
+      "impact": "Nothing here changes for residents on its own — the individual items are listed on the meeting agenda.",
+      "significance": "routine"
     },
     {
       "id": 900,
@@ -82,9 +83,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Amend the Steeplechase South subdivision map",
-      "summary": "The city approved a second amendment to the recorded subdivision map for Steeplechase South, at 877 N Pony Express Parkway.",
-      "impact": "This touches the recorded map for one subdivision off Pony Express Parkway. Unless you own or are buying a lot there, nothing changes for you."
+      "headline": "Steeplechase South subdivision plat amended",
+      "summary": "The city approved a second plat amendment for the Steeplechase South subdivision at 877 N Pony Express Parkway.",
+      "impact": "This adjusts the recorded layout of one subdivision on Pony Express Parkway. Unless you live in or are buying in Steeplechase South, nothing changes for you.",
+      "significance": "routine"
     },
     {
       "id": 901,
@@ -121,9 +123,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Update the city's street cross-section drawings",
-      "summary": "The council amended the code section that holds the illustrations showing how streets and rights of way must be laid out.",
-      "impact": "This is a technical drawing standard for developers and engineers designing new streets. Nothing changes for residents day to day."
+      "headline": "Update street cross-section diagrams in city code",
+      "summary": "The city updated the right-of-way profile illustrations in its code — the standard diagrams showing how streets are to be laid out.",
+      "impact": "Nothing changes day to day. These are the technical drawings engineers and developers follow when designing new streets.",
+      "significance": "routine"
     },
     {
       "id": 902,
@@ -161,9 +164,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Update the rules on fencing and privacy screening",
-      "summary": "The council amended the code sections covering privacy screening, general fencing rules, and the table of land uses allowed in the city.",
-      "impact": "If you are putting up a fence or screening on your property, the requirements may not be what they were — check with city planning staff before you build. The motion itself does not spell out what changed."
+      "headline": "New rules for fences and privacy screening",
+      "summary": "The city amended its code covering fences, privacy screening, and the table of land uses allowed in each zone; the motion does not state what specifically changed.",
+      "impact": "If you are planning a fence or a screening wall on your property, the rules you have to build to have changed — check the current code before you start.",
+      "significance": "notable"
     },
     {
       "id": 903,
@@ -200,9 +204,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Change who signs off on contract change orders",
-      "summary": "The city rewrote its purchasing rules to change how change orders — revisions to contracts the city has already signed — get approved.",
-      "impact": "This is internal housekeeping. It affects city staff and the contractors working on city projects, not what residents pay or see."
+      "headline": "Change the sign-off process for change orders",
+      "summary": "The city rewrote its purchasing rules to change how change orders — the cost adjustments made after a contract is already underway — get approved.",
+      "impact": "This is internal paperwork and nothing changes for residents. It affects how city staff and the council sign off on added costs for work already under contract.",
+      "significance": "routine"
     },
     {
       "id": 904,
@@ -239,9 +244,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Put traffic calming on the city's legislative wish list",
-      "summary": "The council added traffic calming and other traffic-related actions to the list of priorities the city takes to state lawmakers.",
-      "impact": "No speed bumps, signs, or street changes come out of this. It signals the city wants state help on traffic, but nothing on your street changes today."
+      "headline": "Traffic calming added to priority list",
+      "summary": "The council added traffic calming and other traffic-related actions to the city's list of legislative priorities.",
+      "impact": "No speed bumps or new signs come from this on its own. It flags traffic as something the city wants to work on; any real change comes later.",
+      "significance": "routine"
     },
     {
       "id": 905,
@@ -276,9 +282,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Ask the Legislature for a youth court and justice court",
-      "summary": "The council added a youth court, a justice court, and other public safety measures to the list of priorities it will push with state lawmakers.",
-      "impact": "Nothing changes for you yet. This only sets what the city will ask the Legislature for; an actual court would need its own separate decision later."
+      "headline": "Youth court and justice court added to priority list",
+      "summary": "The council added a youth court, a justice court, and other public safety measures to the city's list of legislative priorities.",
+      "impact": "Nothing changes yet. This only puts these ideas on the city's priority list — an actual youth or justice court would take separate decisions later.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

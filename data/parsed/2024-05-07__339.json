@@ -27,9 +27,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent items handled, one pulled for later",
-      "summary": "The council handled its consent agenda, pulling item 12.C for a future meeting and adding an annual review requirement to item 12.E.",
-      "impact": "Routine housekeeping — nothing changes for residents. The minutes here don't say what items 12.C and 12.E actually were."
+      "headline": "Consent agenda approved, one item pulled",
+      "summary": "The council approved its consent agenda, holding item 12.C for a future meeting and adding an annual review to item 12.E.",
+      "impact": "Nothing changes for residents — this is the routine batch approval of uncontested items, with one held back for another day.",
+      "significance": "routine"
     },
     {
       "id": 717,
@@ -62,9 +63,10 @@
           "vote": "Absent"
         }
       ],
-      "headline": "Tentative 2024-25 budget, hearing set for June 4",
-      "summary": "The council took up the tentative city budget for 2024-25 and set a public hearing on the final budget for June 4, 2024.",
-      "impact": "The tentative budget is a placeholder. The real decision comes at the June 4 hearing, which is your chance to tell the council how you want next year's money spent."
+      "headline": "Tentative 2024-25 budget adopted, hearing June 4",
+      "summary": "The council tentatively adopted the city's 2024-2025 budget and set a June 4, 2024 public hearing before the final budget is adopted.",
+      "impact": "The June 4 hearing is your chance to speak on next year's city spending before the council locks it in.",
+      "significance": "notable"
     },
     {
       "id": 718,
@@ -83,9 +85,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "New pay schedule for the city's elected officers",
-      "summary": "The council took up a new code chapter setting the compensation schedule for the city's statutory officers; no dollar figures appear in the record.",
-      "impact": "This is internal housekeeping — it sets how the city records pay for its officeholders. Nothing changes for you day to day, and the record lists no dollar amounts."
+      "headline": "Pay schedule set for elected city officers",
+      "summary": "The council added a new chapter to city code setting the compensation schedule for Eagle Mountain's statutory officers.",
+      "impact": "Nothing changes day to day — this puts officer pay into the city code. The motion lists no salary figures.",
+      "significance": "routine"
     },
     {
       "id": 719,
@@ -106,9 +109,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Changes to the city's building rules",
-      "summary": "The council took up an update to Eagle Mountain's building and construction code; the record does not say what the update actually changed.",
-      "impact": "Building and construction rules cover permits and inspections, so this could touch anyone building or remodeling. But the recorded motion doesn't say what changed, so we can't tell you what's different."
+      "headline": "Building and construction rules updated",
+      "summary": "The council changed the city's building and construction rules in Title 15 of the municipal code; the record does not spell out what changed.",
+      "impact": "If you are building or remodeling, the rules you have to follow have shifted — though the meeting record does not say how. Most residents will notice nothing.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

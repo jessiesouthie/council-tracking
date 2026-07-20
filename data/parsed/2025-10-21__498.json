@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine consent agenda approved",
-      "summary": "The council approved its consent agenda, the batch of routine items passed together in a single vote without separate discussion.",
-      "impact": "This is routine housekeeping — nothing changes for residents. The motion as recorded doesn't list which items were in the batch."
+      "headline": "Consent agenda approved",
+      "summary": "The council approved its consent agenda, the batch of items voted through together without separate discussion.",
+      "impact": "Nothing changes for residents — this is the routine batch vote the council uses to clear uncontested items in one step.",
+      "significance": "routine"
     },
     {
       "id": 971,
@@ -83,9 +84,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Animal rules sent back to Planning Commission",
-      "summary": "The council sent proposed rules on alternative animal management plans, and the related zoning changes, back to the Planning Commission for more review.",
-      "impact": "If you keep animals on your property, nothing changes yet. The proposal goes back for revisions and would have to return to the council before any new rules take effect."
+      "headline": "Animal rules sent back for more work",
+      "summary": "The council sent proposed rules on alternative animal management plans, and the zoning that goes with them, back to the Planning Commission for further review.",
+      "impact": "If you keep animals on your property, nothing changes yet. The rules are still being rewritten and will have to come back to the council before anything takes effect.",
+      "significance": "routine"
     },
     {
       "id": 972,
@@ -122,9 +124,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Development deal for Meta's project",
-      "summary": "The city approved a development agreement with Stadion, LLC, the company name Meta uses locally, setting the terms for its project here.",
-      "impact": "This sets the ground rules Meta has to build under. The motion lists no dollar figures, acreage or timeline, so it doesn't tell you what you'll see or pay."
+      "headline": "Development agreement with Meta approved",
+      "summary": "The city approved a development agreement with Stadion, LLC — the company known as Meta — setting the terms for its Eagle Mountain project.",
+      "impact": "This sets the ground rules for what Meta may build here and what it owes the city. The motion doesn't list those terms, so residents won't see anything change day to day.",
+      "significance": "notable"
     },
     {
       "id": 973,
@@ -161,9 +164,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Change the water and sewer deal with Meta",
-      "summary": "The city approved a third amendment to its water and sewer agreement with Stadion, LLC, the company name Meta uses locally.",
-      "impact": "The motion doesn't spell out what the amendment changes, so nothing here says your water service or bill is affected. It matters most if you follow the city's water arrangements with Meta."
+      "headline": "Water and sewer deal with Meta updated",
+      "summary": "The council approved a third change to the water and sewer agreement with Stadion, LLC — the company known as Meta.",
+      "impact": "This governs the water and sewer service the Meta site gets and on what terms. The motion doesn't say what the change does, so no effect on your household bill is stated.",
+      "significance": "notable"
     },
     {
       "id": 974,
@@ -201,9 +205,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Development deal for Harmony subdivision",
-      "summary": "The city approved a development agreement with homebuilder Meritage Homes covering the Harmony subdivision.",
-      "impact": "The agreement locks in the terms Meritage has to build to. Nothing changes day to day for current residents — it matters mainly if you live near the site or plan to buy there."
+      "headline": "Development deal for Harmony Subdivision homes",
+      "summary": "The city approved a development agreement with Meritage Homes setting the terms for the Harmony Subdivision.",
+      "impact": "This locks in the rules Meritage Homes must build to at Harmony. The motion itself doesn't state how many homes, what they cost, or when building starts, so there is nothing yet for neighbors to plan around.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

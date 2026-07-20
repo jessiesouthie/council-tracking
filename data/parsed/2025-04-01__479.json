@@ -41,9 +41,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Declare April 25 as Arbor Day",
+      "headline": "Arbor Day set for April 25",
       "summary": "The council proclaimed April 25, 2025 as Arbor Day in Eagle Mountain.",
-      "impact": "Symbolic only — nothing changes for residents."
+      "impact": "Ceremonial only — nothing changes for residents. It's a symbolic nod to tree planting, with no new rules or spending attached.",
+      "significance": "routine"
     },
     {
       "id": 860,
@@ -78,9 +79,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Declare April Financial Literacy Month",
+      "headline": "April named Financial Literacy Month",
       "summary": "The council proclaimed April as Financial Literacy Month in Eagle Mountain.",
-      "impact": "This is a symbolic declaration with no rules or spending attached — nothing changes for residents."
+      "impact": "Ceremonial only — nothing changes for residents, and no city money or program is committed.",
+      "significance": "routine"
     },
     {
       "id": 861,
@@ -117,9 +119,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Appoint Marian Burningham to cemetery board",
+      "headline": "Marian Burningham appointed to Cemetery Advisory Board",
       "summary": "The council appointed Marian Burningham to a three-year term on the Cemetery Advisory Board, running through December 31, 2027.",
-      "impact": "A routine volunteer appointment — nothing changes for residents day to day."
+      "impact": "Nothing changes for residents — the board advises the city on the cemetery, and this simply fills a seat on it.",
+      "significance": "routine"
     },
     {
       "id": 862,
@@ -156,9 +159,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve the routine consent agenda",
-      "summary": "The council approved its batch of routine items, pulling one item out for separate discussion and folding in corrections to the March 18 minutes.",
-      "impact": "Routine housekeeping — nothing changes for residents."
+      "headline": "Consent agenda approved, one item pulled",
+      "summary": "The council approved its consent agenda, pulling item 14.A. out for separate discussion and folding in a correction to the March 18 minutes.",
+      "impact": "Routine housekeeping — nothing changes for residents. This is the single batch vote the council uses to clear uncontested items at once.",
+      "significance": "routine"
     },
     {
       "id": 863,
@@ -196,9 +200,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve a park-and-ride lot for transit riders",
-      "summary": "The council approved the site plan for a Utah Transit Authority park-and-ride lot in Eagle Mountain.",
-      "impact": "If you commute by bus, the city will eventually have a place to park and catch transit. The motion does not say where it goes or when it opens."
+      "headline": "UTA park-and-ride site plan approved",
+      "summary": "The council approved the site plan for a UTA park-and-ride lot in Eagle Mountain.",
+      "impact": "The transit agency can move ahead with a lot where you would park and catch a bus. The motion gives no location, size, or opening date.",
+      "significance": "notable"
     },
     {
       "id": 864,
@@ -235,9 +240,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Give up a permanent sewer easement",
-      "summary": "The city released a permanent sewer easement while keeping a temporary one in place.",
-      "impact": "Routine property paperwork touching a single parcel — nothing changes for residents."
+      "headline": "Permanent sewer easement released, temporary one kept",
+      "summary": "The council gave up a permanent sewer easement across a property while holding on to a temporary one.",
+      "impact": "This is a property-records step between the city and one landowner. The motion doesn't say where the easement is, and nothing changes for residents generally.",
+      "significance": "routine"
     },
     {
       "id": 865,
@@ -274,9 +280,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Update the long-range map for Big Eagle 7",
-      "summary": "The council changed the city's long-range future land use map for the Big Eagle 7 area.",
-      "impact": "This is the follow-up paperwork that keeps the city's long-range plan consistent with the rezoning of the same land — no separate change for residents."
+      "headline": "Long-range land use map updated for Big Eagle 7",
+      "summary": "The council amended the General Plan's future land use map for the land known as Big Eagle 7.",
+      "impact": "The General Plan is the city's long-term blueprint for what goes where. This redraws that map for the Big Eagle 7 area; nothing on the ground changes immediately.",
+      "significance": "notable"
     },
     {
       "id": 866,
@@ -313,9 +320,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Rezone Big Eagle 7 land for industry",
-      "summary": "The city rezoned the land known as Big Eagle 7 to industrial zoning and applied an additional overlay zone on top of it.",
-      "impact": "Industrial development is now allowed on this land. If you live near Big Eagle 7, expect industrial buildings rather than homes as the area builds out."
+      "headline": "Big Eagle 7 land rezoned for industrial use",
+      "summary": "The council rezoned the land known as Big Eagle 7 to industrial zoning and applied an RTI overlay zone on top of it.",
+      "impact": "This land is now set aside for industrial use rather than homes. If you live near Big Eagle 7, what gets built there in the future will be industrial.",
+      "significance": "notable"
     },
     {
       "id": 867,
@@ -353,9 +361,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Update the city's zoning rules",
-      "summary": "The council approved changes to the city's zoning code, Title 17, as laid out in the updated meeting packet.",
-      "impact": "The motion itself does not spell out what changed, so the effect depends on the packet details. Zoning rules govern what can be built and where in the city."
+      "headline": "Changes to the city zoning code adopted",
+      "summary": "The council amended Title 17, the city's zoning code, adopting the updated version included in the meeting packet.",
+      "impact": "Zoning rules govern what can be built on a property and where. The motion itself doesn't spell out what changed, so the effect on any given property isn't clear from the record.",
+      "significance": "notable"
     },
     {
       "id": 868,
@@ -391,8 +400,9 @@
         }
       ],
       "headline": "Inland port project area rejected",
-      "summary": "The council declined to support creating a state Inland Port Authority project area inside Eagle Mountain.",
-      "impact": "No inland port district moves forward in the city for now, and nothing changes on the ground. The state authority would need the city's backing to proceed here."
+      "summary": "The council turned down a resolution supporting the creation of a state Inland Port Authority project area inside Eagle Mountain.",
+      "impact": "No inland port district moves forward with the city's backing, so the industrial development and tax arrangements that come with one are off the table for now. Day to day, nothing changes.",
+      "significance": "notable"
     },
     {
       "id": 869,
@@ -429,9 +439,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Pick the technology for the new sewer plant",
-      "summary": "The city chose membrane filtration treatment technology and a construction-manager delivery method for its proposed sewer plant.",
-      "impact": "Nothing changes for residents right now. This is a technical choice about how the future sewer plant will treat waste and how it will be built, made before design begins."
+      "headline": "Sewer plant to use membrane treatment technology",
+      "summary": "The city settled on membrane bioreactor (MBR) treatment technology and a construction-manager delivery method for its proposed new sewer treatment plant.",
+      "impact": "This locks in how the planned sewer plant will clean wastewater and how it gets built. Nothing changes on your bill today — the motion names no cost or timeline.",
+      "significance": "notable"
     },
     {
       "id": 870,
@@ -464,9 +475,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Study a sales tax for parks and arts",
-      "summary": "The council directed staff to study whether to put a Recreation, Arts, and Parks sales tax question on the 2025 city election ballot.",
-      "impact": "No new tax yet — this is only groundwork. If the council goes ahead, you would be the one voting on it in the 2025 city election."
+      "headline": "Possible parks and arts sales tax on 2025 ballot",
+      "summary": "The council took up a proposal to have staff study placing a Recreation, Arts and Parks (RAP) sales tax question on the 2025 city election ballot.",
+      "impact": "Nothing changes now — this is only analysis. If the council later moves ahead, you would get the final say on the tax at the 2025 municipal election.",
+      "significance": "notable"
     },
     {
       "id": 871,
@@ -501,9 +513,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Make City Hall design a top priority",
-      "summary": "The council marked the City Hall land purchase and a mortgage help program as finished, and made designing City Hall a high priority for the year ahead.",
-      "impact": "Nothing changes for you today — this is the city's internal to-do list. It signals City Hall and the first phase of the downtown plan are next in line for work."
+      "headline": "City hall design made a top city priority",
+      "summary": "The council moved the city hall land purchase and a mortgage assistance program to its completed list and made designing a city hall a high priority downtown.",
+      "impact": "Nothing changes for you yet. This is the city's internal to-do list, and it now flags designing a city hall within the first phase of the downtown plan as a top item.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

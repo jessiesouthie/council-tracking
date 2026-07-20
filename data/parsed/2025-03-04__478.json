@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine items approved; two pulled for debate",
-      "summary": "The council approved its consent agenda in a single vote, but pulled the downtown plan and inland port resolutions out to be discussed separately later that night.",
-      "impact": "This is procedural housekeeping — nothing changes for residents. It only meant the downtown plan and inland port items each got their own discussion instead of passing without one."
+      "headline": "Consent agenda approved, two items pulled out",
+      "summary": "The council approved its consent agenda and pulled the downtown plan and inland port resolutions out for separate discussion later in the meeting.",
+      "impact": "This is routine housekeeping — nothing changes for residents. Its only effect was that two bigger items got debated on their own instead of being passed in a batch.",
+      "significance": "routine"
     },
     {
       "id": 849,
@@ -61,9 +62,10 @@
         "development"
       ],
       "votes": [],
-      "headline": "Development agreement with Enyo",
-      "summary": "The council took up an ordinance approving a development agreement with Enyo, with the terms set out in the meeting packet rather than in the motion itself.",
-      "impact": "The motion gives no details, so there is nothing here that tells you what Enyo would build, where, or when. The specifics live in the agenda packet."
+      "headline": "Enyo development agreement taken up",
+      "summary": "The council considered an ordinance approving a development agreement with Enyo, as written in the meeting's agenda packet.",
+      "impact": "A development agreement sets what a developer may build and what the city requires in return. The motion itself gives no location, size, or dollar figures, so the terms are only in the packet.",
+      "significance": "notable"
     },
     {
       "id": 850,
@@ -99,8 +101,9 @@
         }
       ],
       "headline": "Downtown master plan adopted",
-      "summary": "The council adopted the Downtown Master Plan, the city's guiding document for how Eagle Mountain's downtown area should develop.",
-      "impact": "You won't see anything change on the ground yet. The plan is the blueprint the city will measure future downtown projects against, so it shapes what gets built there over time."
+      "summary": "The council adopted the Downtown Master Plan, the city's guiding blueprint for how its downtown area should be developed.",
+      "impact": "Nothing changes on the ground right away, but this is the document staff and the council will point to when future downtown building and zoning proposals come up.",
+      "significance": "notable"
     },
     {
       "id": 851,
@@ -135,9 +138,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Inland port proposal put on hold",
-      "summary": "The council set aside a resolution supporting a Utah Inland Port Authority project area in Eagle Mountain, holding it for further discussion at a later meeting.",
-      "impact": "Nothing is settled — no port area is created for now. If you have a view on an inland port in Eagle Mountain, the item is still open and will come back to the council."
+      "headline": "Inland port decision put on hold",
+      "summary": "The council delayed a decision on backing a Utah Inland Port Authority project area inside Eagle Mountain, sending it back for more discussion.",
+      "impact": "Nothing changes yet. The proposal is still alive and will come back to a future meeting, so if an inland port district in the city matters to you, there is still time to weigh in.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

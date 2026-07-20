@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve the batch of routine consent items",
-      "summary": "The council approved its consent agenda, the group of routine items passed together in one vote; the individual items are not listed in this record.",
-      "impact": "This is routine housekeeping — nothing changes for residents."
+      "headline": "Consent agenda approved",
+      "summary": "The council approved its consent agenda, the batch of items voted through together without separate discussion.",
+      "impact": "This is routine housekeeping — nothing changes for residents.",
+      "significance": "routine"
     },
     {
       "id": 790,
@@ -82,9 +83,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "New city rules for easements on private land",
-      "summary": "The city added a new easements chapter to its code and updated related definitions, setting written rules for easements where none existed before.",
-      "impact": "This mostly affects developers and property owners dealing with easements on their land, who now have explicit city rules to follow. For most residents, nothing changes day to day."
+      "headline": "New easement rules added to the land use code",
+      "summary": "The city added a new easements chapter to its land use code and updated the code's definitions to match.",
+      "impact": "This mainly touches property owners and developers dealing with easements — the strips of land set aside for things like utilities or access. Most residents will see no change day to day.",
+      "significance": "notable"
     },
     {
       "id": 791,
@@ -98,9 +100,10 @@
       "outcome": "",
       "tags": [],
       "votes": [],
-      "headline": "No action on a city facilities master plan",
-      "summary": "The council took no action on a proposal to use the Galloway report as a guideline toward a future city facilities master plan.",
-      "impact": "Nothing changes for residents. The city still has no adopted facilities master plan, and the council would have to take the question up again."
+      "headline": "No decision on city facilities master plan",
+      "summary": "The council did not adopt a Facilities Master Plan; a proposal to treat the Galloway report as a guideline for a future plan went no further.",
+      "impact": "The city still has no adopted long-range plan for its buildings and facilities. Nothing changes for residents right now.",
+      "significance": "routine"
     },
     {
       "id": 792,
@@ -135,9 +138,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Adopt a public art plan for the city",
-      "summary": "The city adopted a public art plan to guide how Eagle Mountain approaches public art going forward.",
-      "impact": "Nothing changes for you day to day. The plan sets direction only — it does not fund, buy, or place any specific piece of art."
+      "headline": "Public art plan adopted",
+      "summary": "The city adopted a Public Art Plan to guide how Eagle Mountain approaches art in public places.",
+      "impact": "Nothing changes day to day. The plan sets the city's general approach; any specific artwork or spending would still need its own approval.",
+      "significance": "routine"
     },
     {
       "id": 793,
@@ -174,9 +178,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Put the city's residential zoning rules up for review",
-      "summary": "The council added a review of Eagle Mountain's residential zoning rules, Chapter 17.25 of the city code, to its list of legislative priorities.",
-      "impact": "Nothing changes yet. This only puts the rules governing homes and lots in line for a future look, and any actual change would have to come back to the council."
+      "headline": "Residential zoning rules queued for review",
+      "summary": "The council added a review of the city's residential zoning rules, Municipal Code Chapter 17.25, to its list of legislative priorities.",
+      "impact": "Nothing changes yet — this only puts residential zoning on the council's to-do list. Any actual change to what can be built in a residential zone would be a separate decision later.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

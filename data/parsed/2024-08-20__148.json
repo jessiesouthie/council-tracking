@@ -42,8 +42,9 @@
         }
       ],
       "headline": "September named PTA Membership Month",
-      "summary": "The council proclaimed September 2024 as Parent Teacher Association Membership Month.",
-      "impact": "Purely symbolic — nothing changes for residents. It is an encouragement to join your school's PTA, with no money, fees, or rules attached."
+      "summary": "The city proclaimed September 2024 as Parent Teacher Association Membership Month.",
+      "impact": "Nothing changes for residents — this is a ceremonial recognition of local PTA volunteers, with no cost or requirement attached.",
+      "significance": "routine"
     },
     {
       "id": 742,
@@ -80,9 +81,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent items passed; interim manager deal pulled",
-      "summary": "The council approved its batch of routine items, but pulled out the interim city manager agreement with Stephen Mumford and extended a legislative consulting contract to two years.",
-      "impact": "Mostly routine housekeeping with no effect on residents. The notable part is what did not pass: the interim city manager contract was removed from the batch rather than approved with it."
+      "headline": "Consent agenda approved, manager contract pulled",
+      "summary": "The council approved its consent agenda, but pulled out the interim city manager agreement with Stephen Mumford and shortened a legislative consulting renewal to two years.",
+      "impact": "This is routine housekeeping — nothing changes for residents. The interim city manager contract was set aside to be handled separately.",
+      "significance": "routine"
     },
     {
       "id": 743,
@@ -119,9 +121,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Delay decision on Towns at Brylee Farms",
-      "summary": "The council set aside the development agreement for Towns at Brylee Farms without deciding it.",
-      "impact": "Nothing is settled for this project. If you are following Brylee Farms, the agreement has to come back on a future agenda before anything moves."
+      "headline": "Decision delayed on Towns at Brylee Farms",
+      "summary": "The council delayed a decision on the development agreement for the Towns at Brylee Farms project.",
+      "impact": "Nothing changes for now — the project is on hold until the council takes it up again.",
+      "significance": "routine"
     },
     {
       "id": 744,
@@ -139,8 +142,9 @@
       ],
       "votes": [],
       "headline": "672-acre development deal near the data centers",
-      "summary": "The council took up a development agreement covering roughly 672 acres in two parcels — one near the Meta, Google and QTS sites, one next to Firefly.",
-      "impact": "The land sits by the data centers and the Firefly area in the southwest, not in existing neighborhoods. The change discussed would require buffering for any land added to the deal later, and only once it is inside city limits."
+      "summary": "The council took up a development agreement covering about 672 acres on two parcels, one near the Meta, Google, and QTS sites and one beside the Firefly area.",
+      "impact": "This touches landowners and neighbors near the data center campuses and in the southwest near Firefly. The council rewrote the buffering language so it only binds land once that land is annexed into the city.",
+      "significance": "notable"
     },
     {
       "id": 745,
@@ -175,9 +179,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Adopt Triple Tail redevelopment plan for 24 parcels",
-      "summary": "The council adopted a redevelopment plan for the Triple Tail area — 24 parcels near Pole Canyon Blvd and east of Pony Express Pkwy — to steer them toward higher-value uses.",
-      "impact": "If you live near those parcels, this sets the city's blueprint for the kinds of development it wants there. Nothing is built yet; the plan is the roadmap, not a project."
+      "headline": "Triple Tail redevelopment plan adopted",
+      "summary": "The city adopted the Triple Tail Community Reinvestment Project Area Plan, covering 24 parcels, to steer that land toward new development and economic uses.",
+      "impact": "If you live near 4000 North and Pole Canyon Boulevard east of Tyson Parkway, or south of 1000 North east of Pony Express Parkway, expect the city to actively pursue development on the land around you.",
+      "significance": "notable"
     },
     {
       "id": 746,
@@ -212,9 +217,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Hire MHTN Architects to plan a downtown",
-      "summary": "The city hired MHTN Architects to write the Downtown Master Plan, picking the firm from three that pitched the council earlier that night.",
-      "impact": "Nothing changes on the ground yet. This is the planning stage — a consultant will draft what a downtown could look like, and any real construction would come much later."
+      "headline": "MHTN Architects hired to plan a downtown",
+      "summary": "The city hired MHTN Architects to create the Downtown Master Plan, choosing the firm after hearing pitches from three competing firms.",
+      "impact": "Nothing changes on the ground yet. This hires the firm that will draft the city's vision for a downtown, work that would shape what eventually gets built there.",
+      "significance": "notable"
     },
     {
       "id": 747,
@@ -249,9 +255,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Drop ADU impact-fee item from lobbying list",
-      "summary": "The council removed a proposal about impact fees for accessory dwelling units from the list of issues it asks state lawmakers to act on.",
-      "impact": "This is routine housekeeping — nothing changes for residents. It only trims what the city lobbies the Legislature about; no fee or rule in Eagle Mountain changed."
+      "headline": "City drops ADU impact-fee item from lobbying list",
+      "summary": "The city removed the item on impact fees for accessory dwelling units from the list of priorities it asks the state legislature to act on.",
+      "impact": "Nothing changes for residents or for what you pay to build an ADU — the city simply stopped asking the legislature to take up the issue this session.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

@@ -29,9 +29,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Three items pulled for full discussion",
-      "summary": "The council pulled the Eagle Square plat, the wayfinding sign contract, and the marketing plan contract out of the consent list for individual debate.",
-      "impact": "This is routine procedure — nothing changes for residents. It only means those three items got a full public discussion instead of being approved in one batch."
+      "headline": "Three items pulled for fuller discussion",
+      "summary": "The council pulled the Eagle Square plat, the wayfinding sign contract, and the marketing contract out of the consent agenda for separate discussion.",
+      "impact": "Nothing changes for residents — this is the procedural step that moved three items out of the quick-approval batch so they could be debated individually.",
+      "significance": "routine"
     },
     {
       "id": 725,
@@ -69,9 +70,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Eagle Square commercial project delayed",
-      "summary": "The council delayed approval of the Eagle Square commercial preliminary plat until legal wording in a development agreement amendment is worked out.",
-      "impact": "Nothing changes on the ground. The Eagle Square commercial development can't move ahead until the council approves the plat, which is waiting on the legal language being settled."
+      "headline": "Eagle Square shopping center plat delayed",
+      "summary": "The council delayed a decision on the Eagle Square commercial preliminary plat until legal wording in the related development agreement is sorted out.",
+      "impact": "Work on this commercial project cannot move forward until the council takes it up again. Nothing changes for residents in the meantime.",
+      "significance": "routine"
     },
     {
       "id": 726,
@@ -108,9 +110,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "New wayfinding signs rejected over cost and durability",
-      "summary": "The council rejected a contract for six new wayfinding signs and told staff to come back with a more durable material and a cheaper installation.",
-      "impact": "The city's weathered signs directing you to parks and facilities stay as they are for now, and there is still no new signage pointing to Smith Ranch Park."
+      "headline": "New park and city signs sent back to staff",
+      "summary": "The council rejected a contract with Identity Signs for six new wayfinding signs and told staff to find sturdier materials and cheaper installation.",
+      "impact": "The aging signs directing you to parks like Smith Ranch Park stay as they are for now, and new ones will not go up this fall as staff had hoped.",
+      "significance": "routine"
     },
     {
       "id": 727,
@@ -147,9 +150,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "City hires a marketing firm at $3,500 a month",
-      "summary": "The city hired REDKOR Brand Campaigns to build a city-wide marketing plan at $3,500 per month, month-to-month, capped at 14 months.",
-      "impact": "Nothing changes day to day. Over time you may see more consistent city messaging around tourism and business recruitment. The city can cancel the contract at any point."
+      "headline": "City hires marketing firm at $3,500 a month",
+      "summary": "The city hired REDKOR Brand Campaigns to build a city marketing plan for $3,500 a month, cancellable at any time and capped at 14 months.",
+      "impact": "Nothing changes day to day. Over time you may notice more consistent city messaging about tourism and business, and the city can end the contract whenever it wants.",
+      "significance": "routine"
     },
     {
       "id": 728,
@@ -188,9 +192,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Mayor and council pay set for 2025",
-      "summary": "The council set its own pay at $18,100 a year and the mayor's at $119,800 plus a $600 monthly car allowance, starting January 2025.",
-      "impact": "This is what your elected officials will be paid out of the city budget beginning January 1, 2025. Nothing changes in city services or in what you pay."
+      "headline": "Mayor and council pay raised, starting January",
+      "summary": "The city set the mayor's pay at $119,800 plus a $600 monthly car allowance and council pay at $18,100 a year, effective January 1, 2025.",
+      "impact": "This is taxpayer money going to the city's elected officials. The new amounts take effect January 1, 2025; there is no direct change to your bills or services.",
+      "significance": "notable"
     },
     {
       "id": 729,
@@ -228,8 +233,9 @@
         }
       ],
       "headline": "Fence and retaining wall rules put on hold",
-      "summary": "The council delayed a decision on rewritten rules for privacy fences, landscaping buffers, and a new chapter covering retaining walls.",
-      "impact": "Current fence and wall rules still apply. If these ever pass, they would mainly affect homeowners and builders putting up fences, buffers, or retaining walls."
+      "summary": "The council delayed a decision on new rules for privacy fences, landscaping buffers, and retaining walls.",
+      "impact": "Nothing changes for now — the current fence and wall rules still apply. If you were waiting on the new standards before building, you will have to wait longer.",
+      "significance": "routine"
     },
     {
       "id": 730,
@@ -268,8 +274,9 @@
         }
       ],
       "headline": "Historic zones rules delayed again",
-      "summary": "The council delayed a decision on a new \"Historic Zones\" chapter of city code, pushing it to the August 6 meeting after already tabling it in June.",
-      "impact": "Nothing changes for now. The rules are meant to give the city a consistent, legally defensible way to apply development standards to older properties that don't yet match the 2024 code."
+      "summary": "The council put off a decision on new Historic Zone rules for a second time, pushing it to the August 6, 2024 meeting.",
+      "impact": "Nothing changes yet. If you own one of the older properties the city wants to bring under 2024 development rules, the decision is still pending.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

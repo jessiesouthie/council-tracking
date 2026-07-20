@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine items passed, four pulled from the batch",
-      "summary": "The council approved its consent agenda but pulled three items out for separate debate and dropped a fourth from the agenda entirely.",
-      "impact": "This is parliamentary housekeeping — nothing changes for residents on its own. It only set which items were debated separately and which came off the agenda."
+      "headline": "Routine items approved, four pulled off the list",
+      "summary": "The council approved its consent agenda after pulling three items out for full discussion and dropping a fourth item from the agenda entirely.",
+      "impact": "Nothing changes for residents — this is the housekeeping step that clears uncontroversial items in a single vote. The three pulled items were debated separately later in the meeting.",
+      "significance": "routine"
     },
     {
       "id": 961,
@@ -82,9 +83,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Hidden Hollow keeps its swimming pool",
-      "summary": "The council rejected Cadence Homes' request to swap the planned swimming pool at the Hidden Hollow clubhouse for a gym and extra lawn games.",
-      "impact": "If you live in or are buying into Hidden Hollow, the pool in the approved plan stays — the builder cannot substitute a gym and lawn games for it."
+      "headline": "Hidden Hollow keeps its pool",
+      "summary": "The council rejected Cadence Homes' request to swap the planned swimming pool at the Hidden Hollow clubhouse for a gym and lawn games.",
+      "impact": "If you live in or are buying into Hidden Hollow, the clubhouse amenity stays as it was originally approved — a swimming pool, not a gym.",
+      "significance": "notable"
     },
     {
       "id": 962,
@@ -120,8 +122,9 @@
         }
       ],
       "headline": "Crosswalk deal at Woodhaven and Pony Express",
-      "summary": "The city approved a reimbursement agreement for crosswalk access at Woodhaven Boulevard and Pony Express Parkway, and directed staff to address unsafe conditions in winter.",
-      "impact": "If you or your kids cross Pony Express at Woodhaven, the city has been told to deal with the winter hazards at that crossing. No cost or timeline was given."
+      "summary": "The city approved a reimbursement agreement for crosswalk access at Woodhaven Boulevard and Pony Express Parkway and directed staff to address unsafe winter conditions there.",
+      "impact": "If you cross Pony Express Parkway at Woodhaven on foot, this covers the cost of crosswalk access at that corner, and city staff have been told to deal with what makes it dangerous in winter.",
+      "significance": "notable"
     },
     {
       "id": 963,
@@ -157,8 +160,9 @@
         }
       ],
       "headline": "City fee schedule updated",
-      "summary": "The council amended Appendix A of the city's consolidated fee schedule, the master list of what permits and city services cost.",
-      "impact": "If you pull a building permit or pay for a city service, the price may have changed. The motion does not say which fees moved or by how much."
+      "summary": "The council approved changes to Appendix A of the city's consolidated fee schedule, the price list for city services and permits.",
+      "impact": "Some of what you pay the city changes. The motion does not say which fees or by how much, so check the current schedule before pulling a permit or paying for a city service.",
+      "significance": "notable"
     },
     {
       "id": 964,
@@ -195,9 +199,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "First budget update of the year approved",
-      "summary": "The council approved the first amendment to Eagle Mountain's 2025-26 budget, the mid-year adjustment to where city money is allocated.",
-      "impact": "Routine housekeeping — nothing changes for you directly. The motion does not list which line items moved, so it says nothing about your taxes or fees."
+      "headline": "Mid-year changes to the city budget",
+      "summary": "The council approved the first amendment to the 2025-2026 city budget, the mid-year rewrite of what the city plans to spend.",
+      "impact": "Budget amendments move or add money partway through the year. This motion does not say which line items changed, so the detail lives in the budget document rather than the vote itself.",
+      "significance": "notable"
     },
     {
       "id": 965,
@@ -234,9 +239,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "City to sell land at $3.44 a square foot",
-      "summary": "The council authorized selling a significant piece of city-owned land at $3.44 per square foot and asked staff to work out financing terms.",
-      "impact": "Nothing changes day to day. The motion does not say which parcel is being sold or who is buying it, so there is no telling yet what will go there."
+      "headline": "City land to be sold at $3.44 a square foot",
+      "summary": "The council approved selling a significant piece of city-owned land at $3.44 per square foot, with staff directed to work out the financing terms.",
+      "impact": "The price is set, but the motion does not name the property or the buyer, so what eventually gets built there is still unknown. Staff still has to settle how the buyer pays.",
+      "significance": "notable"
     },
     {
       "id": 966,
@@ -273,9 +279,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Plat change for two Rush Creek Industrial lots",
-      "summary": "The city approved an amendment to Lots 102 and 111 in Phase A of the Rush Creek Industrial subdivision.",
-      "impact": "This is routine land-record paperwork in an industrial area — nothing changes for residents. It affects only the owners and developers of those two lots."
+      "headline": "Lot lines redrawn in Rush Creek industrial area",
+      "summary": "The council approved changes to two lots, 102 and 111, in Phase A of the Rush Creek Industrial plat.",
+      "impact": "This is a boundary change on paper in an industrial area. It affects the property owner and what can be built on those two lots — not the average resident.",
+      "significance": "routine"
     },
     {
       "id": 967,
@@ -312,9 +319,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Rules for shops and apartments put on hold",
-      "summary": "The council delayed a decision on new design standards for commercial buildings and apartments, sending them back for final changes discussed at the October 21 meeting.",
-      "impact": "Nothing changes yet. The current rules on how stores and apartment buildings must look still apply, and the revised standards come back to the council later."
+      "headline": "Design rules for shops and apartments put on hold",
+      "summary": "The council delayed a decision on updated design standards for commercial and apartment buildings, sending them back for final changes before another vote.",
+      "impact": "Nothing changes yet. The rules that govern what new stores and apartment buildings must look like stay as they are until the council takes the item up again.",
+      "significance": "routine"
     },
     {
       "id": 968,
@@ -349,9 +357,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Zayo Group gets a city fiber franchise",
-      "summary": "The city signed a franchise agreement with Zayo Group, letting the telecom company use Eagle Mountain's streets and rights-of-way for its lines.",
-      "impact": "Routine housekeeping — nothing changes for residents. This is the same kind of agreement the council approved for SummitIG Fiber at the same meeting, and it promises no service to your house."
+      "headline": "Franchise deal approved with Zayo Group",
+      "summary": "The city approved a franchise agreement with Zayo Group, LLC, the standard permission a telecom company needs to do business in Eagle Mountain.",
+      "impact": "Nothing changes for you today. The motion does not say what Zayo will build or when — this is the paperwork step that lets the company operate in the city.",
+      "significance": "routine"
     },
     {
       "id": 969,
@@ -386,9 +395,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Fiber company SummitIG gets a city franchise",
-      "summary": "The city signed a franchise agreement with SummitIG Fiber, the permission a telecom company needs to run its lines through Eagle Mountain's streets and rights-of-way.",
-      "impact": "Nothing changes for you today. The agreement does not promise internet service to any home — it only allows the company to build in city rights-of-way."
+      "headline": "Franchise deal approved with SummitIG Fiber",
+      "summary": "The city approved a franchise agreement with SummitIG Fiber, LLC, the standard permission a fiber-optic company needs to do business in Eagle Mountain.",
+      "impact": "Nothing changes for you today. The motion does not say what SummitIG will build, where, or when — only that the company now has a franchise agreement with the city.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

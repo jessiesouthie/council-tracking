@@ -44,8 +44,9 @@
         }
       ],
       "headline": "Joshua Biagio appointed to Library Advisory Board",
-      "summary": "The council appointed Joshua Biagio to the Library Advisory Board, filling out a term that runs through December 2025.",
-      "impact": "This is routine housekeeping — nothing changes for residents. The board advises the city on library matters, and this fills one existing seat for the rest of its term."
+      "summary": "The council appointed Joshua Biagio to the Library Advisory Board, finishing a term that runs through December 2025.",
+      "impact": "Nothing changes day to day — this fills an unexpired seat on a board that advises the city on the library.",
+      "significance": "routine"
     },
     {
       "id": 739,
@@ -78,9 +79,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine consent items approved in one vote",
-      "summary": "The council passed its consent agenda, a group of routine items approved together in a single vote; this record does not itemize what was included.",
-      "impact": "Consent agendas usually hold routine business, but this record doesn't list what was in this one — so we can't tell you what, if anything, it changes for you."
+      "headline": "Consent agenda approved",
+      "summary": "The council passed its consent agenda as a single batch; the record does not list which items were included.",
+      "impact": "Consent items are the routine business the council approves together without separate debate. The record here doesn't say what was in this batch.",
+      "significance": "routine"
     },
     {
       "id": 740,
@@ -116,7 +118,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "New school district proposal approved",
+      "summary": "The council approved the proposal to create a new school district and set the date for its final decision on it.",
+      "impact": "This advances the proposal rather than settling it — a final council vote is still to come. If a new district is created, it would change which school district Eagle Mountain belongs to.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

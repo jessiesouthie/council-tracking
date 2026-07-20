@@ -39,9 +39,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Jason Allen joins the Planning Commission",
-      "summary": "The council approved Jason Allen's appointment to the Planning Commission for a three-year term running January 2026 through December 2028.",
-      "impact": "Nothing changes for you today. Allen will spend the next three years reviewing building and zoning proposals before they go to the council."
+      "headline": "Jason Allen joins the planning commission",
+      "summary": "The council signed off on appointing Jason Allen to the planning commission for a three-year term running January 2026 through December 2028.",
+      "impact": "Nothing changes for you day to day. The planning commission reviews building and zoning proposals before they reach the council, so who sits on it shapes what gets built.",
+      "significance": "routine"
     },
     {
       "id": 1006,
@@ -74,9 +75,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Brent Strong joins the Planning Commission",
-      "summary": "The council approved Brent Strong's appointment to the Planning Commission for a three-year term running January 2026 through December 2028.",
-      "impact": "Nothing changes for you today. Strong will spend the next three years reviewing building and zoning proposals before they go to the council."
+      "headline": "Brent Strong joins the planning commission",
+      "summary": "The council signed off on appointing Brent Strong to the planning commission for a three-year term running January 2026 through December 2028.",
+      "impact": "Nothing changes for you day to day. The planning commission reviews building and zoning proposals before they reach the council, so who sits on it shapes what gets built.",
+      "significance": "routine"
     },
     {
       "id": 1007,
@@ -109,9 +111,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Bryan Free joins the Planning Commission",
-      "summary": "The council approved Bryan Free's appointment to the Planning Commission for a one-year term covering January through December 2026.",
-      "impact": "Nothing changes for you today. The Planning Commission is the volunteer board that reviews building and zoning proposals before they reach the council, so Free will help weigh projects in your area this year."
+      "headline": "Bryan Free joins the planning commission",
+      "summary": "The council signed off on appointing Bryan Free to the planning commission for a one-year term through December 2026.",
+      "impact": "Nothing changes for you day to day. The planning commission reviews building and zoning proposals before they reach the council, so who sits on it shapes what gets built.",
+      "significance": "routine"
     },
     {
       "id": 1008,
@@ -144,9 +147,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Susan Allen appointed Senior Advisor",
-      "summary": "The council signed off on Susan Allen's appointment as Senior Advisor for a three-year term running January 2026 through December 2028.",
-      "impact": "This is routine housekeeping — nothing changes for residents day to day. It repeats the appointment recorded a moment earlier in the same meeting."
+      "headline": "Susan Allen appointed senior advisor",
+      "summary": "The council signed off on appointing Susan Allen as senior advisor for a three-year term running January 2026 through December 2028.",
+      "impact": "Nothing changes for residents — this is a routine appointment to an advisory role.",
+      "significance": "routine"
     },
     {
       "id": 1009,
@@ -179,9 +183,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Susan Allen appointed Senior Advisor",
-      "summary": "The council signed off on Susan Allen's appointment as Senior Advisor for a three-year term running January 2026 through December 2028.",
-      "impact": "This is routine housekeeping — nothing changes for residents day to day. It repeats the appointment recorded a moment earlier in the same meeting."
+      "headline": "Susan Allen appointed senior advisor",
+      "summary": "The council signed off on appointing Susan Allen as senior advisor for a three-year term running January 2026 through December 2028.",
+      "impact": "Nothing changes for residents — this is a routine appointment to an advisory role.",
+      "significance": "routine"
     },
     {
       "id": 1010,
@@ -214,9 +219,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine items approved, one pulled, minutes fixed",
-      "summary": "The council approved its batch of routine items, pulled item 13.A. for a later date, and corrected the December 16 minutes to show a 3:0 vote, not 3:2.",
-      "impact": "Routine housekeeping — nothing changes for residents. One item was held back and will come back on a future agenda."
+      "headline": "Consent agenda approved, December minutes fixed",
+      "summary": "The council approved its consent agenda, pulled one item to be taken up later, and corrected the vote recorded in the December 16 minutes.",
+      "impact": "This is routine housekeeping — nothing changes for residents. The item that was pulled will come back on a future agenda.",
+      "significance": "routine"
     },
     {
       "id": 1011,
@@ -249,9 +255,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "New rules for fences and screening",
-      "summary": "The city rewrote the section of its code covering general fencing and screening; the motion itself does not spell out what the new standards say.",
-      "impact": "If you're planning to put up a fence or a screening wall on your property, the standards have changed — check the current rules with the city before you build."
+      "headline": "Fence and screening rules changed",
+      "summary": "The city changed the part of its code that governs fences and screening, though the motion does not spell out the new provisions.",
+      "impact": "If you are putting up a fence or screening on your property anywhere in the city, check the current code before you build — the rules that apply to you have changed.",
+      "significance": "notable"
     },
     {
       "id": 1012,
@@ -288,9 +295,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Move to reject Hidden Hollow swap outright",
-      "summary": "The council also took up a competing motion to deny the Hidden Hollow amenity exchange outright rather than hold it for a later date.",
-      "impact": "Nothing changes on the ground in Hidden Hollow. The amenity exchange is still undecided, so the plan already on the books stands for now."
+      "headline": "Move to reject Hidden Hollow amenity swap",
+      "summary": "The council took up a proposal to reject the Hidden Hollow amenity change outright rather than leave it for a later meeting.",
+      "impact": "Nothing is settled for Hidden Hollow either way — the amenity change was neither approved nor finally rejected at this meeting.",
+      "significance": "routine"
     },
     {
       "id": 1013,
@@ -328,8 +336,9 @@
         }
       ],
       "headline": "Hidden Hollow amenity swap put on hold",
-      "summary": "The council set aside a proposed change to the Hidden Hollow site plan that would swap one amenity for another, without deciding it.",
-      "impact": "If you live in or near Hidden Hollow, the amenities in the approved plan stay as they are for now. The council can bring the item back at a later meeting."
+      "summary": "The council delayed a decision on a minor change to the amenities planned for the Hidden Hollow development.",
+      "impact": "If you live in or are buying into Hidden Hollow, the proposed change to the development's amenities is still unsettled and will come back to the council later.",
+      "significance": "routine"
     },
     {
       "id": 1014,
@@ -362,9 +371,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Melissa Clark named Mayor Pro Tempore",
-      "summary": "The council appointed Councilmember Melissa Clark as Mayor Pro Tempore, the member who stands in for the mayor.",
-      "impact": "This is routine housekeeping — nothing changes for residents. You may see Clark chairing a council meeting if the mayor is away."
+      "headline": "Melissa Clark named mayor pro tem",
+      "summary": "The council named Councilmember Melissa Clark mayor pro tem, the role that chairs meetings when the mayor is absent.",
+      "impact": "Nothing changes for residents — this is the standing arrangement the council makes each year so someone can run a meeting the mayor misses.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

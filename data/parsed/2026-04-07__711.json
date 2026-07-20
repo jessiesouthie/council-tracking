@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Elizabeth Evans joins community services board",
-      "summary": "The council appointed Elizabeth Evans to the Community Services Board for a one-year term running April 2026 through March 2027.",
-      "impact": "This is a routine appointment and nothing changes for residents."
+      "headline": "Elizabeth Evans joins Community Services Board",
+      "summary": "The council appointed Elizabeth Evans to the Community Services Board for a term running April 2026 through March 2027.",
+      "impact": "Routine housekeeping — nothing changes for residents. This fills another seat on the advisory board, this one for a single year.",
+      "significance": "routine"
     },
     {
       "id": 1058,
@@ -82,9 +83,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Marian Burningham joins community services board",
-      "summary": "The council appointed Marian Burningham to the Community Services Board for a three-year term running April 2026 through March 2029.",
-      "impact": "This is a routine appointment and nothing changes for residents."
+      "headline": "Marian Burningham joins Community Services Board",
+      "summary": "The council appointed Marian Burningham to the Community Services Board for a term running April 2026 through March 2029.",
+      "impact": "Routine housekeeping — nothing changes for residents. This fills one seat on an advisory board.",
+      "significance": "routine"
     },
     {
       "id": 1059,
@@ -105,9 +107,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Two Overland items pulled for separate votes",
-      "summary": "The council approved its routine consent items in one batch but pulled the two Overland agreements out to be discussed and voted on separately.",
-      "impact": "This is procedural housekeeping — nothing changes for residents. It only meant the two Overland items got their own discussion instead of passing in a batch."
+      "headline": "Routine items grouped; two land items pulled out",
+      "summary": "The council took up its batch of routine consent items, pulling the two Overland land agreements out to be handled separately.",
+      "impact": "Nothing changes for residents — this is the housekeeping step that clears routine items in one vote and moves the two land items into open discussion.",
+      "significance": "routine"
     },
     {
       "id": 1060,
@@ -144,9 +147,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Trade land with the state in Overland",
-      "summary": "The city approved a land exchange with SITLA, the state land agency, in the Overland area, conditioned on reciprocal contract language and a guaranteed clean title.",
-      "impact": "Nothing changes day to day. The swap only rearranges who owns which parcels in Overland, and the motion says nothing about what will be built there."
+      "headline": "Land swap with the state in the Overland area",
+      "summary": "The city approved trading properties with the state trust lands agency (SITLA) in the Overland area, conditioned on matching contract language and a clean title guarantee.",
+      "impact": "It reshuffles which parcels the city and the state each own out in the Overland area. Nothing changes at your home now, but it shapes what the city can do with that land later.",
+      "significance": "notable"
     },
     {
       "id": 1061,
@@ -181,9 +185,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Agreement signed on the Overland area",
-      "summary": "The city approved a memorandum of agreement concerning Overland; the record of the motion gives no detail on what the agreement contains.",
-      "impact": "The motion says nothing about what the agreement covers, so there is nothing concrete to tell you about how it affects residents."
+      "headline": "Agreement approved over the Overland area",
+      "summary": "The council approved a memorandum of agreement concerning Overland; the motion itself does not spell out the terms.",
+      "impact": "The record gives no detail on what the city agreed to, so no effect on residents can honestly be described. It was pulled off the consent agenda for separate discussion.",
+      "significance": "notable"
     },
     {
       "id": 1062,
@@ -220,9 +225,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Sell city land at $2.07 a square foot",
-      "summary": "The city approved selling part of a county parcel at $2.07 per square foot, with the total set by the final survey and existing utility easements kept in place.",
-      "impact": "This is a routine property sale and nothing changes day to day for residents. Utility lines crossing the land stay protected under the terms."
+      "headline": "City to sell land at $2.07 a square foot",
+      "summary": "The council approved selling part of a city-owned parcel at $2.07 per square foot, with the total set by the final survey.",
+      "impact": "This is a one-off sale of city land and changes nothing at your home. Existing utility easements on the property stay in place, so the lines running through it are protected.",
+      "significance": "notable"
     },
     {
       "id": 1063,
@@ -259,9 +265,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Parks and trails plan sent back for revisions",
-      "summary": "The council delayed adopting the Parks, Trails and Open Space Master Plan and told its consultant to revise it using the feedback given and bring it back.",
-      "impact": "No decision yet on the city's long-range plan for parks, trails and open space. It returns at a future work session before any vote."
+      "headline": "Parks and trails master plan sent back for changes",
+      "summary": "The council delayed adopting the Parks, Trails and Open Space Master Plan and sent it back to the consultant for revisions before a future work session.",
+      "impact": "No park or trail is affected yet. The plan meant to guide future park and trail decisions is still being reworked and returns to the council later.",
+      "significance": "routine"
     },
     {
       "id": 1064,
@@ -298,9 +305,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Noise limits now lift at 7 a.m., not 9 a.m.",
-      "summary": "The city rewrote its noise rules, ending the morning restriction at 7 a.m. instead of 9 a.m., seven days a week, and changing the decibel limits during restricted hours.",
-      "impact": "Loud activity can legally start two hours earlier every morning, weekends included. If noise near your home wakes you, expect it to be allowed from 7 a.m."
+      "headline": "Noise limits now lift at 7 a.m. instead of 9 a.m.",
+      "summary": "The city changed its noise rules, adjusting maximum decibel levels during restricted hours and moving the morning cutoff from 9 a.m. to 7 a.m., seven days a week.",
+      "impact": "This applies citywide, weekends included: the stricter noise limits now end at 7 a.m. rather than 9 a.m., so you may hear louder activity two hours earlier in the morning.",
+      "significance": "notable"
     },
     {
       "id": 1065,
@@ -337,9 +345,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Shift board terms to an April–March year",
-      "summary": "The city changed its code so appointments to the library board and other city boards run April 1 through March 31 instead of January through December.",
-      "impact": "This is routine housekeeping. It only affects people who serve on city boards, and nothing changes for other residents."
+      "headline": "Board appointment terms shift to an April start",
+      "summary": "The city changed its code so library board and other appointments run April 1 through March 31 instead of the calendar year.",
+      "impact": "This touches people who serve on city boards, not the public. If you sit on one, your term now starts in April rather than January.",
+      "significance": "routine"
     },
     {
       "id": 1066,
@@ -374,9 +383,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Pursue a justice court with Utah County",
+      "headline": "Justice court with Utah County added to priorities",
       "summary": "The council added pursuing a justice court with Utah County to its Legislative Priorities List.",
-      "impact": "Nothing changes for you now — this only puts the idea on the city's priority list. Any actual court would take separate decisions later."
+      "impact": "Nothing changes now, and no court is being created. This only flags the idea as something the city intends to pursue.",
+      "significance": "routine"
     },
     {
       "id": 1067,
@@ -411,9 +421,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Take up rules for temporary business signs",
-      "summary": "The council added a temporary business signage provision to its Legislative Priorities List and asked staff to come back with an actual proposal.",
-      "impact": "Nothing changes yet. If you run a business here, the rules for putting up temporary signs could change once staff bring a proposal back to the council."
+      "headline": "Temporary business signs added to lobbying list",
+      "summary": "The council added a temporary business signage provision to its Legislative Priorities List and directed staff to come back with a proposal.",
+      "impact": "Nothing changes yet for businesses or sign rules — this only puts the topic on the city's priority list and starts staff working on a proposal.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

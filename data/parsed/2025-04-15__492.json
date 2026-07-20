@@ -44,8 +44,9 @@
         }
       ],
       "headline": "Consent agenda approved, three items pulled",
-      "summary": "The council approved its consent agenda in a single vote but pulled items 10.A, 11.B, and 11.C out for separate discussion.",
-      "impact": "Routine housekeeping — nothing changes for residents. The three pulled items, including the rodeo grounds partnership and the fee reduction, got their own debate and votes instead."
+      "summary": "The council approved its consent agenda after pulling three items out of the bundle for separate discussion later in the meeting.",
+      "impact": "Nothing changes for residents — this is the batch of routine items the council passes in a single vote, with the three pulled items taken up on their own.",
+      "significance": "routine"
     },
     {
       "id": 873,
@@ -83,9 +84,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "McDonald's at City Center on hold for traffic study",
-      "summary": "The council put the City Center McDonald's site plan on hold until a traffic study is completed.",
-      "impact": "The restaurant is neither approved nor denied, and it cannot move forward until traffic around City Center is studied. If you drive through that area, the council is looking at congestion before deciding."
+      "headline": "McDonald's plan paused for a traffic study",
+      "summary": "The council put the McDonald's site plan at City Center on hold until a traffic study is completed.",
+      "impact": "The City Center McDonald's cannot be approved until traffic near the site is studied, so the project is pushed back. Nothing changes on the ground in the meantime.",
+      "significance": "routine"
     },
     {
       "id": 874,
@@ -120,9 +122,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Explore moving the rodeo grounds near Camp Williams",
-      "summary": "The city declared its intent to work with a regional land committee on relocating the Eagle Mountain rodeo grounds into a buffer area around Camp Williams.",
-      "impact": "Nothing changes yet — this is a statement of intent, not a move. If you use the rodeo grounds, relocation is now on the table, but no site, cost, or date has been set."
+      "headline": "City backs moving the rodeo grounds",
+      "summary": "The council declared its intent to work with the West Traverse Sentinel Landscape committee on relocating the city rodeo grounds into the buffer area around Camp Williams.",
+      "impact": "Nothing moves yet — this only commits the city to work with the partner group on a possible new site. If you use the rodeo grounds, expect a relocation plan to come back for a real decision later.",
+      "significance": "notable"
     },
     {
       "id": 875,
@@ -157,9 +160,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Application fee cut from $3,350 to $1,350",
-      "summary": "The council cut the fee for Brett Simpson's Gazelle Run master plan amendment from $3,350 to $1,350 rather than waiving it entirely.",
-      "impact": "This touches one applicant and one application — the city collects $2,000 less on it. Nothing changes for other residents."
+      "headline": "Gazelle Run application fee cut to $1,350",
+      "summary": "The council cut the fee for Brett Simpson's Gazelle Run master development plan amendment from $3,350 to $1,350, rather than waiving it entirely as first proposed.",
+      "impact": "This touches one applicant only. The city collects $2,000 less on this single application, and the fees everyone else pays are unchanged.",
+      "significance": "routine"
     },
     {
       "id": 876,
@@ -197,9 +201,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Federal grant spending: $150K for small businesses",
-      "summary": "The city approved its 2026 federal block grant spending: $150,000 in small business grants, $36,163 for yard cleanup, $20,000 for an ADA crosswalk ramp, and $35,292 in low-income aid.",
-      "impact": "If you run a small business here, $150,000 in grant money is available to apply for, and low-income households can get help with utility bills, food, and school supplies. A new ADA ramp and crosswalk is funded at Fiona Street and Airport Road."
+      "headline": "Block grant money set: $150K for small businesses",
+      "summary": "The city set its 2026 federal block grant spending: $150,000 in small business grants, $36,163 for yard cleanup, $20,000 for an ADA crosswalk, and $35,292 in aid programs.",
+      "impact": "Small businesses can apply for grant money, and lower-income households get help with utility bills, cemetery costs, school supplies, food and yard cleanup. A new ADA ramp and crosswalk is funded at Fiona Street and Airport Road.",
+      "significance": "notable"
     },
     {
       "id": 877,
@@ -236,9 +241,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Cedar Valley Holbrook land-use map change delayed",
-      "summary": "The council delayed a decision on the long-range land use map change for Cedar Valley Holbrook, the companion item to its postponed zoning change.",
-      "impact": "Nothing changes for residents today. Both halves of the Cedar Valley Holbrook proposal are now waiting on a future meeting."
+      "headline": "Cedar Valley Holbrook land use change delayed",
+      "summary": "The council delayed a decision on changing the long-range land use map for the land known as Cedar Valley Holbrook.",
+      "impact": "Nothing changes — this map change was set aside along with the related rezoning and will return to the council later.",
+      "significance": "routine"
     },
     {
       "id": 878,
@@ -263,9 +269,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Cedar Valley Holbrook zoning change delayed",
-      "summary": "The council delayed a decision on the zoning change for the land known as Cedar Valley Holbrook rather than voting on it.",
-      "impact": "Nothing changes on the ground. The proposal is not dead — it can return to a future meeting, so watch later agendas if you were following it."
+      "headline": "Cedar Valley Holbrook rezoning put on hold",
+      "summary": "The council delayed a decision on rezoning the land known as Cedar Valley Holbrook.",
+      "impact": "Nothing changes for now. The proposal is set aside and has to come back to the council before anything about that land is decided.",
+      "significance": "routine"
     },
     {
       "id": 879,
@@ -302,9 +309,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Land-use map changed for Cedar Corners Phase 5",
+      "headline": "Land use map updated for Cedar Corners Phase 5",
       "summary": "The council changed the city's long-range land use map for Cedar Corners Phase 5 from Neighborhood Residential 1 to Neighborhood Residential 2.",
-      "impact": "This is the map counterpart to the zoning change on the same land, keeping the city's long-range plan consistent with what it just approved. Nothing changes beyond what the zoning change already allows."
+      "impact": "This updates the city's long-term plan for that land so it matches the rezoning approved the same night. Nothing changes anywhere else in the city.",
+      "significance": "notable"
     },
     {
       "id": 880,
@@ -341,9 +349,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Zoning change for Cedar Corners Phase 5",
-      "summary": "The council rezoned the Cedar Corners Phase 5 land out of its residential zone and into the city's RC zone.",
-      "impact": "The land can now be built on under the RC zone's rules rather than the old residential ones. It matters if you live near Cedar Corners; elsewhere in the city, nothing changes."
+      "headline": "Cedar Corners Phase 5 rezoned to RC",
+      "summary": "The council changed the zoning on the Cedar Corners Phase 5 land from residential to the city's RC zone.",
+      "impact": "This is the zoning step behind the Cedar Corners Phase 5 project. If you live nearby, what can be built on that land is now governed by RC zone rules instead of the old residential rules.",
+      "significance": "notable"
     },
     {
       "id": 881,
@@ -381,9 +390,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Conditions added to Cedar Corners Phase 5 agreement",
-      "summary": "The council took up the Cedar Corners Phase 5 development agreement with added conditions: connected sidewalks, roads linking Poplar Drive and Maple Street, and a construction start benchmark.",
-      "impact": "If you live near Cedar Corners, the conditions are meant to make sure sidewalks and streets connect through to Poplar Drive and Maple Street instead of dead-ending. Nothing changes until construction begins."
+      "headline": "Cedar Corners Phase 5 development deal approved",
+      "summary": "The city approved a development agreement for Cedar Corners Phase 5, with conditions on when construction may start and on connecting the roads and sidewalks.",
+      "impact": "If you live near Poplar Drive or Maple Street, the developer must connect the roads on both sides and keep the walkways continuous rather than leaving them to dead-end.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

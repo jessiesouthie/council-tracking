@@ -43,9 +43,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Pass the routine consent agenda",
-      "summary": "The council approved its consent agenda in a single vote; the motion does not list which items were included.",
-      "impact": "This is routine housekeeping — the consent agenda is the batch of uncontested business the council passes together, and nothing in it changes anything for residents."
+      "headline": "Consent agenda approved",
+      "summary": "The council approved its consent agenda, the batch of items passed together without separate discussion.",
+      "impact": "Nothing changes for residents — this is the routine bundle of items the council clears in one vote.",
+      "significance": "routine"
     },
     {
       "id": 921,
@@ -80,9 +81,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Sell 2.15 acres of city land",
-      "summary": "The city approved disposing of 2.15 acres of city-owned land (Utah County parcel 59:044:0015) and set the terms; the motion names no buyer or price.",
-      "impact": "Unless you live next to that parcel, nothing changes for you. The land leaves city ownership under terms the council set but the motion does not spell out."
+      "headline": "City to dispose of 2.15 acres of land",
+      "summary": "The council approved disposing of 2.15 acres of city-owned land at Utah County parcel 59:044:0015 and set the terms.",
+      "impact": "This land leaves city hands. The motion does not say who receives it or what will go there, so there is nothing concrete yet for neighbors to plan around.",
+      "significance": "notable"
     },
     {
       "id": 922,
@@ -119,9 +121,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Revised layout for the Town Center Marketplace",
-      "summary": "The city approved an amended preliminary plat — the proposed layout of lots and streets — for the Marketplace at Eagle Mountain Town Center.",
-      "impact": "Nothing changes for you today. A preliminary plat is an early planning step for the Marketplace site, well before anything gets built."
+      "headline": "Revised plan for Town Center marketplace",
+      "summary": "The council approved an amended preliminary plat for the Marketplace at Eagle Mountain Town Center.",
+      "impact": "This is an early planning step for the Town Center marketplace, laying out how the land is divided. Nothing gets built on this approval alone.",
+      "significance": "notable"
     },
     {
       "id": 923,
@@ -159,9 +162,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Change the pay schedule for city officers",
-      "summary": "The city amended the compensation schedule for its statutory officers; the motion does not state the new pay figures.",
-      "impact": "This is internal city payroll housekeeping — nothing changes for residents, and the motion does not say whether the pay went up or down."
+      "headline": "Pay schedule for city officers updated",
+      "summary": "The council amended the compensation schedule for the city's statutory officers.",
+      "impact": "This sets what the city's statutory officers are paid. The motion does not state the new figures, and nothing changes for residents day to day.",
+      "significance": "notable"
     },
     {
       "id": 924,
@@ -198,9 +202,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Cut required shared parking from 40% to 35%",
-      "summary": "The city eased its parking rules, lowering required shared parking from 40% to 35% and changing where parking areas can be located on a site.",
-      "impact": "This lands on developers and businesses planning new projects, who now have to set aside less shared parking. Nothing changes at existing homes or businesses."
+      "headline": "Shared parking requirement lowered to 35%",
+      "summary": "The council changed the rules on where parking areas can go and cut the required shared parking from 40% to 35%.",
+      "impact": "This mainly touches developers and businesses building new commercial projects, which can now share slightly less of their parking. You may see lots laid out differently in future developments.",
+      "significance": "notable"
     },
     {
       "id": 925,
@@ -237,9 +242,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Delay new rules for drive-thru lanes",
-      "summary": "The council set aside a decision on changes to the city's rules for drive-thru lanes.",
-      "impact": "Nothing changes for now — the existing drive-thru rules stay in place unless and until the council takes the item back up."
+      "headline": "Drive-thru lane rules put on hold",
+      "summary": "The council delayed a decision on changes to the city's rules for drive-thru lanes.",
+      "impact": "Nothing changes for residents or businesses — the existing drive-thru rules stay in place until the council takes the item back up.",
+      "significance": "routine"
     },
     {
       "id": 926,
@@ -276,9 +282,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Tweak housing rules and the definition of a structure",
-      "summary": "The city changed its zoning code's definition of a \"structure\" and its table of residential development standards; the motion does not say what the changes were.",
-      "impact": "The motion gives no detail on what actually changed, so there is nothing here that tells you whether it affects what you can build on your lot. Anyone planning a project should check the updated code."
+      "headline": "Building standards for homes updated",
+      "summary": "The council changed the city code's definition of a \"structure\" and its residential development standards table.",
+      "impact": "If you are planning to build on your lot, the rules for what counts as a structure and the standards your project must meet have shifted. The motion itself doesn't spell out the specifics.",
+      "significance": "notable"
     },
     {
       "id": 927,
@@ -315,9 +322,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Clear the way to trade 20.35 acres by Bypass Road",
-      "summary": "The city approved disposing of up to 20.35 acres of city land known as the Bypass Road Property, and told staff to return once an exchange property is chosen.",
-      "impact": "No land has changed hands yet, and nothing changes for you today. The council still has to approve the actual swap once staff identifies what the city would get in return."
+      "headline": "Up to 20.35 acres near Bypass Road to be traded",
+      "summary": "The council approved disposing of up to 20.35 acres of city-owned land known as the Bypass Road Property, to be exchanged for land chosen later.",
+      "impact": "The city is clearing the way to swap this land, but has not yet said what it will get in return. Staff must come back to the council before any trade is final.",
+      "significance": "notable"
     },
     {
       "id": 928,
@@ -355,9 +363,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Sign rules now cover school and city sports fields",
-      "summary": "The city rewrote its sign rules and defined an athletic facility as a regulation-size school or city-owned soccer, football, baseball or softball field, or the Rodeo Grounds.",
-      "impact": "This matters if you run, sponsor, or advertise at a school field, a city field, or the Rodeo Grounds — those are now the places the sign rules apply to. For most residents, nothing changes."
+      "headline": "Sign rules now cover city fields and Rodeo Grounds",
+      "summary": "The council rewrote the city's sign rules and defined an \"athletic facility\" as a high school, middle school, or city-owned regulation field, or the Rodeo Grounds.",
+      "impact": "The sign rules that apply at athletic venues now reach city-owned fields and the Rodeo Grounds, not just school fields. For most residents, day-to-day life is unchanged.",
+      "significance": "notable"
     },
     {
       "id": 929,
@@ -392,9 +401,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Delay a franchise deal with Zayo Group",
-      "summary": "The council put off a decision on a franchise agreement with Zayo Group, LLC, taking no action on its terms.",
-      "impact": "Nothing changes for residents right now. The agreement is set aside and would have to come back before the council for any decision."
+      "headline": "Zayo fiber franchise agreement put on hold",
+      "summary": "The council delayed a decision on a franchise agreement with Zayo Group, LLC, a fiber network company.",
+      "impact": "Nothing changes for residents right now — the agreement was set aside and will come back to the council another night.",
+      "significance": "routine"
     },
     {
       "id": 930,
@@ -431,9 +441,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Put Airport Road funding on the state priority list",
-      "summary": "The council added a funding plan for roads serving the Lone Tree and Oquirrh Mountain Ranch areas through Airport Road to the city's legislative priorities list.",
-      "impact": "Nothing changes on the ground yet. This is the city telling state lawmakers what it wants money for; road work would only follow if the state actually funds it."
+      "headline": "Lone Tree road funding added to priorities list",
+      "summary": "The council added a funding plan for roads serving the Lone Tree and Oquirrh Mountain Ranch areas through Airport Road to its legislative priorities list.",
+      "impact": "Nothing changes on the ground yet. This puts the road funding on the city's official ask list; any actual money and construction would still have to be approved later.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

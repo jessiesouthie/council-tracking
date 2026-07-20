@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine consent items approved",
-      "summary": "The council passed its batch of routine consent items, pulling the Mountainland Supply development agreement out for separate discussion.",
-      "impact": "This is routine housekeeping — nothing changes for residents. The one item worth a real debate was taken out and voted on separately."
+      "headline": "Consent agenda approved, one item pulled out",
+      "summary": "The council approved its bundle of routine consent items but pulled the Mountainland Supply development agreement out for separate discussion.",
+      "impact": "Nothing changes for residents — this is the batch of routine business the council passes in a single vote, minus the one item it wanted to debate on its own.",
+      "significance": "routine"
     },
     {
       "id": 954,
@@ -82,9 +83,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Development deal with Mountainland Supply",
-      "summary": "The city approved a development agreement with Mountainland Supply, the contract that spells out the terms of the company's project.",
-      "impact": "Nothing changes for residents right now. This locks in terms between the city and one company before it builds; the motion does not say where the site is or what is planned."
+      "headline": "Development deal with Mountainland Supply approved",
+      "summary": "The city approved a development agreement with Mountainland Supply; the motion itself does not state the site, the size, or the terms.",
+      "impact": "A development agreement locks in what a builder may do on a specific piece of land. The motion doesn't say where that land is or what is going up, so the details sit in the agreement itself.",
+      "significance": "notable"
     },
     {
       "id": 955,
@@ -122,9 +124,10 @@
           "vote": "No"
         }
       ],
-      "headline": "Proposal to sell the land at $45,000 an acre",
-      "summary": "A proposed alternative price of $45,000 per acre, or $1.03 per square foot, for the same city land, on the grounds that the parcel needs no extra water rights.",
-      "impact": "This was the cheaper of the two prices floated for the same parcel. Either way, the price affects the city's books, not anything you pay or do."
+      "headline": "Lower $45,000-an-acre price rejected",
+      "summary": "The council rejected a lower price of $45,000 per acre ($1.03 per square foot) for the same city land, on the argument that the parcel needs no added water rights.",
+      "impact": "Nothing changes for residents — this was a competing price for the same parcel, and the higher price the council approved is what stands.",
+      "significance": "routine"
     },
     {
       "id": 956,
@@ -162,9 +165,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Proposal to pause the land sale over water rules",
-      "summary": "A proposal to put the land sale on hold while staff tightened the water requirements and wrote a policy for reviewing future land sales.",
-      "impact": "This was a procedural move to slow the sale down and settle the water question first. Nothing about it would have changed anything for residents directly."
+      "headline": "Bid to pause the land sale over water rules fails",
+      "summary": "The council declined to delay the land-sale resolution while staff refined water requirements and wrote a policy for reviewing future requests to buy city land.",
+      "impact": "Nothing changes for residents — this was an attempt to hold the sale back for more study, and it did not hold.",
+      "significance": "routine"
     },
     {
       "id": 957,
@@ -201,9 +205,10 @@
           "vote": "No"
         }
       ],
-      "headline": "Sell city land at $95,000 an acre",
-      "summary": "The city approved selling a piece of city-owned property at $95,000 per acre, or $2.18 per square foot.",
-      "impact": "Nothing changes day to day for residents. The city is turning a parcel it owns into cash at a set price; the motion does not say which parcel or who is buying it."
+      "headline": "City land to be sold at $95,000 an acre",
+      "summary": "The council authorized selling a significant piece of city-owned property at a price of $95,000 per acre, or $2.18 per square foot.",
+      "impact": "The motion doesn't name the parcel or the buyer; what it settles is the price the city will accept for land the public currently owns. Nothing changes day to day for residents.",
+      "significance": "notable"
     },
     {
       "id": 958,
@@ -238,9 +243,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Add a telecom ordinance to the city's to-do list",
-      "summary": "The council added drafting a telecommunications ordinance, a franchise agreement, or both to its list of legislative priorities.",
-      "impact": "Nothing changes today. This is a placeholder for rules the city intends to write later; any actual ordinance would have to come back to the council."
+      "headline": "Telecom rules added to council's priority list",
+      "summary": "The council added drafting a telecommunications ordinance and/or franchise agreement to its list of legislative priorities.",
+      "impact": "Nothing changes for you yet — this puts the item on the city's to-do list, and any actual rules would have to come back to the council later.",
+      "significance": "routine"
     },
     {
       "id": 959,
@@ -275,9 +281,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Write rules for selling city-owned land",
-      "summary": "The council put drafting a policy to guide staff in reviewing applications to buy city-owned land on its list of legislative priorities.",
-      "impact": "Nothing changes for you now. It commits the city to writing rules later for how it handles requests to buy land it owns, which would come back to the council for a vote."
+      "headline": "Land-sale policy added to council's priority list",
+      "summary": "The council put writing a policy for how staff review applications to buy city-owned land onto its list of legislative priorities.",
+      "impact": "Nothing changes right now — this only commits the city to drafting rules later for how it handles requests to buy public land.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

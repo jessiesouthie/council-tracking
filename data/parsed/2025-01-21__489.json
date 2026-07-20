@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Jacob Adams appointed to the Youth Council",
-      "summary": "The council appointed Jacob Adams to the Youth Council, filling a seat that runs through June 30, 2025.",
-      "impact": "Nothing changes for residents — this fills one volunteer seat on the city's youth group for the rest of a term."
+      "headline": "Jacob Adams appointed to Youth Council",
+      "summary": "The council appointed Jacob Adams to the Youth Council for a term running through June 30, 2025.",
+      "impact": "Nothing changes for residents — this fills a seat on the city's youth advisory body.",
+      "significance": "routine"
     },
     {
       "id": 823,
@@ -74,9 +75,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine items approved, two pulled for debate",
-      "summary": "The council handled its routine consent items in one vote, first pulling the civic campus land purchase and the lobbying contract out for separate discussion.",
-      "impact": "This is housekeeping — nothing changes for residents. It only decides which items get debated on their own instead of being passed in a batch."
+      "headline": "Two items pulled for separate discussion",
+      "summary": "The council approved its consent agenda but pulled the civic campus land purchase and the lobbying contract out for individual discussion.",
+      "impact": "This is procedural housekeeping — it only means two items got their own debate instead of passing in a batch.",
+      "significance": "routine"
     },
     {
       "id": 824,
@@ -114,8 +116,9 @@
         }
       ],
       "headline": "Energy code changes put on hold",
-      "summary": "The council delayed a decision on energy-related amendments to Title 17, the city's development code.",
-      "impact": "Nothing changes for now. The current rules stay in place until the council takes this back up, and any effect would land mainly on people planning new development."
+      "summary": "The council delayed a decision on changes to the city's energy-related building and land use rules in Title 17.",
+      "impact": "Nothing changes for now — the existing rules stay in place until the council brings the item back.",
+      "significance": "routine"
     },
     {
       "id": 825,
@@ -131,9 +134,10 @@
         "procurement"
       ],
       "votes": [],
-      "headline": "Buy 20.99 acres for a future civic campus",
-      "summary": "The council took up an agreement to buy 20.99 acres from Ivory Homes and SITLA for a future civic campus, with commercial size limits struck.",
-      "impact": "Nothing changes for you right now — this is land for city buildings someday, with no design, cost, or timeline decided here. Removing the size limit would allow larger commercial buildings as part of the deal."
+      "headline": "Buy 21 acres for a future civic campus",
+      "summary": "The council took up an agreement with Ivory Homes and SITLA to buy 20.99 acres for a future civic campus, with limits on commercial building size struck from the deal.",
+      "impact": "If the purchase goes through, the city would own land it intends to use for future public buildings. Nothing changes for you now — no buildings, timeline, or price are set in this item.",
+      "significance": "notable"
     },
     {
       "id": 826,
@@ -169,8 +173,9 @@
         }
       ],
       "headline": "City hires a lobbyist for $60,000 a year",
-      "summary": "The city approved a one-year agreement for lobbying services at a cost of $60,000 annually.",
-      "impact": "Nothing changes day to day — this is $60,000 of city money spent on outside representation for Eagle Mountain, and you won't see a direct effect at home."
+      "summary": "The city signed a one-year, $60,000 contract for lobbying services to represent Eagle Mountain's interests.",
+      "impact": "Nothing changes day to day — this is the city paying an outside firm to advocate for it, most likely at the state level.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

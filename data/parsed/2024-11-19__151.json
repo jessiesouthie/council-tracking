@@ -41,9 +41,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Small Business Saturday set for Nov 30",
+      "headline": "Small Business Saturday proclaimed for Nov. 30",
       "summary": "The city proclaimed November 30, 2024 as Small Business Saturday in Eagle Mountain.",
-      "impact": "Ceremonial only — nothing changes for you. It is a nudge to shop at local Eagle Mountain businesses that Saturday."
+      "impact": "This is ceremonial — nothing changes for residents or businesses. It's an encouragement to shop locally that day, with no rules, money, or programs attached.",
+      "significance": "routine"
     },
     {
       "id": 795,
@@ -80,9 +81,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine consent items approved",
-      "summary": "The council approved its consent agenda, the batch of routine items voted on together; the record does not list which items were included.",
-      "impact": "This is routine housekeeping — nothing here changes for residents."
+      "headline": "Consent agenda approved",
+      "summary": "The council approved its consent agenda, the batch of items handled together without separate discussion.",
+      "impact": "Nothing changes for residents — this is the routine step that clears grouped housekeeping items in one vote.",
+      "significance": "routine"
     },
     {
       "id": 796,
@@ -119,9 +121,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Require 10% affordable homes in new housing",
-      "summary": "The council set a rule that at least 10% of new homes in these residential zones must be priced for households earning 80% or less of the county median.",
-      "impact": "If you build in these zones, one in ten new homes must be affordable. Buyers of those homes get a deed restriction: you must live in the home yourself, and its price stays tied to that moderate-income limit."
+      "headline": "10% of new homes in some zones must be affordable",
+      "summary": "The city now requires at least 10% of new homes in certain residential zones to be priced for households earning 80% or less of Utah County's median income.",
+      "impact": "If you build or buy in these zones, a share of the homes carry a recorded deed restriction: the owner must live there and the price is capped. Applies to new development, not existing homes.",
+      "significance": "notable"
     },
     {
       "id": 797,
@@ -157,8 +160,9 @@
         }
       ],
       "headline": "Add transit grant study to state lobbying list",
-      "summary": "The council added a study of public transit innovation grants to the city's list of legislative priorities.",
-      "impact": "Nothing changes for you now — this only adds a topic to the wish list the city takes to state lawmakers."
+      "summary": "The council added a study of public transit innovation grants to the list of priorities it takes to the state legislature.",
+      "impact": "Nothing changes for you now — this only signals what the city plans to ask state lawmakers about. Any actual transit service would need separate decisions later.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

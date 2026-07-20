@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Vote on the city's road plan delayed",
-      "summary": "The council delayed adopting the Transportation Master Plan, the long-range blueprint guiding how the city's roads are built and improved.",
-      "impact": "No road project is funded or approved by this, and the plan is still on the shelf. Nothing changes for your commute until the council takes it up again."
+      "headline": "Transportation Master Plan put on hold",
+      "summary": "The council delayed adopting the Transportation Master Plan, the city's long-range plan for its road network.",
+      "impact": "No road decisions are locked in by this. The plan shapes where future roads and improvements go, and it has to come back to the council before it takes effect.",
+      "significance": "routine"
     },
     {
       "id": 914,
@@ -66,9 +67,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Parking rule changes face rejection",
-      "summary": "The council moved to reject proposed changes to the city's parking rules; the record does not show whether that rejection was finalized.",
-      "impact": "The city's existing parking rules stay in force for now, so nothing changes about how parking is handled today."
+      "headline": "Parking rule changes rejected",
+      "summary": "The council moved to reject proposed changes to the city's parking rules.",
+      "impact": "The parking rules stay exactly as they are today. There is nothing new you need to do, and no new restrictions on where you park.",
+      "significance": "notable"
     },
     {
       "id": 915,
@@ -105,9 +107,10 @@
           "vote": "No"
         }
       ],
-      "headline": "Routine consent items approved",
-      "summary": "The council approved its consent agenda, the bundle of routine items voted on together; the record does not list which items were in the bundle.",
-      "impact": "This is routine housekeeping and nothing changes for residents. Because the items are not listed in the record, we can't tell you exactly what was in this batch."
+      "headline": "Consent agenda approved",
+      "summary": "The council approved its consent agenda, the bundle of items passed together in one vote; the record does not list what was in it.",
+      "impact": "Nothing in the record points to a specific change for residents, because the items grouped into this single vote were not listed.",
+      "significance": "routine"
     },
     {
       "id": 916,
@@ -142,9 +145,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Sale of a 0.156-acre city parcel delayed",
-      "summary": "The council delayed a decision on disposing of a 0.156-acre piece of city property, Utah County parcel 49:601:0080, and on the terms of that sale.",
-      "impact": "This is a small sliver of land and it remains city-owned for now. Nothing changes for residents while the decision waits."
+      "headline": "Sale of small city parcel delayed",
+      "summary": "The council delayed a decision on selling a 0.156-acre piece of city property, and on the terms of that sale.",
+      "impact": "Nothing changes for residents — the city holds onto the parcel until the council revisits the sale.",
+      "significance": "routine"
     },
     {
       "id": 917,
@@ -181,9 +185,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Sale of 20.35 acres of Bypass Road land delayed",
-      "summary": "The council delayed a decision on disposing of up to 20.35 acres of city-owned land known as the Bypass Road.",
-      "impact": "The land stays in the city's hands for now, and nothing changes on the ground until the council brings the item back."
+      "headline": "Bypass Road land sale put on hold",
+      "summary": "The council delayed a decision on selling up to 20.35 acres of city-owned land known as the Bypass Road.",
+      "impact": "The city keeps the 20.35 acres for now. Any sale would have to come back to the council before it could go through.",
+      "significance": "routine"
     },
     {
       "id": 918,
@@ -220,9 +225,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Sign rule changes set aside",
-      "summary": "The council took up a move to shelve proposed changes to the city's sign rules and sign permits; the record does not show a final result.",
-      "impact": "The current sign rules stay as they are. If you own a business and are planning a new sign, today's permit requirements still apply."
+      "headline": "Sign rule changes put on hold",
+      "summary": "The council delayed a decision on changes to the city's sign rules, which cover what signs are allowed and how sign permits work.",
+      "impact": "Nothing changes yet — the sign and permit rules on the books today still apply until the council takes the item back up.",
+      "significance": "routine"
     },
     {
       "id": 919,
@@ -258,8 +264,9 @@
         }
       ],
       "headline": "Zayo fiber franchise agreement put on hold",
-      "summary": "The council delayed a decision on a franchise agreement with Zayo Group, LLC, pushing the item to a future meeting rather than approving it.",
-      "impact": "Nothing changes for you right now. The agreement is not in effect, and the council will have to take it up again before anything happens."
+      "summary": "The council delayed a decision on a franchise agreement with Zayo Group, LLC, holding the item over rather than voting it up or down.",
+      "impact": "Nothing changes for residents right now. The agreement is on hold and would have to come back to the council before it could take effect.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

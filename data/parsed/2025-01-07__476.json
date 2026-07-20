@@ -43,7 +43,8 @@
       ],
       "headline": "Brett Wright named mayor pro tempore for 2025",
       "summary": "The council named Councilmember Brett Wright as mayor pro tempore for 2025.",
-      "impact": "Routine housekeeping — it only matters on the occasional night the mayor is away, when Wright runs the council meeting."
+      "impact": "Nothing changes for residents — this simply decides who leads a council meeting when the mayor cannot be there.",
+      "significance": "routine"
     },
     {
       "id": 812,
@@ -82,7 +83,8 @@
       ],
       "headline": "Adam Jacobs joins the Library Advisory Board",
       "summary": "The council appointed Adam Jacobs to a three-year term on the Library Advisory Board, running through 2027.",
-      "impact": "Nothing changes for library users. This is a routine volunteer appointment to the board that advises the city on the library."
+      "impact": "Nothing changes for library users — this fills one volunteer seat on the board that advises the city on the library.",
+      "significance": "routine"
     },
     {
       "id": 813,
@@ -121,7 +123,8 @@
       ],
       "headline": "Benjamin Perez joins the Library Advisory Board",
       "summary": "The council appointed Benjamin Perez to a three-year term on the Library Advisory Board, running through 2027.",
-      "impact": "Nothing changes for library users. The board advises the city on the library; this is a routine volunteer appointment."
+      "impact": "Nothing changes for library users — this fills one volunteer seat on the board that advises the city on the library.",
+      "significance": "routine"
     },
     {
       "id": 814,
@@ -160,9 +163,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent items approved, new city recorder named",
-      "summary": "The council approved its consent agenda, including changes discussed to the annual financial audit and the appointment of Gina Olsen as city recorder.",
-      "impact": "Routine housekeeping — nothing changes for residents. Gina Olsen is now the person who keeps the city's official records and meeting minutes."
+      "headline": "Consent agenda and new city recorder approved",
+      "summary": "The council passed its consent agenda, including changes to the year's financial audit discussed in work session, and appointed Gina Olsen as city recorder.",
+      "impact": "Nothing changes day to day — this is the batch of routine items the council passes together, plus the staff appointment that keeps the city's official records.",
+      "significance": "routine"
     },
     {
       "id": 815,
@@ -199,9 +203,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Cedar Corners land-use map change delayed",
-      "summary": "The council delayed changing the city's long-range future land use map for Cedar Corners Phase 5 and kept the public hearing open.",
-      "impact": "No change on the ground near Cedar Corners. This is the companion item to the rezone, and both are still open for public comment."
+      "headline": "Cedar Corners land-use map change put off",
+      "summary": "The council delayed a change to the city's future land use map for Cedar Corners Phase 5 and left its public hearing open.",
+      "impact": "Nothing changes yet for the Cedar Corners area — the city's long-range map for the site stays as is, and the hearing remains open for comment.",
+      "significance": "routine"
     },
     {
       "id": 816,
@@ -226,9 +231,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Cedar Corners Phase 5 rezone put on hold",
-      "summary": "The council took up delaying a zoning change for the land known as Cedar Corners Phase 5 and keeping its public hearing open.",
-      "impact": "If you live near Cedar Corners, nothing has been rezoned. The public hearing stays open, so you still have a chance to speak before any decision."
+      "headline": "Cedar Corners Phase 5 rezoning put off",
+      "summary": "The council delayed a decision on rezoning the land known as Cedar Corners Phase 5 and left its public hearing open.",
+      "impact": "If you live near Cedar Corners, nothing changes yet — the current zoning stays, and you will still be able to speak when the hearing resumes.",
+      "significance": "routine"
     },
     {
       "id": 817,
@@ -265,9 +271,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Rules changed for building into setbacks",
-      "summary": "The council amended the code section governing what can project into a property's required setbacks, though the motion does not spell out the changes.",
-      "impact": "If you are planning something near your property line, such as an overhang or a porch, check the updated code first. The motion itself does not say what changed."
+      "headline": "Rules changed for building into yard setbacks",
+      "summary": "The council amended the city code rule governing how far a structure may project into a required yard setback.",
+      "impact": "If you are planning to build near your property line, the limits on how far a structure can extend into the setback have changed. The motion itself does not state the new limits — check with the city first.",
+      "significance": "notable"
     },
     {
       "id": 818,
@@ -306,9 +313,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Expired development deals now trigger a rezone",
-      "summary": "The city required the planning director to start rezoning land whenever the master development agreement that zoned it expires or is terminated.",
-      "impact": "This affects landowners and developers whose agreements lapse — the land does not simply keep the zoning the expired deal gave it. Ordinary residents have nothing to do."
+      "headline": "Expired development deals now trigger rezoning",
+      "summary": "The council required the planning director to start rezoning land whenever a master development agreement or development agreement on it expires or is terminated.",
+      "impact": "If you own land covered by a development agreement that lapses, the city will move to rezone it rather than leave the old zoning in place. Most residents will not notice this.",
+      "significance": "notable"
     },
     {
       "id": 819,
@@ -347,9 +355,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Delay on how site plan distances are measured",
-      "summary": "The council delayed a rule change that would measure distances on new site plans from the existing right-of-way rather than from the existing curb.",
-      "impact": "This matters to builders and engineers laying out new projects, not to residents. No decision was made, so the current rules still apply."
+      "headline": "Setback measuring change delayed",
+      "summary": "The council put off a change to how the city measures setbacks on site plans, measuring from the existing right-of-way instead of the curb.",
+      "impact": "Nothing changes for now. The current measuring rules stay in place for anyone submitting a site plan until the council takes the item up again.",
+      "significance": "routine"
     },
     {
       "id": 820,
@@ -384,9 +393,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Hire outside brokers for big city land deals",
-      "summary": "The city authorized staff to bring in an outside real estate brokerage or attorney when buying or selling significant city-owned property.",
-      "impact": "Nothing changes day to day. It affects how the city handles large land transactions behind the scenes; you would only see the result when a major city property is bought or sold."
+      "headline": "Outside brokers allowed for big city land deals",
+      "summary": "The city authorized staff to hire a real estate brokerage or a real estate attorney when buying or selling major city property.",
+      "impact": "Nothing changes day to day — this only sets who the city can bring in to handle its larger land purchases and sales.",
+      "significance": "routine"
     },
     {
       "id": 821,
@@ -421,9 +431,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Council board assignments held over from 2024",
-      "summary": "The council put off deciding which members represent it on city boards, sticking with the 2024 assignments until the mayor meets with each of them.",
-      "impact": "This is internal housekeeping — nothing changes for residents. The city manager was also asked to draw up a list of every board that might need a council liaison."
+      "headline": "Council board assignments put on hold",
+      "summary": "The council kept its 2024 board liaison assignments until the mayor can meet with members to set new ones, and asked staff for a list of all boards.",
+      "impact": "Nothing changes for residents — this is internal housekeeping about which councilmember sits in on which city board and commission.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

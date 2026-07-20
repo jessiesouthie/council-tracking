@@ -39,9 +39,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda approved, with items pulled out",
-      "summary": "The council took up the consent agenda, holding three items back for separate votes, moving item 13.A to open discussion, and correcting spelling in 13.B.",
-      "impact": "Routine housekeeping — nothing changes for residents. This just sorts which items get a quick group vote and which get discussed on their own."
+      "headline": "Consent agenda approved, with items set aside",
+      "summary": "The council approved its consent agenda, pulling items 10.A, 10.B and 12.A for separate votes, moving item 13.A to full discussion, and fixing spelling in 13.B.",
+      "impact": "This is routine housekeeping — nothing changes for residents. It is how the council passes uncontroversial items in one batch while separating out the ones it wants to handle on their own.",
+      "significance": "routine"
     },
     {
       "id": 1054,
@@ -78,9 +79,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Three consent items approved separately",
-      "summary": "The council approved consent agenda items 10.A, 10.B and 12.A on their own, apart from the rest of the consent agenda.",
-      "impact": "This is procedural housekeeping. The motion names the items only by number, so it does not say what they cover or who they affect."
+      "headline": "Remaining consent items approved",
+      "summary": "The council approved the three consent items it had set aside for a separate vote — items 10.A, 10.B and 12.A.",
+      "impact": "Nothing changes for residents from this step itself — it is the follow-up vote on items pulled out of the batch. The motion does not say what those items contain.",
+      "significance": "routine"
     },
     {
       "id": 1055,
@@ -105,9 +107,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Longer construction hours for the QTS SLC1 site",
-      "summary": "The council considered allowing the QTS – SLC1 project to run construction outside the hours city code normally allows.",
-      "impact": "If you live near the QTS SLC1 site, crews could be working earlier or later than the usual limits. The motion does not say which hours or how long they would apply."
+      "headline": "Longer construction hours OK'd for QTS data center",
+      "summary": "The city let the QTS SLC1 data center site run construction outside the hours normally allowed under city code.",
+      "impact": "If you live near the QTS SLC1 site, construction noise may continue outside the usual permitted hours. The motion does not say which hours were granted or how long the exception lasts.",
+      "significance": "notable"
     },
     {
       "id": 1056,
@@ -145,9 +148,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Overland development deal amended; lights capped at 25 feet",
-      "summary": "The city approved the fifth amendment to the Overland development agreement, requiring 25-foot light poles instead of 30 and a 35-acre land swap with the state.",
-      "impact": "If you live near the Overland project, streetlights there will be 25 feet tall rather than 30. The agreement only takes effect once the state land exchange for the bypass road is finished, so nothing changes on the ground yet."
+      "headline": "Overland development deal amended, lights capped at 25 feet",
+      "summary": "The city approved a change to the Overland development agreement, requiring 25-foot light poles instead of 30-foot and a finished 35-acre land swap with the state.",
+      "impact": "If you live near the Overland project, outdoor lighting will sit five feet lower than planned, which means less glare. The deal also depends on a state land exchange tied to the planned bypass road.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

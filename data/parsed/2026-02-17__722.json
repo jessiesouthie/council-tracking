@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine consent items approved in one vote",
-      "summary": "The council passed its consent agenda, the batch of routine items voted through together; this record doesn't list which items were included.",
-      "impact": "Consent agendas hold the routine business the council doesn't debate individually. Nothing in this record points to a change residents would notice."
+      "headline": "Consent agenda approved",
+      "summary": "The council approved its consent agenda, the batch of items passed together in one vote; the record of the motion does not list which items were included.",
+      "impact": "This is routine housekeeping — nothing changes for residents.",
+      "significance": "routine"
     },
     {
       "id": 1031,
@@ -82,9 +83,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Mid-year change to this year's city budget",
-      "summary": "The council approved a second amendment to the 2025–26 city budget, adopted as presented; the motion lists no figures or specific changes.",
-      "impact": "A mid-year budget amendment can move real money, but this record doesn't say what changed. To see whether anything you use is affected, you'd need the budget document itself."
+      "headline": "Mid-year budget update approved",
+      "summary": "The council approved a second round of amendments to the city's 2025–26 budget; the motion itself names no specific dollar figures.",
+      "impact": "Cities adjust their budgets partway through the year to match actual spending. Nothing in this motion spells out a change residents would notice — the detail sits in the budget document, not the motion.",
+      "significance": "routine"
     },
     {
       "id": 1032,
@@ -121,9 +123,10 @@
           "vote": "Abstain"
         }
       ],
-      "headline": "Up to $220M in water and sewer bonds",
-      "summary": "The city authorized borrowing up to $220 million — the motion as read said $230 million — by selling water and sewer revenue bonds.",
-      "impact": "Before the bonds are sold, the city must publish notice of a public hearing and allow a window in which the sale can be legally challenged. Revenue bonds are repaid from water and sewer bills, not property taxes."
+      "headline": "Up to $230M in water and sewer bonds",
+      "summary": "The council authorized borrowing up to $230 million by issuing water and sewer revenue bonds, and set the maximum term, interest rate, and discount for the sale.",
+      "impact": "Revenue bonds are repaid from what the city collects on water and sewer bills rather than from property taxes, so ratepayers ultimately carry this debt. A public hearing is required before the bonds are sold.",
+      "significance": "notable"
     },
     {
       "id": 1033,
@@ -160,9 +163,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "New wildfire-risk map for homes next to open land",
-      "summary": "The city adopted an official Wildland Urban Interface map — the areas where homes back onto undeveloped wildland — and amended the related section of city code.",
-      "impact": "If your property backs onto open land, it may now fall inside the mapped interface area. The motion doesn't spell out what rules come with that."
+      "headline": "Wildfire-risk map adopted for the city",
+      "summary": "The city adopted an official map of the areas where homes sit against wildland fire risk, and updated the related code chapter that governs them.",
+      "impact": "If your property falls inside the mapped wildland interface area, the city's Chapter 15.95 rules apply to it. The map is what decides whether you are in or out of that zone.",
+      "significance": "notable"
     },
     {
       "id": 1034,
@@ -192,9 +196,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Merge five city boards into one",
-      "summary": "The council considered folding the parks, recreation sports, cemetery, veterans, and economic development boards into a single Community Services Board.",
-      "impact": "If you volunteer on one of those five boards, they would be replaced by one combined board. For everyone else, nothing changes day to day."
+      "headline": "Five city boards folded into one",
+      "summary": "The council took up an ordinance replacing five volunteer boards — parks and recreation, sports, cemetery, veterans, and economic development — with a single Community Services Board.",
+      "impact": "If you serve on one of these boards or bring issues to them, they would be consolidated into one Community Services Board. For everyone else, nothing changes day to day.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

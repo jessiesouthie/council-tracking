@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine consent items approved in one vote",
-      "summary": "The council approved its consent agenda, a batch of routine items passed together, with a change to one item worked out earlier in the work session.",
-      "impact": "This is routine housekeeping — nothing here changes for residents. The minutes do not list which items were in the batch."
+      "headline": "Consent agenda approved",
+      "summary": "The council approved its consent agenda in a single vote, with a change to one item that had been discussed earlier in the work session.",
+      "impact": "This is routine housekeeping — the consent agenda is where the council batches items it does not need to debate one by one.",
+      "significance": "routine"
     },
     {
       "id": 1074,
@@ -82,9 +83,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Draft 2026-27 budget accepted, hearings scheduled",
-      "summary": "The council accepted the city's tentative budget for fiscal year 2026-2027 and set public hearings for June 16 and August 18, 2026.",
-      "impact": "Nothing changes day to day — this is the routine first step in the budget process. If you want a say in next year's spending, those two hearing dates are your chance."
+      "headline": "Draft 2026-27 budget accepted, hearings set",
+      "summary": "The council accepted the tentative city budget for 2026–2027 and set public hearings for June 16, 2026 and August 18, 2026.",
+      "impact": "No money is locked in yet. If you want a say in how the city spends next year, those two hearing dates are when to show up.",
+      "significance": "routine"
     },
     {
       "id": 1075,
@@ -121,9 +123,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "City logs the figures behind a possible tax increase",
-      "summary": "The council formally acknowledged the budget officer's statement of a proposed property tax increase and the schedule showing what it would mean for property owners.",
-      "impact": "This is a required paperwork step in the tax increase process — nothing changes for you yet. The decision on whether to actually raise the rate comes later."
+      "headline": "Tax increase figures formally acknowledged",
+      "summary": "The council acknowledged the budget officer's statement of the proposed property tax increase and the schedule showing what that increase would cost taxpayers.",
+      "impact": "Nothing changes yet. This is a step state law requires before a city can raise property taxes; the real decision comes later at the public hearing.",
+      "significance": "routine"
     },
     {
       "id": 1076,
@@ -150,9 +153,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Notice given of a proposed property tax increase",
-      "summary": "The council took up a resolution declaring the city's intent to raise property tax revenue and setting the public hearing required before any increase can happen.",
-      "impact": "Nothing changes yet — this is the notice step. Before the city can raise property taxes, it must hold a public hearing where residents can speak for or against it."
+      "headline": "Property tax increase heads to a hearing",
+      "summary": "The council took up a resolution declaring the city's intent to raise property tax revenue, give public notice, and set the required Truth-in-Taxation hearing date.",
+      "impact": "If the increase goes ahead, homeowners would pay more. The Truth-in-Taxation hearing is the point where you can speak before the council settles on a final rate.",
+      "significance": "notable"
     },
     {
       "id": 1077,
@@ -190,9 +194,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Parks plan adopted, Sweetwater Park cost added",
-      "summary": "The council adopted the parks, trails, and open space master plan and added the cost of Sweetwater Park to the list of projects impact fees are meant to fund.",
-      "impact": "This is the roadmap for future parks and trails and the project list that fees on new homes help pay for. Nothing gets built yet and nothing changes on your bill today."
+      "headline": "Parks plan adopted, Sweetwater Park added",
+      "summary": "The city adopted its parks, trails and open space master plan along with the impact fee plan that pays for it, adding Sweetwater Park's cost to the list.",
+      "impact": "This is the city's list of parks and trails it intends to build, and the fees charged on new construction that fund them. Sweetwater Park is now part of that funded list.",
+      "significance": "notable"
     },
     {
       "id": 1078,
@@ -230,9 +235,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Zoning map updated for the Brandon Park area",
-      "summary": "The city formally recorded existing zoning designations for the Brandon Park area on its official zoning map and future land use map.",
-      "impact": "This is a bookkeeping fix that puts zoning already in use onto the official maps. If you own property in Brandon Park, your designation is now clearly on the record."
+      "headline": "Brandon Park area added to the zoning map",
+      "summary": "The council put the Brandon Park area onto the city's official zoning and future land use maps, recording the zoning designations the area already carries.",
+      "impact": "Nothing changes for Brandon Park property owners — the rules that already applied are now written onto the city's official maps.",
+      "significance": "routine"
     },
     {
       "id": 1079,
@@ -269,9 +275,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Design standards updated for shops and apartments",
-      "summary": "The council adopted changes to the city's design standards for commercial and apartment buildings, approving them as presented without detailing them in the motion.",
-      "impact": "These rules apply to future commercial and apartment projects, so builders deal with them directly, not current homeowners. The minutes do not say what specifically changed."
+      "headline": "Design rules updated for shops and apartments",
+      "summary": "The council updated the city's design standards for commercial buildings and apartments, changing how new projects of that kind must be built and look.",
+      "impact": "Nothing changes for existing homes. The new standards shape the appearance of stores and apartment buildings approved from here on, and developers will have to design to them.",
+      "significance": "notable"
     },
     {
       "id": 1080,
@@ -309,9 +316,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "New screening rules between homes and parking lots",
-      "summary": "The city rewrote its parking and landscaping rules, requiring plants that screen homes to be 3.5 feet tall when planted and to stay green year-round.",
-      "impact": "You would notice this on new commercial and apartment projects next to houses: thicker, evergreen screening from day one instead of thin or bare hedges. Developers carry the cost."
+      "headline": "New parking and screening rules citywide",
+      "summary": "The city rewrote its parking and landscaping rules, requiring screening plants at least 3.5 feet tall when planted and vegetation that screens year-round.",
+      "impact": "This mostly affects builders and businesses planning new lots. Where a project sits next to homes, screening plants must already be 3.5 feet tall and stay green through the winter.",
+      "significance": "notable"
     },
     {
       "id": 1081,
@@ -348,9 +356,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Spring Run Plaza deal: less landscaping, taller walls",
-      "summary": "The council approved the development agreement for Spring Run Plaza, capping required landscaping at 10 feet wide and allowing engineered retaining walls over 6 feet without stepping them back.",
-      "impact": "This sets the rules the developer must follow. Neighbors may see a narrower planted buffer and taller, single-face retaining walls, though stacked boulder or rock walls are not allowed."
+      "headline": "Development deal set for Spring Run Plaza",
+      "summary": "The council approved the master development agreement for Spring Run Plaza, capping the required landscaping width at 10 feet and allowing engineered retaining walls taller than 6 feet without tiering.",
+      "impact": "This sets the rules the developer must build to at that corner. You may see tall, untiered retaining walls there, though stacked boulder and rock walls are not allowed.",
+      "significance": "notable"
     },
     {
       "id": 1082,
@@ -387,9 +396,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Spring Run Plaza: 6 lots approved on 27-acre site",
-      "summary": "The city signed off on the first layout for Spring Run Plaza, a 27.35-acre commercial site at Spring Run Parkway and Cory B. Wride Memorial Highway.",
-      "impact": "If you live or drive near that corner, expect work to start on the first 8.15 acres. Two lots stay empty for now, and the city has to revisit the plans before those are built."
+      "headline": "Spring Run Plaza approved on 27.35 acres",
+      "summary": "The city approved the layout for Spring Run Plaza, a 27.35-acre development at Spring Run Parkway and Cory B. Wride Memorial Highway, starting with six lots.",
+      "impact": "If you live or drive near that corner, expect construction on the first 8.15 acres. Two of the lots stay empty until the developer comes back to the city for approval.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

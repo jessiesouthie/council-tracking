@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine items approved in one batch",
-      "summary": "The council cleared its consent agenda, the bundle of routine items handled together; the record here doesn't name which items were in it.",
-      "impact": "This is routine housekeeping — nothing changes for residents, and no individual item is identified in the record."
+      "headline": "Consent agenda approved",
+      "summary": "The council approved its consent agenda, the batch of items passed together in a single vote without separate discussion.",
+      "impact": "Nothing changes for residents — this is the routine step that clears grouped housekeeping items in one go.",
+      "significance": "routine"
     },
     {
       "id": 932,
@@ -81,8 +82,9 @@
         }
       ],
       "headline": "Join the Utah Valley HOME Consortium",
-      "summary": "The city signed an agreement to join the Utah Valley HOME Consortium, a cooperative arrangement with other governments in the area.",
-      "impact": "Nothing changes for you day to day. This is an agreement between governments, and the motion itself doesn't say what the consortium will fund or what it costs the city."
+      "summary": "The city agreed to sign a cooperation agreement joining the Utah Valley HOME Consortium alongside other participating local governments.",
+      "impact": "Nothing changes for you day to day — this is the paperwork that formally enrolls Eagle Mountain in a regional partnership with neighboring governments.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

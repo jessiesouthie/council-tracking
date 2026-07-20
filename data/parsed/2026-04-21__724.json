@@ -44,8 +44,9 @@
         }
       ],
       "headline": "Consent agenda approved, one item held back",
-      "summary": "The council approved its consent agenda of routine items in a single vote, pulling item 10.A. out and delaying it.",
-      "impact": "This is routine housekeeping — nothing changes for residents. The item that was pulled will come back to the council another night."
+      "summary": "The council approved its consent agenda of grouped items, pulling item 10.A. out and setting it aside for later.",
+      "impact": "Nothing changes for residents — the consent agenda is the batch of uncontested items the council passes in a single vote.",
+      "significance": "routine"
     },
     {
       "id": 1069,
@@ -61,9 +62,10 @@
         "development"
       ],
       "votes": [],
-      "headline": "Motion on the same land request withdrawn",
-      "summary": "A move to delay the same city-owned parcel decision, and to have the applicant work with neighbors and city staff on another option, was withdrawn before any vote.",
-      "impact": "Nothing was decided here — the proposal was pulled back the same night, so nothing changes for residents."
+      "headline": "Motion to delay the land decision withdrawn",
+      "summary": "A move to postpone the same land decision, with direction to work out a better solution with neighboring owners and city staff, was withdrawn.",
+      "impact": "Nothing was decided here — the motion was taken back before any vote, so it changes nothing for residents.",
+      "significance": "routine"
     },
     {
       "id": 1070,
@@ -98,9 +100,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "City rejects sale of a piece of city-owned land",
-      "summary": "The council turned down a proposal to dispose of part of a city-owned parcel in Utah County that the city had flagged as significant property.",
-      "impact": "The land stays in the city's hands. This matters to whoever wanted the parcel and to the neighbors around it; for the rest of the city, nothing changes."
+      "headline": "City won't sell off a piece of its land",
+      "summary": "The council rejected a proposal to dispose of part of a city-owned parcel that the city code treats as significant real property.",
+      "impact": "The land stays in city hands and nothing changes on the ground. The request to take over part of the parcel was turned down.",
+      "significance": "notable"
     },
     {
       "id": 1071,
@@ -138,9 +141,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Delay on screening rules for apartment buildings",
-      "summary": "The council delayed a decision on how apartment buildings must screen equipment like heat pumps, sending it back to be reworked on screening standards and spacing for airflow.",
-      "impact": "Nothing changes for you now. This one is aimed at apartment developers, and the rewritten version comes back to the council later."
+      "headline": "Screening rules for apartment buildings delayed",
+      "summary": "The council delayed a decision on rules for screening heat pumps and other equipment on apartment buildings, sending it back for revisions.",
+      "impact": "Nothing changes right now. The rewritten rules will come back to the council later, and they mainly affect apartment builders rather than homeowners.",
+      "significance": "routine"
     },
     {
       "id": 1072,
@@ -177,9 +181,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Metal fence rules: thicker steel, no corrugated panels",
-      "summary": "The city tightened its fence rules, requiring weathering steel at least 1/8 inch thick, banning corrugated panels, and dropping the yearly sealing requirement.",
-      "impact": "If you put up a metal fence, the steel must be at least 1/8 inch thick, corrugated panels are out, and a drip edge is needed where panels sit near concrete. The city checks this when you pull the permit."
+      "headline": "Stricter rules for steel fences",
+      "summary": "The city set new standards for steel fencing, requiring weathering steel at least 1/8 inch thick, banning corrugated panels, and dropping the annual sealing rule.",
+      "impact": "If you put up a steel fence, the city will now check the metal's thickness when you pull your permit, corrugated panels are no longer allowed, and you no longer have to seal it every year.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

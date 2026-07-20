@@ -42,8 +42,9 @@
         }
       ],
       "headline": "Public comment moved later in the meeting",
-      "summary": "The council moved the public comment period to a later point in the same meeting.",
-      "impact": "Residents who came to speak had to wait until later in the evening to do so. Nothing else about the agenda changed."
+      "summary": "The council moved the public comment period to a later point in the meeting.",
+      "impact": "Residents who came to speak did so later in the evening. Nothing else changes.",
+      "significance": "routine"
     },
     {
       "id": 1016,
@@ -76,9 +77,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine consent items approved",
-      "summary": "The council approved its consent agenda of routine items, correcting a spelling error in the minutes of the January 6, 2026 meeting.",
-      "impact": "This is routine housekeeping — nothing changes for residents."
+      "headline": "Consent agenda approved",
+      "summary": "The council approved its consent agenda, correcting a spelling error in the January 6, 2026 meeting minutes.",
+      "impact": "This is routine housekeeping — nothing changes for residents.",
+      "significance": "routine"
     },
     {
       "id": 1017,
@@ -116,8 +118,9 @@
         }
       ],
       "headline": "New sign rules for data center projects",
-      "summary": "The city changed its sign rules to cover directional signage for data centers and other large-scale development projects.",
-      "impact": "This mostly affects the companies building those large projects and what signs they may post. For most residents the only visible change is signage pointing traffic toward those sites."
+      "summary": "The city changed its sign code to set rules for directional signage tied to data centers and other large-scale development projects.",
+      "impact": "You may see new directional signs around large development and data center sites. Nothing changes for ordinary homeowners or their own signs.",
+      "significance": "notable"
     },
     {
       "id": 1018,
@@ -155,8 +158,9 @@
         }
       ],
       "headline": "Hillside building rules put on hold",
-      "summary": "The council delayed a decision on changing the city's slope development rules, which cover building on steep and hillside ground.",
-      "impact": "If you own or are building on a steep lot, the current rules still apply. Nothing changes until the council revisits the item."
+      "summary": "The council delayed a decision on changes to the city's rules for building on slopes and hillsides.",
+      "impact": "If you own or plan to build on a hillside lot, the current slope rules still apply. Nothing changes until the council revisits this.",
+      "significance": "routine"
     },
     {
       "id": 1019,
@@ -193,9 +197,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Mayor's powers item held for public comment",
-      "summary": "The council set the rewrite of the mayor's powers and duties aside until later in the same meeting so the public could comment first.",
-      "impact": "This gave residents in the room another chance to speak on the mayor's powers before any vote. The city code itself was not changed at this point."
+      "headline": "Mayor's powers item pushed later in the meeting",
+      "summary": "The council set aside the mayor's powers ordinance until later in the same meeting so the public could comment on it first.",
+      "impact": "This is a scheduling step — it gave residents a chance to speak before the council took the item up. Nothing changes for you.",
+      "significance": "routine"
     },
     {
       "id": 1020,
@@ -236,9 +241,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Vote on the mayor's powers delayed",
+      "headline": "Mayor's powers ordinance held over",
       "summary": "The council delayed a decision on rewriting the section of city code that spells out the mayor's powers and duties.",
-      "impact": "No day-to-day change for residents — the mayor's current powers and duties remain exactly as they are until the council takes the item up again."
+      "impact": "Nothing changes day to day — the mayor's current authority stays in place until the council returns to this item.",
+      "significance": "routine"
     },
     {
       "id": 1021,
@@ -279,9 +285,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Rewrite of city governance rules delayed",
-      "summary": "The council put off a decision on repealing and replacing Title 2 of the city code, the section setting out how city government operates.",
-      "impact": "Nothing changes for residents right now. The existing governance rules stay in force until the council brings the rewrite back for another vote."
+      "headline": "Rewrite of city governance rules put on hold",
+      "summary": "The council delayed a decision on rewriting Title 2 of the city code, the section covering how city government itself operates.",
+      "impact": "Nothing changes for residents right now. The rules governing how the city runs stay as they are until the council takes the item back up.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

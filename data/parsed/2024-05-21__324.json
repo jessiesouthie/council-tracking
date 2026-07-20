@@ -29,9 +29,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve site plan for Firefly plats 4 and 5",
-      "summary": "The council approved the site plan for Firefly NPA 1A, plats 4 and 5, in the city's southwest near Cory Wride Memorial Highway and Pole Canyon Boulevard.",
-      "impact": "If you live near Pole Canyon Boulevard, expect building on this parcel to move ahead. The motion does not say how many homes or what kind of buildings are planned, so nothing more specific can be said yet."
+      "headline": "Site plan approved for Firefly plats 4 and 5",
+      "summary": "The city approved the site plan for Firefly NPA 1A, plats 4 and 5, in the southwest part of the city near Cory B. Wride Memorial Highway and Pole Canyon Boulevard.",
+      "impact": "If you live in the southwest end of the city, expect building on this parcel to move ahead. The motion does not say how many homes or lots are involved.",
+      "significance": "notable"
     },
     {
       "id": 721,
@@ -52,9 +53,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Tweak definitions in the city code",
-      "summary": "The council amended the definitions section of the city code, Section 17.10.030; the record does not say which terms changed.",
-      "impact": "Nothing changes for you day to day. This is a wording fix to the city's rulebook, and the motion as recorded does not spell out what was redefined."
+      "headline": "City code definitions amended",
+      "summary": "The council amended the definitions section of the city code, Section 17.10.030; the motion does not say which definitions changed.",
+      "impact": "The motion gives no detail on what was redefined, so there is nothing here that clearly changes anything for residents.",
+      "significance": "routine"
     },
     {
       "id": 722,
@@ -91,9 +93,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Rec center's $2.6M moved to unallocated funds",
-      "summary": "The council pulled $2.6M set aside for a recreation center into an unallocated pot, merged $1M for park projects, and cut monument signs and public art.",
-      "impact": "No recreation center is funded right now, though the council said one is still on the table and the money could go toward land for it. Silver Lake amphitheater, the bike park, and Nolan Park now share a single $1M fund."
+      "headline": "Rec center funding pulled, $1M pooled for parks",
+      "summary": "The council reworked how proceeds from the utility sale are spent, moving $2.6 million earmarked for a recreation center into unallocated funds and pooling $1 million for parks.",
+      "impact": "A recreation center is off the funding list for now — council members said it could be revisited later, possibly starting with buying land. The $1 million park fund still covers Silver Lake amphitheater, bike park, and Nolan Park improvements.",
+      "significance": "notable"
     },
     {
       "id": 723,
@@ -112,9 +115,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Accept school district study, set comment dates",
-      "summary": "The council accepted a feasibility study on forming a new school district and scheduled public comment for June 13 and June 18, 2024.",
-      "impact": "This is your window to speak before the council decides whether Eagle Mountain should create its own school district. The comment sessions are June 13 and 18, 2024; the final decision comes after that."
+      "headline": "Public comment set on new school district",
+      "summary": "The council formally accepted a feasibility study on creating a new school district and scheduled public comment for June 13 and June 18, 2024, ahead of a final decision.",
+      "impact": "If you have kids in school or pay property taxes here, those two dates are your chance to weigh in before the council decides whether to create the district.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

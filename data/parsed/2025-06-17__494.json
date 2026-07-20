@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve the consent agenda, minus three items",
-      "summary": "The council approved its batch of routine items, pulling two out for separate discussion — including the water and sewer rate changes — and dropping one from the agenda entirely.",
-      "impact": "Routine housekeeping — nothing changes for residents by itself. The one thing worth noticing is that the utility rate item was pulled out of the routine batch so it could be discussed on its own."
+      "headline": "Consent agenda approved, three items pulled",
+      "summary": "The council approved its consent agenda after pulling two items for separate discussion and dropping a third from the agenda entirely.",
+      "impact": "Nothing changes for residents — this is the procedural step that clears routine items in one vote and moves the rest into open discussion.",
+      "significance": "routine"
     },
     {
       "id": 907,
@@ -83,8 +84,9 @@
         }
       ],
       "headline": "Change order on the sewer plant upgrade",
-      "summary": "The council approved the first change order with the engineering firm Advanced Engineering and Environmental Services on the city's sewer plant upgrade; the motion does not state a cost.",
-      "impact": "Nothing changes day to day. This is a contract adjustment on work already underway at the sewer plant, and with no dollar figure given, it is not clear whether it adds to the project's cost."
+      "summary": "The council approved a change order with engineering firm Advanced Engineering and Environmental Services for the wastewater treatment plant upgrade.",
+      "impact": "This adjusts the engineering contract on the city's sewer plant upgrade. You will not see anything different at home; the plant work continues under revised terms.",
+      "significance": "notable"
     },
     {
       "id": 908,
@@ -110,8 +112,9 @@
         }
       ],
       "headline": "Water and sewer rate changes taken up",
-      "summary": "The council took up changes to the city's water, sewer, and utility billing rates, but the record does not list the new rates or the outcome.",
-      "impact": "Every household on city water and sewer would feel a rate change. But this record does not say which rates moved or by how much, so nothing here tells you what your bill will be."
+      "summary": "The council took up changes to the city's fee schedule for water rates, sewer rates, and utility billing; the record does not show a final outcome.",
+      "impact": "This is the schedule that sets what you pay on your monthly water and sewer bill. The motion itself does not say how the rates would change, and the record does not show whether it was adopted.",
+      "significance": "notable"
     },
     {
       "id": 909,
@@ -150,9 +153,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Rezone one Porter's Crossing lot from open space to homes",
-      "summary": "The council rezoned a single lot in Porter's Crossing from open space to R1 residential and updated the development plan to match.",
-      "impact": "One lot in one neighborhood: ground that was zoned open space in Porter's Crossing can now hold a home. If you live next to it, expect a house where the plan showed open space; the rest of the city is unaffected."
+      "headline": "Porter's Crossing lot rezoned from open space to housing",
+      "summary": "The council rezoned one lot in Porter's Crossing from open space to R1, the city's single-family housing zone.",
+      "impact": "A parcel that was set aside as open space can now hold a house. If you live next to that lot in Porter's Crossing, expect a home there instead of undeveloped ground.",
+      "significance": "notable"
     },
     {
       "id": 910,
@@ -189,9 +193,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Change the Porter's Crossing development deal",
-      "summary": "The council approved the fourth change to the city's development agreement with Porter's Crossing, the contract that sets what can be built there.",
-      "impact": "If you live in or near Porter's Crossing, this is the contract half of a paired decision — the zoning change itself is the next item. On its own it changes nothing you would see."
+      "headline": "Porter's Crossing development deal amended",
+      "summary": "The council approved a fourth amendment to the master development agreement governing the Porter's Crossing project.",
+      "impact": "This changes the terms the city and the developer agreed to for Porter's Crossing. It matters most to people living in or buying near that development; the rest of the city sees no direct change.",
+      "significance": "notable"
     },
     {
       "id": 911,
@@ -228,9 +233,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Final adjustment to last year's city budget",
-      "summary": "The council approved a seventh round of amendments to the 2024-25 budget, adopted two weeks before that budget year ended.",
-      "impact": "Routine housekeeping — nothing changes for residents. Amendments like this are the bookkeeping the city does to close out a year, and the motion does not say which line items moved."
+      "headline": "Seventh change to last year's budget",
+      "summary": "The council approved the seventh amendment to the 2024-25 budget, adjusting the books before the fiscal year closed.",
+      "impact": "Nothing changes for you day to day — this is the year-end bookkeeping the city does to square its budget with what was actually spent.",
+      "significance": "routine"
     },
     {
       "id": 912,
@@ -267,9 +273,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Adopt the 2025-26 city budget and tax rate",
-      "summary": "The council adopted Eagle Mountain's spending plan for the year that starts July 2025 and set the city's property tax rate at the certified rate.",
-      "impact": "This is the city's main money decision of the year, setting what gets funded through June 2026. The certified rate is the no-increase rate, so the city is not raising its overall property tax take, though your own bill still shifts with your home's value."
+      "headline": "2025-26 city budget and tax rate adopted",
+      "summary": "The council adopted Eagle Mountain's budget for the 2025-26 fiscal year and set the property tax rate at the certified rate.",
+      "impact": "This is the spending plan for the year ahead and the rate behind your city property tax bill. The certified rate is the state-calculated baseline, so the city did not raise taxes above it.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

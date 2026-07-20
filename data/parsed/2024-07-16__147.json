@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine consent items approved",
-      "summary": "The council approved its batch of routine consent items, pulling the WDG website change order out for separate discussion.",
-      "impact": "This is routine housekeeping — nothing changes for residents."
+      "headline": "Consent agenda approved",
+      "summary": "The council approved its consent agenda, pulling the WDG website change order out of the batch for separate discussion.",
+      "impact": "Nothing changes for residents — this is the routine step that passes uncontested items in a single vote.",
+      "significance": "routine"
     },
     {
       "id": 734,
@@ -82,9 +83,10 @@
           "vote": "No"
         }
       ],
-      "headline": "Change order approved for city website work",
-      "summary": "The council approved a change order with its website contractor, WDG, after rewriting the cost language to let WDG adjust for unknown variables.",
-      "impact": "Nothing changes for residents — this is contract paperwork for the city's website. The reworded clause does give the contractor room to revise the budget, timeline, or fees if surprises come up."
+      "headline": "City website contract change order approved",
+      "summary": "The council approved the first change order on its website contract with WDG, after rewriting a clause about the vendor's budget, timeline, and fees.",
+      "impact": "Nothing changes for residents — this is contract paperwork for the company building the city's website. The reworded clause lets the vendor adjust the final cost or schedule if unknown variables come up.",
+      "significance": "routine"
     },
     {
       "id": 735,
@@ -121,9 +123,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Parking rules changed for hotels and B&Bs",
-      "summary": "The council changed how many parking spaces hotels, motels, and bed-and-breakfasts are required to provide.",
-      "impact": "This affects people building or running lodging businesses in the city. For residents, nothing changes day to day."
+      "headline": "Parking rules changed for hotels and motels",
+      "summary": "The city revised the parking table in its zoning code, changing how many parking spaces hotels, motels, and bed-and-breakfasts must provide.",
+      "impact": "Nothing changes day to day for most residents. This affects anyone building or running a hotel, motel, or bed-and-breakfast in Eagle Mountain, who now works from a different parking requirement.",
+      "significance": "notable"
     },
     {
       "id": 736,
@@ -160,9 +163,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "New city rules for second kitchens in homes",
-      "summary": "The council added a new chapter to city code setting rules for second kitchens or kitchenettes in homes.",
-      "impact": "This matters if you're thinking about adding a second kitchen — say for a basement apartment or an in-law setup. It is now governed by city code, so check the rules before you build. Everyone else is unaffected."
+      "headline": "New rules for second kitchens in homes",
+      "summary": "The city added a new section to its code, Chapter 17.69, setting rules for second kitchens and kitchenettes in homes.",
+      "impact": "If you have or are planning a second kitchen in your house, it is now regulated by the city. The motion itself doesn't spell out the requirements, so check with the planning department before building one.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

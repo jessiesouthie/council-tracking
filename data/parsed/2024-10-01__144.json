@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Mary Hammond joins senior citizens advisory council",
-      "summary": "The council appointed Mary Hammond to the Senior Citizens Advisory Council, filling out a four-year term running through 2025.",
-      "impact": "Nothing changes for residents day to day. Seniors who work with the advisory council will see a new member at the table through 2025."
+      "headline": "Mary Hammond joins senior advisory council",
+      "summary": "The council appointed Mary Hammond to the Senior Citizens Advisory Council, completing a four-year term that runs through 2025.",
+      "impact": "Nothing changes for residents — this fills a volunteer seat on the board that advises the city on issues affecting seniors.",
+      "significance": "routine"
     },
     {
       "id": 776,
@@ -83,8 +84,9 @@
         }
       ],
       "headline": "Consent agenda approved, two items pulled",
-      "summary": "The council approved its batch of routine consent items but pulled two of them, 12.G. and 12.H., from the agenda.",
-      "impact": "This is routine housekeeping — nothing changes for residents. The two pulled items simply were not decided at this meeting."
+      "summary": "The council approved its consent agenda — the bundle of uncontested items — after pulling two of the items off it.",
+      "impact": "Nothing changes for residents on its own. This is the batch vote the council uses to clear routine business in one step.",
+      "significance": "routine"
     },
     {
       "id": 777,
@@ -123,9 +125,10 @@
           "vote": "No"
         }
       ],
-      "headline": "Land shifted from Cedar Fort into Eagle Mountain",
-      "summary": "The council approved moving a piece of property out of the Town of Cedar Fort's boundaries and into Eagle Mountain's, on a split vote.",
-      "impact": "If you own or live on the affected land, your city government is now Eagle Mountain rather than Cedar Fort. The motion does not say which property, and nothing changes for the rest of the city."
+      "headline": "Land moved from Cedar Fort into Eagle Mountain",
+      "summary": "The council moved a piece of property out of the Town of Cedar Fort and into Eagle Mountain's city boundaries.",
+      "impact": "If you own or live on that land, Eagle Mountain now provides your city services and sets your taxes and zoning rules instead of Cedar Fort. The motion doesn't identify the property.",
+      "significance": "notable"
     },
     {
       "id": 778,
@@ -162,9 +165,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Zoning code definitions updated",
-      "summary": "The council changed the definitions section of the city's zoning code; the motion does not describe what wording was altered.",
-      "impact": "This is housekeeping — the definitions are the dictionary the zoning code uses. Nothing changes day to day for residents."
+      "headline": "Zoning definitions updated",
+      "summary": "The council updated the definitions section of the city's land use code; the motion does not say which terms were changed.",
+      "impact": "Nothing changes day to day. Definitions set the meaning of terms used elsewhere in the zoning code, and matter mainly to developers and the staff applying those rules.",
+      "significance": "routine"
     },
     {
       "id": 779,
@@ -201,9 +205,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Nuisance and noise rules rewritten",
-      "summary": "The council rewrote the nuisance and noise chapters of the city code, though the motion itself does not spell out what changed.",
-      "impact": "Noise and property-nuisance complaints will be handled under revised rules citywide. The motion gives no detail on what specifically changed, so read the code text before assuming anything is different for you."
+      "headline": "Noise and property nuisance rules rewritten",
+      "summary": "The council approved changes to the city's nuisance abatement and noise rules, though the motion itself does not spell out what was changed.",
+      "impact": "These are the rules behind noise complaints and property-upkeep enforcement, so they apply citywide. The motion text doesn't say what changed — read the ordinance before assuming your yard or late-night habits are affected.",
+      "significance": "notable"
     },
     {
       "id": 780,
@@ -240,9 +245,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Mortgage help for homebuyers, up to $25,000",
-      "summary": "The city created a mortgage assistance program lending homebuyers up to $25,000, prioritizing applicants by job type and putting lower-income households first.",
-      "impact": "If you're buying a home here, you can apply for up to $25,000 toward the purchase. The income cap is $151,800 for households of six or more, and lower-income applicants get priority. An outside reviewer will screen applications."
+      "headline": "Mortgage help: city loans up to $25,000",
+      "summary": "The city created a mortgage assistance program offering homebuyers loans of up to $25,000, prioritized by job type and then by lower household income.",
+      "impact": "If you're buying a home in Eagle Mountain, you can apply for up to $25,000 toward the purchase. Households of six or more earning up to $151,800 may qualify, and an outside reviewer will check eligibility.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

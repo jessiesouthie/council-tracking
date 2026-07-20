@@ -43,9 +43,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Jessi Call appointed Youth Council advisor",
-      "summary": "The council appointed Jessi Call as a Youth Council Committee Advisor, serving from immediately through June 30, 2026.",
-      "impact": "This touches the teens who serve on the Youth Council and the staff who work with them. Nothing changes for anyone else."
+      "headline": "Jessi Call named Youth Council advisor",
+      "summary": "The council appointed Jessi Call as an advisor to the Youth Council Committee, effective immediately and running through June 30, 2026.",
+      "impact": "Nothing changes for residents — this is an appointment to the committee that guides the city's youth council.",
+      "significance": "routine"
     },
     {
       "id": 883,
@@ -82,9 +83,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Routine consent items approved",
-      "summary": "The council approved its batch of routine items, noting a $47,930 change order on one of them and pulling another item for no action.",
-      "impact": "This is routine housekeeping — nothing changes for residents."
+      "headline": "Consent agenda approved",
+      "summary": "The council approved its consent agenda, noting a $47,930 change order on one item and pulling another item for no action.",
+      "impact": "Nothing changes for residents — the consent agenda is the batch of routine items the council passes together in a single vote.",
+      "significance": "routine"
     },
     {
       "id": 884,
@@ -102,9 +104,10 @@
         "parks"
       ],
       "votes": [],
-      "headline": "Bid to keep 15 acres commercial goes nowhere",
-      "summary": "An alternative version of the SR-73 land use change, one that would have preserved roughly 15 acres of commercial land near Airport Road, got no support and died.",
-      "impact": "Nothing changes from this failed attempt. The council instead adopted the version with no commercial land preserved, so that corner is planned entirely for homes."
+      "headline": "Bid to keep 15 acres commercial went nowhere",
+      "summary": "The council took no action on an alternative version of the land use change that would have preserved roughly 15 acres of commercial land near SR-73 and Airport Road.",
+      "impact": "Nothing follows from this item on its own — the council adopted the version that converts the full 73 acres, so no commercial land was carved out near the SR-73 and Airport Road intersection.",
+      "significance": "routine"
     },
     {
       "id": 885,
@@ -143,9 +146,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "73 acres near SR-73 shift from business park to homes",
-      "summary": "The council redrew the city's long-range land use map so 73.03 acres north of SR-73, west of Airport Road, are planned for homes instead of a business park.",
-      "impact": "Land the city had set aside for offices and light industry is now planned for housing. If you live near SR-73 and Airport Road, expect houses rather than employers on that corner."
+      "headline": "73 acres shift from business park to housing",
+      "summary": "The city changed its long-range land use map for 73.03 acres north of SR-73, south of 8000 North and west of Airport Road, from business park and light industry to foothill homes.",
+      "impact": "That 73-acre stretch near SR-73 and Airport Road is now planned for houses instead of offices, warehouses and light industry. If you live nearby, expect a residential neighborhood there rather than a jobs district.",
+      "significance": "notable"
     },
     {
       "id": 886,
@@ -184,7 +188,8 @@
       ],
       "headline": "Cedar Valley Holbrook land rezoned for homes",
       "summary": "The city rezoned the Cedar Valley Holbrook property from agriculture to foothill residential, on the condition that wildlife corridor fencing be marked on the west side.",
-      "impact": "The owner can now pursue housing on land that was zoned for farming. If you live near the Cedar Valley Holbrook area, expect homes there eventually; the fencing condition is meant to protect the wildlife corridor."
+      "impact": "Land that could only be farmed can now be built with homes. Neighbors will eventually see houses where open agricultural ground is today, with fencing marking the wildlife corridor along the west edge.",
+      "significance": "notable"
     },
     {
       "id": 887,
@@ -222,8 +227,9 @@
         }
       ],
       "headline": "Political sign rules rewritten",
-      "summary": "The council changed the section of city code covering political signs; the motion itself does not say what the new rules require.",
-      "impact": "If you put up campaign signs — as a candidate or on your own lawn — check the city's current sign rules before the next election, since they were revised. Everyone else is unaffected."
+      "summary": "The council amended the section of the city code that governs political signs; the motion itself does not spell out what the new rules say.",
+      "impact": "The rules for putting campaign signs on your own property have changed. If you plan to post signs before an election, check the city's updated sign code rather than assuming the old limits still apply.",
+      "significance": "notable"
     },
     {
       "id": 888,
@@ -261,9 +267,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "$20,000 added for a city events UTV",
-      "summary": "The city added $20,000 to the special events budget so staff had more choice when picking a utility task vehicle (UTV).",
-      "impact": "This is a small internal spending change. You may see the vehicle at city events, but nothing changes for residents day to day."
+      "headline": "$20,000 added for a special-events UTV",
+      "summary": "The city added $20,000 to the special events budget line so staff have more flexibility in choosing a utility task vehicle.",
+      "impact": "Nothing changes day to day — this is a budget adjustment that lets the events crew pick a different utility vehicle than the one first budgeted for.",
+      "significance": "routine"
     },
     {
       "id": 889,
@@ -300,9 +307,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Draft 2025-26 city budget adopted",
-      "summary": "The council adopted a tentative budget for the 2025-26 budget year and set the public hearing on the final version for June 3, 2025.",
-      "impact": "Nothing changes yet — this is the placeholder budget the city must adopt before the real one. The decisions that affect your bill came at the June 3 final budget hearing."
+      "headline": "Draft budget opens for public comment June 3",
+      "summary": "The council adopted a tentative budget for the 2025-2026 budget year and set a public hearing on the final version for June 3, 2025.",
+      "impact": "Nothing changes yet — this is the step that puts next year's spending plan on the table for public review. If you want a say in it, the hearing is June 3.",
+      "significance": "routine"
     },
     {
       "id": 890,
@@ -339,9 +347,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Adjust the road design at the META site",
-      "summary": "The city approved changes to the road at the META site: a 5-foot sidewalk instead of 8, a 12-foot drive lane replacing the parking lane, and a drainage swale.",
-      "impact": "This only affects that one road. When it is built you will find a narrower sidewalk and no on-street parking, but a wider driving lane. Nothing changes elsewhere in the city."
+      "headline": "Meta site road narrowed and redesigned",
+      "summary": "The city approved a revised street design at the META site, shrinking the sidewalk from 8 feet to 5 and turning the parking lane into a 12-foot drive lane.",
+      "impact": "If you walk or drive near the META site, the sidewalk will be narrower than originally planned and there will be no on-street parking lane. The 8-foot grass strip becomes a drainage swale instead.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

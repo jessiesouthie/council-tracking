@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda and two added 2025 meeting dates",
-      "summary": "The council passed its consent agenda, pulled two items out for separate discussion, and added November 5 and December 16 to the 2025 meeting calendar.",
-      "impact": "Routine housekeeping — nothing changes for residents, beyond two more council meeting dates on next year's calendar if you plan to attend or comment."
+      "headline": "Consent agenda and 2025 meeting dates",
+      "summary": "The council approved its consent agenda, pulled two items out for separate discussion, and added November 5 and December 16 to the 2025 meeting calendar.",
+      "impact": "Nothing changes for residents beyond two extra council meetings on next year's calendar — this is the routine batch approval of uncontested items.",
+      "significance": "routine"
     },
     {
       "id": 799,
@@ -82,9 +83,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Land transfer allowed only if school site is replaced",
-      "summary": "The city consented to a property transfer inside the new west Utah County school district's boundary, but only on the condition that a replacement parcel is bought for the elementary school.",
-      "impact": "The condition is the point: the city signed off only if a replacement site for the planned elementary school is purchased. If you are counting on that school, the city has tied its consent to keeping a site for it."
+      "headline": "School land transfer tied to replacing school site",
+      "summary": "The city agreed to a property transfer inside the new west county school district, on the condition that a replacement parcel is bought for the elementary school.",
+      "impact": "This matters to families waiting on the elementary school: the city's consent only holds if the district buys replacement land, so a site has to stay set aside for the school.",
+      "significance": "notable"
     },
     {
       "id": 800,
@@ -121,9 +123,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Eagle Crest Storage site plan approved",
-      "summary": "The council approved the site plan for Eagle Crest Storage, clearing the layout for the project to move ahead.",
-      "impact": "If you live near the site, expect a storage facility to be built there. For the rest of the city, nothing changes."
+      "headline": "Eagle Crest Storage facility approved",
+      "summary": "The city signed off on the site plan for Eagle Crest Storage, clearing the way for the storage facility to be built.",
+      "impact": "People living near the site will see a storage facility go up. The motion doesn't say exactly where it sits or how large it is.",
+      "significance": "notable"
     },
     {
       "id": 801,
@@ -158,9 +161,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Set a 10:30 PM end time for the meeting",
+      "headline": "Meeting end time set at 10:30 PM",
       "summary": "The council agreed to stop the meeting at 10:30 PM.",
-      "impact": "Purely procedural — nothing changes for residents. It only means items still on the agenda at 10:30 would have to wait for another meeting."
+      "impact": "Nothing changes for residents — this is housekeeping about how long the meeting runs.",
+      "significance": "routine"
     },
     {
       "id": 802,
@@ -177,9 +181,10 @@
         "development"
       ],
       "votes": [],
-      "headline": "Rose Ranch agreement without the water conditions",
-      "summary": "A version of the Rose Ranch development agreement without the added water-rights conditions was put forward but went no further.",
-      "impact": "Nothing changes for residents. This was an alternate version of the same Rose Ranch agreement; the version with the water conditions attached is the one that governs."
+      "headline": "Rose Ranch agreement without conditions",
+      "summary": "A proposal to approve the Rose Ranch master development agreement without the water conditions was raised but went no further.",
+      "impact": "Nothing changes on its own — this was an alternative to the amended Rose Ranch agreement the council acted on.",
+      "significance": "routine"
     },
     {
       "id": 803,
@@ -219,8 +224,9 @@
         }
       ],
       "headline": "Rose Ranch subdivision agreement approved",
-      "summary": "The council approved the master development agreement for the Rose Ranch subdivision, striking one sentence on water rights and directing staff to keep negotiating a schedule for delivering that water.",
-      "impact": "This sets the ground rules for a new subdivision, so expect construction there under the terms of this agreement. The water piece is not finished — staff are still working out when the developer hands water over."
+      "summary": "The city approved a master development agreement for the Rose Ranch subdivision, striking one water rights sentence and directing staff to keep negotiating a water delivery schedule.",
+      "impact": "Rose Ranch can now move ahead under an agreed set of terms, so expect building in that area. The water piece isn't settled — staff will keep negotiating when and how the developer turns over water.",
+      "significance": "notable"
     },
     {
       "id": 804,
@@ -258,9 +264,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Change to water rights required from new homes",
-      "summary": "The council changed the code section setting how much water rights a developer must hand over to the city before building homes here.",
-      "impact": "This lands on developers, not on you directly. What a builder must supply in water rights affects the cost of new homes and how much water the city banks for future growth."
+      "headline": "Changed water rights developers must hand over",
+      "summary": "The city changed the rules for the water rights new residential developments must provide before they can build.",
+      "impact": "This lands on developers bringing new homes to the city, and on how much water the city banks as it grows. The motion doesn't spell out whether the requirement went up or down.",
+      "significance": "notable"
     },
     {
       "id": 805,
@@ -299,8 +306,9 @@
         }
       ],
       "headline": "Storm water rules updated",
-      "summary": "The council amended the city's storm water ordinance, the chapter of code governing how rain and runoff are handled.",
-      "impact": "Mostly affects builders and developers, who must meet the city's drainage requirements. Day to day, nothing changes for existing homeowners."
+      "summary": "The council amended the city's storm water ordinance, the rules covering runoff and drainage.",
+      "impact": "The motion doesn't say what changed, so it points to no specific effect on residents. Rules like these mainly govern builders and how new development handles runoff.",
+      "significance": "routine"
     },
     {
       "id": 806,
@@ -337,9 +345,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "New rules to move development rights between sites",
-      "summary": "The council created a Transfer of Development Rights overlay zone, a new chapter of city code letting building rights be shifted from one piece of land to another.",
-      "impact": "This is a tool for landowners and developers, not something you use directly. Over time it can steer building away from land the city wants left open and toward areas it would rather see grow."
+      "headline": "New rules to shift development rights between sites",
+      "summary": "The city created a transfer of development rights overlay zone, a tool that lets building density be moved from one property to another.",
+      "impact": "This mostly matters to landowners and developers: it opens a path to shift allowed homes off one parcel and onto another, which means density can land in different places than the base zoning suggests.",
+      "significance": "notable"
     },
     {
       "id": 807,
@@ -376,9 +385,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Fourth budget adjustment of the year",
-      "summary": "The council approved the fourth amendment to the city's 2024-2025 budget, shifting money between accounts partway through the fiscal year.",
-      "impact": "Routine mid-year bookkeeping — nothing changes for residents. Cities amend the budget several times a year as actual spending and revenue come in different from the original estimates."
+      "headline": "Mid-year budget adjustment",
+      "summary": "The city made its fourth round of adjustments to the 2024-2025 budget.",
+      "impact": "This is the mid-year bookkeeping the city does to true up its budget. The motion doesn't say which line items moved or by how much, so nothing here points to a change you would notice.",
+      "significance": "routine"
     },
     {
       "id": 808,
@@ -415,9 +425,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Updated water conservation plan adopted",
-      "summary": "The council adopted a revised Water Conservation and Management Plan, the document setting out how Eagle Mountain plans to manage and stretch its water supply.",
-      "impact": "Nothing changes at your tap today. This is the planning document the city has to keep current, and any actual watering rules or rates would come later as separate decisions."
+      "headline": "Updated city water conservation plan",
+      "summary": "The council adopted an amended water conservation and management plan, the city's blueprint for how it saves and manages its water supply.",
+      "impact": "Nothing changes for you day to day — this updates a planning document. The motion sets no new watering rules or rates.",
+      "significance": "routine"
     },
     {
       "id": 809,
@@ -454,9 +465,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Fee changes for sewer, storm water, and building",
-      "summary": "The city updated its fee schedule covering code enforcement fines, building department fees, sewer rates, and storm water charges. The motion itself does not list the new amounts.",
-      "impact": "Sewer and storm water charges appear on your monthly utility bill, and building fees hit anyone pulling a permit. The motion does not say how much each changed, so check the adopted fee schedule for figures."
+      "headline": "Fees changed for sewer, storm water, and building",
+      "summary": "The city amended its fee schedule, changing code enforcement fines, building department fees, sewer rates, and storm water charges.",
+      "impact": "Sewer and storm water charges are part of your city utility bill, so this reaches every household; the building and enforcement changes hit anyone pulling a permit or cited for a violation. The motion doesn't state the new amounts.",
+      "significance": "notable"
     },
     {
       "id": 810,
@@ -493,9 +505,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Drop two zoning items from the city's priority list",
-      "summary": "The council removed two items — discontinued zoning and transfer of development rights — from the Legislative Priorities List it uses to guide its own agenda.",
-      "impact": "This is housekeeping on an internal to-do list, so nothing changes for residents. The transfer-of-development-rights rules were adopted the same night, so that item no longer needed to be pending."
+      "headline": "Two items dropped from legislative priorities list",
+      "summary": "The council removed two items from its legislative priorities list, one on discontinued zoning and one on transfer of development rights ordinances.",
+      "impact": "Nothing changes for residents — this only trims the city's own list of policy priorities.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

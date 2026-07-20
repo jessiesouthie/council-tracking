@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Appoint Angeline Washburn to the Youth Council",
-      "summary": "The council appointed Angeline Washburn as a Youth Council Advisory for a one-year term running through June 2025.",
-      "impact": "Nothing changes for residents. This is a volunteer appointment to the city's youth council."
+      "headline": "Angeline Washburn appointed to Youth Council",
+      "summary": "The council appointed Angeline Washburn as a Youth Council Advisory for a one-year term through June 2025.",
+      "impact": "Nothing changes for residents — this fills another volunteer advisory seat on the city's youth council.",
+      "significance": "routine"
     },
     {
       "id": 749,
@@ -82,9 +83,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Appoint Nathan Washburn to the Youth Council",
-      "summary": "The council appointed Nathan Washburn as a Youth Council Advisory for a one-year term running through June 2025.",
-      "impact": "Nothing changes for residents. This is a volunteer appointment to the city's youth council."
+      "headline": "Nathan Washburn appointed to Youth Council",
+      "summary": "The council appointed Nathan Washburn as a Youth Council Advisory for a one-year term through June 2025.",
+      "impact": "Nothing changes for residents — this fills a volunteer advisory seat on the city's youth council.",
+      "significance": "routine"
     },
     {
       "id": 750,
@@ -121,9 +123,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve the routine consent items in one vote",
+      "headline": "Consent agenda approved",
       "summary": "The council approved its consent agenda, pulling one item out for separate discussion and changing another item's effective date to the date of closing.",
-      "impact": "Routine housekeeping — this is the batch of items council members agreed needed no debate. Nothing here changes for residents."
+      "impact": "This is routine housekeeping — the batch of items the council passes without separate debate. Nothing here changes for residents on its own.",
+      "significance": "routine"
     },
     {
       "id": 751,
@@ -160,9 +163,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Delay the Eagle Square commercial plans",
-      "summary": "The council delayed a decision on the preliminary plat — the proposed lot layout — for the Eagle Square commercial development.",
-      "impact": "Nothing is approved or blocked yet; the project returns on a later agenda. No change for residents in the meantime."
+      "headline": "Eagle Square commercial plat delayed",
+      "summary": "The council delayed a decision on the preliminary plat for the Eagle Square commercial development.",
+      "impact": "Nothing changes yet — the layout for this commercial project comes back to the council at a later meeting.",
+      "significance": "routine"
     },
     {
       "id": 752,
@@ -199,9 +203,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Amend this year's city budget",
-      "summary": "The council approved the first amendment to the city's 2024-2025 annual budget; the motion itself names no dollar figures.",
-      "impact": "This is a routine mid-year adjustment. The motion does not say what money moved or how much, and nothing changes for residents day to day."
+      "headline": "City budget amended for 2024-25",
+      "summary": "The council approved the first amendment to the city's 2024-2025 annual budget; the motion does not say which line items changed.",
+      "impact": "Budget amendments redirect real money mid-year. The motion itself names no amounts or projects, so the budget document is where to look for what actually shifted.",
+      "significance": "notable"
     },
     {
       "id": 753,
@@ -218,9 +223,10 @@
         "code"
       ],
       "votes": [],
-      "headline": "Keep buildings and digging back from natural washes",
-      "summary": "The council took up a rule keeping buildings and earthwork back from natural washes: 75 feet from the flow line's center or 50 feet from the bank, whichever is greater.",
-      "impact": "If you own or build on a lot beside a natural wash, this would shrink the area you can build or excavate on, with the city engineer setting the exact line."
+      "headline": "Bigger no-build buffer around natural washes",
+      "summary": "The council took up a rule barring permanent buildings and earthwork within 75 feet of a wash's center flowline, or 50 feet from its bank, whichever is greater.",
+      "impact": "If your lot backs onto a dry wash, this limits how close you can build or dig. It applies to homes, shops, and business parks alike, with the city engineer measuring the buffer.",
+      "significance": "notable"
     },
     {
       "id": 754,
@@ -257,9 +263,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Rezone the Enyo battery site to agriculture",
-      "summary": "The council rezoned the land known as the Enyo Battery property out of the airpark zone and into the agriculture zone.",
-      "impact": "Nothing changes for residents today. It resets what can be built on that one property going forward."
+      "headline": "Enyo battery site rezoned back to agriculture",
+      "summary": "The city rezoned the land known as the Enyo battery property from the airpark zone to the agriculture zone.",
+      "impact": "The site is now farm-zoned rather than airpark-zoned, which narrows what can be built there. Nothing changes for residents day to day.",
+      "significance": "notable"
     },
     {
       "id": 755,
@@ -298,9 +305,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Rewrite industrial zoning; limit windmills and storage",
-      "summary": "The council replaced the industrial zoning chapter and tightened farm-zone rules: equestrian centers now need special approval, windmills only as farm accessories, storage yards capped at six moving vehicles.",
-      "impact": "This affects landowners and businesses, not households. An equestrian center on agricultural land now needs special approval, and a commercial storage yard may keep at most six moving vehicles such as vans, box trucks, or trailers."
+      "headline": "Industrial zone rules replaced; farm zone tweaked",
+      "summary": "The city replaced its industrial zone rules and adjusted the agriculture and commercial storage zones, requiring special approval for equestrian centers and capping moving vehicles at six.",
+      "impact": "If you run or plan an equestrian center, a storage yard, or an industrial business, the rules for what you can build and how many trucks you can keep on site have changed. Most residents will notice nothing.",
+      "significance": "notable"
     },
     {
       "id": 756,
@@ -337,9 +345,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Delay new rules on mixing lot sizes",
-      "summary": "The council put off a decision on a proposed rule requiring a mixture of lot sizes in residential development.",
-      "impact": "No change for now. If the rule comes back and passes, it would mainly shape how builders lay out lots in new neighborhoods."
+      "headline": "Decision delayed on required mix of lot sizes",
+      "summary": "The council delayed a decision on a new rule that would require a mixture of lot sizes in developments.",
+      "impact": "Nothing changes for now. The rule would apply to developers laying out new subdivisions, not to existing homeowners, and it comes back to the council later.",
+      "significance": "routine"
     },
     {
       "id": 757,
@@ -355,9 +364,10 @@
         "code"
       ],
       "votes": [],
-      "headline": "Rewrite the rules on fences, including chain link",
-      "summary": "The council considered rewriting the city's fence rules, covering privacy fences, general fencing standards, chain link fencing, and the definitions behind them.",
-      "impact": "If you plan to put up a fence, these rules decide what you can build. The motion does not spell out what changed, so check the current code with the city before you buy materials."
+      "headline": "Fence rules rewritten, including chain link",
+      "summary": "The council took up changes to the city's fence rules, covering definitions, privacy fencing, general fencing standards, and chain link fencing.",
+      "impact": "Fence rules govern what you can put up around your own yard. The motion does not spell out what changed, so check the current code with the city before building a fence.",
+      "significance": "notable"
     },
     {
       "id": 758,
@@ -373,9 +383,10 @@
         "zoning"
       ],
       "votes": [],
-      "headline": "Update the land use map for the Berry Property",
-      "summary": "The council took up a change to the city's long-range land use map for the Berry Property; the record does not show how the vote ended.",
-      "impact": "This is the map-keeping half of the Berry Property rezoning — paperwork that keeps the city's long-range plan lined up with its zoning. Nothing changes day to day."
+      "headline": "Land use map updated for Berry property",
+      "summary": "The council took up a matching change to the general plan land use map for the Berry property.",
+      "impact": "This is the paperwork that lines the city's long-range map up with the zoning change on the same land. On its own, it changes nothing you would see.",
+      "significance": "routine"
     },
     {
       "id": 759,
@@ -412,9 +423,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Rezone the Berry Property for foothill homes",
-      "summary": "The council rezoned the Berry Property from agriculture to foothill residential, opening land previously set aside for farming to housing.",
-      "impact": "If you live near this land, expect homes rather than farmland here in time. The vote does not approve any specific project, builder, or number of houses."
+      "headline": "Berry property rezoned for foothill homes",
+      "summary": "The city rezoned the land known as the Berry property from agriculture to foothill residential, opening it to housing.",
+      "impact": "The land can now be developed as foothill housing instead of staying farmland. Neighbors should expect a housing project to move forward there, though the motion sets no timeline or number of homes.",
+      "significance": "notable"
     },
     {
       "id": 760,
@@ -452,9 +464,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Redraw the long-term land use map for 27 properties",
-      "summary": "The council approved new long-range land-use labels for 27 properties, marking large stretches for parks and open space, business park and light industry, and commercial use.",
-      "impact": "Nothing changes on the ground now. This is the map the city consults when someone later proposes development there, so it signals where parks, homes, and industry may eventually go."
+      "headline": "Future land use map redrawn for master plan area",
+      "summary": "The city redrew its long-range land use map for 27 parcels in the Eagle Mountain Properties area, designating large stretches as parks and open space, business park, and community commercial.",
+      "impact": "This is the city's plan for what the land should eventually become, not a permit to build. It signals where future parks, shops, and business parks may go.",
+      "significance": "notable"
     },
     {
       "id": 761,
@@ -475,9 +488,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Rezone 27 properties in the Eagle Mountain Properties area",
-      "summary": "The council took up a zoning change covering 27 properties in the Eagle Mountain Properties master plan area, most set to agriculture and several to commercial.",
-      "impact": "This touches the owners of those parcels, not the rest of the city. The record does not show how the vote ended, so nothing here is settled."
+      "headline": "Zoning set for Eagle Mountain Properties parcels",
+      "summary": "The council took up a zoning change covering 27 parcels in the Eagle Mountain Properties master plan area, setting most to agriculture with several neighborhood commercial and two low-density residential.",
+      "impact": "Zoning decides what can be built on those parcels. Nothing changes for existing homes today, but it shapes what neighbors could see built on that land later.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

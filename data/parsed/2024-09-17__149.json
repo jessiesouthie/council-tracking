@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine consent items approved in one vote",
-      "summary": "The council approved its consent agenda, dropping one item from the agenda entirely and pulling three others out for separate discussion.",
-      "impact": "This is procedural — a single vote covering routine items. Nothing here changes for residents."
+      "headline": "Consent agenda approved, three items pulled",
+      "summary": "The council approved its consent agenda, dropping one item and pulling three others — including the wayfinding signs and the affordable housing plan — out for full discussion.",
+      "impact": "Nothing changes for residents — this is the procedural step that groups routine business into a single vote and sets aside a few items for debate.",
+      "significance": "routine"
     },
     {
       "id": 763,
@@ -83,9 +84,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Eagle Square shopping center layout approved",
-      "summary": "The city approved the preliminary layout for the Eagle Square commercial development, requiring a traffic study to determine where its Pony Express Parkway entrance goes.",
-      "impact": "A commercial development moves ahead off Pony Express Parkway. The condition requires the south entrance to line up with the intersection across the road, based on the traffic study."
+      "headline": "Eagle Square commercial development approved",
+      "summary": "The council approved the preliminary layout for the Eagle Square commercial development, requiring the traffic study be used to place its entrance off Pony Express Parkway.",
+      "impact": "A commercial development moves ahead on Pony Express Parkway. Its south entrance must be sited using the traffic study so it lines up with the intersection to the south.",
+      "significance": "notable"
     },
     {
       "id": 764,
@@ -99,9 +101,10 @@
       "outcome": "",
       "tags": [],
       "votes": [],
-      "headline": "Six new wayfinding signs",
-      "summary": "The council took up an agreement with Impact Signs to supply six wayfinding signs for the city.",
-      "impact": "If it goes ahead, six signs directing people around the city get installed. The motion does not say where they go or what they cost."
+      "headline": "Six wayfinding signs from Impact Signs",
+      "summary": "The council took up an agreement with Impact Signs to supply six wayfinding signs; the motion doesn't state a cost.",
+      "impact": "If it moves ahead, you'd see six new directional signs around the city. Nothing else changes.",
+      "significance": "routine"
     },
     {
       "id": 765,
@@ -136,9 +139,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Affordable housing plan put on hold",
-      "summary": "The council delayed adopting the city's affordable housing plan, sending it back with changes to be brought to a future meeting.",
-      "impact": "No affordable housing policy takes effect yet. If you have been following this plan, it returns to the council after revisions."
+      "headline": "Affordable housing plan put off",
+      "summary": "The council delayed adopting the city's affordable housing plan, sending it back for the changes members discussed before it returns at a future meeting.",
+      "impact": "Nothing changes for now. The plan is the city's road map for housing people can afford, and it comes back to the council at a later meeting.",
+      "significance": "routine"
     },
     {
       "id": 766,
@@ -176,9 +180,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Long-range map redrawn for the same 17 parcels",
-      "summary": "The city updated its long-range land use map for the same 17 properties: community commercial on twelve, parks and open space on four, foothill residential on one.",
-      "impact": "The land use map is the city's long-term plan for what goes where. This keeps it consistent with the zoning change, and you will see nothing different on the ground today."
+      "headline": "City map redrawn for future shops and parks",
+      "summary": "The council redrew its long-range land use map for certain Ranches and Eagle Mountain Properties parcels, marking most for community commercial and several for parks and open space.",
+      "impact": "This is the planning step that lines the city's official map up with the zoning change on those same parcels. For neighbors, it points to shops, parks and open space instead of more housing.",
+      "significance": "notable"
     },
     {
       "id": 767,
@@ -215,9 +220,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "17 parcels rezoned near The Ranches",
-      "summary": "The city rezoned 17 properties in The Ranches and Eagle Mountain Properties areas: twelve for neighborhood commercial, two agricultural, two open space, one foothill residential.",
-      "impact": "This clears the way for shops and businesses on most of these parcels instead of homes, and sets two areas aside as open space. Nothing is built yet — zoning only sets what is allowed."
+      "headline": "Ranches land rezoned for shops and open space",
+      "summary": "The council rezoned more than a dozen parcels in The Ranches and Eagle Mountain Properties areas, most to commercial-neighborhood zoning, with some as agriculture, open space or foothill housing.",
+      "impact": "If you live near these parcels in The Ranches, expect shops and commercial buildings on most of them rather than houses, with a few kept as farmland or open space.",
+      "significance": "notable"
     },
     {
       "id": 768,
@@ -254,9 +260,10 @@
           "vote": "No"
         }
       ],
-      "headline": "Mid-year change to this year's city budget",
-      "summary": "The city approved a second round of changes to its 2024-2025 budget; the motion itself does not say what was moved or added.",
-      "impact": "A budget amendment shifts money between city accounts partway through the year. The motion gives no detail on the specific spending, so there is nothing here for you to act on."
+      "headline": "Mid-year budget changes approved",
+      "summary": "The council approved the second set of changes to the city's 2024-2025 budget; the record doesn't say which line items changed.",
+      "impact": "The record doesn't spell out what changed, so there's no stated effect on your taxes, fees or services — the details sit in the city's budget amendment documents.",
+      "significance": "notable"
     },
     {
       "id": 769,
@@ -273,9 +280,10 @@
         "parks"
       ],
       "votes": [],
-      "headline": "Rose Ranch: farmland to housing zones",
-      "summary": "The council took up a plan to rezone the Rose Ranch land from farmland to the R2 and R3 housing zones, with conditions attached.",
-      "impact": "If it goes ahead, this land shifts from farmland to housing. The conditions require raised crosswalks on the Pony Express Trail, a historical marker, and the trail finished as usable space."
+      "headline": "Rose Ranch farmland-to-housing rezone",
+      "summary": "The council weighed rezoning Rose Ranch from agriculture to the R2 and R3 housing zones, conditioned on crosswalks, a historical marker and finishing the Pony Express Trail.",
+      "impact": "If it goes ahead, farmland at Rose Ranch becomes housing. Neighbors would get raised tabletop crosswalks and a historical marker on the Pony Express Trail, and the trail finished as usable space.",
+      "significance": "notable"
     },
     {
       "id": 770,
@@ -313,9 +321,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Street width rules held for a second look",
-      "summary": "The council delayed changes to the city's right-of-way diagrams, asking staff to return with recommendations on curb, gutter and a sidewalk for rural 50-foot roads.",
-      "impact": "Nothing changes yet. These diagrams set how wide new streets are and whether they get sidewalks, so this mainly affects future subdivisions, not streets you already drive."
+      "headline": "Street width and sidewalk rules put on hold",
+      "summary": "The council delayed a decision on updated street cross-section rules, asking staff to return with recommendations on curb, gutter and a sidewalk for rural 50-foot streets.",
+      "impact": "No change yet. Whatever the council settles on would shape how new streets are built — mainly affecting new subdivisions, not existing ones.",
+      "significance": "routine"
     },
     {
       "id": 771,
@@ -352,9 +361,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Council rejects changes to residential zone rules",
-      "summary": "The council turned down proposed changes to the definitions and residential zoning chapters of the city code.",
-      "impact": "Nothing changes — the rules for residential zones stay exactly as they were."
+      "headline": "Change to residential zoning rules rejected",
+      "summary": "The council rejected proposed changes to the city's definitions and residential zoning rules, so those sections of the code stay as they are.",
+      "impact": "Nothing changes for homeowners or builders — the existing residential zoning rules remain in force. The motion doesn't say what the rejected changes would have done.",
+      "significance": "notable"
     },
     {
       "id": 772,
@@ -392,8 +402,9 @@
         }
       ],
       "headline": "Noise and nuisance rules sent back to staff",
-      "summary": "The council delayed changes to the city's nuisance and noise rules, asking staff to revise them and bring them back at the next meeting.",
-      "impact": "The current noise and nuisance rules stay in force for now. Any change to how the city handles complaints has to wait for a revised version."
+      "summary": "The council delayed a decision on changes to the city's nuisance and noise rules, sending them to staff for revisions before the next meeting.",
+      "impact": "Nothing changes yet. If you've been following the city's noise or nuisance rules, the revised version is due back at the next council meeting.",
+      "significance": "routine"
     },
     {
       "id": 773,
@@ -430,9 +441,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Update the city's public art rules",
-      "summary": "The city changed the public art chapter of its municipal code; the motion does not say what the changes were.",
-      "impact": "Nothing changes day to day. These rules govern how the city itself handles public art, not anything a resident has to do."
+      "headline": "Public art rules changed",
+      "summary": "The council approved changes to the city's public art rules in Chapter 12.35 of the municipal code.",
+      "impact": "The record doesn't say what changed. The chapter governs how the city handles public art, so there's no stated change to what you pay or do.",
+      "significance": "routine"
     },
     {
       "id": 774,
@@ -469,9 +481,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Council cleans up its own priorities list",
-      "summary": "The council marked its review of conditional uses in the zoning code as finished and dropped a tabled item on lot sizes from its priorities list.",
-      "impact": "This is housekeeping about the council's own to-do list — nothing changes for residents."
+      "headline": "Legislative priorities list updated",
+      "summary": "The council marked its review of conditional-use zoning rules as finished and dropped a neighborhood lot-size item it had already tabled.",
+      "impact": "Nothing changes for residents — this is the council keeping its own to-do list current.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

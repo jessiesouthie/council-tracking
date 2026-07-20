@@ -43,9 +43,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Emily Buss appointed to library board",
+      "headline": "Emily Buss joins the Library Advisory Board",
       "summary": "The council appointed Emily Buss to the Library Advisory Board, finishing out a three-year term that runs through December 2027.",
-      "impact": "Nothing changes at the library day to day. The board advises the city, so if you use the library, one more resident is now weighing in on it."
+      "impact": "Nothing changes day to day at the library — this fills one seat on the board that advises the city on library matters.",
+      "significance": "routine"
     },
     {
       "id": 836,
@@ -75,9 +76,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine items cleared; two pulled for debate",
-      "summary": "The council handled its consent agenda, pushing two sets of past minutes to a later meeting and pulling the water tank change order and Pole Canyon annexation out for discussion.",
-      "impact": "Housekeeping — nothing changes for residents. It only means two items got a fuller public airing instead of passing in a batch."
+      "headline": "Consent agenda approved, four items pulled",
+      "summary": "The council approved its consent agenda while pushing two sets of minutes to a later meeting and moving two other items to full discussion.",
+      "impact": "Nothing changes for residents — this only decides which items get talked through and which wait for a future meeting.",
+      "significance": "routine"
     },
     {
       "id": 837,
@@ -100,9 +102,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Extra $189,986 sought for Firefly water tank",
-      "summary": "The council took up a $189,985.67 change order adding cost to the Firefly 4-million-gallon water tank project; the record does not show a final vote.",
-      "impact": "Nothing changes day to day. This is added cost on a construction project already under way, not a new charge on your bill."
+      "headline": "$190K more for the Firefly water tank",
+      "summary": "The council took up a change order adding $189,985.67 to the cost of the Firefly 4-million-gallon water tank.",
+      "impact": "This adds money to a city water storage tank already under contract. The motion sets no change to your water bill, and the record does not show a final outcome.",
+      "significance": "notable"
     },
     {
       "id": 838,
@@ -127,9 +130,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "178 acres up for Pole Canyon district",
-      "summary": "The council took up consent to annexing 178 acres of land into the Pole Canyon Basic Local District; the record does not show a final vote.",
-      "impact": "This concerns which district covers 178 acres of land, not existing neighborhoods. Nothing changes for current residents, and the outcome was not recorded."
+      "headline": "178 acres proposed for Pole Canyon district",
+      "summary": "The council took up a resolution consenting to the annexation of 178 acres of land into the Pole Canyon Basic Local District.",
+      "impact": "This concerns the 178 acres in question and which district serves them, not existing neighborhoods. The meeting record does not show how this one ended.",
+      "significance": "notable"
     },
     {
       "id": 839,
@@ -164,9 +168,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "City backs an inland port area here",
-      "summary": "The council formally backed creating a Utah Inland Port Authority project area inside Eagle Mountain.",
-      "impact": "Nothing changes for you right now — this only signals the council's support. An actual project area, with real boundaries and terms, would still have to be created."
+      "headline": "City backs an inland port project area",
+      "summary": "The council formally supported creating a Utah Inland Port Authority project area inside Eagle Mountain, a development designation created under state law.",
+      "impact": "This is the city's show of support, not the final word — the state port authority decides whether the project area happens. Nothing changes on the ground yet.",
+      "significance": "notable"
     },
     {
       "id": 840,
@@ -204,8 +209,9 @@
         }
       ],
       "headline": "One lot rezoned in Meadow Ranch",
-      "summary": "The city rezoned a single property, Lot 433 in Meadow Ranch Plat 4; the motion does not say what the new zoning allows.",
-      "impact": "This affects one lot and its immediate neighbors. Unless you live next to it, nothing changes for you."
+      "summary": "The council approved a zoning change for a single property, Lot 433 in Meadow Ranch Plat 4.",
+      "impact": "This affects one lot and its immediate neighbors, not the wider city. The motion does not say what the new zoning allows, so check with the city if you live nearby.",
+      "significance": "notable"
     },
     {
       "id": 841,
@@ -243,8 +249,9 @@
         }
       ],
       "headline": "Lot lines redrawn at Saddle Junction",
-      "summary": "The city approved an amended plat for Saddle Junction Plat 1, adjusting recorded property lines in what is called the Allgood plat amendment.",
-      "impact": "This touches the property owners on that plat, not the wider city. It is a paperwork fix to recorded lot boundaries."
+      "summary": "The council approved an amended plat for Saddle Junction Plat 1, known as the Allgood plat amendment.",
+      "impact": "This touches only the property involved. A plat amendment is the paperwork that adjusts how a parcel is drawn on the official map — nothing changes for other residents.",
+      "significance": "routine"
     },
     {
       "id": 842,
@@ -281,9 +288,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Decision delayed on Spring Run Plaza",
-      "summary": "The council delayed a decision on the development plan and zoning change for Spring Run Plaza.",
-      "impact": "If you live near the proposed Spring Run Plaza, nothing is settled. Nothing changes on the site unless the council takes the item back up and approves it."
+      "headline": "Spring Run Plaza decision delayed",
+      "summary": "The council set aside the master development plan and zoning change for Spring Run Plaza instead of voting it up or down.",
+      "impact": "If you live near the proposed Spring Run Plaza, nothing is settled — the plan and the zoning change are still open and can come back to the council later.",
+      "significance": "routine"
     },
     {
       "id": 843,
@@ -318,9 +326,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Council set an 11 p.m. end time",
-      "summary": "The council agreed to end the meeting at 11:00 p.m.",
-      "impact": "Pure housekeeping — a rule for the council's own meeting. Nothing changes for residents."
+      "headline": "Meeting capped at 11 p.m.",
+      "summary": "The council agreed to end the night's meeting at 11:00 p.m.",
+      "impact": "Nothing changes for residents — this is housekeeping the council uses to limit how late the meeting runs.",
+      "significance": "routine"
     },
     {
       "id": 844,
@@ -357,9 +366,10 @@
           "vote": "No"
         }
       ],
-      "headline": "Fence and screening rules changed",
-      "summary": "The council rewrote the section of city code covering fences and screening; the motion does not say what the new standards require.",
-      "impact": "If you are planning a fence or a screening wall, the standards you build to have changed. Check the current code with the city before you start."
+      "headline": "New rules for fences and screening",
+      "summary": "The council rewrote the section of city code covering general fencing and screening, changing the rules that apply when property owners put up a fence or wall.",
+      "impact": "If you are planning a fence at your home or business, check the updated code before you build — the requirements are not the same as they were.",
+      "significance": "notable"
     },
     {
       "id": 845,
@@ -397,9 +407,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Road impact fees paused for business builders",
-      "summary": "The city partially suspended its transportation impact fee on new nonresidential buildings, and dropped the restaurant exception so the change applies at all building sizes.",
-      "impact": "If you are building commercial space, you will pay less toward the city's road costs. Homeowners and home builders are unaffected — this break covers business projects only."
+      "headline": "Impact fee cut for new businesses",
+      "summary": "The city partially suspended its transportation impact fee for nonresidential development, and dropped the carve-out that had applied to restaurants at every building size.",
+      "impact": "If you are building a business, store, or office in Eagle Mountain, you will pay less in road impact fees. The restaurant carve-out no longer applies at any size.",
+      "significance": "notable"
     },
     {
       "id": 846,
@@ -436,9 +447,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Fifth budget change of the year approved",
-      "summary": "The city approved the fifth amendment to its 2024-2025 budget; the motion does not state the dollar amounts involved.",
-      "impact": "This is routine bookkeeping. Cities adjust their budgets partway through the year as costs shift. Nothing changes for residents."
+      "headline": "Mid-year budget update approved",
+      "summary": "The council approved the fifth amendment to the city's 2024-2025 budget, adjusting the spending plan partway through the fiscal year.",
+      "impact": "Nothing changes for residents — this is the bookkeeping the city does to keep its budget lined up with actual spending. No dollar figures were stated in the motion.",
+      "significance": "routine"
     },
     {
       "id": 847,
@@ -475,9 +487,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Amended water conservation plan adopted",
-      "summary": "The city adopted an updated plan for conserving and managing Eagle Mountain's water supply.",
-      "impact": "Nothing changes for you today. This sets out the city's own water planning approach; the motion states no new watering restrictions, rules, or rates for residents."
+      "headline": "Updated water conservation plan adopted",
+      "summary": "The city adopted an amended water conservation and management plan, the document that sets out how Eagle Mountain manages and conserves its water supply.",
+      "impact": "Nothing changes day to day — this adopts a planning document. The council did not set any new watering rules or restrictions with this vote.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

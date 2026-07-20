@@ -41,9 +41,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Name November Hunger Awareness Month",
-      "summary": "The council declared November 2025 as Hunger Awareness Month in Eagle Mountain.",
-      "impact": "This is symbolic. No money, program, or rule comes with it, and nothing changes for residents."
+      "headline": "November named Hunger Awareness Month",
+      "summary": "The council proclaimed November 2025 as Hunger Awareness Month in Eagle Mountain.",
+      "impact": "This is a ceremonial statement — nothing changes for residents, and no money or city services are affected.",
+      "significance": "routine"
     },
     {
       "id": 976,
@@ -81,9 +82,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Charter school gets intersection conditions",
-      "summary": "The council approved its routine consent agenda and attached staff conditions on intersection improvements to the John Hancock Charter School west campus item.",
-      "impact": "The consent items themselves are housekeeping — nothing changes for residents. The one item with teeth is the charter school's west campus, whose approval now carries city conditions about the nearby intersection."
+      "headline": "Consent items approved, with school traffic conditions",
+      "summary": "The council approved its consent agenda and attached staff conditions requiring intersection improvements to the John Hancock Charter School west campus item.",
+      "impact": "Mostly routine housekeeping. The one piece with teeth is that the charter school's west campus must meet the city's conditions on intersection improvements, which matters to people driving near that site.",
+      "significance": "routine"
     },
     {
       "id": 977,
@@ -121,9 +123,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Approve the long-range sewer plan",
-      "summary": "The city approved its wastewater master plan and the companion plan listing the future sewer projects that impact fees would help pay for.",
-      "impact": "No new charge shows up on your utility bill from this. The plan sets out which sewer projects the city expects to build and feeds into the fees charged on new construction."
+      "headline": "Sewer master plan and impact fee plan approved",
+      "summary": "The council approved the city's wastewater master plan and the impact fee facilities plan setting out which sewer projects new growth is expected to pay for.",
+      "impact": "Sewer service at existing homes doesn't change. The plan is the basis the city uses to charge impact fees on new construction, so it mainly touches builders and anyone building a new home here.",
+      "significance": "notable"
     },
     {
       "id": 978,
@@ -158,9 +161,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Adopt the Sweetwater #4 redevelopment plan",
-      "summary": "The council made the Sweetwater #4 project area plan, already approved by the redevelopment agency, the city's official plan for that area.",
-      "impact": "If you don't live or own land near Sweetwater, you won't notice anything. For that area, this locks in the official plan the city will follow as redevelopment moves ahead."
+      "headline": "Sweetwater #4 redevelopment plan adopted",
+      "summary": "The council adopted the Sweetwater #4 Community Reinvestment Area plan as the official plan governing redevelopment in that project area.",
+      "impact": "If you live or own property near Sweetwater #4, this sets the framework for what gets built there and how tax revenue from that growth is reinvested. The motion names no dollar amounts or timeline.",
+      "significance": "notable"
     },
     {
       "id": 979,
@@ -195,9 +199,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Route Sweetwater #4 property taxes to the RDA",
-      "summary": "The city signed an agreement with its own redevelopment agency to collect the growth in property taxes from the Sweetwater #4 area and pass it along.",
-      "impact": "This doesn't change what you pay in property taxes. It's the plumbing that decides where tax money from that one project area goes, and it matters mainly to city staff and the redevelopment agency."
+      "headline": "Tax deal set up for Sweetwater #4 project area",
+      "summary": "The city and its redevelopment agency signed an agreement spelling out how property tax growth from the Sweetwater #4 project area gets collected and passed along.",
+      "impact": "Nothing changes on your tax bill. This is the paperwork that routes future tax growth from that one area to the redevelopment agency so the project plan can work.",
+      "significance": "routine"
     }
   ],
   "ordinances": [
