@@ -372,5 +372,1301 @@
       "rate_source": "derived",
       "rate_delta": 2.3e-05
     }
-  ]
-}
+  ],
+  "salt_lake": {
+    "county": "Salt Lake County",
+    "rate_year": 2025,
+    "rate_basis": "2025 final adopted municipal rate \u2014 the city's own general levy only, excluding county, school district, and special/service districts.",
+    "rate_source": {
+      "title": "2025 Property Tax Rates (Tax Rates by Entity)",
+      "publisher": "Office of the Salt Lake County Auditor",
+      "url": "https://www.saltlakecounty.gov/property-tax/tax-rates/",
+      "retrieved": "2026-07-21"
+    },
+    "proposal_year": 2026,
+    "proposal_source": {
+      "title": "Why are your taxes increasing? Numerous Utah cities pursue property tax hikes",
+      "publisher": "KSL.com",
+      "url": "https://www.ksl.com/article/51546349/why-are-your-taxes-increasing-numerous-utah-cities-pursue-property-tax-hikes",
+      "retrieved": "2026-07-21",
+      "notice_url": "https://www.saltlakecounty.gov/globalassets/1-site-files/mayor-finance/notices/2026/notice-of-proposed-tax-increase.pdf"
+    },
+    "reference": {
+      "name": "Eagle Mountain",
+      "note": "Utah County \u2014 shown for comparison",
+      "current_rate": 0.000534,
+      "proposed_rate": 0.0017,
+      "proposed_rate_display": "0.001700"
+    },
+    "eagle_mountain": {
+      "rank_current_low": 9,
+      "rank_current_high": 16,
+      "total_with_reference": 24,
+      "rank_proposed_low": 21,
+      "rank_proposed_high": 4
+    },
+    "caveats": [
+      "Rates are each city's 2025 final adopted general levy \u2014 the same basis as the Utah County chart. Eagle Mountain (Utah County) is shown as a dashed reference bar so you can see where its rate falls among Salt Lake County's cities.",
+      "Salt Lake County comparisons are not apples-to-apples with Eagle Mountain. Many of its cities fund fire through the Unified Fire Service Area and police through the Salt Lake Valley Law Enforcement Service Area \u2014 countywide levies billed separately from, and on top of, the city rate shown here.",
+      "The seven cities marked \u2020 levy little or no general city rate. The five metro townships (Copperton, Emigration Canyon, Kearns, Magna, White City) fund municipal services through the Greater Salt Lake Municipal Services District; Riverton and Herriman fund police and fire through their own separate service areas (each adding roughly 0.0021\u20130.0029 on top of the rate shown). Their bars therefore understate what residents actually pay for city services.",
+      "The proposed-increase tab shows the ten Salt Lake County cities and towns that noticed a 2026 truth-in-taxation hike. As with the Utah County chart, only Eagle Mountain has published an actual proposed rate; the Salt Lake resulting rates are derived from each city's own noticed dollar impact, so treat them as estimates. School districts, water conservancy districts, and sub-city service areas that also noticed increases are left off to keep the comparison city-to-city."
+    ],
+    "cities": [
+      {
+        "name": "Emigration Canyon",
+        "current_rate": 0.0,
+        "external_services": true,
+        "metro_township": true
+      },
+      {
+        "name": "Kearns",
+        "current_rate": 0.0,
+        "external_services": true,
+        "metro_township": true
+      },
+      {
+        "name": "Magna",
+        "current_rate": 0.0,
+        "external_services": true,
+        "metro_township": true
+      },
+      {
+        "name": "Riverton",
+        "current_rate": 0.0,
+        "external_services": true
+      },
+      {
+        "name": "Brighton",
+        "current_rate": 0.0,
+        "external_services": true
+      },
+      {
+        "name": "Copperton",
+        "current_rate": 0.0,
+        "external_services": true,
+        "metro_township": true
+      },
+      {
+        "name": "White City",
+        "current_rate": 0.0,
+        "external_services": true,
+        "metro_township": true
+      },
+      {
+        "name": "Herriman",
+        "current_rate": 0.00018,
+        "external_services": true
+      },
+      {
+        "name": "Taylorsville",
+        "current_rate": 0.00082
+      },
+      {
+        "name": "Alta",
+        "current_rate": 0.000834
+      },
+      {
+        "name": "Bluffdale",
+        "current_rate": 0.000866
+      },
+      {
+        "name": "Draper",
+        "current_rate": 0.000936
+      },
+      {
+        "name": "Sandy",
+        "current_rate": 0.001049
+      },
+      {
+        "name": "Midvale",
+        "current_rate": 0.001167
+      },
+      {
+        "name": "Millcreek",
+        "current_rate": 0.001267
+      },
+      {
+        "name": "South Jordan",
+        "current_rate": 0.001313
+      },
+      {
+        "name": "West Jordan",
+        "current_rate": 0.001328
+      },
+      {
+        "name": "Holladay",
+        "current_rate": 0.001334
+      },
+      {
+        "name": "Cottonwood Heights",
+        "current_rate": 0.001509
+      },
+      {
+        "name": "Murray",
+        "current_rate": 0.001696
+      },
+      {
+        "name": "South Salt Lake",
+        "current_rate": 0.002608
+      },
+      {
+        "name": "West Valley City",
+        "current_rate": 0.002647
+      },
+      {
+        "name": "Salt Lake City",
+        "current_rate": 0.00318
+      }
+    ],
+    "proposals": [
+      {
+        "city": "Cottonwood Heights",
+        "pct": 42.02,
+        "revenue": 3500000,
+        "home_value": 850000,
+        "annual_increase": 249.18,
+        "purpose": "General city services and public safety",
+        "resulting_rate": 0.002042,
+        "resulting_rate_estimated": true,
+        "rate_source": "derived",
+        "rate_delta": 0.000533
+      },
+      {
+        "city": "Draper",
+        "pct": 25.12,
+        "revenue": 2455712,
+        "home_value": 941000,
+        "annual_increase": 116.97,
+        "purpose": "Three firefighter posts, playground upkeep, reserve relief",
+        "resulting_rate": 0.001162,
+        "resulting_rate_estimated": true,
+        "rate_source": "derived",
+        "rate_delta": 0.000226
+      },
+      {
+        "city": "Alta",
+        "pct": 22.56,
+        "revenue": 92820,
+        "home_value": 1785000,
+        "annual_increase": 176.71,
+        "purpose": "General town services",
+        "resulting_rate": 0.001014,
+        "resulting_rate_estimated": true,
+        "rate_source": "derived",
+        "rate_delta": 0.00018
+      },
+      {
+        "city": "South Salt Lake",
+        "pct": 12.99,
+        "revenue": 1839537,
+        "home_value": 470000,
+        "annual_increase": 83.5,
+        "purpose": "Public safety",
+        "resulting_rate": 0.002931,
+        "resulting_rate_estimated": true,
+        "rate_source": "derived",
+        "rate_delta": 0.000323
+      },
+      {
+        "city": "Salt Lake City",
+        "pct": 8.93,
+        "revenue": 13793967,
+        "home_value": 703000,
+        "annual_increase": 102.46,
+        "purpose": "Public safety, maintenance staff, capital projects",
+        "resulting_rate": 0.003445,
+        "resulting_rate_estimated": true,
+        "rate_source": "derived",
+        "rate_delta": 0.000265
+      },
+      {
+        "city": "Midvale",
+        "pct": 8.04,
+        "revenue": 78814,
+        "home_value": 503000,
+        "annual_increase": 5.53,
+        "purpose": "Maintain contracted public-safety service levels",
+        "levy": "Public-safety levy, not the general city rate",
+        "resulting_rate": 0.001187,
+        "resulting_rate_estimated": true,
+        "rate_source": "derived",
+        "rate_delta": 2.0e-05
+      },
+      {
+        "city": "Murray",
+        "pct": 5.66,
+        "revenue": 714297,
+        "home_value": 614000,
+        "annual_increase": 26.34,
+        "purpose": "New police officer, police and fire pay",
+        "resulting_rate": 0.001774,
+        "resulting_rate_estimated": true,
+        "rate_source": "derived",
+        "rate_delta": 7.8e-05
+      },
+      {
+        "city": "Taylorsville",
+        "pct": 5.02,
+        "revenue": 234800,
+        "home_value": 498000,
+        "annual_increase": 11.23,
+        "purpose": "Road maintenance",
+        "resulting_rate": 0.000861,
+        "resulting_rate_estimated": true,
+        "rate_source": "derived",
+        "rate_delta": 4.1e-05
+      },
+      {
+        "city": "West Valley City",
+        "pct": 4.91,
+        "revenue": 1949129,
+        "home_value": 456000,
+        "annual_increase": 32.61,
+        "purpose": "New firefighter posts, police raises",
+        "resulting_rate": 0.002777,
+        "resulting_rate_estimated": true,
+        "rate_source": "derived",
+        "rate_delta": 0.00013
+      },
+      {
+        "city": "West Jordan",
+        "pct": 2.21,
+        "revenue": 500418,
+        "home_value": 562000,
+        "annual_increase": 8.65,
+        "purpose": "Crossing guard, parks staff, summer events",
+        "resulting_rate": 0.001356,
+        "resulting_rate_estimated": true,
+        "rate_source": "derived",
+        "rate_delta": 2.8e-05
+      }
+    ]
+  },
+  "statewide": {
+    "rate_year": 2025,
+    "rate_basis": "2025 final adopted municipal rate (city levy only), from the same Utah State Tax Commission Report 600 used for the Utah County chart.",
+    "total_cities": 253,
+    "eagle_mountain": {
+      "current_rate": 0.000534,
+      "proposed_rate": 0.0017,
+      "rank_current_low": 64,
+      "rank_current_high": 190,
+      "rank_proposed_low": 219,
+      "rank_proposed_high": 35
+    },
+    "note": "Ranks are by the city's own property tax levy, lowest to highest. Rate ties share adjacent ranks; positions are computed from the rates shown.",
+    "cities": [
+      {
+        "name": "Brighton",
+        "rate": 0.0
+      },
+      {
+        "name": "Copperton",
+        "rate": 0.0
+      },
+      {
+        "name": "Emigration Canyon",
+        "rate": 0.0
+      },
+      {
+        "name": "Kearns",
+        "rate": 0.0
+      },
+      {
+        "name": "Magna",
+        "rate": 0.0
+      },
+      {
+        "name": "Marriott-Slaterville",
+        "rate": 0.0
+      },
+      {
+        "name": "Riverton",
+        "rate": 0.0
+      },
+      {
+        "name": "West Haven",
+        "rate": 0.0
+      },
+      {
+        "name": "White City",
+        "rate": 0.0
+      },
+      {
+        "name": "Plymouth",
+        "rate": 0.000112
+      },
+      {
+        "name": "Loa",
+        "rate": 0.000117
+      },
+      {
+        "name": "Bicknell",
+        "rate": 0.000118
+      },
+      {
+        "name": "Kanosh",
+        "rate": 0.000121
+      },
+      {
+        "name": "Torrey",
+        "rate": 0.000132
+      },
+      {
+        "name": "Springdale",
+        "rate": 0.000165
+      },
+      {
+        "name": "Beaver",
+        "rate": 0.00017
+      },
+      {
+        "name": "Herriman",
+        "rate": 0.00018
+      },
+      {
+        "name": "Lyman",
+        "rate": 0.000181
+      },
+      {
+        "name": "Garden City",
+        "rate": 0.000191
+      },
+      {
+        "name": "Boulder",
+        "rate": 0.000192
+      },
+      {
+        "name": "Koosharem",
+        "rate": 0.000202
+      },
+      {
+        "name": "Clawson",
+        "rate": 0.00023
+      },
+      {
+        "name": "Naples",
+        "rate": 0.000234
+      },
+      {
+        "name": "Plain City",
+        "rate": 0.000236
+      },
+      {
+        "name": "Holden",
+        "rate": 0.000254
+      },
+      {
+        "name": "Hinckley",
+        "rate": 0.000259
+      },
+      {
+        "name": "Meadow",
+        "rate": 0.000266
+      },
+      {
+        "name": "Hooper",
+        "rate": 0.000283
+      },
+      {
+        "name": "Daniel",
+        "rate": 0.000298
+      },
+      {
+        "name": "Centerfield",
+        "rate": 0.000325
+      },
+      {
+        "name": "Scipio",
+        "rate": 0.000325
+      },
+      {
+        "name": "Farr West",
+        "rate": 0.000327
+      },
+      {
+        "name": "Fielding",
+        "rate": 0.00034
+      },
+      {
+        "name": "Mona",
+        "rate": 0.000361
+      },
+      {
+        "name": "Laketown",
+        "rate": 0.000366
+      },
+      {
+        "name": "Tropic",
+        "rate": 0.000373
+      },
+      {
+        "name": "Hanksville",
+        "rate": 0.000375
+      },
+      {
+        "name": "Annabella",
+        "rate": 0.00038
+      },
+      {
+        "name": "Henrieville",
+        "rate": 0.000381
+      },
+      {
+        "name": "Trenton",
+        "rate": 0.000382
+      },
+      {
+        "name": "Vernon",
+        "rate": 0.000385
+      },
+      {
+        "name": "Wales",
+        "rate": 0.000388
+      },
+      {
+        "name": "Levan",
+        "rate": 0.000405
+      },
+      {
+        "name": "Leeds",
+        "rate": 0.000418
+      },
+      {
+        "name": "Amalga",
+        "rate": 0.000419
+      },
+      {
+        "name": "Virgin",
+        "rate": 0.000422
+      },
+      {
+        "name": "Fayette",
+        "rate": 0.000434
+      },
+      {
+        "name": "Antimony",
+        "rate": 0.000438
+      },
+      {
+        "name": "Honeyville",
+        "rate": 0.000447
+      },
+      {
+        "name": "Fillmore",
+        "rate": 0.000449
+      },
+      {
+        "name": "Cleveland",
+        "rate": 0.00045
+      },
+      {
+        "name": "Henefer",
+        "rate": 0.00045
+      },
+      {
+        "name": "Cedar Fort",
+        "rate": 0.000457
+      },
+      {
+        "name": "Woodruff",
+        "rate": 0.000468
+      },
+      {
+        "name": "River Heights",
+        "rate": 0.000476
+      },
+      {
+        "name": "Bear River",
+        "rate": 0.000479
+      },
+      {
+        "name": "Sterling",
+        "rate": 0.000493
+      },
+      {
+        "name": "Altamont",
+        "rate": 0.000503
+      },
+      {
+        "name": "Nephi",
+        "rate": 0.000504
+      },
+      {
+        "name": "Paradise",
+        "rate": 0.000506
+      },
+      {
+        "name": "Vernal",
+        "rate": 0.000506
+      },
+      {
+        "name": "Oak City",
+        "rate": 0.000513
+      },
+      {
+        "name": "Millville",
+        "rate": 0.00052
+      },
+      {
+        "name": "Eagle Mountain",
+        "rate": 0.000534
+      },
+      {
+        "name": "Uintah",
+        "rate": 0.000538
+      },
+      {
+        "name": "Glenwood",
+        "rate": 0.000542
+      },
+      {
+        "name": "Bluff",
+        "rate": 0.000543
+      },
+      {
+        "name": "Leamington",
+        "rate": 0.000553
+      },
+      {
+        "name": "Redmond",
+        "rate": 0.000557
+      },
+      {
+        "name": "Howell",
+        "rate": 0.000577
+      },
+      {
+        "name": "Huntsville",
+        "rate": 0.00061
+      },
+      {
+        "name": "Hideout",
+        "rate": 0.000625
+      },
+      {
+        "name": "Randolph",
+        "rate": 0.000627
+      },
+      {
+        "name": "New Harmony",
+        "rate": 0.000629
+      },
+      {
+        "name": "Newton",
+        "rate": 0.000634
+      },
+      {
+        "name": "Midway",
+        "rate": 0.00064
+      },
+      {
+        "name": "Portage",
+        "rate": 0.00065
+      },
+      {
+        "name": "Fairfield",
+        "rate": 0.000655
+      },
+      {
+        "name": "Minersville",
+        "rate": 0.000663
+      },
+      {
+        "name": "Rush Valley",
+        "rate": 0.000669
+      },
+      {
+        "name": "Elwood",
+        "rate": 0.000675
+      },
+      {
+        "name": "Huntington",
+        "rate": 0.000697
+      },
+      {
+        "name": "Sigurd",
+        "rate": 0.000697
+      },
+      {
+        "name": "Paragonah",
+        "rate": 0.000706
+      },
+      {
+        "name": "Snowville",
+        "rate": 0.000706
+      },
+      {
+        "name": "Deweyville",
+        "rate": 0.000708
+      },
+      {
+        "name": "Fairview",
+        "rate": 0.00071
+      },
+      {
+        "name": "Manti",
+        "rate": 0.00072
+      },
+      {
+        "name": "West Point",
+        "rate": 0.00073
+      },
+      {
+        "name": "Elsinore",
+        "rate": 0.000735
+      },
+      {
+        "name": "Highland",
+        "rate": 0.00074
+      },
+      {
+        "name": "Washington",
+        "rate": 0.000747
+      },
+      {
+        "name": "Central Valley",
+        "rate": 0.000748
+      },
+      {
+        "name": "Kamas",
+        "rate": 0.000754
+      },
+      {
+        "name": "St. George",
+        "rate": 0.000754
+      },
+      {
+        "name": "Orem",
+        "rate": 0.000755
+      },
+      {
+        "name": "Pleasant View",
+        "rate": 0.000767
+      },
+      {
+        "name": "Heber",
+        "rate": 0.00077
+      },
+      {
+        "name": "Joseph",
+        "rate": 0.000773
+      },
+      {
+        "name": "Kingston",
+        "rate": 0.000786
+      },
+      {
+        "name": "Lindon",
+        "rate": 0.000788
+      },
+      {
+        "name": "Bountiful",
+        "rate": 0.000789
+      },
+      {
+        "name": "Aurora",
+        "rate": 0.000795
+      },
+      {
+        "name": "Wellsville",
+        "rate": 0.000801
+      },
+      {
+        "name": "Park City",
+        "rate": 0.000815
+      },
+      {
+        "name": "Hurricane",
+        "rate": 0.000816
+      },
+      {
+        "name": "Taylorsville",
+        "rate": 0.00082
+      },
+      {
+        "name": "Apple Valley",
+        "rate": 0.000822
+      },
+      {
+        "name": "Alta",
+        "rate": 0.000834
+      },
+      {
+        "name": "Castle Dale",
+        "rate": 0.000839
+      },
+      {
+        "name": "Spring City",
+        "rate": 0.000839
+      },
+      {
+        "name": "Hyrum",
+        "rate": 0.000847
+      },
+      {
+        "name": "North Salt Lake",
+        "rate": 0.000855
+      },
+      {
+        "name": "Orangeville",
+        "rate": 0.000856
+      },
+      {
+        "name": "Castle Valley",
+        "rate": 0.000864
+      },
+      {
+        "name": "Bluffdale",
+        "rate": 0.000866
+      },
+      {
+        "name": "Ferron",
+        "rate": 0.000867
+      },
+      {
+        "name": "Duchesne",
+        "rate": 0.000873
+      },
+      {
+        "name": "Erda",
+        "rate": 0.000877
+      },
+      {
+        "name": "La Verkin",
+        "rate": 0.000877
+      },
+      {
+        "name": "Eureka",
+        "rate": 0.000878
+      },
+      {
+        "name": "Lakepoint",
+        "rate": 0.000881
+      },
+      {
+        "name": "Santa Clara",
+        "rate": 0.000912
+      },
+      {
+        "name": "Manila",
+        "rate": 0.00092
+      },
+      {
+        "name": "Logan",
+        "rate": 0.000922
+      },
+      {
+        "name": "Emery",
+        "rate": 0.000933
+      },
+      {
+        "name": "Draper",
+        "rate": 0.000936
+      },
+      {
+        "name": "Tabiona",
+        "rate": 0.000944
+      },
+      {
+        "name": "Genola",
+        "rate": 0.000949
+      },
+      {
+        "name": "Oakley",
+        "rate": 0.000949
+      },
+      {
+        "name": "Goshen",
+        "rate": 0.000957
+      },
+      {
+        "name": "Toquerville",
+        "rate": 0.000962
+      },
+      {
+        "name": "Saratoga Springs",
+        "rate": 0.000976
+      },
+      {
+        "name": "Charleston",
+        "rate": 0.000984
+      },
+      {
+        "name": "Spanish Fork",
+        "rate": 0.000986
+      },
+      {
+        "name": "Hyde Park",
+        "rate": 0.000995
+      },
+      {
+        "name": "Providence",
+        "rate": 0.001015
+      },
+      {
+        "name": "Elk Ridge",
+        "rate": 0.00102
+      },
+      {
+        "name": "Sunset",
+        "rate": 0.001022
+      },
+      {
+        "name": "North Logan",
+        "rate": 0.001026
+      },
+      {
+        "name": "Elmo",
+        "rate": 0.001031
+      },
+      {
+        "name": "Rocky Ridge",
+        "rate": 0.001035
+      },
+      {
+        "name": "Cedar Hills",
+        "rate": 0.001043
+      },
+      {
+        "name": "Sandy",
+        "rate": 0.001049
+      },
+      {
+        "name": "Francis",
+        "rate": 0.001052
+      },
+      {
+        "name": "Kanarraville",
+        "rate": 0.001069
+      },
+      {
+        "name": "Richmond",
+        "rate": 0.001075
+      },
+      {
+        "name": "Springville",
+        "rate": 0.001079
+      },
+      {
+        "name": "Marysvale",
+        "rate": 0.00108
+      },
+      {
+        "name": "Fountain Green",
+        "rate": 0.001088
+      },
+      {
+        "name": "Monroe",
+        "rate": 0.001106
+      },
+      {
+        "name": "Hildale",
+        "rate": 0.001111
+      },
+      {
+        "name": "Enterprise",
+        "rate": 0.001113
+      },
+      {
+        "name": "Scofield",
+        "rate": 0.001115
+      },
+      {
+        "name": "Milford",
+        "rate": 0.00112
+      },
+      {
+        "name": "Ephraim",
+        "rate": 0.001132
+      },
+      {
+        "name": "Panguitch",
+        "rate": 0.001136
+      },
+      {
+        "name": "Enoch",
+        "rate": 0.001141
+      },
+      {
+        "name": "Layton",
+        "rate": 0.001143
+      },
+      {
+        "name": "Salem",
+        "rate": 0.001144
+      },
+      {
+        "name": "Lehi",
+        "rate": 0.001163
+      },
+      {
+        "name": "Midvale",
+        "rate": 0.001167
+      },
+      {
+        "name": "Ivins",
+        "rate": 0.001174
+      },
+      {
+        "name": "Rockville",
+        "rate": 0.001175
+      },
+      {
+        "name": "Pleasant Grove",
+        "rate": 0.001179
+      },
+      {
+        "name": "Centerville",
+        "rate": 0.0012
+      },
+      {
+        "name": "Alpine",
+        "rate": 0.001201
+      },
+      {
+        "name": "Coalville",
+        "rate": 0.001206
+      },
+      {
+        "name": "Clearfield",
+        "rate": 0.001218
+      },
+      {
+        "name": "Delta",
+        "rate": 0.001222
+      },
+      {
+        "name": "Glendale",
+        "rate": 0.001243
+      },
+      {
+        "name": "Willard",
+        "rate": 0.001258
+      },
+      {
+        "name": "Millcreek",
+        "rate": 0.001267
+      },
+      {
+        "name": "Junction",
+        "rate": 0.001273
+      },
+      {
+        "name": "Myton",
+        "rate": 0.001282
+      },
+      {
+        "name": "Price",
+        "rate": 0.00129
+      },
+      {
+        "name": "Cornish",
+        "rate": 0.001297
+      },
+      {
+        "name": "Morgan",
+        "rate": 0.001297
+      },
+      {
+        "name": "Payson",
+        "rate": 0.001299
+      },
+      {
+        "name": "Clarkston",
+        "rate": 0.0013
+      },
+      {
+        "name": "North Ogden",
+        "rate": 0.001304
+      },
+      {
+        "name": "South Jordan",
+        "rate": 0.001313
+      },
+      {
+        "name": "Blanding",
+        "rate": 0.001324
+      },
+      {
+        "name": "West Jordan",
+        "rate": 0.001328
+      },
+      {
+        "name": "Holladay",
+        "rate": 0.001334
+      },
+      {
+        "name": "Smithfield",
+        "rate": 0.001352
+      },
+      {
+        "name": "Grantsville",
+        "rate": 0.001368
+      },
+      {
+        "name": "West Bountiful",
+        "rate": 0.001368
+      },
+      {
+        "name": "Mayfield",
+        "rate": 0.001371
+      },
+      {
+        "name": "Mount Pleasant",
+        "rate": 0.00138
+      },
+      {
+        "name": "Nibley",
+        "rate": 0.00138
+      },
+      {
+        "name": "Gunnison",
+        "rate": 0.001383
+      },
+      {
+        "name": "Woods Cross",
+        "rate": 0.001392
+      },
+      {
+        "name": "Lynndyl",
+        "rate": 0.001393
+      },
+      {
+        "name": "Corinne",
+        "rate": 0.001396
+      },
+      {
+        "name": "Circleville",
+        "rate": 0.001398
+      },
+      {
+        "name": "Santaquin",
+        "rate": 0.001409
+      },
+      {
+        "name": "Riverdale",
+        "rate": 0.001414
+      },
+      {
+        "name": "Orderville",
+        "rate": 0.001432
+      },
+      {
+        "name": "South Weber",
+        "rate": 0.001434
+      },
+      {
+        "name": "Mendon",
+        "rate": 0.00144
+      },
+      {
+        "name": "Hatch",
+        "rate": 0.001445
+      },
+      {
+        "name": "Kaysville",
+        "rate": 0.001455
+      },
+      {
+        "name": "Mapleton",
+        "rate": 0.001456
+      },
+      {
+        "name": "Moroni",
+        "rate": 0.001484
+      },
+      {
+        "name": "Escalante",
+        "rate": 0.001503
+      },
+      {
+        "name": "Cottonwood Heights",
+        "rate": 0.001509
+      },
+      {
+        "name": "American Fork",
+        "rate": 0.001532
+      },
+      {
+        "name": "Harrisville",
+        "rate": 0.001534
+      },
+      {
+        "name": "Cedar City",
+        "rate": 0.001583
+      },
+      {
+        "name": "Cannonville",
+        "rate": 0.00161
+      },
+      {
+        "name": "Lewiston",
+        "rate": 0.001617
+      },
+      {
+        "name": "Roy",
+        "rate": 0.001618
+      },
+      {
+        "name": "Farmington",
+        "rate": 0.00166
+      },
+      {
+        "name": "Washington Terrace",
+        "rate": 0.001667
+      },
+      {
+        "name": "Provo",
+        "rate": 0.001678
+      },
+      {
+        "name": "Brigham City",
+        "rate": 0.001685
+      },
+      {
+        "name": "Murray",
+        "rate": 0.001696
+      },
+      {
+        "name": "Kanab",
+        "rate": 0.0017
+      },
+      {
+        "name": "Fruit Heights",
+        "rate": 0.001717
+      },
+      {
+        "name": "Roosevelt",
+        "rate": 0.001731
+      },
+      {
+        "name": "Monticello",
+        "rate": 0.001774
+      },
+      {
+        "name": "Perry",
+        "rate": 0.001801
+      },
+      {
+        "name": "Richfield",
+        "rate": 0.001809
+      },
+      {
+        "name": "Ballard",
+        "rate": 0.001818
+      },
+      {
+        "name": "Mantua",
+        "rate": 0.001876
+      },
+      {
+        "name": "Helper",
+        "rate": 0.001919
+      },
+      {
+        "name": "Interlaken",
+        "rate": 0.001979
+      },
+      {
+        "name": "Syracuse",
+        "rate": 0.001981
+      },
+      {
+        "name": "Clinton",
+        "rate": 0.002016
+      },
+      {
+        "name": "Alton",
+        "rate": 0.002023
+      },
+      {
+        "name": "Moab",
+        "rate": 0.002167
+      },
+      {
+        "name": "Wallsburg",
+        "rate": 0.002181
+      },
+      {
+        "name": "Parowan",
+        "rate": 0.002191
+      },
+      {
+        "name": "Ogden",
+        "rate": 0.002193
+      },
+      {
+        "name": "Dutch John",
+        "rate": 0.002239
+      },
+      {
+        "name": "Brian Head",
+        "rate": 0.002328
+      },
+      {
+        "name": "South Ogden",
+        "rate": 0.002455
+      },
+      {
+        "name": "Tooele",
+        "rate": 0.002476
+      },
+      {
+        "name": "Stockton",
+        "rate": 0.002544
+      },
+      {
+        "name": "South Salt Lake",
+        "rate": 0.002608
+      },
+      {
+        "name": "Salina",
+        "rate": 0.002616
+      },
+      {
+        "name": "West Valley City",
+        "rate": 0.002647
+      },
+      {
+        "name": "Green River",
+        "rate": 0.002706
+      },
+      {
+        "name": "Garland",
+        "rate": 0.00272
+      },
+      {
+        "name": "Big Water",
+        "rate": 0.002791
+      },
+      {
+        "name": "Tremonton",
+        "rate": 0.002797
+      },
+      {
+        "name": "Wendover",
+        "rate": 0.002826
+      },
+      {
+        "name": "Wellington",
+        "rate": 0.003
+      },
+      {
+        "name": "Woodland Hills",
+        "rate": 0.003093
+      },
+      {
+        "name": "Salt Lake City",
+        "rate": 0.00318
+      },
+      {
+        "name": "Vineyard",
+        "rate": 0.003796
+      },
+      {
+        "name": "East Carbon",
+        "rate": 0.00875
+      }
+    ]
+  }}

@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260716b" />
+    <link rel="stylesheet" href="site.css?v=20260721c" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -58,7 +58,7 @@
 
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
 
-    <script src="site.js?v=20260716b"></script>
+    <script src="site.js?v=20260721c"></script>
     <script>
       (async () => {
         const root = document.getElementById("content");
@@ -130,6 +130,7 @@
               </p>
               ${schedulePanel(tax)}
               ${county ? countyPanel(county) : ""}
+              ${county && county.statewide ? statewidePanel(county.statewide, county.rate_source) : ""}
               ${sourcePanel(tax)}
               ${recordPanel(tax)}
             </section>
@@ -140,8 +141,11 @@
         wireEstimator({ CURRENT, PROPOSED, RATIO, tax });
         wireStickyResult();
         if (county) {
+          wireCountySwitch();
           wireChartTabs();
           wireChartTooltips();
+          wireStatewideTable();
+          wireStatewideView();
         }
       }
 
@@ -679,28 +683,10 @@
       }
 
       function countyPanel(c) {
-        const body = `
-          <p class="panel-intro county-lede">
-            Eagle Mountain levies the <strong>second-lowest city property tax rate</strong> of the
-            ${c.cities.length} municipalities in Utah County today. At the proposed rate it would have
-            the <strong>third-highest</strong> — the largest increase any city in the county is asking
-            for this year, by a wide margin.
-          </p>
+        const utahN = c.cities.length;
+        const sl = c.salt_lake;
 
-          <div class="chart-tabs" role="tablist" aria-label="Comparison view">
-            <button role="tab" id="tab-rate" aria-controls="panel-rate" aria-selected="true" tabindex="0">
-              Rate today
-            </button>
-            <button role="tab" id="tab-inc" aria-controls="panel-inc" aria-selected="false" tabindex="-1">
-              Proposed increase
-            </button>
-          </div>
-
-          <div class="county">
-            <div role="tabpanel" id="panel-rate" aria-labelledby="tab-rate">${rateChartHtml(c)}</div>
-            <div role="tabpanel" id="panel-inc" aria-labelledby="tab-inc" hidden>${increaseChartHtml(c)}</div>
-          </div>
-
+        const utahNotes = `
           <div class="county-notes">
             <h3>About these numbers</h3>
             <ul>${c.caveats.map((x) => `<li>${CT.escapeHtml(x)}</li>`).join("")}</ul>
@@ -711,7 +697,218 @@
               reporting the ${c.proposal_year} truth-in-taxation notices.
             </p>
           </div>`;
-        return panel("How Eagle Mountain compares", `Its rate against the other ${c.cities.length - 1} cities in Utah County`, body, false);
+
+        const body = `
+          <p class="panel-intro county-lede">
+            Eagle Mountain levies the <strong>second-lowest city property tax rate</strong> of the
+            ${utahN} municipalities in Utah County today. At the proposed rate it would have the
+            <strong>third-highest</strong> — the largest increase any city in the county is asking
+            for this year, by a wide margin. Switch to Salt Lake County to see where its rate falls
+            among its Wasatch Front neighbours.
+          </p>
+
+          ${sl ? `<p class="scope-hint" id="scope-hint">Compare against</p>
+          <div class="scope-switch" role="radiogroup" aria-labelledby="scope-hint">
+            <button type="button" role="radio" id="scope-utah" data-scope="utah" aria-checked="true" tabindex="0">Utah County</button>
+            <button type="button" role="radio" id="scope-slc" data-scope="slc" aria-checked="false" tabindex="-1">Salt Lake County</button>
+          </div>` : ""}
+
+          <div class="county">
+            <div class="scope-panel" data-scope-panel="utah">
+              <div class="chart-tabs" role="tablist" aria-label="Comparison view">
+                <button role="tab" id="tab-rate" aria-controls="panel-rate" aria-selected="true" tabindex="0">
+                  Rate today
+                </button>
+                <button role="tab" id="tab-inc" aria-controls="panel-inc" aria-selected="false" tabindex="-1">
+                  Proposed increase
+                </button>
+              </div>
+              <div role="tabpanel" id="panel-rate" aria-labelledby="tab-rate">${rateChartHtml(c)}</div>
+              <div role="tabpanel" id="panel-inc" aria-labelledby="tab-inc" hidden>${increaseChartHtml(c)}</div>
+              ${utahNotes}
+            </div>
+
+            ${sl ? `<div class="scope-panel" data-scope-panel="slc" hidden>
+              <div class="chart-tabs" role="tablist" aria-label="Comparison view">
+                <button role="tab" id="tab-sl-rate" aria-controls="panel-sl-rate" aria-selected="true" tabindex="0">
+                  Rate today
+                </button>
+                <button role="tab" id="tab-sl-inc" aria-controls="panel-sl-inc" aria-selected="false" tabindex="-1">
+                  Proposed increase
+                </button>
+              </div>
+              <div role="tabpanel" id="panel-sl-rate" aria-labelledby="tab-sl-rate">${saltLakeChartHtml(sl)}</div>
+              <div role="tabpanel" id="panel-sl-inc" aria-labelledby="tab-sl-inc" hidden>${saltLakeIncreaseChartHtml(sl)}</div>
+              ${saltLakeNotes(sl)}
+            </div>` : ""}
+          </div>`;
+        return panel("How Eagle Mountain compares", "Its rate against Utah County and Salt Lake County cities", body, false);
+      }
+
+      /* --- Salt Lake County: current rates, Eagle Mountain dropped in as a
+         dashed out-of-county reference so you can read where it would fall.
+         Salt Lake County's metro townships and several cities fund police and
+         fire through separate county service areas, so their city-levy bars
+         understate what residents pay — flagged with † and spelled out below. */
+      function saltLakeChartHtml(sl) {
+        const em = sl.eagle_mountain;
+        const ref = { name: EM, current_rate: sl.reference.current_rate, isRef: true };
+        const rows = [...sl.cities, ref].sort((a, b) => b.current_rate - a.current_rate);
+        const max = Math.max(...rows.map((r) => r.current_rate)) * 1.02;
+
+        const bars = rows
+          .map((r) => {
+            const isRef = r.isRef;
+            const w = Math.max((r.current_rate / max) * 100, 0.4);
+            const ext = r.external_services ? '<span class="ast" aria-hidden="true">†</span>' : "";
+            const tip = isRef
+              ? `${EM} — ${rate6(r.current_rate)} (Utah County, shown for comparison)`
+              : `${r.name} — ${rate6(r.current_rate)}${r.external_services ? " · general city levy only; funds police/fire through separate service areas" : ""}`;
+            return `
+              <div class="crow ${isRef ? "is-em is-ref" : ""}" data-tip="${CT.escapeHtml(tip)}">
+                <span class="cname">${CT.escapeHtml(isRef ? EM : r.name)}${ext}</span>
+                <span class="ctrack">
+                  <span class="cbar ${isRef ? "cem" : ""}" style="width:${w}%"></span>
+                </span>
+                <span class="cval">${rate6(r.current_rate)}</span>
+              </div>`;
+          })
+          .join("");
+
+        return `
+        <figure class="chart">
+          <figcaption>
+            <h3>City property tax rate, today — Salt Lake County</h3>
+            <p>Each city's own general levy. Eagle Mountain (Utah County) is dropped in as a dashed
+               reference: its current rate would be the ${ordinal(em.rank_current_low)}-lowest of these
+               ${em.total_with_reference}, and the proposed rate would move it to the
+               ${ordinal(em.rank_proposed_high)}-highest.</p>
+          </figcaption>
+          <div class="legend">
+            <span class="lg"><i class="sw sw-base"></i>City levy</span>
+            <span class="lg"><i class="sw sw-ref"></i>Eagle Mountain (reference)</span>
+          </div>
+          <div class="chart-body">${bars}</div>
+          <p class="chart-foot">
+            <span aria-hidden="true">†</span> Levies little or no general city rate; funds police and fire
+            (and, for the metro townships, most services) through separate countywide service districts not
+            shown in these bars.
+          </p>
+          ${tableView(
+            ["City", "City levy"],
+            rows.map((r) => [r.isRef ? EM + " (ref.)" : r.name, rate6(r.current_rate)])
+          )}
+        </figure>`;
+      }
+
+      /* --- Salt Lake County chart 2: where the 2026 proposals would leave each
+         city. Same cities, same rate axis as the current-rate chart, re-sorted by
+         the rate each would end up at. Solid segment = today's rate; hatched
+         segment = the noticed increase on top. Eagle Mountain is kept as the same
+         dashed out-of-county reference, now showing its proposed rate. */
+      function saltLakeIncreaseChartHtml(sl) {
+        const em = sl.eagle_mountain;
+        const ref = {
+          name: EM,
+          current_rate: sl.reference.current_rate,
+          resulting_rate: sl.reference.proposed_rate,
+          isRef: true,
+        };
+        const resOf = (r) => (r.isRef ? r.resulting_rate : resultingRate(sl, r));
+        const all = [...sl.cities, ref];
+        const nowRank = new Map(
+          [...all].sort((a, b) => b.current_rate - a.current_rate).map((x, i) => [x.name, i + 1])
+        );
+        const rows = [...all].sort((a, b) => resOf(b) - resOf(a));
+        const max = Math.max(...rows.map(resOf)) * 1.02;
+        const proposing = sl.proposals.length;
+        // Rank Eagle Mountain's proposed rate against everyone's *resulting* rate
+        // (each city's own increase applied), so the caption can't drift from the bars.
+        const emResRank = rows.findIndex((r) => r.isRef) + 1;
+
+        const bars = rows
+          .map((r, i) => {
+            const isRef = r.isRef;
+            const p = isRef ? null : proposalFor(sl, r.name);
+            const res = resOf(r);
+            const wNow = Math.max((r.current_rate / max) * 100, 0.4);
+            const wRes = (res / max) * 100;
+            const hasInc = isRef || !!p;
+            const moved = nowRank.get(r.name) - (i + 1);
+
+            const ext = !isRef && r.external_services ? '<span class="ast" aria-hidden="true">†</span>' : "";
+            const levy = p && p.levy ? '<span class="ast" aria-hidden="true">‡</span>' : "";
+
+            const tip = isRef
+              ? `${EM} — ${rate6(r.current_rate)} → ${rate6(res)} (Utah County, shown for comparison)`
+              : p
+                ? `${r.name} — ${rate6(r.current_rate)} → ${rate6(res)} (+${p.pct}%, derived rate) · ${p.purpose}`
+                : `${r.name} — no increase noticed; holds at ${rate6(r.current_rate)}`;
+
+            return `
+              <div class="crow ${isRef ? "is-em is-ref" : ""} ${hasInc ? "" : "no-prop"}" data-tip="${CT.escapeHtml(tip)}">
+                <span class="cname">${CT.escapeHtml(isRef ? EM : r.name)}${ext}${levy}</span>
+                <span class="ctrack">
+                  ${hasInc ? `<span class="cbar cprop ${isRef ? "cem" : ""}" style="width:${wRes}%"></span>` : ""}
+                  <span class="cbar ${isRef ? "cem" : ""}" style="width:${wNow}%"></span>
+                </span>
+                <span class="cval">
+                  ${rate6(res)}
+                  ${moved > 0 ? `<span class="cmove up" aria-hidden="true">▲${moved}</span><span class="sr-only"> up ${moved} places</span>` : ""}
+                </span>
+              </div>`;
+          })
+          .join("");
+
+        return `
+        <figure class="chart">
+          <figcaption>
+            <h3>Where the ${sl.proposal_year} proposals would leave each city — Salt Lake County</h3>
+            <p>Same cities, same rate axis — re-sorted by the rate each would end up at.
+               ${proposing} of Salt Lake County's ${sl.cities.length} cities noticed a ${sl.proposal_year}
+               increase. Eagle Mountain (Utah County) is dropped in as a dashed reference; with every city's
+               proposal applied its rate would rank ${ordinal(emResRank)}-highest of these ${em.total_with_reference}.</p>
+          </figcaption>
+          <div class="legend">
+            <span class="lg"><i class="sw sw-base"></i>Rate today</span>
+            <span class="lg"><i class="sw sw-prop-neutral"></i>Proposed increase</span>
+            <span class="lg"><i class="sw sw-ref"></i>Eagle Mountain (reference)</span>
+          </div>
+          <div class="chart-body">${bars}</div>
+          <p class="chart-foot">
+            <span aria-hidden="true">†</span> Funds police/fire (and, for metro townships, most services) through
+            separate countywide service districts not shown here.
+            <span aria-hidden="true">‡</span> Raises a dedicated levy (public safety), not the general city rate.
+            Only Eagle Mountain has published a proposed rate — the Salt Lake figures are derived from each
+            city's own noticed dollar impact.
+          </p>
+          ${tableView(
+            ["City", "Rate today", "Rate if it passes", "Increase", "Purpose"],
+            rows.map((r) => {
+              const p = r.isRef ? null : proposalFor(sl, r.name);
+              return [
+                r.isRef ? EM + " (ref.)" : r.name,
+                rate6(r.current_rate),
+                rate6(resOf(r)),
+                r.isRef ? "reference" : p ? `+${p.pct}% (${p.rate_source})` : "No increase noticed",
+                r.isRef ? "—" : p ? p.purpose : "—",
+              ];
+            })
+          )}
+        </figure>`;
+      }
+
+      function saltLakeNotes(sl) {
+        return `
+          <div class="county-notes">
+            <h3>About these numbers</h3>
+            <ul>${sl.caveats.map((x) => `<li>${CT.escapeHtml(x)}</li>`).join("")}</ul>
+            <p class="src">
+              Rates: <a href="${sl.rate_source.url}" rel="nofollow noopener">${CT.escapeHtml(sl.rate_source.title)}</a>,
+              ${CT.escapeHtml(sl.rate_source.publisher)} — ${sl.rate_year} final adopted, city levy only.
+              ${sl.proposal_source ? `Proposed increases: <a href="${sl.proposal_source.notice_url || sl.proposal_source.url}" rel="nofollow noopener">Salt Lake County ${sl.proposal_year} truth-in-taxation notices</a> (per-city purposes via <a href="${sl.proposal_source.url}" rel="nofollow noopener">${CT.escapeHtml(sl.proposal_source.publisher)}</a>).` : ""}
+            </p>
+          </div>`;
       }
 
       // Both charts list the same cities in the same order, so toggling swaps the
@@ -730,7 +927,7 @@
             const w = (r.current_rate / max) * 100;
             const tip = `${r.name} — ${rate6(r.current_rate)}${r.mostly_other_county ? " (mostly Salt Lake Co.)" : ""}`;
             return `
-              <div class="crow ${isEM ? "is-em" : ""}" data-tip="${CT.escapeHtml(tip)}" tabindex="0">
+              <div class="crow ${isEM ? "is-em" : ""}" data-tip="${CT.escapeHtml(tip)}">
                 <span class="cname">${CT.escapeHtml(r.name)}${r.mostly_other_county ? '<span class="ast" aria-hidden="true">*</span>' : ""}</span>
                 <span class="ctrack">
                   <span class="cbar ${isEM ? "cem" : ""}" style="width:${w}%"></span>
@@ -789,7 +986,7 @@
               : `${city.name} — no increase proposed; holds at ${rate6(city.current_rate)}`;
 
             return `
-              <div class="crow ${isEM ? "is-em" : ""} ${p ? "" : "no-prop"}" data-tip="${CT.escapeHtml(tip)}" tabindex="0">
+              <div class="crow ${isEM ? "is-em" : ""} ${p ? "" : "no-prop"}" data-tip="${CT.escapeHtml(tip)}">
                 <span class="cname">${CT.escapeHtml(city.name)}${levy}${mark}</span>
                 <span class="ctrack">
                   ${p ? `<span class="cbar cprop ${isEM ? "cem" : ""}" style="width:${wRes}%"></span>` : ""}
@@ -797,7 +994,7 @@
                 </span>
                 <span class="cval">
                   ${rate6(res)}
-                  ${moved > 0 ? `<span class="cmove up" title="up ${moved} places">▲${moved}</span>` : ""}
+                  ${moved > 0 ? `<span class="cmove up" aria-hidden="true">▲${moved}</span><span class="sr-only"> up ${moved} places</span>` : ""}
                 </span>
               </div>`;
           })
@@ -825,7 +1022,7 @@
             own noticed dollar impact.
           </p>
           ${tableView(
-            ["City", "Rate today", "Rate if it passes", "Increase"],
+            ["City", "Rate today", "Rate if it passes", "Increase", "Purpose"],
             rows.map((city) => {
               const p = proposalFor(c, city.name);
               return [
@@ -833,6 +1030,7 @@
                 rate6(city.current_rate),
                 p ? rate6(p.resulting_rate) : rate6(city.current_rate),
                 p ? `+${p.pct}% (${p.rate_source})` : "No increase proposed",
+                p ? p.purpose : "—",
               ];
             })
           )}
@@ -840,33 +1038,37 @@
       }
 
       // Tabs: click, plus Left/Right/Home/End per the WAI-ARIA tabs pattern.
+      // Each .chart-tabs group is wired independently — the Utah County and Salt
+      // Lake County tablists must not deselect each other's panels.
       function wireChartTabs() {
-        const tabs = [...document.querySelectorAll('.chart-tabs [role="tab"]')];
-        if (!tabs.length) return;
+        document.querySelectorAll(".chart-tabs").forEach((group) => {
+          const tabs = [...group.querySelectorAll('[role="tab"]')];
+          if (!tabs.length) return;
 
-        const select = (tab) => {
-          tabs.forEach((t) => {
-            const on = t === tab;
-            t.setAttribute("aria-selected", String(on));
-            t.tabIndex = on ? 0 : -1;
-            document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
-          });
-          tab.focus();
-        };
+          const select = (tab) => {
+            tabs.forEach((t) => {
+              const on = t === tab;
+              t.setAttribute("aria-selected", String(on));
+              t.tabIndex = on ? 0 : -1;
+              document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+            });
+            tab.focus();
+          };
 
-        tabs.forEach((tab, i) => {
-          tab.addEventListener("click", () => select(tab));
-          tab.addEventListener("keydown", (e) => {
-            const k = e.key;
-            let next = null;
-            if (k === "ArrowRight") next = tabs[(i + 1) % tabs.length];
-            else if (k === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
-            else if (k === "Home") next = tabs[0];
-            else if (k === "End") next = tabs[tabs.length - 1];
-            if (next) {
-              e.preventDefault();
-              select(next);
-            }
+          tabs.forEach((tab, i) => {
+            tab.addEventListener("click", () => select(tab));
+            tab.addEventListener("keydown", (e) => {
+              const k = e.key;
+              let next = null;
+              if (k === "ArrowRight") next = tabs[(i + 1) % tabs.length];
+              else if (k === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
+              else if (k === "Home") next = tabs[0];
+              else if (k === "End") next = tabs[tabs.length - 1];
+              if (next) {
+                e.preventDefault();
+                select(next);
+              }
+            });
           });
         });
       }
@@ -887,7 +1089,188 @@
         </details>`;
       }
 
-      // One shared tooltip element, positioned to the hovered/focused row.
+      /* ---------------- statewide ranking ----------------
+         All 253 Utah municipalities ranked by their own city levy — the same
+         city-only measure as the county charts. A single sortable table rather
+         than a chart: 253 bars would be a wall, but the reader can sort by rank,
+         name, or rate and find any city, with Eagle Mountain's row lit up. */
+      function statewidePanel(sw, src) {
+        const em = sw.eagle_mountain;
+        const N = sw.total_cities;
+
+        // Rank high → low: rank 1 is the highest city levy in the state.
+        // Current-rate ranking — all cities as they are billed today, highest first.
+        const current = [...sw.cities]
+          .sort((a, b) => b.rate - a.rate)
+          .map((r, i) => ({ name: r.name, rate: r.rate, rank: i + 1 }));
+
+        // Proposed ranking — swap in Eagle Mountain's proposed rate and re-rank,
+        // still highest first. Every other city keeps today's rate: Utah's 2026
+        // rates aren't certified until after the August hearings, so only the
+        // proposal this site tracks can be placed against the statewide field.
+        const proposed = sw.cities
+          .map((r) => ({ name: r.name, rate: r.name === EM ? em.proposed_rate : r.rate }))
+          .sort((a, b) => b.rate - a.rate)
+          .map((r, i) => ({ name: r.name, rate: r.rate, rank: i + 1 }));
+
+        const emCur = current.find((r) => r.name === EM).rank; // counted from the top
+        const emProp = proposed.find((r) => r.name === EM).rank; // counted from the top
+        const climbed = emCur - emProp; // places gained climbing toward #1
+        const emCurLow = N - emCur + 1; // the same current rank, counted from the bottom
+
+        const rowsHtml = (list, view) =>
+          list
+            .map((r) => {
+              const isEM = r.name === EM;
+              const moved =
+                view === "proposed" && isEM
+                  ? ` <span class="cmove up" title="up ${climbed} places">▲${climbed}</span>`
+                  : "";
+              const tag = isEM ? ` <span class="you-pill">${view === "proposed" ? "proposed" : "today"}</span>` : "";
+              return `<tr${isEM ? ' class="is-em-row"' : ""} data-rank="${r.rank}" data-rate="${r.rate}" data-name="${CT.escapeHtml(r.name)}">
+                <td class="num">${r.rank}</td>
+                <td>${CT.escapeHtml(r.name)}${tag}</td>
+                <td class="num">${rate6(r.rate)}${moved}</td>
+              </tr>`;
+            })
+            .join("");
+
+        const tableHtml = (id, list, view) => `
+          <div class="tablewrap statewide-wrap">
+            <table class="data statewide" id="${id}">
+              <thead><tr>
+                <th scope="col" class="num sortable" data-key="rank" aria-sort="ascending" tabindex="0">Rank<span class="sarrow" aria-hidden="true"> ▲</span></th>
+                <th scope="col" class="sortable" data-key="name" aria-sort="none" tabindex="0">City<span class="sarrow" aria-hidden="true"></span></th>
+                <th scope="col" class="num sortable" data-key="rate" aria-sort="none" tabindex="0">City levy<span class="sarrow" aria-hidden="true"></span></th>
+              </tr></thead>
+              <tbody>${rowsHtml(list, view)}</tbody>
+            </table>
+          </div>`;
+
+        const body = `
+          <p class="panel-intro">
+            Every Utah city and town ranked by its own property tax levy — the same city-only measure as the
+            county charts — from the state's ${sw.rate_year} rate report, <strong>highest rate first</strong>.
+            Eagle Mountain's current <strong>${rate6(em.current_rate)}</strong> ranks
+            <strong>${ordinal(emCur)}-highest</strong> of ${N} — the ${ordinal(emCurLow)}-lowest. Switch to
+            <em>With Eagle Mountain's proposal</em> and it climbs ${climbed} places to
+            <strong>${ordinal(emProp)}-highest</strong>. Sort any column; Eagle Mountain stays lit.
+          </p>
+
+          <div class="scope-switch stateview-switch" role="radiogroup" aria-label="Which rate to rank by">
+            <button type="button" role="radio" id="sv-current" data-view="current" aria-checked="true" tabindex="0">Rate today</button>
+            <button type="button" role="radio" id="sv-proposed" data-view="proposed" aria-checked="false" tabindex="-1">With Eagle Mountain's proposal</button>
+          </div>
+
+          <div class="stateview" data-view-panel="current">${tableHtml("statewide-current", current, "current")}</div>
+          <div class="stateview" data-view-panel="proposed" hidden>
+            ${tableHtml("statewide-proposed", proposed, "proposed")}
+            <p class="chart-foot">
+              Only Eagle Mountain's proposed rate is placed here. Every other city is shown at today's rate —
+              Utah's 2026 city rates aren't certified until after the August truth-in-taxation hearings.
+            </p>
+          </div>
+
+          <p class="chart-foot">
+            City levy only — excludes county, school district, and special/service district levies, so it is not
+            your total tax bill. Cities with the same rate take adjacent ranks. Source:
+            <a href="${src.url}" rel="nofollow noopener">${CT.escapeHtml(src.title)}</a>, ${CT.escapeHtml(src.publisher)}.
+          </p>`;
+        return panel("Where Eagle Mountain ranks statewide", `Its current rate — and its proposal — against all ${N} Utah cities`, body, false);
+      }
+
+      // The scope switch swaps the whole comparison between Utah County (both
+      // tabs) and Salt Lake County (current rates only). Radiogroup semantics,
+      // arrow-key operable, per the WAI-ARIA radio pattern.
+      function wireCountySwitch() {
+        const radios = [...document.querySelectorAll('.scope-switch [role="radio"]')];
+        if (!radios.length) return;
+        const panelFor = (r) => document.querySelector(`[data-scope-panel="${r.dataset.scope}"]`);
+        const select = (radio) => {
+          radios.forEach((r) => {
+            const on = r === radio;
+            r.setAttribute("aria-checked", String(on));
+            r.tabIndex = on ? 0 : -1;
+            const p = panelFor(r);
+            if (p) p.hidden = !on;
+          });
+          radio.focus();
+        };
+        radios.forEach((radio, i) => {
+          radio.addEventListener("click", () => select(radio));
+          radio.addEventListener("keydown", (e) => {
+            let next = null;
+            if (e.key === "ArrowRight" || e.key === "ArrowDown") next = radios[(i + 1) % radios.length];
+            else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = radios[(i - 1 + radios.length) % radios.length];
+            if (next) { e.preventDefault(); select(next); }
+          });
+        });
+      }
+
+      // Click or Enter/Space on a header sorts a statewide table. Rank and rate
+      // sort numerically, city by name; re-activating a column flips it. Wires
+      // both the "today" and "with the proposal" tables independently.
+      function wireStatewideTable() {
+        document.querySelectorAll("table.data.statewide").forEach((table) => {
+          const tbody = table.tBodies[0];
+          const rows = [...tbody.rows];
+          let curKey = "rank", curDir = 1;
+          const val = (tr, key) =>
+            key === "name" ? tr.dataset.name.toLowerCase()
+              : parseFloat(key === "rank" ? tr.dataset.rank : tr.dataset.rate);
+          const sort = (key) => {
+            curDir = key === curKey ? -curDir : 1;
+            curKey = key;
+            rows.sort((a, b) => {
+              const va = val(a, key), vb = val(b, key);
+              return va < vb ? -curDir : va > vb ? curDir : 0;
+            });
+            rows.forEach((r) => tbody.appendChild(r));
+            table.querySelectorAll("th.sortable").forEach((th) => {
+              const on = th.dataset.key === key;
+              th.setAttribute("aria-sort", on ? (curDir > 0 ? "ascending" : "descending") : "none");
+              th.querySelector(".sarrow").textContent = on ? (curDir > 0 ? " ▲" : " ▼") : "";
+            });
+          };
+          table.querySelectorAll("th.sortable").forEach((th) => {
+            th.addEventListener("click", () => sort(th.dataset.key));
+            th.addEventListener("keydown", (e) => {
+              if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sort(th.dataset.key); }
+            });
+          });
+        });
+      }
+
+      // The statewide "rate today" / "with the proposal" toggle. Same radiogroup
+      // pattern as the county switch.
+      function wireStatewideView() {
+        const radios = [...document.querySelectorAll('.stateview-switch [role="radio"]')];
+        if (!radios.length) return;
+        const panelFor = (r) => document.querySelector(`[data-view-panel="${r.dataset.view}"]`);
+        const select = (radio) => {
+          radios.forEach((r) => {
+            const on = r === radio;
+            r.setAttribute("aria-checked", String(on));
+            r.tabIndex = on ? 0 : -1;
+            const p = panelFor(r);
+            if (p) p.hidden = !on;
+          });
+          radio.focus();
+        };
+        radios.forEach((radio, i) => {
+          radio.addEventListener("click", () => select(radio));
+          radio.addEventListener("keydown", (e) => {
+            let next = null;
+            if (e.key === "ArrowRight" || e.key === "ArrowDown") next = radios[(i + 1) % radios.length];
+            else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = radios[(i - 1 + radios.length) % radios.length];
+            if (next) { e.preventDefault(); select(next); }
+          });
+        });
+      }
+
+      // One shared tooltip element, positioned to the hovered (mouse) or
+      // tapped (touch) row. The exact-value data it carries also lives in each
+      // chart's "View as table" fallback, so nothing here is the sole source.
       function wireChartTooltips() {
         const tip = document.createElement("div");
         tip.className = "chart-tip";
@@ -895,7 +1278,11 @@
         tip.hidden = true;
         document.body.appendChild(tip);
 
+        let openRow = null;   // row whose tip is currently showing
+        let viaTap = false;   // opened by touch — needs an explicit dismiss
+
         const show = (row) => {
+          openRow = row;
           tip.textContent = row.dataset.tip;
           tip.hidden = false;
           const r = row.getBoundingClientRect();
@@ -903,16 +1290,27 @@
           let left = r.left + window.scrollX + 12;
           left = Math.min(left, window.scrollX + document.documentElement.clientWidth - t.width - 10);
           tip.style.left = Math.max(window.scrollX + 6, left) + "px";
-          tip.style.top = r.top + window.scrollY - t.height - 8 + "px";
+          // Prefer above the row; flip below when sitting above would clip the
+          // top of the viewport (e.g. tabbing/tapping the first row up top).
+          const clipsTop = r.top - t.height - 8 < 8;
+          tip.style.top = (clipsTop ? r.bottom + 8 : r.top - t.height - 8) + window.scrollY + "px";
         };
-        const hide = () => { tip.hidden = true; };
+        const hide = () => { openRow = null; viaTap = false; tip.hidden = true; };
 
         document.querySelectorAll(".crow[data-tip]").forEach((row) => {
-          row.addEventListener("mouseenter", () => show(row));
-          row.addEventListener("focus", () => show(row));
-          row.addEventListener("mouseleave", hide);
-          row.addEventListener("blur", hide);
+          // Mouse: hover shows the tip.
+          row.addEventListener("mouseenter", () => { if (!viaTap) show(row); });
+          row.addEventListener("mouseleave", () => { if (!viaTap) hide(); });
+          // Touch: no hover, so a tap toggles the tip.
+          row.addEventListener("pointerdown", (e) => {
+            if (e.pointerType === "mouse") return;
+            e.stopPropagation();
+            if (openRow === row) hide();
+            else { viaTap = true; show(row); }
+          });
         });
+        // A tap elsewhere, or any scroll, dismisses a tapped-open tip.
+        document.addEventListener("pointerdown", () => { if (viaTap) hide(); });
         window.addEventListener("scroll", hide, { passive: true });
       }
 

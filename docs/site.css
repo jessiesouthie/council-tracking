@@ -3747,7 +3747,6 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   background: var(--c-base);
   border-radius: 0 4px 4px 0;   /* rounded data-end, anchored to baseline */
   min-width: 2px;
-  transition: width 260ms cubic-bezier(.4,0,.2,1);
 }
 .cbar.cem { background: var(--c-em); }
 
@@ -3846,19 +3845,22 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
 .chart-tabs [role="tab"]:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 [role="tabpanel"][hidden] { display: none; }
 
-@media (prefers-reduced-motion: reduce) {
-  .cbar { transition: none; }
-}
-
 @media (max-width: 620px) {
   .crow { grid-template-columns: 84px minmax(0, 1fr) 80px; gap: 7px; }
   .cname { font-size: 11px; }
-  .chart-tabs { display: flex; width: 100%; }
-  .chart-tabs [role="tab"] { flex: 1; padding: 8px 10px; }
+  /* Full-width segmented controls with a 44px min touch target (Apple HIG). */
+  .chart-tabs, .scope-switch { display: flex; width: 100%; }
+  .chart-tabs [role="tab"], .scope-switch [role="radio"] {
+    flex: 1;
+    min-height: 44px;
+    padding: 8px 10px;
+  }
 }
 
-/* Cities holding steady recede; they still show a real rate, so don't fade them out. */
-.crow.no-prop .cname, .crow.no-prop .cval { opacity: .72; }
+/* Cities holding steady recede via a lighter bar — not faded labels. The name
+   and rate are real data and must keep clearing 4.5:1 (fading the text dropped
+   the value to ~3.6:1 on the panel ground). */
+.crow.no-prop .cbar { opacity: .55; }
 
 /* Rank movement, shown only where a city climbs. */
 .cmove {
@@ -3871,6 +3873,89 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   vertical-align: 1px;
 }
 .crow.is-em .cmove { color: var(--highlight-ink); }
+
+/* ---------- county scope switch (Utah County / Salt Lake County) ---------- */
+/* A visible label so the outer switch (which peer group) reads apart from the
+   inner tabs (which measure). */
+.scope-hint {
+  margin: 0 0 6px;
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--fg-muted);
+}
+.scope-switch {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  margin-bottom: 16px;
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+.scope-switch [role="radio"] {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--fg-muted);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 7px 15px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease;
+}
+.scope-switch [role="radio"]:hover { color: var(--fg); }
+.scope-switch [role="radio"][aria-checked="true"] {
+  background: var(--bg-elev);
+  color: var(--fg);
+  box-shadow: var(--shadow-hair);
+}
+.scope-switch [role="radio"]:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.scope-panel[hidden] { display: none; }
+
+/* Eagle Mountain shown as an out-of-county reference: a hollow dashed bar so it
+   reads as "not one of these cities, here for scale". */
+.crow.is-ref .cbar,
+.crow.is-ref:hover .cbar {
+  background: transparent;
+  background-image: none;
+  border: 1.5px dashed var(--c-em);
+  box-shadow: none;
+}
+.legend .sw-ref {
+  background: transparent;
+  border: 1.5px dashed var(--c-em);
+}
+
+/* ---------- statewide ranking table ---------- */
+.statewide-wrap { max-height: 540px; overflow: auto; }
+table.data.statewide { font-variant-numeric: tabular-nums; }
+table.data.statewide .num { text-align: right; }
+table.data.statewide thead th { position: sticky; top: 0; z-index: 1; }
+table.data.statewide th.sortable { cursor: pointer; user-select: none; white-space: nowrap; }
+table.data.statewide th.sortable:hover { color: var(--fg); }
+table.data.statewide th.sortable:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+table.data.statewide th .sarrow { font-size: 9px; }
+table.data.statewide tr.is-em-row td {
+  background: var(--accent-soft);
+  color: var(--fg);
+  font-weight: 700;
+}
+.you-pill {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #3B2D0A;
+  background: var(--highlight);
+  padding: 1px 6px;
+  border-radius: 999px;
+  vertical-align: 1px;
+}
 
 /* =========================================================================
    Budget spending page — two Sankey diagrams of the adopted budget.
