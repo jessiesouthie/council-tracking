@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260721c" />
+    <link rel="stylesheet" href="site.css?v=20260721f" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -113,21 +113,25 @@
               ${statusHtml(tax)}
               <h1 class="tax-h1">What would this cost you?</h1>
               <p class="tax-lede">
-                Eagle Mountain wants to raise its city property tax to pay for more
-                sheriff's deputies. Put in what your home is worth to see the city's
-                share of your bill — what you pay now, and what's proposed.
+                Eagle Mountain wants to raise its city property tax to fund its
+                public safety contract with the Utah County Sheriff's Office. Put in
+                what your home is worth to see the city's share of your bill — what
+                you pay now, and what's proposed.
               </p>
               ${nextHearingHtml(tax)}
             </header>
 
             ${estimatorHtml(tax)}
 
-            <section class="learn reveal" style="--i:2" aria-labelledby="learn-title">
+            ${takeawayHtml(tax, county)}
+
+            <section class="learn reveal" style="--i:3" aria-labelledby="learn-title">
               <h2 class="learn-title" id="learn-title">The fuller picture</h2>
               <p class="learn-sub">
                 The estimate is the short version. Open any of these for where the
                 numbers come from and how the decision has moved so far.
               </p>
+              ${pictureNavHtml(county)}
               ${schedulePanel(tax)}
               ${county ? countyPanel(county) : ""}
               ${county && county.statewide ? statewidePanel(county.statewide, county.rate_source) : ""}
@@ -140,6 +144,7 @@
         measureTopbar();
         wireEstimator({ CURRENT, PROPOSED, RATIO, tax });
         wireStickyResult();
+        wirePictureNav();
         if (county) {
           wireCountySwitch();
           wireChartTabs();
@@ -548,14 +553,113 @@
         }
       }
 
+      /* ---------------- the takeaway ----------------
+         The bridge from the tool to the detail. A reader who works the estimator
+         and stops still leaves with the headline: how big the increase is, what
+         it does to the city's standing, and what it buys. Every figure here is
+         opened in full inside a panel below, so this states nothing it can't
+         back up. The rank cards only render when the county data loaded — the
+         page is built to work without it.
+      */
+      function takeawayHtml(tax, county) {
+        const pct = tax.rates.proposed.pct;
+        const em = county ? county.eagle_mountain : null;
+
+        const incTxt = em
+          ? "over the certified rate — the largest increase any Utah County city is asking for this year."
+          : `over the ${CT.escapeHtml(tax.rates.certified_2026.rate_display)} certified rate.`;
+
+        const rankCard = em
+          ? `
+            <li class="tk">
+              <span class="tk-kicker">Where it ranks</span>
+              <span class="tk-fig shift">${ordinal(em.total_cities - em.rank_current + 1)}-lowest <span class="to" aria-hidden="true">→</span> ${ordinal(em.rank_proposed)}-highest</span>
+              <span class="tk-txt">Eagle Mountain's city property tax rate among the county's ${em.total_cities} cities — where it sits today, and where this proposal would put it.</span>
+            </li>`
+          : "";
+
+        return `
+          <section class="takeaway reveal" style="--i:2" aria-labelledby="takeaway-title">
+            <h2 class="takeaway-title" id="takeaway-title">What this would mean</h2>
+            <ul class="takeaway-list${em ? "" : " two"}">
+              <li class="tk">
+                <span class="tk-kicker">The increase</span>
+                <span class="tk-fig">+${pct}%</span>
+                <span class="tk-txt">${incTxt}</span>
+              </li>
+              ${rankCard}
+              <li class="tk">
+                <span class="tk-kicker">What it pays for</span>
+                <span class="tk-fig word">Public safety</span>
+                <span class="tk-txt">The new revenue funds the city's public safety contract with the Utah County Sheriff's Office — the deputies, patrol, and dispatch that make up Eagle Mountain's police coverage — keeping pace with the city's growth.</span>
+              </li>
+            </ul>
+            ${em ? `<p class="takeaway-link"><a href="#p-compare" data-panel="p-compare">See how Eagle Mountain compares across the county <span aria-hidden="true">→</span></a></p>` : ""}
+          </section>`;
+      }
+
+      /* ---------------- section wayfinding ----------------
+         Five stacked closed panels give a reader no sense of what's inside. A
+         row of chips names each topic up front and jumps to it — opening the
+         panel on the way. Built from the same conditionals as the panels, so a
+         chip never points at a section that didn't render.
+      */
+      function pictureNavHtml(county) {
+        const items = [
+          ["p-schedule", "Schedule"],
+          county ? ["p-compare", "Compare"] : null,
+          county && county.statewide ? ["p-statewide", "Statewide"] : null,
+          ["p-source", "Sources"],
+          ["p-record", "Timeline"],
+        ].filter(Boolean);
+        return `
+          <nav class="picture-nav" aria-label="Jump to a section">
+            ${items.map(([id, label]) => `<a class="pnav-link" href="#${id}" data-panel="${id}">${CT.escapeHtml(label)}</a>`).join("")}
+          </nav>`;
+      }
+
+      /* Chips and the takeaway link open their target panel and glide to it;
+         a shared URL that names a panel does the same on load. Both honour
+         reduced-motion by dropping the smooth scroll. */
+      function wirePictureNav() {
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        const reveal = (id, focus) => {
+          const target = document.getElementById(id);
+          if (!target || target.tagName !== "DETAILS") return false;
+          target.open = true;
+          target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+          // Keyboard users land on the panel they asked for, not back at the top.
+          if (focus) {
+            const sum = target.querySelector("summary");
+            if (sum) sum.focus({ preventScroll: true });
+          }
+          return true;
+        };
+
+        document.querySelectorAll("[data-panel]").forEach((a) => {
+          a.addEventListener("click", (e) => {
+            const id = a.getAttribute("data-panel");
+            if (document.getElementById(id)) {
+              e.preventDefault();
+              history.replaceState(null, "", "#" + id);
+              reveal(id, true);
+            }
+          });
+        });
+
+        // Deep link: a URL ending in #p-compare (etc.) arrives with that panel open.
+        if (location.hash.length > 1) reveal(location.hash.slice(1), false);
+      }
+
       /* ---------------- disclosure panels ----------------
          Each panel is a native <details>: keyboard-operable, no JS to open, and
          collapsed by default so the page arrives calm. The schedule opens first
          so the section never reads as an empty stack of closed doors.
       */
-      function panel(title, sub, bodyHtml, open) {
+      function panel(title, sub, bodyHtml, open, id) {
         return `
-        <details class="panel"${open ? " open" : ""}>
+        <details class="panel"${id ? ` id="${id}"` : ""}${open ? " open" : ""}>
           <summary>
             <span class="panel-tt">
               <b>${title}</b>
@@ -642,7 +746,7 @@
             Either way it is a comparison of rates, not of collections — the schedule's own revenue lines,
             ${usd0(cur.revenue)} against ${usd0(prop.revenue)}, work out to ${tax.revenue_ratio_pct}%.
           </p>`;
-        return panel("The official schedule", "The six lines of the city's Truth-in-Taxation schedule", body, true);
+        return panel("The official schedule", "The six lines of the city's Truth-in-Taxation schedule", body, true, "p-schedule");
       }
 
       /* ---------------- the paper trail ---------------- */
@@ -664,7 +768,7 @@
             <strong>Minutes and recording.</strong> ${CT.escapeHtml(tax.source.minutes)}
             Council approved the June 16 minutes on ${CT.fmtDate(tax.source.minutes_approved)}.
           </p>`;
-        return panel("Where these numbers come from", "The quote on the record, and the arithmetic that reproduces it", body, false);
+        return panel("Where these numbers come from", "The quote on the record, and the arithmetic that reproduces it", body, false, "p-source");
       }
 
       /* ---------------- county comparison charts ----------------
@@ -707,21 +811,26 @@
             among its Wasatch Front neighbours.
           </p>
 
-          ${sl ? `<p class="scope-hint" id="scope-hint">Compare against</p>
-          <div class="scope-switch" role="radiogroup" aria-labelledby="scope-hint">
-            <button type="button" role="radio" id="scope-utah" data-scope="utah" aria-checked="true" tabindex="0">Utah County</button>
-            <button type="button" role="radio" id="scope-slc" data-scope="slc" aria-checked="false" tabindex="-1">Salt Lake County</button>
+          ${sl ? `<div class="switch-row">
+            <p class="switch-label" id="scope-hint">Compare against</p>
+            <div class="scope-switch" role="radiogroup" aria-labelledby="scope-hint">
+              <button type="button" role="radio" id="scope-utah" data-scope="utah" aria-checked="true" tabindex="0">Utah County</button>
+              <button type="button" role="radio" id="scope-slc" data-scope="slc" aria-checked="false" tabindex="-1">Salt Lake County</button>
+            </div>
           </div>` : ""}
 
           <div class="county">
             <div class="scope-panel" data-scope-panel="utah">
-              <div class="chart-tabs" role="tablist" aria-label="Comparison view">
-                <button role="tab" id="tab-rate" aria-controls="panel-rate" aria-selected="true" tabindex="0">
-                  Rate today
-                </button>
-                <button role="tab" id="tab-inc" aria-controls="panel-inc" aria-selected="false" tabindex="-1">
-                  Proposed increase
-                </button>
+              <div class="switch-row">
+                <p class="switch-label" id="view-utah">View</p>
+                <div class="chart-tabs" role="tablist" aria-labelledby="view-utah">
+                  <button role="tab" id="tab-rate" aria-controls="panel-rate" aria-selected="true" tabindex="0">
+                    Rate today
+                  </button>
+                  <button role="tab" id="tab-inc" aria-controls="panel-inc" aria-selected="false" tabindex="-1">
+                    Proposed increase
+                  </button>
+                </div>
               </div>
               <div role="tabpanel" id="panel-rate" aria-labelledby="tab-rate">${rateChartHtml(c)}</div>
               <div role="tabpanel" id="panel-inc" aria-labelledby="tab-inc" hidden>${increaseChartHtml(c)}</div>
@@ -729,20 +838,23 @@
             </div>
 
             ${sl ? `<div class="scope-panel" data-scope-panel="slc" hidden>
-              <div class="chart-tabs" role="tablist" aria-label="Comparison view">
-                <button role="tab" id="tab-sl-rate" aria-controls="panel-sl-rate" aria-selected="true" tabindex="0">
-                  Rate today
-                </button>
-                <button role="tab" id="tab-sl-inc" aria-controls="panel-sl-inc" aria-selected="false" tabindex="-1">
-                  Proposed increase
-                </button>
+              <div class="switch-row">
+                <p class="switch-label" id="view-slc">View</p>
+                <div class="chart-tabs" role="tablist" aria-labelledby="view-slc">
+                  <button role="tab" id="tab-sl-rate" aria-controls="panel-sl-rate" aria-selected="true" tabindex="0">
+                    Rate today
+                  </button>
+                  <button role="tab" id="tab-sl-inc" aria-controls="panel-sl-inc" aria-selected="false" tabindex="-1">
+                    Proposed increase
+                  </button>
+                </div>
               </div>
               <div role="tabpanel" id="panel-sl-rate" aria-labelledby="tab-sl-rate">${saltLakeChartHtml(sl)}</div>
               <div role="tabpanel" id="panel-sl-inc" aria-labelledby="tab-sl-inc" hidden>${saltLakeIncreaseChartHtml(sl)}</div>
               ${saltLakeNotes(sl)}
             </div>` : ""}
           </div>`;
-        return panel("How Eagle Mountain compares", "Its rate against Utah County and Salt Lake County cities", body, false);
+        return panel("How Eagle Mountain compares", "Its rate against Utah County and Salt Lake County cities", body, false, "p-compare");
       }
 
       /* --- Salt Lake County: current rates, Eagle Mountain dropped in as a
@@ -754,23 +866,26 @@
         const em = sl.eagle_mountain;
         const ref = { name: EM, current_rate: sl.reference.current_rate, isRef: true };
         const rows = [...sl.cities, ref].sort((a, b) => b.current_rate - a.current_rate);
-        const max = Math.max(...rows.map((r) => r.current_rate)) * 1.02;
+        const max = axisMax(rows.map((r) => r.current_rate));
+        let offCount = 0;
 
         const bars = rows
           .map((r) => {
             const isRef = r.isRef;
-            const w = Math.max((r.current_rate / max) * 100, 0.4);
+            const off = r.current_rate > max;
+            if (off) offCount++;
+            const frac = Math.min(Math.max(r.current_rate / max, 0.004), 1);
             const ext = r.external_services ? '<span class="ast" aria-hidden="true">†</span>' : "";
             const tip = isRef
               ? `${EM} — ${rate6(r.current_rate)} (Utah County, shown for comparison)`
               : `${r.name} — ${rate6(r.current_rate)}${r.external_services ? " · general city levy only; funds police/fire through separate service areas" : ""}`;
             return `
-              <div class="crow ${isRef ? "is-em is-ref" : ""}" data-tip="${CT.escapeHtml(tip)}">
+              <div class="crow ${isRef ? "is-em is-ref" : ""} ${off ? "off" : ""}" data-tip="${CT.escapeHtml(tip)}">
                 <span class="cname">${CT.escapeHtml(isRef ? EM : r.name)}${ext}</span>
                 <span class="ctrack">
-                  <span class="cbar ${isRef ? "cem" : ""}" style="width:${w}%"></span>
+                  <span class="cbar ${isRef ? "cem" : ""} ${off ? "bar-off" : ""}" style="width:${barSpan(frac)}"></span>
+                  ${valCell(frac, off, rate6(r.current_rate))}
                 </span>
-                <span class="cval">${rate6(r.current_rate)}</span>
               </div>`;
           })
           .join("");
@@ -792,7 +907,7 @@
           <p class="chart-foot">
             <span aria-hidden="true">†</span> Levies little or no general city rate; funds police and fire
             (and, for the metro townships, most services) through separate countywide service districts not
-            shown in these bars.
+            shown in these bars.${offCount ? " " + OFF_NOTE : ""}
           </p>
           ${tableView(
             ["City", "City levy"],
@@ -820,8 +935,9 @@
           [...all].sort((a, b) => b.current_rate - a.current_rate).map((x, i) => [x.name, i + 1])
         );
         const rows = [...all].sort((a, b) => resOf(b) - resOf(a));
-        const max = Math.max(...rows.map(resOf)) * 1.02;
+        const max = axisMax(rows.map(resOf));
         const proposing = sl.proposals.length;
+        let offCount = 0;
         // Rank Eagle Mountain's proposed rate against everyone's *resulting* rate
         // (each city's own increase applied), so the caption can't drift from the bars.
         const emResRank = rows.findIndex((r) => r.isRef) + 1;
@@ -831,8 +947,10 @@
             const isRef = r.isRef;
             const p = isRef ? null : proposalFor(sl, r.name);
             const res = resOf(r);
-            const wNow = Math.max((r.current_rate / max) * 100, 0.4);
-            const wRes = (res / max) * 100;
+            const off = res > max;
+            if (off) offCount++;
+            const fNow = Math.min(Math.max(r.current_rate / max, 0.004), 1);
+            const fRes = Math.min(res / max, 1);
             const hasInc = isRef || !!p;
             const moved = nowRank.get(r.name) - (i + 1);
 
@@ -846,22 +964,19 @@
                 : `${r.name} — no increase noticed; holds at ${rate6(r.current_rate)}`;
 
             return `
-              <div class="crow ${isRef ? "is-em is-ref" : ""} ${hasInc ? "" : "no-prop"}" data-tip="${CT.escapeHtml(tip)}">
+              <div class="crow ${isRef ? "is-em is-ref" : ""} ${hasInc ? "" : "no-prop"} ${off ? "off" : ""}" data-tip="${CT.escapeHtml(tip)}">
                 <span class="cname">${CT.escapeHtml(isRef ? EM : r.name)}${ext}${levy}</span>
                 <span class="ctrack">
-                  ${hasInc ? `<span class="cbar cprop ${isRef ? "cem" : ""}" style="width:${wRes}%"></span>` : ""}
-                  <span class="cbar ${isRef ? "cem" : ""}" style="width:${wNow}%"></span>
-                </span>
-                <span class="cval">
-                  ${rate6(res)}
-                  ${moved > 0 ? `<span class="cmove up" aria-hidden="true">▲${moved}</span><span class="sr-only"> up ${moved} places</span>` : ""}
+                  ${hasInc ? `<span class="cbar cprop ${isRef ? "cem" : ""} ${off ? "bar-off" : ""}" style="width:${barSpan(fRes)}"></span>` : ""}
+                  <span class="cbar ${isRef ? "cem" : ""} ${off && !hasInc ? "bar-off" : ""}" style="width:${barSpan(fNow)}"></span>
+                  ${valCell(fRes, off, `${rate6(res)}${moved > 0 ? `<span class="cmove up" aria-hidden="true">▲${moved}</span><span class="sr-only"> up ${moved} places</span>` : ""}`)}
                 </span>
               </div>`;
           })
           .join("");
 
         return `
-        <figure class="chart">
+        <figure class="chart chart--wide-val">
           <figcaption>
             <h3>Where the ${sl.proposal_year} proposals would leave each city — Salt Lake County</h3>
             <p>Same cities, same rate axis — re-sorted by the rate each would end up at.
@@ -880,7 +995,7 @@
             separate countywide service districts not shown here.
             <span aria-hidden="true">‡</span> Raises a dedicated levy (public safety), not the general city rate.
             Only Eagle Mountain has published a proposed rate — the Salt Lake figures are derived from each
-            city's own noticed dollar impact.
+            city's own noticed dollar impact.${offCount ? " " + OFF_NOTE : ""}
           </p>
           ${tableView(
             ["City", "Rate today", "Rate if it passes", "Increase", "Purpose"],
@@ -916,23 +1031,53 @@
       const cityOrder = (c) => [...c.cities].sort((a, b) => b.current_rate - a.current_rate);
       const proposalFor = (c, name) => c.proposals.find((p) => p.city === name) || null;
 
+      /* --- shared bar geometry ---------------------------------------------
+         A couple of cities (e.g. Vineyard) levy ~2x everyone else, and left to
+         their own devices they stretch the axis so the other two dozen — the
+         middle of the pack, where Eagle Mountain lives — collapse into unreadable
+         stubs. So the axis maxes out at the top of the *main cluster*, not the
+         literal max: anything past the Tukey upper fence (Q3 + 1.5·IQR) is drawn
+         to the edge and flagged as running off the top of the scale. When the
+         data has no such outlier the fence catches nothing and this is just
+         max·1.02, exactly as before. Recomputed per chart so the weekly ingest
+         can move the cutoff on its own. */
+      function axisMax(values) {
+        const v = [...values].sort((a, b) => a - b);
+        const q = (p) => {
+          const i = (v.length - 1) * p, lo = Math.floor(i), hi = Math.ceil(i);
+          return v[lo] + (v[hi] - v[lo]) * (i - lo);
+        };
+        const fence = q(0.75) + 1.5 * (q(0.75) - q(0.25));
+        const inRange = v.filter((x) => x <= fence);
+        return (inRange.length ? inRange[inRange.length - 1] : v[v.length - 1]) * 1.02;
+      }
+      // Each bar is drawn to a fraction of (track width − label gutter), so the
+      // value can ride just past the bar's end without ever overflowing the row.
+      const barSpan = (frac) => `calc(${frac.toFixed(4)} * (100% - var(--track-gutter)))`;
+      const valCell = (frac, off, inner) =>
+        `<span class="cval" style="left:${barSpan(frac)}">${inner}${off ? '<span class="offmark" aria-hidden="true"> ↑</span>' : ""}</span>`;
+      const OFF_NOTE = `<span aria-hidden="true">↑</span> Rate runs past the top of the scale; the exact figure is still shown.`;
+
       /* --- chart 1: current rate only, no proposal --- */
       function rateChartHtml(c) {
         const rows = cityOrder(c);
-        const max = Math.max(...rows.map((r) => r.current_rate)) * 1.02;
+        const max = axisMax(rows.map((r) => r.current_rate));
+        let offCount = 0;
 
         const bars = rows
           .map((r) => {
             const isEM = r.name === EM;
-            const w = (r.current_rate / max) * 100;
+            const off = r.current_rate > max;
+            if (off) offCount++;
+            const frac = Math.min(r.current_rate / max, 1);
             const tip = `${r.name} — ${rate6(r.current_rate)}${r.mostly_other_county ? " (mostly Salt Lake Co.)" : ""}`;
             return `
-              <div class="crow ${isEM ? "is-em" : ""}" data-tip="${CT.escapeHtml(tip)}">
+              <div class="crow ${isEM ? "is-em" : ""} ${off ? "off" : ""}" data-tip="${CT.escapeHtml(tip)}">
                 <span class="cname">${CT.escapeHtml(r.name)}${r.mostly_other_county ? '<span class="ast" aria-hidden="true">*</span>' : ""}</span>
                 <span class="ctrack">
-                  <span class="cbar ${isEM ? "cem" : ""}" style="width:${w}%"></span>
+                  <span class="cbar ${isEM ? "cem" : ""} ${off ? "bar-off" : ""}" style="width:${barSpan(frac)}"></span>
+                  ${valCell(frac, off, rate6(r.current_rate))}
                 </span>
-                <span class="cval">${rate6(r.current_rate)}</span>
               </div>`;
           })
           .join("");
@@ -948,7 +1093,7 @@
             <span class="lg"><i class="sw sw-em"></i>Eagle Mountain</span>
           </div>
           <div class="chart-body">${bars}</div>
-          <p class="chart-foot"><span aria-hidden="true">*</span> Levies in Utah County but lies mostly in Salt Lake County.</p>
+          <p class="chart-foot"><span aria-hidden="true">*</span> Levies in Utah County but lies mostly in Salt Lake County.${offCount ? " " + OFF_NOTE : ""}</p>
           ${tableView(["City", "Current rate"], rows.map((r) => [r.name, rate6(r.current_rate)]))}
         </figure>`;
       }
@@ -966,16 +1111,19 @@
       function increaseChartHtml(c) {
         const nowRank = new Map(cityOrder(c).map((x, i) => [x.name, i + 1]));
         const rows = [...c.cities].sort((a, b) => resultingRate(c, b) - resultingRate(c, a));
-        const max = Math.max(...rows.map((r) => resultingRate(c, r))) * 1.02;
+        const max = axisMax(rows.map((r) => resultingRate(c, r)));
         const proposing = c.proposals.length;
+        let offCount = 0;
 
         const bars = rows
           .map((city, i) => {
             const p = proposalFor(c, city.name);
             const isEM = city.name === EM;
             const res = resultingRate(c, city);
-            const wNow = (city.current_rate / max) * 100;
-            const wRes = (res / max) * 100;
+            const off = res > max;
+            if (off) offCount++;
+            const fNow = Math.min(city.current_rate / max, 1);
+            const fRes = Math.min(res / max, 1);
             const moved = nowRank.get(city.name) - (i + 1);
 
             const mark = p && p.rate_source === "approximate" ? '<span class="ast" aria-hidden="true">‡</span>' : "";
@@ -986,22 +1134,19 @@
               : `${city.name} — no increase proposed; holds at ${rate6(city.current_rate)}`;
 
             return `
-              <div class="crow ${isEM ? "is-em" : ""} ${p ? "" : "no-prop"}" data-tip="${CT.escapeHtml(tip)}">
+              <div class="crow ${isEM ? "is-em" : ""} ${p ? "" : "no-prop"} ${off ? "off" : ""}" data-tip="${CT.escapeHtml(tip)}">
                 <span class="cname">${CT.escapeHtml(city.name)}${levy}${mark}</span>
                 <span class="ctrack">
-                  ${p ? `<span class="cbar cprop ${isEM ? "cem" : ""}" style="width:${wRes}%"></span>` : ""}
-                  <span class="cbar ${isEM ? "cem" : ""}" style="width:${wNow}%"></span>
-                </span>
-                <span class="cval">
-                  ${rate6(res)}
-                  ${moved > 0 ? `<span class="cmove up" aria-hidden="true">▲${moved}</span><span class="sr-only"> up ${moved} places</span>` : ""}
+                  ${p ? `<span class="cbar cprop ${isEM ? "cem" : ""} ${off ? "bar-off" : ""}" style="width:${barSpan(fRes)}"></span>` : ""}
+                  <span class="cbar ${isEM ? "cem" : ""} ${off && !p ? "bar-off" : ""}" style="width:${barSpan(fNow)}"></span>
+                  ${valCell(fRes, off, `${rate6(res)}${moved > 0 ? `<span class="cmove up" aria-hidden="true">▲${moved}</span><span class="sr-only"> up ${moved} places</span>` : ""}`)}
                 </span>
               </div>`;
           })
           .join("");
 
         return `
-        <figure class="chart">
+        <figure class="chart chart--wide-val">
           <figcaption>
             <h3>Where the ${c.proposal_year} proposals would leave each city</h3>
             <p>Same cities, same rate axis — re-sorted by the rate each would end up at.
@@ -1019,7 +1164,7 @@
             <span aria-hidden="true">†</span> Raises a dedicated levy (library; public safety), not the general city rate.
             <span aria-hidden="true">‡</span> Rests on a rounded dollar figure; approximate.
             Only Eagle Mountain has published a proposed rate — the rest are derived from each city's
-            own noticed dollar impact.
+            own noticed dollar impact.${offCount ? " " + OFF_NOTE : ""}
           </p>
           ${tableView(
             ["City", "Rate today", "Rate if it passes", "Increase", "Purpose"],
@@ -1176,7 +1321,7 @@
             your total tax bill. Cities with the same rate take adjacent ranks. Source:
             <a href="${src.url}" rel="nofollow noopener">${CT.escapeHtml(src.title)}</a>, ${CT.escapeHtml(src.publisher)}.
           </p>`;
-        return panel("Where Eagle Mountain ranks statewide", `Its current rate — and its proposal — against all ${N} Utah cities`, body, false);
+        return panel("Where Eagle Mountain ranks statewide", `Its current rate — and its proposal — against all ${N} Utah cities`, body, false, "p-statewide");
       }
 
       // The scope switch swaps the whole comparison between Utah County (both
@@ -1345,7 +1490,7 @@
               </section>`;
           })
           .join("");
-        return panel("Every meeting it moved through", "Two hearings still ahead, then the full record and what led up to it", groups, false);
+        return panel("Every meeting it moved through", "Two hearings still ahead, then the full record and what led up to it", groups, false, "p-record");
       }
 
       function meetingCard(m) {

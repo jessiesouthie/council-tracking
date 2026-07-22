@@ -3384,8 +3384,102 @@ html.has-modal { overflow: hidden; }
   min-width: 62px;
 }
 
+/* ---------- takeaway: the bridge from the tool to the detail ----------
+   Three sourced facts in plain language between the estimator and the panels,
+   so a reader who stops at the number still leaves with the point. Framed in
+   the highlight (the proposed-increase colour used across the page) because
+   that is exactly what these facts are about. */
+.takeaway { margin: 0 0 44px; }
+.takeaway-title {
+  font-family: var(--serif);
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-align: center;
+  margin: 0 0 20px;
+  color: var(--fg);
+}
+.takeaway-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.takeaway-list.two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 480px; margin-inline: auto; }
+.takeaway .tk {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 17px 18px 19px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--highlight);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.takeaway .tk-kicker {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--fg-muted);
+}
+.takeaway .tk-fig {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--highlight-ink);
+  font-variant-numeric: tabular-nums;
+}
+/* The rank shift is a phrase, not one figure — step it down so it fits without wrapping mid-word. */
+.takeaway .tk-fig.shift { font-size: 19px; letter-spacing: -0.01em; line-height: 1.15; }
+.takeaway .tk-fig.word  { font-size: 22px; letter-spacing: -0.01em; }
+.takeaway .tk-fig .to { color: var(--fg-muted); font-weight: 600; margin: 0 3px; }
+.takeaway .tk-txt {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--fg-muted);
+}
+.takeaway-link { text-align: center; margin: 18px 0 0; }
+.takeaway-link a {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ---------- section wayfinding (chips under "the fuller picture") ---------- */
+.picture-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 560px;
+  margin: 0 auto 26px;
+}
+.pnav-link {
+  display: inline-block;
+  padding: 7px 15px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-elev);
+  color: var(--fg-soft);
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow-hair);
+  transition: border-color 140ms ease, color 140ms ease, background 140ms ease;
+}
+.pnav-link:hover { border-color: var(--accent); color: var(--fg); background: var(--bg-muted); text-decoration: none; }
+.pnav-link:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
 /* ---------- "the fuller picture" — disclosure panels ---------- */
 .learn { margin-top: 8px; }
+/* A chip or a shared #panel link scrolls the panel to the top — keep it clear of the sticky topbar. */
+details.panel { scroll-margin-top: calc(var(--topbar-h, 62px) + 12px); }
 .learn-title {
   font-family: var(--serif);
   font-size: 25px;
@@ -3652,6 +3746,11 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   .tax-hero { margin-bottom: 28px; }
   .tax-next { margin-top: 20px; }
 
+  /* Cards stack; the shift figure has room again, so let it grow back. */
+  .takeaway-list, .takeaway-list.two { grid-template-columns: minmax(0, 1fr); max-width: none; }
+  .takeaway .tk { padding: 15px 16px 17px; }
+  .takeaway .tk-fig.shift { font-size: 22px; }
+
   .tax-tool .tool-out { padding: 18px 16px; gap: 15px; }
   .tax-tool .bignum { font-size: 40px; margin-top: 8px; }
   .tax-tool .permonth { font-size: 12px; }
@@ -3726,7 +3825,7 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
 
 .crow {
   display: grid;
-  grid-template-columns: 104px minmax(0, 1fr) 92px;
+  grid-template-columns: 104px minmax(0, 1fr);
   align-items: center;
   gap: 8px;
   padding: 2px 4px;
@@ -3740,7 +3839,12 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
 .crow.is-em .cname { color: var(--fg); font-weight: 700; }
 .cname .ast { color: var(--fg-muted); margin-left: 1px; }
 
-.ctrack { position: relative; height: 14px; display: block; }
+/* The track reserves a gutter at its right edge so a value label can sit just
+   past the end of even the longest bar without spilling out of the row. Bars
+   are drawn to a fraction of (100% − gutter) — see barSpan() in tax.html — so
+   every label rides at its own bar's end instead of floating in a far column. */
+.ctrack { position: relative; height: 14px; display: block; --track-gutter: 68px; }
+.chart--wide-val .ctrack { --track-gutter: 100px; }   /* room for the "▲n" rank badge */
 .cbar {
   position: absolute;
   left: 0; top: 0; bottom: 0;
@@ -3749,6 +3853,17 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   min-width: 2px;
 }
 .cbar.cem { background: var(--c-em); }
+
+/* Off the top of the scale: a couple of high-levy cities are clamped to the
+   axis max so the rest stay legible. The clamped bar loses its rounded cap and
+   fades out at the right edge to read as "continues past here". */
+.cbar.bar-off {
+  border-radius: 0;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 12px), transparent);
+          mask-image: linear-gradient(90deg, #000 calc(100% - 12px), transparent);
+}
+.offmark { font-weight: 700; color: var(--fg-muted); }
+.crow.is-em .offmark { color: var(--c-em); }
 
 /* The proposed-increase segment. Drawn full-width to the resulting rate and
    sat behind the solid "today" bar, so the exposed tail is the increase.
@@ -3765,10 +3880,15 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
 .crow:hover .cbar:not(.cprop), .crow:focus-visible .cbar:not(.cprop) { box-shadow: 2px 0 0 var(--bg-elev); }
 
 .cval {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-left: 8px;
   font-size: 12px;
-  text-align: right;
+  white-space: nowrap;
   color: var(--fg-muted);
   font-variant-numeric: tabular-nums;
+  line-height: 1;
 }
 .crow.is-em .cval { color: var(--fg); font-weight: 700; }
 
@@ -3817,7 +3937,6 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   display: inline-flex;
   gap: 2px;
   padding: 3px;
-  margin-bottom: 16px;
   background: var(--bg-muted);
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -3846,8 +3965,13 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
 [role="tabpanel"][hidden] { display: none; }
 
 @media (max-width: 620px) {
-  .crow { grid-template-columns: 84px minmax(0, 1fr) 80px; gap: 7px; }
+  .crow { grid-template-columns: 84px minmax(0, 1fr); gap: 7px; }
   .cname { font-size: 11px; }
+  /* Tighter label gutter on narrow tracks; the value still rides at the bar end. */
+  .ctrack { --track-gutter: 60px; }
+  .chart--wide-val .ctrack { --track-gutter: 88px; }
+  /* Label stacks above its switch, which goes full-width. */
+  .switch-row, .scope-panel > .switch-row { grid-template-columns: 1fr; gap: 5px; margin-bottom: 12px; }
   /* Full-width segmented controls with a 44px min touch target (Apple HIG). */
   .chart-tabs, .scope-switch { display: flex; width: 100%; }
   .chart-tabs [role="tab"], .scope-switch [role="radio"] {
@@ -3874,11 +3998,21 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
 }
 .crow.is-em .cmove { color: var(--highlight-ink); }
 
-/* ---------- county scope switch (Utah County / Salt Lake County) ---------- */
-/* A visible label so the outer switch (which peer group) reads apart from the
-   inner tabs (which measure). */
-.scope-hint {
-  margin: 0 0 6px;
+/* ---------- toggle rows (scope + view) ----------
+   The two switches — which peer group, and which measure — read as a labeled
+   pair: a fixed label column on the left, both pill switches starting at the
+   same x below it. */
+.switch-row {
+  display: grid;
+  grid-template-columns: 132px minmax(0, max-content);
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+/* A little more breathing room under the "View" row that sits above a chart. */
+.scope-panel > .switch-row { margin-bottom: 16px; }
+.switch-label {
+  margin: 0;
   font-family: var(--sans);
   font-size: 11px; font-weight: 700;
   text-transform: uppercase; letter-spacing: .08em;
@@ -3888,7 +4022,6 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   display: inline-flex;
   gap: 2px;
   padding: 3px;
-  margin-bottom: 16px;
   background: var(--bg-muted);
   border: 1px solid var(--border);
   border-radius: 999px;
