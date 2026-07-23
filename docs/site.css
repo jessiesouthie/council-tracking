@@ -4128,6 +4128,23 @@ table.data.statewide tr.is-em-row td {
   border-radius: 999px;
   vertical-align: 1px;
 }
+/* A quieter marker for the other cities whose noticed 2026 increase is applied
+   in the "With 2026 proposals" ranking — an outline pill so it reads as a
+   footnote next to the name, never competing with Eagle Mountain's solid tag. */
+.prop-pill {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  padding: 0 5px;
+  border-radius: 999px;
+  vertical-align: 1px;
+}
 
 /* =========================================================================
    Budget spending page — two Sankey diagrams of the adopted budget.

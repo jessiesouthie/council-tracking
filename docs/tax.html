@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260723a" />
+    <link rel="stylesheet" href="site.css?v=20260723b" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -134,7 +134,7 @@
               ${pictureNavHtml(county)}
               ${schedulePanel(tax)}
               ${county ? countyPanel(county) : ""}
-              ${county && county.statewide ? statewidePanel(county.statewide, county.rate_source) : ""}
+              ${county && county.statewide ? statewidePanel(county) : ""}
               ${sourcePanel(tax)}
               ${recordPanel(tax)}
             </section>
@@ -1292,7 +1292,7 @@
       // pill, footnote asterisks, and screen-reader-only spans.
       function cellCsvText(el) {
         const c = el.cloneNode(true);
-        c.querySelectorAll(".sarrow, .cmove, .you-pill, .sr-only, .offmark, .ast").forEach((n) => n.remove());
+        c.querySelectorAll(".sarrow, .cmove, .you-pill, .prop-pill, .sr-only, .offmark, .ast").forEach((n) => n.remove());
         return c.textContent.replace(/\s+/g, " ").trim();
       }
 
@@ -1346,22 +1346,35 @@
          city-only measure as the county charts. A single sortable table rather
          than a chart: 253 bars would be a wall, but the reader can sort by rank,
          name, or rate and find any city, with Eagle Mountain's row lit up. */
-      function statewidePanel(sw, src) {
+      function statewidePanel(county) {
+        const sw = county.statewide;
+        const src = county.rate_source;
         const em = sw.eagle_mountain;
         const N = sw.total_cities;
+
+        // Every noticed 2026 proposal this site tracks — Utah County and Salt
+        // Lake County both — keyed by city name to its resulting rate, the same
+        // figure the county charts draw. Eagle Mountain is pinned to the
+        // statewide dataset's own proposed_rate so the two never drift apart.
+        const proposedRate = new Map();
+        [...(county.proposals || []), ...((county.salt_lake && county.salt_lake.proposals) || [])]
+          .forEach((p) => { if (p.resulting_rate != null) proposedRate.set(p.city, p.resulting_rate); });
+        proposedRate.set(EM, em.proposed_rate);
+        const othersCount = proposedRate.size - 1; // proposing cities besides Eagle Mountain
 
         // Rank high → low: rank 1 is the highest city levy in the state.
         // Current-rate ranking — all cities as they are billed today, highest first.
         const current = [...sw.cities]
           .sort((a, b) => b.rate - a.rate)
           .map((r, i) => ({ name: r.name, rate: r.rate, rank: i + 1 }));
+        const curRank = new Map(current.map((r) => [r.name, r.rank]));
 
-        // Proposed ranking — swap in Eagle Mountain's proposed rate and re-rank,
-        // still highest first. Every other city keeps today's rate: Utah's 2026
-        // rates aren't certified until after the August hearings, so only the
-        // proposal this site tracks can be placed against the statewide field.
+        // Proposed ranking — swap in every tracked proposal's resulting rate and
+        // re-rank, still highest first. Cities with no noticed 2026 proposal keep
+        // today's rate: Utah's other 2026 rates aren't certified until after the
+        // August hearings, so only the proposals this site tracks are placed.
         const proposed = sw.cities
-          .map((r) => ({ name: r.name, rate: r.name === EM ? em.proposed_rate : r.rate }))
+          .map((r) => ({ name: r.name, rate: proposedRate.has(r.name) ? proposedRate.get(r.name) : r.rate }))
           .sort((a, b) => b.rate - a.rate)
           .map((r, i) => ({ name: r.name, rate: r.rate, rank: i + 1 }));
 
@@ -1374,15 +1387,21 @@
           list
             .map((r) => {
               const isEM = r.name === EM;
-              const moved =
-                view === "proposed" && isEM
-                  ? ` <span class="cmove up" title="up ${climbed} places">▲${climbed}</span>`
+              const hasProp = view === "proposed" && proposedRate.has(r.name);
+              const moved = hasProp ? curRank.get(r.name) - r.rank : 0; // places climbed
+              const movedHtml =
+                moved > 0
+                  ? ` <span class="cmove up" title="up ${moved} places">▲${moved}</span>`
                   : "";
-              const tag = isEM ? ` <span class="you-pill">${view === "proposed" ? "proposed" : "today"}</span>` : "";
+              const tag = isEM
+                ? ` <span class="you-pill">${view === "proposed" ? "proposed" : "today"}</span>`
+                : hasProp
+                  ? ` <span class="prop-pill" title="Noticed 2026 increase applied">proposed</span>`
+                  : "";
               return `<tr${isEM ? ' class="is-em-row"' : ""} data-rank="${r.rank}" data-rate="${r.rate}" data-name="${CT.escapeHtml(r.name)}">
                 <td class="num">${r.rank}</td>
                 <td>${CT.escapeHtml(r.name)}${tag}</td>
-                <td class="num">${rate6(r.rate)}${moved}</td>
+                <td class="num">${rate6(r.rate)}${movedHtml}</td>
               </tr>`;
             })
             .join("");
@@ -1405,21 +1424,24 @@
             county charts — from the state's ${sw.rate_year} rate report, <strong>highest rate first</strong>.
             Eagle Mountain's current <strong>${rate6(em.current_rate)}</strong> ranks
             <strong>${ordinal(emCur)}-highest</strong> of ${N} — the ${ordinal(emCurLow)}-lowest. Switch to
-            <em>With Eagle Mountain's proposal</em> and it climbs ${climbed} places to
+            <em>With 2026 proposals</em> — Eagle Mountain's and the ${othersCount} other noticed increases this
+            site tracks, all applied at once — and Eagle Mountain climbs ${climbed} places to
             <strong>${ordinal(emProp)}-highest</strong>. Sort any column; Eagle Mountain stays lit.
           </p>
 
           <div class="scope-switch stateview-switch" role="radiogroup" aria-label="Which rate to rank by">
             <button type="button" role="radio" id="sv-current" data-view="current" aria-checked="true" tabindex="0">Rate today</button>
-            <button type="button" role="radio" id="sv-proposed" data-view="proposed" aria-checked="false" tabindex="-1">With Eagle Mountain's proposal</button>
+            <button type="button" role="radio" id="sv-proposed" data-view="proposed" aria-checked="false" tabindex="-1">With 2026 proposals</button>
           </div>
 
           <div class="stateview" data-view-panel="current">${tableHtml("statewide-current", current, "current")}</div>
           <div class="stateview" data-view-panel="proposed" hidden>
             ${tableHtml("statewide-proposed", proposed, "proposed")}
             <p class="chart-foot">
-              Only Eagle Mountain's proposed rate is placed here. Every other city is shown at today's rate —
-              Utah's 2026 city rates aren't certified until after the August truth-in-taxation hearings.
+              Every noticed 2026 increase this site tracks — Eagle Mountain's and ${othersCount} others across Utah
+              and Salt Lake counties, each marked <span class="prop-pill">proposed</span> — is applied here at its
+              resulting rate. Every other city is shown at today's rate: Utah's remaining 2026 city rates aren't
+              certified until after the August truth-in-taxation hearings.
             </p>
           </div>
 
