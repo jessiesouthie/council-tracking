@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260721f" />
+    <link rel="stylesheet" href="site.css?v=20260723a" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -145,6 +145,7 @@
         wireEstimator({ CURRENT, PROPOSED, RATIO, tax });
         wireStickyResult();
         wirePictureNav();
+        wireTableExports();
         if (county) {
           wireCountySwitch();
           wireChartTabs();
@@ -1232,6 +1233,112 @@
             </table>
           </div>
         </details>`;
+      }
+
+      /* ---------------- table export ----------------
+         Every data table on the page — the official schedule, each chart's
+         "View as table" fallback, and the statewide rankings — gets a small
+         toolbar beneath it to take the numbers away as CSV or onto the
+         clipboard. The rendered DOM is the single source, so whatever rows and
+         sort order the reader is looking at is exactly what exports. Wired once,
+         after render, so it covers tables added by any panel without each panel
+         having to opt in. */
+      function wireTableExports() {
+        document.querySelectorAll("table.data").forEach((table, i) => {
+          const anchor = table.closest(".tablewrap") || table;
+          const after = anchor.nextElementSibling;
+          if (after && after.classList.contains("table-export")) return; // idempotent
+
+          const name = exportName(table, i);
+          const bar = document.createElement("div");
+          bar.className = "table-export";
+          bar.innerHTML = `
+            <span class="tx-exp-label">Export</span>
+            <button type="button" class="tx-exp-btn" data-act="csv">Download CSV</button>
+            <button type="button" class="tx-exp-btn" data-act="copy">Copy</button>
+            <span class="tx-exp-note" role="status" aria-live="polite"></span>`;
+          anchor.after(bar);
+
+          const note = bar.querySelector(".tx-exp-note");
+          let noteTimer = 0;
+          const flash = (msg) => {
+            note.textContent = msg;
+            clearTimeout(noteTimer);
+            noteTimer = setTimeout(() => { note.textContent = ""; }, 2500);
+          };
+
+          bar.querySelector('[data-act="csv"]').addEventListener("click", () => {
+            downloadCsv(tableToCsv(table), name + ".csv");
+            flash("Downloaded");
+          });
+          bar.querySelector('[data-act="copy"]').addEventListener("click", async () => {
+            flash((await copyText(tableToCsv(table))) ? "Copied" : "Copy failed");
+          });
+        });
+      }
+
+      // A stable, human-readable filename for the exported table: its own
+      // caption or heading, falling back to the panel it lives in.
+      function exportName(table, i) {
+        const h3 = table.closest("figure")?.querySelector("figcaption h3");
+        const summ = table.closest("details.panel")?.querySelector("summary .panel-tt b");
+        const raw = (h3 && h3.textContent) || table.id || (summ && summ.textContent) || `table-${i + 1}`;
+        const slug = raw.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
+        return "eagle-mountain-" + (slug || "table");
+      }
+
+      // A cell's exported text is its visible text minus the decorations that
+      // aren't data: sort arrows, rank-move chevrons, the "today/proposed"
+      // pill, footnote asterisks, and screen-reader-only spans.
+      function cellCsvText(el) {
+        const c = el.cloneNode(true);
+        c.querySelectorAll(".sarrow, .cmove, .you-pill, .sr-only, .offmark, .ast").forEach((n) => n.remove());
+        return c.textContent.replace(/\s+/g, " ").trim();
+      }
+
+      const csvField = (s) => (/[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s);
+
+      function tableToCsv(table) {
+        const line = (tr) => [...tr.querySelectorAll("th,td")].map((c) => csvField(cellCsvText(c))).join(",");
+        const lines = [];
+        table.querySelectorAll("thead tr").forEach((tr) => lines.push(line(tr)));
+        table.querySelectorAll("tbody tr").forEach((tr) => lines.push(line(tr)));
+        return lines.join("\r\n");
+      }
+
+      function downloadCsv(csv, filename) {
+        // A BOM so Excel reads it as UTF-8 (the †/‡ footnote marks survive).
+        const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
+
+      async function copyText(text) {
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return true;
+          }
+        } catch (e) { /* fall through to the legacy path */ }
+        try {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          const ok = document.execCommand("copy");
+          ta.remove();
+          return ok;
+        } catch (e) {
+          return false;
+        }
       }
 
       /* ---------------- statewide ranking ----------------
