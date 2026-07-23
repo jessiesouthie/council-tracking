@@ -3760,25 +3760,60 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   .tax-tool .input-pair { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .tax-tool .tool-foot { grid-template-columns: minmax(0, 1fr); gap: 7px; padding: 14px 16px; }
 
+  /* Section chips: a touch more height so they clear a comfortable tap target. */
+  .picture-nav { gap: 7px; }
+  .pnav-link { padding: 8px 14px; }
+
+  /* Custom-rate stepper: bump the −/+ keys to a 40px touch square. */
+  .tax-tool .cstep { width: 40px; min-height: 40px; }
+
   .learn-title { font-size: 22px; }
   .panel > summary { padding: 15px 16px; gap: 12px; }
   .panel-tt b { font-size: 16.5px; }
   .panel-body { padding: 2px 16px 18px; }
+
+  /* Data tables (the official schedule, the statewide ranking, each chart's
+     table view) carry three columns with wordy row labels — tighten the cell
+     inset and step the type down so they fit a 360px screen before the wrap
+     forces a sideways scroll. Scoped to the tax page so other pages' tables
+     (which fold into cards at this width) are untouched. */
+  .tax-page table.data { font-size: 13px; }
+  .tax-page table.data th, .tax-page table.data td { padding: 8px 10px; }
+  table.data.schedule .rise { margin-left: 6px; }
 
   .rail-line { padding-left: 22px; }
   .rail-node { left: -22px; }
 }
 
 /* The banner stacks on narrow screens but keeps pinning — on a phone that is
-   the whole point. */
+   the whole point. Once stacked it becomes the tallest thing on screen while
+   pinned, so the vertical rhythm is pulled in tight: enough to read the number,
+   the change, and the two bars without the banner swallowing the fold. */
 @media (max-width: 700px) {
-  .tax-tool .tool-out { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .tax-tool .tool-out { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .tax-tool .out-compare {
     border-left: 0;
     border-top: 1px solid var(--res-rule);
     padding-left: 0;
-    padding-top: 16px;
+    padding-top: 13px;
   }
+  .tax-tool .permonth { margin-top: 5px; }
+  .tax-tool .bars { margin-top: 12px; gap: 8px; }
+}
+
+/* Smallest phones (≤400px): shave the banner further so the controls below it
+   still peek above the fold when it pins, and give the ink panel a touch less
+   inset so the number keeps its air. Nothing here changes the banner's height
+   *on pin* — only its resting size — so the pin observer never re-fires. */
+@media (max-width: 400px) {
+  .tax-tool .tool-out { padding: 15px 14px; gap: 12px; }
+  .tax-tool .bignum { font-size: 37px; }
+  .tax-tool .rlabel { font-size: 10.5px; letter-spacing: .07em; }
+  .tax-tool .delta { padding: 5px 11px 5px 9px; font-size: 13px; }
+  .tax-tool .bar { grid-template-columns: 54px minmax(0, 1fr) auto; gap: 8px; }
+  .tax-tool .bar .bv { min-width: 56px; }
+  .tax-tool .tool-inputs { padding: 18px 14px; gap: 18px; }
+  .tax-tool .tool-foot { padding: 13px 14px; }
 }
 
 /* =========================================================================
@@ -4004,6 +4039,10 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
 [role="tabpanel"][hidden] { display: none; }
 
 @media (max-width: 620px) {
+  /* Reclaim the chart's side inset for the bars themselves — on a phone the
+     limiting dimension is bar length, not padding. */
+  .chart { padding: 16px 14px 12px; }
+  .chart figcaption h3 { font-size: 17.5px; }
   .crow { grid-template-columns: 84px minmax(0, 1fr); gap: 7px; }
   .cname { font-size: 11px; }
   /* Tighter label gutter on narrow tracks; the value still rides at the bar end. */
@@ -4018,6 +4057,18 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
     min-height: 44px;
     padding: 8px 10px;
   }
+}
+
+/* Smallest phones: pull the city-name column in and trim the row gap so the
+   bar keeps a legible length at 320–360px. */
+@media (max-width: 400px) {
+  .chart { padding: 15px 12px 11px; }
+  .crow { grid-template-columns: 72px minmax(0, 1fr); gap: 6px; padding: 2px 2px; }
+  .cname { font-size: 10.5px; }
+  .ctrack { --track-gutter: 56px; }
+  .chart--wide-val .ctrack { --track-gutter: 82px; }
+  .cval { font-size: 11px; padding-left: 6px; }
+  .legend { gap: 10px 14px; }
 }
 
 /* Cities holding steady recede via a lighter bar — not faded labels. The name
