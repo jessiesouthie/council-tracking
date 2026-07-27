@@ -1,0 +1,626 @@
+{
+  "meeting": {
+    "id": 714,
+    "date": "2026-07-07",
+    "source_file": "2026-07-07__714.pdf",
+    "motion_count": 14,
+    "ord_count": 16,
+    "res_count": 8
+  },
+  "motions": [
+    {
+      "id": 1099,
+      "meeting_id": 714,
+      "date": "2026-07-07",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the appointment of Jessi Call as a Youth City Council Advisor through May 31, 2027",
+      "motion": "Councilmember Whiting moved to approve the appointment of Jessi Call as a Youth City Council Advisor through May 31, 2027. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "personnel"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1100,
+      "meeting_id": 714,
+      "date": "2026-07-07",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the appointment of Angeline Washburn as a Youth City Council Advisor through May 31, 20…",
+      "motion": "Councilmember Whiting moved to approve the appointment of Angeline Washburn as a Youth City Council Advisor through May 31, 2027. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "personnel"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1101,
+      "meeting_id": 714,
+      "date": "2026-07-07",
+      "page": 7,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Clark moved to approve the Consent Agenda with the following changes: 1. Remove 15.D from the Consent Agenda and place under Scheduled Items on the agenda. 2. Revise Item 15.A. by updat ing the Renewal Agreement to include : 1) The name David Stewart , and 2) Clarification of the reporting requirements to s tate which include that the Consultant shall attend either virtually or in person a minimum of two City Council or strategic planning meetings of the City per year , specifically before the regular legislative session, interim legislative session , and as requested by the body of the City Council . Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Melisssa Clark",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1102,
+      "meeting_id": 714,
+      "date": "2026-07-07",
+      "page": 8,
+      "agenda_ref": "15.D.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the Second Amendment to the Eagle Quest East Master Development Agreement.",
+      "motion": "Councilmember Wood moved to deny the approval of a Resolution of Eagle Mountain City, Utah, Approving the Second Amendment to the Eagle Quest East Master Development Agreement. Councilmember Whiting seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Melisssa Clark",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1103,
+      "meeting_id": 714,
+      "date": "2026-07-07",
+      "page": 8,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code 17.75.052 regarding Accessory Recreation Buildings",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code 17.75.052 regarding Accessory Recreation Buildings. Councilmember Whiting seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "parks",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1104,
+      "meeting_id": 714,
+      "date": "2026-07-07",
+      "page": 9,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah , Enacting Chapter 17.64 of the Eagle Mountain Municipal Code Establishing an Alternative Energy Overlay Zone",
+      "motion": "Councilmember Wright moved to table an Ordinance of Eagle Mountain City, Utah , Enacting Chapter 17.64 of the Eagle Mountain Municipal Code Establishing an Alternative Energy Overlay Zone . Councilmember Wood seconded the motion.",
+      "outcome": "failed with a 2:3 vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "No"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "No"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "No"
+        }
+      ]
+    },
+    {
+      "id": 1105,
+      "meeting_id": 714,
+      "date": "2026-07-07",
+      "page": 9,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Enacting Chapter 17.64 of the Eagle Mountain Municipal Code Establishing an Alternative Energy Overlay Zone with the adoption of changing out administrative appeals with the City Council",
+      "motion": "Councilmember Huish moved to adopt an Ordinance of Eagle Mountain City, Utah, Enacting Chapter 17.64 of the Eagle Mountain Municipal Code Establishing an Alternative Energy Overlay Zone with the adoption of changing out administrative appeals with the City Council. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a 4:1 vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "No"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1106,
+      "meeting_id": 714,
+      "date": "2026-07-07",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah , Amending the Eagle Mountain Municipal Code 17.10.030 Definitions, 17.25.030 Land Use Table, and Enacting Chapter 17.44 Senior Housing Overlay Zone and direct staff to bring the item back to a work session for further discussion",
+      "motion": "Councilmember Clark moved to table an Ordinance of Eagle Mountain City, Utah , Amending the Eagle Mountain Municipal Code 17.10.030 Definitions, 17.25.030 Land Use Table, and Enacting Chapter 17.44 Senior Housing Overlay Zone and direct staff to bring the item back to a work session for further discussion. Councilmember Whiting seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1107,
+      "meeting_id": 714,
+      "date": "2026-07-07",
+      "page": 11,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 17.10.030 (Definitions), and Section 17.80.120 (Political Signs)",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 17.10.030 (Definitions), and Section 17.80.120 (Political Signs) . Councilmember Clark seconded the motion. Councilmember Clark suggested an amendment to the motion . City Council discussed the proposed amendment, which directed staff to add a single line to the business license section addressing temporary sign use and to determine the appropriate sign size . AMENDED MOTION :Councilmember Wood amended his motion to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 17.10.030 (Definitions ), Section 17.80.120 (Political Signs ) and Section 17.80.160 (Temporary Signs ), with the amendment to remove the proposed seasonal sign language . The motion also directed staff to prepare a temporary sign provision under the business license section of the Eagle Mountain Municipal Code and return it to the City Council for approval. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1108,
+      "meeting_id": 714,
+      "date": "2026-07-07",
+      "page": 12,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, A dopting the Eagle Mountain City Annexation Policy Plan",
+      "motion": "Councilmember Whiting moved to adopt an Ordinance of Eagle Mountain City, Utah, A dopting the Eagle Mountain City Annexation Policy Plan. Councilmember Huish seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1109,
+      "meeting_id": 714,
+      "date": "2026-07-07",
+      "page": 12,
+      "agenda_ref": "17.A.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 10.10 Parking, Regarding Vehicle Parking in Residential Zones.",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah , Amending the Eagle Mountain Municipal Code Chapter 10.10 Parking, Regarding Vehicle Parking in Residential Zones with the following revisions: 1. Altering 10.10.100 (A)(7) to read “Parking on driveway and garage side, side yard on impervious material or concreate ”, and “setback from the sidewalk two feet ”, and add “other than …” Councilmember Huish seconded the motion.",
+      "outcome": "",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 1110,
+      "meeting_id": 714,
+      "date": "2026-07-07",
+      "page": 12,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 10.10 Parking, Regarding Vehicle Parking in Residential Zones with the following revisions: Eagle Mountain City CouMncinilu te –sJuly 7, 2026 Page1 2 of 15 1. Strike 10.10.100(7). 2. Add to Item 3 under (A), “trailers or other vehicles .”",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 10.10 Parking, Regarding Vehicle Parking in Residential Zones with the following revisions: Eagle Mountain City CouMncinilu te –sJuly 7, 2026 Page1 2 of 15 1. Strike 10.10.100(7). 2. Add to Item 3 under (A), “trailers or other vehicles .”",
+      "outcome": "",
+      "tags": [
+        "code"
+      ],
+      "votes": []
+    },
+    {
+      "id": 1111,
+      "meeting_id": 714,
+      "date": "2026-07-07",
+      "page": 13,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 10.10 Parking, Regarding Vehicle Parking in Residential Zones with the following revisions: 1. Strike Section 10.10.100 (A)(7). 2. Amend Section 10.10.100 (A)(3) to fully read: “Agricultural vehicle, recreational vehicle, or any trailer or other vehicle within the front yard area (excluding a paved or gravel driveway and garage side setback) of any residential zone of the City",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 10.10 Parking, Regarding Vehicle Parking in Residential Zones with the following revisions: 1. Strike Section 10.10.100 (A)(7). 2. Amend Section 10.10.100 (A)(3) to fully read: “Agricultural vehicle, recreational vehicle, or any trailer or other vehicle within the front yard area (excluding a paved or gravel driveway and garage side setback) of any residential zone of the City. Councilmember Huish seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 1112,
+      "meeting_id": 714,
+      "date": "2026-07-07",
+      "page": 14,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the Citywide Speed Management Study as presented in Item 18.A. with the addition of the…",
+      "motion": "Councilmember Whiting moved to approve the Citywide Speed Management Study as presented in Item 18.A. with the addition of the roads identified by Councilmember Wood, and to fund the study using Eagle Mountain City CouMncinilu te –sJuly 7, 2026 Page1 3 of 15 funds previously allocated for speed tables. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a 4:1 vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "No"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "16.C. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "16.A. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Wright moved to table an Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "MOTION: Councilmember Huish moved to adopt an Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 10,
+      "line_text": "16.B. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 10,
+      "line_text": "MOTION: Councilmember Clark moved to table an Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 10,
+      "line_text": "16.D. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 11,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 11,
+      "line_text": "AMENDED MOTION :Councilmember Wood amended his motion to adopt an Ordinance of"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 11,
+      "line_text": "16.E. ORDINANCE/PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 12,
+      "line_text": "MOTION: Councilmember Whiting moved to adopt an Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 12,
+      "line_text": "17.A. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Amending the Eagle"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 12,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 12,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 13,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "15.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "15.D. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving the"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 6,
+      "line_text": "15.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 6,
+      "line_text": "15.B. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving the"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 7,
+      "line_text": "15.C. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving the First"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 7,
+      "line_text": "15.D. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving the"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 7,
+      "line_text": "15.D. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving the Second"
+    },
+    {
+      "source_file": "2026-07-07__714.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Wood moved to deny the approval of a Resolution of Eagle"
+    }
+  ]
+}

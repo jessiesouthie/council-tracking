@@ -1,0 +1,242 @@
+{
+  "meeting": {
+    "id": 688,
+    "date": "2026-06-23",
+    "source_file": "2026-06-23__688.pdf",
+    "motion_count": 6,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 302,
+      "meeting_id": 688,
+      "date": "2026-06-23",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of June 9, 2026, Planning Commission meeting. Commissioner Free seconded th…",
+      "motion": "Commissioner Allen moved to approve the minutes of June 9, 2026, Planning Commission meeting. Commissioner Free seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Excused"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 303,
+      "meeting_id": 688,
+      "date": "2026-06-23",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Annexation Policy Plan. Commissioner DeCou…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.A., Annexation Policy Plan. Commissioner DeCoursey seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 304,
+      "meeting_id": 688,
+      "date": "2026-06-23",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.B., Triumph Master Development Agreement 2nd A…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.B., Triumph Master Development Agreement 2nd Amendment. Commissioner Free seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Excused"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 305,
+      "meeting_id": 688,
+      "date": "2026-06-23",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.C., EMMC 17.75.052 – Accessory Recreation Buil…",
+      "motion": "Commissioner Free moved to recommend approval to the City Council of Item 7.C., EMMC 17.75.052 – Accessory Recreation Buildings. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a 4 to 1 vote.",
+      "tags": [
+        "parks"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "No"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Excused"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 306,
+      "meeting_id": 688,
+      "date": "2026-06-23",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.D., EMMC 17.10.030, 17.80.120, 17.160 – Season…",
+      "motion": "Commissioner DeCoursey moved to recommend approval to the City Council of Item 7.D., EMMC 17.10.030, 17.80.120, 17.160 – Seasonal Political Signs with the correction of a small clerical error. Commissioner Jensen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Excused"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 307,
+      "meeting_id": 688,
+      "date": "2026-06-23",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.E., EMMC 16.20, 16.25, 17.100 – Cost Estimate.…",
+      "motion": "Commissioner Free moved to recommend approval to the City Council of Item 7.E., EMMC 16.20, 16.25, 17.100 – Cost Estimate. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Excused"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}
