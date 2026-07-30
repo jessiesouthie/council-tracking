@@ -116,8 +116,27 @@ PY
 )
 
 [ "$DATE" != "NONE" ] || die "event $EVENT_ID not found on the portal"
+
+# Newer events return mediaSourcePathMp4 as a storage-relative path
+# ("stream/EAGLEMOUNTAINUT/<guid>.mp4") rather than a playable URL; only older,
+# CDN-archived ones carry an absolute https:// link. The portal itself resolves
+# the real URL through this endpoint, so ask it whenever the path isn't absolute.
+case "$MP4" in
+  http://*|https://*) ;;
+  *)
+    say "Media path is relative — resolving the playable URL …"
+    MEDIA_JSON="$(curl -fsS "$API_BASE/EventsMedia/GetEventMediaSummary(eventId=$EVENT_ID)" -H 'Accept: application/json' || true)"
+    MP4="$(printf '%s' "$MEDIA_JSON" | python3 -c 'import json,sys
+try:
+    print(json.load(sys.stdin).get("videoUrl") or "NONE")
+except Exception:
+    print("NONE")')"
+    ;;
+esac
+
 if [ -z "$AUDIO" ]; then
-  [ "$MP4" != "NONE" ] || die "event $EVENT_ID has no recording yet (mediaSourcePathMp4 empty); supply one with --audio <path>"
+  [ "$MP4" != "NONE" ] && [ -n "$MP4" ] \
+    || die "event $EVENT_ID has no playable recording yet; supply one with --audio <path>"
 fi
 
 STEM="${DATE}__${EVENT_ID}"
