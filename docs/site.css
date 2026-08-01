@@ -3916,6 +3916,9 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
 .chart {
   --c-base: var(--t-sage);
   --c-em:   var(--t-rust);
+  /* The median rule is a gridline, not a series: the page's own ink, held back
+     far enough to sit under the data and still clear the sage bars it crosses. */
+  --c-med:  color-mix(in oklab, var(--t-fg) 62%, transparent);
   --c-hover: var(--t-card);
   margin: 0 0 22px;
   padding: 0;
@@ -3941,6 +3944,11 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   background-image: repeating-linear-gradient(135deg, var(--t-page) 0 2px, transparent 2px 5px);
 }
 .legend .sw-ref { background: transparent; border: 1.5px dashed var(--c-em); }
+.legend .sw-med {
+  width: 0; height: 13px; border-radius: 0;
+  border-left: 2px dashed var(--c-med);
+  margin: 0 4px;
+}
 
 .chart-body { display: flex; flex-direction: column; gap: 3px; }
 
@@ -4021,6 +4029,7 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 2;              /* a value near the median keeps its own line clear */
   padding-left: 8px;
   font-family: var(--mono);
   font-size: 11.5px;
@@ -4055,6 +4064,52 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   border: 1.5px dashed var(--c-em);
   box-shadow: none;
 }
+
+/* ---------- the median line ----------
+   One dashed rule down the chart at the median of the bars it crosses, so every
+   bar can be read against the middle city as well as against the top one. It is
+   built out of a per-row tick rather than a single overlay: the name column and
+   the value gutter both narrow on a phone, and a rule positioned in page pixels
+   would slide off the numbers at the first breakpoint. Each tick lives inside
+   the track it marks, so the line stays honest at every width. The ticks
+   overshoot the row by the flex gap above and below, closing into one line. */
+.mtick {
+  position: absolute;
+  top: -3px; bottom: -3px;
+  width: 0;
+  border-left: 1px dashed var(--c-med);
+  pointer-events: none;
+  z-index: 1;
+}
+/* Eagle Mountain's row is padded out of the run, so its tick has to reach
+   further to keep the line unbroken where it matters most. */
+.crow.is-em .mtick { top: -10px; bottom: -10px; }
+/* The label rail, built from the same row grid as the bars — which is the whole
+   reason the flag lands on the line instead of near it. */
+.medrow { padding-top: 0; padding-bottom: 2px; }
+.medrow .ctrack { height: 12px; }
+.cname.medname {
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+}
+.mflag {
+  position: absolute;
+  bottom: -1px;
+  transform: translateX(-50%);
+  padding: 0 5px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  line-height: 1.3;
+  white-space: nowrap;
+  color: var(--t-fg);
+  background: var(--t-card);   /* the surface the charts sit on — see the card layer */
+  font-variant-numeric: tabular-nums;
+}
+/* The rule arrives with the bars rather than ahead of them. */
+.bars-armed .mtick, .bars-armed .mflag, .bars-armed .medname { opacity: 0; }
+.bars-in .mtick, .bars-in .mflag, .bars-in .medname { opacity: 1; transition: opacity .5s ease .34s; }
 
 .chart-foot { margin: 14px 0 0; font-size: 12px; line-height: 1.6; color: var(--t-muted); }
 
@@ -4273,6 +4328,149 @@ table.data.statewide tr.is-em-row td {
   vertical-align: 1px;
 }
 
+/* ---------- quarters of the ranking ----------
+   A rank out of 253 is a precise answer to a question nobody asked; the quarter
+   is the answer. One ordered ramp, not four categories: sage for the low end
+   walking up to the same rust the charts use for the top, so the four read as a
+   scale even in greyscale. The ramp never carries meaning alone — every chip
+   also says which quarter it is, and the text on it is page ink, so contrast
+   never depends on the tint behind it. */
+#p-statewide {
+  --q1: var(--t-rust);
+  --q2: color-mix(in oklab, var(--t-rust) 52%, var(--t-sage));
+  --q3: color-mix(in oklab, var(--t-rust) 18%, var(--t-sage));
+  --q4: color-mix(in oklab, var(--t-sage) 62%, var(--t-page));
+}
+/* Scoped to the panel: q1–q4 are short enough to collide with anything, and
+   the ramp they point at is only defined here. */
+#p-statewide .q1 { --qc: var(--q1); }
+#p-statewide .q2 { --qc: var(--q2); }
+#p-statewide .q3 { --qc: var(--q3); }
+#p-statewide .q4 { --qc: var(--q4); }
+
+.qsum {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--t-muted);
+}
+.qsum b { color: var(--t-fg); }
+/* The quarter named in the summary, marked with its own tint the way a
+   highlighter would — behind the words, never instead of them. */
+.q-in { box-shadow: inset 0 -.42em 0 color-mix(in oklab, var(--qc) 26%, transparent); }
+
+/* The four quarters as a strip of buttons: what each covers, how big it is,
+   which one Eagle Mountain is in — and pressed, it filters the table to that
+   quarter alone. The colour band sits on top of each button, so the strip reads
+   left to right as the ramp running from the highest quarter to the lowest. */
+.qstrip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 16px;
+}
+.qseg {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 9px 10px 10px;
+  text-align: left;
+  background: var(--t-card);
+  border: 1px solid var(--t-line);
+  border-top: 3px solid var(--qc);
+  border-radius: 5px;
+  cursor: pointer;
+  font: inherit;
+  color: var(--t-muted);
+  transition: background 140ms ease, border-color 140ms ease;
+}
+.qseg:hover { background: color-mix(in oklab, var(--qc) 10%, var(--t-card)); }
+.qseg:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.qseg[aria-pressed="true"] {
+  background: color-mix(in oklab, var(--qc) 16%, var(--t-card));
+  border-color: color-mix(in oklab, var(--qc) 55%, var(--t-line));
+  border-top-color: var(--qc);
+}
+.qseg[aria-pressed="true"] .qseg-head { color: var(--t-fg); }
+.qseg-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--t-fg);
+  line-height: 1.3;
+}
+.qseg-range {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--t-muted);
+}
+.qseg-n { font-size: 11px; color: var(--t-muted); }
+/* Page ink, not rust: at 11px on the gold card this has to clear 4.5:1, and the
+   card's own tint is already saying which quarter the city is in. */
+.qseg-em { color: var(--t-fg); font-weight: 700; }
+/* The quarter the city is actually in gets the same lift its row gets. */
+.qseg.has-em { background: var(--t-gold-hi); border-color: var(--t-gold-line); }
+.qseg.has-em:hover { background: color-mix(in oklab, var(--qc) 10%, var(--t-gold-hi)); }
+.qseg.has-em[aria-pressed="true"] { background: color-mix(in oklab, var(--qc) 16%, var(--t-gold-hi)); }
+
+.qchip {
+  display: inline-block;
+  min-width: 24px;
+  padding: 0 5px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.65;
+  color: var(--t-fg);
+  background: color-mix(in oklab, var(--qc) 20%, transparent);
+  border: 1px solid color-mix(in oklab, var(--qc) 48%, transparent);
+  border-radius: 999px;
+}
+/* In the table: the quarter column, and a colour rule down the rank cell so the
+   bands are legible while scrolling even with the column off the side. */
+table.data.statewide .qcell { width: 1%; white-space: nowrap; }
+table.data.statewide td.qlead { border-left: 3px solid var(--qc); }
+/* The header keeps the same 3px so the Rank column doesn't step sideways at the
+   top of the table. */
+table.data.statewide thead th:first-child { border-left: 3px solid transparent; }
+table.data.statewide tr.is-em-row .qchip { background: transparent; border-color: var(--t-fg); }
+
+/* The three lines drawn through the ranking: the quarter boundaries, the middle
+   one of which is the median. Shown only while the table is in rank order and
+   unfiltered — see syncDividers() — because between two alphabetised rows they
+   would be describing an order that isn't there. */
+table.data.statewide tr.qdiv td {
+  padding: 5px 10px;
+  background: var(--t-card);
+  border-top: 1px solid var(--t-fg);
+  border-bottom: 0;
+  overflow: hidden;   /* contains the floated figure if the label wraps */
+}
+.qdiv-l {
+  font-size: 11px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+}
+.qdiv-v {
+  float: right;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--t-fg);
+}
+table.data.statewide tr.qdiv.is-median td {
+  background: var(--t-gold-bg);
+  border-top: 2px solid var(--t-gold);
+  border-bottom: 1px solid var(--t-gold-line);
+}
+.qdiv.is-median .qdiv-l { color: var(--t-fg); font-weight: 700; }
+.qdiv.is-median .qdiv-v { font-weight: 700; }
+
 /* =========================================================================
    RESPONSIVE
    ========================================================================= */
@@ -4346,6 +4544,19 @@ table.data.statewide tr.is-em-row td {
   .cname { font-size: 11.5px; }
   .ctrack { --track-gutter: 62px; }
   .chart--wide-val .ctrack { --track-gutter: 90px; }
+  .cname.medname { font-size: 9.5px; letter-spacing: .05em; }
+
+  /* Four quarters across a phone is four unreadable columns; two rows of two
+     keeps the ramp legible and the buttons at a real touch size. */
+  .qstrip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .qseg { padding: 8px 9px 9px; }
+  .qseg-head { font-size: 12px; }
+  /* The quarter column earns its ~45px even on a 360px screen — it is the
+     column most readers came for — so it stays and the cells tighten instead.
+     The wrap scrolls sideways if a long city name pushes past the edge. */
+  table.data.statewide th, table.data.statewide td { padding: 8px 7px; }
+  table.data.statewide .qcell { padding-left: 4px; padding-right: 6px; }
+  .qdiv-l { font-size: 10px; }
   .panel > summary { padding: 15px 2px; gap: 12px; }
   .panel-tt h3 { font-size: 16.5px; }
 }
@@ -4504,8 +4715,10 @@ table.data.statewide tr.is-em-row td {
 }
 @media (prefers-reduced-motion: reduce) {
   .bars-armed .cbar, .bars-armed .levy-bar { transform: none; }
-  .bars-armed .cval, .bars-armed .levy-amt { opacity: 1; }
-  .bars-in .cbar, .bars-in .levy-bar, .bars-in .cval, .bars-in .levy-amt { transition: none; }
+  .bars-armed .cval, .bars-armed .levy-amt,
+  .bars-armed .mtick, .bars-armed .mflag, .bars-armed .medname { opacity: 1; }
+  .bars-in .cbar, .bars-in .levy-bar, .bars-in .cval, .bars-in .levy-amt,
+  .bars-in .mtick, .bars-in .mflag, .bars-in .medname { transition: none; }
 }
 /* Printing doesn't scroll, so the observer never fires and a chart that was
    below the fold would come out of the printer as a column of city names with
@@ -4513,7 +4726,8 @@ table.data.statewide tr.is-em-row td {
    one pass. Nothing is animated on paper anyway. */
 @media print {
   .bars-armed .cbar, .bars-armed .levy-bar { transform: none !important; }
-  .bars-armed .cval, .bars-armed .levy-amt { opacity: 1 !important; }
+  .bars-armed .cval, .bars-armed .levy-amt,
+  .bars-armed .mtick, .bars-armed .mflag, .bars-armed .medname { opacity: 1 !important; }
 }
 
 /* ---------- statewide: find a city ----------

@@ -27,7 +27,7 @@
          so nothing on this page would use it, and asking for a third family only
          costs a render-blocking round trip. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260801a" />
+    <link rel="stylesheet" href="site.css?v=20260801b" />
   </head>
   <body class="page-tax">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -1166,6 +1166,9 @@
         const ref = { name: EM, current_rate: sl.reference.current_rate, isRef: true };
         const rows = [...sl.cities, ref].sort((a, b) => b.current_rate - a.current_rate);
         const max = axisMax(rows.map((r) => r.current_rate));
+        // Salt Lake County's own median: Eagle Mountain is a visitor on this
+        // chart and must not shift the middle of the county it is measured against.
+        const med = medianLine(sl.cities.map((r) => r.current_rate), max, "median");
         let offCount = 0;
 
         const bars = rows
@@ -1183,6 +1186,7 @@
                 <span class="cname">${CT.escapeHtml(isRef ? EM : r.name)}${ext}</span>
                 <span class="ctrack">
                   <span class="cbar ${isRef ? "cem" : ""} ${off ? "bar-off" : ""}" style="width:${barSpan(frac)}"></span>
+                  ${med.tick}
                   ${valCell(frac, off, rate6(r.current_rate))}
                 </span>
               </div>`;
@@ -1199,9 +1203,12 @@
           <div class="legend">
             <span class="lg"><i class="sw sw-base"></i>City levy</span>
             <span class="lg"><i class="sw sw-ref"></i>Eagle Mountain (reference)</span>
+            ${MED_LEGEND}
           </div>
-          <div class="chart-body">${bars}</div>
+          <div class="chart-body">${med.rail}${bars}</div>
           <p class="chart-foot">
+            Dashed line: the median Salt Lake County city levy, ${rate6(med.value)} — Eagle Mountain,
+            as a visitor here, is left out of it.
             <span aria-hidden="true">†</span> Funds police/fire through separate service districts, not shown
             in these bars.${offCount ? " " + OFF_NOTE : ""}
           </p>
@@ -1232,6 +1239,7 @@
         );
         const rows = [...all].sort((a, b) => resOf(b) - resOf(a));
         const max = axisMax(rows.map(resOf));
+        const med = medianLine(sl.cities.map(resOf), max, "median"); // county only — see chart 1
         const proposing = sl.proposals.length;
         let offCount = 0;
         // Rank Eagle Mountain's proposed rate against everyone's *resulting* rate
@@ -1265,6 +1273,7 @@
                 <span class="ctrack">
                   ${hasInc ? `<span class="cbar cprop ${isRef ? "cem" : ""} ${off ? "bar-off" : ""}" style="width:${barSpan(fRes)}"></span>` : ""}
                   <span class="cbar ${isRef ? "cem" : ""} ${off && !hasInc ? "bar-off" : ""}" style="width:${barSpan(fNow)}"></span>
+                  ${med.tick}
                   ${valCell(fRes, off, `${rate6(res)}${moved > 0 ? `<span class="cmove up" aria-hidden="true">▲${moved}</span><span class="sr-only"> up ${moved} places</span>` : ""}`)}
                 </span>
               </div>`;
@@ -1282,9 +1291,11 @@
             <span class="lg"><i class="sw sw-base"></i>Rate today</span>
             <span class="lg"><i class="sw sw-prop-neutral"></i>Proposed increase</span>
             <span class="lg"><i class="sw sw-ref"></i>Eagle Mountain (reference)</span>
+            ${MED_LEGEND}
           </div>
-          <div class="chart-body">${bars}</div>
+          <div class="chart-body">${med.rail}${bars}</div>
           <p class="chart-foot">
+            Dashed line: the median Salt Lake County rate if every proposal passes, ${rate6(med.value)}.
             <span aria-hidden="true">†</span> Funds police/fire through separate service districts.
             <span aria-hidden="true">‡</span> Dedicated levy, not the general rate.${offCount ? " " + OFF_NOTE : ""}
           </p>
@@ -1322,7 +1333,19 @@
       const proposalFor = (c, name) => c.proposals.find((p) => p.city === name) || null;
 
       /* --- shared bar geometry ---------------------------------------------
-         A couple of cities (e.g. Vineyard) levy ~2x everyone else, and left to
+         Linear-interpolated quantile over an ascending array — the same
+         definition a spreadsheet's PERCENTILE uses. One implementation for the
+         axis's outlier fence, the charts' median line and the statewide quartile
+         cuts, so those three can never disagree about where the 75th percentile
+         of the same numbers is. */
+      function quantileOf(asc, p) {
+        const i = (asc.length - 1) * p, lo = Math.floor(i), hi = Math.ceil(i);
+        return asc[lo] + (asc[hi] - asc[lo]) * (i - lo);
+      }
+      const quantile = (values, p) => quantileOf([...values].sort((a, b) => a - b), p);
+      const medianOf = (values) => quantile(values, 0.5);
+
+      /* A couple of cities (e.g. Vineyard) levy ~2x everyone else, and left to
          their own devices they stretch the axis so the other two dozen — the
          middle of the pack, where Eagle Mountain lives — collapse into unreadable
          stubs. So the axis maxes out at the top of the *main cluster*, not the
@@ -1333,11 +1356,8 @@
          can move the cutoff on its own. */
       function axisMax(values) {
         const v = [...values].sort((a, b) => a - b);
-        const q = (p) => {
-          const i = (v.length - 1) * p, lo = Math.floor(i), hi = Math.ceil(i);
-          return v[lo] + (v[hi] - v[lo]) * (i - lo);
-        };
-        const fence = q(0.75) + 1.5 * (q(0.75) - q(0.25));
+        const q3 = quantileOf(v, 0.75), q1 = quantileOf(v, 0.25);
+        const fence = q3 + 1.5 * (q3 - q1);
         const inRange = v.filter((x) => x <= fence);
         return (inRange.length ? inRange[inRange.length - 1] : v[v.length - 1]) * 1.02;
       }
@@ -1348,10 +1368,42 @@
         `<span class="cval" style="left:${barSpan(frac)}">${inner}${off ? '<span class="offmark" aria-hidden="true"> ↑</span>' : ""}</span>`;
       const OFF_NOTE = `<span aria-hidden="true">↑</span> Past the top of the scale; exact figure still shown.`;
 
+      /* --- the median line -------------------------------------------------
+         Bars sorted high to low answer "who is highest" but never "what is
+         normal", so a chart of two dozen cities leaves the reader to eyeball the
+         middle. A dashed rule at the median of the values the chart draws gives
+         every bar a second reading: above the middle city, or below it.
+
+         It is drawn as a tick inside each row's track rather than as one rule
+         laid over the chart, because the geometry underneath it moves — the name
+         column and the value gutter are both narrower on a phone — and an
+         overlay positioned in page pixels would slide off the bars at the first
+         breakpoint. Each tick inherits the track it sits in, so the line stays
+         on the number at every width. The label rides in a header rail built
+         from the same row grid, for the same reason.
+
+         The rule and its flag are decoration: the figure is also stated in the
+         chart's footnote, which is what a screen reader gets. */
+      function medianLine(values, max, label) {
+        const med = medianOf(values);
+        const at = barSpan(Math.min(Math.max(med / max, 0), 1));
+        return {
+          value: med,
+          tick: `<span class="mtick" style="left:${at}" aria-hidden="true"></span>`,
+          rail: `
+            <div class="crow medrow" aria-hidden="true">
+              <span class="cname medname">${CT.escapeHtml(label)}</span>
+              <span class="ctrack"><span class="mflag" style="left:${at}">${rate6(med)}</span></span>
+            </div>`,
+        };
+      }
+      const MED_LEGEND = `<span class="lg"><i class="sw sw-med"></i>Median</span>`;
+
       /* --- chart 1: current rate only, no proposal --- */
       function rateChartHtml(c) {
         const rows = cityOrder(c);
         const max = axisMax(rows.map((r) => r.current_rate));
+        const med = medianLine(rows.map((r) => r.current_rate), max, "median");
         let offCount = 0;
 
         const bars = rows
@@ -1366,6 +1418,7 @@
                 <span class="cname">${CT.escapeHtml(r.name)}${r.mostly_other_county ? '<span class="ast" aria-hidden="true">*</span>' : ""}</span>
                 <span class="ctrack">
                   <span class="cbar ${isEM ? "cem" : ""} ${off ? "bar-off" : ""}" style="width:${barSpan(frac)}"></span>
+                  ${med.tick}
                   ${valCell(frac, off, rate6(r.current_rate))}
                 </span>
               </div>`;
@@ -1381,9 +1434,14 @@
           <div class="legend">
             <span class="lg"><i class="sw sw-base"></i>Current rate</span>
             <span class="lg"><i class="sw sw-em"></i>Eagle Mountain</span>
+            ${MED_LEGEND}
           </div>
-          <div class="chart-body">${bars}</div>
-          <p class="chart-foot"><span aria-hidden="true">*</span> Mostly in Salt Lake County.${offCount ? " " + OFF_NOTE : ""}</p>
+          <div class="chart-body">${med.rail}${bars}</div>
+          <p class="chart-foot">
+            Dashed line: the median Utah County city levy, ${rate6(med.value)} — half of these
+            ${rows.length} cities charge more, half less.
+            <span aria-hidden="true">*</span> Mostly in Salt Lake County.${offCount ? " " + OFF_NOTE : ""}
+          </p>
           ${tableView(["City", "Current rate"], rows.map((r) => [r.name, rate6(r.current_rate)]))}
         </figure>`;
       }
@@ -1402,6 +1460,7 @@
         const nowRank = new Map(cityOrder(c).map((x, i) => [x.name, i + 1]));
         const rows = [...c.cities].sort((a, b) => resultingRate(c, b) - resultingRate(c, a));
         const max = axisMax(rows.map((r) => resultingRate(c, r)));
+        const med = medianLine(rows.map((r) => resultingRate(c, r)), max, "median");
         const proposing = c.proposals.length;
         let offCount = 0;
 
@@ -1429,6 +1488,7 @@
                 <span class="ctrack">
                   ${p ? `<span class="cbar cprop ${isEM ? "cem" : ""} ${off ? "bar-off" : ""}" style="width:${barSpan(fRes)}"></span>` : ""}
                   <span class="cbar ${isEM ? "cem" : ""} ${off && !p ? "bar-off" : ""}" style="width:${barSpan(fNow)}"></span>
+                  ${med.tick}
                   ${valCell(fRes, off, `${rate6(res)}${moved > 0 ? `<span class="cmove up" aria-hidden="true">▲${moved}</span><span class="sr-only"> up ${moved} places</span>` : ""}`)}
                 </span>
               </div>`;
@@ -1446,9 +1506,11 @@
             <span class="lg"><i class="sw sw-base"></i>Rate today</span>
             <span class="lg"><i class="sw sw-prop-neutral"></i>Proposed increase</span>
             <span class="lg"><i class="sw sw-em"></i>Eagle Mountain</span>
+            ${MED_LEGEND}
           </div>
-          <div class="chart-body">${bars}</div>
+          <div class="chart-body">${med.rail}${bars}</div>
           <p class="chart-foot">
+            Dashed line: the median rate if every proposal passes, ${rate6(med.value)}.
             <span aria-hidden="true">†</span> Dedicated levy, not the general rate.
             <span aria-hidden="true">‡</span> Approximate.${offCount ? " " + OFF_NOTE : ""}
           </p>
@@ -1595,7 +1657,9 @@
         const lines = [];
         table.querySelectorAll("thead tr").forEach((tr) => lines.push(line(tr)));
         table.querySelectorAll("tbody tr").forEach((tr) => {
-          if (!tr.hidden) lines.push(line(tr));
+          // Quarter dividers are furniture, not rows of data — a spreadsheet
+          // wants the 253 cities and their Q column, not three labelled rules.
+          if (!tr.hidden && !tr.classList.contains("qdiv")) lines.push(line(tr));
         });
         return lines.join("\r\n");
       }
@@ -1677,46 +1741,147 @@
         const climbed = emCur - emProp; // places gained climbing toward #1
         const emCurLow = N - emCur + 1; // the same current rank, counted from the bottom
 
-        const rowsHtml = (list, view) =>
-          list
-            .map((r) => {
-              const isEM = r.name === EM;
-              const hasProp = view === "proposed" && proposedRate.has(r.name);
-              const moved = hasProp ? curRank.get(r.name) - r.rank : 0; // places climbed
-              const movedHtml =
-                moved > 0
-                  ? ` <span class="cmove up" title="up ${moved} places">▲${moved}</span>`
-                  : "";
-              const tag = isEM
-                ? ` <span class="you-pill">${view === "proposed" ? "proposed" : "today"}</span>`
-                : hasProp
-                  ? ` <span class="prop-pill" title="Noticed 2026 increase applied">proposed</span>`
-                  : "";
-              return `<tr${isEM ? ' class="is-em-row"' : ""} data-rank="${r.rank}" data-rate="${r.rate}" data-name="${CT.escapeHtml(r.name)}">
-                <td class="num">${r.rank}</td>
-                <td>${CT.escapeHtml(r.name)}${tag}</td>
-                <td class="num">${rate6(r.rate)}${movedHtml}</td>
-              </tr>`;
-            })
-            .join("");
+        /* ---- quarters ----
+           A rank out of 253 is a precise answer to a question nobody asked. What
+           a reader wants from a list this long is which part of it they are in,
+           so the ranking is cut into quarters and every row carries its own.
 
-        const tableHtml = (id, list, view) => `
+           Cut by position rather than by rate, so the four groups come out the
+           same size — 253 doesn't divide by four, so they run 63/64/63/63 — and
+           each boundary falls between two rows, where a line can be drawn and
+           labelled. The cost is that cities tied at a boundary rate can land on
+           either side of it; the footnote says so.
+
+           Numbered the way the question is usually put: Q1 is the top quarter by
+           rate, Q4 the bottom. That is the reverse of the statistical convention,
+           where "first quartile" means the lowest 25%, so every Q is spelled out
+           in words wherever it appears and never left to stand alone. */
+        const cutsFor = (n) => [1, 2, 3].map((k) => Math.round((n * k) / 4)); // last rank in Q1, Q2, Q3
+        const quartileOf = (rank, cuts) => (rank <= cuts[0] ? 1 : rank <= cuts[1] ? 2 : rank <= cuts[2] ? 3 : 4);
+        const QWHAT = { 1: "Highest quarter", 2: "Upper middle", 3: "Lower middle", 4: "Lowest quarter" };
+        const QBAND = { 1: "the top 25%", 2: "the 50th–75th percentile", 3: "the 25th–50th percentile", 4: "the bottom 25%" };
+
+        // Everything the strip, the dividers and the summary sentence need about
+        // one ranking, read off that ranking once — so no two of them can end up
+        // describing a different table.
+        const readingOf = (list) => {
+          const n = list.length;
+          const cuts = cutsFor(n);
+          const rates = list.map((r) => r.rate);
+          const emRow = list.find((r) => r.name === EM);
+          const bands = [1, 2, 3, 4].map((q) => {
+            const rows = list.filter((r) => quartileOf(r.rank, cuts) === q);
+            return {
+              q,
+              n: rows.length,
+              hi: rows[0].rate,
+              lo: rows[rows.length - 1].rate,
+              hasEM: rows.some((r) => r.name === EM),
+            };
+          });
+          return {
+            cuts, bands, em: emRow,
+            emQ: quartileOf(emRow.rank, cuts),
+            median: quantile(rates, 0.5),
+            p25: quantile(rates, 0.25),
+            p75: quantile(rates, 0.75),
+            // The percentile a reader means by "where does mine sit": the share
+            // of the other cities levying less than this one.
+            emPct: Math.round(((n - emRow.rank) / (n - 1)) * 100),
+          };
+        };
+        const readCur = readingOf(current);
+        const readProp = readingOf(proposed);
+
+        // The three lines drawn through the table. The middle one is the median —
+        // the single figure that says what a normal Utah city charges.
+        const dividersFor = (rd) => [
+          { after: rd.cuts[0], cls: "", label: "Top quarter ends here · 75th percentile", value: rd.p75 },
+          { after: rd.cuts[1], cls: " is-median", label: "The middle · half of Utah's cities are above this line", value: rd.median },
+          { after: rd.cuts[2], cls: "", label: "Bottom quarter starts here · 25th percentile", value: rd.p25 },
+        ];
+
+        const dividerHtml = (d) => `
+          <tr class="qdiv${d.cls}" data-after="${d.after}">
+            <td colspan="4">
+              <span class="qdiv-l">${d.label}</span>
+              <span class="qdiv-v">${rate6(d.value)}</span>
+            </td>
+          </tr>`;
+
+        const rowHtml = (r, rd, view) => {
+          const isEM = r.name === EM;
+          const q = quartileOf(r.rank, rd.cuts);
+          const hasProp = view === "proposed" && proposedRate.has(r.name);
+          const moved = hasProp ? curRank.get(r.name) - r.rank : 0; // places climbed
+          const movedHtml =
+            moved > 0
+              ? ` <span class="cmove up" title="up ${moved} places">▲${moved}</span>`
+              : "";
+          const tag = isEM
+            ? ` <span class="you-pill">${view === "proposed" ? "proposed" : "today"}</span>`
+            : hasProp
+              ? ` <span class="prop-pill" title="Noticed 2026 increase applied">proposed</span>`
+              : "";
+          return `<tr${isEM ? ' class="is-em-row"' : ""} data-rank="${r.rank}" data-rate="${r.rate}" data-q="${q}" data-name="${CT.escapeHtml(r.name)}">
+            <td class="num qlead q${q}">${r.rank}</td>
+            <td>${CT.escapeHtml(r.name)}${tag}</td>
+            <td class="num">${rate6(r.rate)}${movedHtml}</td>
+            <td class="qcell"><span class="qchip q${q}" title="${QWHAT[q]} — ${QBAND[q]}">Q${q}</span></td>
+          </tr>`;
+        };
+
+        // Dividers are spliced into the rank-ordered rows from the bottom up, so
+        // each insertion leaves the indices above it alone.
+        const rowsHtml = (list, rd, view) => {
+          const out = list.map((r) => rowHtml(r, rd, view));
+          [...dividersFor(rd)].reverse().forEach((d) => out.splice(d.after, 0, dividerHtml(d)));
+          return out.join("");
+        };
+
+        // The quarters as four buttons: what each covers, how many cities are in
+        // it, which one Eagle Mountain is in — and, pressed, it filters the
+        // ranking down to that quarter alone.
+        const stripHtml = (rd) => `
+          <p class="qsum">
+            The middle Utah city levies <b>${rate6(rd.median)}</b>. Eagle Mountain's
+            <b>${rate6(rd.em.rate)}</b> puts it in <b class="q-in q${rd.emQ}">Q${rd.emQ},
+            ${QBAND[rd.emQ]}</b> — above ${rd.emPct}% of the ${N} cities.
+          </p>
+          <div class="qstrip" role="group" aria-label="Quarters of the ranking. Choosing one filters the table below.">
+            ${rd.bands
+              .map(
+                (b) => `
+              <button type="button" class="qseg q${b.q}${b.hasEM ? " has-em" : ""}" data-q="${b.q}"
+                      aria-pressed="false" title="Show only ${QBAND[b.q]}">
+                <span class="qseg-head"><span class="qchip q${b.q}">Q${b.q}</span>${QWHAT[b.q]}</span>
+                <span class="qseg-range">${rate6(b.lo)} – ${rate6(b.hi)}</span>
+                <span class="qseg-n">${b.n} cities${b.hasEM ? ' · <span class="qseg-em">Eagle Mountain</span>' : ""}</span>
+              </button>`
+              )
+              .join("")}
+          </div>`;
+
+        const tableHtml = (id, list, rd, view) => `
           <div class="tablewrap statewide-wrap">
             <table class="data statewide" id="${id}">
               <thead><tr>
                 <th scope="col" class="num sortable" data-key="rank" aria-sort="ascending" tabindex="0">Rank<span class="sarrow" aria-hidden="true"> ▲</span></th>
                 <th scope="col" class="sortable" data-key="name" aria-sort="none" tabindex="0">City<span class="sarrow" aria-hidden="true"></span></th>
                 <th scope="col" class="num sortable" data-key="rate" aria-sort="none" tabindex="0">City levy<span class="sarrow" aria-hidden="true"></span></th>
+                <th scope="col" class="sortable" data-key="q" aria-sort="none" tabindex="0">Quarter<span class="sarrow" aria-hidden="true"></span></th>
               </tr></thead>
-              <tbody>${rowsHtml(list, view)}</tbody>
+              <tbody>${rowsHtml(list, rd, view)}</tbody>
             </table>
           </div>`;
 
         const body = `
           <p class="panel-intro">
-            All ${N} Utah cities by their own levy, highest first. Eagle Mountain is
-            <strong>${ordinal(emCur)}</strong> today and would be <strong>${ordinal(emProp)}</strong>
-            with the 2026 proposals applied — a climb of ${climbed} places.
+            All ${N} Utah cities by their own levy, highest first, cut into quarters.
+            Eagle Mountain is <strong>${ordinal(emCur)}</strong> today — the
+            ${QWHAT[readCur.emQ].toLowerCase()} of the state — and would be
+            <strong>${ordinal(emProp)}</strong> with the 2026 proposals applied,
+            a climb of ${climbed} places into the ${QWHAT[readProp.emQ].toLowerCase()}.
           </p>
 
           <div class="sw-tools">
@@ -1743,20 +1908,29 @@
             <button type="button" class="tx-link" id="sw-clear">clear the filter</button>.
           </p>
 
-          <div class="stateview" data-view-panel="current">${tableHtml("statewide-current", current, "current")}</div>
+          <div class="stateview" data-view-panel="current">
+            ${stripHtml(readCur)}
+            ${tableHtml("statewide-current", current, readCur, "current")}
+          </div>
           <div class="stateview" data-view-panel="proposed" hidden>
-            ${tableHtml("statewide-proposed", proposed, "proposed")}
+            ${stripHtml(readProp)}
+            ${tableHtml("statewide-proposed", proposed, readProp, "proposed")}
             <p class="chart-foot">
               ${othersCount + 1} tracked increases applied, each marked
-              <span class="prop-pill">proposed</span>. Every other city is at today's rate.
+              <span class="prop-pill">proposed</span>. Every other city is at today's rate,
+              so the quarters here move only as far as those increases push them.
             </p>
           </div>
 
           <p class="chart-foot">
+            Quarters are cut by position in the ranking, so each holds about ${Math.round(N / 4)}
+            cities; two cities on the same rate can fall either side of a boundary. The three
+            lines through the table are the 75th percentile, the median and the 25th percentile.
+            They show while the table is in rank order and unfiltered.
             City levy only — not your total bill. Source:
             <a href="${src.url}" rel="nofollow noopener">${CT.escapeHtml(src.title)}</a>.
           </p>`;
-        return panel("Where Eagle Mountain ranks statewide", `Its current rate — and its proposal — against all ${N} Utah cities`, body, false, "p-statewide");
+        return panel("Where Eagle Mountain ranks statewide", `Its current rate — and its proposal — against all ${N} Utah cities, quarter by quarter`, body, false, "p-statewide");
       }
 
       // The scope switch swaps the whole comparison between Utah County (both
@@ -1788,23 +1962,53 @@
         });
       }
 
-      // Click or Enter/Space on a header sorts a statewide table. Rank and rate
-      // sort numerically, city by name; re-activating a column flips it. Wires
-      // both the "today" and "with the proposal" tables independently.
+      /* The quarter boundaries only mean something while the table is in rank
+         order and showing every city. A line labelled "the median" sitting
+         between two alphabetically adjacent rows, or between two survivors of a
+         filter, would be a plain lie — so the dividers are re-placed after every
+         sort and withdrawn the moment either condition breaks. Called by both
+         the sorter and the filter, and it reads the state it needs off the DOM
+         so neither has to tell the other anything. */
+      function syncDividers(table) {
+        const tbody = table.tBodies[0];
+        const rankTh = table.querySelector('th[data-key="rank"]');
+        const inRankOrder = rankTh && rankTh.getAttribute("aria-sort") === "ascending";
+        const q = document.getElementById("sw-q");
+        const filtered =
+          !!(q && q.value.trim()) || !!document.querySelector('.qseg[aria-pressed="true"]');
+        tbody.querySelectorAll("tr.qdiv").forEach((d) => {
+          d.hidden = true;
+          const anchor = inRankOrder && !filtered
+            ? tbody.querySelector(`tr[data-rank="${d.dataset.after}"]`)
+            : null;
+          if (anchor) { anchor.after(d); d.hidden = false; }
+          // Parked at the top, out of the sorted run — not the bottom, where a
+          // hidden row would take `tr:last-child` off the last real city and
+          // leave it wearing a border the table doesn't give its last row.
+          else tbody.insertBefore(d, tbody.firstChild);
+        });
+      }
+
+      // Click or Enter/Space on a header sorts a statewide table. Rank, rate and
+      // quarter sort numerically, city by name; re-activating a column flips it.
+      // Wires both the "today" and "with the proposal" tables independently.
       function wireStatewideTable() {
         document.querySelectorAll("table.data.statewide").forEach((table) => {
           const tbody = table.tBodies[0];
-          const rows = [...tbody.rows];
+          const rows = [...tbody.querySelectorAll("tr[data-name]")]; // the cities; dividers are placed, not sorted
           let curKey = "rank", curDir = 1;
           const val = (tr, key) =>
             key === "name" ? tr.dataset.name.toLowerCase()
-              : parseFloat(key === "rank" ? tr.dataset.rank : tr.dataset.rate);
+              : parseFloat(key === "rank" ? tr.dataset.rank : key === "q" ? tr.dataset.q : tr.dataset.rate);
           const sort = (key) => {
             curDir = key === curKey ? -curDir : 1;
             curKey = key;
             rows.sort((a, b) => {
               const va = val(a, key), vb = val(b, key);
-              return va < vb ? -curDir : va > vb ? curDir : 0;
+              // Whole quarters tie by definition, so ties fall back to the
+              // ranking rather than to whatever order the last sort left behind.
+              if (va === vb) return +a.dataset.rank - +b.dataset.rank;
+              return va < vb ? -curDir : curDir;
             });
             rows.forEach((r) => tbody.appendChild(r));
             table.querySelectorAll("th.sortable").forEach((th) => {
@@ -1812,6 +2016,7 @@
               th.setAttribute("aria-sort", on ? (curDir > 0 ? "ascending" : "descending") : "none");
               th.querySelector(".sarrow").textContent = on ? (curDir > 0 ? " ▲" : " ▼") : "";
             });
+            syncDividers(table);
           };
           table.querySelectorAll("th.sortable").forEach((th) => {
             th.addEventListener("click", () => sort(th.dataset.key));
@@ -1834,35 +2039,59 @@
         const empty = document.getElementById("sw-empty");
         const clear = document.getElementById("sw-clear");
         const tables = [...document.querySelectorAll("table.data.statewide")];
-        const total = tables[0] ? tables[0].tBodies[0].rows.length : 0;
+        const rowsOf = (t) => [...t.tBodies[0].querySelectorAll("tr[data-name]")];
+        const total = tables[0] ? rowsOf(tables[0]).length : 0;
+        // Both views carry their own strip; pressing a quarter in one presses it
+        // in the other, so switching between them keeps the same 63 cities.
+        const segs = [...document.querySelectorAll(".qseg")];
+        let activeQ = 0; // 0 = every quarter
 
         const apply = () => {
           const term = q.value.trim().toLowerCase();
           let shown = 0;
           tables.forEach((t, i) => {
             let n = 0;
-            [...t.tBodies[0].rows].forEach((tr) => {
-              const hit = !term || tr.dataset.name.toLowerCase().includes(term);
+            rowsOf(t).forEach((tr) => {
+              const hit =
+                (!term || tr.dataset.name.toLowerCase().includes(term)) &&
+                (!activeQ || +tr.dataset.q === activeQ);
               tr.hidden = !hit;
               if (hit) n++;
             });
+            syncDividers(t);
             if (i === 0) shown = n;
           });
+          const on = !!term || !!activeQ;
           empty.hidden = shown > 0;
           // "1 of 253 cities" — the noun agrees with the total, not the count.
-          count.textContent = !term ? "" : shown === 0 ? "No matches" : `${shown} of ${total} cities`;
+          count.textContent = !on ? "" : shown === 0 ? "No matches" : `${shown} of ${total} cities`;
           // A short list has nothing to scroll; let the box shrink to it.
           document.querySelectorAll(".statewide-wrap").forEach((w) =>
-            w.classList.toggle("is-filtered", !!term && shown <= 12)
+            w.classList.toggle("is-filtered", on && shown <= 12)
           );
         };
+
+        segs.forEach((seg) => {
+          seg.addEventListener("click", () => {
+            const qn = +seg.dataset.q;
+            activeQ = activeQ === qn ? 0 : qn; // pressing the pressed one clears it
+            segs.forEach((s) => s.setAttribute("aria-pressed", String(+s.dataset.q === activeQ)));
+            apply();
+          });
+        });
 
         q.addEventListener("input", apply);
         // Esc clears, the convention for a search field.
         q.addEventListener("keydown", (e) => {
           if (e.key === "Escape" && q.value) { e.preventDefault(); q.value = ""; apply(); }
         });
-        clear.addEventListener("click", () => { q.value = ""; apply(); q.focus(); });
+        clear.addEventListener("click", () => {
+          q.value = "";
+          activeQ = 0;
+          segs.forEach((s) => s.setAttribute("aria-pressed", "false"));
+          apply();
+          q.focus();
+        });
       }
 
       // The statewide "rate today" / "with the proposal" toggle. Same radiogroup
