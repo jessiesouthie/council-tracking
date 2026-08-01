@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260731s" />
+    <link rel="stylesheet" href="site.css?v=20260801a" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -258,7 +258,8 @@
           onNodeClick: (node) => { afState.focus = { side: node.side, name: node.name }; renderAF(); },
         });
         legendFor("af-legend", cols[0], AF_T);
-        fillTable("af-table", ["Fund", funcMode ? "Function" : "Type of spending"], links, AF_T);
+        fillTable("af-table", ["Fund", funcMode ? "Function" : "Type of spending"], links, AF_T, null, null,
+          [exportSlug("budget by fund and " + (funcMode ? "function" : "type of spending"))]);
         setTableSummary("View the numbers as a table");
         document.getElementById("af-sub").textContent =
           (funcMode
@@ -309,7 +310,7 @@
             clickable: () => false,
           });
           legendFor("af-legend", cols[0], total);
-          fillDrillTable("af-table", items, total, "target");
+          fillDrillTable("af-table", items, total, "target", f.name);
         } else {
           const F = AF.funds.find((x) => x.name === f.name);
           const total = F.total, col = fc.get(f.name);
@@ -324,7 +325,7 @@
             clickable: () => false,
           });
           legendFor("af-legend", [{ name: f.name, total, color: col }], total);
-          fillDrillTable("af-table", items, total, "fund");
+          fillDrillTable("af-table", items, total, "fund", f.name);
         }
         setTableSummary(items.length > 12
           ? `See all ${items.length} line items in the table`
@@ -340,7 +341,7 @@
       // Drill table: every line item with its specific fund, a per-row "pooled"
       // marker, and a reconciliation of how much is itemised vs. pooled — so a
       // reader can see every dollar is accounted for even where a name isn't.
-      function fillDrillTable(id, items, total, side) {
+      function fillDrillTable(id, items, total, side, focusName) {
         let pooled = 0;
         const rows = items.slice().sort((a, b) => b.value - a.value).map((it) => {
           const isLump = LUMP.has(it.name);
@@ -352,6 +353,7 @@
             + `<td class="num">${usdC(it.value)}</td><td class="num">${pct(it.value, total)}</td></tr>`;
         }).join("");
         const h = side === "target" ? "Line item / project" : "Line item";
+        const name = exportSlug(focusName + " line items");
         const itemised = total - pooled;
         const recon = pooled > 0
           ? `<p class="b-recon"><strong>${short(itemised)}</strong> is itemised to named line items;
@@ -363,7 +365,9 @@
         document.getElementById(id).innerHTML =
           `<table class="data"><thead><tr><th scope="col">${h}</th><th scope="col" class="num">Budgeted</th><th scope="col" class="num">Share</th></tr></thead><tbody>${rows}</tbody></table>`
           + recon
-          + `<p class="b-tablenote">Each row is a line item from the adopted budget, shown with the specific fund it sits in. Projects carried in the books at $0 this year are omitted.</p>`;
+          + `<p class="b-tablenote">Each row is a line item from the adopted budget, shown with the specific fund it sits in. Projects carried in the books at $0 this year are omitted.</p>`
+          + exportBarHtml(name);
+        wireTableExports(id);
       }
 
       function setTableSummary(text) {
@@ -395,7 +399,8 @@
         // The chart groups revenue and departments for legibility; the table
         // lists every source and every one of the city's departments in full.
         fillTable("gf-table", ["Revenue source", "Amount"], gf.revenue_detail.map((r) => ({ source: r.name, value: r.total })), T,
-          ["Department", "Amount"], gf.departments_detail.map((d) => ({ source: d.name, value: d.total })));
+          ["Department", "Amount"], gf.departments_detail.map((d) => ({ source: d.name, value: d.total })),
+          [exportSlug("general fund revenue"), exportSlug("general fund departments")]);
       }
 
       /* ---------------- the Sankey engine (generic, N columns) ----------------
@@ -565,20 +570,127 @@
       }
 
       // A table view for every chart — identity is never carried by colour alone.
-      function fillTable(id, head, rows, T, head2, rows2) {
+      // `names` supplies the export filename for each table, in order.
+      function fillTable(id, head, rows, T, head2, rows2, names) {
         const body = (rs) => rs.slice().sort((a, b) => b.value - a.value).map((l) =>
           `<tr><td>${esc(l.source)}${l.target ? " → " + esc(l.target) : ""}</td><td class="num">${usdC(l.value)}</td><td class="num">${pct(l.value, T)}</td></tr>`).join("");
-        const table = (h, rs) => {
+        const table = (h, rs, name) => {
           const flow = rs.some((r) => r.target);
           const col1 = flow ? `${esc(h[0])} → ${esc(h[1])}` : esc(h[0]);
-          return `<table class="data"><thead><tr><th scope="col">${col1}</th><th scope="col" class="num">Budgeted</th><th scope="col" class="num">Share</th></tr></thead><tbody>${body(rs)}</tbody></table>`;
+          return `<table class="data"><thead><tr><th scope="col">${col1}</th><th scope="col" class="num">Budgeted</th><th scope="col" class="num">Share</th></tr></thead><tbody>${body(rs)}</tbody></table>`
+            + exportBarHtml(name);
         };
         // The two-column charts pass link rows (source→target); the General Fund
         // passes two flat lists (revenue, then departments) shown side by side.
         const norm = (rs) => rs.map((r) => (r.target ? r : { source: r.source, value: r.value }));
-        let html = table(head, norm(rows));
-        if (head2) html += table(head2, norm(rows2));
+        const nm = names || [];
+        let html = table(head, norm(rows), nm[0]);
+        if (head2) html += table(head2, norm(rows2), nm[1]);
         document.getElementById(id).innerHTML = html;
+        wireTableExports(id);
+      }
+
+      /* ---------------- table export ----------------
+         The same toolbar the tax page carries: every table on this page can be
+         taken away as CSV or copied. The rendered DOM is the single source, so
+         whichever grouping or drill-down the reader is looking at is exactly
+         what exports. The bars are part of each table's markup rather than
+         bolted on afterwards, because these tables are re-rendered wholesale on
+         every toggle and drill — a bar inserted after the fact wouldn't survive.
+      */
+      const exportSlug = (s) =>
+        "eagle-mountain-" + String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
+
+      function exportBarHtml(name) {
+        return `<div class="table-export" data-name="${esc(name || "budget-table")}">
+            <span class="tx-exp-label">Export</span>
+            <button type="button" class="tx-exp-btn" data-act="csv">Download CSV</button>
+            <button type="button" class="tx-exp-btn" data-act="copy">Copy</button>
+            <span class="tx-exp-note" role="status" aria-live="polite"></span>
+          </div>`;
+      }
+
+      // Each bar exports the nearest table above it, so the General Fund's two
+      // tables get one apiece and the drill view's notes can sit in between.
+      function wireTableExports(id) {
+        const scope = document.getElementById(id);
+        if (!scope) return;
+        scope.querySelectorAll(".table-export").forEach((bar) => {
+          let table = bar.previousElementSibling;
+          while (table && !table.matches("table.data")) table = table.previousElementSibling;
+          if (!table) return;
+
+          const note = bar.querySelector(".tx-exp-note");
+          let noteTimer = 0;
+          const flash = (msg) => {
+            note.textContent = msg;
+            clearTimeout(noteTimer);
+            noteTimer = setTimeout(() => { note.textContent = ""; }, 2500);
+          };
+
+          bar.querySelector('[data-act="csv"]').addEventListener("click", () => {
+            downloadCsv(tableToCsv(table), bar.dataset.name + ".csv");
+            flash("Downloaded");
+          });
+          bar.querySelector('[data-act="copy"]').addEventListener("click", async () => {
+            flash((await copyText(tableToCsv(table))) ? "Copied" : "Copy failed");
+          });
+        });
+      }
+
+      // A cell's exported text is its visible text. The fund a line item sits in
+      // renders as its own line under the name, so it needs a separator or the
+      // two would run together into one unreadable field.
+      function cellCsvText(el) {
+        const c = el.cloneNode(true);
+        c.querySelectorAll(".sr-only").forEach((n) => n.remove());
+        c.querySelectorAll(".b-where").forEach((n) => { n.textContent = " — " + n.textContent.trim(); });
+        return c.textContent.replace(/\s+/g, " ").trim();
+      }
+
+      const csvField = (s) => (/[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s);
+
+      function tableToCsv(table) {
+        const line = (tr) => [...tr.querySelectorAll("th,td")].map((c) => csvField(cellCsvText(c))).join(",");
+        const lines = [];
+        table.querySelectorAll("thead tr").forEach((tr) => lines.push(line(tr)));
+        table.querySelectorAll("tbody tr").forEach((tr) => { if (!tr.hidden) lines.push(line(tr)); });
+        return lines.join("\r\n");
+      }
+
+      function downloadCsv(csv, filename) {
+        // A BOM so Excel reads it as UTF-8 (the em dashes and · survive).
+        const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
+
+      async function copyText(text) {
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return true;
+          }
+        } catch (e) { /* fall through to the legacy path */ }
+        try {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          const ok = document.execCommand("copy");
+          ta.remove();
+          return ok;
+        } catch (e) {
+          return false;
+        }
       }
 
     </script>

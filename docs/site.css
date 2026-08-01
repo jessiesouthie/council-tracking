@@ -4072,7 +4072,9 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
 
 /* Export toolbar under each data table — CSV download and clipboard copy. Sits
    quietly beneath the table; what exports is whatever the reader is looking at,
-   current sort order and all. */
+   current sort order and all. Written in site tokens rather than the tax page's
+   own palette so the same toolbar drops onto any page with a data table; the
+   confirmation note picks up the tax gold where that palette is in scope. */
 .table-export {
   display: flex;
   align-items: center;
@@ -4085,7 +4087,7 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   font-weight: 600;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--t-muted);
+  color: var(--fg-muted);
 }
 .tx-exp-btn {
   font: inherit;
@@ -4093,16 +4095,16 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   font-weight: 600;
   line-height: 1;
   padding: 8px 13px;
-  color: var(--t-fg-2);
-  background: var(--t-card);
-  border: 1px solid var(--t-line);
+  color: var(--fg);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
   border-radius: 5px;
   cursor: pointer;
   transition: border-color .15s, color .15s;
 }
-.tx-exp-btn:hover { border-color: var(--t-fg); color: var(--t-fg); }
+.tx-exp-btn:hover { border-color: var(--fg-soft); color: var(--fg-soft); }
 .tx-exp-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-.tx-exp-note { font-size: 12px; color: var(--t-gold); font-variant-numeric: tabular-nums; }
+.tx-exp-note { font-size: 12px; color: var(--t-gold, var(--highlight-ink)); font-variant-numeric: tabular-nums; }
 
 .chart-tip {
   position: absolute;
@@ -4879,7 +4881,11 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
 .b-tableview > summary { cursor: pointer; padding: 13px 22px; font-weight: 700; font-size: 13.5px; color: var(--fg-soft); list-style-position: inside; }
 .b-tableview[open] > summary { border-bottom: 1px solid var(--border); }
 .b-tableview .tablewrap { overflow-x: auto; }
-.b-tableview .tablewrap + table, .b-tableview table + table { border-top: 8px solid var(--bg-muted); }
+/* A general sibling combinator, not adjacent: an export toolbar now sits
+   between the two General Fund tables, and the seam still belongs to them. */
+.b-tableview .tablewrap + table, .b-tableview table ~ table { border-top: 8px solid var(--bg-muted); }
+/* Inside a chart card the toolbar lines up with the notes below the table. */
+.b-tableview .table-export { margin: 0; padding: 12px 22px 16px; }
 /* Drill table: the specific fund a line item sits in, and the lump-line caveat. */
 .b-where { display: block; font-size: 11.5px; color: var(--fg-muted); margin-top: 1px; }
 .b-tablenote { margin: 0; padding: 12px 22px 16px; font-size: 12.5px; color: var(--fg-muted); line-height: 1.5; }
@@ -4939,6 +4945,7 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
 
   .b-legend { padding: 12px 16px 16px; }
   .b-tableview > summary,
+  .b-tableview .table-export,
   .b-tablenote,
   .b-recon { padding-left: 16px; padding-right: 16px; }
 
