@@ -1,0 +1,115 @@
+{
+  "_comment": "Every property tax levied on an Eagle Mountain parcel, not just the city's line. Rates are the 2025 Final Adopted Tax Rate for each entity in the tax area that covers most of the city, read from the Utah State Tax Commission's Report 600 — the same document behind the county comparison in data.tax-county.json. `certified` is that year's Auditor's Certified Rate, so a rate above it means the entity went through Truth-in-Taxation in 2025 and raised. Rates are decimal multipliers on taxable value; a primary residence is taxed on 55% of market value, and every entity here levies against that same taxable value.",
+
+  "rate_year": 2025,
+  "rate_basis": "2025 Final Adopted Tax Rate, by taxing entity, for Utah County tax area 038-0000 — the area that covers most of Eagle Mountain. These are the rates on today's bills.",
+
+  "tax_area": {
+    "code": "038-0000",
+    "county": "Utah County",
+    "note": "Eagle Mountain is split across thirteen Utah County tax areas. Ten of them — 035-9906, 038-0000, -0001, -0005, -0007, -0009, -0010, -0011, -0012, and 053-0001 — carry exactly the seven levies in this table and come to 0.009377. The other three add a local district on top of them:",
+    "total": 0.009377,
+    "total_certified": 0.008659
+  },
+
+  "source": {
+    "title": "2025 Tax Rates by Tax Area, Report 600",
+    "publisher": "Utah State Tax Commission, Property Tax Division",
+    "url": "https://files.tax.utah.gov/propertytax/tax-rates/area-rates/taxarearates2025.pdf",
+    "page": "347 of 505 (Utah County, tax areas 035-9906 and 038-0000)",
+    "published": "2026-01-05",
+    "retrieved": "2026-07-31"
+  },
+
+  "sample_value": 500000,
+  "residential_ratio": 0.55,
+
+  "entities": [
+    {
+      "code": "2010",
+      "name": "Alpine School District",
+      "short": "Alpine School District",
+      "rate": 0.005774,
+      "certified": 0.005674,
+      "proposed": 0.006074,
+      "what": "Public schools — the district Eagle Mountain's schools belong to. The largest single line on the bill by a wide margin."
+    },
+    {
+      "code": "4400",
+      "name": "Unified Fire Service Area",
+      "short": "Unified Fire",
+      "rate": 0.001650,
+      "certified": 0.001347,
+      "proposed": 0.001650,
+      "what": "Fire and emergency medical response. Eagle Mountain sits inside this service area, so the fire levy is charged on the bill directly rather than out of the city's own rate."
+    },
+    {
+      "code": "1010",
+      "name": "Utah County",
+      "short": "Utah County",
+      "rate": 0.000893,
+      "certified": 0.000609,
+      "proposed": 0.000893,
+      "what": "County government — the jail, the courts, elections, county roads, and the Sheriff's Office county-wide. Eagle Mountain's own contract with the Sheriff is paid by the city, out of the city's line below."
+    },
+    {
+      "code": "3047",
+      "name": "Eagle Mountain City",
+      "short": "Eagle Mountain City",
+      "rate": 0.000534,
+      "certified": 0.000534,
+      "proposed": 0.000534,
+      "is_city": true,
+      "what": "The city's own general levy — the one line on this bill the City Council sets, and the one the estimator above is about."
+    },
+    {
+      "code": "4250",
+      "name": "Central Utah Water Conservancy District",
+      "short": "Central Utah Water",
+      "rate": 0.000400,
+      "certified": 0.000380,
+      "proposed": 0.000400,
+      "what": "Wholesale water — the district that develops and delivers Central Utah Project water to cities along the Wasatch Front."
+    },
+    {
+      "code": "1020",
+      "name": "County Assessing & Collecting Levy",
+      "short": "County assessing",
+      "rate": 0.000112,
+      "certified": 0.000101,
+      "proposed": 0.000112,
+      "what": "Pays Utah County to value property and collect the tax — the assessor, recorder, and treasurer's side of the bill."
+    },
+    {
+      "code": "1015",
+      "name": "Multicounty Assessing & Collecting Levy",
+      "short": "Multicounty assessing",
+      "rate": 0.000014,
+      "certified": 0.000014,
+      "proposed": 0.000014,
+      "what": "A statewide levy set in state law, not by any local board, that funds property valuation standards across all 29 counties. The smallest line on the bill."
+    }
+  ],
+
+  "variants": [
+    {
+      "name": "Pole Canyon Basic Local District",
+      "rate": 0.000417,
+      "areas": ["038-0008", "053-0000"],
+      "note": "Adds 0.000417 in tax areas 038-0008 and 053-0000, taking the bill there to 0.009794."
+    },
+    {
+      "name": "Firefly Public Infrastructure District No. 1",
+      "rate": 0.002927,
+      "areas": ["506-0000"],
+      "note": "Adds 0.002927 in tax area 506-0000, on top of the Pole Canyon levy — a total of 0.012721 inside its boundary. A public infrastructure district repays the bonds that built one development's infrastructure, and is paid only by property inside it."
+    }
+  ],
+
+  "caveats": [
+    "Rates are the 2025 final adopted figures — the ones on bills mailed in 2025. The 2026 rates for the county, the school district, the water district and the fire service area are set on their own schedules and are not final yet; only Eagle Mountain's proposed 2026 rate is known.",
+    "This is the picture for the tax area covering most of Eagle Mountain. Your own parcel's tax area is printed on your valuation notice, and three areas add a local district on top of these seven levies.",
+    "Property tax is not the whole bill. City utility charges, garbage, and stormwater fees are billed separately and are not property taxes.",
+    "A primary residence is taxed on 55% of its market value. Every entity in the table levies against that same reduced value, so the exemption applies to all of them at once."
+  ]
+}

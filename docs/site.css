@@ -676,9 +676,12 @@ details.motion-row[open] {
 
 /* The front page runs a touch narrower than the data pages. It is a reading
    page, not a table, and the decision cards want a column they can fill rather
-   than a measure they leave half empty. */
+   than a measure they leave half empty. The tax page opts into the same measure
+   (main.main-reading), so flipping between the two keeps the column edges put —
+   which is why the width lives here, once, rather than being restated. */
 .home main,
-main.home {
+main.home,
+main.main-reading {
   max-width: 920px;
 }
 
@@ -686,7 +689,8 @@ main.home {
    it can't eat into text contrast), with a warm bloom pooling at the top of the
    page. It is what stops the cream reading as flat #F7F4EC fill. */
 .home body::before,
-body.home-paper::before {
+body.home-paper::before,
+body.page-tax::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -700,7 +704,8 @@ body.home-paper::before {
   mix-blend-mode: multiply;
 }
 @media (prefers-color-scheme: dark) {
-  body.home-paper::before { opacity: .28; mix-blend-mode: soft-light; }
+  body.home-paper::before,
+  body.page-tax::before { opacity: .28; mix-blend-mode: soft-light; }
 }
 
 /* ---------- Hero ---------- */
@@ -2931,20 +2936,38 @@ html.has-modal { overflow: hidden; }
 .tx-turn .tx-spk[title] { cursor: help; }
 
 /* =========================================================================
-   TAX ESTIMATOR (tax.html)
-   Estimator-first, and calm. A centered hero asks the question, the interactive
-   tool answers it, and everything else — the official schedule, the county
-   comparison, the paper trail, the meeting record — waits inside collapsible
-   panels the reader opens on demand. One quiet column, generous whitespace, and
-   a single dominant surface (the ink result banner). All selectors are scoped
-   under .tax-page / .tax-tool / .panel / .chart so they can't reach other pages.
+   PROPERTY TAX PAGE (tax.html)
+   An editorial broadsheet, not an app screen. One narrow column of warm paper,
+   hairline rules instead of cards, and a single dominant surface — the ink band
+   carrying the answer. The page reads top to bottom as one argument: the tool,
+   three facts, the whole bill, the county standing. Reference material waits in
+   collapsible panels at the foot.
+
+   Figures are set in IBM Plex Mono throughout — rates, shares, and dollars are
+   things a reader compares down a column, and the mono face makes the columns
+   line up on their own. Text is Instrument Sans. Both are loaded by tax.html and
+   scoped to it via body.page-tax, so no other page changes typeface.
+
+   All selectors are scoped under .tax-page / .tax-tool / .panel / .chart so they
+   can't reach other pages. The one exception is .reveal below, which index.html
+   shares.
    ========================================================================= */
 
+/* tax.html only: the page's own typeface pair, mapped onto the site's font
+   tokens so every inherited rule (headings, tables, buttons) follows without
+   being restated. */
+body.page-tax {
+  --display: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Arial, sans-serif;
+  --sans:    var(--display);
+  --serif:   var(--display);
+  --mono:    "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+
 /* ---------- entrance ----------
-   The page is injected after two fetches, so it arrives all at once. A short
+   The page is injected after three fetches, so it arrives all at once. A short
    staggered rise gives the sections an order to be read in. Each keyframe ends
    on `transform: none` rather than translateY(0): a lingering transform would
-   make .tax-tool a containing block and quietly break the sticky banner. */
+   make an ancestor a containing block and quietly break a sticky child. */
 @keyframes ct-rise {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: none; }
@@ -2954,309 +2977,368 @@ html.has-modal { overflow: hidden; }
   animation-delay: calc(var(--i, 0) * 90ms);
 }
 
-/* One comfortable reading column, centered. */
-.tax-page { max-width: 720px; margin: 0 auto; }
+/* ---------- the page's own palette ----------
+   Warm neutrals for structure, gold for the editorial voice (eyebrows, links,
+   the figures a reader is meant to carry away), rust for the increase itself,
+   and sage for the recessive bars. Surfaces track the site tokens so the page
+   sits on the same paper as the rest of the site and follows the theme toggle;
+   only the four accents are stated literally, with dark variants below. */
+.tax-page {
+  --t-page:   var(--bg);
+  --t-card:   var(--bg-elev);
+  --t-tray:   #F1EDE2;               /* segmented-control tray */
+  --t-line:   var(--border);
+  --t-line-2: var(--hairline);
+  --t-fg:     var(--fg-soft);
+  --t-fg-2:   var(--fg);
+  --t-muted:  var(--fg-muted);
 
-/* ---------- hero ---------- */
-.tax-hero { text-align: center; margin: 6px 0 34px; }
+  --t-ink:      #23261F;             /* the result band's ground */
+  --t-ink-2:    #2B2E24;             /* its emphasised half */
+  --t-ink-line: #3A3C31;
+  --t-on-ink:     #EFEADB;
+  --t-on-ink-dim: #A7A895;
+  --t-on-ink-gold:#F0D386;
 
-.tax-status {
-  display: inline-flex;
+  --t-gold:      #8A6A12;            /* eyebrows, links, display figures */
+  --t-gold-line: #E3C766;
+  --t-gold-bg:   #FDF7E6;
+  --t-gold-hi:   #F6E7BA;            /* the city's row, lifted out */
+  --t-rust:      #A8542F;            /* the increase */
+  --t-rust-fg:   #FFF3E8;
+  --t-sage:      #6F7C68;            /* recessive bars */
+  --t-pass:      #2C6B47;
+
+  --t-r: 6px;
+  max-width: none;
+  margin: 0 auto;
+}
+
+/* Dark: the accents lift off the dark ground, the ink band sinks well below the
+   page so it still reads as the one dominant surface, and the two gold fills
+   become tints rather than washes. Cream clears 12:1 on the band; gold, rust,
+   and sage each clear AA against both grounds. */
+@media (prefers-color-scheme: dark) {
+  .tax-page {
+    --t-tray:      #2C3128;
+    --t-ink:       #14170F;
+    --t-ink-2:     #1C2016;
+    --t-ink-line:  #33372B;
+    --t-gold:      #EFC868;
+    --t-gold-line: #8A6A12;
+    --t-gold-bg:   #2C2515;
+    --t-gold-hi:   #3E331A;
+    --t-rust:      #C4643A;
+    --t-rust-fg:   #FFF3E8;
+    --t-sage:      #8B948A;
+    --t-pass:      #46B183;
+  }
+}
+:root[data-theme="dark"] .tax-page {
+  --t-tray: #2C3128; --t-ink: #14170F; --t-ink-2: #1C2016; --t-ink-line: #33372B;
+  --t-gold: #EFC868; --t-gold-line: #8A6A12; --t-gold-bg: #2C2515; --t-gold-hi: #3E331A;
+  --t-rust: #C4643A; --t-sage: #8B948A; --t-pass: #46B183;
+}
+:root[data-theme="light"] .tax-page {
+  --t-tray: #F1EDE2; --t-ink: #23261F; --t-ink-2: #2B2E24; --t-ink-line: #3A3C31;
+  --t-gold: #8A6A12; --t-gold-line: #E3C766; --t-gold-bg: #FDF7E6; --t-gold-hi: #F6E7BA;
+  --t-rust: #A8542F; --t-sage: #6F7C68; --t-pass: #2C6B47;
+}
+
+.tax-page { display: flex; flex-direction: column; gap: 46px; }
+.tax-page .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.tax-page a { color: var(--t-gold); }
+.tax-page a:hover { color: var(--t-fg); }
+
+/* ---------- shared section furniture ----------
+   Every section opens the same way: a gold eyebrow, a heading, and a paragraph
+   of standfirst. Stating it once here is what makes four very different
+   sections read as one page. */
+.tax-page .eyebrow {
+  margin: 0;
+  display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: var(--highlight-soft);
-  color: var(--highlight-ink);
   font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .02em;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--t-gold);
 }
 .tax-status-dot {
   width: 7px; height: 7px;
+  flex: none;
   border-radius: 50%;
-  background: var(--highlight);
-  box-shadow: 0 0 0 0 var(--highlight);
+  background: var(--t-gold);
   animation: nh-ping 2.4s ease-out infinite;
 }
 @keyframes nh-ping {
-  0%       { box-shadow: 0 0 0 0 color-mix(in oklab, var(--highlight) 55%, transparent); }
+  0%       { box-shadow: 0 0 0 0 color-mix(in oklab, var(--t-gold) 55%, transparent); }
   70%,100% { box-shadow: 0 0 0 6px transparent; }
 }
 
+.tax-page .tax-sec { display: flex; flex-direction: column; gap: 22px; }
+.tax-page .sec-head { display: flex; flex-direction: column; gap: 8px; }
+.tax-page .sec-h2 {
+  margin: 0;
+  font-size: clamp(23px, 3.4vw, 28px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -.022em;
+  color: var(--t-fg);
+  text-wrap: balance;
+}
+.tax-page .sec-sub {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--t-fg-2);
+  text-wrap: pretty;
+}
+.tax-page .sec-sub strong { color: var(--t-fg); font-weight: 600; }
+
+/* ---------- hero ---------- */
+.tax-hero { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
 .tax-h1 {
-  font-family: var(--serif);
-  font-size: clamp(30px, 5.2vw, 44px);
-  font-weight: 600;
-  line-height: 1.06;
-  letter-spacing: -0.02em;
-  color: var(--fg);
-  margin: 17px 0 14px;
+  margin: 0;
+  font-size: clamp(32px, 6vw, 47px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -.028em;
+  color: var(--t-fg);
+  text-wrap: balance;
 }
 .tax-lede {
-  max-width: 52ch;
-  margin: 0 auto;
-  color: var(--fg-muted);
-  font-size: 16px;
-  line-height: 1.6;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--t-fg-2);
+  text-wrap: pretty;
 }
 
-/* The one fact a reader can still act on — a calm chip, not a banner. */
+/* The one fact a reader can still act on. A gold-ruled note, not a banner. */
 .tax-next {
-  display: inline-flex;
+  display: flex;
   align-items: flex-start;
   gap: 10px;
-  text-align: left;
-  max-width: 62ch;
-  margin: 24px auto 0;
-  padding: 11px 16px;
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--highlight);
-  border-radius: var(--radius);
-  background: var(--bg-elev);
-  box-shadow: var(--shadow);
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--fg-muted);
+  margin: 6px 0 0;
+  padding: 13px 18px;
+  border-left: 3px solid var(--t-gold-line);
+  background: var(--t-gold-bg);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--t-fg-2);
 }
-.tax-next b { color: var(--fg); font-weight: 700; }
+.tax-next b { color: var(--t-fg); font-weight: 600; }
 .tax-next .nh-pulse {
   flex: none;
   width: 8px; height: 8px;
-  margin-top: 6px;
+  margin-top: 7px;
   border-radius: 50%;
-  background: var(--highlight);
-  box-shadow: 0 0 0 0 var(--highlight);
+  background: var(--t-gold);
   animation: nh-ping 2.4s ease-out infinite;
 }
 
-/* ---------- estimator card (the hero tool) ----------
-   The result banner is an ink panel, the one dominant surface on the page. Its
-   colours are local tokens rather than --accent: in dark mode --accent is the
-   burnt orange, and a full orange panel would shout. Both themes are picked so
-   cream clears 10:1 and the accents clear AA. */
-.estimator { margin: 0 0 48px; }
-
+/* =========================================================================
+   THE ESTIMATOR
+   Controls first, answer underneath — the order of a printed schedule. The
+   answer stays on screen anyway: the ink band is sticky to the *bottom* of the
+   viewport, so it rides the fold for as long as the controls above it are in
+   reach and releases once the reader has scrolled past the tool.
+   ========================================================================= */
+.estimator { margin: 0; }
 .tax-tool {
-  --res-bg:   #2F2A21;
-  --res-fg:   #FBF7EC;
-  --res-dim:  #C3BBAA;
-  --res-rule: rgba(251,247,236,.15);
-  --res-hot:  #F0906F;
-  --res-cool: #6FC79C;
-
-  background: var(--bg-elev);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  /* No `overflow: hidden` — it would make this a scroll container and the
-     banner inside would never pin. Corners are rounded per-band instead. */
+  background: var(--t-card);
+  border: 1px solid var(--t-line);
+  border-radius: var(--t-r);
+  /* No `overflow: hidden` — it would make this a scroll container and the band
+     inside would never stick. Corners are rounded per-band instead. */
 }
-/* Dark mode sinks the panel well below the card surface (#262E25) rather than
-   nudging under it: at a couple of points' difference the one dominant element
-   on the page reads as flat. Cream clears 15:1 here, the accents clear AA. */
-@media (prefers-color-scheme: dark) {
-  .tax-tool { --res-bg: #17140F; --res-rule: rgba(251,247,236,.13); --res-hot: #EF7C60; --res-cool: #46B183; }
-}
-:root[data-theme="dark"] .tax-tool { --res-bg: #17140F; --res-rule: rgba(251,247,236,.13); --res-hot: #EF7C60; --res-cool: #46B183; }
-:root[data-theme="light"] .tax-tool { --res-bg: #2F2A21; --res-rule: rgba(251,247,236,.15); --res-hot: #F0906F; --res-cool: #6FC79C; }
 
-#tool-sentinel { display: block; height: 0; }
-
-/* Tabbing to a control below the fold scrolls it flush to the viewport top —
-   which is behind the pinned banner. Reserve the chrome above it. --out-h is
-   the banner's measured height, set in tax.html. */
+/* Tabbing to a control scrolls it flush to the viewport top — which is behind
+   the sticky topbar. Reserve that chrome; --topbar-h is measured in tax.html. */
 .tax-tool .field,
-.tax-tool .rate { scroll-margin-top: calc(var(--topbar-h, 62px) + var(--out-h, 230px) + 14px); }
+.tax-tool .rate { scroll-margin-top: calc(var(--topbar-h, 62px) + 14px); }
 
-.tax-tool .tool-inputs {
-  padding: 24px 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-.tax-tool .input-pair {
+.tax-tool .est-inputs {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 24px;
+  gap: 30px;
+  padding: 26px 26px 24px;
 }
-
-/* Disclaimers, banded off at the foot where they belong. */
-.tax-tool .tool-foot {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 8px 26px;
-  padding: 15px 22px 16px;
-  border-top: 1px solid var(--border);
-  background: var(--bg-muted);
-  border-radius: 0 0 calc(var(--radius) - 1px) calc(var(--radius) - 1px);
-  font-size: 11.5px;
-  line-height: 1.55;
-  color: var(--fg-muted);
+.tax-tool .est-rates {
+  padding: 22px 26px 24px;
+  border-bottom: 1px solid var(--t-line-2);
 }
-.tax-tool .tool-foot p { margin: 0; }
-.tax-tool .tool-foot strong { color: var(--fg); font-weight: 700; }
+.tax-tool .field { display: flex; flex-direction: column; }
 
 .tax-tool .flabel {
   display: block;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: .07em;
-  color: var(--fg-muted);
-  margin-bottom: 8px;
+  letter-spacing: .12em;
+  color: var(--t-muted);
+  margin-bottom: 9px;
+}
+.tax-tool .hint {
+  margin: 9px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--t-muted);
 }
 
-/* segmented control */
+/* segmented control — an inset tray, the choice pressed into ink */
 .tax-tool .seg {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
+  gap: 6px;
+  padding: 4px;
+  background: var(--t-tray);
+  border-radius: 5px;
 }
 .tax-tool .seg input { position: absolute; opacity: 0; pointer-events: none; }
 .tax-tool .seg label {
   text-align: center;
-  padding: 9px 6px;
+  padding: 10px 6px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
-  color: var(--fg-muted);
-  background: var(--bg-elev);
   line-height: 1.25;
+  color: var(--t-muted);
   transition: background 140ms ease, color 140ms ease;
 }
-.tax-tool .seg label + label { border-left: 1px solid var(--border-strong); }
-.tax-tool .seg label:hover { background: var(--bg-muted); }
-.tax-tool .seg input:checked + label { background: var(--accent); color: var(--accent-fg); }
-.tax-tool .seg input:focus-visible + label { outline: 3px solid var(--focus); outline-offset: -3px; }
+.tax-tool .seg label:hover { color: var(--t-fg); }
+.tax-tool .seg input:checked + label { background: var(--t-ink); color: var(--t-on-ink); }
+.tax-tool .seg input:focus-visible + label { outline: 3px solid var(--focus); outline-offset: -2px; }
 
-/* market value */
-.tax-tool .valuerow { display: flex; align-items: baseline; gap: 6px; margin-bottom: 10px; }
-.tax-tool .valuerow .dollar { font-family: var(--serif); font-size: 26px; color: var(--fg-muted); }
+/* market value — an underlined figure, the way a form on paper asks for one */
+.tax-tool .valuerow {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  border-bottom: 2px solid var(--t-fg);
+  padding-bottom: 4px;
+}
+.tax-tool .valuerow .dollar { font-size: 24px; color: var(--t-muted); }
 .tax-tool input.value {
-  font-family: var(--serif);
-  font-size: 30px;
+  font-family: var(--mono);
+  font-size: 32px;
   font-weight: 600;
-  letter-spacing: -0.015em;
+  letter-spacing: -.02em;
   font-variant-numeric: tabular-nums;
   width: 100%;
   min-width: 0;
   border: 0;
-  border-bottom: 2px solid var(--border-strong);
   background: transparent;
-  color: var(--fg);
-  padding: 0 0 3px;
+  color: var(--t-fg);
+  padding: 0;
   border-radius: 0;
 }
-.tax-tool input.value:focus { outline: none; border-bottom-color: var(--accent); }
+.tax-tool input.value:focus { outline: none; }
+.tax-tool .valuerow:focus-within { border-bottom-color: var(--t-gold); }
 
 .tax-tool input[type="range"] {
   -webkit-appearance: none; appearance: none;
-  width: 100%; height: 22px; margin: 0;
+  width: 100%; height: 28px; margin: 6px 0 0;
   background: transparent; cursor: pointer;
 }
-.tax-tool input[type="range"]::-webkit-slider-runnable-track {
-  height: 4px; border-radius: 999px; background: var(--border-strong);
-}
-.tax-tool input[type="range"]::-moz-range-track {
-  height: 4px; border-radius: 999px; background: var(--border-strong);
-}
+.tax-tool input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: var(--t-line); }
+.tax-tool input[type="range"]::-moz-range-track { height: 4px; border-radius: 4px; background: var(--t-line); }
 .tax-tool input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none; appearance: none;
-  width: 18px; height: 18px; margin-top: -7px;
+  width: 22px; height: 22px; margin-top: -9px;
   border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid var(--bg-elev);
-  box-shadow: 0 1px 3px rgb(0 0 0 / .25);
+  background: var(--t-ink);
+  border: 3px solid var(--t-card);
+  box-shadow: 0 1px 4px rgb(0 0 0 / .28);
 }
 .tax-tool input[type="range"]::-moz-range-thumb {
-  width: 18px; height: 18px;
+  width: 22px; height: 22px;
   border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid var(--bg-elev);
-  box-shadow: 0 1px 3px rgb(0 0 0 / .25);
+  background: var(--t-ink);
+  border: 3px solid var(--t-card);
+  box-shadow: 0 1px 4px rgb(0 0 0 / .28);
 }
 .tax-tool .rangeends {
   display: flex; justify-content: space-between;
-  font-size: 11px; color: var(--fg-muted);
+  font-family: var(--mono);
+  font-size: 11px; color: var(--t-muted);
   font-variant-numeric: tabular-nums;
 }
 
 /* rate scenarios */
-.tax-tool .rates { display: flex; flex-direction: column; gap: 7px; }
+.tax-tool .rates { display: flex; flex-direction: column; gap: 6px; }
 .tax-tool .rate { position: relative; }
 /* Only the radio hides behind its label. Scoped to the radio on purpose: an
    unqualified `.rate input` also swallows the custom-rate slider and field. */
 .tax-tool .rate > input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
-/* The card itself. Direct child only — the custom row also holds a plain
-   field label, which must not inherit a card's border and padding. */
+/* Direct child only — the custom row also holds a plain field label, which must
+   not inherit the row's border and padding. */
 .tax-tool .rate > label {
   display: grid;
   grid-template-columns: 14px minmax(0, 1fr) auto;
   align-items: center;
   gap: 12px;
-  padding: 12px 14px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--bg-elev);
+  padding: 11px 14px;
+  border: 1px solid var(--t-line);
+  border-radius: 5px;
+  background: var(--t-card);
   cursor: pointer;
   transition: border-color 140ms ease, background 140ms ease;
 }
-.tax-tool .rate > label:hover { background: var(--bg-muted); }
+.tax-tool .rate > label:hover { border-color: var(--t-fg); }
 .tax-tool .rate .dot {
   width: 14px; height: 14px; border-radius: 50%;
-  border: 2px solid var(--border-strong);
+  border: 2px solid var(--t-line);
   display: grid; place-items: center;
 }
-.tax-tool .rate input:checked + label { border-color: var(--accent); background: var(--accent-soft); }
-.tax-tool .rate input:checked + label .dot { border-color: var(--accent); }
+.tax-tool .rate input:checked + label { border-color: var(--t-fg); background: var(--t-page); }
+.tax-tool .rate input:checked + label .dot { border-color: var(--t-fg); }
 .tax-tool .rate input:checked + label .dot::after {
-  content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+  content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--t-fg);
 }
 .tax-tool .rate input:focus-visible + label { outline: 3px solid var(--focus); outline-offset: 2px; }
-.tax-tool .rate .rname { font-size: 13.5px; font-weight: 600; line-height: 1.2; display: block; }
-.tax-tool .rate .rmeta { font-size: 11.5px; color: var(--fg-muted); margin-top: 1px; display: block; }
+.tax-tool .rate .rname { font-size: 14px; font-weight: 600; line-height: 1.2; display: block; }
+.tax-tool .rate .rmeta { font-size: 12px; color: var(--t-muted); margin-top: 2px; display: block; }
 .tax-tool .rate .rrate {
-  font-family: var(--serif);
-  font-size: 15px; font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.01em;
+  font-size: 14.5px; font-weight: 600;
+  letter-spacing: -.01em;
   white-space: nowrap;
+  color: var(--t-fg-2);
 }
-/* the proposed rate is the number this page exists to explain */
-.tax-tool .rate.is-proposed input:checked + label { border-color: var(--highlight); background: var(--highlight-soft); }
-.tax-tool .rate.is-proposed input:checked + label .dot { border-color: var(--highlight-ink); }
-.tax-tool .rate.is-proposed input:checked + label .dot::after { background: var(--highlight-ink); }
-.tax-tool .rate.is-proposed .rrate { color: var(--highlight-ink); }
-.tax-tool .customwrap { padding: 4px 12px 10px; }
-.tax-tool .customwrap[hidden] { display: none; }
+/* The proposed rate is the number this page exists to explain. */
+.tax-tool .rate.is-proposed input:checked + label { border-color: var(--t-gold-line); background: var(--t-gold-bg); }
+.tax-tool .rate.is-proposed input:checked + label .dot { border-color: var(--t-gold); }
+.tax-tool .rate.is-proposed input:checked + label .dot::after { background: var(--t-gold); }
+.tax-tool .rate.is-proposed .rrate { color: var(--t-gold); }
 
+.tax-tool .customwrap { padding: 8px 14px 4px; }
+.tax-tool .customwrap[hidden] { display: none; }
 /* The rate itself, typeable. The slider is for exploring; this is for the
    reader who has a specific number in mind and wants to put it in. */
 .tax-tool .customedit {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; margin-bottom: 8px;
+  gap: 12px;
 }
 .tax-tool .customedit .clabel {
-  font-size: 11.5px; font-weight: 600;
-  letter-spacing: 0.04em; text-transform: uppercase;
-  color: var(--fg-muted);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--t-muted);
 }
 .tax-tool .cnum {
   display: flex; align-items: center;
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-sm);
-  background: var(--bg-elev);
+  border: 1px solid var(--t-line);
+  border-radius: 5px;
+  background: var(--t-card);
   overflow: hidden;
 }
-.tax-tool .cnum:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.tax-tool .cnum:focus-within { border-color: var(--t-gold); }
 .tax-tool input.crate {
   width: 9ch;
-  border: 0; background: transparent; color: var(--fg);
-  font-family: var(--serif);
-  font-size: 16px; font-weight: 600;
+  border: 0; background: transparent; color: var(--t-fg);
+  font-size: 15px; font-weight: 600;
   font-variant-numeric: tabular-nums;
   text-align: center;
   padding: 7px 2px;
@@ -3264,627 +3346,648 @@ html.has-modal { overflow: hidden; }
 .tax-tool input.crate:focus { outline: none; }
 .tax-tool .cstep {
   border: 0; background: transparent;
-  color: var(--fg-muted);
+  color: var(--t-muted);
   font-size: 16px; line-height: 1;
   width: 34px; min-height: 34px;
   cursor: pointer;
   display: grid; place-items: center;
 }
-.tax-tool .cstep:hover { background: var(--bg-muted); color: var(--fg); }
+.tax-tool .cstep:hover { background: var(--t-tray); color: var(--t-fg); }
 .tax-tool .cstep:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
 
-/* ---------- result banner ----------
-   Pins under the topbar while the reader works the controls beneath it. The
-   pin offset is the topbar's measured height (--topbar-h, set in tax.html),
-   because that bar shrinks at the mobile breakpoint and grows with the
-   safe-area inset. */
-.tax-tool .tool-out {
-  position: sticky;
-  /* Flush against the topbar. Any gap here is a window the inputs scroll
-     through as the banner pins. */
-  top: var(--topbar-h, 62px);
-  z-index: 5;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
-  align-items: center;
-  gap: 28px;
-  padding: 24px 26px;
-  background: var(--res-bg);
-  color: var(--res-fg);
-  border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;
-  transition: border-radius 160ms ease, box-shadow 160ms ease;
+/* ---------- the answer ----------
+   This is the whole page for most people who open it. So it says one thing, in
+   the unit a household actually budgets in: dollars a month. The year figure is
+   under it, the two totals it came from are under that, and the six-decimal rate
+   that produced all of it appears nowhere on this panel — a resident who has
+   never read a tax notice cannot do anything with 0.001700. */
+.bill-band {
+  background: var(--t-ink);
+  color: var(--t-on-ink);
+  padding: 34px 30px 30px;
+  text-align: center;
 }
-/* Stuck: square off against the topbar and lift off the page. */
-.tax-tool .tool-out.is-pinned {
-  border-radius: 0;
-  box-shadow: 0 12px 26px rgb(var(--shadow-rgb) / .22);
-}
-/* Grid children default to min-width:auto, so a long unbreakable figure would
-   push through the divider instead of shrinking its own column. */
-.tax-tool .out-main,
-.tax-tool .out-compare { min-width: 0; }
-
-.tax-tool .rlabel {
+.bb-lead {
   margin: 0;
-  font-size: 11px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .09em;
-  color: var(--res-dim);
+  font-size: 15px;
+  color: var(--t-on-ink-dim);
 }
-/* Wrap before the scenario, never inside it. */
-.tax-tool .rlabel .scen { color: var(--res-fg); white-space: nowrap; }
-
-.tax-tool .bignum {
-  font-family: var(--serif);
-  font-size: clamp(46px, 5.6vw, 68px);
+.bb-hero {
+  margin: 6px 0 0;
+  font-size: clamp(58px, 11vw, 104px);
   font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.025em;
-  font-variant-numeric: tabular-nums;
-  color: var(--res-fg);
-  margin: 10px 0 0;
+  line-height: .95;
+  letter-spacing: -.045em;
+  color: #FFFFFF;
   overflow-wrap: anywhere;
 }
-/* A $500k home gives seven characters. A mistyped market value gives fifteen,
-   and the display size has to stand down rather than run into the bars. */
-.tax-tool .bignum.len-l  { font-size: clamp(34px, 3.9vw, 47px); }
-.tax-tool .bignum.len-xl { font-size: clamp(25px, 2.9vw, 35px); letter-spacing: -0.015em; }
-/* A changed scenario is a different answer, not a nudged one. */
+.is-down .bb-hero { color: #9FE0C1; }
+.bb-unit {
+  margin: 4px 0 0;
+  font-size: clamp(19px, 2.6vw, 26px);
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--t-on-ink-gold);
+}
+.is-down .bb-unit { color: #9FE0C1; }
+.is-same .bb-unit { color: var(--t-on-ink-dim); }
+.bb-year {
+  margin: 12px 0 0;
+  font-size: 16px;
+  color: var(--t-on-ink-dim);
+}
+/* A mistyped value can give a fifteen-character figure; step it down rather than
+   let it break out of the panel. */
+.bb-hero.len-l  { font-size: clamp(40px, 7vw, 62px); }
+.bb-hero.len-xl { font-size: clamp(28px, 5vw, 42px); letter-spacing: -.03em; }
 @keyframes ct-numpulse {
   from { opacity: .45; transform: translateY(3px); }
   to   { opacity: 1;   transform: none; }
 }
-.tax-tool .bignum.numflash { animation: ct-numpulse 260ms cubic-bezier(.22,.7,.2,1); }
+.bb-hero.numflash { animation: ct-numpulse 260ms cubic-bezier(.22,.7,.2,1); }
 
-.tax-tool .permonth {
-  margin: 7px 0 0;
-  font-size: 13px;
-  color: var(--res-dim);
-  font-variant-numeric: tabular-nums;
+/* The two totals the difference came from — supporting evidence, set small and
+   side by side so the comparison is still one glance. */
+.bb-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 26px auto 0;
+  max-width: 520px;
+  background: var(--t-ink-line);
+  border-top: 1px solid var(--t-ink-line);
 }
-
-.tax-tool .out-compare {
-  border-left: 1px solid var(--res-rule);
-  padding-left: 28px;
+.bb-half {
+  background: var(--t-ink);
+  padding: 16px 12px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
 }
-.tax-tool .delta {
-  display: inline-flex; align-items: center; gap: 7px;
-  padding: 6px 13px 6px 10px;
-  border-radius: 999px;
-  font-size: 13.5px; font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-.tax-tool .delta.up   { background: color-mix(in oklab, var(--res-hot) 22%, transparent);  color: var(--res-hot); }
-.tax-tool .delta.down { background: color-mix(in oklab, var(--res-cool) 22%, transparent); color: var(--res-cool); }
-.tax-tool .delta.same { background: transparent; color: var(--res-dim); border: 1px dashed var(--res-rule); }
-.tax-tool .delta .arrow { font-size: 11px; line-height: 1; }
-.tax-tool .delta .per { font-weight: 400; opacity: .82; }
-
-.tax-tool .bars { margin-top: 16px; display: flex; flex-direction: column; gap: 9px; }
-/* The value column sizes to its content and the track gives way, so an
-   outsized figure shortens the bar rather than escaping the panel. */
-.tax-tool .bar { display: grid; grid-template-columns: 62px minmax(0, 1fr) auto; align-items: center; gap: 9px; }
-.tax-tool .bar .bl {
-  font-size: 10px; line-height: 1.2;
-  text-transform: uppercase; letter-spacing: .06em;
-  color: var(--res-dim);
-}
-.tax-tool .bar .track {
-  height: 8px; border-radius: 999px;
-  background: color-mix(in oklab, var(--res-fg) 13%, transparent);
-  overflow: hidden;
-}
-.tax-tool .bar .fill { display: block; height: 100%; width: 0; border-radius: 999px; transition: width 340ms cubic-bezier(.4,0,.2,1); }
-.tax-tool .bar.now .fill { background: var(--res-cool); }
-.tax-tool .bar.sel .fill { background: var(--res-hot); }
-.tax-tool .bar .bv {
-  font-size: 12px; font-weight: 700; text-align: right;
-  color: var(--res-fg);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-  min-width: 62px;
-}
-
-/* ---------- takeaway: the bridge from the tool to the detail ----------
-   Three sourced facts in plain language between the estimator and the panels,
-   so a reader who stops at the number still leaves with the point. Framed in
-   the highlight (the proposed-increase colour used across the page) because
-   that is exactly what these facts are about. */
-.takeaway { margin: 0 0 44px; }
-.takeaway-title {
-  font-family: var(--serif);
-  font-size: 25px;
+.bb-label {
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: -0.015em;
-  text-align: center;
-  margin: 0 0 20px;
-  color: var(--fg);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t-on-ink-dim);
 }
-.takeaway-list {
+.bb-new .bb-label { color: var(--t-on-ink-gold); }
+.bb-num {
+  font-size: clamp(22px, 3vw, 27px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  color: color-mix(in oklab, var(--t-on-ink) 85%, transparent);
+  overflow-wrap: anywhere;
+}
+.bb-new .bb-num { color: #FFFFFF; }
+.bb-num.len-l  { font-size: clamp(17px, 2.2vw, 21px); }
+.bb-num.len-xl { font-size: clamp(14px, 1.7vw, 16px); }
+.bb-sub { font-size: 12.5px; color: var(--t-on-ink-dim); }
+
+.tax-tool .tool-foot {
+  margin: 0;
+  padding: 13px 26px 14px;
+  border-top: 1px solid var(--t-line-2);
+  background: var(--t-page);
+  border-radius: 0 0 calc(var(--t-r) - 1px) calc(var(--t-r) - 1px);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--t-muted);
+}
+.tax-tool .tool-foot strong { color: var(--t-fg); font-weight: 600; }
+
+/* ---------- the question ----------
+   One input, asked as a sentence, sized so nobody has to look for it. The
+   property-type switch sits under it because almost everyone is answering
+   "home I live in" and shouldn't have to think about it. */
+.tax-tool .est-ask { padding: 30px 26px 26px; }
+.tax-page .ask-q {
+  display: block;
+  font-size: clamp(20px, 2.6vw, 25px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  color: var(--t-fg);
+  margin-bottom: 14px;
+}
+.tax-tool .est-ask .valuerow { border-bottom-width: 3px; }
+.tax-tool .est-ask input.value { font-size: clamp(36px, 6vw, 52px); }
+.tax-tool .est-ask .dollar { font-size: clamp(24px, 3.6vw, 32px); }
+.tax-tool .ask-type { margin-top: 22px; max-width: 420px; }
+.tax-tool .ask-type .flabel { margin-bottom: 8px; }
+
+/* ---------- what you can do about it ----------
+   The only actionable thing on the page, so it sits in the hero above the
+   estimator. Small on purpose: a badge, a date, and a sentence. It is a
+   signpost, not a section — anything bigger competes with the question the
+   page is actually asking. */
+.tax-page .act {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin: 4px 0 0;
+  padding: 12px 16px;
+  background: var(--t-gold-bg);
+  border-left: 3px solid var(--t-gold-line);
+  border-radius: 0 var(--t-r) var(--t-r) 0;
+}
+.tax-page .act-pulse {
+  flex: none;
+  width: 8px; height: 8px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: var(--t-gold);
+  animation: nh-ping 2.4s ease-out infinite;
+}
+.tax-page .act-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.tax-page .act-head {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  color: var(--t-fg);
+}
+.tax-page .act-meta {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--t-fg-2);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tax-page .act-pulse { animation: none; }
+}
+
+/* ---------- the three facts ----------
+   A hairline strip, full column width — the newspaper move of setting the
+   summary numbers between the tool and the argument. Rules top and bottom, a
+   1px grid gap standing in for column rules. */
+.tax-page .facts {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 1px;
+  background: var(--t-line);
+  border-top: 1px solid var(--t-line);
+  border-bottom: 1px solid var(--t-line);
 }
-.takeaway-list.two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 480px; margin-inline: auto; }
-.takeaway .tk {
+.tax-page .facts.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.tax-page .facts .fact {
+  background: var(--t-page);
+  padding: 20px 22px 22px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 17px 18px 19px;
-  background: var(--bg-elev);
-  border: 1px solid var(--border);
-  border-top: 3px solid var(--highlight);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  gap: 7px;
 }
-.takeaway .tk-kicker {
-  font-size: 10.5px;
+.tax-page .facts .fact b {
+  font-size: 26px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  color: var(--fg-muted);
-}
-.takeaway .tk-fig {
-  font-family: var(--serif);
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--highlight-ink);
+  line-height: 1.1;
+  letter-spacing: -.025em;
+  color: var(--t-gold);
   font-variant-numeric: tabular-nums;
 }
-/* The rank shift is a phrase, not one figure — step it down so it fits without wrapping mid-word. */
-.takeaway .tk-fig.shift { font-size: 19px; letter-spacing: -0.01em; line-height: 1.15; }
-.takeaway .tk-fig.word  { font-size: 22px; letter-spacing: -0.01em; }
-.takeaway .tk-fig .to { color: var(--fg-muted); font-weight: 600; margin: 0 3px; }
-.takeaway .tk-txt {
-  font-size: 12.5px;
-  line-height: 1.5;
-  color: var(--fg-muted);
-}
-.takeaway-link { text-align: center; margin: 18px 0 0; }
-.takeaway-link a {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--accent);
-}
+/* The rank shift is a phrase, not one figure — step it down so it fits. */
+.tax-page .facts .fact b.shift { font-size: 19px; letter-spacing: -.01em; line-height: 1.2; }
+.tax-page .facts .fact b .to { color: var(--t-muted); margin: 0 3px; }
+/* Break between the two ranks, never inside one: "3rd-highest" splitting at
+   its hyphen reads as two separate figures. */
+.tax-page .facts .fact b .nb { white-space: nowrap; }
+.tax-page .facts .fact p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--t-fg-2); }
 
-/* ---------- section wayfinding (chips under "the fuller picture") ---------- */
+/* =========================================================================
+   YOUR WHOLE BILL
+   Seven levies land on an Eagle Mountain parcel and the city sets one of them.
+   One row each: who takes it, how big it is against the largest, the rate, its
+   share, and what it comes to on the property entered above. Names are set
+   flush right against the bars so the eye reads label-then-length in one move.
+   ========================================================================= */
+.levy { margin: 0; }
+.levy-head, .levy-row, .levy-total {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr) 58px 96px;
+  gap: 12px;
+  align-items: center;
+}
+.levy-head {
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--t-fg);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+}
+.levy-head > :first-child { text-align: right; }
+/* The rate header sits over the rates, not over the bars it shares a grid cell
+   with — the rate column is the right-hand end of that cell. */
+.levy-head > :nth-child(2) { text-align: right; }
+.levy-head > :nth-child(3), .levy-head > :nth-child(4) { text-align: right; }
+
+.levy-row { padding: 8px 0; border-bottom: 1px solid var(--t-line-2); }
+.levy-row.is-city { background: var(--t-gold-hi); }
+.levy-row:hover { background: var(--t-card); }
+.levy-row.is-city:hover { background: var(--t-gold-hi); }
+
+.levy-name { text-align: right; font-size: 13.5px; line-height: 1.3; font-weight: 600; color: var(--t-fg-2); }
+.levy-row.is-city .levy-name { font-weight: 700; color: var(--t-fg); }
+
+.levy-bar-wrap { display: grid; grid-template-columns: minmax(0, 1fr) 66px; gap: 10px; align-items: center; }
+.levy-track { position: relative; display: block; height: 14px; }
+.levy-bar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  min-width: 2px;
+  background: var(--t-sage);
+  border-radius: 0 3px 3px 0;
+}
+.levy-bar.is-city { background: var(--t-rust); }
+.levy-rate, .levy-share { font-size: 12px; color: var(--t-muted); }
+.levy-share { text-align: right; }
+.levy-amt { text-align: right; font-size: 13.5px; font-weight: 600; color: var(--t-fg); }
+
+.levy-total { padding-top: 9px; border-top: 1px solid var(--t-fg); }
+.levy-total > :first-child { text-align: right; font-size: 14px; font-weight: 700; color: var(--t-fg); }
+.levy-rate-total { font-size: 12.5px; font-weight: 600; color: var(--t-fg-2); }
+.levy-total .levy-track { height: 0; }
+.levy-total .levy-amt { font-size: 15px; font-weight: 700; }
+
+/* A gold-ruled aside — the one thing on the page that is a claim about the
+   future rather than a figure off a rate sheet. */
+.tax-page .note {
+  border-left: 3px solid var(--t-gold-line);
+  background: var(--t-gold-bg);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.tax-page .note b { font-size: 15px; font-weight: 600; color: var(--t-fg); }
+.tax-page .note p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--t-fg-2);
+  text-wrap: pretty;
+}
+.tax-page .note strong { color: var(--t-fg); font-weight: 600; }
+
+/* =========================================================================
+   REFERENCE PANELS
+   Flat disclosures, not cards: a rule above each, a heading, and a chevron.
+   Collapsed by default so the page ends calm; the schedule opens first so the
+   section never reads as a stack of closed doors.
+   ========================================================================= */
+.learn { display: flex; flex-direction: column; gap: 0; }
+.learn .sec-head { margin-bottom: 20px; }
+details.panel { scroll-margin-top: calc(var(--topbar-h, 62px) + 12px); }
+
 .picture-nav {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 8px;
-  max-width: 560px;
-  margin: 0 auto 26px;
+  margin: 0 0 22px;
 }
 .pnav-link {
   display: inline-block;
-  padding: 7px 15px;
-  border: 1px solid var(--border);
+  padding: 7px 14px;
+  border: 1px solid var(--t-line);
   border-radius: 999px;
-  background: var(--bg-elev);
-  color: var(--fg-soft);
+  background: var(--t-card);
+  color: var(--t-fg-2);
   font-size: 12.5px;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: var(--shadow-hair);
   transition: border-color 140ms ease, color 140ms ease, background 140ms ease;
 }
-.pnav-link:hover { border-color: var(--accent); color: var(--fg); background: var(--bg-muted); text-decoration: none; }
+.pnav-link:hover { border-color: var(--t-fg); color: var(--t-fg); text-decoration: none; }
 .pnav-link:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
-/* ---------- "the fuller picture" — disclosure panels ---------- */
-.learn { margin-top: 8px; }
-/* A chip or a shared #panel link scrolls the panel to the top — keep it clear of the sticky topbar. */
-details.panel { scroll-margin-top: calc(var(--topbar-h, 62px) + 12px); }
-.learn-title {
-  font-family: var(--serif);
-  font-size: 25px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  text-align: center;
-  margin: 0 0 7px;
-  color: var(--fg);
-}
-.learn-sub {
-  text-align: center;
-  max-width: 54ch;
-  margin: 0 auto 24px;
-  color: var(--fg-muted);
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-details.panel {
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-elev);
-  box-shadow: var(--shadow);
-  margin-bottom: 12px;
-  overflow: hidden;
-}
+details.panel { border-top: 1px solid var(--t-line); }
+details.panel:last-child { border-bottom: 1px solid var(--t-line); }
 .panel > summary {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 17px 20px;
+  padding: 17px 2px;
   cursor: pointer;
   list-style: none;
   -webkit-tap-highlight-color: transparent;
-  transition: background 140ms ease;
 }
 .panel > summary::-webkit-details-marker { display: none; }
-.panel > summary:hover { background: var(--bg-muted); }
-.panel > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; border-radius: var(--radius); }
+.panel > summary:hover .panel-tt h3 { color: var(--t-gold); }
+.panel > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
 .panel-tt { flex: 1; min-width: 0; }
-.panel-tt b {
+/* A real heading, so the four panels appear in the document outline — styled
+   back down to the size the layout wants. */
+.panel-tt h3 {
   display: block;
-  font-family: var(--serif);
-  font-size: 18px; font-weight: 600;
+  margin: 0;
+  font-size: 18px; font-weight: 700;
   line-height: 1.2;
-  color: var(--fg);
+  letter-spacing: -.015em;
+  color: var(--t-fg);
+  transition: color 140ms ease;
 }
 .panel-tt span {
   display: block;
-  margin-top: 3px;
-  font-size: 12.5px;
-  line-height: 1.4;
-  color: var(--fg-muted);
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--t-muted);
 }
+/* Drawn rather than typed: a ▾ glyph is at the mercy of whichever face is
+   resolved, and Instrument Sans renders it as a speck. */
 .panel-chev {
   flex: none;
-  color: var(--fg-muted);
-  font-size: 15px;
-  line-height: 1;
-  transition: transform 220ms cubic-bezier(.4,0,.2,1);
+  width: 9px; height: 9px;
+  margin: -4px 5px 0 0;
+  border-right: 2px solid var(--t-gold);
+  border-bottom: 2px solid var(--t-gold);
+  transform: rotate(45deg);
+  transition: transform 220ms cubic-bezier(.4,0,.2,1), margin 220ms cubic-bezier(.4,0,.2,1);
 }
-details.panel[open] > summary .panel-chev { transform: rotate(180deg); }
-.panel-body { padding: 2px 20px 22px; }
+details.panel[open] > summary .panel-chev { transform: rotate(-135deg); margin-top: 4px; }
+.panel-body { padding: 2px 2px 26px; }
 .panel-intro {
-  margin: 0 0 16px;
-  max-width: 72ch;
-  font-size: 14px;
+  margin: 0 0 18px;
+  font-size: 14.5px;
   line-height: 1.6;
-  color: var(--fg-muted);
+  color: var(--t-fg-2);
 }
-.panel-intro strong { color: var(--fg); font-weight: 700; }
-.panel-intro.county-lede { font-size: 14.5px; }
+.panel-intro strong { color: var(--t-fg); font-weight: 600; }
 
-/* Give an opening panel a gentle slide, so the accordion feels alive. */
 @keyframes panel-open {
   from { opacity: 0; transform: translateY(-6px); }
   to   { opacity: 1; transform: none; }
 }
 details.panel[open] > .panel-body { animation: panel-open 260ms cubic-bezier(.22,.7,.2,1); }
 
-/* ---------- "as read" table + quote ---------- */
-table.data.schedule { font-variant-numeric: tabular-nums; }
+/* ---------- data tables ----------
+   Ruled rows on paper rather than a boxed grid: hairlines, an ink rule under
+   the head, and every figure in mono. */
+.tax-page .tablewrap { border: 0; border-radius: 0; background: transparent; }
+.tax-page table.data { font-size: 14px; }
+.tax-page table.data th, .tax-page table.data td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--t-line-2);
+}
+.tax-page table.data thead th {
+  background: transparent;
+  border-bottom: 1px solid var(--t-fg);
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--t-muted);
+  font-weight: 600;
+}
+.tax-page table.data .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* ---------- "as read" schedule + quote ---------- */
 table.data.schedule .num { text-align: right; }
-table.data.schedule .rowlabel { font-weight: 600; }
-table.data.schedule .rowlabel .ast { color: var(--fg-muted); font-weight: 400; }
-
-/* The percentage line is the one figure not reproduced as spoken, so it carries
-   its basis with it rather than leaving the reader to reconcile two numbers. */
-.schedule-foot { margin-top: 12px; font-size: 11.5px; line-height: 1.55; }
-.schedule-foot strong { color: var(--fg); font-weight: 700; }
-
-/* The rise a taxpayer actually feels, trailing the proposed figure it belongs to.
-   Nowrap keeps "+$320.58" off a line of its own on narrow screens. */
+table.data.schedule .rowlabel { font-weight: 600; color: var(--t-fg-2); }
+table.data.schedule .rowlabel .ast { color: var(--t-muted); font-weight: 400; }
+/* The rise a taxpayer actually feels, trailing the proposed figure it belongs
+   to. Nowrap keeps "+$320.58" off a line of its own on narrow screens. */
 table.data.schedule .rise {
   display: inline-block;
   margin-left: 8px;
   white-space: nowrap;
   font-size: 0.85em;
   font-weight: 700;
-  color: var(--highlight-ink);
+  color: var(--t-rust);
+}
+
+table.data.bill .num { text-align: right; white-space: nowrap; }
+table.data.bill .rowlabel b { display: block; font-weight: 600; color: var(--t-fg); }
+/* What each entity does with the money, under its name. */
+table.data.bill .bill-what {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--t-muted);
+}
+table.data.bill tr.is-city td { background: var(--t-gold-hi); }
+table.data.bill tr.is-city .rowlabel b { font-weight: 700; }
+table.data.bill tr.is-total td {
+  border-top: 1px solid var(--t-fg);
+  border-bottom: 0;
+  font-weight: 700;
+  color: var(--t-fg);
 }
 
 blockquote.record {
   margin: 0;
-  padding: 18px 20px;
-  background: var(--bg-muted);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--highlight);
-  border-radius: var(--radius);
+  padding: 4px 0 4px 20px;
+  border-left: 3px solid var(--t-gold-line);
 }
 blockquote.record p {
   margin: 0 0 10px;
-  font-family: var(--serif);
-  font-size: 18px;
+  font-size: 19px;
   line-height: 1.5;
-  color: var(--fg-soft);
-  max-width: 58ch;
+  color: var(--t-fg);
+  text-wrap: pretty;
 }
-blockquote.record footer { font-size: 12.5px; color: var(--fg-muted); }
+blockquote.record footer { font-size: 13px; color: var(--t-muted); }
 
 .derivation {
-  margin: 16px 0 0;
-  border: 1px dashed var(--border-strong);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  font-size: 12.5px;
-  line-height: 1.55;
-  color: var(--fg-muted);
-  max-width: 72ch;
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--t-line-2);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--t-fg-2);
 }
-.derivation strong { color: var(--fg); }
+.derivation strong { color: var(--t-fg); font-weight: 600; }
 
-/* ---------- meeting record ----------
-   A chronology, drawn as one. Each group carries its own spine because the
-   groups run by relevance, not by date: "leading up to it" is April and sits
-   last, so a single continuous line would double back at the seam. */
+/* ---------- the meeting record ----------
+   A chronology, set as a list with a date gutter rather than a timeline with a
+   drawn spine — the flat page has enough structure without one. What is still
+   ahead gets the gold box, because it is the only part a reader can still act on.
+   ========================================================================= */
 .rail-group { margin-bottom: 26px; }
 .rail-group:last-child { margin-bottom: 0; }
 .rail-group-title {
-  font-family: var(--serif);
-  font-size: 17px; font-weight: 600;
-  margin: 0 0 2px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--t-muted);
+  margin: 0 0 3px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--t-fg);
 }
-.rail-group-note { margin: 0 0 12px; font-size: 11.5px; color: var(--fg-muted); line-height: 1.45; max-width: 72ch; }
+.rail-hearing .rail-group-title,
+.rail-context .rail-group-title { border-bottom-color: var(--t-line); }
+.rail-group-note { margin: 10px 0 12px; font-size: 13px; color: var(--t-muted); line-height: 1.5; }
 
-.rail-line {
-  position: relative;
-  list-style: none;
-  margin: 0;
-  padding: 2px 0 2px 24px;
-}
-/* left:6px + width:2px centres on the nodes, whose 14px boxes start at x=0. */
-.rail-line::before {
-  content: "";
-  position: absolute;
-  left: 6px; top: 12px; bottom: 12px;
-  width: 2px;
-  border-radius: 1px;
-  background: var(--border-strong);
-}
-.rail-item { position: relative; margin-bottom: 10px; }
-.rail-item:last-child { margin-bottom: 0; }
-.rail-node {
-  position: absolute;
-  left: -24px; top: 15px;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--bg-elev);
-  border: 2px solid var(--accent);
-  box-shadow: 0 0 0 3px var(--bg);
-  transition: background 140ms ease, border-color 140ms ease;
-}
-.rail-item:has(a.tax-card:hover) .rail-node { background: var(--highlight); border-color: var(--highlight); }
+.rail-line { list-style: none; margin: 0; padding: 0; }
+.rail-item { position: relative; }
+.rail-node { display: none; }   /* the gutter carries the chronology now */
 
-/* Still to come: a dashed spine and hollow nodes — nothing here has happened. */
-.rail-hearing .rail-line::before { background: repeating-linear-gradient(var(--border-strong) 0 4px, transparent 4px 8px); }
-.rail-hearing .rail-node { border-color: var(--highlight); border-style: dashed; }
-
-/* Leading up to it: background, and drawn like it. */
-.rail-context .rail-line::before { background: var(--border-strong); opacity: .55; }
-.rail-context .rail-node { border-color: var(--border-strong); }
+/* Still to come: one gold-ruled box holding both hearings. */
+.rail-hearing .rail-line {
+  border: 1px solid var(--t-gold-line);
+  border-radius: var(--t-r);
+  background: var(--t-gold-bg);
+  overflow: hidden;
+}
+.rail-hearing .rail-item + .rail-item { border-top: 1px solid color-mix(in oklab, var(--t-gold-line) 55%, transparent); }
 
 .tax-card {
-  display: block;
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 6px 20px;
   color: inherit;
-  background: var(--bg-elev);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 12px 13px;
-  box-shadow: var(--shadow);
-  transition: border-color 140ms ease, transform 140ms ease, box-shadow 140ms ease;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--t-line-2);
+  transition: background 140ms ease;
 }
-a.tax-card:hover {
-  text-decoration: none;
-  border-color: var(--highlight);
-  transform: translateX(2px);
-  box-shadow: var(--shadow-lift);
-}
+.rail-hearing .tax-card { padding: 16px 20px; border-bottom: 0; }
+.rail-line > .rail-item:last-child > .tax-card { border-bottom: 0; }
+a.tax-card:hover { text-decoration: none; background: var(--t-card); }
+a.tax-card:hover .mc-title { color: var(--t-gold); }
 a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-.rail-context .tax-card { opacity: .82; }
-.rail-context .tax-card:hover { opacity: 1; }
-.tax-card.is-upcoming { border-style: dashed; border-color: var(--border-strong); background: transparent; box-shadow: none; }
+.rail-context .tax-card { padding: 13px 0; }
 
-.mc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 5px; }
+/* Date and kind stack in the left gutter; everything else runs in the column. */
+.mc-head { grid-row: span 4; display: flex; flex-direction: column; gap: 4px; }
 .mc-kind {
-  font-size: 9.5px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .08em;
-  color: var(--highlight-ink);
+  order: 2;
+  font-size: 10.5px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--t-muted);
 }
-.rail-context .mc-kind { color: var(--fg-muted); }
-.mc-date { font-size: 11px; color: var(--fg-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.mc-title { margin: 0 0 5px; font-family: var(--serif); font-size: 16.5px; font-weight: 600; line-height: 1.2; }
-.mc-note { margin: 0; font-size: 12px; line-height: 1.5; color: var(--fg-muted); }
+.mc-date {
+  order: 1;
+  font-family: var(--mono);
+  font-size: 13px; font-weight: 600;
+  color: var(--t-gold);
+  white-space: nowrap;
+}
+.rail-context .mc-date { font-weight: 400; color: var(--t-muted); }
+.mc-title { margin: 0; grid-column: 2; font-size: 17px; font-weight: 600; line-height: 1.25; letter-spacing: -.01em; color: var(--t-fg); transition: color 140ms ease; }
+.rail-context .mc-title { font-size: 15px; color: var(--t-fg-2); }
+.mc-note { margin: 0; grid-column: 2; font-size: 14px; line-height: 1.5; color: var(--t-muted); }
 
-.mc-items { list-style: none; margin: 9px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.mc-items { list-style: none; margin: 4px 0 0; padding: 0; grid-column: 2; display: flex; flex-direction: column; gap: 7px; }
 .mc-items li {
   display: grid;
   grid-template-columns: 34px minmax(0, 1fr);
   gap: 6px;
-  font-size: 11.5px;
-  line-height: 1.4;
-  padding-top: 6px;
-  border-top: 1px solid var(--border);
+  font-size: 12.5px;
+  line-height: 1.45;
+  padding-top: 7px;
+  border-top: 1px solid var(--t-line-2);
 }
-.mc-items .iref { font-weight: 700; color: var(--fg-muted); font-variant-numeric: tabular-nums; }
-.mc-items .itext { color: var(--fg); }
-.mc-items .iout { grid-column: 2; font-size: 10.5px; font-weight: 700; }
-.mc-items .iout.ok { color: var(--ok); }
-.mc-items .iout.unk { color: var(--warn); }
+.mc-items .iref { font-family: var(--mono); font-weight: 600; color: var(--t-muted); }
+.mc-items .itext { color: var(--t-fg-2); }
+.mc-items .iout { grid-column: 2; font-size: 12px; font-weight: 600; }
+.mc-items .iout.ok { color: var(--t-pass); }
+.mc-items .iout.unk { color: var(--t-gold); }
 
-.mc-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.mc-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; grid-column: 2; }
 .mini-pill {
   display: inline-block;
   padding: 1px 7px;
   border-radius: 999px;
-  font-size: 10px; font-weight: 700;
-  letter-spacing: .04em; text-transform: uppercase;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
   border: 1px solid currentColor;
 }
-.mini-pill.tx { color: var(--accent); }
-.mini-pill.up { color: var(--highlight-ink); }
-.mini-pill.ctx { color: var(--fg-muted); }
+.mini-pill.tx { color: var(--t-sage); }
+.mini-pill.up { color: var(--t-gold); }
+.mini-pill.ctx { color: var(--t-muted); }
 
 .mc-go {
   display: block;
-  margin-top: 10px;
-  font-size: 11.5px;
-  font-weight: 700;
-  color: var(--accent);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal { animation: none; }
-  .tax-tool .bar .fill { transition: none; }
-  .tax-tool .tool-out { transition: none; }
-  .tax-tool .bignum.numflash { animation: none; }
-  .tax-status-dot, .tax-next .nh-pulse { animation: none; }
-  details.panel[open] > .panel-body { animation: none; }
-  .panel-chev { transition: none; }
-  a.tax-card:hover { transform: none; }
-}
-
-@media (max-width: 620px) {
-  .tax-hero { margin-bottom: 28px; }
-  .tax-next { margin-top: 20px; }
-
-  /* Cards stack; the shift figure has room again, so let it grow back. */
-  .takeaway-list, .takeaway-list.two { grid-template-columns: minmax(0, 1fr); max-width: none; }
-  .takeaway .tk { padding: 15px 16px 17px; }
-  .takeaway .tk-fig.shift { font-size: 22px; }
-
-  .tax-tool .tool-out { padding: 18px 16px; gap: 15px; }
-  .tax-tool .bignum { font-size: 40px; margin-top: 8px; }
-  .tax-tool .permonth { font-size: 12px; }
-
-  .tax-tool .tool-inputs { padding: 20px 16px; gap: 20px; }
-  /* Two fields side by side stop being two fields at this width. */
-  .tax-tool .input-pair { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-  .tax-tool .tool-foot { grid-template-columns: minmax(0, 1fr); gap: 7px; padding: 14px 16px; }
-
-  /* Section chips: a touch more height so they clear a comfortable tap target. */
-  .picture-nav { gap: 7px; }
-  .pnav-link { padding: 8px 14px; }
-
-  /* Custom-rate stepper: bump the −/+ keys to a 40px touch square. */
-  .tax-tool .cstep { width: 40px; min-height: 40px; }
-
-  .learn-title { font-size: 22px; }
-  .panel > summary { padding: 15px 16px; gap: 12px; }
-  .panel-tt b { font-size: 16.5px; }
-  .panel-body { padding: 2px 16px 18px; }
-
-  /* Data tables (the official schedule, the statewide ranking, each chart's
-     table view) carry three columns with wordy row labels — tighten the cell
-     inset and step the type down so they fit a 360px screen before the wrap
-     forces a sideways scroll. Scoped to the tax page so other pages' tables
-     (which fold into cards at this width) are untouched. */
-  .tax-page table.data { font-size: 13px; }
-  .tax-page table.data th, .tax-page table.data td { padding: 8px 10px; }
-  table.data.schedule .rise { margin-left: 6px; }
-
-  .rail-line { padding-left: 22px; }
-  .rail-node { left: -22px; }
-}
-
-/* The banner stacks on narrow screens but keeps pinning — on a phone that is
-   the whole point. Once stacked it becomes the tallest thing on screen while
-   pinned, so the vertical rhythm is pulled in tight: enough to read the number,
-   the change, and the two bars without the banner swallowing the fold. */
-@media (max-width: 700px) {
-  .tax-tool .tool-out { grid-template-columns: minmax(0, 1fr); gap: 14px; }
-  .tax-tool .out-compare {
-    border-left: 0;
-    border-top: 1px solid var(--res-rule);
-    padding-left: 0;
-    padding-top: 13px;
-  }
-  .tax-tool .permonth { margin-top: 5px; }
-  .tax-tool .bars { margin-top: 12px; gap: 8px; }
-}
-
-/* Smallest phones (≤400px): shave the banner further so the controls below it
-   still peek above the fold when it pins, and give the ink panel a touch less
-   inset so the number keeps its air. Nothing here changes the banner's height
-   *on pin* — only its resting size — so the pin observer never re-fires. */
-@media (max-width: 400px) {
-  .tax-tool .tool-out { padding: 15px 14px; gap: 12px; }
-  .tax-tool .bignum { font-size: 37px; }
-  .tax-tool .rlabel { font-size: 10.5px; letter-spacing: .07em; }
-  .tax-tool .delta { padding: 5px 11px 5px 9px; font-size: 13px; }
-  .tax-tool .bar { grid-template-columns: 54px minmax(0, 1fr) auto; gap: 8px; }
-  .tax-tool .bar .bv { min-width: 56px; }
-  .tax-tool .tool-inputs { padding: 18px 14px; gap: 18px; }
-  .tax-tool .tool-foot { padding: 13px 14px; }
+  grid-column: 2;
+  margin-top: 2px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--t-gold);
 }
 
 /* =========================================================================
-   COUNTY COMPARISON CHARTS (tax.html)
+   COMPARISON CHARTS
    Emphasis encoding, not a categorical palette: every bar wears the same
-   recessive ink and Eagle Mountain is lifted out in the accent. The
-   accent/neutral pair was checked for colorblind separation against both
-   surfaces (protanopia ΔE 40 light / 32 dark). The proposed segment is
-   distinguished by texture + a direct label rather than a third hue.
+   recessive sage and Eagle Mountain is lifted out in rust. The pair was checked
+   for colorblind separation against both surfaces. The proposed segment is told
+   apart by texture and a direct label rather than a third hue.
    ========================================================================= */
-
-/* chart-local tokens: base = recessive ink, em = accent, prop = textured accent */
 .chart {
-  --c-base: #6E7A6B;      /* recessive ink bars */
-  --c-em:   var(--accent);
-  --c-grid: var(--border);
-  margin: 0 0 20px;
-  padding: 18px 20px 14px;
-  background: var(--bg-muted);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  --c-base: var(--t-sage);
+  --c-em:   var(--t-rust);
+  --c-hover: var(--t-card);
+  margin: 0 0 22px;
+  padding: 0;
+  background: transparent;
+  border: 0;
 }
-@media (prefers-color-scheme: dark) {
-  .chart { --c-base: #8B948A; }
-}
-:root[data-theme="dark"] .chart { --c-base: #8B948A; }
-:root[data-theme="light"] .chart { --c-base: #6E7A6B; }
-
 .chart figcaption { margin-bottom: 14px; }
-.chart figcaption h3 { font-family: var(--serif); font-size: 19px; font-weight: 600; margin: 0 0 3px; }
-.chart figcaption p { margin: 0; font-size: 12.5px; color: var(--fg-muted); max-width: 70ch; }
+.chart figcaption h3 {
+  font-size: 18px; font-weight: 700;
+  letter-spacing: -.015em;
+  margin: 0 0 4px;
+  color: var(--t-fg);
+}
+.chart figcaption p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--t-muted); }
 
 .legend { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px; }
-.legend .lg { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--fg-muted); }
-.legend .sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.legend .lg { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--t-muted); }
+.legend .sw { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
 .legend .sw-base { background: var(--c-base); }
 .legend .sw-em { background: var(--c-em); }
 .legend .sw-prop-neutral {
   background-color: var(--c-base);
-  background-image: repeating-linear-gradient(135deg, var(--bg-muted) 0 2px, transparent 2px 5px);
+  background-image: repeating-linear-gradient(135deg, var(--t-page) 0 2px, transparent 2px 5px);
 }
+.legend .sw-ref { background: transparent; border: 1.5px dashed var(--c-em); }
 
-.chart-body { display: flex; flex-direction: column; gap: 2px; }
+.chart-body { display: flex; flex-direction: column; gap: 3px; }
 
 .crow {
   display: grid;
-  grid-template-columns: 104px minmax(0, 1fr);
+  grid-template-columns: 130px minmax(0, 1fr);
   align-items: center;
-  gap: 8px;
-  padding: 2px 4px;
-  border-radius: 4px;
+  gap: 10px;
+  padding: 3px 4px;
   outline: none;
 }
-.crow:hover, .crow:focus-visible { background: var(--bg-elev); }
-.crow:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.crow:hover, .crow:focus-visible { background: var(--c-hover); }
+.crow:focus-visible { outline: 2px solid var(--t-gold); outline-offset: 1px; }
+/* Eagle Mountain's own rows are the two the chart exists to place: rules above
+   and below lift them out of the run without a second hue. */
+.crow.is-em {
+  padding: 7px 4px;
+  background: var(--t-gold-hi);
+  border-top: 1px solid var(--t-fg);
+  border-bottom: 1px solid var(--t-fg);
+}
+.crow.is-em:hover { background: var(--t-gold-hi); }
 
-.cname { font-size: 12px; color: var(--fg-muted); text-align: right; line-height: 1.25; }
-.crow.is-em .cname { color: var(--fg); font-weight: 700; }
-.cname .ast { color: var(--fg-muted); margin-left: 1px; }
+.cname {
+  font-size: 13px;
+  color: var(--t-muted);
+  text-align: right;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.crow.is-em .cname { color: var(--t-fg); font-weight: 700; }
+.cname .ast { color: var(--t-muted); margin-left: 1px; }
 
 /* The track reserves a gutter at its right edge so a value label can sit just
    past the end of even the longest bar without spilling out of the row. Bars
    are drawn to a fraction of (100% − gutter) — see barSpan() in tax.html — so
    every label rides at its own bar's end instead of floating in a far column. */
-.ctrack { position: relative; height: 14px; display: block; --track-gutter: 68px; }
-.chart--wide-val .ctrack { --track-gutter: 100px; }   /* room for the "▲n" rank badge */
+.ctrack { position: relative; height: 13px; display: block; --track-gutter: 74px; }
+.crow.is-em .ctrack { height: 16px; }
+.chart--wide-val .ctrack { --track-gutter: 104px; }   /* room for the "▲n" rank badge */
 .cbar {
   position: absolute;
   left: 0; top: 0; bottom: 0;
   background: var(--c-base);
-  border-radius: 0 4px 4px 0;   /* rounded data-end, anchored to baseline */
+  border-radius: 0 3px 3px 0;
   min-width: 2px;
 }
 .cbar.cem { background: var(--c-em); }
@@ -3897,183 +4000,39 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 12px), transparent);
           mask-image: linear-gradient(90deg, #000 calc(100% - 12px), transparent);
 }
-.offmark { font-weight: 700; color: var(--fg-muted); }
+.offmark { font-weight: 700; color: var(--t-muted); }
 .crow.is-em .offmark { color: var(--c-em); }
 
-/* The proposed-increase segment. Drawn full-width to the resulting rate and
-   sat behind the solid "today" bar, so the exposed tail is the increase.
-   Texture, not a third hue, tells it from the solid segment. */
+/* The proposed-increase segment. Drawn full-width to the resulting rate and sat
+   behind the solid "today" bar, so the exposed tail is the increase. Texture,
+   not a third hue, tells it from the solid segment. */
 .cbar.cprop {
   background-color: var(--c-base);
-  background-image: repeating-linear-gradient(135deg, var(--bg-muted) 0 2px, transparent 2px 5px);
+  background-image: repeating-linear-gradient(135deg, var(--t-page) 0 2px, transparent 2px 5px);
   opacity: .9;
 }
 .cbar.cprop.cem { background-color: var(--c-em); }
-
 /* 2px surface gap where the solid bar meets the textured one */
-.crow .cbar:not(.cprop) { box-shadow: 2px 0 0 var(--bg-muted); }
-.crow:hover .cbar:not(.cprop), .crow:focus-visible .cbar:not(.cprop) { box-shadow: 2px 0 0 var(--bg-elev); }
+.crow .cbar:not(.cprop) { box-shadow: 2px 0 0 var(--t-page); }
+.crow:hover .cbar:not(.cprop), .crow:focus-visible .cbar:not(.cprop) { box-shadow: 2px 0 0 var(--c-hover); }
+.crow.is-em .cbar:not(.cprop), .crow.is-em:hover .cbar:not(.cprop) { box-shadow: 2px 0 0 var(--t-gold-hi); }
 
 .cval {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   padding-left: 8px;
-  font-size: 12px;
+  font-family: var(--mono);
+  font-size: 11.5px;
   white-space: nowrap;
-  color: var(--fg-muted);
+  color: var(--t-muted);
   font-variant-numeric: tabular-nums;
   line-height: 1;
 }
-.crow.is-em .cval { color: var(--fg); font-weight: 700; }
-
-.chart-foot { margin: 12px 0 0; font-size: 11px; color: var(--fg-muted); }
-
-.tableview { margin-top: 12px; }
-.tableview summary {
-  cursor: pointer;
-  font-size: 11.5px;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: .03em;
-}
-.tableview summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
-.tableview .tablewrap { margin-top: 10px; }
-
-/* Export toolbar under each data table — CSV download and clipboard copy.
-   Sits quietly beneath the table; the buttons read as the page's small
-   secondary controls, not primary calls to action. What exports is whatever
-   the reader is looking at, current sort order and all. */
-.table-export {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-}
-.tx-exp-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-}
-.tx-exp-btn {
-  font: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1;
-  padding: 7px 12px;
-  color: var(--accent);
-  background: var(--bg-elev);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: border-color .15s, background .15s, color .15s;
-}
-.tx-exp-btn:hover { border-color: var(--accent); background: var(--accent-soft); }
-.tx-exp-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-.tx-exp-note {
-  font-size: 11.5px;
-  color: var(--fg-muted);
-  font-variant-numeric: tabular-nums;
-}
-
-.chart-tip {
-  position: absolute;
-  z-index: 40;
-  max-width: 300px;
-  padding: 7px 10px;
-  border-radius: var(--radius-sm);
-  background: var(--fg);
-  color: var(--bg-elev);
-  font-size: 12px;
-  line-height: 1.4;
-  pointer-events: none;
-  box-shadow: 0 4px 14px rgb(var(--shadow-rgb) / .28);
-}
-.chart-tip[hidden] { display: none; }
-
-.county-notes { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--border); }
-.county-notes h3 {
-  font-family: var(--sans);
-  font-size: 11px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .08em;
-  color: var(--fg-muted);
-  margin: 0 0 8px;
-}
-.county-notes ul { margin: 0 0 10px; padding-left: 18px; }
-.county-notes li { font-size: 12.5px; color: var(--fg-muted); line-height: 1.55; margin-bottom: 4px; max-width: 78ch; }
-.county-notes .src { margin: 0; font-size: 11.5px; color: var(--fg-muted); max-width: 78ch; }
-
-/* ---------- chart tabs (county section) ---------- */
-.chart-tabs {
-  display: inline-flex;
-  gap: 2px;
-  padding: 3px;
-  background: var(--bg-muted);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-}
-.chart-tabs [role="tab"] {
-  appearance: none;
-  border: 0;
-  background: transparent;
-  color: var(--fg-muted);
-  font-family: var(--sans);
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: .01em;
-  padding: 7px 15px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: background 140ms ease, color 140ms ease;
-}
-.chart-tabs [role="tab"]:hover { color: var(--fg); }
-.chart-tabs [role="tab"][aria-selected="true"] {
-  background: var(--bg-elev);
-  color: var(--fg);
-  box-shadow: var(--shadow-hair);
-}
-.chart-tabs [role="tab"]:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-[role="tabpanel"][hidden] { display: none; }
-
-@media (max-width: 620px) {
-  /* Reclaim the chart's side inset for the bars themselves — on a phone the
-     limiting dimension is bar length, not padding. */
-  .chart { padding: 16px 14px 12px; }
-  .chart figcaption h3 { font-size: 17.5px; }
-  .crow { grid-template-columns: 84px minmax(0, 1fr); gap: 7px; }
-  .cname { font-size: 11px; }
-  /* Tighter label gutter on narrow tracks; the value still rides at the bar end. */
-  .ctrack { --track-gutter: 60px; }
-  .chart--wide-val .ctrack { --track-gutter: 88px; }
-  /* Label stacks above its switch, which goes full-width. */
-  .switch-row, .scope-panel > .switch-row { grid-template-columns: 1fr; gap: 5px; margin-bottom: 12px; }
-  /* Full-width segmented controls with a 44px min touch target (Apple HIG). */
-  .chart-tabs, .scope-switch { display: flex; width: 100%; }
-  .chart-tabs [role="tab"], .scope-switch [role="radio"] {
-    flex: 1;
-    min-height: 44px;
-    padding: 8px 10px;
-  }
-}
-
-/* Smallest phones: pull the city-name column in and trim the row gap so the
-   bar keeps a legible length at 320–360px. */
-@media (max-width: 400px) {
-  .chart { padding: 15px 12px 11px; }
-  .crow { grid-template-columns: 72px minmax(0, 1fr); gap: 6px; padding: 2px 2px; }
-  .cname { font-size: 10.5px; }
-  .ctrack { --track-gutter: 56px; }
-  .chart--wide-val .ctrack { --track-gutter: 82px; }
-  .cval { font-size: 11px; padding-left: 6px; }
-  .legend { gap: 10px 14px; }
-}
+.crow.is-em .cval { color: var(--t-fg); font-weight: 600; font-size: 12.5px; }
 
 /* Cities holding steady recede via a lighter bar — not faded labels. The name
-   and rate are real data and must keep clearing 4.5:1 (fading the text dropped
-   the value to ~3.6:1 on the panel ground). */
+   and rate are real data and must keep clearing 4.5:1. */
 .crow.no-prop .cbar { opacity: .55; }
 
 /* Rank movement, shown only where a city climbs. */
@@ -4083,60 +4042,9 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   font-size: 9.5px;
   font-weight: 700;
   letter-spacing: 0;
-  color: var(--highlight-ink);
+  color: var(--t-rust);
   vertical-align: 1px;
 }
-.crow.is-em .cmove { color: var(--highlight-ink); }
-
-/* ---------- toggle rows (scope + view) ----------
-   The two switches — which peer group, and which measure — read as a labeled
-   pair: a fixed label column on the left, both pill switches starting at the
-   same x below it. */
-.switch-row {
-  display: grid;
-  grid-template-columns: 132px minmax(0, max-content);
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 10px;
-}
-/* A little more breathing room under the "View" row that sits above a chart. */
-.scope-panel > .switch-row { margin-bottom: 16px; }
-.switch-label {
-  margin: 0;
-  font-family: var(--sans);
-  font-size: 11px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .08em;
-  color: var(--fg-muted);
-}
-.scope-switch {
-  display: inline-flex;
-  gap: 2px;
-  padding: 3px;
-  background: var(--bg-muted);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-}
-.scope-switch [role="radio"] {
-  appearance: none;
-  border: 0;
-  background: transparent;
-  color: var(--fg-muted);
-  font-family: var(--sans);
-  font-size: 12.5px;
-  font-weight: 700;
-  padding: 7px 15px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: background 140ms ease, color 140ms ease;
-}
-.scope-switch [role="radio"]:hover { color: var(--fg); }
-.scope-switch [role="radio"][aria-checked="true"] {
-  background: var(--bg-elev);
-  color: var(--fg);
-  box-shadow: var(--shadow-hair);
-}
-.scope-switch [role="radio"]:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-.scope-panel[hidden] { display: none; }
 
 /* Eagle Mountain shown as an out-of-county reference: a hollow dashed bar so it
    reads as "not one of these cities, here for scale". */
@@ -4147,54 +4055,710 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   border: 1.5px dashed var(--c-em);
   box-shadow: none;
 }
-.legend .sw-ref {
-  background: transparent;
-  border: 1.5px dashed var(--c-em);
+
+.chart-foot { margin: 14px 0 0; font-size: 12px; line-height: 1.6; color: var(--t-muted); }
+
+.tableview { margin-top: 14px; }
+.tableview summary {
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--t-gold);
+  letter-spacing: .01em;
 }
+.tableview summary:hover { color: var(--t-fg); }
+.tableview summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
+.tableview .tablewrap { margin-top: 12px; }
+
+/* Export toolbar under each data table — CSV download and clipboard copy. Sits
+   quietly beneath the table; what exports is whatever the reader is looking at,
+   current sort order and all. */
+.table-export {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.tx-exp-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+}
+.tx-exp-btn {
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 8px 13px;
+  color: var(--t-fg-2);
+  background: var(--t-card);
+  border: 1px solid var(--t-line);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color .15s, color .15s;
+}
+.tx-exp-btn:hover { border-color: var(--t-fg); color: var(--t-fg); }
+.tx-exp-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.tx-exp-note { font-size: 12px; color: var(--t-gold); font-variant-numeric: tabular-nums; }
+
+.chart-tip {
+  position: absolute;
+  z-index: 40;
+  max-width: 320px;
+  padding: 8px 11px;
+  border-radius: 5px;
+  background: var(--t-ink);
+  color: var(--t-on-ink);
+  font-size: 12.5px;
+  line-height: 1.45;
+  pointer-events: none;
+  box-shadow: 0 4px 14px rgb(var(--shadow-rgb) / .28);
+}
+.chart-tip[hidden] { display: none; }
+
+.county-notes { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--t-line); }
+.county-notes h3 {
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .12em;
+  color: var(--t-muted);
+  margin: 0 0 10px;
+}
+.county-notes ul { margin: 0 0 12px; padding-left: 18px; }
+.county-notes li { font-size: 13px; color: var(--t-muted); line-height: 1.6; margin-bottom: 5px; }
+.county-notes .src { margin: 0; font-size: 12px; color: var(--t-muted); line-height: 1.6; }
+
+/* ---------- fine print ----------
+   Caveats and sources, closed. A quiet line with a rule above it — deliberately
+   not styled like the section disclosures further down the page, because this is
+   a footnote to the chart it sits under, not a peer of it. */
+.tax-page details.fine {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--t-line);
+}
+.tax-page details.fine > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+  -webkit-tap-highlight-color: transparent;
+}
+.tax-page details.fine > summary::-webkit-details-marker { display: none; }
+.tax-page details.fine > summary::before {
+  content: "";
+  width: 7px; height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+  transition: transform 200ms cubic-bezier(.4,0,.2,1);
+}
+.tax-page details.fine[open] > summary::before { transform: rotate(-135deg) translateY(-1px); }
+.tax-page details.fine > summary:hover { color: var(--t-fg); }
+.tax-page details.fine > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 3px; }
+.tax-page .fine-body { padding-top: 12px; }
+.tax-page .fine-body ul { margin: 0 0 12px; padding-left: 18px; }
+.tax-page .fine-body li { font-size: 13px; color: var(--t-muted); line-height: 1.6; margin-bottom: 5px; }
+.tax-page .fine-body p { margin: 0; font-size: 12.5px; color: var(--t-muted); line-height: 1.6; }
+.tax-page .fine-body .src { font-size: 12px; }
+@media (pointer: coarse) {
+  .tax-page details.fine > summary { min-height: 44px; }
+}
+
+/* The proposal note's second line is a condition on the first, not a new point. */
+.tax-page .note-fine {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--t-muted);
+}
+
+/* ---------- toggle rows (scope + view) ----------
+   The two switches — which peer group, and which measure — read as a labeled
+   pair: a fixed label column on the left, both switches starting at the same x. */
+.switch-row {
+  display: grid;
+  grid-template-columns: 132px minmax(0, max-content);
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.scope-panel > .switch-row { margin-bottom: 18px; }
+.switch-label {
+  margin: 0;
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .12em;
+  color: var(--t-muted);
+}
+.chart-tabs, .scope-switch {
+  display: inline-flex;
+  gap: 6px;
+  padding: 4px;
+  background: var(--t-tray);
+  border-radius: 5px;
+}
+.chart-tabs [role="tab"], .scope-switch [role="radio"] {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--t-muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease;
+}
+.chart-tabs [role="tab"]:hover, .scope-switch [role="radio"]:hover { color: var(--t-fg); }
+.chart-tabs [role="tab"][aria-selected="true"],
+.scope-switch [role="radio"][aria-checked="true"] { background: var(--t-ink); color: var(--t-on-ink); }
+.chart-tabs [role="tab"]:focus-visible,
+.scope-switch [role="radio"]:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+[role="tabpanel"][hidden] { display: none; }
+.scope-panel[hidden] { display: none; }
+.stateview-switch { margin-bottom: 14px; }
 
 /* ---------- statewide ranking table ---------- */
 .statewide-wrap { max-height: 540px; overflow: auto; }
-table.data.statewide { font-variant-numeric: tabular-nums; }
 table.data.statewide .num { text-align: right; }
-table.data.statewide thead th { position: sticky; top: 0; z-index: 1; }
+table.data.statewide thead th { position: sticky; top: 0; z-index: 1; background: var(--t-page); }
 table.data.statewide th.sortable { cursor: pointer; user-select: none; white-space: nowrap; }
-table.data.statewide th.sortable:hover { color: var(--fg); }
+table.data.statewide th.sortable:hover { color: var(--t-fg); }
 table.data.statewide th.sortable:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
 table.data.statewide th .sarrow { font-size: 9px; }
 table.data.statewide tr.is-em-row td {
-  background: var(--accent-soft);
-  color: var(--fg);
+  background: var(--t-gold-hi);
+  color: var(--t-fg);
   font-weight: 700;
 }
 .you-pill {
   display: inline-block;
   margin-left: 6px;
   font-size: 9.5px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: #3B2D0A;
-  background: var(--highlight);
+  color: var(--t-rust-fg);
+  background: var(--t-rust);
   padding: 1px 6px;
   border-radius: 999px;
   vertical-align: 1px;
 }
 /* A quieter marker for the other cities whose noticed 2026 increase is applied
-   in the "With 2026 proposals" ranking — an outline pill so it reads as a
-   footnote next to the name, never competing with Eagle Mountain's solid tag. */
+   in the "With 2026 proposals" ranking — an outline pill, never competing with
+   Eagle Mountain's solid tag. */
 .prop-pill {
   display: inline-block;
   margin-left: 6px;
   font-size: 9px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: .05em;
   text-transform: uppercase;
-  color: var(--fg-muted);
+  color: var(--t-muted);
   background: transparent;
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--t-line);
   padding: 0 5px;
   border-radius: 999px;
   vertical-align: 1px;
+}
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; }
+  .bb-num.numflash { animation: none; }
+  .tax-status-dot, .tax-next .nh-pulse { animation: none; }
+  details.panel[open] > .panel-body { animation: none; }
+  .panel-chev { transition: none; }
+}
+
+@media (max-width: 760px) {
+  .tax-page { gap: 36px; }
+  .tax-tool .est-inputs { grid-template-columns: minmax(0, 1fr); gap: 22px; padding: 20px 18px; }
+  .tax-tool .est-rates { padding: 0 18px 20px; }
+  .tax-tool .tool-foot { padding: 12px 18px 13px; }
+
+  /* Two figures side by side stop being two figures at this width. */
+  .bill-band { grid-template-columns: minmax(0, 1fr); }
+  .bb-now { border-right: 0; border-bottom: 1px solid var(--t-ink-line); }
+  .bb-cell { padding: 16px 18px; gap: 4px; }
+  .bb-delta { padding: 12px 18px; }
+  .bb-delta b { font-size: 16.5px; }
+  .bb-delta span { font-size: 12.5px; }
+
+  .tax-page .facts, .tax-page .facts.two { grid-template-columns: minmax(0, 1fr); }
+  .tax-page .facts .fact { padding: 16px 0 18px; }
+  .tax-page .facts .fact b.shift { font-size: 22px; }
+
+  /* Levy rows fold: name and amount on one line, the bar beneath, share gone —
+     three narrow numeric columns don't survive a 360px screen. */
+  .levy-head { display: none; }
+  .levy-row, .levy-total { grid-template-columns: minmax(0, 1fr) auto; gap: 5px 12px; padding: 12px 0; }
+  .levy-row.is-city { padding-left: 10px; padding-right: 10px; }
+  .levy-name, .levy-total > :first-child { text-align: left; }
+  .levy-bar-wrap { grid-row: 2; grid-template-columns: minmax(0, 1fr) 60px; }
+  .levy-share { display: none; }
+  .levy-amt { align-self: start; }
+
+  .tax-card { grid-template-columns: minmax(0, 1fr); gap: 7px; }
+  .mc-head { grid-row: auto; flex-direction: row; align-items: baseline; gap: 10px; }
+  .mc-title, .mc-note, .mc-items, .mc-badges, .mc-go { grid-column: 1; }
+
+  /* Label stacks above its switch, which goes full-width with a 44px target. */
+  .switch-row, .scope-panel > .switch-row { grid-template-columns: 1fr; gap: 6px; margin-bottom: 14px; }
+  .chart-tabs, .scope-switch { display: flex; width: 100%; }
+  .chart-tabs [role="tab"], .scope-switch [role="radio"] { flex: 1; min-height: 44px; padding: 8px 10px; }
+}
+
+@media (max-width: 620px) {
+  .tax-lede { font-size: 16.5px; }
+  .tax-page .sec-sub { font-size: 15px; }
+
+  /* Custom-rate stepper: bump the −/+ keys to a 40px touch square. */
+  .tax-tool .cstep { width: 40px; min-height: 40px; }
+
+  /* Data tables carry three columns with wordy row labels — tighten the cell
+     inset and step the type down so they fit a 360px screen before the wrap
+     forces a sideways scroll. */
+  .tax-page .tablewrap { overflow-x: auto; }
+  .tax-page table.data { font-size: 13px; }
+  .tax-page table.data th, .tax-page table.data td { padding: 8px 10px; }
+  table.data.schedule .rise { margin-left: 6px; }
+  /* The entity descriptions are the first thing to go when the table has to fit
+     a phone — the rate and the dollars are what the row is for. */
+  table.data.bill .bill-what { display: none; }
+
+  /* Reclaim the chart's label gutter for the bars themselves. */
+  .chart figcaption h3 { font-size: 17px; }
+  .crow { grid-template-columns: 92px minmax(0, 1fr); gap: 8px; }
+  .cname { font-size: 11.5px; }
+  .ctrack { --track-gutter: 62px; }
+  .chart--wide-val .ctrack { --track-gutter: 90px; }
+  .panel > summary { padding: 15px 2px; gap: 12px; }
+  .panel-tt h3 { font-size: 16.5px; }
+}
+
+@media (max-width: 400px) {
+  .tax-tool .est-inputs { padding: 18px 14px; }
+  .tax-tool .est-rates { padding: 0 14px 18px; }
+  .bb-cell { padding: 14px; }
+  .bb-delta { padding: 11px 14px; }
+  .tax-tool .tool-foot { padding: 12px 14px; }
+  .crow { grid-template-columns: 76px minmax(0, 1fr); gap: 6px; padding: 2px; }
+  .cname { font-size: 11px; }
+  .ctrack { --track-gutter: 58px; }
+  .chart--wide-val .ctrack { --track-gutter: 84px; }
+  .cval { font-size: 11px; padding-left: 6px; }
+  .legend { gap: 10px 14px; }
+}
+
+/* =========================================================================
+   REFINEMENTS
+   Craft and conformance passes over the layout above: the loading shape, the
+   section spine, the bars' entrance, the statewide
+   filter, and a sweep bringing every control up to a 44px touch target on
+   pointer-coarse devices.
+   ========================================================================= */
+
+/* ---------- loading + failure ----------
+   The skeleton mirrors the real first screen — eyebrow, two heading lines, two
+   lede lines, the input card, the ink band — at close to its real height, so
+   nothing jumps when the data lands. It breathes rather than sweeps: a shimmer
+   travelling across five bars reads as activity the page doesn't have. */
+/* Hidden without scripting: the <noscript> block explains the situation, and a
+   skeleton that will never resolve is just noise under it. The class is
+   dropped by an inline <script> in <head>, so a scripted browser never sees
+   this state. */
+.no-js .tax-skeleton { display: none; }
+.tax-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 4px;
+}
+.tax-skeleton .sk-line {
+  display: block;
+  border-radius: 3px;
+  background: var(--t-line);
+  animation: sk-breathe 1.6s ease-in-out infinite;
+}
+.tax-skeleton .sk-eyebrow { width: 168px; height: 12px; margin-bottom: 6px; }
+.tax-skeleton .sk-h1      { width: min(100%, 460px); height: 40px; border-radius: 5px; }
+.tax-skeleton .sk-h1-2    { width: min(100%, 360px); margin-bottom: 8px; }
+.tax-skeleton .sk-lede    { width: min(100%, 540px); height: 15px; }
+.tax-skeleton .sk-lede-2  { width: min(100%, 430px); }
+.tax-skeleton .sk-card {
+  margin-top: 26px;
+  border: 1px solid var(--t-line);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--t-card);
+}
+.tax-skeleton .sk-card-in {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 26px;
+}
+.tax-skeleton .sk-field { height: 62px; border-radius: 5px; }
+/* The real band is the page's one filled surface, so the placeholder for it is
+   the one filled shape here — at a fraction of the ink, not a grey box. The
+   tint lives in the colour, not in `opacity`: sk-breathe animates opacity, and
+   a declared opacity here would simply be overridden by the keyframes. */
+.tax-skeleton .sk-band {
+  height: 152px;
+  background: color-mix(in oklab, var(--t-ink) 18%, transparent);
+  animation: sk-breathe 1.6s ease-in-out infinite;
+}
+@keyframes sk-breathe { 0%, 100% { opacity: .55; } 50% { opacity: .9; } }
+@media (max-width: 760px) {
+  .tax-skeleton .sk-card-in { grid-template-columns: 1fr; padding: 20px 18px; }
+  .tax-skeleton .sk-h1 { height: 32px; }
+  .tax-skeleton .sk-band { height: 240px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tax-skeleton .sk-line, .tax-skeleton .sk-band { animation: none; }
+}
+
+/* A dead end with a way out of it. */
+.tax-page .tax-fail { display: flex; flex-direction: column; gap: 14px; margin: 8px 0 40px; }
+.tax-page .tax-fail p { margin: 0; }
+.tx-btn {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 20px;
+  min-height: 44px;
+  color: var(--t-on-ink);
+  background: var(--t-ink);
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: opacity 140ms ease;
+}
+.tx-btn:hover { opacity: .88; }
+.tx-btn:disabled { opacity: .55; cursor: default; }
+.tx-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+/* A button that reads as a link, for an action offered inside a sentence. */
+.tx-link {
+  font: inherit;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--t-gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.tx-link:hover { color: var(--t-fg); }
+.tx-link:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
+
+/* ---------- the section spine ----------
+   A set numeral in front of each eyebrow. Three sections is few enough that
+   numbering them is orientation rather than bureaucracy — it tells a reader
+   who lands mid-page how much argument sits above and below them. */
+.tax-page .sec-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--t-gold);
+  padding-right: 11px;
+  margin-right: 1px;
+  border-right: 1px solid var(--t-gold-line);
+  opacity: .85;
+}
+
+/* ---------- the bars drawing themselves ----------
+   scaleX from the baseline, never width: a transform is composited, so two
+   dozen bars animating at once cost no layout. Armed only by JS and only when
+   motion is welcome, so the resting state of this stylesheet is "bars visible".
+   Rows stagger by index (--r, set in tax.html) and the stagger is capped so the
+   longest chart still finishes in about half a second. */
+.bars-armed .cbar,
+.bars-armed .levy-bar { transform: scaleX(0); }
+.bars-armed .cval,
+.bars-armed .levy-amt { opacity: 0; }
+.bars-in .cbar,
+.bars-in .levy-bar {
+  transform-origin: left center;
+  transition: transform 560ms cubic-bezier(.22,.7,.2,1);
+  transition-delay: calc(var(--r, 0) * 18ms);
+}
+.bars-in .cval,
+.bars-in .levy-amt {
+  transition: opacity 300ms ease-out;
+  transition-delay: calc(var(--r, 0) * 18ms + 200ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  .bars-armed .cbar, .bars-armed .levy-bar { transform: none; }
+  .bars-armed .cval, .bars-armed .levy-amt { opacity: 1; }
+  .bars-in .cbar, .bars-in .levy-bar, .bars-in .cval, .bars-in .levy-amt { transition: none; }
+}
+/* Printing doesn't scroll, so the observer never fires and a chart that was
+   below the fold would come out of the printer as a column of city names with
+   no bars at all. Same hazard for any tool that renders the full page height in
+   one pass. Nothing is animated on paper anyway. */
+@media print {
+  .bars-armed .cbar, .bars-armed .levy-bar { transform: none !important; }
+  .bars-armed .cval, .bars-armed .levy-amt { opacity: 1 !important; }
+}
+
+/* ---------- statewide: find a city ----------
+   253 rows is well past the point where scrolling finds anything. Sorting
+   answers "who is highest"; the filter answers "where is mine". */
+.sw-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin-bottom: 6px;
+}
+.sw-tools .stateview-switch { margin-bottom: 0; }
+.sw-find { position: relative; flex: 1 1 200px; min-width: 0; max-width: 280px; }
+.sw-find-ico {
+  position: absolute;
+  left: 12px; top: 50%;
+  width: 13px; height: 13px;
+  margin-top: -8px;
+  border: 1.5px solid var(--t-muted);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.sw-find-ico::after {
+  content: "";
+  position: absolute;
+  right: -5px; bottom: -4px;
+  width: 6px; height: 1.5px;
+  background: var(--t-muted);
+  transform: rotate(45deg);
+}
+input.sw-q {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px 8px 34px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--t-fg);
+  background: var(--t-card);
+  border: 1px solid var(--t-line);
+  border-radius: 5px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+input.sw-q::placeholder { color: var(--t-muted); }
+input.sw-q:focus { outline: none; border-color: var(--t-fg); }
+input.sw-q:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+input.sw-q:focus + .sw-find-ico { border-color: var(--t-fg); }
+/* Safari draws its own clear affordance; ours is Esc plus the empty state. */
+input.sw-q::-webkit-search-decoration,
+input.sw-q::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+.sw-count {
+  margin: 0 0 10px;
+  min-height: 18px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--t-gold);
+}
+.sw-empty {
+  margin: 0 0 12px;
+  padding: 14px 16px;
+  border: 1px dashed var(--t-line);
+  border-radius: 5px;
+  font-size: 14px;
+  color: var(--t-muted);
+}
+.sw-empty[hidden] { display: none; }
+/* A three-row result has nothing to scroll — drop the scroll box's floor so it
+   doesn't sit as a tall empty frame under three rows. */
+.statewide-wrap.is-filtered { max-height: none; overflow: visible; }
+table.data.statewide tbody tr[hidden] { display: none; }
+
+/* =========================================================================
+   TOUCH TARGETS
+   Everything interactive on this page clears 44px on a coarse pointer. Applied
+   by input type rather than by viewport width: a small laptop with a mouse
+   doesn't need fat controls, and a large tablet with a finger does — a width
+   breakpoint gets both of those backwards.
+   ========================================================================= */
+@media (pointer: coarse) {
+  /* min-height rather than padding wherever the box can stretch: padding has to
+     be recomputed against each control's own line-height to land on 44, and one
+     of them is always left at 43. */
+  .tax-tool .seg label { display: grid; place-items: center; min-height: 46px; }
+  .tax-tool .rate > label { min-height: 56px; }
+  .tax-tool .cstep { width: 44px; min-height: 44px; }
+  .tax-page .pnav-link { min-height: 44px; display: inline-flex; align-items: center; padding: 8px 16px; }
+  .tx-exp-btn { min-height: 44px; padding: 8px 16px; }
+  .chart-tabs [role="tab"], .scope-switch [role="radio"] { min-height: 44px; }
+  .tableview summary { min-height: 44px; display: flex; align-items: center; }
+  .panel > summary { min-height: 56px; }
+  table.data.statewide th.sortable { padding-block: 14px; }
+
+  /* Chart rows carry the tooltip, and a 22px row is not a tap target. Open the
+     rows up; the bars keep their weight, so the chart reads the same. */
+  .chart-body { gap: 0; }
+  .crow, .levy-row { min-height: 44px; }
+}
+
+/* A row whose only affordance is a tooltip should say so on hover. */
+.crow[data-tip], .levy-row[data-tip] { cursor: help; }
+
+/* =========================================================================
+   SURFACES
+   The page had become one flat sheet: everything sat directly on the paper and
+   was separated only by hairlines, so nothing read as a distinct object. This
+   layer gives it three planes — the paper, the cards raised off it, and the ink
+   band raised off those — and lets the shadow do the work the rules were doing.
+
+   The shadow is the site's own --shadow token, which is warm-tinted rather than
+   neutral grey, so a lifted card still looks like it belongs on cream.
+   ========================================================================= */
+
+/* The page's own spacing opens up a little, because cards need air around them
+   in a way that hairline-separated blocks do not. */
+.tax-page { gap: 30px; }
+
+/* ---------- the section card ----------
+   The whole-bill and comparison sections each become one object: heading, data
+   and fine print on a single raised surface, so it is obvious where one section
+   ends and the next begins. */
+.tax-page .tax-sec,
+.tax-page .learn {
+  background: var(--t-card);
+  border: 1px solid var(--t-line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 28px 30px 30px;
+  gap: 20px;
+}
+/* Chart and levy hover states sat on --t-card, which is now the card itself;
+   they need to lift against it rather than match it. */
+.tax-page .tax-sec { --c-hover: var(--t-page); }
+.levy-row:hover { background: var(--t-page); }
+
+/* The fine print closes the card, so its rule spans the full width and its last
+   child sits flush with the card's bottom padding. */
+.tax-page details.fine { margin-top: 22px; }
+.tax-page .tax-sec > details.fine:last-child,
+.tax-page .learn > details.fine:last-child { margin-bottom: 0; }
+
+/* ---------- the estimator ----------
+   The one card that was already a card. Give it the same lift as the rest and a
+   slightly deeper shadow, because it sits at the top and holds the ink band. */
+.tax-tool {
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: clip;   /* clip, not hidden: does not create a scroll container */
+}
+/* With the card clipping, the band's own corner rounding is redundant and the
+   foot no longer needs to fake the bottom radius. */
+.bill-band { border-radius: 0; }
+.tax-tool .tool-foot { border-radius: 0; }
+
+/* ---------- the three facts ----------
+   Three separate cards rather than three cells of one hairline grid. This is the
+   row a reader skims, so the objects should be countable at a glance. */
+.tax-page .facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  background: transparent;
+  border: 0;
+}
+.tax-page .facts.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.tax-page .facts .fact {
+  background: var(--t-card);
+  border: 1px solid var(--t-line);
+  border-top: 3px solid var(--t-gold-line);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 20px 20px 22px;
+}
+
+/* ---------- the hearing card ----------
+   It is the one thing on the page a reader can act on, so it gets a real card
+   edge instead of a bare left rule — but stays small. */
+.tax-page .act {
+  border: 1px solid var(--t-gold-line);
+  border-left-width: 4px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 13px 18px;
+}
+
+/* ---------- the proposal note ----------
+   Sits inside the section card, so it needs its own edge to separate from the
+   surface it is on. */
+.tax-page .note {
+  border: 1px solid var(--t-gold-line);
+  border-left-width: 4px;
+  border-radius: 10px;
+  padding: 18px 22px;
+}
+
+/* ---------- disclosure panels ----------
+   Each panel becomes its own card, so the four of them read as four things
+   rather than as a ruled list. The group they sit in loses its own card, since a
+   card of cards is just a box. */
+.tax-page .learn {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+details.panel {
+  background: var(--t-card);
+  border: 1px solid var(--t-line);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  margin-bottom: 10px;
+  overflow: clip;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+details.panel:first-of-type,
+details.panel:last-child { border: 1px solid var(--t-line); }
+details.panel:hover { border-color: var(--t-gold-line); }
+details.panel[open] { box-shadow: var(--shadow); }
+.panel > summary { padding: 18px 22px; }
+.panel-body { padding: 0 22px 24px; }
+
+/* ---------- data tables inside cards ---------- */
+.tax-page .tablewrap { background: transparent; }
+.statewide-wrap { border: 1px solid var(--t-line); border-radius: 8px; }
+table.data.statewide thead th { background: var(--t-card); }
+
+/* ---------- narrow screens ----------
+   Cards keep their edges but give back their inset, so the content still gets
+   the width. */
+@media (max-width: 760px) {
+  .tax-page { gap: 22px; }
+  .tax-page .tax-sec { padding: 22px 18px 24px; border-radius: 10px; }
+  /* Restated here, not inherited: the card layer redeclares the facts grid
+     further down the file than the original mobile rule, so without this the
+     three columns survive onto a phone and the last card is clipped. */
+  .tax-page .facts,
+  .tax-page .facts.two { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .tax-page .facts .fact { padding: 16px 18px 18px; }
+  .panel > summary { padding: 16px 18px; }
+  .panel-body { padding: 0 18px 20px; }
+  .tax-page .note { padding: 16px 18px; }
+}
+@media (max-width: 400px) {
+  .tax-page .tax-sec { padding: 18px 14px 20px; }
+  .panel > summary { padding: 15px 14px; }
+  .panel-body { padding: 0 14px 18px; }
 }
 
 /* =========================================================================

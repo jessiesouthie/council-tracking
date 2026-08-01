@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8" />
+    <script>document.documentElement.classList.remove("no-js");</script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Property Tax Estimator — Eagle Mountain Council Tracking</title>
     <meta name="description" content="See what Eagle Mountain's proposed property tax increase would cost you, and every council meeting where it was discussed." />
@@ -20,10 +21,15 @@
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260723c" />
+    <!-- This page runs on its own typeface pair: Instrument Sans for text and
+         IBM Plex Mono for every rate, share, and dollar figure. Inter is
+         deliberately not requested here — body.page-tax remaps the font tokens,
+         so nothing on this page would use it, and asking for a third family only
+         costs a render-blocking round trip. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="site.css?v=20260731s" />
   </head>
-  <body>
+  <body class="page-tax">
     <a href="#main" class="skip-link">Skip to main content</a>
     <header class="topbar">
       <a class="brand" href="index.html">
@@ -52,8 +58,48 @@
       </nav>
     </header>
 
-    <main id="main">
-      <div id="content"></div>
+    <!-- Same measure as the front page: this is a reading page with a tool at
+         the top of it, not a table, so it shares the homepage's column. -->
+    <main id="main" class="main-reading">
+      <!-- The page is built from three fetches, so it can't render on first
+           paint. Rather than a blank column that snaps to full height when the
+           data lands, ship the shape of the page as static markup: a heading
+           block and the estimator card at roughly their real sizes. It holds the
+           scroll position steady (no layout shift) and tells the reader what is
+           coming. render() replaces the whole thing. -->
+      <div id="content" aria-busy="true">
+        <!-- Without the .no-js rule in site.css hiding the skeleton, an
+             unscripted browser would get this explanation *and* a skeleton
+             shimmering underneath it forever. -->
+        <noscript>
+          <div class="tax-page">
+            <div class="tax-fail">
+              <p class="eyebrow">Needs JavaScript</p>
+              <h1 class="tax-h1">The estimator needs JavaScript</h1>
+              <p class="tax-lede">The figures behind it are public: the city's Truth-in-Taxation
+                schedule was read into the record on June 16, 2026, and the
+                <a href="meetings.html">meeting records</a> carry it in full.</p>
+            </div>
+          </div>
+        </noscript>
+        <!-- Inside .tax-page so the placeholder inherits this page's warm ink and
+             rules rather than the site's navy — a skeleton in the wrong palette
+             announces itself as scaffolding. -->
+        <div class="tax-page tax-skeleton" role="status" aria-label="Loading the property tax estimator">
+          <span class="sk-line sk-eyebrow"></span>
+          <span class="sk-line sk-h1"></span>
+          <span class="sk-line sk-h1 sk-h1-2"></span>
+          <span class="sk-line sk-lede"></span>
+          <span class="sk-line sk-lede sk-lede-2"></span>
+          <div class="sk-card">
+            <div class="sk-card-in">
+              <span class="sk-line sk-field"></span>
+              <span class="sk-line sk-field"></span>
+            </div>
+            <div class="sk-band"></div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
@@ -66,12 +112,35 @@
           fetch(new URL(f, document.baseURI))
             .then((r) => (r.ok ? r.json() : null))
             .catch(() => null);
-        // The county comparison is a nice-to-have; the page still works without it.
-        const [tax, county] = await Promise.all([grab("data.tax.json"), grab("data.tax-county.json")]);
+        // The county comparison and the full-bill breakdown are nice-to-haves;
+        // the page still works without either.
+        const [tax, county, bill] = await Promise.all([
+          grab("data.tax.json"),
+          grab("data.tax-county.json"),
+          grab("data.tax-bill.json"),
+        ]);
 
+        root.removeAttribute("aria-busy");
+
+        // A dead end needs a way out of it, not just an explanation. The retry
+        // refetches in place rather than reloading the document, so a reader on
+        // a flaky connection doesn't lose their scroll position.
         if (!tax) {
-          root.innerHTML = `<h1 class="page-title">Property tax</h1>
-            <p class="page-sub">Tax data couldn't be loaded. Reload the page to try again.</p>`;
+          root.innerHTML = `
+            <div class="tax-page">
+              <div class="tax-fail" role="alert">
+                <p class="eyebrow">Couldn't load</p>
+                <h1 class="tax-h1">The tax data didn't arrive</h1>
+                <p class="tax-lede">This is usually a dropped connection rather than anything wrong
+                  with the figures. Try again.</p>
+                <p><button type="button" class="tx-btn" id="tax-retry">Try again</button></p>
+              </div>
+            </div>`;
+          document.getElementById("tax-retry").addEventListener("click", (e) => {
+            e.target.disabled = true;
+            e.target.textContent = "Loading…";
+            location.reload();
+          });
           return;
         }
 
@@ -79,12 +148,19 @@
         // on this site don't set a property tax rate, so say so rather than
         // showing council numbers under a planning-commission heading.
         if (CT.currentBody() !== tax.body) {
-          root.innerHTML = `<h1 class="page-title">Property tax</h1>
-            <p class="page-sub">Only the City Council sets a property tax rate. Switch to City Council to use the estimator.</p>`;
+          root.innerHTML = `
+            <div class="tax-page">
+              <div class="tax-fail">
+                <p class="eyebrow">Not this body</p>
+                <h1 class="tax-h1">Only the City Council sets a property tax rate</h1>
+                <p class="tax-lede">Switch the body picker in the header back to City Council to use
+                  the estimator.</p>
+              </div>
+            </div>`;
           return;
         }
 
-        render(tax, county, root);
+        render(tax, county, bill, root);
       })();
 
       const usd = (n) =>
@@ -92,17 +168,25 @@
       const usd0 = (n) => "$" + Math.round(n).toLocaleString("en-US");
       const commas = (n) => n.toLocaleString("en-US");
       const cap = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
+      // Small counts read as words in prose ("a bill with seven"); anything
+      // past ten stays a numeral, as does every figure in a table or a chart.
+      const NUM_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+      const numWord = (n) => NUM_WORDS[n] || String(n);
 
       /* =========================================================================
-         The page is built estimator-first: the headline asks a question, and the
-         tool that answers it is the very next thing. Everything else — the
-         official schedule, the county comparison, the paper trail, the meeting
-         record — is real and sourced, but it is supporting detail, so it lives in
-         calm collapsible panels the reader opens on demand rather than a wall of
-         tables on arrival.
+         The page reads as one continuous argument, in the order a resident would
+         ask it: what would this cost me (the tool), how big is it (three facts),
+         where does it sit on my actual bill (all seven levies), and where would
+         the rate land against everyone else (the county charts). Those run flat,
+         one after another, with nothing to open.
+
+         What follows them is reference material — the six-line schedule as read,
+         all 253 Utah cities, the paper trail, the meeting-by-meeting record. Real
+         and sourced, but not what anyone came for, so it waits in collapsible
+         panels rather than adding four screens to the scroll.
          ========================================================================= */
 
-      function render(tax, county, root) {
+      function render(tax, county, bill, root) {
         const CURRENT = tax.rates.current.rate;
         const PROPOSED = tax.rates.proposed.rate;
         const RATIO = tax.residential_ratio;
@@ -111,12 +195,10 @@
           <div class="tax-page">
             <header class="tax-hero reveal">
               ${statusHtml(tax)}
-              <h1 class="tax-h1">What would this cost you?</h1>
+              <h1 class="tax-h1">Eagle Mountain wants to raise your property tax</h1>
               <p class="tax-lede">
-                Eagle Mountain wants to raise its city property tax to fund its
-                public safety contract with the Utah County Sheriff's Office. Put in
-                what your home is worth to see the city's share of your bill — what
-                you pay now, and what's proposed.
+                Enter what your home is worth and see what it would cost you.
+                Nothing is final — the council still has to vote.
               </p>
               ${nextHearingHtml(tax)}
             </header>
@@ -125,15 +207,18 @@
 
             ${takeawayHtml(tax, county)}
 
-            <section class="learn reveal" style="--i:3" aria-labelledby="learn-title">
-              <h2 class="learn-title" id="learn-title">The fuller picture</h2>
-              <p class="learn-sub">
-                The estimate is the short version. Open any of these for where the
-                numbers come from and how the decision has moved so far.
-              </p>
+            ${bill ? billSection(bill, tax) : ""}
+
+            ${county ? countySection(county) : ""}
+
+            <section class="learn reveal" style="--i:5" aria-labelledby="learn-title">
+              <div class="sec-head">
+                <p class="eyebrow"><span class="sec-num" aria-hidden="true">03</span>The record</p>
+                <h2 class="sec-h2" id="learn-title">Where all of this comes from</h2>
+                <p class="sec-sub">Open any of these for the detail behind the numbers.</p>
+              </div>
               ${pictureNavHtml(county)}
               ${schedulePanel(tax)}
-              ${county ? countyPanel(county) : ""}
               ${county && county.statewide ? statewidePanel(county) : ""}
               ${sourcePanel(tax)}
               ${recordPanel(tax)}
@@ -142,29 +227,35 @@
         `;
 
         measureTopbar();
+        // Wired before the estimator, so the estimator's first paint already
+        // finds the bill breakdown and syncs its dollar figures to it.
+        if (bill) wireBillPanel(bill);
         wireEstimator({ CURRENT, PROPOSED, RATIO, tax });
-        wireStickyResult();
+        wireMeasures();
         wirePictureNav();
         wireTableExports();
         if (county) {
           wireCountySwitch();
           wireChartTabs();
-          wireChartTooltips();
           wireStatewideTable();
           wireStatewideView();
+          wireStatewideFilter();
         }
+        // Tooltips are wired across every chart row on the page, so the bill
+        // breakdown keeps them even on a load where the county data didn't come.
+        if (county || bill) { wireChartTooltips(); wireBarReveal(); }
       }
 
       /* ---------------- hero ---------------- */
 
-      // A small, friendly status line: what stage this is at, and for which year.
+      // The eyebrow over the headline: what stage this is at, and for which year.
       function statusHtml(tax) {
         const fy = tax.fiscal_year.replace("-", "–");
         return `
-          <span class="tax-status">
+          <p class="eyebrow">
             <span class="tax-status-dot" aria-hidden="true"></span>
-            ${CT.escapeHtml(cap(tax.status))} increase · FY ${CT.escapeHtml(fy)}
-          </span>`;
+            ${CT.escapeHtml(cap(tax.status))} · FY ${CT.escapeHtml(fy)}
+          </p>`;
       }
 
       // The one fact a reader can still act on: nothing is settled, and there is a
@@ -180,12 +271,18 @@
 
         const days = Math.round((asDate(next) - today) / 86400000);
         const when = days <= 0 ? "today" : days === 1 ? "tomorrow" : `in ${days} days`;
+        // The one thing a resident can actually do about any of this, so it sits
+        // above the estimator rather than below it — but small: a line saying
+        // when, and a line saying they are allowed to speak. Most people do not
+        // know a Truth-in-Taxation hearing takes public comment.
         return `
-          <p class="tax-next">
-            <span class="nh-pulse" aria-hidden="true"></span>
-            <span><b>Next up · ${when}.</b> ${CT.escapeHtml(next.title)}, ${CT.fmtDate(next.date)}.
-            The rate isn't final until the hearings are done.</span>
-          </p>`;
+          <aside class="act">
+            <span class="act-pulse" aria-hidden="true"></span>
+            <span class="act-body">
+              <b class="act-head">Public hearing ${when}</b>
+              <span class="act-meta">${CT.fmtDate(next.date)} · You can speak before the council votes.</span>
+            </span>
+          </aside>`;
       }
 
       /* ---------------- estimator (the hero tool) ---------------- */
@@ -201,133 +298,120 @@
         const cur = tax.rates.current;
         const prop = tax.rates.proposed;
         const taxable = DEFAULT_VALUE * tax.residential_ratio;
-        const d = {
-          now: taxable * cur.rate,
-          sel: taxable * prop.rate,
-        };
-        d.diff = d.sel - d.now;
-        d.fill = (n) => (n / Math.max(d.now, d.sel, 0.01)) * 100;
+        const now = taxable * cur.rate;
+        const sel = taxable * prop.rate;
+        const diff = sel - now;
         return `
-        <section class="estimator reveal" style="--i:1" id="estimate">
+        <section class="estimator reveal" style="--i:1" id="estimate" aria-label="Property tax estimator">
           <div class="tax-tool">
-            <span id="tool-sentinel" aria-hidden="true"></span>
-
-            <!-- The answer, at the top of the tool and pinned while you work the
-                 controls below it. On a phone this is the difference between
-                 seeing the number and scrolling for it. -->
-            <div class="tool-out">
-              <div class="out-main">
-                <p class="rlabel">
-                  Your city property tax at the <span class="scen" id="res-scenario">proposed rate</span>
-                </p>
-                <p class="bignum" id="res-total">${usd(d.sel)}</p>
-                <p class="permonth" id="res-month">${usd(d.sel / 12)} per month</p>
+            <div class="est-ask">
+              <label class="ask-q" for="mv">What is your home worth?</label>
+              <div class="valuerow">
+                <span class="dollar" aria-hidden="true">$</span>
+                <input class="value" id="mv" type="text" inputmode="numeric" value="${commas(DEFAULT_VALUE)}" aria-describedby="mv-help" />
               </div>
+              <input type="range" id="mv-range" min="100000" max="3000000" step="5000" value="${DEFAULT_VALUE}" aria-label="What your home is worth" />
+              <div class="rangeends" id="mv-help"><span>$100k</span><span>$3M</span></div>
+              <p class="hint" id="ratio-note">${ratioNote(true, tax.residential_ratio)}</p>
 
-              <div class="out-compare">
-                <div id="res-delta" class="delta up">
-                  <span class="arrow" aria-hidden="true">▲</span>
-                  <span id="res-delta-text">${usd(d.diff)} more per year
-                    <span class="per">· ${usd(d.diff / 12)}/mo</span></span>
-                </div>
-
-                <div class="bars" aria-hidden="true">
-                  <div class="bar now">
-                    <span class="bl">Today</span>
-                    <span class="track"><span class="fill" id="bar-now" style="width:${d.fill(d.now)}%"></span></span>
-                    <span class="bv" id="bv-now">${usd(d.now)}</span>
-                  </div>
-                  <div class="bar sel">
-                    <span class="bl" id="bl-sel">Proposed</span>
-                    <span class="track"><span class="fill" id="bar-sel" style="width:${d.fill(d.sel)}%"></span></span>
-                    <span class="bv" id="bv-sel">${usd(d.sel)}</span>
-                  </div>
+              <div class="ask-type">
+                <span class="flabel" id="lbl-type">This is my</span>
+                <div class="seg" role="group" aria-labelledby="lbl-type">
+                  <input type="radio" name="ptype" id="pt-home" value="primary" checked />
+                  <label for="pt-home">Home I live in</label>
+                  <input type="radio" name="ptype" id="pt-biz" value="other" />
+                  <label for="pt-biz">Rental or business</label>
                 </div>
               </div>
             </div>
 
-            <div class="tool-inputs">
-              <div class="input-pair">
-                <div class="field">
-                  <span class="flabel" id="lbl-type">Property type</span>
-                  <div class="seg" role="group" aria-labelledby="lbl-type">
-                    <input type="radio" name="ptype" id="pt-home" value="primary" checked />
-                    <label for="pt-home">Primary residence</label>
-                    <input type="radio" name="ptype" id="pt-biz" value="other" />
-                    <label for="pt-biz">Commercial</label>
-                  </div>
-                </div>
+            <!-- The answer, in the order a homeowner asks it: how much more,
+                 per month, then per year, then the two totals it came from.
+                 The rate that produced all of this is not on this panel at all —
+                 it means nothing to someone who has never read a tax notice. -->
+            <div class="bill-band" id="bill-band">
+              <p class="bb-lead" id="res-lead">You would pay about</p>
+              <p class="bb-hero mono" id="res-delta-month">${usd(diff / 12)}</p>
+              <p class="bb-unit" id="res-delta-unit">more a month</p>
+              <p class="bb-year" id="res-delta-text">${usd(diff)} more a year</p>
 
-                <div class="field">
-                  <label class="flabel" for="mv">What's it worth?</label>
-                  <div class="valuerow">
-                    <span class="dollar" aria-hidden="true">$</span>
-                    <input class="value" id="mv" type="text" inputmode="numeric" value="${commas(DEFAULT_VALUE)}" aria-describedby="mv-help" />
-                  </div>
-                  <input type="range" id="mv-range" min="100000" max="3000000" step="5000" value="${DEFAULT_VALUE}" aria-label="Market value" />
-                  <div class="rangeends" id="mv-help"><span>$100k</span><span>$3M</span></div>
+              <div class="bb-split" id="res-delta">
+                <div class="bb-half">
+                  <span class="bb-label">Your city tax now</span>
+                  <span class="bb-num mono" id="now-year">${usd(now)}</span>
+                  <span class="bb-sub">a year · <span id="now-month">${usd(now / 12)}</span> a month</span>
+                </div>
+                <div class="bb-half bb-new">
+                  <span class="bb-label" id="res-scenario">If this passes</span>
+                  <span class="bb-num mono" id="res-total">${usd(sel)}</span>
+                  <span class="bb-sub">a year · <span id="res-month">${usd(sel / 12)}</span> a month</span>
                 </div>
               </div>
+            </div>
 
-              <div class="field">
-                <span class="flabel" id="lbl-rate">Which rate?</span>
-                <div class="rates" role="radiogroup" aria-labelledby="lbl-rate">
-                  <div class="rate">
-                    <input type="radio" name="rate" id="r-current" value="current" />
-                    <label for="r-current">
-                      <span class="dot" aria-hidden="true"></span>
-                      <span>
-                        <span class="rname">${CT.escapeHtml(cur.label)}</span>
-                        <span class="rmeta">${CT.escapeHtml(cur.note)}</span>
-                      </span>
-                      <span class="rrate">${cur.rate.toFixed(6)}</span>
-                    </label>
-                  </div>
+            <div class="est-rates">
+              <span class="flabel" id="lbl-rate">Compare against another rate</span>
+              <div class="rates" role="radiogroup" aria-labelledby="lbl-rate">
+                <div class="rate">
+                  <input type="radio" name="rate" id="r-current" value="current" />
+                  <label for="r-current">
+                    <span class="dot" aria-hidden="true"></span>
+                    <span>
+                      <span class="rname">What you pay today</span>
+                      <span class="rmeta" data-perk="${cur.rate}"></span>
+                    </span>
+                    <span class="rrate mono">${cur.rate.toFixed(6)}</span>
+                  </label>
+                </div>
 
-                  <div class="rate is-proposed">
-                    <input type="radio" name="rate" id="r-proposed" value="proposed" checked />
-                    <label for="r-proposed">
-                      <span class="dot" aria-hidden="true"></span>
-                      <span>
-                        <span class="rname">${CT.escapeHtml(prop.label)}</span>
-                        <span class="rmeta">${CT.escapeHtml(prop.note)}</span>
-                      </span>
-                      <span class="rrate">${CT.escapeHtml(prop.rate_display)}</span>
-                    </label>
-                  </div>
+                <div class="rate is-proposed">
+                  <input type="radio" name="rate" id="r-proposed" value="proposed" checked />
+                  <label for="r-proposed">
+                    <span class="dot" aria-hidden="true"></span>
+                    <span>
+                      <span class="rname">What the city is proposing</span>
+                      <span class="rmeta" data-perk="${prop.rate}"></span>
+                    </span>
+                    <span class="rrate mono">${CT.escapeHtml(prop.rate_display)}</span>
+                  </label>
+                </div>
 
-                  <div class="rate is-custom">
-                    <input type="radio" name="rate" id="r-custom" value="custom" />
-                    <label for="r-custom">
-                      <span class="dot" aria-hidden="true"></span>
-                      <span>
-                        <span class="rname">Try another rate</span>
-                        <span class="rmeta" id="custom-meta">Type a rate, or drag</span>
-                      </span>
-                      <span class="rrate" id="custom-rate">0.001100</span>
-                    </label>
-                    <div class="customwrap" id="customwrap" hidden>
-                      <div class="customedit">
-                        <label class="clabel" for="custom-num">Rate</label>
-                        <div class="cnum">
-                          <button type="button" class="cstep" id="custom-down" aria-label="Lower the rate">−</button>
-                          <input id="custom-num" class="crate" type="text" inputmode="decimal"
-                                 value="0.001100" aria-describedby="custom-help" />
-                          <button type="button" class="cstep" id="custom-up" aria-label="Raise the rate">+</button>
-                        </div>
+                <div class="rate is-custom">
+                  <input type="radio" name="rate" id="r-custom" value="custom" />
+                  <label for="r-custom">
+                    <span class="dot" aria-hidden="true"></span>
+                    <span>
+                      <span class="rname">Some other rate</span>
+                      <span class="rmeta" id="custom-meta">Type a rate, or drag</span>
+                    </span>
+                    <span class="rrate mono" id="custom-rate">0.001100</span>
+                  </label>
+                  <div class="customwrap" id="customwrap" hidden>
+                    <div class="customedit">
+                      <label class="clabel" for="custom-num">Rate</label>
+                      <div class="cnum">
+                        <button type="button" class="cstep" id="custom-down" aria-label="Lower the rate">−</button>
+                        <input id="custom-num" class="crate mono" type="text" inputmode="decimal"
+                               value="0.001100" aria-describedby="custom-help" />
+                        <button type="button" class="cstep" id="custom-up" aria-label="Raise the rate">+</button>
                       </div>
-                      <input type="range" id="custom-range" min="0" max="3000" step="10" value="1100" aria-label="Custom tax rate" />
-                      <div class="rangeends" id="custom-help"><span>0.000000</span><span>0.003000</span></div>
                     </div>
+                    <input type="range" id="custom-range" min="0" max="3000" step="10" value="1100" aria-label="Custom tax rate" />
+                    <div class="rangeends" id="custom-help"><span>0.000000</span><span>0.003000</span></div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="tool-foot">
-              <p><strong>This is the city's share only.</strong> Your full bill also includes county, school district, and other levies the city doesn't set.</p>
-              <p>${CT.escapeHtml(tax.residential_ratio_note)}</p>
-            </div>
+            <!-- The answer: today's bill and the chosen scenario's, side by side
+                 on one ink band, with the difference called out across the foot
+                 of both. Directly under the controls, in the order a printed
+                 schedule states it — what you pay, then what is proposed. -->
+
+            <p class="tool-foot">
+              <strong>This is only the city's part of your property tax bill.</strong>
+              Schools, the county and four others charge you separately — see below.
+            </p>
           </div>
 
           <!-- One composed sentence for screen readers. The visible figures are
@@ -336,6 +420,13 @@
           <p class="sr-only" id="res-sr" aria-live="polite"></p>
         </section>`;
       }
+
+      // Utah's assessment ratio, stated for whichever property type is selected.
+      // Built from the data's own ratio rather than the literal "55%".
+      const ratioNote = (primary, ratio) =>
+        primary
+          ? `Utah taxes a primary residence on ${+(ratio * 100).toFixed(1)}% of its market value.`
+          : "Business, rental, and secondary property is taxed on its full market value.";
 
       function wireEstimator({ CURRENT, PROPOSED, RATIO }) {
         const $ = (id) => document.getElementById(id);
@@ -374,9 +465,9 @@
         const ratio = () => ($("pt-home").checked ? RATIO : 1);
         const chosen = () => {
           const v = document.querySelector('input[name="rate"]:checked').value;
-          if (v === "current") return { rate: CURRENT, name: "current rate", bar: "Current" };
-          if (v === "proposed") return { rate: PROPOSED, name: "proposed rate", bar: "Proposed" };
-          return { rate: customMicro / 1e6, name: "rate you picked", bar: "Yours" };
+          if (v === "current") return { rate: CURRENT, name: "current rate", short: "No change" };
+          if (v === "proposed") return { rate: PROPOSED, name: "proposed rate", short: "If this passes" };
+          return { rate: customMicro / 1e6, name: "rate you picked", short: "At your rate" };
         };
 
         // The visible number updates on every slider tick; the announcement waits
@@ -388,6 +479,7 @@
         };
 
         function paint() {
+          const primary = $("pt-home").checked;
           const taxable = value() * ratio();
           const sel = chosen();
           const now = taxable * CURRENT;
@@ -395,40 +487,57 @@
 
           const total = usd(tax);
           bignum.textContent = total;
+          $("now-year").textContent = usd(now);
           // "$467.50" is seven characters; a mistyped market value can give
-          // fifteen. Step the display size down rather than let it run into
-          // the comparison bars.
-          bignum.classList.toggle("len-l", total.length > 11 && total.length <= 14);
-          bignum.classList.toggle("len-xl", total.length > 14);
+          // fifteen. Both cells step down together, so the two figures stay
+          // the same size and remain comparable at a glance.
+          const longest = Math.max(total.length, usd(now).length);
+          [bignum, $("now-year")].forEach((el) => {
+            el.classList.toggle("len-l", longest > 11 && longest <= 14);
+            el.classList.toggle("len-xl", longest > 14);
+          });
 
-          $("res-month").textContent = usd(tax / 12) + " per month";
-          $("res-scenario").textContent = sel.name;
+          $("res-month").textContent = usd(tax / 12);
+          $("now-month").textContent = usd(now / 12);
+          $("res-scenario").textContent = sel.short;
+          $("ratio-note").textContent = ratioNote(primary, RATIO);
 
           const diff = tax - now;
           const same = Math.abs(diff) < 0.005;
-          const d = $("res-delta");
-          d.className = "delta " + (same ? "same" : diff > 0 ? "up" : "down");
-          d.querySelector(".arrow").textContent = same ? "=" : diff > 0 ? "▲" : "▼";
-          $("res-delta-text").innerHTML = same
-            ? "Same as today"
-            : `${usd(Math.abs(diff))} ${diff > 0 ? "more" : "less"} per year ` +
-              `<span class="per">· ${usd(Math.abs(diff) / 12)}/mo</span>`;
+          const band = $("bill-band");
+          band.className = "bill-band " + (same ? "is-same" : diff > 0 ? "is-up" : "is-down");
 
-          const max = Math.max(now, tax, 0.01);
-          $("bar-now").style.width = (now / max) * 100 + "%";
-          $("bar-sel").style.width = (tax / max) * 100 + "%";
-          $("bv-now").textContent = usd(now);
-          $("bv-sel").textContent = usd(tax);
-          $("bl-sel").textContent = sel.bar;
+          // "You would pay about $26.72 more a month" — the sentence a resident
+          // came for, split across three lines so the figure can carry the weight.
+          // At the current rate there is no difference to report, so the panel
+          // answers the other obvious question instead — what you pay now —
+          // rather than announcing "$0.00 different a month".
+          $("res-lead").textContent = same ? "Your city tax would stay at" : "You would pay about";
+          $("res-delta-month").textContent = same ? usd(tax / 12) : usd(Math.abs(diff) / 12);
+          $("res-delta-unit").textContent = same ? "a month" : `${diff > 0 ? "more" : "less"} a month`;
+          $("res-delta-text").textContent = same
+            ? "No change from what you pay today"
+            : `${usd(Math.abs(diff))} ${diff > 0 ? "more" : "less"} a year`;
 
           // Unopened, the row has to advertise that it is editable at all; once
           // it's the chosen scenario, the space is better spent on what the rate
           // means in dollars.
           const cr = customMicro / 1e6;
           customRate.textContent = cr.toFixed(6);
-          customMeta.textContent = $("r-custom").checked
-            ? usd(cr * 100000 * ratio()) + " per $100k of value"
-            : "Type a rate, or drag";
+          customMeta.textContent = usd(cr * 100000 * ratio()) + " a year per $100k";
+
+          // Every rate row is priced the same way, so the six-decimal figure
+          // beside it is evidence rather than the thing being read.
+          document.querySelectorAll("[data-perk]").forEach((el) => {
+            el.textContent = usd(parseFloat(el.dataset.perk) * 100000 * ratio()) + " a year per $100k";
+          });
+
+          // The whole-bill panel shows the same property at every other taxing
+          // entity's rate, so it follows the value and property type entered
+          // here. It never follows the *rate* picker: those seven rates are
+          // 2025's adopted figures, and the city's proposal is stated as its
+          // own line under that table rather than mixed into them.
+          if (BILL_SYNC) BILL_SYNC(value(), primary);
 
           announce(
             `Your city property tax at the ${sel.name} is ${usd(tax)} per year, ` +
@@ -497,118 +606,84 @@
         srOut.textContent = ""; // don't announce the initial render
       }
 
-      /* ---------------- sticky result banner ----------------
-         The banner pins under the topbar, so the topbar's real height has to be
-         a number the stylesheet can read. Measured rather than assumed: it
-         shrinks at the mobile breakpoint and grows with the safe-area inset.
+      /* ---------------- measurements ----------------
+         The estimator no longer pins anything: the band sits directly under the
+         controls, in the order a printed schedule states it, and the whole card
+         is short enough to hold both at once. What the stylesheet still needs is
+         the topbar's real height — panels and controls scroll themselves into
+         view against it, and it shrinks at the mobile breakpoint and grows with
+         the safe-area inset, so it can't be a constant.
       */
-      // Also publishes the banner's height, so `scroll-margin-top` can keep a
-      // tabbed-to control from landing behind it.
       function measureTopbar() {
-        const root = document.documentElement;
         const bar = document.querySelector(".topbar");
-        const out = document.querySelector(".tool-out");
         const h = bar ? Math.round(bar.getBoundingClientRect().height) : 60;
-        root.style.setProperty("--topbar-h", h + "px");
-        if (out) root.style.setProperty("--out-h", Math.round(out.getBoundingClientRect().height) + "px");
+        document.documentElement.style.setProperty("--topbar-h", h + "px");
         return h;
       }
 
-      // A zero-height sentinel at the top of the card. Once it leaves the pin
-      // line, the banner is stuck — that's when it earns a shadow and loses its
-      // rounded corners. Nothing about the banner's size changes, so pinning
-      // can't shift the content below it and re-trigger the observer.
-      function wireStickyResult() {
-        const out = document.querySelector(".tool-out");
-        const sentinel = document.getElementById("tool-sentinel");
-        if (!out || !sentinel || !("IntersectionObserver" in window)) return;
-
-        let io = null;
-        const attach = () => {
-          if (io) io.disconnect();
-          const top = measureTopbar() + 1;
-          io = new IntersectionObserver(
-            ([e]) => out.classList.toggle("is-pinned", !e.isIntersecting && e.boundingClientRect.top < top),
-            { rootMargin: `-${top}px 0px 0px 0px`, threshold: 0 }
-          );
-          io.observe(sentinel);
-        };
-
+      function wireMeasures() {
         let t = 0;
         const remeasure = () => {
           clearTimeout(t);
-          t = setTimeout(attach, 150);
+          t = setTimeout(measureTopbar, 150);
         };
-
-        attach();
         window.addEventListener("resize", remeasure);
 
-        // Measuring once is a race. The topbar grows when Inter replaces
-        // the fallback and the brand wraps to two lines, and it grows again if
-        // the body switcher rewraps — either way the banner would pin behind a
-        // bar taller than the height we recorded.
-        if (document.fonts && document.fonts.ready) document.fonts.ready.then(attach);
+        // Measuring once is a race: the topbar grows when the webfont replaces
+        // the fallback and the brand wraps to two lines, and again if the body
+        // switcher rewraps.
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(measureTopbar);
         if ("ResizeObserver" in window) {
           const bar = document.querySelector(".topbar");
           if (bar) new ResizeObserver(remeasure).observe(bar);
         }
       }
 
-      /* ---------------- the takeaway ----------------
-         The bridge from the tool to the detail. A reader who works the estimator
-         and stops still leaves with the headline: how big the increase is, what
-         it does to the city's standing, and what it buys. Every figure here is
-         opened in full inside a panel below, so this states nothing it can't
-         back up. The rank cards only render when the county data loaded — the
+      /* ---------------- the three facts ----------------
+         A hairline strip straight under the tool. A reader who works the
+         estimator and stops still leaves with the headline: how big the increase
+         is, what it does to the city's standing, and what it buys. Every figure
+         is opened in full further down the page, so this states nothing it can't
+         back up. The rank fact only renders when the county data loaded — the
          page is built to work without it.
       */
       function takeawayHtml(tax, county) {
         const pct = tax.rates.proposed.pct;
         const em = county ? county.eagle_mountain : null;
 
-        const incTxt = em
-          ? "over the certified rate — the largest increase any Utah County city is asking for this year."
-          : `over the ${CT.escapeHtml(tax.rates.certified_2026.rate_display)} certified rate.`;
-
-        const rankCard = em
+        const rankFact = em
           ? `
-            <li class="tk">
-              <span class="tk-kicker">Where it ranks</span>
-              <span class="tk-fig shift">${ordinal(em.total_cities - em.rank_current + 1)}-lowest <span class="to" aria-hidden="true">→</span> ${ordinal(em.rank_proposed)}-highest</span>
-              <span class="tk-txt">Eagle Mountain's city property tax rate among the county's ${em.total_cities} cities — where it sits today, and where this proposal would put it.</span>
+            <li class="fact">
+              <b class="shift"><span class="nb">${ordinal(em.total_cities - em.rank_current + 1)}-lowest</span> <span class="to" aria-hidden="true">→</span> <span class="nb">${ordinal(em.rank_proposed)}-highest</span></b>
+              <p>Eagle Mountain charges nearly the least of the ${em.total_cities} cities in Utah County
+                today. This would move it near the top.</p>
             </li>`
           : "";
 
         return `
-          <section class="takeaway reveal" style="--i:2" aria-labelledby="takeaway-title">
-            <h2 class="takeaway-title" id="takeaway-title">What this would mean</h2>
-            <ul class="takeaway-list${em ? "" : " two"}">
-              <li class="tk">
-                <span class="tk-kicker">The increase</span>
-                <span class="tk-fig">+${pct}%</span>
-                <span class="tk-txt">${incTxt}</span>
-              </li>
-              ${rankCard}
-              <li class="tk">
-                <span class="tk-kicker">What it pays for</span>
-                <span class="tk-fig word">Public safety</span>
-                <span class="tk-txt">The new revenue funds the city's public safety contract with the Utah County Sheriff's Office — the deputies, patrol, and dispatch that make up Eagle Mountain's police coverage — keeping pace with the city's growth.</span>
-              </li>
-            </ul>
-            ${em ? `<p class="takeaway-link"><a href="#p-compare" data-panel="p-compare">See how Eagle Mountain compares across the county <span aria-hidden="true">→</span></a></p>` : ""}
-          </section>`;
+          <ul class="facts reveal${em ? "" : " two"}" style="--i:2" aria-label="What this would mean">
+            <li class="fact">
+              <b>About 3&times; more</b>
+              <p>The city's part of your tax bill would roughly triple${em ? " — the biggest jump any Utah County city is asking for this year" : ""}.</p>
+            </li>
+            ${rankFact}
+            <li class="fact">
+              <b>Sheriff's deputies</b>
+              <p>The ${usd0(tax.revenue_increase)} it raises is set aside for policing — Eagle Mountain
+                contracts with the Utah County Sheriff.</p>
+            </li>
+          </ul>`;
       }
 
       /* ---------------- section wayfinding ----------------
-         Five stacked closed panels give a reader no sense of what's inside. A
+         Four stacked closed panels give a reader no sense of what's inside. A
          row of chips names each topic up front and jumps to it — opening the
          panel on the way. Built from the same conditionals as the panels, so a
          chip never points at a section that didn't render.
       */
       function pictureNavHtml(county) {
         const items = [
-          ["p-schedule", "Schedule"],
-          county ? ["p-compare", "Compare"] : null,
+          ["p-schedule", "The schedule"],
           county && county.statewide ? ["p-statewide", "Statewide"] : null,
           ["p-source", "Sources"],
           ["p-record", "Timeline"],
@@ -619,19 +694,21 @@
           </nav>`;
       }
 
-      /* Chips and the takeaway link open their target panel and glide to it;
-         a shared URL that names a panel does the same on load. Both honour
+      /* Chips and in-page links glide to their target, opening it first if it is
+         a panel. A shared URL that names one does the same on load. Both honour
          reduced-motion by dropping the smooth scroll. */
       function wirePictureNav() {
         const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
         const reveal = (id, focus) => {
           const target = document.getElementById(id);
-          if (!target || target.tagName !== "DETAILS") return false;
-          target.open = true;
+          if (!target) return false;
+          const isPanel = target.tagName === "DETAILS";
+          if (isPanel) target.open = true;
+          revealBars(target);
           target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
           // Keyboard users land on the panel they asked for, not back at the top.
-          if (focus) {
+          if (focus && isPanel) {
             const sum = target.querySelector("summary");
             if (sum) sum.focus({ preventScroll: true });
           }
@@ -649,7 +726,7 @@
           });
         });
 
-        // Deep link: a URL ending in #p-compare (etc.) arrives with that panel open.
+        // Deep link: a URL ending in #p-schedule (etc.) arrives with that panel open.
         if (location.hash.length > 1) reveal(location.hash.slice(1), false);
       }
 
@@ -658,15 +735,34 @@
          collapsed by default so the page arrives calm. The schedule opens first
          so the section never reads as an empty stack of closed doors.
       */
+      /* Caveats, sources and footnote keys are load-bearing for trust — a civic
+         data page that hides how its numbers were derived isn't worth much — but
+         they are not what anyone arrives to read, and left inline they were more
+         than half the words on the page. Each set gets a closed disclosure
+         instead: still one click from the chart it belongs to, still exportable,
+         still in the DOM for search, and out of the way of the argument. */
+      function finePrint(label, bodyHtml) {
+        return `
+        <details class="fine">
+          <summary>${CT.escapeHtml(label)}</summary>
+          <div class="fine-body">${bodyHtml}</div>
+        </details>`;
+      }
+
+      // The title is a real <h3>, not a styled <b>. A summary may contain heading
+      // content, and without it these four sections are invisible to the document
+      // outline — a screen-reader user scanning by heading would jump straight
+      // from "Where all of this comes from" to the meeting groups inside the last
+      // panel, with no way to tell the four panels apart.
       function panel(title, sub, bodyHtml, open, id) {
         return `
         <details class="panel"${id ? ` id="${id}"` : ""}${open ? " open" : ""}>
           <summary>
             <span class="panel-tt">
-              <b>${title}</b>
+              <h3>${title}</h3>
               <span>${sub}</span>
             </span>
-            <span class="panel-chev" aria-hidden="true">▾</span>
+            <span class="panel-chev" aria-hidden="true"></span>
           </summary>
           <div class="panel-body">${bodyHtml}</div>
         </details>`;
@@ -681,14 +777,14 @@
          effect, because the county had not yet returned the recalculated
          certified rate. Against the 0.000530 it did return on June 22, the same
          proposal is 220.9%, and that is the number in the city's own
-         Truth-in-Taxation notice. So the row states the percentage the proposed
-         rate actually carries, and the note under the table says what was read
-         aloud and why the two differ.
+         Truth-in-Taxation notice, so that is the number the row states. The
+         asterisk under the table names the basis; the longer reconciliation of
+         the two figures used to sit here and was cut as more than a reader of
+         this page needs.
 
          Note it is a rate-to-rate figure either way. The schedule's own revenue
-         lines — $2,839,998 against $9,798,139 — imply 245%, a different measure
-         (tax.revenue_ratio_pct), which is why this row is not labelled as a
-         change in revenue.
+         lines — $2,839,998 against $9,798,139 — imply 245%, a different measure,
+         which is why this row is not labelled as a change in revenue.
       */
       function schedulePanel(tax) {
         const cur = tax.rates.current, prop = tax.rates.proposed;
@@ -701,10 +797,8 @@
         const bizNow = biz.market_value * cur.rate;
         const body = `
           <p class="panel-intro">
-            The schedule Mayor Gray read aloud on
-            <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a>, transcribed from the recording.
-            The percentage is the one line stated against the certified rate the county
-            returned afterwards, rather than as he read it — the note under the table has both.
+            Read aloud on <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a>, transcribed
+            from the recording.
           </p>
           <div class="tablewrap">
             <table class="data schedule">
@@ -737,17 +831,220 @@
               </tbody>
             </table>
           </div>
-          <p class="chart-foot schedule-foot">
-            <span aria-hidden="true">*</span>
-            <strong>+${prop.pct}%</strong> is the proposed ${CT.escapeHtml(prop.rate_display)} against the
-            ${CT.escapeHtml(certified.rate_display)} certified rate — the comparison the city's own
-            Truth-in-Taxation notice uses. Mayor Gray read this line as ${tax.as_read.pct}% on June 16,
-            measured against the ${cur.rate.toFixed(6)} rate then in effect; the county did not return the
-            recalculated certified rate until June 22, after the schedule was read.
-            Either way it is a comparison of rates, not of collections — the schedule's own revenue lines,
-            ${usd0(cur.revenue)} against ${usd0(prop.revenue)}, work out to ${tax.revenue_ratio_pct}%.
-          </p>`;
+          <p class="chart-foot">
+            <span aria-hidden="true">*</span> <strong>+${prop.pct}%</strong> is
+            ${CT.escapeHtml(prop.rate_display)} against the ${CT.escapeHtml(certified.rate_display)}
+            certified rate — the comparison the city's own notice uses.
+          </p>
+`;
         return panel("The official schedule", "The six lines of the city's Truth-in-Taxation schedule", body, true, "p-schedule");
+      }
+
+      /* ---------------- the whole bill ----------------
+         The estimator answers "what does the city take?", and a reader who
+         stops there can be left thinking the city's line is the property tax.
+         It isn't: seven entities levy on an Eagle Mountain parcel, and the city
+         is the fourth largest of them. This panel lays out all seven at their
+         2025 final adopted rates — the ones on today's bills — so the city's
+         proposal can be read against the bill it actually belongs to.
+
+         The rates are fixed 2025 figures and the bars are drawn from them, so
+         bar geometry never changes. Only the dollar figures move, and they
+         follow the market value and property type entered in the estimator —
+         every element carrying a dollar amount declares the rate it is derived
+         from in `data-billrate`, and the sync function does the arithmetic.
+      */
+      function billSection(bill, tax) {
+        const ents = [...bill.entities].sort((a, b) => b.rate - a.rate);
+        const total = ents.reduce((s, e) => s + e.rate, 0);
+        const city = ents.find((e) => e.is_city);
+        const cityPos = ents.indexOf(city) + 1;
+        const max = ents[0].rate;
+        const share = (r) => (r / total) * 100;
+        const pct1 = (n) => n.toFixed(1) + "%";
+        // Summed rates land on 0.009376999999999998 in binary floating point;
+        // the data attribute the sync reads back should carry the rate, not the
+        // error term.
+        const attrRate = (r) => r.toFixed(9);
+
+        // What the city's proposal would do to the bill as a whole, holding
+        // every other entity at its 2025 rate — the only honest way to state
+        // it, since no other entity has set a 2026 rate yet.
+        const prop = tax.rates.proposed.rate;
+        const propTotal = total - city.rate + prop;
+        const propPos = ents.filter((e) => !e.is_city && e.rate > prop).length + 1;
+        const raised = ents.filter((e) => e.rate > e.certified).length;
+
+        // One row per levy, laid out like the bill itself: who takes it, how much
+        // of the whole it is, and what that comes to on this property. The bar
+        // geometry is fixed 2025 rates; only the dollar column moves.
+        const bars = ents
+          .map((e) => {
+            const tip = `${e.name} — ${rate6(e.rate)}, ${pct1(share(e.rate))} of the bill · ${e.what}`;
+            return `
+              <div class="levy-row ${e.is_city ? "is-city" : ""}" data-tip="${CT.escapeHtml(tip)}">
+                <div class="levy-name">${CT.escapeHtml(e.short)}</div>
+                <div class="levy-bar-wrap">
+                  <span class="levy-track">
+                    <span class="levy-bar ${e.is_city ? "is-city" : ""}" style="width:${((e.rate / max) * 100).toFixed(2)}%"></span>
+                  </span>
+                  <span class="mono levy-rate">${rate6(e.rate)}</span>
+                </div>
+                <div class="mono levy-share">${pct1(share(e.rate))}</div>
+                <div class="mono levy-amt" data-billrate="${attrRate(e.rate)}"></div>
+              </div>`;
+          })
+          .join("");
+
+        const rows = ents
+          .map(
+            (e) => `
+              <tr${e.is_city ? ' class="is-city"' : ""}>
+                <td class="rowlabel">
+                  <b>${CT.escapeHtml(e.name)}</b>
+                  <span class="bill-what">${CT.escapeHtml(e.what)}</span>
+                </td>
+                <td class="num">${rate6(e.rate)}</td>
+                <td class="num">${pct1(share(e.rate))}</td>
+                <td class="num" data-billrate="${attrRate(e.rate)}"></td>
+              </tr>`
+          )
+          .join("");
+
+        return `
+          <section class="tax-sec reveal" style="--i:3" id="s-bill" aria-labelledby="bill-title">
+            <div class="sec-head">
+              <p class="eyebrow"><span class="sec-num" aria-hidden="true">01</span>Where your money goes</p>
+              <h2 class="sec-h2" id="bill-title">The city gets ${Math.round(share(city.rate))}&cent; of every property tax dollar</h2>
+              <p class="sec-sub">
+                ${cap(numWord(ents.length))} different bodies tax your home, and the City Council
+                controls only one of them. Schools take the most by far.
+              </p>
+            </div>
+
+            <figure class="levy" data-tipscope>
+              <figcaption class="sr-only">
+                ${bill.rate_year} final adopted property tax rates for tax area ${CT.escapeHtml(bill.tax_area.code)},
+                and what each takes from the property entered in the estimator.
+              </figcaption>
+              <div class="levy-head">
+                <div>Who taxes your home</div>
+                <div>Rate</div>
+                <div>Share</div>
+                <div data-billnoun="head"></div>
+              </div>
+              ${bars}
+              <div class="levy-total">
+                <div>Total property tax</div>
+                <div class="levy-bar-wrap">
+                  <span class="levy-track"></span>
+                  <span class="mono levy-rate levy-rate-total">${rate6(total)}</span>
+                </div>
+                <div class="mono levy-share">100%</div>
+                <div class="mono levy-amt" data-billrate="${attrRate(total)}"></div>
+              </div>
+            </figure>
+
+            <div class="note">
+              <b>If the city's proposal passes</b>
+              <p>
+                Your whole bill goes from
+                <strong><span data-billrate="${attrRate(total)}"></span></strong> to
+                <strong><span data-billrate="${attrRate(propTotal)}"></span></strong> — up
+                ${pct1(((propTotal - total) / total) * 100)} — and the city moves from the
+                ${ordinal(cityPos)}-largest line on it to the ${ordinal(propPos)}-largest.
+              </p>
+              <p class="note-fine">Every other entity held at its ${bill.rate_year} rate; none has set a
+                ${bill.rate_year + 1} rate yet.</p>
+            </div>
+
+            ${
+              /* The table carries what the compact rows can't: what each entity
+                 actually does with the money. It is also what the export toolbar
+                 hangs off, so the numbers can be taken away as CSV. */ ""
+            }
+            <details class="tableview">
+              <summary>See what each one pays for</summary>
+              <div class="tablewrap">
+                <table class="data bill" id="bill-breakdown">
+                  <thead>
+                    <tr>
+                      <th scope="col">Who taxes your home</th>
+                      <th scope="col" class="num">${bill.rate_year} rate</th>
+                      <th scope="col" class="num">Share</th>
+                      <th scope="col" class="num" data-billnoun="head"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${rows}
+                    <tr class="is-total">
+                      <td class="rowlabel"><b>Total property tax</b></td>
+                      <td class="num">${rate6(total)}</td>
+                      <td class="num">100%</td>
+                      <td class="num" data-billrate="${attrRate(total)}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            ${finePrint(
+              "About these numbers",
+              `<ul>
+                ${bill.caveats.map((x) => `<li>${CT.escapeHtml(x)}</li>`).join("")}
+                <li>${CT.escapeHtml(bill.tax_area.note)}
+                  <ul>
+                    ${bill.variants
+                      .map((v) => `<li><b>${CT.escapeHtml(v.name)}</b> — ${CT.escapeHtml(v.note)}</li>`)
+                      .join("")}
+                  </ul>
+                </li>
+              </ul>
+              <p class="src">
+                Rates: <a href="${bill.source.url}" rel="nofollow noopener">${CT.escapeHtml(bill.source.title)}</a>,
+                ${CT.escapeHtml(bill.source.publisher)} — ${CT.escapeHtml(bill.source.page)},
+                published ${CT.fmtDate(bill.source.published)}.
+              </p>`
+            )}
+          </section>`;
+      }
+
+      /* The estimator drives this panel's dollar figures. Everything carrying a
+         `data-billrate` is a rate times the taxable value; everything carrying
+         `data-billnoun` is the phrase describing the property those figures are
+         about. Nothing structural is rewritten, so the export toolbar attached
+         under the table survives every update and exports what is on screen. */
+      let BILL_SYNC = null;
+
+      function wireBillPanel(bill) {
+        const root = document.getElementById("s-bill");
+        if (!root) return;
+        const figs = [...root.querySelectorAll("[data-billrate]")];
+        const nouns = [...root.querySelectorAll("[data-billnoun]")];
+
+        BILL_SYNC = (marketValue, isPrimary) => {
+          const taxable = marketValue * (isPrimary ? bill.residential_ratio : 1);
+          figs.forEach((el) => {
+            el.textContent = usd(taxable * parseFloat(el.dataset.billrate));
+          });
+          // A column header has to stay short; a sentence can say the whole
+          // thing, including that a non-primary property is taxed on its full
+          // value rather than 55% of it.
+          nouns.forEach((el) => {
+            el.textContent =
+              el.dataset.billnoun === "head"
+                ? isPrimary
+                  ? `On a ${usd0(marketValue)} home`
+                  : `On ${usd0(marketValue)} of other property`
+                : isPrimary
+                  ? `a ${usd0(marketValue)} primary residence`
+                  : `a ${usd0(marketValue)} business or rental property`;
+          });
+        };
+
+        // A first pass at the panel's own default, so the markup is never blank
+        // if the estimator hasn't painted yet.
+        BILL_SYNC(bill.sample_value, true);
       }
 
       /* ---------------- the paper trail ---------------- */
@@ -787,30 +1084,31 @@
         return n + ({ 1: "st", 2: "nd", 3: "rd" }[n % 10] || "th");
       }
 
-      function countyPanel(c) {
+      function countySection(c) {
         const utahN = c.cities.length;
         const sl = c.salt_lake;
 
-        const utahNotes = `
-          <div class="county-notes">
-            <h3>About these numbers</h3>
-            <ul>${c.caveats.map((x) => `<li>${CT.escapeHtml(x)}</li>`).join("")}</ul>
+        const utahNotes = finePrint(
+          "About these numbers",
+          `<ul>${c.caveats.map((x) => `<li>${CT.escapeHtml(x)}</li>`).join("")}</ul>
             <p class="src">
               Rates: <a href="${c.rate_source.url}" rel="nofollow noopener">${CT.escapeHtml(c.rate_source.title)}</a>,
               ${CT.escapeHtml(c.rate_source.publisher)}.
               Proposed increases: <a href="${c.proposal_source.url}" rel="nofollow noopener">${CT.escapeHtml(c.proposal_source.publisher)}</a>,
               reporting the ${c.proposal_year} truth-in-taxation notices.
-            </p>
-          </div>`;
+            </p>`
+        );
 
-        const body = `
-          <p class="panel-intro county-lede">
-            Eagle Mountain levies the <strong>second-lowest city property tax rate</strong> of the
-            ${utahN} municipalities in Utah County today. At the proposed rate it would have the
-            <strong>third-highest</strong> — the largest increase any city in the county is asking
-            for this year, by a wide margin. Switch to Salt Lake County to see where its rate falls
-            among its Wasatch Front neighbours.
-          </p>
+        return `
+          <section class="tax-sec reveal" style="--i:4" id="s-compare" aria-labelledby="compare-title">
+            <div class="sec-head">
+              <p class="eyebrow"><span class="sec-num" aria-hidden="true">02</span>Compared to nearby cities</p>
+              <h2 class="sec-h2" id="compare-title">Eagle Mountain charges less than almost everyone</h2>
+              <p class="sec-sub">
+                Eagle Mountain has the <strong>second-lowest</strong> city rate of the ${utahN} in Utah
+                County today. The proposal would make it the <strong>third-highest</strong>.
+              </p>
+            </div>
 
           ${sl ? `<div class="switch-row">
             <p class="switch-label" id="scope-hint">Compare against</p>
@@ -854,8 +1152,8 @@
               <div role="tabpanel" id="panel-sl-inc" aria-labelledby="tab-sl-inc" hidden>${saltLakeIncreaseChartHtml(sl)}</div>
               ${saltLakeNotes(sl)}
             </div>` : ""}
-          </div>`;
-        return panel("How Eagle Mountain compares", "Its rate against Utah County and Salt Lake County cities", body, false, "p-compare");
+          </div>
+          </section>`;
       }
 
       /* --- Salt Lake County: current rates, Eagle Mountain dropped in as a
@@ -895,10 +1193,8 @@
         <figure class="chart">
           <figcaption>
             <h3>City property tax rate, today — Salt Lake County</h3>
-            <p>Each city's own general levy. Eagle Mountain (Utah County) is dropped in as a dashed
-               reference: its current rate would be the ${ordinal(em.rank_current_low)}-lowest of these
-               ${em.total_with_reference}, and the proposed rate would move it to the
-               ${ordinal(em.rank_proposed_high)}-highest.</p>
+            <p>Each city's own general levy. Eagle Mountain is dropped in dashed, as an
+               out-of-county reference.</p>
           </figcaption>
           <div class="legend">
             <span class="lg"><i class="sw sw-base"></i>City levy</span>
@@ -906,9 +1202,8 @@
           </div>
           <div class="chart-body">${bars}</div>
           <p class="chart-foot">
-            <span aria-hidden="true">†</span> Levies little or no general city rate; funds police and fire
-            (and, for the metro townships, most services) through separate countywide service districts not
-            shown in these bars.${offCount ? " " + OFF_NOTE : ""}
+            <span aria-hidden="true">†</span> Funds police/fire through separate service districts, not shown
+            in these bars.${offCount ? " " + OFF_NOTE : ""}
           </p>
           ${tableView(
             ["City", "City levy"],
@@ -980,10 +1275,8 @@
         <figure class="chart chart--wide-val">
           <figcaption>
             <h3>Where the ${sl.proposal_year} proposals would leave each city — Salt Lake County</h3>
-            <p>Same cities, same rate axis — re-sorted by the rate each would end up at.
-               ${proposing} of Salt Lake County's ${sl.cities.length} cities noticed a ${sl.proposal_year}
-               increase. Eagle Mountain (Utah County) is dropped in as a dashed reference; with every city's
-               proposal applied its rate would rank ${ordinal(emResRank)}-highest of these ${em.total_with_reference}.</p>
+            <p>${proposing} of ${sl.cities.length} cities noticed a ${sl.proposal_year} increase.
+               Eagle Mountain is the dashed reference.</p>
           </figcaption>
           <div class="legend">
             <span class="lg"><i class="sw sw-base"></i>Rate today</span>
@@ -992,11 +1285,8 @@
           </div>
           <div class="chart-body">${bars}</div>
           <p class="chart-foot">
-            <span aria-hidden="true">†</span> Funds police/fire (and, for metro townships, most services) through
-            separate countywide service districts not shown here.
-            <span aria-hidden="true">‡</span> Raises a dedicated levy (public safety), not the general city rate.
-            Only Eagle Mountain has published a proposed rate — the Salt Lake figures are derived from each
-            city's own noticed dollar impact.${offCount ? " " + OFF_NOTE : ""}
+            <span aria-hidden="true">†</span> Funds police/fire through separate service districts.
+            <span aria-hidden="true">‡</span> Dedicated levy, not the general rate.${offCount ? " " + OFF_NOTE : ""}
           </p>
           ${tableView(
             ["City", "Rate today", "Rate if it passes", "Increase", "Purpose"],
@@ -1015,16 +1305,15 @@
       }
 
       function saltLakeNotes(sl) {
-        return `
-          <div class="county-notes">
-            <h3>About these numbers</h3>
-            <ul>${sl.caveats.map((x) => `<li>${CT.escapeHtml(x)}</li>`).join("")}</ul>
+        return finePrint(
+          "About these numbers",
+          `<ul>${sl.caveats.map((x) => `<li>${CT.escapeHtml(x)}</li>`).join("")}</ul>
             <p class="src">
               Rates: <a href="${sl.rate_source.url}" rel="nofollow noopener">${CT.escapeHtml(sl.rate_source.title)}</a>,
               ${CT.escapeHtml(sl.rate_source.publisher)} — ${sl.rate_year} final adopted, city levy only.
               ${sl.proposal_source ? `Proposed increases: <a href="${sl.proposal_source.notice_url || sl.proposal_source.url}" rel="nofollow noopener">Salt Lake County ${sl.proposal_year} truth-in-taxation notices</a> (per-city purposes via <a href="${sl.proposal_source.url}" rel="nofollow noopener">${CT.escapeHtml(sl.proposal_source.publisher)}</a>).` : ""}
-            </p>
-          </div>`;
+            </p>`
+        );
       }
 
       // Both charts list the same cities in the same order, so toggling swaps the
@@ -1057,7 +1346,7 @@
       const barSpan = (frac) => `calc(${frac.toFixed(4)} * (100% - var(--track-gutter)))`;
       const valCell = (frac, off, inner) =>
         `<span class="cval" style="left:${barSpan(frac)}">${inner}${off ? '<span class="offmark" aria-hidden="true"> ↑</span>' : ""}</span>`;
-      const OFF_NOTE = `<span aria-hidden="true">↑</span> Rate runs past the top of the scale; the exact figure is still shown.`;
+      const OFF_NOTE = `<span aria-hidden="true">↑</span> Past the top of the scale; exact figure still shown.`;
 
       /* --- chart 1: current rate only, no proposal --- */
       function rateChartHtml(c) {
@@ -1087,14 +1376,14 @@
         <figure class="chart">
           <figcaption>
             <h3>City property tax rate, today</h3>
-            <p>Utah County municipalities, city levy only. Eagle Mountain sits second from the bottom.</p>
+            <p>Utah County municipalities, city levy only.</p>
           </figcaption>
           <div class="legend">
             <span class="lg"><i class="sw sw-base"></i>Current rate</span>
             <span class="lg"><i class="sw sw-em"></i>Eagle Mountain</span>
           </div>
           <div class="chart-body">${bars}</div>
-          <p class="chart-foot"><span aria-hidden="true">*</span> Levies in Utah County but lies mostly in Salt Lake County.${offCount ? " " + OFF_NOTE : ""}</p>
+          <p class="chart-foot"><span aria-hidden="true">*</span> Mostly in Salt Lake County.${offCount ? " " + OFF_NOTE : ""}</p>
           ${tableView(["City", "Current rate"], rows.map((r) => [r.name, rate6(r.current_rate)]))}
         </figure>`;
       }
@@ -1150,10 +1439,8 @@
         <figure class="chart chart--wide-val">
           <figcaption>
             <h3>Where the ${c.proposal_year} proposals would leave each city</h3>
-            <p>Same cities, same rate axis — re-sorted by the rate each would end up at.
-               ${proposing} of ${rows.length} are proposing an increase. Eagle Mountain would move from the
-               ${ordinal(rows.length - c.eagle_mountain.rank_current + 1)}-lowest rate in the county to the
-               ${ordinal(c.eagle_mountain.rank_proposed)}-highest.</p>
+            <p>${proposing} of ${rows.length} cities are proposing an increase. Re-sorted by the rate
+               each would end up at.</p>
           </figcaption>
           <div class="legend">
             <span class="lg"><i class="sw sw-base"></i>Rate today</span>
@@ -1162,10 +1449,8 @@
           </div>
           <div class="chart-body">${bars}</div>
           <p class="chart-foot">
-            <span aria-hidden="true">†</span> Raises a dedicated levy (library; public safety), not the general city rate.
-            <span aria-hidden="true">‡</span> Rests on a rounded dollar figure; approximate.
-            Only Eagle Mountain has published a proposed rate — the rest are derived from each city's
-            own noticed dollar impact.${offCount ? " " + OFF_NOTE : ""}
+            <span aria-hidden="true">†</span> Dedicated levy, not the general rate.
+            <span aria-hidden="true">‡</span> Approximate.${offCount ? " " + OFF_NOTE : ""}
           </p>
           ${tableView(
             ["City", "Rate today", "Rate if it passes", "Increase", "Purpose"],
@@ -1196,7 +1481,11 @@
               const on = t === tab;
               t.setAttribute("aria-selected", String(on));
               t.tabIndex = on ? 0 : -1;
-              document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+              const p = document.getElementById(t.getAttribute("aria-controls"));
+              p.hidden = !on;
+              // A chart that was hidden never scrolled into view, so its bars are
+              // still armed at zero width. Draw them now that it is on screen.
+              if (on) revealBars(p);
             });
             tab.focus();
           };
@@ -1281,7 +1570,7 @@
       // caption or heading, falling back to the panel it lives in.
       function exportName(table, i) {
         const h3 = table.closest("figure")?.querySelector("figcaption h3");
-        const summ = table.closest("details.panel")?.querySelector("summary .panel-tt b");
+        const summ = table.closest("details.panel")?.querySelector("summary .panel-tt h3");
         const raw = (h3 && h3.textContent) || table.id || (summ && summ.textContent) || `table-${i + 1}`;
         const slug = raw.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
         return "eagle-mountain-" + (slug || "table");
@@ -1298,11 +1587,16 @@
 
       const csvField = (s) => (/[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s);
 
+      // What exports is what is on screen: current sort order, and — once the
+      // statewide table can be filtered — only the rows that survived the filter.
+      // Exporting 253 hidden rows from a table showing three would be a surprise.
       function tableToCsv(table) {
         const line = (tr) => [...tr.querySelectorAll("th,td")].map((c) => csvField(cellCsvText(c))).join(",");
         const lines = [];
         table.querySelectorAll("thead tr").forEach((tr) => lines.push(line(tr)));
-        table.querySelectorAll("tbody tr").forEach((tr) => lines.push(line(tr)));
+        table.querySelectorAll("tbody tr").forEach((tr) => {
+          if (!tr.hidden) lines.push(line(tr));
+        });
         return lines.join("\r\n");
       }
 
@@ -1420,35 +1714,47 @@
 
         const body = `
           <p class="panel-intro">
-            Every Utah city and town ranked by its own property tax levy — the same city-only measure as the
-            county charts — from the state's ${sw.rate_year} rate report, <strong>highest rate first</strong>.
-            Eagle Mountain's current <strong>${rate6(em.current_rate)}</strong> ranks
-            <strong>${ordinal(emCur)}-highest</strong> of ${N} — the ${ordinal(emCurLow)}-lowest. Switch to
-            <em>With 2026 proposals</em> — Eagle Mountain's and the ${othersCount} other noticed increases this
-            site tracks, all applied at once — and Eagle Mountain climbs ${climbed} places to
-            <strong>${ordinal(emProp)}-highest</strong>. Sort any column; Eagle Mountain stays lit.
+            All ${N} Utah cities by their own levy, highest first. Eagle Mountain is
+            <strong>${ordinal(emCur)}</strong> today and would be <strong>${ordinal(emProp)}</strong>
+            with the 2026 proposals applied — a climb of ${climbed} places.
           </p>
 
-          <div class="scope-switch stateview-switch" role="radiogroup" aria-label="Which rate to rank by">
-            <button type="button" role="radio" id="sv-current" data-view="current" aria-checked="true" tabindex="0">Rate today</button>
-            <button type="button" role="radio" id="sv-proposed" data-view="proposed" aria-checked="false" tabindex="-1">With 2026 proposals</button>
+          <div class="sw-tools">
+            <div class="scope-switch stateview-switch" role="radiogroup" aria-label="Which rate to rank by">
+              <button type="button" role="radio" id="sv-current" data-view="current" aria-checked="true" tabindex="0">Rate today</button>
+              <button type="button" role="radio" id="sv-proposed" data-view="proposed" aria-checked="false" tabindex="-1">With 2026 proposals</button>
+            </div>
+            <!-- ${N} rows is past the point where scrolling is a way to find
+                 anything. Sorting answers "who is highest"; this answers the
+                 question most people actually arrive with, which is "where is
+                 mine". Filters both rankings at once so switching between them
+                 keeps the same city in view. -->
+            <div class="sw-find">
+              <label class="sr-only" for="sw-q">Find a city</label>
+              <span class="sw-find-ico" aria-hidden="true"></span>
+              <input type="search" id="sw-q" class="sw-q" placeholder="Find a city" autocomplete="off"
+                     spellcheck="false" aria-describedby="sw-count" />
+            </div>
           </div>
+          <p class="sw-count" id="sw-count" role="status" aria-live="polite"></p>
+
+          <p class="sw-empty" id="sw-empty" hidden>
+            No Utah city or town matches that. Check the spelling, or
+            <button type="button" class="tx-link" id="sw-clear">clear the filter</button>.
+          </p>
 
           <div class="stateview" data-view-panel="current">${tableHtml("statewide-current", current, "current")}</div>
           <div class="stateview" data-view-panel="proposed" hidden>
             ${tableHtml("statewide-proposed", proposed, "proposed")}
             <p class="chart-foot">
-              Every noticed 2026 increase this site tracks — Eagle Mountain's and ${othersCount} others across Utah
-              and Salt Lake counties, each marked <span class="prop-pill">proposed</span> — is applied here at its
-              resulting rate. Every other city is shown at today's rate: Utah's remaining 2026 city rates aren't
-              certified until after the August truth-in-taxation hearings.
+              ${othersCount + 1} tracked increases applied, each marked
+              <span class="prop-pill">proposed</span>. Every other city is at today's rate.
             </p>
           </div>
 
           <p class="chart-foot">
-            City levy only — excludes county, school district, and special/service district levies, so it is not
-            your total tax bill. Cities with the same rate take adjacent ranks. Source:
-            <a href="${src.url}" rel="nofollow noopener">${CT.escapeHtml(src.title)}</a>, ${CT.escapeHtml(src.publisher)}.
+            City levy only — not your total bill. Source:
+            <a href="${src.url}" rel="nofollow noopener">${CT.escapeHtml(src.title)}</a>.
           </p>`;
         return panel("Where Eagle Mountain ranks statewide", `Its current rate — and its proposal — against all ${N} Utah cities`, body, false, "p-statewide");
       }
@@ -1467,6 +1773,7 @@
             r.tabIndex = on ? 0 : -1;
             const p = panelFor(r);
             if (p) p.hidden = !on;
+            if (on && p) revealBars(p);
           });
           radio.focus();
         };
@@ -1515,6 +1822,49 @@
         });
       }
 
+      /* Find-a-city. Filters both statewide rankings on every keystroke — 253
+         rows is small enough that debouncing would only add lag — and reports
+         the count to a live region so it is announced rather than merely seen.
+         Ranks are never renumbered: a filtered row keeps its real standing, which
+         is the whole point of looking a city up. */
+      function wireStatewideFilter() {
+        const q = document.getElementById("sw-q");
+        if (!q) return;
+        const count = document.getElementById("sw-count");
+        const empty = document.getElementById("sw-empty");
+        const clear = document.getElementById("sw-clear");
+        const tables = [...document.querySelectorAll("table.data.statewide")];
+        const total = tables[0] ? tables[0].tBodies[0].rows.length : 0;
+
+        const apply = () => {
+          const term = q.value.trim().toLowerCase();
+          let shown = 0;
+          tables.forEach((t, i) => {
+            let n = 0;
+            [...t.tBodies[0].rows].forEach((tr) => {
+              const hit = !term || tr.dataset.name.toLowerCase().includes(term);
+              tr.hidden = !hit;
+              if (hit) n++;
+            });
+            if (i === 0) shown = n;
+          });
+          empty.hidden = shown > 0;
+          // "1 of 253 cities" — the noun agrees with the total, not the count.
+          count.textContent = !term ? "" : shown === 0 ? "No matches" : `${shown} of ${total} cities`;
+          // A short list has nothing to scroll; let the box shrink to it.
+          document.querySelectorAll(".statewide-wrap").forEach((w) =>
+            w.classList.toggle("is-filtered", !!term && shown <= 12)
+          );
+        };
+
+        q.addEventListener("input", apply);
+        // Esc clears, the convention for a search field.
+        q.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && q.value) { e.preventDefault(); q.value = ""; apply(); }
+        });
+        clear.addEventListener("click", () => { q.value = ""; apply(); q.focus(); });
+      }
+
       // The statewide "rate today" / "with the proposal" toggle. Same radiogroup
       // pattern as the county switch.
       function wireStatewideView() {
@@ -1540,6 +1890,81 @@
             if (next) { e.preventDefault(); select(next); }
           });
         });
+      }
+
+      /* ---------------- bars drawing themselves ----------------
+         The one orchestrated moment on the page. Each chart's bars sweep out
+         from the baseline as the chart scrolls into view, staggered down the
+         list, so a wall of two dozen rates arrives as a ranking being drawn
+         rather than as a block that was already there.
+
+         Three things this has to survive:
+         · Reduced motion — then it never arms at all, and the bars are simply
+           drawn. Nothing here is the only way to read a value.
+         · Hidden tab panels — a chart inside `hidden` never intersects, so
+           switching tabs would reveal a panel of zero-width bars. Every switch
+           calls revealBars() on what it just showed.
+         · Anything going wrong — the armed state is added by JS and cleared by a
+           timeout, so a failed observer degrades to visible bars, not to none.
+      */
+      const BAR_GROUPS = ".chart-body, .levy";
+
+      function revealBars(scope) {
+        (scope || document).querySelectorAll(".bars-armed").forEach((g) => {
+          g.querySelectorAll(".cbar, .levy-bar").forEach((b, i) => {
+            b.style.setProperty("--r", Math.min(i, 26));
+          });
+          g.classList.remove("bars-armed");
+          g.classList.add("bars-in");
+        });
+      }
+
+      function wireBarReveal() {
+        if (!("IntersectionObserver" in window)) return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+        const groups = [...document.querySelectorAll(BAR_GROUPS)];
+        if (!groups.length) return;
+        groups.forEach((g) => g.classList.add("bars-armed"));
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (!e.isIntersecting) return;
+              revealBars(e.target.parentElement || e.target);
+              io.unobserve(e.target);
+            });
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.06 }
+        );
+        groups.forEach((g) => io.observe(g));
+
+        /* The observer alone is not enough, and the failure is bad: an armed bar
+           is an *invisible* bar, and its value column is invisible with it. A
+           jump — an in-page anchor, a browser Find, restoring a scroll position,
+           anything that moves the page without passing through the intervening
+           pixels — can leave a chart behind the viewport having never once
+           intersected it, and it then stays blank for as long as the reader is
+           on the page.
+
+           So the observer only owns the *nice* case. This sweep owns
+           correctness: on any scroll, anything at or above the fold is drawn
+           whether or not it was ever seen. It detaches once nothing is armed. */
+        const sweep = () => {
+          const armed = document.querySelectorAll(".bars-armed");
+          if (!armed.length) {
+            window.removeEventListener("scroll", sweep);
+            return;
+          }
+          const vh = window.innerHeight;
+          armed.forEach((g) => {
+            if (g.getBoundingClientRect().top < vh) revealBars(g.parentElement || g);
+          });
+        };
+        window.addEventListener("scroll", sweep, { passive: true });
+
+        // And a backstop, for a reader who simply never scrolls.
+        setTimeout(() => revealBars(document), 2500);
       }
 
       // One shared tooltip element, positioned to the hovered (mouse) or
@@ -1571,7 +1996,7 @@
         };
         const hide = () => { openRow = null; viaTap = false; tip.hidden = true; };
 
-        document.querySelectorAll(".crow[data-tip]").forEach((row) => {
+        document.querySelectorAll(".crow[data-tip], .levy-row[data-tip]").forEach((row) => {
           // Mouse: hover shows the tip.
           row.addEventListener("mouseenter", () => { if (!viaTap) show(row); });
           row.addEventListener("mouseleave", () => { if (!viaTap) hide(); });
@@ -1604,7 +2029,7 @@
             const meta = tax.groups[g];
             return `
               <section class="rail-group rail-${g}">
-                <h3 class="rail-group-title">${CT.escapeHtml(meta.label)}</h3>
+                <h4 class="rail-group-title">${CT.escapeHtml(meta.label)}</h4>
                 <p class="rail-group-note">${CT.escapeHtml(meta.note)}</p>
                 <ol class="rail-line">
                   ${items
