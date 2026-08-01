@@ -27,7 +27,7 @@
          so nothing on this page would use it, and asking for a third family only
          costs a render-blocking round trip. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260801b" />
+    <link rel="stylesheet" href="site.css?v=20260801c" />
   </head>
   <body class="page-tax">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -775,12 +775,18 @@
          The percentage line is the one figure not reproduced as spoken. The
          mayor read 218%, which is 0.001700 against 0.000534 — the rate then in
          effect, because the county had not yet returned the recalculated
-         certified rate. Against the 0.000530 it did return on June 22, the same
-         proposal is 220.9%, and that is the number in the city's own
-         Truth-in-Taxation notice, so that is the number the row states. The
-         asterisk under the table names the basis; the longer reconciliation of
-         the two figures used to sit here and was cut as more than a reader of
-         this page needs.
+         certified rate. The row states the 220.9% from the city's own
+         Truth-in-Taxation notice instead, measured against the recalculated
+         certified rate the county returned on June 22.
+
+         Both of those numbers are now under the table, because a table billed as
+         "read aloud on June 16" cannot quietly carry a figure that was not. The
+         footnote owns one more wrinkle: 220.9% does not fall out of the
+         arithmetic. The city never published the certified rate as a rate
+         — the notice's $314.03 on a $488,000 home implies 0.00053014, its own
+         220.9% implies 0.00052976, and both round to the 0.000530 shown here,
+         which gives 220.8%. A tenth of a point, and the page states it rather
+         than leaving a reader to find it with a calculator.
 
          Note it is a rate-to-rate figure either way. The schedule's own revenue
          lines — $2,839,998 against $9,798,139 — imply 245%, a different measure,
@@ -790,6 +796,24 @@
         const cur = tax.rates.current, prop = tax.rates.proposed;
         const certified = tax.rates.certified_2026;
         const home = tax.as_read.home, biz = tax.as_read.business;
+        // Both worked from the data, so neither can drift if a rate is revised:
+        // what the rounded certified rate actually gives, and what was read on
+        // the night. Each clause renders only when it differs from the row.
+        const derived = ((prop.rate / certified.rate - 1) * 100).toFixed(1);
+        const gapNote =
+          derived !== String(prop.pct)
+            ? ` Worked from the rounded ${CT.escapeHtml(certified.rate_display)}, the same
+                comparison gives +${derived}% — the city has never published the certified rate
+                as a rate, and the tenth of a point is rounding inside it.`
+            : "";
+        const asReadNote =
+          tax.as_read.pct !== prop.pct
+            ? ` <strong>On the night, this line was read as +${tax.as_read.pct}%</strong> —
+                the same ${CT.escapeHtml(prop.rate_display)} measured against the
+                ${cur.rate.toFixed(6)} then in effect, because Utah County did not return the
+                recalculated certified rate until June 22. Every other figure in this table is
+                as read.`
+            : "";
         // The proposed column reproduces the dollar figures the mayor read aloud rather
         // than recomputing them from the rounded rate, so the table matches the record
         // to the cent. The current column is arithmetic on a rate that is already exact.
@@ -834,7 +858,8 @@
           <p class="chart-foot">
             <span aria-hidden="true">*</span> <strong>+${prop.pct}%</strong> is
             ${CT.escapeHtml(prop.rate_display)} against the ${CT.escapeHtml(certified.rate_display)}
-            certified rate — the comparison the city's own notice uses.
+            certified rate — the comparison the city's own notice uses, and the figure it
+            states.${gapNote}${asReadNote}
           </p>
 `;
         return panel("The official schedule", "The six lines of the city's Truth-in-Taxation schedule", body, true, "p-schedule");
@@ -1657,7 +1682,7 @@
         const lines = [];
         table.querySelectorAll("thead tr").forEach((tr) => lines.push(line(tr)));
         table.querySelectorAll("tbody tr").forEach((tr) => {
-          // Quarter dividers are furniture, not rows of data — a spreadsheet
+          // The percentile dividers are furniture, not rows of data — a spreadsheet
           // wants the 253 cities and their Q column, not three labelled rules.
           if (!tr.hidden && !tr.classList.contains("qdiv")) lines.push(line(tr));
         });
@@ -1741,10 +1766,11 @@
         const climbed = emCur - emProp; // places gained climbing toward #1
         const emCurLow = N - emCur + 1; // the same current rank, counted from the bottom
 
-        /* ---- quarters ----
+        /* ---- percentile groups ----
            A rank out of 253 is a precise answer to a question nobody asked. What
            a reader wants from a list this long is which part of it they are in,
-           so the ranking is cut into quarters and every row carries its own.
+           so the ranking is cut into four equal groups and every row carries its
+           own.
 
            Cut by position rather than by rate, so the four groups come out the
            same size — 253 doesn't divide by four, so they run 63/64/63/63 — and
@@ -1752,14 +1778,23 @@
            labelled. The cost is that cities tied at a boundary rate can land on
            either side of it; the footnote says so.
 
-           Numbered the way the question is usually put: Q1 is the top quarter by
-           rate, Q4 the bottom. That is the reverse of the statistical convention,
-           where "first quartile" means the lowest 25%, so every Q is spelled out
-           in words wherever it appears and never left to stand alone. */
-        const cutsFor = (n) => [1, 2, 3].map((k) => Math.round((n * k) / 4)); // last rank in Q1, Q2, Q3
+           Labelled in percentiles, never as "Q1"–"Q4": on a page about tax years
+           and budget cycles, a Q-number reads as a quarter of the calendar, and
+           the statistical convention runs the other way anyway (the "first
+           quartile" is the lowest 25%). Group 1 here is the highest-rate 25%, so
+           every label says top/bottom or names the percentile band outright. */
+        const cutsFor = (n) => [1, 2, 3].map((k) => Math.round((n * k) / 4)); // last rank in group 1, 2, 3
         const quartileOf = (rank, cuts) => (rank <= cuts[0] ? 1 : rank <= cuts[1] ? 2 : rank <= cuts[2] ? 3 : 4);
-        const QWHAT = { 1: "Highest quarter", 2: "Upper middle", 3: "Lower middle", 4: "Lowest quarter" };
-        const QBAND = { 1: "the top 25%", 2: "the 50th–75th percentile", 3: "the 25th–50th percentile", 4: "the bottom 25%" };
+        // Three registers for the same four groups: a heading, a chip short
+        // enough for a table cell, and a form that can sit inside a sentence.
+        const QWHAT = { 1: "Highest rates", 2: "Above the middle", 3: "Below the middle", 4: "Lowest rates" };
+        const QCHIP = { 1: "Top 25%", 2: "51–75th", 3: "26–50th", 4: "Bottom 25%" };
+        const QBAND = {
+          1: "the top 25% of Utah cities",
+          2: "the 51st–75th percentile",
+          3: "the 26th–50th percentile",
+          4: "the bottom 25% of Utah cities",
+        };
 
         // Everything the strip, the dividers and the summary sentence need about
         // one ranking, read off that ranking once — so no two of them can end up
@@ -1796,9 +1831,9 @@
         // The three lines drawn through the table. The middle one is the median —
         // the single figure that says what a normal Utah city charges.
         const dividersFor = (rd) => [
-          { after: rd.cuts[0], cls: "", label: "Top quarter ends here · 75th percentile", value: rd.p75 },
+          { after: rd.cuts[0], cls: "", label: "75th percentile · a quarter of Utah's cities are above this line", value: rd.p75 },
           { after: rd.cuts[1], cls: " is-median", label: "The middle · half of Utah's cities are above this line", value: rd.median },
-          { after: rd.cuts[2], cls: "", label: "Bottom quarter starts here · 25th percentile", value: rd.p25 },
+          { after: rd.cuts[2], cls: "", label: "25th percentile · a quarter of Utah's cities are below this line", value: rd.p25 },
         ];
 
         const dividerHtml = (d) => `
@@ -1827,7 +1862,7 @@
             <td class="num qlead q${q}">${r.rank}</td>
             <td>${CT.escapeHtml(r.name)}${tag}</td>
             <td class="num">${rate6(r.rate)}${movedHtml}</td>
-            <td class="qcell"><span class="qchip q${q}" title="${QWHAT[q]} — ${QBAND[q]}">Q${q}</span></td>
+            <td class="qcell"><span class="qchip q${q}" title="${QWHAT[q]} — ${QBAND[q]}">${QCHIP[q]}</span></td>
           </tr>`;
         };
 
@@ -1839,22 +1874,22 @@
           return out.join("");
         };
 
-        // The quarters as four buttons: what each covers, how many cities are in
+        // The four groups as buttons: what each covers, how many cities are in
         // it, which one Eagle Mountain is in — and, pressed, it filters the
-        // ranking down to that quarter alone.
+        // ranking down to that group alone.
         const stripHtml = (rd) => `
           <p class="qsum">
             The middle Utah city levies <b>${rate6(rd.median)}</b>. Eagle Mountain's
-            <b>${rate6(rd.em.rate)}</b> puts it in <b class="q-in q${rd.emQ}">Q${rd.emQ},
-            ${QBAND[rd.emQ]}</b> — above ${rd.emPct}% of the ${N} cities.
+            <b>${rate6(rd.em.rate)}</b> is higher than <b>${rd.emPct}%</b> of the ${N}
+            cities — putting it in <b class="q-in q${rd.emQ}">${QBAND[rd.emQ]}</b> by rate.
           </p>
-          <div class="qstrip" role="group" aria-label="Quarters of the ranking. Choosing one filters the table below.">
+          <div class="qstrip" role="group" aria-label="Percentile groups. Choosing one filters the table below.">
             ${rd.bands
               .map(
                 (b) => `
               <button type="button" class="qseg q${b.q}${b.hasEM ? " has-em" : ""}" data-q="${b.q}"
                       aria-pressed="false" title="Show only ${QBAND[b.q]}">
-                <span class="qseg-head"><span class="qchip q${b.q}">Q${b.q}</span>${QWHAT[b.q]}</span>
+                <span class="qseg-head"><span class="qchip q${b.q}">${QCHIP[b.q]}</span>${QWHAT[b.q]}</span>
                 <span class="qseg-range">${rate6(b.lo)} – ${rate6(b.hi)}</span>
                 <span class="qseg-n">${b.n} cities${b.hasEM ? ' · <span class="qseg-em">Eagle Mountain</span>' : ""}</span>
               </button>`
@@ -1869,7 +1904,7 @@
                 <th scope="col" class="num sortable" data-key="rank" aria-sort="ascending" tabindex="0">Rank<span class="sarrow" aria-hidden="true"> ▲</span></th>
                 <th scope="col" class="sortable" data-key="name" aria-sort="none" tabindex="0">City<span class="sarrow" aria-hidden="true"></span></th>
                 <th scope="col" class="num sortable" data-key="rate" aria-sort="none" tabindex="0">City levy<span class="sarrow" aria-hidden="true"></span></th>
-                <th scope="col" class="sortable" data-key="q" aria-sort="none" tabindex="0">Quarter<span class="sarrow" aria-hidden="true"></span></th>
+                <th scope="col" class="sortable" data-key="q" aria-sort="none" tabindex="0">Percentile<span class="sarrow" aria-hidden="true"></span></th>
               </tr></thead>
               <tbody>${rowsHtml(list, rd, view)}</tbody>
             </table>
@@ -1877,11 +1912,11 @@
 
         const body = `
           <p class="panel-intro">
-            All ${N} Utah cities by their own levy, highest first, cut into quarters.
-            Eagle Mountain is <strong>${ordinal(emCur)}</strong> today — the
-            ${QWHAT[readCur.emQ].toLowerCase()} of the state — and would be
+            All ${N} Utah cities by their own levy, highest first, split into four
+            equal groups by percentile. Eagle Mountain is <strong>${ordinal(emCur)}</strong>
+            today — in ${QBAND[readCur.emQ]} — and would be
             <strong>${ordinal(emProp)}</strong> with the 2026 proposals applied,
-            a climb of ${climbed} places into the ${QWHAT[readProp.emQ].toLowerCase()}.
+            a climb of ${climbed} places into ${QBAND[readProp.emQ]}.
           </p>
 
           <div class="sw-tools">
@@ -1918,19 +1953,20 @@
             <p class="chart-foot">
               ${othersCount + 1} tracked increases applied, each marked
               <span class="prop-pill">proposed</span>. Every other city is at today's rate,
-              so the quarters here move only as far as those increases push them.
+              so the percentile groups here move only as far as those increases push them.
             </p>
           </div>
 
           <p class="chart-foot">
-            Quarters are cut by position in the ranking, so each holds about ${Math.round(N / 4)}
+            The four groups are percentiles — where a city sits among the ${N}, not a time of
+            year. They are cut by position in the ranking, so each holds about ${Math.round(N / 4)}
             cities; two cities on the same rate can fall either side of a boundary. The three
             lines through the table are the 75th percentile, the median and the 25th percentile.
             They show while the table is in rank order and unfiltered.
             City levy only — not your total bill. Source:
             <a href="${src.url}" rel="nofollow noopener">${CT.escapeHtml(src.title)}</a>.
           </p>`;
-        return panel("Where Eagle Mountain ranks statewide", `Its current rate — and its proposal — against all ${N} Utah cities, quarter by quarter`, body, false, "p-statewide");
+        return panel("Where Eagle Mountain ranks statewide", `Its current rate — and its proposal — against all ${N} Utah cities, by percentile`, body, false, "p-statewide");
       }
 
       // The scope switch swaps the whole comparison between Utah County (both
@@ -1962,7 +1998,7 @@
         });
       }
 
-      /* The quarter boundaries only mean something while the table is in rank
+      /* The percentile boundaries only mean something while the table is in rank
          order and showing every city. A line labelled "the median" sitting
          between two alphabetically adjacent rows, or between two survivors of a
          filter, would be a plain lie — so the dividers are re-placed after every
@@ -1990,7 +2026,7 @@
       }
 
       // Click or Enter/Space on a header sorts a statewide table. Rank, rate and
-      // quarter sort numerically, city by name; re-activating a column flips it.
+      // percentile sort numerically, city by name; re-activating a column flips it.
       // Wires both the "today" and "with the proposal" tables independently.
       function wireStatewideTable() {
         document.querySelectorAll("table.data.statewide").forEach((table) => {
@@ -2005,7 +2041,7 @@
             curKey = key;
             rows.sort((a, b) => {
               const va = val(a, key), vb = val(b, key);
-              // Whole quarters tie by definition, so ties fall back to the
+              // Whole percentile groups tie by definition, so ties fall back to the
               // ranking rather than to whatever order the last sort left behind.
               if (va === vb) return +a.dataset.rank - +b.dataset.rank;
               return va < vb ? -curDir : curDir;
@@ -2041,10 +2077,10 @@
         const tables = [...document.querySelectorAll("table.data.statewide")];
         const rowsOf = (t) => [...t.tBodies[0].querySelectorAll("tr[data-name]")];
         const total = tables[0] ? rowsOf(tables[0]).length : 0;
-        // Both views carry their own strip; pressing a quarter in one presses it
+        // Both views carry their own strip; pressing a group in one presses it
         // in the other, so switching between them keeps the same 63 cities.
         const segs = [...document.querySelectorAll(".qseg")];
-        let activeQ = 0; // 0 = every quarter
+        let activeQ = 0; // 0 = every group
 
         const apply = () => {
           const term = q.value.trim().toLowerCase();

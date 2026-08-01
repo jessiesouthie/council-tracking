@@ -4355,14 +4355,14 @@ table.data.statewide tr.is-em-row td {
   color: var(--t-muted);
 }
 .qsum b { color: var(--t-fg); }
-/* The quarter named in the summary, marked with its own tint the way a
+/* The percentile band named in the summary, marked with its own tint the way a
    highlighter would — behind the words, never instead of them. */
 .q-in { box-shadow: inset 0 -.42em 0 color-mix(in oklab, var(--qc) 26%, transparent); }
 
-/* The four quarters as a strip of buttons: what each covers, how big it is,
-   which one Eagle Mountain is in — and pressed, it filters the table to that
-   quarter alone. The colour band sits on top of each button, so the strip reads
-   left to right as the ramp running from the highest quarter to the lowest. */
+/* The four percentile groups as a strip of buttons: what each covers, how big
+   it is, which one Eagle Mountain is in — and pressed, it filters the table to
+   that group alone. The colour band sits on top of each button, so the strip
+   reads left to right as the ramp running from the highest rates to the lowest. */
 .qstrip {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -4395,6 +4395,10 @@ table.data.statewide tr.is-em-row td {
 .qseg-head {
   display: flex;
   align-items: center;
+  /* The chip carries a percentile band now, not a one-glyph Q — long enough that
+     on a narrow card it should drop the label to its own line rather than
+     squeeze it. */
+  flex-wrap: wrap;
   gap: 6px;
   font-size: 12.5px;
   font-weight: 700;
@@ -4421,6 +4425,7 @@ table.data.statewide tr.is-em-row td {
   min-width: 24px;
   padding: 0 5px;
   text-align: center;
+  white-space: nowrap;
   font-family: var(--mono);
   font-size: 10px;
   font-weight: 700;
@@ -4430,8 +4435,8 @@ table.data.statewide tr.is-em-row td {
   border: 1px solid color-mix(in oklab, var(--qc) 48%, transparent);
   border-radius: 999px;
 }
-/* In the table: the quarter column, and a colour rule down the rank cell so the
-   bands are legible while scrolling even with the column off the side. */
+/* In the table: the percentile column, and a colour rule down the rank cell so
+   the bands are legible while scrolling even with the column off the side. */
 table.data.statewide .qcell { width: 1%; white-space: nowrap; }
 table.data.statewide td.qlead { border-left: 3px solid var(--qc); }
 /* The header keeps the same 3px so the Rank column doesn't step sideways at the
@@ -4439,8 +4444,8 @@ table.data.statewide td.qlead { border-left: 3px solid var(--qc); }
 table.data.statewide thead th:first-child { border-left: 3px solid transparent; }
 table.data.statewide tr.is-em-row .qchip { background: transparent; border-color: var(--t-fg); }
 
-/* The three lines drawn through the ranking: the quarter boundaries, the middle
-   one of which is the median. Shown only while the table is in rank order and
+/* The three lines drawn through the ranking: the percentile boundaries, the
+   middle one of which is the median. Shown only while the table is in rank order and
    unfiltered — see syncDividers() — because between two alphabetised rows they
    would be describing an order that isn't there. */
 table.data.statewide tr.qdiv td {
@@ -4546,12 +4551,12 @@ table.data.statewide tr.qdiv.is-median td {
   .chart--wide-val .ctrack { --track-gutter: 90px; }
   .cname.medname { font-size: 9.5px; letter-spacing: .05em; }
 
-  /* Four quarters across a phone is four unreadable columns; two rows of two
+  /* Four groups across a phone is four unreadable columns; two rows of two
      keeps the ramp legible and the buttons at a real touch size. */
   .qstrip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
   .qseg { padding: 8px 9px 9px; }
   .qseg-head { font-size: 12px; }
-  /* The quarter column earns its ~45px even on a 360px screen — it is the
+  /* The percentile column earns its width even on a 360px screen — it is the
      column most readers came for — so it stays and the cells tighten instead.
      The wrap scrolls sideways if a long city name pushes past the edge. */
   table.data.statewide th, table.data.statewide td { padding: 8px 7px; }
