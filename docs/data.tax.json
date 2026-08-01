@@ -21,7 +21,7 @@
       "rate_display": "0.000530",
       "label": "2026 certified rate",
       "note": "The Truth-in-Taxation comparison basis",
-      "derivation": "The city never published this as a rate; it is implied by its own Truth-in-Taxation notice. A $314.03 rise on a $488,000 primary residence against the 0.001700 proposal gives 0.000530 — which reproduces both the noticed $314.03 and the noticed 220.9% exactly. Utah County delivered the recalculated certified rate on June 22, after the June 16 schedule was read."
+      "derivation": "The city never published this as a rate; it is implied by its own Truth-in-Taxation notice, and the notice's two published figures imply it slightly differently. A $314.03 rise on a $488,000 primary residence against the 0.001700 proposal implies 0.00053014; the noticed 220.9% implies 0.00052976. Both round to 0.000530, which is the rate stated here — but 0.001700 against 0.000530 is +220.75%, so the noticed 220.9% cannot be reproduced to the decimal from any single rounded rate. The gap is a tenth of a point and lives inside a certified rate the city has never published. Utah County delivered the recalculated certified rate on June 22, after the June 16 schedule was read."
     },
     "proposed": {
       "rate": 0.0017,
@@ -123,7 +123,8 @@
       "group": "record",
       "kind": "Read into the record",
       "title": "Schedule read a third time; budget manager presents the tentative budget",
-      "note": "Taken up under a heading marked “no action taken.” The minutes record that Mayor Gray read the Property Tax Impact Schedule but do not reprint its figures, so it is not possible to say from the record whether this was the 245% schedule or an early version of the revised one. There is no recording transcript for this meeting.",
+      "note": "Taken up under a heading marked “no action taken.” The minutes record that Mayor Gray read the Property Tax Impact Schedule but do not reprint its figures, so it is not possible to say from the record whether this was the 245% schedule or an early version of the revised one. The recording does not settle it either: it runs 2h 39m and ends partway through public comment, before item 18 was reached.",
+      "transcript": true,
       "items": [
         {
           "ref": "18.A.",
@@ -158,6 +159,36 @@
           "outcome": "Passed 4–1, Huish opposed"
         }
       ]
+    },
+    {
+      "id": 714,
+      "date": "2026-07-07",
+      "group": "record",
+      "kind": "Public comment",
+      "title": "Residents take opposite sides; council spends half an hour on it",
+      "note": "Nothing about the tax was on the agenda, and it still took up more of the night than most items that were. Bronwyn Richardson opposed what she called a 220% increase, citing the two Title I elementary schools and the Title I preschool in the city, and asked for a line-by-line accounting given that the notice says the money is entirely for public safety while officials had also described it as employee compensation. Jeff Ruth, of The Landing, took the other side at the end of a comment about parking: “If it's all going towards law enforcement and fire, I fully support it… from somebody that struggles month to month, there's been many times I've called officers out and I never saw them.” In council comments afterward, Councilmember Rich Wood corrected a common reading of the proposal — “there's not extra money… it's all going to pay for our entire contract, not new… our entire contract with the Sheriff's Department” — and apologized for how the city had explained it. The June 16 minutes were approved this night, inside the consent agenda as item 14.A.",
+      "transcript": true,
+      "items": [
+        {
+          "ref": "11.",
+          "text": "Public comment — two residents on the proposed increase, one against and one for",
+          "outcome": "No vote taken"
+        },
+        {
+          "ref": "14.A.",
+          "text": "Minutes of the June 16, 2026 meeting, approved within the consent agenda",
+          "outcome": "Passed 5–0"
+        }
+      ]
+    },
+    {
+      "id": 727,
+      "date": "2026-07-21",
+      "group": "record",
+      "kind": "Mentioned in passing",
+      "title": "Council ties the increase to the deputies it would pay for",
+      "note": "Not on the agenda and not discussed as an item. During closing council comments on a neighborhood's speeding complaint, Councilmember Craig Whiting named it in passing — “the tax increase is going to be discussed here soon and voted on” — and said the deputies it would fund were what he expected to bring more patrol into neighborhoods. Listed so the record between the June 16 vote and the August hearing has no silent gap in it.",
+      "transcript": true
     },
     {
       "id": null,
@@ -211,7 +242,7 @@
   "groups": {
     "record": {
       "label": "On the record",
-      "note": "Meetings where the increase was formally acted on or read into the record. The schedule has been read four times."
+      "note": "Meetings where the increase was acted on, read into the record, or taken up in front of the public. The schedule has been read four times."
     },
     "hearing": {
       "label": "Still to come",
