@@ -288,6 +288,42 @@ def _extra_docs() -> list[dict]:
                 "text": _clean(text),
             }
         )
+    # The city's levy is one line of seven. Asked "what are my property taxes?",
+    # the agent should be able to name all of them rather than answer with the
+    # city's rate alone, so the whole-bill breakdown is its own citable chunk.
+    bill_path = DOCS / "data.tax-bill.json"
+    if bill_path.exists():
+        bill = json.loads(bill_path.read_text(encoding="utf-8"))
+        ents = sorted(bill.get("entities", []), key=lambda e: -e.get("rate", 0.0))
+        total = sum(e.get("rate", 0.0) for e in ents)
+        lines = [
+            f"{e.get('name','')}: rate {e.get('rate', 0):.6f}"
+            + (f" ({e.get('rate', 0) / total * 100:.1f}% of the bill)" if total else "")
+            + f" — {e.get('what','')}"
+            for e in ents
+        ]
+        area = bill.get("tax_area", {})
+        text = (
+            f"Every property tax levied on an Eagle Mountain parcel, not just the city's. "
+            f"These are the {bill.get('rate_year','')} final adopted rates for Utah County tax area "
+            f"{area.get('code','')}, which covers most of the city, and they total {total:.6f}. "
+            f"{len(ents)} taxing entities appear on the bill and the City Council sets exactly one of them. "
+            + " ".join(lines)
+            + " "
+            + " ".join(bill.get("caveats", []))
+        )
+        docs.append(
+            {
+                "id": "city-council:tax-bill",
+                "kind": "tax",
+                "body": "city-council",
+                "title": f"Every property tax on an Eagle Mountain bill — {bill.get('rate_year','')} rates",
+                "date": "",
+                "url": "tax.html#p-bill",
+                "tags": ["budget"],
+                "text": _clean(text),
+            }
+        )
     budget_path = DOCS / "data.budget.json"
     if budget_path.exists():
         b = json.loads(budget_path.read_text(encoding="utf-8"))
