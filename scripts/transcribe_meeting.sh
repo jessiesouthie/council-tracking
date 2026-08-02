@@ -342,9 +342,6 @@ For each substantive item, a `### <ref> — <title>` heading followed by 1–3 e
 ## Notable moments
 A bulleted list; each bullet a short **bold lead-in.** then a self-contained sentence or two (public comments, disagreements, off-agenda items).
 
-## What the minutes leave out
-2–3 items, each showing "*Minutes would say:*" vs. "*Recording captures:*" as a short paragraph.
-
 ## About this transcript
 Brief plain prose: likely misheard proper nouns, speaker-attribution limits, and audio-unclear spots.
 

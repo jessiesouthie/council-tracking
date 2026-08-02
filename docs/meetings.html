@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260801c" />
+    <link rel="stylesheet" href="site.css?v=20260801d" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -337,8 +337,7 @@
       // it through marked() in a single pass gives the reader an undifferentiated
       // wall — so instead we split it on its H2s and hand each section to a
       // renderer that knows what that section *is*: motions become decision rows
-      // with outcome pills, the meeting map becomes a timeline, and the
-      // minutes-vs-recording pairs become side-by-side contrast cards. Anything
+      // with outcome pills, and the meeting map becomes a timeline. Anything
       // unrecognised still renders as plain prose, so an off-format summary
       // degrades instead of breaking.
       // ---------------------------------------------------------------------
@@ -531,35 +530,6 @@
         return html + (rest ? prose(rest) : "");
       }
 
-      // "What the minutes leave out": each paragraph pairs the official record
-      // against the recording. Setting the two side by side is the whole point of
-      // the section, so render it as a contrast rather than as running text.
-      function renderContrast(md) {
-        // The two halves of a pair may arrive in one paragraph or in two, and the
-        // items are sometimes divided by a `---` rule. Split on the markers
-        // themselves rather than on blank lines, so either layout parses.
-        const chunks = md.replace(/^\s*---+\s*$/gm, "").split(/\*Minutes would say:\*/i);
-        const intro = chunks.shift().trim();
-        const pairs = [];
-        for (const c of chunks) {
-          const m = /([\s\S]*?)\*Recording captures:\*([\s\S]*)/i.exec(c);
-          if (m) pairs.push({ minutes: m[1].trim(), rec: m[2].trim() });
-        }
-        if (!pairs.length) return prose(md);
-        const others = intro ? [intro] : [];
-        return pairs.map((c) => `
-          <div class="contrast">
-            <div class="contrast-side">
-              <p class="contrast-lab">Minutes would say</p>
-              <p class="contrast-txt">${mdInline(c.minutes)}</p>
-            </div>
-            <div class="contrast-side is-rec">
-              <p class="contrast-lab">Recording captures</p>
-              <p class="contrast-txt">${mdInline(c.rec)}</p>
-            </div>
-          </div>`).join("") + (others.length ? prose(others.join("\n\n")) : "");
-      }
-
       // Map a heading to a renderer. Matching is loose so the older summaries
       // (numbered headings: "## 1. Meeting Map", "## 5. Transcript Quality
       // Notes") keep rendering until they're regenerated.
@@ -568,13 +538,12 @@
         if (k === "decisions" || k === "motions-at-a-glance") return "decisions";
         if (k === "meeting-map") return "map";
         if (k === "what-was-discussed" || k === "per-item-enrichment") return "discussed";
-        if (k.includes("minutes")) return "contrast";
         if (k.includes("transcript")) return "about";
         if (k === "notable-moments") return "moments";
         return "prose";
       }
       const RENDERER = {
-        decisions: renderDecisions, settled: renderSettled, map: renderMap, contrast: renderContrast,
+        decisions: renderDecisions, settled: renderSettled, map: renderMap,
       };
 
       // Short rail labels. The section keeps its full heading; the tab only has to
@@ -584,7 +553,6 @@
         settled: "Settled without a vote",
         map: "Meeting map",
         discussed: "Discussion",
-        contrast: "Minutes vs. recording",
         moments: "Moments",
       };
 
@@ -594,7 +562,6 @@
         if (kind === "decisions" || kind === "map") return (extractTable(md).rows || []).length;
         if (kind === "discussed") return (md.match(/^###\s/gm) || []).length;
         if (kind === "moments" || kind === "settled") return (md.match(/^\s*[-*]\s/gm) || []).length;
-        if (kind === "contrast")  return (md.match(/\*Minutes would say:\*/gi) || []).length;
         return 0;
       }
 

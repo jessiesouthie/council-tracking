@@ -2463,9 +2463,8 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
 
    So the document is broken along its own seams and each part is given the shape
    its content already had: the lede leads, the motions become decision rows that
-   carry the site's vote colours, the meeting map becomes a timeline you can scrub
-   against, and the minutes-vs-recording pairs sit side by side where the contrast
-   does the arguing. The caveats — true but not why anyone came — wait behind a
+   carry the site's vote colours, and the meeting map becomes a timeline you can
+   scrub against. The caveats — true but not why anyone came — wait behind a
    disclosure at the foot.
 
    Everything is token-driven, so dark mode needs no rules of its own.
@@ -2769,24 +2768,6 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
 }
 .sum-sec.is-moments li strong { color: var(--fg-soft); }
 
-/* ---- minutes vs. recording: the official record on the left, what actually
-   happened on the right. The right side is the lit one — that's the argument. --- */
-.contrast {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-  margin: 0 0 12px; overflow: hidden;
-  background: var(--border); border: 1px solid var(--border); border-radius: var(--radius);
-}
-.contrast-side { padding: 14px 16px; background: var(--bg-muted); }
-.contrast-side.is-rec { background: var(--bg-elev); }
-.contrast-lab {
-  margin: 0 0 6px;
-  font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-  color: var(--fg-muted);
-}
-.contrast-side.is-rec .contrast-lab { color: var(--accent-ink); }
-.contrast-txt { margin: 0; font-size: 14px; line-height: 1.6; color: var(--fg-muted); }
-.contrast-side.is-rec .contrast-txt { color: var(--fg); }
-
 /* ---- the caveats: true, but not why anyone came ---- */
 .sum-about {
   margin: 30px 0 0;
@@ -2812,9 +2793,6 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
   .sum-about > summary::before { transition: none; }
 }
 
-@media (max-width: 620px) {
-  .contrast { grid-template-columns: 1fr; }
-}
 /* The waveform is atmosphere, and atmosphere is the first thing to go when the
    row it rides in starts to wrap. */
 @media (max-width: 900px) { .sum-wave { display: none; } }
