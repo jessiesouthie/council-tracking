@@ -347,6 +347,57 @@ def _extra_docs() -> list[dict]:
                 "text": _clean(text),
             }
         )
+    # The published book is a year behind what the Council is actually deciding.
+    # Asked "what's in the budget?", the agent should reach the interim FY2026-27
+    # figures first, so they get their own chunk rather than being folded into the
+    # adopted-book one — and it says plainly that nothing here is final yet.
+    next_path = DOCS / "data.budget-next.json"
+    if next_path.exists():
+        nb = json.loads(next_path.read_text(encoding="utf-8"))
+        t = nb.get("totals", {}).get("fy2027", {})
+        prior = nb.get("totals", {}).get("fy2026", {})
+        gfn = nb.get("general_fund", {})
+        ps = nb.get("public_safety", {})
+        top_funds = ", ".join(
+            f"{f['name']} ${f['total']:,}" for f in nb.get("funds", [])[:5]
+        )
+        top_capital = ", ".join(
+            f"{c['name']} ${c['total']:,}" for c in nb.get("capital", [])[:6]
+        )
+        dates = "; ".join(f"{c['date']} {c['label']}" for c in nb.get("calendar", []))
+        text = (
+            f"{nb.get('fiscal_year_label','')} budget — {nb.get('status','')}, not final. "
+            f"{nb.get('status_note','')} "
+            f"All funds ${t.get('gross',0):,}, against ${prior.get('gross',0):,} adopted for FY2025-26. "
+            f"${t.get('reserves',0):,} of that is a reserve appropriation rather than money planned to be "
+            f"spent, so the like-for-like comparison is ${t.get('net',0):,} against ${prior.get('net',0):,}. "
+            f"Budgeted borrowing totals ${nb.get('borrowing',{}).get('total',0):,}, almost all of it a "
+            f"$200,000,000 sewer bond for the new wastewater treatment plant. "
+            f"General Fund ${gfn.get('total',0):,}, up from ${gfn.get('prior',0):,} — but it covers less: "
+            f"planning, building inspection and permitting moved out to a new "
+            f"${gfn.get('moved_out',{}).get('fund_total',0):,} Community Development fund paid for by permit "
+            f"and plan-check fees, taking about "
+            f"${gfn.get('moved_out',{}).get('revenue_moved',0):,} of fee revenue with them. "
+            f"The proposed property-tax increase appears as a {nb.get('tax_line',{}).get('revenue_account','')} "
+            f"revenue line of ${nb.get('tax_line',{}).get('interim_revenue',0):,} and an identical restricted "
+            f"expense line inside Public Safety; it cannot be spent unless the increase passes. "
+            f"The Sheriff contract line falls from ${ps.get('contract_prior',0):,} to ${ps.get('contract',0):,} "
+            f"with ${ps.get('restricted',0):,} held restricted — together ${ps.get('combined',0):,}, the proposed "
+            f"property-tax revenue exactly. Largest funds: {top_funds}. "
+            f"Largest capital lines: {top_capital}. Key dates: {dates}."
+        )
+        docs.append(
+            {
+                "id": "city-council:budget-next",
+                "kind": "budget",
+                "body": "city-council",
+                "title": f"Next year's budget — {nb.get('fiscal_year_label','')} (interim)",
+                "date": "",
+                "url": "budget.html#next-year",
+                "tags": ["budget"],
+                "text": _clean(text),
+            }
+        )
     return docs
 
 
