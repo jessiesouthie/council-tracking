@@ -4,24 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Budget Spending — Eagle Mountain Council Tracking</title>
-    <meta name="description" content="Follow every dollar of Eagle Mountain's FY2025 adopted budget — from the fund that holds it to the service it pays for — in an interactive Sankey diagram." />
+    <meta name="description" content="What Eagle Mountain plans to spend in FY2026–27 — a $200M sewer bond, a restricted tax line, and the capital slate — alongside the FY2025 adopted budget in an interactive Sankey diagram." />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Council Tracking" />
     <meta property="og:title" content="Budget Spending — Eagle Mountain Council Tracking" />
-    <meta property="og:description" content="Follow every dollar of Eagle Mountain's FY2025 adopted budget — from the fund that holds it to the service it pays for — in an interactive Sankey diagram." />
+    <meta property="og:description" content="What Eagle Mountain plans to spend in FY2026–27 — a $200M sewer bond, a restricted tax line, and the capital slate — alongside the FY2025 adopted budget in an interactive Sankey diagram." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Budget Spending — Eagle Mountain Council Tracking" />
-    <meta name="twitter:description" content="Follow every dollar of Eagle Mountain's FY2025 adopted budget — from the fund that holds it to the service it pays for." />
+    <meta name="twitter:description" content="What Eagle Mountain plans to spend in FY2026–27, alongside the FY2025 adopted budget it can be measured against." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260801d" />
+    <link rel="stylesheet" href="site.css?v=20260802e" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -56,7 +56,7 @@
       <div id="content"></div>
     </main>
 
-    <footer class="footer"><span>Budget figures from the Eagle Mountain City ClearGov budget book</span></footer>
+    <footer class="footer"><span>Budget figures from the Eagle Mountain City ClearGov budget book and line items</span></footer>
 
     <div class="sk-tip" id="sk-tip" role="status" aria-live="off"></div>
 
@@ -64,9 +64,12 @@
     <script>
       (async () => {
         const root = document.getElementById("content");
-        const data = await fetch(new URL("data.budget.json", document.baseURI))
+        const grab = (f) => fetch(new URL(f, document.baseURI))
           .then((r) => (r.ok ? r.json() : null))
           .catch(() => null);
+        // The FY2025 book drives the charts; the next-year file is additive, so a
+        // missing or stale one costs the reader the analysis, not the page.
+        const [data, next] = await Promise.all([grab("data.budget.json"), grab("data.budget-next.json")]);
 
         if (!data) {
           root.innerHTML = `<h1 class="page-title">Budget spending</h1>
@@ -79,20 +82,28 @@
             <p class="page-sub">Only the City adopts a budget. Switch to City Council to explore it.</p>`;
           return;
         }
-        render(data, root);
+        render(data, root, next);
       })();
 
       /* =========================================================================
          The page answers one question — where does Eagle Mountain's money go? —
-         at two altitudes. First the whole $172.5M across every fund, so the scale
-         and the dominance of capital spending are unmissable. Then the General
-         Fund alone, traced revenue-in to service-out, because that is the fund of
-         the services residents recognise and the one the Council most directly
-         steers. Every figure is the city's own adopted line items; nothing here
-         is modelled or estimated.
+         and it has to answer it for two budgets at once, which is the whole
+         organising problem. The city is operating right now on an *interim*
+         FY2026–27 budget that is not final until 18 August; the last budget it
+         published in full is the FY2025 book. So the page runs in time order:
+         the year in force first, flagged as provisional, then the settled book
+         below it, flagged as adopted. The two never share a surface.
+
+         Within each year the money is shown at two altitudes — the whole budget
+         across every fund, then the General Fund alone traced revenue-in to
+         service-out, because that is the fund of the services residents
+         recognise and the one the Council most directly steers. Every figure is
+         the city's own line items; nothing here is modelled or estimated.
          ========================================================================= */
 
-      const usdC = (n) => "$" + Math.round(n).toLocaleString("en-US");
+      // Credit lines are negative, so the sign leads rather than sitting inside
+      // the amount ("−$3,919,994", not "$-3,919,994").
+      const usdC = (n) => (n < 0 ? "−$" : "$") + Math.round(Math.abs(n)).toLocaleString("en-US");
       const short = (n) => {
         if (n >= 1e6) return "$" + (n / 1e6).toFixed(n >= 1e7 ? 1 : 2) + "M";
         if (n >= 1e3) return "$" + Math.round(n / 1e3) + "K";
@@ -104,7 +115,7 @@
       // separation. Defined as tokens in site.css so both themes stay in sync.
       const RAMP = ["--sk-c0", "--sk-c1", "--sk-c2", "--sk-c3", "--sk-c4", "--sk-c5"];
 
-      function render(data, root) {
+      function render(data, root, next) {
         const af = data.all_funds;
         const gf = data.general_fund;
         const T = data.total;
@@ -116,92 +127,533 @@
         root.innerHTML = `
           <div class="budget-page">
             <header class="b-hero">
-              <p class="b-eyebrow">FY${CT.escapeHtml(fy)} Adopted Budget</p>
+              <p class="b-eyebrow">${next ? `Eagle Mountain City budget` : `FY${CT.escapeHtml(fy)} adopted budget`}</p>
               <h1 class="b-h1">Where Eagle Mountain plans to spend</h1>
               <p class="b-lede">
-                Every dollar the city budgeted for ${CT.escapeHtml(fy)}, traced from the fund that
-                holds it to what it pays for. Follow any ribbon to see how much, and where it lands.
+                Every dollar the city budgets, traced from the fund that holds it to what it pays for.
+                ${next
+                  ? `Two budgets sit behind this page — the one the city is running on right now, which
+                     is not final, and the last one it published in full. Pick one below; the page shows
+                     a single year at a time.`
+                  : `Follow any ribbon to see how much, and where it lands.`}
               </p>
+              ${next ? yearCards(next, data) : ""}
+            </header>
+
+            ${next ? interimSection(next) : ""}
+
+            <section class="bp" id="fy-charts"${next ? ` role="tabpanel" aria-labelledby="tab-fy-charts" tabindex="0" hidden` : ""}>
+              ${next ? `
+              <div class="bp-head">
+                <div class="bp-head-t">
+                  <p class="bp-flag">Adopted · on the books</p>
+                  <h2 id="bp-title">The last budget published in full — FY${esc(fy)}</h2>
+                </div>
+                <p class="bp-lede">
+                  Nothing below is provisional. The FY${esc(fy)} book is the plan the Council adopted for the
+                  year that ended 30 June 2025, and the only year the city has itemised down to the line —
+                  so it is the one that can be followed all the way from a fund to a named project.
+                </p>
+              </div>` : ""}
+
               <div class="b-figures">
                 <div class="b-fig"><span class="k">Total appropriated</span><span class="v">${short(T)}</span><span class="d">across all six fund groups</span></div>
                 <div class="b-fig"><span class="k">Largest fund</span><span class="v">${short(topFund.total)}</span><span class="d">${CT.escapeHtml(topFund.name)} · ${pct(topFund.total, T)}</span></div>
                 <div class="b-fig"><span class="k">Biggest use</span><span class="v">${short(topUse.total)}</span><span class="d">${CT.escapeHtml(topUse.name)} · ${pct(topUse.total, T)}</span></div>
                 <div class="b-fig"><span class="k">On personnel</span><span class="v">${short(personnel.total)}</span><span class="d">wages &amp; benefits, all funds</span></div>
               </div>
-            </header>
 
-            <!-- 1 · The whole budget -->
-            <section class="b-chartcard" aria-labelledby="af-title">
-              <div class="b-chart-head">
-                <div>
-                  <h2 id="af-title">The whole budget, all funds</h2>
-                  <p id="af-sub"></p>
-                </div>
-                <div class="b-toggle" role="group" aria-label="Choose the right-hand grouping">
-                  <button id="af-func" type="button" aria-pressed="true">By function</button>
-                  <button id="af-obj" type="button" aria-pressed="false">By type of spending</button>
-                </div>
+              <!-- 1 · The whole budget -->
+              ${allFundsCard("af", "The whole budget, all funds", next ? "h3" : "h2")}
+
+              <!-- 2 · The General Fund -->
+              ${generalFundCard("gf", "The General Fund, revenue to service", `
+                The ${short(gf.total)} General Fund pays for the day-to-day services residents see —
+                police, parks, streets, planning, city hall. Here every dollar flows from where it
+                comes in, through the fund, out to the service that spends it.
+                Departments are grouped into service areas here; the table below lists each one.`,
+                next ? "h3" : "h2")}
+
+              <div class="b-notes">
+                <div class="b-note"><h3>What this shows</h3><p>Budgeted (adopted) spending — the plan the Council approved for the year, not final actuals. Every figure is the city's own budget line items, rolled up to fund, function, and department.</p></div>
+                <div class="b-note"><h3>About transfers</h3><p>“Interfund Transfers” move money between the city's own funds, so a small share of the ${short(T)} is counted once where it leaves and again where it arrives — inherent to any all-funds view.</p></div>
+                <div class="b-note"><h3>Why capital is so large</h3><p>Eagle Mountain is one of Utah's fastest-growing cities. The single biggest slice — ${short(topUse.total)} — builds roads, water, and facilities to keep pace, funded largely by impact fees and bonds rather than taxes.</p></div>
               </div>
-              <div class="b-focus" id="af-focus" hidden>
-                <button class="b-back" id="af-back" type="button"><span aria-hidden="true">←</span> All funds</button>
-                <span class="b-focus-title" id="af-focus-title"></span>
-              </div>
-              <div class="b-scroll">
-                <svg class="sankey" id="af-svg" role="img" aria-labelledby="af-svg-title"></svg>
-                <span id="af-svg-title" class="sr-only"></span>
-              </div>
-              <p class="b-swipe" aria-hidden="true">Swipe the chart sideways to see it all <span>→</span></p>
-              <div class="b-legend" id="af-legend"></div>
-              ${tableDetails("af-table")}
+
+              <p class="b-src">
+                Source: <a href="${data.source.url}" rel="nofollow noopener">${CT.escapeHtml(data.source.title)}</a>
+                (${CT.escapeHtml(data.source.publisher)}), adopted-budget line items. Compiled for Council Tracking.
+              </p>
             </section>
-
-            <!-- 2 · The General Fund -->
-            <section class="b-chartcard" aria-labelledby="gf-title">
-              <div class="b-chart-head">
-                <div>
-                  <h2 id="gf-title">The General Fund, revenue to service</h2>
-                  <p>
-                    The ${short(gf.total)} General Fund pays for the day-to-day services residents see —
-                    police, parks, streets, planning, city hall. Here every dollar flows from where it
-                    comes in, through the fund, out to the service that spends it.
-                    Departments are grouped into service areas here; the table below lists each one.
-                  </p>
-                </div>
-              </div>
-              <div class="b-scroll">
-                <svg class="sankey" id="gf-svg" role="img" aria-labelledby="gf-svg-title"></svg>
-                <span id="gf-svg-title" class="sr-only">Sankey diagram of the Eagle Mountain General Fund, from revenue source through the fund to the department that spends it.</span>
-              </div>
-              <p class="b-swipe" aria-hidden="true">Swipe the chart sideways to see it all <span>→</span></p>
-              <div class="b-legend" id="gf-legend"></div>
-              ${tableDetails("gf-table")}
-            </section>
-
-            <div class="b-notes">
-              <div class="b-note"><h3>What this shows</h3><p>Budgeted (adopted) spending — the plan the Council approved for the year, not final actuals. Every figure is the city's own budget line items, rolled up to fund, function, and department.</p></div>
-              <div class="b-note"><h3>About transfers</h3><p>“Interfund Transfers” move money between the city's own funds, so a small share of the ${short(T)} is counted once where it leaves and again where it arrives — inherent to any all-funds view.</p></div>
-              <div class="b-note"><h3>Why capital is so large</h3><p>Eagle Mountain is one of Utah's fastest-growing cities. The single biggest slice — ${short(topUse.total)} — builds roads, water, and facilities to keep pace, funded largely by impact fees and bonds rather than taxes.</p></div>
-            </div>
-
-            <p class="b-src">
-              Source: <a href="${data.source.url}" rel="nofollow noopener">${CT.escapeHtml(data.source.title)}</a>
-              (${CT.escapeHtml(data.source.publisher)}), adopted-budget line items. Compiled for Council Tracking.
-            </p>
           </div>
         `;
 
-        AF = af; AF_T = T;
-        renderAF();
-        drawGeneralFund(gf);
+        // Two chart sets off one implementation: the year in force first, because
+        // it is the budget still being decided, then the FY2025 book below it.
+        const sets = [];
+        if (next) {
+          const nctx = afContext("naf", next.all_funds, next.totals.fy2027.gross);
+          nctx.label = next.fiscal_year_label;
+          nctx.slug = "fy2027 budget";
+          nctx.height = 700;
+          sets.push({ ctx: nctx, gf: next.general_fund_chart, gfPrefix: "ngf", gfSlug: "fy2027 general fund" });
+        }
+        const actx = afContext("af", af, T);
+        actx.label = "FY" + fy;
+        actx.slug = "budget";
+        sets.push({ ctx: actx, gf, gfPrefix: "gf", gfSlug: "general fund" });
 
-        // Toggling the grouping resets any open drill-down (targets differ per mode).
-        document.getElementById("af-func").addEventListener("click", () => { afState = { view: "function", focus: null }; renderAF(); });
-        document.getElementById("af-obj").addEventListener("click", () => { afState = { view: "object", focus: null }; renderAF(); });
-        document.getElementById("af-back").addEventListener("click", () => { afState.focus = null; renderAF(); });
+        const drawAll = () => sets.forEach((set) => {
+          renderAF(set.ctx);
+          drawGeneralFund(set.gf, set.gfPrefix, set.gfSlug);
+        });
+        drawAll();
+
+        sets.forEach(({ ctx }) => {
+          // Toggling the grouping resets any open drill-down (targets differ per mode).
+          el(ctx, "func").addEventListener("click", () => { ctx.state = { view: "function", focus: null }; renderAF(ctx); });
+          el(ctx, "obj").addEventListener("click", () => { ctx.state = { view: "object", focus: null }; renderAF(ctx); });
+          el(ctx, "back").addEventListener("click", () => { ctx.state.focus = null; renderAF(ctx); });
+        });
+
+        // The next-year tables are static markup, so they only need their export
+        // bars wired once — unlike the charts', which are rebuilt on every redraw.
+        if (next) {
+          ["bn-t-funds", "bn-t-objects", "bn-t-gfrev", "bn-t-gfdept", "bn-t-capital"].forEach(wireTableExports);
+          wireYearTabs();
+        }
 
         // Redraw on theme flips so token-driven colours refresh (keeps any drill state).
-        new MutationObserver(() => { renderAF(); drawGeneralFund(gf); })
+        new MutationObserver(drawAll)
           .observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+      }
+
+      /* ---------------- the two budgets, at the top of the page ----------------
+         The reader's first job is to tell them apart, so they are put side by
+         side before either is explained: which year it is, whether it is settled
+         or still moving, how big, and what it is good for. They double as the
+         page's tabs — only one budget is on screen at a time, because the two
+         years are not comparable line for line and a reader scrolling past the
+         seam had no way to tell which year a figure belonged to. The year
+         between them has neither a published book nor a chart, so it is named in
+         the note underneath rather than given a card it can't honour.
+      */
+      function yearCards(n, data) {
+        const t = n.totals;
+        return `
+          <div class="b-years" role="tablist" aria-label="Which budget to show">
+            <button class="b-year is-open" type="button" role="tab" id="tab-next-year"
+                    aria-controls="next-year" aria-selected="true" tabindex="0">
+              <span class="b-year-flag">In effect now · not final</span>
+              <span class="b-year-fy"><span class="nowrap">${esc(n.fiscal_year_label)}</span><em>1 July 2026 – 30 June 2027</em></span>
+              <span class="b-year-v">${short(t.fy2027.gross)}</span>
+              <span class="b-year-d">
+                The city has been spending against this budget since 1 July, but the Council has not taken
+                its final vote on it — that is 18 August, and the figures can still change. Only
+                ${short(t.fy2027.net)} of that headline total is money planned to actually go out the door;
+                the rest is set aside.
+              </span>
+              <span class="b-year-go" data-on="Showing this budget" data-off="Show this budget">Showing this budget</span>
+            </button>
+            <button class="b-year is-set" type="button" role="tab" id="tab-fy-charts"
+                    aria-controls="fy-charts" aria-selected="false" tabindex="-1">
+              <span class="b-year-flag">Final · on the books</span>
+              <span class="b-year-fy">FY${esc(data.fiscal_year)}<em>ended 30 June 2025</em></span>
+              <span class="b-year-v">${short(data.total)}</span>
+              <span class="b-year-d">
+                The last budget the city published in full detail, and the only year broken out line by line.
+                It is what the two most detailed diagrams are drawn from — you can follow a dollar from a
+                fund all the way to a named project.
+              </span>
+              <span class="b-year-go" data-on="Showing this budget" data-off="Show this budget">Show this budget</span>
+            </button>
+          </div>
+          <p class="b-years-note">
+            The year in between — <strong class="nowrap">FY2025–26</strong>, ${short(t.fy2026.gross)}, ended
+            30 June 2026 — has no charts here, because the city never published a full budget book for it.
+            It shows up only as the “last year” column in the
+            <span class="nowrap">${esc(n.fiscal_year_label)}</span> tables.
+          </p>`;
+      }
+
+      /* Only one budget is on screen at a time, so the cards above are the switch.
+         The panels keep the ids the cards used to link to (#next-year,
+         #fy-charts), which means an old deep link into either budget still opens
+         that budget instead of landing on a hidden section — and switching
+         rewrites the hash so a reader can share whichever year they're on.
+         The charts are drawn for both years up front, hidden or not: the Sankey
+         layout is pure arithmetic on a fixed viewBox and never measures the DOM,
+         so nothing has to be redrawn when a panel appears. */
+      function wireYearTabs() {
+        const tabs = [...document.querySelectorAll('.b-year[role="tab"]')];
+        if (!tabs.length) return;
+
+        const select = (tab, opts = {}) => {
+          tabs.forEach((t) => {
+            const on = t === tab;
+            t.setAttribute("aria-selected", String(on));
+            t.tabIndex = on ? 0 : -1;
+            const go = t.querySelector(".b-year-go");
+            if (go) go.textContent = on ? go.dataset.on : go.dataset.off;
+            const panel = document.getElementById(t.getAttribute("aria-controls"));
+            if (panel) panel.hidden = !on;
+          });
+          if (opts.focus) tab.focus();
+          if (!opts.silent) history.replaceState(null, "", "#" + tab.getAttribute("aria-controls"));
+        };
+
+        tabs.forEach((tab, i) => {
+          tab.addEventListener("click", () => select(tab));
+          // Arrow keys move between tabs, the standard for a tablist.
+          tab.addEventListener("keydown", (e) => {
+            const step = /^Arrow(Right|Down)$/.test(e.key) ? 1 : /^Arrow(Left|Up)$/.test(e.key) ? -1 : 0;
+            if (step) select(tabs[(i + step + tabs.length) % tabs.length], { focus: true });
+            else if (e.key === "Home") select(tabs[0], { focus: true });
+            else if (e.key === "End") select(tabs[tabs.length - 1], { focus: true });
+            else return;
+            e.preventDefault();
+          });
+        });
+
+        // Default is the year in force; a hash from an old link wins.
+        const linked = tabs.find((t) => "#" + t.getAttribute("aria-controls") === location.hash);
+        select(linked || tabs[0], { silent: true });
+      }
+
+      /* ---------------- the year in force: the FY2026–27 interim budget ----------------
+         The budget actually in front of the Council, above the FY2025 book.
+         It gets the same two Sankeys, off the same code — but prose first,
+         because a $169M reserve appropriation and a $200M bond booked in one
+         year make the diagram's proportions misleading on their own. The
+         reader is told what the widest ribbon is before meeting it.
+
+         Each prose block runs heading-and-figure in a left rail, argument in the
+         column beside it: the section is the full width of the page, so a single
+         centred measure would leave a third of it empty.
+
+         Everything here is the city's own line items (see
+         ingest/build_budget_next.py); the narrative claims are each anchored to
+         a meeting the reader can open.
+      */
+      function interimSection(n) {
+        const t = n.totals;
+        const gf = n.general_fund;
+        const sewer = n.funds.find((f) => f.name === "Sewer Fund");
+        const capOut = n.objects.find((o) => o.name === "Capital Outlay");
+        const personnel = n.objects.find((o) => o.name === "Personnel Services");
+        const safety = gf.departments.find((d) => d.name === "Public Safety");
+        const ps = n.public_safety;
+        const moved = gf.moved_out;
+        const bondSewer = n.borrowing.by_fund.find((b) => b.name === "Sewer Fund");
+        const bondWater = n.borrowing.by_fund.find((b) => b.name === "Water Fund");
+        const bondRda = n.borrowing.by_fund.find((b) => b.name === "Eagle Mountain RDA");
+        const wwtp = n.capital.find((c) => /Waste Water Treatment/i.test(c.name));
+        // Two capital lines are pooled buckets called "Capital Projects" rather than
+        // named work. They belong in the table but not in a sentence listing projects.
+        const pooled = n.capital.filter((c) => /^Capital (Projects|Outlay)$/i.test(c.name));
+        const named = n.capital.filter((c) => !pooled.includes(c) && c !== wwtp);
+        const gfPct = (((gf.total - gf.prior) / gf.prior) * 100).toFixed(1);
+        const grossX = (t.fy2027.gross / t.fy2026.gross).toFixed(1);
+        const netPct = (((t.fy2027.net - t.fy2026.net) / t.fy2026.net) * 100).toFixed(0);
+
+        return `
+          <section class="bn" id="next-year" role="tabpanel" aria-labelledby="tab-next-year" tabindex="0">
+            <div class="bn-head">
+              <div class="bn-head-t">
+                <p class="bn-flag">In effect now · not final</p>
+                <h2 id="bn-title">The year now running: the <span class="nowrap">${esc(n.fiscal_year_label)}</span> budget</h2>
+              </div>
+              <p class="bn-lede">
+                The Council passed this budget <a href="meetings.html?id=726">on 16 June</a>, 4–1, so the city
+                would have something to spend against on 1 July. But it passed it as an
+                <strong>interim</strong> budget — meaning not final. Utah law makes a city hold a public hearing
+                before it can raise property tax, and this budget proposes one. That hearing is
+                <strong>6 August</strong>; the final vote is <strong>18 August</strong>. Numbers can change at either.
+              </p>
+            </div>
+
+            <ol class="bn-cal">
+              ${n.calendar.map((c) => `
+                <li class="${c.done ? "is-done" : "is-ahead"}">
+                  <span class="bn-cal-date">${esc(CT.fmtDate(c.date))}</span>
+                  <span class="bn-cal-label">${c.meeting_id ? `<a href="meetings.html?id=${c.meeting_id}">${esc(c.label)}</a>` : esc(c.label)}</span>
+                  <span class="bn-cal-note">${esc(c.note)}</span>
+                </li>`).join("")}
+            </ol>
+
+            <div class="b-figures bn-figs">
+              <div class="b-fig"><span class="k">The headline total</span><span class="v">${short(t.fy2027.gross)}</span><span class="d">${grossX}× last year's ${short(t.fy2026.gross)}; includes money set aside</span></div>
+              <div class="b-fig"><span class="k">Actually planned to be spent</span><span class="v">${short(t.fy2027.net)}</span><span class="d">the total minus money set aside · up ${netPct}%</span></div>
+              <div class="b-fig"><span class="k">Money the city plans to borrow</span><span class="v">${short(n.borrowing.total)}</span><span class="d">nearly all of it for a new sewer plant</span></div>
+              <div class="b-fig"><span class="k">Day-to-day services</span><span class="v">${short(gf.total)}</span><span class="d">the General Fund — police, parks, streets · up ${gfPct}%</span></div>
+            </div>
+
+            ${glossary()}
+
+            <div class="bn-read">
+              ${readBlock("Most of the increase is a single sewer bond", short(bondSewer.total), "borrowed for one sewer project",
+                `The city plans to borrow ${short(bondSewer.total)} at once for a new sewer plant, and the budget
+                 shows the whole loan in the year it is taken out — though most of that money will not be spent
+                 for years. So the ${grossX}× headline is not ${grossX}× the spending.`, `
+                <p>
+                  Almost all of the jump is that one project. The Sewer Fund goes from ${short(sewer.prior)} to
+                  <strong>${short(sewer.total)}</strong> because the budget counts
+                  <strong>${short(bondSewer.total)}</strong> of borrowing for a new wastewater treatment plant —
+                  the 6-million-gallon-a-day plant the Council went through in its
+                  <a href="meetings.html?id=744">28 April work session</a>. Only ${short(wwtp.total)} of construction on it
+                  is budgeted for this year. Add up every fund and <strong>${short(t.fy2027.reserves)}</strong> of the
+                  budget is money the city takes in but does not plan to spend this year — savings, in effect.
+                </p>
+                <p class="bn-aside">
+                  That is why the second figure above is the fairer comparison. Take the set-aside money out of both
+                  years and the city plans to spend ${short(t.fy2027.net)} this year against ${short(t.fy2026.net)} last
+                  year — up ${netPct}%, not tripled. Two smaller loans sit behind the headline too:
+                  ${short(bondWater.total)} in the Water Fund, and ${short(bondRda.total)} in the city's redevelopment
+                  agency, which the Council took up on <a href="meetings.html?id=713">2 June</a>.
+                </p>`)}
+
+              ${readBlock("The tax increase is already written into the budget", short(n.tax_line.interim_revenue), "counted twice — once coming in, once going out",
+                `The increase has not been approved, but the budget already carries it — as money coming in, and as
+                 the same amount going out. It is fenced off until the 6 August hearing decides whether the city
+                 gets to collect it.`, `
+                <p>
+                  Both entries are for the same <strong>${usdC(n.tax_line.interim_revenue)}</strong>. On the income side it
+                  is a line the city calls <em>${esc(n.tax_line.revenue_account)}</em>, sitting next to the
+                  ${usdC(n.tax_line.base_revenue)} of property tax it collects today. On the spending side the identical
+                  figure is parked inside ${esc(n.tax_line.department)} on a line called
+                  <em>${esc(n.tax_line.expense_account)}</em>. “Restricted” means what it sounds like: the money is set
+                  aside and cannot be spent unless the increase survives the hearing. The
+                  <a href="tax.html">Tax page</a> goes through the rates and what it would cost a household.
+                </p>`)}
+
+              ${readBlock("The sheriff's contract moves from sales tax to property tax", short(ps.combined), "the sheriff's contract, once you add both lines back together",
+                `The budget splits the cost of policing across two lines. Added back together they come to exactly
+                 the property tax the city would collect if the increase passes.`, `
+                <p>
+                  The line that pays the county for policing drops from ${usdC(ps.contract_prior)} to
+                  <strong>${usdC(ps.contract)}</strong> — to the dollar, what the city collects in property tax today —
+                  and ${usdC(ps.restricted)} moves onto the fenced-off line described above. Add the two:
+                  <strong>${usdC(ps.combined)}</strong>, which is the proposed property-tax revenue exactly.
+                </p>
+                <p class="bn-aside">
+                  Staff put it the same way to the Council on <a href="meetings.html?id=726">16 June</a>: policing had
+                  been paid for largely out of sales tax, and the increase would move it onto property tax and free that
+                  sales tax up for other things. About $1.25M of the increase was tied to specific hires — one sergeant
+                  and six deputies. What the rest would pay for was described in that same meeting as still open.
+                </p>`)}
+
+              ${readBlock(`The General Fund is up ${gfPct}% after planning and permits moved out`, short(moved.fund_total), `moved into a new ${esc(moved.fund)} fund that pays for itself`,
+                `Planning and building permits moved out of the General Fund into their own fund this year, so the
+                 pot grew while the list of things it pays for got shorter. The ${gfPct}% is not ${gfPct}% more
+                 service.`, `
+                <p>
+                  The new <strong>${esc(moved.fund)}</strong> fund is ${short(moved.fund_total)} and pays for itself out
+                  of permit and plan-check fees instead of taxes. Setting it up took
+                  ${moved.departments.map((d) => `${esc(d.name)} (${short(d.prior)})`).join(" and ")}
+                  off the General Fund's books, and about ${short(moved.revenue_moved)} of the fee money that paid for
+                  them left with it. What is left grows: Public Safety is now the biggest department at
+                  ${short(safety.total)}, up from ${short(safety.prior)}, and wages and benefits across every fund rise
+                  from ${short(personnel.prior)} to ${short(personnel.total)}.
+                </p>
+                <p class="bn-aside">
+                  Two things to know before reading the department table. ${esc(gf.reorg_note)}
+                </p>`)}
+
+              ${readBlock("What the city plans to build", short(capOut.total), `to build or buy physical things, across ${n.capital.length} lines`,
+                `${short(capOut.total)} of the budget goes to physical things that last — pipes, roads, buildings,
+                 vehicles. Most of it is named work you can look up; ${short(pooled.reduce((a, c) => a + c.total, 0))}
+                 of it carries no project name at all.`, `
+                <p>
+                  Spending on physical things — “capital outlay”, in budget language — rises from
+                  ${short(capOut.prior)} to <strong>${short(capOut.total)}</strong> across ${n.capital.length} lines.
+                  The biggest named jobs after the treatment plant:
+                  ${named.slice(0, 5).map((c) => `${esc(c.name)} (${short(c.total)})`).join(", ")}.
+                  Another ${short(pooled.reduce((a, c) => a + c.total, 0))} sits in ${pooled.length} catch-all lines
+                  labelled only “Capital Projects” or “Capital Outlay”, with no project attached — so there is no way
+                  to tell from the budget what that money builds. The FY2025 budget had the same gap.
+                </p>`)}
+            </div>
+
+            ${allFundsCard("naf", `The whole <span class="nowrap">${esc(n.fiscal_year_label)}</span> budget, all funds`)}
+
+            <p class="bn-chartnote">
+              <strong>Reading that chart:</strong> the widest ribbon on it is
+              <strong>${short(t.fy2027.reserves)}</strong> going to <em>Fund Balance Appropriation</em> — which the
+              other grouping calls <em>Use of Reserves</em> — and that is not spending. It is money the city takes
+              in this year and does not spend this year, mostly borrowed sewer money waiting to be used. It is drawn
+              because it really is in the budget. Judge every other ribbon against the ${short(t.fy2027.net)} the
+              city plans to spend rather than the ${short(t.fy2027.gross)} total.
+            </p>
+
+            ${generalFundCard("ngf", `The <span class="nowrap">${esc(n.fiscal_year_label)}</span> General Fund, from income to service`, `
+              The ${short(gf.total)} General Fund is where the property-tax question actually lands. The
+              <em>proposed property tax</em> gets its own ribbon rather than being folded in with property tax,
+              because the city isn't collecting it yet — and the ${esc(n.tax_line.department)} bar it feeds is
+              carrying the fenced-off money that can't be spent unless the increase passes.`)}
+
+            ${bnTable("bn-t-funds", "Every fund, next to last year", "Fund", n.funds, "fy2027-by-fund")}
+            ${bnTable("bn-t-objects", "What the money is spent on — wages, supplies, building", "Type", n.objects, "fy2027-by-type")}
+            ${bnTable("bn-t-gfrev", "Where General Fund money comes from", "Source", gf.revenue, "fy2027-general-fund-revenue")}
+            ${bnTable("bn-t-gfdept", "What each department gets", "Department", gf.departments, "fy2027-general-fund-departments")}
+            ${bnCapitalTable(n.capital)}
+
+            <div class="b-notes bn-notes">
+              <div class="b-note"><h3>What this is</h3><p>${esc(n.status_note)}</p></div>
+              <div class="b-note"><h3>Where it comes from</h3><p>${esc(n.source.note)}</p></div>
+              <div class="b-note"><h3>One caveat</h3><p>${esc(n.source.caveat)}</p></div>
+            </div>
+          </section>`;
+      }
+
+      /* One analysis block: heading and the figure it turns on in a left rail,
+         the argument in the column beside it. The rail is what lets the prose run
+         edge to edge of the section without the line getting too long to read.
+
+         `gist` is the whole point of the block in one or two plain sentences, set
+         larger than the body. A reader who takes only the gists still leaves with
+         the argument; the detail underneath is there for whoever wants to check
+         it. Nothing in a gist may be new — it only says the body in fewer words.
+
+         Headings state the finding outright, in the flattest words available:
+         "Most of the increase is a single sewer bond", not "Why the total nearly
+         triples". No curiosity gap, no promise of a payoff below, nothing
+         addressed to "you". If a heading can't be read as a claim the page is
+         prepared to defend, it is the wrong heading. */
+      function readBlock(heading, statV, statK, gist, body) {
+        return `
+          <div class="bn-block">
+            <div class="bn-rail">
+              <h3>${heading}</h3>
+              <p class="bn-stat"><span class="v">${statV}</span><span class="k">${statK}</span></p>
+            </div>
+            <div class="bn-body">
+              <p class="bn-gist">${gist}</p>
+              ${body}
+            </div>
+          </div>`;
+      }
+
+      /* The page is full of words that mean something specific in a budget and
+         something looser in English — "fund", "reserves", "capital", "restricted".
+         Rather than glossing each one every time it appears, they are defined once
+         here, open on the page above the analysis that uses them. Closed by
+         default: a reader who already knows what a fund is should not have to
+         scroll past nine definitions to reach the argument. */
+      function glossary() {
+        const terms = [
+          ["Fund", "The city keeps its money in separate pots that can't be freely mixed. Water bills go into the water fund and can only pay for water. Most taxes go into the General Fund."],
+          ["General Fund", "The pot that pays for the services most people picture when they think of the city: police, parks, streets, planning, city hall."],
+          ["Reserves, or fund balance", "Savings. Money the city takes in but doesn't plan to spend this year. It still appears in the budget total, which is why that total can be much bigger than actual spending."],
+          ["Bond", "A loan. The city borrows a lump sum now, builds something with it, and pays it back with interest over decades — usually out of the fees or taxes tied to whatever it built."],
+          ["Capital, or capital outlay", "Physical things that last: pipes, roads, buildings, vehicles. As opposed to wages, fuel and supplies, which get used up each year."],
+          ["Interim budget", "A budget that's in force but not final. The city can spend against it, and the numbers can still change before the final vote."],
+          ["Truth in Taxation", "Utah's rule that a city has to advertise and hold a public hearing before raising property tax above a set rate. It's why this year's budget isn't final yet."],
+          ["Restricted", "Money written into the budget but fenced off — it can't be spent until something else happens. Here, until the tax increase passes."],
+          ["Redevelopment agency (RDA)", "A separate body run by the same elected officials, which uses a share of the tax collected in a designated area to pay for development there."],
+          ["Fiscal year", "The city's budget year, which doesn't match the calendar. FY2026–27 runs 1 July 2026 to 30 June 2027."],
+        ];
+        return `
+          <details class="bn-gloss">
+            <summary>Budget words, in plain English</summary>
+            <dl>
+              ${terms.map(([t, d]) => `<div><dt>${esc(t)}</dt><dd>${esc(d)}</dd></div>`).join("")}
+            </dl>
+          </details>`;
+      }
+
+      // A true minus sign, not a hyphen — these sit in tabular-numeral columns.
+      const signed = (v) => (v > 0 ? "+" : "−") + short(Math.abs(v));
+
+      function bnTable(id, title, col, rows, slug) {
+        const body = rows.map((r) => `
+          <tr>
+            <td>${esc(r.name)}</td>
+            <td class="num">${r.prior ? usdC(r.prior) : "—"}</td>
+            <td class="num">${r.total ? usdC(r.total) : "—"}</td>
+            <td class="num ${r.change > 0 ? "bn-up" : r.change < 0 ? "bn-down" : ""}">${r.change ? signed(r.change) : "—"}</td>
+          </tr>`).join("");
+        return `
+          <details class="b-tableview bn-tableview">
+            <summary>${esc(title)}</summary>
+            <div class="tablewrap" id="${id}">
+              <table class="data">
+                <thead><tr>
+                  <th scope="col">${esc(col)}</th>
+                  <th scope="col" class="num">Last year (FY2025–26)</th>
+                  <th scope="col" class="num">This year (FY2026–27)</th>
+                  <th scope="col" class="num">Change</th>
+                </tr></thead>
+                <tbody>${body}</tbody>
+              </table>
+              ${exportBarHtml(exportSlug(slug))}
+            </div>
+          </details>`;
+      }
+
+      function bnCapitalTable(rows) {
+        const body = rows.map((r) => `
+          <tr>
+            <td>${esc(r.name)}<span class="b-where">${esc(r.fund)}</span></td>
+            <td class="num">${usdC(r.total)}</td>
+          </tr>`).join("");
+        return `
+          <details class="b-tableview bn-tableview">
+            <summary>Everything the city plans to build or buy this year</summary>
+            <div class="tablewrap" id="bn-t-capital">
+              <table class="data">
+                <thead><tr><th scope="col">Project</th><th scope="col" class="num">Budgeted</th></tr></thead>
+                <tbody>${body}</tbody>
+              </table>
+              ${exportBarHtml(exportSlug("fy2027-capital-projects"))}
+            </div>
+          </details>`;
+      }
+
+      /* The two chart cards, emitted once per chart set. Ids are derived from the
+         prefix so the controller can find them; the copy differs per year.
+         `h` is the heading level: the cards sit under a year heading whenever both
+         budgets are on the page, but become the page's own h2s if the next-year
+         file is missing — so the level can't be hard-coded without a skipped rank. */
+      function allFundsCard(prefix, heading, h = "h3") {
+        return `
+          <section class="b-chartcard" aria-labelledby="${prefix}-title">
+            <div class="b-chart-head">
+              <${h} id="${prefix}-title">${heading}</${h}>
+              <div class="b-toggle" role="group" aria-label="Choose the right-hand grouping">
+                <button id="${prefix}-func" type="button" aria-pressed="true">By function</button>
+                <button id="${prefix}-obj" type="button" aria-pressed="false">By type of spending</button>
+              </div>
+              <p id="${prefix}-sub"></p>
+            </div>
+            <div class="b-focus" id="${prefix}-focus" hidden>
+              <button class="b-back" id="${prefix}-back" type="button"><span aria-hidden="true">←</span> All funds</button>
+              <span class="b-focus-title" id="${prefix}-focus-title"></span>
+            </div>
+            <div class="b-scroll">
+              <svg class="sankey" id="${prefix}-svg" role="img" aria-labelledby="${prefix}-svg-title"></svg>
+              <span id="${prefix}-svg-title" class="sr-only"></span>
+            </div>
+            <p class="b-swipe" aria-hidden="true">Swipe the chart sideways to see it all <span>→</span></p>
+            <div class="b-legend" id="${prefix}-legend"></div>
+            ${tableDetails(prefix + "-table")}
+          </section>`;
+      }
+
+      function generalFundCard(prefix, heading, blurb, h = "h3") {
+        return `
+          <section class="b-chartcard" aria-labelledby="${prefix}-title">
+            <div class="b-chart-head">
+              <${h} id="${prefix}-title">${heading}</${h}>
+              <p>${blurb}</p>
+            </div>
+            <div class="b-scroll">
+              <svg class="sankey" id="${prefix}-svg" role="img" aria-labelledby="${prefix}-svg-title"></svg>
+              <span id="${prefix}-svg-title" class="sr-only">Sankey diagram of the Eagle Mountain General Fund, from revenue source through the fund to the department that spends it.</span>
+            </div>
+            <p class="b-swipe" aria-hidden="true">Swipe the chart sideways to see it all <span>→</span></p>
+            <div class="b-legend" id="${prefix}-legend"></div>
+            ${tableDetails(prefix + "-table")}
+          </section>`;
       }
 
       function tableDetails(id) {
@@ -218,83 +670,104 @@
          the node → its own line items and named capital projects; for a fund, the
          fund → its line items. "← All funds" returns.
       */
-      let AF = null, AF_T = 0;
-      let afState = { view: "function", focus: null }; // focus: {side:'fund'|'target', name}
+      // One controller, instantiated per chart set: the FY2025 book uses prefix
+      // "af", next year's uses "naf". Everything below reads its ids and its
+      // drill state off the instance, so the two charts can be open on different
+      // groupings and different drill-downs at the same time without colliding.
+      function afContext(prefix, af, total) {
+        return { p: prefix, AF: af, T: total, state: { view: "function", focus: null } };
+      }
+      const el = (ctx, suffix) => document.getElementById(ctx.p + "-" + suffix);
 
-      const fundColorMap = () => new Map(AF.funds.map((n, i) => [n.name, cssv(RAMP[i % 6])]));
+      const fundColorMap = (ctx) => new Map(ctx.AF.funds.map((n, i) => [n.name, cssv(RAMP[i % 6])]));
 
-      function renderAF() {
-        if (afState.focus) drawAfFocus();
-        else drawAfOverview();
-        document.getElementById("af-func").setAttribute("aria-pressed", String(afState.view === "function"));
-        document.getElementById("af-obj").setAttribute("aria-pressed", String(afState.view === "object"));
-        const bar = document.getElementById("af-focus");
-        bar.hidden = !afState.focus;
-        if (afState.focus) {
-          document.getElementById("af-focus-title").textContent =
-            afState.focus.side === "target"
-              ? `${afState.focus.name} — who funds it, and what it buys`
-              : `${afState.focus.name} — what it spends on`;
+      function renderAF(ctx) {
+        if (ctx.state.focus) drawAfFocus(ctx);
+        else drawAfOverview(ctx);
+        el(ctx, "func").setAttribute("aria-pressed", String(ctx.state.view === "function"));
+        el(ctx, "obj").setAttribute("aria-pressed", String(ctx.state.view === "object"));
+        const bar = el(ctx, "focus");
+        bar.hidden = !ctx.state.focus;
+        if (ctx.state.focus) {
+          el(ctx, "focus-title").textContent =
+            ctx.state.focus.side === "target"
+              ? `${ctx.state.focus.name} — who funds it, and what it buys`
+              : `${ctx.state.focus.name} — what it spends on`;
         }
       }
 
-      function drawAfOverview() {
-        const funcMode = afState.view === "function";
-        const rightNodes = funcMode ? AF.functions : AF.objects;
-        const links = (funcMode ? AF.links_fund_function : AF.links_fund_object).filter((l) => l.value > 0);
-        const fc = fundColorMap();
+      function drawAfOverview(ctx) {
+        const funcMode = ctx.state.view === "function";
+        const rightNodes = funcMode ? ctx.AF.functions : ctx.AF.objects;
+        const links = (funcMode ? ctx.AF.links_fund_function : ctx.AF.links_fund_object).filter((l) => l.value > 0);
+        const fc = fundColorMap(ctx);
         // Namespaced ids so a name shared across columns can't merge two nodes.
         const cols = [
-          AF.funds.map((n) => ({ id: "L:" + n.name, name: n.name, total: n.total, color: fc.get(n.name), kind: "fund" })),
+          ctx.AF.funds.map((n) => ({ id: "L:" + n.name, name: n.name, total: n.total, color: fc.get(n.name), kind: "fund" })),
           rightNodes.map((n) => ({ id: "R:" + n.name, name: n.name, total: n.total, color: cssv("--sk-node"), kind: "target" })),
         ];
         const edges = links.map((l) => ({ source: "L:" + l.source, target: "R:" + l.target, value: l.value, color: fc.get(l.source) }));
         orderByBarycentre(cols[0], cols[1], edges);
 
-        drawSankey("af-svg", cols, edges, AF_T, {
+        drawSankey(ctx.p + "-svg", cols, edges, ctx.T, {
           colCaptions: ["Fund", funcMode ? "What it pays for" : "Type of spending"],
           labelSides: ["end", "start"],
+          height: ctx.height,
           clickable: () => true,
-          onNodeClick: (node) => { afState.focus = { side: node.side, name: node.name }; renderAF(); },
+          onNodeClick: (node) => { ctx.state.focus = { side: node.side, name: node.name }; renderAF(ctx); },
         });
-        legendFor("af-legend", cols[0], AF_T);
-        fillTable("af-table", ["Fund", funcMode ? "Function" : "Type of spending"], links, AF_T, null, null,
-          [exportSlug("budget by fund and " + (funcMode ? "function" : "type of spending"))]);
-        setTableSummary("View the numbers as a table");
-        document.getElementById("af-sub").textContent =
+        legendFor(ctx.p + "-legend", cols[0], ctx.T);
+        fillTable(ctx.p + "-table", ["Fund", funcMode ? "Function" : "Type of spending"], links, ctx.T, null, null,
+          [exportSlug(ctx.slug + " by fund and " + (funcMode ? "function" : "type of spending"))]);
+        setTableSummary(ctx, "View the numbers as a table");
+        el(ctx, "sub").textContent =
           (funcMode
             ? "Left: the fund each dollar sits in. Right: the function it pays for."
             : "Left: the fund each dollar sits in. Right: the kind of expense it becomes.") +
           " Click any bar to open its line items and projects.";
-        document.getElementById("af-svg-title").textContent =
-          `Sankey diagram of Eagle Mountain FY budgeted spending by fund and ${funcMode ? "function" : "expense type"}. Each bar is clickable to drill into its line items.`;
+        el(ctx, "svg-title").textContent =
+          `Sankey diagram of Eagle Mountain ${ctx.label} budgeted spending by fund and ${funcMode ? "function" : "expense type"}. Each bar is clickable to drill into its line items.`;
       }
 
-      function drillItemsFor(focus) {
-        if (focus.side === "fund") return AF.drill.byFund[focus.name] || [];
-        return (afState.view === "function" ? AF.drill.byFunction : AF.drill.byObject)[focus.name] || [];
+      function drillItemsFor(ctx, focus) {
+        if (focus.side === "fund") return ctx.AF.drill.byFund[focus.name] || [];
+        return (ctx.state.view === "function" ? ctx.AF.drill.byFunction : ctx.AF.drill.byObject)[focus.name] || [];
       }
 
       // The diagram stays legible at ~12 rows; the table below carries the full
       // itemisation. Everything past the 11th line folds into one "Other" ribbon.
+      //
+      // Credits are dropped here, not summed. Some General Fund lines are
+      // negative — administrative cost recharged to the utility funds, booked as
+      // a contra-expense — and a ribbon cannot have negative width. They stay in
+      // the table, where drillCredit() reconciles them against the net total.
       function capForSankey(items, n) {
-        if (items.length <= n) return items;
-        const head = items.slice(0, n - 1);
-        const restVal = items.slice(n - 1).reduce((a, x) => a + x.value, 0);
+        const pos = items.filter((i) => i.value > 0);
+        if (pos.length <= n) return pos;
+        const head = pos.slice(0, n - 1);
+        const restVal = pos.slice(n - 1).reduce((a, x) => a + x.value, 0);
         return [...head, { name: "Other line items", value: restVal, c: null, f: null }];
       }
 
-      function drawAfFocus() {
-        const fc = fundColorMap();
-        const f = afState.focus;
-        const items = drillItemsFor(f);                 // full list (up to ~40 + Other)
+      // What the chart had to leave out, so the figures under it can say so.
+      const drillCredit = (items) => items.reduce((a, x) => a + Math.min(0, x.value), 0);
+
+      function drawAfFocus(ctx) {
+        const fc = fundColorMap(ctx);
+        const f = ctx.state.focus;
+        const items = drillItemsFor(ctx, f);            // full list (up to ~40 + Other)
         const shown = capForSankey(items, 12);          // legible subset for the diagram
         const itemColor = (it) => (it.c && fc.has(it.c) ? fc.get(it.c) : cssv("--sk-node"));
 
+        // Everything drawn is scaled to the positive lines, so ribbons still fill
+        // their node; the net figure lives in the table note underneath.
+        const drawn = shown.reduce((a, x) => a + x.value, 0);
+        const credit = drillCredit(items);
+
         if (f.side === "target") {
-          const links = (afState.view === "function" ? AF.links_fund_function : AF.links_fund_object)
+          const links = (ctx.state.view === "function" ? ctx.AF.links_fund_function : ctx.AF.links_fund_object)
             .filter((l) => l.target === f.name && l.value > 0);
-          const total = links.reduce((a, l) => a + l.value, 0);
+          const total = credit ? drawn : links.reduce((a, l) => a + l.value, 0);
           const cols = [
             links.map((l) => ({ id: "L:" + l.source, name: l.source, total: l.value, color: fc.get(l.source) })),
             [{ id: "M", name: f.name, total, color: cssv("--accent") }],
@@ -304,33 +777,35 @@
             ...links.map((l) => ({ source: "L:" + l.source, target: "M", value: l.value, color: fc.get(l.source) })),
             ...shown.map((it, i) => ({ source: "M", target: "I:" + i, value: it.value, color: itemColor(it) })),
           ];
-          drawSankey("af-svg", cols, edges, total, {
+          drawSankey(ctx.p + "-svg", cols, edges, total, {
             colCaptions: ["Funded by", "", "Line items & projects"],
             labelSides: ["end", "mid", "start"],
+            height: ctx.height,
             clickable: () => false,
           });
-          legendFor("af-legend", cols[0], total);
-          fillDrillTable("af-table", items, total, "target", f.name);
+          legendFor(ctx.p + "-legend", cols[0], total);
+          fillDrillTable(ctx.p + "-table", items, total, "target", f.name, credit);
         } else {
-          const F = AF.funds.find((x) => x.name === f.name);
-          const total = F.total, col = fc.get(f.name);
+          const F = ctx.AF.funds.find((x) => x.name === f.name);
+          const total = credit ? drawn : F.total, col = fc.get(f.name);
           const cols = [
             [{ id: "M", name: f.name, total, color: col }],
             shown.map((it, i) => ({ id: "I:" + i, name: it.name, total: it.value, color: col })),
           ];
           const edges = shown.map((it, i) => ({ source: "M", target: "I:" + i, value: it.value, color: col }));
-          drawSankey("af-svg", cols, edges, total, {
+          drawSankey(ctx.p + "-svg", cols, edges, total, {
             colCaptions: [f.name, "Line items"],
             labelSides: ["end", "start"],
+            height: ctx.height,
             clickable: () => false,
           });
-          legendFor("af-legend", [{ name: f.name, total, color: col }], total);
-          fillDrillTable("af-table", items, total, "fund", f.name);
+          legendFor(ctx.p + "-legend", [{ name: f.name, total, color: col }], total);
+          fillDrillTable(ctx.p + "-table", items, total, "fund", f.name, credit);
         }
-        setTableSummary(items.length > 12
+        setTableSummary(ctx, items.length > 12
           ? `See all ${items.length} line items in the table`
           : "See the line items in the table");
-        document.getElementById("af-svg-title").textContent =
+        el(ctx, "svg-title").textContent =
           `Focused Sankey of ${f.name}: its funding sources and the line items and projects it pays for.`;
       }
 
@@ -341,7 +816,7 @@
       // Drill table: every line item with its specific fund, a per-row "pooled"
       // marker, and a reconciliation of how much is itemised vs. pooled — so a
       // reader can see every dollar is accounted for even where a name isn't.
-      function fillDrillTable(id, items, total, side, focusName) {
+      function fillDrillTable(id, items, total, side, focusName, credit = 0) {
         let pooled = 0;
         const rows = items.slice().sort((a, b) => b.value - a.value).map((it) => {
           const isLump = LUMP.has(it.name);
@@ -362,22 +837,30 @@
              city budgets as a single amount and spends on projects as they come up. Every dollar is
              appropriated; not every dollar is pre-assigned to a named project.</p>`
           : "";
+        const creditNote = credit
+          ? `<p class="b-recon">One line is a credit, not a cost: <strong>${short(Math.abs(credit))}</strong> of
+             administrative cost is recharged to the water, sewer and other funds that use these services, so the
+             General Fund books it as negative expense. The chart above shows the ${short(total)} of positive lines
+             only — a ribbon cannot be negative — which nets down to <strong>${short(total + credit)}</strong>, the
+             figure carried in the overview.</p>`
+          : "";
         document.getElementById(id).innerHTML =
           `<table class="data"><thead><tr><th scope="col">${h}</th><th scope="col" class="num">Budgeted</th><th scope="col" class="num">Share</th></tr></thead><tbody>${rows}</tbody></table>`
+          + creditNote
           + recon
           + `<p class="b-tablenote">Each row is a line item from the adopted budget, shown with the specific fund it sits in. Projects carried in the books at $0 this year are omitted.</p>`
           + exportBarHtml(name);
         wireTableExports(id);
       }
 
-      function setTableSummary(text) {
-        const s = document.getElementById("af-table")?.closest("details")?.querySelector("summary");
+      function setTableSummary(ctx, text) {
+        const s = el(ctx, "table")?.closest("details")?.querySelector("summary");
         if (s) s.textContent = text;
       }
 
       /* ---------------- General Fund chart (3 columns: revenue → fund → dept) ---------------- */
 
-      function drawGeneralFund(gf) {
+      function drawGeneralFund(gf, p = "gf", slug = "general fund") {
         const T = gf.total;
         const revColors = gf.revenue.map((n, i) => cssv(RAMP[i % 6]));
         const cols = [
@@ -391,16 +874,17 @@
           // accent rather than implying a revenue source maps to a department.
           ...gf.departments.map((n) => ({ source: "GF", target: "DEP:" + n.name, value: n.total, color: cssv("--accent") })),
         ];
-        drawSankey("gf-svg", cols, edges, T, {
+        drawSankey(p + "-svg", cols, edges, T, {
           colCaptions: ["Revenue in", "", "Service out"],
           labelSides: ["end", "mid", "start"],
+          height: 600,
         });
-        legendFor("gf-legend", cols[0], T, "Revenue source");
+        legendFor(p + "-legend", cols[0], T, "Revenue source");
         // The chart groups revenue and departments for legibility; the table
         // lists every source and every one of the city's departments in full.
-        fillTable("gf-table", ["Revenue source", "Amount"], gf.revenue_detail.map((r) => ({ source: r.name, value: r.total })), T,
+        fillTable(p + "-table", ["Revenue source", "Amount"], gf.revenue_detail.map((r) => ({ source: r.name, value: r.total })), T,
           ["Department", "Amount"], gf.departments_detail.map((d) => ({ source: d.name, value: d.total })),
-          [exportSlug("general fund revenue"), exportSlug("general fund departments")]);
+          [exportSlug(slug + " revenue"), exportSlug(slug + " departments")]);
       }
 
       /* ---------------- the Sankey engine (generic, N columns) ----------------
@@ -422,7 +906,7 @@
 
       function drawSankey(svgId, cols, edges, TOTAL, opts) {
         const svg = document.getElementById(svgId);
-        const W = 1100, nodeW = 15, gap = 11, topPad = 46, botPad = 12, drawH = svgId === "gf-svg" ? 600 : 560;
+        const W = 1100, nodeW = 15, gap = 11, topPad = 46, botPad = 12, drawH = opts.height || 560;
         const H = drawH + topPad + botPad;
         const LZONE = 200, RZONE = 210;
         const C = cols.length;

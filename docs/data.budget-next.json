@@ -1,0 +1,5724 @@
+{
+ "_comment": "Eagle Mountain's FY2026-27 budget as adopted on an interim basis 16 June 2026, compared against the FY2025-26 and FY2024-25 adopted budgets. Rolled up from the city's own ClearGov line items via ingest/build_budget_next.py. Budgeted, not actual. This budget is not final: a Truth-in-Taxation hearing is set for 6 August 2026 and final adoption for 18 August 2026, and figures can move at either. The same rollup reproduces the published FY2025 book total to the dollar, which is how the method is verified.",
+ "fiscal_year": "2026-27",
+ "fiscal_year_label": "FY2026–27",
+ "status": "interim",
+ "status_note": "Passed 16 June 2026 by a 4–1 vote as an interim budget — meaning it is in force but not final. Utah law requires that step when a city proposes a property-tax increase, because the increase has to go to a public hearing first. The final vote on this budget is scheduled for 18 August 2026, and the figures can change before then.",
+ "as_of": "2026-07-16",
+ "source": {
+  "title": "Eagle Mountain City line items",
+  "publisher": "ClearGov",
+  "url": "https://cleargov.com/api/statistics/municipalities/315552/lineItems",
+  "note": "The city has not published a budget book since FY2025. These figures come from the raw line-item feed that sits behind that book — the same data, one step earlier: version 1937425 for FY2026-27, and 1917953 for the FY2025 and FY2026 adopted budgets.",
+  "caveat": "The FY2026-27 figures come from a different version of that feed than the finished budgets they are compared against, because an interim budget does not get a finished-budget entry until it is adopted. Everything is added up exactly the same way, and the method reproduces the city's published FY2025 total to the dollar."
+ },
+ "calendar": [
+  {
+   "date": "2026-05-05",
+   "meeting_id": 712,
+   "label": "Tentative budget accepted",
+   "note": "Council also acknowledged the budget officer's proposed property-tax increase.",
+   "done": true
+  },
+  {
+   "date": "2026-05-26",
+   "meeting_id": 748,
+   "label": "Budget work session",
+   "note": "Line-by-line review of new positions; no votes taken.",
+   "done": true
+  },
+  {
+   "date": "2026-06-16",
+   "meeting_id": 726,
+   "label": "Interim budget adopted, 4–1",
+   "note": "Councilmember Huish voted no.",
+   "done": true
+  },
+  {
+   "date": "2026-08-06",
+   "meeting_id": null,
+   "label": "Truth-in-Taxation hearing",
+   "note": "6:00 p.m. The hearing on the proposed property-tax increase.",
+   "done": false
+  },
+  {
+   "date": "2026-08-18",
+   "meeting_id": null,
+   "label": "Final budget adoption",
+   "note": "Set by the 5 May resolution accepting the tentative budget.",
+   "done": false
+  }
+ ],
+ "totals": {
+  "fy2027": {
+   "gross": 391646644,
+   "reserves": 169290950,
+   "net": 222355694
+  },
+  "fy2026": {
+   "gross": 163179862,
+   "reserves": 2679198,
+   "net": 160500664
+  },
+  "fy2025": {
+   "gross": 172508305,
+   "reserves": 4289748,
+   "net": 168218557
+  }
+ },
+ "borrowing": {
+  "total": 230000000,
+  "by_fund": [
+   {
+    "name": "Sewer Fund",
+    "total": 200000000
+   },
+   {
+    "name": "Water Fund",
+    "total": 20000000
+   },
+   {
+    "name": "Eagle Mountain RDA",
+    "total": 10000000
+   }
+  ],
+  "note": "Budgeted bond proceeds. Nearly all of it is the sewer bond that pays for the new wastewater treatment plant; the budget books the borrowing in FY2027 even though most of the construction happens in later years."
+ },
+ "all_funds": {
+  "funds": [
+   {
+    "name": "Enterprise · Utilities",
+    "total": 268850200
+   },
+   {
+    "name": "Special Revenue Fund",
+    "total": 56465477
+   },
+   {
+    "name": "General Fund",
+    "total": 42650441
+   },
+   {
+    "name": "Capital Projects Fund",
+    "total": 16954637
+   },
+   {
+    "name": "Internal Service",
+    "total": 4112639
+   },
+   {
+    "name": "Debt Service Fund",
+    "total": 2613250
+   }
+  ],
+  "functions": [
+   {
+    "name": "Fund Balance Appropriation",
+    "total": 169290950
+   },
+   {
+    "name": "Capital Improvements",
+    "total": 93269748
+   },
+   {
+    "name": "Public Utilities",
+    "total": 32847019
+   },
+   {
+    "name": "General Government",
+    "total": 29631254
+   },
+   {
+    "name": "Interfund Transfers",
+    "total": 18999818
+   },
+   {
+    "name": "Community Services",
+    "total": 11469326
+   },
+   {
+    "name": "Public Services",
+    "total": 10840767
+   },
+   {
+    "name": "Public Safety",
+    "total": 10837430
+   },
+   {
+    "name": "Community Development",
+    "total": 5784247
+   },
+   {
+    "name": "Debt Service",
+    "total": 4563446
+   },
+   {
+    "name": "Department Services",
+    "total": 4112639
+   }
+  ],
+  "objects": [
+   {
+    "name": "Use of Reserves",
+    "total": 169290950
+   },
+   {
+    "name": "Capital Outlay",
+    "total": 95418748
+   },
+   {
+    "name": "Materials, Supplies & Services",
+    "total": 72746508
+   },
+   {
+    "name": "Interfund Transfers",
+    "total": 26920193
+   },
+   {
+    "name": "Personnel Services",
+    "total": 20466716
+   },
+   {
+    "name": "Debt Service",
+    "total": 4563446
+   },
+   {
+    "name": "Grants",
+    "total": 2240083
+   }
+  ],
+  "links_fund_function": [
+   {
+    "source": "Enterprise · Utilities",
+    "target": "Fund Balance Appropriation",
+    "value": 164172496
+   },
+   {
+    "source": "Enterprise · Utilities",
+    "target": "Capital Improvements",
+    "value": 67832795
+   },
+   {
+    "source": "Enterprise · Utilities",
+    "target": "Public Utilities",
+    "value": 32847019
+   },
+   {
+    "source": "Special Revenue Fund",
+    "target": "General Government",
+    "value": 24812538
+   },
+   {
+    "source": "Capital Projects Fund",
+    "target": "Capital Improvements",
+    "value": 16138052
+   },
+   {
+    "source": "General Fund",
+    "target": "Public Safety",
+    "value": 10837430
+   },
+   {
+    "source": "General Fund",
+    "target": "Public Services",
+    "value": 10739820
+   },
+   {
+    "source": "Special Revenue Fund",
+    "target": "Interfund Transfers",
+    "value": 9605699
+   },
+   {
+    "source": "Special Revenue Fund",
+    "target": "Capital Improvements",
+    "value": 9298901
+   },
+   {
+    "source": "General Fund",
+    "target": "Community Services",
+    "value": 9164880
+   },
+   {
+    "source": "General Fund",
+    "target": "Interfund Transfers",
+    "value": 6529840
+   },
+   {
+    "source": "Special Revenue Fund",
+    "target": "Community Development",
+    "value": 5224492
+   },
+   {
+    "source": "Special Revenue Fund",
+    "target": "Fund Balance Appropriation",
+    "value": 5118454
+   },
+   {
+    "source": "General Fund",
+    "target": "General Government",
+    "value": 4818716
+   },
+   {
+    "source": "Internal Service",
+    "target": "Department Services",
+    "value": 4112639
+   },
+   {
+    "source": "Debt Service Fund",
+    "target": "Debt Service",
+    "value": 2613250
+   },
+   {
+    "source": "Special Revenue Fund",
+    "target": "Community Services",
+    "value": 2304446
+   },
+   {
+    "source": "Enterprise · Utilities",
+    "target": "Interfund Transfers",
+    "value": 2047694
+   },
+   {
+    "source": "Enterprise · Utilities",
+    "target": "Debt Service",
+    "value": 1950196
+   },
+   {
+    "source": "Capital Projects Fund",
+    "target": "Interfund Transfers",
+    "value": 816585
+   },
+   {
+    "source": "General Fund",
+    "target": "Community Development",
+    "value": 559755
+   },
+   {
+    "source": "Special Revenue Fund",
+    "target": "Public Services",
+    "value": 100947
+   }
+  ],
+  "links_fund_object": [
+   {
+    "source": "Enterprise · Utilities",
+    "target": "Use of Reserves",
+    "value": 164172496
+   },
+   {
+    "source": "Enterprise · Utilities",
+    "target": "Capital Outlay",
+    "value": 67832795
+   },
+   {
+    "source": "Enterprise · Utilities",
+    "target": "Materials, Supplies & Services",
+    "value": 28504201
+   },
+   {
+    "source": "Special Revenue Fund",
+    "target": "Materials, Supplies & Services",
+    "value": 26769795
+   },
+   {
+    "source": "General Fund",
+    "target": "Materials, Supplies & Services",
+    "value": 16230488
+   },
+   {
+    "source": "Capital Projects Fund",
+    "target": "Capital Outlay",
+    "value": 16138052
+   },
+   {
+    "source": "General Fund",
+    "target": "Interfund Transfers",
+    "value": 14318190
+   },
+   {
+    "source": "General Fund",
+    "target": "Personnel Services",
+    "value": 11858763
+   },
+   {
+    "source": "Special Revenue Fund",
+    "target": "Interfund Transfers",
+    "value": 9721760
+   },
+   {
+    "source": "Special Revenue Fund",
+    "target": "Capital Outlay",
+    "value": 9298901
+   },
+   {
+    "source": "Special Revenue Fund",
+    "target": "Use of Reserves",
+    "value": 5118454
+   },
+   {
+    "source": "Enterprise · Utilities",
+    "target": "Personnel Services",
+    "value": 4342818
+   },
+   {
+    "source": "Special Revenue Fund",
+    "target": "Personnel Services",
+    "value": 3316484
+   },
+   {
+    "source": "Debt Service Fund",
+    "target": "Debt Service",
+    "value": 2613250
+   },
+   {
+    "source": "Special Revenue Fund",
+    "target": "Grants",
+    "value": 2240083
+   },
+   {
+    "source": "Enterprise · Utilities",
+    "target": "Interfund Transfers",
+    "value": 2047694
+   },
+   {
+    "source": "Enterprise · Utilities",
+    "target": "Debt Service",
+    "value": 1950196
+   },
+   {
+    "source": "Internal Service",
+    "target": "Capital Outlay",
+    "value": 1906000
+   },
+   {
+    "source": "Internal Service",
+    "target": "Materials, Supplies & Services",
+    "value": 1242024
+   },
+   {
+    "source": "Internal Service",
+    "target": "Personnel Services",
+    "value": 948651
+   },
+   {
+    "source": "Capital Projects Fund",
+    "target": "Interfund Transfers",
+    "value": 816585
+   },
+   {
+    "source": "General Fund",
+    "target": "Capital Outlay",
+    "value": 243000
+   },
+   {
+    "source": "Internal Service",
+    "target": "Interfund Transfers",
+    "value": 15964
+   }
+  ],
+  "drill": {
+   "byFund": {
+    "General Fund": [
+     {
+      "name": "Restricted Interim Budget",
+      "value": 6958141,
+      "c": "Public Safety",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 6582059,
+      "c": "General Government",
+      "f": "General Fund"
+     },
+     {
+      "name": "Development Agreements",
+      "value": 6480000,
+      "c": "Community Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Due To Cap Proj Fund",
+      "value": 6393350,
+      "c": "Interfund Transfers",
+      "f": "General Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": -3919994,
+      "c": "General Government",
+      "f": "General Fund"
+     },
+     {
+      "name": "Contract Services",
+      "value": 2839998,
+      "c": "Public Safety",
+      "f": "General Fund"
+     },
+     {
+      "name": "Paved Road Maint.",
+      "value": 2000000,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 1509025,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Street Light New Install",
+      "value": 1500000,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 1453606,
+      "c": "General Government",
+      "f": "General Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 1044711,
+      "c": "General Government",
+      "f": "General Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 776623,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Part-Time Permanent",
+      "value": 618728,
+      "c": "Community Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Dispatch Services",
+      "value": 588515,
+      "c": "Public Safety",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - FT",
+      "value": 509622,
+      "c": "General Government",
+      "f": "General Fund"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 509195,
+      "c": "General Government",
+      "f": "General Fund"
+     },
+     {
+      "name": "Utilities (Gas Electric Water",
+      "value": 466640,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Liability Insurance Premium",
+      "value": 375046,
+      "c": "General Government",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Seasonal",
+      "value": 353207,
+      "c": "Public Safety",
+      "f": "General Fund"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 330829,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Street Light Maintenance",
+      "value": 310000,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Travel & Training",
+      "value": 229610,
+      "c": "Community Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "City Wide Trees",
+      "value": 215300,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Landscape Maintenance",
+      "value": 203000,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Special Events & Projects",
+      "value": 170000,
+      "c": "Community Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Youth Sports",
+      "value": 151700,
+      "c": "Community Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Equipment Supplies and Mainten",
+      "value": 146000,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Due To GIS Fund",
+      "value": 136490,
+      "c": "Interfund Transfers",
+      "f": "General Fund"
+     },
+     {
+      "name": "Park Amenities Repair/Replace",
+      "value": 134000,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Computer Equipment",
+      "value": 131500,
+      "c": "General Government",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Full-Time",
+      "value": 131250,
+      "c": "Community Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Building & Grounds Maintenance",
+      "value": 131000,
+      "c": "General Government",
+      "f": "General Fund"
+     },
+     {
+      "name": "Medicare",
+      "value": 120864,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Snow Removal",
+      "value": 110000,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Overtime",
+      "value": 108500,
+      "c": "Community Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries Recreation - Part Tim",
+      "value": 102102,
+      "c": "Community Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Parks Trail Maintenance",
+      "value": 100000,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Sidewalk Maintenance",
+      "value": 95000,
+      "c": "Public Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Library Materials & Books",
+      "value": 92200,
+      "c": "Community Services",
+      "f": "General Fund"
+     },
+     {
+      "name": "Dues Subscriptions & Membershi",
+      "value": 90139,
+      "c": "General Government",
+      "f": "General Fund"
+     },
+     {
+      "name": "Other (86 smaller lines)",
+      "value": 2372485,
+      "c": null,
+      "f": null
+     }
+    ],
+    "Special Revenue Fund": [
+     {
+      "name": "Sweetwater CRA Expenditures",
+      "value": 12363937,
+      "c": "General Government",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Mid Valley CRA Expenditures",
+      "value": 10000000,
+      "c": "General Government",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Capital Projects",
+      "value": 7798901,
+      "c": "Capital Improvements",
+      "f": "Water Impact Fee Fund"
+     },
+     {
+      "name": "Due To General Fund CP Fund",
+      "value": 3510000,
+      "c": "Interfund Transfers",
+      "f": "Transportation Impact Fee Fund"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 3391222,
+      "c": "Fund Balance Appropriation",
+      "f": "Parks/Trails Impact Fee Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 2057677,
+      "c": "Community Development",
+      "f": "Community Development"
+     },
+     {
+      "name": "Due To Sewer Fund",
+      "value": 1827708,
+      "c": "Interfund Transfers",
+      "f": "Wastewater Impact Fee Fund"
+     },
+     {
+      "name": "Due To Debt Service Fund",
+      "value": 1813250,
+      "c": "Interfund Transfers",
+      "f": "Transportation Impact Fee Fund"
+     },
+     {
+      "name": "Sweetwater CRA Expenditures #2",
+      "value": 1740981,
+      "c": "General Government",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Due to Affordable Housing Fund",
+      "value": 1650232,
+      "c": "Interfund Transfers",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Capital Outlay",
+      "value": 1500000,
+      "c": "Capital Improvements",
+      "f": "Stormwater Impact Fee Fund"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 1315427,
+      "c": "Fund Balance Appropriation",
+      "f": "Wastewater Impact Fee Fund"
+     },
+     {
+      "name": "Mortgage Assistance Program",
+      "value": 1200500,
+      "c": "Community Services",
+      "f": "Affordable Housing Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 825818,
+      "c": "Community Development",
+      "f": "Community Development"
+     },
+     {
+      "name": "Due To Water Fund",
+      "value": 675578,
+      "c": "Interfund Transfers",
+      "f": "Water Impact Fee Fund"
+     },
+     {
+      "name": "Pole Canyon CRA #1",
+      "value": 667620,
+      "c": "General Government",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Local Grants",
+      "value": 600000,
+      "c": "Community Services",
+      "f": "RAP Tax"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 587880,
+      "c": "Community Development",
+      "f": "Community Development"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 451631,
+      "c": "Community Development",
+      "f": "Community Development"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 372234,
+      "c": "Fund Balance Appropriation",
+      "f": "Community Development"
+     },
+     {
+      "name": "Retirement",
+      "value": 297324,
+      "c": "Community Development",
+      "f": "Community Development"
+     },
+     {
+      "name": "Homeless Shelter Mandate",
+      "value": 242000,
+      "c": "Community Services",
+      "f": "Affordable Housing Fund"
+     },
+     {
+      "name": "Local Grants",
+      "value": 197583,
+      "c": "Community Development",
+      "f": "CDBG"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 144130,
+      "c": "Community Development",
+      "f": "Community Development"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 116061,
+      "c": "Community Development",
+      "f": "Community Development"
+     },
+     {
+      "name": "Due To General Fund CP Fund",
+      "value": 89373,
+      "c": "Interfund Transfers",
+      "f": "Parks/Trails Impact Fee Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 88899,
+      "c": "Community Services",
+      "f": "Affordable Housing Fund"
+     },
+     {
+      "name": "Salaries - Part-Time Permanent",
+      "value": 76230,
+      "c": "Community Development",
+      "f": "Community Development"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 72009,
+      "c": "Community Development",
+      "f": "Community Development"
+     },
+     {
+      "name": "Contractual Agreements",
+      "value": 55200,
+      "c": "Community Development",
+      "f": "Community Development"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 50000,
+      "c": "Community Services",
+      "f": "Affordable Housing Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 50000,
+      "c": "Public Services",
+      "f": "Cemetery Fund"
+     },
+     {
+      "name": "Overtime",
+      "value": 49920,
+      "c": "Community Development",
+      "f": "Community Development"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 49396,
+      "c": "Community Development",
+      "f": "CDBG"
+     },
+     {
+      "name": "Special Projects",
+      "value": 48899,
+      "c": "Community Services",
+      "f": "Public Art"
+     },
+     {
+      "name": "RDA Consulting Services",
+      "value": 40000,
+      "c": "General Government",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Employee Benefits (401k & 457)",
+      "value": 39707,
+      "c": "Community Development",
+      "f": "Community Development"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 39571,
+      "c": "Fund Balance Appropriation",
+      "f": "Public Safety Facility Impact"
+     },
+     {
+      "name": "Due to General Fund- AdminChrg",
+      "value": 39558,
+      "c": "Interfund Transfers",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "State Insurance Fund",
+      "value": 32467,
+      "c": "Community Development",
+      "f": "Community Development"
+     },
+     {
+      "name": "Other (43 smaller lines)",
+      "value": 296554,
+      "c": null,
+      "f": null
+     }
+    ],
+    "Debt Service Fund": [
+     {
+      "name": "Interest Expense",
+      "value": 981250,
+      "c": "Debt Service",
+      "f": "Debt Service Fund"
+     },
+     {
+      "name": "Principal",
+      "value": 830000,
+      "c": "Debt Service",
+      "f": "Debt Service Fund"
+     },
+     {
+      "name": "Arbitage Interest Rebate",
+      "value": 800000,
+      "c": "Debt Service",
+      "f": "Debt Service Fund"
+     },
+     {
+      "name": "Paying Agent Fee",
+      "value": 2000,
+      "c": "Debt Service",
+      "f": "Debt Service Fund"
+     }
+    ],
+    "Capital Projects Fund": [
+     {
+      "name": "Trail Head/Pony Express Pwky",
+      "value": 3360000,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Campus Drive High T",
+      "value": 2790000,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Land Acquisition",
+      "value": 2500000,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Airport Road",
+      "value": 2000000,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Trail - Ranches PEP to SR73",
+      "value": 1320137,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Relocate Rodeo Grounds",
+      "value": 1000000,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Due to Debt Service Fund",
+      "value": 800000,
+      "c": "Interfund Transfers",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Ranches Pkwy Widening PEP-SR73",
+      "value": 750000,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "City Hall",
+      "value": 500000,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Seal Coat Roads",
+      "value": 500000,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Traffic Signal MVR/EMB",
+      "value": 425000,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Pole Cny/PEP Intersection",
+      "value": 300000,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Park&Recreation Grant Projects",
+      "value": 262915,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Speed Tables",
+      "value": 200000,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Silverlake Parkway Turn Lane",
+      "value": 150000,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Mt Airy Widening SR73",
+      "value": 50000,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Fieldhouse",
+      "value": 30000,
+      "c": "Capital Improvements",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Due to Public Art Fund",
+      "value": 16585,
+      "c": "Interfund Transfers",
+      "f": "Capital Projects General Fund"
+     }
+    ],
+    "Enterprise · Utilities": [
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 144455246,
+      "c": "Fund Balance Appropriation",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Waste Water Treatment Facility",
+      "value": 48056951,
+      "c": "Capital Improvements",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 19679421,
+      "c": "Fund Balance Appropriation",
+      "f": "Water Fund"
+     },
+     {
+      "name": "CUWCD - Development Fees",
+      "value": 8853500,
+      "c": "Public Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "East Trunkline",
+      "value": 5900000,
+      "c": "Capital Improvements",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "CUWCD - Contracted Water",
+      "value": 4418895,
+      "c": "Public Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Capital Projects",
+      "value": 4165094,
+      "c": "Capital Improvements",
+      "f": "Water Fund"
+     },
+     {
+      "name": "EffluentPond Storage Liner R&R",
+      "value": 4010000,
+      "c": "Capital Improvements",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "TSSD Services",
+      "value": 3203092,
+      "c": "Public Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Solid Waste Contract",
+      "value": 2709000,
+      "c": "Public Utilities",
+      "f": "Solid Waste Fund"
+     },
+     {
+      "name": "Ox Ditch Upgrade",
+      "value": 2600000,
+      "c": "Capital Improvements",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "FB Sanitary Sewer & Force Main",
+      "value": 2500000,
+      "c": "Capital Improvements",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Utilities (Gas Electric Water",
+      "value": 1913450,
+      "c": "Public Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 1537859,
+      "c": "Public Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 1099072,
+      "c": "Public Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 1086788,
+      "c": "Public Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Principal",
+      "value": 1066300,
+      "c": "Debt Service",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 1003698,
+      "c": "Public Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Meters - Water - New",
+      "value": 850000,
+      "c": "Public Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 607091,
+      "c": "Public Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Principal",
+      "value": 520700,
+      "c": "Debt Service",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Meters - Water - Replacement",
+      "value": 461800,
+      "c": "Public Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 417419,
+      "c": "Interfund Transfers",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Utilities",
+      "value": 399000,
+      "c": "Public Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 373651,
+      "c": "Public Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 371256,
+      "c": "Interfund Transfers",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Equipment Materials & Supplies",
+      "value": 365500,
+      "c": "Public Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 328616,
+      "c": "Public Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "FB Winter Storage Ponds",
+      "value": 300750,
+      "c": "Capital Improvements",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Tertiary Treatment Project",
+      "value": 300000,
+      "c": "Capital Improvements",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Chemicals & Fertilizers",
+      "value": 291700,
+      "c": "Public Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Equipment Supplies and Mainten",
+      "value": 286000,
+      "c": "Public Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 275141,
+      "c": "Public Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Interest",
+      "value": 200668,
+      "c": "Debt Service",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 196706,
+      "c": "Interfund Transfers",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Due to UB Internal Service Fnd",
+      "value": 196253,
+      "c": "Interfund Transfers",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 155987,
+      "c": "Public Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Interest",
+      "value": 154878,
+      "c": "Debt Service",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 152246,
+      "c": "Public Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Due to UB Internal Service Fnd",
+      "value": 151852,
+      "c": "Interfund Transfers",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Other (103 smaller lines)",
+      "value": 3234620,
+      "c": null,
+      "f": null
+     }
+    ],
+    "Internal Service": [
+     {
+      "name": "Vehicle Purchase",
+      "value": 1906000,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Salaries - Full Time Permanent",
+      "value": 212764,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Fleet Vehicle Fuel",
+      "value": 200000,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Vehicle Maintenance",
+      "value": 200000,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Salaries - FT",
+      "value": 196909,
+      "c": "Department Services",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Salaries - FT",
+      "value": 159950,
+      "c": "Department Services",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 147000,
+      "c": "Department Services",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Banking Fees",
+      "value": 129375,
+      "c": "Department Services",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "UtilityBill Mailing/Printiing",
+      "value": 111350,
+      "c": "Department Services",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 108382,
+      "c": "Department Services",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 96873,
+      "c": "Department Services",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Insurance & Surety Bonds",
+      "value": 82294,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 60300,
+      "c": "Department Services",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Salaries - PT/Temporary",
+      "value": 53457,
+      "c": "Department Services",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 52328,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 44848,
+      "c": "Department Services",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Salaries - PT/Temporary",
+      "value": 37933,
+      "c": "Department Services",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 37672,
+      "c": "Department Services",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 31212,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 27943,
+      "c": "Department Services",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 25000,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 25000,
+      "c": "Department Services",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 22698,
+      "c": "Department Services",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 17100,
+      "c": "Department Services",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 15964,
+      "c": "Department Services",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 13000,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 12149,
+      "c": "Department Services",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Travel & Training",
+      "value": 10150,
+      "c": "Department Services",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 9844,
+      "c": "Department Services",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 6585,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Equipment Supplies/Maintenance",
+      "value": 5000,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "State Insurance Fund",
+      "value": 4253,
+      "c": "Department Services",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "State Insurance Fund",
+      "value": 3853,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Travel & Training",
+      "value": 3500,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Medicare",
+      "value": 3409,
+      "c": "Department Services",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "FICA",
+      "value": 3315,
+      "c": "Department Services",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Dental Insurance",
+      "value": 3212,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Medicare",
+      "value": 3097,
+      "c": "Department Services",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Medicare",
+      "value": 3087,
+      "c": "Department Services",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Equipment Supplies & Maint.",
+      "value": 2800,
+      "c": "Department Services",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Other (22 smaller lines)",
+      "value": 23033,
+      "c": null,
+      "f": null
+     }
+    ]
+   },
+   "byFunction": {
+    "General Government": [
+     {
+      "name": "Sweetwater CRA Expenditures",
+      "value": 12363937,
+      "c": "Special Revenue Fund",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Mid Valley CRA Expenditures",
+      "value": 10000000,
+      "c": "Special Revenue Fund",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": -4592615,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 3493501,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Sweetwater CRA Expenditures #2",
+      "value": 1740981,
+      "c": "Special Revenue Fund",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 758180,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Pole Canyon CRA #1",
+      "value": 667620,
+      "c": "Special Revenue Fund",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 627870,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 589596,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - FT",
+      "value": 509622,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 413289,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Liability Insurance Premium",
+      "value": 375046,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Part-Time Permanent",
+      "value": 325654,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 205214,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 150153,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Travel & Training",
+      "value": 148695,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Computer Equipment",
+      "value": 131500,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Building & Grounds Maintenance",
+      "value": 100000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Dues Subscriptions & Membershi",
+      "value": 88839,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Cell Phone",
+      "value": 84000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Seasonal",
+      "value": 82013,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Computer Software & Maint",
+      "value": 81000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Utilities",
+      "value": 77334,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Attorney Fees",
+      "value": 75000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Building & Bldg Improvements",
+      "value": 75000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Medicare",
+      "value": 63624,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Banking Fees",
+      "value": 61200,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Council Special Projects",
+      "value": 61000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Computer Software & Maintenanc",
+      "value": 52910,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Dental Insurance",
+      "value": 50214,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Equipment Supplies & Maintnanc",
+      "value": 48850,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Website Maintenance",
+      "value": 44150,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Office Expense & Supplies",
+      "value": 41700,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Telephone",
+      "value": 41000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Employee Activities",
+      "value": 41000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Computer Software & Maintenance",
+      "value": 40200,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "RDA Consulting Services",
+      "value": 40000,
+      "c": "Special Revenue Fund",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Salaries - PT",
+      "value": 36495,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "DSL Service",
+      "value": 34950,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Car Allowance",
+      "value": 31200,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Other (36 smaller lines)",
+      "value": 371332,
+      "c": null,
+      "f": null
+     }
+    ],
+    "Community Services": [
+     {
+      "name": "Development Agreements",
+      "value": 6480000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Mortgage Assistance Program",
+      "value": 1200500,
+      "c": "Special Revenue Fund",
+      "f": "Affordable Housing Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 714119,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Local Grants",
+      "value": 600000,
+      "c": "Special Revenue Fund",
+      "f": "RAP Tax"
+     },
+     {
+      "name": "Salaries - Part-Time Permanent",
+      "value": 293074,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Homeless Shelter Mandate",
+      "value": 242000,
+      "c": "Special Revenue Fund",
+      "f": "Affordable Housing Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 192818,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Special Events & Projects",
+      "value": 170000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Youth Sports",
+      "value": 151700,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Full-Time",
+      "value": 131250,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 125821,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries Recreation - Part Tim",
+      "value": 102102,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Library Materials & Books",
+      "value": 92200,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 88899,
+      "c": "Special Revenue Fund",
+      "f": "Affordable Housing Fund"
+     },
+     {
+      "name": "Pony Express Days Celebration",
+      "value": 65000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Seasonal",
+      "value": 58968,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Travel & Training",
+      "value": 56400,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 55400,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 54088,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 50000,
+      "c": "Special Revenue Fund",
+      "f": "Affordable Housing Fund"
+     },
+     {
+      "name": "Special Projects",
+      "value": 48899,
+      "c": "Special Revenue Fund",
+      "f": "Public Art"
+     },
+     {
+      "name": "Marketing Tools",
+      "value": 45300,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Overtime",
+      "value": 37000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 28827,
+      "c": "Special Revenue Fund",
+      "f": "Affordable Housing Fund"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 27450,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Dues Subscriptions, Membership",
+      "value": 25130,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Economic Development",
+      "value": 25000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 23429,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "FICA",
+      "value": 21830,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Medicare",
+      "value": 18865,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Computer Network & Data Proces",
+      "value": 18219,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 16958,
+      "c": "Special Revenue Fund",
+      "f": "Affordable Housing Fund"
+     },
+     {
+      "name": "Senior Council",
+      "value": 15000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Library Materials from Grants",
+      "value": 15000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Adult Sports",
+      "value": 14300,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 12616,
+      "c": "Special Revenue Fund",
+      "f": "Affordable Housing Fund"
+     },
+     {
+      "name": "Youth Council",
+      "value": 12000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Dental Insurance",
+      "value": 11453,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Employee Benefits (410K & 457)",
+      "value": 10753,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Office Expense & Supplies",
+      "value": 10500,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Other (27 smaller lines)",
+      "value": 106458,
+      "c": null,
+      "f": null
+     }
+    ],
+    "Public Safety": [
+     {
+      "name": "Restricted Interim Budget",
+      "value": 6958141,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Contract Services",
+      "value": 2839998,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Dispatch Services",
+      "value": 588515,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Seasonal",
+      "value": 177450,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 83259,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Animal Control",
+      "value": 71557,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "DUI Blitzes w/ Alcohol Tax Fnd",
+      "value": 35000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 21055,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "FICA",
+      "value": 11002,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Communities That Care Program",
+      "value": 7000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Emergency Management Equipment",
+      "value": 6500,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Misc - Services & Supplies",
+      "value": 6000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Rad Women",
+      "value": 6000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "State Insurance Fund",
+      "value": 4721,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Emergency Management",
+      "value": 4000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Medicare",
+      "value": 3782,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 3423,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "RadKids",
+      "value": 3000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Travel & Training",
+      "value": 2600,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "CERT Training",
+      "value": 2000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Dental Insurance",
+      "value": 1405,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Long Term Disability",
+      "value": 442,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Vision Insurance",
+      "value": 290,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Clothing Allowance",
+      "value": 100,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 100,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Dues & Memberships",
+      "value": 90,
+      "c": "General Fund",
+      "f": "General Fund"
+     }
+    ],
+    "Community Development": [
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 2057677,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 825818,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 587880,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 451631,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Retirement",
+      "value": 297324,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 295098,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Local Grants",
+      "value": 197583,
+      "c": "Special Revenue Fund",
+      "f": "CDBG"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 144130,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 116061,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Salaries - Part-Time Permanent",
+      "value": 76230,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 72009,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Contractual Agreements",
+      "value": 55200,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 53586,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 52293,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Overtime",
+      "value": 49920,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 49396,
+      "c": "Special Revenue Fund",
+      "f": "CDBG"
+     },
+     {
+      "name": "Retirement",
+      "value": 41877,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Employee Benefits (401k & 457)",
+      "value": 39707,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 35000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "State Insurance Fund",
+      "value": 32467,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Medicare",
+      "value": 30957,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Travel & Training",
+      "value": 29790,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Dental Insurance",
+      "value": 28561,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Contractual Agreements",
+      "value": 27600,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Special Projects",
+      "value": 22500,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Special Projects",
+      "value": 20000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Employee Benefits (401k & 457)",
+      "value": 16081,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Office Expense & Supplies",
+      "value": 14750,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Long Term Disability",
+      "value": 10454,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Dues & Memberships",
+      "value": 7217,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Clothing Allowance",
+      "value": 6600,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Vision Insurance",
+      "value": 5948,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "FICA",
+      "value": 4732,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Medicare",
+      "value": 4281,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Planning Commission Meetings",
+      "value": 3800,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Equipment Materials & Supplies",
+      "value": 3350,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "State Insurance Fund",
+      "value": 3280,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Dental Insurance",
+      "value": 2292,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Meetings",
+      "value": 1800,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Clothing Allowance",
+      "value": 1700,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Other (8 smaller lines)",
+      "value": 7667,
+      "c": null,
+      "f": null
+     }
+    ],
+    "Public Services": [
+     {
+      "name": "Paved Road Maint.",
+      "value": 2000000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 1996082,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Street Light New Install",
+      "value": 1500000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 825655,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 619035,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 572382,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Utilities (Gas Electric Water",
+      "value": 466640,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 429260,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Street Light Maintenance",
+      "value": 310000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 283994,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "City Wide Trees",
+      "value": 215300,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Landscape Maintenance",
+      "value": 203000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Equipment Supplies and Mainten",
+      "value": 137000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Park Amenities Repair/Replace",
+      "value": 134000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Snow Removal",
+      "value": 110000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 102186,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Parks Trail Maintenance",
+      "value": 100000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Sidewalk Maintenance",
+      "value": 95000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Street Sign Maintenance",
+      "value": 75000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Equipment Rental/Lease (Non-Pu",
+      "value": 74500,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Part-Time Temporary",
+      "value": 58191,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Overtime",
+      "value": 50500,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 50000,
+      "c": "Special Revenue Fund",
+      "f": "Cemetery Fund"
+     },
+     {
+      "name": "Special Projects",
+      "value": 40000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "State Insurance Fund",
+      "value": 38489,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Traffic Signal Maintenance",
+      "value": 35000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Seasonal",
+      "value": 34776,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 33456,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Building & Grounds Maintenance",
+      "value": 31000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Medicare",
+      "value": 30312,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Dental Insurance",
+      "value": 23717,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Travel & Training",
+      "value": 20915,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Unimproved Road Maint.",
+      "value": 20000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 17309,
+      "c": "Special Revenue Fund",
+      "f": "Cemetery Fund"
+     },
+     {
+      "name": "Clothing Allowance",
+      "value": 12791,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Long Term Disability",
+      "value": 10695,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Equipment Materials & Supplies",
+      "value": 10000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Equipment Rental/Lease",
+      "value": 10000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Employee Benefits (401k & 457)",
+      "value": 9736,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Landscape Maintenance",
+      "value": 8500,
+      "c": "Special Revenue Fund",
+      "f": "Cemetery Fund"
+     },
+     {
+      "name": "Other (19 smaller lines)",
+      "value": 46346,
+      "c": null,
+      "f": null
+     }
+    ],
+    "Interfund Transfers": [
+     {
+      "name": "Due To Cap Proj Fund",
+      "value": 6393350,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Due To General Fund CP Fund",
+      "value": 3510000,
+      "c": "Special Revenue Fund",
+      "f": "Transportation Impact Fee Fund"
+     },
+     {
+      "name": "Due To Sewer Fund",
+      "value": 1827708,
+      "c": "Special Revenue Fund",
+      "f": "Wastewater Impact Fee Fund"
+     },
+     {
+      "name": "Due To Debt Service Fund",
+      "value": 1813250,
+      "c": "Special Revenue Fund",
+      "f": "Transportation Impact Fee Fund"
+     },
+     {
+      "name": "Due to Affordable Housing Fund",
+      "value": 1650232,
+      "c": "Special Revenue Fund",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Due to Debt Service Fund",
+      "value": 800000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Due To Water Fund",
+      "value": 675578,
+      "c": "Special Revenue Fund",
+      "f": "Water Impact Fee Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 417419,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 371256,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 196706,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Due to UB Internal Service Fnd",
+      "value": 196253,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Due to UB Internal Service Fnd",
+      "value": 151852,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Due to UB Internal Service Fnd",
+      "value": 139469,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Due To GIS Fund",
+      "value": 136490,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Due to GIS Internal Service Fd",
+      "value": 136490,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Due to GIS Internal Service Fd",
+      "value": 136490,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Due to GIS Internal Service Fd",
+      "value": 136490,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Due to UB Internal Service Fnd",
+      "value": 132955,
+      "c": "Enterprise · Utilities",
+      "f": "Solid Waste Fund"
+     },
+     {
+      "name": "Due To General Fund CP Fund",
+      "value": 89373,
+      "c": "Special Revenue Fund",
+      "f": "Parks/Trails Impact Fee Fund"
+     },
+     {
+      "name": "Due to General Fund- AdminChrg",
+      "value": 39558,
+      "c": "Special Revenue Fund",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Due to Public Art Fund",
+      "value": 21814,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Due to Public Art Fund",
+      "value": 16585,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Due to Public Art Fund",
+      "value": 10500,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     }
+    ],
+    "Debt Service": [
+     {
+      "name": "Principal",
+      "value": 1066300,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Interest Expense",
+      "value": 981250,
+      "c": "Debt Service Fund",
+      "f": "Debt Service Fund"
+     },
+     {
+      "name": "Principal",
+      "value": 830000,
+      "c": "Debt Service Fund",
+      "f": "Debt Service Fund"
+     },
+     {
+      "name": "Arbitage Interest Rebate",
+      "value": 800000,
+      "c": "Debt Service Fund",
+      "f": "Debt Service Fund"
+     },
+     {
+      "name": "Principal",
+      "value": 520700,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Interest",
+      "value": 200668,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Interest",
+      "value": 154878,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Paying Agent Fee",
+      "value": 5083,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Paying Agent Fee",
+      "value": 2567,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Paying Agent Fee",
+      "value": 2000,
+      "c": "Debt Service Fund",
+      "f": "Debt Service Fund"
+     }
+    ],
+    "Fund Balance Appropriation": [
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 144455246,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 19679421,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 3391222,
+      "c": "Special Revenue Fund",
+      "f": "Parks/Trails Impact Fee Fund"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 1315427,
+      "c": "Special Revenue Fund",
+      "f": "Wastewater Impact Fee Fund"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 372234,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 39571,
+      "c": "Special Revenue Fund",
+      "f": "Public Safety Facility Impact"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 37829,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     }
+    ],
+    "Capital Improvements": [
+     {
+      "name": "Waste Water Treatment Facility",
+      "value": 48056951,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Capital Projects",
+      "value": 7798901,
+      "c": "Special Revenue Fund",
+      "f": "Water Impact Fee Fund"
+     },
+     {
+      "name": "East Trunkline",
+      "value": 5900000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Capital Projects",
+      "value": 4165094,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "EffluentPond Storage Liner R&R",
+      "value": 4010000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Trail Head/Pony Express Pwky",
+      "value": 3360000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Campus Drive High T",
+      "value": 2790000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Ox Ditch Upgrade",
+      "value": 2600000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Land Acquisition",
+      "value": 2500000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "FB Sanitary Sewer & Force Main",
+      "value": 2500000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Airport Road",
+      "value": 2000000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Capital Outlay",
+      "value": 1500000,
+      "c": "Special Revenue Fund",
+      "f": "Stormwater Impact Fee Fund"
+     },
+     {
+      "name": "Trail - Ranches PEP to SR73",
+      "value": 1320137,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Relocate Rodeo Grounds",
+      "value": 1000000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Ranches Pkwy Widening PEP-SR73",
+      "value": 750000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "City Hall",
+      "value": 500000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Seal Coat Roads",
+      "value": 500000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Traffic Signal MVR/EMB",
+      "value": 425000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "FB Winter Storage Ponds",
+      "value": 300750,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Pole Cny/PEP Intersection",
+      "value": 300000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Tertiary Treatment Project",
+      "value": 300000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Park&Recreation Grant Projects",
+      "value": 262915,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Speed Tables",
+      "value": 200000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Silverlake Parkway Turn Lane",
+      "value": 150000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Mt Airy Widening SR73",
+      "value": 50000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Fieldhouse",
+      "value": 30000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     }
+    ],
+    "Public Utilities": [
+     {
+      "name": "CUWCD - Development Fees",
+      "value": 8853500,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "CUWCD - Contracted Water",
+      "value": 4418895,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "TSSD Services",
+      "value": 3203092,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Solid Waste Contract",
+      "value": 2709000,
+      "c": "Enterprise · Utilities",
+      "f": "Solid Waste Fund"
+     },
+     {
+      "name": "Utilities (Gas Electric Water",
+      "value": 1913450,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 1537859,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 1099072,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 1086788,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 1003698,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Meters - Water - New",
+      "value": 850000,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 607091,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Meters - Water - Replacement",
+      "value": 461800,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Utilities",
+      "value": 399000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 373651,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Equipment Materials & Supplies",
+      "value": 365500,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 328616,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Chemicals & Fertilizers",
+      "value": 291700,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Equipment Supplies and Mainten",
+      "value": 286000,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 275141,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 155987,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 152246,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 147321,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 140000,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 137000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 101848,
+      "c": "Enterprise · Utilities",
+      "f": "Solid Waste Fund"
+     },
+     {
+      "name": "Stormdrain Maintenance",
+      "value": 100000,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 98950,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 89577,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Lab Work",
+      "value": 85000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Equipment Supplies and Mainten",
+      "value": 81000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Bio Solids Disposal",
+      "value": 80000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Attorney Fees",
+      "value": 75000,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Scada Maintenance & Upgrades",
+      "value": 70000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Chemicals & Fertilizers",
+      "value": 61000,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Salaries - Part-Time Permanent",
+      "value": 60798,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Overtime",
+      "value": 55000,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Scada Maintenance & Upgrades",
+      "value": 55000,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Valve Maintenance",
+      "value": 50000,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Equipment Supplies & Maintenan",
+      "value": 50000,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 42318,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Other (74 smaller lines)",
+      "value": 895121,
+      "c": null,
+      "f": null
+     }
+    ],
+    "Department Services": [
+     {
+      "name": "Vehicle Purchase",
+      "value": 1906000,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Salaries - Full Time Permanent",
+      "value": 212764,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Fleet Vehicle Fuel",
+      "value": 200000,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Vehicle Maintenance",
+      "value": 200000,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Salaries - FT",
+      "value": 196909,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Salaries - FT",
+      "value": 159950,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 147000,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Banking Fees",
+      "value": 129375,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "UtilityBill Mailing/Printiing",
+      "value": 111350,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 108382,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 96873,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Insurance & Surety Bonds",
+      "value": 82294,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 60300,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Salaries - PT/Temporary",
+      "value": 53457,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 52328,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 44848,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Salaries - PT/Temporary",
+      "value": 37933,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 37672,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 31212,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 27943,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 25000,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 25000,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 22698,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 17100,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 15964,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 13000,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 12149,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Travel & Training",
+      "value": 10150,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 9844,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 6585,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Equipment Supplies/Maintenance",
+      "value": 5000,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "State Insurance Fund",
+      "value": 4253,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "State Insurance Fund",
+      "value": 3853,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Travel & Training",
+      "value": 3500,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Medicare",
+      "value": 3409,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "FICA",
+      "value": 3315,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Dental Insurance",
+      "value": 3212,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Medicare",
+      "value": 3097,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Medicare",
+      "value": 3087,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Equipment Supplies & Maint.",
+      "value": 2800,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Other (22 smaller lines)",
+      "value": 23033,
+      "c": null,
+      "f": null
+     }
+    ]
+   },
+   "byObject": {
+    "Personnel Services": [
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 6582059,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 2057677,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 1453606,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 1086788,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 1044711,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 1003698,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Salaries - Part-Time Permanent",
+      "value": 618728,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 607091,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Salaries - FT",
+      "value": 509622,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 451631,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Salaries - Seasonal",
+      "value": 353207,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 330829,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 328616,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 297324,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 275141,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Salaries - Full Time Permanent",
+      "value": 212764,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Salaries - FT",
+      "value": 196909,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Salaries - FT",
+      "value": 159950,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 155987,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 152246,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 147321,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Salaries - Full-Time",
+      "value": 131250,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Medicare",
+      "value": 120864,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Overtime",
+      "value": 108500,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries Recreation - Part Tim",
+      "value": 102102,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Retirement",
+      "value": 89577,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Dental Insurance",
+      "value": 89081,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Full-Time Permanent",
+      "value": 88899,
+      "c": "Special Revenue Fund",
+      "f": "Affordable Housing Fund"
+     },
+     {
+      "name": "Salaries - Part-Time Permanent",
+      "value": 76230,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "State Insurance Fund",
+      "value": 75332,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 72009,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Salaries - Part-Time Permanent",
+      "value": 60798,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "FICA",
+      "value": 60412,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Salaries - Part-Time Temporary",
+      "value": 58191,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Overtime",
+      "value": 55000,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Salaries - PT/Temporary",
+      "value": 53457,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 52328,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Overtime",
+      "value": 49920,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Health Insurance",
+      "value": 44848,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Employee Benefits (401K & 457)",
+      "value": 42318,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Other (106 smaller lines)",
+      "value": 1009695,
+      "c": null,
+      "f": null
+     }
+    ],
+    "Materials, Supplies & Services": [
+     {
+      "name": "Sweetwater CRA Expenditures",
+      "value": 12363937,
+      "c": "Special Revenue Fund",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Mid Valley CRA Expenditures",
+      "value": 10000000,
+      "c": "Special Revenue Fund",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "CUWCD - Development Fees",
+      "value": 8853500,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Development Agreements",
+      "value": 6480000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "CUWCD - Contracted Water",
+      "value": 4418895,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": -3973580,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "TSSD Services",
+      "value": 3203092,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Contract Services",
+      "value": 2839998,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Solid Waste Contract",
+      "value": 2709000,
+      "c": "Enterprise · Utilities",
+      "f": "Solid Waste Fund"
+     },
+     {
+      "name": "Paved Road Maint.",
+      "value": 2000000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Utilities (Gas Electric Water",
+      "value": 1913450,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Sweetwater CRA Expenditures #2",
+      "value": 1740981,
+      "c": "Special Revenue Fund",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 1537859,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 1509025,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Street Light New Install",
+      "value": 1500000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 1099072,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Meters - Water - New",
+      "value": 850000,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 825818,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Pole Canyon CRA #1",
+      "value": 667620,
+      "c": "Special Revenue Fund",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Dispatch Services",
+      "value": 588515,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 587880,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Computer Software & Maint.",
+      "value": 509195,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Utilities (Gas Electric Water",
+      "value": 466640,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Meters - Water - Replacement",
+      "value": 461800,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Utilities",
+      "value": 399000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Liability Insurance Premium",
+      "value": 375046,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 373651,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Equipment Materials & Supplies",
+      "value": 365500,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Street Light Maintenance",
+      "value": 310000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Chemicals & Fertilizers",
+      "value": 291700,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Equipment Supplies and Mainten",
+      "value": 286000,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Travel & Training",
+      "value": 229610,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "City Wide Trees",
+      "value": 215300,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Landscape Maintenance",
+      "value": 203000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Fleet Vehicle Fuel",
+      "value": 200000,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Vehicle Maintenance",
+      "value": 200000,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Special Events & Projects",
+      "value": 170000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Youth Sports",
+      "value": 151700,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Professional & Technical Servi",
+      "value": 147000,
+      "c": "Internal Service",
+      "f": "Utility Billing Fund"
+     },
+     {
+      "name": "Equipment Supplies and Mainten",
+      "value": 146000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Other (171 smaller lines)",
+      "value": 5530304,
+      "c": null,
+      "f": null
+     }
+    ],
+    "Capital Outlay": [
+     {
+      "name": "Waste Water Treatment Facility",
+      "value": 48056951,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Capital Projects",
+      "value": 7798901,
+      "c": "Special Revenue Fund",
+      "f": "Water Impact Fee Fund"
+     },
+     {
+      "name": "East Trunkline",
+      "value": 5900000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Capital Projects",
+      "value": 4165094,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "EffluentPond Storage Liner R&R",
+      "value": 4010000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Trail Head/Pony Express Pwky",
+      "value": 3360000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Campus Drive High T",
+      "value": 2790000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Ox Ditch Upgrade",
+      "value": 2600000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Land Acquisition",
+      "value": 2500000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "FB Sanitary Sewer & Force Main",
+      "value": 2500000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Airport Road",
+      "value": 2000000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Vehicle Purchase",
+      "value": 1906000,
+      "c": "Internal Service",
+      "f": "Fleet Fund"
+     },
+     {
+      "name": "Capital Outlay",
+      "value": 1500000,
+      "c": "Special Revenue Fund",
+      "f": "Stormwater Impact Fee Fund"
+     },
+     {
+      "name": "Trail - Ranches PEP to SR73",
+      "value": 1320137,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Relocate Rodeo Grounds",
+      "value": 1000000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Ranches Pkwy Widening PEP-SR73",
+      "value": 750000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "City Hall",
+      "value": 500000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Seal Coat Roads",
+      "value": 500000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Traffic Signal MVR/EMB",
+      "value": 425000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "FB Winter Storage Ponds",
+      "value": 300750,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Pole Cny/PEP Intersection",
+      "value": 300000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Tertiary Treatment Project",
+      "value": 300000,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Park&Recreation Grant Projects",
+      "value": 262915,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Speed Tables",
+      "value": 200000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Silverlake Parkway Turn Lane",
+      "value": 150000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Computer Equipment",
+      "value": 131500,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Building & Bldg Improvements",
+      "value": 75000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Mt Airy Widening SR73",
+      "value": 50000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Furniture",
+      "value": 30000,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Fieldhouse",
+      "value": 30000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Emergency Management Equipment",
+      "value": 6500,
+      "c": "General Fund",
+      "f": "General Fund"
+     }
+    ],
+    "Interfund Transfers": [
+     {
+      "name": "Restricted Interim Budget",
+      "value": 6958141,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Due To Cap Proj Fund",
+      "value": 6393350,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Due To General Fund CP Fund",
+      "value": 3510000,
+      "c": "Special Revenue Fund",
+      "f": "Transportation Impact Fee Fund"
+     },
+     {
+      "name": "Due To Sewer Fund",
+      "value": 1827708,
+      "c": "Special Revenue Fund",
+      "f": "Wastewater Impact Fee Fund"
+     },
+     {
+      "name": "Due To Debt Service Fund",
+      "value": 1813250,
+      "c": "Special Revenue Fund",
+      "f": "Transportation Impact Fee Fund"
+     },
+     {
+      "name": "Due to Affordable Housing Fund",
+      "value": 1650232,
+      "c": "Special Revenue Fund",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Due to Debt Service Fund",
+      "value": 800000,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 776623,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Due To Water Fund",
+      "value": 675578,
+      "c": "Special Revenue Fund",
+      "f": "Water Impact Fee Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 417419,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 371256,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 196706,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Due to UB Internal Service Fnd",
+      "value": 196253,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Due to UB Internal Service Fnd",
+      "value": 151852,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Due to UB Internal Service Fnd",
+      "value": 139469,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Due To GIS Fund",
+      "value": 136490,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Due to GIS Internal Service Fd",
+      "value": 136490,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Due to GIS Internal Service Fd",
+      "value": 136490,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Due to GIS Internal Service Fd",
+      "value": 136490,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     },
+     {
+      "name": "Due to UB Internal Service Fnd",
+      "value": 132955,
+      "c": "Enterprise · Utilities",
+      "f": "Solid Waste Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 116061,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Due To General Fund CP Fund",
+      "value": 89373,
+      "c": "Special Revenue Fund",
+      "f": "Parks/Trails Impact Fee Fund"
+     },
+     {
+      "name": "Administrative Cost",
+      "value": 53586,
+      "c": "General Fund",
+      "f": "General Fund"
+     },
+     {
+      "name": "Due to General Fund- AdminChrg",
+      "value": 39558,
+      "c": "Special Revenue Fund",
+      "f": "Eagle Mountain RDA"
+     },
+     {
+      "name": "Due to Public Art Fund",
+      "value": 21814,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Due to Public Art Fund",
+      "value": 16585,
+      "c": "Capital Projects Fund",
+      "f": "Capital Projects General Fund"
+     },
+     {
+      "name": "Due To Fleet Fund",
+      "value": 15964,
+      "c": "Internal Service",
+      "f": "GIS Fund"
+     },
+     {
+      "name": "Due to Public Art Fund",
+      "value": 10500,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     }
+    ],
+    "Grants": [
+     {
+      "name": "Mortgage Assistance Program",
+      "value": 1200500,
+      "c": "Special Revenue Fund",
+      "f": "Affordable Housing Fund"
+     },
+     {
+      "name": "Local Grants",
+      "value": 600000,
+      "c": "Special Revenue Fund",
+      "f": "RAP Tax"
+     },
+     {
+      "name": "Homeless Shelter Mandate",
+      "value": 242000,
+      "c": "Special Revenue Fund",
+      "f": "Affordable Housing Fund"
+     },
+     {
+      "name": "Local Grants",
+      "value": 197583,
+      "c": "Special Revenue Fund",
+      "f": "CDBG"
+     }
+    ],
+    "Debt Service": [
+     {
+      "name": "Principal",
+      "value": 1066300,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Interest Expense",
+      "value": 981250,
+      "c": "Debt Service Fund",
+      "f": "Debt Service Fund"
+     },
+     {
+      "name": "Principal",
+      "value": 830000,
+      "c": "Debt Service Fund",
+      "f": "Debt Service Fund"
+     },
+     {
+      "name": "Arbitage Interest Rebate",
+      "value": 800000,
+      "c": "Debt Service Fund",
+      "f": "Debt Service Fund"
+     },
+     {
+      "name": "Principal",
+      "value": 520700,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Interest",
+      "value": 200668,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Interest",
+      "value": 154878,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Paying Agent Fee",
+      "value": 5083,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Paying Agent Fee",
+      "value": 2567,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Paying Agent Fee",
+      "value": 2000,
+      "c": "Debt Service Fund",
+      "f": "Debt Service Fund"
+     }
+    ],
+    "Use of Reserves": [
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 144455246,
+      "c": "Enterprise · Utilities",
+      "f": "Sewer Fund"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 19679421,
+      "c": "Enterprise · Utilities",
+      "f": "Water Fund"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 3391222,
+      "c": "Special Revenue Fund",
+      "f": "Parks/Trails Impact Fee Fund"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 1315427,
+      "c": "Special Revenue Fund",
+      "f": "Wastewater Impact Fee Fund"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 372234,
+      "c": "Special Revenue Fund",
+      "f": "Community Development"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 39571,
+      "c": "Special Revenue Fund",
+      "f": "Public Safety Facility Impact"
+     },
+     {
+      "name": "Fund Balance Appropriation",
+      "value": 37829,
+      "c": "Enterprise · Utilities",
+      "f": "Storm Drain Fund"
+     }
+    ]
+   }
+  }
+ },
+ "general_fund_chart": {
+  "total": 42650441,
+  "revenue": [
+   {
+    "name": "Sales & Use Tax",
+    "total": 25356766
+   },
+   {
+    "name": "Proposed property tax",
+    "total": 6958141
+   },
+   {
+    "name": "State & intergovernmental",
+    "total": 3189287
+   },
+   {
+    "name": "Property Tax",
+    "total": 3136498
+   },
+   {
+    "name": "Contributions",
+    "total": 1515000
+   },
+   {
+    "name": "Fees & charges",
+    "total": 1072885
+   },
+   {
+    "name": "Miscellaneous",
+    "total": 530450
+   },
+   {
+    "name": "Other funding & reserves",
+    "total": 516231
+   },
+   {
+    "name": "Other revenue",
+    "total": 375183
+   }
+  ],
+  "revenue_detail": [
+   {
+    "name": "Sales & Use Tax",
+    "total": 25356766
+   },
+   {
+    "name": "Proposed property tax",
+    "total": 6958141
+   },
+   {
+    "name": "State & intergovernmental",
+    "total": 3189287
+   },
+   {
+    "name": "Property Tax",
+    "total": 3136498
+   },
+   {
+    "name": "Contributions",
+    "total": 1515000
+   },
+   {
+    "name": "Fees & charges",
+    "total": 1072885
+   },
+   {
+    "name": "Miscellaneous",
+    "total": 530450
+   },
+   {
+    "name": "Other funding & reserves",
+    "total": 516231
+   },
+   {
+    "name": "Licenses & Permits",
+    "total": 121000
+   },
+   {
+    "name": "Sales & Services",
+    "total": 104467
+   },
+   {
+    "name": "Business Licenses & Permits",
+    "total": 80403
+   },
+   {
+    "name": "Transfers in",
+    "total": 39558
+   },
+   {
+    "name": "Grants",
+    "total": 15000
+   },
+   {
+    "name": "Fines",
+    "total": 6180
+   },
+   {
+    "name": "Rents & Leases",
+    "total": 6000
+   },
+   {
+    "name": "Reimbursements",
+    "total": 2575
+   }
+  ],
+  "departments": [
+   {
+    "name": "Public Safety",
+    "total": 10837430
+   },
+   {
+    "name": "Economic Development",
+    "total": 6834679
+   },
+   {
+    "name": "Transfers out",
+    "total": 6529840
+   },
+   {
+    "name": "Streets & Roads",
+    "total": 6270607
+   },
+   {
+    "name": "Parks, Recreation & Events",
+    "total": 5796677
+   },
+   {
+    "name": "General government",
+    "total": 4635826
+   },
+   {
+    "name": "Library",
+    "total": 1002737
+   },
+   {
+    "name": "Building & Neighborhood",
+    "total": 559755
+   },
+   {
+    "name": "Engineering",
+    "total": 182890
+   }
+  ],
+  "departments_detail": [
+   {
+    "name": "Public Safety",
+    "total": 10837430
+   },
+   {
+    "name": "Economic Development",
+    "total": 6834679
+   },
+   {
+    "name": "Transfers out",
+    "total": 6529840
+   },
+   {
+    "name": "Streets & Roads",
+    "total": 6270607
+   },
+   {
+    "name": "Parks",
+    "total": 4010939
+   },
+   {
+    "name": "Library",
+    "total": 1002737
+   },
+   {
+    "name": "Recreation",
+    "total": 715971
+   },
+   {
+    "name": "Executive",
+    "total": 633349
+   },
+   {
+    "name": "Special Events",
+    "total": 611493
+   },
+   {
+    "name": "Information Technology",
+    "total": 579078
+   },
+   {
+    "name": "Neighborhood Improvement",
+    "total": 559755
+   },
+   {
+    "name": "Finance",
+    "total": 542927
+   },
+   {
+    "name": "Human Resources",
+    "total": 477034
+   },
+   {
+    "name": "Operations & Facilities",
+    "total": 463363
+   },
+   {
+    "name": "Open Space",
+    "total": 458274
+   },
+   {
+    "name": "Accounting",
+    "total": 328363
+   },
+   {
+    "name": "Attorney",
+    "total": 308054
+   },
+   {
+    "name": "Legislative & Strategic Svcs",
+    "total": 276147
+   },
+   {
+    "name": "Risk Management",
+    "total": 239379
+   },
+   {
+    "name": "Legislative",
+    "total": 230759
+   },
+   {
+    "name": "City Recorder's Office",
+    "total": 230214
+   },
+   {
+    "name": "Communications",
+    "total": 194819
+   },
+   {
+    "name": "Engineering",
+    "total": 182890
+   },
+   {
+    "name": "Customer Services",
+    "total": 132340
+   }
+  ]
+ },
+ "funds": [
+  {
+   "name": "Sewer Fund",
+   "prior": 17491257,
+   "total": 217460999,
+   "change": 199969742
+  },
+  {
+   "name": "Water Fund",
+   "prior": 24391308,
+   "total": 46056578,
+   "change": 21665270
+  },
+  {
+   "name": "General Fund",
+   "prior": 36854296,
+   "total": 42650441,
+   "change": 5796145
+  },
+  {
+   "name": "Eagle Mountain RDA",
+   "prior": 8453952,
+   "total": 26502328,
+   "change": 18048376
+  },
+  {
+   "name": "Capital Projects General Fund",
+   "prior": 19805942,
+   "total": 16954637,
+   "change": -2851305
+  },
+  {
+   "name": "Water Impact Fee Fund",
+   "prior": 26247177,
+   "total": 8474479,
+   "change": -17772698
+  },
+  {
+   "name": "Community Development",
+   "prior": 0,
+   "total": 5349747,
+   "change": 5349747
+  },
+  {
+   "name": "Transportation Impact Fee Fund",
+   "prior": 4125050,
+   "total": 5323250,
+   "change": 1198200
+  },
+  {
+   "name": "Parks/Trails Impact Fee Fund",
+   "prior": 3424792,
+   "total": 3480595,
+   "change": 55803
+  },
+  {
+   "name": "Wastewater Impact Fee Fund",
+   "prior": 8327993,
+   "total": 3143135,
+   "change": -5184858
+  },
+  {
+   "name": "Solid Waste Fund",
+   "prior": 3040294,
+   "total": 3029685,
+   "change": -10609
+  },
+  {
+   "name": "Fleet Fund",
+   "prior": 3398678,
+   "total": 2751951,
+   "change": -646727
+  },
+  {
+   "name": "Debt Service Fund",
+   "prior": 1813250,
+   "total": 2613250,
+   "change": 800000
+  },
+  {
+   "name": "Storm Drain Fund",
+   "prior": 2130846,
+   "total": 2302938,
+   "change": 172092
+  },
+  {
+   "name": "Affordable Housing Fund",
+   "prior": 1847887,
+   "total": 1655547,
+   "change": -192340
+  },
+  {
+   "name": "Stormwater Impact Fee Fund",
+   "prior": 410100,
+   "total": 1500000,
+   "change": 1089900
+  },
+  {
+   "name": "Utility Billing Fund",
+   "prior": 742776,
+   "total": 814728,
+   "change": 71952
+  },
+  {
+   "name": "RAP Tax",
+   "prior": 0,
+   "total": 600000,
+   "change": 600000
+  },
+  {
+   "name": "GIS Fund",
+   "prior": 517016,
+   "total": 545960,
+   "change": 28944
+  },
+  {
+   "name": "CDBG",
+   "prior": 0,
+   "total": 246979,
+   "change": 246979
+  },
+  {
+   "name": "Cemetery Fund",
+   "prior": 81523,
+   "total": 100947,
+   "change": 19424
+  },
+  {
+   "name": "Public Art",
+   "prior": 0,
+   "total": 48899,
+   "change": 48899
+  },
+  {
+   "name": "Public Safety Facility Impact",
+   "prior": 35700,
+   "total": 39571,
+   "change": 3871
+  },
+  {
+   "name": "AA 2013-1 Fund",
+   "prior": 40025,
+   "total": 0,
+   "change": -40025
+  }
+ ],
+ "objects": [
+  {
+   "name": "Fund Balance Appropriation",
+   "prior": 2679198,
+   "total": 169290950,
+   "change": 166611752
+  },
+  {
+   "name": "Capital Outlay",
+   "prior": 66317735,
+   "total": 95418748,
+   "change": 29101013
+  },
+  {
+   "name": "Materials Supplies Services",
+   "prior": 62353910,
+   "total": 72746508,
+   "change": 10392598
+  },
+  {
+   "name": "Interfund Transfers",
+   "prior": 9058781,
+   "total": 26920193,
+   "change": 17861412
+  },
+  {
+   "name": "Personnel Services",
+   "prior": 17071670,
+   "total": 20466716,
+   "change": 3395046
+  },
+  {
+   "name": "Debt Service",
+   "prior": 3506892,
+   "total": 4563446,
+   "change": 1056554
+  },
+  {
+   "name": "Grants",
+   "prior": 2191676,
+   "total": 2240083,
+   "change": 48407
+  }
+ ],
+ "capital": [
+  {
+   "name": "Waste Water Treatment Facility",
+   "fund": "Sewer Fund",
+   "account": "52-81-52100-7306",
+   "total": 48056951
+  },
+  {
+   "name": "Capital Projects",
+   "fund": "Water Impact Fee Fund",
+   "account": "11-81-51000-7000",
+   "total": 7798901
+  },
+  {
+   "name": "East Trunkline",
+   "fund": "Sewer Fund",
+   "account": "52-81-52100-7310",
+   "total": 5900000
+  },
+  {
+   "name": "Capital Projects",
+   "fund": "Water Fund",
+   "account": "51-81-51700-7000",
+   "total": 4165094
+  },
+  {
+   "name": "EffluentPond Storage Liner R&R",
+   "fund": "Sewer Fund",
+   "account": "52-81-52100-7220",
+   "total": 4010000
+  },
+  {
+   "name": "Trail Head/Pony Express Pwky",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-44100-7074",
+   "total": 3360000
+  },
+  {
+   "name": "Campus Drive High T",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-44100-7029",
+   "total": 2790000
+  },
+  {
+   "name": "Ox Ditch Upgrade",
+   "fund": "Sewer Fund",
+   "account": "52-81-52100-7309",
+   "total": 2600000
+  },
+  {
+   "name": "Land Acquisition",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-41000-7058",
+   "total": 2500000
+  },
+  {
+   "name": "FB Sanitary Sewer & Force Main",
+   "fund": "Sewer Fund",
+   "account": "52-81-52100-7304",
+   "total": 2500000
+  },
+  {
+   "name": "Airport Road",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-44100-7026",
+   "total": 2000000
+  },
+  {
+   "name": "Vehicle Purchase",
+   "fund": "Fleet Fund",
+   "account": "54-45-54000-7421",
+   "total": 1906000
+  },
+  {
+   "name": "Capital Outlay",
+   "fund": "Stormwater Impact Fee Fund",
+   "account": "17-51-59000-7000",
+   "total": 1500000
+  },
+  {
+   "name": "Trail - Ranches PEP to SR73",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-45100-7084",
+   "total": 1320137
+  },
+  {
+   "name": "Relocate Rodeo Grounds",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-41000-7078",
+   "total": 1000000
+  },
+  {
+   "name": "Ranches Pkwy Widening PEP-SR73",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-44100-7079",
+   "total": 750000
+  },
+  {
+   "name": "City Hall",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-41000-7061",
+   "total": 500000
+  },
+  {
+   "name": "Seal Coat Roads",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-44100-7125",
+   "total": 500000
+  },
+  {
+   "name": "Traffic Signal MVR/EMB",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-44100-7083",
+   "total": 425000
+  },
+  {
+   "name": "FB Winter Storage Ponds",
+   "fund": "Sewer Fund",
+   "account": "52-81-52100-7305",
+   "total": 300750
+  },
+  {
+   "name": "Pole Cny/PEP Intersection",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-44100-7080",
+   "total": 300000
+  },
+  {
+   "name": "Tertiary Treatment Project",
+   "fund": "Sewer Fund",
+   "account": "52-81-52100-7308",
+   "total": 300000
+  },
+  {
+   "name": "Park&Recreation Grant Projects",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-45100-7045",
+   "total": 262915
+  },
+  {
+   "name": "Speed Tables",
+   "fund": "Capital Projects General Fund",
+   "account": "47-80-44100-7118",
+   "total": 200000
+  },
+  {
+   "name": "Silverlake Parkway Turn Lane",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-44100-7070",
+   "total": 150000
+  },
+  {
+   "name": "Computer Equipment",
+   "fund": "General Fund",
+   "account": "10-19-41955-7412",
+   "total": 131500
+  },
+  {
+   "name": "Building & Bldg Improvements",
+   "fund": "General Fund",
+   "account": "10-19-41950-7211",
+   "total": 75000
+  },
+  {
+   "name": "Mt Airy Widening SR73",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-44100-7082",
+   "total": 50000
+  },
+  {
+   "name": "Furniture",
+   "fund": "General Fund",
+   "account": "10-19-41950-7552",
+   "total": 30000
+  },
+  {
+   "name": "Fieldhouse",
+   "fund": "Capital Projects General Fund",
+   "account": "47-81-41000-7077",
+   "total": 30000
+  },
+  {
+   "name": "Emergency Management Equipment",
+   "fund": "General Fund",
+   "account": "10-21-42100-7415",
+   "total": 6500
+  }
+ ],
+ "capital_total": 95418748,
+ "general_fund": {
+  "total": 42650441,
+  "prior": 36854296,
+  "revenue": [
+   {
+    "name": "Sales and Use Taxes - General",
+    "prior": 13458726,
+    "total": 14535424,
+    "change": 1076698
+   },
+   {
+    "name": "Municipal Energy Tax",
+    "prior": 7726283,
+    "total": 8896371,
+    "change": 1170088
+   },
+   {
+    "name": "Property Taxes Interim Budget",
+    "prior": 0,
+    "total": 6958141,
+    "change": 6958141
+   },
+   {
+    "name": "Class BC@ Road Fund Allotment",
+    "prior": 3154287,
+    "total": 3154287,
+    "change": 0
+   },
+   {
+    "name": "Property Taxes",
+    "prior": 2839998,
+    "total": 2839998,
+    "change": 0
+   },
+   {
+    "name": "Developer Cont-Street Lights",
+    "prior": 1000000,
+    "total": 1500000,
+    "change": 500000
+   },
+   {
+    "name": "Additional Transit Tax",
+    "prior": 1189213,
+    "total": 1284350,
+    "change": 95137
+   },
+   {
+    "name": "Bldg Fees - Subdivision Inspection Fees",
+    "prior": 550000,
+    "total": 850000,
+    "change": 300000
+   },
+   {
+    "name": "Beginning General Fund Balance to be Appropr",
+    "prior": 0,
+    "total": 516231,
+    "change": 516231
+   },
+   {
+    "name": "Interest Earnings",
+    "prior": 500000,
+    "total": 515000,
+    "change": 15000
+   },
+   {
+    "name": "Public Transportation",
+    "prior": 472982,
+    "total": 510821,
+    "change": 37839
+   },
+   {
+    "name": "Motor Vehicle Fee-In-Lieu",
+    "prior": 210000,
+    "total": 190000,
+    "change": -20000
+   },
+   {
+    "name": "Rec Fees - Youth Sports",
+    "prior": 125000,
+    "total": 128750,
+    "change": 3750
+   },
+   {
+    "name": "Municipal Tel License Tax Dist",
+    "prior": 120000,
+    "total": 123600,
+    "change": 3600
+   },
+   {
+    "name": "Bldg Permits - Grading & Excavating",
+    "prior": 85000,
+    "total": 121000,
+    "change": 36000
+   },
+   {
+    "name": "Property Taxes (Delinquent and Prior Year)",
+    "prior": 105000,
+    "total": 105000,
+    "change": 0
+   },
+   {
+    "name": "Fire Services",
+    "prior": 27500,
+    "total": 52967,
+    "change": 25467
+   },
+   {
+    "name": "Pony Express Days Rev Tickets",
+    "prior": 50000,
+    "total": 51500,
+    "change": 1500
+   },
+   {
+    "name": "Licenses - Business",
+    "prior": 48935,
+    "total": 50403,
+    "change": 1468
+   },
+   {
+    "name": "Process Fees - Recording of Legal Documents",
+    "prior": 8000,
+    "total": 45000,
+    "change": 37000
+   },
+   {
+    "name": "Due From RDA",
+    "prior": 22917,
+    "total": 39558,
+    "change": 16641
+   },
+   {
+    "name": "State Liquor Fund Allotment",
+    "prior": 35000,
+    "total": 35000,
+    "change": 0
+   },
+   {
+    "name": "Traffic Control/Road Permits",
+    "prior": 0,
+    "total": 30000,
+    "change": 30000
+   },
+   {
+    "name": "Other Miscellaneous",
+    "prior": 15000,
+    "total": 15450,
+    "change": 450
+   },
+   {
+    "name": "CLEF Grant",
+    "prior": 15000,
+    "total": 15000,
+    "change": 0
+   },
+   {
+    "name": "Eco Dev - Golf Sponsorship",
+    "prior": 15000,
+    "total": 15000,
+    "change": 0
+   },
+   {
+    "name": "NSF Fee",
+    "prior": 11700,
+    "total": 13750,
+    "change": 2050
+   },
+   {
+    "name": "Use Fees - Parks and Public Pr",
+    "prior": 12000,
+    "total": 12360,
+    "change": 360
+   },
+   {
+    "name": "Rec Fees - Adult Sports",
+    "prior": 10000,
+    "total": 10300,
+    "change": 300
+   },
+   {
+    "name": "Library - Fines & Fees",
+    "prior": 7500,
+    "total": 7725,
+    "change": 225
+   },
+   {
+    "name": "Transient Room Tax",
+    "prior": 8000,
+    "total": 6200,
+    "change": -1800
+   },
+   {
+    "name": "Code Enforcement Fines",
+    "prior": 6000,
+    "total": 6180,
+    "change": 180
+   },
+   {
+    "name": "Cell Tower Lease",
+    "prior": 6000,
+    "total": 6000,
+    "change": 0
+   },
+   {
+    "name": "Vendor Booth",
+    "prior": 5000,
+    "total": 5000,
+    "change": 0
+   },
+   {
+    "name": "Senior Meals - MAG Reimb.",
+    "prior": 2500,
+    "total": 2575,
+    "change": 75
+   },
+   {
+    "name": "Penalties/Interest Property Tx",
+    "prior": 1500,
+    "total": 1500,
+    "change": 0
+   },
+   {
+    "name": "CDBG Awards",
+    "prior": 465455,
+    "total": 0,
+    "change": -465455
+   },
+   {
+    "name": "Permits - Sign",
+    "prior": 5000,
+    "total": 0,
+    "change": -5000
+   },
+   {
+    "name": "Bldg Permit-Temp Pwr Inspction",
+    "prior": 115000,
+    "total": 0,
+    "change": -115000
+   },
+   {
+    "name": "Bldg Permits - Surcharge",
+    "prior": 1800,
+    "total": 0,
+    "change": -1800
+   },
+   {
+    "name": "Dev Fee - Plat Fees",
+    "prior": 300000,
+    "total": 0,
+    "change": -300000
+   },
+   {
+    "name": "Dev Fee - Plan Check",
+    "prior": 1000000,
+    "total": 0,
+    "change": -1000000
+   },
+   {
+    "name": "Due From AA 2013-1 (Admin Chrg",
+    "prior": 5000,
+    "total": 0,
+    "change": -5000
+   },
+   {
+    "name": "Permits - Conditional Use",
+    "prior": 15000,
+    "total": 0,
+    "change": -15000
+   },
+   {
+    "name": "EM City Merchandise",
+    "prior": 500,
+    "total": 0,
+    "change": -500
+   },
+   {
+    "name": "Bldg Permits - Building",
+    "prior": 2500000,
+    "total": 0,
+    "change": -2500000
+   },
+   {
+    "name": "Dev Fee - Zoning and Subdivision",
+    "prior": 10500,
+    "total": 0,
+    "change": -10500
+   },
+   {
+    "name": "Sheriff's Service",
+    "prior": 90000,
+    "total": 0,
+    "change": -90000
+   },
+   {
+    "name": "Miss EM Pageant Revenue",
+    "prior": 1500,
+    "total": 0,
+    "change": -1500
+   },
+   {
+    "name": "Revenue from Collections",
+    "prior": 500,
+    "total": 0,
+    "change": -500
+   },
+   {
+    "name": "Plan Check Solar/Commercial",
+    "prior": 500000,
+    "total": 0,
+    "change": -500000
+   }
+  ],
+  "departments": [
+   {
+    "name": "Public Safety",
+    "prior": 8815970,
+    "total": 10837430,
+    "change": 2021460
+   },
+   {
+    "name": "Economic Development",
+    "prior": 5611668,
+    "total": 6834679,
+    "change": 1223011
+   },
+   {
+    "name": "Transfers out",
+    "prior": 1007933,
+    "total": 6529840,
+    "change": 5521907
+   },
+   {
+    "name": "Streets & Roads",
+    "prior": 5612846,
+    "total": 6270607,
+    "change": 657761
+   },
+   {
+    "name": "Parks",
+    "prior": 3295056,
+    "total": 4010939,
+    "change": 715883
+   },
+   {
+    "name": "Library",
+    "prior": 879530,
+    "total": 1002737,
+    "change": 123207
+   },
+   {
+    "name": "Recreation",
+    "prior": 546008,
+    "total": 715971,
+    "change": 169963
+   },
+   {
+    "name": "Executive",
+    "prior": 967429,
+    "total": 633349,
+    "change": -334080
+   },
+   {
+    "name": "Special Events",
+    "prior": 598635,
+    "total": 611493,
+    "change": 12858
+   },
+   {
+    "name": "Information Technology",
+    "prior": 733817,
+    "total": 579078,
+    "change": -154739
+   },
+   {
+    "name": "Neighborhood Improvement",
+    "prior": 434563,
+    "total": 559755,
+    "change": 125192
+   },
+   {
+    "name": "Finance",
+    "prior": 740195,
+    "total": 542927,
+    "change": -197268
+   },
+   {
+    "name": "Human Resources",
+    "prior": 433044,
+    "total": 477034,
+    "change": 43990
+   },
+   {
+    "name": "Operations & Facilities",
+    "prior": 450763,
+    "total": 463363,
+    "change": 12600
+   },
+   {
+    "name": "Open Space",
+    "prior": 373576,
+    "total": 458274,
+    "change": 84698
+   },
+   {
+    "name": "Accounting",
+    "prior": 0,
+    "total": 328363,
+    "change": 328363
+   },
+   {
+    "name": "Attorney",
+    "prior": 233650,
+    "total": 308054,
+    "change": 74404
+   },
+   {
+    "name": "Legislative & Strategic Svcs",
+    "prior": 0,
+    "total": 276147,
+    "change": 276147
+   },
+   {
+    "name": "Risk Management",
+    "prior": 0,
+    "total": 239379,
+    "change": 239379
+   },
+   {
+    "name": "Legislative",
+    "prior": 480051,
+    "total": 230759,
+    "change": -249292
+   },
+   {
+    "name": "City Recorder's Office",
+    "prior": 519180,
+    "total": 230214,
+    "change": -288966
+   },
+   {
+    "name": "Communications",
+    "prior": 314526,
+    "total": 194819,
+    "change": -119707
+   },
+   {
+    "name": "Engineering",
+    "prior": 294275,
+    "total": 182890,
+    "change": -111385
+   },
+   {
+    "name": "Customer Services",
+    "prior": 0,
+    "total": 132340,
+    "change": 132340
+   },
+   {
+    "name": "Planning & Zoning",
+    "prior": 1098507,
+    "total": 0,
+    "change": -1098507
+   },
+   {
+    "name": "Fund Reserve",
+    "prior": 967788,
+    "total": 0,
+    "change": -967788
+   },
+   {
+    "name": "Building Inspections",
+    "prior": 2445286,
+    "total": 0,
+    "change": -2445286
+   }
+  ],
+  "moved_out": {
+   "fund": "Community Development",
+   "fund_total": 5349747,
+   "departments": [
+    {
+     "name": "Building Inspections",
+     "prior": 2445286
+    },
+    {
+     "name": "Planning & Zoning",
+     "prior": 1098507
+    }
+   ],
+   "revenue_moved": 4447300,
+   "note": "FY2027 moves planning, building inspection and permitting out of the General Fund into a new Community Development fund that pays for itself out of permit and plan-check fees. Both the cost and the fee revenue leave the General Fund together, so a department-by-department comparison against FY2026 is not like for like."
+  },
+  "reorg_note": "Four departments show up for the first time this year — Accounting, Risk Management, Legislative & Strategic Services and Customer Services. They are new lines in the same city-hall part of the budget; the budget does not say whether that is new work or existing work being split out and given its own name. And “Transfers out” is not a department at all: it is money the General Fund sends to the city's other funds, which the source data happens to file under the Planning & Zoning name."
+ },
+ "tax_line": {
+  "interim_revenue": 6958141,
+  "base_revenue": 2839998,
+  "revenue_account": "Property Taxes Interim Budget",
+  "expense_account": "Restricted Interim Budget",
+  "department": "Public Safety",
+  "note": "The proposed property-tax increase appears in the budget as its own revenue line and, for the identical amount, as a restricted expense line inside Public Safety. It is budgeted but cannot be spent unless the increase survives the 6 August hearing."
+ },
+ "public_safety": {
+  "contract_prior": 7873141,
+  "contract": 2839998,
+  "restricted": 6958141,
+  "dispatch_prior": 505993,
+  "dispatch": 588515,
+  "note": "In FY2025-26 the Sheriff contract line carries the whole cost and is met largely out of sales tax. In FY2026-27 it is cut to the exact amount of the city's current property-tax collections, with the balance moved to the restricted line. Added together they are the proposed property-tax revenue exactly — the budget's own statement that public safety is being re-based onto property tax.",
+  "combined": 9798139
+ }
+}

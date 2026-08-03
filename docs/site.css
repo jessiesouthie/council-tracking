@@ -149,6 +149,16 @@
     --highlight-soft:#453718;
     --highlight-ink: #EFC868;
 
+    /* Links have to invert too, and for a long time they didn't: the light-mode
+       ochre (#A2650F, chosen deep enough for white paper) was left in place on the
+       dark ground, where it lands at 3.6:1 — under AA for body text. These are the
+       same amber the dark palette already trusts for small type, so a link still
+       reads as the one warm thing in a cream-on-ink page, and hover now steps
+       *lighter* rather than darker, which is the direction that reads as "raised"
+       against ink. Both clear 8:1 on the lightest dark surface (--bg-muted). */
+    --link:          #EFC868;
+    --link-strong:   #F7DFAC;
+
     --ok:            #46B183;
     --ok-ink:        #9FE0C1;
     --ok-soft:       #1B3A2C;
@@ -4980,8 +4990,101 @@ table.data.statewide thead th { background: var(--t-card); }
 }
 .b-lede {
   font-family: var(--serif); font-size: clamp(17px, 2.4vw, 21px); line-height: 1.45;
-  color: var(--fg); max-width: 60ch; margin: 14px 0 0;
+  color: var(--fg); max-width: 68ch; margin: 14px 0 0;
 }
+
+/* ---- the two budgets, side by side --------------------------------------
+   The page carries a budget that is settled and a budget that is not, and the
+   reader has to be able to tell which is which before reading a single figure.
+   These two cards are that contract: the provisional year takes the highlight
+   edge and the amber chip used for "still moving" everywhere else on the site;
+   the adopted year takes the navy accent edge used for settled record. Same
+   shape, deliberately different ink.
+
+   They are also the page's tabs — one budget shows at a time — so the pair has
+   to carry a third distinction on top of those two: which one you are reading.
+   That one is carried by depth, not hue, since both hues are already spoken
+   for: the selected card sits raised on the elevated surface, the other drops
+   flat to the page background with its figures muted back. */
+/* An explicit breakpoint rather than auto-fit: the open tab's wedge only makes
+   sense while the two sit side by side, so the layout and the wedge have to
+   switch at the same width. */
+.b-years {
+  margin: 26px 0 0; display: grid; gap: 14px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) { .b-years { grid-template-columns: 1fr 1fr; } }
+.b-year {
+  position: relative;
+  display: grid; align-content: start; gap: 3px;
+  padding: 16px 18px 15px; border-radius: var(--radius);
+  background: var(--bg-elev); border: 1px solid var(--border);
+  box-shadow: var(--shadow); color: inherit; text-decoration: none;
+  font: inherit; text-align: left; width: 100%; cursor: pointer; appearance: none;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease,
+              background-color .15s ease;
+}
+/* Amber edge = still moving, ink edge = on the record. Deliberately not two
+   hues: in dark mode --accent and --highlight are both amber, so the pair has
+   to separate on weight and fill, and each chip says its status in words.
+   Everything below leaves that top edge alone — it states the year's status,
+   which doesn't change with what you happen to be reading. */
+.b-year.is-open  { border-top: 3px solid var(--highlight); }
+.b-year.is-set   { border-top: 3px solid var(--fg-soft); }
+.b-year:hover { border-inline-color: var(--border-strong); border-bottom-color: var(--border-strong); box-shadow: var(--shadow-lift); transform: translateY(-1px); }
+.b-year:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+/* The year you're not reading steps back, but stays fully legible — it is still
+   the only summary of that budget on the page, so it loses its card and its ink
+   drops to muted, and nothing else. The status chip is never dimmed: which
+   budget is settled and which is still moving is a fact about the year, not
+   about what you happen to have open. */
+.b-year[aria-selected="false"] { background: transparent; box-shadow: none; }
+.b-year[aria-selected="false"] .b-year-v,
+.b-year[aria-selected="false"] .b-year-fy,
+.b-year[aria-selected="false"] .b-year-d { color: var(--fg-muted); }
+.b-year[aria-selected="true"] {
+  border-inline-color: var(--border-strong); border-bottom-color: var(--border-strong);
+  box-shadow: var(--shadow-lift);
+}
+.b-year[aria-selected="true"]:hover { transform: none; }
+/* A wedge under the open tab, pointing into the panel it controls, in that
+   year's own edge colour. White-on-cream and a shadow are too fine a difference
+   to carry "this is the one you're reading" on their own — and unlike a tinted
+   background, a shape reads the same in both themes. Only while the tabs are
+   side by side: stacked, the wedge under the top card would point at the card
+   beneath it rather than at the panel, and the muted ink carries the state. */
+@media (min-width: 720px) {
+  .b-year[aria-selected="true"]::after {
+    content: ""; position: absolute; left: 50%; bottom: 0; translate: -50% 100%;
+    border: 9px solid transparent; border-bottom-width: 0;
+  }
+  .b-year.is-open[aria-selected="true"]::after { border-top-color: var(--highlight); }
+  .b-year.is-set[aria-selected="true"]::after  { border-top-color: var(--fg-soft); }
+}
+.b-year[aria-selected="true"] .b-year-go { color: var(--fg-muted); text-decoration: none; }
+.b-year-flag {
+  justify-self: start; padding: 3px 9px; border-radius: 999px;
+  font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .07em;
+}
+.is-open .b-year-flag { background: var(--highlight-soft); color: var(--highlight-ink); }
+.is-set  .b-year-flag { background: var(--fg-soft);        color: var(--bg-elev); }
+.b-year-fy {
+  margin-top: 9px; font-size: 14px; font-weight: 800; color: var(--fg-soft);
+  letter-spacing: .01em; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px;
+}
+.b-year-fy em { font-style: normal; font-weight: 500; font-size: 12.5px; color: var(--fg-muted); }
+.b-year-v {
+  font-family: var(--serif); font-weight: 700; font-size: 34px; line-height: 1.05;
+  color: var(--fg-soft); font-variant-numeric: tabular-nums; margin-top: 2px;
+}
+.b-year-d { margin-top: 6px; font-size: 13.5px; line-height: 1.55; color: var(--fg); }
+.b-year-go { margin-top: 10px; font-size: 13px; font-weight: 700; color: var(--link); }
+.b-year:not([aria-selected="true"]):hover .b-year-go { color: var(--link-strong); text-decoration: underline; }
+.b-years-note {
+  margin: 12px 0 0; font-size: 13px; line-height: 1.55; color: var(--fg-muted);
+}
+.b-years-note strong { color: var(--fg-soft); font-weight: 700; }
+@media (prefers-reduced-motion: reduce) { .b-year { transition: none; } .b-year:hover { transform: none; } }
 
 /* headline figures */
 .b-figures { display: flex; flex-wrap: wrap; gap: 14px; margin: 26px 0 0; }
@@ -5002,16 +5105,29 @@ table.data.statewide thead th { background: var(--t-card); }
   background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
   box-shadow: var(--shadow); margin-top: 26px; overflow: hidden;
 }
+/* Title and its grouping control ride a left rail; the description takes the
+   whole column beside them. A single centred measure under the title left most
+   of a 980px card empty on the right, which read as an unfinished layout. */
 .b-chart-head {
-  display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: flex-end; justify-content: space-between;
-  padding: 20px 22px 15px; border-bottom: 1px solid var(--border);
+  display: grid; grid-template-columns: minmax(200px, 290px) minmax(0, 1fr);
+  align-items: start; gap: 12px 28px;
+  padding: 20px 22px 16px; border-bottom: 1px solid var(--border);
 }
-.b-chart-head h2 { font-family: var(--serif); font-size: 22px; color: var(--fg-soft); margin: 0; }
-.b-chart-head p { margin: 6px 0 0; font-size: 13.5px; color: var(--fg-muted); max-width: 52ch; }
+.b-chart-head h2,
+.b-chart-head h3 {
+  grid-column: 1; grid-row: 1; margin: 0;
+  font-family: var(--serif); font-size: 22px; line-height: 1.2; color: var(--fg-soft);
+  text-wrap: balance;
+}
+.b-chart-head p {
+  grid-column: 2; grid-row: 1 / span 2; align-self: center; margin: 0;
+  font-size: 14px; line-height: 1.55; color: var(--fg-muted);
+}
 
 .b-toggle {
   display: inline-flex; background: var(--bg-muted); border: 1px solid var(--border);
   border-radius: var(--radius-sm); padding: 3px; gap: 2px; flex: 0 0 auto;
+  grid-column: 1; grid-row: 2; justify-self: start; align-self: start;
 }
 .b-toggle button {
   border: 0; background: transparent; font-family: var(--sans); font-size: 13px; font-weight: 700;
@@ -5103,8 +5219,198 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
   border-radius: var(--radius); padding: 14px 16px;
 }
 .b-note h3 { font-family: var(--sans); font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--fg-muted); margin: 0 0 6px; }
-.b-note p { margin: 0; font-size: 13.5px; color: var(--fg); }
+.b-note p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--fg); }
 .b-src { margin-top: 22px; font-size: 13px; color: var(--fg-muted); }
+
+/* ---- The year in force: the FY2026–27 interim budget ----------------------
+   This block is the budget the city is actually operating on, and it is not
+   final. It leads the page and has to read as a different kind of thing from
+   the settled book below it — provisional, prose-led — so it takes a tinted
+   ground and the highlighter accent rather than the white card the adopted
+   figures use. Colours are all tokens, so dark mode follows. */
+.bn {
+  margin-top: 30px; padding: 22px 24px 24px;
+  background: var(--bg-muted); border: 1px solid var(--border);
+  border-top: 3px solid var(--highlight); border-radius: var(--radius);
+  scroll-margin-top: 20px;
+}
+/* Masthead: the flag and title on one side, the standing of the budget on the
+   other, so the two together fill the width instead of stacking down a column. */
+.bn-head {
+  display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr);
+  gap: 10px 34px; align-items: start;
+}
+.bn-head h2 {
+  font-family: var(--serif); font-size: 26px; line-height: 1.2;
+  color: var(--fg-soft); margin: 9px 0 0; text-wrap: balance;
+}
+.bn-flag {
+  display: inline-block; margin: 0; padding: 3px 9px; border-radius: 999px;
+  background: var(--highlight-soft); color: var(--highlight-ink);
+  font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .07em;
+}
+.bn-lede { margin: 4px 0 0; font-size: 15px; line-height: 1.6; color: var(--fg); }
+.bn-lede strong { color: var(--fg-soft); }
+
+/* The calendar is the spine of the whole section: which steps have happened,
+   which have not. Past steps link to the meeting; future ones cannot. The note
+   sits in its own column rather than under the label, so each step is one line
+   that uses the full width of the section. */
+.bn-cal { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 2px; }
+.bn-cal li {
+  display: grid; grid-template-columns: 104px minmax(150px, 260px) minmax(0, 1fr);
+  gap: 2px 18px;
+  padding: 9px 0 9px 14px; border-left: 3px solid var(--border-strong);
+  align-items: baseline;
+}
+.bn-cal li.is-ahead { border-left-color: var(--highlight); }
+.bn-cal-date { font-size: 12.5px; font-weight: 700; color: var(--fg-muted); font-variant-numeric: tabular-nums; }
+.bn-cal-label { font-size: 14px; font-weight: 700; color: var(--fg-soft); }
+.bn-cal li.is-ahead .bn-cal-label::after {
+  content: "ahead"; margin-left: 8px; padding: 1px 7px; border-radius: 999px;
+  background: var(--highlight-soft); color: var(--highlight-ink);
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+}
+.bn-cal-note { font-size: 12.5px; line-height: 1.5; color: var(--fg-muted); }
+
+.bn-figs { margin-top: 22px; }
+.bn .b-fig { background: var(--bg-elev); }
+
+/* Analysis blocks. Heading and the one figure the argument turns on ride a left
+   rail; the prose takes the column beside it. That keeps the line length in the
+   readable range while the block itself spans the full width of the section —
+   a single centred measure left a third of the page empty down the right. */
+.bn-read { margin-top: 26px; }
+.bn-block {
+  display: grid; grid-template-columns: minmax(0, 262px) minmax(0, 1fr);
+  gap: 10px 34px; align-items: start;
+  margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.bn-block:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.bn-read h3 {
+  font-family: var(--serif); font-size: 19px; line-height: 1.25; color: var(--fg-soft);
+  margin: 0; text-wrap: balance;
+}
+.bn-stat { margin: 9px 0 0; display: flex; flex-direction: column; }
+.bn-stat .v {
+  font-family: var(--serif); font-weight: 700; font-size: 25px; line-height: 1.1;
+  color: var(--highlight-ink); font-variant-numeric: tabular-nums;
+}
+.bn-stat .k { margin-top: 3px; font-size: 12.5px; line-height: 1.4; color: var(--fg-muted); }
+.bn-body { min-width: 0; }
+.bn-read p { margin: 0; font-size: 15px; line-height: 1.62; color: var(--fg); }
+.bn-body p + p { margin-top: 13px; }
+.bn-read strong { color: var(--fg-soft); font-variant-numeric: tabular-nums; }
+.bn-read em { font-style: italic; }
+/* The block's point, in plain words, ahead of the block's evidence. Set a step
+   up from the body so the three type sizes in a block read as one ladder —
+   gist, then detail, then the aside — and a reader can stop after any of them. */
+.bn-gist {
+  font-size: 17px !important; line-height: 1.5 !important; color: var(--fg-soft) !important;
+  margin-bottom: 14px !important; text-wrap: pretty;
+}
+.bn-aside {
+  border-left: 3px solid var(--border-strong); padding-left: 14px;
+  font-size: 13.5px !important; color: var(--fg-muted) !important;
+}
+
+/* The glossary. Closed by default and set as a plain definition list — it is a
+   place to look something up mid-read, not a section to be read through, so it
+   gets no card of its own and columns out of the way on wide screens. */
+.bn-gloss {
+  margin-top: 20px; background: var(--bg-elev);
+  border: 1px solid var(--border); border-radius: var(--radius);
+}
+.bn-gloss > summary { padding: 12px 16px; font-size: 14px; font-weight: 700; color: var(--fg-soft); cursor: pointer; }
+.bn-gloss > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; border-radius: var(--radius); }
+.bn-gloss dl { margin: 0; padding: 4px 16px 16px; }
+@media (min-width: 861px) { .bn-gloss dl { columns: 2; column-gap: 34px; } }
+.bn-gloss dl > div { break-inside: avoid; padding: 8px 0; border-top: 1px solid var(--border); }
+.bn-gloss dt { font-size: 13.5px; font-weight: 800; color: var(--fg-soft); }
+.bn-gloss dd { margin: 3px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--fg-muted); }
+
+/* Sits between the all-funds chart and the General Fund one: the caveat a
+   reader needs in order to read the widest ribbon correctly. Set in two columns
+   so it fills the section without running to a 120-character line. */
+.bn-chartnote {
+  margin: 12px 0 0; padding: 14px 18px;
+  border-left: 3px solid var(--highlight);
+  background: var(--bg-elev); border-radius: var(--radius);
+  font-size: 13.5px; line-height: 1.6; color: var(--fg-muted);
+}
+@media (min-width: 861px) { .bn-chartnote { columns: 2; column-gap: 34px; } }
+.bn-chartnote strong { color: var(--fg-soft); font-variant-numeric: tabular-nums; }
+.bn-chartnote em { font-style: italic; }
+
+.bn .b-chartcard { margin-top: 18px; }
+
+.bn-tableview {
+  margin-top: 12px; background: var(--bg-elev);
+  border: 1px solid var(--border); border-radius: var(--radius);
+}
+.bn-tableview + .bn-tableview { margin-top: 8px; }
+.bn-tableview > summary { padding: 12px 16px; }
+.bn-up { color: var(--ok); }
+.bn-down { color: var(--danger-ink); }
+.bn-notes { margin-top: 22px; }
+.bn-notes .b-note { border-left-color: var(--border-strong); }
+
+/* ---- The adopted book: FY2025 --------------------------------------------
+   The settled half of the page. It has to be unmistakably a different kind of
+   thing from the interim block above it, so where that one is tinted, amber-
+   edged and prose-led, this one sits on the page ground behind a heavy navy
+   rule and says "adopted" in the same place the other says "not final". */
+.bp { margin-top: 44px; padding-top: 26px; border-top: 3px solid var(--fg-soft); scroll-margin-top: 20px; }
+/* As a tab panel it no longer divides two stacked sections — it opens straight
+   under the tabs, so it takes the same gap its counterpart does. The ink top
+   rule stays: paired with the other panel's amber one, the edge alone says
+   which of the two budgets is open. */
+.bp[role="tabpanel"] { margin-top: 30px; }
+.bp:focus-visible, .bn:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+.bp-head {
+  display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr);
+  gap: 10px 34px; align-items: start;
+}
+.bp-flag {
+  display: inline-block; margin: 0; padding: 3px 9px; border-radius: 999px;
+  background: var(--fg-soft); color: var(--bg-elev);
+  font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .07em;
+}
+.bp-head h2 {
+  font-family: var(--serif); font-size: 26px; line-height: 1.2;
+  color: var(--fg-soft); margin: 9px 0 0; text-wrap: balance;
+}
+.bp-lede { margin: 4px 0 0; font-size: 15px; line-height: 1.6; color: var(--fg); }
+
+@media (max-width: 860px) {
+  /* Below the rail breakpoint every two-column head and block stacks. Nothing
+     is holding the measure in once the rail is gone, so a cap goes back on —
+     it only bites on tablets, where a full-width line would run past 85
+     characters; on phones the container is already narrower than the cap. */
+  .bn-head, .bp-head, .bn-block { grid-template-columns: minmax(0, 1fr); gap: 10px 0; }
+  .bn-lede, .bp-lede { margin-top: 0; }
+  .bn-body p, .bn-lede, .bp-lede, .bn-chartnote, .b-chart-head p { max-width: 76ch; }
+  .bn-stat { flex-direction: row; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .bn-stat .k { margin-top: 0; }
+  .b-chart-head { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .b-chart-head h2,
+  .b-chart-head h3 { grid-column: 1; grid-row: 1; }
+  .b-chart-head p  { grid-column: 1; grid-row: 2; align-self: start; }
+  .b-toggle        { grid-column: 1; grid-row: 3; }
+}
+
+@media (max-width: 640px) {
+  .bn { padding: 18px 16px 20px; }
+  .bn-head h2, .bp-head h2 { font-size: 22px; }
+  .bn-lede, .bp-lede { font-size: 14.5px; }
+  /* Stack the date above the label rather than squeezing a 104px column. */
+  .bn-cal li { grid-template-columns: minmax(0, 1fr); padding-left: 12px; }
+  .bn-read h3 { font-size: 17px; }
+  .bn-read p { font-size: 14.5px; }
+  .bn-stat .v { font-size: 22px; }
+  .bp { margin-top: 34px; padding-top: 22px; }
+  .b-year-v { font-size: 30px; }
+}
 
 @media (max-width: 640px) {
   /* Headline figures: a tidy 2-up grid instead of uneven flex wrapping. */
@@ -5116,9 +5422,10 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
   /* Chart header stacks; the toggle spans the width with equal-width buttons
      so both grouping options are comfortable tap targets. */
   .b-chartcard { margin-top: 20px; }
-  .b-chart-head { flex-direction: column; align-items: stretch; gap: 12px; padding: 16px 16px 14px; }
-  .b-chart-head h2 { font-size: 20px; }
-  .b-toggle { width: 100%; }
+  .b-chart-head { gap: 10px; padding: 16px 16px 14px; }
+  .b-chart-head h2,
+  .b-chart-head h3 { font-size: 20px; }
+  .b-toggle { width: 100%; justify-self: stretch; }
   .b-toggle button { flex: 1 1 0; padding: 9px 8px; text-align: center; }
 
   .b-focus { padding: 12px 16px 0; flex-wrap: wrap; }
