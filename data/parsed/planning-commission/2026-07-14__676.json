@@ -1,0 +1,308 @@
+{
+  "meeting": {
+    "id": 676,
+    "date": "2026-07-14",
+    "source_file": "2026-07-14__676.pdf",
+    "motion_count": 7,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 308,
+      "meeting_id": 676,
+      "date": "2026-07-14",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of June 23, 2026, Planning Commission meeting. Commissioner Allen seconded…",
+      "motion": "Commissioner Strong moved to approve the minutes of June 23, 2026, Planning Commission meeting. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Abstain"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 309,
+      "meeting_id": 676,
+      "date": "2026-07-14",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Scenic Mountain Rezone. Commissioner Stron…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.A., Scenic Mountain Rezone. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 310,
+      "meeting_id": 676,
+      "date": "2026-07-14",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table Item 7.B., Eagle Mountain Chapel and Recreation Building Site Plan. Commissioner Strong s…",
+      "motion": "Commissioner Hess moved to table Item 7.B., Eagle Mountain Chapel and Recreation Building Site Plan. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "parks"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 311,
+      "meeting_id": 676,
+      "date": "2026-07-14",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Table Item 7.C., Eagle Mountain Chapel and Recreation Building Development Agreement. Commissio…",
+      "motion": "Commissioner Strong moved to table Item 7.C., Eagle Mountain Chapel and Recreation Building Development Agreement. Commissioner Free seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "parks"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 312,
+      "meeting_id": 676,
+      "date": "2026-07-14",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Deny Item 7.D., Wright Retaining Wall Variance, based on the following criteria: 1. There is en…",
+      "motion": "Commissioner Hess moved to deny Item 7.D., Wright Retaining Wall Variance, based on the following criteria: 1. There is enough buildable area on the property to build a tiered wall, that would meet the City's standards for retaining walls. It is not an unreasonable hardship if there is still buildable area available for use. Having sloped land does not make the subject property unique and is a general condition to the neighborhood. 2. The property is not deprived of privileges granted to other properties in the same district. 3. It may be in the public interest to have tiered retaining walls that blend better with the natural topography. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 313,
+      "meeting_id": 676,
+      "date": "2026-07-14",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.E., Brylee Townhomes Development Agreement Fir…",
+      "motion": "Commissioner Strong moved to recommend approval to the City Council of Item 7.E., Brylee Townhomes Development Agreement First Amendment. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Excused"
+        }
+      ]
+    },
+    {
+      "id": 314,
+      "meeting_id": 676,
+      "date": "2026-07-14",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.F., Stadion Development Agreement First Amendm…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.F., Stadion Development Agreement First Amendment. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Excused"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}
