@@ -11,6 +11,8 @@ already publishes:
   * transcript passages, windowed so a quote can be retrieved and cited
   * each council member, their role and tenure, and how often they vote yes
   * the proposed tax change and the adopted budget
+  * how the city's rate compares with other cities, and the road fees on utility
+    bills that a rate comparison can't see
   * a short per-body overview so the agent knows what's on the site
 
 Each corpus entry is a self-contained, *citable* chunk: it carries a `url` that
@@ -396,6 +398,169 @@ def _extra_docs() -> list[dict]:
                 "url": "budget.html#next-year",
                 "tags": ["budget"],
                 "text": _clean(text),
+            }
+        )
+    docs += _county_docs()
+    return docs
+
+
+def _ordinal(n: int) -> str:
+    if n % 100 in (11, 12, 13):
+        return f"{n}th"
+    return f"{n}{ {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th') }"
+
+
+def _county_docs() -> list[dict]:
+    """The comparison against other cities, and the fees that comparison can't see.
+
+    Two chunks, not one. "Is Eagle Mountain's tax high?" and "does my city charge
+    a road fee?" are different questions with different answers, and folding the
+    fees into the long rate chunk would bury them behind twenty-six city rates.
+    Both deep-link to the same section, so a visitor lands on the charts either
+    way. Ranks are computed here from the rates themselves rather than read from
+    the stored rank fields, so a chunk can never disagree with the bars the
+    reader is looking at.
+    """
+    path = DOCS / "data.tax-county.json"
+    if not path.exists():
+        return []
+    c = json.loads(path.read_text(encoding="utf-8"))
+    cities = c.get("cities", [])
+    if not cities:
+        return []
+
+    em = c.get("eagle_mountain", {})
+    em_rate = em.get("current_rate", 0.0)
+    em_prop = em.get("proposed_rate", 0.0)
+    rates = sorted(x.get("current_rate", 0.0) for x in cities)
+    mid = len(rates) // 2
+    median = rates[mid] if len(rates) % 2 else (rates[mid - 1] + rates[mid]) / 2
+    low_to_high = sorted(cities, key=lambda x: x.get("current_rate", 0.0))
+    em_pos = next(
+        (i + 1 for i, x in enumerate(low_to_high) if x.get("name") == "Eagle Mountain"), 0
+    )
+
+    # Where the proposal would land: every city carried at the rate its own
+    # published figures imply, which is what the second chart ranks by.
+    resulting = {p.get("city"): p.get("resulting_rate") for p in c.get("proposals", [])}
+    high_to_low = sorted(
+        cities,
+        key=lambda x: resulting.get(x.get("name")) or x.get("current_rate", 0.0),
+        reverse=True,
+    )
+    em_prop_pos = next(
+        (i + 1 for i, x in enumerate(high_to_low) if x.get("name") == "Eagle Mountain"), 0
+    )
+
+    rate_lines = ", ".join(
+        f"{x.get('name','')} {x.get('current_rate', 0):.6f}" for x in reversed(low_to_high)
+    )
+    prop_lines = " ".join(
+        f"{p.get('city','')}: +{p.get('pct')}% for {p.get('purpose','')}"
+        + (f" ({p['levy']})" if p.get("levy") else "")
+        + f", about ${p.get('annual_increase', 0):,.0f} a year on a ${p.get('home_value', 0):,} home."
+        for p in c.get("proposals", [])
+    )
+    sw = c.get("statewide", {})
+    sw_em = sw.get("eagle_mountain", {})
+
+    # Salt Lake County is the page's second comparison. Its ranks are computed
+    # the way its charts rank: current against current, proposed against every
+    # city's resulting rate. The stored rank fields measure the proposed rate
+    # against current rates instead, which would put a different number in the
+    # agent's mouth than the bars show.
+    sl = c.get("salt_lake", {})
+    sl_cities = sl.get("cities", [])
+    sl_res = {p.get("city"): p.get("resulting_rate") for p in sl.get("proposals", [])}
+    sl_now_below = sum(1 for x in sl_cities if x.get("current_rate", 0.0) < em_rate)
+    sl_prop_above = sum(
+        1
+        for x in sl_cities
+        if (sl_res.get(x.get("name")) or x.get("current_rate", 0.0)) > em_prop
+    )
+
+    text = (
+        f"How Eagle Mountain's city property tax rate compares with other cities. "
+        f"These are {c.get('rate_year','')} final adopted municipal rates — the city's own levy only, "
+        f"not the county, school district or special districts. "
+        f"Eagle Mountain's {em_rate:.6f} is the {_ordinal(em_pos)}-lowest of the {len(cities)} cities in "
+        f"Utah County, against a county median of {median:.6f}. "
+        f"The proposed {em_prop:.6f} would make it the {_ordinal(em_prop_pos)}-highest, once every other "
+        f"city's own proposed increase is applied. "
+        f"Rates today, highest to lowest: {rate_lines}. "
+        f"{len(c.get('proposals', []))} Utah County cities noticed a {c.get('proposal_year','')} increase. "
+        f"{prop_lines} "
+        + (
+            f"Statewide, of all {sw.get('total_cities','')} Utah cities, Eagle Mountain's current rate is the "
+            f"{_ordinal(sw_em.get('rank_current_low', 0))}-lowest; the proposed rate would be the "
+            f"{_ordinal(sw_em.get('rank_proposed_high', 0))}-highest, measuring it against every other city's "
+            f"current rate — the state does not publish a full set of 2026 proposals. "
+            if sw_em
+            else ""
+        )
+        + (
+            f"The same page carries a second comparison against the {len(sl_cities)} cities of Salt Lake "
+            f"County, where Eagle Mountain is shown as an out-of-county reference: its current rate would be "
+            f"the {_ordinal(sl_now_below + 1)}-lowest there, and the proposed rate the "
+            f"{_ordinal(sl_prop_above + 1)}-highest once each of those cities' own increases is applied. "
+            if sl_cities
+            else ""
+        )
+        + " ".join(c.get("caveats", []))
+    )
+
+    docs = [
+        {
+            "id": "city-council:tax-compare",
+            "kind": "tax",
+            "body": "city-council",
+            "title": f"How the rate compares — Utah County cities, {c.get('rate_year','')} rates",
+            "date": "",
+            "url": "tax.html#s-compare",
+            "tags": ["budget"],
+            "text": _clean(text),
+        }
+    ]
+
+    # Several cities pay for streets with a flat monthly utility fee instead of a
+    # rate. Asked "who charges more?", the agent should be able to say that a
+    # rate comparison misses it, and by how much.
+    t = c.get("transportation_fees", {})
+    fee_cities = t.get("cities", [])
+    if fee_cities:
+        tax_path = DOCS / "data.tax.json"
+        ratio = 0.55
+        if tax_path.exists():
+            ratio = json.loads(tax_path.read_text(encoding="utf-8")).get("residential_ratio", ratio)
+        taxable = 500000 * ratio
+        fee_lines = " ".join(
+            f"{f.get('name','')}: ${f.get('monthly', 0):.2f} a month, ${f.get('monthly', 0) * 12:,.2f} a year "
+            f"— the same as a property tax rate of {f.get('monthly', 0) * 12 / taxable:.6f} on a $500,000 home. "
+            f"{f.get('note','')}"
+            for f in sorted(fee_cities, key=lambda f: -f.get("monthly", 0))
+        )
+        fee_text = (
+            f"Transportation utility fees — road fees charged on the monthly city utility bill, not through "
+            f"the property tax. {len(fee_cities)} Utah County cities charge one, so a comparison of property "
+            f"tax rates understates what a household there pays for streets. "
+            f"A fee is set by resolution and is not subject to Truth-in-Taxation notices or hearings, and it "
+            f"is flat: the same on every home, whatever it is worth. Residential rates as of "
+            f"{t.get('as_of','')}: {fee_lines} "
+            f"Eagle Mountain charges no such fee. {t.get('eagle_mountain', {}).get('note','')} "
+            f"For scale, Eagle Mountain's entire city property tax on a $500,000 primary residence is "
+            f"${em_rate * taxable:,.2f} a year today. "
+            + " ".join(t.get("caveats", []))
+        )
+        docs.append(
+            {
+                "id": "city-council:tax-fees",
+                "kind": "tax",
+                "body": "city-council",
+                "title": "Road fees on the utility bill — Utah County cities that charge one",
+                "date": "",
+                "url": "tax.html#s-compare",
+                "tags": ["budget"],
+                "text": _clean(fee_text),
             }
         )
     return docs

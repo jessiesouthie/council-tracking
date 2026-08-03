@@ -27,7 +27,7 @@
          so nothing on this page would use it, and asking for a third family only
          costs a render-blocking round trip. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260803a" />
+    <link rel="stylesheet" href="site.css?v=20260803b" />
   </head>
   <body class="page-tax">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -209,7 +209,7 @@
 
             ${bill ? billSection(bill, tax) : ""}
 
-            ${county ? countySection(county) : ""}
+            ${county ? countySection(county, RATIO) : ""}
 
             <section class="learn reveal" style="--i:5" aria-labelledby="learn-title">
               <div class="sec-head">
@@ -1109,7 +1109,108 @@
         return n + ({ 1: "st", 2: "nd", 3: "rd" }[n % 10] || "th");
       }
 
-      function countySection(c) {
+      /* ---------------- things to consider: fees the charts can't see ----------
+         A rate comparison can only see the property tax. Several Utah County
+         cities pay for street work with a flat monthly fee on the utility bill
+         instead, which is set by resolution, never touches a tax rate, and so
+         never appears in a bar. That belongs beside the charts rather than in
+         the fine print: a reader comparing rates alone would draw the wrong
+         conclusion about what those cities charge a household. */
+      const TUF_HOME = 500000;
+
+      function transportFeeHtml(c, ratio) {
+        const t = c.transportation_fees;
+        if (!t || !Array.isArray(t.cities) || !t.cities.length) return "";
+
+        const taxable = TUF_HOME * ratio;
+        const rows = [...t.cities].sort((a, b) => b.monthly - a.monthly);
+        const top = rows[0];
+        const topAnnual = top.monthly * 12;
+        // Eagle Mountain's whole city levy on the same home — the only honest
+        // way to say how big a flat fee is next to a rate.
+        const emTax = c.eagle_mountain.current_rate * taxable;
+        const cmp = topAnnual > emTax ? "more than" : "less than";
+
+        const body = rows
+          .map(
+            (r) => `
+              <tr>
+                <th scope="row">${CT.escapeHtml(r.name)}</th>
+                <td class="num">${usd(r.monthly)}</td>
+                <td class="num">${usd(r.monthly * 12)}</td>
+                <td class="num mono">${rate6((r.monthly * 12) / taxable)}</td>
+              </tr>`
+          )
+          .join("");
+
+        return `
+          <aside class="consider" aria-labelledby="tuf-title">
+            <p class="consider-eyebrow">Things to consider</p>
+            <h3 class="consider-h" id="tuf-title">Some cities charge for roads on the utility bill instead</h3>
+            <p class="consider-lede">
+              These bars are property tax, and only property tax.
+              ${cap(numWord(rows.length))} Utah County cities also charge a flat monthly fee
+              on the city utility bill and spend it on streets. It is set by resolution rather
+              than noticed as a tax increase, and no chart of tax rates can see it.
+            </p>
+            <table class="tuf-table">
+              <caption class="sr-only">
+                Monthly transportation utility fees charged on residential utility bills in
+                Utah County cities, as of ${CT.fmtDate(t.as_of)}.
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">City</th>
+                  <th scope="col" class="num">Per month</th>
+                  <th scope="col" class="num">Per year</th>
+                  <th scope="col" class="num">As a tax rate</th>
+                </tr>
+              </thead>
+              <tbody>${body}</tbody>
+            </table>
+            <p class="consider-foot">
+              The last column is what each fee would cost as a property tax rate on a
+              ${usd0(TUF_HOME)} primary residence — for scale only, since the fee is flat and
+              the same on every home. Eagle Mountain charges no such fee, so its bar is the
+              whole of what the city asks a household for; ${CT.escapeHtml(top.name)}'s
+              ${usd0(topAnnual)} a year is ${cmp} the ${usd(emTax)} Eagle Mountain's own
+              property tax takes from that home today.
+            </p>
+          </aside>`;
+      }
+
+      // The per-city sources and the caveats behind that aside ride along in the
+      // chart's own fine print, so the section keeps one place to look for both.
+      function transportFeeNotes(c) {
+        const t = c.transportation_fees;
+        if (!t || !Array.isArray(t.cities) || !t.cities.length) return "";
+        const cited = t.cities
+          .map(
+            (r) =>
+              `<a href="${r.source.url}" rel="nofollow noopener">${CT.escapeHtml(r.name)}</a>`
+          )
+          .join(", ");
+        const notes = t.cities
+          .map(
+            (r) =>
+              `<li><b>${CT.escapeHtml(r.name)}</b> — ${CT.escapeHtml(r.label)}, ${usd(r.monthly)} a month. ${CT.escapeHtml(r.note)}</li>`
+          )
+          .join("");
+        return `
+          <p class="fine-sub">Fees on the utility bill</p>
+          <ul>${t.caveats.map((x) => `<li>${CT.escapeHtml(x)}</li>`).join("")}</ul>
+          <ul>${notes}</ul>
+          <p class="src">
+            Utility fees, each from the city's own current fee schedule: ${cited}.
+            Eagle Mountain charges none —
+            <a href="${t.eagle_mountain.source.url}" rel="nofollow noopener">${CT.escapeHtml(t.eagle_mountain.source.title)}</a>.
+            Which cities charge one:
+            <a href="${t.list_source.url}" rel="nofollow noopener">${CT.escapeHtml(t.list_source.publisher)}</a>,
+            ${CT.fmtDate(t.list_source.published)}.
+          </p>`;
+      }
+
+      function countySection(c, ratio) {
         const utahN = c.cities.length;
         const sl = c.salt_lake;
 
@@ -1121,7 +1222,8 @@
               ${CT.escapeHtml(c.rate_source.publisher)}.
               Proposed increases: <a href="${c.proposal_source.url}" rel="nofollow noopener">${CT.escapeHtml(c.proposal_source.publisher)}</a>,
               reporting the ${c.proposal_year} truth-in-taxation notices.
-            </p>`
+            </p>
+            ${transportFeeNotes(c)}`
         );
 
         return `
@@ -1158,6 +1260,7 @@
               </div>
               <div role="tabpanel" id="panel-rate" aria-labelledby="tab-rate">${rateChartHtml(c)}</div>
               <div role="tabpanel" id="panel-inc" aria-labelledby="tab-inc" hidden>${increaseChartHtml(c)}</div>
+              ${transportFeeHtml(c, ratio)}
               ${utahNotes}
             </div>
 

@@ -35,6 +35,84 @@
     "Draper and Bluffdale levy in Utah County but lie mostly in Salt Lake County.",
     "Resulting rates are each city's current rate plus the rate increase implied by its own published figures (the dollar rise on its stated average home, over 55% of that home's value). This avoids assuming the noticed percentage applies to the general city rate \u2014 for Highland and Orem it does not. Tested against Eagle Mountain, the only city publishing a proposed rate, the method reproduces 0.001700. Rows marked \u2021 rest on a rounded dollar figure and are approximate."
   ],
+  "transportation_fees": {
+    "_comment": "Utah County cities that fund street work through a flat monthly fee on the utility bill rather than through the property tax. Every amount is the residential rate, read off the city's own current fee schedule or rates page. The property tax charts cannot see this money, which is the whole reason it is listed here.",
+    "as_of": "2026-08-03",
+    "basis": "Flat monthly fee charged on a residential city utility bill, in addition to the property tax.",
+    "cities": [
+      {
+        "name": "Highland",
+        "monthly": 18.5,
+        "label": "Transportation Utility Fee",
+        "note": "Adopted May 2017 after a study found 45% of city roads poor or failing; scheduled to end June 30, 2028, when the road bonds are paid off.",
+        "source": {
+          "title": "Transportation Utility Fund background information",
+          "publisher": "Highland City",
+          "url": "https://www.highlandut.gov/399/Transportation-Utility-Fund",
+          "retrieved": "2026-08-03"
+        }
+      },
+      {
+        "name": "Mapleton",
+        "monthly": 8.0,
+        "label": "Road fund fee",
+        "note": "City code establishes a utility road fund paid by utility users; the amount is set in the consolidated utility fee schedule.",
+        "source": {
+          "title": "Utility rates, effective 09/01/2025",
+          "publisher": "Mapleton City, Finance",
+          "url": "https://www.mapleton.org/departments/finance/utilities/index.php",
+          "retrieved": "2026-08-03"
+        }
+      },
+      {
+        "name": "Pleasant Grove",
+        "monthly": 6.76,
+        "label": "Utility transportation fee",
+        "note": "Charged by intensity of street use: $6.76 residential, $33.02 and $188.84 for the two commercial tiers. Challenged in court and upheld as a fee, not a tax, in Larson v. Pleasant Grove City (2023 UT 2).",
+        "source": {
+          "title": "Fee schedule, FY2026 adopted — effective July 1, 2025",
+          "publisher": "Pleasant Grove City",
+          "url": "https://cms2.revize.com/revize/pleasantgroveut/Fee%20Schedule_FY2026_Adopted.pdf",
+          "retrieved": "2026-08-03"
+        }
+      },
+      {
+        "name": "Provo",
+        "monthly": 4.2,
+        "label": "Transportation utility fee",
+        "note": "Residential A (single family) rate; billed on the monthly consolidated utility bill under Provo City Code 5.08.",
+        "source": {
+          "title": "Public Works utility rates",
+          "publisher": "Provo City",
+          "url": "https://www.provo.gov/946/Public-Works-Utility-Rates",
+          "retrieved": "2026-08-03"
+        }
+      }
+    ],
+    "eagle_mountain": {
+      "charges_fee": false,
+      "note": "Eagle Mountain's consolidated fee schedule carries no road or transportation charge on a residential utility bill. Its residential utility fees are water, sewer, storm drain and garbage.",
+      "source": {
+        "title": "Consolidated fee schedule, updated March 3, 2026",
+        "publisher": "Eagle Mountain City",
+        "url": "https://eaglemountain.gov/wp-content/uploads/2026/03/Consolidated-Fee-Schedule-Current.pdf",
+        "retrieved": "2026-08-03"
+      }
+    },
+    "list_source": {
+      "title": "Utah cities charge transportation fees on top of taxes",
+      "publisher": "KUTV",
+      "url": "https://kutv.com/news/local/utah-cities-charge-transportation-fees-on-top-of-taxes",
+      "published": "2026-03-25",
+      "retrieved": "2026-08-03"
+    },
+    "caveats": [
+      "The fee is flat. Every household pays the same, whatever the home is worth, so it lands hardest on the least valuable homes — the opposite of how a property tax rate works.",
+      "The rate equivalents are what each fee would cost as a property tax rate on a $500,000 primary residence, taxed on 55% of value. They are for scale only; no city levies these as a rate.",
+      "A fee is not a tax. It is set by resolution and is not subject to Truth-in-Taxation notices or hearings, which is part of why cities use it. Utah's Supreme Court upheld Pleasant Grove's as a fee rather than a tax in 2023, remanding on whether the amount was reasonable.",
+      "About a dozen Utah cities charge one; these four are the Utah County cities identified in a March 2026 survey and confirmed against each city's current fee schedule. A city that adopted one since would not appear here."
+    ]
+  },
   "cities": [
     {
       "name": "Vineyard",

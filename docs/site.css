@@ -4175,6 +4175,89 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
 .county-notes li { font-size: 13px; color: var(--t-muted); line-height: 1.6; margin-bottom: 5px; }
 .county-notes .src { margin: 0; font-size: 12px; color: var(--t-muted); line-height: 1.6; }
 
+/* ---------- things to consider ----------
+   An annotation to the charts: what the bars, by construction, cannot show. It
+   is deliberately not the gold aside — the gold is spent on the one claim about
+   the reader's own future bill, and a second gold block would cost that one its
+   weight. A sage rule down the left instead, the same ink the recessive bars
+   use, so it reads as belonging to the chart above it. */
+.consider {
+  margin-top: 26px;
+  padding-left: 16px;
+  border-left: 3px solid var(--t-sage);
+}
+.consider-eyebrow {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--t-gold);
+}
+.consider-h {
+  margin: 7px 0 9px;
+  font-size: 16.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--t-fg-2);
+  text-wrap: balance;
+}
+.consider-lede {
+  margin: 0 0 14px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--t-fg);
+  text-wrap: pretty;
+}
+.consider-foot {
+  margin: 12px 0 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--t-muted);
+  text-wrap: pretty;
+}
+
+/* Four rows and four columns — small enough to read at a glance, so it stays
+   open on the page rather than hiding behind a "view as table" summary, and
+   carries no export toolbar for the same reason. */
+.tuf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.tuf-table th, .tuf-table td { padding: 7px 0; border-bottom: 1px solid var(--t-line); }
+.tuf-table thead th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+  vertical-align: bottom;
+}
+.tuf-table tbody th { font-weight: 600; color: var(--t-fg-2); text-align: left; }
+.tuf-table td { color: var(--t-fg); }
+.tuf-table .num {
+  text-align: right;
+  padding-left: 12px;
+  font-variant-numeric: tabular-nums;
+}
+/* Figures never break; the column headings above them may, so a phone gets a
+   two-line heading instead of a table wider than the screen. */
+.tuf-table tbody .num { white-space: nowrap; }
+.tuf-table .mono { font-family: var(--mono); font-size: 12.5px; color: var(--t-muted); }
+.tuf-table tbody tr:last-child th,
+.tuf-table tbody tr:last-child td { border-bottom: none; }
+
+@media (max-width: 560px) {
+  .consider { padding-left: 13px; }
+  .consider-h { font-size: 15.5px; }
+  .consider-lede { font-size: 14px; }
+  .tuf-table { font-size: 12.5px; }
+  .tuf-table .num { padding-left: 8px; }
+  .tuf-table .mono { font-size: 11.5px; }
+}
+
 /* ---------- fine print ----------
    Caveats and sources, closed. A quiet line with a rule above it — deliberately
    not styled like the section disclosures further down the page, because this is
@@ -4214,6 +4297,19 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
 .tax-page .fine-body li { font-size: 13px; color: var(--t-muted); line-height: 1.6; margin-bottom: 5px; }
 .tax-page .fine-body p { margin: 0; font-size: 12.5px; color: var(--t-muted); line-height: 1.6; }
 .tax-page .fine-body .src { font-size: 12px; }
+/* A second run of caveats inside one disclosure — the rate sources, then the
+   fees the rates can't show — needs a line between them or the two read as one
+   list with a stray sentence about utility bills in the middle. */
+.tax-page .fine-body p.fine-sub {
+  margin: 18px 0 9px;
+  padding-top: 14px;
+  border-top: 1px solid var(--t-line);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+}
 @media (pointer: coarse) {
   .tax-page details.fine > summary { min-height: 44px; }
 }
