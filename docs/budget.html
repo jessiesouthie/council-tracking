@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260802e" />
+    <link rel="stylesheet" href="site.css?v=20260803a" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -137,8 +137,13 @@
                      a single year at a time.`
                   : `Follow any ribbon to see how much, and where it lands.`}
               </p>
-              ${next ? yearCards(next, data) : ""}
             </header>
+
+            <!-- A sibling of the panels rather than a child of the hero: on a
+                 phone the switcher pins under the topbar, and a sticky element
+                 only sticks for as long as its own parent is on screen. Inside
+                 the hero it would unpin a few hundred pixels down. -->
+            ${next ? yearCards(next, data) : ""}
 
             ${next ? interimSection(next) : ""}
 
@@ -164,10 +169,13 @@
               </div>
 
               <!-- 1 · The whole budget -->
-              ${allFundsCard("af", "The whole budget, all funds", next ? "h3" : "h2")}
+              <!-- Both budgets carry a chart of the same name, and on a phone the
+                   card heading is often the only thing on screen — so when the
+                   page is running two years, each card says which year it is. -->
+              ${allFundsCard("af", next ? `The whole FY${esc(fy)} budget, all funds` : "The whole budget, all funds", next ? "h3" : "h2")}
 
               <!-- 2 · The General Fund -->
-              ${generalFundCard("gf", "The General Fund, revenue to service", `
+              ${generalFundCard("gf", next ? `The FY${esc(fy)} General Fund, revenue to service` : "The General Fund, revenue to service", `
                 The ${short(gf.total)} General Fund pays for the day-to-day services residents see —
                 police, parks, streets, planning, city hall. Here every dollar flows from where it
                 comes in, through the fund, out to the service that spends it.
@@ -226,7 +234,27 @@
         // Redraw on theme flips so token-driven colours refresh (keeps any drill state).
         new MutationObserver(drawAll)
           .observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+        measureTopbar();
       }
+
+      /* The topbar is sticky at every width, and on a phone the year switcher
+         pins directly beneath it — so the stylesheet needs the bar's real
+         height. It shrinks at the 760px breakpoint and grows with the notch
+         inset, so it can't be a constant. Same measurement the tax page takes. */
+      function measureTopbar() {
+        const bar = document.querySelector(".topbar");
+        document.documentElement.style.setProperty(
+          "--topbar-h", (bar ? Math.round(bar.getBoundingClientRect().height) : 60) + "px");
+      }
+      (() => {
+        let t = 0;
+        const remeasure = () => { clearTimeout(t); t = setTimeout(measureTopbar, 150); };
+        addEventListener("resize", remeasure);
+        addEventListener("orientationchange", remeasure);
+        // Webfonts land after first paint and change the brand block's height.
+        if (document.fonts?.ready) document.fonts.ready.then(measureTopbar);
+      })();
 
       /* ---------------- the two budgets, at the top of the page ----------------
          The reader's first job is to tell them apart, so they are put side by
@@ -237,6 +265,14 @@
          seam had no way to tell which year a figure belonged to. The year
          between them has neither a published book nor a chart, so it is named in
          the note underneath rather than given a card it can't honour.
+
+         Below the width where the two cards fit side by side they collapse to a
+         compact switcher that pins under the topbar (see .b-years in site.css),
+         so the year you are reading stays on screen the whole way down. That
+         switcher has room for a status, a year and a total and nothing else,
+         so each of those three carries a short form alongside its full one —
+         real markup rather than a CSS content swap, so whichever is displayed
+         is also what the tab is named to a screen reader.
       */
       function yearCards(n, data) {
         const t = n.totals;
@@ -244,7 +280,7 @@
           <div class="b-years" role="tablist" aria-label="Which budget to show">
             <button class="b-year is-open" type="button" role="tab" id="tab-next-year"
                     aria-controls="next-year" aria-selected="true" tabindex="0">
-              <span class="b-year-flag">In effect now · not final</span>
+              <span class="b-year-flag"><span class="b-full">In effect now · not final</span><span class="b-min">Not final</span></span>
               <span class="b-year-fy"><span class="nowrap">${esc(n.fiscal_year_label)}</span><em>1 July 2026 – 30 June 2027</em></span>
               <span class="b-year-v">${short(t.fy2027.gross)}</span>
               <span class="b-year-d">
@@ -257,7 +293,7 @@
             </button>
             <button class="b-year is-set" type="button" role="tab" id="tab-fy-charts"
                     aria-controls="fy-charts" aria-selected="false" tabindex="-1">
-              <span class="b-year-flag">Final · on the books</span>
+              <span class="b-year-flag"><span class="b-full">Final · on the books</span><span class="b-min">Final</span></span>
               <span class="b-year-fy">FY${esc(data.fiscal_year)}<em>ended 30 June 2025</em></span>
               <span class="b-year-v">${short(data.total)}</span>
               <span class="b-year-d">
@@ -283,12 +319,20 @@
          rewrites the hash so a reader can share whichever year they're on.
          The charts are drawn for both years up front, hidden or not: the Sankey
          layout is pure arithmetic on a fixed viewBox and never measures the DOM,
-         so nothing has to be redrawn when a panel appears. */
+         so nothing has to be redrawn when a panel appears.
+
+         On a phone the switcher is pinned, so a reader can flip years from
+         anywhere on the page — and the two budgets have nothing in common
+         section for section, so holding the scroll position would drop them
+         into the middle of an unrelated argument. Whenever the newly-opened
+         budget starts above the viewport, the page returns to the top of it. */
       function wireYearTabs() {
         const tabs = [...document.querySelectorAll('.b-year[role="tab"]')];
         if (!tabs.length) return;
+        const smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
 
         const select = (tab, opts = {}) => {
+          let opened = null;
           tabs.forEach((t) => {
             const on = t === tab;
             t.setAttribute("aria-selected", String(on));
@@ -296,20 +340,24 @@
             const go = t.querySelector(".b-year-go");
             if (go) go.textContent = on ? go.dataset.on : go.dataset.off;
             const panel = document.getElementById(t.getAttribute("aria-controls"));
-            if (panel) panel.hidden = !on;
+            if (panel) { panel.hidden = !on; if (on) opened = panel; }
           });
           if (opts.focus) tab.focus();
           if (!opts.silent) history.replaceState(null, "", "#" + tab.getAttribute("aria-controls"));
+          // Read after the swap, so the measurement is of the panel now on screen.
+          // scroll-margin-top on the panel clears the topbar and the pinned switcher.
+          if (opts.reveal && opened && opened.getBoundingClientRect().top < 0)
+            opened.scrollIntoView({ block: "start", behavior: smooth ? "smooth" : "auto" });
         };
 
         tabs.forEach((tab, i) => {
-          tab.addEventListener("click", () => select(tab));
+          tab.addEventListener("click", () => select(tab, { reveal: true }));
           // Arrow keys move between tabs, the standard for a tablist.
           tab.addEventListener("keydown", (e) => {
             const step = /^Arrow(Right|Down)$/.test(e.key) ? 1 : /^Arrow(Left|Up)$/.test(e.key) ? -1 : 0;
-            if (step) select(tabs[(i + step + tabs.length) % tabs.length], { focus: true });
-            else if (e.key === "Home") select(tabs[0], { focus: true });
-            else if (e.key === "End") select(tabs[tabs.length - 1], { focus: true });
+            if (step) select(tabs[(i + step + tabs.length) % tabs.length], { focus: true, reveal: true });
+            else if (e.key === "Home") select(tabs[0], { focus: true, reveal: true });
+            else if (e.key === "End") select(tabs[tabs.length - 1], { focus: true, reveal: true });
             else return;
             e.preventDefault();
           });

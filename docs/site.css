@@ -5066,6 +5066,10 @@ table.data.statewide thead th { background: var(--t-card); }
   justify-self: start; padding: 3px 9px; border-radius: 999px;
   font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .07em;
 }
+/* Long form here, short form in the pinned mobile switcher. Both are real
+   markup and one of the pair is always display:none, so the tab's accessible
+   name is whichever wording is actually on screen — never both, never neither. */
+.b-year .b-min { display: none; }
 .is-open .b-year-flag { background: var(--highlight-soft); color: var(--highlight-ink); }
 .is-set  .b-year-flag { background: var(--fg-soft);        color: var(--bg-elev); }
 .b-year-fy {
@@ -5232,7 +5236,10 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
   margin-top: 30px; padding: 22px 24px 24px;
   background: var(--bg-muted); border: 1px solid var(--border);
   border-top: 3px solid var(--highlight); border-radius: var(--radius);
-  scroll-margin-top: 20px;
+  /* Deep links land on a panel, and switching years can scroll to one — both
+     have to clear the sticky topbar (and, on mobile, the pinned switcher too:
+     see the max-width:719px block). */
+  scroll-margin-top: calc(var(--topbar-h, 62px) + 14px);
 }
 /* Masthead: the flag and title on one side, the standing of the budget on the
    other, so the two together fill the width instead of stacking down a column. */
@@ -5360,7 +5367,10 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
    thing from the interim block above it, so where that one is tinted, amber-
    edged and prose-led, this one sits on the page ground behind a heavy navy
    rule and says "adopted" in the same place the other says "not final". */
-.bp { margin-top: 44px; padding-top: 26px; border-top: 3px solid var(--fg-soft); scroll-margin-top: 20px; }
+.bp {
+  margin-top: 44px; padding-top: 26px; border-top: 3px solid var(--fg-soft);
+  scroll-margin-top: calc(var(--topbar-h, 62px) + 14px);
+}
 /* As a tab panel it no longer divides two stacked sections — it opens straight
    under the tabs, so it takes the same gap its counterpart does. The ink top
    rule stays: paired with the other panel's amber one, the edge alone says
@@ -5399,32 +5409,191 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
   .b-toggle        { grid-column: 1; grid-row: 3; }
 }
 
+/* ---- The two budgets, on a phone: a pinned switcher ------------------------
+   Stacked, the two cards cost the better part of a screen before a single
+   figure appears — and once a reader scrolled past them, nothing on screen
+   said which of the two budgets everything below belonged to. The page runs
+   two years whose sections have the same names and wildly different numbers,
+   so that is the one thing it cannot leave ambiguous.
+
+   Below the width where the cards fit side by side they collapse to a two-up
+   switcher — status, year, total, and nothing else — pinned under the topbar
+   for the length of the page. It is the same tablist, so it is still the
+   control as well as the label. What it drops is each card's description;
+   the open panel's own head restates it immediately below, and the year you
+   are not reading is one tap away.
+
+   Breakpoint matched to the card layout's own: the moment the pair stops
+   sitting side by side as cards, they become the switcher instead. */
+@media (max-width: 719px) {
+  .b-years {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 18px 0 0;
+    position: sticky;
+    /* -1px so the bar's own top edge tucks under the topbar's bottom border
+       instead of leaving a hairline of page showing through between them. */
+    top: calc(var(--topbar-h, 60px) - 1px);
+    z-index: 6;
+    /* Full-bleed, so it reads as chrome the page scrolls under rather than as
+       a card inside the article. main's inline padding is what's cancelled. */
+    margin-inline: calc(-1 * max(16px, var(--safe-left))) calc(-1 * max(16px, var(--safe-right)));
+    padding-block: 8px 9px;
+    padding-inline: max(16px, var(--safe-left)) max(16px, var(--safe-right));
+    /* Opaque, not the topbar's translucent blur: the unselected segment is a
+       transparent outline, so anything showing through the bar would show
+       through the segment too and land behind its own label. */
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Two lines: year and status on one, the total under it. */
+  .b-year {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "fy flag" "v v";
+    align-items: baseline;
+    gap: 0 6px;
+    padding: 7px 10px 8px;
+    border-radius: var(--radius-sm);
+    box-shadow: none;
+  }
+  .b-year:hover { transform: none; box-shadow: none; }
+  .b-year.is-open { border-top-width: 2px; }
+  .b-year.is-set  { border-top-width: 2px; }
+  /* Which one is open is carried by fill, not by depth — at this size a shadow
+     is indistinguishable from none — and the fill is that year's own status
+     colour, so "which is open" and "what kind of budget it is" stay one fact.
+     The unread year keeps its full ink; it is a control, not a footnote. */
+  .b-year[aria-selected="false"] { background: transparent; }
+  .b-year[aria-selected="true"] { box-shadow: none; }
+  /* The status edge keeps its hue on the year you're not reading — which budget
+     is settled is a fact about the year — but not its full weight. In dark mode
+     the adopted year's edge is near-white, and at this size the brightest line
+     in the bar reads as the selected one whatever the fill says. */
+  .b-year.is-open[aria-selected="false"] { border-top-color: color-mix(in oklab, var(--highlight) 55%, var(--bg)); }
+  .b-year.is-set[aria-selected="false"]  { border-top-color: color-mix(in oklab, var(--fg-soft) 42%, var(--bg)); }
+  .b-year.is-open[aria-selected="true"] {
+    background: var(--highlight-soft); border-color: var(--highlight);
+  }
+  /* Mixed from the ink rather than taken from --accent-soft: in dark mode that
+     token and --highlight-soft are both browns a few points apart, so the two
+     selected states would have been the same colour — the one thing this bar
+     exists to tell apart. Mixing --fg-soft into the card surface tracks the
+     theme instead: a pale navy on paper, a lifted neutral on ink, never amber. */
+  .b-year.is-set[aria-selected="true"] {
+    background: color-mix(in oklab, var(--fg-soft) 13%, var(--bg-elev));
+    border-color: var(--border-strong); border-top-color: var(--fg-soft);
+  }
+  /* The same wedge the desktop tabs carry, sitting on the bar's bottom edge and
+     pointing into the panel it opens — the one cue that survives being read at
+     a glance mid-scroll. */
+  .b-year[aria-selected="true"]::after {
+    content: ""; position: absolute; left: 50%; bottom: -10px; translate: -50% 0;
+    border: 6px solid transparent; border-bottom-width: 0;
+  }
+  .b-year.is-open[aria-selected="true"]::after { border-top-color: var(--highlight); }
+  .b-year.is-set[aria-selected="true"]::after  { border-top-color: var(--fg-soft); }
+
+  /* The chip loses its pill here. Selecting a segment fills it with that year's
+     own status tint, which is the very colour the chip was filled with — the
+     chip would have vanished into it. Set as coloured caps instead, it survives
+     both states, and the width it gives back is what lets the year and the
+     status share one line. */
+  .b-year-flag {
+    grid-area: flag; justify-self: end; align-self: center;
+    font-size: 9.5px; letter-spacing: .05em;
+  }
+  .b-year.is-open .b-year-flag { background: none; padding: 0; color: var(--highlight-ink); }
+  .b-year.is-set  .b-year-flag { background: none; padding: 0; color: var(--fg-soft); }
+  .b-year .b-full { display: none; }
+  .b-year .b-min  { display: inline; }
+  .b-year-fy { grid-area: fy; margin-top: 0; font-size: 12.5px; }
+  .b-year-fy em { display: none; }
+  .b-year-v { grid-area: v; margin-top: 1px; font-size: 19px; }
+  /* The descriptions and the "show this budget" link: the open panel's head
+     says the first, and a segmented control doesn't need the second. */
+  .b-year-d, .b-year-go { display: none; }
+
+  .b-years-note { margin-top: 12px; font-size: 12.5px; }
+
+  /* Deep links and the year switch both scroll a panel to the top — clear the
+     topbar and the pinned bar under it, or the panel's flag lands behind them. */
+  .bn, .bp { scroll-margin-top: calc(var(--topbar-h, 60px) + 78px); }
+  /* The switcher is now the seam between the two budgets, so the panels stop
+     paying for a second one of their own. */
+  .bp[role="tabpanel"] { margin-top: 20px; }
+  .bn { margin-top: 20px; }
+
+  /* ---- and the space the switcher bought, spent on the page ---- */
+  .b-hero { margin-top: 0; }
+  .b-h1 { font-size: clamp(26px, 7.4vw, 33px); }
+  .b-lede { font-size: 15.5px; line-height: 1.45; margin-top: 10px; }
+}
+
+/* Under about 350px a half-width segment can't hold the year and the status
+   word on one line, and neither may be shortened further — "FY2026–27" can't
+   wrap and "not final" is the whole point of the bar. So the status takes its
+   own line. Fourteen pixels, on the only phones that need them. */
+@media (max-width: 349px) {
+  .b-year {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "flag" "fy" "v";
+  }
+  .b-year-flag { justify-self: start; }
+  .b-year-fy { margin-top: 1px; }
+  .bn, .bp { scroll-margin-top: calc(var(--topbar-h, 60px) + 92px); }
+}
+
 @media (max-width: 640px) {
-  .bn { padding: 18px 16px 20px; }
-  .bn-head h2, .bp-head h2 { font-size: 22px; }
+  .bn { padding: 16px 14px 18px; }
+  .bn-head h2, .bp-head h2 { font-size: 21px; }
   .bn-lede, .bp-lede { font-size: 14.5px; }
-  /* Stack the date above the label rather than squeezing a 104px column. */
-  .bn-cal li { grid-template-columns: minmax(0, 1fr); padding-left: 12px; }
+  /* One step per row instead of three: the date and what happened share a
+     baseline, the note runs full width beneath them. Squeezing the desktop
+     104px date column would have wrapped every date onto two lines; stacking
+     all three fields cost four rows per step and most of a screen for the
+     calendar alone. */
+  .bn-cal { gap: 1px; }
+  .bn-cal li {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "date label" "note note";
+    gap: 1px 10px; padding: 7px 0 8px 11px;
+  }
+  .bn-cal-date  { grid-area: date; font-size: 11.5px; }
+  .bn-cal-label { grid-area: label; font-size: 13.5px; }
+  .bn-cal-note  { grid-area: note; font-size: 12px; line-height: 1.45; }
+  .bn-cal li.is-ahead .bn-cal-label::after { margin-left: 6px; padding: 1px 5px; font-size: 9.5px; }
+
+  .bn-read { margin-top: 20px; }
+  .bn-block { margin-top: 16px; padding-top: 16px; }
   .bn-read h3 { font-size: 17px; }
   .bn-read p { font-size: 14.5px; }
+  .bn-gist { font-size: 16px !important; margin-bottom: 11px !important; }
+  .bn-stat { margin-top: 7px; }
   .bn-stat .v { font-size: 22px; }
-  .bp { margin-top: 34px; padding-top: 22px; }
-  .b-year-v { font-size: 30px; }
+  .bn-gloss { margin-top: 16px; }
+  .bn-gloss > summary { padding: 11px 14px; }
+  .bn-gloss dl { padding: 2px 14px 14px; }
+  .bn-chartnote { padding: 12px 14px; font-size: 13px; }
+  .bn-figs { margin-top: 16px; }
+  .bp { padding-top: 18px; }
 }
 
 @media (max-width: 640px) {
   /* Headline figures: a tidy 2-up grid instead of uneven flex wrapping. */
-  .b-figures { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-  .b-fig { padding: 13px 14px; }
-  .b-fig .v { font-size: 24px; }
-  .b-fig .d { font-size: 12px; }
+  .b-figures { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
+  .b-fig { padding: 11px 12px; }
+  .b-fig .k { font-size: 11px; letter-spacing: .05em; line-height: 1.3; }
+  .b-fig .v { font-size: 22px; margin-top: 3px; }
+  .b-fig .d { font-size: 11.5px; line-height: 1.4; }
 
   /* Chart header stacks; the toggle spans the width with equal-width buttons
      so both grouping options are comfortable tap targets. */
-  .b-chartcard { margin-top: 20px; }
-  .b-chart-head { gap: 10px; padding: 16px 16px 14px; }
+  .b-chartcard { margin-top: 16px; }
+  .b-chart-head { gap: 9px; padding: 14px 14px 13px; }
   .b-chart-head h2,
-  .b-chart-head h3 { font-size: 20px; }
+  .b-chart-head h3 { font-size: 19px; }
+  .b-chart-head p { font-size: 13.5px; }
   .b-toggle { width: 100%; justify-self: stretch; }
   .b-toggle button { flex: 1 1 0; padding: 9px 8px; text-align: center; }
 
@@ -5447,13 +5616,15 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
   }
   .b-swipe span { font-style: normal; color: var(--highlight-ink); }
 
-  .b-legend { padding: 12px 16px 16px; }
-  .b-tableview > summary,
+  .b-legend { padding: 10px 14px 14px; gap: 5px 13px; }
+  .b-tableview > summary { padding: 11px 14px; }
   .b-tableview .table-export,
   .b-tablenote,
-  .b-recon { padding-left: 16px; padding-right: 16px; }
+  .b-recon { padding-left: 14px; padding-right: 14px; }
 
-  .b-notes { grid-template-columns: 1fr; margin-top: 20px; }
+  .b-notes { grid-template-columns: 1fr; margin-top: 16px; gap: 10px; }
+  .b-note { padding: 12px 13px; }
+  .b-src { margin-top: 18px; }
 }
 
 /* ── Ask agent ─────────────────────────────────────────────────────────────
