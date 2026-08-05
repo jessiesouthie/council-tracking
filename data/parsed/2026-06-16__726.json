@@ -12,16 +12,20 @@
       "id": 1095,
       "meeting_id": 726,
       "date": "2026-06-16",
-      "page": 6,
+      "page": 7,
       "agenda_ref": "Consent",
       "business_type": "Consent batch",
       "item_title": "(see motion text for included items)",
       "motion": "Councilmember Clark moved to approve the Consent Agenda with the following amendments : 1. Item 13.B., Section 6 (Use of Sponsorship Funds ) remove the provisions beginning with “purchase and maintain” through “cover administrative” and to add “other one-time use of funds approved by the City Council.” 2. Item 13 .B., updat e Appendix A Fee Schedule to reflect fee schedule presented in the Work Session. 3. Item 13 .F., update the Scope of Work to include a kickoff meeting noticed for the full City Council and emphasize Councilmember involvement throughout the process. 4. Item 14 .A., Section 2.45.040 (Limitations of the Youth City Council Authority ): update the numbering of items 1-4 and revise Item 1 to read “The youth city council must have a quorum in order to conduct business. A quorum is one more than half of the youth city council voting members or at least five voting members, whichever is less. ” Councilmember Huish seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [
         "consent"
       ],
       "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
         {
           "member_id": "craig-whiting",
           "vote": "Yes"
@@ -128,22 +132,30 @@
       "id": 1098,
       "meeting_id": 726,
       "date": "2026-06-16",
-      "page": 9,
+      "page": 10,
       "agenda_ref": "",
       "business_type": "Ordinance",
       "item_title": "An Ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code 16.15 Concept Plans adding condition that council be notified every time a concept plan will be presented to Planning Commission",
       "motion": "Councilmember Wright moved to a dopt an Ordinance of Eagle Mountain City, Utah, amending the Eagle Mountain Municipal Code 16.15 Concept Plans adding condition that council be notified every time a concept plan will be presented to Planning Commission . Councilmember Wood seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [
         "code"
       ],
       "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
         {
           "member_id": "craig-whiting",
           "vote": "Yes"
         },
         {
           "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
           "vote": "Yes"
         },
         {

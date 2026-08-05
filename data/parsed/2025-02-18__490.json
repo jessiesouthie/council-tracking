@@ -52,17 +52,21 @@
       "id": 836,
       "meeting_id": 490,
       "date": "2025-02-18",
-      "page": 5,
+      "page": 6,
       "agenda_ref": "Consent",
       "business_type": "Consent batch",
       "item_title": "(see motion text for included items)",
       "motion": "Councilmember Wright moved to approve the Consent Agenda, moving items 13.A. January 7, 2025 Minutes, and 13.B. January 21, 2025 Minutes to a future Council meeting agenda, and moving 12.A. Firefly 4MG Tank Change Order #2, and 14.C. A Resolution Consenting to the Annexation of 178 Acres of Land into the Pole Canyon Basic Local District to the Scheduled Items for further discussion. Councilmember Gray seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [
         "zoning",
         "consent"
       ],
       "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
         {
           "member_id": "donna-burnham",
           "vote": "Yes"
@@ -73,6 +77,10 @@
         },
         {
           "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
           "vote": "Yes"
         }
       ],

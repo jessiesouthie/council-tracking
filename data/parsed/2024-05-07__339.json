@@ -36,7 +36,7 @@
       "id": 717,
       "meeting_id": 339,
       "date": "2024-05-07",
-      "page": 10,
+      "page": 11,
       "agenda_ref": "",
       "business_type": "Other / consent / misc.",
       "item_title": "Approve a resolutÍon of Eagle MountaÍn CÍþ, Utah, tentatÍvelg adoptÍng the Eagle MountaÍn CÍtg…",
@@ -46,6 +46,10 @@
         "budget"
       ],
       "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
         {
           "member_id": "donna-burnham",
           "vote": "Yes"

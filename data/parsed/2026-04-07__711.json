@@ -92,18 +92,34 @@
       "id": 1059,
       "meeting_id": 711,
       "date": "2026-04-07",
-      "page": 4,
+      "page": 5,
       "agenda_ref": "Consent",
       "business_type": "Consent batch",
       "item_title": "(see motion text for included items)",
       "motion": "Councilmember Clark moved to approve the Consent Agenda removing items 14.A. and 14.B. and moving them to Scheduled Items. Councilmember Wright seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed by a vote of 4:0, with one abstention.",
       "tags": [
         "consent"
       ],
       "votes": [
         {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Abstain"
+        },
+        {
+          "member_id": "zachory-huish",
           "vote": "Yes"
         }
       ],
@@ -159,7 +175,7 @@
       "page": 6,
       "agenda_ref": "14.B.",
       "business_type": "Resolution",
-      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving a Memorandum of Agreement Concerning Overland. Eagle Mountain City CouMnicnilu te –s April 7, 2026 Page5 of 12",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving a Memorandum of Agreement Concerning Overland.",
       "motion": "Councilmember Wood moved to approve a Resolution of Eagle Mountain City, Utah, Approving a Memorandum of Agreement Concerning Overland. Councilmember Huish seconded the motion.",
       "outcome": "passed with a unanimous vote.",
       "tags": [],
@@ -317,8 +333,8 @@
       "page": 10,
       "agenda_ref": "",
       "business_type": "Ordinance",
-      "item_title": "An Ordinance of Eagle Mountain City Utah, Amending the Eagle Mountain Municipal Code 2.35 (Public Library) and Eagle Mountain Municipal Code 17.15 (Roles and Duties) to Eagle Mountain City CouMnicnilu te –s April 7, 2026 Page9 of 12 Modify the Timing of Appointments from January 1 – December 31 to April 1 – March 31",
-      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City Utah, Amending the Eagle Mountain Municipal Code 2.35 (Public Library) and Eagle Mountain Municipal Code 17.15 (Roles and Duties) to Eagle Mountain City CouMnicnilu te –s April 7, 2026 Page9 of 12 Modify the Timing of Appointments from January 1 – December 31 to April 1 – March 31. Councilmember Wright seconded the motion.",
+      "item_title": "An Ordinance of Eagle Mountain City Utah, Amending the Eagle Mountain Municipal Code 2.35 (Public Library) and Eagle Mountain Municipal Code 17.15 (Roles and Duties) to Modify the Timing of Appointments from January 1 – December 31 to April 1 – March 31",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City Utah, Amending the Eagle Mountain Municipal Code 2.35 (Public Library) and Eagle Mountain Municipal Code 17.15 (Roles and Duties) to Modify the Timing of Appointments from January 1 – December 31 to April 1 – March 31. Councilmember Wright seconded the motion.",
       "outcome": "passed with a unanimous vote.",
       "tags": [
         "code"

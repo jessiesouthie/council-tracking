@@ -52,18 +52,34 @@
       "id": 914,
       "meeting_id": 482,
       "date": "2025-07-01",
-      "page": 4,
+      "page": 5,
       "agenda_ref": "",
       "business_type": "Ordinance",
       "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 10.10 Parking",
       "motion": "Councilmember Burnham moved to deny an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 10.10 Parking. Councilmember Clark seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a 4:1 vote.",
       "tags": [
         "code"
       ],
       "votes": [
         {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
           "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "No"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
           "vote": "Yes"
         }
       ],
@@ -199,7 +215,7 @@
       "business_type": "Ordinance",
       "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 17.80 Sign Regulations and Sign Permits",
       "motion": "Councilmember Wright moved to table an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 17.80 Sign Regulations and Sign Permits. Councilmember Wood seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [
         "code"
       ],

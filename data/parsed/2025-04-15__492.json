@@ -97,7 +97,7 @@
       "agenda_ref": "11.B.",
       "business_type": "Resolution",
       "item_title": "A Resolution of Eagle Mountain City, Utah, Expressing an Intent to Work in Partnership with the West Traverse Sentinel Landscape (WTSL) Committee for the Relocation of the Eagle Mountain City Rodeo Grounds within the Army Compatible Use Buffer (ACUB) Area Surrounding Camp Williams",
-      "motion": "Councilmember Wright moved to adopt a Resolution of Eagle Mountain City, Utah, Expressing an Intent to Work in Partnership with the West Traverse Sentinel Landscape (WTSL) Committee for the Relocation of the Eagle Mountain City Eagle Mountain City Council Agenda – April 15, 2025 Page 6 of 13 Rodeo Grounds within the Army Compatible Use Buffer (ACUB) Area Surrounding Camp Williams. Councilmember Clark seconded the motion.",
+      "motion": "Councilmember Wright moved to adopt a Resolution of Eagle Mountain City, Utah, Expressing an Intent to Work in Partnership with the West Traverse Sentinel Landscape (WTSL) Committee for the Relocation of the Eagle Mountain City Rodeo Grounds within the Army Compatible Use Buffer (ACUB) Area Surrounding Camp Williams. Councilmember Clark seconded the motion.",
       "outcome": "passed with a unanimous vote of 4:0.",
       "tags": [],
       "votes": [
@@ -250,22 +250,34 @@
       "id": 878,
       "meeting_id": 492,
       "date": "2025-04-15",
-      "page": 9,
+      "page": 10,
       "agenda_ref": "",
       "business_type": "Ordinance",
       "item_title": "An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as Cedar Valley Holbrook",
       "motion": "Councilmember Burnham moved to table an Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as Cedar Valley Holbrook. Councilmember Wright seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [
         "zoning"
       ],
       "votes": [
         {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
           "member_id": "donna-burnham",
           "vote": "Yes"
         },
         {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
           "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
           "vote": "Yes"
         }
       ],
@@ -363,7 +375,7 @@
       "business_type": "Resolution",
       "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the Cedar Corners Phase 5 Development Agreement",
       "motion": "Councilmember Wood moved to adopt a Resolution of Eagle Mountain City, Utah, Approving the Cedar Corners Phase 5 Development Agreement with the following additions: 1. That the applicant work with Planning staff on establishing a benchmark for when construction can be started; 2. That the pedestrian rights of way are connecting, and the two roads are connecting on either side of Poplar Drive and Maple Street. Councilmember Wright seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [
         "development",
         "infrastructure"

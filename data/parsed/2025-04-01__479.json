@@ -448,16 +448,20 @@
       "id": 870,
       "meeting_id": 479,
       "date": "2025-04-01",
-      "page": 12,
+      "page": 13,
       "agenda_ref": "",
       "business_type": "Other / consent / misc.",
       "item_title": "",
       "motion": "Councilmember Wright moved authorize staff to begin analysis and preparation for a potential future action to place a Recreation, Arts, and Parks (RAP) Sales Tax question on the 2025 Municipal Election ballot. Councilmember Wood seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [
         "parks"
       ],
       "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
         {
           "member_id": "donna-burnham",
           "vote": "Yes"

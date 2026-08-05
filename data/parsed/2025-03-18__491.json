@@ -170,19 +170,35 @@
       "id": 856,
       "meeting_id": 491,
       "date": "2025-03-18",
-      "page": 6,
+      "page": 7,
       "agenda_ref": "",
       "business_type": "Other / consent / misc.",
       "item_title": "Deny the Harmony 14 Preliminary Plat",
       "motion": "Councilmember Wood moved to deny the Harmony 14 Preliminary Plat. Councilmember Gray seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a 4:1.",
       "tags": [
         "zoning"
       ],
       "votes": [
         {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
           "member_id": "donna-burnham",
           "vote": "No"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
         }
       ],
       "headline": "Vote to deny the Harmony 14 subdivision plan",

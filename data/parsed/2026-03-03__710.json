@@ -252,12 +252,12 @@
       "id": 1041,
       "meeting_id": 710,
       "date": "2026-03-03",
-      "page": 8,
+      "page": 9,
       "agenda_ref": "Consent",
       "business_type": "Consent batch",
       "item_title": "(see motion text for included items)",
       "motion": "Councilmember Clark moved to approve the Consent Agenda. Councilmember Whiting seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [
         "consent"
       ],
@@ -282,7 +282,13 @@
       "headline": "Consent agenda approved",
       "summary": "The council approved its consent agenda, the group of items passed together in a single vote without separate discussion.",
       "impact": "Nothing changes for residents on its own — this is the routine business the council clears in one vote.",
-      "significance": "routine"
+      "significance": "routine",
+      "raw_voters": [
+        {
+          "name": "Bret Wright",
+          "vote": "Yes"
+        }
+      ]
     },
     {
       "id": 1042,
@@ -472,8 +478,8 @@
       "page": 13,
       "agenda_ref": "",
       "business_type": "Ordinance",
-      "item_title": "Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Sections 15.80, 17.10, 17.25, 17.100 regarding Slope Development , with a correction to change the misspelled word “fist” to “first.” Councilmember Whiting seconded the motion. Eagle Mountain City CouMnicnilu te –s March ,3 2026 Page1 2 of 18",
-      "motion": "Councilmember Wood moved to adopt a n Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Sections 15.80, 17.10, 17.25, 17.100 regarding Slope Development , with a correction to change the misspelled word “fist” to “first.” Councilmember Whiting seconded the motion. Eagle Mountain City CouMnicnilu te –s March ,3 2026 Page1 2 of 18",
+      "item_title": "Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Sections 15.80, 17.10, 17.25, 17.100 regarding Slope Development , with a correction to change the misspelled word “fist” to “first.” Councilmember Whiting seconded the motion",
+      "motion": "Councilmember Wood moved to adopt a n Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Sections 15.80, 17.10, 17.25, 17.100 regarding Slope Development , with a correction to change the misspelled word “fist” to “first.” Councilmember Whiting seconded the motion.",
       "outcome": "passed with a unanimous vote.",
       "tags": [
         "code"

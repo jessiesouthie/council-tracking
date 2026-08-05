@@ -93,16 +93,20 @@
       "id": 1093,
       "meeting_id": 713,
       "date": "2026-06-02",
-      "page": 9,
+      "page": 10,
       "agenda_ref": "16.A.",
       "business_type": "Resolution",
       "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the Pledge of any portion of the City’s Sales and Use Taxes to the Proposed Issuance of the Redevelopment Agency’s Sales Tax and Tax Increment Revenue Bonds, Series 2026 (the “Bonds” ) and Authorizing the Execution of Related Pledge and Bond Documents Thereto and all other Actions Required to Pledge Sales and Use Taxes to the Bonds.",
       "motion": "Councilmember Whiting moved to a pprove a Resolution of Eagle Mountain City, Utah, Approving the Pledge of any Portion of the City’s Sales and Use Taxes to the Proposed Issuance of the Redevelopment Agency’s Sales Tax ad Tax Increment Revenue Bonds, Series 2026 (the “Bonds”) and Authorizing the Execution of Related Pledge and Bond Documents Thereto and all other Actions Required to Pledge Sales and Use Taxes to the Bonds. Councilmember Clark seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a 3:1 vote, with one abstention.",
       "tags": [
         "budget"
       ],
       "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
         {
           "member_id": "craig-whiting",
           "vote": "Yes"
@@ -110,6 +114,10 @@
         {
           "member_id": "melissa-clark",
           "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "No"
         },
         {
           "member_id": "zachory-huish",

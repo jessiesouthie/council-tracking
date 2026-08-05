@@ -50,12 +50,12 @@
       "id": 1016,
       "meeting_id": 501,
       "date": "2026-01-20",
-      "page": 5,
+      "page": 6,
       "agenda_ref": "Consent",
       "business_type": "Consent batch",
       "item_title": "(see motion text for included items)",
       "motion": "Councilmember Clark moved to approve the Consent Agenda with a correction of a spelling error in the January 6, 2026 , City Council Meeting Minutes . Councilmember Wright seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [
         "consent"
       ],
@@ -74,6 +74,10 @@
         },
         {
           "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
           "vote": "Yes"
         }
       ],
@@ -254,7 +258,7 @@
       "agenda_ref": "13.D.",
       "business_type": "Ordinance",
       "item_title": "An Ordinance of Eagle Mountain City, Utah, Repealing and Replacing Various Provisions of Title 2 of the Eagle Mountain Municipal Code Related to City Governance.",
-      "motion": "Councilmember Wood moved to table item 13.D. an Ordinance of Eagle Mountain City, Utah, Repealing and Replacing Various Provisions of Title Eagle Mountain City CouMnicnilu te –s January 2,0 2025 Page9 of 11 2 of the Eagle Mountain Municipal Code Related to City Governance . Councilmember Wright seconded the motion.",
+      "motion": "Councilmember Wood moved to table item 13.D. an Ordinance of Eagle Mountain City, Utah, Repealing and Replacing Various Provisions of Title 2 of the Eagle Mountain Municipal Code Related to City Governance . Councilmember Wright seconded the motion.",
       "outcome": "passed with a unanimous vote.",
       "tags": [
         "code"

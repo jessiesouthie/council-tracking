@@ -12,16 +12,20 @@
       "id": 1053,
       "meeting_id": 900325,
       "date": "2026-03-25",
-      "page": 5,
+      "page": 6,
       "agenda_ref": "Consent",
       "business_type": "Consent batch",
       "item_title": "(see motion text for included items)",
       "motion": "Councilmember Clark moved to approve the Consent Agenda with the exclusion of Items 10.A., 10.B., and 12.A., to be voted on separately, and with Item 13.A. removed and placed under Scheduled Items. The motion also included minor spelling updates to Item 13.B. as discussed during the Policy Session . Councilmember Whiting seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a 4:0 vote.",
       "tags": [
         "consent"
       ],
       "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
         {
           "member_id": "craig-whiting",
           "vote": "Yes"
@@ -88,19 +92,31 @@
       "id": 1055,
       "meeting_id": 900325,
       "date": "2026-03-25",
-      "page": 6,
+      "page": 7,
       "agenda_ref": "13.A.",
       "business_type": "Resolution",
       "item_title": "A Resolution of Eagle Mountain City, Utah, Authorizing Extended Hours for Construction Operations for QTS – SLC1 as Allowed in Eagle Mountain Municipal Code Section 8.15.080(G).",
       "motion": "Councilmember Clark moved to approve a Resolution of Eagle Mountain City, Utah, Authorizing Extended Hours for Construction Operations for QTS – SLC1 as Allowed in Eagle Mountain Municipal Code Section 8.15.080(G). Councilmember Huish seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a 4:0 vote.",
       "tags": [
         "code"
       ],
       "votes": [
         {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "melissa-clark",
           "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Excused"
         },
         {
           "member_id": "zachory-huish",

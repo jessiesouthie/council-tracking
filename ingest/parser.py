@@ -151,7 +151,16 @@ def meeting_date_from_text(text: str) -> str:
 
 
 def _is_footer_line(line: str) -> bool:
-    return "Council Minutes" in line and "Page" in line and "of" in line
+    if "Council Minutes" in line and "Page" in line and "of" in line:
+        return True
+    # Some exports interleave the two halves of the running head, so the words
+    # come out scrambled ("Eagle Mountain City CouMnicnilu te –s ... Page6 of 11",
+    # every page of the 2026-07-21 minutes). Fall back to the parts that survive.
+    return bool(
+        "Eagle Mountain City" in line
+        and re.search(r"\bPage\s*\d", line)
+        and re.search(r"\bof\s*\d+\s*$", line.strip())
+    )
 
 
 def _clears_business_item(line: str) -> bool:

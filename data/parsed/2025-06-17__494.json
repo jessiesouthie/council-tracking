@@ -92,22 +92,34 @@
       "id": 908,
       "meeting_id": 494,
       "date": "2025-06-17",
-      "page": 5,
+      "page": 6,
       "agenda_ref": "14.B.",
       "business_type": "Resolution",
       "item_title": "A Resolution of Eagle Mountain City, Utah, Amending the Eagle Mountain City Consolidated Fee Schedule for Water Rates, Sewer Rates, and Utility Billing Rates and Fees.",
       "motion": "Councilmember Wood moved to adopt a Resolution of Eagle Mountain City, Utah, Amending the Eagle Mountain City Consolidated Fee Schedule for Water Rates, Sewer Rates, and Utility Billing Rates and Fees. Councilmember Burnham seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [
         "infrastructure"
       ],
       "votes": [
         {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
           "member_id": "donna-burnham",
           "vote": "Yes"
         },
         {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
           "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
           "vote": "Yes"
         }
       ],

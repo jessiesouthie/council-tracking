@@ -52,16 +52,20 @@
       "id": 739,
       "meeting_id": 142,
       "date": "2024-08-06",
-      "page": 5,
+      "page": 6,
       "agenda_ref": "Consent",
       "business_type": "Consent batch",
       "item_title": "(see motion text for included items)",
       "motion": "Councilmember Gray moved to approve the Consent Agenda. Councilmember Wood seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [
         "consent"
       ],
       "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
         {
           "member_id": "donna-burnham",
           "vote": "Yes"

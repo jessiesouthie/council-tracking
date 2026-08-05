@@ -52,16 +52,20 @@
       "id": 823,
       "meeting_id": 489,
       "date": "2025-01-21",
-      "page": 4,
+      "page": 5,
       "agenda_ref": "Consent",
       "business_type": "Consent batch",
       "item_title": "(see motion text for included items)",
       "motion": "Councilmember Wood moved to approve the consent agenda, removing Items 11.C. and 11.E. from the consent agenda and placing them at the end of the scheduled items for further discussion. Councilmember Burnham seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [
         "consent"
       ],
       "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
         {
           "member_id": "donna-burnham",
           "vote": "Yes"
@@ -72,6 +76,10 @@
         },
         {
           "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
           "vote": "Yes"
         }
       ],

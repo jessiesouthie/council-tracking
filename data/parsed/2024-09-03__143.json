@@ -15,7 +15,7 @@
       "page": 4,
       "agenda_ref": "13.E.",
       "business_type": "Resolution",
-      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving an Amendment to the Commercial Lease Agreement between Star West Eagle Mountain Properties LLC and Eagle Mountain City. Staff answered questions posed by the Council regarding other office space solutions including mobile offices and purchase options, and how many office spaces the proposed agreement will add. Eagle Mountain City Council Meeting – September 3, 2024 Page 2 of 15",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving an Amendment to the Commercial Lease Agreement between Star West Eagle Mountain Properties LLC and Eagle Mountain City. Staff answered questions posed by the Council regarding other office space solutions including mobile offices and purchase options, and how many office spaces the proposed agreement will add.",
       "motion": "Councilmember Gray moved to approve the appointment of Angeline Washburn as a Youth Council Advisory for a one-year term through June 2025. Councilmember Wright seconded the motion.",
       "outcome": "passed with a unanimous vote.",
       "tags": [
@@ -473,18 +473,34 @@
       "id": 761,
       "meeting_id": 143,
       "date": "2024-09-03",
-      "page": 14,
+      "page": 15,
       "agenda_ref": "",
       "business_type": "Ordinance",
       "item_title": "An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Located within the Eagle Mountain Properties Master Plan Area. Property Zone 1 CN 2 AG 3 AG 4 AG 5 AG 6 AG 7 AG 8 AG 9 AG 10 AG 11 LMD 12 AG 13 AG 14 AG 15 AG 16 AG 17 AG 19 AG 20 LMD 21 AG 22 AG 23 CN 24 CN 25 CN 26 CN 27 CN 28 CN Councilmember Wood seconded the motion",
       "motion": "Councilmember Wright moved to approve an Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Located within the Eagle Mountain Properties Master Plan Area. Property Zone 1 CN 2 AG 3 AG 4 AG 5 AG 6 AG 7 AG 8 AG 9 AG 10 AG 11 LMD 12 AG 13 AG 14 AG 15 AG 16 AG 17 AG 19 AG 20 LMD 21 AG 22 AG 23 CN 24 CN 25 CN 26 CN 27 CN 28 CN Councilmember Wood seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [
         "zoning"
       ],
       "votes": [
         {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
           "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
           "vote": "Yes"
         }
       ],

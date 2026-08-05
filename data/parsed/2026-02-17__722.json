@@ -135,8 +135,8 @@
       "page": 10,
       "agenda_ref": "",
       "business_type": "Ordinance",
-      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending Eagle Mountain Municipal Code Chapter 15.95 and Eagle Mountain City CouMnicnilu te –s February 1, 72026 Page9 of 12 Adopting the Eagle Mountain City Wildland Urban Interface Area Map",
-      "motion": "Councilmember Whiting moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending Eagle Mountain Municipal Code Chapter 15.95 and Eagle Mountain City CouMnicnilu te –s February 1, 72026 Page9 of 12 Adopting the Eagle Mountain City Wildland Urban Interface Area Map. Councilmember Huish seconded the motion.",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending Eagle Mountain Municipal Code Chapter 15.95 and Adopting the Eagle Mountain City Wildland Urban Interface Area Map",
+      "motion": "Councilmember Whiting moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending Eagle Mountain Municipal Code Chapter 15.95 and Adopting the Eagle Mountain City Wildland Urban Interface Area Map. Councilmember Huish seconded the motion.",
       "outcome": "passed with a unanimous vote.",
       "tags": [
         "code"
@@ -172,17 +172,21 @@
       "id": 1034,
       "meeting_id": 722,
       "date": "2026-02-17",
-      "page": 10,
+      "page": 11,
       "agenda_ref": "18.A.",
       "business_type": "Ordinance",
       "item_title": "An Ordinance of Eagle Mountain City, Utah, Repealing Chapter 2.30 (Parks and Recreation Advisory Board), Chapter 2.40 (Recreation Sports Board), Chapter 2.55 (Cemetery Board), Chapter 2.60 (Military and Veterans Advisory Board), and Chapter 2.7 0 (Economic Development Board) and Enacting Chapter 2.80 of the Eagle Mountain Municipal Code to Establish a Community Services Board.",
       "motion": "Councilmember Huish moved to adopt a n Ordinance of Eagle Mountain City, Utah, Repealing Chapter 2.30 (Parks and Recreation Advisory Board), Chapter 2.40 (Recreation Sports Board), Chapter 2.55 (Cemetery Board), Chapter 2.60 (Military and Veterans Advisory Board), and Chapter 2.70 (Economic D evelopment Board) and Enacting Chapter 2.80 of the Eagle Mountain Municipal Code to Establish a Community Services Board. Councilmember Wright seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [
         "parks",
         "code"
       ],
       "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
         {
           "member_id": "craig-whiting",
           "vote": "Yes"
@@ -190,6 +194,10 @@
         {
           "member_id": "melissa-clark",
           "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Excused"
         },
         {
           "member_id": "zachory-huish",

@@ -132,20 +132,28 @@
       "id": 1076,
       "meeting_id": 712,
       "date": "2026-05-05",
-      "page": 8,
+      "page": 9,
       "agenda_ref": "17.C.",
       "business_type": "Resolution",
       "item_title": "A Resolution of Eagle Mountain City, Utah, Declaring Intent to Increase Property Tax Revenue, Providing Notice, and Setting a Public Hearing Date in Accordance with Truth -in-Taxation Requirements.",
       "motion": "Councilmember Wood moved to approve a Resolution of Eagle Mountain City, Utah, Declaring Intent to Increase Property Tax Revenue, Providing Notice, and Setting a Public Hearing Date in Accordance with the Truth -in-Taxation Requirements. Councilmember Whiting seconded the motion.",
-      "outcome": "(outcome not found)",
+      "outcome": "passed with a unanimous vote.",
       "tags": [],
       "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
         {
           "member_id": "craig-whiting",
           "vote": "Yes"
         },
         {
           "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
           "vote": "Yes"
         },
         {
@@ -248,7 +256,7 @@
       "agenda_ref": "",
       "business_type": "Ordinance",
       "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 17.72 regarding Commercial and Multifamily Design Standards as presented",
-      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 17.72 regarding Commercial and Multifamily Design Standards as presented . Councilmember Whiting seconded the motion. Eagle Mountain City CouMnicnilu te –s May 52, 026 Page1 0 of 14",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 17.72 regarding Commercial and Multifamily Design Standards as presented . Councilmember Whiting seconded the motion.",
       "outcome": "passed with a unanimous vote.",
       "tags": [
         "code"
