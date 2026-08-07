@@ -27,7 +27,7 @@
          so nothing on this page would use it, and asking for a third family only
          costs a render-blocking round trip. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260803b" />
+    <link rel="stylesheet" href="site.css?v=20260806a" />
   </head>
   <body class="page-tax">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -166,6 +166,10 @@
       const usd = (n) =>
         "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const usd0 = (n) => "$" + Math.round(n).toLocaleString("en-US");
+      // Citywide assessed value runs to ten figures; nobody reads it digit by
+      // digit, and the point of quoting it is the order of magnitude.
+      const usdBig = (n) =>
+        n >= 1e9 ? "$" + (n / 1e9).toFixed(1) + "B" : n >= 1e6 ? "$" + (n / 1e6).toFixed(1) + "M" : usd0(n);
       const commas = (n) => n.toLocaleString("en-US");
       const cap = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
       // Small counts read as words in prose ("a bill with seven"); anything
@@ -293,6 +297,44 @@
       // number that corrects itself in front of the reader reads as a glitch,
       // and it's the one number this page exists to state.
       const DEFAULT_VALUE = 500000;
+      // Where the "some other rate" row opens: a round number between what the
+      // city charges today and what it is asking for.
+      const DEFAULT_CUSTOM = 0.0011;
+
+      // A percentage typed into the estimator is measured against the rate in
+      // effect today, so it matches the dollars the panel prints: a rate 50%
+      // higher is a city tax bill 50% higher. One decimal, no trailing zero
+      // noise, and never "-0.0".
+      const fmtPct = (p) => (Math.abs(p) < 0.05 ? "0.0" : p.toFixed(1));
+      // Read aloud rather than typed: past a hundred points the tenth is noise.
+      const pctStr = (p) => (Math.abs(p) >= 100 ? Math.round(p).toLocaleString("en-US") : fmtPct(p));
+      // A true minus, not a hyphen: these sit beside tabular figures.
+      const signed = (p) => (p < -0.05 ? "−" : "+") + pctStr(Math.abs(p));
+
+      // The one thing a reader has to be told about the percent field, because
+      // the number most of them arrived with — the noticed 220.9% — is measured
+      // against a different rate than the one they pay.
+      function basisNote(tax) {
+        const cur = tax.rates.current;
+        const prop = tax.rates.proposed;
+        const cert = tax.rates.certified_2026;
+        const overToday = fmtPct((prop.rate / cur.rate - 1) * 100);
+        const base = `Percentages here are measured against the
+          ${cur.rate.toFixed(6)} you pay today, the way the increase was read on June 16.`;
+        if (!cert) return base;
+        return `${base} The city's noticed +${prop.pct}% is measured against the
+          ${CT.escapeHtml(cert.rate_display)} certified rate instead — the same proposal is
+          +${overToday}% against today's.`;
+      }
+
+      // What a rate raises across the whole city. The published schedule gives
+      // two points; a rate nobody has published is priced off the taxable value
+      // behind the city's own proposal, which is the base a rate adopted now
+      // would actually apply to.
+      function cityBase(tax) {
+        const prop = tax.rates.proposed;
+        return prop.revenue && prop.rate ? prop.revenue / prop.rate : 0;
+      }
 
       function estimatorHtml(tax) {
         const cur = tax.rates.current;
@@ -301,6 +343,7 @@
         const now = taxable * cur.rate;
         const sel = taxable * prop.rate;
         const diff = sel - now;
+        const hasRevenue = !!(cur.revenue && prop.revenue);
         return `
         <section class="estimator reveal" style="--i:1" id="estimate" aria-label="Property tax estimator">
           <div class="tax-tool">
@@ -347,6 +390,23 @@
                   <span class="bb-sub">a year · <span id="res-month">${usd(sel / 12)}</span> a month</span>
                 </div>
               </div>
+
+              <!-- The same rate seen from the other end: not what one household
+                   pays, but what the whole city collects. It doesn't move with
+                   the home value above it — this is every parcel in Eagle
+                   Mountain — so it sits apart from the two halves. -->
+              ${
+                hasRevenue
+                  ? `<div class="bb-city" id="bb-city">
+                <span class="bb-label">What the city collects</span>
+                <span class="bb-city-num mono" id="cw-total">${usd0(prop.revenue)}</span>
+                <span class="bb-sub" id="cw-sub">a year · +${pctStr(
+                  (prop.revenue / cur.revenue - 1) * 100
+                )}% against the ${usd0(cur.revenue)} it collects today</span>
+                <span class="bb-note" id="cw-note">From the city's published schedule.</span>
+              </div>`
+                  : ""
+              }
             </div>
 
             <div class="est-rates">
@@ -382,21 +442,38 @@
                     <span class="dot" aria-hidden="true"></span>
                     <span>
                       <span class="rname">Some other rate</span>
-                      <span class="rmeta" id="custom-meta">Type a rate, or drag</span>
+                      <span class="rmeta" id="custom-meta">Type a rate or a percent, or drag</span>
                     </span>
                     <span class="rrate mono" id="custom-rate">0.001100</span>
                   </label>
                   <div class="customwrap" id="customwrap" hidden>
+                    <!-- Two ways of saying the same scenario. Almost nobody
+                         thinks in six-decimal rates; plenty of people arrive
+                         having heard a percentage. Fill in either and the other
+                         follows. -->
                     <div class="customedit">
-                      <label class="clabel" for="custom-num">Rate</label>
-                      <div class="cnum">
-                        <button type="button" class="cstep" id="custom-down" aria-label="Lower the rate">−</button>
-                        <input id="custom-num" class="crate mono" type="text" inputmode="decimal"
-                               value="0.001100" aria-describedby="custom-help" />
-                        <button type="button" class="cstep" id="custom-up" aria-label="Raise the rate">+</button>
+                      <div class="cfield">
+                        <label class="clabel" for="custom-num">Rate</label>
+                        <div class="cnum">
+                          <button type="button" class="cstep" id="custom-down" aria-label="Lower the rate">−</button>
+                          <input id="custom-num" class="crate mono" type="text" inputmode="decimal"
+                                 value="${DEFAULT_CUSTOM.toFixed(6)}" aria-describedby="custom-help" />
+                          <button type="button" class="cstep" id="custom-up" aria-label="Raise the rate">+</button>
+                        </div>
+                      </div>
+                      <div class="cfield">
+                        <label class="clabel" for="custom-pct">% change from today</label>
+                        <div class="cnum">
+                          <button type="button" class="cstep" id="pct-down" aria-label="Lower the percentage">−</button>
+                          <input id="custom-pct" class="crate cpct mono" type="text" inputmode="decimal"
+                                 value="${fmtPct((DEFAULT_CUSTOM / cur.rate - 1) * 100)}" aria-describedby="custom-basis" />
+                          <span class="csuffix" aria-hidden="true">%</span>
+                          <button type="button" class="cstep" id="pct-up" aria-label="Raise the percentage">+</button>
+                        </div>
                       </div>
                     </div>
-                    <input type="range" id="custom-range" min="0" max="3000" step="10" value="1100" aria-label="Custom tax rate" />
+                    <p class="hint chint" id="custom-basis">${basisNote(tax)}</p>
+                    <input type="range" id="custom-range" min="0" max="3000" step="10" value="${Math.round(DEFAULT_CUSTOM * 1e6)}" aria-label="Custom tax rate" />
                     <div class="rangeends" id="custom-help"><span>0.000000</span><span>0.003000</span></div>
                   </div>
                 </div>
@@ -428,17 +505,28 @@
           ? `Utah taxes a primary residence on ${+(ratio * 100).toFixed(1)}% of its market value.`
           : "Business, rental, and secondary property is taxed on its full market value.";
 
-      function wireEstimator({ CURRENT, PROPOSED, RATIO }) {
+      function wireEstimator({ CURRENT, PROPOSED, RATIO, tax }) {
         const $ = (id) => document.getElementById(id);
         const mv = $("mv"),
           mvRange = $("mv-range"),
           customWrap = $("customwrap"),
           customRng = $("custom-range"),
           customNum = $("custom-num"),
+          customPct = $("custom-pct"),
           customRate = $("custom-rate"),
           customMeta = $("custom-meta"),
           bignum = $("res-total"),
+          cityRow = $("bb-city"),
           srOut = $("res-sr");
+
+        const CUR_REV = tax.rates.current.revenue || 0;
+        const PROP_REV = tax.rates.proposed.revenue || 0;
+        const CITY_BASE = cityBase(tax);
+        // The two collections figures are counted on different years' assessed
+        // values, which is why an unchanged rate still raises more. Saying which
+        // year each one belongs to is the difference between that reading as
+        // arithmetic and reading as a bug.
+        const TAX_YEAR = parseInt(tax.fiscal_year, 10) || 0;
 
         // The custom rate is kept here, in millionths, rather than read back off
         // the slider: the slider snaps to its 0.000010 step, and a rate someone
@@ -447,14 +535,22 @@
         const STEP = parseInt(customRng.step, 10);
         let customMicro = parseInt(customRng.value, 10);
 
-        // `typed` keeps a half-finished entry ("0.0" on the way to "0.0018")
-        // from being reformatted out from under the cursor.
+        // The rate and the percent are one control wearing two faces. Both are
+        // derived from `customMicro` — nothing is stored as a percentage, so the
+        // two fields can never drift apart.
+        const microToPct = (micro) => (CURRENT ? (micro / 1e6 / CURRENT - 1) * 100 : 0);
+        const pctToMicro = (p) => CURRENT * 1e6 * (1 + p / 100);
+
+        // `typed` names the field being edited, so a half-finished entry ("0.0"
+        // on the way to "0.0018", or a lone "-") isn't reformatted out from
+        // under the cursor. The other face always refreshes.
         const setCustom = (micro, typed) => {
           customMicro = Math.min(Math.max(Math.round(micro), 0), RATE_MAX);
           customRng.value = customMicro;
           $("r-custom").checked = true;
           customWrap.hidden = false;
-          if (!typed) customNum.value = (customMicro / 1e6).toFixed(6);
+          if (typed !== "rate") customNum.value = (customMicro / 1e6).toFixed(6);
+          if (typed !== "pct") customPct.value = fmtPct(microToPct(customMicro));
           paint();
         };
 
@@ -465,10 +561,16 @@
         const ratio = () => ($("pt-home").checked ? RATIO : 1);
         const chosen = () => {
           const v = document.querySelector('input[name="rate"]:checked').value;
-          if (v === "current") return { rate: CURRENT, name: "current rate", short: "No change" };
-          if (v === "proposed") return { rate: PROPOSED, name: "proposed rate", short: "If this passes" };
-          return { rate: customMicro / 1e6, name: "rate you picked", short: "At your rate" };
+          if (v === "current") return { key: v, rate: CURRENT, name: "current rate", short: "No change" };
+          if (v === "proposed") return { key: v, rate: PROPOSED, name: "proposed rate", short: "If this passes" };
+          return { key: v, rate: customMicro / 1e6, name: "rate you picked", short: "At your rate" };
         };
+
+        // Two of the three scenarios have a published collections figure behind
+        // them; quote those rather than re-deriving them. Anything else is
+        // scaled off the taxable value the city's own proposal implies.
+        const cityRevenue = (sel) =>
+          sel.key === "current" ? CUR_REV : sel.key === "proposed" ? PROP_REV : sel.rate * CITY_BASE;
 
         // The visible number updates on every slider tick; the announcement waits
         // for the reader to settle, so assistive tech gets one sentence, not fifty.
@@ -524,7 +626,29 @@
           // means in dollars.
           const cr = customMicro / 1e6;
           customRate.textContent = cr.toFixed(6);
-          customMeta.textContent = usd(cr * 100000 * ratio()) + " a year per $100k";
+          customMeta.textContent =
+            sel.key === "custom"
+              ? usd(cr * 100000 * ratio()) + " a year per $100k · " + signed(microToPct(customMicro)) + "%"
+              : "Type a rate or a percent, or drag";
+
+          // What the same rate does to the city's own side of the ledger. The
+          // figure a resident pays and the figure the city collects are the two
+          // halves of the same argument, and only one of them was on this panel.
+          if (cityRow) {
+            const rev = cityRevenue(sel);
+            const revDiff = rev - CUR_REV;
+            const revSame = CUR_REV > 0 && Math.abs(revDiff) / CUR_REV < 0.0005;
+            $("cw-total").textContent = usd0(rev);
+            $("cw-sub").textContent = revSame
+              ? "a year · about what it collects today"
+              : `a year · ${signed((rev / CUR_REV - 1) * 100)}% against the ${usd0(CUR_REV)} it collects today`;
+            $("cw-note").textContent =
+              sel.key === "custom"
+                ? `Estimated on the ${usdBig(CITY_BASE)} of ${TAX_YEAR || ""} taxable value behind the city's
+                   schedule; today's total is collected on ${TAX_YEAR ? TAX_YEAR - 1 : "last year's"} values.`.replace(/\s+/g, " ")
+                : "From the city's published schedule.";
+            cityRow.classList.toggle("is-up", !revSame && revDiff > 0);
+          }
 
           // Every rate row is priced the same way, so the six-decimal figure
           // beside it is evidence rather than the thing being read.
@@ -544,7 +668,8 @@
               `${usd(tax / 12)} per month. ` +
               (same
                 ? "The same as today."
-                : `${usd(Math.abs(diff))} ${diff > 0 ? "more" : "less"} per year than the current rate.`)
+                : `${usd(Math.abs(diff))} ${diff > 0 ? "more" : "less"} per year than the current rate.`) +
+              (cityRow ? ` Citywide, that rate collects about ${usd0(cityRevenue(sel))} a year.` : "")
           );
         }
 
@@ -585,7 +710,7 @@
         customNum.addEventListener("input", () => {
           const n = parseFloat(String(customNum.value).replace(/[^0-9.]/g, ""));
           if (isNaN(n)) return; // an empty or half-typed field isn't a rate yet
-          setCustom(n * 1e6, true);
+          setCustom(n * 1e6, "rate");
         });
         // Tidy the field to six places only once they're done with it, and never
         // leave a cleared field standing in for a rate that is still in effect.
@@ -601,6 +726,41 @@
 
         $("custom-up").addEventListener("click", () => setCustom(customMicro + STEP));
         $("custom-down").addEventListener("click", () => setCustom(customMicro - STEP));
+
+        // The percent field, wired the same way. A leading minus is kept so a
+        // reader can type their way down to a cut, and the field is stepped in
+        // whole points — a tenth of a point is under a millionth of a rate.
+        const PCT_STEP = 1;
+        const pctValue = () => {
+          const raw = String(customPct.value).replace(/[^0-9.\-]/g, "");
+          const n = parseFloat(raw);
+          return isNaN(n) ? null : n;
+        };
+        const stepPct = (dir, big) => {
+          const from = pctValue();
+          const at = from === null ? microToPct(customMicro) : from;
+          setCustom(pctToMicro(at + dir * PCT_STEP * (big ? 10 : 1)));
+        };
+
+        customPct.addEventListener("input", () => {
+          const n = pctValue();
+          if (n === null) return; // "-" or "" on the way to a number
+          setCustom(pctToMicro(n), "pct");
+        });
+        // Snapping the rate to six decimals can move the percent a hair off what
+        // was typed; on the way out, show the percent the rate actually is.
+        customPct.addEventListener("blur", () => {
+          customPct.value = fmtPct(microToPct(customMicro));
+        });
+        customPct.addEventListener("keydown", (e) => {
+          const dir = e.key === "ArrowUp" ? 1 : e.key === "ArrowDown" ? -1 : 0;
+          if (!dir) return;
+          e.preventDefault();
+          stepPct(dir, e.shiftKey);
+        });
+
+        $("pct-up").addEventListener("click", () => stepPct(1));
+        $("pct-down").addEventListener("click", () => stepPct(-1));
 
         paint();
         srOut.textContent = ""; // don't announce the initial render

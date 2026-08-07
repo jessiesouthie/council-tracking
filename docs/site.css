@@ -3307,9 +3307,13 @@ body.page-tax {
 /* The rate itself, typeable. The slider is for exploring; this is for the
    reader who has a specific number in mind and wants to put it in. */
 .tax-tool .customedit {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 12px;
+  display: flex; align-items: flex-end; flex-wrap: wrap;
+  gap: 10px 16px;
 }
+/* The rate and the percentage are the same control twice over, so they sit
+   side by side rather than one above the other — a reader picks the unit they
+   already think in and the other fills itself in. */
+.tax-tool .cfield { display: flex; flex-direction: column; gap: 6px; }
 .tax-tool .customedit .clabel {
   font-size: 11px; font-weight: 600;
   letter-spacing: .12em; text-transform: uppercase;
@@ -3342,6 +3346,15 @@ body.page-tax {
 }
 .tax-tool .cstep:hover { background: var(--t-tray); color: var(--t-fg); }
 .tax-tool .cstep:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+/* "−100.0" is the widest this ever gets. The sign lives in the field, so the
+   percentage can be typed down past today's rate as well as up. */
+.tax-tool input.cpct { width: 6.5ch; text-align: right; padding-right: 0; }
+.tax-tool .csuffix {
+  font-size: 15px; font-weight: 600;
+  color: var(--t-muted);
+  padding: 0 2px 0 1px;
+}
+.tax-tool .chint { margin: 11px 0 2px; }
 
 /* ---------- the answer ----------
    This is the whole page for most people who open it. So it says one thing, in
@@ -3432,6 +3445,34 @@ body.page-tax {
 .bb-num.len-l  { font-size: clamp(17px, 2.2vw, 21px); }
 .bb-num.len-xl { font-size: clamp(14px, 1.7vw, 16px); }
 .bb-sub { font-size: 12.5px; color: var(--t-on-ink-dim); }
+
+/* ---------- the city's side of it ----------
+   The same rate, counted across every parcel instead of one. It runs the full
+   width under the two halves rather than becoming a third column: it does not
+   move with the home value above it, and pretending otherwise would invite the
+   reading that this is somehow part of one household's bill. */
+.bb-city {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 16px 12px 2px;
+  border-top: 1px solid var(--t-ink-line);
+}
+.bb-city-num {
+  font-size: clamp(22px, 3vw, 27px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  color: color-mix(in oklab, var(--t-on-ink) 85%, transparent);
+  overflow-wrap: anywhere;
+}
+.bb-city.is-up .bb-city-num { color: #FFFFFF; }
+.bb-note {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--t-on-ink-dim);
+}
 
 .tax-tool .tool-foot {
   margin: 0;
