@@ -3978,10 +3978,6 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   background-color: var(--c-base);
   background-image: repeating-linear-gradient(135deg, var(--t-page) 0 2px, transparent 2px 5px);
 }
-.legend .sw-prop-em {
-  background-color: var(--c-em);
-  background-image: repeating-linear-gradient(135deg, var(--t-page) 0 2px, transparent 2px 5px);
-}
 .legend .sw-ref { background: transparent; border: 1.5px dashed var(--c-em); }
 .legend .sw-med {
   width: 0; height: 13px; border-radius: 0;
@@ -4951,23 +4947,10 @@ table.data.statewide tbody tr[hidden] { display: none; }
    ========================================================================= */
 
 /* Names here run to "West Jordan Fairway Estates Special Service District", so
-   the chart's name column is given half again the width the county charts use,
-   and the value gutter enough room for Eagle Mountain's row to carry two
-   figures: "220.75% → 183.02%". */
+   the chart's name column is given half again the width the county charts use.
+   Every row carries one figure, so the value gutter is the county charts' own. */
 .chart--state .crow { grid-template-columns: 190px minmax(0, 1fr); }
-.chart--state .ctrack { --track-gutter: 148px; }
-
-/* Eagle Mountain's second figure — what the August 6 vote actually set —
-   wherever its noticed figure appears. Deliberately quiet: the ranking is on
-   the noticed number, and this rides along with it rather than replacing it. */
-.st-adopt {
-  font-weight: 500;
-  color: var(--t-muted);
-  font-size: .88em;
-  white-space: nowrap;
-}
-.crow.is-em .st-adopt { color: var(--t-fg); }
-table.data.statelist .st-adopt { display: block; margin-top: 2px; }
+.chart--state .ctrack { --track-gutter: 96px; }
 
 /* Each row is an entity, a kind and a county — three facts that would be three
    columns on a desktop and unreadable on a phone. Stacked instead: the name at
@@ -4995,8 +4978,7 @@ table.data.statelist .st-adopt { display: block; margin-top: 2px; }
    across two lines stops being a rate. */
 table.data.statelist td.num .st-meta,
 table.data.statelist .st-when .st-meta { white-space: nowrap; }
-table.data.statelist tr.is-em-row .st-meta,
-table.data.statelist tr.is-em-row .st-adopt { color: var(--t-fg); }
+table.data.statelist tr.is-em-row .st-meta { color: var(--t-fg); }
 table.data.statelist .st-when { white-space: nowrap; }
 /* Six columns where the statewide ranking has four, so each one gives back a
    little of its padding rather than pushing the last column off the edge. */
@@ -5019,7 +5001,6 @@ table.data.statelist :is(th, td) { padding-left: 8px; padding-right: 8px; }
 @media (max-width: 700px) {
   .chart--state .crow { grid-template-columns: 116px minmax(0, 1fr); }
   .chart--state .ctrack { --track-gutter: 88px; }
-  .chart--state .cval .st-adopt { display: none; }
   /* Seven columns will not fit a phone. Squeezed, they turn every name into
      three lines; left at full width they scroll sideways, which hides every
      figure behind a swipe nobody knows to make. So each ranking keeps the rate
@@ -5036,7 +5017,6 @@ table.data.statelist :is(th, td) { padding-left: 8px; padding-right: 8px; }
   #state-rev :is(th, td):nth-child(5),
   table.data.statelist :is(th, td):nth-child(7) { display: none; }
   .st-when-m { display: inline; }
-  .st-adoptw { display: none; }
   /* Sortable headers are nowrap so the sort arrow never orphans; the rank
      column is the one place that costs more than it is worth, so there the
      arrow is allowed onto a second line. */

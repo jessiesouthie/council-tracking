@@ -450,24 +450,32 @@ def _state_docs() -> list[dict]:
     if em is None:
         return []
 
+    # Eagle Mountain is ranked on what its council adopted, the way the page
+    # ranks it; its own noticed row is dropped from the comparison so it is
+    # never measured against itself.
     def rank_of(key: str, value: float) -> int:
-        return sum(1 for n in notices if n.get(key, 0) > value) + 1
-
-    # Eagle Mountain's own noticed row is dropped when placing the adopted
-    # figure, so it is never ranked against itself.
-    def adopted_rank(key: str, value: float) -> int:
         return sum(1 for n in notices if n.get("entity") != em_name and n.get(key, 0) > value) + 1
 
-    top = sorted(notices, key=lambda n: -n.get("pct", 0))[:15]
-    def levy(n: dict) -> str:
-        if n.get("proposed_rate") is None:
-            return "no rate published"
-        return f"levy {n.get('certified_rate',0):.6f} to {n.get('proposed_rate',0):.6f}"
+    # Eagle Mountain appears in this list at what it adopted, not what it
+    # noticed — the same substitution the page's ranking makes, so the agent and
+    # the chart never quote different numbers for the same row.
+    def val(n: dict, key: str):
+        return ad.get(key, 0) if n.get("entity") == em_name else n.get(key, 0)
 
+    def rate(n: dict):
+        return ad.get("rate") if n.get("entity") == em_name else n.get("proposed_rate")
+
+    def levy(n: dict) -> str:
+        return "no rate published" if rate(n) is None else \
+            f"levy {n.get('certified_rate',0):.6f} to {rate(n):.6f}"
+
+    top = sorted(notices, key=lambda n: -val(n, "pct"))[:15]
     top_lines = "; ".join(
         f"{n.get('entity','')} ({n.get('county','')} County, {n.get('type','').lower()}) "
-        f"+{n.get('pct',0)}%, {levy(n)}, ${n.get('annual_increase',0):,.2f} a year on a "
-        f"${n.get('home_value',0):,} home, ${n.get('revenue',0):,} raised, hearing {n.get('hearing',{}).get('date','')}"
+        f"+{val(n,'pct')}%, {levy(n)}, ${val(n,'annual_increase'):,.2f} a year on a "
+        f"${n.get('home_value',0):,} home, ${val(n,'revenue'):,} raised, "
+        + ("adopted" if n.get("entity") == em_name else "hearing")
+        + f" {n.get('hearing',{}).get('date','')}"
         for n in top
     )
 
@@ -477,16 +485,14 @@ def _state_docs() -> list[dict]:
         f"{t.get('counties',0)} counties — cities, towns, school districts, water conservancy districts "
         f"and fire districts — asking for ${t.get('revenue',0):,} between them, with hearings from "
         f"{t.get('hearings_from','')} to {t.get('hearings_to','')}. "
-        f"Eagle Mountain's noticed increase of {em.get('pct',0)}% was the "
-        f"{_ordinal(rank_of('pct', em.get('pct', 0)))}-steepest in the state, the "
-        f"{_ordinal(rank_of('annual_increase', em.get('annual_increase', 0)))}-heaviest on an average home "
-        f"at ${em.get('annual_increase',0):,.2f} a year, and the "
-        f"{_ordinal(rank_of('revenue', em.get('revenue', 0)))}-largest by revenue at ${em.get('revenue',0):,}. "
-        f"On {ad.get('date','')} the council adopted {ad.get('rate_display','')} instead, "
-        f"{ad.get('pct',0)}% — which against every other entity's noticed figure is the "
-        f"{_ordinal(adopted_rank('pct', ad.get('pct', 0)))}-steepest, the "
-        f"{_ordinal(adopted_rank('annual_increase', ad.get('annual_increase', 0)))}-heaviest per home and the "
-        f"{_ordinal(adopted_rank('revenue', ad.get('revenue', 0)))}-largest by revenue. "
+        f"Eagle Mountain's is the only settled figure on the list: its council adopted "
+        f"{ad.get('rate_display','')} on {ad.get('date','')}, an increase of {ad.get('pct',0)}%. "
+        f"Measured against every other entity's noticed figure that is the "
+        f"{_ordinal(rank_of('pct', ad.get('pct', 0)))}-steepest increase in the state, the "
+        f"{_ordinal(rank_of('annual_increase', ad.get('annual_increase', 0)))}-heaviest on an average home "
+        f"at ${ad.get('annual_increase',0):,.2f} a year, and the "
+        f"{_ordinal(rank_of('revenue', ad.get('revenue', 0)))}-largest by revenue at "
+        f"${ad.get('revenue',0):,}. Every other entity's hearing may still land lower than its notice. "
         f"The fifteen steepest proposals in Utah: {top_lines}. "
         + " ".join(s.get("caveats", []))
     )

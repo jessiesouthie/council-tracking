@@ -27,7 +27,7 @@
          so nothing on this page would use it, and asking for a third family only
          costs a render-blocking round trip. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260807b" />
+    <link rel="stylesheet" href="site.css?v=20260807c" />
   </head>
   <body class="page-tax">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -280,9 +280,8 @@
           : "From the city's published schedule.";
 
       /* The sentence under the headline. Before August 6 it had a vote to point
-         at; now the vote has happened, so it says what was set and — because
-         the number most readers arrived with is the other one — what was set
-         instead of. */
+         at; now the vote has happened, so it says what was set, and the rate
+         the city noticed and did not adopt is left to the record below. */
       function ledeHtml(tax) {
         const nw = newRate(tax);
         if (!isAdopted(tax))
@@ -294,9 +293,8 @@
         return `
           <p class="tax-lede">
             On ${CT.fmtDate(nw.date)} the council set the rate at
-            <strong>${CT.escapeHtml(nw.rate_display)}</strong> — not the
-            ${CT.escapeHtml(tax.rates.proposed.rate_display)} it noticed. Enter what your
-            home is worth and see what it costs you.
+            <strong>${CT.escapeHtml(nw.rate_display)}</strong>. Enter what your home is
+            worth and see what it costs you.
           </p>`;
       }
 
@@ -2091,10 +2089,11 @@
         // .st-when-m is a phone-only echo of the hearing column; it would land
         // in the export as a second copy of a date the CSV already has.
         c.querySelectorAll(".sarrow, .cmove, .you-pill, .prop-pill, .sr-only, .offmark, .ast, .st-when-m").forEach((n) => n.remove());
-        // A cell carrying two figures stacks them as blocks, which read on
-        // screen as two lines and in textContent as one run-on word. Separate
-        // them before flattening, or the export says "220.75%183.02% adopted".
-        c.querySelectorAll(".st-rate, .st-adopt, .st-meta").forEach((n) => n.insertAdjacentText("beforebegin", " "));
+        // A cell carrying a figure over its second line stacks them as blocks,
+        // which read on screen as two lines and in textContent as one run-on
+        // word. Separate them before flattening, or the export says
+        // "0.001500from 0.000530".
+        c.querySelectorAll(".st-rate, .st-meta").forEach((n) => n.insertAdjacentText("beforebegin", " "));
         return c.textContent.replace(/\s+/g, " ").trim();
       }
 
@@ -2163,12 +2162,14 @@
          on every row, and the find box matches it, so a reader who wants only
          the cities can have only the cities.
 
-         Eagle Mountain is the one row that has stopped being a proposal: the
-         council noticed 0.001700 and adopted 0.001500 on August 6. It is ranked
-         on the noticed figure, alongside everyone else's noticed figure, because
-         ranking one entity's outcome against everyone else's opening ask would
-         flatter it. What the vote did is drawn inside the bar and stated in the
-         row, and the rank it would hold is in the sentence above the chart.
+         Eagle Mountain is the one row that has stopped being a proposal, and it
+         is carried at the rate the council actually set on August 6 — the same
+         rate the rest of this page is about. The 0.001700 it noticed belongs to
+         the record, not to the list: it is in the schedule as read and in the
+         timeline, and it is not quoted here. Every other row is still that
+         entity's own noticed figure, and the caveats say so, because a hearing
+         yet to happen can land lower than the notice that announced it —
+         Eagle Mountain's did.
       */
       function stateProposalsPanel(state) {
         const rows = state.notices;
@@ -2211,16 +2212,19 @@
           },
         ];
 
-        // One ranking per basis, plus the rank Eagle Mountain's adopted figure
-        // would hold — measured against everyone else's noticed figure, with its
-        // own noticed row taken out so it isn't compared to itself.
+        /* Every figure this panel draws for a given entity, on a given basis.
+           One function, used by the ranking, the bars, the value labels and the
+           table alike, so there is exactly one place that knows Eagle Mountain's
+           row is the adopted rate rather than the noticed one — and no way for
+           the ranking and the number printed on the row to disagree. */
+        const valOf = (b, n) => (n.entity === EMN ? b.adopted : b.of(n));
+        const rateOf = (n) => (n.entity === EMN ? ad.rate : n.proposed_rate);
+
         const rankBy = (b) => {
-          const list = [...rows].sort((x, y) => b.of(y) - b.of(x)).map((n, i) => ({ n, rank: i + 1 }));
-          return {
-            list,
-            emRank: list.find((r) => r.n.entity === EMN).rank,
-            adRank: rows.filter((n) => n.entity !== EMN && b.of(n) > b.adopted).length + 1,
-          };
+          const list = [...rows]
+            .sort((x, y) => valOf(b, y) - valOf(b, x))
+            .map((n, i) => ({ n, rank: i + 1 }));
+          return { list, emRank: list.find((r) => r.n.entity === EMN).rank };
         };
         const RANKS = new Map(BASES.map((b) => [b.key, rankBy(b)]));
 
@@ -2236,34 +2240,30 @@
           // top twelve, it is added back rather than quietly dropped from its
           // own page.
           if (!top.some((x) => x.n.entity === EMN)) top.push(r.list.find((x) => x.n.entity === EMN));
-          const max = axisMax(top.map((x) => b.of(x.n)));
+          const max = axisMax(top.map((x) => valOf(b, x.n)));
           let offCount = 0;
 
           const bars = top
             .map(({ n }) => {
               const isEM = n.entity === EMN;
-              const v = b.of(n);
+              const v = valOf(b, n);
               const off = v > max;
               if (off) offCount++;
               const f = Math.min(Math.max(v / max, 0.004), 1);
-              const fAd = Math.min(Math.max(b.adopted / max, 0.004), 1);
               // The levy behind the bar. Ogden Valley City has no certified rate
               // to measure from, so its tip carries the percentage alone.
-              const levy = n.proposed_rate == null
+              const levy = rateOf(n) == null
                 ? "no rate published"
-                : `${rate6(n.certified_rate)} → ${rate6(n.proposed_rate)}`;
+                : `${rate6(n.certified_rate)} → ${rate6(rateOf(n))}`;
               const tip = isEM
-                ? `${n.entity} — noticed ${b.fmt(v)}, adopted ${b.fmt(b.adopted)} on August 6 · levy ${rate6(n.certified_rate)} → ${rate6(ad.rate)}, not the ${rate6(n.proposed_rate)} noticed`
+                ? `${n.entity} — ${b.fmt(v)} · levy ${levy} · adopted August 6 · ${n.type}, ${n.county} County`
                 : `${n.entity} — ${b.fmt(v)} · levy ${levy} · ${n.type}, ${n.county} County · hearing ${hearingLabel(n)}`;
               return `
                 <div class="crow ${isEM ? "is-em" : ""} ${off ? "off" : ""}" data-tip="${CT.escapeHtml(tip)}">
                   <span class="cname">${CT.escapeHtml(n.entity)}</span>
                   <span class="ctrack">
-                    <span class="cbar ${isEM ? "cprop cem" : ""} ${off ? "bar-off" : ""}" style="width:${barSpan(f)}"></span>
-                    ${isEM ? `<span class="cbar cem" style="width:${barSpan(fAd)}"></span>` : ""}
-                    ${valCell(f, off, isEM
-                      ? `${b.fmt(v)}<span class="st-adopt"> → ${b.fmt(b.adopted)}</span>`
-                      : b.fmt(v))}
+                    <span class="cbar ${isEM ? "cem" : ""} ${off ? "bar-off" : ""}" style="width:${barSpan(f)}"></span>
+                    ${valCell(f, off, b.fmt(v))}
                   </span>
                 </div>`;
             })
@@ -2276,15 +2276,13 @@
               <p>${CT.escapeHtml(b.sub)}</p>
             </figcaption>
             <div class="legend">
-              <span class="lg"><i class="sw sw-base"></i>As noticed</span>
-              <span class="lg"><i class="sw sw-prop-em"></i>Eagle Mountain, as noticed</span>
-              <span class="lg"><i class="sw sw-em"></i>Eagle Mountain, as adopted</span>
+              <span class="lg"><i class="sw sw-base"></i>Proposed</span>
+              <span class="lg"><i class="sw sw-em"></i>Eagle Mountain — adopted</span>
             </div>
             <div class="chart-body">${bars}</div>
             <p class="chart-foot">
-              Eagle Mountain's bar is drawn twice: the textured tail is the
-              ${b.fmt(b.of(rows.find((n) => n.entity === EMN)))} it noticed, the solid bar inside it
-              the ${b.fmt(b.adopted)} the council adopted on August 6.${offCount ? " " + OFF_NOTE : ""}
+              Eagle Mountain's bar is the rate its council set on August 6. Every other bar is a
+              proposal, and its hearing has yet to happen or has yet to be recorded here.${offCount ? " " + OFF_NOTE : ""}
             </p>
           </figure>`;
         };
@@ -2299,39 +2297,40 @@
            now. Ogden Valley City has neither — it incorporated too recently to
            have a certified rate, and its notice carries a percentage with no
            rates behind it, so the cell says so rather than inventing one. */
-        const rateCell = (n, isEM) => {
-          if (n.proposed_rate == null) {
+        const rateCell = (n) => {
+          const r = rateOf(n);
+          if (r == null) {
             return `<span class="st-rate">—</span><span class="st-meta">no rate published</span>`;
           }
-          return `<span class="st-rate">${rate6(n.proposed_rate)}</span>
-            ${isEM ? `<span class="st-adopt">${rate6(ad.rate)}<span class="st-adoptw"> adopted</span></span>` : ""}
+          return `<span class="st-rate">${rate6(r)}</span>
             <span class="st-meta">from ${rate6(n.certified_rate)}</span>`;
         };
 
         const trHtml = (n, rank) => {
           const isEM = n.entity === EMN;
           const day = dayOf(n.hearing.date);
-          // "adopted" is the label; on a phone the column can only afford the
-          // figure, and the lit row plus the paragraph above already say what
-          // the second number is. The word is stripped by CSS, not by markup,
-          // so the CSV export still carries it.
-          const adCell = (v) => (isEM ? `<span class="st-adopt">${v}<span class="st-adoptw"> adopted</span></span>` : "");
+          // Eagle Mountain's hearing is behind it, so its second line says what
+          // came of it where every other row says when to turn up.
+          const when = isEM
+            ? ` · adopted ${day.label}`
+            : `<span class="st-when-m"> · hearing ${CT.escapeHtml(day.label)}</span>`;
           return `<tr${isEM ? ' class="is-em-row"' : ""} data-rank="${rank}"
               data-name="${CT.escapeHtml(n.entity)}"
               data-search="${CT.escapeHtml(`${n.entity} ${n.county} ${n.type}`.toLowerCase())}"
-              data-rate="${n.proposed_rate == null ? -1 : n.proposed_rate}"
-              data-pct="${n.pct}" data-home="${n.annual_increase}" data-rev="${n.revenue}" data-date="${day.sort}">
+              data-rate="${rateOf(n) == null ? -1 : rateOf(n)}"
+              data-pct="${valOf(BASES[0], n)}" data-home="${valOf(BASES[1], n)}"
+              data-rev="${valOf(BASES[2], n)}" data-date="${day.sort}">
             <td class="num">${rank}</td>
             <td>
               <span class="st-name">${CT.escapeHtml(n.entity)}</span>
               <span class="st-meta">${CT.escapeHtml(n.type)} · ${CT.escapeHtml(n.county)} County${
                 n.years_in_row > 1 ? ` · ${numWord(n.years_in_row)} years running` : ""
-              }<span class="st-when-m"> · hearing ${CT.escapeHtml(day.label)}</span></span>
+              }${when}</span>
             </td>
-            <td class="num">${rateCell(n, isEM)}</td>
-            <td class="num">${pct2(n.pct)}${adCell(pct2(ad.pct))}</td>
-            <td class="num">${usd(n.annual_increase)}${adCell(usd(ad.annual_increase))}</td>
-            <td class="num">${usdBig(n.revenue)}${adCell(usdBig(ad.revenue))}</td>
+            <td class="num">${rateCell(n)}</td>
+            <td class="num">${pct2(valOf(BASES[0], n))}</td>
+            <td class="num">${usd(valOf(BASES[1], n))}</td>
+            <td class="num">${usdBig(valOf(BASES[2], n))}</td>
             <td class="st-when">${CT.escapeHtml(day.label)}<span class="st-meta">${CT.escapeHtml(n.hearing.time)}</span></td>
           </tr>`;
         };
@@ -2357,7 +2356,6 @@
           </div>`;
 
         const rPct = RANKS.get("pct"), rHome = RANKS.get("home"), rRev = RANKS.get("rev");
-        const emNoticed = rows.find((n) => n.entity === EMN);
 
         const notes = finePrint(
           "About these numbers",
@@ -2376,19 +2374,17 @@
         const body = `
           <p class="panel-intro">
             ${N} truth-in-taxation notices went out in Utah this year, from ${T.entities} taxing
-            entities in ${T.counties} counties, asking for ${usdBig(T.revenue)} between them. Eagle
-            Mountain's was the <strong>${ordinal(rPct.emRank)} steepest</strong> of them by
-            percentage, the <strong>${ordinal(rHome.emRank)} heaviest</strong> on an average home,
-            and the <strong>${ordinal(rRev.emRank)} largest</strong> by money raised.
+            entities in ${T.counties} counties, asking for ${usdBig(T.revenue)} between them. Against
+            all of them, the <strong>${ad.rate_display}</strong> Eagle Mountain adopted is the
+            <strong>${ordinal(rPct.emRank)} steepest</strong> increase in the state by percentage,
+            the <strong>${ordinal(rHome.emRank)} heaviest</strong> on an average home, and the
+            <strong>${ordinal(rRev.emRank)} largest</strong> by money raised.
           </p>
           <p class="panel-intro st-adopted-note">
-            On <strong>August 6</strong> the council adopted <strong>${ad.rate_display}</strong>
-            rather than the ${rate6(emNoticed.proposed_rate)} it noticed — ${pct2(ad.pct)} instead of
-            ${pct2(emNoticed.pct)}. Against everyone else's noticed figures that is
-            <strong>${ordinal(rPct.adRank)}</strong> by percentage,
-            <strong>${ordinal(rHome.adRank)}</strong> per home and
-            <strong>${ordinal(rRev.adRank)}</strong> by money. Every other row here is still a
-            proposal, and hearings run to ${CT.escapeHtml(dayOf(T.hearings_to).label)}.
+            Eagle Mountain's is the one settled row: its council voted on
+            <strong>${CT.escapeHtml(dayOf(ad.date).label)}</strong>. Everything else here is still a
+            proposal, with hearings running to ${CT.escapeHtml(dayOf(T.hearings_to).label)} — and any
+            of them can end lower than the notice that announced it.
           </p>
 
           <div class="sw-tools">
@@ -2421,7 +2417,8 @@
             against that entity's own average home — so the columns rank like with like, but the
             homes underneath them differ. Hearings run
             ${CT.escapeHtml(dayOf(T.hearings_from).label)}–${CT.escapeHtml(dayOf(T.hearings_to).label)};
-            a hearing can end in less than was noticed, as Eagle Mountain's did.
+            a hearing can end in less than was noticed, as Eagle Mountain's did, so the rows below it
+            may not be the rates those entities finish the month with.
           </p>
           ${notes}`;
 
@@ -2485,12 +2482,6 @@
         const emProp = proposed.find((r) => r.name === EM).rank; // counted from the top
         const climbed = emCur - emProp; // places gained climbing toward #1
         const emCurLow = N - emCur + 1; // the same current rank, counted from the bottom
-        // Where the noticed 0.001700 would have landed, for the sentence that
-        // says what the vote changed. Counted against the same list every other
-        // rank on this page uses, so the two are comparable.
-        const rankAtNoticed = ad
-          ? proposed.filter((r) => r.name !== EM && r.rate > em.proposed_rate).length + 1
-          : null;
 
         /* ---- percentile groups ----
            A rank out of 253 is a precise answer to a question nobody asked. What
@@ -2643,12 +2634,7 @@
             today — in ${QBAND[readCur.emQ]} — and is
             <strong>${ordinal(emProp)}</strong> at the ${rate6(emNew)} it
             ${ad ? "adopted on August 6" : "has proposed"}, a climb of ${climbed} places
-            into ${QBAND[readProp.emQ]}.${
-              ad
-                ? ` The council noticed ${rate6(em.proposed_rate)}, which would have put it
-                   ${ordinal(rankAtNoticed)}.`
-                : ""
-            }
+            into ${QBAND[readProp.emQ]}.
           </p>
 
           <div class="sw-tools">
