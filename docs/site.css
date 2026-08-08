@@ -3060,6 +3060,8 @@ body.page-tax {
   background: var(--t-gold);
   animation: nh-ping 2.4s ease-out infinite;
 }
+/* The rate has been set — the dot stays, the pulse goes. */
+.tax-status-dot.is-done { animation: none; }
 @keyframes nh-ping {
   0%       { box-shadow: 0 0 0 0 color-mix(in oklab, var(--t-gold) 55%, transparent); }
   70%,100% { box-shadow: 0 0 0 6px transparent; }
@@ -3296,11 +3298,11 @@ body.page-tax {
   white-space: nowrap;
   color: var(--t-fg-2);
 }
-/* The proposed rate is the number this page exists to explain. */
-.tax-tool .rate.is-proposed input:checked + label { border-color: var(--t-gold-line); background: var(--t-gold-bg); }
-.tax-tool .rate.is-proposed input:checked + label .dot { border-color: var(--t-gold); }
-.tax-tool .rate.is-proposed input:checked + label .dot::after { background: var(--t-gold); }
-.tax-tool .rate.is-proposed .rrate { color: var(--t-gold); }
+/* The rate the council set is the number this page exists to explain. */
+.tax-tool .rate.is-new input:checked + label { border-color: var(--t-gold-line); background: var(--t-gold-bg); }
+.tax-tool .rate.is-new input:checked + label .dot { border-color: var(--t-gold); }
+.tax-tool .rate.is-new input:checked + label .dot::after { background: var(--t-gold); }
+.tax-tool .rate.is-new .rrate { color: var(--t-gold); }
 
 .tax-tool .customwrap { padding: 8px 14px 4px; }
 .tax-tool .customwrap[hidden] { display: none; }
@@ -3955,7 +3957,11 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   border: 0;
 }
 .chart figcaption { margin-bottom: 14px; }
-.chart figcaption h3 {
+/* h3 at the top of a section's chart, h4 for a chart that sits inside a panel
+   whose own title is already an h3. Same type either way — the level is about
+   the document outline, not about size. */
+.chart figcaption h3,
+.chart figcaption h4 {
   font-size: 18px; font-weight: 700;
   letter-spacing: -.015em;
   margin: 0 0 4px;
@@ -3970,6 +3976,10 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
 .legend .sw-em { background: var(--c-em); }
 .legend .sw-prop-neutral {
   background-color: var(--c-base);
+  background-image: repeating-linear-gradient(135deg, var(--t-page) 0 2px, transparent 2px 5px);
+}
+.legend .sw-prop-em {
+  background-color: var(--c-em);
   background-image: repeating-linear-gradient(135deg, var(--t-page) 0 2px, transparent 2px 5px);
 }
 .legend .sw-ref { background: transparent; border: 1.5px dashed var(--c-em); }
@@ -4930,6 +4940,119 @@ input.sw-q::-webkit-search-cancel-button { -webkit-appearance: none; }
    doesn't sit as a tall empty frame under three rows. */
 .statewide-wrap.is-filtered { max-height: none; overflow: visible; }
 table.data.statewide tbody tr[hidden] { display: none; }
+
+/* =========================================================================
+   EVERY PROPOSAL IN THE STATE
+   Borrows the statewide ranking's table shell wholesale — the sticky head, the
+   sortable columns, the lit Eagle Mountain row — and adds only what a list of
+   mixed taxing entities needs that a list of cities did not: room for names
+   three words longer, a second line under each name for the type and county,
+   and a way to show one row carrying two figures.
+   ========================================================================= */
+
+/* Names here run to "West Jordan Fairway Estates Special Service District", so
+   the chart's name column is given half again the width the county charts use,
+   and the value gutter enough room for Eagle Mountain's row to carry two
+   figures: "220.75% → 183.02%". */
+.chart--state .crow { grid-template-columns: 190px minmax(0, 1fr); }
+.chart--state .ctrack { --track-gutter: 148px; }
+
+/* Eagle Mountain's second figure — what the August 6 vote actually set —
+   wherever its noticed figure appears. Deliberately quiet: the ranking is on
+   the noticed number, and this rides along with it rather than replacing it. */
+.st-adopt {
+  font-weight: 500;
+  color: var(--t-muted);
+  font-size: .88em;
+  white-space: nowrap;
+}
+.crow.is-em .st-adopt { color: var(--t-fg); }
+table.data.statelist .st-adopt { display: block; margin-top: 2px; }
+
+/* Each row is an entity, a kind and a county — three facts that would be three
+   columns on a desktop and unreadable on a phone. Stacked instead: the name at
+   table weight, everything else one step down and muted. */
+.st-name { display: block; }
+/* The rate the entity would levy, over the certified rate it is measured
+   against. Mono and a shade heavier than the row, because on a page about
+   rates this is the number, and every percentage in the table is derived
+   from it. */
+.st-rate { display: block; font-weight: 600; white-space: nowrap; }
+/* The hearing date, echoed into the name cell for phones only — see the
+   media query below, where the hearing column is what gives way. */
+.st-when-m { display: none; }
+.st-meta {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .01em;
+  color: var(--t-muted);
+}
+/* The name's second line wraps — held on one line it sets the column to the
+   width of "City · Salt Lake County · four years running" and pushes the last
+   column off the table. The figures' second lines never wrap: a rate broken
+   across two lines stops being a rate. */
+table.data.statelist td.num .st-meta,
+table.data.statelist .st-when .st-meta { white-space: nowrap; }
+table.data.statelist tr.is-em-row .st-meta,
+table.data.statelist tr.is-em-row .st-adopt { color: var(--t-fg); }
+table.data.statelist .st-when { white-space: nowrap; }
+/* Six columns where the statewide ranking has four, so each one gives back a
+   little of its padding rather than pushing the last column off the edge. */
+table.data.statelist :is(th, td) { padding-left: 8px; padding-right: 8px; }
+/* 79 rows, not 253 — the box can afford to be shorter than the city ranking's
+   without becoming a peephole. */
+.statelist-wrap { max-height: 480px; }
+.statelist-wrap.is-filtered { max-height: none; overflow: visible; }
+
+/* Three measures rather than two views, so the switch needs the room to say
+   which is which without truncating on a laptop. */
+.basis-switch { margin-bottom: 0; }
+.st-adopted-note { margin-top: -4px; }
+
+/* A phone has no room for a gutter wide enough to hold both of Eagle Mountain's
+   figures, and squeezing one in would leave every bar on the chart a stub. So
+   the second figure drops out of the value column at this width: the two-tone
+   bar still shows the vote, the footnote under the chart still states it in
+   full, and the table below still carries it on the row. */
+@media (max-width: 700px) {
+  .chart--state .crow { grid-template-columns: 116px minmax(0, 1fr); }
+  .chart--state .ctrack { --track-gutter: 88px; }
+  .chart--state .cval .st-adopt { display: none; }
+  /* Seven columns will not fit a phone. Squeezed, they turn every name into
+     three lines; left at full width they scroll sideways, which hides every
+     figure behind a swipe nobody knows to make. So each ranking keeps the rate
+     and drops to the one measure it is actually ranked by — the other two are
+     one tap away on the switch above, and the CSV carries all of them either
+     way. Columns: 1 rank, 2 entity, 3 rate, 4 increase, 5 per home, 6 revenue,
+     7 hearing. The hearing column goes too, and reappears as a phrase on the
+     entity's own second line, which had room for it. */
+  #state-pct :is(th, td):nth-child(5),
+  #state-pct :is(th, td):nth-child(6),
+  #state-home :is(th, td):nth-child(4),
+  #state-home :is(th, td):nth-child(6),
+  #state-rev :is(th, td):nth-child(4),
+  #state-rev :is(th, td):nth-child(5),
+  table.data.statelist :is(th, td):nth-child(7) { display: none; }
+  .st-when-m { display: inline; }
+  .st-adoptw { display: none; }
+  /* Sortable headers are nowrap so the sort arrow never orphans; the rank
+     column is the one place that costs more than it is worth, so there the
+     arrow is allowed onto a second line. */
+  table.data.statelist th[data-key="rank"] { white-space: normal; }
+  /* The levy stays; the certified rate it is measured from does not. That
+     comparison is what the Increase column already is, and holding a second
+     eight-digit rate in the column costs the entity names the width they need
+     to stop wrapping three deep. It is still on the row in the CSV, and on
+     any screen wider than this. */
+  table.data.statelist .st-rate ~ .st-meta { display: none; }
+  /* The rate column earns its keep on a phone; the row label can give up a
+     little of its own to pay for it. */
+  table.data.statelist .st-name { hyphens: auto; }
+  /* The last dozen pixels: four columns fit a 390px phone, but only just. */
+  table.data.statelist :is(th, td) { padding-left: 5px; padding-right: 5px; }
+}
 
 /* =========================================================================
    TOUCH TARGETS

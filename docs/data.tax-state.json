@@ -1,0 +1,1558 @@
+{
+  "_comment": "Every 2026 Truth-in-Taxation notice in Utah — not just Eagle Mountain's, and not just cities. One row per notice, exactly as the Utah Taxpayers Association compiled them from the counties' own notices: certified rate, proposed rate, the increase measured against the certified rate, the dollar effect on that entity's average home, the revenue the increase raises, and when and where the hearing is. Rates are decimal multipliers on taxable value. Nothing here is derived except the `adopted` block, which carries Eagle Mountain's August 6 vote through the same notice — see its own `derivation`.",
+  "year": 2026,
+  "source": {
+    "title": "2026 Truth-in-Taxation list",
+    "publisher": "Utah Taxpayers Association",
+    "url": "https://utahtaxpayers.org/wp-content/uploads/2026/08/2026-Truth-in-Taxation-list-Sheet1-2.pdf",
+    "retrieved": "2026-08-07",
+    "reported_by": {
+      "title": "67 Utah taxing entities seeking $93.58M in tax hikes between them, taxpayers group says",
+      "publisher": "KSL.com",
+      "url": "https://www.ksl.com/article/51606015/67-utah-taxing-entities-seeking-9358m-in-tax-hikes-between-them-taxpayers-group-says"
+    }
+  },
+  "totals": {
+    "notices": 79,
+    "entities": 68,
+    "counties": 18,
+    "revenue": 96055660,
+    "revenue_headline": 93580522,
+    "hearings_from": "2026-08-03",
+    "hearings_to": "2026-08-27"
+  },
+  "eagle_mountain": {
+    "entity": "Eagle Mountain City",
+    "adopted": {
+      "rate": 0.0015,
+      "rate_display": "0.001500",
+      "pct": 183.02,
+      "annual_increase": 260.35,
+      "revenue": 5591594,
+      "budget_total": 8646795,
+      "home_value": 488000,
+      "taxable_value": 268400,
+      "date": "2026-08-06",
+      "meeting_id": 747,
+      "vote": "Passed 5–0 on a roll call — moved by Whiting, seconded by Wright; Wood, Whiting, Wright, Clark and Huish all in favour",
+      "motion": "Approves and adopts a property tax rate of 0.001500 for fiscal year 2026 to 2027. This rate exceeds the certified tax rate of 0.000530 and will result in an increase in the city's ad valorem property tax budgeted revenue of approximately $5,591,594, or 183.02% above the city's property tax budgeted revenue for the prior year, exclusive of new growth.",
+      "source": {
+        "title": "City Council meeting, August 6, 2026 — Truth-in-Taxation hearing, item 4.A",
+        "publisher": "Eagle Mountain City",
+        "url": "meetings.html?id=747",
+        "retrieved": "2026-08-07"
+      },
+      "derivation": "The rate, the 183.02% and the $5,591,594 are read verbatim from the motion Councilmember Whiting made and the council passed 5–0; nothing about them is inferred. The $260.35 is the one derived figure: the Truth-in-Taxation notice's own $268,400 taxable value — 55% of a $488,000 home — times the 0.000970 the rate rose, which is the same arithmetic behind the $314.03 on the notice and behind every other entity's dollar column. Around the table the council put it as “about $250 a year” and “closer to 70 cents per day”; those are the same figure spoken loosely, not a different one."
+    }
+  },
+  "caveats": [
+    "Every percentage here is the increase over that entity's own certified rate — the rate that would raise the same money as last year. It is not an increase in anyone's total tax bill: a city, a school district, a water district and sometimes a fire district all levy on the same parcel, and only one of them is on this list.",
+    "The dollar figure is the effect on an average home in that entity, and each entity picked its own average. They run from $300,000 in Boulder to $1,895,000 in Summit County's slice of the Weber Basin district, so the dollar column compares typical households, not identical ones.",
+    "79 notices, 68 entities: Central Utah Water Conservancy District notices in seven counties, Weber Basin in five, and Draper in two, each with its own hearing and its own figures. Ranking by revenue counts each notice separately, so those entities' totals are split across rows.",
+    "The Utah Taxpayers Association's own headline — 67 entities, $93,580,522 — leaves out Ogden Valley City, which incorporated too recently to have a certified rate and shows ‘Not Available’ in both rate columns. Its $2,475,138 is included in the $96.1M total here, and it is ranked on the 512.61% its notice states.",
+    "These are proposals. A hearing can end in a smaller increase than the one noticed, or in none at all — Eagle Mountain's did: the council noticed 0.001700 and adopted 0.001500 on August 6, after nearly three hours of public comment. Every other row is still the noticed figure."
+  ],
+  "notices": [
+    {
+      "entity": "Brigham City",
+      "county": "Box Elder",
+      "type": "City",
+      "certified_rate": 0.00174,
+      "proposed_rate": 0.001824,
+      "pct": 4.83,
+      "home_value": 400000,
+      "taxable_value": 220000,
+      "annual_increase": 18.48,
+      "revenue": 184843,
+      "budget_total": 4031299,
+      "years_in_row": 2,
+      "hearing": {
+        "date": "2026-08-13",
+        "time": "6:00 PM",
+        "where": "20 N Main St, Brigham City"
+      }
+    },
+    {
+      "entity": "Deweyville Town",
+      "county": "Box Elder",
+      "type": "Town",
+      "certified_rate": 0.000705,
+      "proposed_rate": 0.001265,
+      "pct": 79.43,
+      "home_value": 485000,
+      "taxable_value": 266750,
+      "annual_increase": 149.38,
+      "revenue": 32000,
+      "budget_total": 72266,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-20",
+        "time": "7:00 PM",
+        "where": "10870 N Hwy 38"
+      }
+    },
+    {
+      "entity": "Fielding Town",
+      "county": "Box Elder",
+      "type": "Town",
+      "certified_rate": 0.000334,
+      "proposed_rate": 0.000621,
+      "pct": 85.93,
+      "home_value": 450000,
+      "taxable_value": 247500,
+      "annual_increase": 71.03,
+      "revenue": 13868,
+      "budget_total": 30000,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-12",
+        "time": "6:30 PM",
+        "where": "150 S 100 W, Fielding"
+      }
+    },
+    {
+      "entity": "Weber Basin Water Conservancy District",
+      "county": "Box Elder",
+      "type": "Water district",
+      "certified_rate": 0.000187,
+      "proposed_rate": 0.0002,
+      "pct": 6.95,
+      "home_value": 570000,
+      "taxable_value": 313500,
+      "annual_increase": 4.08,
+      "revenue": 545.0,
+      "budget_total": 8385,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-24",
+        "time": "6:30 PM",
+        "where": "2837 E Hwy 193, Layton"
+      }
+    },
+    {
+      "entity": "Cache County School District",
+      "county": "Cache",
+      "type": "School district",
+      "certified_rate": 0.004967,
+      "proposed_rate": 0.005665,
+      "pct": 14.05,
+      "home_value": 549000,
+      "taxable_value": 301950,
+      "annual_increase": 210.76,
+      "revenue": 8610926,
+      "budget_total": 69889834,
+      "years_in_row": 2,
+      "hearing": {
+        "date": "2026-08-06",
+        "time": "6:00 PM",
+        "where": "2035 N 1200 E, North Logan"
+      }
+    },
+    {
+      "entity": "Hyde Park City",
+      "county": "Cache",
+      "type": "City",
+      "certified_rate": 0.001002,
+      "proposed_rate": 0.0011,
+      "pct": 9.78,
+      "home_value": 599000,
+      "taxable_value": 329450,
+      "annual_increase": 32.29,
+      "revenue": 95185,
+      "budget_total": 1068404,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-26",
+        "time": "7:00 PM",
+        "where": "113 E Center, Hyde Park"
+      }
+    },
+    {
+      "entity": "Logan City",
+      "county": "Cache",
+      "type": "City",
+      "certified_rate": 0.000882,
+      "proposed_rate": 0.001085,
+      "pct": 23.02,
+      "home_value": 530000,
+      "taxable_value": 291500,
+      "annual_increase": 59.17,
+      "revenue": 1360000,
+      "budget_total": 7260319,
+      "years_in_row": 3,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "290 N 100 W, Logan"
+      }
+    },
+    {
+      "entity": "North Logan City",
+      "county": "Cache",
+      "type": "City",
+      "certified_rate": 0.001019,
+      "proposed_rate": 0.001099,
+      "pct": 7.85,
+      "home_value": 659000,
+      "taxable_value": 362450,
+      "annual_increase": 29.0,
+      "revenue": 139615,
+      "budget_total": 1917308,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-05",
+        "time": "6:35 PM",
+        "where": "2525 N 600 E, North Logan, UT 84341"
+      }
+    },
+    {
+      "entity": "River Heights City",
+      "county": "Cache",
+      "type": "City",
+      "certified_rate": 0.00049,
+      "proposed_rate": 0.000849,
+      "pct": 73.27,
+      "home_value": 531000,
+      "taxable_value": 292050,
+      "annual_increase": 104.85,
+      "revenue": 85101,
+      "budget_total": 201255,
+      "years_in_row": 2,
+      "hearing": {
+        "date": "2026-08-17",
+        "time": "6:30 PM",
+        "where": "520 S 500 E, River Heights"
+      }
+    },
+    {
+      "entity": "Wellsville City",
+      "county": "Cache",
+      "type": "City",
+      "certified_rate": 0.000802,
+      "proposed_rate": 0.00081,
+      "pct": 1.0,
+      "home_value": 578000,
+      "taxable_value": 317900,
+      "annual_increase": 2.54,
+      "revenue": 3703,
+      "budget_total": 374941,
+      "years_in_row": 3,
+      "hearing": {
+        "date": "2026-08-19",
+        "time": "6:10 PM",
+        "where": "75 E Main, Wellsville"
+      }
+    },
+    {
+      "entity": "Centerville City",
+      "county": "Davis",
+      "type": "City",
+      "certified_rate": 0.001137,
+      "proposed_rate": 0.001314,
+      "pct": 15.57,
+      "home_value": 610000,
+      "taxable_value": 335500,
+      "annual_increase": 59.38,
+      "revenue": 369103,
+      "budget_total": 2737486,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-25",
+        "time": "6:00 PM",
+        "where": "250 N. Main St. Centerville, UT 84014"
+      }
+    },
+    {
+      "entity": "Clearfield",
+      "county": "Davis",
+      "type": "City",
+      "certified_rate": 0.001176,
+      "proposed_rate": 0.001253,
+      "pct": 6.55,
+      "home_value": 510000,
+      "taxable_value": 280500,
+      "annual_increase": 21.6,
+      "revenue": 233106,
+      "budget_total": 3793272,
+      "years_in_row": 3,
+      "hearing": {
+        "date": "2026-08-04",
+        "time": "7:00 PM",
+        "where": "55 S State St, 3rd Floor, Clearfield"
+      }
+    },
+    {
+      "entity": "Farmington",
+      "county": "Davis",
+      "type": "City",
+      "certified_rate": 0.00161,
+      "proposed_rate": 0.001685,
+      "pct": 4.66,
+      "home_value": 790000,
+      "taxable_value": 434500,
+      "annual_increase": 32.59,
+      "revenue": 285108,
+      "budget_total": 6381277,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-18",
+        "time": "7:00 PM",
+        "where": "Farmington City Hall"
+      }
+    },
+    {
+      "entity": "Kaysville",
+      "county": "Davis",
+      "type": "City",
+      "certified_rate": 0.00139,
+      "proposed_rate": 0.001586,
+      "pct": 14.1,
+      "home_value": 711000,
+      "taxable_value": 391050,
+      "annual_increase": 76.65,
+      "revenue": 802910,
+      "budget_total": 6484991,
+      "years_in_row": 2,
+      "hearing": {
+        "date": "2026-08-06",
+        "time": "7:00 PM",
+        "where": "23 E Center Street Kaysville Utah"
+      }
+    },
+    {
+      "entity": "South Weber",
+      "county": "Davis",
+      "type": "City",
+      "certified_rate": 0.001421,
+      "proposed_rate": 0.001434,
+      "pct": 0.91,
+      "home_value": 596000,
+      "taxable_value": 327800,
+      "annual_increase": 4.26,
+      "revenue": 12046,
+      "budget_total": 1328476,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "1600 E South Weber Dr, South Weber, UT 84405"
+      }
+    },
+    {
+      "entity": "West Point",
+      "county": "Davis",
+      "type": "City",
+      "certified_rate": 0.000711,
+      "proposed_rate": 0.00078,
+      "pct": 9.7,
+      "home_value": 552000,
+      "taxable_value": 303600,
+      "annual_increase": 20.95,
+      "revenue": 86166,
+      "budget_total": 974044,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-18",
+        "time": "7:00 PM",
+        "where": "3200 W. 300 N. West Point City, 84015"
+      }
+    },
+    {
+      "entity": "Woods Cross City",
+      "county": "Davis",
+      "type": "City",
+      "certified_rate": 0.001298,
+      "proposed_rate": 0.001906,
+      "pct": 46.84,
+      "home_value": 543000,
+      "taxable_value": 298650,
+      "annual_increase": 181.58,
+      "revenue": 995285,
+      "budget_total": 3120087,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-04",
+        "time": "7:30 PM",
+        "where": "1555 S 800 W, Woods Cross"
+      }
+    },
+    {
+      "entity": "Weber Basin Water Conservancy District",
+      "county": "Davis",
+      "type": "Water district",
+      "certified_rate": 0.000187,
+      "proposed_rate": 0.0002,
+      "pct": 6.95,
+      "home_value": 619000,
+      "taxable_value": 340450,
+      "annual_increase": 4.43,
+      "revenue": 572626,
+      "budget_total": 8809621,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-24",
+        "time": "6:30 PM",
+        "where": "2837 E Hwy 193, Layton"
+      }
+    },
+    {
+      "entity": "South Davis Metro Fire Service Area",
+      "county": "Davis",
+      "type": "Fire district",
+      "certified_rate": 0.00051,
+      "proposed_rate": 0.000593,
+      "pct": 16.27,
+      "home_value": 651000,
+      "taxable_value": 358050,
+      "annual_increase": 29.72,
+      "revenue": 1315412,
+      "budget_total": 9398066,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-03",
+        "time": "6:00 PM",
+        "where": "255 S 100 W, Bountiful"
+      }
+    },
+    {
+      "entity": "Central Utah Water Conservancy District",
+      "county": "Duchesne",
+      "type": "Water district",
+      "certified_rate": 0.000394,
+      "proposed_rate": 0.0004,
+      "pct": 1.52,
+      "home_value": 325000,
+      "taxable_value": 178750,
+      "annual_increase": 1.07,
+      "revenue": 26642,
+      "budget_total": 1776138,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-24",
+        "time": "6:00 PM",
+        "where": "50 E 200 S, Roosevelt"
+      }
+    },
+    {
+      "entity": "Boulder Town",
+      "county": "Garfield",
+      "type": "Town",
+      "certified_rate": 0.000176,
+      "proposed_rate": 0.000502,
+      "pct": 185.23,
+      "home_value": 300000,
+      "taxable_value": 165000,
+      "annual_increase": 53.79,
+      "revenue": 12897,
+      "budget_total": 19860,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "Boulder Town Hall"
+      }
+    },
+    {
+      "entity": "Grand County School District",
+      "county": "Grand",
+      "type": "School district",
+      "certified_rate": 0.005511,
+      "proposed_rate": 0.005622,
+      "pct": 2.01,
+      "home_value": 511000,
+      "taxable_value": 281050,
+      "annual_increase": 31.2,
+      "revenue": 431503,
+      "budget_total": 21854776,
+      "years_in_row": 2,
+      "hearing": {
+        "date": "2026-08-19",
+        "time": "6:00 PM",
+        "where": "264 S. 400 E, Moab"
+      }
+    },
+    {
+      "entity": "Castle Valley Town",
+      "county": "Grand",
+      "type": "Town",
+      "certified_rate": 0.000774,
+      "proposed_rate": 0.001193,
+      "pct": 54.13,
+      "home_value": 459000,
+      "taxable_value": 252450,
+      "annual_increase": 105.78,
+      "revenue": 73666,
+      "budget_total": 209850,
+      "years_in_row": 2,
+      "hearing": {
+        "date": "2026-08-12",
+        "time": "6:30 PM",
+        "where": "Town Building 2 Castle Valley Dr. Castle Valley"
+      }
+    },
+    {
+      "entity": "Juab County School District",
+      "county": "Juab",
+      "type": "School district",
+      "certified_rate": 0.005276,
+      "proposed_rate": 0.005695,
+      "pct": 7.94,
+      "home_value": 478000,
+      "taxable_value": 262900,
+      "annual_increase": 110.16,
+      "revenue": 919351,
+      "budget_total": 12496507,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-18",
+        "time": "6:00 PM",
+        "where": "346 E 600 N, Nephi"
+      }
+    },
+    {
+      "entity": "Nephi City",
+      "county": "Juab",
+      "type": "City",
+      "certified_rate": 0.000493,
+      "proposed_rate": 0.001031,
+      "pct": 109.13,
+      "home_value": 448000,
+      "taxable_value": 246400,
+      "annual_increase": 132.56,
+      "revenue": 523000,
+      "budget_total": 1002665,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "7:00 PM",
+        "where": "160 N Main St, Nephi"
+      }
+    },
+    {
+      "entity": "Central Utah Water Conservancy District",
+      "county": "Juab",
+      "type": "Water district",
+      "certified_rate": 0.000394,
+      "proposed_rate": 0.0004,
+      "pct": 1.52,
+      "home_value": 448000,
+      "taxable_value": 246400,
+      "annual_increase": 1.48,
+      "revenue": 13815,
+      "budget_total": 920970,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-25",
+        "time": "6:00 PM",
+        "where": "1426 E 750 N, Orem"
+      }
+    },
+    {
+      "entity": "Weber Basin Water Conservancy District",
+      "county": "Morgan",
+      "type": "Water district",
+      "certified_rate": 0.000187,
+      "proposed_rate": 0.0002,
+      "pct": 6.95,
+      "home_value": 786000,
+      "taxable_value": 432300,
+      "annual_increase": 5.62,
+      "revenue": 46780,
+      "budget_total": 719699,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-24",
+        "time": "6:30 PM",
+        "where": "2837 E Hwy 193, Layton"
+      }
+    },
+    {
+      "entity": "WPR Utility District",
+      "county": "Morgan",
+      "type": "Special district",
+      "certified_rate": 0.000606,
+      "proposed_rate": 0.0008,
+      "pct": 32.01,
+      "home_value": 786000,
+      "taxable_value": 432300,
+      "annual_increase": 83.87,
+      "revenue": 168456,
+      "budget_total": 694663,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-17",
+        "time": "6:00 PM",
+        "where": "4200 N Morgan Valley Dr, Morgan"
+      }
+    },
+    {
+      "entity": "WPR Road And Fire District",
+      "county": "Morgan",
+      "type": "Fire district",
+      "certified_rate": 0.000606,
+      "proposed_rate": 0.0008,
+      "pct": 32.01,
+      "home_value": 786000,
+      "taxable_value": 432300,
+      "annual_increase": 83.87,
+      "revenue": 168456,
+      "budget_total": 694663,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-17",
+        "time": "6:15 PM",
+        "where": "4200 N Morgan Valley Dr, Morgan"
+      }
+    },
+    {
+      "entity": "Granite School District",
+      "county": "Salt Lake",
+      "type": "School district",
+      "certified_rate": 0.00574,
+      "proposed_rate": 0.006133,
+      "pct": 6.85,
+      "home_value": 579000,
+      "taxable_value": 318450,
+      "annual_increase": 125.15,
+      "revenue": 21115465,
+      "budget_total": 329519441,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-18",
+        "time": "6:00 PM",
+        "where": "2500 S State St, Salt Lake City"
+      }
+    },
+    {
+      "entity": "Canyons School District",
+      "county": "Salt Lake",
+      "type": "School district",
+      "certified_rate": 0.005388,
+      "proposed_rate": 0.005559,
+      "pct": 3.17,
+      "home_value": 770000,
+      "taxable_value": 423500,
+      "annual_increase": 72.42,
+      "revenue": 6871000,
+      "budget_total": 223880773,
+      "years_in_row": 3,
+      "hearing": {
+        "date": "2026-08-04",
+        "time": "6:00 PM",
+        "where": "9361 S 300 E, Sandy"
+      }
+    },
+    {
+      "entity": "Alta Town",
+      "county": "Salt Lake",
+      "type": "Town",
+      "certified_rate": 0.000799,
+      "proposed_rate": 0.000979,
+      "pct": 22.53,
+      "home_value": 1785000,
+      "taxable_value": 981750,
+      "annual_increase": 176.72,
+      "revenue": 92820,
+      "budget_total": 505000,
+      "years_in_row": 2,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "10351 E Hwy 210, Alta"
+      }
+    },
+    {
+      "entity": "Cottonwood Heights City",
+      "county": "Salt Lake",
+      "type": "City",
+      "certified_rate": 0.001468,
+      "proposed_rate": 0.002001,
+      "pct": 36.31,
+      "home_value": 850000,
+      "taxable_value": 467500,
+      "annual_increase": 249.18,
+      "revenue": 3454767,
+      "budget_total": 12969961,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "2277 E Bengal Blvd, Cottonwood Heights"
+      }
+    },
+    {
+      "entity": "Draper City",
+      "county": "Salt Lake",
+      "type": "City",
+      "certified_rate": 0.000902,
+      "proposed_rate": 0.001128,
+      "pct": 25.06,
+      "home_value": 941000,
+      "taxable_value": 517550,
+      "annual_increase": 116.97,
+      "revenue": 2455712,
+      "budget_total": 12256829,
+      "years_in_row": 3,
+      "hearing": {
+        "date": "2026-08-12",
+        "time": "6:00 PM",
+        "where": "1020 E Pioneer Rd, Draper"
+      }
+    },
+    {
+      "entity": "Midvale City",
+      "county": "Salt Lake",
+      "type": "City",
+      "certified_rate": 0.001154,
+      "proposed_rate": 0.001174,
+      "pct": 1.73,
+      "home_value": 503000,
+      "taxable_value": 276650,
+      "annual_increase": 5.53,
+      "revenue": 78814,
+      "budget_total": 4526000,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "7505 S Holden St, Midvale"
+      }
+    },
+    {
+      "entity": "Murray City",
+      "county": "Salt Lake",
+      "type": "City",
+      "certified_rate": 0.001656,
+      "proposed_rate": 0.001734,
+      "pct": 4.71,
+      "home_value": 614000,
+      "taxable_value": 337700,
+      "annual_increase": 26.34,
+      "revenue": 714297,
+      "budget_total": 15974419,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:30 PM",
+        "where": "10 E 4800 S, Murray"
+      }
+    },
+    {
+      "entity": "Salt Lake City",
+      "county": "Salt Lake",
+      "type": "City",
+      "certified_rate": 0.003216,
+      "proposed_rate": 0.003481,
+      "pct": 8.24,
+      "home_value": 703000,
+      "taxable_value": 386650,
+      "annual_increase": 102.46,
+      "revenue": 13793967,
+      "budget_total": 181577263,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "7:00 PM",
+        "where": "451 S State St, Rm 315, Salt Lake City"
+      }
+    },
+    {
+      "entity": "South Salt Lake City",
+      "county": "Salt Lake",
+      "type": "City",
+      "certified_rate": 0.002493,
+      "proposed_rate": 0.002816,
+      "pct": 12.96,
+      "home_value": 470000,
+      "taxable_value": 258500,
+      "annual_increase": 83.5,
+      "revenue": 1839527,
+      "budget_total": 16024155,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "220 East Morris AveSouth Salt Lake City, UT 84115"
+      }
+    },
+    {
+      "entity": "Taylorsville City",
+      "county": "Salt Lake",
+      "type": "City",
+      "certified_rate": 0.000819,
+      "proposed_rate": 0.00086,
+      "pct": 5.01,
+      "home_value": 498000,
+      "taxable_value": 273900,
+      "annual_increase": 11.23,
+      "revenue": 234800,
+      "budget_total": 4972429,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-12",
+        "time": "6:30 PM",
+        "where": "City Hall- 2600 W Taylorsville Blvd, Taylorsville UT 84129"
+      }
+    },
+    {
+      "entity": "West Jordan City",
+      "county": "Salt Lake",
+      "type": "City",
+      "certified_rate": 0.001281,
+      "proposed_rate": 0.001309,
+      "pct": 2.19,
+      "home_value": 562000,
+      "taxable_value": 309100,
+      "annual_increase": 8.65,
+      "revenue": 500418,
+      "budget_total": 23638541,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "8000 S Redwood Rd, West Jordan"
+      }
+    },
+    {
+      "entity": "West Valley City",
+      "county": "Salt Lake",
+      "type": "City",
+      "certified_rate": 0.002564,
+      "proposed_rate": 0.002694,
+      "pct": 5.07,
+      "home_value": 456000,
+      "taxable_value": 250800,
+      "annual_increase": 32.6,
+      "revenue": 1949129,
+      "budget_total": 40530891,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:30 PM",
+        "where": "3600 Constitution Blvd, West Valley City"
+      }
+    },
+    {
+      "entity": "Central Utah Water Conservancy District",
+      "county": "Salt Lake",
+      "type": "Water district",
+      "certified_rate": 0.000394,
+      "proposed_rate": 0.0004,
+      "pct": 1.52,
+      "home_value": 658000,
+      "taxable_value": 361900,
+      "annual_increase": 2.17,
+      "revenue": 1237921,
+      "budget_total": 82528062,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-25",
+        "time": "6:00 PM",
+        "where": "1426 E 750 N, Orem"
+      }
+    },
+    {
+      "entity": "West Jordan Fairway Estates Special Service District",
+      "county": "Salt Lake",
+      "type": "Special district",
+      "certified_rate": 0.000809,
+      "proposed_rate": 0.000889,
+      "pct": 9.89,
+      "home_value": 537000,
+      "taxable_value": 295350,
+      "annual_increase": 23.63,
+      "revenue": 1209,
+      "budget_total": 13487,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "7:15 PM",
+        "where": "8000 S Redwood Road West Jordan, UT 84088"
+      }
+    },
+    {
+      "entity": "Herriman Fire Service Area",
+      "county": "Salt Lake",
+      "type": "Fire district",
+      "certified_rate": 0.001334,
+      "proposed_rate": 0.001364,
+      "pct": 2.25,
+      "home_value": 652000,
+      "taxable_value": 358600,
+      "annual_increase": 10.76,
+      "revenue": 205560,
+      "budget_total": 9206746,
+      "years_in_row": 2,
+      "hearing": {
+        "date": "2026-08-12",
+        "time": "7:00 PM",
+        "where": "5355 W Herriman Main St"
+      }
+    },
+    {
+      "entity": "Herriman City Safety Enforcement Area",
+      "county": "Salt Lake",
+      "type": "Special district",
+      "certified_rate": 0.001423,
+      "proposed_rate": 0.001491,
+      "pct": 4.78,
+      "home_value": 652000,
+      "taxable_value": 358600,
+      "annual_increase": 24.38,
+      "revenue": 512970,
+      "budget_total": 11244565,
+      "years_in_row": 2,
+      "hearing": {
+        "date": "2026-08-12",
+        "time": "6:00 PM",
+        "where": "5355 W Herriman Main St"
+      }
+    },
+    {
+      "entity": "North Sanpete School District",
+      "county": "Sanpete",
+      "type": "School district",
+      "certified_rate": 0.004539,
+      "proposed_rate": 0.004937,
+      "pct": 8.77,
+      "home_value": 400000,
+      "taxable_value": 220000,
+      "annual_increase": 87.56,
+      "revenue": 750000,
+      "budget_total": 9305158,
+      "years_in_row": 2,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "Board Room 220 E 700 S Mt. Pleasant, UT 84647"
+      }
+    },
+    {
+      "entity": "Ephraim City",
+      "county": "Sanpete",
+      "type": "City",
+      "certified_rate": 0.001096,
+      "proposed_rate": 0.001199,
+      "pct": 9.4,
+      "home_value": 415000,
+      "taxable_value": 228250,
+      "annual_increase": 23.51,
+      "revenue": 45022,
+      "budget_total": 522968,
+      "years_in_row": 3,
+      "hearing": {
+        "date": "2026-08-19",
+        "time": "7:00 PM",
+        "where": "City Hall council chambers"
+      }
+    },
+    {
+      "entity": "Richfield City",
+      "county": "Sevier",
+      "type": "City",
+      "certified_rate": 0.001721,
+      "proposed_rate": 0.002277,
+      "pct": 32.31,
+      "home_value": 330000,
+      "taxable_value": 181500,
+      "annual_increase": 100.91,
+      "revenue": 500000,
+      "budget_total": 2047519,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "75 E Center St. (Richfield City Council Room)"
+      }
+    },
+    {
+      "entity": "Henefer Town",
+      "county": "Summit",
+      "type": "Town",
+      "certified_rate": 0.000423,
+      "proposed_rate": 0.000533,
+      "pct": 26.0,
+      "home_value": 600000,
+      "taxable_value": 330000,
+      "annual_increase": 36.3,
+      "revenue": 13473,
+      "budget_total": 65280,
+      "years_in_row": 3,
+      "hearing": {
+        "date": "2026-08-20",
+        "time": "7:00 PM",
+        "where": "Town Hall 150 W Center St. Henefer, UT 84033"
+      }
+    },
+    {
+      "entity": "Weber Basin Water Conservancy District",
+      "county": "Summit",
+      "type": "Water district",
+      "certified_rate": 0.000187,
+      "proposed_rate": 0.0002,
+      "pct": 6.95,
+      "home_value": 1895000,
+      "taxable_value": 1042250,
+      "annual_increase": 13.55,
+      "revenue": 642197,
+      "budget_total": 9879960,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-24",
+        "time": "6:30 PM",
+        "where": "2837 E Hwy 193, Layton"
+      }
+    },
+    {
+      "entity": "Central Utah Water Conservancy District",
+      "county": "Summit",
+      "type": "Water district",
+      "certified_rate": 0.000394,
+      "proposed_rate": 0.0004,
+      "pct": 1.52,
+      "home_value": 980000,
+      "taxable_value": 539000,
+      "annual_increase": 3.23,
+      "revenue": 4175,
+      "budget_total": 278317,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-25",
+        "time": "6:00 PM",
+        "where": "1426 E 750 N, Orem"
+      }
+    },
+    {
+      "entity": "Grantsville City",
+      "county": "Tooele",
+      "type": "City",
+      "certified_rate": 0.001417,
+      "proposed_rate": 0.001488,
+      "pct": 5.01,
+      "home_value": 563000,
+      "taxable_value": 309650,
+      "annual_increase": 21.99,
+      "revenue": 110832,
+      "budget_total": 2322788,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-05",
+        "time": "7:00 PM",
+        "where": "429 E Main St, Grantsville"
+      }
+    },
+    {
+      "entity": "Tooele City",
+      "county": "Tooele",
+      "type": "City",
+      "certified_rate": 0.002527,
+      "proposed_rate": 0.00259,
+      "pct": 2.49,
+      "home_value": 410000,
+      "taxable_value": 225500,
+      "annual_increase": 14.21,
+      "revenue": 238092,
+      "budget_total": 9788199,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-19",
+        "time": "7:00 PM",
+        "where": "Tooele City Hall, Council Chambers"
+      }
+    },
+    {
+      "entity": "North Tooele City Special Service District",
+      "county": "Tooele",
+      "type": "Special district",
+      "certified_rate": 0.000429,
+      "proposed_rate": 0.000563,
+      "pct": 31.24,
+      "home_value": 433000,
+      "taxable_value": 238150,
+      "annual_increase": 31.91,
+      "revenue": 38064,
+      "budget_total": 159926,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-27",
+        "time": "8:00 PM",
+        "where": "90 North Main Street, Tooele, Utah"
+      }
+    },
+    {
+      "entity": "Central Utah Water Conservancy District",
+      "county": "Uintah",
+      "type": "Water district",
+      "certified_rate": 0.000394,
+      "proposed_rate": 0.0004,
+      "pct": 1.52,
+      "home_value": 360000,
+      "taxable_value": 198000,
+      "annual_increase": 1.19,
+      "revenue": 36579,
+      "budget_total": 2438622,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-24",
+        "time": "6:00 PM",
+        "where": "50 E 200 S, Roosevelt"
+      }
+    },
+    {
+      "entity": "Provo City School District",
+      "county": "Utah",
+      "type": "School district",
+      "certified_rate": 0.006885,
+      "proposed_rate": 0.006999,
+      "pct": 1.66,
+      "home_value": 526000,
+      "taxable_value": 289300,
+      "annual_increase": 32.98,
+      "revenue": 1309955,
+      "budget_total": 80427184,
+      "years_in_row": 2,
+      "hearing": {
+        "date": "2026-08-05",
+        "time": "6:00 PM",
+        "where": "280 W 940 N"
+      }
+    },
+    {
+      "entity": "American Fork City",
+      "county": "Utah",
+      "type": "City",
+      "certified_rate": 0.001428,
+      "proposed_rate": 0.001656,
+      "pct": 15.97,
+      "home_value": 502000,
+      "taxable_value": 276100,
+      "annual_increase": 62.95,
+      "revenue": 660000,
+      "budget_total": 9001698,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "7:00 PM",
+        "where": "31 N Church St, American Fork"
+      }
+    },
+    {
+      "entity": "Cedar Hills City",
+      "county": "Utah",
+      "type": "City",
+      "certified_rate": 0.000736,
+      "proposed_rate": 0.001125,
+      "pct": 52.85,
+      "home_value": 682000,
+      "taxable_value": 375100,
+      "annual_increase": 145.91,
+      "revenue": 150000,
+      "budget_total": 1174237,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "3925 W Cedar Hills Dr, Cedar Hills"
+      }
+    },
+    {
+      "entity": "Draper City",
+      "county": "Utah",
+      "type": "City",
+      "certified_rate": 0.000902,
+      "proposed_rate": 0.001128,
+      "pct": 25.06,
+      "home_value": 838000,
+      "taxable_value": 460900,
+      "annual_increase": 104.16,
+      "revenue": 122224,
+      "budget_total": 610041,
+      "years_in_row": 3,
+      "hearing": {
+        "date": "2026-08-12",
+        "time": "6:00 PM",
+        "where": "1020 E Pioneer Rd, Draper"
+      }
+    },
+    {
+      "entity": "Eagle Mountain City",
+      "county": "Utah",
+      "type": "City",
+      "certified_rate": 0.00053,
+      "proposed_rate": 0.0017,
+      "pct": 220.75,
+      "home_value": 488000,
+      "taxable_value": 268400,
+      "annual_increase": 314.03,
+      "revenue": 6742938,
+      "budget_total": 9798139,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-06",
+        "time": "6:00 PM",
+        "where": "1650 Stagecoach Run, Eagle Mountain"
+      }
+    },
+    {
+      "entity": "Saratoga Springs City",
+      "county": "Utah",
+      "type": "City",
+      "certified_rate": 0.000978,
+      "proposed_rate": 0.001467,
+      "pct": 50.0,
+      "home_value": 542000,
+      "taxable_value": 298100,
+      "annual_increase": 145.77,
+      "revenue": 3100000,
+      "budget_total": 9300539,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "319 S Saratoga Rd, Saratoga Springs"
+      }
+    },
+    {
+      "entity": "Highland City",
+      "county": "Utah",
+      "type": "City",
+      "certified_rate": 0.000725,
+      "proposed_rate": 0.000775,
+      "pct": 6.9,
+      "home_value": 1036000,
+      "taxable_value": 569800,
+      "annual_increase": 28.49,
+      "revenue": 172488,
+      "budget_total": 2684135,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "5400 W Civic Center Dr, Highland"
+      }
+    },
+    {
+      "entity": "Orem City",
+      "county": "Utah",
+      "type": "City",
+      "certified_rate": 0.00059,
+      "proposed_rate": 0.000781,
+      "pct": 32.37,
+      "home_value": 520000,
+      "taxable_value": 286000,
+      "annual_increase": 54.63,
+      "revenue": 450000,
+      "budget_total": 8504041,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-27",
+        "time": "6:00 PM",
+        "where": "56 N. State Street, Orem"
+      }
+    },
+    {
+      "entity": "Pleasant Grove City",
+      "county": "Utah",
+      "type": "City",
+      "certified_rate": 0.000938,
+      "proposed_rate": 0.001231,
+      "pct": 31.24,
+      "home_value": 602000,
+      "taxable_value": 331100,
+      "annual_increase": 97.01,
+      "revenue": 365667,
+      "budget_total": 5482044,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "108 S 100 E, Pleasant Grove"
+      }
+    },
+    {
+      "entity": "Springville City",
+      "county": "Utah",
+      "type": "City",
+      "certified_rate": 0.000712,
+      "proposed_rate": 0.001021,
+      "pct": 43.4,
+      "home_value": 476000,
+      "taxable_value": 261800,
+      "annual_increase": 80.9,
+      "revenue": 97000,
+      "budget_total": 4757276,
+      "years_in_row": 3,
+      "hearing": {
+        "date": "2026-08-18",
+        "time": "7:00 PM",
+        "where": "110 S Main St, Springville"
+      }
+    },
+    {
+      "entity": "Central Utah Water Conservancy District",
+      "county": "Utah",
+      "type": "Water district",
+      "certified_rate": 0.000397,
+      "proposed_rate": 0.0004,
+      "pct": 0.76,
+      "home_value": 576000,
+      "taxable_value": 316800,
+      "annual_increase": 0.95,
+      "revenue": 277759,
+      "budget_total": 37034469,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-25",
+        "time": "6:00 PM",
+        "where": "1426 E 750 N, Orem"
+      }
+    },
+    {
+      "entity": "Heber City",
+      "county": "Wasatch",
+      "type": "City",
+      "certified_rate": 0.000751,
+      "proposed_rate": 0.000787,
+      "pct": 4.79,
+      "home_value": 451000,
+      "taxable_value": 248050,
+      "annual_increase": 8.93,
+      "revenue": 174000,
+      "budget_total": 3800863,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-05",
+        "time": "7:00 PM",
+        "where": "City Hall - 75 N Main St, Heber City"
+      }
+    },
+    {
+      "entity": "Interlaken Town",
+      "county": "Wasatch",
+      "type": "Town",
+      "certified_rate": 0.002037,
+      "proposed_rate": 0.002109,
+      "pct": 3.53,
+      "home_value": 723000,
+      "taxable_value": 397650,
+      "annual_increase": 28.63,
+      "revenue": 6955,
+      "budget_total": 202483,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-04",
+        "time": "6:00 PM",
+        "where": "Interlaken Town Pumphouse, 326 Luzern Rd., Midway, UT"
+      }
+    },
+    {
+      "entity": "Central Utah Water Conservancy District",
+      "county": "Wasatch",
+      "type": "Water district",
+      "certified_rate": 0.000394,
+      "proposed_rate": 0.0004,
+      "pct": 1.52,
+      "home_value": 800000,
+      "taxable_value": 440000,
+      "annual_increase": 2.64,
+      "revenue": 120012,
+      "budget_total": 8000792,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-25",
+        "time": "6:00 PM",
+        "where": "1426 E 750 N, Orem"
+      }
+    },
+    {
+      "entity": "Hildale City",
+      "county": "Washington",
+      "type": "City",
+      "certified_rate": 0.001072,
+      "proposed_rate": 0.002872,
+      "pct": 167.91,
+      "home_value": 453000,
+      "taxable_value": 249150,
+      "annual_increase": 448.47,
+      "revenue": 210219,
+      "budget_total": 335403,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-05",
+        "time": "6:00 PM",
+        "where": "320 E Newel Ave, Hildale, UT"
+      }
+    },
+    {
+      "entity": "Toquerville City",
+      "county": "Washington",
+      "type": "City",
+      "certified_rate": 0.000931,
+      "proposed_rate": 0.001214,
+      "pct": 30.4,
+      "home_value": 361000,
+      "taxable_value": 198550,
+      "annual_increase": 56.19,
+      "revenue": 98000,
+      "budget_total": 420162,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "Toquerville City Hall, 212 N Toquer Blvd in Toquerville"
+      }
+    },
+    {
+      "entity": "Harrisville City",
+      "county": "Weber",
+      "type": "City",
+      "certified_rate": 0.001534,
+      "proposed_rate": 0.001567,
+      "pct": 2.15,
+      "home_value": 433000,
+      "taxable_value": 238150,
+      "annual_increase": 7.86,
+      "revenue": 24132,
+      "budget_total": 1145912,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-04",
+        "time": "7:00 PM",
+        "where": "363 W Independence Blvd, Harrisville"
+      }
+    },
+    {
+      "entity": "Hooper City",
+      "county": "Weber",
+      "type": "City",
+      "certified_rate": 0.000277,
+      "proposed_rate": 0.000406,
+      "pct": 46.57,
+      "home_value": 630000,
+      "taxable_value": 346500,
+      "annual_increase": 44.7,
+      "revenue": 128000,
+      "budget_total": 403896,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-06",
+        "time": "6:00 PM",
+        "where": "5580 W 4600 S, Hooper"
+      }
+    },
+    {
+      "entity": "Roy City",
+      "county": "Weber",
+      "type": "City",
+      "certified_rate": 0.001608,
+      "proposed_rate": 0.002492,
+      "pct": 54.98,
+      "home_value": 439000,
+      "taxable_value": 241450,
+      "annual_increase": 213.44,
+      "revenue": 2807745,
+      "budget_total": 7913789,
+      "years_in_row": 3,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "5051 S 1900 W, Roy"
+      }
+    },
+    {
+      "entity": "South Ogden City",
+      "county": "Weber",
+      "type": "City",
+      "certified_rate": 0.002417,
+      "proposed_rate": 0.002666,
+      "pct": 10.3,
+      "home_value": 497000,
+      "taxable_value": 273350,
+      "annual_increase": 68.06,
+      "revenue": 476331,
+      "budget_total": 5099993,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-04",
+        "time": "6:00 PM",
+        "where": "3950 Adams Ave. South Ogden, UT 84403"
+      }
+    },
+    {
+      "entity": "Washington Terrace City",
+      "county": "Weber",
+      "type": "City",
+      "certified_rate": 0.00159,
+      "proposed_rate": 0.001697,
+      "pct": 6.73,
+      "home_value": 431000,
+      "taxable_value": 237050,
+      "annual_increase": 25.36,
+      "revenue": 98100,
+      "budget_total": 1556877,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-04",
+        "time": "6:00 PM",
+        "where": "City Hall, 5249 South 400 East, Washington Terrace"
+      }
+    },
+    {
+      "entity": "Weber Basin Water Conservancy District",
+      "county": "Weber",
+      "type": "Water district",
+      "certified_rate": 0.000187,
+      "proposed_rate": 0.0002,
+      "pct": 6.95,
+      "home_value": 533000,
+      "taxable_value": 293150,
+      "annual_increase": 3.81,
+      "revenue": 476649,
+      "budget_total": 7333072,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-24",
+        "time": "6:30 PM",
+        "where": "2837 E Hwy 193, Layton"
+      }
+    },
+    {
+      "entity": "North View Fire District",
+      "county": "Weber",
+      "type": "Fire district",
+      "certified_rate": 0.001094,
+      "proposed_rate": 0.0012,
+      "pct": 9.69,
+      "home_value": 553000,
+      "taxable_value": 304150,
+      "annual_increase": 32.24,
+      "revenue": 493424,
+      "budget_total": 5603877,
+      "years_in_row": 4,
+      "hearing": {
+        "date": "2026-08-03",
+        "time": "6:00 PM",
+        "where": "Station 21, 315 E 2550 N, North Ogden"
+      }
+    },
+    {
+      "entity": "Ogden Valley City",
+      "county": "Weber",
+      "type": "City",
+      "certified_rate": null,
+      "proposed_rate": null,
+      "pct": 512.61,
+      "home_value": 1222000,
+      "taxable_value": 672100,
+      "annual_increase": 640.51,
+      "revenue": 2475138,
+      "budget_total": null,
+      "years_in_row": 1,
+      "hearing": {
+        "date": "2026-08-11",
+        "time": "6:00 PM",
+        "where": "7474 E. 200 S. Huntsville, UT 84317"
+      }
+    }
+  ]
+}

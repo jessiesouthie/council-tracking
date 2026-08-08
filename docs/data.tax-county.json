@@ -17,23 +17,31 @@
   },
   "eagle_mountain": {
     "current_rate": 0.000534,
+    "adopted_rate": 0.0015,
+    "adopted_rate_display": "0.001500",
+    "adopted_pct": 183.02,
+    "adopted_date": "2026-08-06",
+    "adopted_meeting_id": 747,
     "proposed_rate": 0.0017,
     "proposed_rate_display": "0.001700",
     "tentative_pct": 245,
     "notice_pct": 220.9,
     "rank_current": 25,
+    "rank_adopted": 6,
     "rank_proposed": 3,
     "total_cities": 26,
     "tentative_rate": 0.00184233,
-    "tentative_rate_display": "0.001842"
+    "tentative_rate_display": "0.001842",
+    "rank_note": "`rank_adopted` is where the 0.001500 the council adopted on August 6 lands once every other Utah County city's own noticed increase is applied — the ranking the second chart draws. `rank_proposed` is where the noticed 0.001700 would have landed on the same basis."
   },
   "caveats": [
     "Current rates are 2025 final adopted rates \u2014 the newest complete set the state publishes. 2026 rates are not certified until after the August hearings.",
-    "Eagle Mountain's tentative schedule (read May 26) implied a rate of 0.001842 and a 245% increase. The rate the city is actually proposing is 0.001700, a 220.9% increase measured against the newer certified rate. The charts use 0.001700.",
-    "Percent increases are the figures on each city's Truth-in-Taxation notice: the proposed rate measured against that city's certified rate. They are not increases in your total tax bill, and they are not the ratio of proposed collections to current collections — for Eagle Mountain that ratio is 245%, against a noticed 220.9%.",
+    "Eagle Mountain is the one city here whose 2026 rate is settled: the council adopted 0.001500 on August 6, after noticing 0.001700 and hearing nearly three hours of public comment. The charts carry the adopted rate for Eagle Mountain and each other city's noticed figure for the rest, whose hearings run through late August.",
+    "Eagle Mountain's tentative schedule (read May 26) implied a rate of 0.001842 and a 245% increase. The rate it noticed was 0.001700, a 220.9% increase measured against the newer certified rate. The rate it adopted is 0.001500, a 183.02% increase on the same basis.",
+    "Percent increases are the figures on each city's Truth-in-Taxation notice: the proposed rate measured against that city's certified rate. They are not increases in your total tax bill, and they are not the ratio of proposed collections to current collections — for Eagle Mountain the adopted rate's ratio is 204.5%, against the 183.02% in the motion.",
     "Highland's and Orem's proposals raise a dedicated levy (library; public safety), not the general city rate.",
     "Draper and Bluffdale levy in Utah County but lie mostly in Salt Lake County.",
-    "Resulting rates are each city's current rate plus the rate increase implied by its own published figures (the dollar rise on its stated average home, over 55% of that home's value). This avoids assuming the noticed percentage applies to the general city rate \u2014 for Highland and Orem it does not. Tested against Eagle Mountain, the only city publishing a proposed rate, the method reproduces 0.001700. Rows marked \u2021 rest on a rounded dollar figure and are approximate."
+    "Resulting rates are each city's current rate plus the rate increase implied by its own published figures (the dollar rise on its stated average home, over 55% of that home's value). This avoids assuming the noticed percentage applies to the general city rate \u2014 for Highland and Orem it does not. Tested against Eagle Mountain, the only city publishing a proposed rate, the method reproduces the 0.001700 it noticed — the 0.001500 in the charts is the rate it went on to adopt, read off the motion rather than derived. Rows marked \u2021 rest on a rounded dollar figure and are approximate."
   ],
   "transportation_fees": {
     "_comment": "Utah County cities that fund street work through a flat monthly fee on the utility bill rather than through the property tax. Every amount is the residential rate, read off the city's own current fee schedule or rates page. The property tax charts cannot see this money, which is the whole reason it is listed here.",
@@ -326,15 +334,22 @@
   "proposals": [
     {
       "city": "Eagle Mountain",
-      "pct": 220.9,
-      "revenue": 6740000,
+      "pct": 183.02,
+      "revenue": 5591594,
       "home_value": 488000,
-      "annual_increase": 314.03,
+      "annual_increase": 260.35,
       "purpose": "Sheriff's deputies / public safety",
-      "resulting_rate": 0.0017,
+      "resulting_rate": 0.0015,
       "resulting_rate_estimated": false,
-      "rate_source": "published",
-      "rate_delta": 0.00117
+      "rate_source": "adopted",
+      "rate_delta": 0.00097,
+      "adopted": true,
+      "adopted_date": "2026-08-06",
+      "noticed_rate": 0.0017,
+      "noticed_pct": 220.9,
+      "noticed_revenue": 6740000,
+      "noticed_annual_increase": 314.03,
+      "note": "The only settled row in this list. The council noticed 0.001700 and adopted 0.001500 on August 6; the percentage, the revenue and the rate are the motion's own figures, and the $260.35 is the notice's $268,400 taxable value times the 0.000970 the rate rose."
     },
     {
       "city": "Saratoga Springs",
@@ -473,6 +488,8 @@
       "name": "Eagle Mountain",
       "note": "Utah County \u2014 shown for comparison",
       "current_rate": 0.000534,
+      "adopted_rate": 0.0015,
+      "adopted_rate_display": "0.001500",
       "proposed_rate": 0.0017,
       "proposed_rate_display": "0.001700"
     },
@@ -480,14 +497,17 @@
       "rank_current_low": 9,
       "rank_current_high": 16,
       "total_with_reference": 24,
+      "rank_adopted_low": 19,
+      "rank_adopted_high": 6,
       "rank_proposed_low": 21,
-      "rank_proposed_high": 4
+      "rank_proposed_high": 4,
+      "rank_note": "Measured against Salt Lake County's current rates, which is what these fields have always compared. The chart itself ranks Eagle Mountain against each city's resulting rate instead, and puts the adopted 0.001500 sixth there too."
     },
     "caveats": [
       "Rates are each city's 2025 final adopted general levy \u2014 the same basis as the Utah County chart. Eagle Mountain (Utah County) is shown as a dashed reference bar so you can see where its rate falls among Salt Lake County's cities.",
       "Salt Lake County comparisons are not apples-to-apples with Eagle Mountain. Many of its cities fund fire through the Unified Fire Service Area and police through the Salt Lake Valley Law Enforcement Service Area \u2014 countywide levies billed separately from, and on top of, the city rate shown here.",
       "The eight cities and towns marked \u2020 levy little or no general city rate. The five metro townships (Copperton, Emigration Canyon, Kearns, Magna, White City) fund municipal services through the Greater Salt Lake Municipal Services District, and Brighton contracts for its services the same way; Riverton and Herriman fund police and fire through their own separate service areas (adding 0.002198 and 0.002792 respectively, on top of the rate shown). Their bars therefore understate what residents actually pay for city services.",
-      "The proposed-increase tab shows the ten Salt Lake County cities and towns that noticed a 2026 truth-in-taxation hike. As with the Utah County chart, only Eagle Mountain has published an actual proposed rate; the Salt Lake resulting rates are derived from each city's own noticed dollar impact, so treat them as estimates. School districts, water conservancy districts, and sub-city service areas that also noticed increases are left off to keep the comparison city-to-city."
+      "The proposed-increase tab shows the ten Salt Lake County cities and towns that noticed a 2026 truth-in-taxation hike. As with the Utah County chart, Eagle Mountain is the only city with a rate that is not an estimate — it published a proposed rate and then adopted 0.001500 on August 6; the Salt Lake resulting rates are derived from each city's own noticed dollar impact, so treat them as estimates. School districts, water conservancy districts, and sub-city service areas that also noticed increases are left off to keep the comparison city-to-city."
     ],
     "cities": [
       {
@@ -726,9 +746,13 @@
     "total_cities": 253,
     "eagle_mountain": {
       "current_rate": 0.000534,
+      "adopted_rate": 0.0015,
+      "adopted_rate_display": "0.001500",
       "proposed_rate": 0.0017,
       "rank_current_low": 64,
       "rank_current_high": 190,
+      "rank_adopted_low": 205,
+      "rank_adopted_high": 49,
       "rank_proposed_low": 219,
       "rank_proposed_high": 35
     },

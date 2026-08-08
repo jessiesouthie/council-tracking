@@ -10,7 +10,7 @@ already publishes:
   * every meeting (as a compact record, plus the prose summary when transcribed)
   * transcript passages, windowed so a quote can be retrieved and cited
   * each council member, their role and tenure, and how often they vote yes
-  * the proposed tax change and the adopted budget
+  * the tax change — as noticed and as adopted — and the adopted budget
   * how the city's rate compares with other cities, and the road fees on utility
     bills that a rate comparison can't see
   * a short per-body overview so the agent knows what's on the site
@@ -272,9 +272,23 @@ def _extra_docs() -> list[dict]:
                     f"{r.get('label', key)}: rate {r.get('rate')}"
                     + (f", revenue ${r.get('revenue'):,}" if isinstance(r.get("revenue"), (int, float)) else "")
                 )
+        # Once a rate is adopted the chunk has to lead with it. Every rate in the
+        # file is still listed, including the one that was noticed and dropped,
+        # so a question about the 0.001700 people saw on the notice still lands.
+        adopted = rates.get("adopted") or {}
+        headline = (
+            f"Adopted property tax rate for {tax.get('fiscal_year_label', tax.get('fiscal_year',''))}: "
+            f"{adopted.get('rate_display','')}, adopted {adopted.get('date','')} — "
+            f"{adopted.get('pct','')}% over the certified rate, raising "
+            f"${adopted.get('revenue_increase',0):,}. {adopted.get('vote','')}. "
+            f"It is not the {rates.get('proposed',{}).get('rate_display','')} the city noticed. "
+            if adopted
+            else f"Proposed property tax change for {tax.get('fiscal_year_label', tax.get('fiscal_year',''))}, "
+                 f"status: {tax.get('status','')}. "
+        )
         text = (
-            f"Proposed property tax change for {tax.get('fiscal_year_label', tax.get('fiscal_year',''))}, "
-            f"status: {tax.get('status','')}. Purpose: {tax.get('purpose','')} "
+            headline
+            + f"Purpose: {tax.get('purpose','')} "
             f"Utah taxes a primary residence on {int(tax.get('residential_ratio',0)*100)}% of market value. "
             + " ".join(rate_lines)
         )
@@ -283,7 +297,7 @@ def _extra_docs() -> list[dict]:
                 "id": "city-council:tax",
                 "kind": "tax",
                 "body": "city-council",
-                "title": f"Proposed property tax — {tax.get('fiscal_year_label','')}",
+                "title": f"{'Adopted' if adopted else 'Proposed'} property tax — {tax.get('fiscal_year_label','')}",
                 "date": "",
                 "url": "tax.html",
                 "tags": ["budget"],
@@ -401,6 +415,7 @@ def _extra_docs() -> list[dict]:
             }
         )
     docs += _county_docs()
+    docs += _state_docs()
     return docs
 
 
@@ -408,6 +423,112 @@ def _ordinal(n: int) -> str:
     if n % 100 in (11, 12, 13):
         return f"{n}th"
     return f"{n}{ {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th') }"
+
+
+def _state_docs() -> list[dict]:
+    """Every truth-in-taxation notice in Utah, and what the council actually did.
+
+    Two chunks again, for the same reason the county comparison is two. "Is this
+    the biggest tax increase in Utah?" wants the ranking; "how much did my taxes
+    go up?" wants the adopted rate and nothing else, and burying that answer
+    behind seventy-nine other entities would be a way of not giving it. Ranks are
+    computed from the figures rather than stored, so the agent and the charts
+    can't drift apart.
+    """
+    path = DOCS / "data.tax-state.json"
+    if not path.exists():
+        return []
+    s = json.loads(path.read_text(encoding="utf-8"))
+    notices = s.get("notices", [])
+    if not notices:
+        return []
+
+    em_name = s.get("eagle_mountain", {}).get("entity", "")
+    ad = s.get("eagle_mountain", {}).get("adopted", {})
+    t = s.get("totals", {})
+    em = next((n for n in notices if n.get("entity") == em_name), None)
+    if em is None:
+        return []
+
+    def rank_of(key: str, value: float) -> int:
+        return sum(1 for n in notices if n.get(key, 0) > value) + 1
+
+    # Eagle Mountain's own noticed row is dropped when placing the adopted
+    # figure, so it is never ranked against itself.
+    def adopted_rank(key: str, value: float) -> int:
+        return sum(1 for n in notices if n.get("entity") != em_name and n.get(key, 0) > value) + 1
+
+    top = sorted(notices, key=lambda n: -n.get("pct", 0))[:15]
+    def levy(n: dict) -> str:
+        if n.get("proposed_rate") is None:
+            return "no rate published"
+        return f"levy {n.get('certified_rate',0):.6f} to {n.get('proposed_rate',0):.6f}"
+
+    top_lines = "; ".join(
+        f"{n.get('entity','')} ({n.get('county','')} County, {n.get('type','').lower()}) "
+        f"+{n.get('pct',0)}%, {levy(n)}, ${n.get('annual_increase',0):,.2f} a year on a "
+        f"${n.get('home_value',0):,} home, ${n.get('revenue',0):,} raised, hearing {n.get('hearing',{}).get('date','')}"
+        for n in top
+    )
+
+    text = (
+        f"Every {s.get('year','')} truth-in-taxation notice in Utah, not just Eagle Mountain's and not "
+        f"just cities. {t.get('notices',0)} notices from {t.get('entities',0)} taxing entities in "
+        f"{t.get('counties',0)} counties — cities, towns, school districts, water conservancy districts "
+        f"and fire districts — asking for ${t.get('revenue',0):,} between them, with hearings from "
+        f"{t.get('hearings_from','')} to {t.get('hearings_to','')}. "
+        f"Eagle Mountain's noticed increase of {em.get('pct',0)}% was the "
+        f"{_ordinal(rank_of('pct', em.get('pct', 0)))}-steepest in the state, the "
+        f"{_ordinal(rank_of('annual_increase', em.get('annual_increase', 0)))}-heaviest on an average home "
+        f"at ${em.get('annual_increase',0):,.2f} a year, and the "
+        f"{_ordinal(rank_of('revenue', em.get('revenue', 0)))}-largest by revenue at ${em.get('revenue',0):,}. "
+        f"On {ad.get('date','')} the council adopted {ad.get('rate_display','')} instead, "
+        f"{ad.get('pct',0)}% — which against every other entity's noticed figure is the "
+        f"{_ordinal(adopted_rank('pct', ad.get('pct', 0)))}-steepest, the "
+        f"{_ordinal(adopted_rank('annual_increase', ad.get('annual_increase', 0)))}-heaviest per home and the "
+        f"{_ordinal(adopted_rank('revenue', ad.get('revenue', 0)))}-largest by revenue. "
+        f"The fifteen steepest proposals in Utah: {top_lines}. "
+        + " ".join(s.get("caveats", []))
+    )
+
+    adopted_text = (
+        f"What Eagle Mountain's City Council actually adopted. On {ad.get('date','')}, at the "
+        f"truth-in-taxation hearing, the council voted to set the city property tax rate at "
+        f"{ad.get('rate_display','')} — not the {em.get('proposed_rate',0):.6f} on the public notice. "
+        f"{ad.get('vote','')}. That is an increase of {ad.get('pct',0)}% over the "
+        f"{em.get('certified_rate',0):.6f} certified rate, rather than the {em.get('pct',0)}% noticed. "
+        f"It adds about ${ad.get('annual_increase',0):,.2f} a year to a "
+        f"${ad.get('home_value',0):,} primary residence, instead of ${em.get('annual_increase',0):,.2f}, "
+        f"and raises roughly ${ad.get('revenue',0):,} rather than ${em.get('revenue',0):,}. "
+        f"The money goes to the Utah County Sheriff's contract and the deputies it funds. "
+        f"The increase does not take effect until the full budget passes at the budget adoption "
+        f"hearing on August 18, 2026. The motion as read: \"{ad.get('motion','')}\" "
+        f"Source: {ad.get('source',{}).get('title','')}, transcribed from the recording; "
+        f"the minutes were not published when this was written. {ad.get('derivation','')}"
+    )
+
+    return [
+        {
+            "id": "city-council:tax-state",
+            "kind": "tax",
+            "body": "city-council",
+            "title": f"Every tax increase proposed in Utah — {s.get('year','')} truth-in-taxation notices",
+            "date": "",
+            "url": "tax.html#p-state-proposals",
+            "tags": ["budget"],
+            "text": _clean(text),
+        },
+        {
+            "id": "city-council:tax-adopted",
+            "kind": "tax",
+            "body": "city-council",
+            "title": f"The rate the council adopted — {ad.get('rate_display','')}, {ad.get('date','')}",
+            "date": ad.get("date", ""),
+            "url": "tax.html#p-state-proposals",
+            "tags": ["budget"],
+            "text": _clean(adopted_text),
+        },
+    ]
 
 
 def _county_docs() -> list[dict]:
@@ -431,7 +552,11 @@ def _county_docs() -> list[dict]:
 
     em = c.get("eagle_mountain", {})
     em_rate = em.get("current_rate", 0.0)
-    em_prop = em.get("proposed_rate", 0.0)
+    # The rate Eagle Mountain will actually levy: adopted where the council has
+    # voted, the noticed figure where it has not.
+    em_adopted = em.get("adopted_rate")
+    em_prop = em_adopted or em.get("proposed_rate", 0.0)
+    em_word = "adopted" if em_adopted else "proposed"
     rates = sorted(x.get("current_rate", 0.0) for x in cities)
     mid = len(rates) // 2
     median = rates[mid] if len(rates) % 2 else (rates[mid - 1] + rates[mid]) / 2
@@ -485,23 +610,26 @@ def _county_docs() -> list[dict]:
         f"not the county, school district or special districts. "
         f"Eagle Mountain's {em_rate:.6f} is the {_ordinal(em_pos)}-lowest of the {len(cities)} cities in "
         f"Utah County, against a county median of {median:.6f}. "
-        f"The proposed {em_prop:.6f} would make it the {_ordinal(em_prop_pos)}-highest, once every other "
+        f"The {em_word} {em_prop:.6f} "
+        + ("makes" if em_adopted else "would make")
+        + f" it the {_ordinal(em_prop_pos)}-highest, once every other "
         f"city's own proposed increase is applied. "
         f"Rates today, highest to lowest: {rate_lines}. "
         f"{len(c.get('proposals', []))} Utah County cities noticed a {c.get('proposal_year','')} increase. "
         f"{prop_lines} "
         + (
             f"Statewide, of all {sw.get('total_cities','')} Utah cities, Eagle Mountain's current rate is the "
-            f"{_ordinal(sw_em.get('rank_current_low', 0))}-lowest; the proposed rate would be the "
-            f"{_ordinal(sw_em.get('rank_proposed_high', 0))}-highest, measuring it against every other city's "
-            f"current rate — the state does not publish a full set of 2026 proposals. "
+            f"{_ordinal(sw_em.get('rank_current_low', 0))}-lowest; the {em_word} rate is the "
+            f"{_ordinal(sw_em.get('rank_adopted_high') or sw_em.get('rank_proposed_high', 0))}-highest, "
+            f"measuring it against every other city's current rate — the state does not publish a full set "
+            f"of 2026 proposals. "
             if sw_em
             else ""
         )
         + (
             f"The same page carries a second comparison against the {len(sl_cities)} cities of Salt Lake "
             f"County, where Eagle Mountain is shown as an out-of-county reference: its current rate would be "
-            f"the {_ordinal(sl_now_below + 1)}-lowest there, and the proposed rate the "
+            f"the {_ordinal(sl_now_below + 1)}-lowest there, and the {em_word} rate the "
             f"{_ordinal(sl_prop_above + 1)}-highest once each of those cities' own increases is applied. "
             if sl_cities
             else ""

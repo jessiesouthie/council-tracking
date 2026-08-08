@@ -5,17 +5,17 @@
     <script>document.documentElement.classList.remove("no-js");</script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Property Tax Estimator — Eagle Mountain Council Tracking</title>
-    <meta name="description" content="See what Eagle Mountain's proposed property tax increase would cost you, and every council meeting where it was discussed." />
+    <meta name="description" content="See what the property tax increase Eagle Mountain adopted on August 6 costs you, and every council meeting it moved through." />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Council Tracking" />
     <meta property="og:title" content="Property Tax Estimator — Eagle Mountain Council Tracking" />
-    <meta property="og:description" content="See what Eagle Mountain's proposed property tax increase would cost you, and every council meeting where it was discussed." />
+    <meta property="og:description" content="See what the property tax increase Eagle Mountain adopted on August 6 costs you, and every council meeting it moved through." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Property Tax Estimator — Eagle Mountain Council Tracking" />
-    <meta name="twitter:description" content="See what Eagle Mountain's proposed property tax increase would cost you, and every council meeting where it was discussed." />
+    <meta name="twitter:description" content="See what the property tax increase Eagle Mountain adopted on August 6 costs you, and every council meeting it moved through." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
@@ -27,7 +27,7 @@
          so nothing on this page would use it, and asking for a third family only
          costs a render-blocking round trip. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260806a" />
+    <link rel="stylesheet" href="site.css?v=20260807b" />
   </head>
   <body class="page-tax">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -112,12 +112,13 @@
           fetch(new URL(f, document.baseURI))
             .then((r) => (r.ok ? r.json() : null))
             .catch(() => null);
-        // The county comparison and the full-bill breakdown are nice-to-haves;
-        // the page still works without either.
-        const [tax, county, bill] = await Promise.all([
+        // The county comparison, the full-bill breakdown and the statewide list
+        // of proposals are nice-to-haves; the page still works without any of them.
+        const [tax, county, bill, state] = await Promise.all([
           grab("data.tax.json"),
           grab("data.tax-county.json"),
           grab("data.tax-bill.json"),
+          grab("data.tax-state.json"),
         ]);
 
         root.removeAttribute("aria-busy");
@@ -160,7 +161,7 @@
           return;
         }
 
-        render(tax, county, bill, root);
+        render(tax, county, bill, state, root);
       })();
 
       const usd = (n) =>
@@ -190,20 +191,17 @@
          panels rather than adding four screens to the scroll.
          ========================================================================= */
 
-      function render(tax, county, bill, root) {
+      function render(tax, county, bill, state, root) {
         const CURRENT = tax.rates.current.rate;
-        const PROPOSED = tax.rates.proposed.rate;
+        const NEWRATE = newRate(tax).rate;
         const RATIO = tax.residential_ratio;
 
         root.innerHTML = `
           <div class="tax-page">
             <header class="tax-hero reveal">
               ${statusHtml(tax)}
-              <h1 class="tax-h1">Eagle Mountain wants to raise your property tax</h1>
-              <p class="tax-lede">
-                Enter what your home is worth and see what it would cost you.
-                Nothing is final — the council still has to vote.
-              </p>
+              <h1 class="tax-h1">Eagle Mountain ${isAdopted(tax) ? "is raising" : "wants to raise"} your property tax</h1>
+              ${ledeHtml(tax)}
               ${nextHearingHtml(tax)}
             </header>
 
@@ -213,7 +211,7 @@
 
             ${bill ? billSection(bill, tax) : ""}
 
-            ${county ? countySection(county, RATIO) : ""}
+            ${county ? countySection(county, RATIO, tax) : ""}
 
             <section class="learn reveal" style="--i:5" aria-labelledby="learn-title">
               <div class="sec-head">
@@ -221,9 +219,10 @@
                 <h2 class="sec-h2" id="learn-title">Where all of this comes from</h2>
                 <p class="sec-sub">Open any of these for the detail behind the numbers.</p>
               </div>
-              ${pictureNavHtml(county)}
+              ${pictureNavHtml(county, state)}
               ${schedulePanel(tax)}
-              ${county && county.statewide ? statewidePanel(county) : ""}
+              ${state ? stateProposalsPanel(state) : ""}
+              ${county && county.statewide ? statewidePanel(county, state) : ""}
               ${sourcePanel(tax)}
               ${recordPanel(tax)}
             </section>
@@ -234,30 +233,82 @@
         // Wired before the estimator, so the estimator's first paint already
         // finds the bill breakdown and syncs its dollar figures to it.
         if (bill) wireBillPanel(bill);
-        wireEstimator({ CURRENT, PROPOSED, RATIO, tax });
+        wireEstimator({ CURRENT, NEWRATE, RATIO, tax });
         wireMeasures();
         wirePictureNav();
         wireTableExports();
         if (county) {
           wireCountySwitch();
           wireChartTabs();
-          wireStatewideTable();
+          wireSortableTable("#p-statewide table.data.statewide");
           wireStatewideView();
           wireStatewideFilter();
         }
+        if (state) {
+          wireSortableTable("#p-state-proposals table.data.statelist");
+          wireStateBasis();
+          wireStateFilter();
+        }
         // Tooltips are wired across every chart row on the page, so the bill
         // breakdown keeps them even on a load where the county data didn't come.
-        if (county || bill) { wireChartTooltips(); wireBarReveal(); }
+        if (county || bill || state) { wireChartTooltips(); wireBarReveal(); }
       }
 
       /* ---------------- hero ---------------- */
 
+      /* ---------------- which rate the page is about ----------------
+         The council noticed 0.001700 and adopted 0.001500 on August 6, and the
+         page has to speak with one voice about which of those a reader is
+         looking at. Everything that describes what the city will actually
+         charge reads `newRate(tax)`; the noticed rate is quoted by name, only
+         where the record is the point — the schedule as read, the timeline, the
+         statewide list that ranks every entity on what it noticed.
+
+         Written as a fallback rather than a constant so a future year's data,
+         which will start life with a proposal and no adopted rate, renders as a
+         proposal without a code change — `isAdopted` is what switches the
+         page's tense. */
+      const newRate = (tax) => tax.rates.adopted || tax.rates.proposed;
+      const isAdopted = (tax) => !!tax.rates.adopted;
+      // Where the citywide collections figure beside the rate comes from. The
+      // noticed one was printed on the schedule; the adopted one is the motion's
+      // own increase carried through that schedule, so it doesn't claim to have
+      // been published.
+      const revNote = (tax) =>
+        isAdopted(tax)
+          ? "The motion's own increase, carried through the city's schedule."
+          : "From the city's published schedule.";
+
+      /* The sentence under the headline. Before August 6 it had a vote to point
+         at; now the vote has happened, so it says what was set and — because
+         the number most readers arrived with is the other one — what was set
+         instead of. */
+      function ledeHtml(tax) {
+        const nw = newRate(tax);
+        if (!isAdopted(tax))
+          return `
+            <p class="tax-lede">
+              Enter what your home is worth and see what it would cost you.
+              Nothing is final — the council still has to vote.
+            </p>`;
+        return `
+          <p class="tax-lede">
+            On ${CT.fmtDate(nw.date)} the council set the rate at
+            <strong>${CT.escapeHtml(nw.rate_display)}</strong> — not the
+            ${CT.escapeHtml(tax.rates.proposed.rate_display)} it noticed. Enter what your
+            home is worth and see what it costs you.
+          </p>`;
+      }
+
       // The eyebrow over the headline: what stage this is at, and for which year.
       function statusHtml(tax) {
         const fy = tax.fiscal_year.replace("-", "–");
+        // The dot pings while the number can still move. Once the rate is set
+        // it stops: a pulse beside "Adopted" would read as something still
+        // happening.
         return `
           <p class="eyebrow">
-            <span class="tax-status-dot" aria-hidden="true"></span>
+            <span class="tax-status-dot${isAdopted(tax) ? " is-done" : ""}" aria-hidden="true"></span>
             ${CT.escapeHtml(cap(tax.status))} · FY ${CT.escapeHtml(fy)}
           </p>`;
       }
@@ -278,12 +329,12 @@
         // The one thing a resident can actually do about any of this, so it sits
         // above the estimator rather than below it — but small: a line saying
         // when, and a line saying they are allowed to speak. Most people do not
-        // know a Truth-in-Taxation hearing takes public comment.
+        // know a budget hearing takes public comment either.
         return `
           <aside class="act">
             <span class="act-pulse" aria-hidden="true"></span>
             <span class="act-body">
-              <b class="act-head">Public hearing ${when}</b>
+              <b class="act-head">${CT.escapeHtml(next.title)} ${when}</b>
               <span class="act-meta">${CT.fmtDate(next.date)} · You can speak before the council votes.</span>
             </span>
           </aside>`;
@@ -312,38 +363,38 @@
       const signed = (p) => (p < -0.05 ? "−" : "+") + pctStr(Math.abs(p));
 
       // The one thing a reader has to be told about the percent field, because
-      // the number most of them arrived with — the noticed 220.9% — is measured
-      // against a different rate than the one they pay.
+      // the number most of them arrived with — the 183.02% in the motion, or
+      // the 220.9% on the notice before it — is measured against a different
+      // rate than the one they pay.
       function basisNote(tax) {
         const cur = tax.rates.current;
-        const prop = tax.rates.proposed;
+        const nw = newRate(tax);
         const cert = tax.rates.certified_2026;
-        const overToday = fmtPct((prop.rate / cur.rate - 1) * 100);
+        const overToday = fmtPct((nw.rate / cur.rate - 1) * 100);
         const base = `Percentages here are measured against the
           ${cur.rate.toFixed(6)} you pay today, the way the increase was read on June 16.`;
         if (!cert) return base;
-        return `${base} The city's noticed +${prop.pct}% is measured against the
-          ${CT.escapeHtml(cert.rate_display)} certified rate instead — the same proposal is
+        return `${base} The ${isAdopted(tax) ? "adopted" : "noticed"} +${nw.pct}% is measured
+          against the ${CT.escapeHtml(cert.rate_display)} certified rate instead — the same rate is
           +${overToday}% against today's.`;
       }
 
-      // What a rate raises across the whole city. The published schedule gives
+      // What a rate raises across the whole city. The city's own schedule gives
       // two points; a rate nobody has published is priced off the taxable value
-      // behind the city's own proposal, which is the base a rate adopted now
-      // would actually apply to.
+      // behind the rate the council set, which is the base a rate applies to.
       function cityBase(tax) {
-        const prop = tax.rates.proposed;
-        return prop.revenue && prop.rate ? prop.revenue / prop.rate : 0;
+        const nw = newRate(tax);
+        return nw.revenue && nw.rate ? nw.revenue / nw.rate : 0;
       }
 
       function estimatorHtml(tax) {
         const cur = tax.rates.current;
-        const prop = tax.rates.proposed;
+        const nw = newRate(tax);
         const taxable = DEFAULT_VALUE * tax.residential_ratio;
         const now = taxable * cur.rate;
-        const sel = taxable * prop.rate;
+        const sel = taxable * nw.rate;
         const diff = sel - now;
-        const hasRevenue = !!(cur.revenue && prop.revenue);
+        const hasRevenue = !!(cur.revenue && nw.revenue);
         return `
         <section class="estimator reveal" style="--i:1" id="estimate" aria-label="Property tax estimator">
           <div class="tax-tool">
@@ -385,7 +436,7 @@
                   <span class="bb-sub">a year · <span id="now-month">${usd(now / 12)}</span> a month</span>
                 </div>
                 <div class="bb-half bb-new">
-                  <span class="bb-label" id="res-scenario">If this passes</span>
+                  <span class="bb-label" id="res-scenario">${isAdopted(tax) ? "At the adopted rate" : "If this passes"}</span>
                   <span class="bb-num mono" id="res-total">${usd(sel)}</span>
                   <span class="bb-sub">a year · <span id="res-month">${usd(sel / 12)}</span> a month</span>
                 </div>
@@ -399,11 +450,11 @@
                 hasRevenue
                   ? `<div class="bb-city" id="bb-city">
                 <span class="bb-label">What the city collects</span>
-                <span class="bb-city-num mono" id="cw-total">${usd0(prop.revenue)}</span>
+                <span class="bb-city-num mono" id="cw-total">${usd0(nw.revenue)}</span>
                 <span class="bb-sub" id="cw-sub">a year · +${pctStr(
-                  (prop.revenue / cur.revenue - 1) * 100
+                  (nw.revenue / cur.revenue - 1) * 100
                 )}% against the ${usd0(cur.revenue)} it collects today</span>
-                <span class="bb-note" id="cw-note">From the city's published schedule.</span>
+                <span class="bb-note" id="cw-note">${CT.escapeHtml(revNote(tax))}</span>
               </div>`
                   : ""
               }
@@ -424,15 +475,15 @@
                   </label>
                 </div>
 
-                <div class="rate is-proposed">
-                  <input type="radio" name="rate" id="r-proposed" value="proposed" checked />
-                  <label for="r-proposed">
+                <div class="rate is-new">
+                  <input type="radio" name="rate" id="r-new" value="new" checked />
+                  <label for="r-new">
                     <span class="dot" aria-hidden="true"></span>
                     <span>
-                      <span class="rname">What the city is proposing</span>
-                      <span class="rmeta" data-perk="${prop.rate}"></span>
+                      <span class="rname">${isAdopted(tax) ? "What the council adopted" : "What the city is proposing"}</span>
+                      <span class="rmeta" data-perk="${nw.rate}"></span>
                     </span>
-                    <span class="rrate mono">${CT.escapeHtml(prop.rate_display)}</span>
+                    <span class="rrate mono">${CT.escapeHtml(nw.rate_display)}</span>
                   </label>
                 </div>
 
@@ -505,7 +556,7 @@
           ? `Utah taxes a primary residence on ${+(ratio * 100).toFixed(1)}% of its market value.`
           : "Business, rental, and secondary property is taxed on its full market value.";
 
-      function wireEstimator({ CURRENT, PROPOSED, RATIO, tax }) {
+      function wireEstimator({ CURRENT, NEWRATE, RATIO, tax }) {
         const $ = (id) => document.getElementById(id);
         const mv = $("mv"),
           mvRange = $("mv-range"),
@@ -520,8 +571,11 @@
           srOut = $("res-sr");
 
         const CUR_REV = tax.rates.current.revenue || 0;
-        const PROP_REV = tax.rates.proposed.revenue || 0;
+        const NEW_REV = newRate(tax).revenue || 0;
         const CITY_BASE = cityBase(tax);
+        const NEW_NOTE = revNote(tax);
+        const NEW_SHORT = isAdopted(tax) ? "At the adopted rate" : "If this passes";
+        const NEW_NAME = isAdopted(tax) ? "adopted rate" : "proposed rate";
         // The two collections figures are counted on different years' assessed
         // values, which is why an unchanged rate still raises more. Saying which
         // year each one belongs to is the difference between that reading as
@@ -562,15 +616,15 @@
         const chosen = () => {
           const v = document.querySelector('input[name="rate"]:checked').value;
           if (v === "current") return { key: v, rate: CURRENT, name: "current rate", short: "No change" };
-          if (v === "proposed") return { key: v, rate: PROPOSED, name: "proposed rate", short: "If this passes" };
+          if (v === "new") return { key: v, rate: NEWRATE, name: NEW_NAME, short: NEW_SHORT };
           return { key: v, rate: customMicro / 1e6, name: "rate you picked", short: "At your rate" };
         };
 
-        // Two of the three scenarios have a published collections figure behind
-        // them; quote those rather than re-deriving them. Anything else is
-        // scaled off the taxable value the city's own proposal implies.
+        // Two of the three scenarios have a collections figure of their own
+        // behind them; quote those rather than re-deriving them. Anything else
+        // is scaled off the taxable value the city's own schedule implies.
         const cityRevenue = (sel) =>
-          sel.key === "current" ? CUR_REV : sel.key === "proposed" ? PROP_REV : sel.rate * CITY_BASE;
+          sel.key === "current" ? CUR_REV : sel.key === "new" ? NEW_REV : sel.rate * CITY_BASE;
 
         // The visible number updates on every slider tick; the announcement waits
         // for the reader to settle, so assistive tech gets one sentence, not fifty.
@@ -646,7 +700,9 @@
               sel.key === "custom"
                 ? `Estimated on the ${usdBig(CITY_BASE)} of ${TAX_YEAR || ""} taxable value behind the city's
                    schedule; today's total is collected on ${TAX_YEAR ? TAX_YEAR - 1 : "last year's"} values.`.replace(/\s+/g, " ")
-                : "From the city's published schedule.";
+                : sel.key === "new"
+                  ? NEW_NOTE
+                  : "From the city's published schedule.";
             cityRow.classList.toggle("is-up", !revSame && revDiff > 0);
           }
 
@@ -808,29 +864,39 @@
          page is built to work without it.
       */
       function takeawayHtml(tax, county) {
-        const pct = tax.rates.proposed.pct;
+        const nw = newRate(tax);
+        const done = isAdopted(tax);
+        // Ranked off the same rates the charts below draw, rather than off the
+        // stored rank fields, so this strip cannot disagree with the bars.
         const em = county ? county.eagle_mountain : null;
+        const rankNow = county ? cityOrder(county).findIndex((r) => r.name === EM) + 1 : 0;
+        const rankNew = county ? rankByResulting(county) : 0;
+        const times = nw.rate / tax.rates.current.rate;
 
         const rankFact = em
           ? `
             <li class="fact">
-              <b class="shift"><span class="nb">${ordinal(em.total_cities - em.rank_current + 1)}-lowest</span> <span class="to" aria-hidden="true">→</span> <span class="nb">${ordinal(em.rank_proposed)}-highest</span></b>
-              <p>Eagle Mountain charges nearly the least of the ${em.total_cities} cities in Utah County
-                today. This would move it near the top.</p>
+              <b class="shift"><span class="nb">${ordinal(county.cities.length - rankNow + 1)}-lowest</span> <span class="to" aria-hidden="true">→</span> <span class="nb">${ordinal(rankNew)}-highest</span></b>
+              <p>Eagle Mountain charges nearly the least of the ${county.cities.length} cities in Utah
+                County today. ${done ? "The new rate moves" : "This would move"} it into the top
+                ${numWord(rankNew)}.</p>
             </li>`
           : "";
 
         return `
-          <ul class="facts reveal${em ? "" : " two"}" style="--i:2" aria-label="What this would mean">
+          <ul class="facts reveal${em ? "" : " two"}" style="--i:2" aria-label="What this means">
             <li class="fact">
-              <b>About 3&times; more</b>
-              <p>The city's part of your tax bill would roughly triple${em ? " — the biggest jump any Utah County city is asking for this year" : ""}.</p>
+              <b>About ${times.toFixed(1)}&times; more</b>
+              <p>The city's part of your tax bill ${done ? "is" : "would be"} about
+                ${times.toFixed(1)}× what it is today${
+                  em ? " — the biggest increase any Utah County city has on the table this year" : ""
+                }.</p>
             </li>
             ${rankFact}
             <li class="fact">
               <b>Sheriff's deputies</b>
-              <p>The ${usd0(tax.revenue_increase)} it raises is set aside for policing — Eagle Mountain
-                contracts with the Utah County Sheriff.</p>
+              <p>The ${usd0(nw.revenue_increase || tax.revenue_increase)} it raises is set aside for
+                policing — Eagle Mountain contracts with the Utah County Sheriff.</p>
             </li>
           </ul>`;
       }
@@ -841,9 +907,10 @@
          panel on the way. Built from the same conditionals as the panels, so a
          chip never points at a section that didn't render.
       */
-      function pictureNavHtml(county) {
+      function pictureNavHtml(county, state) {
         const items = [
           ["p-schedule", "The schedule"],
+          state ? ["p-state-proposals", "Every Utah proposal"] : null,
           county && county.statewide ? ["p-statewide", "Statewide"] : null,
           ["p-source", "Sources"],
           ["p-record", "Timeline"],
@@ -979,10 +1046,21 @@
         // to the cent. The current column is arithmetic on a rate that is already exact.
         const homeNow = home.market_value * tax.residential_ratio * cur.rate;
         const bizNow = biz.market_value * cur.rate;
+        // The schedule is the noticed rate, in full, as it was read — so the
+        // panel has to say up front that it is not the rate now in force, or a
+        // reader who opens it lands on 0.001700 with nothing to tell them.
+        const adopted = tax.rates.adopted;
         const body = `
           <p class="panel-intro">
             Read aloud on <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a>, transcribed
-            from the recording.
+            from the recording.${
+              adopted
+                ? ` It is the schedule for the <strong>${CT.escapeHtml(prop.rate_display)}</strong> the
+                    city noticed — not the ${CT.escapeHtml(adopted.rate_display)} the council went on to
+                    adopt on <a href="meetings.html?id=${adopted.meeting_id}">August 6</a>. Every figure
+                    in the table is the noticed one.`
+                : ""
+            }
           </p>
           <div class="tablewrap">
             <table class="data schedule">
@@ -1022,7 +1100,11 @@
             states.${gapNote}${asReadNote}
           </p>
 `;
-        return panel("The official schedule", "The six lines of the city's Truth-in-Taxation schedule", body, true, "p-schedule");
+        return panel(
+          "The official schedule",
+          `The six lines of the city's Truth-in-Taxation schedule${adopted ? ", as noticed" : ""}`,
+          body, true, "p-schedule"
+        );
       }
 
       /* ---------------- the whole bill ----------------
@@ -1031,7 +1113,7 @@
          It isn't: seven entities levy on an Eagle Mountain parcel, and the city
          is the fourth largest of them. This panel lays out all seven at their
          2025 final adopted rates — the ones on today's bills — so the city's
-         proposal can be read against the bill it actually belongs to.
+         new rate can be read against the bill it actually belongs to.
 
          The rates are fixed 2025 figures and the bars are drawn from them, so
          bar geometry never changes. Only the dollar figures move, and they
@@ -1052,12 +1134,12 @@
         // error term.
         const attrRate = (r) => r.toFixed(9);
 
-        // What the city's proposal would do to the bill as a whole, holding
-        // every other entity at its 2025 rate — the only honest way to state
-        // it, since no other entity has set a 2026 rate yet.
-        const prop = tax.rates.proposed.rate;
-        const propTotal = total - city.rate + prop;
-        const propPos = ents.filter((e) => !e.is_city && e.rate > prop).length + 1;
+        // What the city's new rate does to the bill as a whole, holding every
+        // other entity at its 2025 rate — the only honest way to state it,
+        // since no other entity has set a 2026 rate yet.
+        const nw = newRate(tax).rate;
+        const propTotal = total - city.rate + nw;
+        const propPos = ents.filter((e) => !e.is_city && e.rate > nw).length + 1;
         const raised = ents.filter((e) => e.rate > e.certified).length;
 
         // One row per levy, laid out like the bill itself: who takes it, how much
@@ -1131,7 +1213,7 @@
             </figure>
 
             <div class="note">
-              <b>If the city's proposal passes</b>
+              <b>${isAdopted(tax) ? "With the rate the council adopted" : "If the city's proposal passes"}</b>
               <p>
                 Your whole bill goes from
                 <strong><span data-billrate="${attrRate(total)}"></span></strong> to
@@ -1232,9 +1314,25 @@
         BILL_SYNC(bill.sample_value, true);
       }
 
-      /* ---------------- the paper trail ---------------- */
+      /* ---------------- the paper trail ----------------
+         Two quotes, in the order they happened: the schedule that noticed the
+         increase, and the motion that set it. The motion goes first, because it
+         is the rate in force and the one every figure above is drawn from. */
       function sourcePanel(tax) {
+        const ad = tax.rates.adopted;
         const body = `
+          ${
+            ad
+              ? `<blockquote class="record">
+                   <p>“${CT.escapeHtml(ad.motion)}”</p>
+                   <footer>
+                     The motion adopting the rate — ${CT.escapeHtml(ad.vote)} —
+                     <a href="meetings.html?id=${ad.meeting_id}">meeting #${ad.meeting_id}, ${CT.fmtDate(ad.date)}</a>
+                   </footer>
+                 </blockquote>`
+              : ""
+          }
+
           <blockquote class="record">
             <p>“${CT.escapeHtml(tax.source.quote)}”</p>
             <footer>
@@ -1243,13 +1341,26 @@
             </footer>
           </blockquote>
 
+          ${
+            ad
+              ? `<p class="derivation">
+                   <strong>How the adopted rate checks out.</strong> ${CT.escapeHtml(ad.derivation)}
+                 </p>`
+              : ""
+          }
+
           <p class="derivation">
-            <strong>How the proposed rate checks out.</strong> ${CT.escapeHtml(tax.rates.proposed.derivation)}
+            <strong>How the ${ad ? "noticed" : "proposed"} rate checks out.</strong> ${CT.escapeHtml(tax.rates.proposed.derivation)}
           </p>
 
           <p class="derivation">
             <strong>Minutes and recording.</strong> ${CT.escapeHtml(tax.source.minutes)}
-            Council approved the June 16 minutes on ${CT.fmtDate(tax.source.minutes_approved)}.
+            Council approved the June 16 minutes on ${CT.fmtDate(tax.source.minutes_approved)}.${
+              ad
+                ? ` The ${CT.fmtDate(ad.date)} minutes are not published yet, so the motion above is
+                    transcribed from that meeting's recording.`
+                : ""
+            }
           </p>`;
         return panel("Where these numbers come from", "The quote on the record, and the arithmetic that reproduces it", body, false, "p-source");
       }
@@ -1370,9 +1481,13 @@
           </p>`;
       }
 
-      function countySection(c, ratio) {
+      function countySection(c, ratio, tax) {
         const utahN = c.cities.length;
         const sl = c.salt_lake;
+        // Both ranks come off the charts' own orderings, not the stored fields.
+        const rankNow = cityOrder(c).findIndex((r) => r.name === EM) + 1;
+        const rankNew = rankByResulting(c);
+        const done = isAdopted(tax);
 
         const utahNotes = finePrint(
           "About these numbers",
@@ -1392,8 +1507,10 @@
               <p class="eyebrow"><span class="sec-num" aria-hidden="true">02</span>Compared to nearby cities</p>
               <h2 class="sec-h2" id="compare-title">Eagle Mountain charges less than almost everyone</h2>
               <p class="sec-sub">
-                Eagle Mountain has the <strong>second-lowest</strong> city rate of the ${utahN} in Utah
-                County today. The proposal would make it the <strong>third-highest</strong>.
+                Eagle Mountain has the <strong>${ordinal(utahN - rankNow + 1)}-lowest</strong> city rate
+                of the ${utahN} in Utah County today. The rate ${done ? "it adopted makes" : "it has proposed would make"}
+                it the <strong>${ordinal(rankNew)}-highest</strong>, once every other city's own
+                ${c.proposal_year} increase is applied.
               </p>
             </div>
 
@@ -1414,7 +1531,7 @@
                     Rate today
                   </button>
                   <button role="tab" id="tab-inc" aria-controls="panel-inc" aria-selected="false" tabindex="-1">
-                    Proposed increase
+                    ${done ? "With the increases" : "Proposed increase"}
                   </button>
                 </div>
               </div>
@@ -1507,17 +1624,21 @@
         </figure>`;
       }
 
-      /* --- Salt Lake County chart 2: where the 2026 proposals would leave each
-         city. Same cities, same rate axis as the current-rate chart, re-sorted by
-         the rate each would end up at. Solid segment = today's rate; hatched
-         segment = the noticed increase on top. Eagle Mountain is kept as the same
-         dashed out-of-county reference, now showing its proposed rate. */
+      /* --- Salt Lake County chart 2: where the 2026 increases leave each city.
+         Same cities, same rate axis as the current-rate chart, re-sorted by the
+         rate each would end up at. Solid segment = today's rate; hatched
+         segment = the noticed increase on top. Eagle Mountain is kept as the
+         same dashed out-of-county reference, at the rate its council adopted —
+         these cities' hearings have not happened yet, so it is the one settled
+         bar on the chart. */
       function saltLakeIncreaseChartHtml(sl) {
         const em = sl.eagle_mountain;
+        const refRate = sl.reference.adopted_rate || sl.reference.proposed_rate;
+        const refAdopted = !!sl.reference.adopted_rate;
         const ref = {
           name: EM,
           current_rate: sl.reference.current_rate,
-          resulting_rate: sl.reference.proposed_rate,
+          resulting_rate: refRate,
           isRef: true,
         };
         const resOf = (r) => (r.isRef ? r.resulting_rate : resultingRate(sl, r));
@@ -1550,7 +1671,7 @@
             const levy = p && p.levy ? '<span class="ast" aria-hidden="true">‡</span>' : "";
 
             const tip = isRef
-              ? `${EM} — ${rate6(r.current_rate)} → ${rate6(res)} (Utah County, shown for comparison)`
+              ? `${EM} — ${rate6(r.current_rate)} → ${rate6(res)}${refAdopted ? ", adopted August 6" : ""} (Utah County, shown for comparison)`
               : p
                 ? `${r.name} — ${rate6(r.current_rate)} → ${rate6(res)} (+${p.pct}%, derived rate) · ${p.purpose}`
                 : `${r.name} — no increase noticed; holds at ${rate6(r.current_rate)}`;
@@ -1573,7 +1694,8 @@
           <figcaption>
             <h3>Where the ${sl.proposal_year} proposals would leave each city — Salt Lake County</h3>
             <p>${proposing} of ${sl.cities.length} cities noticed a ${sl.proposal_year} increase.
-               Eagle Mountain is the dashed reference.</p>
+               Eagle Mountain is the dashed reference, at
+               ${refAdopted ? "the rate it adopted" : "its proposed rate"}.</p>
           </figcaption>
           <div class="legend">
             <span class="lg"><i class="sw sw-base"></i>Rate today</span>
@@ -1595,7 +1717,13 @@
                 r.isRef ? EM + " (ref.)" : r.name,
                 rate6(r.current_rate),
                 rate6(resOf(r)),
-                r.isRef ? "reference" : p ? `+${p.pct}% (${p.rate_source})` : "No increase noticed",
+                r.isRef
+                  ? refAdopted
+                    ? "adopted (reference)"
+                    : "reference"
+                  : p
+                    ? `+${p.pct}% (${p.rate_source})`
+                    : "No increase noticed",
                 r.isRef ? "—" : p ? p.purpose : "—",
               ];
             })
@@ -1734,15 +1862,28 @@
         </figure>`;
       }
 
-      /* --- chart 2: where the proposals leave each city ---
+      /* --- chart 2: where the 2026 increases leave each city ---
          Same 26 cities, same rate axis as chart 1, re-sorted by the rate each
          city would end up at. Solid segment = today's rate; hatched segment =
-         the proposed increase on top of it.
+         the increase on top of it.
+
+         One of the twenty-six is no longer a proposal: Eagle Mountain adopted
+         its rate on August 6, and its row says so — in the bar's label, in the
+         tooltip and in the table. The other nine are still notices, with
+         hearings to come, which is the whole reason the distinction is drawn
+         rather than calling them all "proposed".
       */
       const resultingRate = (c, city) => {
         const p = proposalFor(c, city.name);
         return p ? p.resulting_rate : city.current_rate;
       };
+
+      // Where Eagle Mountain lands once every city carries its own 2026 figure —
+      // the ranking chart 2 draws, and the one the prose above it quotes.
+      const rankByResulting = (c) =>
+        [...c.cities]
+          .sort((a, b) => resultingRate(c, b) - resultingRate(c, a))
+          .findIndex((r) => r.name === EM) + 1;
 
       function increaseChartHtml(c) {
         const nowRank = new Map(cityOrder(c).map((x, i) => [x.name, i + 1]));
@@ -1750,6 +1891,8 @@
         const max = axisMax(rows.map((r) => resultingRate(c, r)));
         const med = medianLine(rows.map((r) => resultingRate(c, r)), max, "median");
         const proposing = c.proposals.length;
+        // The one row that has stopped being a proposal, if there is one.
+        const emAdopted = (proposalFor(c, EM) || {}).adopted ? proposalFor(c, EM) : null;
         let offCount = 0;
 
         const bars = rows
@@ -1766,12 +1909,19 @@
             const mark = p && p.rate_source === "approximate" ? '<span class="ast" aria-hidden="true">‡</span>' : "";
             const levy = p && p.levy ? '<span class="ast" aria-hidden="true">†</span>' : "";
 
+            // "adopted" is a third state beside published and derived: the rate
+            // is not an estimate and not a proposal, it is what the council set.
+            const rateWord = { published: "published rate", adopted: "adopted August 6" }[p && p.rate_source]
+              || (p ? p.rate_source + " rate" : "");
             const tip = p
-              ? `${city.name} — ${rate6(city.current_rate)} → ${rate6(res)} (+${p.pct}%, ${p.rate_source === "published" ? "published rate" : p.rate_source + " rate"}) · ${p.purpose}`
+              ? `${city.name} — ${rate6(city.current_rate)} → ${rate6(res)} (+${p.pct}%, ${rateWord}) · ${p.purpose}`
               : `${city.name} — no increase proposed; holds at ${rate6(city.current_rate)}`;
 
             return `
               <div class="crow ${isEM ? "is-em" : ""} ${p ? "" : "no-prop"} ${off ? "off" : ""}" data-tip="${CT.escapeHtml(tip)}">
+                ${/* No pill here: .cname is a fixed, ellipsised column, so a tag
+                     on it would truncate the city's name. The adopted row says
+                     so in its tooltip, in the foot and in the table instead. */ ""}
                 <span class="cname">${CT.escapeHtml(city.name)}${levy}${mark}</span>
                 <span class="ctrack">
                   ${p ? `<span class="cbar cprop ${isEM ? "cem" : ""} ${off ? "bar-off" : ""}" style="width:${barSpan(fRes)}"></span>` : ""}
@@ -1786,28 +1936,35 @@
         return `
         <figure class="chart chart--wide-val">
           <figcaption>
-            <h3>Where the ${c.proposal_year} proposals would leave each city</h3>
-            <p>${proposing} of ${rows.length} cities are proposing an increase. Re-sorted by the rate
-               each would end up at.</p>
+            <h3>Where the ${c.proposal_year} increases leave each city</h3>
+            <p>${proposing} of ${rows.length} cities have a ${c.proposal_year} increase${
+              emAdopted ? ` — Eagle Mountain's adopted, the other ${numWord(proposing - 1)} still notices` : ""
+            }. Re-sorted by the rate each ends up at.</p>
           </figcaption>
           <div class="legend">
             <span class="lg"><i class="sw sw-base"></i>Rate today</span>
-            <span class="lg"><i class="sw sw-prop-neutral"></i>Proposed increase</span>
+            <span class="lg"><i class="sw sw-prop-neutral"></i>The increase</span>
             <span class="lg"><i class="sw sw-em"></i>Eagle Mountain</span>
             ${MED_LEGEND}
           </div>
           <div class="chart-body">${med.rail}${bars}</div>
           <p class="chart-foot">
-            Dashed line: the median rate if every proposal passes, ${rate6(med.value)}.
+            ${
+              emAdopted
+                ? `Eagle Mountain's <b>${rate6(emAdopted.resulting_rate)}</b> was adopted on
+                   ${CT.fmtDate(emAdopted.adopted_date)}; every other increase here is still a notice,
+                   with its own hearing to come. `
+                : ""
+            }Dashed line: the median rate if every one of them holds, ${rate6(med.value)}.
             <span aria-hidden="true">†</span> Dedicated levy, not the general rate.
             <span aria-hidden="true">‡</span> Approximate.${offCount ? " " + OFF_NOTE : ""}
           </p>
           ${tableView(
-            ["City", "Rate today", "Rate if it passes", "Increase", "Purpose"],
+            ["City", "Rate today", "New rate", "Increase", "Purpose"],
             rows.map((city) => {
               const p = proposalFor(c, city.name);
               return [
-                city.name,
+                city.name + (p && p.adopted ? " (adopted)" : ""),
                 rate6(city.current_rate),
                 p ? rate6(p.resulting_rate) : rate6(city.current_rate),
                 p ? `+${p.pct}% (${p.rate_source})` : "No increase proposed",
@@ -1931,7 +2088,13 @@
       // pill, footnote asterisks, and screen-reader-only spans.
       function cellCsvText(el) {
         const c = el.cloneNode(true);
-        c.querySelectorAll(".sarrow, .cmove, .you-pill, .prop-pill, .sr-only, .offmark, .ast").forEach((n) => n.remove());
+        // .st-when-m is a phone-only echo of the hearing column; it would land
+        // in the export as a second copy of a date the CSV already has.
+        c.querySelectorAll(".sarrow, .cmove, .you-pill, .prop-pill, .sr-only, .offmark, .ast, .st-when-m").forEach((n) => n.remove());
+        // A cell carrying two figures stacks them as blocks, which read on
+        // screen as two lines and in textContent as one run-on word. Separate
+        // them before flattening, or the export says "220.75%183.02% adopted".
+        c.querySelectorAll(".st-rate, .st-adopt, .st-meta").forEach((n) => n.insertAdjacentText("beforebegin", " "));
         return c.textContent.replace(/\s+/g, " ").trim();
       }
 
@@ -1987,25 +2150,318 @@
         }
       }
 
+      /* ---------------- every proposal in the state ----------------
+         The county charts answer "how does this compare to my neighbours". This
+         answers the question they raise next: is Eagle Mountain's the biggest
+         anywhere? Every August the Utah Taxpayers Association collects every
+         county's truth-in-taxation notices into one list; this is that list,
+         entire, ranked three ways.
+
+         Cities, towns, school districts, water districts and fire districts sit
+         in one ranking on purpose. They are the entities levying on the same
+         parcel, and a bill does not care which kind sent the notice. The type is
+         on every row, and the find box matches it, so a reader who wants only
+         the cities can have only the cities.
+
+         Eagle Mountain is the one row that has stopped being a proposal: the
+         council noticed 0.001700 and adopted 0.001500 on August 6. It is ranked
+         on the noticed figure, alongside everyone else's noticed figure, because
+         ranking one entity's outcome against everyone else's opening ask would
+         flatter it. What the vote did is drawn inside the bar and stated in the
+         row, and the rank it would hold is in the sentence above the chart.
+      */
+      function stateProposalsPanel(state) {
+        const rows = state.notices;
+        const N = rows.length;
+        const T = state.totals;
+        const EMN = state.eagle_mountain.entity;
+        const ad = state.eagle_mountain.adopted;
+        const src = state.source;
+
+        const pct2 = (v) => v.toFixed(2) + "%";
+        const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        // Parsed by hand rather than through Date: "2026-08-13" is UTC midnight,
+        // which is August 12 for every reader in Utah.
+        const dayOf = (iso) => {
+          const [y, m, d] = iso.split("-").map(Number);
+          return { y, m, d, label: `${MONTHS[m - 1]} ${d}`, sort: y * 10000 + m * 100 + d };
+        };
+        const hearingLabel = (n) => `${dayOf(n.hearing.date).label}, ${n.hearing.time}`;
+
+        /* Three things a reader can mean by "the biggest increase", and they
+           disagree: the steepest percentage is a small town, the most money is a
+           school district, and the heaviest household bill is neither. Rather
+           than pick one and call it the ranking, all three are offered and the
+           same 79 notices are re-sorted under each. */
+        const BASES = [
+          {
+            key: "pct", label: "Percentage", of: (n) => n.pct, adopted: ad.pct, fmt: pct2,
+            title: "The twelve steepest increases proposed in Utah",
+            sub: "Each entity's proposed rate against its own certified rate — the percentage on its notice, not a percentage of anyone's bill.",
+          },
+          {
+            key: "home", label: "Per home", of: (n) => n.annual_increase, adopted: ad.annual_increase, fmt: usd,
+            title: "The twelve costliest, per household",
+            sub: "One year of the increase on an average home in that entity. Each entity picked its own average, so these are typical households, not identical ones.",
+          },
+          {
+            key: "rev", label: "Revenue", of: (n) => n.revenue, adopted: ad.revenue, fmt: usdBig,
+            title: "The twelve largest, by money raised",
+            sub: "What the increase brings in. The size of the entity drives this column far more than the size of the increase.",
+          },
+        ];
+
+        // One ranking per basis, plus the rank Eagle Mountain's adopted figure
+        // would hold — measured against everyone else's noticed figure, with its
+        // own noticed row taken out so it isn't compared to itself.
+        const rankBy = (b) => {
+          const list = [...rows].sort((x, y) => b.of(y) - b.of(x)).map((n, i) => ({ n, rank: i + 1 }));
+          return {
+            list,
+            emRank: list.find((r) => r.n.entity === EMN).rank,
+            adRank: rows.filter((n) => n.entity !== EMN && b.of(n) > b.adopted).length + 1,
+          };
+        };
+        const RANKS = new Map(BASES.map((b) => [b.key, rankBy(b)]));
+
+        /* ---- the chart: the top twelve on the chosen basis ----
+           79 bars would be the wall the statewide panel already refuses to
+           draw, and the tail of this list is entities asking for 1%. Twelve is
+           where Eagle Mountain still sits comfortably inside the picture on all
+           three bases; the full list is the table underneath. */
+        const chartHtml = (b) => {
+          const r = RANKS.get(b.key);
+          const top = r.list.slice(0, 12);
+          // Defensive: if a future year's list pushes Eagle Mountain out of the
+          // top twelve, it is added back rather than quietly dropped from its
+          // own page.
+          if (!top.some((x) => x.n.entity === EMN)) top.push(r.list.find((x) => x.n.entity === EMN));
+          const max = axisMax(top.map((x) => b.of(x.n)));
+          let offCount = 0;
+
+          const bars = top
+            .map(({ n }) => {
+              const isEM = n.entity === EMN;
+              const v = b.of(n);
+              const off = v > max;
+              if (off) offCount++;
+              const f = Math.min(Math.max(v / max, 0.004), 1);
+              const fAd = Math.min(Math.max(b.adopted / max, 0.004), 1);
+              // The levy behind the bar. Ogden Valley City has no certified rate
+              // to measure from, so its tip carries the percentage alone.
+              const levy = n.proposed_rate == null
+                ? "no rate published"
+                : `${rate6(n.certified_rate)} → ${rate6(n.proposed_rate)}`;
+              const tip = isEM
+                ? `${n.entity} — noticed ${b.fmt(v)}, adopted ${b.fmt(b.adopted)} on August 6 · levy ${rate6(n.certified_rate)} → ${rate6(ad.rate)}, not the ${rate6(n.proposed_rate)} noticed`
+                : `${n.entity} — ${b.fmt(v)} · levy ${levy} · ${n.type}, ${n.county} County · hearing ${hearingLabel(n)}`;
+              return `
+                <div class="crow ${isEM ? "is-em" : ""} ${off ? "off" : ""}" data-tip="${CT.escapeHtml(tip)}">
+                  <span class="cname">${CT.escapeHtml(n.entity)}</span>
+                  <span class="ctrack">
+                    <span class="cbar ${isEM ? "cprop cem" : ""} ${off ? "bar-off" : ""}" style="width:${barSpan(f)}"></span>
+                    ${isEM ? `<span class="cbar cem" style="width:${barSpan(fAd)}"></span>` : ""}
+                    ${valCell(f, off, isEM
+                      ? `${b.fmt(v)}<span class="st-adopt"> → ${b.fmt(b.adopted)}</span>`
+                      : b.fmt(v))}
+                  </span>
+                </div>`;
+            })
+            .join("");
+
+          return `
+          <figure class="chart chart--state">
+            <figcaption>
+              <h4>${CT.escapeHtml(b.title)}</h4>
+              <p>${CT.escapeHtml(b.sub)}</p>
+            </figcaption>
+            <div class="legend">
+              <span class="lg"><i class="sw sw-base"></i>As noticed</span>
+              <span class="lg"><i class="sw sw-prop-em"></i>Eagle Mountain, as noticed</span>
+              <span class="lg"><i class="sw sw-em"></i>Eagle Mountain, as adopted</span>
+            </div>
+            <div class="chart-body">${bars}</div>
+            <p class="chart-foot">
+              Eagle Mountain's bar is drawn twice: the textured tail is the
+              ${b.fmt(b.of(rows.find((n) => n.entity === EMN)))} it noticed, the solid bar inside it
+              the ${b.fmt(b.adopted)} the council adopted on August 6.${offCount ? " " + OFF_NOTE : ""}
+            </p>
+          </figure>`;
+        };
+
+        /* ---- the table: all of them ----
+           Every notice, on one row, with all three measures side by side so
+           switching the ranking never hides the number a reader came for. Sort
+           state is per table, so a reader who sorts by hearing date under one
+           basis finds the others as they left them. */
+        /* The levy itself, the thing every percentage on this page is a
+           percentage *of*: what the entity would charge, over what it charges
+           now. Ogden Valley City has neither — it incorporated too recently to
+           have a certified rate, and its notice carries a percentage with no
+           rates behind it, so the cell says so rather than inventing one. */
+        const rateCell = (n, isEM) => {
+          if (n.proposed_rate == null) {
+            return `<span class="st-rate">—</span><span class="st-meta">no rate published</span>`;
+          }
+          return `<span class="st-rate">${rate6(n.proposed_rate)}</span>
+            ${isEM ? `<span class="st-adopt">${rate6(ad.rate)}<span class="st-adoptw"> adopted</span></span>` : ""}
+            <span class="st-meta">from ${rate6(n.certified_rate)}</span>`;
+        };
+
+        const trHtml = (n, rank) => {
+          const isEM = n.entity === EMN;
+          const day = dayOf(n.hearing.date);
+          // "adopted" is the label; on a phone the column can only afford the
+          // figure, and the lit row plus the paragraph above already say what
+          // the second number is. The word is stripped by CSS, not by markup,
+          // so the CSV export still carries it.
+          const adCell = (v) => (isEM ? `<span class="st-adopt">${v}<span class="st-adoptw"> adopted</span></span>` : "");
+          return `<tr${isEM ? ' class="is-em-row"' : ""} data-rank="${rank}"
+              data-name="${CT.escapeHtml(n.entity)}"
+              data-search="${CT.escapeHtml(`${n.entity} ${n.county} ${n.type}`.toLowerCase())}"
+              data-rate="${n.proposed_rate == null ? -1 : n.proposed_rate}"
+              data-pct="${n.pct}" data-home="${n.annual_increase}" data-rev="${n.revenue}" data-date="${day.sort}">
+            <td class="num">${rank}</td>
+            <td>
+              <span class="st-name">${CT.escapeHtml(n.entity)}</span>
+              <span class="st-meta">${CT.escapeHtml(n.type)} · ${CT.escapeHtml(n.county)} County${
+                n.years_in_row > 1 ? ` · ${numWord(n.years_in_row)} years running` : ""
+              }<span class="st-when-m"> · hearing ${CT.escapeHtml(day.label)}</span></span>
+            </td>
+            <td class="num">${rateCell(n, isEM)}</td>
+            <td class="num">${pct2(n.pct)}${adCell(pct2(ad.pct))}</td>
+            <td class="num">${usd(n.annual_increase)}${adCell(usd(ad.annual_increase))}</td>
+            <td class="num">${usdBig(n.revenue)}${adCell(usdBig(ad.revenue))}</td>
+            <td class="st-when">${CT.escapeHtml(day.label)}<span class="st-meta">${CT.escapeHtml(n.hearing.time)}</span></td>
+          </tr>`;
+        };
+
+        const th = (key, label, num, first) =>
+          `<th scope="col" class="${num ? "num " : ""}sortable" data-key="${key}"
+               aria-sort="${first ? "ascending" : "none"}" tabindex="0">${label}<span class="sarrow" aria-hidden="true">${first ? " ▲" : ""}</span></th>`;
+
+        const tableHtml = (b) => `
+          <div class="tablewrap statewide-wrap statelist-wrap">
+            <table class="data statewide statelist" id="state-${b.key}">
+              <thead><tr>
+                ${th("rank", "Rank", true, true)}
+                ${th("name", "Entity", false, false)}
+                ${th("rate", "Tax rate", true, false)}
+                ${th("pct", "Increase", true, false)}
+                ${th("home", "Per home", true, false)}
+                ${th("rev", "Revenue", true, false)}
+                ${th("date", "Hearing", false, false)}
+              </tr></thead>
+              <tbody>${RANKS.get(b.key).list.map(({ n, rank }) => trHtml(n, rank)).join("")}</tbody>
+            </table>
+          </div>`;
+
+        const rPct = RANKS.get("pct"), rHome = RANKS.get("home"), rRev = RANKS.get("rev");
+        const emNoticed = rows.find((n) => n.entity === EMN);
+
+        const notes = finePrint(
+          "About these numbers",
+          `<ul>${state.caveats.map((x) => `<li>${CT.escapeHtml(x)}</li>`).join("")}</ul>
+            <p class="src">
+              The list: <a href="${src.url}" rel="nofollow noopener">${CT.escapeHtml(src.title)}</a>,
+              ${CT.escapeHtml(src.publisher)}, retrieved ${CT.escapeHtml(src.retrieved)} — compiled from the
+              counties' own truth-in-taxation notices and reported by
+              <a href="${src.reported_by.url}" rel="nofollow noopener">${CT.escapeHtml(src.reported_by.publisher)}</a>.
+              Eagle Mountain's adopted rate comes from the meeting itself:
+              <a href="${ad.source.url}">${CT.escapeHtml(ad.source.title)}</a>.
+              ${CT.escapeHtml(ad.vote)}. ${CT.escapeHtml(ad.derivation)}
+            </p>`
+        );
+
+        const body = `
+          <p class="panel-intro">
+            ${N} truth-in-taxation notices went out in Utah this year, from ${T.entities} taxing
+            entities in ${T.counties} counties, asking for ${usdBig(T.revenue)} between them. Eagle
+            Mountain's was the <strong>${ordinal(rPct.emRank)} steepest</strong> of them by
+            percentage, the <strong>${ordinal(rHome.emRank)} heaviest</strong> on an average home,
+            and the <strong>${ordinal(rRev.emRank)} largest</strong> by money raised.
+          </p>
+          <p class="panel-intro st-adopted-note">
+            On <strong>August 6</strong> the council adopted <strong>${ad.rate_display}</strong>
+            rather than the ${rate6(emNoticed.proposed_rate)} it noticed — ${pct2(ad.pct)} instead of
+            ${pct2(emNoticed.pct)}. Against everyone else's noticed figures that is
+            <strong>${ordinal(rPct.adRank)}</strong> by percentage,
+            <strong>${ordinal(rHome.adRank)}</strong> per home and
+            <strong>${ordinal(rRev.adRank)}</strong> by money. Every other row here is still a
+            proposal, and hearings run to ${CT.escapeHtml(dayOf(T.hearings_to).label)}.
+          </p>
+
+          <div class="sw-tools">
+            <div class="scope-switch basis-switch" role="radiogroup" aria-label="Rank the proposals by">
+              ${BASES.map((b, i) => `
+                <button type="button" role="radio" data-basis="${b.key}"
+                        aria-checked="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${CT.escapeHtml(b.label)}</button>`).join("")}
+            </div>
+            <div class="sw-find">
+              <label class="sr-only" for="st-q">Find an entity</label>
+              <span class="sw-find-ico" aria-hidden="true"></span>
+              <input type="search" id="st-q" class="sw-q" placeholder="Find an entity, county or type"
+                     autocomplete="off" spellcheck="false" aria-describedby="st-count" />
+            </div>
+          </div>
+          <p class="sw-count" id="st-count" role="status" aria-live="polite"></p>
+          <p class="sw-empty" id="st-empty" hidden>
+            Nothing on the list matches that. Try a county, or a type like “school district”, or
+            <button type="button" class="tx-link" id="st-clear">clear the filter</button>.
+          </p>
+
+          ${BASES.map((b, i) => `
+            <div class="stateview" data-basis-panel="${b.key}"${i ? " hidden" : ""}>
+              ${chartHtml(b)}
+              ${tableHtml(b)}
+            </div>`).join("")}
+
+          <p class="chart-foot">
+            Every percentage is measured against that entity's own certified rate, and every dollar
+            against that entity's own average home — so the columns rank like with like, but the
+            homes underneath them differ. Hearings run
+            ${CT.escapeHtml(dayOf(T.hearings_from).label)}–${CT.escapeHtml(dayOf(T.hearings_to).label)};
+            a hearing can end in less than was noticed, as Eagle Mountain's did.
+          </p>
+          ${notes}`;
+
+        return panel(
+          "Every tax increase proposed in Utah this year",
+          `All ${N} truth-in-taxation notices, ranked — and where Eagle Mountain lands on the list`,
+          body, false, "p-state-proposals"
+        );
+      }
+
       /* ---------------- statewide ranking ----------------
          All 253 Utah municipalities ranked by their own city levy — the same
          city-only measure as the county charts. A single sortable table rather
          than a chart: 253 bars would be a wall, but the reader can sort by rank,
          name, or rate and find any city, with Eagle Mountain's row lit up. */
-      function statewidePanel(county) {
+      function statewidePanel(county, state) {
         const sw = county.statewide;
         const src = county.rate_source;
         const em = sw.eagle_mountain;
         const N = sw.total_cities;
 
+        /* Eagle Mountain's second rate stopped being a proposal on August 6:
+           the council noticed 0.001700, took three hours of comment and adopted
+           0.001500. The ranking is drawn on what it will actually levy — from
+           the vote itself where the statewide dataset loaded, and from this
+           file's own adopted_rate where it didn't, so the panel never ranks one
+           rate while the rest of the page states another. Only the sentence
+           quoting the vote needs the richer record. */
+        const swAd = (state && state.eagle_mountain && state.eagle_mountain.adopted) || null;
+        const ad = swAd || (em.adopted_rate ? { rate: em.adopted_rate } : null);
+        const emNew = ad ? ad.rate : em.proposed_rate;
+        const emWord = ad ? "adopted" : "proposed";
+
         // Every noticed 2026 proposal this site tracks — Utah County and Salt
         // Lake County both — keyed by city name to its resulting rate, the same
-        // figure the county charts draw. Eagle Mountain is pinned to the
-        // statewide dataset's own proposed_rate so the two never drift apart.
+        // figure the county charts draw.
         const proposedRate = new Map();
         [...(county.proposals || []), ...((county.salt_lake && county.salt_lake.proposals) || [])]
           .forEach((p) => { if (p.resulting_rate != null) proposedRate.set(p.city, p.resulting_rate); });
-        proposedRate.set(EM, em.proposed_rate);
+        proposedRate.set(EM, emNew);
         const othersCount = proposedRate.size - 1; // proposing cities besides Eagle Mountain
 
         // Rank high → low: rank 1 is the highest city levy in the state.
@@ -2015,10 +2471,11 @@
           .map((r, i) => ({ name: r.name, rate: r.rate, rank: i + 1 }));
         const curRank = new Map(current.map((r) => [r.name, r.rank]));
 
-        // Proposed ranking — swap in every tracked proposal's resulting rate and
-        // re-rank, still highest first. Cities with no noticed 2026 proposal keep
-        // today's rate: Utah's other 2026 rates aren't certified until after the
-        // August hearings, so only the proposals this site tracks are placed.
+        // The second ranking — Eagle Mountain at the rate it adopted, every other
+        // tracked city at its proposal's resulting rate, re-ranked highest first.
+        // Cities with no noticed 2026 proposal keep today's rate: Utah's other
+        // 2026 rates aren't certified until after the August hearings, so only
+        // the proposals this site tracks are placed.
         const proposed = sw.cities
           .map((r) => ({ name: r.name, rate: proposedRate.has(r.name) ? proposedRate.get(r.name) : r.rate }))
           .sort((a, b) => b.rate - a.rate)
@@ -2028,6 +2485,12 @@
         const emProp = proposed.find((r) => r.name === EM).rank; // counted from the top
         const climbed = emCur - emProp; // places gained climbing toward #1
         const emCurLow = N - emCur + 1; // the same current rank, counted from the bottom
+        // Where the noticed 0.001700 would have landed, for the sentence that
+        // says what the vote changed. Counted against the same list every other
+        // rank on this page uses, so the two are comparable.
+        const rankAtNoticed = ad
+          ? proposed.filter((r) => r.name !== EM && r.rate > em.proposed_rate).length + 1
+          : null;
 
         /* ---- percentile groups ----
            A rank out of 253 is a precise answer to a question nobody asked. What
@@ -2117,7 +2580,7 @@
               ? ` <span class="cmove up" title="up ${moved} places">▲${moved}</span>`
               : "";
           const tag = isEM
-            ? ` <span class="you-pill">${view === "proposed" ? "proposed" : "today"}</span>`
+            ? ` <span class="you-pill">${view === "proposed" ? emWord : "today"}</span>`
             : hasProp
               ? ` <span class="prop-pill" title="Noticed 2026 increase applied">proposed</span>`
               : "";
@@ -2177,15 +2640,23 @@
           <p class="panel-intro">
             All ${N} Utah cities by their own levy, highest first, split into four
             equal groups by percentile. Eagle Mountain is <strong>${ordinal(emCur)}</strong>
-            today — in ${QBAND[readCur.emQ]} — and would be
-            <strong>${ordinal(emProp)}</strong> with the 2026 proposals applied,
-            a climb of ${climbed} places into ${QBAND[readProp.emQ]}.
+            today — in ${QBAND[readCur.emQ]} — and is
+            <strong>${ordinal(emProp)}</strong> at the ${rate6(emNew)} it
+            ${ad ? "adopted on August 6" : "has proposed"}, a climb of ${climbed} places
+            into ${QBAND[readProp.emQ]}.${
+              ad
+                ? ` The council noticed ${rate6(em.proposed_rate)}, which would have put it
+                   ${ordinal(rankAtNoticed)}.`
+                : ""
+            }
           </p>
 
           <div class="sw-tools">
             <div class="scope-switch stateview-switch" role="radiogroup" aria-label="Which rate to rank by">
               <button type="button" role="radio" id="sv-current" data-view="current" aria-checked="true" tabindex="0">Rate today</button>
-              <button type="button" role="radio" id="sv-proposed" data-view="proposed" aria-checked="false" tabindex="-1">With 2026 proposals</button>
+              <button type="button" role="radio" id="sv-proposed" data-view="proposed" aria-checked="false" tabindex="-1">${
+                ad ? "With the adopted rate" : "With 2026 proposals"
+              }</button>
             </div>
             <!-- ${N} rows is past the point where scrolling is a way to find
                  anything. Sorting answers "who is highest"; this answers the
@@ -2214,9 +2685,19 @@
             ${stripHtml(readProp)}
             ${tableHtml("statewide-proposed", proposed, readProp, "proposed")}
             <p class="chart-foot">
-              ${othersCount + 1} tracked increases applied, each marked
-              <span class="prop-pill">proposed</span>. Every other city is at today's rate,
-              so the percentile groups here move only as far as those increases push them.
+              ${ad
+                ? `Eagle Mountain is at the <b>${rate6(emNew)}</b> its council adopted on
+                   <b>August 6</b>${
+                     swAd
+                       ? ` — ${pctStr(swAd.pct)}% over the certified rate,
+                          ${CT.escapeHtml(swAd.vote.split("—")[0].trim().toLowerCase())}`
+                       : ""
+                   }. The other ${othersCount} tracked increases are still proposals, each marked
+                   <span class="prop-pill">proposed</span>, and their hearings run to late August.`
+                : `${othersCount + 1} tracked increases applied, each marked
+                   <span class="prop-pill">proposed</span>.`}
+              Every other city is at today's rate, so the percentile groups here move only as far
+              as those increases push them.
             </p>
           </div>
 
@@ -2229,14 +2710,22 @@
             City levy only — not your total bill. Source:
             <a href="${src.url}" rel="nofollow noopener">${CT.escapeHtml(src.title)}</a>.
           </p>`;
-        return panel("Where Eagle Mountain ranks statewide", `Its current rate — and its proposal — against all ${N} Utah cities, by percentile`, body, false, "p-statewide");
+        return panel(
+          "Where Eagle Mountain ranks statewide",
+          `Its current rate — and the ${ad ? "rate it adopted on August 6" : "rate it has proposed"} — against all ${N} Utah cities, by percentile`,
+          body, false, "p-statewide"
+        );
       }
 
       // The scope switch swaps the whole comparison between Utah County (both
       // tabs) and Salt Lake County (current rates only). Radiogroup semantics,
       // arrow-key operable, per the WAI-ARIA radio pattern.
       function wireCountySwitch() {
-        const radios = [...document.querySelectorAll('.scope-switch [role="radio"]')];
+        // `.scope-switch` is the shared look for every radiogroup on this page —
+        // the county scope, the statewide view, the statewide-proposal basis. Only
+        // the county one carries data-scope, so match on that rather than on the
+        // class, or clicking a county would blank the other two switches.
+        const radios = [...document.querySelectorAll('.scope-switch [role="radio"]')].filter((r) => r.dataset.scope);
         if (!radios.length) return;
         const panelFor = (r) => document.querySelector(`[data-scope-panel="${r.dataset.scope}"]`);
         const select = (radio) => {
@@ -2288,17 +2777,22 @@
         });
       }
 
-      // Click or Enter/Space on a header sorts a statewide table. Rank, rate and
-      // percentile sort numerically, city by name; re-activating a column flips it.
-      // Wires both the "today" and "with the proposal" tables independently.
-      function wireStatewideTable() {
-        document.querySelectorAll("table.data.statewide").forEach((table) => {
+      /* Click or Enter/Space on a header sorts a ranked table. Each sortable
+         header names a data-key; every row carries the matching data-attribute,
+         and a value that parses as a number sorts numerically while anything
+         else sorts as text. Re-activating a column flips it. Each table is wired
+         independently, so the statewide ranking's two views and the statewide
+         proposal list's three all keep their own sort state. */
+      function wireSortableTable(sel) {
+        document.querySelectorAll(sel).forEach((table) => {
           const tbody = table.tBodies[0];
-          const rows = [...tbody.querySelectorAll("tr[data-name]")]; // the cities; dividers are placed, not sorted
+          const rows = [...tbody.querySelectorAll("tr[data-name]")]; // the entities; dividers are placed, not sorted
           let curKey = "rank", curDir = 1;
-          const val = (tr, key) =>
-            key === "name" ? tr.dataset.name.toLowerCase()
-              : parseFloat(key === "rank" ? tr.dataset.rank : key === "q" ? tr.dataset.q : tr.dataset.rate);
+          const val = (tr, key) => {
+            const raw = tr.dataset[key];
+            const n = parseFloat(raw);
+            return Number.isNaN(n) ? String(raw).toLowerCase() : n;
+          };
           const sort = (key) => {
             curDir = key === curKey ? -curDir : 1;
             curKey = key;
@@ -2337,7 +2831,7 @@
         const count = document.getElementById("sw-count");
         const empty = document.getElementById("sw-empty");
         const clear = document.getElementById("sw-clear");
-        const tables = [...document.querySelectorAll("table.data.statewide")];
+        const tables = [...document.querySelectorAll("#p-statewide table.data.statewide")];
         const rowsOf = (t) => [...t.tBodies[0].querySelectorAll("tr[data-name]")];
         const total = tables[0] ? rowsOf(tables[0]).length : 0;
         // Both views carry their own strip; pressing a group in one presses it
@@ -2365,7 +2859,7 @@
           // "1 of 253 cities" — the noun agrees with the total, not the count.
           count.textContent = !on ? "" : shown === 0 ? "No matches" : `${shown} of ${total} cities`;
           // A short list has nothing to scroll; let the box shrink to it.
-          document.querySelectorAll(".statewide-wrap").forEach((w) =>
+          document.querySelectorAll("#p-statewide .statewide-wrap").forEach((w) =>
             w.classList.toggle("is-filtered", on && shown <= 12)
           );
         };
@@ -2393,7 +2887,7 @@
         });
       }
 
-      // The statewide "rate today" / "with the proposal" toggle. Same radiogroup
+      // The statewide "rate today" / "with the adopted rate" toggle. Same radiogroup
       // pattern as the county switch.
       function wireStatewideView() {
         const radios = [...document.querySelectorAll('.stateview-switch [role="radio"]')];
@@ -2418,6 +2912,78 @@
             if (next) { e.preventDefault(); select(next); }
           });
         });
+      }
+
+      // Which of the three measures the statewide proposal list is ranked by.
+      // Same radiogroup pattern as the county switch; the charts inside a hidden
+      // panel have never intersected, so whichever panel is shown draws its bars
+      // on the way in.
+      function wireStateBasis() {
+        const radios = [...document.querySelectorAll(".basis-switch [role=\"radio\"]")];
+        if (!radios.length) return;
+        const panelFor = (r) => document.querySelector(`[data-basis-panel="${r.dataset.basis}"]`);
+        const select = (radio) => {
+          radios.forEach((r) => {
+            const on = r === radio;
+            r.setAttribute("aria-checked", String(on));
+            r.tabIndex = on ? 0 : -1;
+            const p = panelFor(r);
+            if (p) p.hidden = !on;
+            if (on && p) revealBars(p);
+          });
+          radio.focus();
+        };
+        radios.forEach((radio, i) => {
+          radio.addEventListener("click", () => select(radio));
+          radio.addEventListener("keydown", (e) => {
+            let next = null;
+            if (e.key === "ArrowRight" || e.key === "ArrowDown") next = radios[(i + 1) % radios.length];
+            else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = radios[(i - 1 + radios.length) % radios.length];
+            if (next) { e.preventDefault(); select(next); }
+          });
+        });
+      }
+
+      /* Find-an-entity, for the statewide proposal list. Matches the entity, its
+         county and its type from one box, so "school district" narrows to the
+         seven of them and "Weber" to everything levying in Weber County — the
+         type filter a set of chips would have cost a row of UI. Filters all
+         three rankings at once, so switching the measure keeps the same rows.
+         Ranks are never renumbered: a filtered row keeps its real standing. */
+      function wireStateFilter() {
+        const q = document.getElementById("st-q");
+        if (!q) return;
+        const count = document.getElementById("st-count");
+        const empty = document.getElementById("st-empty");
+        const clear = document.getElementById("st-clear");
+        const tables = [...document.querySelectorAll("table.data.statelist")];
+        const rowsOf = (t) => [...t.tBodies[0].querySelectorAll("tr[data-search]")];
+        const total = tables[0] ? rowsOf(tables[0]).length : 0;
+
+        const apply = () => {
+          const term = q.value.trim().toLowerCase();
+          let shown = 0;
+          tables.forEach((t, i) => {
+            let n = 0;
+            rowsOf(t).forEach((tr) => {
+              const hit = !term || tr.dataset.search.includes(term);
+              tr.hidden = !hit;
+              if (hit) n++;
+            });
+            if (i === 0) shown = n;
+          });
+          empty.hidden = shown > 0;
+          count.textContent = !term ? "" : shown === 0 ? "No matches" : `${shown} of ${total} notices`;
+          document.querySelectorAll(".statelist-wrap").forEach((w) =>
+            w.classList.toggle("is-filtered", !!term && shown <= 12)
+          );
+        };
+
+        q.addEventListener("input", apply);
+        q.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && q.value) { e.preventDefault(); q.value = ""; apply(); }
+        });
+        clear.addEventListener("click", () => { q.value = ""; apply(); q.focus(); });
       }
 
       /* ---------------- bars drawing themselves ----------------
@@ -2572,7 +3138,7 @@
               </section>`;
           })
           .join("");
-        return panel("Every meeting it moved through", "Two hearings still ahead, then the full record and what led up to it", groups, false, "p-record");
+        return panel("Every meeting it moved through", "The two hearings, then the full record and what led up to it", groups, false, "p-record");
       }
 
       function meetingCard(m) {
