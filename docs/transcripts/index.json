@@ -1,6 +1,19 @@
 {
   "city-council": [
     {
+      "id": 747,
+      "date": "2026-08-06",
+      "stem": "2026-08-06__747",
+      "title": "City Council Meeting",
+      "summary_file": "transcripts/city-council/2026-08-06__747.summary.md",
+      "text_file": "transcripts/city-council/2026-08-06__747.txt",
+      "speakers_file": null,
+      "diarized": true,
+      "media_url": "https://eaglemountainut.portal.civicclerk.com/event/747/media",
+      "duration": "4h 40m",
+      "words": 43129
+    },
+    {
       "id": 715,
       "date": "2026-08-04",
       "stem": "2026-08-04__715",
