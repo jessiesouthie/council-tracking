@@ -547,10 +547,10 @@ def build():
             },
             {
                 "date": "2026-08-06",
-                "meeting_id": None,
-                "label": "Truth-in-Taxation hearing",
-                "note": "6:00 p.m. The hearing on the proposed property-tax increase.",
-                "done": False,
+                "meeting_id": 747,
+                "label": "Tax increase adopted, 5–0",
+                "note": "Roughly sixty people spoke at the Truth-in-Taxation hearing; the Council then set the rate at 0.001500, not the 0.001700 it noticed.",
+                "done": True,
             },
             {
                 "date": "2026-08-18",
@@ -629,8 +629,9 @@ def build():
             "note": (
                 "The proposed property-tax increase appears in the budget as its own revenue line "
                 "and, for the identical amount, as a restricted expense line inside Public Safety. "
-                "It is budgeted but cannot be spent unless the increase survives the 6 August "
-                "hearing."
+                "The Council approved an increase on 6 August, but at 0.001500 rather than the "
+                "0.001700 this budget was built on, so the figure is trued up at the 18 August "
+                "adoption."
             ),
         },
         # The single clearest thing the line items show: the Sheriff contract is

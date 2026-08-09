@@ -415,8 +415,10 @@
                 The Council passed this budget <a href="meetings.html?id=726">on 16 June</a>, 4–1, so the city
                 would have something to spend against on 1 July. But it passed it as an
                 <strong>interim</strong> budget — meaning not final. Utah law makes a city hold a public hearing
-                before it can raise property tax, and this budget proposes one. That hearing is
-                <strong>6 August</strong>; the final vote is <strong>18 August</strong>. Numbers can change at either.
+                before it can raise property tax, and this budget proposed one. That hearing was
+                <a href="meetings.html?id=747">6 August</a>, where the Council set the rate at 0.001500 rather than
+                the 0.001700 it had noticed; the final vote is <strong>18 August</strong>, and the numbers can still
+                change there.
               </p>
             </div>
 
@@ -461,16 +463,17 @@
                 </p>`)}
 
               ${readBlock("The tax increase is already written into the budget", short(n.tax_line.interim_revenue), "counted twice — once coming in, once going out",
-                `The increase has not been approved, but the budget already carries it — as money coming in, and as
-                 the same amount going out. It is fenced off until the 6 August hearing decides whether the city
-                 gets to collect it.`, `
+                `The Council approved the increase on <a href="meetings.html?id=747">6 August</a>, but at a lower rate
+                 than this budget was built on. The budget still carries the noticed figure twice — as money coming in,
+                 and as the same amount going out — and the 18 August adoption is where it gets trued up.`, `
                 <p>
                   Both entries are for the same <strong>${usdC(n.tax_line.interim_revenue)}</strong>. On the income side it
                   is a line the city calls <em>${esc(n.tax_line.revenue_account)}</em>, sitting next to the
                   ${usdC(n.tax_line.base_revenue)} of property tax it collects today. On the spending side the identical
                   figure is parked inside ${esc(n.tax_line.department)} on a line called
-                  <em>${esc(n.tax_line.expense_account)}</em>. “Restricted” means what it sounds like: the money is set
-                  aside and cannot be spent unless the increase survives the hearing. The
+                  <em>${esc(n.tax_line.expense_account)}</em>. “Restricted” means what it sounds like: the money was set
+                  aside and could not be spent unless the increase survived the hearing. It did, at 0.001500, so the
+                  figure the city actually collects is settled at the 18 August adoption rather than here. The
                   <a href="tax.html">Tax page</a> goes through the rates and what it would cost a household.
                 </p>`)}
 
