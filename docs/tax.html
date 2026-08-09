@@ -27,7 +27,7 @@
          so nothing on this page would use it, and asking for a third family only
          costs a render-blocking round trip. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260807c" />
+    <link rel="stylesheet" href="site.css?v=20260809c" />
   </head>
   <body class="page-tax">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -93,8 +93,9 @@
           <span class="sk-line sk-lede sk-lede-2"></span>
           <div class="sk-card">
             <div class="sk-card-in">
+              <span class="sk-line sk-ask"></span>
               <span class="sk-line sk-field"></span>
-              <span class="sk-line sk-field"></span>
+              <span class="sk-line sk-slider"></span>
             </div>
             <div class="sk-band"></div>
           </div>
@@ -112,13 +113,15 @@
           fetch(new URL(f, document.baseURI))
             .then((r) => (r.ok ? r.json() : null))
             .catch(() => null);
-        // The county comparison, the full-bill breakdown and the statewide list
-        // of proposals are nice-to-haves; the page still works without any of them.
-        const [tax, county, bill, state] = await Promise.all([
+        // The county comparison, the full-bill breakdown, the statewide list of
+        // proposals and the argument section are nice-to-haves; the page still
+        // works without any of them.
+        const [tax, county, bill, state, kase] = await Promise.all([
           grab("data.tax.json"),
           grab("data.tax-county.json"),
           grab("data.tax-bill.json"),
           grab("data.tax-state.json"),
+          grab("data.tax-case.json"),
         ]);
 
         root.removeAttribute("aria-busy");
@@ -161,7 +164,7 @@
           return;
         }
 
-        render(tax, county, bill, state, root);
+        render(tax, county, bill, state, kase, root);
       })();
 
       const usd = (n) =>
@@ -191,7 +194,7 @@
          panels rather than adding four screens to the scroll.
          ========================================================================= */
 
-      function render(tax, county, bill, state, root) {
+      function render(tax, county, bill, state, kase, root) {
         const CURRENT = tax.rates.current.rate;
         const NEWRATE = newRate(tax).rate;
         const RATIO = tax.residential_ratio;
@@ -213,9 +216,11 @@
 
             ${county ? countySection(county, RATIO, tax) : ""}
 
-            <section class="learn reveal" style="--i:5" aria-labelledby="learn-title">
+            ${kase ? caseSection(kase) : ""}
+
+            <section class="learn reveal" style="--i:6" aria-labelledby="learn-title">
               <div class="sec-head">
-                <p class="eyebrow"><span class="sec-num" aria-hidden="true">03</span>The record</p>
+                <p class="eyebrow"><span class="sec-num" aria-hidden="true">04</span>The record</p>
                 <h2 class="sec-h2" id="learn-title">Where all of this comes from</h2>
                 <p class="sec-sub">Open any of these for the detail behind the numbers.</p>
               </div>
@@ -565,6 +570,10 @@
           customRate = $("custom-rate"),
           customMeta = $("custom-meta"),
           bignum = $("res-total"),
+          // The headline figure, kept apart from `bignum`: that one is the small
+          // scenario total, and the flash below belongs on the number the panel
+          // exists to state.
+          heronum = $("res-delta-month"),
           cityRow = $("bb-city"),
           srOut = $("res-sr");
 
@@ -733,11 +742,11 @@
         // owns `.pulse` as a boxed component, and sharing the name dropped the
         // figure into a padded grey block for the length of the animation.
         const pulse = () => {
-          bignum.classList.remove("numflash");
-          void bignum.offsetWidth; // restart the animation
-          bignum.classList.add("numflash");
+          heronum.classList.remove("numflash");
+          void heronum.offsetWidth; // restart the animation
+          heronum.classList.add("numflash");
         };
-        bignum.addEventListener("animationend", () => bignum.classList.remove("numflash"));
+        heronum.addEventListener("animationend", () => heronum.classList.remove("numflash"));
 
         mv.addEventListener("input", () => {
           const n = value();
@@ -897,6 +906,392 @@
                 policing — Eagle Mountain contracts with the Utah County Sheriff.</p>
             </li>
           </ul>`;
+      }
+
+      /* =========================================================================
+         The argument
+
+         Everything above this point is arithmetic: what the rate is, what it
+         costs one household, where it sits against other cities. None of that
+         tells a reader why the council says it needs the money, what was said in
+         public before the vote, or what the people organising against it are
+         actually organising against.
+
+         This section carries that, and it has one rule: nothing goes in it that
+         isn't a quotation from a recording of an open meeting or a citation to
+         statute. The city's case and the case against it are both built out of
+         the same material, and the section closes on the objections the record
+         answers badly rather than on the ones it answers well — a page that only
+         made the city's argument would be worth nothing to a reader trying to
+         decide what they think.
+         ========================================================================= */
+
+      // A sourced quotation. The attribution is the load-bearing part: without a
+      // meeting to click through to, every line here is just assertion.
+      function srcQuote(s, cls) {
+        if (!s) return "";
+        const link =
+          s.meeting != null
+            ? `<a class="aq-src" href="meetings.html?id=${s.meeting}">${CT.fmtDate(s.date)} · Meeting #${s.meeting} <span aria-hidden="true">→</span></a>`
+            : `<span class="aq-src">${CT.fmtDate(s.date)}</span>`;
+        return `
+          <figure class="arg-quote${cls ? " " + cls : ""}">
+            ${s.quote ? `<blockquote>${CT.escapeHtml(s.quote)}</blockquote>` : ""}
+            <figcaption>
+              <span class="aq-who">${CT.escapeHtml(s.speaker || "")}</span>
+              ${link}
+            </figcaption>
+          </figure>`;
+      }
+
+      function caseSection(k) {
+        return `
+          <section class="tax-sec argument reveal" style="--i:5" id="s-argument" aria-labelledby="arg-title">
+            <div class="sec-head">
+              <p class="eyebrow"><span class="sec-num" aria-hidden="true">03</span>${CT.escapeHtml(k.eyebrow)}</p>
+              <h2 class="sec-h2" id="arg-title">${CT.escapeHtml(k.title)}</h2>
+              <p class="sec-sub">${CT.escapeHtml(k.sub)}</p>
+            </div>
+
+            ${argCase(k.case)}
+            ${argDisplacement(k.displacement)}
+            ${argStrain(k.strain)}
+            ${argLedger(k.ledger)}
+            ${argResponse(k.response)}
+            ${argReferendum(k.referendum)}
+            ${argCounter(k.counter)}
+
+            <p class="arg-foot">${CT.escapeHtml(k.sources_note)}</p>
+          </section>`;
+      }
+
+      /* Why the city says it needs it. Six figures rather than six paragraphs:
+         the case is quantitative, and stating it as prose invites the reader to
+         weigh it as opinion. */
+      function argCase(c) {
+        if (!c) return "";
+        const cards = (c.points || [])
+          .map(
+            (p) => `
+            <li class="astat">
+              <b>${CT.escapeHtml(p.stat)}</b>
+              <p>${CT.escapeHtml(p.text)}</p>
+              ${srcQuote(p.source, "tight")}
+            </li>`
+          )
+          .join("");
+        return `
+          <div class="arg-block">
+            <h3 class="arg-h">${CT.escapeHtml(c.heading)}</h3>
+            <p class="arg-lede">${CT.escapeHtml(c.lede)}</p>
+            <ul class="arg-stats">${cards}</ul>
+            ${
+              c.closer
+                ? `<div class="arg-closer">
+                     <p>${CT.escapeHtml(c.closer.text)}</p>
+                     ${srcQuote(c.closer.source)}
+                   </div>`
+                : ""
+            }
+          </div>`;
+      }
+
+      /* The "100% for public safety" charge, walked one step at a time. Numbered,
+         because the whole dispute is that two true statements — the money all
+         goes to the Sheriff, and the Sheriff's costs barely move — sound like a
+         contradiction unless you are shown the order they happen in. */
+      function argDisplacement(d) {
+        if (!d) return "";
+        const steps = (d.steps || [])
+          .map(
+            (s, i) => `
+            <li class="astep">
+              <span class="astep-n" aria-hidden="true">${i + 1}</span>
+              <div class="astep-body">
+                <p class="astep-label">${CT.escapeHtml(s.label)}</p>
+                <p class="astep-text">${CT.escapeHtml(s.text)}</p>
+                ${srcQuote(s.source, "tight")}
+              </div>
+            </li>`
+          )
+          .join("");
+
+        const freed = d.freed
+          ? `
+          <div class="arg-freed">
+            <h4 class="arg-h4">${CT.escapeHtml(d.freed.heading)}</h4>
+            <p class="arg-note">${CT.escapeHtml(d.freed.note)}</p>
+            <ul class="afreed">
+              ${(d.freed.items || [])
+                .map(
+                  (it) => `<li><b class="mono">${CT.escapeHtml(it.figure)}</b><span>${CT.escapeHtml(it.text)}</span></li>`
+                )
+                .join("")}
+            </ul>
+            ${srcQuote(d.freed.source)}
+          </div>`
+          : "";
+
+        return `
+          <div class="arg-block">
+            <h3 class="arg-h">${CT.escapeHtml(d.heading)}</h3>
+            <p class="arg-lede">${CT.escapeHtml(d.lede)}</p>
+            <ol class="arg-steps">${steps}</ol>
+            ${freed}
+          </div>`;
+      }
+
+      /* The transparency ledger. Two columns of the same complaint: what happened
+         in public, and what the council itself conceded about how badly it was
+         explained. Set side by side because the whole point is that both are true
+         and they are not the same charge. */
+      function argLedger(l) {
+        if (!l) return "";
+        const rows = (l.open.rows || [])
+          .map(
+            (r) => `
+            <li class="aled${r.weight === "strong" ? " is-strong" : ""}">
+              <a class="aled-when" href="meetings.html?id=${r.meeting}">${CT.fmtDate(r.date)}</a>
+              <p>${CT.escapeHtml(r.text)}</p>
+            </li>`
+          )
+          .join("");
+
+        const always = (l.open.always || [])
+          .map(
+            (a) => `<li><p>${CT.escapeHtml(a.text)}</p>${srcQuote(a.source, "tight")}</li>`
+          )
+          .join("");
+
+        const admits = (l.admitted.quotes || [])
+          .map(
+            (q) => `
+            <figure class="aadmit">
+              <blockquote>${CT.escapeHtml(q.quote)}</blockquote>
+              <figcaption>${CT.escapeHtml(q.speaker)}</figcaption>
+            </figure>`
+          )
+          .join("");
+
+        return `
+          <div class="arg-block">
+            <h3 class="arg-h">${CT.escapeHtml(l.heading)}</h3>
+            <p class="arg-lede">${CT.escapeHtml(l.lede)}</p>
+
+            <div class="arg-two">
+              <div class="arg-col">
+                <h4 class="arg-h4">${CT.escapeHtml(l.open.heading)}</h4>
+                <ol class="arg-ledger">${rows}</ol>
+                <ul class="arg-always">${always}</ul>
+              </div>
+              <div class="arg-col arg-col-admit">
+                <h4 class="arg-h4">${CT.escapeHtml(l.admitted.heading)}</h4>
+                <p class="arg-note">${CT.escapeHtml(l.admitted.note)}</p>
+                <div class="aadmit-list">${admits}</div>
+              </div>
+            </div>
+
+            <p class="arg-punch">${CT.escapeHtml(l.distinction)}</p>
+          </div>`;
+      }
+
+      /* What the hearing changed. The four deltas are the single most-missed fact
+         about August 6 — the rate on the signs is not the rate that passed — so
+         they get the largest type in the section. */
+      function argResponse(r) {
+        if (!r) return "";
+        const deltas = (r.changes || [])
+          .map(
+            (c) => `
+            <li class="adelta">
+              <span class="adelta-label">${CT.escapeHtml(c.label)}</span>
+              <b class="shift">
+                <span class="nb was mono">${CT.escapeHtml(c.from)}</span>
+                <span class="to" aria-hidden="true">→</span>
+                <span class="nb now mono">${CT.escapeHtml(c.to)}</span>
+              </b>
+              <p>${CT.escapeHtml(c.text)}</p>
+            </li>`
+          )
+          .join("");
+
+        const commits = (r.commitments || [])
+          .map((c) => `<li><p>${CT.escapeHtml(c.text)}</p>${srcQuote(c.source, "tight")}</li>`)
+          .join("");
+
+        return `
+          <div class="arg-block arg-response">
+            <h3 class="arg-h">${CT.escapeHtml(r.heading)}</h3>
+            <p class="arg-lede">${CT.escapeHtml(r.lede)}</p>
+            <ul class="arg-deltas">${deltas}</ul>
+            <ul class="arg-commits">${commits}</ul>
+            <p class="arg-vote">${CT.escapeHtml(r.vote)}</p>
+            ${r.shortfall ? `<p class="arg-punch">${CT.escapeHtml(r.shortfall)}</p>` : ""}
+            ${
+              r.closer
+                ? `<figure class="arg-quote">
+                     <blockquote>${CT.escapeHtml(r.closer.quote)}</blockquote>
+                     <figcaption><span class="aq-who">${CT.escapeHtml(r.closer.speaker)}</span></figcaption>
+                   </figure>`
+                : ""
+            }
+          </div>`;
+      }
+
+      /* The referendum, in three parts: the sequence, the bill, and the one real
+         precedent. This was a closed panel of statute citations in the first
+         draft and it read as legalese — the fix was to stop listing provisions
+         and start telling it in order, with the money and the precedent as their
+         own blocks rather than as two more bullets. It stays open on the page:
+         it is the most actionable thing here right now. */
+      function argReferendum(rf) {
+        if (!rf) return "";
+
+        const steps = (rf.steps || [])
+          .map(
+            (s, i) => `
+            <li class="astep">
+              <span class="astep-n" aria-hidden="true">${i + 1}</span>
+              <div class="astep-body">
+                <p class="astep-label">${CT.escapeHtml(s.label)}</p>
+                <p class="astep-text">${CT.escapeHtml(s.text)}</p>
+              </div>
+            </li>`
+          )
+          .join("");
+
+        // The two costs are deliberately the same shape, so the reader compares
+        // "≈ $5.59M" against "Not published" and draws the obvious conclusion
+        // without the page having to assert it.
+        const cost = rf.cost
+          ? `
+          <div class="arg-cost">
+            <h4 class="arg-h4">${CT.escapeHtml(rf.cost.heading)}</h4>
+            <p class="arg-lede">${CT.escapeHtml(rf.cost.lede)}</p>
+            <ul class="acost">
+              ${(rf.cost.items || [])
+                .map(
+                  (it) => `
+                  <li>
+                    <b class="acost-fig">${CT.escapeHtml(it.figure)}</b>
+                    <span class="acost-label">${CT.escapeHtml(it.label)}</span>
+                    <p>${CT.escapeHtml(it.text)}</p>
+                    ${srcQuote(it.source, "tight")}
+                  </li>`
+                )
+                .join("")}
+            </ul>
+            <p class="arg-punch">${CT.escapeHtml(rf.cost.note)}</p>
+          </div>`
+          : "";
+
+        const prec = rf.precedent
+          ? `
+          <div class="arg-precedent">
+            <h4 class="arg-h4">${CT.escapeHtml(rf.precedent.heading)}</h4>
+            <p class="aprec-text">${CT.escapeHtml(rf.precedent.text)}</p>
+            <p class="arg-note">${CT.escapeHtml(rf.precedent.note)}</p>
+          </div>`
+          : "";
+
+        return `
+          <div class="arg-block arg-referendum" id="p-referendum">
+            <h3 class="arg-h">${CT.escapeHtml(rf.heading)}</h3>
+            <p class="arg-lede">${CT.escapeHtml(rf.lede)}</p>
+            <ol class="arg-steps">${steps}</ol>
+            ${cost}
+            ${prec}
+          </div>`;
+      }
+
+      /* The complaints and the cause. The strongest thing in the transcript is
+         accidental: person after person opposed the increase and then described,
+         in detail, the symptoms of the shortfall it was meant to close. Setting
+         each complaint directly against the staffing fact that explains it is the
+         only honest way to show that — quoting either half alone would be a
+         rhetorical trick. */
+      function argStrain(s) {
+        if (!s) return "";
+
+        const pairs = (s.pairs || [])
+          .map(
+            (p) => `
+            <li class="apair">
+              <figure class="apair-said">
+                <blockquote>${CT.escapeHtml(p.said)}</blockquote>
+                <figcaption>
+                  <span class="aq-who">${CT.escapeHtml(p.who)}</span>
+                  <a class="aq-src" href="meetings.html?id=${p.meeting}">${CT.fmtDate(p.date)} · Meeting #${p.meeting} <span aria-hidden="true">→</span></a>
+                </figcaption>
+              </figure>
+              <div class="apair-why">
+                <p class="apair-why-label">Why</p>
+                <p>${CT.escapeHtml(p.because)}</p>
+                ${srcQuote(p.bsrc, "tight")}
+              </div>
+            </li>`
+          )
+          .join("");
+
+        const st = s.staffing
+          ? `
+          <div class="arg-staffing">
+            <h4 class="arg-h4">${CT.escapeHtml(s.staffing.heading)}</h4>
+            <ul class="afreed">
+              ${(s.staffing.items || [])
+                .map((i) => `<li><b class="mono">${CT.escapeHtml(i.figure)}</b><span>${CT.escapeHtml(i.text)}</span></li>`)
+                .join("")}
+            </ul>
+            ${(s.staffing.quotes || []).map((q) => srcQuote(q)).join("")}
+          </div>`
+          : "";
+
+        return `
+          <div class="arg-block arg-strain">
+            <h3 class="arg-h">${CT.escapeHtml(s.heading)}</h3>
+            <p class="arg-lede">${CT.escapeHtml(s.lede)}</p>
+            <ul class="arg-pairs">${pairs}</ul>
+            ${st}
+            <p class="arg-punch">${CT.escapeHtml(s.closer)}</p>
+          </div>`;
+      }
+
+      /* Where the criticism lands. Last, and not hedged — the section has spent
+         several screens setting out the city's case, and it does not get to skip
+         the part where the case is weakest. */
+      function argCounter(c) {
+        if (!c) return "";
+        const items = (c.items || [])
+          .map((i) => `<li><p>${CT.escapeHtml(i.text)}</p>${srcQuote(i.source, "tight")}</li>`)
+          .join("");
+
+        const coming = c.coming
+          ? `
+          <div class="arg-coming">
+            <h4 class="arg-h4">${CT.escapeHtml(c.coming.heading)}</h4>
+            <p class="arg-note">${CT.escapeHtml(c.coming.text)}</p>
+            <table class="tuf-table acoming">
+              <tbody>
+                ${(c.coming.rows || [])
+                  .map(
+                    (r) =>
+                      `<tr><th scope="row">${CT.escapeHtml(r.who)}</th><td class="num">${CT.escapeHtml(r.amount)}</td></tr>`
+                  )
+                  .join("")}
+              </tbody>
+            </table>
+            <p class="arg-note">${CT.escapeHtml(c.coming.note)}</p>
+            ${srcQuote(c.coming.source, "tight")}
+          </div>`
+          : "";
+
+        return `
+          <div class="arg-block arg-counter">
+            <h3 class="arg-h">${CT.escapeHtml(c.heading)}</h3>
+            <p class="arg-lede">${CT.escapeHtml(c.lede)}</p>
+            <ul class="arg-counters">${items}</ul>
+            ${coming}
+          </div>`;
       }
 
       /* ---------------- section wayfinding ----------------

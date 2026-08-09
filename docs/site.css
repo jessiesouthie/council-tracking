@@ -3106,61 +3106,40 @@ body.page-tax {
   text-wrap: pretty;
 }
 
-/* The one fact a reader can still act on. A gold-ruled note, not a banner. */
-.tax-next {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin: 6px 0 0;
-  padding: 13px 18px;
-  border-left: 3px solid var(--t-gold-line);
-  background: var(--t-gold-bg);
-  font-size: 14px;
-  line-height: 1.55;
-  color: var(--t-fg-2);
-}
-.tax-next b { color: var(--t-fg); font-weight: 600; }
-.tax-next .nh-pulse {
-  flex: none;
-  width: 8px; height: 8px;
-  margin-top: 7px;
-  border-radius: 50%;
-  background: var(--t-gold);
-  animation: nh-ping 2.4s ease-out infinite;
-}
-
 /* =========================================================================
    THE ESTIMATOR
-   Controls first, answer underneath — the order of a printed schedule. The
-   answer stays on screen anyway: the ink band is sticky to the *bottom* of the
-   viewport, so it rides the fold for as long as the controls above it are in
-   reach and releases once the reader has scrolled past the tool.
+   Question, answer, then the rates the answer was priced at — the order of a
+   printed schedule. Nothing pins itself to the viewport: the whole card is
+   sized to hold the question and the answer in one view, which is cheaper and
+   steadier than a sticky band riding the fold.
+
+   Four bands, one inset. Sizes here are deliberately restrained for a tool that
+   sits at the top of a long page — the figure has to be unmissable, not the
+   only thing on screen.
    ========================================================================= */
 .estimator { margin: 0; }
 .tax-tool {
+  /* One inset for the whole card, stated once. The question, the ink band, the
+     rate rows and the footnote all read these rather than carrying a padding
+     each — when they carried their own, the responsive rules only ever caught
+     some of them and the bands stepped out of alignment on a phone. */
+  --pad-x: 26px;
+  --pad-y: 22px;
+
   background: var(--t-card);
   border: 1px solid var(--t-line);
   border-radius: var(--t-r);
-  /* No `overflow: hidden` — it would make this a scroll container and the band
-     inside would never stick. Corners are rounded per-band instead. */
+  /* No `overflow: hidden` to clip the ink band to the card's corners: it would
+     make this a scroll container, and the rate rows inside set their own
+     scroll-margin against the topbar. The bands round their own outer corners
+     instead — see .tool-foot, and .bill-band in the two-column layout. */
 }
 
 /* Tabbing to a control scrolls it flush to the viewport top — which is behind
    the sticky topbar. Reserve that chrome; --topbar-h is measured in tax.html. */
-.tax-tool .field,
 .tax-tool .rate { scroll-margin-top: calc(var(--topbar-h, 62px) + 14px); }
 
-.tax-tool .est-inputs {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 30px;
-  padding: 26px 26px 24px;
-}
-.tax-tool .est-rates {
-  padding: 22px 26px 24px;
-  border-bottom: 1px solid var(--t-line-2);
-}
-.tax-tool .field { display: flex; flex-direction: column; }
+.tax-tool .est-rates { padding: var(--pad-y) var(--pad-x) calc(var(--pad-y) + 2px); }
 
 .tax-tool .flabel {
   display: block;
@@ -3190,10 +3169,10 @@ body.page-tax {
 .tax-tool .seg input { position: absolute; opacity: 0; pointer-events: none; }
 .tax-tool .seg label {
   text-align: center;
-  padding: 10px 6px;
+  padding: 9px 6px;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 600;
   line-height: 1.25;
   color: var(--t-muted);
@@ -3231,7 +3210,7 @@ body.page-tax {
 
 .tax-tool input[type="range"] {
   -webkit-appearance: none; appearance: none;
-  width: 100%; height: 28px; margin: 6px 0 0;
+  width: 100%; height: 26px; margin: 4px 0 0;
   background: transparent; cursor: pointer;
 }
 .tax-tool input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: var(--t-line); }
@@ -3259,7 +3238,7 @@ body.page-tax {
 }
 
 /* rate scenarios */
-.tax-tool .rates { display: flex; flex-direction: column; gap: 6px; }
+.tax-tool .rates { display: flex; flex-direction: column; gap: 5px; }
 .tax-tool .rate { position: relative; }
 /* Only the radio hides behind its label. Scoped to the radio on purpose: an
    unqualified `.rate input` also swallows the custom-rate slider and field. */
@@ -3271,7 +3250,7 @@ body.page-tax {
   grid-template-columns: 14px minmax(0, 1fr) auto;
   align-items: center;
   gap: 12px;
-  padding: 11px 14px;
+  padding: 9px 13px;
   border: 1px solid var(--t-line);
   border-radius: 5px;
   background: var(--t-card);
@@ -3304,7 +3283,9 @@ body.page-tax {
 .tax-tool .rate.is-new input:checked + label .dot::after { background: var(--t-gold); }
 .tax-tool .rate.is-new .rrate { color: var(--t-gold); }
 
-.tax-tool .customwrap { padding: 8px 14px 4px; }
+/* Indented to the same 13px as the row's own label above it, so the rate field
+   lines up under the row it belongs to instead of hanging a pixel off it. */
+.tax-tool .customwrap { padding: 8px 13px 4px; }
 .tax-tool .customwrap[hidden] { display: none; }
 /* The rate itself, typeable. The slider is for exploring; this is for the
    reader who has a specific number in mind and wants to put it in. */
@@ -3367,42 +3348,47 @@ body.page-tax {
 .bill-band {
   background: var(--t-ink);
   color: var(--t-on-ink);
-  padding: 34px 30px 30px;
+  padding: 26px var(--pad-x) 22px;
   text-align: center;
 }
 .bb-lead {
   margin: 0;
-  font-size: 15px;
+  font-size: 13.5px;
+  letter-spacing: .01em;
   color: var(--t-on-ink-dim);
 }
+/* Still the largest thing on the page by a wide margin, but no longer sized so
+   that the figure alone fills a laptop fold. At 72px it is unmissable and the
+   two totals it came from stay in the same glance — which was the point of
+   putting them under it. */
 .bb-hero {
-  margin: 6px 0 0;
-  font-size: clamp(58px, 11vw, 104px);
+  margin: 4px 0 0;
+  font-size: clamp(46px, 8.5vw, 72px);
   font-weight: 600;
   line-height: .95;
-  letter-spacing: -.045em;
+  letter-spacing: -.04em;
   color: #FFFFFF;
   overflow-wrap: anywhere;
 }
 .is-down .bb-hero { color: #9FE0C1; }
 .bb-unit {
-  margin: 4px 0 0;
-  font-size: clamp(19px, 2.6vw, 26px);
+  margin: 5px 0 0;
+  font-size: clamp(16px, 2.1vw, 19px);
   font-weight: 600;
-  letter-spacing: -.01em;
+  letter-spacing: -.005em;
   color: var(--t-on-ink-gold);
 }
 .is-down .bb-unit { color: #9FE0C1; }
 .is-same .bb-unit { color: var(--t-on-ink-dim); }
 .bb-year {
-  margin: 12px 0 0;
-  font-size: 16px;
+  margin: 9px 0 0;
+  font-size: 14.5px;
   color: var(--t-on-ink-dim);
 }
 /* A mistyped value can give a fifteen-character figure; step it down rather than
    let it break out of the panel. */
-.bb-hero.len-l  { font-size: clamp(40px, 7vw, 62px); }
-.bb-hero.len-xl { font-size: clamp(28px, 5vw, 42px); letter-spacing: -.03em; }
+.bb-hero.len-l  { font-size: clamp(34px, 5.6vw, 50px); }
+.bb-hero.len-xl { font-size: clamp(25px, 4.2vw, 36px); letter-spacing: -.03em; }
 @keyframes ct-numpulse {
   from { opacity: .45; transform: translateY(3px); }
   to   { opacity: 1;   transform: none; }
@@ -3415,21 +3401,21 @@ body.page-tax {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1px;
-  margin: 26px auto 0;
-  max-width: 520px;
+  margin: 20px auto 0;
+  max-width: 480px;
   background: var(--t-ink-line);
   border-top: 1px solid var(--t-ink-line);
 }
 .bb-half {
   background: var(--t-ink);
-  padding: 16px 12px 4px;
+  padding: 13px 12px 3px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
   min-width: 0;
 }
 .bb-label {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -3437,16 +3423,16 @@ body.page-tax {
 }
 .bb-new .bb-label { color: var(--t-on-ink-gold); }
 .bb-num {
-  font-size: clamp(22px, 3vw, 27px);
+  font-size: clamp(19px, 2.5vw, 23px);
   font-weight: 600;
   letter-spacing: -.02em;
   color: color-mix(in oklab, var(--t-on-ink) 85%, transparent);
   overflow-wrap: anywhere;
 }
 .bb-new .bb-num { color: #FFFFFF; }
-.bb-num.len-l  { font-size: clamp(17px, 2.2vw, 21px); }
-.bb-num.len-xl { font-size: clamp(14px, 1.7vw, 16px); }
-.bb-sub { font-size: 12.5px; color: var(--t-on-ink-dim); }
+.bb-num.len-l  { font-size: clamp(16px, 2vw, 19px); }
+.bb-num.len-xl { font-size: clamp(13px, 1.6vw, 15px); }
+.bb-sub { font-size: 12px; line-height: 1.35; color: var(--t-on-ink-dim); }
 
 /* ---------- the city's side of it ----------
    The same rate, counted across every parcel instead of one. It runs the full
@@ -3456,14 +3442,14 @@ body.page-tax {
 .bb-city {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  max-width: 520px;
+  gap: 4px;
+  max-width: 480px;
   margin: 0 auto;
-  padding: 16px 12px 2px;
+  padding: 13px 12px 0;
   border-top: 1px solid var(--t-ink-line);
 }
 .bb-city-num {
-  font-size: clamp(22px, 3vw, 27px);
+  font-size: clamp(19px, 2.5vw, 23px);
   font-weight: 600;
   letter-spacing: -.02em;
   color: color-mix(in oklab, var(--t-on-ink) 85%, transparent);
@@ -3471,19 +3457,23 @@ body.page-tax {
 }
 .bb-city.is-up .bb-city-num { color: #FFFFFF; }
 .bb-note {
-  font-size: 11.5px;
+  margin-top: 1px;
+  font-size: 11px;
   line-height: 1.45;
   color: var(--t-on-ink-dim);
 }
 
+/* The footnote closes the card. It carries the only rule here — the rate rows
+   above it used to draw one too, and the two hairlines stacked into a 2px
+   double line across the foot of the tool. */
 .tax-tool .tool-foot {
   margin: 0;
-  padding: 13px 26px 14px;
+  padding: 12px var(--pad-x) 13px;
   border-top: 1px solid var(--t-line-2);
   background: var(--t-page);
   border-radius: 0 0 calc(var(--t-r) - 1px) calc(var(--t-r) - 1px);
-  font-size: 13px;
-  line-height: 1.55;
+  font-size: 12.5px;
+  line-height: 1.5;
   color: var(--t-muted);
 }
 .tax-tool .tool-foot strong { color: var(--t-fg); font-weight: 600; }
@@ -3492,20 +3482,72 @@ body.page-tax {
    One input, asked as a sentence, sized so nobody has to look for it. The
    property-type switch sits under it because almost everyone is answering
    "home I live in" and shouldn't have to think about it. */
-.tax-tool .est-ask { padding: 30px 26px 26px; }
+.tax-tool .est-ask { padding: calc(var(--pad-y) + 2px) var(--pad-x) var(--pad-y); }
 .tax-page .ask-q {
   display: block;
-  font-size: clamp(20px, 2.6vw, 25px);
+  font-size: clamp(17px, 2.2vw, 20px);
   font-weight: 600;
-  letter-spacing: -.02em;
+  letter-spacing: -.015em;
   color: var(--t-fg);
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 .tax-tool .est-ask .valuerow { border-bottom-width: 3px; }
-.tax-tool .est-ask input.value { font-size: clamp(36px, 6vw, 52px); }
-.tax-tool .est-ask .dollar { font-size: clamp(24px, 3.6vw, 32px); }
-.tax-tool .ask-type { margin-top: 22px; max-width: 420px; }
-.tax-tool .ask-type .flabel { margin-bottom: 8px; }
+/* Big enough that the field reads as the one thing to fill in, small enough
+   that the question, the slider and the property-type switch all fit above the
+   fold with the answer. */
+.tax-tool .est-ask input.value { font-size: clamp(31px, 5vw, 40px); }
+.tax-tool .est-ask .dollar { font-size: clamp(20px, 3vw, 26px); }
+.tax-tool .est-ask .hint { margin-top: 7px; }
+.tax-tool .ask-type { margin-top: 16px; max-width: 400px; }
+.tax-tool .ask-type .flabel { margin-bottom: 7px; }
+
+/* ---------- two columns, once there is room for two ----------
+   Stacked, this card runs past a laptop fold: the question, the answer and the
+   three rates are four bands deep, and a reader changing the rate has already
+   scrolled the answer off the top by the time they get to it. Above 900px the
+   controls take the left column and the ink band takes the right, spanning both
+   rows — the card halves in height and the figure is on screen the whole time
+   any control is.
+
+   Placed by grid-area rather than by reordering the markup: the document order
+   stays question → answer → rates, which is the order the page narrates it in
+   and the order a screen reader gets. Tab order still runs straight down the
+   left column, because that column is exactly the focusable half. */
+@media (min-width: 900px) {
+  .tax-tool {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 420px);
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "ask   band"
+      "rates band"
+      "foot  foot";
+  }
+  .tax-tool .est-ask   { grid-area: ask; }
+  .tax-tool .est-rates { grid-area: rates; }
+  .tax-tool .tool-foot { grid-area: foot; }
+
+  .tax-tool .bill-band {
+    grid-area: band;
+    /* Centred in whatever height the controls beside it happen to need — the
+       rate rows grow by ~90px when the custom row opens, and an answer pinned
+       to the top of that column would drift away from the figure it answers. */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* A narrower column, so it gives back the inset the full-width band could
+       afford — the two totals underneath need every pixel of measure. */
+    padding: 26px 20px 24px;
+    /* No corner rounding of its own — the SURFACES layer below clips the whole
+       tool, so the band's outer corner is cut by the card. */
+  }
+  /* Narrower measure than the full-width band had, so the figure is sized to
+     its column rather than to the viewport. */
+  .tax-tool .bb-hero { font-size: clamp(40px, 5.4vw, 60px); }
+  .tax-tool .bb-hero.len-l  { font-size: clamp(31px, 3.9vw, 44px); }
+  .tax-tool .bb-hero.len-xl { font-size: clamp(24px, 3vw, 33px); }
+  .tax-tool .bb-split, .tax-tool .bb-city { max-width: none; }
+}
 
 /* ---------- what you can do about it ----------
    The only actionable thing on the page, so it sits in the hero above the
@@ -3669,14 +3711,14 @@ body.page-tax {
    section never reads as a stack of closed doors.
    ========================================================================= */
 .learn { display: flex; flex-direction: column; gap: 0; }
-.learn .sec-head { margin-bottom: 20px; }
+.learn .sec-head { margin-bottom: 22px; }
 details.panel { scroll-margin-top: calc(var(--topbar-h, 62px) + 12px); }
 
 .picture-nav {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 0 0 22px;
+  margin: 0 0 20px;
 }
 .pnav-link {
   display: inline-block;
@@ -4305,6 +4347,512 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   .tuf-table .mono { font-size: 11.5px; }
 }
 
+/* ---------- the argument ----------
+   The one section on this page made of sentences rather than figures, so it is
+   the one section that needs a reading measure. Everything inside it is capped
+   near 68 characters and left-aligned against the section's own spine; the
+   charts above run full-bleed and would drag the prose out to an unreadable
+   line length if this didn't hold it back.
+
+   Structurally it is six stacked blocks separated by hairlines rather than six
+   disclosure panels. The material is the argument, not the appendix — a reader
+   who has scrolled this far has earned the right to see it without clicking. */
+/* One reading measure for the whole section, named once — and carried by the
+   card's inset, not by each paragraph inside it.
+
+   It used to be spelled 40em, 42em and 44em across nine rules, but the worse
+   half was that only the prose carried a measure at all: headings, hairlines and
+   the figure grids ran the card's full width while every paragraph stopped
+   ~180px short, so the section had a ragged right edge top to bottom.
+
+   Do NOT fix that by capping this section's width — it is a card in the
+   SURFACES layer below, and a max-width here shrinks the card itself, leaving a
+   short card hanging beside its full-width neighbours. SURFACES insets this one
+   card's side padding instead, until its inner width *is* the measure; then
+   `--arg-measure: 100%` lets everything fill that column and share one edge.
+
+   The 22px under the section head is the same distance `.tax-sec` puts between
+   its head and its content; a gap:0 section has to restate it as a margin, but
+   the number is the page's, not this section's. */
+.tax-page .argument { --arg-measure: 100%; }
+.tax-page .argument .sec-head { margin-bottom: 22px; }
+
+.arg-block {
+  padding: 30px 0;
+  border-top: 1px solid var(--t-line);
+}
+.arg-block:first-of-type { border-top: 0; padding-top: 0; }
+
+.arg-h {
+  margin: 0 0 12px;
+  max-width: 30em;
+  font-size: clamp(19px, 2.6vw, 22px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.015em;
+  color: var(--t-fg);
+  text-wrap: balance;
+}
+.arg-h4 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t-gold);
+}
+.arg-lede {
+  margin: 0 0 22px;
+  max-width: var(--arg-measure);
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--t-fg-2);
+  text-wrap: pretty;
+}
+.arg-note {
+  margin: 0 0 12px;
+  max-width: var(--arg-measure);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--t-muted);
+  text-wrap: pretty;
+}
+.arg-foot {
+  margin: 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--t-line);
+  max-width: var(--arg-measure);
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--t-muted);
+  text-wrap: pretty;
+}
+
+/* A quotation with somewhere to go. The caption is the point: a claim on this
+   page is only worth what the meeting behind it is worth, so the link to that
+   meeting is never optional and never smaller than the attribution. */
+.arg-quote { margin: 12px 0 0; max-width: var(--arg-measure); }
+.arg-quote blockquote {
+  margin: 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--t-gold-line);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--t-fg);
+  text-wrap: pretty;
+}
+.arg-quote.tight blockquote { font-size: 13.5px; line-height: 1.55; color: var(--t-fg-2); }
+.arg-quote figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin: 7px 0 0 16px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.aq-who { font-weight: 600; color: var(--t-fg-2); }
+a.aq-src { color: var(--t-muted); text-decoration: none; white-space: nowrap; }
+a.aq-src:hover { color: var(--t-gold); text-decoration: underline; }
+
+/* The city's case: six figures. Auto-fit rather than a fixed column count, so
+   the same markup is a single column on a phone and three across on a desktop
+   without a breakpoint per layout. */
+.arg-stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+  gap: 26px 30px;
+}
+.astat > b {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.015em;
+  color: var(--t-gold);
+  text-wrap: balance;
+}
+.astat > p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--t-fg-2); }
+
+.arg-closer {
+  margin-top: 26px;
+  padding: 18px 20px;
+  background: var(--t-gold-bg);
+  border-radius: var(--t-r);
+}
+.arg-closer > p {
+  margin: 0;
+  max-width: var(--arg-measure);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--t-fg);
+  text-wrap: pretty;
+}
+.arg-closer .arg-quote blockquote { border-left-color: var(--t-gold); }
+
+/* Numbered steps. The counter is a real element rather than a list marker so it
+   can sit in its own gutter column and keep the text block aligned. */
+.arg-steps { list-style: none; margin: 0; padding: 0; }
+.astep {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 0 14px;
+  padding: 18px 0;
+  border-top: 1px dashed var(--t-line);
+}
+.astep:first-child { border-top: 0; padding-top: 0; }
+.astep-n {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--t-gold);
+  padding-top: 2px;
+}
+.astep-body { min-width: 0; max-width: var(--arg-measure); }
+.astep-label {
+  margin: 0 0 5px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--t-fg);
+  text-wrap: balance;
+}
+.astep-text { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--t-fg-2); text-wrap: pretty; }
+
+.arg-freed {
+  margin-top: 26px;
+  padding: 20px 22px;
+  border: 1px solid var(--t-line);
+  border-radius: var(--t-r);
+  background: var(--t-card);
+}
+.afreed { list-style: none; margin: 0 0 4px; padding: 0; }
+.afreed li {
+  display: grid;
+  grid-template-columns: minmax(110px, auto) minmax(0, 1fr);
+  gap: 4px 16px;
+  padding: 9px 0;
+  border-top: 1px solid var(--t-line-2);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.afreed li:first-child { border-top: 0; }
+.afreed b { font-weight: 600; color: var(--t-gold); white-space: nowrap; }
+.afreed span { color: var(--t-fg-2); text-wrap: pretty; }
+
+/* Transparency vs communication: the argument of the block is that these are
+   two different charges, and the layout has to make that claim before the prose
+   does. It made it side by side once, which was the right idea and the wrong
+   shape:
+   the left column carries seven dated rows and three long items, the right
+   carries five short quotations, and a 6:1 imbalance under `align-items: start`
+   left most of a screen of empty paper down the right-hand side. The two
+   charges still read as two, because they are two headed blocks on two grounds
+   — the contrast was never doing the work, the tray was. */
+.arg-two {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.arg-col { min-width: 0; }
+.arg-col-admit {
+  padding: 20px 22px 22px;
+  border-radius: var(--t-r);
+  background: var(--t-tray);
+}
+
+.arg-ledger { list-style: none; margin: 0; padding: 0; max-width: var(--arg-measure); }
+.aled {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 2px 14px;
+  padding: 11px 0;
+  border-top: 1px solid var(--t-line-2);
+}
+.aled:first-child { border-top: 0; padding-top: 0; }
+.aled-when {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--t-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.aled-when:hover { color: var(--t-gold); text-decoration: underline; }
+.aled.is-strong .aled-when { color: var(--t-gold); }
+.aled > p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--t-fg-2); text-wrap: pretty; }
+.aled.is-strong > p { color: var(--t-fg); }
+
+.arg-always { list-style: none; margin: 18px 0 0; padding: 0; max-width: var(--arg-measure); }
+.arg-always > li {
+  padding: 12px 0;
+  border-top: 1px solid var(--t-line);
+}
+.arg-always > li > p { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--t-fg-2); text-wrap: pretty; }
+
+/* Five short quotations across the full column. Set in balanced multicol rather
+   than a grid: an odd count in a two-track grid orphans the last one, and
+   `columns` evens the two stacks out on its own however many arrive. */
+.arg-col-admit .arg-note { max-width: var(--arg-measure); }
+.aadmit { margin: 0 0 16px; break-inside: avoid; }
+.aadmit:last-child { margin-bottom: 0; }
+@media (min-width: 720px) {
+  .arg-col-admit .aadmit-list { columns: 2; column-gap: 34px; }
+  /* Multicol collapses the last child's margin oddly across a break; a uniform
+     margin on every quote keeps both stacks on the same rhythm. */
+  .arg-col-admit .aadmit:last-child { margin-bottom: 16px; }
+}
+.aadmit blockquote {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--t-fg);
+  text-wrap: pretty;
+}
+.aadmit figcaption {
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--t-muted);
+}
+
+.arg-punch {
+  margin: 26px 0 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--t-sage);
+  max-width: var(--arg-measure);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--t-fg);
+  text-wrap: pretty;
+}
+
+/* What changed on the night. Same "was → now" idiom as the three facts near the
+   top of the page, so a reader recognises it as the page's way of saying a
+   number moved rather than reading it as a new kind of chart — and the same
+   hairline grid, for the same reason.
+
+   Two by two, not auto-fit: there are four of these, and auto-fit put three on
+   the first row and stranded the fourth beside two-thirds of a row of white.
+   Four figures that belong together have to land as a block. */
+.arg-deltas {
+  list-style: none;
+  margin: 0 0 26px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px 0;
+  max-width: var(--arg-measure);
+}
+@media (min-width: 620px) {
+  .arg-deltas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--t-line);
+    border-top: 1px solid var(--t-line);
+    border-bottom: 1px solid var(--t-line);
+  }
+  /* The 1px gaps are the rules; each cell paints the surface back over its own
+     area. --t-card, not --t-page: this grid sits on the argument's section card,
+     and the paper colour would show as a tinted rectangle on it. Outer edges
+     stay flush to the section spine so the block squares up with the hairlines
+     above and below it. */
+  .adelta { background: var(--t-card); padding: 16px 22px 18px; }
+  .adelta:nth-child(odd)  { padding-left: 0; }
+  .adelta:nth-child(even) { padding-right: 0; }
+}
+.adelta-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+}
+.adelta .shift {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+}
+.adelta .was { color: var(--t-muted); text-decoration: line-through; text-decoration-thickness: 1px; }
+.adelta .now { color: var(--t-pass); }
+.adelta .to { color: var(--t-muted); margin: 0 5px; font-weight: 400; }
+.adelta .nb { white-space: nowrap; }
+.adelta > p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--t-fg-2); text-wrap: pretty; }
+
+.arg-commits { list-style: none; margin: 0 0 20px; padding: 0; }
+.arg-commits > li {
+  padding: 14px 0;
+  border-top: 1px solid var(--t-line);
+  max-width: var(--arg-measure);
+}
+.arg-commits > li > p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--t-fg-2); text-wrap: pretty; }
+.arg-vote {
+  margin: 0 0 4px;
+  max-width: var(--arg-measure);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--t-fg);
+  text-wrap: pretty;
+}
+
+/* The complaint and the reason for it, set as one row. The quote takes the wider
+   column because it is the surprising half; the explanation sits beside it in a
+   quieter tray so the pairing reads as annotation rather than as rebuttal — the
+   people quoted are not being argued with, they are being agreed with. */
+.arg-pairs { list-style: none; margin: 0 0 26px; padding: 0; }
+.apair {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 20px 30px;
+  align-items: start;
+  padding: 20px 0;
+  border-top: 1px solid var(--t-line);
+}
+.apair:first-child { border-top: 0; padding-top: 0; }
+.apair-said { margin: 0; min-width: 0; }
+.apair-said blockquote {
+  margin: 0;
+  padding-left: 14px;
+  border-left: 3px solid var(--t-rust);
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--t-fg);
+  text-wrap: pretty;
+}
+.apair-said figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin: 8px 0 0 17px;
+  font-size: 12px;
+}
+.apair-why {
+  min-width: 0;
+  padding: 16px 18px;
+  border-radius: var(--t-r);
+  background: var(--t-tray);
+}
+.apair-why-label {
+  margin: 0 0 5px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--t-gold);
+}
+.apair-why > p { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--t-fg-2); text-wrap: pretty; }
+.apair-why .arg-quote blockquote { border-left-color: var(--t-sage); }
+
+.arg-staffing {
+  padding: 20px 22px;
+  border: 1px solid var(--t-line);
+  border-radius: var(--t-r);
+  background: var(--t-card);
+}
+.arg-staffing .arg-quote { margin-top: 18px; }
+
+/* The two costs of a referendum, in the same shape so they compare themselves.
+   The figure leads because the whole point of the block is that one of these
+   numbers is three orders of magnitude larger than the other. */
+.acost { list-style: none; margin: 0 0 4px; padding: 0; }
+.acost > li {
+  padding: 16px 0;
+  border-top: 1px solid var(--t-line);
+  max-width: 46em;
+}
+.acost > li:first-child { border-top: 0; padding-top: 0; }
+.acost-fig {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  color: var(--t-rust);
+  font-variant-numeric: tabular-nums;
+}
+.acost-label {
+  display: block;
+  margin: 3px 0 6px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--t-fg);
+}
+.acost > li > p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--t-fg-2); text-wrap: pretty; }
+
+.arg-cost { margin-top: 30px; padding-top: 26px; border-top: 2px solid var(--t-line); }
+.arg-precedent {
+  margin-top: 26px;
+  padding: 20px 22px;
+  border-left: 3px solid var(--t-gold-line);
+  background: var(--t-gold-bg);
+  border-radius: 0 var(--t-r) var(--t-r) 0;
+}
+.aprec-text {
+  margin: 0 0 10px;
+  max-width: var(--arg-measure);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--t-fg);
+  text-wrap: pretty;
+}
+.arg-precedent .arg-note { margin-bottom: 0; }
+
+/* The objections that stand up. A rust spine rather than gold: this is the one
+   block on the page arguing against the thing the page mostly explains, and it
+   should not look like the city's own material. */
+.arg-counter .arg-h { color: var(--t-fg); }
+.arg-counters { list-style: none; margin: 0; padding: 0; }
+.arg-counters > li {
+  padding: 16px 0 16px 16px;
+  border-left: 3px solid var(--t-rust);
+  border-top: 1px solid var(--t-line);
+  max-width: var(--arg-measure);
+}
+.arg-counters > li:first-child { border-top: 0; }
+.arg-counters > li > p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--t-fg-2); text-wrap: pretty; }
+
+.arg-coming {
+  margin-top: 26px;
+  padding: 20px 22px;
+  border: 1px solid var(--t-line);
+  border-radius: var(--t-r);
+}
+.acoming { max-width: 34em; margin-bottom: 14px; }
+.acoming tbody th { font-size: 13.5px; }
+.acoming td.num { font-family: var(--mono); font-size: 13px; color: var(--t-gold); }
+
+@media (max-width: 900px) {
+  .apair { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+}
+@media (max-width: 560px) {
+  .arg-block { padding: 24px 0; }
+  .apair-said blockquote { font-size: 14.5px; padding-left: 12px; }
+  .apair-why, .arg-staffing, .arg-precedent { padding: 15px 15px; }
+  .acost-fig { font-size: 19px; }
+  .arg-lede { font-size: 14.5px; }
+  .astat > b { font-size: 18px; }
+  .astep { grid-template-columns: 22px minmax(0, 1fr); gap: 0 10px; }
+  .aled { grid-template-columns: minmax(0, 1fr); }
+  .aled-when { padding-top: 0; }
+  .arg-col-admit, .arg-freed, .arg-coming, .arg-closer { padding: 16px 15px; }
+  .afreed li { grid-template-columns: minmax(0, 1fr); }
+  .adelta .shift { font-size: 16px; }
+  .aref.is-flag { padding: 12px 13px; }
+  .arg-counters > li { padding-left: 13px; }
+  .arg-punch { padding-left: 13px; font-size: 14.5px; }
+}
+
 /* ---------- fine print ----------
    Caveats and sources, closed. A quiet line with a rule above it — deliberately
    not styled like the section disclosures further down the page, because this is
@@ -4612,25 +5160,17 @@ table.data.statewide tr.qdiv.is-median td {
    ========================================================================= */
 @media (prefers-reduced-motion: reduce) {
   .reveal { animation: none; }
-  .bb-num.numflash { animation: none; }
-  .tax-status-dot, .tax-next .nh-pulse { animation: none; }
+  .bb-hero.numflash { animation: none; }
+  .tax-status-dot { animation: none; }
   details.panel[open] > .panel-body { animation: none; }
   .panel-chev { transition: none; }
 }
 
 @media (max-width: 760px) {
-  .tax-page { gap: 36px; }
-  .tax-tool .est-inputs { grid-template-columns: minmax(0, 1fr); gap: 22px; padding: 20px 18px; }
-  .tax-tool .est-rates { padding: 0 18px 20px; }
-  .tax-tool .tool-foot { padding: 12px 18px 13px; }
-
-  /* Two figures side by side stop being two figures at this width. */
-  .bill-band { grid-template-columns: minmax(0, 1fr); }
-  .bb-now { border-right: 0; border-bottom: 1px solid var(--t-ink-line); }
-  .bb-cell { padding: 16px 18px; gap: 4px; }
-  .bb-delta { padding: 12px 18px; }
-  .bb-delta b { font-size: 16.5px; }
-  .bb-delta span { font-size: 12.5px; }
+  /* The page's own gap at this width is set by the SURFACES layer further down
+     — same specificity, later in the file — so it is not restated here. */
+  /* One number, and every band inside the card follows it. */
+  .tax-tool { --pad-x: 18px; --pad-y: 18px; }
 
   .tax-page .facts, .tax-page .facts.two { grid-template-columns: minmax(0, 1fr); }
   .tax-page .facts .fact { padding: 16px 0 18px; }
@@ -4698,11 +5238,12 @@ table.data.statewide tr.qdiv.is-median td {
 }
 
 @media (max-width: 400px) {
-  .tax-tool .est-inputs { padding: 18px 14px; }
-  .tax-tool .est-rates { padding: 0 14px 18px; }
-  .bb-cell { padding: 14px; }
-  .bb-delta { padding: 11px 14px; }
-  .tax-tool .tool-foot { padding: 12px 14px; }
+  .tax-tool { --pad-x: 14px; --pad-y: 16px; }
+  /* Two figures side by side stop being two comparable figures at this width —
+     "Your city tax now" alone wraps three deep in the column it's left with. */
+  .bb-split { grid-template-columns: minmax(0, 1fr); }
+  .bb-half { padding: 12px 2px 8px; }
+  .bb-city { padding: 12px 2px 0; }
   .crow { grid-template-columns: 76px minmax(0, 1fr); gap: 6px; padding: 2px; }
   .cname { font-size: 11px; }
   .ctrack { --track-gutter: 58px; }
@@ -4753,27 +5294,32 @@ table.data.statewide tr.qdiv.is-median td {
   overflow: hidden;
   background: var(--t-card);
 }
+/* The real card asks one question down the full width, so the placeholder does
+   too — a two-column stand-in was left over from a layout this tool no longer
+   has, and it snapped to a single column the moment the data landed. */
 .tax-skeleton .sk-card-in {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 24px 26px 22px;
 }
-.tax-skeleton .sk-field { height: 62px; border-radius: 5px; }
+.tax-skeleton .sk-ask    { width: min(100%, 250px); height: 20px; }
+.tax-skeleton .sk-field  { height: 52px; border-radius: 5px; }
+.tax-skeleton .sk-slider { height: 10px; border-radius: 5px; }
 /* The real band is the page's one filled surface, so the placeholder for it is
    the one filled shape here — at a fraction of the ink, not a grey box. The
    tint lives in the colour, not in `opacity`: sk-breathe animates opacity, and
    a declared opacity here would simply be overridden by the keyframes. */
 .tax-skeleton .sk-band {
-  height: 152px;
+  height: 300px;
   background: color-mix(in oklab, var(--t-ink) 18%, transparent);
   animation: sk-breathe 1.6s ease-in-out infinite;
 }
 @keyframes sk-breathe { 0%, 100% { opacity: .55; } 50% { opacity: .9; } }
 @media (max-width: 760px) {
-  .tax-skeleton .sk-card-in { grid-template-columns: 1fr; padding: 20px 18px; }
+  .tax-skeleton .sk-card-in { padding: 20px 18px 18px; }
   .tax-skeleton .sk-h1 { height: 32px; }
-  .tax-skeleton .sk-band { height: 240px; }
+  .tax-skeleton .sk-band { height: 330px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .tax-skeleton .sk-line, .tax-skeleton .sk-band { animation: none; }
@@ -5097,6 +5643,29 @@ table.data.statelist :is(th, td) { padding-left: 8px; padding-right: 8px; }
 .tax-page .tax-sec { --c-hover: var(--t-page); }
 .levy-row:hover { background: var(--t-page); }
 
+/* ---------- the argument card ----------
+   Every other section is figures, which want the full 812px of card. This one
+   is sentences, and 812px of 15.5px text is past a hundred characters a line.
+   So this card alone pulls its sides in until the inner width is a reading
+   measure — the card still squares up with its neighbours, and the essay gets a
+   column with equal air on both sides instead of a short right edge.
+
+   Two things this must not be done with. A `max-width` on the section shrinks
+   the card itself and leaves it hanging beside the full-width ones. And it has
+   to out-specify `.tax-page .tax-sec` above, which sets all four paddings in one
+   shorthand and is declared later — hence the doubled class. The narrow
+   overrides restate that section's own numbers for the same reason. */
+/* 90px a side on the widest card leaves ~698px of column — near enough the 44em
+   the section's paragraphs were already capped at, so the measure is unchanged
+   and only the things that used to overshoot it have moved. */
+.tax-page .tax-sec.argument { padding-inline: clamp(30px, 10%, 90px); }
+
+/* `gap: 0` is the argument's own rule, restated at a weight that survives the
+   card layer: `.tax-page .argument` and `.tax-page .tax-sec` are both (0,2,0)
+   and this file's later `gap: 20px` was quietly winning, which floated every
+   hairline 20px off centre between the blocks it separates. */
+.tax-page .tax-sec.argument { gap: 0; }
+
 /* The fine print closes the card, so its rule spans the full width and its last
    child sits flush with the card's bottom padding. */
 .tax-page details.fine { margin-top: 22px; }
@@ -5194,6 +5763,10 @@ table.data.statewide thead th { background: var(--t-card); }
 @media (max-width: 760px) {
   .tax-page { gap: 22px; }
   .tax-page .tax-sec { padding: 22px 18px 24px; border-radius: 10px; }
+  /* The essay gives its inset back too — at this width the measure is the
+     screen, and an indented column just makes the lines shorter than the ones
+     in every other card. */
+  .tax-page .tax-sec.argument { padding-inline: 18px; }
   /* Restated here, not inherited: the card layer redeclares the facts grid
      further down the file than the original mobile rule, so without this the
      three columns survive onto a phone and the last card is clipped. */
@@ -5206,6 +5779,7 @@ table.data.statewide thead th { background: var(--t-card); }
 }
 @media (max-width: 400px) {
   .tax-page .tax-sec { padding: 18px 14px 20px; }
+  .tax-page .tax-sec.argument { padding-inline: 14px; }
   .panel > summary { padding: 15px 14px; }
   .panel-body { padding: 0 14px 18px; }
 }

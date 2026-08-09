@@ -1,0 +1,612 @@
+{
+  "_comment": "The argument, as opposed to the arithmetic. Everything here is transcribed from a recording of an open meeting; `source` names the meeting id, the date and the speaker, and `quote` is verbatim where it is in quotation marks. Speaker attribution on August 6 follows the mayor's own call order from the chair — Huish, Wood, Whiting, Wright, Clark — and anything the recording does not let us attribute confidently is left unattributed rather than guessed. This file takes no side; the section it feeds sets out the city's case, the record of what was said in public and when, the charge that the money was misdescribed, and the places where that charge lands.",
+  "eyebrow": "The argument",
+  "title": "Why the city says it needs this, and what it said in public",
+  "sub": "The rate is one number. The case behind it, the objections to it, and the record of when each was made in public are what the argument is actually about.",
+  "case": {
+    "heading": "The mechanism nobody voted for",
+    "lede": "Utah sets a city's property tax by revenue, not by rate. As assessed values rise, the certified rate falls to hold collections roughly flat, so a household's city property tax bill barely moves for years while the cost of serving that household does not stop rising. Eagle Mountain went about fifteen years without touching the rate, and doubled in population in about six. Those two facts together are the whole of the city's case.",
+    "points": [
+      {
+        "stat": "About $200 a year",
+        "text": "What one councilmember's own household has paid the city in property tax, essentially unchanged for a decade while the city's cost to police that household rose every year.",
+        "source": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Councilmember Zac Huish",
+          "quote": "I've lived here 20 years and my property tax rate has decreased as my home value has gone up. I've paid the same nominal dollar amount… I went home, pulled out all my tax records, went back to 2016, pulled out my property tax rate. It's like $200. What I paid last year is like $210."
+        }
+      },
+      {
+        "stat": "$2.8M against $8M+",
+        "text": "Property tax collected by the city, against what it owes the Utah County Sheriff. The difference has been made up out of sales tax and other general fund revenue for years.",
+        "source": {
+          "meeting": 726,
+          "date": "2026-06-16",
+          "speaker": "From the dais, answering a resident's question at the public hearing",
+          "quote": "We have about 2.8 million that we're collecting on property taxes and our public safety bill is 8 million right now."
+        }
+      },
+      {
+        "stat": "0.45 officers per 1,000",
+        "text": "Eagle Mountain's sworn staffing ratio — one deputy per roughly 2,200 residents. Lehi is at 0.7, Saratoga Springs about 0.9. The Sheriff's Office says the city was near 0.7–0.8 in the early 2000s and has fallen since.",
+        "source": {
+          "meeting": 743,
+          "date": "2026-04-14",
+          "speaker": "Chief Deputy Erik Knutzen, Utah County Sheriff's Office",
+          "quote": "At first, it was probably close to 0.7, 0.8 way back in the late '90s, early 2000s… when I first got here, I think we were at about 0.49, 0.5 last year. And then, because of shortages on requests, it went down from there, and now we're at 0.45."
+        }
+      },
+      {
+        "stat": "65–70% saturated",
+        "text": "The share of patrol time already committed to calls. The ICMA benchmark the Sheriff's Office used calls under 50% cushioned, 50–60% properly staffed, and anything sustained above 60% understaffed.",
+        "source": {
+          "meeting": 743,
+          "date": "2026-04-14",
+          "speaker": "Chief Deputy Erik Knutzen",
+          "quote": "Our patrol saturation level is about 65 to 70% average during most periods and higher during peak hours… Our deputies are spending most of their available time responding to calls, which limits their ability to do proactive work."
+        }
+      },
+      {
+        "stat": "25,699 calls, up 18.6%",
+        "text": "Calls for service in a year — about 70 a day, averaging 32 minutes each, roughly 38 hours a day of deputy time before backup, report writing or travel. The Sheriff's Office attributes the rise to population, not to a crime wave.",
+        "source": {
+          "meeting": 743,
+          "date": "2026-04-14",
+          "speaker": "Chief Deputy Erik Knutzen",
+          "quote": "Eagle Mountain City's safe… We are one of the safest cities in the state of Utah. You have citizen increase, which is creating more calls for service."
+        }
+      },
+      {
+        "stat": "7 asked for, 11–13 indicated",
+        "text": "The request that became this budget line was one sergeant and six deputies — about $1.44 million, taking the ratio to 0.55. The workload study the Sheriff's Office ran pointed to eleven to thirteen more sworn.",
+        "source": {
+          "meeting": 743,
+          "date": "2026-04-14",
+          "speaker": "Chief Deputy Erik Knutzen",
+          "quote": "Based on the workload study, an increase of 11 to 13 sworn total is what we're looking at, what we need. Right now, we're too lean. We're not failing. We're not collapsing… We're lean, and in this case, lean means fragile."
+        }
+      }
+    ],
+    "closer": {
+      "text": "Growth does not solve this on its own, because new households are added at the old rate. That is the sentence the council kept returning to, and it is the part of the argument residents most often reject.",
+      "source": {
+        "meeting": 747,
+        "date": "2026-08-06",
+        "speaker": "Councilmember Craig Whiting",
+        "quote": "It's the additional residents that are coming in paying 2010 taxes that we cannot sustain… Revenues have increased because we have a larger tax base, but expenses have increased much faster. So when people say the growth should pay for it, the growth is the issue because we are growing under a 2010 tax rate."
+      }
+    }
+  },
+  "displacement": {
+    "heading": "“100% for public safety” — what it meant, and why it was heard as a lie",
+    "lede": "This is the charge at the centre of the referendum, and it deserves setting out precisely rather than defending or dismissing. The notice said the money was for public safety. The noticed increase was $6.74 million. The Sheriff's contract was going up about $1.5 million. Residents did that subtraction, found roughly $5.2 million unaccounted for, and concluded they had been misled.",
+    "steps": [
+      {
+        "label": "What the statutory schedule actually says",
+        "text": "The Truth-in-Taxation impact schedule — the legally required text, read aloud at every budget meeting from May onward and again at the hearing — names the Sheriff's contract as the affected budget and puts it at $9,798,139. That is the same figure, to the dollar, as the proposed property tax revenue. The whole design was that the levy exactly covers the contract and nothing else, which is why the claim is arithmetically true in its own terms: there is no second dollar to allocate.",
+        "source": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Mayor Jared Gray, reading the schedule",
+          "quote": "The affected budget, sheriff's contract. The proposed budget is $9,798,139. The budget with no tax change is $8,290,000, and the budget change would be $1,507,939."
+        }
+      },
+      {
+        "label": "What actually changes",
+        "text": "Property tax is not paying for new deputies so much as taking over the whole contract from sales tax, which had been quietly subsidising it. The money that moves is the freed sales tax — and that is what residents were never told, because it was not in the application filed with the state.",
+        "source": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Councilmember Craig Whiting",
+          "quote": "When we say that 100% of the property tax increase goes to public safety, that is the correct answer. What we need to do is help you understand — and this means we didn't communicate this well enough — how public safety has been paid… we're essentially robbing from sales tax to help subsidize our police."
+        }
+      },
+      {
+        "label": "Why the gap was never explained up front",
+        "text": "The council's own account of the omission. The Truth-in-Taxation application filed with the state was built around covering the Sheriff's contract entirely with property tax; the councilmember who spoke to it said the freed-up money was treated as a separate discussion out of concern about departing from that application.",
+        "source": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Councilmember Zac Huish",
+          "quote": "When the application was submitted for the policy to cover 100% of the sheriff's contract 100% with property taxes — that was the application. And in the state of Utah, to vary from that application would completely disrupt this entire process… It's obvious that you take $6.7 million minus roughly $1.5 million and there's a gap there… That's not part of the initial application. That's a separate discussion."
+        }
+      },
+      {
+        "label": "The correction, a month before the hearing",
+        "text": "A councilmember volunteered the clarification at the July 7 meeting, in response to a resident who had asked for a line-by-line accounting. The tax was not on that night's agenda.",
+        "source": {
+          "meeting": 714,
+          "date": "2026-07-07",
+          "speaker": "Councilmember Rich Wood",
+          "quote": "There's not extra money when we do the tax for the property. It's all going to pay for our entire contract, not new — our entire contract with the Sheriff's Department."
+        }
+      },
+      {
+        "label": "Where the criticism lands anyway",
+        "text": "The sharpest version of the objection came from a resident who had spent an hour with the mayor, the city manager, a councilmember and finance staff the day before the hearing — and still concluded that funding the contract entirely from property tax is a policy choice, not a restoration of how things used to work.",
+        "source": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Alex Washburn, resident",
+          "quote": "When I reviewed the 2010 budget, the last time there's a tax increase, I found that property tax revenue was approximately $974,000 while police expenditures were approximately $2 million. So… property taxes did not fully fund law enforcement even then. That tells me that fully funding the sheriff's contract through property taxes isn't simply restoring the way things have always been, it's a policy decision."
+        }
+      }
+    ],
+    "freed": {
+      "heading": "What the freed sales tax was earmarked for",
+      "note": "Named on the record on May 26 and again on August 6 — ten weeks and then the night of the hearing. Not a published plan, but not a secret either.",
+      "items": [
+        {
+          "figure": "$525,000",
+          "text": "To bring city staff to 90% of the market median. Not above average — to the middle."
+        },
+        {
+          "figure": "28 positions",
+          "text": "About $2.6 million all in, of which $1.3 million hits the general fund; the rest is covered by permit, development and utility fees. The heaviest concentration is parks, open space and streets crews."
+        },
+        {
+          "figure": "Four schools",
+          "text": "Concrete speed tables at Silver Lake, Brookhaven, Mountain Trails and Desert Sky, plus a commissioned study of the city's other problem streets. The city engineer put a concrete retrofit at $28,000–$30,000 apiece on May 26; a councilmember quoted $70,000–$80,000 at the hearing."
+        },
+        {
+          "figure": "$419 million",
+          "text": "Eagle Mountain's own share of its master transportation plan by 2035, which the council says can only be met by bonding or leverage."
+        },
+        {
+          "figure": "10 for 68",
+          "text": "Full-time parks employees for sixty-eight parks, by one councilmember's count on the night."
+        },
+        {
+          "figure": "At capacity",
+          "text": "The sewer treatment plant, which takes three-plus years to expand; and well capacity so thin the city asked every school, church, HOA and business not to water over the Fourth of July week."
+        }
+      ],
+      "source": {
+        "meeting": 748,
+        "date": "2026-05-26",
+        "speaker": "Councilmember Melissa Clark, in the budget work session",
+        "quote": "It's really important for our residents to hear that when we talk about a tax increase, it's not for the things that are on this paper, but without a tax increase, we're going to have to continue subsidizing the public safety part, the cost of our budget, with other areas of revenue."
+      }
+    }
+  },
+  "ledger": {
+    "heading": "Transparency and communication are not the same charge",
+    "lede": "Almost every speaker at the hearing used the word transparency. Reading the record, two different complaints are tangled inside it: whether the city did this in the open, and whether residents found out. On the first, the paper trail is unusually complete. On the second, the council does not contest the criticism — it made the criticism itself, from the dais, before anyone voted.",
+    "open": {
+      "heading": "What was done in public, and when",
+      "rows": [
+        {
+          "date": "2026-04-14",
+          "meeting": 743,
+          "text": "Sheriff's Office presents the staffing case in an open budget work session — the ratio, the workload study, the cost per deputy, the ask. Council openly discusses that a tax increase may be the mechanism.",
+          "weight": "strong"
+        },
+        {
+          "date": "2026-05-05",
+          "meeting": 712,
+          "text": "Three resolutions in one night: tentative budget accepted, Budget Officer's statement of a proposed increase acknowledged, intent to exceed the certified rate declared. Both August hearings are set here — the Truth-in-Taxation hearing and the budget adoption hearing — three months ahead.",
+          "weight": "strong"
+        },
+        {
+          "date": "2026-05-26",
+          "meeting": 748,
+          "text": "Impact schedule read a second time. Council then works through the staffing list position by position in open session, states the $2.6M / $1.3M split aloud, and says explicitly that the freed money is what pays for those positions.",
+          "weight": "strong"
+        },
+        {
+          "date": "2026-06-02",
+          "meeting": 713,
+          "text": "Schedule read a third time under a heading marked no action taken.",
+          "weight": "normal"
+        },
+        {
+          "date": "2026-06-16",
+          "meeting": 726,
+          "text": "Schedule read a fourth time, then a public hearing. A former councilmember asks how the city got here and is answered at length. Another resident asks for a written policy requiring regular review. A third is talked through the difference between the city's share and a whole tax bill. The vote is 4–1.",
+          "weight": "strong"
+        },
+        {
+          "date": "2026-07-07",
+          "meeting": 714,
+          "text": "Not on the agenda; taken up anyway for roughly half an hour after two residents raise it. A councilmember volunteers the correction about there being no extra money, and apologises for the explanation.",
+          "weight": "normal"
+        },
+        {
+          "date": "2026-08-06",
+          "meeting": 747,
+          "text": "The statutory hearing. Roughly sixty speakers over three hours; the hearing closes at 9:00 PM and the council keeps going until 10:38, answering in the open and then cutting the rate.",
+          "weight": "strong"
+        }
+      ],
+      "always": [
+        {
+          "text": "The full line-item budget — this year's and every prior year's — has been on eaglemountain.gov throughout, with an interactive breakdown by department.",
+          "source": {
+            "meeting": 747,
+            "date": "2026-08-06",
+            "speaker": "From the dais",
+            "quote": "That document exists. And not only does that document exist right now for this year's budget, but it exists for all of the previous year's budgets, and they are all on our city website… We've done a crappy job of helping you know where it is, but it exists."
+          }
+        },
+        {
+          "text": "A resident who had attended nearly every council meeting for a year told the hearing that most of the questions being asked that night had already been answered in those meetings.",
+          "source": {
+            "meeting": 747,
+            "date": "2026-08-06",
+            "speaker": "Charlotte Dukos, resident",
+            "quote": "There's a lot of the questions that are being presented here tonight that have been answered, and I want to acknowledge that. The budget is online, line item, in a 200-page document. And so that is available. All of these projects, everything that we're talking about tonight has been talked about in city meetings."
+          }
+        },
+        {
+          "text": "Outside the meetings: a neighbourhood listening tour, farmers-market appearances, a councilmember-funded podcast, a published personal phone number, and an hour-long working session with the resident who had filed records requests, held the day before the hearing with the mayor, city manager, a councilmember and finance staff."
+        }
+      ]
+    },
+    "admitted": {
+      "heading": "What the council conceded, on the record, before the vote",
+      "note": "Five councilmembers spoke in turn after the hearing closed. Four of the five led with the communication failure.",
+      "quotes": [
+        {
+          "speaker": "Councilmember Zac Huish",
+          "quote": "Transparency — we failed you. We absolutely failed you."
+        },
+        {
+          "speaker": "Councilmember Rich Wood",
+          "quote": "I think we did a horrible job of communication. I think that's been highlighted by every person here. And so for that, I want to apologize… I will own that. I should have communicated."
+        },
+        {
+          "speaker": "Councilmember Craig Whiting",
+          "quote": "This means we didn't communicate this well enough… I think people would be like, oh, wait a second, I can get behind freeing up some sales tax dollars to go toward making sure our streets are safer. We just didn't communicate that."
+        },
+        {
+          "speaker": "Councilmember Melissa Clark",
+          "quote": "We do need to do a better job of communicating. Mayor Gray and this council have tried to come to your neighborhoods and do a listening tour. We've tried to go to farmers markets, but it's still not enough."
+        },
+        {
+          "speaker": "Councilmember Rich Wood",
+          "quote": "One of the things that I feel like that we could have done with this — I believe we should have had our current tax rate budget and a separate budget that is based on what the increase would be so that we could actually have the very conversation that you guys are asking about."
+        }
+      ]
+    },
+    "distinction": "Every decision was taken in a recorded meeting on a published agenda, with the budget published the whole time and the schedule read aloud at every budget meeting from May onward. That is the ordinary meaning of transparent. What the city did not do was translate any of it — the notice said public safety, said nothing about displaced sales tax, and left residents to find the $5 million gap themselves and draw the obvious conclusion. Those are different failures with different remedies, and the second one is real."
+  },
+  "response": {
+    "heading": "What the hearing actually changed",
+    "lede": "The council did not gavel through the noticed rate. It cut it in the room, after the comment period, and committed to two structural changes it had been asked for from the floor.",
+    "changes": [
+      {
+        "from": "0.001700",
+        "to": "0.001500",
+        "label": "The rate",
+        "text": "Noticed at 0.001700. Adopted at 0.001500 — the same rate Saratoga Springs lands on after its own increase, and described from the dais as around the 65th to 70th percentile for Utah County rather than the middle of it."
+      },
+      {
+        "from": "220.88%",
+        "to": "183.02%",
+        "label": "The percentage",
+        "text": "Measured the same way, against the 0.000530 certified rate. The 220% on the notices, the signs and the petitions is not the rate in force."
+      },
+      {
+        "from": "$6,742,938",
+        "to": "$5,591,594",
+        "label": "The money",
+        "text": "$1,151,344 taken off the increase between the close of the hearing and the motion."
+      },
+      {
+        "from": "$314.03",
+        "to": "about $260",
+        "label": "The average home",
+        "text": "On the notice's own $488,000 primary residence. Around the table it was described as about $250 a year, or roughly 70 cents a day."
+      }
+    ],
+    "commitments": [
+      {
+        "text": "An ordinance requiring every future council to review the rate annually — so that a fifteen-year gap cannot recur, and so the rate can be brought back down when data-centre revenue arrives. Asked for from the floor by a resident on June 16 and again on August 6.",
+        "source": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Councilmember Zac Huish",
+          "quote": "I would propose that we have a code that requires future city councils to come back every single year, review… If QTS comes online and some of these data centers are — our property taxes exceed the sheriff's contract, I would like to see our rate go down."
+        }
+      },
+      {
+        "text": "A resolution creating a segregated public safety fund, so the money can be shown going where the notice said it would rather than disappearing into the general fund. Confirmed as legally available by the city attorney during the meeting.",
+        "source": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Councilmember Rich Wood",
+          "quote": "I also feel pretty strongly about making sure that we, if we're saying that we're going to put it to public safety, that there should be something that demonstrates to the citizens that that's exactly where that's going."
+        }
+      }
+    ],
+    "vote": "Passed 5–0 on a roll call — including Councilmember Huish, who voted against the proposed rate on June 16 and told the hearing he did not support 0.001700 either.",
+    "shortfall": "One consequence the council did not dwell on: at 0.001500 the levy raises about $8.6 million against a $9.8 million Sheriff's contract. The rate that passed does not, in fact, fully fund public safety from property tax — it leaves roughly $1.15 million still coming out of sales tax. The stated policy was cut back along with the rate, and less sales tax is freed than the May and June discussions assumed.",
+    "closer": {
+      "speaker": "Mayor Jared Gray",
+      "quote": "Though I am not excited about going to the 0.15, because I feel like that is, if we felt like that's what it was, we should have started with that, frankly. I heard what you said too, and I felt what each one of you said about how it's impacting your homes. So maybe that's the direction we need to go for this year."
+    }
+  },
+  "referendum": {
+    "heading": "If a referendum happens",
+    "lede": "A referendum against this rate is legally available — Utah Code § 20A-7-613 exists for exactly this situation, and a Utah city property tax referendum ran as recently as last autumn. What follows is the sequence, then what it would cost the city, then what happened the last time someone tried it. None of it is an argument for or against signing; it is what the statute and the precedent say.",
+    "steps": [
+      {
+        "label": "File the application",
+        "text": "Five sponsors, notarised, with a copy of the resolution attached. Due no later than the first business day at least five days after the law passed (§ 20A-7-601(6)). The council passed this on Thursday, August 6, 2026, which reads as Tuesday, August 11 — the city recorder is the authority on that date, not this page."
+      },
+      {
+        "label": "The city writes the impact statement",
+        "text": "Within three business days the recorder hands the application to the city's budget officer, who must produce — with legal counsel — an unbiased fiscal and legal impact statement estimating what repealing the rate would do (§ 20A-7-602.5). This is a legal obligation on city staff, on a short clock, and it is the first real cost."
+      },
+      {
+        "label": "Gather signatures — against two thresholds",
+        "text": "For a second-class city it is 8.25% of active voters citywide, and 8.25% within at least 75% of the city's voter participation areas. Both must be met. The second one is the one that decides these, and almost nobody organising a petition budgets for it."
+      },
+      {
+        "label": "Beat a 30- or 40-day clock",
+        "text": "Packets go to the county clerk by 5 p.m. on the earlier of 30 calendar days after the first person signs that packet, or 40 calendar days after the local clerk numbers the packets (§ 20A-7-613(3)). Whichever comes first — so a packet started early expires early."
+      },
+      {
+        "label": "The county verifies",
+        "text": "The county clerk has 10 business days to check the signatures, then the local clerk has two business days to act on the result and the city attorney two more to write the ballot title (§ 20A-7-613(4)–(6))."
+      },
+      {
+        "label": "If it qualifies, this year's rate reverts",
+        "text": "The certified tax rate for the fiscal year in which the petition was filed becomes the city's most recent certified rate (§ 20A-7-613(10)(a)(i)). FY2026–27 would be collected at the old rate — before anybody votes. This is the provision that actually matters, and it favours the sponsors."
+      },
+      {
+        "label": "Then the vote, on November 3, 2026",
+        "text": "The next regular general election, unless a special election is called (§ 20A-7-613(7)). If the timing runs past the ballot printing deadline, the question is printed anyway and simply not counted if it never qualifies (§ 20A-7-613(13))."
+      },
+      {
+        "label": "And the outcome is asymmetric",
+        "text": "A majority voting against the rate kills the increase. Anything else and the proposed increased revenues set the certified rate for the following fiscal year — with § 20A-7-613(10)(c) letting the city skip re-running the Truth-in-Taxation notice and hearing to get there. Losing delays the increase by a year. Only winning stops it."
+      }
+    ],
+    "cost": {
+      "heading": "What it would cost Eagle Mountain",
+      "lede": "Two costs, and they are nothing like the same size. The one people talk about is the county reimbursement. The one that would actually reshape the year is the suspended levy.",
+      "items": [
+        {
+          "figure": "≈ $5.59M",
+          "label": "A year of the levy, suspended",
+          "text": "If the petition qualifies, FY2026–27 is collected at the old certified rate whatever the voters later decide. That is the whole adopted increase, gone for a year — and the city cannot re-notice its way around it mid-year. Every figure below is downstream of this one."
+        },
+        {
+          "figure": "Not published",
+          "label": "The county reimbursement",
+          "text": "§ 20A-7-613(12) makes the city repay Utah County the costs it would not have incurred but for the referendum — signature verification, ballot preparation, printing. Neither the city nor the county has published a figure, and the size depends on whether the question rides the already-scheduled November 3 general election or triggers a special one. It is a real bill, and next to the suspended levy it is a rounding error. This page will not invent a number for it."
+        },
+        {
+          "figure": "28 positions",
+          "label": "The hiring, first",
+          "text": "The council was told plainly in May that every position in the tentative budget depends on this revenue — not because the tax pays their salaries, but because without it the sales tax stays pinned under the Sheriff's contract and the general fund has nothing left.",
+          "source": {
+            "meeting": 748,
+            "date": "2026-05-26",
+            "speaker": "Councilmember Brett Wright",
+            "quote": "The P1s and the P2s are contingent upon it. They're going to come out of the general fund, and if there is no tax increase, there's not resources in the general fund to fund any of the P1s or P2s."
+          }
+        },
+        {
+          "figure": "Streets and school zones",
+          "label": "Then the safety spending",
+          "text": "The speed tables, the crossings and the street-safety study were the first things named as freed-up money, which makes them the first things un-freed.",
+          "source": {
+            "meeting": 747,
+            "date": "2026-08-06",
+            "speaker": "Councilmember Craig Whiting",
+            "quote": "If this tax — this doesn't go through, what now happens? Well, the sales tax will have to go back to support our public safety, and it gets diverted from being able to put speed tables and other things like that in our school zones."
+          }
+        },
+        {
+          "figure": "3× later",
+          "label": "And deferred maintenance compounds",
+          "text": "The argument the council made for not waiting another year, in one line.",
+          "source": {
+            "meeting": 747,
+            "date": "2026-08-06",
+            "speaker": "Councilmember Rich Wood",
+            "quote": "If we let every one of our parks die, guys, it's going to be three times the amount to fix them."
+          }
+        }
+      ],
+      "note": "One thing a referendum would not do: reopen the Sheriff's contract. That is a signed agreement with Utah County, and it is the line the schedule names. If the revenue goes, the contract does not — it goes back to being paid out of sales tax, which is the arrangement the whole increase was meant to end."
+    },
+    "precedent": {
+      "heading": "The last Utah city to try this",
+      "text": "Ivins City, Washington County, autumn 2025. The council raised the rate in August for about $860,000 — a 33.76% increase, roughly $121 a year on a $743,000 home. Residents ran a referendum and got the raw signature count. On October 16 the city clerk declared it insufficient anyway: the threshold was met in only two of the four voter participation areas, and the law requires three. The question had already been printed on the ballots, so Washington County printed it and did not count it. The tax increase took effect.",
+      "note": "Ivins is a city of about 9,000, divided into four voter participation areas, so it needed three. Eagle Mountain is roughly nine times larger; how many areas it is divided into, and what 75% of them works out to, is a question for the city recorder rather than for this page. The point that carries over is the shape of the test: a petition has to be built around geographic spread, not around a headline signature count. That is what sank the last one."
+    }
+  },
+  "counter": {
+    "heading": "Where the criticism lands",
+    "lede": "A page that only made the city's case would not be worth reading. These are the objections the record does not answer, or answers badly.",
+    "items": [
+      {
+        "text": "The public messaging overreached where the statutory schedule did not. The schedule says the revenue funds public safety operations and supports the Sheriff's Office including added deputies — accurate, and narrower than it sounds. What residents quoted back to the council was blunter.",
+        "source": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Duncan Searcy, resident, quoting the city",
+          "quote": "Eagle Mountain City is proposing a property tax increase with every dollar going straight to public safety, period. So that's a lie, and we all know that now."
+        }
+      },
+      {
+        "text": "The council discussed a possible state cap on city tax increases as a reason to act now. A cap bill was floated and failed, and the underlying revenue threat — a proposal to socialise the municipal energy tax that data centres generate — is real. But “raise it before the state stops us” reads badly however true the pressure is, and residents who heard it said so.",
+        "source": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Chris Waldron, resident",
+          "quote": "I listened to the Pitch Book podcast, and I was appalled at a comment that was made about we're doing this tax increase because the state is going to could potentially cap the city's ability to increase it… I just don't think that's ethical."
+        }
+      },
+      {
+        "text": "No scenario analysis was ever published. Nobody was shown what a 10% or 20% smaller increase would cost the city in specific delayed projects, which is exactly the comparison that would let a resident argue about priorities rather than react to a percentage.",
+        "source": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Alex Washburn, resident",
+          "quote": "I asked what I thought was a simple question. If this proposed tax increase were reduced, or didn't pass at all, what projects or priorities would actually be delayed or eliminated? The answer was that those decisions haven't been made yet… I respectfully believe that the analysis should have come first."
+        }
+      },
+      {
+        "text": "The schedule the city noticed moved three times before it settled — 245% on May 26, 218% read on June 16, 220.88% on the notice — and the certified rate underneath it has never been published by the city as a rate. That is mostly the county's calendar rather than concealment, but it made the number look unstable to anyone watching.",
+        "source": {
+          "meeting": 726,
+          "date": "2026-06-16",
+          "speaker": "Finance staff, on why the schedule was still provisional",
+          "quote": "This was as of June 11th, because the county will give us the actual number on the 22nd."
+        }
+      },
+      {
+        "text": "Records access is disputed. A resident told the hearing that a records request about the capital projects behind the increase was refused and then quoted at a fee the requester could not pay. The requester himself described filing requests and then being given an hour of the mayor's, the city manager's and the finance team's time the day before the hearing, which he said changed his understanding. Both accounts are in the record; neither is resolved in it.",
+        "source": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Joy Rasmussen, resident",
+          "quote": "Alex Washburn has done a GRAMA request and asked you guys for information about why you're doing this and where you're spending the money and what capital projects this is going to go towards… And his request was denied, and you're going to charge him a huge fee he can't afford."
+        }
+      },
+      {
+        "text": "Data-centre incentives are the grievance underneath the grievance, and the city's answer is partly good and partly beside the point. State law and the redevelopment agreements both prevent taxing data centres at a different rate from houses, so the city genuinely cannot single them out. But the incentives that were granted were granted, and the revenue they were meant to bring has not arrived yet.",
+        "source": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Councilmember Craig Whiting",
+          "quote": "I would love if we could tax the data centers separately. The state of Utah doesn't allow it… They are laughing all the way to the bank right now that they are only paying 2010 taxes, and the only way we can make them pay more is to increase the tax rate."
+        }
+      }
+    ],
+    "coming": {
+      "heading": "The revenue everyone is waiting for",
+      "text": "Presented at the hearing as figures from QTS, for buildings under construction and not yet on the tax rolls. Estimates, given as such — and the reason several councilmembers said they expect to revisit the rate downward rather than upward.",
+      "rows": [
+        {
+          "who": "All local jurisdictions",
+          "amount": "over $19M a year"
+        },
+        {
+          "who": "Lake Mountain School District",
+          "amount": "$10.4M a year"
+        },
+        {
+          "who": "Unified Fire",
+          "amount": "$3.2M a year"
+        },
+        {
+          "who": "Eagle Mountain City",
+          "amount": "$2.7M a year at the current rate"
+        },
+        {
+          "who": "Utah County",
+          "amount": "$1.7M a year"
+        }
+      ],
+      "note": "The city also said QTS declined incentives on its next two buildings unprompted, and agreed to pay the full ~$5 million cost of widening Pony Express with two new signals after a single phone call from the mayor.",
+      "source": {
+        "meeting": 747,
+        "date": "2026-08-06",
+        "speaker": "Mayor Jared Gray",
+        "quote": "They came back on these next 2 — we didn't even ask this — and said, hey, by the way, you guys have been so great to us, we don't want any incentives on these next builds. We're going to be full taxpayers starting day one."
+      }
+    }
+  },
+  "sources_note": "Every quotation on this page is transcribed from the city's own recording of the meeting named beside it. Transcripts for all of these meetings are on this site; the August 6 minutes had not been published when this was written, so the figures from that night come from the recording. Statutory citations are to Utah Code Title 20A, Chapter 7, Part 6 (local referenda) as amended through the 2026 General Session.",
+  "strain": {
+    "heading": "Most of the complaints at the hearing were descriptions of the problem",
+    "lede": "This is the strangest thing in the transcript, and it is worth reading the room for it. Speaker after speaker opposed the increase and then, in the same three minutes, described dying parks, broken roads, uncut weeds, unanswered calls and a city that looks worse every year. Those are not separate grievances from the budget argument. They are what a city looks like when it runs on a fifteen-year-old rate — and they are the specific things the freed money was earmarked to fix.",
+    "pairs": [
+      {
+        "said": "Look at our parks, look at our walking paths. Even behind my house, which is a new build for the most part, it's all gone to crap. It looks unpresentable, ugly on the eye — and I don't think that a 220% increase is going to help with that.",
+        "who": "Tyler Duclos, resident, opposing",
+        "meeting": 747,
+        "date": "2026-08-06",
+        "because": "Ten full-time parks employees for sixty-eight parks, by a councilmember's count on the night. The one park singled out as looking good that week was the one the city had just taken back in-house from a contractor.",
+        "bsrc": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Councilmember Zac Huish",
+          "quote": "He said, you know, we took this park back in-house, meaning our employees are taking care of this park. We have a lot of contract work that happens throughout the city in our parks, and they don't look great… The park by my house is dying. There's weeds everywhere, and you can drive around Eagle Mountain and see those conditions."
+        }
+      },
+      {
+        "said": "Eagle Mountain city center and communities look more run-down every day… The traffic has increased here significantly. The roads are horrible.",
+        "who": "Betty Peralta, resident, opposing",
+        "meeting": 747,
+        "date": "2026-08-06",
+        "because": "The city manager's account of why. Eagle Mountain runs about a third of the staff a city its size would normally carry, and has done for years.",
+        "bsrc": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "City Manager Ben Reeves",
+          "quote": "Our city staff is about the third of the size of city staff of equivalent population, and they are working their hearts out… I truly feel like for many, many years that they've been working with basically an arm tied behind their back. We haven't invested in them."
+        }
+      },
+      {
+        "said": "How many times have I been up here and asked you guys to mow along the roads, to fix this, to fix that?… I mean, it's like with the voles at the park. Max, I think, got hurt because his leg went into one of those holes. I've asked it to be addressed. Never, never done.",
+        "who": "Jeff Ruth, resident, supporting",
+        "meeting": 747,
+        "date": "2026-08-06",
+        "because": "Ruth is one of the few speakers who joined the two halves out loud: he backed the increase precisely because he had spent years asking for the mowing and the repairs and being told there was no one to do them. A resident who had attended nearly every council meeting for a year made the same connection.",
+        "bsrc": {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Charlotte Dukos, resident",
+          "quote": "We have projects that we have funded but don't have personnel to complete, and so they stay undone. We have complaints all over the city of things that are not maintained, things that have been promised but have not been done, and we don't have the personnel to complete it because we don't have the money to pay them."
+        }
+      }
+    ],
+    "staffing": {
+      "heading": "What understaffed actually means here",
+      "items": [
+        {
+          "figure": "≈ ⅓",
+          "text": "The city's staffing level against comparable Utah cities, by the city manager's own estimate."
+        },
+        {
+          "figure": "10 / 68",
+          "text": "Full-time parks employees against parks."
+        },
+        {
+          "figure": "$525,000",
+          "text": "What it costs to lift city wages to 90% of the market median — not above it, to just under the middle of it."
+        },
+        {
+          "figure": "236 staff, 115 hires",
+          "text": "Total employees against the number hired in twelve months. HR runs that on one part-time payroll person; an IRS audit had already flagged items in payroll."
+        },
+        {
+          "figure": "~$150,000",
+          "text": "Spent on outside counsel in a year, because the one city attorney has no bandwidth — the weekly development review meeting he is required by code to attend is among the things that go undone."
+        },
+        {
+          "figure": "8–9 short",
+          "text": "Library staffing against state standards, before counting the square footage the standards also call for."
+        }
+      ],
+      "quotes": [
+        {
+          "speaker": "Melissa Yates, the city's purchasing agent, in an open budget session",
+          "meeting": 748,
+          "date": "2026-05-26",
+          "quote": "Every purchase over $75,000 comes through me. Every contract that we do comes through me… I'm very busy. I work overtime every week. And I'm teary because I care about the city and I care about my departments… We are growing exponentially. I cannot keep up. I need help. That's just the end point."
+        },
+        {
+          "speaker": "City Manager Ben Reeves, relaying the finance director's standing verdict",
+          "meeting": 743,
+          "date": "2026-04-14",
+          "quote": "We don't have an expense problem, we have a revenue problem. We are not keeping up. And so for years we have run lean. There's really not the area to cut in other areas to make this happen."
+        },
+        {
+          "speaker": "The city's finance director, on what departments even ask for",
+          "meeting": 748,
+          "date": "2026-05-26",
+          "quote": "If you want a list of all the requests that everybody needs, we don't submit though. They don't even ask for it in the department, in our budget, because they know it's not even an option. These aren't what it takes us to get to what we would consider to be an optimal level. What we're getting is this is the minimum we feel like we can do to try to keep pulsing forward and not necessarily be going backwards."
+        }
+      ]
+    },
+    "closer": "None of this obliges anyone to support the increase. Plenty of speakers argued the money should come from data centres, from impact fees, from cuts elsewhere, or more slowly — all reasonable positions. But \"the city looks terrible, so don't give them more money\" is the one argument the record does not support, because the looking-terrible and the not-having-money are the same fact seen from two ends."
+  }
+}
