@@ -1024,7 +1024,7 @@
             <ul class="afreed">
               ${(d.freed.items || [])
                 .map(
-                  (it) => `<li><b class="mono">${CT.escapeHtml(it.figure)}</b><span>${CT.escapeHtml(it.text)}</span></li>`
+                  (it) => `<li><b>${CT.escapeHtml(it.figure)}</b><span>${CT.escapeHtml(it.text)}</span></li>`
                 )
                 .join("")}
             </ul>
