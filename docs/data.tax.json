@@ -29,7 +29,7 @@
       "label": "Adopted 2026–27",
       "note": "Public safety · +183.02% over the certified rate",
       "pct": 183.02,
-      "pct_basis": "Increase over the 2026 certified rate of 0.000530 — the same basis the notice used, and the figure stated in the motion. It measures the rate, not collections, and not anyone's total bill.",
+      "pct_basis": "The figure stated in the motion: the increase in budgeted revenue over the prior year, exclusive of new growth — $5,591,594 against the $3,055,201 the certified rate would raise. It is also, to the second decimal, what 0.001500 is over the 0.000530 certified rate, so this one percentage comes out the same whether it is read as a ratio of revenue or a ratio of rates. Either way it is not a percentage of anyone's total bill.",
       "revenue": 8646795,
       "revenue_increase": 5591594,
       "meeting_id": 747,
@@ -49,9 +49,10 @@
       "rate": 0.0017,
       "rate_display": "0.001700",
       "label": "Noticed 2026–27, not adopted",
-      "note": "Superseded by the adopted 0.001500 · was +220.9% over the certified rate",
-      "pct": 220.9,
-      "pct_basis": "Increase over the 2026 certified rate of 0.000530. This is the figure in the city's Truth-in-Taxation notice, and it measures the rate, not collections.",
+      "note": "Superseded by the adopted 0.001500 · was noticed at +220.88%",
+      "pct": 220.88,
+      "pct_rate_basis": 220.75,
+      "pct_basis": "The figure printed on the city's Truth-in-Taxation notice, in the notice's own words: 220.88% above last year's property tax budgeted revenue excluding eligible new growth. It is a ratio of revenue, not of rates — 0.001700 against the 0.000530 certified rate is +220.75%, which is the figure the Utah Taxpayers Association's statewide list carries for Eagle Mountain. The two differ because 'excluding eligible new growth' takes about $2,400 out of the base; see `rates.certified_2026.derivation`.",
       "revenue": 9798139,
       "derivation": "Confirmed twice over by the schedule read on June 16: a $500,000 primary residence at $467.43 in total city tax, and an average business at $4,341.62 on a $2,554,303 market value, each independently imply a rate of 0.0016997 — 0.001700 at the six decimal places the city publishes. It is also printed outright, as “Eagle Mountain City's 2026 Proposed Property Tax Rate” on the impact schedule the city posted two days later. It is not the rate in force: on August 6 the council adopted 0.001500 instead."
     },
@@ -74,7 +75,7 @@
     "meeting_id": 726,
     "date": "2026-06-16",
     "pct": 218,
-    "note": "On June 16 the mayor read the increase as 218%. That is 0.001700 measured against 0.000534, the rate then in effect — the county had not yet returned the recalculated certified rate, which he noted was due on June 22. Against that recalculated 0.000530 the same proposal is the 220.9% now noticed.",
+    "note": "On June 16 the mayor read the increase as 218%. That is 0.001700 measured against 0.000534, the rate then in effect — the county had not yet returned the recalculated certified rate, which he noted was due on June 22. Against that recalculated 0.000530 the same proposal is +220.75%, and the notice went out at the 220.88% its revenue lines give.",
     "examples_note": "The worked examples the mayor read aloud on June 16, transcribed from the recording. They are cents off what 0.001700 gives exactly, because the city computed them from the unrounded rate before rounding it to six decimals for publication. The totals survived the recalculated certified rate; the increases did not. The printed schedule keeps the same $4,341.62 on the average business but puts the rise at $2,987.84 rather than the $2,977.62 read here — the $10.22 is the certified rate moving from 0.000534 to 0.000530 underneath it.",
     "home": {
       "market_value": 500000,
@@ -108,7 +109,7 @@
         "publisher": "Eagle Mountain City",
         "url": "https://eaglemountain.gov/wp-content/uploads/2026/06/Proposed-Property-Tax-Impact-Schedule-June-2026.pdf",
         "dated": "June 18, 2026",
-        "note": "The schedule that was read aloud, in print: rate with no increase 0.000530, proposed rate 0.001700, $9,798,139 against the $3,055,201 no increase would raise, and the affected budget named as the Sheriff contract — $9,798,139 proposed against $8,290,000 with no tax change."
+        "note": "The schedule that was read aloud, in print: rate with no increase 0.000530, proposed rate 0.001700, $9,798,139 against the $3,055,201 no increase would raise, and the affected budget named as the Sheriff contract — $9,798,139 proposed against $8,290,000 with no tax change. The schedule's own Sheriff line does not quite add: $8,290,000 plus the $1,507,939 change it prints is $9,797,939, $200 short of the $9,798,139 beside it. Every figure on this page is the schedule's as published, that $200 included."
       },
       {
         "title": "Utah County Notice of Proposed Tax Increase",

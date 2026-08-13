@@ -367,7 +367,7 @@
 
       // The one thing a reader has to be told about the percent field, because
       // the number most of them arrived with — the 183.02% in the motion, or
-      // the 220.9% on the notice before it — is measured against a different
+      // the 220.88% on the notice before it — is measured against a different
       // rate than the one they pay.
       function basisNote(tax) {
         const cur = tax.rates.current;
@@ -377,9 +377,18 @@
         const base = `Percentages here are measured against the
           ${cur.rate.toFixed(6)} you pay today, the way the increase was read on June 16.`;
         if (!cert) return base;
-        return `${base} The ${isAdopted(tax) ? "adopted" : "noticed"} +${nw.pct}% is measured
-          against the ${CT.escapeHtml(cert.rate_display)} certified rate instead — the same rate is
-          +${overToday}% against today's.`;
+        // A rate whose headline percentage is a ratio of revenue rather than of
+        // rates carries `pct_rate_basis`; saying it "is measured against the
+        // certified rate" would be wrong for those, and the noticed 220.88% is
+        // one of them.
+        return nw.pct_rate_basis
+          ? `${base} The ${isAdopted(tax) ? "adopted" : "noticed"} +${nw.pct}% is the notice's own
+             figure — a rise in revenue, not in the rate. The same rate is +${overToday}% against
+             today's, and +${nw.pct_rate_basis}% against the
+             ${CT.escapeHtml(cert.rate_display)} certified rate.`
+          : `${base} The ${isAdopted(tax) ? "adopted" : "noticed"} +${nw.pct}% is measured
+             against the ${CT.escapeHtml(cert.rate_display)} certified rate instead — the same rate is
+             +${overToday}% against today's.`;
       }
 
       // What a rate raises across the whole city. The city's own schedule gives
@@ -1414,15 +1423,16 @@
          two wrinkles that used to sit in this table: the mayor read the
          percentage as +218% on the night, which is 0.001700 against the
          0.000534 then in effect rather than the recalculated certified rate the
-         county returned on June 22; and the noticed 220.9% never quite fell out
-         of the arithmetic, because the city has never published the certified
-         rate as a rate. The adopted 183.02% does reproduce, to the second
-         decimal, so the asterisk under this table has less to explain than it
+         county returned on June 22; and the noticed 220.88% is a ratio of
+         revenue rather than of rates, so it never quite fell out of the rate
+         arithmetic — 0.001700 over the 0.000530 certified rate is +220.75%.
+         The adopted 183.02% is the one figure that comes out the same on either
+         basis, so the asterisk under this table has less to explain than it
          used to.
 
-         Note the percentage is a rate-to-rate figure either way. The schedule's
-         own revenue lines imply a different number — a change in collections —
-         which is why that row is not labelled as one.
+         Because of that, the noticed percentage below is labelled as the
+         notice's own figure rather than as an increase over the certified rate.
+         The adopted row is both, and says so.
       */
       function schedulePanel(tax) {
         const cur = tax.rates.current, prop = tax.rates.proposed;
@@ -1463,15 +1473,17 @@
               biz: cents(biz.proposed),
             };
 
-        // What the rounded certified rate actually gives, stated only where it
-        // differs from the percentage the row carries. Worked from the data, so
-        // it cannot drift if a rate is revised.
+        // What the certified rate actually gives as a ratio of rates, stated
+        // only where it differs from the percentage the row carries — which it
+        // does whenever that percentage is the notice's own revenue figure.
+        // Worked from the data, so it cannot drift if a rate is revised.
         const derived = (nw.rate / certified.rate - 1) * 100;
         const gapNote =
           Math.abs(derived - col.pct) >= 0.05
-            ? ` Worked from the rounded ${CT.escapeHtml(certified.rate_display)}, the same
-                comparison gives +${derived.toFixed(1)}% — the city has never published the certified
-                rate as a rate, and the tenth of a point is rounding inside it.`
+            ? ` The percentage on that row is the city's own, and it measures revenue: the rise in
+                budgeted collections over last year, excluding eligible new growth. Measured instead
+                as one rate against another, ${CT.escapeHtml(col.rate)} over the
+                ${CT.escapeHtml(certified.rate_display)} certified rate is +${derived.toFixed(2)}%.`
             : "";
         // Before the vote, the one figure in the table that was not as spoken.
         const asReadNote =
@@ -1505,7 +1517,9 @@
                <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a> was built on the
                ${CT.escapeHtml(prop.rate_display)} the council did not adopt:
                ${usd0(prop.revenue)} in revenue, +${usd0(tax.revenue_increase)} of it new,
-               +${prop.pct}% over the certified rate, ${usd(cents(home.proposed))} on the same
+               the +${prop.pct}% the notice states${
+                 prop.pct_rate_basis ? ` (+${prop.pct_rate_basis}% measured rate against rate)` : ""
+               }, ${usd(cents(home.proposed))} on the same
                ${usd0(home.market_value)} home and ${usd(cents(biz.proposed))} on the same business.
                Those are the figures on the mailed notice, and they are still what most of the signs
                say. On the night the percentage was read as +${tax.as_read.pct}% — the same
@@ -2480,8 +2494,10 @@
                    with its own hearing to come. `
                 : ""
             }Dashed line: the median rate if every one of them holds, ${rate6(med.value)}.
-            <span aria-hidden="true">†</span> Dedicated levy, not the general rate.
-            <span aria-hidden="true">‡</span> Approximate.${offCount ? " " + OFF_NOTE : ""}
+            ${/* Both marks are conditional: a footnote explaining a symbol that
+                 appears nowhere in the chart reads as a missing row. */ ""}
+            ${c.proposals.some((p) => p.levy) ? '<span aria-hidden="true">†</span> Dedicated levy, not the general rate.' : ""}
+            ${c.proposals.some((p) => p.rate_source === "approximate") ? '<span aria-hidden="true">‡</span> Approximate.' : ""}${offCount ? " " + OFF_NOTE : ""}
           </p>
           ${tableView(
             ["City", "Rate today", "New rate", "Increase", "Purpose"],

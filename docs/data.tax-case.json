@@ -5,7 +5,7 @@
   "sub": "The rate is one number. The case behind it, the objections to it, and the record of when each was made in public are what the argument is actually about.",
   "case": {
     "heading": "The mechanism nobody voted for",
-    "lede": "Utah sets a city's property tax by revenue, not by rate. As assessed values rise, the certified rate falls to hold collections roughly flat, so a household's city property tax bill barely moves for years while the cost of serving that household does not stop rising. Eagle Mountain went about fifteen years without touching the rate, and doubled in population in about six. Those two facts together are the whole of the city's case.",
+    "lede": "Utah sets a city's property tax by revenue, not by rate. As assessed values rise, the certified rate falls to hold collections roughly flat, so a household's city property tax bill barely moves for years while the cost of serving that household does not stop rising. Eagle Mountain went about fifteen years without touching the rate — the last increase was in 2010 — and roughly doubled in population in the eight years after that, from about 32,000 in 2017 to about 65,400 in 2025. Those two facts together are the whole of the city's case.",
     "points": [
       {
         "stat": "About $200 a year",
@@ -284,13 +284,13 @@
         "from": "0.001700",
         "to": "0.001500",
         "label": "The rate",
-        "text": "Noticed at 0.001700. Adopted at 0.001500 — the same rate Saratoga Springs lands on after its own increase, and described from the dais as around the 65th to 70th percentile for Utah County rather than the middle of it."
+        "text": "Noticed at 0.001700. Adopted at 0.001500 — a little above where Saratoga Springs' own noticed increase would land it, and described from the dais as around the 65th to 70th percentile for Utah County rather than the middle of it."
       },
       {
         "from": "220.88%",
         "to": "183.02%",
         "label": "The percentage",
-        "text": "Measured the same way, against the 0.000530 certified rate. The 220% on the notices, the signs and the petitions is not the rate in force."
+        "text": "Both are the same measure — the rise in budgeted property tax revenue over the prior year, excluding eligible new growth — so they are comparable to each other. The adopted 183.02% happens also to be exactly what 0.001500 is over the 0.000530 certified rate; the noticed 220.88% is not that figure, which is 220.75%. Either way, the 220% on the notices, the signs and the petitions is not the rate in force."
       },
       {
         "from": "$6,742,938",
@@ -346,11 +346,11 @@
       },
       {
         "label": "Gather signatures — against two thresholds",
-        "text": "For a second-class city it is 8.25% of active voters citywide, and 8.25% within at least 75% of the city's voter participation areas. Both must be met. The second one is the one that decides these, and almost nobody organising a petition budgets for it."
+        "text": "For a city of the second class it is 8.25% of active voters citywide, and 8.25% within at least 75% of the city's voter participation areas (§ 20A-7-601(2)(d)). Both must be met. The second one is the one that decides these, and almost nobody organising a petition budgets for it. Eagle Mountain has only just become a second-class city: the threshold in state law is 65,000 residents, the first statewide subcounty estimates put the city at 65,409 in 2025, and the class changes on the lieutenant governor's certificate rather than on the estimate itself (§ 10-2-301, § 67-1a-2(3)(d)). If that certificate has not issued, it is still a third-class city and the two thresholds are 10% rather than 8.25%. The city recorder is the authority on which applies, not this page."
       },
       {
         "label": "Beat a 30- or 40-day clock",
-        "text": "Packets go to the county clerk by 5 p.m. on the earlier of 30 calendar days after the first person signs that packet, or 40 calendar days after the local clerk numbers the packets (§ 20A-7-613(3)). Whichever comes first — so a packet started early expires early."
+        "text": "Packets go to the county clerk by 5 p.m. on the first business day at least 30 calendar days after the first person signs that packet, or the first business day at least 40 calendar days after the local clerk hands the sponsors the petition and signature sheets under § 20A-7-604(3) — whichever of the two falls first (§ 20A-7-613(3)). So a packet started early expires early."
       },
       {
         "label": "The county verifies",
@@ -421,8 +421,8 @@
     },
     "precedent": {
       "heading": "The last Utah city to try this",
-      "text": "Ivins City, Washington County, autumn 2025. The council raised the rate in August for about $860,000 — a 33.76% increase, roughly $121 a year on a $743,000 home. Residents ran a referendum and got the raw signature count. On October 16 the city clerk declared it insufficient anyway: the threshold was met in only two of the four voter participation areas, and the law requires three. The question had already been printed on the ballots, so Washington County printed it and did not count it. The tax increase took effect.",
-      "note": "Ivins is a city of about 9,000, divided into four voter participation areas, so it needed three. Eagle Mountain is roughly nine times larger; how many areas it is divided into, and what 75% of them works out to, is a question for the city recorder rather than for this page. The point that carries over is the shape of the test: a petition has to be built around geographic spread, not around a headline signature count. That is what sank the last one."
+      "text": "Ivins City, Washington County, autumn 2025. The council raised the rate in August for about $860,000 — a 33.76% increase, $121.37 a year on the $743,000 home its notice used. Residents ran a referendum and got the raw signature count. On October 16 the city recorder declared it insufficient anyway: the threshold was met in only two of the four voter participation areas, and the law requires three. The question had already been printed on the ballots, so Washington County printed it and did not count it. The tax increase took effect.",
+      "note": "Ivins is a city of about 11,000, divided into four voter participation areas, so it needed three. Eagle Mountain is roughly six times larger; how many areas it is divided into, and what 75% of them works out to, is a question for the city recorder rather than for this page. The point that carries over is the shape of the test: a petition has to be built around geographic spread, not around a headline signature count. That is what sank the last one."
     }
   },
   "counter": {

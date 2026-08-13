@@ -1,5 +1,5 @@
 {
-  "_comment": "County-wide comparison. Current rates are the 2025 Final Adopted rate for each municipal taxing entity in Utah County (the rate levied on today's bills), read from the Utah State Tax Commission's Report 600. Proposed increases are the 2026 Truth-in-Taxation cycle. The two come from different sources and different years \u2014 see `caveats`.",
+  "_comment": "County-wide comparison. Current rates are the 2025 Final Adopted rate for each municipal taxing entity in Utah County (the rate levied on today's bills), read from the Utah State Tax Commission's Report 600. Proposed increases are the 2026 Truth-in-Taxation cycle, taken line by line from Utah County's own combined notice rather than from press reports. The two come from different sources and different years \u2014 see `caveats`.",
   "rate_year": 2025,
   "rate_basis": "Final adopted municipal rate \u2014 city levy only, excluding county, school district, and special districts.",
   "rate_source": {
@@ -10,10 +10,17 @@
   },
   "proposal_year": 2026,
   "proposal_source": {
-    "title": "Why are your taxes increasing? Numerous Utah cities pursue property tax hikes",
-    "publisher": "KSL.com",
-    "url": "https://www.ksl.com/article/51546349/why-are-your-taxes-increasing-numerous-utah-cities-pursue-property-tax-hikes",
-    "retrieved": "2026-07-09"
+    "title": "Utah County Notice of Proposed Tax Increase",
+    "publisher": "Utah County, as published by Eagle Mountain City",
+    "url": "https://eaglemountain.gov/wp-content/uploads/2026/07/2026-T-in-T-Ad-Utah-Co-Combined-Proof.pdf",
+    "retrieved": "2026-08-12",
+    "note": "Every percentage, average home value, dollar effect and revenue figure in `proposals` is read off this one document. It supersedes the July press summary that this chart previously ran on, which differed from the county's own figures on several rows — Pleasant Grove by nearly a factor of two.",
+    "superseded_by_this": {
+      "title": "Why are your taxes increasing? Numerous Utah cities pursue property tax hikes",
+      "publisher": "KSL.com",
+      "url": "https://www.ksl.com/article/51546349/why-are-your-taxes-increasing-numerous-utah-cities-pursue-property-tax-hikes",
+      "retrieved": "2026-07-09"
+    }
   },
   "county_notice": {
     "title": "Utah County Notice of Proposed Tax Increase",
@@ -32,9 +39,9 @@
     "proposed_rate": 0.0017,
     "proposed_rate_display": "0.001700",
     "tentative_pct": 245,
-    "notice_pct": 220.9,
+    "notice_pct": 220.88,
     "rank_current": 25,
-    "rank_adopted": 6,
+    "rank_adopted": 5,
     "rank_proposed": 3,
     "total_cities": 26,
     "tentative_rate": 0.00184233,
@@ -44,12 +51,12 @@
   "caveats": [
     "Current rates are 2025 final adopted rates \u2014 the newest complete set the state publishes. 2026 rates are not certified until after the August hearings.",
     "Eagle Mountain is the one city here whose 2026 rate is settled: the council adopted 0.001500 on August 6, after noticing 0.001700 and hearing nearly three hours of public comment. The charts carry the adopted rate for Eagle Mountain and each other city's noticed figure for the rest, whose hearings run through late August.",
-    "Eagle Mountain's tentative schedule (read May 26) implied a rate of 0.001842 and a 245% increase. The rate it noticed was 0.001700, a 220.9% increase measured against the newer certified rate. The rate it adopted is 0.001500, a 183.02% increase on the same basis.",
-    "Percent increases are each city's own noticed figure as it was reported when the increase was proposed: the rise in that city's property tax revenue. They are not increases in your total tax bill, and they are not the ratio of proposed collections to current collections — for Eagle Mountain the adopted rate's ratio is 204.5%, against the 183.02% in the motion.",
-    "Utah County's combined notice, linked below, is the primary document for this year's proposals, and several rows here differ from it. Highland's and Orem's figures here are the levy being raised rather than the entity-wide increase the notice states (6.89% and 6.95%); Pleasant Grove is furthest apart, 16.55% here against 8.72% on the notice; American Fork, Cedar Hills, Saratoga Springs and Springville each sit within four points of their noticed figure. Lehi and Santaquin proposed increases but do not appear on the proof the city published, and Draper appears on it at 22.55% but is not charted here, being mostly a Salt Lake County city. Eagle Mountain's line matches this page to the dollar: $142.25 to $456.28 on a $488,000 home, $6,742,938, 220.88%.",
-    "Highland's and Orem's proposals raise a dedicated levy (library; public safety), not the general city rate.",
+    "Eagle Mountain's tentative schedule (read May 26) implied a rate of 0.001842 and a 245% increase. The rate it noticed was 0.001700, which its notice states as 220.88% — the rise in budgeted revenue excluding eligible new growth. Measured as a ratio of rates instead, 0.001700 against the 0.000530 certified rate is 220.75%. The rate it adopted is 0.001500, a 183.02% increase, and that one figure comes out the same on either basis.",
+    "Percent increases are each entity's own noticed figure, exactly as Utah County advertised it: the rise in that entity's property tax budgeted revenue, excluding eligible new growth. They are not increases in your total tax bill, and they are not the ratio of proposed collections to current collections — for Eagle Mountain the adopted rate's ratio is 204.5%, against the 183.02% in the motion.",
+    "Every proposal charted here is read off Utah County's combined notice, linked below, rather than off press coverage. Two cities a July news summary listed as proposing increases — Lehi and Santaquin — appear neither on the county's advertised notice nor on the Utah Taxpayers Association's statewide compilation of every 2026 notice, so they are not charted. Draper is on the county notice at 22.55% but is not charted here, being mostly a Salt Lake County city; its Salt Lake County proposal is on the other tab. Provo City School District and the Central Utah Water Conservancy District are on the notice but are not cities. Eagle Mountain's line matches this page to the dollar: $142.25 to $456.28 on a $488,000 home, $6,742,938, 220.88%.",
+    "Highland's and Orem's proposals raise a dedicated levy (library; public safety) rather than the general city rate, but the percentage and the dollar figures shown for them are the entity-wide ones the county notice states — the same basis as every other row.",
     "Draper and Bluffdale levy in Utah County but lie mostly in Salt Lake County.",
-    "Resulting rates are each city's current rate plus the rate increase implied by its own published figures (the dollar rise on its stated average home, over 55% of that home's value). This avoids assuming the noticed percentage applies to the general city rate \u2014 for Highland and Orem it does not. Tested against Eagle Mountain, the only city publishing a proposed rate, the method reproduces the 0.001700 it noticed — the 0.001500 in the charts is the rate it went on to adopt, read off the motion rather than derived. Rows marked \u2021 rest on a rounded dollar figure and are approximate."
+    "Resulting rates are each city's current rate plus the rate increase implied by its own noticed figures (the dollar rise on its stated average home, over 55% of that home's value). This avoids assuming the noticed percentage applies to the general city rate \u2014 for Highland and Orem it does not. The notice's \u2018from\u2019 column is each entity's 2026 certified rate rather than its 2025 adopted rate, so the sum is close rather than exact: on Eagle Mountain \u2014 the one city that published a proposed rate \u2014 the method gives 0.001704 against the 0.001700 it noticed. The 0.001500 in the charts is the rate it went on to adopt, read off the motion rather than derived."
   ],
   "transportation_fees": {
     "_comment": "Utah County cities that fund street work through a flat monthly fee on the utility bill rather than through the property tax. Every amount is the residential rate, read off the city's own current fee schedule or rates page. The property tax charts cannot see this money, which is the whole reason it is listed here.",
@@ -354,124 +361,96 @@
       "adopted": true,
       "adopted_date": "2026-08-06",
       "noticed_rate": 0.0017,
-      "noticed_pct": 220.9,
-      "noticed_revenue": 6740000,
+      "noticed_pct": 220.88,
+      "noticed_revenue": 6742938,
       "noticed_annual_increase": 314.03,
-      "note": "The only settled row in this list. The council noticed 0.001700 and adopted 0.001500 on August 6; the percentage, the revenue and the rate are the motion's own figures, and the $260.35 is the notice's $268,400 taxable value times the 0.000970 the rate rose."
+      "note": "The only settled row in this list. The council noticed 0.001700 and adopted 0.001500 on August 6; the percentage, the revenue and the rate are the motion's own figures, and the $260.35 is the notice's $268,400 taxable value times the 0.000970 the rate rose. The noticed figures beside them are Eagle Mountain's line on the county notice, to the dollar."
     },
     {
       "city": "Saratoga Springs",
-      "pct": 54.0,
+      "pct": 50.03,
       "revenue": 3100000,
-      "home_value": 550000,
-      "annual_increase": 165.92,
+      "home_value": 542000,
+      "annual_increase": 145.77,
       "purpose": "Fire and police services",
-      "resulting_rate": 0.001524,
+      "resulting_rate": 0.001465,
       "resulting_rate_estimated": true,
       "rate_source": "derived",
-      "rate_delta": 0.000548
-    },
-    {
-      "city": "Highland",
-      "pct": 53.0,
-      "revenue": 171600,
-      "home_value": 1000000,
-      "annual_increase": 28.65,
-      "purpose": "Library staffing",
-      "levy": "Library levy, not the general city rate",
-      "resulting_rate": 0.000792,
-      "resulting_rate_estimated": true,
-      "rate_source": "derived",
-      "rate_delta": 5.2e-05
+      "rate_delta": 0.000489
     },
     {
       "city": "Cedar Hills",
-      "pct": 20.0,
+      "pct": 19.55,
       "revenue": 150000,
-      "home_value": 678342,
-      "annual_increase": 56.0,
-      "approx": true,
+      "home_value": 682000,
+      "annual_increase": 54.02,
       "purpose": "Public safety contracts",
-      "resulting_rate": 0.001193,
+      "resulting_rate": 0.001187,
       "resulting_rate_estimated": true,
-      "rate_source": "approximate",
-      "rate_delta": 0.00015
+      "rate_source": "derived",
+      "rate_delta": 0.000144
     },
     {
       "city": "Pleasant Grove",
-      "pct": 16.55,
-      "revenue": 683088,
-      "home_value": 570655,
-      "annual_increase": 50.0,
-      "approx": true,
+      "pct": 8.72,
+      "revenue": 365667,
+      "home_value": 602000,
+      "annual_increase": 27.15,
       "purpose": "Two police, three firefighters",
-      "resulting_rate": 0.001338,
+      "resulting_rate": 0.001261,
       "resulting_rate_estimated": true,
-      "rate_source": "approximate",
-      "rate_delta": 0.000159
-    },
-    {
-      "city": "Lehi",
-      "pct": 9.8,
-      "revenue": 1700000,
-      "home_value": 600000,
-      "annual_increase": 35.0,
-      "approx": true,
-      "purpose": "Police, fire, parks wages",
-      "resulting_rate": 0.001269,
-      "resulting_rate_estimated": true,
-      "rate_source": "approximate",
-      "rate_delta": 0.000106
+      "rate_source": "derived",
+      "rate_delta": 8.2e-05
     },
     {
       "city": "American Fork",
-      "pct": 9.0,
+      "pct": 8.48,
       "revenue": 660000,
-      "home_value": 492300,
-      "annual_increase": 34.0,
-      "approx": true,
+      "home_value": 502000,
+      "annual_increase": 33.41,
       "purpose": "Nine full-time firefighters",
-      "resulting_rate": 0.001658,
+      "resulting_rate": 0.001653,
       "resulting_rate_estimated": true,
-      "rate_source": "approximate",
-      "rate_delta": 0.000126
+      "rate_source": "derived",
+      "rate_delta": 0.000121
     },
     {
       "city": "Orem",
-      "pct": 7.0,
+      "pct": 6.95,
       "revenue": 450000,
-      "home_value": 513000,
-      "annual_increase": 11.85,
+      "home_value": 520000,
+      "annual_increase": 11.73,
       "purpose": "Two new police officers",
       "levy": "Public-safety levy, not the general city rate",
-      "resulting_rate": 0.000797,
+      "resulting_rate": 0.000796,
       "resulting_rate_estimated": true,
       "rate_source": "derived",
-      "rate_delta": 4.2e-05
+      "rate_delta": 4.1e-05
     },
     {
-      "city": "Santaquin",
-      "pct": 3.4,
-      "revenue": 73407,
-      "home_value": 450000,
-      "annual_increase": 11.89,
-      "purpose": "Fire equipment, library",
-      "resulting_rate": 0.001457,
+      "city": "Highland",
+      "pct": 6.89,
+      "revenue": 172488,
+      "home_value": 1036000,
+      "annual_increase": 28.49,
+      "purpose": "Library staffing",
+      "levy": "Library levy, not the general city rate",
+      "resulting_rate": 0.00079,
       "resulting_rate_estimated": true,
       "rate_source": "derived",
-      "rate_delta": 4.8e-05
+      "rate_delta": 5e-05
     },
     {
       "city": "Springville",
-      "pct": 3.0,
+      "pct": 2.97,
       "revenue": 97000,
-      "home_value": 500000,
-      "annual_increase": 6.36,
+      "home_value": 476000,
+      "annual_increase": 5.5,
       "purpose": "Offset inflation costs",
-      "resulting_rate": 0.001102,
+      "resulting_rate": 0.0011,
       "resulting_rate_estimated": true,
       "rate_source": "derived",
-      "rate_delta": 2.3e-05
+      "rate_delta": 2.1e-05
     }
   ],
   "salt_lake": {
