@@ -3872,6 +3872,85 @@ blockquote.record footer { font-size: 13px; color: var(--t-muted); }
 }
 .derivation strong { color: var(--t-fg); font-weight: 600; }
 
+/* ---------- the published documents ----------
+   A citation list, not a row of buttons: what matters is which document says
+   what, so the title leads and the sentence under it says what you will find
+   when you open it. The rule above it separates paper from testimony.
+   ========================================================================= */
+.docs {
+  margin: 22px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--t-line-2);
+}
+.docs-h {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+}
+.docs-lede {
+  margin: 0 0 14px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--t-fg-2);
+}
+.doclist { margin: 0; padding: 0; list-style: none; }
+.doclist li {
+  margin: 0 0 14px;
+  padding-left: 14px;
+  border-left: 2px solid var(--t-line);
+}
+.doclist li:last-child { margin-bottom: 0; }
+.doclist li:hover { border-left-color: var(--t-gold-line); }
+.doclist .doc-title {
+  display: inline;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--t-fg);
+  text-decoration: none;
+  border-bottom: 1px solid var(--t-gold-line);
+}
+.doclist .doc-title:hover { color: var(--t-gold); }
+.doc-ext {
+  margin-left: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  color: var(--t-muted);
+  white-space: nowrap;
+}
+.doc-meta {
+  display: block;
+  margin-top: 3px;
+  font-size: 11.5px;
+  color: var(--t-muted);
+}
+.doclist li p {
+  margin: 6px 0 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--t-fg-2);
+}
+.docs .src { margin: 14px 0 0; font-size: 12px; color: var(--t-muted); }
+
+/* The document a quotation also exists in. It goes under the attribution on its
+   own line — the figcaption is a wrapping flex row, and a second link sitting
+   beside the meeting link reads as an alternative source rather than a second
+   one. */
+.aq-doc {
+  flex: 0 0 100%;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--t-muted);
+  text-decoration: none;
+  border-bottom: 0;
+}
+.aq-doc:hover { color: var(--t-gold); }
+
 /* ---------- the meeting record ----------
    A chronology, set as a list with a date gutter rather than a timeline with a
    drawn spine — the flat page has enough structure without one. What is still

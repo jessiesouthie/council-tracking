@@ -1,5 +1,5 @@
 {
-  "_comment": "The property tax increase, tracked per fiscal year. Every figure here is transcribed from a source meeting; `evidence` names where. Rates are decimal multipliers applied to taxable value, matching the Truth-in-Taxation schedule read into the record. `rates.adopted` is what the council actually set on August 6 and what the page is about; `rates.proposed` is the 0.001700 it noticed and did not adopt, kept because the notice, the schedule and every figure quoted before that night were built on it.",
+  "_comment": "The property tax increase, tracked per fiscal year. Every figure here is transcribed from a source meeting; `evidence` names where, and `documents` links the city's own published notice and impact schedule, which print the noticed figures. Rates are decimal multipliers applied to taxable value, matching the Truth-in-Taxation schedule read into the record. `rates.adopted` is what the council actually set on August 6 and what the page is about; `rates.proposed` is the 0.001700 it noticed and did not adopt, kept because the notice, the schedule and every figure quoted before that night were built on it.",
   "body": "city-council",
   "fiscal_year": "2026-27",
   "fiscal_year_label": "FY2026–27",
@@ -21,7 +21,7 @@
       "rate_display": "0.000530",
       "label": "2026 certified rate",
       "note": "The Truth-in-Taxation comparison basis",
-      "derivation": "The city never published this as a rate; it is implied by its own Truth-in-Taxation notice, and the notice's two published figures imply it slightly differently. A $314.03 rise on a $488,000 primary residence against the 0.001700 proposal implies 0.00053014; the noticed 220.9% implies 0.00052976. Both round to 0.000530, which is the rate stated here — but 0.001700 against 0.000530 is +220.75%, so the noticed 220.9% cannot be reproduced to the decimal from any single rounded rate. The gap is a tenth of a point and lives inside a certified rate the city has never published. Utah County delivered the recalculated certified rate on June 22, after the June 16 schedule was read."
+      "derivation": "The city published this figure once, as a line in its own Proposed Property Tax Impact Schedule: “Property Tax Rate with no increase — 0.000530”, against the 0.001700 proposed beside it. The notice's other figures imply it to slightly different decimals: a $314.03 rise on a $488,000 primary residence against 0.001700 implies 0.00053014, and the noticed 220.88% implies 0.00052976. Both round to the published 0.000530 — but 0.001700 against 0.000530 is +220.75%, so the noticed percentage is not a ratio of rates at all. It is a ratio of revenue, and the schedule shows both sides of it: $6,742,938 of new revenue against the $3,055,201 the certified rate would raise is +220.70%, and the 220.88% on the notice implies a base near $3,052,760 — about $2,400 lower, which is what “excluding eligible new growth” takes out. Utah County delivered the recalculated certified rate on June 22, after the June 16 schedule was read."
     },
     "adopted": {
       "rate": 0.0015,
@@ -53,7 +53,7 @@
       "pct": 220.9,
       "pct_basis": "Increase over the 2026 certified rate of 0.000530. This is the figure in the city's Truth-in-Taxation notice, and it measures the rate, not collections.",
       "revenue": 9798139,
-      "derivation": "Confirmed twice over by the schedule read on June 16: a $500,000 primary residence at $467.43 in total city tax, and an average business at $4,341.62 on a $2,554,303 market value, each independently imply a rate of 0.0016997 — 0.001700 at the six decimal places the city publishes. The same rate reconciles with the 2026 Truth-in-Taxation notice. It is not the rate in force: on August 6 the council adopted 0.001500 instead."
+      "derivation": "Confirmed twice over by the schedule read on June 16: a $500,000 primary residence at $467.43 in total city tax, and an average business at $4,341.62 on a $2,554,303 market value, each independently imply a rate of 0.0016997 — 0.001700 at the six decimal places the city publishes. It is also printed outright, as “Eagle Mountain City's 2026 Proposed Property Tax Rate” on the impact schedule the city posted two days later. It is not the rate in force: on August 6 the council adopted 0.001500 instead."
     },
     "tentative": {
       "rate": 0.00184233,
@@ -75,7 +75,7 @@
     "date": "2026-06-16",
     "pct": 218,
     "note": "On June 16 the mayor read the increase as 218%. That is 0.001700 measured against 0.000534, the rate then in effect — the county had not yet returned the recalculated certified rate, which he noted was due on June 22. Against that recalculated 0.000530 the same proposal is the 220.9% now noticed.",
-    "examples_note": "The worked examples the mayor read aloud on June 16, transcribed from the recording. They are cents off what 0.001700 gives exactly, because the city computed them from the unrounded rate before rounding it to six decimals for publication.",
+    "examples_note": "The worked examples the mayor read aloud on June 16, transcribed from the recording. They are cents off what 0.001700 gives exactly, because the city computed them from the unrounded rate before rounding it to six decimals for publication. The totals survived the recalculated certified rate; the increases did not. The printed schedule keeps the same $4,341.62 on the average business but puts the rise at $2,987.84 rather than the $2,977.62 read here — the $10.22 is the certified rate moving from 0.000534 to 0.000530 underneath it.",
     "home": {
       "market_value": 500000,
       "proposed": 467.43,
@@ -86,6 +86,38 @@
       "proposed": 4341.62,
       "increase": 2977.62
     }
+  },
+
+  "documents": {
+    "note": "The paper behind the spoken record. The city posts all three on its Truth-in-Taxation page; every noticed figure on this page can be read off one of them.",
+    "index": {
+      "title": "Truth in Taxation — Property Tax",
+      "publisher": "Eagle Mountain City",
+      "url": "https://eaglemountain.gov/truth-in-taxation-property-tax/"
+    },
+    "items": [
+      {
+        "title": "Notice of Proposed Tax Increase — Eagle Mountain City",
+        "publisher": "Eagle Mountain City",
+        "url": "https://eaglemountain.gov/wp-content/uploads/2026/07/updated-tax-notice-6.22.2026.pdf",
+        "dated": "Updated June 22, 2026",
+        "note": "The statutory notice itself. City tax on a $488,000 residence rising from $142.25 to $456.28 — the $314.03 — a $488,000 business from $258.64 to $829.60, $6,742,938 in additional revenue, 220.88% above last year's budgeted revenue excluding new growth, and the August 6 hearing."
+      },
+      {
+        "title": "Proposed Property Tax Impact Schedule",
+        "publisher": "Eagle Mountain City",
+        "url": "https://eaglemountain.gov/wp-content/uploads/2026/06/Proposed-Property-Tax-Impact-Schedule-June-2026.pdf",
+        "dated": "June 18, 2026",
+        "note": "The schedule that was read aloud, in print: rate with no increase 0.000530, proposed rate 0.001700, $9,798,139 against the $3,055,201 no increase would raise, and the affected budget named as the Sheriff contract — $9,798,139 proposed against $8,290,000 with no tax change."
+      },
+      {
+        "title": "Utah County Notice of Proposed Tax Increase",
+        "publisher": "Utah County, as published by Eagle Mountain City",
+        "url": "https://eaglemountain.gov/wp-content/uploads/2026/07/2026-T-in-T-Ad-Utah-Co-Combined-Proof.pdf",
+        "dated": "Advertised proof, July 2026",
+        "note": "Every Utah County entity noticing an increase this year on one page, with each one's average home, dollar effect, revenue, percentage and hearing. Eagle Mountain's is the largest line on it by every measure."
+      }
+    ]
   },
 
   "source": {

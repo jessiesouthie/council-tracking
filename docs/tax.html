@@ -27,7 +27,7 @@
          so nothing on this page would use it, and asking for a third family only
          costs a render-blocking round trip. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260809c" />
+    <link rel="stylesheet" href="site.css?v=20260812a" />
   </head>
   <body class="page-tax">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -934,12 +934,18 @@
           s.meeting != null
             ? `<a class="aq-src" href="meetings.html?id=${s.meeting}">${CT.fmtDate(s.date)} · Meeting #${s.meeting} <span aria-hidden="true">→</span></a>`
             : `<span class="aq-src">${CT.fmtDate(s.date)}</span>`;
+        // Some of what was said aloud also exists in print. Where it does, the
+        // document goes next to the quote rather than in a bibliography.
+        const doc = s.doc
+          ? `<a class="aq-doc" href="${s.doc.url}" rel="nofollow noopener">${CT.escapeHtml(s.doc.title)} (PDF) <span aria-hidden="true">↗</span></a>`
+          : "";
         return `
           <figure class="arg-quote${cls ? " " + cls : ""}">
             ${s.quote ? `<blockquote>${CT.escapeHtml(s.quote)}</blockquote>` : ""}
             <figcaption>
               <span class="aq-who">${CT.escapeHtml(s.speaker || "")}</span>
               ${link}
+              ${doc}
             </figcaption>
           </figure>`;
       }
@@ -1388,71 +1394,143 @@
         </details>`;
       }
 
-      /* ---------------- the schedule as read ----------------
-         The schedule Mayor Gray read on June 16 (meeting #726, item 17.B), line
-         item for line item, in his order.
+      /* ---------------- the official schedule ----------------
+         The six lines of the statutory Truth-in-Taxation schedule, in the order
+         Mayor Gray read them on June 16 (meeting #726, item 17.B) — but carried
+         at the rate the council actually adopted, not the one that was read.
+         The schedule is a form the city has to fill in, not a document frozen
+         to a proposal that lost; a reader who opens a panel called "the
+         official schedule" wants the rate they will be billed at.
 
-         The percentage line is the one figure not reproduced as spoken. The
-         mayor read 218%, which is 0.001700 against 0.000534 — the rate then in
-         effect, because the county had not yet returned the recalculated
-         certified rate. The row states the 220.9% from the city's own
-         Truth-in-Taxation notice instead, measured against the recalculated
-         certified rate the county returned on June 22.
+         Two of the six lines are quoted rather than computed: the rate and the
+         percentage are the motion's own words. The other four are that rate
+         applied to the same revenue base and the same two properties the city
+         used, which is the only way to state them — nobody read a schedule for
+         0.001500 aloud.
 
-         Both of those numbers are now under the table, because a table billed as
-         "read aloud on June 16" cannot quietly carry a figure that was not. The
-         footnote owns one more wrinkle: 220.9% does not fall out of the
-         arithmetic. The city never published the certified rate as a rate
-         — the notice's $314.03 on a $488,000 home implies 0.00053014, its own
-         220.9% implies 0.00052976, and both round to the 0.000530 shown here,
-         which gives 220.8%. A tenth of a point, and the page states it rather
-         than leaving a reader to find it with a calculator.
+         The noticed figures are directly under the table rather than gone,
+         because they are what the mailed notice, the county's combined ad and
+         most of the signs in the city still say. That paragraph also owns the
+         two wrinkles that used to sit in this table: the mayor read the
+         percentage as +218% on the night, which is 0.001700 against the
+         0.000534 then in effect rather than the recalculated certified rate the
+         county returned on June 22; and the noticed 220.9% never quite fell out
+         of the arithmetic, because the city has never published the certified
+         rate as a rate. The adopted 183.02% does reproduce, to the second
+         decimal, so the asterisk under this table has less to explain than it
+         used to.
 
-         Note it is a rate-to-rate figure either way. The schedule's own revenue
-         lines — $2,839,998 against $9,798,139 — imply 245%, a different measure,
-         which is why this row is not labelled as a change in revenue.
+         Note the percentage is a rate-to-rate figure either way. The schedule's
+         own revenue lines imply a different number — a change in collections —
+         which is why that row is not labelled as one.
       */
       function schedulePanel(tax) {
         const cur = tax.rates.current, prop = tax.rates.proposed;
         const certified = tax.rates.certified_2026;
         const home = tax.as_read.home, biz = tax.as_read.business;
-        // Both worked from the data, so neither can drift if a rate is revised:
-        // what the rounded certified rate actually gives, and what was read on
-        // the night. Each clause renders only when it differs from the row.
-        const derived = ((prop.rate / certified.rate - 1) * 100).toFixed(1);
+        const nw = newRate(tax);
+        const done = isAdopted(tax);
+
+        // Rounded to cents before anything is subtracted, so the rise printed
+        // beside a figure is the difference between the two figures on screen
+        // rather than a cent off them.
+        const cents = (n) => Math.round(n * 100) / 100;
+        // Today's column is arithmetic on a rate that is already exact.
+        const homeNow = cents(home.market_value * tax.residential_ratio * cur.rate);
+        const bizNow = cents(biz.market_value * cur.rate);
+
+        /* The other column. Before the vote it reproduces the dollar figures
+           the mayor read aloud rather than recomputing them from the rounded
+           rate, so the table matches the record to the cent. After it there is
+           nothing spoken to reproduce: the rate and the percentage come from
+           the motion, and the rest is that rate applied to the same base and
+           the same two properties. */
+        const col = done
+          ? {
+              rate: nw.rate_display,
+              revenue: nw.revenue,
+              newRevenue: nw.revenue - cur.revenue,
+              pct: nw.pct,
+              home: cents(home.market_value * tax.residential_ratio * nw.rate),
+              biz: cents(biz.market_value * nw.rate),
+            }
+          : {
+              rate: prop.rate_display,
+              revenue: prop.revenue,
+              newRevenue: tax.revenue_increase,
+              pct: prop.pct,
+              home: cents(home.proposed),
+              biz: cents(biz.proposed),
+            };
+
+        // What the rounded certified rate actually gives, stated only where it
+        // differs from the percentage the row carries. Worked from the data, so
+        // it cannot drift if a rate is revised.
+        const derived = (nw.rate / certified.rate - 1) * 100;
         const gapNote =
-          derived !== String(prop.pct)
+          Math.abs(derived - col.pct) >= 0.05
             ? ` Worked from the rounded ${CT.escapeHtml(certified.rate_display)}, the same
-                comparison gives +${derived}% — the city has never published the certified rate
-                as a rate, and the tenth of a point is rounding inside it.`
+                comparison gives +${derived.toFixed(1)}% — the city has never published the certified
+                rate as a rate, and the tenth of a point is rounding inside it.`
             : "";
+        // Before the vote, the one figure in the table that was not as spoken.
         const asReadNote =
-          tax.as_read.pct !== prop.pct
+          !done && tax.as_read.pct !== prop.pct
             ? ` <strong>On the night, this line was read as +${tax.as_read.pct}%</strong> —
                 the same ${CT.escapeHtml(prop.rate_display)} measured against the
                 ${cur.rate.toFixed(6)} then in effect, because Utah County did not return the
                 recalculated certified rate until June 22. Every other figure in this table is
                 as read.`
             : "";
-        // The proposed column reproduces the dollar figures the mayor read aloud rather
-        // than recomputing them from the rounded rate, so the table matches the record
-        // to the cent. The current column is arithmetic on a rate that is already exact.
-        const homeNow = home.market_value * tax.residential_ratio * cur.rate;
-        const bizNow = biz.market_value * cur.rate;
-        // The schedule is the noticed rate, in full, as it was read — so the
-        // panel has to say up front that it is not the rate now in force, or a
-        // reader who opens it lands on 0.001700 with nothing to tell them.
-        const adopted = tax.rates.adopted;
+
+        /* The new-revenue line is the one place the adopted column and the
+           motion disagree on their face, and the reason is a base rather than a
+           mistake — so it gets its own marker rather than a reader's suspicion. */
+        const newRevNote =
+          done && nw.revenue_increase
+            ? ` <span aria-hidden="true">†</span> <strong>+${usd0(col.newRevenue)}</strong> is
+                ${usd0(nw.revenue)} against the ${usd0(cur.revenue)} the city collects today, which is
+                how the schedule states this line. The motion's own ${usd0(nw.revenue_increase)} is the
+                same increase measured against last year's budgeted revenue excluding new growth.`
+            : "";
+
+        // The schedule the city published, for a reader who wants the noticed
+        // figures in the original rather than in our sentence.
+        const schedDoc = ((tax.documents || {}).items || []).find((d) =>
+          /impact schedule/i.test(d.title || "")
+        );
+        const noticedNote = done
+          ? `<p class="chart-foot">
+               <strong>What was noticed.</strong> The schedule read on
+               <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a> was built on the
+               ${CT.escapeHtml(prop.rate_display)} the council did not adopt:
+               ${usd0(prop.revenue)} in revenue, +${usd0(tax.revenue_increase)} of it new,
+               +${prop.pct}% over the certified rate, ${usd(cents(home.proposed))} on the same
+               ${usd0(home.market_value)} home and ${usd(cents(biz.proposed))} on the same business.
+               Those are the figures on the mailed notice, and they are still what most of the signs
+               say. On the night the percentage was read as +${tax.as_read.pct}% — the same
+               ${CT.escapeHtml(prop.rate_display)} against the ${cur.rate.toFixed(6)} then in effect,
+               because Utah County did not return the recalculated certified rate until June 22.${
+                 schedDoc
+                   ? ` The schedule as published:
+                       <a href="${schedDoc.url}" rel="nofollow noopener">${CT.escapeHtml(schedDoc.title)}</a> (PDF).`
+                   : ""
+               }
+             </p>`
+          : "";
+
         const body = `
           <p class="panel-intro">
-            Read aloud on <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a>, transcribed
-            from the recording.${
-              adopted
-                ? ` It is the schedule for the <strong>${CT.escapeHtml(prop.rate_display)}</strong> the
-                    city noticed — not the ${CT.escapeHtml(adopted.rate_display)} the council went on to
-                    adopt on <a href="meetings.html?id=${adopted.meeting_id}">August 6</a>. Every figure
-                    in the table is the noticed one.`
-                : ""
+            ${
+              done
+                ? `The statutory schedule the city has to publish, carried at the
+                   <strong>${CT.escapeHtml(nw.rate_display)}</strong> the council adopted on
+                   <a href="meetings.html?id=${nw.meeting_id}">August 6</a>. The rate and the
+                   +${nw.pct}% are the motion's own; the other four lines are that rate applied to the
+                   same revenue base and the same two properties the city read into the record on
+                   <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a>.`
+                : `Read aloud on <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a>,
+                   transcribed from the recording.`
             }
           </p>
           <div class="tablewrap">
@@ -1461,41 +1539,47 @@
                 <tr>
                   <th scope="col">City property tax</th>
                   <th scope="col" class="num">Current</th>
-                  <th scope="col" class="num">Proposed</th>
+                  <th scope="col" class="num">${done ? "Adopted" : "Proposed"}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr><td class="rowlabel">Tax rate</td>
                   <td class="num">${cur.rate.toFixed(6)}</td>
-                  <td class="num">${CT.escapeHtml(prop.rate_display)}</td></tr>
+                  <td class="num">${CT.escapeHtml(col.rate)}</td></tr>
                 <tr><td class="rowlabel">Revenue to the city</td>
                   <td class="num">${usd0(cur.revenue)}</td>
-                  <td class="num">${usd0(prop.revenue)}</td></tr>
-                <tr><td class="rowlabel">New revenue to the city</td>
+                  <td class="num">${usd0(col.revenue)}</td></tr>
+                <tr><td class="rowlabel">New revenue to the city${
+                  newRevNote ? ' <span class="ast" aria-hidden="true">†</span>' : ""
+                }</td>
                   <td class="num">—</td>
-                  <td class="num">+${usd0(tax.revenue_increase)}</td></tr>
+                  <td class="num">+${usd0(col.newRevenue)}</td></tr>
                 <tr><td class="rowlabel">Increase over the certified rate <span class="ast" aria-hidden="true">*</span></td>
                   <td class="num">—</td>
-                  <td class="num">+${prop.pct}%</td></tr>
+                  <td class="num">+${col.pct}%</td></tr>
                 <tr><td class="rowlabel">Tax on a ${usd0(home.market_value)} home</td>
                   <td class="num">${usd(homeNow)}</td>
-                  <td class="num">${usd(home.proposed)} <span class="rise">+${usd(home.increase)}</span></td></tr>
+                  <td class="num">${usd(col.home)} <span class="rise">+${usd(col.home - homeNow)}</span></td></tr>
                 <tr><td class="rowlabel">Tax on the average business (${usd0(biz.market_value)})</td>
                   <td class="num">${usd(bizNow)}</td>
-                  <td class="num">${usd(biz.proposed)} <span class="rise">+${usd(biz.increase)}</span></td></tr>
+                  <td class="num">${usd(col.biz)} <span class="rise">+${usd(col.biz - bizNow)}</span></td></tr>
               </tbody>
             </table>
           </div>
           <p class="chart-foot">
-            <span aria-hidden="true">*</span> <strong>+${prop.pct}%</strong> is
-            ${CT.escapeHtml(prop.rate_display)} against the ${CT.escapeHtml(certified.rate_display)}
-            certified rate — the comparison the city's own notice uses, and the figure it
-            states.${gapNote}${asReadNote}
+            <span aria-hidden="true">*</span> <strong>+${col.pct}%</strong> is
+            ${CT.escapeHtml(col.rate)} against the ${CT.escapeHtml(certified.rate_display)}
+            certified rate — ${
+              done
+                ? "the basis the motion states, and the one the city's notice used before it"
+                : "the comparison the city's own notice uses, and the figure it states"
+            }.${gapNote}${asReadNote}${newRevNote}
           </p>
+          ${noticedNote}
 `;
         return panel(
           "The official schedule",
-          `The six lines of the city's Truth-in-Taxation schedule${adopted ? ", as noticed" : ""}`,
+          `The six lines of the city's Truth-in-Taxation schedule${done ? ", at the rate that passed" : ""}`,
           body, true, "p-schedule"
         );
       }
@@ -1707,6 +1791,38 @@
         BILL_SYNC(bill.sample_value, true);
       }
 
+      /* The published documents. The quotes above prove what was said in the
+         room; these are the paper the city put out, and every noticed figure on
+         this page can be read off one of them. They go last because a reader who
+         doubts the arithmetic should end up holding the originals. */
+      function docsBlock(docs) {
+        if (!docs || !Array.isArray(docs.items) || !docs.items.length) return "";
+        const items = docs.items
+          .map(
+            (d) => `
+            <li>
+              <a class="doc-title" href="${d.url}" rel="nofollow noopener">${CT.escapeHtml(d.title)}
+                <span class="doc-ext" aria-hidden="true">PDF ↗</span></a>
+              <span class="doc-meta">${CT.escapeHtml(d.publisher || "")}${d.dated ? " · " + CT.escapeHtml(d.dated) : ""}</span>
+              ${d.note ? `<p>${CT.escapeHtml(d.note)}</p>` : ""}
+            </li>`
+          )
+          .join("");
+        return `
+          <div class="docs">
+            <p class="docs-h">The documents</p>
+            ${docs.note ? `<p class="docs-lede">${CT.escapeHtml(docs.note)}</p>` : ""}
+            <ul class="doclist">${items}</ul>
+            ${
+              docs.index
+                ? `<p class="src">All three are posted on the city's own
+                     <a href="${docs.index.url}" rel="nofollow noopener">${CT.escapeHtml(docs.index.title)}</a>
+                     page.</p>`
+                : ""
+            }
+          </div>`;
+      }
+
       /* ---------------- the paper trail ----------------
          Two quotes, in the order they happened: the schedule that noticed the
          increase, and the motion that set it. The motion goes first, because it
@@ -1754,8 +1870,16 @@
                     transcribed from that meeting's recording.`
                 : ""
             }
-          </p>`;
-        return panel("Where these numbers come from", "The quote on the record, and the arithmetic that reproduces it", body, false, "p-source");
+          </p>
+
+          ${docsBlock(tax.documents)}`;
+        return panel(
+          "Where these numbers come from",
+          "The quotes on the record, the notice and schedule the city published, and the arithmetic that reproduces both",
+          body,
+          false,
+          "p-source"
+        );
       }
 
       /* ---------------- county comparison charts ----------------
@@ -1890,6 +2014,13 @@
               ${CT.escapeHtml(c.rate_source.publisher)}.
               Proposed increases: <a href="${c.proposal_source.url}" rel="nofollow noopener">${CT.escapeHtml(c.proposal_source.publisher)}</a>,
               reporting the ${c.proposal_year} truth-in-taxation notices.
+              ${
+                c.county_notice
+                  ? `The county's own notice, in full:
+                     <a href="${c.county_notice.url}" rel="nofollow noopener">${CT.escapeHtml(c.county_notice.title)}</a>
+                     (PDF, ${CT.escapeHtml(c.county_notice.publisher)}).`
+                  : ""
+              }
             </p>
             ${transportFeeNotes(c)}`
         );

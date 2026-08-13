@@ -304,6 +304,32 @@ def _extra_docs() -> list[dict]:
                 "text": _clean(text),
             }
         )
+        # "Where can I read the actual notice?" is a question the agent should
+        # answer with a URL, not a paraphrase. The published PDFs are their own
+        # chunk so the links survive retrieval intact.
+        pubs = (tax.get("documents") or {}).get("items") or []
+        if pubs:
+            listed = " ".join(
+                f"{d.get('title','')} ({d.get('publisher','')}"
+                + (f", {d.get('dated')}" if d.get("dated") else "")
+                + f"): {d.get('url','')} — {d.get('note','')}"
+                for d in pubs
+            )
+            docs.append(
+                {
+                    "id": "city-council:tax-documents",
+                    "kind": "tax",
+                    "body": "city-council",
+                    "title": "The published truth-in-taxation documents (PDFs)",
+                    "date": "",
+                    "url": "tax.html#p-source",
+                    "tags": ["budget"],
+                    "text": _clean(
+                        "The city's own published documents behind the property tax increase, each a PDF. "
+                        + listed
+                    ),
+                }
+            )
     # The city's levy is one line of seven. Asked "what are my property taxes?",
     # the agent should be able to name all of them rather than answer with the
     # city's rate alone, so the whole-bill breakdown is its own citable chunk.

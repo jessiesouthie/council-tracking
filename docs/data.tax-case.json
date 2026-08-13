@@ -89,7 +89,12 @@
           "meeting": 747,
           "date": "2026-08-06",
           "speaker": "Mayor Jared Gray, reading the schedule",
-          "quote": "The affected budget, sheriff's contract. The proposed budget is $9,798,139. The budget with no tax change is $8,290,000, and the budget change would be $1,507,939."
+          "quote": "The affected budget, sheriff's contract. The proposed budget is $9,798,139. The budget with no tax change is $8,290,000, and the budget change would be $1,507,939.",
+          "doc": {
+            "title": "Proposed Property Tax Impact Schedule",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2026/06/Proposed-Property-Tax-Impact-Schedule-June-2026.pdf",
+            "note": "The same three figures in print, under “Affected Budget — Sheriff Contract”."
+          }
         }
       },
       {
@@ -452,7 +457,7 @@
         }
       },
       {
-        "text": "The schedule the city noticed moved three times before it settled — 245% on May 26, 218% read on June 16, 220.88% on the notice — and the certified rate underneath it has never been published by the city as a rate. That is mostly the county's calendar rather than concealment, but it made the number look unstable to anyone watching.",
+        "text": "The schedule the city noticed moved three times before it settled — 245% on May 26, 218% read on June 16, 220.88% on the notice — and the certified rate underneath it moved with it, from 0.000534 to the 0.000530 the city printed once, in a schedule posted on June 18. That is mostly the county's calendar rather than concealment, but it made the number look unstable to anyone watching.",
         "source": {
           "meeting": 726,
           "date": "2026-06-16",
@@ -513,7 +518,7 @@
       }
     }
   },
-  "sources_note": "Every quotation on this page is transcribed from the city's own recording of the meeting named beside it. Transcripts for all of these meetings are on this site; the August 6 minutes had not been published when this was written, so the figures from that night come from the recording. Statutory citations are to Utah Code Title 20A, Chapter 7, Part 6 (local referenda) as amended through the 2026 General Session.",
+  "sources_note": "Every quotation on this page is transcribed from the city's own recording of the meeting named beside it. Transcripts for all of these meetings are on this site; the August 6 minutes had not been published when this was written, so the figures from that night come from the recording. The documents behind the noticed figures — the notice itself, the impact schedule it was built on, and Utah County's combined notice — are linked in full under “Where these numbers come from”. Statutory citations are to Utah Code Title 20A, Chapter 7, Part 6 (local referenda) as amended through the 2026 General Session.",
   "strain": {
     "heading": "Most of the complaints at the hearing were descriptions of the problem",
     "lede": "This is the strangest thing in the transcript, and it is worth reading the room for it. Speaker after speaker opposed the increase and then, in the same three minutes, described dying parks, broken roads, uncut weeds, unanswered calls and a city that looks worse every year. Those are not separate grievances from the budget argument. They are what a city looks like when it runs on a fifteen-year-old rate — and they are the specific things the freed money was earmarked to fix.",

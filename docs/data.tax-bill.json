@@ -1,5 +1,5 @@
 {
-  "_comment": "Every property tax levied on an Eagle Mountain parcel, not just the city's line. Rates are the 2025 Final Adopted Tax Rate for each entity in the tax area that covers most of the city, read from the Utah State Tax Commission's Report 600 — the same document behind the county comparison in data.tax-county.json. `certified` is that year's Auditor's Certified Rate, so a rate above it means the entity went through Truth-in-Taxation in 2025 and raised. Rates are decimal multipliers on taxable value; a primary residence is taxed on 55% of market value, and every entity here levies against that same taxable value.",
+  "_comment": "Every property tax levied on an Eagle Mountain parcel, not just the city's line. Rates are the 2025 Final Adopted Tax Rate for each entity in the tax area that covers most of the city, read from the Utah State Tax Commission's Report 600 — the same document behind the county comparison in data.tax-county.json. `certified` is that year's Auditor's Certified Rate, so a rate above it means the entity went through Truth-in-Taxation in 2025 and raised. `proposed` is the entity's 2026 figure where it has one and its 2025 rate where it does not; only Eagle Mountain City's is settled — the 0.001500 its council adopted on August 6, not a proposal. Rates are decimal multipliers on taxable value; a primary residence is taxed on 55% of market value, and every entity here levies against that same taxable value.",
 
   "rate_year": 2025,
   "rate_basis": "2025 Final Adopted Tax Rate, by taxing entity, for Utah County tax area 038-0000 — the area that covers most of Eagle Mountain. These are the rates on today's bills.",
@@ -58,7 +58,7 @@
       "short": "Eagle Mountain City",
       "rate": 0.000534,
       "certified": 0.000534,
-      "proposed": 0.000534,
+      "proposed": 0.0015,
       "is_city": true,
       "what": "The city's own general levy — the one line on this bill the City Council sets, and the one the estimator above is about."
     },
