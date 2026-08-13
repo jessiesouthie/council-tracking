@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260809c" />
+    <link rel="stylesheet" href="site.css?v=20260812a" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -102,9 +102,15 @@
     <script>
       const PAGE_SIZE = 25;
       let page = 1;
-      let jumped = false, scrolled = false; // deep-link (?id=) is a one-shot
-      // `id` isn't a filter — it's a deep link to one motion (from a homepage
-      // decision card, or a shared URL). It opens that row and pages to it.
+      // The motion we've already paged and scrolled to. A jump happens once per
+      // address, not once per paint — otherwise every filter change would yank
+      // the reader back to the anchor. A new address (a hashchange, or a row the
+      // reader opens themselves) is what makes another jump eligible.
+      let handledId = "";
+      // `id` isn't a filter — it's the address of one motion, carried in the
+      // fragment (motions.html#m1234) the way an anchor normally is. It opens
+      // that row, pages to it, and stays on the URL as the reader filters, so
+      // whatever is open is always what a copied link will reopen.
       const state = { q: "", tag: "", member: "", outcome: "", year: "", sig: "", id: "" };
       const RADIO_KEYS = ["tag", "member", "outcome", "year", "sig"];
       const FILTER_KEYS = ["q", ...RADIO_KEYS];
@@ -137,9 +143,13 @@
         yearWrap.innerHTML = '<label><input type="radio" name="year" value=""> All years</label>' +
           years.map(y => `<label><input type="radio" name="year" value="${y}"> ${y}</label>`).join("");
 
-        // Hydrate from URL
+        // Hydrate from URL. The fragment is the canonical way to address a
+        // motion; `?id=` is the older form the agent corpus still emits, and
+        // reading it here quietly upgrades those links to a fragment on the
+        // first syncUrl().
         const params = CT.paramsFromUrl();
-        for (const k of [...FILTER_KEYS, "id"]) if (params[k]) state[k] = params[k];
+        for (const k of FILTER_KEYS) if (params[k]) state[k] = params[k];
+        state.id = motionIdFromHash() || params.id || "";
         document.getElementById("q").value = state.q;
         applyStateToControls();
 
@@ -167,8 +177,48 @@
           page = 1; paint(); syncUrl();
         });
 
+        // Opening a row makes it the addressed motion, so the address bar always
+        // holds a link to whatever the reader is looking at — no "copy link"
+        // control needed. `toggle` doesn't bubble, hence the capture phase; and
+        // rows built with the `open` attribute never fire it, so re-painting the
+        // list can't clobber state.id.
+        document.getElementById("rows").addEventListener("toggle", (e) => {
+          const row = e.target.closest && e.target.closest(".motion-row");
+          if (!row || !row.id) return;
+          const id = row.id.slice(1);
+          if (row.open) {
+            state.id = id;
+            // You opened it, so you're already looking at it — nothing left for
+            // the next paint to scroll to.
+            handledId = id;
+            // The ring marks where a link landed you. Once you start opening
+            // rows yourself it has served its purpose.
+            document.querySelectorAll(".motion-row.is-linked").forEach(r => r.classList.remove("is-linked"));
+          } else if (state.id === id) {
+            state.id = "";
+          }
+          syncUrl();
+        }, true);
+
+        // Someone edits the fragment, or follows a #m link from elsewhere on the
+        // page. replaceState doesn't fire this, so there's no loop with syncUrl.
+        window.addEventListener("hashchange", () => {
+          const id = motionIdFromHash();
+          if (!id || id === state.id) return;
+          state.id = id;
+          paint();
+        });
+
         paint();
+        // An arrival on the legacy `?id=` form leaves the query string carrying
+        // something that isn't a filter; one sync rewrites it as a fragment.
+        if (params.id) syncUrl();
       })();
+
+      function motionIdFromHash() {
+        const m = /^#m(\d+)$/.exec(location.hash);
+        return m ? m[1] : "";
+      }
 
       function applyStateToControls() {
         for (const name of RADIO_KEYS) {
@@ -200,7 +250,11 @@
         const body = CT.currentBody();
         if (body && body !== "city-council") p.set("body", body);
         for (const k of FILTER_KEYS) if (state[k]) p.set(k, state[k]);
-        history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p.toString() : ""));
+        // The open motion rides along as a fragment, so a copied URL reopens it
+        // with the reader's filters intact.
+        const qs = p.toString();
+        history.replaceState(null, "",
+          location.pathname + (qs ? "?" + qs : "") + (state.id ? "#m" + state.id : ""));
       }
 
       function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -257,10 +311,10 @@
         document.getElementById("result-count").textContent =
           `${filt.length.toLocaleString()} motion${filt.length === 1 ? "" : "s"}`;
 
-        // A deep-linked motion can sit on any page of the result set. Jump to its
-        // page on the first paint, then hand control back to normal paging.
-        if (state.id && !jumped) {
-          jumped = true;
+        // An addressed motion can sit on any page of the result set. Jump to its
+        // page the first time we see that address, then hand control back to
+        // normal paging.
+        if (state.id && state.id !== handledId) {
           const idx = filt.findIndex(m => String(m.id) === state.id);
           if (idx >= 0) page = Math.floor(idx / PAGE_SIZE) + 1;
         }
@@ -271,10 +325,10 @@
         rows.innerHTML = slice.map(m => renderMotionRow(data, m, state.member)).join("") ||
           `<div class="empty-block"><p><strong>No motions match.</strong></p><p class="muted">Try clearing a filter, or <a href="motions.html">start over</a>.</p></div>`;
 
-        if (state.id && !scrolled) {
+        if (state.id && state.id !== handledId) {
           const el = document.getElementById("m" + state.id);
           if (el) {
-            scrolled = true;
+            handledId = state.id;
             el.classList.add("is-linked");
             el.scrollIntoView({ block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
           }
