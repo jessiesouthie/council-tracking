@@ -1,0 +1,199 @@
+name: Publish meeting transcripts
+
+# Publishes the transcript and enriched summary for a council meeting the
+# morning after it happens — no laptop involved.
+#
+# Each run asks the CivicClerk portal which recent meetings have a recording
+# posted but no summary in data/transcripts/, then hands each one to the same
+# scripts/transcribe_meeting.sh used by hand locally (in --cloud mode, so
+# AssemblyAI does the transcription with speaker diarization — GitHub's runners
+# are far too slow for on-device Whisper on a four-hour meeting).
+#
+# Runs twice a day because the city posts recordings at no fixed hour: usually
+# the same night, sometimes the next afternoon. Runs that find nothing new cost
+# nothing but a couple of API calls, and a meeting is only ever transcribed once.
+#
+# Required repository secrets:
+#   ASSEMBLYAI_API_KEY      transcription (~$1 per meeting)
+#   CLAUDE_CODE_OAUTH_TOKEN summary; generate locally with `claude setup-token`
+#                           (or set ANTHROPIC_API_KEY instead to use API credits)
+
+on:
+  schedule:
+    - cron: "0 13 * * *"   # 07:00 Mountain — the morning after
+    - cron: "0 20 * * *"   # 14:00 Mountain — catches recordings posted late
+  workflow_dispatch:
+    inputs:
+      event_id:
+        description: "Transcribe only this CivicClerk event id (skips discovery)"
+        required: false
+        type: string
+      body:
+        description: "Body id for event_id / discovery"
+        required: false
+        default: "city-council"
+        type: string
+      days:
+        description: "How many days back to look for untranscribed meetings"
+        required: false
+        default: "6"
+        type: string
+      limit:
+        description: "Maximum meetings to transcribe in this run"
+        required: false
+        default: "3"
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  # Shared with weekly-ingest.yml: both push to main, so they must not overlap.
+  group: ingest
+  cancel-in-progress: false
+
+jobs:
+  transcribe:
+    runs-on: ubuntu-latest
+    # A four-hour meeting is roughly 20 minutes of AssemblyAI turnaround plus a
+    # few minutes of summarising, so three meetings fit comfortably.
+    timeout-minutes: 180
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Check required secrets
+        env:
+          ASSEMBLYAI_API_KEY: ${{ secrets.ASSEMBLYAI_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          missing=0
+          if [ -z "$ASSEMBLYAI_API_KEY" ]; then
+            echo "::error::ASSEMBLYAI_API_KEY is not set — add it under Settings → Secrets and variables → Actions."
+            missing=1
+          fi
+          if [ -z "$CLAUDE_CODE_OAUTH_TOKEN" ] && [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::No Claude credential — set CLAUDE_CODE_OAUTH_TOKEN (from 'claude setup-token') or ANTHROPIC_API_KEY."
+            missing=1
+          fi
+          exit $missing
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r ingest/requirements.txt
+          npm install -g @anthropic-ai/claude-code
+
+      - name: Find meetings that need publishing
+        id: find
+        env:
+          EVENT_ID: ${{ inputs.event_id }}
+          BODY: ${{ inputs.body || 'city-council' }}
+          DAYS: ${{ inputs.days || '6' }}
+          LIMIT: ${{ inputs.limit || '3' }}
+        run: |
+          if [ -n "$EVENT_ID" ]; then
+            # Manual override: trust the operator, skip the window checks.
+            # Every column is filled in — `read` folds runs of tabs together, so
+            # an empty field would shift the rest of the row along.
+            printf '%s\t%s\t%s\t%s\t%s\n' "$BODY" "$EVENT_ID" "(manual)" "manual" "requested by hand" > work.tsv
+          else
+            python -m ingest.pending_transcripts --body "$BODY" --days "$DAYS" --limit "$LIMIT" > work.tsv
+          fi
+          count=$(wc -l < work.tsv | tr -d ' ')
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          if [ "$count" -eq 0 ]; then
+            echo "Nothing pending — every recent meeting already has a summary." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Pending meetings:" >> "$GITHUB_STEP_SUMMARY"
+            sed 's/^/- /' work.tsv >> "$GITHUB_STEP_SUMMARY"
+          fi
+          cat work.tsv
+
+      - name: Transcribe and summarise
+        if: steps.find.outputs.count != '0'
+        env:
+          ASSEMBLYAI_API_KEY: ${{ secrets.ASSEMBLYAI_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Nobody is watching this job, so the summary call must never stop to
+          # ask a question, and must give up rather than hang for hours.
+          COUNCIL_CLAUDE_FLAGS: "--dangerously-skip-permissions"
+          COUNCIL_CLAUDE_TIMEOUT: "30m"
+        run: |
+          # An empty credential is worse than an absent one — the CLI would try
+          # it and fail confusingly. Drop whichever secret wasn't configured.
+          [ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" ] || unset CLAUDE_CODE_OAUTH_TOKEN
+          [ -n "${ANTHROPIC_API_KEY:-}" ] || unset ANTHROPIC_API_KEY
+
+          failed=""
+          while IFS=$'\t' read -r body id day need name; do
+            [ -n "$id" ] || continue
+            echo "::group::$day  $body/$id  ($need)  $name"
+            # A meeting that fails must not stop the others, and a failed
+            # summary leaves the transcript in place: the next run retries just
+            # the summary rather than paying to transcribe again.
+            if scripts/transcribe_meeting.sh "$id" --body "$body" --cloud; then
+              echo "ok: $body/$id"
+            else
+              echo "::error::failed to publish $body event $id ($day)"
+              failed="$failed $body/$id"
+            fi
+            echo "::endgroup::"
+          done < work.tsv
+
+          if [ -n "$failed" ]; then
+            echo "FAILED_MEETINGS=$failed" >> "$GITHUB_ENV"
+            echo "Failed:$failed" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Rebuild site artifacts
+        if: steps.find.outputs.count != '0'
+        run: |
+          python -m ingest.build_transcripts
+          python -m ingest.build_agent_corpus --all-bodies
+
+      - name: Commit and push
+        if: steps.find.outputs.count != '0'
+        run: |
+          git config user.name  "council-bot"
+          git config user.email "council-bot@users.noreply.github.com"
+          git add data/transcripts docs/transcripts docs/agent-corpus.json
+          if git diff --cached --quiet; then
+            echo "No changes — nothing to commit."
+            exit 0
+          fi
+          stems=$(git diff --cached --name-only -- 'data/transcripts/*.summary.md' \
+                    | sed 's#.*/##; s#\.summary\.md$##' | sort -u | tr '\n' ' ' | sed 's/ *$//')
+          git commit -m "data: transcript ${stems:-update}"
+          # weekly-ingest shares the concurrency group, but a human push can
+          # still land mid-run; rebase rather than fail the whole night's work.
+          for attempt in 1 2 3; do
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push && exit 0
+            echo "push attempt $attempt failed; retrying…"
+            sleep 5
+          done
+          echo "::error::could not push transcript commit"
+          exit 1
+
+      - name: Report failures
+        if: always()
+        run: |
+          if [ -n "${FAILED_MEETINGS:-}" ]; then
+            echo "::error::some meetings did not publish:${FAILED_MEETINGS}"
+            exit 1
+          fi

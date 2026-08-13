@@ -31,6 +31,11 @@
 #
 # Requirements: ffmpeg, whisper-cli (brew install ffmpeg whisper-cpp),
 #               claude CLI (for the summary), python3.
+#
+# This is also the engine behind .github/workflows/transcribe-meetings.yml, which
+# runs it in --cloud mode the morning after each meeting. Two env vars exist for
+# that unattended case: COUNCIL_CLAUDE_FLAGS (extra flags for the summary call)
+# and COUNCIL_CLAUDE_TIMEOUT (default 30m, needs `timeout` on PATH).
 set -euo pipefail
 
 # ---- locate repo root (script lives in <root>/scripts) ----
@@ -71,6 +76,22 @@ done
 
 say() { printf '\033[1;32m▸ %s\033[0m\n' "$*"; }
 die() { printf '\033[1;31m✗ %s\033[0m\n' "$*" >&2; exit 1; }
+
+# Summary model invocation. Interactively this is just `claude -p`. The nightly
+# GitHub Actions run sets COUNCIL_CLAUDE_FLAGS=--dangerously-skip-permissions so
+# nothing can stop to ask a question in a job with no one watching, and the call
+# is capped with `timeout` where that exists (macOS ships without it) so a hung
+# request fails the meeting instead of the whole run.
+CLAUDE_FLAGS="${COUNCIL_CLAUDE_FLAGS:-}"
+CLAUDE_TIMEOUT="${COUNCIL_CLAUDE_TIMEOUT:-30m}"
+run_claude() {
+  # shellcheck disable=SC2086  # CLAUDE_FLAGS is a deliberate word-split list
+  if command -v timeout >/dev/null; then
+    timeout "$CLAUDE_TIMEOUT" claude -p $CLAUDE_FLAGS
+  else
+    claude -p $CLAUDE_FLAGS
+  fi
+}
 
 # ---- dependency checks ----
 for bin in python3 curl; do
@@ -355,7 +376,7 @@ PROMPT
         printf '=== OFFICIAL AGENDA ===\n%s\n\n' "${AGENDA_TXT:-(agenda unavailable)}"
         printf '=== FULL TRANSCRIPT ===\n'
         cat "$TXT"
-      } | claude -p > "$SUMMARY.tmp" && [ -s "$SUMMARY.tmp" ]; then
+      } | run_claude > "$SUMMARY.tmp" && [ -s "$SUMMARY.tmp" ]; then
         # Trim any preamble before the lede, just in case. The document now opens
         # on "**In short:**" — there is no H1, because the page supplies the title.
         python3 - "$SUMMARY.tmp" "$SUMMARY" <<'PY'
