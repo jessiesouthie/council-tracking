@@ -5913,6 +5913,15 @@ table.data.statewide thead th { background: var(--t-card); }
   grid-template-columns: 1fr;
 }
 @media (min-width: 720px) { .b-years { grid-template-columns: 1fr 1fr; } }
+/* Three budgets need a third column, but not until there is room for one: at
+   tablet width three cards would each be too narrow to hold a description, so
+   the pair sits side by side and the oldest year takes the full width beneath
+   them. Which is the right card to give the extra room to — it is the one a
+   reader is least likely to open, so its card carries more of the argument. */
+@media (min-width: 720px) and (max-width: 1019px) {
+  .b-years.is-three > :last-child { grid-column: 1 / -1; }
+}
+@media (min-width: 1020px) { .b-years.is-three { grid-template-columns: repeat(3, 1fr); } }
 .b-year {
   position: relative;
   display: grid; align-content: start; gap: 3px;
@@ -6261,6 +6270,373 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
 .bn-notes { margin-top: 22px; }
 .bn-notes .b-note { border-left-color: var(--border-strong); }
 
+/* ---- The adopted book: FY2025–26 ------------------------------------------
+   The same prose-led shell as the interim block above it, and deliberately so:
+   both are a year explained before it is charted. What separates them is
+   status, carried exactly where the year cards carry it — an ink edge and an
+   ink flag for a budget that is settled, amber for one that is not.
+
+   Beyond that, this one section is set as what it actually is: a printed
+   volume. Everything else on the site reports on things that are still moving,
+   and is dressed as an interface — cards, shadows, a UI grotesque. The adopted
+   book is finished, 646 pages of it, and the only page on the site that can be
+   read all the way down to an account number. So it takes document typography
+   instead: a serif with some cut to it for the display line, the site's mono
+   for anything that is a figure or a filing code, and rules where the rest of
+   the site would use a card edge. The interim block above keeps the interface
+   dress, which is the point — the two look like different kinds of object
+   because they are.
+
+   Everything below is scoped to .bk so the shared .bn shell is untouched. */
+.bk {
+  /* Fraunces at one pinned instance — 700, sharpest cut, wonky alternates on.
+     Pinning SOFT and WONK rather than shipping the axes takes the latin subset
+     from 118KB to 34KB, which is the whole reason a second family is
+     affordable here at all. Everything numeric uses the mono the site already
+     has, so the book costs one font file, not three. */
+  --bk-display: "Fraunces", Georgia, "Times New Roman", serif;
+  /* The stock the book is printed on: a half-step warmer and yellower than the
+     interim block's ground, so the two panels read as different paper rather
+     than the same panel in two states. */
+  --bk-paper: #F7F2E3;
+  --bk-rule: var(--border-strong);
+  /* The one figure a block turns on. --highlight-ink, not --warm-ink: only the
+     first is redefined for dark, and this sits on a dark ground there. */
+  --bk-figure: var(--highlight-ink);
+
+  background: var(--bk-paper);
+  border-top-color: var(--fg-soft);
+}
+@media (prefers-color-scheme: dark) { .bk { --bk-paper: #1F221A; } }
+:root[data-theme="dark"]  .bk { --bk-paper: #1F221A; }
+:root[data-theme="light"] .bk { --bk-paper: #F7F2E3; }
+
+/* The masthead. A title page, so the title is allowed to be a title: the
+   display line runs to 40px where the interim block's runs to 26, and the flag
+   loses its pill and becomes a stamp — squared off, letterspaced, set in mono.
+   The rule under the whole head is what closes it. */
+.bk .bn-head {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 12px 40px;
+  padding-bottom: 20px; border-bottom: 1px solid var(--bk-rule);
+}
+.bk .bn-head h2 {
+  font-family: var(--bk-display); font-weight: 700;
+  font-size: clamp(29px, 4.1vw, 40px); line-height: 1.07;
+  letter-spacing: -.014em; margin: 13px 0 0;
+}
+.bk .bn-flag {
+  padding: 4px 10px 3px; border-radius: 2px;
+  background: var(--fg-soft); color: var(--bg-elev);
+  font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: .14em;
+}
+.bk .bn-lede { font-size: 15.5px; line-height: 1.66; }
+
+/* The colophon: what the volume is, in the terms a volume is described in. It
+   runs the full width under both head columns and closes the masthead on its
+   own rule. Putting it in the title's column instead — to fill the space a
+   two-line title leaves beside a six-line lede — only moved the gap to the
+   other column and broke the strip over two rows; the space under a title is
+   a title page, and it is the rule that has to close it, not the copy. */
+.bk-colophon {
+  grid-column: 1 / -1; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 13px 34px;
+  margin: 22px 0 0; padding: 13px 0 0; border-top: 1px solid var(--bk-rule);
+}
+.bk-colophon li {
+  font-family: var(--mono); font-size: 12.5px; line-height: 1.35;
+  color: var(--fg-soft); font-variant-numeric: tabular-nums;
+}
+.bk-colophon .k {
+  display: block; margin-bottom: 3px;
+  font-size: 9.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em;
+  color: var(--fg-muted);
+}
+
+/* The four headline figures, as the band a financial statement opens with
+   rather than four cards: one rule over, one under, hairlines between. Cards
+   made four equal boxes out of four unequal facts and put a shadow under each
+   one; a ruled band lets them sit at the top of the page as a single reading. */
+.bk .bn-figs {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0;
+  margin-top: 26px;
+  border-top: 2px solid var(--fg-soft); border-bottom: 1px solid var(--bk-rule);
+}
+.bk .b-fig {
+  background: transparent; border: 0; border-radius: 0; box-shadow: none;
+  padding: 15px 20px 17px 0;
+}
+.bk .b-fig + .b-fig { border-left: 1px solid var(--bk-rule); padding-left: 20px; }
+.bk .b-fig .k {
+  font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .14em;
+}
+.bk .b-fig .v {
+  font-family: var(--bk-display); font-weight: 700;
+  font-size: clamp(25px, 3.3vw, 34px); line-height: 1; margin-top: 9px;
+}
+.bk .b-fig .d { margin-top: 8px; font-size: 12.5px; line-height: 1.45; }
+
+/* The reading blocks. The heading takes the display face, the figure beside it
+   keeps the amber it already had, and an account number stops pretending to be
+   emphasis: in this section every <em> in the prose is a filing code, so it is
+   set as one — mono, upright, on its own small ground. */
+.bk .bn-block { border-top-color: var(--bk-rule); }
+.bk .bn-read h3 {
+  font-family: var(--bk-display); font-weight: 700;
+  font-size: 21px; line-height: 1.2; letter-spacing: -.008em;
+}
+.bk .bn-stat .v {
+  font-family: var(--bk-display); font-weight: 700; font-size: 28px;
+  color: var(--bk-figure);
+}
+.bk .bn-stat .k { font-family: var(--mono); font-size: 11px; line-height: 1.45; }
+.bk .bn-read em {
+  font-family: var(--mono); font-style: normal; font-size: .88em;
+  color: var(--fg-soft); background: var(--bg-elev);
+  border: 1px solid var(--border); border-radius: 3px; padding: 1px 5px;
+  white-space: nowrap;
+}
+.bk .bn-chartnote { border-left-color: var(--fg-soft); }
+
+/* The explorer, as a ledger. Three things change: the two money columns get
+   fixed widths so figures line up down all twenty funds instead of ragging to
+   whatever each row needs; the rows lose four pixels apiece, which is most of
+   a screen over a long fund; and every figure moves to mono, because a column
+   of nine-digit sums is the one place proportional numerals cost real reading.
+   The card keeps its edge and radius so it still belongs to the site, but the
+   shadow goes — a ledger sits on the page, it does not float above it. */
+.bk .bx { box-shadow: none; border-color: var(--bk-rule); overflow: clip; }
+.bk .bx-head h3 {
+  font-family: var(--bk-display); font-weight: 700; font-size: 22px; letter-spacing: -.008em;
+}
+.bk .bx-count { font-family: var(--mono); font-size: 11.5px; }
+
+/* The column heads the ledger never had. Sticky under the topbar, so the two
+   figures still have names forty rows into a fund. overflow:clip on the card
+   above is what makes that work — clip crops without creating the scroll
+   container that overflow:hidden would, and a sticky child inside a scroll
+   container with nowhere to scroll never moves. */
+.bk .bx-cols {
+  position: sticky; top: calc(var(--topbar-h, 62px) - 1px); z-index: 3;
+  display: grid; grid-template-columns: minmax(0, 1fr) 150px 104px; gap: 16px;
+  align-items: baseline; padding: 9px 22px 8px 40px;
+  background: var(--bg-muted);
+  border-top: 1px solid var(--bk-rule); border-bottom: 1px solid var(--bk-rule);
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .13em; color: var(--fg-muted);
+}
+.bk .bx-cols span + span { text-align: right; }
+/* display:grid above would otherwise outrank the UA's [hidden]. */
+.bk .bx-cols[hidden] { display: none; }
+.bk .bx-list { margin-top: 0; }
+
+.bk .bx-g > summary, .bk .bx-d > summary {
+  grid-template-columns: minmax(0, 1fr) 150px 104px; gap: 2px 16px;
+  padding: 8px 22px 8px 40px;
+}
+.bk .bx-g > summary::before, .bk .bx-d > summary::before { top: 12px; }
+.bk .bx-n { font-size: 14px; }
+/* What kind of fund it is runs after the name rather than under it. Sixteen of
+   the twenty funds carry that line, so as a block it was costing a second line
+   on almost every row — about a screen and a half over the list — to say
+   "Special Revenue Fund" in the place the eye is trying to read down names. */
+.bk .bx-n .b-where { display: inline; margin-left: 9px; }
+.bk .bx-n .b-where::before { content: "· "; }
+.bk .bx-v { font-family: var(--mono); font-size: 13px; font-weight: 500; text-align: right; }
+.bk .bx-c { font-family: var(--mono); font-size: 11.5px; }
+
+/* Each fund's share of the budget, drawn along the foot of its own row. The
+   list is sorted by size already, so this adds no ordering — what it adds is
+   scale: the General Fund's bar against the Cemetery Fund's says in one glance
+   what $34.6M against $81,523 takes two readings of the column to say. Set
+   from --share in the markup; rows without it simply have no bar. */
+.bk .bx-g > summary::after {
+  content: ""; position: absolute; left: 0; bottom: 0; height: 2px;
+  width: var(--share, 0); background: var(--fg-soft); opacity: .24;
+}
+.bk .bx-g[open] > summary::after { opacity: .5; }
+
+/* Every table in the section, set as a statement: mono figures, tighter rows,
+   an ink rule under the column heads, and the accountant's double rule over a
+   total. The book prints its totals that way and so does every budget document
+   the reader is likely to have seen. */
+.bk table.data { font-size: 13.5px; }
+.bk table.data th, .bk table.data td { padding: 7px 12px; border-bottom-color: var(--hairline); }
+.bk table.data thead th {
+  font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .12em;
+  border-bottom: 2px solid var(--fg-soft);
+}
+.bk table.data .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.bk table.data .b-where { font-family: var(--mono); font-size: 10.5px; }
+.bk table.data.bx-lines .bx-grp th { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; }
+.bk table.data.bx-lines .bx-sub td { border-top: 1px solid var(--bk-rule); }
+.bk table.data.bx-lines .bx-tot td { border-top: 3px double var(--fg-soft); }
+
+/* Notes and source, as the back matter of the volume: ruled, not carded, and
+   the source line set in mono under the heavy rule that closes the section. */
+.bk .bn-notes .b-note {
+  background: transparent; border: 0; border-top: 1px solid var(--bk-rule);
+  border-radius: 0; padding: 12px 0 0;
+}
+.bk .b-note h3 { font-family: var(--mono); font-size: 10px; letter-spacing: .13em; }
+.bk .b-src {
+  margin-top: 26px; padding-top: 14px; border-top: 2px solid var(--fg-soft);
+  font-family: var(--mono); font-size: 11.5px; line-height: 1.65;
+}
+
+/* One reveal, on the matter at the top of the section — the stamp, the title,
+   the colophon, then the four figures left to right. It runs when the panel is
+   first shown rather than on load, because the year tabs hide the panel with
+   [hidden]; that is the moment the reader arrives at it either way. */
+@media (prefers-reduced-motion: no-preference) {
+  .bk .bn-head-t, .bk .bn-lede, .bk .bk-colophon, .bk .b-fig {
+    animation: bk-set .55s cubic-bezier(.22, .68, .3, 1) both;
+  }
+  .bk .bn-lede     { animation-delay: .05s; }
+  .bk .bk-colophon { animation-delay: .1s; }
+  .bk .b-fig:nth-child(1) { animation-delay: .16s; }
+  .bk .b-fig:nth-child(2) { animation-delay: .22s; }
+  .bk .b-fig:nth-child(3) { animation-delay: .28s; }
+  .bk .b-fig:nth-child(4) { animation-delay: .34s; }
+}
+@keyframes bk-set {
+  from { opacity: 0; transform: translateY(9px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (max-width: 860px) {
+  /* The masthead stacks here like every other head on the page. Restated with
+     .bk on it because the two-column rule above carries .bk too and would
+     otherwise outrank the shared collapse — which left the title and the flag
+     in a 145px column on a phone, three lines of stamp and a six-line title. */
+  .bk .bn-head { grid-template-columns: minmax(0, 1fr); gap: 10px 0; }
+  /* Four figures across a tablet gives each one a two-word line, so the band
+     goes two by two with the hairline now running both ways. */
+  .bk .bn-figs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bk .b-fig { padding-inline: 20px 20px; }
+  .bk .b-fig:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .bk .b-fig:nth-child(n + 3) { border-top: 1px solid var(--bk-rule); }
+}
+@media (max-width: 719px) {
+  /* Same collapse the shared explorer makes at this width — the name takes its
+     own line and the amount and change share the next — but restated here,
+     because these selectors carry .bk and would otherwise outrank it. */
+  .bk .bx-cols { display: none; }
+  .bk .bx-g > summary, .bk .bx-d > summary {
+    grid-template-columns: minmax(0, 1fr) auto; padding: 9px 14px 9px 34px;
+  }
+  .bk .bx-g > summary::before, .bk .bx-d > summary::before { left: 14px; }
+  .bk .bx-kids .bx-d > summary { padding-left: 44px; }
+  .bk .bx-kids .bx-d > summary::before { left: 24px; }
+  .bk .bn-figs { grid-template-columns: minmax(0, 1fr); }
+  .bk .b-fig { padding-left: 0; border-left: 0; }
+  .bk .b-fig + .b-fig { padding-left: 0; border-left: 0; border-top: 1px solid var(--bk-rule); }
+  .bk-colophon { gap: 0 22px; }
+}
+
+/* ---- The explorer: the budget book itself ---------------------------------
+   Everything else on the page is a summary of something; this is the thing
+   being summarised, so it is built to be worked rather than read — a search
+   across every line, two ways of grouping them, and tables that open only when
+   asked for. Nested disclosures, so a reader can hold one department open and
+   still see the shape of the fund it sits in.
+
+   Depth is carried by indent and ground, not by nesting cards: a fund is a row
+   on the card's own surface, its departments sit on the muted ground one step
+   in, and the accounts themselves are a plain table one step further. Three
+   levels is as deep as the budget goes, which is why it can be done with
+   space alone and never needs a border to say where you are. */
+.bx {
+  margin-top: 26px; background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
+}
+.bx-head { padding: 18px 22px 0; }
+.bx-head h3 { font-family: var(--serif); font-size: 20px; line-height: 1.25; color: var(--fg-soft); margin: 0; }
+.bx-head p { margin: 7px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--fg-muted); max-width: 76ch; }
+.bx-tools { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; padding: 14px 22px 0; }
+.bx-search { flex: 1 1 300px; display: flex; }
+.bx-search .input { width: 100%; min-width: 0; }
+.bx-count { margin: 11px 22px 0; font-size: 12.5px; color: var(--fg-muted); }
+.bx-list { margin-top: 11px; }
+
+/* One row per fund or department: what it is on the left, what it was given on
+   the right, and how that compares with the year before. The middle column is
+   the only one that has to line up down the list, so it is the one given a
+   fixed home; the change sits beyond it, where a long name can never push it. */
+.bx-g, .bx-d { border-top: 1px solid var(--border); }
+.bx-g > summary, .bx-d > summary {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 2px 16px; align-items: baseline; cursor: pointer;
+  padding: 11px 22px 11px 40px; list-style: none; position: relative;
+}
+.bx-g > summary::-webkit-details-marker, .bx-d > summary::-webkit-details-marker { display: none; }
+/* The caret is drawn rather than typed: a glyph would sit on the text baseline
+   and drift with the row's height. Rotation is the open state, so there is one
+   thing to animate and nothing to keep in sync. */
+.bx-g > summary::before, .bx-d > summary::before {
+  content: ""; position: absolute; left: 20px; top: 15px;
+  width: 7px; height: 7px; border-right: 2px solid var(--fg-muted); border-bottom: 2px solid var(--fg-muted);
+  rotate: -45deg; transition: rotate .15s ease;
+}
+.bx-g[open] > summary::before, .bx-d[open] > summary::before { rotate: 45deg; }
+.bx-g > summary:hover, .bx-d > summary:hover { background: var(--accent-soft); }
+.bx-g > summary:focus-visible, .bx-d > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+.bx-n { font-weight: 700; font-size: 14.5px; color: var(--fg-soft); }
+.bx-v { font-weight: 700; font-size: 14.5px; color: var(--fg-soft); font-variant-numeric: tabular-nums; }
+.bx-c { font-size: 12.5px; color: var(--fg-muted); font-variant-numeric: tabular-nums; text-align: right; }
+.bx-c.bn-up, .bx-c.bn-down { font-weight: 700; }
+
+/* Departments sit on the muted ground, a step in from their fund. */
+.bx-kids { background: var(--bg-muted); }
+.bx-kids .bx-d > summary { padding-left: 56px; }
+.bx-kids .bx-d > summary::before { left: 36px; }
+.bx-kids .bx-n { font-weight: 600; }
+.bx-table { padding: 2px 14px 16px 22px; }
+.bx-table .tablewrap { background: var(--bg-elev); }
+
+/* The account table. Type-of-spending headers and their subtotals are the
+   book's own shape, and they are what keeps a 40-row department readable. */
+table.data.bx-lines { font-size: 13px; }
+/* The line's name gets a floor rather than a share of what's left: six money
+   columns will squeeze it to three wrapped words otherwise, and the account
+   number under it must not break — half an account number is unsearchable.
+   Past the floor the table scrolls inside its own wrapper, which is the
+   behaviour every other wide table on the site has. */
+table.data.bx-lines td:first-child, table.data.bx-lines thead th:first-child { min-width: 210px; }
+table.data.bx-lines td:first-child .b-where { white-space: nowrap; }
+table.data.bx-lines .num { white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }
+table.data.bx-lines thead th { font-size: 11.5px; }
+table.data.bx-lines .bx-grp th {
+  font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--fg-muted); background: var(--bg-muted); padding-top: 11px;
+}
+table.data.bx-lines .bx-sub td { font-weight: 700; color: var(--fg-soft); }
+table.data.bx-lines .bx-tot td {
+  font-weight: 800; color: var(--fg-soft); border-top: 2px solid var(--border-strong); border-bottom: none;
+}
+.bx-list > .tablewrap { margin: 0 22px; }
+
+/* The note that says which FY2025–26 the next-year tables compare against.
+   Sits under the last of them rather than beside each: it is one fact about
+   every table in the section, and repeating it four times would read as four
+   different caveats. */
+.bn-priornote { margin-top: 18px; }
+
+@media (max-width: 719px) {
+  /* The row's three parts stop fitting on one line well before the card runs
+     out of width — a fund name and a nine-figure sum are each most of it — so
+     the amount takes the second line and the change sits beside it. */
+  .bx-g > summary, .bx-d > summary { grid-template-columns: minmax(0, 1fr) auto; padding: 10px 14px 10px 34px; }
+  .bx-g > summary::before, .bx-d > summary::before { left: 14px; }
+  .bx-n { grid-column: 1 / -1; }
+  .bx-kids .bx-d > summary { padding-left: 44px; }
+  .bx-kids .bx-d > summary::before { left: 24px; }
+  .bx-head, .bx-tools { padding-inline: 14px; }
+  .bx-count { margin-inline: 14px; }
+  .bx-table { padding: 2px 8px 14px 14px; }
+  .bx-list > .tablewrap { margin-inline: 14px; }
+}
+
 /* ---- The adopted book: FY2025 --------------------------------------------
    The settled half of the page. It has to be unmistakably a different kind of
    thing from the interim block above it, so where that one is tinted, amber-
@@ -6344,6 +6720,24 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
        through the segment too and land behind its own label. */
     background: var(--bg);
     border-bottom: 1px solid var(--border);
+  }
+
+  /* Three segments can't hold the year and its status on one line, so the
+     status goes above — the same stack the narrowest phones drop to with two.
+     The total loses a few points with it: three segments across a 360px phone
+     leave about a hundred pixels each, and "$119.1M" at 19px does not fit. */
+  .b-years.is-three { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .b-years.is-three .b-year {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "flag" "fy" "v";
+  }
+  .b-years.is-three .b-year-flag { justify-self: start; }
+  .b-years.is-three .b-year-v { font-size: 16.5px; }
+  /* The pinned bar is a line taller with three, so anything that scrolls to
+     clear it has to know. Panels are the switcher's own siblings, which is
+     what lets one class on the bar reach them. */
+  .b-years.is-three ~ .bn, .b-years.is-three ~ .bp {
+    scroll-margin-top: calc(var(--topbar-h, 60px) + 96px);
   }
 
   /* Two lines: year and status on one, the total under it. */

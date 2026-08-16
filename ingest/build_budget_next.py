@@ -1,34 +1,38 @@
 """Build docs/data.budget-next.json — the FY2026–27 budget, from ClearGov line items.
 
 The Budget page's main charts are built from the FY2025 *budget book* (see
-docs/data.budget.json). No budget book exists for FY2026 or FY2027 — the city
-stopped publishing them after FY2025 — but ClearGov still holds every line item
-for every year behind its statistics API, and that is what this reads.
+docs/data.budget.json). No budget book exists for FY2027 — an interim budget
+does not get one — but ClearGov holds every line item for every year behind its
+statistics API, and that is what this reads. FY2025–26 does have a book, and it
+is published in full by ingest/build_budget_book.py.
 
 Method, and why it can be trusted: the same rollup run against FY2025 version
 1917953 reproduces $172,508,305, the exact total the published FY2025 book
 carries. That tie-out is asserted below and the script fails if it ever breaks.
 
-Two version lineages are involved:
+Three version lineages are involved:
 
-  1917953  the adopted-budget lineage. Holds FY2019–FY2026. FY2025 in this
-           lineage is the published book; FY2026 is the budget adopted 17 Jun
-           2025 (meeting 494).
-  1937425  holds FY2027. This is where the FY2026–27 budget lives — set on
-           5 May 2026 when the council accepted the tentative budget (meeting
-           712), touched again 10 Jun and 16 Jul 2026 around the interim
-           adoption (meeting 726).
+  1917953  the standing-budget lineage. Holds FY2019–FY2026, each year as it
+           stands: FY2025 is the published book, and FY2026 is FY2025-26 with
+           the capital carried into it during the year — $163.2M.
+  1937425  holds FY2026 and FY2027. FY2026 here is the FY2025-26 budget book as
+           adopted, $119.1M. FY2027 is the FY2026–27 budget — set on 5 May 2026
+           when the council accepted the tentative budget (meeting 712), touched
+           again 10 Jun and 16 Jul 2026 around the interim adoption (meeting 726).
 
-FY2027 not sharing the adopted lineage is a real caveat, surfaced in the JSON
-rather than smoothed over: the FY2026–27 budget is *interim*, adopted 16 Jun
-2026 pending a Truth-in-Taxation hearing on 6 Aug and final adoption on 18 Aug
-2026, so it has no adopted-lineage row to sit in yet.
+Two things follow, both surfaced in the JSON rather than smoothed over. FY2027
+does not sit in the standing lineage, because an interim budget has no finished
+entry to sit in. And every "last year" figure on the next-year page is FY2025-26
+as that year ended up, not as it was adopted — the fairer comparison, since it
+is the budget the city was actually working to, but $44M larger than the book,
+so it is labelled everywhere it appears.
 
-Usage:  python -m ingest.build_budget_next
+Usage:  python -m ingest.build_budget_next [--cache DIR]
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import urllib.request
 from pathlib import Path
@@ -41,7 +45,8 @@ OUT = DOCS / "data.budget-next.json"
 
 # (year, native_version_id) for each budget this file compares.
 FY2027 = (2027, 1937425)  # interim FY2026-27
-FY2026 = (2026, 1917953)  # adopted FY2025-26
+FY2026 = (2026, 1917953)  # FY2025-26 as it ended up — carry-forwards included
+FY2026_BOOK = (2026, 1937425)  # FY2025-26 as adopted — the published book
 FY2025 = (2025, 1917953)  # adopted FY2024-25 — the published book
 
 # The published FY2025 book's own bottom line. The rollup must reproduce it.
@@ -119,6 +124,11 @@ SERVICE_AREA = {
     # Not a department: money leaving the fund. ClearGov files these under a
     # category that happens to share a department's name — see DISAMBIGUATE.
     "Transfers out": "Transfers out",
+    # Also not a department: money the fund takes in and does not spend. The
+    # FY2025-26 book carries $955,333 of it in the General Fund, where neither
+    # FY2025 nor FY2027 carried any, so it needs a bucket of its own — folding
+    # it into a service area would read as spending on that service.
+    "Fund Reserve": "Set aside, not spent",
 }
 
 # ClearGov reuses department names across functions: there is a "Planning &
@@ -153,15 +163,28 @@ PERMIT_ACCOUNTS = {
 UPSTREAM_TEXT_FIXES = {"treatement": "treatment"}
 
 
-def fetch(path: str):
+def fetch(path: str, cache: Path | None = None, name: str = ""):
+    """GET one API path, optionally through a directory of saved responses.
+
+    The line-item feed is ~29MB and both budget builders read the same two
+    responses, so a cache directory lets a refresh download them once. Nothing
+    expires it: pass --cache only while iterating, and leave it off to publish.
+    """
+    if cache and name and (cache / name).exists():
+        return json.loads((cache / name).read_text(encoding="utf-8"))
     req = urllib.request.Request(f"{API}/{path}", headers={"Accept": "application/json"})
     with urllib.request.urlopen(req, timeout=300) as resp:
-        return json.load(resp)
+        data = json.load(resp)
+    if cache and name:
+        cache.mkdir(parents=True, exist_ok=True)
+        (cache / name).write_text(json.dumps(data), encoding="utf-8")
+    return data
 
 
-def load():
-    cats = {c["id"]: c for c in fetch(f"categories/listByMunicipalityId?municipalityId={MUNICIPALITY_ID}")}
-    items = fetch(f"statistics/municipalities/{MUNICIPALITY_ID}/lineItems")
+def load(cache: Path | None = None):
+    cats = {c["id"]: c for c in fetch(
+        f"categories/listByMunicipalityId?municipalityId={MUNICIPALITY_ID}", cache, "categories.json")}
+    items = fetch(f"statistics/municipalities/{MUNICIPALITY_ID}/lineItems", cache, "lineItems.json")
     return cats, items
 
 
@@ -424,10 +447,11 @@ def pair(now: dict, prior: dict, *, drop_zero=True):
     return rows
 
 
-def build():
-    cats, items = load()
+def build(cache: Path | None = None):
+    cats, items = load(cache)
     fy27 = Book(items, cats, *FY2027)
     fy26 = Book(items, cats, *FY2026)
+    fy26book = Book(items, cats, *FY2026_BOOK)
     fy25 = Book(items, cats, *FY2025)
 
     got = round(fy25.total("exp"))
@@ -441,9 +465,16 @@ def build():
 
     fba27 = fy27.by("object")["Fund Balance Appropriation"]
     fba26 = fy26.by("object").get("Fund Balance Appropriation", 0)
+    fba26b = fy26book.by("object").get("Fund Balance Appropriation", 0)
     fba25 = fy25.by("object").get("Fund Balance Appropriation", 0)
 
     gross27, gross26, gross25 = fy27.total(), fy26.total(), fy25.total()
+    # FY2025-26 twice: what the Council adopted, and what the year became once
+    # unfinished capital rolled into it. The comparison columns on this page are
+    # against the second — that is the budget the city actually ran — but a
+    # figure that big cannot go unlabelled, so the adopted one travels with it.
+    # See ingest/build_budget_book.py, which publishes the adopted book in full.
+    gross26b = fy26book.total()
 
     borrowing = sorted(
         (
@@ -488,12 +519,14 @@ def build():
     data = {
         "_comment": (
             "Eagle Mountain's FY2026-27 budget as adopted on an interim basis 16 June 2026, "
-            "compared against the FY2025-26 and FY2024-25 adopted budgets. Rolled up from the "
-            "city's own ClearGov line items via ingest/build_budget_next.py. Budgeted, not "
-            "actual. This budget is not final: a Truth-in-Taxation hearing is set for 6 August "
-            "2026 and final adoption for 18 August 2026, and figures can move at either. The "
-            "same rollup reproduces the published FY2025 book total to the dollar, which is how "
-            "the method is verified."
+            "compared against FY2025-26 as that year ended up and FY2024-25 as adopted. Rolled "
+            "up from the city's own ClearGov line items via ingest/build_budget_next.py. "
+            "Budgeted, not actual. This budget is not final: a Truth-in-Taxation hearing is set "
+            "for 6 August 2026 and final adoption for 18 August 2026, and figures can move at "
+            "either. Every 'last year' figure here is FY2025-26 including the capital carried "
+            "forward into it mid-year — larger than the $119.1M the Council adopted, which is "
+            "published line by line in data.budget-book.json. The same rollup reproduces the "
+            "published FY2025 book total to the dollar, which is how the method is verified."
         ),
         "fiscal_year": "2026-27",
         "fiscal_year_label": "FY2026–27",
@@ -510,17 +543,17 @@ def build():
             "publisher": "ClearGov",
             "url": "https://cleargov.com/api/statistics/municipalities/315552/lineItems",
             "note": (
-                "The city has not published a budget book since FY2025. These figures come from "
-                "the raw line-item feed that sits behind that book — the same data, one step "
-                "earlier: version 1937425 for FY2026-27, and 1917953 for the FY2025 and FY2026 "
-                "adopted budgets."
+                "These figures come from the raw line-item feed that sits behind the city's "
+                "published budget books — the same data, one step earlier: version 1937425 for "
+                "FY2026-27, and 1917953 for FY2025 and for FY2025-26 as that year ended up."
             ),
             "caveat": (
-                "The FY2026-27 figures come from a different version of that feed than the "
-                "finished budgets they are compared against, because an interim budget does not "
-                "get a finished-budget entry until it is adopted. Everything is added up exactly "
-                "the same way, and the method reproduces the city's published FY2025 total to the "
-                "dollar."
+                "Last year's column is FY2025-26 as it stood at the end of the year, not as it "
+                "was adopted: $163.2M against the $119.1M the Council voted for, the difference "
+                "being building work carried forward from the year before. That is the fairer "
+                "comparison — it is what the city was actually working to — but it makes this "
+                "year's increase look smaller than it does against the adopted figure. The "
+                "adopted book is on this page in full, under FY2025-26."
             ),
         },
         "calendar": [
@@ -562,7 +595,11 @@ def build():
         ],
         "totals": {
             "fy2027": {"gross": round(gross27), "reserves": round(fba27), "net": round(gross27 - fba27)},
-            "fy2026": {"gross": round(gross26), "reserves": round(fba26), "net": round(gross26 - fba26)},
+            "fy2026": {
+                "gross": round(gross26), "reserves": round(fba26), "net": round(gross26 - fba26),
+                "adopted_gross": round(gross26b), "adopted_reserves": round(fba26b),
+                "adopted_net": round(gross26b - fba26b),
+            },
             "fy2025": {"gross": round(gross25), "reserves": round(fba25), "net": round(gross25 - fba25)},
         },
         "borrowing": {
@@ -661,5 +698,11 @@ def build():
     print(f"wrote {OUT} — FY2027 gross {gross27:,.0f}, net of reserves {gross27 - fba27:,.0f}")
 
 
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--cache", type=Path, help="directory to cache the two API responses in")
+    build(ap.parse_args().cache)
+
+
 if __name__ == "__main__":
-    build()
+    main()
