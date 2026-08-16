@@ -5587,6 +5587,10 @@ table.data.statewide tbody tr[hidden] { display: none; }
    columns on a desktop and unreadable on a phone. Stacked instead: the name at
    table weight, everything else one step down and muted. */
 .st-name { display: block; }
+/* The dagger on a row read off the issuing county's notice rather than the
+   compiled list. Muted, like every other footnote mark on the site: it marks a
+   row without competing with the entity's name for the eye. */
+.st-name .ast { color: var(--t-muted); margin-left: 1px; }
 /* The rate the entity would levy, over the certified rate it is measured
    against. Mono and a shade heavier than the row, because on a page about
    rates this is the number, and every percentage in the table is derived

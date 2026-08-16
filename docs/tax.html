@@ -27,7 +27,7 @@
          so nothing on this page would use it, and asking for a third family only
          costs a render-blocking round trip. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260815n" />
+    <link rel="stylesheet" href="site.css?v=20260815o" />
   </head>
   <body class="page-tax">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -2871,7 +2871,15 @@
               data-rev="${valOf(BASES[2], n)}" data-date="${day.sort}">
             <td class="num">${rank}</td>
             <td>
-              <span class="st-name">${CT.escapeHtml(n.entity)}</span>
+              <span class="st-name">${CT.escapeHtml(n.entity)}${
+                /* A row the compiled list got wrong and the issuing county's own
+                   notice settled. Marked rather than silently swapped, because a
+                   reader comparing this table against the published list should
+                   be able to see where the two part company, and why. */
+                n.corrected_from_notice
+                  ? `<span class="ast" title="Corrected against the county's own notice — see About these numbers">†</span>`
+                  : ""
+              }</span>
               <span class="st-meta">${CT.escapeHtml(n.type)} · ${CT.escapeHtml(n.county)} County${
                 n.years_in_row > 1 ? ` · ${numWord(n.years_in_row)} years running` : ""
               }${when}</span>
