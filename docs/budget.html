@@ -26,7 +26,7 @@
          pinning them takes the latin subset from 118KB to 34KB. Figures and
          filing codes use the mono the site already ships with. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,700,0,1&family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260815o" />
+    <link rel="stylesheet" href="site.css?v=20260816c" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -433,7 +433,7 @@
 
          Each prose block runs heading-and-figure in a left rail, argument in the
          column beside it: the section is the full width of the page, so a single
-         centred measure would leave a third of it empty.
+         centered measure would leave a third of it empty.
 
          Everything here is the city's own line items (see
          ingest/build_budget_next.py); the narrative claims are each anchored to
@@ -1313,7 +1313,7 @@
           rightNodes.map((n) => ({ id: "R:" + n.name, name: n.name, total: n.total, color: cssv("--sk-node"), kind: "target" })),
         ];
         const edges = links.map((l) => ({ source: "L:" + l.source, target: "R:" + l.target, value: l.value, color: fc.get(l.source) }));
-        orderByBarycentre(cols[0], cols[1], edges);
+        orderByBarycenter(cols[0], cols[1], edges);
 
         drawSankey(ctx.p + "-svg", cols, edges, ctx.T, {
           colCaptions: ["Fund", funcMode ? "What it pays for" : "Type of spending"],
@@ -1499,7 +1499,7 @@
          ribbon means the same dollars in every column; because money is conserved,
          each node's ribbons exactly fill its height.
       */
-      function orderByBarycentre(leftCol, rightCol, edges) {
+      function orderByBarycenter(leftCol, rightCol, edges) {
         const idx = new Map(leftCol.map((n, i) => [n.id, i]));
         const bary = new Map();
         rightCol.forEach((r) => {
@@ -1612,7 +1612,7 @@
       }
 
       // Push overlapping labels apart while keeping them as close to their node
-      // centre as possible, then clamp inside [lo, hi]. Returns node → label-y.
+      // center as possible, then clamp inside [lo, hi]. Returns node → label-y.
       function spreadLabels(col, minGap, lo, hi) {
         const arr = col.map((n) => ({ n, y: n.y + n.h / 2 })).sort((a, b) => a.y - b.y);
         for (let i = 1; i < arr.length; i++)

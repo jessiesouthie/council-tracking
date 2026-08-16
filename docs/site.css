@@ -722,7 +722,7 @@ body.page-tax::before {
 
 /* ---------- Hero ---------- */
 /* No cap here: the title, sub and search pill carry their own measures and stay
-   centred, so the ledger below them is free to fill the column and line up with
+   centered, so the ledger below them is free to fill the column and line up with
    the decision cards. */
 .hero {
   text-align: center;
@@ -3535,7 +3535,7 @@ body.page-tax, .tax-page {
 
   .tax-tool .bill-band {
     grid-area: band;
-    /* Centred in whatever height the controls beside it happen to need — the
+    /* Centered in whatever height the controls beside it happen to need — the
        rate rows grow by ~90px when the custom row opens, and an answer pinned
        to the top of that column would drift away from the figure it answers. */
     display: flex;
@@ -5752,7 +5752,7 @@ table.data.statelist :is(th, td) { padding-left: 8px; padding-right: 8px; }
 /* `gap: 0` is the argument's own rule, restated at a weight that survives the
    card layer: `.tax-page .argument` and `.tax-page .tax-sec` are both (0,2,0)
    and this file's later `gap: 20px` was quietly winning, which floated every
-   hairline 20px off centre between the blocks it separates. */
+   hairline 20px off center between the blocks it separates. */
 .tax-page .tax-sec.argument { gap: 0; }
 
 /* The fine print closes the card, so its rule spans the full width and its last
@@ -6022,7 +6022,7 @@ table.data.statewide thead th { background: var(--t-card); }
   box-shadow: var(--shadow); margin-top: 26px; overflow: hidden;
 }
 /* Title and its grouping control ride a left rail; the description takes the
-   whole column beside them. A single centred measure under the title left most
+   whole column beside them. A single centered measure under the title left most
    of a 980px card empty on the right, which read as an unfinished layout. */
 .b-chart-head {
   display: grid; grid-template-columns: minmax(200px, 290px) minmax(0, 1fr);
@@ -6198,7 +6198,7 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
 /* Analysis blocks. Heading and the one figure the argument turns on ride a left
    rail; the prose takes the column beside it. That keeps the line length in the
    readable range while the block itself spans the full width of the section —
-   a single centred measure left a third of the page empty down the right. */
+   a single centered measure left a third of the page empty down the right. */
 .bn-read { margin-top: 26px; }
 .bn-block {
   display: grid; grid-template-columns: minmax(0, 262px) minmax(0, 1fr);
@@ -7384,6 +7384,7 @@ table.data.bx-lines .bx-tot td {
 }
 .switch-row.proj-switch .switch-label { margin-bottom: 10px; color: var(--t-gold); }
 .switch-row.proj-switch .scope-switch { display: flex; flex-wrap: wrap; }
+
 /* The picked scenario reads as four short paragraphs rather than one long one:
    what the rate is, what it raises, and what the case is for reading it. Ruled
    on the same gold as the switcher above it, so the control and its answer
@@ -8058,14 +8059,17 @@ table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi
   .proj-pool-bar { height: 24px; }
 }
 
-/* ---------- what gives first ----------
-   The reachable pool again, but split by what it is rather than whose
-   department it sits in, and laid out in the order a budget actually gives
-   way. The overlay on each segment is how far this scenario's gap eats in.
+/* ---------- what the flexible money is made of ----------
+   The flexible pool again, but split by what it buys rather than whose
+   department it sits in, ordered by how quickly each part could be changed.
 
-   Rung colours run light-to-dark deliberately: the first thing to go is the
-   palest, staffing is the darkest, so the bar reads as a gradient of
-   seriousness left to right without needing four unrelated hues. */
+   This bar used to carry a second layer showing how far the scenario's gap ate
+   into each segment, and the cards below it were marked as "reached". Both are
+   gone: the walk asserted a reduction sequence no council has adopted, and the
+   rust overlay was the loudest thing on the page in service of it. What is left
+   is a plain composition, so the colours no longer need to read as a gradient
+   of seriousness — they only need to be four distinguishable bands that match
+   their legend keys. */
 .proj-order { margin-top: 34px; }
 
 .proj-rung-bar {
@@ -8077,32 +8081,19 @@ table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi
   background: var(--t-line);
 }
 .proj-rung { position: relative; display: block; height: 100%; }
-/* The consumed portion sits on top of its own rung, hatched in the deficit
-   rust so it reads as "taken" rather than as a fifth category. */
-.proj-rung-eaten {
-  position: absolute;
-  inset: 0 auto 0 0;
-  display: block;
-  height: 100%;
-  background: repeating-linear-gradient(45deg,
-    var(--proj-def-fill-solid) 0 4px, var(--proj-def-line) 4px 6.5px);
-  box-shadow: inset -2px 0 0 var(--t-rust);
-}
 .proj-rung-maintenance, .legend .sw.proj-rung-maintenance, .proj-rung-key.proj-rung-maintenance { background: var(--t-gold-hi); }
 .proj-rung-capital,     .legend .sw.proj-rung-capital,     .proj-rung-key.proj-rung-capital     { background: var(--t-gold-line); }
 .proj-rung-fleet,       .legend .sw.proj-rung-fleet,       .proj-rung-key.proj-rung-fleet       { background: var(--t-sage); }
 .proj-rung-personnel,   .legend .sw.proj-rung-personnel,   .proj-rung-key.proj-rung-personnel   { background: var(--tier-contract); }
-.legend .sw.proj-rung-eaten-key {
-  background: repeating-linear-gradient(45deg,
-    var(--proj-def-fill-solid) 0 3px, var(--proj-def-line) 3px 5px);
-  border: 1px solid var(--t-rust);
-}
 
+/* Neutral rule, not the rust one it carried while this paragraph was walking a
+   gap into payroll. It states a composition and a comparison of sizes now, and
+   an alarm border made it read as a finding either way. */
 .proj-punch {
   margin: 4px 0 22px;
   padding: 16px 18px;
-  border-left: 3px solid var(--t-rust);
-  background: var(--t-gold-bg);
+  border-left: 3px solid var(--t-line-2);
+  background: var(--t-card);
   border-radius: 0 var(--t-r) var(--t-r) 0;
   font-size: 14.5px;
   line-height: 1.65;
@@ -8139,8 +8130,6 @@ table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi
   flex-direction: column;
   gap: 6px;
 }
-/* A rung the gap actually reaches is marked, so the cards and the bar agree. */
-.proj-rung-card.is-reached { border-color: var(--t-rust); }
 .proj-rung-ord {
   margin: 0;
   display: flex;
@@ -8158,15 +8147,6 @@ table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi
 .proj-rung-what { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--t-fg-2); }
 .proj-rung-why { margin: 0; font-size: 13px; line-height: 1.6; color: var(--t-muted); }
 .proj-rung-why strong { color: var(--t-fg-2); }
-.proj-rung-hit {
-  margin: 2px 0 0;
-  padding-top: 8px;
-  border-top: 1px solid var(--t-line-2);
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--proj-def-ink);
-}
-.proj-rung-hit strong { color: var(--proj-def-ink); }
 .proj-rung-lines-note { margin: 6px 0 0; font-size: 12px; line-height: 1.55; color: var(--t-muted); }
 
 /* The named accounts. These are the point of the whole section — "mowing" and

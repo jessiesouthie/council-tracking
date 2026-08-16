@@ -62,6 +62,27 @@
     "expenditure_growth",
   ];
 
+  /* ------------------------------------------------- the data-center switch
+     The largest single thing holding the projected gap down is $1.9bn of
+     data-center value assumed onto the roll, and whether any of it lands there
+     is not settled: value inside a community reinvestment area is subtracted
+     from the certified-rate base, and every data center already in this city
+     sits inside one. Modelling it as a fact would be asserting the answer, so
+     the reader gets all three.
+
+     "partial" is not half. It is the subset the record actually distinguishes:
+     the buildings the city said on 6 August had declined incentives and would
+     be "full taxpayers starting day one", which the config marks
+     `incentive_free: true`. A 50% split would be a fourth invented number. */
+
+  const ADDITION_MODES = ["full", "partial", "none"];
+
+  function additionIncluded(addition, mode) {
+    if (mode === "none") return false;
+    if (mode === "partial") return addition.incentive_free === true;
+    return true;
+  }
+
   function readBaseline(config, overrides) {
     const b = (config && config.baseline) || {};
     const o = overrides || {};
@@ -154,16 +175,23 @@
    * @param {string} scenarioId which scenario to run
    * @param {object} [opts]
    * @param {object} [opts.overrides] numeric overrides for any baseline field
-   * @returns {{ok, errors, warnings, rows, summary, crossings, scenario, method}}
+   * @param {string} [opts.additions]  "full" (default), "partial" or "none" —
+   *                                   how much of the named data-center value
+   *                                   is assumed to reach the city's own roll
+   * @returns {{ok, errors, warnings, rows, summary, crossings, scenario, method, additions}}
    */
   function project(config, scenarioId, opts) {
     const options = opts || {};
+    const additionMode = ADDITION_MODES.includes(options.additions) ? options.additions : "full";
     const scenario = scenarioById(config, scenarioId);
     const base = readBaseline(config, options.overrides);
     const { errors, warnings } = validate(config, base, scenario);
 
     if (errors.length) {
-      return { ok: false, errors, warnings, rows: [], summary: null, crossings: [], scenario, method: null };
+      return {
+        ok: false, errors, warnings, rows: [], summary: null, crossings: [],
+        scenario, method: null, additions: additionMode,
+      };
     }
 
     const method = scenario.method || "revenue_based";
@@ -172,10 +200,11 @@
     const labels = config.year_labels || {};
     const collection = base.collection_rate;
 
-    // Named taxable-value additions (the data centres), keyed by year.
+    // Named taxable-value additions (the data centers), keyed by year.
     const additions = {};
     (config.value_additions || []).forEach((a) => {
       if (!isNum(a.amount) || !Number.isInteger(a.year)) return;
+      if (!additionIncluded(a, additionMode)) return;
       additions[a.year] = (additions[a.year] || 0) + a.amount;
     });
 
@@ -296,6 +325,7 @@
       summary: summarise(rows),
       scenario,
       method,
+      additions: additionMode,
     };
   }
 
@@ -363,7 +393,10 @@
 
   /* ------------------------------------------------------------------ export */
 
-  const api = { project, validate, findCrossings, summarise, scenarioById, readBaseline, BASE_FIELDS };
+  const api = {
+    project, validate, findCrossings, summarise, scenarioById, readBaseline,
+    BASE_FIELDS, ADDITION_MODES,
+  };
 
   root.Projections = api;
   if (typeof module === "object" && module.exports) module.exports = api;

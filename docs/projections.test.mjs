@@ -205,7 +205,7 @@ test("more rate means more revenue, in every projected year", () => {
   assert.ok(half.summary.cumulative > none.summary.cumulative);
 });
 
-test("the data-centre cross-check in the config is internally consistent", () => {
+test("the data-center cross-check in the config is internally consistent", () => {
   const d = CONFIG.value_additions_derivation;
   d.rows.forEach((r) => {
     // Each row's stated implication is its amount over its rate, in thousands.
@@ -215,6 +215,100 @@ test("the data-centre cross-check in the config is internally consistent", () =>
   const total = CONFIG.value_additions.reduce((a, x) => a + x.amount, 0);
   const mean = d.rows.reduce((a, r) => a + r.implies * 1000, 0) / d.rows.length;
   close(total / 1e9, mean / 1e9, 0.15, "additions match the cross-check mean");
+});
+
+/* ========================================================================== */
+/* 1b. The data-center sensitivity.                                           */
+/* ========================================================================== */
+
+test("the additions mode defaults to full, and junk falls back to it", () => {
+  const full = project(CONFIG, "none", { additions: "full" });
+  ["", null, undefined, "half", "FULL", 1].forEach((junk) => {
+    const r = project(CONFIG, "none", { additions: junk });
+    assert.equal(r.additions, "full", `additions=${String(junk)} should fall back`);
+    money(r.summary.cumulative, full.summary.cumulative, `additions=${String(junk)}`);
+  });
+  // And omitting the option entirely is the same as asking for full, so the
+  // page's default and every existing caller agree.
+  money(project(CONFIG, "none").summary.cumulative, full.summary.cumulative, "no option given");
+});
+
+test("the three additions modes are strictly ordered, and 'none' zeroes the roll additions", () => {
+  const [none, partial, full] = ["none", "partial", "full"].map((m) =>
+    project(CONFIG, "none", { additions: m })
+  );
+
+  // No data-center value at all: every projected year's addition is zero.
+  none.rows.forEach((row) => money(row.valueAddition, 0, `${row.year} carries no addition`));
+
+  // Less assumed value can only mean less revenue, never more.
+  assert.ok(none.summary.cumulative < partial.summary.cumulative, "none is worse than partial");
+  assert.ok(partial.summary.cumulative < full.summary.cumulative, "partial is worse than full");
+});
+
+test("'partial' keeps exactly the buildings the city made a claim about", () => {
+  const r = project(CONFIG, "none", { additions: "partial" });
+  const kept = CONFIG.value_additions.filter((a) => a.incentive_free === true);
+  const dropped = CONFIG.value_additions.filter((a) => a.incentive_free !== true);
+
+  // The split is a property of the config, not of a hard-coded year in the
+  // engine: whichever rows carry the flag are the rows that survive.
+  assert.ok(kept.length && dropped.length, "the config must distinguish the two kinds");
+  kept.forEach((a) => {
+    const row = r.rows.find((x) => x.year === a.year);
+    money(row.valueAddition, a.amount, `FY${a.year} keeps the incentive-free addition`);
+  });
+  dropped.forEach((a) => {
+    const row = r.rows.find((x) => x.year === a.year);
+    money(row.valueAddition, 0, `FY${a.year} drops the unconfirmed addition`);
+  });
+});
+
+test("dropping the data-center additions is what section 02 quotes as the downside", () => {
+  // The page no longer offers this as a control — it states one assumption and
+  // names the alternative in a sentence. But that sentence's figure is computed
+  // by rerunning the model with the additions dropped rather than written into
+  // the copy, so the option has to keep working even with no UI on it.
+  ["none", "half", "adopted"].forEach((id) => {
+    const full = project(CONFIG, id);
+    const without = project(CONFIG, id, { additions: "none" });
+    assert.ok(without.ok, `${id} must still run with the additions dropped`);
+    assert.ok(
+      without.summary.cumulative < full.summary.cumulative,
+      `${id}: dropping $1.9bn of taxable value must widen the gap, not narrow it`
+    );
+  });
+});
+
+/* ========================================================================== */
+/* 1c. The exposure figures the page states more than once.                   */
+/* ========================================================================== */
+
+test("the four spending categories add up to the flexible pool exactly", () => {
+  // Section 04 derives this quantity twice from different places — the pool
+  // table subtracts the constrained tiers from total appropriations, and the
+  // composition below it sums the four spending categories — and now prints
+  // both. They were a dollar apart, which read as an arithmetic error on a page
+  // whose whole claim is that its arithmetic checks out.
+  const P = CONFIG.exposure.pool;
+  const residual = P.total - P.tiers.reduce((a, t) => a + t.amount, 0);
+  const categories = CONFIG.exposure.order.rungs.reduce((a, x) => a + x.amount, 0);
+  assert.equal(categories, residual, "the two derivations of the flexible pool must agree");
+});
+
+test("the transfers tier is flagged deferrable, so the wider figure gets stated", () => {
+  // The page's own footnote says these transfers are mostly deferrable capital
+  // rather than a fixed obligation. Section 04 reads this flag to print the
+  // second, larger reachable figure; without it the page understates what a
+  // council could move and contradicts its own note.
+  const P = CONFIG.exposure.pool;
+  const deferrable = P.tiers.filter((t) => t.deferrable);
+  assert.equal(deferrable.length, 1, "exactly the transfers tier is deferrable");
+  assert.equal(deferrable[0].key, "transfers");
+  assert.ok(P.deferrable_label && P.deferrable_note, "the wider figure needs its own copy");
+  // Every tier states how constrained it is; the table renders a column of it.
+  P.tiers.forEach((t) => assert.ok(t.flex, `${t.key} needs a flexibility note`));
+  assert.ok(P.reachable_flex, "the reachable row needs one too");
 });
 
 /* ========================================================================== */
@@ -348,7 +442,7 @@ test("a named value addition lands as new growth, and is kept at the levied rate
   money(r.rows[3].propertyTax, 1_500_000, "FY2030 levy");
 });
 
-test("the rate the city levies decides what the data centres are worth to it", () => {
+test("the rate the city levies decides what the data centers are worth to it", () => {
   const lo = toyConfig();
   lo.value_additions = [{ year: 2028, amount: 1_900_000_000 }];
   const hi = JSON.parse(JSON.stringify(lo));

@@ -4,18 +4,18 @@
     <meta charset="utf-8" />
     <script>document.documentElement.classList.remove("no-js");</script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>What No Tax Increase Would Cost — Eagle Mountain Council Tracking</title>
-    <meta name="description" content="At the certified rate — legally “no increase” — Eagle Mountain takes in $35.4M in FY2026–27 against the $42.7M it has adopted. The gap, where it lands, and what gives first." />
+    <title>How Three Property-Tax Rates Could Affect the General Fund — Eagle Mountain Council Tracking</title>
+    <meta name="description" content="A planning estimate to FY2031–32. At the certified rate — legally “no increase” — the model estimates $35.4M of recurring revenue against $42.7M of interim-budget spending, a projected gap of $7.3M in the first year." />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Council Tracking" />
-    <meta property="og:title" content="What No Tax Increase Would Cost — Eagle Mountain Council Tracking" />
-    <meta property="og:description" content="At the certified rate, the city takes in $35.4M against the $42.7M it has adopted for FY2026–27. What the gap is, where it would have to come from, and what gives first." />
+    <meta property="og:title" content="How Three Property-Tax Rates Could Affect the General Fund — Eagle Mountain Council Tracking" />
+    <meta property="og:description" content="An independent planning estimate, not a city forecast. Projected General Fund revenue against projected spending to FY2031–32 under the certified rate, an illustrative middle rate, and the rate the council adopted." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="What No Tax Increase Would Cost — Eagle Mountain Council Tracking" />
-    <meta name="twitter:description" content="Money in against money out to FY2031–32 at the certified rate, and what a shortfall reaches first." />
+    <meta name="twitter:title" content="How Three Property-Tax Rates Could Affect the General Fund — Eagle Mountain Council Tracking" />
+    <meta name="twitter:description" content="Projected General Fund revenue against projected spending to FY2031–32, under three property-tax rates. A planning estimate, not a city forecast." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
@@ -25,7 +25,7 @@
          Tax section and shares its typography through body.page-tax. Inter is
          deliberately not requested. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260815o" />
+    <link rel="stylesheet" href="site.css?v=20260816c" />
   </head>
   <body class="page-tax">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -99,7 +99,7 @@
     <footer class="footer"><span>Planning estimates built from Eagle Mountain's published budget and its own meeting recordings — not a city forecast</span></footer>
 
     <script src="site.js?v=20260815a"></script>
-    <script src="projections.js?v=20260815a"></script>
+    <script src="projections.js?v=20260816a"></script>
     <script>
       /* =======================================================================
          Projected City Budget Gap
@@ -193,9 +193,17 @@
       // the assumption table reads them as words in a sentence ("6% a year
       // against 5%"), where "6.00%" implies a precision nobody published.
       const rateShort = (p) => +(p * 100).toFixed(2) + "%";
-      // "deficit"/"surplus" always travels with the colour, never instead of it.
-      const word = (gap) => (gap < 0 ? "deficit" : gap > 0 ? "surplus" : "balanced");
-      const Word = (gap) => (gap < 0 ? "Deficit" : gap > 0 ? "Surplus" : "Balanced");
+      // "gap"/"surplus" always travels with the colour, never instead of it.
+      //
+      // These said "deficit" until the review. A deficit is an accounting fact
+      // about a budget as adopted, and by that test Eagle Mountain does not have
+      // one: the interim budget balances to the cent. What this page measures is
+      // the difference between projected recurring revenue and projected
+      // spending once a reserve draw is excluded, which is a gap in a model, not
+      // a deficit in a ledger. The distinction is the page's whole method, so it
+      // belongs in the noun and not only in the section that defines it.
+      const word = (gap) => (gap < 0 ? "gap" : gap > 0 ? "surplus" : "balanced");
+      const Word = (gap) => (gap < 0 ? "Gap" : gap > 0 ? "Surplus" : "Balanced");
 
       /* ------------------------------------------------------------- state */
 
@@ -340,11 +348,9 @@
           r.rows.every((x) => x.gap <= y1.gap);
         const drift = widensThroughout
           ? `<p class="proj-why-drift"><strong>It is a level, not a drift.</strong>
-               ${esc(((y1.gap / lastRow.gap) * 100).toFixed(0))}% of the ${esc(lastRow.label)} gap is
-               already there in the first year. ${esc(numWord(r.rows.length - 1).replace(/^./, (ch) => ch.toUpperCase()))}
-               more years of spending outgrowing revenue add ${esc(usd0(Math.abs(lastRow.gap - y1.gap)))}
-               on top of it; the opening ${esc(usd0(Math.abs(y1.gap)))} was set when the budget was
-               adopted, not by anything the model assumes about the future.</p>`
+               ${esc(((y1.gap / lastRow.gap) * 100).toFixed(0))}% of the ${esc(lastRow.label)} gap is already
+               there in the first year, and that opening ${esc(usd0(Math.abs(y1.gap)))} was set when the
+               budget was adopted — not by anything the model assumes about the future.</p>`
           : "";
 
         const heading =
@@ -411,21 +417,32 @@
         const scale =
           y1 && safety
             ? `<p class="proj-hero-scale">
-                 Property tax brings in <strong>${esc(usd0(y1.propertyTax))}</strong> of that —
+                 Property tax is <strong>${esc(usd0(y1.propertyTax))}</strong> of that —
                  <strong>${((y1.propertyTax / y1.expenditures) * 100).toFixed(0)}%</strong> of the budget, and
                  <strong>${((y1.propertyTax / safety.amount) * 100).toFixed(0)}%</strong> of the
-                 ${esc(usd0(safety.amount))} policing contract it is meant to cover.
+                 ${esc(usd0(safety.amount))} policing contract the increase was meant to cover.
                </p>`
             : "";
 
+        // Three corrections live in this sentence and all three are the same
+        // correction: the page is a model, and it has to say so in the first
+        // thing anyone reads. It estimates, rather than reporting what the city
+        // "takes in"; the spending side is the *interim* budget, with the final
+        // hearing still to come on 18 August; and the six-year figure is the sum
+        // of six projected annual gaps, not a debt, a balance or a total the
+        // city would ever carry. Left implicit, each one reads as a finding.
         const lede = y1
-          ? `Utah law calls the certified rate <strong>no increase</strong>. At that rate Eagle Mountain takes
-             in <strong>${esc(usd0(y1.totalRevenue))}</strong> in ${esc(y1.label)} and spends
-             <strong>${esc(usd0(y1.expenditures))}</strong> — the budget its council has already adopted.
-             That is a <strong class="proj-hero-gap">${esc(usd0(Math.abs(y1.gap)))} ${esc(word(y1.gap))}</strong>
-             in year one${sum ? `, and <strong>${esc(usd0(Math.abs(sum.cumulative)))}</strong> over six years` : ""}.`
-          : `What Eagle Mountain expects to take in each year, against what it expects to spend, under
-             three property-tax choices.`;
+          ? `Utah law calls the certified rate <strong>no increase</strong>. At that rate the model estimates
+             <strong>${esc(usd0(y1.totalRevenue))}</strong> of recurring revenue in ${esc(y1.label)} against
+             <strong>${esc(usd0(y1.expenditures))}</strong> of spending in the interim budget the council
+             adopted in June. That is a projected recurring gap of
+             <strong class="proj-hero-gap">${esc(usd0(Math.abs(y1.gap)))}</strong> in the first year${
+               sum
+                 ? `, and the six projected annual gaps add up to
+                    <strong>${esc(usd0(Math.abs(sum.cumulative)))}</strong> through ${esc(sum.lastLabel)}`
+                 : ""
+             }.`
+          : `Projected General Fund revenue against projected spending, under three property-tax rates.`;
 
         return `
           <header class="tax-hero reveal">
@@ -433,13 +450,14 @@
               <span class="tax-status-dot" aria-hidden="true"></span>
               Planning estimate · ${esc(first)} to ${esc(last)}
             </p>
-            <h1 class="tax-h1">What no tax increase would cost</h1>
+            <h1 class="tax-h1">How three property-tax rates could affect the General Fund</h1>
             <p class="tax-lede">${lede}</p>
             ${scale}
             <p class="proj-flag">
-              <span class="proj-flag-tag">Not a city forecast</span>
+              <span class="proj-flag-tag">An independent planning estimate, not a city forecast</span>
               The city publishes no multi-year plan. This is built from its own budget and its meeting
-              recordings. Some numbers are still unconfirmed, and they are flagged below.
+              recordings. Some numbers are still unconfirmed, and they are flagged below. Results change
+              when the assumptions change.
             </p>
           </header>`;
       }
@@ -454,7 +472,7 @@
         ["s-scenario", "Scenario"],
         ["s-result", "The projection"],
         ["s-assumptions", "The numbers"],
-        ["s-exposure", "Where it lands"],
+        ["s-exposure", "What it could affect"],
         ["s-sources", "Sources"],
       ];
 
@@ -535,64 +553,22 @@
 
             <div class="proj-def-card is-policy">
               <h3>The revenue stays roughly level; the rate adjusts</h3>
-              <p>Under Utah's property-tax system, “no tax increase” does not mean keeping the same tax
-                rate. Each year, the county calculates a <strong>certified tax rate</strong> intended to
-                generate approximately the same revenue from existing property as the previous year.</p>
-              <p>When property values rise, the certified rate generally falls. New construction can still
-                increase city revenue because it adds new taxable property.</p>
-              <p>Keeping the numerical rate unchanged while property values rise would collect more revenue
-                from existing property and would not qualify as the certified “no tax increase” rate.</p>
+              <p>Under Utah's system, “no tax increase” does not mean holding the tax rate. Each year the
+                county calculates a <strong>certified rate</strong> intended to raise about the same revenue
+                from existing property as the year before, so when values rise the rate generally falls.
+                Only new construction adds revenue.</p>
+              <p>Holding the numeric rate while values rise collects more from the same house, and does not
+                qualify as “no increase”.</p>
             </div>
 
             <div class="proj-def-card">
               <h3>The three rates used on this page</h3>
-              <p>These rates represent different policy choices for the same year:</p>
               <ul class="proj-def-list">${rateList}</ul>
-              <p>This page uses the certified rate as the no-increase scenario and compares it with the two
-                higher-rate scenarios. Only the first and last are rates anyone has actually set: the
-                0.001050 in the middle is an assumption of this project's own, and is labelled as one
-                wherever it appears.</p>
-              <p>Two further rates are easy to confuse with these. <strong>0.000534</strong> is what appears
-                on current property-tax bills; Utah County recalculated the certified rate to 0.000530 on
-                22 June 2026, so the no-increase comparison is 0.000530, not 0.000534.
-                <strong>0.001700</strong> is the rate the city noticed and advertised but did not adopt.</p>
-            </div>
-
-            <div class="proj-def-card">
-              <h3>How this page estimates property-tax revenue</h3>
-              <p>The projection considers:</p>
-              <ul class="proj-def-list">
-                <li>The taxable value of existing property</li>
-                <li>Expected new construction and other eligible growth</li>
-                <li>The selected tax rate</li>
-                <li>The expected collection rate</li>
-              </ul>
-              <p>In simplified form:</p>
-              <p class="proj-def-formula">Projected property-tax revenue = taxable value × selected rate ×
-                collection rate</p>
-              <p>The county's official certified-rate calculation includes additional statutory adjustments.
-                The figures on this page are planning estimates and should not be treated as official tax
-                rates or legal determinations.</p>
-              <p class="src"><a href="${esc(sourceUrl(c, "59-2-924"))}" rel="nofollow noopener">Read Utah Code § 59-2-924 <span aria-hidden="true">↗</span></a></p>
-            </div>
-
-            <div class="proj-def-card">
-              <h3>What “budget gap” means on this page</h3>
-              <p>The budget gap is the difference between the General Fund's projected operating revenue and
-                planned spending for a single fiscal year:</p>
-              <p class="proj-def-formula">Annual budget gap = operating revenue − planned expenditures</p>
-              <ul class="proj-def-list">
-                <li>A <strong class="is-sur">positive gap</strong> is shown in green and means projected
-                  revenue exceeds planned spending.</li>
-                <li>A <strong class="is-def">negative gap</strong> is shown in red and means planned
-                  spending exceeds projected revenue.</li>
-              </ul>
-              <p>Transfers from savings or fund balance are not counted as operating revenue. Reserves can
-                cover a shortfall temporarily, but they do not provide recurring revenue for future
-                years.</p>
-              <p>The six-year figure is the sum of the projected annual gaps. It shows the overall scale of
-                the funding difference across the projection period; it is not a debt or a year-end balance
-                the city would automatically carry.</p>
+              <p>Only the first and last are rates anyone set; the 0.001050 is this project's own, labelled
+                as an assumption wherever it appears. Two others are easy to confuse with these:
+                <strong>0.000534</strong> is on current bills, superseded when Utah County recalculated the
+                certified rate to 0.000530 on 22 June 2026, and <strong>0.001700</strong> is the rate the
+                city advertised but did not adopt.</p>
             </div>
 
             <div class="switch-row proj-switch">
@@ -600,15 +576,43 @@
               <div class="scope-switch" role="radiogroup" aria-labelledby="scenario-title">${buttons}</div>
             </div>
             <div class="proj-scenario-note" id="scenario-note" role="status"></div>
-
-            <div class="proj-def-card">
-              <h3>How spending is compared</h3>
-              <p>All three scenarios use the same spending projection: the City Council's adopted
-                FY2026–27 plan, projected forward.</p>
-              <p>Keeping spending the same allows the charts to isolate the effect of each tax rate. It does
-                not mean the city would necessarily adopt the same spending plan under every scenario.</p>
-            </div>
           </section>`;
+      }
+
+      /* The technical working, in one place and one click down.
+         It used to sit at the foot of section 01, between "pick a rate" and the
+         charts. It is methodology, not orientation: a reader choosing a rate
+         does not need the levy formula first, and a reader checking the model
+         wants it beside the numbers it operates on. So it moved to section 03,
+         where the inputs are. */
+
+      function methodologyHtml(c) {
+        return panel("Methodology", "The levy formula, what “gap” means here, and how the three scenarios are compared", `
+          <h4 class="proj-sub-h">Estimating property-tax revenue</h4>
+          <p class="proj-def-formula">Projected property-tax revenue = taxable value × selected rate ×
+            collection rate</p>
+          <p>The collection rate is set to <strong>100%</strong>, which is how the city states its own
+            revenue on its impact schedule. Actual first-year collection runs 93–97%, reaching about
+            99.4% once late payments arrive, so every property-tax figure here is a gross levy rather
+            than cash received. The county's official certified-rate calculation includes further
+            statutory adjustments; these are planning estimates, not legal determinations.</p>
+          <p class="src"><a href="${esc(sourceUrl(c, "59-2-924"))}" rel="nofollow noopener">Read Utah Code § 59-2-924 <span aria-hidden="true">↗</span></a></p>
+
+          <h4 class="proj-sub-h">What “gap” means here</h4>
+          <p class="proj-def-formula">Annual gap = recurring revenue − planned expenditures</p>
+          <p>General Fund only, one fiscal year at a time. Transfers from savings or fund balance are
+            not counted as recurring revenue: reserves cover a shortfall once, but cannot be drawn
+            again the year after. That single exclusion is why the interim budget can balance to the
+            cent while this page still shows a gap. The six-year figure is the sum of the annual gaps —
+            a measure of scale, not a debt or a year-end balance.</p>
+
+          <h4 class="proj-sub-h">How spending is compared</h4>
+          <p>All three scenarios use the same spending projection: the council's <strong>interim</strong>
+            FY2026–27 plan, adopted 16 June 2026 and grown forward. The final budget hearing is
+            18 August 2026, so that figure can still change. Holding spending constant isolates the
+            effect of each rate; it does not mean the city would adopt the same plan under every
+            scenario.</p>
+        `, false, "p-method");
       }
 
       function wireControls() {
@@ -686,12 +690,36 @@
         const n = r.rows.length;
         const shape =
           sum.deficitYears === n
-            ? `<strong>All ${esc(String(n))}</strong> years to ${esc(sum.lastLabel)} run a deficit.`
+            ? `<strong>All ${esc(String(n))}</strong> years to ${esc(sum.lastLabel)} show a projected gap.`
             : sum.deficitYears === 0
-              ? `None of the ${esc(String(n))} years to ${esc(sum.lastLabel)} runs a deficit.`
+              ? `None of the ${esc(String(n))} years to ${esc(sum.lastLabel)} shows a projected gap.`
               : `Of the ${esc(String(n))} years to ${esc(sum.lastLabel)}, ` +
-                `<strong>${esc(String(sum.deficitYears))}</strong> run a deficit.`;
-        document.getElementById("result-sub").innerHTML = shape + cross;
+                `<strong>${esc(String(sum.deficitYears))}</strong> show a projected gap.`;
+
+        // The largest assumption on the page, stated where its effect is rather
+        // than only in the panel that documents it.
+        //
+        // This was briefly a three-way control, and it should not have been.
+        // Whether those parcels sit inside a community reinvestment area is a
+        // binary fact nobody has looked up — there is no continuum for a reader
+        // to explore, so a switcher only asked them to guess, and it implied the
+        // eight other assumptions were settled when the second-biggest lever on
+        // the page is a growth rate stated in prose. One sentence carries it.
+        //
+        // The contrast figure is computed by rerunning the model with the named
+        // additions dropped, not written into the copy, so it cannot go stale
+        // when a value or a year in the config moves.
+        const added = (state.config.value_additions || []).reduce((a, x) => a + (x.amount || 0), 0);
+        const without = Projections.project(state.config, state.scenario, { additions: "none" });
+        const dc =
+          added > 0 && without.ok && without.summary
+            ? ` The model counts all <strong>${esc(short(added))}</strong> of data-center value as taxable
+                from ${esc(r.rows[1] ? r.rows[1].label : "FY2027–28")}. If those parcels sit inside a project
+                area — as every data center already in the city does — the six-year total widens to
+                <strong>${esc(usd0(Math.abs(without.summary.cumulative)))}</strong>.
+                <a href="#s-assumptions">What the record shows</a>.`
+            : "";
+        document.getElementById("result-sub").innerHTML = shape + cross + dc;
       }
 
       /* ------------------------------------------------------------- summary */
@@ -708,18 +736,20 @@
 
         el.innerHTML = `
           <ul class="facts proj-facts" aria-label="Summary for ${esc(s.firstLabel)} and the full period">
-            ${cell("Money in", usd0(s.totalRevenue), esc(s.firstLabel))}
-            ${cell("Money out", usd0(s.expenditures), esc(s.firstLabel))}
+            ${cell("Recurring revenue", usd0(s.totalRevenue), esc(s.firstLabel))}
+            ${cell("Projected spending", usd0(s.expenditures), esc(s.firstLabel))}
             ${cell(
-              `${s.gap < 0 ? "Deficit" : "Surplus"} in ${s.firstLabel}`,
+              `Projected ${s.gap < 0 ? "gap" : "surplus"} in ${s.firstLabel}`,
               `<span class="proj-sign ${s.gap < 0 ? "is-def" : "is-sur"}">${usdSigned(s.gap)}</span>`,
               "",
               s.gap < 0 ? "is-def" : "is-sur"
             )}
             ${cell(
-              `${numWord(r.rows.length).replace(/^./, (ch) => ch.toUpperCase())} years to ${s.lastLabel}`,
+              `Sum of ${numWord(r.rows.length)} annual gaps to ${s.lastLabel}`,
               `<span class="proj-sign ${s.cumulative < 0 ? "is-def" : "is-sur"}">${usdSigned(s.cumulative)}</span>`,
-              "",
+              // Stated on the card itself, not only in section 01. This is the
+              // figure most likely to be quoted on its own, and read as a debt.
+              "Not a debt or a year-end balance.",
               s.cumulative < 0 ? "is-def" : "is-sur"
             )}
           </ul>`;
@@ -773,13 +803,13 @@
         return `
           <figure class="chart proj-chart">
             <figcaption>
-              <h3 id="chart-title">Money in and money out, each year</h3>
+              <h3 id="chart-title">Projected revenue and projected spending, each year</h3>
             </figcaption>
             <div class="legend" aria-hidden="true">
-              <span class="lg"><i class="sw proj-sw-rev"></i>Money in (solid)</span>
-              <span class="lg"><i class="sw proj-sw-exp"></i>Money out (dashed)</span>
+              <span class="lg"><i class="sw proj-sw-rev"></i>Recurring revenue (solid)</span>
+              <span class="lg"><i class="sw proj-sw-exp"></i>Projected spending (dashed)</span>
               <span class="lg"><i class="sw proj-sw-sur"></i>Surplus</span>
-              <span class="lg"><i class="sw proj-sw-def"></i>Deficit (hatched)</span>
+              <span class="lg"><i class="sw proj-sw-def"></i>Gap (hatched)</span>
             </div>
             <div class="proj-plot" id="plot-main"></div>
             <p class="chart-foot" id="chart-foot"></p>
@@ -787,8 +817,8 @@
 
           <figure class="chart proj-chart proj-chart-gap">
             <figcaption>
-              <h3 id="gap-title">The gap each year</h3>
-              <p>The same figures at full scale. Bars above the line are surpluses, hatched bars below are deficits.</p>
+              <h3 id="gap-title">The projected gap each year</h3>
+              <p>The same figures at full scale. Bars above the line are projected surpluses, hatched bars below are projected gaps.</p>
             </figcaption>
             <div class="proj-plot" id="plot-gap"></div>
             <p class="chart-foot" id="gap-foot"></p>
@@ -996,12 +1026,9 @@
         wireHits(host, r);
 
         document.getElementById("chart-foot").innerHTML =
-          `<strong>The scale starts at ${esc(short(lo))}, not zero.</strong> Both lines sit between ` +
-          `${esc(short(Math.min(...values)))} and ${esc(short(Math.max(...values)))}, so starting at zero would ` +
-          `squash the gap flat. The chart below uses a true zero.` +
-          (r.crossings.length
-            ? ` The marked point is where the lines cross, worked out from the figures rather than read off the drawing.`
-            : "");
+          `<strong>The scale starts at ${esc(short(lo))}, not zero</strong>, because both lines sit between ` +
+          `${esc(short(Math.min(...values)))} and ${esc(short(Math.max(...values)))}. The chart below uses a true zero.` +
+          (r.crossings.length ? ` The marked point is where the lines cross, computed from the figures.` : "");
       }
 
       function drawGap(host, r) {
@@ -1256,7 +1283,7 @@
         return (
           `Line chart, ${s.firstLabel} to ${s.lastLabel}. Money in runs from ${usd0(r.rows[0].totalRevenue)} to ` +
           `${usd0(r.rows.at(-1).totalRevenue)}; money out from ${usd0(r.rows[0].expenditures)} to ` +
-          `${usd0(r.rows.at(-1).expenditures)}. ${s.deficitYears} of ${r.rows.length} years are in deficit.${cross} ` +
+          `${usd0(r.rows.at(-1).expenditures)}. ${s.deficitYears} of ${r.rows.length} years show a projected gap.${cross} ` +
           `Full figures are in the table below.`
         );
       }
@@ -1320,7 +1347,7 @@
                   <th scope="col" class="num">Other revenue</th>
                   <th scope="col" class="num">Total in</th>
                   <th scope="col" class="num">Spending</th>
-                  <th scope="col" class="num">Gap</th>
+                  <th scope="col" class="num">Annual result</th>
                   <th scope="col" class="num">Running total</th>
                 </tr>
               </thead>
@@ -1328,8 +1355,9 @@
             </table>
           </div>
           <p class="chart-foot">
-            The ${esc(r.rows[0].label)} row is the city's own budget, not a projection. Only the rate
-            charged changes between the three scenarios.
+            The ${esc(r.rows[0].label)} row is the city's own interim budget, not a projection. Only the rate
+            charged changes between the three scenarios. The running total is the sum of the annual results
+            to that year — not a debt, and not a balance the city would carry.
             ${anyAdj ? '<span aria-hidden="true">†</span> Includes a named adjustment — listed under the numbers below.' : ""}
           </p>
           <div class="table-export">
@@ -1505,8 +1533,8 @@
             <div class="sec-head">
               <p class="eyebrow"><span class="sec-num" aria-hidden="true">03</span>The numbers</p>
               <h2 class="sec-h2" id="assume-title">Every number behind the chart</h2>
-              <p class="sec-sub">Nine numbers produce everything above. Five come from the record. Four are
-                estimates — and those four are where the argument is.</p>
+              <p class="sec-sub">Nine numbers produce everything above. Five come from the record; four are
+                estimates, and those four are where the argument is.</p>
             </div>
 
             <div class="proj-scope">
@@ -1514,8 +1542,7 @@
             </div>
 
             <h3 class="proj-sub-h2">Taken from the record</h3>
-            <p class="proj-lede">Nothing to argue with. Each one is published, or implied by two published
-              figures that agree.</p>
+            <p class="proj-lede">Each one is published, or implied by two published figures that agree.</p>
             <div class="tablewrap">
               <table class="data proj-base">
                 <thead>
@@ -1532,8 +1559,8 @@
             <h3 class="proj-sub-h2">Estimated, because nobody has published them</h3>
             <p class="proj-lede">These four are the projection. The gap opens because spending is assumed to
               grow faster than income — ${esc(rateShort(b.expenditure_growth.value))} a year against
-              ${esc(rateShort(b.other_revenue_growth.value))}. If that one comparison is wrong, so is the
-              chart. The city has no multi-year plan that would settle it.</p>
+              ${esc(rateShort(b.other_revenue_growth.value))}. If that comparison is wrong, so is the chart,
+              and the city has no multi-year plan that would settle it.</p>
             <div class="tablewrap">
               <table class="data proj-base">
                 <thead>
@@ -1553,7 +1580,7 @@
 
             ${permitsPanelHtml(c)}
 
-            ${panel("The data centres, and why the rate decides what they are worth", d.heading, `
+            ${panel("The data centers, and why the rate decides what they are worth", d.heading, `
               <p class="panel-intro">${esc(d.text)}</p>
               <div class="tablewrap">
                 <table class="data">
@@ -1575,7 +1602,7 @@
               ${srcQuote(d.source)}
               <h4 class="proj-sub-h">How it is entered here</h4>
               <ul class="proj-list">${additions}</ul>
-            `, false, "p-datacentres")}
+            `, false, "p-datacenters")}
 
             ${projectAreasHtml(c)}
 
@@ -1626,8 +1653,8 @@
 
       /* --------------------------------------------- the project-area finding
          The largest single thing holding the projected gap down is $1.9bn of
-         data-centre value added to the roll. The public record of what the data
-         centre already here pays the city cuts against it hard enough that the
+         data-center value added to the roll. The public record of what the data
+         center already here pays the city cuts against it hard enough that the
          page has to say so next to the assumption, not in a footnote. Opened by
          default, unlike the panels around it, for that reason. */
 
@@ -1884,7 +1911,7 @@
         return `
           <section class="tax-sec reveal" style="--i:4" id="s-exposure" aria-labelledby="exp-title">
             <div class="sec-head">
-              <p class="eyebrow"><span class="sec-num" aria-hidden="true">04</span>Where it lands</p>
+              <p class="eyebrow"><span class="sec-num" aria-hidden="true">04</span>What it could affect</p>
               <h2 class="sec-h2" id="exp-title">${esc(x.heading)}</h2>
               <p class="sec-sub">${esc(x.lede)}</p>
             </div>
@@ -1899,10 +1926,15 @@
               <p class="proj-input-note">${esc(x.earmarked.note)}</p>
             </div>
 
+            <!-- Quotations are evidence: they are what the record actually
+                 says, and a reader who wants to check the section's claims
+                 needs them verbatim. But they are also the least compressible
+                 thing on the page — four councilmembers making one point at
+                 length — so they sit behind a click rather than in the run of
+                 the text. Nothing is paraphrased away; the panel carries them
+                 in full, attributed exactly as the recording allows. -->
             <div class="proj-voices">
-              <h3 class="proj-sub-h2">${esc(x.voices.heading)}</h3>
-              <p class="proj-ear-lede">${esc(x.voices.lede)}</p>
-              ${voices}
+              ${panel(x.voices.heading, x.voices.lede, voices, false, "p-voices")}
             </div>
 
             <div class="proj-meaning">
@@ -1936,6 +1968,17 @@
         const total = P.total * scale;
         const reachable = total - P.tiers.reduce((a, t) => a + tierAmt(t), 0);
 
+        // The review's sharpest arithmetic point. The page held the $6.5M of
+        // transfers outside the reachable pool while its own footnote said they
+        // are mostly deferrable capital rather than a fixed obligation — so the
+        // headline "a council can move $12.2M" was understating the answer by
+        // more than half again, on the page's own evidence. Rather than move the
+        // row (deferring a road project is not the same decision as reducing an
+        // operating budget), both figures are stated, and the wider one is not
+        // buried in a note.
+        const deferrable = P.tiers.filter((t) => t.deferrable).reduce((a, t) => a + tierAmt(t), 0);
+        const withDeferrable = reachable + deferrable;
+
         const first = r.rows[0];
         const last = r.rows[r.rows.length - 1];
         // The reachable pool grows with the rest of spending, so the final-year
@@ -1961,19 +2004,27 @@
             </th>
             <td class="num">${esc(usd0(tierAmt(t)))}</td>
             <td class="num">${((tierAmt(t) / total) * 100).toFixed(0)}%</td>
+            <td>${esc(t.flex || "")}</td>
           </tr>`
           )
           .join("");
 
-        const gapWord = first.gap < 0 ? "deficit" : "surplus";
+        const gapWord = first.gap < 0 ? "gap" : "surplus";
 
         poolEl.innerHTML = `
           <div class="proj-pool">
             <div class="proj-pool-head">
-              <h3 class="proj-sub-h2">How much of the budget a council can actually change</h3>
+              <h3 class="proj-sub-h2">How the General Fund is currently allocated</h3>
               <p>${esc(P.total_label)}: <strong>${esc(usd0(total))}</strong>${edited ? " (scaled to your edited baseline)" : ""}.
-                 Take out what is under contract and what is already spoken for, and a council can move
-                 <strong>${esc(usd0(reachable))}</strong>.</p>
+                 Take out what is contracted and what is restricted by law, and
+                 <strong>${esc(usd0(reachable))}</strong> is more flexible${
+                   deferrable > 0
+                     ? ` — or <strong>${esc(usd0(withDeferrable))}</strong> counting the
+                         ${esc(usd0(deferrable))} of transfers and planned capital, which the line items
+                         suggest is mostly deferrable`
+                     : ""
+                 }. Flexible is not discretionary: it pays for ongoing services and the people who deliver
+                 them.</p>
             </div>
 
             <div class="proj-pool-bar" role="img"
@@ -1987,7 +2038,7 @@
 
             <div class="tablewrap">
               <table class="data">
-                <thead><tr><th scope="col">Part of the General Fund</th><th scope="col" class="num">FY2026–27</th><th scope="col" class="num">Share</th></tr></thead>
+                <thead><tr><th scope="col">Part of the General Fund</th><th scope="col" class="num">FY2026–27</th><th scope="col" class="num">Share</th><th scope="col">How flexible is it?</th></tr></thead>
                 <tbody>
                   ${rows}
                   <tr class="is-total">
@@ -1995,7 +2046,19 @@
                       <span class="proj-li-note">${esc(P.reachable_note)}</span></th>
                     <td class="num">${esc(usd0(reachable))}</td>
                     <td class="num">${((reachable / total) * 100).toFixed(0)}%</td>
+                    <td>${esc(P.reachable_flex || "")}</td>
                   </tr>
+                  ${
+                    deferrable > 0
+                      ? `<tr class="is-total">
+                           <th scope="row">${esc(P.deferrable_label)}
+                             <span class="proj-li-note">${esc(P.deferrable_note)}</span></th>
+                           <td class="num">${esc(usd0(withDeferrable))}</td>
+                           <td class="num">${((withDeferrable / total) * 100).toFixed(0)}%</td>
+                           <td>Depends on which projects are already committed</td>
+                         </tr>`
+                      : ""
+                  }
                 </tbody>
               </table>
             </div>
@@ -2003,17 +2066,19 @@
             ${
               first.gap < 0 || last.gap < 0
                 ? `<div class="proj-against">
-                     <p class="proj-against-head">This scenario's gap against that money</p>
+                     <p class="proj-against-head">This scenario's projected gap, for scale</p>
                      <ul>
-                       <li><strong>${esc(first.label)}:</strong> a ${esc(usd0(Math.abs(first.gap)))} ${esc(gapWord)} takes
-                         <strong>${(shareOf(first.gap, reachable) * 100).toFixed(0)}%</strong> of it${first.gap > 0 ? " — a surplus, so nothing has to come out" : ""}.</li>
-                       <li><strong>${esc(last.label)}:</strong> a ${esc(usd0(Math.abs(last.gap)))} ${esc(word(last.gap))}, against
-                         about ${esc(usd0(reachableLast))} by then, takes
-                         <strong>${(shareOf(last.gap, reachableLast) * 100).toFixed(0)}%</strong>.</li>
+                       <li><strong>${esc(first.label)}:</strong> ${esc(usd0(Math.abs(first.gap)))} — equivalent to
+                         <strong>${(shareOf(first.gap, reachable) * 100).toFixed(0)}%</strong> of the flexible money.</li>
+                       <li><strong>${esc(last.label)}:</strong> ${esc(usd0(Math.abs(last.gap)))} against about
+                         ${esc(usd0(reachableLast))} by then — <strong>${(shareOf(last.gap, reachableLast) * 100).toFixed(0)}%</strong>.</li>
                      </ul>
+                     <p class="proj-input-note">A comparison of sizes, not a claim about what would be
+                       reduced: a council could defer capital, find other revenue, or draw reserves
+                       instead.</p>
                    </div>`
-                : `<p class="proj-against-none">This scenario runs a surplus in both ${esc(first.label)} and ${esc(last.label)},
-                     so nothing has to come out of it in either year.</p>`
+                : `<p class="proj-against-none">This scenario projects a surplus in both ${esc(first.label)} and ${esc(last.label)},
+                     so on these assumptions nothing would have to come out of it in either year.</p>`
             }
             ${orderHtml(state.config.exposure.order, r, scale)}
             <p class="proj-input-note">${esc(P.method_note)}
@@ -2041,133 +2106,132 @@
          --------------------------------------------------------------------- */
 
       /* ======================================================================
-         What gives first
+         What the flexible money is made of
 
-         The department chart says where the money is. This says what actually
-         happens to it, and it is the part a reader is really asking about.
+         This was "What gets cut first": the same four categories, but drawn as
+         a ladder with the scenario's gap walked down it, rung by rung, until it
+         stopped somewhere inside payroll. The review was right that it was the
+         least supportable thing on the page, and for a reason worth recording
+         so it is not reintroduced.
 
-         The order is not a guess and it is not a ranking of importance. It is
-         the order in which a municipal budget can physically be reduced inside
-         a fiscal year: materials and maintenance need no vote and break no
-         agreement, capital can be deferred, internal transfers can be skipped,
-         and people are last because they are slowest and hardest to undo. The
-         page says that explicitly, twice, because "maintenance first" reads as
-         "maintenance matters least" if it is not headed off.
+         The ordering itself is defensible — it is how quickly each kind of
+         spending can be changed inside a fiscal year, which is a mechanical
+         fact and not a ranking of importance. What was not defensible was the
+         walk. Consuming each rung completely before touching the next asserts a
+         sequence no council has adopted, and no council would actually follow:
+         a real reduction takes a little from several places at once, and this
+         one might take none of it at all — the same gap could be met by
+         deferring capital, by other revenue, or by reserves. The bar drew a
+         decision, and the page has no standing to draw one.
 
-         The finding that makes it worth drawing: three of the four rungs
-         together are smaller than the no-increase gap. Every dollar of mowing,
-         tree work, trail repair, equipment and fleet contribution in every
-         department a council can reach does not cover it. The remainder can
-         only come from payroll, and the bar shows exactly how far into it.
+         The arithmetic at the end was worse. "The gap reaches 33% of it",
+         pointed at a bar labelled People, invited exactly one reading: a third
+         of the staff. What the figure actually measured was the remainder as a
+         share of a modelled personnel cost, which is not a headcount, not a
+         payroll reduction, and not a thing anyone had proposed.
+
+         So the composition stays and the walk is gone. The four figures still
+         answer the question worth answering — that the flexible pool is mostly
+         payroll, so no statement about it is really a statement about mowing —
+         and the maintenance accounts underneath stay untouched, because those
+         are not a projection at all. They are what the last adopted budget
+         already did, account by account, out of the city's own budget book.
          ====================================================================== */
       function orderHtml(O, r, scale) {
         if (!O || !O.rungs) return "";
-        const rungs = O.rungs.map((x) => ({ ...x, amount: x.amount * scale }));
-        const total = rungs.reduce((a, x) => a + x.amount, 0);
+        const parts = O.rungs.map((x) => ({ ...x, amount: x.amount * scale }));
+        const total = parts.reduce((a, x) => a + x.amount, 0);
+        const staff = parts[parts.length - 1];
         const first = r.rows[0];
-        const gap = Math.abs(first.gap);
-        const deficit = first.gap < 0;
 
-        // Walk the gap down the rungs and record where it stops.
-        let left = gap;
-        const eaten = rungs.map((x) => {
-          const take = Math.max(0, Math.min(left, x.amount));
-          left -= take;
-          return { ...x, take, share: x.amount > 0 ? take / x.amount : 0 };
-        });
-        const stops = eaten.find((x) => x.take > 0 && x.take < x.amount) || eaten[eaten.length - 1];
-        const staff = eaten[eaten.length - 1];
-        const nonStaff = total - rungs[rungs.length - 1].amount;
-
-        const segs = eaten
+        const segs = parts
           .map(
             (x) => `
             <span class="proj-rung proj-rung-${esc(x.key)}" style="width:${((x.amount / total) * 100).toFixed(3)}%"
-                  title="${esc(x.label)} — ${esc(usd0(x.amount))}">
-              ${x.take > 0 ? `<span class="proj-rung-eaten" style="width:${((x.take / x.amount) * 100).toFixed(2)}%"></span>` : ""}
-            </span>`
+                  title="${esc(x.label)} — ${esc(usd0(x.amount))}"></span>`
           )
           .join("");
 
-        const cards = eaten
+        const cards = parts
           .map(
-            (x, i) => `
-            <li class="proj-rung-card${x.take > 0 ? " is-reached" : ""}">
+            (x) => `
+            <li class="proj-rung-card">
               <p class="proj-rung-ord"><span class="proj-rung-key proj-rung-${esc(x.key)}" aria-hidden="true"></span>
-                ${esc(numWord(i + 1))}${i === 0 ? " — first" : i === eaten.length - 1 ? " — last" : ""}</p>
+                ${((x.amount / total) * 100).toFixed(0)}% of the flexible pool</p>
               <h4>${esc(x.label)}</h4>
               <p class="proj-rung-amt mono">${esc(usd0(x.amount))}</p>
               <p class="proj-rung-what">${esc(x.what)}</p>
-              <p class="proj-rung-why"><strong>Why here.</strong> ${esc(x.why)}</p>
+              <p class="proj-rung-why"><strong>How quickly it could change.</strong> ${esc(x.why)}</p>
               ${x.lines ? maintTable(x) : ""}
-              ${x.take > 0
-                ? `<p class="proj-rung-hit">${x.take >= x.amount
-                    ? `This scenario's gap uses <strong>all of it</strong>.`
-                    : `This scenario's gap reaches <strong>${(x.share * 100).toFixed(0)}%</strong> of it — ${esc(usd0(x.take))}.`}</p>`
-                : ""}
             </li>`
           )
           .join("");
 
+        // The bar and the one-paragraph finding stay in the open; the four
+        // detail cards go behind a click. The finding is that the flexible pool
+        // is mostly payroll, and the bar plus one sentence carries it — the
+        // cards restate the same four figures with a paragraph each, which is
+        // reference material rather than the point.
         return `
           <div class="proj-order">
             <h3 class="proj-sub-h2">${esc(O.heading)}</h3>
             <p class="proj-ear-lede">${esc(O.lede)}</p>
 
             <div class="proj-rung-bar" role="img"
-                 aria-label="${esc(`The reachable pool in the order it gives way: ${eaten.map((x) => `${x.label} ${usd0(x.amount)}`).join(", ")}. This scenario's ${first.label} gap of ${usd0(gap)} reaches ${stops.label.toLowerCase()}.`)}">${segs}</div>
+                 aria-label="${esc(`What the flexible operating pool of ${usd0(total)} is made of: ${parts.map((x) => `${x.label} ${usd0(x.amount)}`).join(", ")}.`)}">${segs}</div>
             <div class="legend">
-              ${eaten.map((x) => `<span class="lg"><i class="sw proj-rung-${esc(x.key)}"></i>${esc(x.label)}</span>`).join("")}
-              <span class="lg"><i class="sw proj-rung-eaten-key"></i>Used up by this scenario's gap</span>
+              ${parts.map((x) => `<span class="lg"><i class="sw proj-rung-${esc(x.key)}"></i>${esc(x.label)}</span>`).join("")}
             </div>
 
-            <p class="proj-punch">${punchHtml(O, first, gap, deficit, nonStaff, staff, stops)}</p>
+            <p class="proj-punch">${scaleHtml(parts, total, staff, first)}</p>
 
-            <ol class="proj-rung-list">${cards}</ol>
-
-            <p class="note-fine"><strong>An order, not a plan.</strong> ${esc(O.caveat)}</p>
-            ${finePrint("How the four steps were measured", `
+            ${panel("The four categories in detail", "What each one buys, how quickly it could change, and what the last budget already did to maintenance", `
+              <ol class="proj-rung-list">${cards}</ol>
               <p>${esc(O.basis)}</p>
               <p class="src"><strong>Needs confirming.</strong> ${esc(O.confirm)}</p>
-            `)}
+            `, false, "p-categories")}
+
+            <p class="note-fine"><strong>A composition, not a plan.</strong> ${esc(O.caveat)}</p>
           </div>`;
       }
 
-      /* The paragraph under the rung bar.
+      /* The paragraph under the composition bar.
 
-         It used to open with O.punchline, which is written about the
-         no-increase case — "come to less than the no-increase gap" — and was
-         printed verbatim under the Mid and High buttons, where it is a claim
-         about a scenario the reader is not looking at. O.punchline is now
-         scenario-neutral framing that holds in all three, and this scenario's
-         own arithmetic follows it.
+         It used to walk the gap down the four rungs and report where it landed.
+         It now states two things and stops: what the pool is made of, and — only
+         when there is a gap to compare — the comparison of sizes, with the
+         reading it must not be given ruled out in the same breath rather than in
+         a footnote below it. "Equivalent to 33% of the personnel cost" and "33%
+         of the staff" are different claims, and only the first is one this page
+         can make. */
 
-         The small-gap branch also said "even stopping all of it leaves $0
-         untouched", because it reused a figure clamped at zero for the other
-         branch: a gap that stops inside the first step leaves most of the
-         three untouched, not none of it. It states the remainder now. */
+      function scaleHtml(parts, total, staff, first) {
+        const nonStaff = total - staff.amount;
+        const share = (staff.amount / total) * 100;
 
-      function punchHtml(O, first, gap, deficit, nonStaff, staff, stops) {
-        // No qualitative lead. O.punchline used to open this and said, in words,
-        // exactly what the arithmetic below says with figures — the same claim
-        // twice, back to back. The figures are the stronger half, so they stand
-        // alone and O.punchline is gone from the config.
-        if (!deficit)
-          return `${esc(first.label)} runs a surplus here, so nothing on this list is reached. The order is
-                  what would happen if a gap opened.`;
+        const composition =
+          `The flexible pool of <strong>${esc(usd0(total))}</strong> is
+           <strong>${esc(share.toFixed(0))}%</strong> personnel. Everything else in it — maintenance,
+           equipment and fleet contribution — comes to ${esc(usd0(nonStaff))}.`;
 
-        if (gap > nonStaff)
-          return `In ${esc(first.label)} this scenario is short <strong>${esc(usd0(gap))}</strong>. Every
-                  dollar of maintenance, equipment and fleet contribution a council can reach adds up to
-                  ${esc(usd0(nonStaff))}. Stop <em>all</em> of it and
-                  <strong>${esc(usd0(gap - nonStaff))}</strong> still has to come from people — about
-                  <strong>${esc((((gap - nonStaff) / staff.amount) * 100).toFixed(0))}%</strong> of the
-                  reachable payroll.`;
+        if (first.gap >= 0)
+          return `${composition} ${esc(first.label)} projects a surplus here, so there is nothing to set
+                  against it.`;
 
-        return `In ${esc(first.label)} this scenario is short <strong>${esc(usd0(gap))}</strong>. The three
-                steps before payroll come to ${esc(usd0(nonStaff))}, so the gap stops at
-                <strong>${esc(stops.label.toLowerCase())}</strong> and leaves
-                ${esc(usd0(nonStaff - gap))} of them untouched.`;
+        const gap = Math.abs(first.gap);
+        const over = gap - nonStaff;
+
+        return (
+          composition +
+          ` For scale, this scenario's projected ${esc(first.label)} gap of
+            <strong>${esc(usd0(gap))}</strong> is ` +
+          (over > 0
+            ? `larger than that non-personnel total; the excess is equivalent to
+               <strong>${esc(((over / staff.amount) * 100).toFixed(0))}%</strong> of the modelled personnel
+               cost — a ratio between two dollar figures, not a share of staff or payroll that anyone has
+               proposed reducing.`
+            : `smaller than it, so the size of the gap alone implies nothing about staffing.`)
+        );
       }
 
       /* The named maintenance accounts. The claim they support is one number
@@ -2234,19 +2298,20 @@
 
         const count = x.lines.length + x.road_lines.length;
 
-        // These two figures are a *sample* of the rung above them, and without
-        // saying so they read as the rung itself: "Maintenance in the
-        // departments a council can reach — $679,165" sitting directly under a
-        // step labelled $4,015,444 is two different numbers for the same words
-        // in the same card. So each headline names its account count, the note
-        // states the relationship to the rung, and the road figure says on its
-        // face that it is outside the rung rather than only in the fine print.
+        // These two figures are a *sample* of the category above them, and
+        // without saying so they read as the category itself: "Maintenance in
+        // the departments a council can reach — $679,165" sitting directly
+        // under a heading of $4,015,444 is two different numbers for the same
+        // words in the same card. So each headline names its account count, the
+        // note states the relationship, and the road figure says on its face
+        // that it is outside the category rather than only in the fine print.
         return `
-          <p class="proj-maint-note">What the last budget actually did to maintenance.
-            ${esc(numWord(x.lines.length).replace(/^./, (ch) => ch.toUpperCase()))} named accounts inside this
-            step, and ${esc(numWord(x.road_lines.length))} more in Streets &amp; Roads that sit outside it.</p>
+          <p class="proj-maint-note">What the last adopted budget actually did to maintenance — a record,
+            not a projection. ${esc(numWord(x.lines.length).replace(/^./, (ch) => ch.toUpperCase()))} named
+            accounts inside this category, and ${esc(numWord(x.road_lines.length))} more in Streets &amp;
+            Roads that sit outside it.</p>
           <ul class="proj-maint-heads">
-            ${head(x.lines_total, "Inside this step")}
+            ${head(x.lines_total, "Inside this category")}
             ${head(x.road_total, "Streets & Roads — outside it")}
           </ul>
           ${finePrint(`All ${numWord(count)} accounts, as the budget book prints them`, `
