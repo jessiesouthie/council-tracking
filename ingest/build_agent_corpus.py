@@ -370,12 +370,16 @@ def _extra_docs() -> list[dict]:
     if budget_path.exists():
         b = json.loads(budget_path.read_text(encoding="utf-8"))
         total = b.get("total")
-        gf = b.get("general_fund")
+        # Both of these read out of the shipped file's own shape: general_fund is
+        # a block with a total inside it, and source is a title/publisher/url
+        # object — printed raw, either one puts a Python dict in the agent's mouth.
+        gf = (b.get("general_fund") or {}).get("total")
+        src = b.get("source") or {}
         text = (
             f"Adopted budget for fiscal year {b.get('fiscal_year','')}. "
             + (f"Total all funds: ${total:,}. " if isinstance(total, (int, float)) else "")
             + (f"General fund: ${gf:,}. " if isinstance(gf, (int, float)) else "")
-            + f"Source: {b.get('source','')}."
+            + f"Source: {src.get('title','')} ({src.get('publisher','')})."
         )
         docs.append(
             {
@@ -410,7 +414,9 @@ def _extra_docs() -> list[dict]:
         text = (
             f"{nb.get('fiscal_year_label','')} budget — {nb.get('status','')}, not final. "
             f"{nb.get('status_note','')} "
-            f"All funds ${t.get('gross',0):,}, against ${prior.get('gross',0):,} adopted for FY2025-26. "
+            f"All funds ${t.get('gross',0):,}, against the ${prior.get('gross',0):,} FY2025-26 ended on "
+            "— that year was adopted at $119,105,860 and grew as capital carried into it, so this "
+            "comparison is against the larger, later figure. "
             f"${t.get('reserves',0):,} of that is a reserve appropriation rather than money planned to be "
             f"spent, so the like-for-like comparison is ${t.get('net',0):,} against ${prior.get('net',0):,}. "
             f"Budgeted borrowing totals ${nb.get('borrowing',{}).get('total',0):,}, almost all of it a "
@@ -436,6 +442,49 @@ def _extra_docs() -> list[dict]:
                 "title": f"Next year's budget — {nb.get('fiscal_year_label','')} (interim)",
                 "date": "",
                 "url": "budget.html#next-year",
+                "tags": ["budget"],
+                "text": _clean(text),
+            }
+        )
+    # The FY2025-26 book: the one budget itemised to the account, so the agent
+    # can answer "how much went to the library" rather than only "how much went
+    # to community services". Its own chunk, because the year has two totals and
+    # an answer that quotes the wrong one is wrong by $44M.
+    book_path = DOCS / "data.budget-book.json"
+    if book_path.exists():
+        bb = json.loads(book_path.read_text(encoding="utf-8"))
+        bt = bb.get("totals", {})
+        top_funds = ", ".join(
+            f"{f['name']} ${f['adopted']:,}" for f in bb.get("funds", [])[:6])
+        top_depts = ", ".join(
+            f"{d['name']} ${d['adopted']:,}" for d in bb.get("departments", [])[:8])
+        revenue = ", ".join(
+            f"{r['name']} ${r['adopted']:,}" for r in bb.get("citywide", {}).get("revenue", []))
+        spending = ", ".join(
+            f"{o['name']} ${o['adopted']:,}" for o in bb.get("citywide", {}).get("expense", []))
+        text = (
+            f"{bb.get('fiscal_year_label','')} adopted budget — the year {bb.get('period','')}, "
+            "published in full as a budget book and itemised on this site down to every account. "
+            f"Adopted at ${bt.get('adopted',0):,} across {bt.get('fund_count',0)} funds and "
+            f"{bt.get('department_count',0)} departments, {bt.get('line_count',0):,} lines in all. "
+            f"The same year stood at ${bt.get('amended',0):,} by the end of it: "
+            f"${bt.get('carried_forward',0):,} of building work that was not finished the year before "
+            "rolled forward into it. Quote the adopted figure for what the Council voted on and the "
+            "amended one for what the year actually ran, and say which is which. "
+            f"For comparison, FY2025 was adopted at ${bt.get('fy25_budget',0):,}. "
+            f"Revenue by source: {revenue}. Spending by type: {spending}. "
+            f"Largest funds: {top_funds}. Largest departments: {top_depts}. "
+            "Any figure can be looked up by fund, by department or by account number in the "
+            "line-by-line explorer on the Budget page."
+        )
+        docs.append(
+            {
+                "id": "city-council:budget-book",
+                "kind": "budget",
+                "body": "city-council",
+                "title": f"Last year's budget, line by line — {bb.get('fiscal_year_label','')} (adopted)",
+                "date": "",
+                "url": "budget.html#book-year",
                 "tags": ["budget"],
                 "text": _clean(text),
             }
