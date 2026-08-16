@@ -94,6 +94,8 @@
   --ico-receipt:  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M6 2.8h12v18.4l-2.4-1.6-2.4 1.6-2.4-1.6-2.4 1.6L6 19.6z'/><path d='M9.5 8h5'/><path d='M9.5 12h5'/></svg>");
   --ico-flow:     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='3.2' height='6'/><rect x='3' y='14' width='3.2' height='6'/><rect x='17.8' y='9' width='3.2' height='6'/><path d='M6.2 7h5c1.5 0 1.5 5 3 5h3.6'/><path d='M6.2 17h5c1.5 0 1.5-5 3-5'/></svg>");
   --ico-more:     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black' stroke='none'><circle cx='5' cy='12' r='1.7'/><circle cx='12' cy='12' r='1.7'/><circle cx='19' cy='12' r='1.7'/></svg>");
+  /* Two lines diverging — the projection page's whole subject in 22px. */
+  --ico-trend:    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M3.5 4v16h17'/><path d='M6.5 15l4-4 3 2 4.5-6'/><path d='M6.5 11l4 2 3-4 4.5 2' stroke-dasharray='3 2.4'/></svg>");
 
   /* One typeface across the site. Inter is a neutral UI grotesque, so it carries
      the display sizes on tracking and weight rather than on character — hence the
@@ -2121,6 +2123,7 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
   [data-nav="members.html"]  .tab-ico { -webkit-mask-image: var(--ico-people);   mask-image: var(--ico-people); }
   [data-nav="tax.html"]      .tab-ico { -webkit-mask-image: var(--ico-receipt);  mask-image: var(--ico-receipt); }
   [data-nav="budget.html"]   .tab-ico { -webkit-mask-image: var(--ico-flow);     mask-image: var(--ico-flow); }
+  [data-nav="projections.html"] .tab-ico { -webkit-mask-image: var(--ico-trend); mask-image: var(--ico-trend); }
   .tabbar .tab-more .tab-ico { -webkit-mask-image: var(--ico-more); mask-image: var(--ico-more); }
 
   /* Four tabs — comfortable on a 320px screen without truncation. */
@@ -2970,8 +2973,13 @@ body.page-tax {
    the figures a reader is meant to carry away), rust for the increase itself,
    and sage for the recessive bars. Surfaces track the site tokens so the page
    sits on the same paper as the rest of the site and follows the theme toggle;
-   only the four accents are stated literally, with dark variants below. */
-.tax-page {
+   only the four accents are stated literally, with dark variants below.
+
+   Declared on body.page-tax, not on .tax-page alone: the shared chart tooltip
+   is appended to the body so it can be positioned in page coordinates without
+   inheriting a containing block, and a token scoped to .tax-page would be
+   undefined there — which reads as a transparent background, not a fallback. */
+body.page-tax, .tax-page {
   --t-page:   var(--bg);
   --t-card:   var(--bg-elev);
   --t-tray:   #F1EDE2;               /* segmented-control tray */
@@ -2998,8 +3006,6 @@ body.page-tax {
   --t-pass:      #2C6B47;
 
   --t-r: 6px;
-  max-width: none;
-  margin: 0 auto;
 }
 
 /* Dark: the accents lift off the dark ground, the ink band sinks well below the
@@ -3007,7 +3013,7 @@ body.page-tax {
    become tints rather than washes. Cream clears 12:1 on the band; gold, rust,
    and sage each clear AA against both grounds. */
 @media (prefers-color-scheme: dark) {
-  .tax-page {
+  body.page-tax, .tax-page {
     --t-tray:      #2C3128;
     --t-ink:       #14170F;
     --t-ink-2:     #1C2016;
@@ -3022,18 +3028,18 @@ body.page-tax {
     --t-pass:      #46B183;
   }
 }
-:root[data-theme="dark"] .tax-page {
+:root[data-theme="dark"] body.page-tax, :root[data-theme="dark"] .tax-page {
   --t-tray: #2C3128; --t-ink: #14170F; --t-ink-2: #1C2016; --t-ink-line: #33372B;
   --t-gold: #EFC868; --t-gold-line: #8A6A12; --t-gold-bg: #2C2515; --t-gold-hi: #3E331A;
   --t-rust: #C4643A; --t-sage: #8B948A; --t-pass: #46B183;
 }
-:root[data-theme="light"] .tax-page {
+:root[data-theme="light"] body.page-tax, :root[data-theme="light"] .tax-page {
   --t-tray: #F1EDE2; --t-ink: #23261F; --t-ink-2: #2B2E24; --t-ink-line: #3A3C31;
   --t-gold: #8A6A12; --t-gold-line: #E3C766; --t-gold-bg: #FDF7E6; --t-gold-hi: #F6E7BA;
   --t-rust: #A8542F; --t-sage: #6F7C68; --t-pass: #2C6B47;
 }
 
-.tax-page { display: flex; flex-direction: column; gap: 46px; }
+.tax-page { display: flex; flex-direction: column; gap: 46px; max-width: none; margin: 0 auto; }
 .tax-page .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 .tax-page a { color: var(--t-gold); }
 .tax-page a:hover { color: var(--t-fg); }
@@ -6718,3 +6724,1165 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
 @media (prefers-reduced-motion: reduce) {
   .agent-typing i { animation: none; }
 }
+
+/* =========================================================================
+   PROJECTIONS — projections.html
+   ------------------------------------------------------------------------
+   The second page in the Tax section. It runs on body.page-tax, so it
+   inherits that page's typeface pair, its warm palette (--t-*), its section
+   furniture (.eyebrow / .sec-h2 / .sec-sub), its panels, its tables and its
+   chart tooltip. What is added here is only what the projection needs and
+   the tax page has no use for: the section sub-nav, the two SVG charts, the
+   assumption controls, and the three-way tagging (derived / assumption /
+   needs confirming) that keeps a placeholder from reading as a fact.
+
+   Everything is scoped under .tax-subnav or .proj-*, so nothing here can
+   reach the tax page, the budget page, or anything else.
+
+   Colour never carries meaning alone. Surplus and deficit are also a word in
+   every table cell and every tooltip, a solid-vs-dashed line, round-vs-square
+   markers, and a plain-vs-hatched fill.
+   ========================================================================= */
+
+/* ---------- the Tax section's sub-nav ----------
+   Two destinations, so a strip rather than a menu. It sits inside the reading
+   column above the page's own hero, and reads as a level below the topbar:
+   smaller, quieter, and underlined on the current page rather than filled. */
+.tax-subnav {
+  display: flex;
+  gap: 4px;
+  margin: 0 0 6px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tax-subnav::-webkit-scrollbar { display: none; }
+.tax-subnav a {
+  flex: none;
+  padding: 7px 13px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--fg-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 140ms ease, color 140ms ease;
+}
+.tax-subnav a:hover { background: var(--bg-muted); color: var(--fg-soft); }
+.tax-subnav a[aria-current="page"] {
+  background: var(--accent-tint);
+  color: var(--fg-soft);
+}
+.tax-subnav a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* ---------- this page's own accents ----------
+   Two of them, and they are the only new colours on the site: a projection
+   green and a projection red, both derived from the existing --ok / --danger
+   so a surplus here reads as the same kind of green as a passed vote. Fills
+   are tints; lines and ink are the deeper variants, which is what keeps a
+   hatched band legible against paper and against the dark ground. */
+.proj-page {
+  --proj-rev:        #2C6B47;   /* revenue line */
+  --proj-exp:        #8A5312;   /* expenditure line */
+  --proj-sur-fill:   rgb(31 138 91 / .17);
+  --proj-sur-fill-solid: rgb(31 138 91 / .34);
+  --proj-sur-ink:    #1B6244;
+  --proj-def-fill:   rgb(217 86 58 / .12);
+  --proj-def-fill-solid: rgb(217 86 58 / .20);
+  --proj-def-line:   rgb(217 86 58 / .55);
+  --proj-def-ink:    #9A3B24;
+  /* Rust used as *text* needs more lift than rust used as a rule. --t-rust
+     clears AA on paper but only reaches 4.3:1 on the dark ground, so the
+     "needs confirming" ink is its own token and is lightened in dark. */
+  --proj-confirm-ink: #A8542F;
+  --proj-confirm-bg:  var(--t-rust);
+  --proj-confirm-fg:  var(--t-rust-fg);
+  /* Tier fills for the pool bar and the department chart. These cannot borrow
+     --t-ink: in dark that token IS the page's dark ground, so a bar painted
+     with it disappears. Declared per theme instead, lightest = heaviest
+     obligation. */
+  --tier-contract:   #23261F;
+  --tier-agreements: #5C6152;
+  --proj-grid:       var(--t-line-2);
+}
+@media (prefers-color-scheme: dark) {
+  .proj-page {
+    --proj-rev: #46B183;
+    --proj-exp: #EFC868;
+    --proj-sur-fill: rgb(70 177 131 / .20);
+    --proj-sur-fill-solid: rgb(70 177 131 / .38);
+    --proj-sur-ink: #6ECFA3;
+    --proj-def-fill: rgb(196 100 58 / .18);
+    --proj-def-fill-solid: rgb(196 100 58 / .30);
+    --proj-def-line: rgb(224 128 90 / .7);
+    --proj-def-ink: #E3906E;
+    --proj-confirm-ink: #DB8058;
+    /* On the dark ground a solid rust chip with cream on it falls to 3.7:1.
+       A tint behind the lightened ink clears AA and reads better besides. */
+    --proj-confirm-bg: rgb(196 100 58 / .22);
+    --tier-contract: #E0E2D4;
+    --tier-agreements: #9AA08C;
+  }
+}
+:root[data-theme="dark"] .proj-page {
+  --proj-rev: #46B183; --proj-exp: #EFC868;
+  --proj-sur-fill: rgb(70 177 131 / .20); --proj-sur-fill-solid: rgb(70 177 131 / .38);
+  --proj-sur-ink: #6ECFA3;
+  --proj-def-fill: rgb(196 100 58 / .18); --proj-def-fill-solid: rgb(196 100 58 / .30);
+  --proj-def-line: rgb(224 128 90 / .7); --proj-def-ink: #E3906E;
+  --proj-confirm-ink: #DB8058; --proj-confirm-bg: rgb(196 100 58 / .22); --proj-confirm-fg: #DB8058;
+  --tier-contract: #E0E2D4; --tier-agreements: #9AA08C;
+}
+:root[data-theme="light"] .proj-page {
+  --proj-rev: #2C6B47; --proj-exp: #8A5312;
+  --proj-sur-fill: rgb(31 138 91 / .17); --proj-sur-fill-solid: rgb(31 138 91 / .34);
+  --proj-sur-ink: #1B6244;
+  --proj-def-fill: rgb(217 86 58 / .12); --proj-def-fill-solid: rgb(217 86 58 / .20);
+  --proj-def-line: rgb(217 86 58 / .55); --proj-def-ink: #9A3B24;
+  --proj-confirm-ink: #A8542F; --proj-confirm-bg: var(--t-rust); --proj-confirm-fg: var(--t-rust-fg);
+  --tier-contract: #23261F; --tier-agreements: #5C6152;
+}
+
+/* Sign colour is applied to the figure that carries the sign and to nothing
+   else. It was briefly a bare .is-def/.is-sur pair, which meant a table row
+   tagged as a deficit year turned all ten of its cells rust — every figure in
+   the line reading as if it were the deficit. */
+.proj-page .proj-sign.is-sur,
+.proj-page .proj-gap-cell.is-sur,
+.proj-page .facts .fact.is-sur b { color: var(--proj-sur-ink); }
+.proj-page .proj-sign.is-def,
+.proj-page .proj-gap-cell.is-def,
+.proj-page .facts .fact.is-def b { color: var(--proj-def-ink); }
+
+/* ---------- hero flag ----------
+   The page's most important sentence, and it has to survive a reader who
+   scrolls straight to the chart, so it is a block rather than a footnote. */
+.proj-flag {
+  margin: 4px 0 0;
+  padding: 14px 16px;
+  border: 1px solid var(--t-gold-line);
+  border-radius: var(--t-r);
+  background: var(--t-gold-bg);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--t-fg-2);
+}
+.proj-flag-tag {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--t-gold);
+  color: var(--t-page);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  vertical-align: 1px;
+}
+/* The gap figure inside the lede. It carries deficit colour because it is the
+   one number in the paragraph that has a sign; the rest are plain quantities
+   and colouring them too would make the sentence a wall of rust. */
+.proj-hero-gap { color: var(--proj-def-ink); white-space: nowrap; }
+/* The scale line: property tax against the budget and against the Sheriff's
+   contract. A rule rather than a box — it is a continuation of the lede, not a
+   caveat like the flag beneath it. */
+.proj-hero-scale {
+  margin: 2px 0 0;
+  padding-left: 13px;
+  border-left: 3px solid var(--t-gold-line);
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--t-fg-2);
+  max-width: 72ch;
+}
+.proj-hero-scale strong { color: var(--t-fg); font-variant-numeric: tabular-nums; }
+
+/* ---------- the section list ----------
+   The page is long, so a reader needs to know what is down there before they
+   start scrolling. It borrows the summary rail's chips but NOT its pinning:
+   the summary rail floats over a list of short sections, whereas this page is
+   22,000px of dense prose and tables, and a translucent bar pinned over that
+   clipped a line of text on every screen for the whole scroll. It sits under
+   the hero and stays there. */
+.proj-toc { position: static; margin: 0 0 4px; }
+/* Only the topbar to clear now that nothing is pinned below it. */
+.proj-page .tax-sec { scroll-margin-top: calc(var(--topbar-h, 62px) + 14px); }
+
+/* ---------- the definition, before anything else ----------
+   One card, set apart from the prose around it, because the reader has to
+   settle what "no increase" means before a single figure will land — and it
+   now opens the same section as the switcher labelled with it. */
+.proj-def-card {
+  padding: 18px 20px 20px;
+  border: 1px solid var(--t-line);
+  border-radius: var(--t-r);
+  background: var(--t-card);
+}
+.proj-def-card.is-policy { border-color: var(--t-gold-line); background: var(--t-gold-bg); }
+.proj-def-tag {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+}
+.proj-def-card.is-policy .proj-def-tag { color: var(--t-gold); }
+.proj-def-card h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--t-fg);
+}
+.proj-def-card p { margin: 0; font-size: 14px; line-height: 1.62; color: var(--t-fg-2); }
+/* The "gap" card runs to three paragraphs — the measure, what it excludes, and
+   what the running total is — so the base card's flush margins need a rhythm. */
+.proj-def-card p + p { margin-top: 11px; }
+/* Two cards list rather than argue — the three rates, and what goes into the
+   revenue estimate. Indented just enough to hang the markers inside the card's
+   padding, and each item set at the same measure as the prose above it. */
+.proj-def-list {
+  margin: 9px 0 0;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.62;
+  color: var(--t-fg-2);
+}
+.proj-def-list li + li { margin-top: 6px; }
+.proj-def-list + p { margin-top: 11px; }
+.proj-def-list .is-sur { color: var(--proj-sur-ink); }
+.proj-def-list .is-def { color: var(--proj-def-ink); }
+/* The two formulas are read as objects, not sentences: set apart, mono, and
+   left-ruled so the eye can skip them and come back. */
+.proj-def-formula {
+  margin: 9px 0 0;
+  padding: 9px 12px;
+  border-left: 3px solid var(--t-gold-line);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--t-page);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--t-fg);
+}
+.proj-def-formula + p { margin-top: 11px; }
+.proj-def-card .src { margin-top: 12px; font-size: 12px; color: var(--t-muted); }
+
+/* ---------- controls ----------
+   The scenario switch is the one control the whole page hangs off — every
+   figure in all five sections moves with it — so it is given its own panel
+   rather than the 132px-label row the tax page uses for secondary switches.
+   Label above, buttons below, full width: it reads as the thing to press. */
+.proj-controls { gap: 14px; }
+.switch-row.proj-switch {
+  display: block;
+  margin: 4px 0 0;
+  padding: 15px 17px 16px;
+  border: 1px solid var(--t-gold-line);
+  border-radius: var(--t-r);
+  background: var(--t-page);
+}
+.switch-row.proj-switch .switch-label { margin-bottom: 10px; color: var(--t-gold); }
+.switch-row.proj-switch .scope-switch { display: flex; flex-wrap: wrap; }
+/* The picked scenario reads as four short paragraphs rather than one long one:
+   what the rate is, what it raises, and what the case is for reading it. Ruled
+   on the same gold as the switcher above it, so the control and its answer
+   read as one thing. */
+.proj-scenario-note {
+  margin: 0;
+  padding-left: 13px;
+  border-left: 2px solid var(--t-gold-line);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--t-fg-2);
+  max-width: 74ch;
+}
+.proj-scenario-note strong { color: var(--t-fg); }
+.proj-scenario-note p { margin: 0; }
+.proj-scenario-note p + p { margin-top: 9px; }
+.proj-scenario-h {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--t-fg);
+}
+/* The rate itself, which is the one figure a reader came to this control for. */
+.proj-scenario-rate { color: var(--t-muted); font-size: 13px; }
+.proj-scenario-rate .mono { font-size: 13.5px; font-weight: 600; color: var(--t-fg); }
+
+/* ---------- summary cards ----------
+   Four of them, and four is what makes them work: money in, money out, this
+   year's gap, and the running total. There used to be a fifth carrying the
+   property-tax figure, which forced a six-track grid split 2+2+2 / 3+3 to stop
+   "$40,982,866" being clipped mid-digit. That figure now sits in the scenario
+   note beside the rate that sets it, and four equal columns hold the rest.
+   The label leads and the figure follows, because these are four different
+   quantities and a reader needs to know which one they are looking at. */
+.tax-page .facts.proj-facts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.proj-facts .fact { padding: 18px 18px 20px; }
+/* nowrap keeps "−$1,667,575" from breaking after the minus and reading as two
+   separate things. */
+.proj-facts .fact b {
+  font-size: 21px;
+  letter-spacing: -.025em;
+  white-space: nowrap;
+}
+.proj-fact-label { display: block; font-weight: 600; color: var(--t-fg); }
+.proj-facts .fact p { font-size: 12.5px; }
+
+/* ---------- why the gap is what it is ----------
+   Sits under the summary cards, which sit under the charts: the six years get
+   drawn first, the cards state the answer in figures, and this states where
+   that answer came from. It was a closed panel down in the methodology
+   section, which put the one explanation a reader needs behind a click and two
+   screens of scrolling.
+
+   Deliberately not a card. The cards above it are figures; this is a short
+   argument with a table in it, so it takes the section's own prose treatment
+   with a rule down the left to tie it to the cards it explains. */
+.proj-why {
+  margin: 22px 0 4px;
+  padding: 18px 0 2px 18px;
+  border-left: 3px solid var(--t-gold-line);
+}
+.proj-why .proj-sub-h2 { margin-bottom: 6px; }
+.proj-why .proj-ear-lede { margin-bottom: 14px; }
+.proj-why .tablewrap { margin: 0; }
+.proj-why table.data th[scope="row"] { font-weight: 600; }
+.proj-why-drift {
+  margin: 14px 0 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--t-fg-2);
+  max-width: 72ch;
+}
+.proj-why-drift strong { color: var(--t-fg); }
+
+@media (max-width: 719px) {
+  .proj-why { padding-left: 13px; }
+}
+
+/* ---------- validation ---------- */
+.proj-alert {
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  border-radius: var(--t-r);
+  border: 1px solid var(--t-rust);
+  background: var(--t-page);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.proj-alert.is-warning { border-color: var(--t-gold-line); background: var(--t-gold-bg); }
+.proj-alert-head { margin: 0 0 6px; font-weight: 700; color: var(--t-fg); }
+.proj-alert ul { margin: 0; padding-left: 18px; color: var(--t-fg-2); }
+.proj-alert li { margin-bottom: 3px; }
+.proj-alert p:last-child { margin-bottom: 0; }
+
+/* ---------- the charts ---------- */
+.proj-chart { margin-top: 8px; }
+.proj-chart-gap { margin-top: 26px; }
+.proj-plot { width: 100%; }
+.proj-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.proj-svg text { fill: var(--t-muted); font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+.proj-grid line { stroke: var(--proj-grid); stroke-width: 1; }
+.proj-tick.is-zero line { stroke: var(--t-fg-2); stroke-width: 1.4; }
+.proj-axis line { stroke: var(--t-line); stroke-width: 1; }
+.proj-xlab { font-weight: 600; }
+
+.proj-fill { stroke: none; }
+.proj-line { fill: none; stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+.proj-line-rev { stroke: var(--proj-rev); }
+.proj-line-exp { stroke: var(--proj-exp); stroke-dasharray: 7 5; }
+.proj-mark-rev { fill: var(--proj-rev); }
+.proj-mark-exp { fill: var(--proj-exp); }
+
+/* The crossover: a filled dot on the lines plus a drop to the axis, so the
+   moment the sign changes is a marked event and not just where the colour
+   under the lines happens to change. */
+.proj-cross line { stroke: var(--t-fg-2); stroke-width: 1.3; stroke-dasharray: 3 3; }
+.proj-cross circle { fill: var(--t-page); stroke: var(--t-fg); stroke-width: 2; }
+
+.proj-zero { stroke: var(--t-fg); stroke-width: 1.6; }
+.proj-barlab { font-weight: 600; fill: var(--t-fg-2); }
+.proj-bar { stroke: var(--proj-def-line); stroke-width: 0; }
+.proj-bar.is-sur { stroke: var(--proj-sur-ink); stroke-width: 1; }
+.proj-bar.is-def { stroke: var(--proj-def-line); stroke-width: 1; }
+
+/* Hit targets are invisible until hovered or focused. The guide line is what
+   makes a focused column readable for a keyboard user, who has no cursor to
+   tell them where they are. */
+/* Only the hit target itself is transparent. This used to be `.proj-hit rect`,
+   which also matched the gap bars — they sit inside a .proj-hit group — and
+   silently stripped their hatch fill, leaving six empty outlines. */
+.proj-hitarea { fill: transparent; }
+.proj-hit .proj-guide { stroke: var(--t-fg); stroke-width: 1; opacity: 0; }
+.proj-hit.is-on .proj-guide { opacity: .35; }
+.proj-hit:focus { outline: none; }
+.proj-hit:focus-visible .proj-hitarea { fill: rgb(43 108 255 / .08); stroke: var(--focus); stroke-width: 2; }
+.proj-hit:focus-visible .proj-guide { opacity: .5; }
+.proj-bar-g:focus-visible .proj-bar { stroke: var(--focus); stroke-width: 2.5; }
+
+/* ---------- tooltip ---------- */
+.proj-tip { max-width: 300px; padding: 10px 12px; }
+.proj-tip .pt-head {
+  margin: 0 0 7px;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--t-on-ink-gold);
+}
+.proj-tip .pt-tag {
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: rgb(255 255 255 / .14);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.proj-tip .pt-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 3px 14px;
+  align-items: baseline;
+}
+.proj-tip .pt-k { color: var(--t-on-ink-dim); }
+.proj-tip .pt-v {
+  text-align: right;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+.proj-tip .pt-v.is-sur { color: #7FD9AE; }
+.proj-tip .pt-v.is-def { color: #F0A283; }
+
+/* ---------- results table ----------
+   Ten columns of figures, and for a while only six of them were on screen: the
+   other four sat past the right edge behind a scroll bar nobody reads a table
+   through. It was asking for 1184px; the card leaves 812px inside its inset.
+   The 372px comes off the furniture, not off the figures — all ten columns are
+   still here and every number in them is still written out in full.
+
+   What the furniture was costing:
+
+   1. `.num { white-space: nowrap }` applied to the head as well as the body,
+      so "Certified rate" and "Running total" each held a column ~30px wider
+      than any figure in it. Ten headers, ~240px of nothing. Headers wrap now;
+      only the figures stay on one line, which is the part that has to.
+   2. The base-year chip sat inline after the year and made the first column
+      163px, twice what the label needs. It drops under the year.
+   3. Header labels and that chip are set a notch smaller than the site's usual
+      11px, because at this density they are signposts, not reading.
+   4. The adjustment dagger is hung in the gutter at zero width instead of
+      widening the spending column by 13px for a single mark.
+   5. The table gives back the card's 30px inset and rules across the full
+      width of the card. Its heading, footnote and export bar stay in the
+      inset — a wide figure inside the card, not a card of a different width.
+      The card's edges are untouched, which is the part that has to hold: they
+      line up with every other card on the page.
+
+   That leaves 850px of table in the 870px the card gives back — the whole
+   thing on screen at every width down to the page's own 920px measure. Under
+   that the card itself is the constraint and the figures do scroll, which is
+   what the sticky year column further down is for. */
+.proj-table-block { --sec-pad-x: 30px; }
+.proj-table-block .tablewrap { margin-inline: calc(var(--sec-pad-x) * -1); }
+@media (max-width: 760px) { .proj-table-block { --sec-pad-x: 18px; } }
+@media (max-width: 400px) { .proj-table-block { --sec-pad-x: 14px; } }
+
+.proj-table-head { margin: 30px 0 12px; }
+.proj-table-head h3 { margin: 0 0 4px; font-size: 17px; font-weight: 700; color: var(--t-fg); }
+.proj-table-head p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--t-muted); }
+table.data.proj-table { font-size: 12px; }
+table.data.proj-table :is(th, td) { padding-left: 6px; padding-right: 6px; }
+/* The rules run to the card's edge; the figures stop short of it, so nothing
+   sits against the border. Half the card's inset, not all of it — the other
+   half is what buys the tenth column. */
+table.data.proj-table :is(th, td):first-child { padding-left: 14px; }
+table.data.proj-table :is(th, td):last-child { padding-right: 14px; }
+table.data.proj-table .num { text-align: right; }
+table.data.proj-table tbody .num { white-space: nowrap; }
+table.data.proj-table thead th {
+  white-space: normal;
+  vertical-align: bottom;
+  line-height: 1.3;
+  hyphens: none;
+  font-size: 10px;
+  letter-spacing: .06em;
+}
+table.data.proj-table th[scope="row"] { font-weight: 600; color: var(--t-fg); white-space: nowrap; }
+table.data.proj-table tr.is-anchor td, table.data.proj-table tr.is-anchor th { background: var(--t-gold-hi); }
+/* The shared rule closes the last row's cells but not its row header, which
+   left a rule the width of one column hanging under the table. */
+table.data.proj-table tbody tr:last-child :is(th, td) { border-bottom: none; }
+
+/* Below the card width the figures still outrun the sheet, and a row of
+   numbers with no year against it is unreadable — so the label column stays
+   put and takes a hairline only once something has actually slid under it. */
+table.data.proj-table thead th:first-child,
+table.data.proj-table th[scope="row"] {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--t-card);
+}
+table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi); }
+/* Drawn as a pseudo-element rather than a border or a shadow: the table is
+   border-collapse, where a cell's own edge is negotiated with its neighbour's
+   and a 1px change would shift every column across as the reader scrolled. */
+.tablewrap.is-scrolled table.data.proj-table :is(thead th:first-child, th[scope="row"])::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--t-line);
+}
+.proj-anchor-tag {
+  display: block;
+  width: max-content;
+  margin: 3px 0 0;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: var(--t-gold);
+  color: var(--t-page);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.proj-gap-cell .proj-gap-word {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.proj-gap-cell .proj-gap-num { font-weight: 600; font-variant-numeric: tabular-nums; }
+.proj-gap-cell.is-def { color: var(--proj-def-ink); }
+.proj-gap-cell.is-sur { color: var(--proj-sur-ink); }
+/* Zero width, so one dagger on one row cannot widen the spending column for
+   all thirteen. It hangs in the gutter to the right of the figure, which is
+   where a reference mark belongs anyway. */
+.proj-adj-mark {
+  display: inline-block;
+  width: 0;
+  margin-left: 2px;
+  overflow: visible;
+  color: var(--t-muted);
+  cursor: help;
+}
+
+/* ---------- legend swatches ---------- */
+.legend .proj-sw-rev { background: var(--proj-rev); border-radius: 2px; height: 4px; width: 18px; }
+.legend .proj-sw-exp {
+  height: 4px; width: 18px; border-radius: 2px;
+  background: repeating-linear-gradient(90deg, var(--proj-exp) 0 6px, transparent 6px 10px);
+}
+.legend .proj-sw-sur { background: var(--proj-sur-fill-solid); border: 1px solid var(--proj-sur-ink); }
+.legend .proj-sw-def {
+  background: repeating-linear-gradient(45deg, var(--proj-def-fill-solid) 0 2px, var(--proj-def-line) 2px 4px);
+  border: 1px solid var(--proj-def-line);
+}
+
+/* ---------- assumptions ---------- */
+.proj-scope {
+  padding: 14px 16px;
+  border-left: 3px solid var(--t-gold-line);
+  background: var(--t-gold-bg);
+  border-radius: 0 var(--t-r) var(--t-r) 0;
+}
+.proj-scope p { margin: 0; font-size: 13.5px; line-height: 1.62; color: var(--t-fg-2); }
+
+/* The lead-in above each of the two baseline tables: a sentence saying what
+   kind of number is in it and whether the reader should be arguing with it. */
+.proj-lede { margin: 0 0 12px; font-size: 14px; line-height: 1.65; color: var(--t-fg-2); }
+
+/* The baseline tables. The third column is prose, so it takes the width; the
+   figure column stays tabular and narrow. */
+.proj-base th[scope="row"] { width: 30%; font-weight: 600; }
+.proj-base td.num { width: 1%; white-space: nowrap; }
+.proj-base td:last-child { font-size: 13.5px; line-height: 1.6; color: var(--t-fg-2); }
+.proj-base td:last-child .proj-tags { margin-left: 6px; vertical-align: 1px; }
+
+/* On a phone the third column is prose and takes everything, which squeezes
+   the label to one word per line. Below 560px each row becomes a block
+   instead: name and figure on one line, the sentence under them. */
+@media (max-width: 560px) {
+  .proj-base, .proj-base tbody, .proj-base tr, .proj-base th, .proj-base td { display: block; }
+  .proj-base thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .proj-base tr { padding: 12px 0; border-top: 1px solid var(--t-line); }
+  .proj-base tr:first-child { border-top: 0; }
+  .proj-base th[scope="row"] { width: auto; padding: 0; font-size: 14px; }
+  .proj-base td { padding: 0; border: 0; }
+  .proj-base td.num { width: auto; margin: 2px 0 6px; text-align: left; color: var(--t-gold); font-size: 15px; }
+  .proj-base td:last-child { font-size: 13px; }
+}
+
+.proj-tags { display: inline-flex; gap: 5px; flex-wrap: wrap; }
+.proj-tag {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.proj-tag.is-derived { background: var(--t-tray); color: var(--t-fg-2); }
+.proj-tag.is-assumed { background: var(--warm-soft); color: var(--warm-ink); }
+.proj-tag.is-confirm { background: var(--proj-confirm-bg); color: var(--proj-confirm-fg); }
+/* The answered counterpart of "Needs confirming" — green, because a flag that
+   has been resolved should not keep reading as an outstanding one. */
+.proj-tag.is-confirmed { background: var(--proj-sur-fill-solid); color: var(--proj-sur-ink); }
+/* Half-answered: the record settled the shape of it but not the number. Warm
+   rather than green or red, so a reader can tell the three states apart. */
+.proj-tag.is-partly { background: var(--warm-soft); color: var(--warm-ink); }
+
+/* The note bodies use the same three states as the tags. is-confirm already
+   carries the outstanding treatment; these two are its resolved counterparts. */
+.proj-input-note.is-confirmed,
+.proj-input-note.is-partly { color: var(--t-fg-2); }
+.proj-input-note.is-confirmed strong { color: var(--proj-sur-ink); }
+.proj-input-note.is-partly strong { color: var(--warm-ink); }
+
+/* The documents behind the project-area finding, listed like the page's own
+   sources because that is what they are. */
+.proj-src-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 14px; }
+.proj-src-list > li { display: grid; gap: 3px; font-size: 14px; line-height: 1.6; }
+
+.proj-input-note { margin: 0; font-size: 12.5px; line-height: 1.6; color: var(--t-muted); }
+.proj-input-note strong { color: var(--t-fg-2); font-weight: 600; }
+.proj-input-note.is-confirm { color: var(--proj-confirm-ink); }
+.proj-input-note.is-confirm strong { color: var(--proj-confirm-ink); }
+
+/* One figure's full paper trail, inside the provenance panel. Ruled rather
+   than boxed: nine of these stacked in boxes reads as a form again, which is
+   the thing this section stopped being. */
+.proj-prov { padding: 14px 0; border-top: 1px solid var(--t-line); display: grid; gap: 8px; }
+.proj-prov:first-child { border-top: 0; padding-top: 4px; }
+.proj-prov-h {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--t-fg);
+}
+.proj-prov-v { font-size: 13.5px; font-variant-numeric: tabular-nums; color: var(--t-gold); }
+
+.proj-sub-h {
+  margin: 20px 0 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+}
+.proj-list { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 12px; }
+.proj-list li { font-size: 13.5px; line-height: 1.6; color: var(--t-fg-2); }
+.proj-list b { color: var(--t-fg); font-weight: 600; }
+.proj-li-note { display: block; margin-top: 4px; font-size: 12.5px; line-height: 1.6; color: var(--t-muted); font-weight: 400; }
+.proj-src { display: block; margin-top: 5px; font-size: 12px; color: var(--t-muted); }
+.proj-src a { font-weight: 600; }
+/* Tables inside the detail panels are plain `table.data`, which has no opinion
+   about figures. Give them the same treatment as the results table: right
+   aligned, never broken after a leading minus, and a ruled total row. */
+.proj-page .panel-body table.data .num { text-align: right; white-space: nowrap; }
+.proj-page .panel-body table.data tr.is-total :is(th, td) {
+  border-top: 1.5px solid var(--t-fg-2);
+  font-weight: 700;
+  color: var(--t-fg);
+}
+.proj-page .panel-body table.data th[scope="row"] { font-weight: 600; color: var(--t-fg); }
+
+.proj-caveat {
+  padding: 12px 14px;
+  border-left: 3px solid var(--t-rust);
+  background: var(--t-page);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+/* ---------- reading it ---------- */
+.proj-options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--t-line);
+  border: 1px solid var(--t-line);
+  border-radius: var(--t-r);
+  overflow: hidden;
+}
+.proj-options li {
+  background: var(--t-page);
+  padding: 14px 16px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--t-fg-2);
+}
+
+/* ---------- sources ---------- */
+.proj-sources { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.proj-sources li { padding-left: 14px; border-left: 2px solid var(--t-line); }
+.proj-sources b { display: block; font-size: 14px; font-weight: 600; color: var(--t-fg); }
+.proj-src-meta { display: block; margin-top: 2px; font-size: 12px; color: var(--t-gold); }
+
+/* ---------- disclaimer ---------- */
+.proj-disclaimer {
+  padding: 20px 22px;
+  border-radius: var(--t-r);
+  background: var(--t-ink);
+  color: var(--t-on-ink);
+}
+.proj-disclaimer p { margin: 0; font-size: 13.5px; line-height: 1.65; color: var(--t-on-ink-dim); }
+.proj-disclaimer-head {
+  margin: 0 0 8px !important;
+  font-size: 12px !important;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--t-on-ink-gold) !important;
+}
+
+/* ---------- responsive ----------
+   The charts resize themselves from JS (they are drawn to a measured width),
+   so what is left here is the furniture around them. */
+@media (max-width: 860px) {
+  /* Four cards over two columns: two clean rows, nothing left stranded. */
+  .tax-page .facts.proj-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 719px) {
+  .proj-options { grid-template-columns: minmax(0, 1fr); }
+  .proj-flag { font-size: 13.5px; }
+  .proj-facts .fact b { font-size: 19px; }
+  table.data.proj-table,
+  table.data.proj-base { font-size: 12px; }
+  .proj-base th[scope="row"] { width: auto; }
+  .proj-table-head { margin-top: 24px; }
+}
+@media (max-width: 480px) {
+  /* One column. Two was tried: an eight-digit figure at nowrap needs about
+     150px of its own, and half of a 360px phone minus padding is not that —
+     it overflowed the card and pushed the page into horizontal scroll. The
+     cards are shorter now (four, not five), so the stack is bearable. */
+  .tax-page .facts.proj-facts { grid-template-columns: minmax(0, 1fr); }
+  .proj-facts .fact { padding: 15px 16px 17px; }
+  .proj-def-card { padding: 15px 16px 17px; }
+  .proj-disclaimer { padding: 16px 17px; }
+}
+
+/* Touch has no hover, so a tap has to be able to raise a tooltip and the
+   targets have to be worth aiming at. */
+@media (pointer: coarse) {
+  .proj-hit rect { fill: transparent; }
+  .tax-subnav a { padding: 9px 14px; }
+}
+
+/* ---------- exposure: where a shortfall lands ----------
+   The section that answers "so what gives". Its job is to be specific without
+   reading as a prediction, so the sourced material (the city's own earmark
+   list, councilmembers' own words) is given the visual weight, and the
+   arithmetic sits above it as a plain bar and a plain table. */
+
+.proj-sub-h2 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--t-fg);
+}
+.proj-ear-lede {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--t-fg-2);
+  max-width: 72ch;
+}
+.proj-ear-lede strong { color: var(--t-fg); }
+
+/* The narrowing bar. Four segments, and the only one that matters is the last
+   — so the three that come off are muted and the remainder is the one with
+   colour in it. */
+.proj-pool-head p { margin: 0 0 16px; font-size: 14px; line-height: 1.65; color: var(--t-fg-2); }
+.proj-pool-head strong { color: var(--t-fg); }
+.proj-pool-bar {
+  display: flex;
+  height: 30px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  background: var(--t-line);
+}
+.proj-seg { display: block; height: 100%; }
+.proj-seg-contract  { background: var(--tier-contract); }
+.proj-seg-restricted{ background: var(--t-sage); }
+/* Hatched, not filled: this is the tier the line items do not break down, and
+   the texture says so. It was briefly a tray-on-hairline hatch, which measured
+   1.1:1 against the card in both themes — technically a bar, visually a gap in
+   one. The stripe is --t-muted now, which is a text-grade grey in both. */
+.proj-seg-transfers,
+.legend .sw.proj-seg-transfers,
+.proj-key.proj-seg-transfers {
+  background: repeating-linear-gradient(45deg,
+    var(--t-tray) 0 4px, var(--t-muted) 4px 6.5px);
+  box-shadow: inset 0 0 0 1px var(--t-muted);
+}
+.proj-seg-reach,
+.proj-seg-reachable { background: var(--t-gold); }
+/* Contractual like public safety, but a different obligation — developer
+   agreements rather than a service contract. Striped rather than merely a
+   lighter shade: the two contract tiers sit next to a sage one and a gold one,
+   and separating them by hue alone gets fragile in dark mode. The texture also
+   carries the distinction for anyone who cannot use the colour. */
+.proj-seg-agreements,
+.legend .sw.proj-seg-agreements,
+.proj-key.proj-seg-agreements {
+  background: repeating-linear-gradient(90deg,
+    var(--tier-agreements) 0 4px, var(--tier-contract) 4px 6px);
+}
+.legend .sw.proj-seg-contract,
+.legend .sw.proj-seg-agreements,
+.legend .sw.proj-seg-restricted,
+.legend .sw.proj-seg-transfers,
+.legend .sw.proj-seg-reach { border-radius: 2px; }
+/* The same four colours as a key beside each table row, so the bar and the
+   table are readable as one object. */
+.proj-key {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-right: 8px;
+  vertical-align: 0;
+}
+
+.proj-against {
+  margin: 18px 0 14px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--t-gold);
+  background: var(--t-gold-bg);
+  border-radius: 0 var(--t-r) var(--t-r) 0;
+}
+.proj-against-head {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t-gold);
+}
+.proj-against ul { margin: 0; padding-left: 18px; }
+.proj-against li { font-size: 13.5px; line-height: 1.65; color: var(--t-fg-2); margin-bottom: 4px; }
+.proj-against li strong { color: var(--t-fg); }
+.proj-against-none {
+  margin: 18px 0 14px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--proj-sur-ink);
+  background: var(--t-page);
+  border-radius: 0 var(--t-r) var(--t-r) 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--t-fg-2);
+}
+
+/* The earmark list — the strongest evidence on the page, so it gets the
+   figure-led treatment the summary cards use rather than a bulleted list. */
+.proj-ear-list {
+  list-style: none;
+  margin: 0 0 4px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--t-line);
+  border: 1px solid var(--t-line);
+  border-radius: var(--t-r);
+  overflow: hidden;
+}
+.proj-ear-list li {
+  background: var(--t-page);
+  padding: 15px 17px 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+/* The cells are drawn by a 1px gap over a tinted background, so an odd count
+   leaves the last slot as a filled rectangle with nothing in it. The list is
+   three items now and could be any number later, so the last card spans the
+   row whenever it would otherwise be stranded. */
+.proj-ear-list li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.proj-ear-fig {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -.015em;
+  color: var(--t-gold);
+  font-variant-numeric: tabular-nums;
+}
+.proj-ear-lab {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--t-fg);
+}
+.proj-ear-txt { font-size: 13px; line-height: 1.6; color: var(--t-fg-2); }
+
+.proj-voices .arg-quote { margin-top: 16px; }
+
+/* ---------- what a gap does and doesn't mean ----------
+   This was a numbered section of its own, sitting directly under the exposure
+   section and repeating most of its caveat. It closes that section instead:
+   the six things a council actually does about a gap, then the one caveat,
+   once. The top rule marks it as the turn from evidence to interpretation. */
+.proj-meaning {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--t-line);
+}
+.proj-meaning .proj-options { margin-top: 4px; }
+.proj-exposure-caveat { margin-top: 16px; }
+
+@media (max-width: 719px) {
+  .proj-ear-list { grid-template-columns: minmax(0, 1fr); }
+  .proj-pool-bar { height: 24px; }
+}
+
+/* ---------- what gives first ----------
+   The reachable pool again, but split by what it is rather than whose
+   department it sits in, and laid out in the order a budget actually gives
+   way. The overlay on each segment is how far this scenario's gap eats in.
+
+   Rung colours run light-to-dark deliberately: the first thing to go is the
+   palest, staffing is the darkest, so the bar reads as a gradient of
+   seriousness left to right without needing four unrelated hues. */
+.proj-order { margin-top: 34px; }
+
+.proj-rung-bar {
+  display: flex;
+  height: 34px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  background: var(--t-line);
+}
+.proj-rung { position: relative; display: block; height: 100%; }
+/* The consumed portion sits on top of its own rung, hatched in the deficit
+   rust so it reads as "taken" rather than as a fifth category. */
+.proj-rung-eaten {
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: block;
+  height: 100%;
+  background: repeating-linear-gradient(45deg,
+    var(--proj-def-fill-solid) 0 4px, var(--proj-def-line) 4px 6.5px);
+  box-shadow: inset -2px 0 0 var(--t-rust);
+}
+.proj-rung-maintenance, .legend .sw.proj-rung-maintenance, .proj-rung-key.proj-rung-maintenance { background: var(--t-gold-hi); }
+.proj-rung-capital,     .legend .sw.proj-rung-capital,     .proj-rung-key.proj-rung-capital     { background: var(--t-gold-line); }
+.proj-rung-fleet,       .legend .sw.proj-rung-fleet,       .proj-rung-key.proj-rung-fleet       { background: var(--t-sage); }
+.proj-rung-personnel,   .legend .sw.proj-rung-personnel,   .proj-rung-key.proj-rung-personnel   { background: var(--tier-contract); }
+.legend .sw.proj-rung-eaten-key {
+  background: repeating-linear-gradient(45deg,
+    var(--proj-def-fill-solid) 0 3px, var(--proj-def-line) 3px 5px);
+  border: 1px solid var(--t-rust);
+}
+
+.proj-punch {
+  margin: 4px 0 22px;
+  padding: 16px 18px;
+  border-left: 3px solid var(--t-rust);
+  background: var(--t-gold-bg);
+  border-radius: 0 var(--t-r) var(--t-r) 0;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--t-fg-2);
+}
+.proj-punch strong { color: var(--t-fg); }
+.proj-punch em { font-style: italic; }
+
+.proj-rung-list {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+/* The first rung carries the named-account list and the last carries the
+   payroll conclusion; both want the full width. The two small middle rungs
+   pair up. Left as four equal cards, the account list made card one four times
+   the height of card two and left a column of empty paper beside it. */
+.proj-rung-card:first-child,
+.proj-rung-card:last-child { grid-column: 1 / -1; }
+.proj-rung-card:first-child .proj-lines {
+  columns: 2;
+  column-gap: 28px;
+}
+.proj-rung-card:first-child .proj-lines li { break-inside: avoid; }
+.proj-rung-card {
+  padding: 16px 18px 18px;
+  border: 1px solid var(--t-line);
+  border-radius: var(--t-r);
+  background: var(--t-card);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+/* A rung the gap actually reaches is marked, so the cards and the bar agree. */
+.proj-rung-card.is-reached { border-color: var(--t-rust); }
+.proj-rung-ord {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+}
+.proj-rung-key { width: 11px; height: 11px; border-radius: 2px; flex: none; }
+.proj-rung-card h4 { margin: 0; font-size: 16px; font-weight: 700; color: var(--t-fg); }
+.proj-rung-amt { margin: 0; font-size: 19px; font-weight: 700; color: var(--t-gold); letter-spacing: -.02em; }
+.proj-rung-what { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--t-fg-2); }
+.proj-rung-why { margin: 0; font-size: 13px; line-height: 1.6; color: var(--t-muted); }
+.proj-rung-why strong { color: var(--t-fg-2); }
+.proj-rung-hit {
+  margin: 2px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--t-line-2);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--proj-def-ink);
+}
+.proj-rung-hit strong { color: var(--proj-def-ink); }
+.proj-rung-lines-note { margin: 6px 0 0; font-size: 12px; line-height: 1.55; color: var(--t-muted); }
+
+/* The named accounts. These are the point of the whole section — "mowing" and
+   "snow removal" as the budget itself writes them — so they get a real list. */
+.proj-lines { list-style: none; margin: 4px 0 0; padding: 0; }
+.proj-lines li {
+  display: grid;
+  /* Every cell placed explicitly. Auto-placement put the amount in the first
+     column and threw the name and the department out behind it. */
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  gap: 1px 12px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--t-line-2);
+  font-size: 12.5px;
+}
+.proj-lines li:last-child { border-bottom: 0; }
+.proj-lines .pl-n { grid-column: 1; grid-row: 1; color: var(--t-fg); font-weight: 600; }
+.proj-lines .pl-n .ast { color: var(--t-muted); margin-left: 2px; }
+.proj-lines .pl-d { grid-column: 1; grid-row: 2; font-size: 11.5px; color: var(--t-muted); }
+.proj-lines .pl-v {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--t-fg-2);
+  font-variant-numeric: tabular-nums;
+}
+.proj-lines li.is-restricted .pl-n { color: var(--t-muted); font-weight: 500; }
+
+@media (max-width: 719px) {
+  .proj-rung-list { grid-template-columns: minmax(0, 1fr); }
+  .proj-rung-card:first-child .proj-lines { columns: 1; }
+  .proj-rung-bar { height: 28px; }
+  .proj-punch { font-size: 13.5px; padding: 14px 15px; }
+}
+
+/* ---------- the maintenance headlines ----------
+   Two full tables used to sit open inside this card, which was already the
+   longest thing in the section. Each existed to support one number, so the
+   two numbers show and the twenty accounts moved into the fine print below
+   them. A row reads left to right as claim, movement, result.
+
+   The note above them is not decoration. These figures are a sample of the
+   step they sit under, and without a line saying so the card shows $679,165
+   under a heading of $4,015,444 and invites the reader to take the smaller
+   number as the step. */
+.proj-maint-note {
+  margin: 12px 0 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--t-muted);
+}
+.proj-maint-heads {
+  list-style: none;
+  margin: 8px 0 4px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--t-line);
+  border: 1px solid var(--t-line);
+  border-radius: var(--t-r);
+  overflow: hidden;
+}
+.proj-maint-heads li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content max-content;
+  align-items: baseline;
+  gap: 6px 14px;
+  padding: 11px 14px;
+  background: var(--t-page);
+}
+.proj-maint-heads .pm-what { font-size: 13px; line-height: 1.45; color: var(--t-fg-2); }
+.proj-maint-heads .pm-move {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--t-muted);
+}
+.proj-maint-heads .pm-to { margin: 0 2px; }
+.proj-maint-heads b {
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--t-fg);
+}
+.proj-maint-heads b.is-down { color: var(--proj-def-ink); }
+@media (max-width: 560px) {
+  /* The two figures drop under the claim rather than squeezing it to nothing. */
+  .proj-maint-heads li { grid-template-columns: minmax(0, 1fr) max-content; }
+  .proj-maint-heads .pm-what { grid-column: 1 / -1; }
+}
+
+/* The named maintenance accounts, in the fine print. A real table, because the
+   comparison across the budget book's own columns is the evidence. */
+table.data.proj-maint { font-size: 12.5px; }
+table.data.proj-maint :is(th, td) { padding: 7px 10px; }
+table.data.proj-maint .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+table.data.proj-maint th[scope="row"] { font-weight: 600; color: var(--t-fg); }
+table.data.proj-maint .pl-d {
+  display: block;
+  margin-top: 1px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--t-muted);
+}
+table.data.proj-maint .is-down { color: var(--proj-def-ink); font-weight: 600; }
+table.data.proj-maint tr.is-total :is(th, td) {
+  border-top: 1.5px solid var(--t-fg-2);
+  font-weight: 700;
+  color: var(--t-fg);
+}
+.proj-rung-card:first-child .tablewrap { margin: 6px 0 2px; }

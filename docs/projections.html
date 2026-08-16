@@ -1,0 +1,2340 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <script>document.documentElement.classList.remove("no-js");</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>What No Tax Increase Would Cost — Eagle Mountain Council Tracking</title>
+    <meta name="description" content="At the certified rate — legally “no increase” — Eagle Mountain takes in $35.4M in FY2026–27 against the $42.7M it has adopted. The gap, where it lands, and what gives first." />
+    <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Council Tracking" />
+    <meta property="og:title" content="What No Tax Increase Would Cost — Eagle Mountain Council Tracking" />
+    <meta property="og:description" content="At the certified rate, the city takes in $35.4M against the $42.7M it has adopted for FY2026–27. What the gap is, where it would have to come from, and what gives first." />
+    <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="What No Tax Increase Would Cost — Eagle Mountain Council Tracking" />
+    <meta name="twitter:description" content="Money in against money out to FY2031–32 at the certified rate, and what a shortfall reaches first." />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Same pair as tax.html, for the same reason: this page is part of the
+         Tax section and shares its typography through body.page-tax. Inter is
+         deliberately not requested. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="site.css?v=20260815n" />
+  </head>
+  <body class="page-tax">
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 512 512" focusable="false">
+            <circle class="m-accent" cx="153" cy="153" r="33.5" />
+            <rect class="m-fg" x="220" y="133" width="175" height="41" rx="20.5" />
+            <circle class="m-fg" cx="153" cy="256" r="33.5" />
+            <rect class="m-dim" x="220" y="235" width="144" height="42" rx="21" />
+            <circle class="m-accent" cx="153" cy="358" r="33.5" />
+            <rect class="m-dim" x="220" y="338" width="113" height="41" rx="20.5" />
+          </svg>
+        </span>
+        <div>
+          <p class="brand-title">Roll Call</p>
+          <p class="city">Eagle Mountain, UT</p>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" data-nav="index.html">Home</a>
+        <a href="meetings.html" data-nav="meetings.html">Meetings</a>
+        <a href="motions.html" data-nav="motions.html">Motions</a>
+        <a href="members.html" data-nav="members.html">Members</a>
+        <a href="tax.html" data-nav="tax.html" data-nav-alias="projections.html">Tax</a>
+        <a href="budget.html" data-nav="budget.html">Budget</a>
+      </nav>
+    </header>
+
+    <main id="main" class="main-reading">
+      <!-- The Tax section's own strip. Static markup rather than injected, so it
+           is there on first paint and on a load where the JSON never arrives —
+           a reader who lands here with the data down can still get back. -->
+      <nav class="tax-subnav" aria-label="Tax section">
+        <a href="tax.html">The increase</a>
+        <a href="projections.html" aria-current="page">Projections</a>
+      </nav>
+
+      <div id="content" aria-busy="true">
+        <noscript>
+          <div class="tax-page">
+            <div class="tax-fail">
+              <p class="eyebrow">Needs JavaScript</p>
+              <h1 class="tax-h1">The projection needs JavaScript</h1>
+              <p class="tax-lede">The figures behind it are public without it. The budget is on the
+                <a href="budget.html">budget page</a>, the adopted rate is on the
+                <a href="tax.html">tax page</a>, and every meeting they went through is in the
+                <a href="meetings.html">meeting record</a>.</p>
+            </div>
+          </div>
+        </noscript>
+        <div class="tax-page tax-skeleton" role="status" aria-label="Loading the budget projection">
+          <span class="sk-line sk-eyebrow"></span>
+          <span class="sk-line sk-h1"></span>
+          <span class="sk-line sk-h1 sk-h1-2"></span>
+          <span class="sk-line sk-lede"></span>
+          <span class="sk-line sk-lede sk-lede-2"></span>
+          <div class="sk-card">
+            <div class="sk-card-in">
+              <span class="sk-line sk-ask"></span>
+              <span class="sk-line sk-field"></span>
+              <span class="sk-line sk-slider"></span>
+            </div>
+            <div class="sk-band"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer"><span>Planning estimates built from Eagle Mountain's published budget and its own meeting recordings — not a city forecast</span></footer>
+
+    <script src="site.js?v=20260815a"></script>
+    <script src="projections.js?v=20260815a"></script>
+    <script>
+      /* =======================================================================
+         Projected City Budget Gap
+
+         The page has one job: show what happens to Eagle Mountain's General
+         Fund over six years under three property-tax paths, and be honest
+         about how much of that is arithmetic and how much is assumption.
+
+         All of the arithmetic is in projections.js; all of the numbers and
+         their sourcing are in data.projections.json. This file only draws. That
+         separation is what lets the summary cards, both charts and the results
+         table come from one calculation, so they cannot drift apart — and it is
+         why the assumption controls need no special handling: they change one
+         object, the model reruns, and every view repaints from it.
+         ======================================================================= */
+
+      (async () => {
+        const root = document.getElementById("content");
+        const grab = (f) =>
+          fetch(new URL(f, document.baseURI))
+            .then((r) => (r.ok ? r.json() : null))
+            .catch(() => null);
+
+        const config = await grab("data.projections.json");
+        root.removeAttribute("aria-busy");
+
+        if (!config) {
+          root.innerHTML = `
+            <div class="tax-page">
+              <div class="tax-fail" role="alert">
+                <p class="eyebrow">Couldn't load</p>
+                <h1 class="tax-h1">The projection data didn't arrive</h1>
+                <p class="tax-lede">Usually a dropped connection rather than anything wrong with the figures.</p>
+                <p><button type="button" class="tx-btn" id="proj-retry">Try again</button></p>
+              </div>
+            </div>`;
+          document.getElementById("proj-retry").addEventListener("click", (e) => {
+            e.target.disabled = true;
+            e.target.textContent = "Loading…";
+            location.reload();
+          });
+          return;
+        }
+
+        // The budget and the levy are the City's; no other body on this site
+        // adopts either, so the page has nothing to say for them.
+        if (CT.currentBody && CT.currentBody() !== (config.body || "city-council")) {
+          root.innerHTML = `
+            <div class="tax-page">
+              <div class="tax-fail">
+                <p class="eyebrow">City only</p>
+                <h1 class="tax-h1">Only the City adopts a budget and a tax rate</h1>
+                <p class="tax-lede">Switch to City Council to see the projection.</p>
+              </div>
+            </div>`;
+          return;
+        }
+
+        render(config, root);
+      })();
+
+      /* ---------------------------------------------------------- formatting
+         Rounding happens here and nowhere else. The engine carries full
+         precision end to end; every figure below is rounded at the moment it
+         becomes text, and never re-used as a number afterwards. */
+
+      const esc = (s) => CT.escapeHtml(String(s));
+      // A true minus, not a hyphen — these sit beside tabular figures.
+      const MINUS = "−";
+      const usd0 = (n) => (n < 0 ? MINUS : "") + "$" + Math.round(Math.abs(n)).toLocaleString("en-US");
+      const usdSigned = (n) => (n < 0 ? MINUS : "+") + "$" + Math.round(Math.abs(n)).toLocaleString("en-US");
+      // Short form for axis ticks only. Never used where a reader might read a
+      // figure off it and quote it.
+      const short = (n) => {
+        const a = Math.abs(n);
+        if (a >= 1e9) return (n < 0 ? MINUS : "") + "$" + (a / 1e9).toFixed(1) + "B";
+        if (a >= 1e6) return (n < 0 ? MINUS : "") + "$" + (a / 1e6).toFixed(a >= 1e8 ? 0 : 1) + "M";
+        if (a >= 1e3) return (n < 0 ? MINUS : "") + "$" + Math.round(a / 1e3) + "k";
+        return (n < 0 ? MINUS : "") + "$" + Math.round(a);
+      };
+      const rate6 = (r) => (r == null ? "—" : Number(r).toFixed(6));
+      const pct1 = (p) => (p < 0 ? MINUS : "+") + (Math.abs(p) * 100).toFixed(1) + "%";
+      // Two decimals where the record states two: the motion's own 183.02% is a
+      // quoted figure, and rounding it to one decimal would stop a reader
+      // matching this page against it. Unsigned, because the sentence it sits
+      // in carries the direction in words ("183.02% higher than the certified
+      // rate"), where a leading + would read as part of the number.
+      const pctBare = (p) => (Math.abs(p) * 100).toFixed(2) + "%";
+      const pctPlain = (p) => (p * 100).toFixed(p * 100 >= 10 ? 1 : 2) + "%";
+      // The same figure without the trailing zeros pctPlain keeps for alignment:
+      // the assumption table reads them as words in a sentence ("6% a year
+      // against 5%"), where "6.00%" implies a precision nobody published.
+      const rateShort = (p) => +(p * 100).toFixed(2) + "%";
+      // "deficit"/"surplus" always travels with the colour, never instead of it.
+      const word = (gap) => (gap < 0 ? "deficit" : gap > 0 ? "surplus" : "balanced");
+      const Word = (gap) => (gap < 0 ? "Deficit" : gap > 0 ? "Surplus" : "Balanced");
+
+      /* ------------------------------------------------------------- state */
+
+      const state = {
+        config: null,
+        scenario: "none",
+      };
+
+      // The engine still takes per-field overrides — the tests drive it that
+      // way — but the page no longer offers any. Every figure on it is the
+      // configured one, so what a reader sees is what the sources support.
+      function run() {
+        return Projections.project(state.config, state.scenario);
+      }
+
+      /* ------------------------------------------------------------- render */
+
+      function render(config, root) {
+        state.config = config;
+        const r = run();
+
+        root.innerHTML = `
+          <div class="tax-page proj-page">
+            ${heroHtml(config)}
+            ${navHtml()}
+            ${controlsHtml(config)}
+
+            <section class="tax-sec reveal" style="--i:2" id="s-result" aria-labelledby="result-title">
+              <div class="sec-head">
+                <p class="eyebrow"><span class="sec-num" aria-hidden="true">02</span>The projection</p>
+                <h2 class="sec-h2" id="result-title">What comes in, against what goes out</h2>
+                <p class="sec-sub" id="result-sub"></p>
+              </div>
+              <div id="validation" role="alert"></div>
+              ${chartShellHtml(config)}
+              <div id="summary"></div>
+              <div id="recon"></div>
+              <div id="results-table" class="proj-table-block"></div>
+            </section>
+
+            ${assumptionsHtml(config)}
+            ${exposureHtml(config)}
+            ${sourcesHtml(config)}
+            ${disclaimerHtml(config)}
+          </div>`;
+
+        measureTopbar();
+        wireNav(root);
+        wireControls();
+        wireTooltip();
+        repaint();
+
+        // The permit chart sits inside a panel that starts closed, and a closed
+        // <details> has no measurable width — so first paint sizes it from the
+        // fallback. Redraw the moment it opens, when there is a real width.
+        const permitPanel = document.getElementById("p-permits");
+        if (permitPanel)
+          permitPanel.addEventListener("toggle", () => {
+            if (permitPanel.open) drawPermits(state.config);
+          });
+
+        // Charts are sized from their container, so they have to be redrawn
+        // when it changes width. Debounced: a drag-resize would otherwise
+        // rebuild two SVGs on every frame.
+        let t = 0;
+        window.addEventListener("resize", () => {
+          clearTimeout(t);
+          t = setTimeout(() => { measureTopbar(); drawCharts(run()); }, 150);
+        });
+      }
+
+      function measureTopbar() {
+        const bar = document.querySelector(".topbar");
+        const h = bar ? Math.round(bar.getBoundingClientRect().height) : 60;
+        document.documentElement.style.setProperty("--topbar-h", h + "px");
+      }
+
+      /* Everything that depends on the model. Called on first paint and
+         whenever the reader picks a different tax scenario. */
+      function repaint() {
+        const r = run();
+        paintSummary(r);
+        paintValidation(r);
+        drawCharts(r);
+        paintTable(r);
+        paintResultSub(r);
+        paintReconciliation(r);
+        paintExposure(r);
+      }
+
+      const NUM_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+      const numWord = (n) => NUM_WORDS[n] || String(n);
+
+      /* ------------------------------------------------------ why the gap is
+         The walk from "the interim budget balances exactly" to this scenario's
+         first-year figure. Three lines, and the third is the only one that
+         moves between scenarios.
+
+         This used to be a closed panel in the methodology section, filed as
+         bookkeeping. It is not bookkeeping — it is the answer to the question
+         a reader has the instant they read the summary cards, and for the
+         no-increase case it reconciles to the dollar: the levy the interim
+         budget assumed and did not get, plus the reserve draw, IS the gap.
+         Nothing else is in it. So it sits open, directly under the cards it
+         explains — which now follow the charts rather than lead them. */
+
+      function paintReconciliation(r) {
+        const el = document.getElementById("recon");
+        if (!el) return;
+        const c = state.config.reconciliation;
+        if (!r.ok || !r.rows.length) { el.innerHTML = ""; return; }
+
+        const y1 = r.rows[0];
+        const lastRow = r.rows[r.rows.length - 1];
+        const levy = y1.propertyTax;
+        const levyDelta = levy - c.interim_levy;
+        const rows = [
+          ["The interim budget, as adopted", c.balanced, "Revenue and appropriations both $42,650,441. Adopted 4–1 on 16 June 2026.", true],
+          ["Less reserves counted as revenue", -c.reserve_draw, c.reserve_note, false],
+          [
+            `This scenario's levy against the ${usd0(c.interim_levy)} the interim budget assumed`,
+            levyDelta,
+            c.levy_note + " " + c.rounding_note,
+            false,
+          ],
+        ];
+
+        // The shape of the period, stated once and only where it holds. A run
+        // of deficits that starts deep and widens slowly is a different problem
+        // from one that opens at nothing and drifts, and the two are
+        // indistinguishable from the chart.
+        //
+        // The test is strict on purpose. Every year has to be a deficit — "how
+        // much of the last year is already in the first" means nothing across a
+        // crossing — and no year may be shallower than the first. Under the
+        // adopted rate the gap narrows for three years before it widens again,
+        // and calling that a level would be reading the endpoints and ignoring
+        // the middle.
+        const widensThroughout =
+          r.rows.length > 1 &&
+          r.rows.every((x) => x.gap < 0) &&
+          r.rows.every((x) => x.gap <= y1.gap);
+        const drift = widensThroughout
+          ? `<p class="proj-why-drift"><strong>It is a level, not a drift.</strong>
+               ${esc(((y1.gap / lastRow.gap) * 100).toFixed(0))}% of the ${esc(lastRow.label)} gap is
+               already there in the first year. ${esc(numWord(r.rows.length - 1).replace(/^./, (ch) => ch.toUpperCase()))}
+               more years of spending outgrowing revenue add ${esc(usd0(Math.abs(lastRow.gap - y1.gap)))}
+               on top of it; the opening ${esc(usd0(Math.abs(y1.gap)))} was set when the budget was
+               adopted, not by anything the model assumes about the future.</p>`
+          : "";
+
+        const heading =
+          y1.gap < 0
+            ? `Why the ${y1.label} gap is ${usd0(Math.abs(y1.gap))}`
+            : y1.gap > 0
+              ? `Why ${y1.label} lands at a ${usd0(y1.gap)} surplus`
+              : `Why ${y1.label} lands exactly level`;
+
+        el.innerHTML = `
+          <div class="proj-why">
+            <h3 class="proj-sub-h2">${esc(heading)}</h3>
+            <p class="proj-ear-lede">${esc(c.text)}</p>
+            <div class="tablewrap">
+              <table class="data">
+                <thead><tr><th scope="col">What it is</th><th scope="col" class="num">Effect</th></tr></thead>
+                <tbody>
+                  ${rows
+                    .map(
+                      ([label, amount, note, zero]) => `
+                    <tr>
+                      <th scope="row">${esc(label)}<span class="proj-li-note">${esc(note)}</span></th>
+                      <td class="num">${zero ? "$0" : esc(usdSigned(amount))}</td>
+                    </tr>`
+                    )
+                    .join("")}
+                  <tr class="is-total">
+                    <th scope="row">${esc(y1.label)} gap on this page</th>
+                    <td class="num proj-gap-cell ${y1.gap < 0 ? "is-def" : "is-sur"}">${esc(usdSigned(y1.gap))}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            ${drift}
+          </div>`;
+      }
+
+      /* ---------------------------------------------------------------- hero */
+
+      /* The hero answers the question the page exists for, in figures, before a
+         reader touches a control: what the certified rate — legally "no
+         increase" — leaves the city with.
+
+         It is computed from the "none" scenario rather than from whichever
+         button is currently pressed, and so it never repaints. That is
+         deliberate: pressing Mid or High changes what the city would charge,
+         not what the certified rate would have raised, so the sentence stays
+         true under all three and a reader who scrolls back up finds the same
+         figures they started from. */
+
+      function heroHtml(c) {
+        const first = c.year_labels[String(c.first_year)] || c.first_year;
+        const last = c.year_labels[String(c.last_year)] || c.last_year;
+
+        const none = Projections.project(c, "none");
+        const y1 = none.ok && none.rows.length ? none.rows[0] : null;
+        const sum = none.ok ? none.summary : null;
+
+        // The scale line. A gap in millions is an abstraction; property tax as a
+        // share of the budget it has to pay for is not, and both figures are the
+        // city's own. The Sheriff's contract is the comparison the council itself
+        // made all summer — the increase was to move that line off sales tax.
+        const safety = (((c.exposure || {}).pool || {}).tiers || []).find((t) => t.key === "contract");
+        const scale =
+          y1 && safety
+            ? `<p class="proj-hero-scale">
+                 Property tax brings in <strong>${esc(usd0(y1.propertyTax))}</strong> of that —
+                 <strong>${((y1.propertyTax / y1.expenditures) * 100).toFixed(0)}%</strong> of the budget, and
+                 <strong>${((y1.propertyTax / safety.amount) * 100).toFixed(0)}%</strong> of the
+                 ${esc(usd0(safety.amount))} policing contract it is meant to cover.
+               </p>`
+            : "";
+
+        const lede = y1
+          ? `Utah law calls the certified rate <strong>no increase</strong>. At that rate Eagle Mountain takes
+             in <strong>${esc(usd0(y1.totalRevenue))}</strong> in ${esc(y1.label)} and spends
+             <strong>${esc(usd0(y1.expenditures))}</strong> — the budget its council has already adopted.
+             That is a <strong class="proj-hero-gap">${esc(usd0(Math.abs(y1.gap)))} ${esc(word(y1.gap))}</strong>
+             in year one${sum ? `, and <strong>${esc(usd0(Math.abs(sum.cumulative)))}</strong> over six years` : ""}.`
+          : `What Eagle Mountain expects to take in each year, against what it expects to spend, under
+             three property-tax choices.`;
+
+        return `
+          <header class="tax-hero reveal">
+            <p class="eyebrow">
+              <span class="tax-status-dot" aria-hidden="true"></span>
+              Planning estimate · ${esc(first)} to ${esc(last)}
+            </p>
+            <h1 class="tax-h1">What no tax increase would cost</h1>
+            <p class="tax-lede">${lede}</p>
+            ${scale}
+            <p class="proj-flag">
+              <span class="proj-flag-tag">Not a city forecast</span>
+              The city publishes no multi-year plan. This is built from its own budget and its meeting
+              recordings. Some numbers are still unconfirmed, and they are flagged below.
+            </p>
+          </header>`;
+      }
+
+      /* ------------------------------------------------- section wayfinding
+         The page is long, so a reader needs to know what is down there before
+         they start scrolling. A list under the hero, not a pinned rail: this
+         page is 22,000px of prose and tables, and a bar floating over that
+         clipped a line of content on every screen the whole way down. */
+
+      const SECTIONS = [
+        ["s-scenario", "Scenario"],
+        ["s-result", "The projection"],
+        ["s-assumptions", "The numbers"],
+        ["s-exposure", "Where it lands"],
+        ["s-sources", "Sources"],
+      ];
+
+      function navHtml() {
+        return `
+          <nav class="sum-toc proj-toc" aria-label="Jump to a section">
+            <div class="sum-toc-rail">
+              ${SECTIONS.map(([id, label]) => `<a href="#${id}">${esc(label)}</a>`).join("")}
+            </div>
+          </nav>`;
+      }
+
+      /* Smooth-scroll the chips, and leave the URL alone — a reader who clicks
+         "Sources" did not ask for a hash they then have to clear. There is no
+         scroll-spy: nothing is pinned, so there is no chip on screen for an
+         active state to light up. */
+      function wireNav(root) {
+        const nav = root.querySelector(".proj-toc");
+        if (!nav) return;
+        const smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+        nav.addEventListener("click", (e) => {
+          const a = e.target.closest("a");
+          if (!a) return;
+          const sec = root.querySelector(a.getAttribute("href"));
+          if (!sec) return;
+          e.preventDefault();
+          // A reader who clicks "Sources" is asking for the sources. Where a
+          // panel is the whole of its section's content, arriving at it closed
+          // means the chip did nothing visible and they have to click again, so
+          // those panels open on the way in. Panels that are one of several in
+          // a section (all of section 03) carry no flag and stay as they are.
+          sec.querySelectorAll("details.panel[data-nav-open]").forEach((d) => { d.open = true; });
+          sec.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+        });
+      }
+
+      const sourceUrl = (c, needle) => {
+        const s = (c.sources || []).find((x) => (x.url || "").includes(needle) || (x.title || "").includes(needle));
+        return s && s.url ? s.url : "#s-sources";
+      };
+
+      /* ------------------------------------------------------------ controls */
+
+      /* Section 01. The definitions and the switcher are one thing: "no
+         increase" means something specific in Utah and close to the opposite
+         of what most people assume, and "gap" is this page's own measure — a
+         draw on reserves is not counted as money in — so both have to be
+         settled before a reader presses the button labelled with one and reads
+         six years labelled with the other. The copy here is written into the
+         page rather than read out of data.projections.json: it is plain
+         definition, not a figure that moves when the file is rebuilt. */
+
+      function controlsHtml(c) {
+        // The rates the section names and the rates the switcher charges are
+        // the same three numbers, so they are read out of the same place. Said
+        // twice they drift, and a page that misstates its own rates is worse
+        // than one that states them once.
+        const rateList = c.scenarios
+          .map(
+            (s) => `
+            <li><strong>${esc(rate6(s.start_rate))} — ${esc(s.rate_label)}:</strong> ${esc(s.blurb)}</li>`
+          )
+          .join("");
+        const buttons = c.scenarios
+          .map(
+            (s, i) => `
+            <button type="button" role="radio" data-scenario="${esc(s.id)}"
+              aria-checked="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${esc(s.short || s.name)}</button>`
+          )
+          .join("");
+
+        return `
+          <section class="tax-sec reveal proj-controls" style="--i:1" id="s-scenario" aria-labelledby="def-title">
+            <div class="sec-head">
+              <p class="eyebrow"><span class="sec-num" aria-hidden="true">01</span>Start here</p>
+              <h2 class="sec-h2" id="def-title">What “no tax increase” means</h2>
+            </div>
+
+            <div class="proj-def-card is-policy">
+              <h3>The revenue stays roughly level; the rate adjusts</h3>
+              <p>Under Utah's property-tax system, “no tax increase” does not mean keeping the same tax
+                rate. Each year, the county calculates a <strong>certified tax rate</strong> intended to
+                generate approximately the same revenue from existing property as the previous year.</p>
+              <p>When property values rise, the certified rate generally falls. New construction can still
+                increase city revenue because it adds new taxable property.</p>
+              <p>Keeping the numerical rate unchanged while property values rise would collect more revenue
+                from existing property and would not qualify as the certified “no tax increase” rate.</p>
+            </div>
+
+            <div class="proj-def-card">
+              <h3>The three rates used on this page</h3>
+              <p>These rates represent different policy choices for the same year:</p>
+              <ul class="proj-def-list">${rateList}</ul>
+              <p>This page uses the certified rate as the no-increase scenario and compares it with the two
+                higher-rate scenarios. Only the first and last are rates anyone has actually set: the
+                0.001050 in the middle is an assumption of this project's own, and is labelled as one
+                wherever it appears.</p>
+              <p>Two further rates are easy to confuse with these. <strong>0.000534</strong> is what appears
+                on current property-tax bills; Utah County recalculated the certified rate to 0.000530 on
+                22 June 2026, so the no-increase comparison is 0.000530, not 0.000534.
+                <strong>0.001700</strong> is the rate the city noticed and advertised but did not adopt.</p>
+            </div>
+
+            <div class="proj-def-card">
+              <h3>How this page estimates property-tax revenue</h3>
+              <p>The projection considers:</p>
+              <ul class="proj-def-list">
+                <li>The taxable value of existing property</li>
+                <li>Expected new construction and other eligible growth</li>
+                <li>The selected tax rate</li>
+                <li>The expected collection rate</li>
+              </ul>
+              <p>In simplified form:</p>
+              <p class="proj-def-formula">Projected property-tax revenue = taxable value × selected rate ×
+                collection rate</p>
+              <p>The county's official certified-rate calculation includes additional statutory adjustments.
+                The figures on this page are planning estimates and should not be treated as official tax
+                rates or legal determinations.</p>
+              <p class="src"><a href="${esc(sourceUrl(c, "59-2-924"))}" rel="nofollow noopener">Read Utah Code § 59-2-924 <span aria-hidden="true">↗</span></a></p>
+            </div>
+
+            <div class="proj-def-card">
+              <h3>What “budget gap” means on this page</h3>
+              <p>The budget gap is the difference between the General Fund's projected operating revenue and
+                planned spending for a single fiscal year:</p>
+              <p class="proj-def-formula">Annual budget gap = operating revenue − planned expenditures</p>
+              <ul class="proj-def-list">
+                <li>A <strong class="is-sur">positive gap</strong> is shown in green and means projected
+                  revenue exceeds planned spending.</li>
+                <li>A <strong class="is-def">negative gap</strong> is shown in red and means planned
+                  spending exceeds projected revenue.</li>
+              </ul>
+              <p>Transfers from savings or fund balance are not counted as operating revenue. Reserves can
+                cover a shortfall temporarily, but they do not provide recurring revenue for future
+                years.</p>
+              <p>The six-year figure is the sum of the projected annual gaps. It shows the overall scale of
+                the funding difference across the projection period; it is not a debt or a year-end balance
+                the city would automatically carry.</p>
+            </div>
+
+            <div class="switch-row proj-switch">
+              <p class="switch-label" id="scenario-title">Pick a rate</p>
+              <div class="scope-switch" role="radiogroup" aria-labelledby="scenario-title">${buttons}</div>
+            </div>
+            <div class="proj-scenario-note" id="scenario-note" role="status"></div>
+
+            <div class="proj-def-card">
+              <h3>How spending is compared</h3>
+              <p>All three scenarios use the same spending projection: the City Council's adopted
+                FY2026–27 plan, projected forward.</p>
+              <p>Keeping spending the same allows the charts to isolate the effect of each tax rate. It does
+                not mean the city would necessarily adopt the same spending plan under every scenario.</p>
+            </div>
+          </section>`;
+      }
+
+      function wireControls() {
+        const radios = [...document.querySelectorAll(".scope-switch [role=radio][data-scenario]")];
+        const select = (btn) => {
+          radios.forEach((r) => {
+            const on = r === btn;
+            r.setAttribute("aria-checked", String(on));
+            r.tabIndex = on ? 0 : -1;
+          });
+          state.scenario = btn.dataset.scenario;
+          btn.focus();
+          repaint();
+        };
+        radios.forEach((btn, i) => {
+          btn.addEventListener("click", () => select(btn));
+          btn.addEventListener("keydown", (e) => {
+            let next = null;
+            if (e.key === "ArrowRight" || e.key === "ArrowDown") next = radios[(i + 1) % radios.length];
+            else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = radios[(i - 1 + radios.length) % radios.length];
+            if (next) { e.preventDefault(); select(next); }
+          });
+        });
+      }
+
+      function paintResultSub(r) {
+        const s = state.config.scenarios.find((x) => x.id === state.scenario);
+        const anchor = r.rows[0];
+        // What this rate raises, and where it sits against the county's
+        // certified rate. Neither figure is written into the copy: for the
+        // adopted rate the comparison comes out at 183.02%, which is the figure
+        // the motion itself carries, and it falls out of the arithmetic rather
+        // than being fed in — the check that the rate and the taxable value
+        // agree. Written into the sentence they would go stale the moment an
+        // assumption moved.
+        const above = anchor && anchor.aboveCertified != null ? anchor.aboveCertified : null;
+        const money =
+          anchor ? `<strong>${esc(usd0(anchor.propertyTax))}</strong> in property-tax revenue for ${esc(anchor.label)}` : "";
+        const revenue = !anchor
+          ? ""
+          : above != null && Math.abs(above) >= 0.00005
+            ? `${esc(s.rate_noun)} is <strong>${esc(pctBare(above))}</strong> ${above > 0 ? "higher" : "lower"} than the certified rate and is projected to generate ${money}.`
+            : `At this rate, the city is projected to receive ${money}.`;
+
+        // One of the three rates is this project's own — no councilmember moved
+        // it and the city never noticed it — so it carries the same Assumption
+        // chip the assumption table uses, rather than reading as published.
+        const tag = s.assumption ? `<span class="proj-tag is-assumed">Assumption</span>` : "";
+
+        document.getElementById("scenario-note").innerHTML = `
+          <p class="proj-scenario-h">${esc(s.name)}${tag}</p>
+          <p class="proj-scenario-rate">Rate: <span class="mono">${esc(rate6(s.start_rate))}</span></p>
+          <p>${esc(s.description)}</p>
+          ${revenue ? `<p>${revenue}</p>` : ""}
+          <p>${esc(s.closer)}</p>`;
+
+        const sum = r.summary;
+        if (!sum) { document.getElementById("result-sub").textContent = ""; return; }
+        // The crossings, if any. The all-deficit and all-surplus cases used to
+        // add "the lines never cross: spending is above revenue in every
+        // projected year", which is the count immediately to its left said a
+        // second way — so those two branches are gone and the count carries it.
+        const cross = r.crossings.length
+          ? " The two lines cross " +
+            (r.crossings.length === 1 ? "" : r.crossings.length === 2 ? "twice — " : `${esc(numWord(r.crossings.length))} times — `) +
+            r.crossings
+              .map((c) => `into ${esc(c.into)} during <strong>${esc(r.rows[c.toIndex].label)}</strong>`)
+              .join(", then ") +
+            "."
+          : "";
+        // The running total is a card of its own further down, so this line
+        // carries the shape — how many years, and where the lines cross — and
+        // leaves the money to the cards. It reads as the chart's own caption,
+        // which is what it now sits directly above.
+        const n = r.rows.length;
+        const shape =
+          sum.deficitYears === n
+            ? `<strong>All ${esc(String(n))}</strong> years to ${esc(sum.lastLabel)} run a deficit.`
+            : sum.deficitYears === 0
+              ? `None of the ${esc(String(n))} years to ${esc(sum.lastLabel)} runs a deficit.`
+              : `Of the ${esc(String(n))} years to ${esc(sum.lastLabel)}, ` +
+                `<strong>${esc(String(sum.deficitYears))}</strong> run a deficit.`;
+        document.getElementById("result-sub").innerHTML = shape + cross;
+      }
+
+      /* ------------------------------------------------------------- summary */
+
+      function paintSummary(r) {
+        const el = document.getElementById("summary");
+        if (!r.ok || !r.summary) { el.innerHTML = ""; return; }
+        const s = r.summary;
+        const cell = (label, value, sub, cls) => `
+          <li class="fact${cls ? " " + cls : ""}">
+            <b>${value}</b>
+            <p><span class="proj-fact-label">${esc(label)}</span>${sub ? " " + sub : ""}</p>
+          </li>`;
+
+        el.innerHTML = `
+          <ul class="facts proj-facts" aria-label="Summary for ${esc(s.firstLabel)} and the full period">
+            ${cell("Money in", usd0(s.totalRevenue), esc(s.firstLabel))}
+            ${cell("Money out", usd0(s.expenditures), esc(s.firstLabel))}
+            ${cell(
+              `${s.gap < 0 ? "Deficit" : "Surplus"} in ${s.firstLabel}`,
+              `<span class="proj-sign ${s.gap < 0 ? "is-def" : "is-sur"}">${usdSigned(s.gap)}</span>`,
+              "",
+              s.gap < 0 ? "is-def" : "is-sur"
+            )}
+            ${cell(
+              `${numWord(r.rows.length).replace(/^./, (ch) => ch.toUpperCase())} years to ${s.lastLabel}`,
+              `<span class="proj-sign ${s.cumulative < 0 ? "is-def" : "is-sur"}">${usdSigned(s.cumulative)}</span>`,
+              "",
+              s.cumulative < 0 ? "is-def" : "is-sur"
+            )}
+          </ul>`;
+      }
+
+      function paintValidation(r) {
+        const el = document.getElementById("validation");
+        const items = [
+          ...r.errors.map((e) => ({ ...e, kind: "error" })),
+          ...r.warnings.map((w) => ({ ...w, kind: "warning" })),
+        ];
+        if (!items.length) { el.innerHTML = ""; el.hidden = true; return; }
+        el.hidden = false;
+        // Nothing on the page can produce these any more: with the inputs gone,
+        // a failure here means the published configuration is wrong, which is
+        // this page's problem and not the reader's. Say so plainly.
+        el.innerHTML = `
+          <div class="proj-alert ${r.errors.length ? "is-error" : "is-warning"}">
+            <p class="proj-alert-head">${r.errors.length
+              ? "This page's own figures don't add up, so the chart is not being drawn"
+              : "The model ran, but one of its figures is outside the usual range"}</p>
+            <ul>${items.map((i) => `<li>${esc(i.message)}</li>`).join("")}</ul>
+          </div>`;
+      }
+
+      /* ========================================================================
+         The charts
+
+         Two of them, and the pairing is the point.
+
+         The main chart shows the two lines with the space between them filled —
+         green where revenue is on top, red and hatched where spending is. Its
+         vertical axis does not start at zero, because both lines sit between
+         $40M and $60M and a zero-based axis would squash a $3M gap into two
+         pixels. That is a real distortion and it is labelled as one on the
+         chart itself.
+
+         The gap chart underneath is the honest counterpart: the annual gap
+         alone, on a true zero baseline, at full scale. Same margins and the
+         same x positions as the chart above it, so a reader can read straight
+         down from a year in one to the same year in the other.
+
+         Both are inline SVG built here rather than by a library. The site
+         carries no charting dependency and this page is not the place to add
+         one; the fills need exact crossover points anyway, and those come out
+         of the engine (Projections.findCrossings) rather than out of a
+         renderer's area interpolation, which is the part libraries get wrong.
+         ======================================================================== */
+
+      function chartShellHtml(c) {
+        return `
+          <figure class="chart proj-chart">
+            <figcaption>
+              <h3 id="chart-title">Money in and money out, each year</h3>
+            </figcaption>
+            <div class="legend" aria-hidden="true">
+              <span class="lg"><i class="sw proj-sw-rev"></i>Money in (solid)</span>
+              <span class="lg"><i class="sw proj-sw-exp"></i>Money out (dashed)</span>
+              <span class="lg"><i class="sw proj-sw-sur"></i>Surplus</span>
+              <span class="lg"><i class="sw proj-sw-def"></i>Deficit (hatched)</span>
+            </div>
+            <div class="proj-plot" id="plot-main"></div>
+            <p class="chart-foot" id="chart-foot"></p>
+          </figure>
+
+          <figure class="chart proj-chart proj-chart-gap">
+            <figcaption>
+              <h3 id="gap-title">The gap each year</h3>
+              <p>The same figures at full scale. Bars above the line are surpluses, hatched bars below are deficits.</p>
+            </figcaption>
+            <div class="proj-plot" id="plot-gap"></div>
+            <p class="chart-foot" id="gap-foot"></p>
+          </figure>`;
+      }
+
+      /* Layout is pure arithmetic on a measured container width. Nothing here
+         reads back from the DOM after writing, so there is no reflow loop. */
+      function geometry(host, kind) {
+        const W = Math.max(280, Math.round(host.getBoundingClientRect().width) || 640);
+        const narrow = W < 560;
+        return {
+          W,
+          H: kind === "gap" ? (narrow ? 150 : 180) : narrow ? 260 : 330,
+          ml: narrow ? 46 : 66,
+          mr: narrow ? 10 : 16,
+          mt: 14,
+          mb: narrow ? 30 : 34,
+          narrow,
+          fs: narrow ? 10 : 11.5,
+        };
+      }
+
+      /* Both charts derive x from this, from the same plot width and the same
+         year count, so a column in one lands exactly under the same column in
+         the other and a reader can read straight down. The inset is half a bar
+         width: without it the end bars and their labels hang off the plot. */
+      function scaleX(g, n) {
+        const plotW = g.W - g.ml - g.mr;
+        const bw = Math.min(46, (plotW / n) * 0.5);
+        const inset = bw / 2 + 2;
+        const span = plotW - 2 * inset;
+        return {
+          plotW,
+          bw,
+          x: (i) => g.ml + inset + (n === 1 ? span / 2 : (i * span) / (n - 1)),
+          colW: n > 1 ? span / (n - 1) : span,
+        };
+      }
+
+      // Round a span out to a readable step, so the gridlines land on numbers a
+      // reader can hold in their head.
+      function niceTicks(lo, hi, count) {
+        const span = hi - lo || 1;
+        const raw = span / Math.max(1, count);
+        const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+        const step = [1, 2, 2.5, 5, 10].map((m) => m * mag).find((s) => s >= raw) || 10 * mag;
+        const start = Math.floor(lo / step) * step;
+        const end = Math.ceil(hi / step) * step;
+        const out = [];
+        for (let v = start; v <= end + step / 2; v += step) out.push(Math.round(v * 1e6) / 1e6);
+        return { ticks: out, lo: start, hi: end };
+      }
+
+      function drawCharts(r) {
+        // Historical, so it does not depend on the model being valid — drawn
+        // before the guard below, and redrawn on resize with everything else.
+        drawPermits(state.config);
+
+        const main = document.getElementById("plot-main");
+        const gap = document.getElementById("plot-gap");
+        if (!main || !gap) return;
+        if (!r.ok || !r.rows.length) {
+          main.innerHTML = "";
+          gap.innerHTML = "";
+          document.getElementById("chart-foot").textContent = "";
+          document.getElementById("gap-foot").textContent = "";
+          return;
+        }
+        drawMain(main, r);
+        drawGap(gap, r);
+      }
+
+      function drawMain(host, r) {
+        const g = geometry(host, "main");
+        const rows = r.rows;
+        const n = rows.length;
+        const values = rows.flatMap((x) => [x.totalRevenue, x.expenditures]);
+        const { ticks, lo, hi } = niceTicks(Math.min(...values), Math.max(...values), g.narrow ? 3 : 5);
+
+        const { plotW, x: X, colW } = scaleX(g, n);
+        const plotH = g.H - g.mt - g.mb;
+        const Y = (v) => g.mt + ((hi - v) / (hi - lo)) * plotH;
+
+        // --- the fills. One polygon per segment, split at any crossing so a
+        // band is never part green and part red.
+        const bands = [];
+        for (let i = 0; i < n - 1; i++) {
+          const a = rows[i], b = rows[i + 1];
+          const da = a.totalRevenue - a.expenditures;
+          const db = b.totalRevenue - b.expenditures;
+          const x0 = X(i), x1 = X(i + 1);
+          if (da === 0 && db === 0) continue;
+          if (da === 0 || db === 0 || da > 0 === db > 0) {
+            bands.push({
+              sign: (da || db) > 0,
+              pts: [
+                [x0, Y(a.totalRevenue)], [x1, Y(b.totalRevenue)],
+                [x1, Y(b.expenditures)], [x0, Y(a.expenditures)],
+              ],
+            });
+          } else {
+            const t = da / (da - db);
+            const xc = x0 + t * (x1 - x0);
+            const yc = Y(a.totalRevenue + t * (b.totalRevenue - a.totalRevenue));
+            bands.push({
+              sign: da > 0,
+              pts: [[x0, Y(a.totalRevenue)], [xc, yc], [x0, Y(a.expenditures)]],
+            });
+            bands.push({
+              sign: db > 0,
+              pts: [[xc, yc], [x1, Y(b.totalRevenue)], [x1, Y(b.expenditures)]],
+            });
+          }
+        }
+
+        const poly = (band) =>
+          `<polygon class="proj-fill ${band.sign ? "is-sur" : "is-def"}"
+             points="${band.pts.map(([x, y]) => `${x.toFixed(2)},${y.toFixed(2)}`).join(" ")}"
+             fill="${band.sign ? "var(--proj-sur-fill)" : "url(#proj-hatch)"}" />`;
+
+        const line = (key) => rows.map((x, i) => `${i ? "L" : "M"}${X(i).toFixed(2)},${Y(x[key]).toFixed(2)}`).join(" ");
+
+        const grid = ticks
+          .map(
+            (v) => `
+            <g class="proj-tick">
+              <line x1="${g.ml}" x2="${g.W - g.mr}" y1="${Y(v).toFixed(2)}" y2="${Y(v).toFixed(2)}" />
+              <text x="${g.ml - 8}" y="${(Y(v) + 3.5).toFixed(2)}" text-anchor="end" font-size="${g.fs}">${esc(short(v))}</text>
+            </g>`
+          )
+          .join("");
+
+        // Crossovers get a marked point and a dashed drop, so the moment the
+        // city changes sign is a thing on the chart rather than something the
+        // reader has to infer from where the colour changes.
+        const crossMarks = r.crossings
+          .map((c) => {
+            const a = rows[c.fromIndex], b = rows[c.toIndex];
+            const x = X(c.fromIndex) + c.fraction * (X(c.toIndex) - X(c.fromIndex));
+            const y = Y(a.totalRevenue + c.fraction * (b.totalRevenue - a.totalRevenue));
+            return `
+              <g class="proj-cross">
+                <line x1="${x.toFixed(2)}" x2="${x.toFixed(2)}" y1="${y.toFixed(2)}" y2="${g.mt + plotH}" />
+                <circle cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="4.5" />
+              </g>`;
+          })
+          .join("");
+
+        const xLabels = rows
+          .map((x, i) => {
+            const label = g.narrow ? "FY" + String(x.year).slice(2) : x.label.replace("FY", "");
+            return `<text class="proj-xlab" x="${X(i).toFixed(2)}" y="${g.H - g.mb + g.fs + 6}"
+                      text-anchor="middle" font-size="${g.fs}">${esc(label)}</text>`;
+          })
+          .join("");
+
+        const markers = rows
+          .map(
+            (x, i) => `
+            <circle class="proj-mark proj-mark-rev" cx="${X(i).toFixed(2)}" cy="${Y(x.totalRevenue).toFixed(2)}" r="3.4" />
+            <rect class="proj-mark proj-mark-exp" x="${(X(i) - 3).toFixed(2)}" y="${(Y(x.expenditures) - 3).toFixed(2)}" width="6" height="6" />`
+          )
+          .join("");
+
+        // One focusable column per year. Focus and hover both raise the same
+        // tooltip, so keyboard and pointer readers get identical figures.
+        const hits = rows
+          .map(
+            (x, i) => `
+            <g class="proj-hit" tabindex="0" role="img" data-i="${i}" aria-label="${esc(tipText(x, r))}">
+              <rect class="proj-hitarea" x="${(X(i) - colW / 2).toFixed(2)}" y="${g.mt}" width="${colW.toFixed(2)}" height="${plotH}" />
+              <line class="proj-guide" x1="${X(i).toFixed(2)}" x2="${X(i).toFixed(2)}" y1="${g.mt}" y2="${g.mt + plotH}" />
+            </g>`
+          )
+          .join("");
+
+        host.innerHTML = `
+          <!-- role="group", not role="img": an img makes its whole subtree
+               presentational, which would hide the focusable year columns from
+               a screen reader. The group is named by the caption and described
+               by the summary; the columns inside stay individually reachable. -->
+          <svg class="proj-svg" viewBox="0 0 ${g.W} ${g.H}" width="${g.W}" height="${g.H}"
+               role="group" aria-labelledby="chart-title" aria-describedby="chart-desc">
+            <desc id="chart-desc">${esc(chartDescription(r))}</desc>
+            <defs>
+              <pattern id="proj-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <rect width="7" height="7" fill="var(--proj-def-fill)" />
+                <line x1="0" y1="0" x2="0" y2="7" stroke="var(--proj-def-line)" stroke-width="2.2" />
+              </pattern>
+            </defs>
+            <g class="proj-grid">${grid}</g>
+            <g class="proj-fills">${bands.map(poly).join("")}</g>
+            ${crossMarks}
+            <path class="proj-line proj-line-exp" d="${line("expenditures")}" />
+            <path class="proj-line proj-line-rev" d="${line("totalRevenue")}" />
+            ${markers}
+            <g class="proj-axis">
+              <line x1="${g.ml}" x2="${g.W - g.mr}" y1="${g.mt + plotH}" y2="${g.mt + plotH}" />
+              ${xLabels}
+            </g>
+            <g class="proj-hits">${hits}</g>
+          </svg>`;
+
+        wireHits(host, r);
+
+        document.getElementById("chart-foot").innerHTML =
+          `<strong>The scale starts at ${esc(short(lo))}, not zero.</strong> Both lines sit between ` +
+          `${esc(short(Math.min(...values)))} and ${esc(short(Math.max(...values)))}, so starting at zero would ` +
+          `squash the gap flat. The chart below uses a true zero.` +
+          (r.crossings.length
+            ? ` The marked point is where the lines cross, worked out from the figures rather than read off the drawing.`
+            : "");
+      }
+
+      function drawGap(host, r) {
+        const g = geometry(host, "gap");
+        const rows = r.rows;
+        const n = rows.length;
+        const gaps = rows.map((x) => x.gap);
+        // Zero is always on the chart — it is the whole reference — but the
+        // domain is not forced symmetric around it. A run of six deficits would
+        // otherwise spend half its height on an empty surplus half.
+        const pad = (Math.max(...gaps) - Math.min(...gaps) || 1) * 0.18;
+        const { ticks, lo, hi } = niceTicks(
+          Math.min(0, Math.min(...gaps) - pad),
+          Math.max(0, Math.max(...gaps) + pad),
+          g.narrow ? 2 : 4
+        );
+
+        const { plotW, x: X, bw, colW } = scaleX(g, n);
+        const plotH = g.H - g.mt - g.mb;
+        const Y = (v) => g.mt + ((hi - v) / (hi - lo)) * plotH;
+        const zero = Y(0);
+
+        const grid = ticks
+          .map((v) => {
+            // Each bar carries its own value, so on a narrow screen the tick
+            // labels are duplication — and the leftmost of them collides with
+            // the first bar's label. Keep the lines and the zero mark.
+            const label =
+              g.narrow && v !== 0
+                ? ""
+                : `<text x="${g.ml - 8}" y="${(Y(v) + 3.5).toFixed(2)}" text-anchor="end" font-size="${g.fs}">${esc(v === 0 ? "$0" : short(v))}</text>`;
+            return `
+            <g class="proj-tick${v === 0 ? " is-zero" : ""}">
+              <line x1="${g.ml}" x2="${g.W - g.mr}" y1="${Y(v).toFixed(2)}" y2="${Y(v).toFixed(2)}" />
+              ${label}
+            </g>`;
+          })
+          .join("");
+
+        const bars = rows
+          .map((x, i) => {
+            const y = Y(x.gap);
+            const top = Math.min(y, zero);
+            const h = Math.max(1.5, Math.abs(y - zero));
+            const def = x.gap < 0;
+            return `
+              <g class="proj-hit proj-bar-g" tabindex="0" role="img" data-i="${i}" aria-label="${esc(tipText(x, r))}">
+                <!-- The bar is the wrong target: a near-balanced year is a few
+                     pixels tall and unhittable, on touch especially. The column
+                     behind it is the target, exactly as on the chart above, so
+                     the two line up to hover and tab through identically. -->
+                <rect class="proj-hitarea" x="${(X(i) - colW / 2).toFixed(2)}" y="${g.mt}"
+                      width="${colW.toFixed(2)}" height="${plotH.toFixed(2)}" />
+                <rect class="proj-bar ${def ? "is-def" : "is-sur"}"
+                      x="${(X(i) - bw / 2).toFixed(2)}" y="${top.toFixed(2)}"
+                      width="${bw.toFixed(2)}" height="${h.toFixed(2)}"
+                      fill="${def ? "url(#proj-hatch-gap)" : "var(--proj-sur-fill-solid)"}" />
+                <text class="proj-barlab" x="${X(i).toFixed(2)}"
+                      y="${(def ? top + h + g.fs + 3 : top - 5).toFixed(2)}"
+                      text-anchor="middle" font-size="${g.fs}">${esc(short(x.gap))}</text>
+              </g>`;
+          })
+          .join("");
+
+        const xLabels = rows
+          .map(
+            (x, i) => `<text class="proj-xlab" x="${X(i).toFixed(2)}" y="${g.H - 6}" text-anchor="middle"
+                         font-size="${g.fs}">${esc(g.narrow ? "FY" + String(x.year).slice(2) : x.label.replace("FY", ""))}</text>`
+          )
+          .join("");
+
+        host.innerHTML = `
+          <svg class="proj-svg" viewBox="0 0 ${g.W} ${g.H}" width="${g.W}" height="${g.H}"
+               role="group" aria-labelledby="gap-title" aria-describedby="gap-desc">
+            <desc id="gap-desc">${esc(gapDescription(r))}</desc>
+            <defs>
+              <pattern id="proj-hatch-gap" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <rect width="7" height="7" fill="var(--proj-def-fill-solid)" />
+                <line x1="0" y1="0" x2="0" y2="7" stroke="var(--proj-def-line)" stroke-width="2.2" />
+              </pattern>
+            </defs>
+            <g class="proj-grid">${grid}</g>
+            ${bars}
+            <line class="proj-zero" x1="${g.ml}" x2="${g.W - g.mr}" y1="${zero.toFixed(2)}" y2="${zero.toFixed(2)}" />
+            <g class="proj-axis">${xLabels}</g>
+          </svg>`;
+
+        wireHits(host, r);
+
+        const worst = rows.reduce((a, x) => (x.gap < a.gap ? x : a), rows[0]);
+        const best = rows.reduce((a, x) => (x.gap > a.gap ? x : a), rows[0]);
+        document.getElementById("gap-foot").innerHTML =
+          `Largest single-year ${esc(word(worst.gap))}: <strong>${esc(usd0(Math.abs(worst.gap)))}</strong> in ` +
+          `${esc(worst.label)}. Best year: <strong>${esc(usd0(Math.abs(best.gap)))} ${esc(word(best.gap))}</strong> ` +
+          `in ${esc(best.label)}.`;
+      }
+
+      /* ------------------------------------------------------------ tooltips */
+
+      function tipText(row, r) {
+        return (
+          `${row.label} — money in ${usd0(row.totalRevenue)}, money out ${usd0(row.expenditures)}, ` +
+          `annual ${word(row.gap)} ${usd0(Math.abs(row.gap))}, cumulative ${word(row.cumulative)} ` +
+          `${usd0(Math.abs(row.cumulative))}`
+        );
+      }
+
+      function tipHtml(row) {
+        const rowLine = (k, v, cls) => `<span class="pt-k">${esc(k)}</span><span class="pt-v ${cls || ""}">${v}</span>`;
+        return `
+          <p class="pt-head">${esc(row.label)}${row.anchor ? " <span class=\"pt-tag\">base year</span>" : ""}</p>
+          <div class="pt-grid">
+            ${rowLine("Money in", usd0(row.totalRevenue))}
+            ${rowLine("Money out", usd0(row.expenditures))}
+            ${rowLine(`Annual ${word(row.gap)}`, usdSigned(row.gap), row.gap < 0 ? "is-def" : "is-sur")}
+            ${rowLine(`Cumulative ${word(row.cumulative)}`, usdSigned(row.cumulative), row.cumulative < 0 ? "is-def" : "is-sur")}
+          </div>`;
+      }
+
+      /* ---------------------------------------------------------------------
+         One tooltip, three ways to raise it, and an explicit owner.
+
+         Hover, keyboard focus and touch all drive the same element, so the only
+         thing that keeps them from fighting is knowing which of them currently
+         owns it. TIP_MODE is that. A mouseleave can only close a tooltip that
+         hover opened; a blur can only close one that focus opened; a scroll
+         closes nothing and simply keeps the tooltip pinned to its owner.
+
+         The alternative — inferring the owner from document.activeElement at
+         the moment of a scroll — was tried and is wrong, because scrolling
+         slides the chart under a stationary cursor and the browser fires a
+         mouseenter the reader never performed. That phantom hover would take
+         the tooltip off a keyboard user mid-arrow. Listening for pointermove
+         rather than mouseenter is what makes hover mean hover: pointermove
+         fires only on real pointer movement and never as a side effect of the
+         page moving underneath it.
+         --------------------------------------------------------------------- */
+
+      let TIP = null;
+      let TIP_FOR = null;   // the element the tooltip is describing
+      let TIP_MODE = null;  // "hover" | "focus" | "touch" — who owns it
+
+      function wireTooltip() {
+        TIP = document.createElement("div");
+        TIP.className = "chart-tip proj-tip";
+        TIP.setAttribute("role", "status");
+        TIP.hidden = true;
+        document.body.appendChild(TIP);
+
+        window.addEventListener("scroll", () => { if (TIP_FOR) placeTip(TIP_FOR); }, { passive: true });
+        // Touch has no hover, so a tapped-open tooltip needs somewhere to tap
+        // to dismiss it.
+        document.addEventListener("pointerdown", () => { if (TIP_MODE === "touch") hideTip(); });
+      }
+
+      function placeTip(el) {
+        const box = el.getBoundingClientRect();
+        const t = TIP.getBoundingClientRect();
+        let left = box.left + box.width / 2 - t.width / 2 + window.scrollX;
+        left = Math.min(left, window.scrollX + document.documentElement.clientWidth - t.width - 8);
+        TIP.style.left = Math.max(window.scrollX + 6, left) + "px";
+        // Prefer above the column; flip below when sitting above would clip the
+        // top of the viewport — or rise out of the chart itself. The hit target
+        // is the full-height column, not the bar, so "above the column" means
+        // above the whole plot: without the second limit a tooltip raised on
+        // any year lands squarely on the chart's own heading. Below the column
+        // it sits over the x-axis labels and the footnote, which cost less.
+        const fig = el.closest(".proj-chart");
+        const ceiling = Math.max(8, fig ? fig.getBoundingClientRect().top : 8);
+        const clipsTop = box.top - t.height - 10 < ceiling;
+        TIP.style.top = (clipsTop ? box.bottom + 10 : box.top - t.height - 10) + window.scrollY + "px";
+      }
+
+      function hideTip() {
+        TIP.hidden = true;
+        TIP_FOR = null;
+        TIP_MODE = null;
+        document.querySelectorAll(".proj-hit.is-on").forEach((h) => h.classList.remove("is-on"));
+      }
+
+      function wireHits(host, r) {
+        const show = (el, mode) => {
+          const row = r.rows[Number(el.dataset.i)];
+          if (!row) return;
+          if (TIP_FOR !== el) {
+            TIP.innerHTML = tipHtml(row);
+            host.querySelectorAll(".proj-hit").forEach((h) => h.classList.toggle("is-on", h === el));
+          }
+          TIP_FOR = el;
+          TIP_MODE = mode;
+          TIP.hidden = false;
+          placeTip(el);
+        };
+        // Deferred a frame: arrowing along the chart fires blur on the old
+        // column before focus on the new one, so an immediate close would shut
+        // the tooltip the keystroke had just moved.
+        const release = (el, mode) =>
+          requestAnimationFrame(() => {
+            if (TIP_FOR === el && TIP_MODE === mode) hideTip();
+          });
+
+        const hits = [...host.querySelectorAll(".proj-hit")];
+        hits.forEach((el, i) => {
+          // pointermove, not mouseenter — see the note above.
+          el.addEventListener("pointermove", (e) => {
+            if (e.pointerType !== "mouse") return;
+            if (TIP_FOR !== el || TIP_MODE !== "hover") show(el, "hover");
+          });
+          el.addEventListener("mouseleave", () => release(el, "hover"));
+
+          el.addEventListener("focus", () => show(el, "focus"));
+          el.addEventListener("blur", () => release(el, "focus"));
+
+          el.addEventListener("pointerdown", (e) => {
+            if (e.pointerType === "mouse") return;
+            e.stopPropagation();
+            if (TIP_FOR === el) hideTip();
+            else show(el, "touch");
+          });
+
+          el.addEventListener("keydown", (e) => {
+            // Left/Right step between years; Escape dismisses without losing
+            // the reader's place in the tab order.
+            let next = null;
+            if (e.key === "ArrowRight") next = hits[Math.min(i + 1, hits.length - 1)];
+            else if (e.key === "ArrowLeft") next = hits[Math.max(i - 1, 0)];
+            else if (e.key === "Home") next = hits[0];
+            else if (e.key === "End") next = hits[hits.length - 1];
+            else if (e.key === "Escape") { hideTip(); return; }
+            if (next && next !== el) { e.preventDefault(); next.focus(); }
+          });
+        });
+
+        // Per-element listeners die with the nodes innerHTML replaces. This one
+        // is on the host, which survives every repaint, so it is attached once
+        // rather than once per keystroke in an assumption field. It closes only
+        // what hover opened.
+        if (!host.dataset.tipWired) {
+          host.dataset.tipWired = "1";
+          host.addEventListener("pointerleave", () => { if (TIP_MODE === "hover") hideTip(); });
+        }
+      }
+
+      /* The text alternative for each SVG. It carries the shape of the chart,
+         not a re-reading of every number — the results table below is the
+         complete figure-by-figure equivalent and is never collapsed. */
+      function chartDescription(r) {
+        const s = r.summary;
+        const cross = r.crossings.length
+          ? ` The lines cross during ${r.rows[r.crossings[0].toIndex].label}, into ${r.crossings[0].into}.`
+          : "";
+        return (
+          `Line chart, ${s.firstLabel} to ${s.lastLabel}. Money in runs from ${usd0(r.rows[0].totalRevenue)} to ` +
+          `${usd0(r.rows.at(-1).totalRevenue)}; money out from ${usd0(r.rows[0].expenditures)} to ` +
+          `${usd0(r.rows.at(-1).expenditures)}. ${s.deficitYears} of ${r.rows.length} years are in deficit.${cross} ` +
+          `Full figures are in the table below.`
+        );
+      }
+      function gapDescription(r) {
+        return (
+          `Bar chart of the gap each year against a zero line, ${r.summary.firstLabel} to ` +
+          `${r.summary.lastLabel}. ` +
+          r.rows.map((x) => `${x.label} ${usdSigned(x.gap)}`).join("; ") + "."
+        );
+      }
+
+      /* --------------------------------------------------------------- table */
+
+      function paintTable(r) {
+        const el = document.getElementById("results-table");
+        if (!r.ok) { el.innerHTML = ""; return; }
+
+        const body = r.rows
+          .map((x) => {
+            const adj = x.adjustments.filter((a) => a.amount);
+            // Sign colouring belongs to the two gap cells, not to the row: a
+            // whole line of figures in deficit red reads as if every one of
+            // them were the deficit.
+            return `
+            <tr${x.anchor ? ' class="is-anchor"' : ""}>
+              <th scope="row">${esc(x.label)}${x.anchor ? '<span class="proj-anchor-tag">base year</span>' : ""}</th>
+              <td class="num">${esc(short(x.taxableValue))}</td>
+              <td class="num mono">${esc(rate6(x.certifiedRate))}</td>
+              <td class="num mono">${esc(rate6(x.effectiveRate))}</td>
+              <td class="num">${esc(usd0(x.propertyTax))}</td>
+              <td class="num">${esc(usd0(x.otherRevenue + x.oneTimeRevenue))}</td>
+              <td class="num">${esc(usd0(x.totalRevenue))}</td>
+              <td class="num">${esc(usd0(x.expenditures))}${adj.length ? `<span class="proj-adj-mark" title="${esc(adj.map((a) => a.label).join("; "))}" aria-hidden="true">†</span>` : ""}</td>
+              <td class="num proj-gap-cell ${x.gap < 0 ? "is-def" : "is-sur"}">
+                <span class="proj-gap-word">${esc(Word(x.gap))}</span>
+                <span class="proj-gap-num">${esc(usdSigned(x.gap))}</span>
+              </td>
+              <td class="num proj-gap-cell ${x.cumulative < 0 ? "is-def" : "is-sur"}">
+                <span class="proj-gap-num">${esc(usdSigned(x.cumulative))}</span>
+              </td>
+            </tr>`;
+          })
+          .join("");
+
+        const anyAdj = r.rows.some((x) => x.adjustments.some((a) => a.amount));
+
+        el.innerHTML = `
+          <div class="proj-table-head">
+            <h3 id="table-title">Year by year</h3>
+            <p>Every figure the charts are drawn from.</p>
+          </div>
+          <div class="tablewrap">
+            <table class="data proj-table" aria-labelledby="table-title">
+              <thead>
+                <tr>
+                  <th scope="col">Fiscal year</th>
+                  <th scope="col" class="num">Taxable value</th>
+                  <th scope="col" class="num">Certified rate</th>
+                  <th scope="col" class="num">Rate charged</th>
+                  <th scope="col" class="num">Property tax</th>
+                  <th scope="col" class="num">Other revenue</th>
+                  <th scope="col" class="num">Total in</th>
+                  <th scope="col" class="num">Spending</th>
+                  <th scope="col" class="num">Gap</th>
+                  <th scope="col" class="num">Running total</th>
+                </tr>
+              </thead>
+              <tbody>${body}</tbody>
+            </table>
+          </div>
+          <p class="chart-foot">
+            The ${esc(r.rows[0].label)} row is the city's own budget, not a projection. Only the rate
+            charged changes between the three scenarios.
+            ${anyAdj ? '<span aria-hidden="true">†</span> Includes a named adjustment — listed under the numbers below.' : ""}
+          </p>
+          <div class="table-export">
+            <span class="tx-exp-label">Export</span>
+            <button type="button" class="tx-exp-btn" id="proj-csv">Download CSV</button>
+            <button type="button" class="tx-exp-btn" id="proj-copy">Copy</button>
+            <span class="tx-exp-note" id="proj-exp-note" role="status" aria-live="polite"></span>
+          </div>`;
+
+        wireExport(el.querySelector("table"));
+        wireStickyEdge(el.querySelector(".tablewrap"));
+      }
+
+      /* The year column is sticky, and a hairline down its right edge is only
+         honest once figures are passing under it — at rest the table is one
+         ruled sheet with no vertical rules in it, which is the whole look. */
+      function wireStickyEdge(wrap) {
+        if (!wrap) return;
+        const mark = () => wrap.classList.toggle("is-scrolled", wrap.scrollLeft > 0);
+        wrap.addEventListener("scroll", mark, { passive: true });
+        mark();
+      }
+
+      /* CSV of what is on screen, matching the export bar every other table on
+         this site carries. */
+      function wireExport(table) {
+        const field = (s) => (/[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s);
+        const cell = (c) => c.textContent.replace(/\s+/g, " ").replace(/†/g, "").trim();
+        const csv = () =>
+          [...table.querySelectorAll("tr")]
+            .map((tr) => [...tr.querySelectorAll("th,td")].map((c) => field(cell(c))).join(","))
+            .join("\r\n");
+        const note = document.getElementById("proj-exp-note");
+        let t = 0;
+        const flash = (m) => { note.textContent = m; clearTimeout(t); t = setTimeout(() => (note.textContent = ""), 2500); };
+
+        document.getElementById("proj-csv").addEventListener("click", () => {
+          const blob = new Blob([csv()], { type: "text/csv;charset=utf-8" });
+          const a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = `eagle-mountain-budget-gap-${state.scenario}.csv`;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+          flash("Downloaded");
+        });
+        document.getElementById("proj-copy").addEventListener("click", async () => {
+          try { await navigator.clipboard.writeText(csv()); flash("Copied"); }
+          catch { flash("Copy failed"); }
+        });
+      }
+
+      /* =========================================================== assumptions
+         Two tables, because the eight numbers behind the projection are not
+         eight of the same thing and presenting them as one undifferentiated
+         list was the reason nobody could read this section.
+
+         Five are figures out of the record — the roll, the certified rate, the
+         two sides of the adopted budget. A reader has nothing to decide about
+         them; they are either transcribed correctly or they are not.
+
+         Four are rates nobody has published, and those four *are* the
+         projection: whether the gap opens at all is mostly the question of
+         whether spending grows faster than revenue. They get their own table,
+         their own framing, and a visible statement of how far the record backs
+         each one.
+
+         The full derivations still ship — every word of them — but in a panel
+         below rather than wrapped around a form control. */
+
+      const FACTS = ["taxable_value", "certified_rate", "other_revenue", "expenditures", "collection_rate"];
+      const GUESSES = ["expenditure_growth", "other_revenue_growth", "new_growth_rate", "appreciation_rate"];
+
+      // Rates are stated per year; the rest are money, except the collection
+      // rate, which is a percentage of a levy.
+      const baseValue = (key, f) =>
+        key === "collection_rate" || GUESSES.includes(key)
+          ? rateShort(f.value)
+          : key === "certified_rate"
+            ? rate6(f.value)
+            : usd0(f.value);
+
+      function assumptionsHtml(c) {
+        const b = c.baseline;
+
+        const factRow = (key) => {
+          const f = b[key] || {};
+          return `
+            <tr>
+              <th scope="row">${esc(f.label || key)}</th>
+              <td class="num mono">${esc(baseValue(key, f))}</td>
+              <td>${esc(f.summary || "")}</td>
+            </tr>`;
+        };
+
+        const guessRow = (key) => {
+          const f = b[key] || {};
+          return `
+            <tr>
+              <th scope="row">${esc(f.label || key)}</th>
+              <td class="num mono">${esc(baseValue(key, f))}</td>
+              <td>
+                ${esc(f.summary || "")}
+                <span class="proj-tags">${standingTag(f)}</span>
+              </td>
+            </tr>`;
+        };
+
+        // Everything the controls used to carry, moved intact into one panel.
+        const provenance = (key) => {
+          const f = b[key] || {};
+          return `
+            <div class="proj-prov">
+              <h4 class="proj-prov-h">${esc(f.label || key)}
+                <span class="proj-prov-v mono">${esc(baseValue(key, f))}</span>
+              </h4>
+              ${f.derivation ? `<p class="proj-input-note"><strong>How it was derived.</strong> ${esc(f.derivation)}</p>` : ""}
+              ${f.basis ? `<p class="proj-input-note"><strong>Basis for the figure.</strong> ${esc(f.basis)}</p>` : ""}
+              ${f.why_not_applied ? `<p class="proj-input-note"><strong>Why it is not applied.</strong> ${esc(f.why_not_applied)}</p>` : ""}
+              ${f.effect ? `<p class="proj-input-note"><strong>What would change if it were.</strong> ${esc(f.effect)}</p>` : ""}
+              ${f.note ? `<p class="proj-input-note">${esc(f.note)}</p>` : ""}
+              ${confirmNote(f, "proj-input-note")}
+              ${f.source ? `<p class="proj-input-note">${srcLine(f.source)}</p>` : ""}
+            </div>`;
+        };
+
+        const additions = (c.value_additions || [])
+          .map(
+            (a) => `
+            <li>
+              <b>${esc(a.label)}</b> — ${esc(short(a.amount))} of taxable value added in
+              ${esc(c.year_labels[String(a.year)] || a.year)}.
+              <span class="proj-tag is-assumed">Assumption</span>
+              ${confirmTag(a)}
+              <span class="proj-li-note">${esc(a.basis || "")} ${a.confirm ? esc(a.confirm) : ""}</span>
+            </li>`
+          )
+          .join("");
+
+        const adjustments = (c.adjustments || [])
+          .map(
+            (a) => `
+            <li>
+              <b>${esc(a.label)}</b> — ${a.amount ? `${esc(usd0(a.amount))} ${a.recurring ? "a year, recurring" : "one-time"}, from ${esc(c.year_labels[String(a.year)] || a.year)}` : "held at zero"}.
+              ${a.illustrative ? `<span class="proj-tag is-assumed">Illustrative</span>` : ""}
+              ${confirmTag(a)}
+              <span class="proj-li-note">${esc(a.note || a.confirm || "")}</span>
+              ${a.source ? srcLine(a.source) : ""}
+            </li>`
+          )
+          .join("");
+
+        const d = c.value_additions_derivation;
+        const derivRows = d.rows
+          .map(
+            (row) => `
+            <tr>
+              <th scope="row">${esc(row.who)}</th>
+              <td class="num">${esc(usd0(row.amount))}</td>
+              <td class="num mono">${esc(rate6(row.rate))}</td>
+              <td class="num">${esc(short(row.implies * 1000))}</td>
+              <td>${esc(row.rate_note)}</td>
+            </tr>`
+          )
+          .join("");
+
+        // c.reconciliation is not read here any more — the walk it drives moved
+        // up into section 02, under the summary cards it explains.
+
+        return `
+          <section class="tax-sec reveal" style="--i:3" id="s-assumptions" aria-labelledby="assume-title">
+            <div class="sec-head">
+              <p class="eyebrow"><span class="sec-num" aria-hidden="true">03</span>The numbers</p>
+              <h2 class="sec-h2" id="assume-title">Every number behind the chart</h2>
+              <p class="sec-sub">Nine numbers produce everything above. Five come from the record. Four are
+                estimates — and those four are where the argument is.</p>
+            </div>
+
+            <div class="proj-scope">
+              <p><strong>What is being modelled:</strong> ${esc(c.scope_note)}</p>
+            </div>
+
+            <h3 class="proj-sub-h2">Taken from the record</h3>
+            <p class="proj-lede">Nothing to argue with. Each one is published, or implied by two published
+              figures that agree.</p>
+            <div class="tablewrap">
+              <table class="data proj-base">
+                <thead>
+                  <tr>
+                    <th scope="col">Figure</th>
+                    <th scope="col" class="num">FY2026–27</th>
+                    <th scope="col">Where it comes from</th>
+                  </tr>
+                </thead>
+                <tbody>${FACTS.map(factRow).join("")}</tbody>
+              </table>
+            </div>
+
+            <h3 class="proj-sub-h2">Estimated, because nobody has published them</h3>
+            <p class="proj-lede">These four are the projection. The gap opens because spending is assumed to
+              grow faster than income — ${esc(rateShort(b.expenditure_growth.value))} a year against
+              ${esc(rateShort(b.other_revenue_growth.value))}. If that one comparison is wrong, so is the
+              chart. The city has no multi-year plan that would settle it.</p>
+            <div class="tablewrap">
+              <table class="data proj-base">
+                <thead>
+                  <tr>
+                    <th scope="col">Estimate</th>
+                    <th scope="col" class="num">A year</th>
+                    <th scope="col">Basis, and how well the record backs it</th>
+                  </tr>
+                </thead>
+                <tbody>${GUESSES.map(guessRow).join("")}</tbody>
+              </table>
+            </div>
+
+            ${panel("Where each number comes from", "The full working for all nine, and what would settle the four that are open", `
+              ${FACTS.concat(GUESSES).map(provenance).join("")}
+            `, false, "p-provenance")}
+
+            ${permitsPanelHtml(c)}
+
+            ${panel("The data centres, and why the rate decides what they are worth", d.heading, `
+              <p class="panel-intro">${esc(d.text)}</p>
+              <div class="tablewrap">
+                <table class="data">
+                  <thead>
+                    <tr>
+                      <th scope="col">Taxing entity</th>
+                      <th scope="col" class="num">Stated yearly revenue</th>
+                      <th scope="col" class="num">2025 rate</th>
+                      <th scope="col" class="num">Implies a value of</th>
+                      <th scope="col">Note</th>
+                    </tr>
+                  </thead>
+                  <tbody>${derivRows}</tbody>
+                </table>
+              </div>
+              <p class="proj-caveat"><strong>One line does not fit.</strong> ${esc(d.caveat)}</p>
+              <p><strong>Cross-check.</strong> ${esc(d.check)}</p>
+              <p><strong>Why it matters.</strong> ${esc(d.why_it_matters)}</p>
+              ${srcQuote(d.source)}
+              <h4 class="proj-sub-h">How it is entered here</h4>
+              <ul class="proj-list">${additions}</ul>
+            `, false, "p-datacentres")}
+
+            ${projectAreasHtml(c)}
+
+            ${panel("Named costs", "Costs the record names, entered year by year instead of hidden in a growth rate", `
+              <ul class="proj-list">${adjustments}</ul>
+            `, false, "p-adjustments")}
+          </section>`;
+      }
+
+      /* ------------------------------------------- confirmation status
+         Every field that carries a `confirm` note also carries `settled`:
+         "yes" if the record answered it, "partly" if it answered half of it,
+         "no" if the document that would settle it does not exist or has not
+         been produced. Absent `settled` means nobody has looked yet. */
+
+      const CONFIRM_STATE = {
+        yes:    { tag: "Confirmed",       lead: "Confirmed.",        cls: "is-confirmed" },
+        partly: { tag: "Partly confirmed", lead: "Partly confirmed.", cls: "is-partly" },
+        no:     { tag: "Still open",      lead: "Still open.",       cls: "is-confirm" },
+      };
+      const cState = (x) => CONFIRM_STATE[x && x.settled] ||
+        { tag: "Needs confirming", lead: "Needs confirming.", cls: "is-confirm" };
+      const confirmTag = (x) =>
+        x && x.confirm ? `<span class="proj-tag ${cState(x).cls}">${esc(cState(x).tag)}</span>` : "";
+
+      /* The same three states, said the other way round, for the assumptions
+         table. `settled: "yes"` means the checking is finished — and for three
+         of the four estimates what the checking found is that the document
+         which would settle the number does not exist. Next to the full note
+         that reads correctly; next to a one-line summary "Confirmed" reads as
+         "this number is verified", which is the reverse of what it says. So the
+         table tags the standing of the estimate rather than of the enquiry, and
+         a finished enquiry gets neutral grey rather than green. */
+
+      const STANDING = {
+        yes:    { tag: "Nothing better published", cls: "is-derived" },
+        partly: { tag: "Partly settled",           cls: "is-partly" },
+        no:     { tag: "Open question",            cls: "is-confirm" },
+      };
+      const standingTag = (x) => {
+        const s = STANDING[x && x.settled] || { tag: "Unchecked", cls: "is-confirm" };
+        return `<span class="proj-tag ${s.cls}">${esc(s.tag)}</span>`;
+      };
+      const confirmNote = (x, cls) =>
+        x && x.confirm
+          ? `<p class="${cls} ${cState(x).cls}"><strong>${esc(cState(x).lead)}</strong> ${esc(x.confirm)}</p>`
+          : "";
+
+      /* --------------------------------------------- the project-area finding
+         The largest single thing holding the projected gap down is $1.9bn of
+         data-centre value added to the roll. The public record of what the data
+         centre already here pays the city cuts against it hard enough that the
+         page has to say so next to the assumption, not in a footnote. Opened by
+         default, unlike the panels around it, for that reason. */
+
+      function projectAreasHtml(c) {
+        const p = c.project_areas;
+        if (!p) return "";
+        const srcs = (p.sources || [])
+          .map(
+            (s) => `
+            <li>
+              <b>${s.url
+                ? `<a href="${esc(s.url)}" rel="nofollow noopener">${esc(s.title)} <span aria-hidden="true">↗</span></a>`
+                : esc(s.title)}</b>
+              <span class="proj-src-meta">${esc(s.publisher || "")}${s.date ? " · " + esc(CT.fmtDate(s.date)) : ""}</span>
+              <span class="proj-li-note">${esc(s.note || "")}</span>
+            </li>`
+          )
+          .join("");
+
+        return panel(p.heading,
+          "The one assumption on this page that a single document could overturn", `
+          <p class="panel-intro">${esc(p.lede)}</p>
+          <p><strong>What the record shows.</strong> ${esc(p.finding)}</p>
+          <p><strong>Cross-check.</strong> ${esc(p.cross_check)}</p>
+          <p class="proj-caveat"><strong>Why it matters.</strong> ${esc(p.why_it_matters)}</p>
+          <p><strong>What cuts the other way.</strong> ${esc(p.against_it)}</p>
+          <h4 class="proj-sub-h">The documents</h4>
+          <ul class="proj-src-list">${srcs}</ul>
+        `, true, "p-projectareas");
+      }
+
+      /* ------------------------------------------------- the permit cross-check
+         The new-growth rate is the input that decides the most on this page, and
+         it used to be a number split between two readings of the tax notice that
+         could not both be true. The city's own permit counts settle it, so they
+         are shown in full — chart, table and all thirteen years — rather than
+         quoted as a single figure the reader has to take on trust. */
+
+      function permitsPanelHtml(c) {
+        const p = c.permit_history;
+        if (!p || !Array.isArray(p.years) || !p.years.length) return "";
+
+        const rows = p.years
+          .map(
+            (y) => `
+            <tr>
+              <th scope="row">FY${esc(y.year)}</th>
+              <td class="num mono">${esc(y.permits.toLocaleString("en-US"))}</td>
+            </tr>`
+          )
+          .join("");
+
+        const caveats = (p.caveats || []).map((x) => `<li>${esc(x)}</li>`).join("");
+
+        return panel(p.heading,
+          "Thirteen years of the city's own count of new homes, and the growth rate it produces", `
+          <p class="panel-intro">${esc(p.lede)}</p>
+          <figure class="chart proj-chart">
+            <figcaption>
+              <h4 id="permits-title">${esc(p.series_label)}</h4>
+            </figcaption>
+            <div class="proj-plot" id="plot-permits"></div>
+            <p class="chart-foot" id="permits-foot"></p>
+          </figure>
+          <p><strong>How 4.8% comes out of it.</strong> ${esc(p.derivation)}</p>
+          <p><strong>What it settles.</strong> ${esc(p.settles)}</p>
+          <p class="proj-caveat"><strong>What it corrects.</strong> ${esc(p.corrects)}</p>
+          <h4 class="proj-sub-h">What it does not cover</h4>
+          <ul class="proj-list">${caveats}</ul>
+          ${confirmNote(p, "proj-input-note")}
+          ${finePrint("The counts, year by year", `
+            <div class="tablewrap">
+              <table class="data">
+                <thead>
+                  <tr>
+                    <th scope="col">Fiscal year</th>
+                    <th scope="col" class="num">New residential permits</th>
+                  </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+              </table>
+            </div>
+          `)}
+          <p class="proj-src"><strong>${esc(p.source.publisher)}</strong> · ${esc(p.source.doc)}${
+            p.source.date ? " · " + esc(CT.fmtDate(p.source.date)) : ""
+          }<span class="proj-li-note">${esc(p.source.note || "")}</span></p>
+        `, false, "p-permits");
+      }
+
+      /* Same geometry helpers as the two money charts, so this one lines up with
+         them visually. Counts rather than dollars on the axis, and the bar for
+         the year the 4.8% is derived from is marked. */
+      function drawPermits(c) {
+        const host = document.getElementById("plot-permits");
+        const p = c && c.permit_history;
+        if (!host || !p || !Array.isArray(p.years) || !p.years.length) return;
+
+        const years = p.years;
+        const n = years.length;
+        const counts = years.map((y) => y.permits);
+        const g = geometry(host, "gap");
+        const { x: X, bw, colW } = scaleX(g, n);
+        const plotH = g.H - g.mt - g.mb;
+        const { ticks, lo, hi } = niceTicks(0, Math.max(...counts) * 1.12, g.narrow ? 2 : 4);
+        const Y = (v) => g.mt + ((hi - v) / (hi - lo)) * plotH;
+        const base = Y(lo);
+        const last = years[n - 1];
+
+        const grid = ticks
+          .map(
+            (v) => `
+            <g class="proj-tick${v === 0 ? " is-zero" : ""}">
+              <line x1="${g.ml}" x2="${g.W - g.mr}" y1="${Y(v).toFixed(2)}" y2="${Y(v).toFixed(2)}" />
+              <text x="${g.ml - 8}" y="${(Y(v) + 3.5).toFixed(2)}" text-anchor="end"
+                    font-size="${g.fs}">${esc(v.toLocaleString("en-US"))}</text>
+            </g>`
+          )
+          .join("");
+
+        // Every other year label on a narrow screen: thirteen of them will not
+        // fit, and dropping alternates keeps the first and the last, which are
+        // the two a reader looks for.
+        const bars = years
+          .map((y, i) => {
+            const top = Y(y.permits);
+            const isLast = i === n - 1;
+            const showLab = !g.narrow || i % 2 === 0 || isLast;
+            return `
+              <g class="proj-bar-g" role="img"
+                 aria-label="FY${esc(y.year)}: ${esc(y.permits.toLocaleString("en-US"))} new residential permits">
+                <rect class="proj-bar ${isLast ? "is-def" : "is-sur"}"
+                      x="${(X(i) - bw / 2).toFixed(2)}" y="${top.toFixed(2)}"
+                      width="${bw.toFixed(2)}" height="${Math.max(1.5, base - top).toFixed(2)}"
+                      fill="${isLast ? "var(--proj-def-fill-solid)" : "var(--proj-sur-fill-solid)"}" />
+                ${showLab
+                  ? `<text class="proj-barlab" x="${X(i).toFixed(2)}" y="${(top - 5).toFixed(2)}"
+                           text-anchor="middle" font-size="${g.fs}">${esc(y.permits.toLocaleString("en-US"))}</text>`
+                  : ""}
+              </g>`;
+          })
+          .join("");
+
+        const xLabels = years
+          .map((y, i) =>
+            !g.narrow || i % 2 === 0 || i === n - 1
+              ? `<text class="proj-xlab" x="${X(i).toFixed(2)}" y="${g.H - 6}" text-anchor="middle"
+                       font-size="${g.fs}">${esc(g.narrow ? String(y.year).slice(2) : "FY" + String(y.year).slice(2))}</text>`
+              : ""
+          )
+          .join("");
+
+        host.innerHTML = `
+          <svg class="proj-svg" viewBox="0 0 ${g.W} ${g.H}" width="${g.W}" height="${g.H}"
+               role="group" aria-labelledby="permits-title">
+            <g class="proj-grid">${grid}</g>
+            ${bars}
+            <line class="proj-zero" x1="${g.ml}" x2="${g.W - g.mr}" y1="${base.toFixed(2)}" y2="${base.toFixed(2)}" />
+            <g class="proj-axis">${xLabels}</g>
+          </svg>`;
+
+        const peak = years.reduce((a, y) => (y.permits > a.permits ? y : a), years[0]);
+        const foot = document.getElementById("permits-foot");
+        if (foot)
+          foot.innerHTML =
+            `The marked bar is <strong>FY${esc(last.year)}</strong>, the year the 4.8% is derived from: ` +
+            `<strong>${esc(last.permits.toLocaleString("en-US"))}</strong> permits. The highest year on this ` +
+            `record is FY${esc(peak.year)} at <strong>${esc(peak.permits.toLocaleString("en-US"))}</strong> — ` +
+            `below the 1,800 a year the council was told at the hearing.`;
+      }
+
+      function srcLine(s) {
+        if (!s) return "";
+        const who = esc(s.speaker || s.publisher || "");
+        // A cited document is the most useful thing here, so it leads and it is
+        // a link wherever the config carries a URL.
+        const doc = s.doc
+          ? s.url
+            ? `<a href="${esc(s.url)}" rel="nofollow noopener">${esc(s.doc)} <span aria-hidden="true">↗</span></a>`
+            : esc(s.doc)
+          : s.url
+            ? `<a href="${esc(s.url)}" rel="nofollow noopener">Source <span aria-hidden="true">↗</span></a>`
+            : s.file
+              ? esc(s.file)
+              : "";
+        const link =
+          s.meeting != null
+            ? `<a href="meetings.html?id=${encodeURIComponent(s.meeting)}">${esc(CT.fmtDate(s.date))} · Meeting #${esc(s.meeting)} <span aria-hidden="true">→</span></a>`
+            : s.date && !s.doc
+              ? `<span>${esc(CT.fmtDate(s.date))}</span>`
+              : "";
+        return `<span class="proj-src">${[who, doc, link].filter(Boolean).join(" · ")}</span>`;
+      }
+
+      function srcQuote(s) {
+        if (!s) return "";
+        return `
+          <figure class="arg-quote">
+            ${s.quote ? `<blockquote>${esc(s.quote)}</blockquote>` : ""}
+            <figcaption>
+              <span class="aq-who">${esc(s.speaker || s.publisher || "")}</span>
+              ${s.meeting != null
+                ? `<a class="aq-src" href="meetings.html?id=${encodeURIComponent(s.meeting)}">${esc(CT.fmtDate(s.date))} · Meeting #${esc(s.meeting)} <span aria-hidden="true">→</span></a>`
+                : s.date ? `<span class="aq-src">${esc(CT.fmtDate(s.date))}</span>` : ""}
+            </figcaption>
+          </figure>`;
+      }
+
+      /* ======================================================================
+         Where a shortfall lands
+
+         The rest of the page answers "how big is the gap". This section answers
+         the question a reader actually has next, which is "so what gives" — and
+         it has to do that without pretending to know. Three things it can say
+         honestly, in descending order of how well the record supports them:
+
+           1. Arithmetic. Most of the General Fund is under contract or spoken
+              for by restricted revenue, so the pool a gap can come out of is
+              much smaller than $42.65M. That is checkable line by line.
+           2. The city's own statement of what the money was for. Property tax
+              was taking the Sheriff's contract off sales tax; the council named
+              twice, on the record, what the freed sales tax was earmarked for.
+              A shortfall is that list not happening.
+           3. What councilmembers said in public would give — quoted, not
+              paraphrased, and not attributed to anyone the recording does not
+              identify.
+
+         What it must never do is present any of that as a decision. The caveat
+         is not a footnote here; it is the last block in the section and it runs
+         straight into "what a projected deficit does and does not mean".
+         ====================================================================== */
+
+      function exposureHtml(c) {
+        const x = c.exposure;
+
+        const earmarked = x.earmarked.items
+          .map(
+            (i) => `
+            <li>
+              <span class="proj-ear-fig">${esc(i.figure)}</span>
+              <span class="proj-ear-lab">${esc(i.label)}</span>
+              <span class="proj-ear-txt">${esc(i.text)}</span>
+            </li>`
+          )
+          .join("");
+
+        const voices = x.voices.quotes.map((q) => srcQuote(q)).join("");
+
+        // "What a gap does and doesn't mean" used to be a section of its own,
+        // immediately after this one and saying much the same thing twice. It
+        // closes this section instead: the caveat below runs straight into the
+        // list of what a council actually does about a gap.
+        const i = c.interpretation;
+
+        return `
+          <section class="tax-sec reveal" style="--i:4" id="s-exposure" aria-labelledby="exp-title">
+            <div class="sec-head">
+              <p class="eyebrow"><span class="sec-num" aria-hidden="true">04</span>Where it lands</p>
+              <h2 class="sec-h2" id="exp-title">${esc(x.heading)}</h2>
+              <p class="sec-sub">${esc(x.lede)}</p>
+            </div>
+
+            <div id="exposure-pool"></div>
+
+            <div class="proj-ear">
+              <h3 class="proj-sub-h2">${esc(x.earmarked.heading)}</h3>
+              <p class="proj-ear-lede">${esc(x.earmarked.lede)}</p>
+              <ul class="proj-ear-list">${earmarked}</ul>
+              ${srcQuote(x.earmarked.source)}
+              <p class="proj-input-note">${esc(x.earmarked.note)}</p>
+            </div>
+
+            <div class="proj-voices">
+              <h3 class="proj-sub-h2">${esc(x.voices.heading)}</h3>
+              <p class="proj-ear-lede">${esc(x.voices.lede)}</p>
+              ${voices}
+            </div>
+
+            <div class="proj-meaning">
+              <h3 class="proj-sub-h2">${esc(i.heading)}</h3>
+              <p class="proj-ear-lede">${esc(i.lede)}</p>
+              <ul class="proj-options">
+                ${i.options.map((o) => `<li>${esc(o)}</li>`).join("")}
+              </ul>
+              <p class="note-fine proj-exposure-caveat"><strong>None of this is a prediction.</strong>
+                ${esc(x.caveat)}</p>
+            </div>
+          </section>`;
+      }
+
+      /* The narrowing, and this scenario's gap measured against what is left of
+         the budget after it. Live, because the gap moves with the scenario and
+         with every assumption. */
+      function paintExposure(r) {
+        const poolEl = document.getElementById("exposure-pool");
+        if (!poolEl) return;
+        if (!r.ok || !r.rows.length) { poolEl.innerHTML = ""; return; }
+
+        const x = state.config.exposure;
+        const P = x.pool;
+        // The pool is built from the shipped FY2026–27 budget. If a reader has
+        // edited the expenditure baseline the tiers no longer describe it, so
+        // the pool scales with the edit and says that it has.
+        const scale = r.rows[0].expenditures / P.total;
+        const edited = Math.abs(scale - 1) > 1e-9;
+        const tierAmt = (t) => t.amount * scale;
+        const total = P.total * scale;
+        const reachable = total - P.tiers.reduce((a, t) => a + tierAmt(t), 0);
+
+        const first = r.rows[0];
+        const last = r.rows[r.rows.length - 1];
+        // The reachable pool grows with the rest of spending, so the final-year
+        // comparison is against a grown pool rather than today's.
+        const reachableLast = reachable * (last.expenditures / first.expenditures);
+        const shareOf = (gap, pool) => (pool > 0 ? Math.min(1, Math.abs(gap) / pool) : 0);
+
+        const segs = P.tiers
+          .map(
+            (t) => `
+            <span class="proj-seg proj-seg-${esc(t.key)}" style="width:${((tierAmt(t) / total) * 100).toFixed(3)}%"
+                  title="${esc(t.label)} — ${esc(usd0(tierAmt(t)))}"></span>`
+          )
+          .join("");
+
+        const rows = P.tiers
+          .map(
+            (t) => `
+          <tr>
+            <th scope="row"><span class="proj-key proj-seg-${esc(t.key)}" aria-hidden="true"></span>${esc(t.label)}
+              <span class="proj-li-note">${esc(t.note || t.confirm || "")}</span>
+              ${confirmTag(t)}
+            </th>
+            <td class="num">${esc(usd0(tierAmt(t)))}</td>
+            <td class="num">${((tierAmt(t) / total) * 100).toFixed(0)}%</td>
+          </tr>`
+          )
+          .join("");
+
+        const gapWord = first.gap < 0 ? "deficit" : "surplus";
+
+        poolEl.innerHTML = `
+          <div class="proj-pool">
+            <div class="proj-pool-head">
+              <h3 class="proj-sub-h2">How much of the budget a council can actually change</h3>
+              <p>${esc(P.total_label)}: <strong>${esc(usd0(total))}</strong>${edited ? " (scaled to your edited baseline)" : ""}.
+                 Take out what is under contract and what is already spoken for, and a council can move
+                 <strong>${esc(usd0(reachable))}</strong>.</p>
+            </div>
+
+            <div class="proj-pool-bar" role="img"
+                 aria-label="${esc(`Of ${usd0(total)} in General Fund appropriations, ${P.tiers.map((t) => `${usd0(tierAmt(t))} is ${t.label.toLowerCase()}`).join(", ")}, leaving ${usd0(reachable)} reachable.`)}">
+              ${segs}<span class="proj-seg proj-seg-reach" style="width:${((reachable / total) * 100).toFixed(3)}%"></span>
+            </div>
+            <div class="legend">
+              ${P.tiers.map((t) => `<span class="lg"><i class="sw proj-seg-${esc(t.key)}"></i>${esc(t.label)}</span>`).join("")}
+              <span class="lg"><i class="sw proj-seg-reach"></i>${esc(P.reachable_label)}</span>
+            </div>
+
+            <div class="tablewrap">
+              <table class="data">
+                <thead><tr><th scope="col">Part of the General Fund</th><th scope="col" class="num">FY2026–27</th><th scope="col" class="num">Share</th></tr></thead>
+                <tbody>
+                  ${rows}
+                  <tr class="is-total">
+                    <th scope="row"><span class="proj-key proj-seg-reach" aria-hidden="true"></span>${esc(P.reachable_label)}
+                      <span class="proj-li-note">${esc(P.reachable_note)}</span></th>
+                    <td class="num">${esc(usd0(reachable))}</td>
+                    <td class="num">${((reachable / total) * 100).toFixed(0)}%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            ${
+              first.gap < 0 || last.gap < 0
+                ? `<div class="proj-against">
+                     <p class="proj-against-head">This scenario's gap against that money</p>
+                     <ul>
+                       <li><strong>${esc(first.label)}:</strong> a ${esc(usd0(Math.abs(first.gap)))} ${esc(gapWord)} takes
+                         <strong>${(shareOf(first.gap, reachable) * 100).toFixed(0)}%</strong> of it${first.gap > 0 ? " — a surplus, so nothing has to come out" : ""}.</li>
+                       <li><strong>${esc(last.label)}:</strong> a ${esc(usd0(Math.abs(last.gap)))} ${esc(word(last.gap))}, against
+                         about ${esc(usd0(reachableLast))} by then, takes
+                         <strong>${(shareOf(last.gap, reachableLast) * 100).toFixed(0)}%</strong>.</li>
+                     </ul>
+                   </div>`
+                : `<p class="proj-against-none">This scenario runs a surplus in both ${esc(first.label)} and ${esc(last.label)},
+                     so nothing has to come out of it in either year.</p>`
+            }
+            ${orderHtml(state.config.exposure.order, r, scale)}
+            <p class="proj-input-note">${esc(P.method_note)}
+              <a href="budget.html#next-year">Open the FY2026–27 budget <span aria-hidden="true">→</span></a></p>
+          </div>`;
+
+        // "What the gap is the size of" used to hang here, sizing the gap
+        // against a wage lift, the 28 positions and a school speed table.
+        // Those are three of the figures in the earmarked list a screen above,
+        // from the same work session — the same numbers, twice, as two card
+        // grids. The earmarked list keeps them, because there they are the
+        // city saying what the money was for rather than arithmetic about it.
+      }
+
+      /* The department chart stood here: every General Fund department as a bar,
+         coloured by tier, with the gap drawn across them. It was cut. Its top
+         four bars were the first four rows of the pool table directly above it,
+         at the same figures and the same colours, and its own caption then had
+         to explain that none of those four was available. Below them fourteen
+         departments rendered as identical stubs. What it showed that the table
+         did not — that the reachable money is many small pots rather than one —
+         is carried by the four steps below, which is the better answer to "so
+         which bits" anyway. The department figures are still in the config
+         under exposure.pool.departments if it is ever wanted back.
+         --------------------------------------------------------------------- */
+
+      /* ======================================================================
+         What gives first
+
+         The department chart says where the money is. This says what actually
+         happens to it, and it is the part a reader is really asking about.
+
+         The order is not a guess and it is not a ranking of importance. It is
+         the order in which a municipal budget can physically be reduced inside
+         a fiscal year: materials and maintenance need no vote and break no
+         agreement, capital can be deferred, internal transfers can be skipped,
+         and people are last because they are slowest and hardest to undo. The
+         page says that explicitly, twice, because "maintenance first" reads as
+         "maintenance matters least" if it is not headed off.
+
+         The finding that makes it worth drawing: three of the four rungs
+         together are smaller than the no-increase gap. Every dollar of mowing,
+         tree work, trail repair, equipment and fleet contribution in every
+         department a council can reach does not cover it. The remainder can
+         only come from payroll, and the bar shows exactly how far into it.
+         ====================================================================== */
+      function orderHtml(O, r, scale) {
+        if (!O || !O.rungs) return "";
+        const rungs = O.rungs.map((x) => ({ ...x, amount: x.amount * scale }));
+        const total = rungs.reduce((a, x) => a + x.amount, 0);
+        const first = r.rows[0];
+        const gap = Math.abs(first.gap);
+        const deficit = first.gap < 0;
+
+        // Walk the gap down the rungs and record where it stops.
+        let left = gap;
+        const eaten = rungs.map((x) => {
+          const take = Math.max(0, Math.min(left, x.amount));
+          left -= take;
+          return { ...x, take, share: x.amount > 0 ? take / x.amount : 0 };
+        });
+        const stops = eaten.find((x) => x.take > 0 && x.take < x.amount) || eaten[eaten.length - 1];
+        const staff = eaten[eaten.length - 1];
+        const nonStaff = total - rungs[rungs.length - 1].amount;
+
+        const segs = eaten
+          .map(
+            (x) => `
+            <span class="proj-rung proj-rung-${esc(x.key)}" style="width:${((x.amount / total) * 100).toFixed(3)}%"
+                  title="${esc(x.label)} — ${esc(usd0(x.amount))}">
+              ${x.take > 0 ? `<span class="proj-rung-eaten" style="width:${((x.take / x.amount) * 100).toFixed(2)}%"></span>` : ""}
+            </span>`
+          )
+          .join("");
+
+        const cards = eaten
+          .map(
+            (x, i) => `
+            <li class="proj-rung-card${x.take > 0 ? " is-reached" : ""}">
+              <p class="proj-rung-ord"><span class="proj-rung-key proj-rung-${esc(x.key)}" aria-hidden="true"></span>
+                ${esc(numWord(i + 1))}${i === 0 ? " — first" : i === eaten.length - 1 ? " — last" : ""}</p>
+              <h4>${esc(x.label)}</h4>
+              <p class="proj-rung-amt mono">${esc(usd0(x.amount))}</p>
+              <p class="proj-rung-what">${esc(x.what)}</p>
+              <p class="proj-rung-why"><strong>Why here.</strong> ${esc(x.why)}</p>
+              ${x.lines ? maintTable(x) : ""}
+              ${x.take > 0
+                ? `<p class="proj-rung-hit">${x.take >= x.amount
+                    ? `This scenario's gap uses <strong>all of it</strong>.`
+                    : `This scenario's gap reaches <strong>${(x.share * 100).toFixed(0)}%</strong> of it — ${esc(usd0(x.take))}.`}</p>`
+                : ""}
+            </li>`
+          )
+          .join("");
+
+        return `
+          <div class="proj-order">
+            <h3 class="proj-sub-h2">${esc(O.heading)}</h3>
+            <p class="proj-ear-lede">${esc(O.lede)}</p>
+
+            <div class="proj-rung-bar" role="img"
+                 aria-label="${esc(`The reachable pool in the order it gives way: ${eaten.map((x) => `${x.label} ${usd0(x.amount)}`).join(", ")}. This scenario's ${first.label} gap of ${usd0(gap)} reaches ${stops.label.toLowerCase()}.`)}">${segs}</div>
+            <div class="legend">
+              ${eaten.map((x) => `<span class="lg"><i class="sw proj-rung-${esc(x.key)}"></i>${esc(x.label)}</span>`).join("")}
+              <span class="lg"><i class="sw proj-rung-eaten-key"></i>Used up by this scenario's gap</span>
+            </div>
+
+            <p class="proj-punch">${punchHtml(O, first, gap, deficit, nonStaff, staff, stops)}</p>
+
+            <ol class="proj-rung-list">${cards}</ol>
+
+            <p class="note-fine"><strong>An order, not a plan.</strong> ${esc(O.caveat)}</p>
+            ${finePrint("How the four steps were measured", `
+              <p>${esc(O.basis)}</p>
+              <p class="src"><strong>Needs confirming.</strong> ${esc(O.confirm)}</p>
+            `)}
+          </div>`;
+      }
+
+      /* The paragraph under the rung bar.
+
+         It used to open with O.punchline, which is written about the
+         no-increase case — "come to less than the no-increase gap" — and was
+         printed verbatim under the Mid and High buttons, where it is a claim
+         about a scenario the reader is not looking at. O.punchline is now
+         scenario-neutral framing that holds in all three, and this scenario's
+         own arithmetic follows it.
+
+         The small-gap branch also said "even stopping all of it leaves $0
+         untouched", because it reused a figure clamped at zero for the other
+         branch: a gap that stops inside the first step leaves most of the
+         three untouched, not none of it. It states the remainder now. */
+
+      function punchHtml(O, first, gap, deficit, nonStaff, staff, stops) {
+        // No qualitative lead. O.punchline used to open this and said, in words,
+        // exactly what the arithmetic below says with figures — the same claim
+        // twice, back to back. The figures are the stronger half, so they stand
+        // alone and O.punchline is gone from the config.
+        if (!deficit)
+          return `${esc(first.label)} runs a surplus here, so nothing on this list is reached. The order is
+                  what would happen if a gap opened.`;
+
+        if (gap > nonStaff)
+          return `In ${esc(first.label)} this scenario is short <strong>${esc(usd0(gap))}</strong>. Every
+                  dollar of maintenance, equipment and fleet contribution a council can reach adds up to
+                  ${esc(usd0(nonStaff))}. Stop <em>all</em> of it and
+                  <strong>${esc(usd0(gap - nonStaff))}</strong> still has to come from people — about
+                  <strong>${esc((((gap - nonStaff) / staff.amount) * 100).toFixed(0))}%</strong> of the
+                  reachable payroll.`;
+
+        return `In ${esc(first.label)} this scenario is short <strong>${esc(usd0(gap))}</strong>. The three
+                steps before payroll come to ${esc(usd0(nonStaff))}, so the gap stops at
+                <strong>${esc(stops.label.toLowerCase())}</strong> and leaves
+                ${esc(usd0(nonStaff - gap))} of them untouched.`;
+      }
+
+      /* The named maintenance accounts. The claim they support is one number
+         each — maintenance in the reachable departments came down 40% between
+         what the city estimated FY2025 would finish at and what it then
+         adopted, and the road accounts moved the same way — so that is what
+         shows, and the twenty accounts behind it sit one click away rather
+         than as two full tables inside a card that is already the longest
+         thing in the section.
+
+         Two money columns, not three. The change is computed from the FY2025
+         estimate against the adopted figure; the FY2024 actual was background
+         and cost a column in both tables. It was also the source of a real
+         bug once — an earlier version read it and labelled it "FY2025–26
+         adopted", so City Wide Trees showed $195,300 against an adopted
+         $11,943. The columns are mapped explicitly here for that reason. */
+      function maintTable(x) {
+        const pct = (a, b) => (b ? `${a / b - 1 >= 0 ? "+" : MINUS}${Math.abs((a / b - 1) * 100).toFixed(0)}%` : "—");
+
+        const body = (rows) =>
+          rows
+            .map(
+              (l) => `
+              <tr>
+                <th scope="row">${esc(l.name)}<span class="pl-d">${esc(l.dept)} · ${esc(l.account)}</span></th>
+                <td class="num">${esc(usd0(l.fy25e))}</td>
+                <td class="num">${esc(usd0(l.adopted))}</td>
+                <td class="num ${l.fy25e && l.adopted < l.fy25e ? "is-down" : ""}">${esc(pct(l.adopted, l.fy25e))}</td>
+              </tr>`
+            )
+            .join("");
+
+        const foot = (t, label) => `
+          <tr class="is-total">
+            <th scope="row">${esc(label)}</th>
+            <td class="num">${esc(usd0(t.fy25e))}</td>
+            <td class="num">${esc(usd0(t.adopted))}</td>
+            <td class="num ${t.adopted < t.fy25e ? "is-down" : ""}">${esc(pct(t.adopted, t.fy25e))}</td>
+          </tr>`;
+
+        const table = (rows, total, label) => `
+          <div class="tablewrap">
+            <table class="data proj-maint">
+              <thead>
+                <tr>
+                  <th scope="col">Account</th>
+                  <th scope="col" class="num">FY2025 est. actual</th>
+                  <th scope="col" class="num">FY2025–26 adopted</th>
+                  <th scope="col" class="num">Change</th>
+                </tr>
+              </thead>
+              <tbody>${body(rows)}${foot(total, label)}</tbody>
+            </table>
+          </div>`;
+
+        // The headline each table exists to support, stated without the table.
+        const head = (t, what) => `
+          <li>
+            <span class="pm-what">${esc(what)}</span>
+            <span class="pm-move">${esc(usd0(t.fy25e))} <span class="pm-to" aria-hidden="true">→</span>
+              <span class="sr-only">to</span> ${esc(usd0(t.adopted))}</span>
+            <b class="${t.adopted < t.fy25e ? "is-down" : ""}">${esc(pct(t.adopted, t.fy25e))}</b>
+          </li>`;
+
+        const count = x.lines.length + x.road_lines.length;
+
+        // These two figures are a *sample* of the rung above them, and without
+        // saying so they read as the rung itself: "Maintenance in the
+        // departments a council can reach — $679,165" sitting directly under a
+        // step labelled $4,015,444 is two different numbers for the same words
+        // in the same card. So each headline names its account count, the note
+        // states the relationship to the rung, and the road figure says on its
+        // face that it is outside the rung rather than only in the fine print.
+        return `
+          <p class="proj-maint-note">What the last budget actually did to maintenance.
+            ${esc(numWord(x.lines.length).replace(/^./, (ch) => ch.toUpperCase()))} named accounts inside this
+            step, and ${esc(numWord(x.road_lines.length))} more in Streets &amp; Roads that sit outside it.</p>
+          <ul class="proj-maint-heads">
+            ${head(x.lines_total, "Inside this step")}
+            ${head(x.road_total, "Streets & Roads — outside it")}
+          </ul>
+          ${finePrint(`All ${numWord(count)} accounts, as the budget book prints them`, `
+            <p>${esc(x.lines_note)}</p>
+            ${table(x.lines, x.lines_total, "Reachable departments")}
+            <p>${esc(x.road_note)}</p>
+            ${table(x.road_lines, x.road_total, "Streets & Roads")}
+            <p>${esc(x.already_note)}</p>
+          `)}`;
+      }
+
+      /* --------------------------------------------------------------- panel */
+
+      function panel(title, sub, bodyHtml, open, id, attrs) {
+        return `
+        <details class="panel"${id ? ` id="${id}"` : ""}${open ? " open" : ""}${attrs || ""}>
+          <summary>
+            <span class="panel-tt">
+              <h3>${esc(title)}</h3>
+              <span>${esc(sub)}</span>
+            </span>
+            <span class="panel-chev" aria-hidden="true"></span>
+          </summary>
+          <div class="panel-body">${bodyHtml}</div>
+        </details>`;
+      }
+
+      function finePrint(label, bodyHtml) {
+        return `
+        <details class="fine">
+          <summary>${esc(label)}</summary>
+          <div class="fine-body">${bodyHtml}</div>
+        </details>`;
+      }
+
+      /* ------------------------------------------------------------- sources */
+
+      function sourcesHtml(c) {
+        const items = (c.sources || [])
+          .map((s) => {
+            const title = s.url
+              ? `<a href="${esc(s.url)}" rel="nofollow noopener">${esc(s.title)} <span aria-hidden="true">↗</span></a>`
+              : s.meeting != null
+                ? `<a href="meetings.html?id=${encodeURIComponent(s.meeting)}">${esc(s.title)} <span aria-hidden="true">→</span></a>`
+                : esc(s.title);
+            return `
+              <li>
+                <b>${title}</b>
+                <span class="proj-src-meta">${esc(s.publisher || "")}${s.date ? " · " + esc(CT.fmtDate(s.date)) : ""}</span>
+                <span class="proj-li-note">${esc(s.note || "")}</span>
+              </li>`;
+          })
+          .join("");
+
+        // Fifteen full citations, each with a paragraph of note, ran to about
+        // three screens of the page's tail and pushed the disclaimer — the last
+        // thing a reader should see — well below it. The list is reference
+        // material: it is there to be checked, not read through, so it collapses
+        // to a single row. The section head above it stays, because it carries
+        // the 05 in the page's numbering and it is what the jump list targets.
+        const count = (c.sources || []).length;
+
+        return `
+          <section class="tax-sec reveal" style="--i:5" id="s-sources" aria-labelledby="src-title">
+            <div class="sec-head">
+              <p class="eyebrow"><span class="sec-num" aria-hidden="true">05</span>Sources</p>
+              <h2 class="sec-h2" id="src-title">Where every figure comes from</h2>
+              <p class="sec-sub">City documents, the city's own line items, and recordings of open meetings.
+                Nothing here comes from anywhere else.</p>
+            </div>
+            ${panel(
+              `All ${numWord(count)} sources`,
+              "Every document and recording behind a figure on this page",
+              `<ul class="proj-sources">${items}</ul>`,
+              false,
+              "p-sources",
+              " data-nav-open"
+            )}
+          </section>`;
+      }
+
+      function disclaimerHtml(c) {
+        return `
+          <aside class="proj-disclaimer reveal" style="--i:6" aria-label="Disclaimer">
+            <p class="proj-disclaimer-head">Planning estimates, not an adopted budget</p>
+            <p>${esc(c.disclaimer)}</p>
+          </aside>`;
+      }
+    </script>
+  </body>
+</html>

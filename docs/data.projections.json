@@ -1,0 +1,1000 @@
+{
+  "_comment": "THE SCENARIO AND ASSUMPTION FILE FOR docs/projections.html. Everything the projection page models lives here; projections.js only does arithmetic on it. Two kinds of number are mixed in this file and they are never mixed on the page: figures the city published or the council read into the record (each carries a `source`), and forward assumptions this project chose (each carries `assumption: true` and a `basis`). Anything the record does not settle carries `confirm`, which the page renders as a visible 'needs confirming' flag rather than quietly using a made-up number. Nothing in this file is an Eagle Mountain forecast — the city has not published one. A councilmember, in the deliberation after the 6 August hearing closed: 'Where's our 5-year plan? Where's our 10-year plan? Do we have a 20-year plan? The answer is no to all of those things.'",
+  "body": "city-council",
+  "scope": "general-fund",
+  "scope_note": "Only the General Fund — the city's main operating account. Property tax lands here, and so do the Sheriff's contract, parks, roads, the library and city hall. Water, sewer and the capital funds are left out: a $200M sewer bond would swamp the picture without telling you anything about the operating gap.",
+  "first_year": 2027,
+  "last_year": 2032,
+  "year_labels": {
+    "2027": "FY2026–27",
+    "2028": "FY2027–28",
+    "2029": "FY2028–29",
+    "2030": "FY2029–30",
+    "2031": "FY2030–31",
+    "2032": "FY2031–32"
+  },
+  "baseline": {
+    "_comment": "FY2026–27, the anchor year. Every figure here is derived from the city's own published numbers; the derivations are printed on the page and reconcile to the cent.",
+    "taxable_value": {
+      "value": 5764530000,
+      "label": "Citywide taxable value, FY2026–27",
+      "summary": "The city's own two published figures — the adopted rate and the certified rate — both imply this same roll, agreeing to 0.000003%.",
+      "derived": true,
+      "derivation": "Not published as a figure; implied identically by two the city did publish. The adopted 0.001500 raises $8,646,795 — 8,646,795 ÷ 0.001500 = $5,764,530,000. The 2026 certified rate 0.000530 raises $3,055,201 — 3,055,201 ÷ 0.000530 = $5,764,530,189. The two agree to 0.000003%. The noticed 0.001700 against $9,798,139 implies $5,763,611,176, which is 0.016% lower; the city computed the noticed schedule from an unrounded rate.",
+      "source": {
+        "meeting": 747,
+        "date": "2026-08-06",
+        "doc": "Proposed Property Tax Impact Schedule, 18 June 2026"
+      }
+    },
+    "certified_rate": {
+      "value": 0.00053,
+      "label": "2026 certified rate",
+      "summary": "Utah County's published no-increase rate for FY2026–27, printed on the city's impact schedule.",
+      "informational": true,
+      "derivation": "The published Truth-in-Taxation comparison basis for FY2026–27, returned by Utah County on 22 June 2026 and printed on the city's impact schedule as 'Property Tax Rate with no increase — 0.000530'. The model does not compute this one; it is shown in the anchor row so the falling certified rates the model does compute have a published figure to start from.",
+      "source": {
+        "doc": "Proposed Property Tax Impact Schedule, 18 June 2026"
+      }
+    },
+    "collection_rate": {
+      "value": 1.0,
+      "label": "Tax collection rate",
+      "summary": "The model bills 100% of the levy, matching how the city states its own revenue. Actual collection runs 93–97% in the first year.",
+      "confirmed": true,
+      "derivation": "Confirmed, and deliberately not applied. The city's audited statements print eleven years of it, from the Utah County Treasurer: between 93.0% and 97.1% of each year's tax is collected that same year — an eleven-year average of 94.9% — and late payments bring the total to between 99.19% and 99.97%. The five most recent years average 99.38%. So the real answer is about 99.4%, not 100%.",
+      "source": {
+        "publisher": "Eagle Mountain City",
+        "doc": "Annual Comprehensive Financial Report, FY ended 30 June 2024 — 'Property Tax Levied and Collections, Last Ten Fiscal Years', p. 99, source: Utah County Treasurer",
+        "url": "https://eaglemountain.gov/wp-content/uploads/2025/01/EMC-ACFR-2024.pdf",
+        "date": "2024-06-30"
+      },
+      "note": "Utah's certified-rate formula has a collection rate inside it. Utah Code § 59-2-924(4)(b) multiplies the value base by a five-year average collection rate before subtracting new growth, and the Tax Commission's 2025 annual report puts the five-year statewide average at 93.88%. That is the statewide figure across all counties; Eagle Mountain's own is materially higher.",
+      "why_not_applied": "The city's Truth-in-Taxation schedule states its revenue as rate × taxable value, with no allowance for tax that goes uncollected, and every anchor figure here is checked against that schedule to the cent — 0.000530 raising $3,055,201, 0.001500 raising $8,646,795. Applying 99.38% inside the model would break that check while telling you nothing new: the shortfall is a flat 0.62% in every year and every scenario. There is also a double-count risk — the county already builds a five-year average collection rate into the certified rate before it publishes it.",
+      "effect": "Applying it scales every property-tax figure on the page down by 0.62% — about $54,000 in FY2026–27 at the adopted rate — and no curve changes shape."
+    },
+    "other_revenue": {
+      "value": 32336071,
+      "label": "All other General Fund income, FY2026–27",
+      "summary": "The adopted interim General Fund revenue, less the two property-tax lines and the reserve draw.",
+      "derived": true,
+      "derivation": "The FY2026–27 interim General Fund revenue of $42,650,441, less the two current-levy property tax lines — 'Property Taxes' $2,839,998 and 'Property Taxes Interim Budget' $6,958,141 — and less the $516,231 'Beginning General Fund Balance to be Appropriated', which is a draw on reserves rather than revenue. 42,650,441 − 6,958,141 − 2,839,998 − 516,231 = 32,336,071. Sales and use tax ($14,535,424) and the municipal energy tax ($8,896,371) are 72% of it. The $105,000 delinquent and prior-year property tax line is left inside this total rather than modelled as part of the levy.",
+      "source": {
+        "file": "data.budget-next.json",
+        "publisher": "Eagle Mountain City line items via ClearGov"
+      }
+    },
+    "expenditures": {
+      "value": 42650441,
+      "label": "General Fund spending, FY2026–27",
+      "summary": "The interim budget adopted 4–1 on 16 June 2026, every department plus transfers out.",
+      "derivation": "The interim budget adopted 4–1 on 16 June 2026, in full: every General Fund department plus $6,529,840 of transfers out to the city's other funds. It is not yet the final budget — that is adopted 18 August 2026.",
+      "source": {
+        "meeting": 726,
+        "date": "2026-06-16",
+        "file": "data.budget-next.json"
+      }
+    },
+    "appreciation_rate": {
+      "value": 0.03,
+      "label": "How much existing property is revalued each year",
+      "summary": "Nearly inert by construction: when existing value rises, the certified rate falls to cancel it.",
+      "assumption": true,
+      "basis": "A placeholder for how much the county reassesses property already on the roll. Under the revenue-based system it is very nearly inert by construction: when existing value rises the certified rate falls to cancel it out, so the projected gap barely moves. It is still an input because it is what makes the certified rate in the table fall year on year, and because new growth is a percentage of a roll that reassessment inflates.",
+      "confirm": "The missing half is the half that matters. Eagle Mountain's audited financial statements print ten years of total taxable assessed value, sourced to the Utah State Tax Commission: $714,063,591 in FY2015 rising to $5,984,539,284 in FY2024, a compound 26.7% a year. But that series is appreciation and new construction together and cannot be split from the outside — the year-over-year steps run from 13.75% to 66.69%, and the 66.69% in FY2023 is the year commercial and industrial value went from $409M to $1,059M, which is construction, not revaluation. What would settle it is the Utah County Assessor's factoring order for Eagle Mountain, or the Auditor's certified-rate worksheet, which separates the two by statute. 3.0% is left as a placeholder, and it stays very nearly inert in the current-policy case for the reason given above.",
+      "source": {
+        "publisher": "Eagle Mountain City",
+        "doc": "Annual Comprehensive Financial Report, FY ended 30 June 2024 — 'Assessed Value and Estimated Actual Value of Taxable Property, Last Ten Fiscal Years', p. 96, source: Utah State Tax Commission",
+        "url": "https://eaglemountain.gov/wp-content/uploads/2025/01/EMC-ACFR-2024.pdf",
+        "date": "2024-06-30"
+      },
+      "settled": "partly"
+    },
+    "new_growth_rate": {
+      "value": 0.048,
+      "label": "New construction added each year",
+      "summary": "1,032 new residential permits in FY2026 at the city's own $268,400 assumed value.",
+      "assumption": true,
+      "confirm": "Still the most consequential input on the page, but no longer a guess between two readings. The published figures supported two irreconcilable ones. Reading one: the certified rate of 0.000530 raises $3,055,201 against a prior-year budgeted levy of $2,839,998, and since the certified rate is set to reproduce prior-year revenue off existing value alone, the $215,203 difference is new-growth revenue — implying $406M of new value, 7.04% of the roll. Reading two: the notice's own 220.88% implies a base near $3,052,760, only about $2,400 below the certified-rate revenue, which would make new growth almost nothing. The city's permit history settles it against reading two: $2,400 of revenue at the certified rate is about $4.5M of value, roughly seventeen houses, in a year the city issued 1,032 residential permits. What would settle it exactly is the Utah County Auditor's certified new-growth figure for Eagle Mountain; enter it here if it differs.",
+      "basis": "4.8% is the city's own residential permit count carried onto the roll: 1,032 new residential permits in FY2026, at the $268,400 taxable value the city's own Truth-in-Taxation notice uses for an Eagle Mountain home, is $276,988,800 against the $5,764,530,000 roll — 4.81%. The FY2022–26 five-year average of 1,093 permits gives 5.09%; the most recent year is used because it is the slower of the two and permits have fallen in each of the last two years. Three things sit outside this figure and all three point the same way: it counts houses only, so commercial and industrial new value is on top of it; the notice's $268,400 is the average home already on the roll rather than a new one; and permits lead the roll, because a house permitted in FY2026 is assessed on the January roll after it is finished. The data centres are not in this rate — they are entered separately as named additions below, so nothing is double-counted.",
+      "settled": "partly"
+    },
+    "other_revenue_growth": {
+      "value": 0.05,
+      "label": "Growth in all other income",
+      "summary": "The budget's own like-for-like step is +9.4%; 5% is a deliberately conservative read of it.",
+      "assumption": true,
+      "basis": "The FY2026–27 budget's own like-for-like step is +9.4%: FY2025–26 non-property-tax General Fund revenue was $34,014,298, of which $4,447,300 of permit and plan-check revenue moved out to the new Community Development fund, leaving $29,566,998 comparable against this year's $32,336,071. 5.0% is set well below that deliberately. One budget-to-budget step in a fast-growing year is not a trend, and the council was warned on the record against leaning on it — 16 June 2026: 'we're using sales tax revenues to fund essential services and that's great as long as you can continue to collect a pile of sales tax revenues in excess of what your needs are. The reality of it is, we're not doing that.'",
+      "confirm": "As far as a negative can be confirmed, yes. A multi-year revenue forecast from the city's finance department would settle this, and the place one would appear does not contain one: the city's most recent audited financial statements contain no instance of the words 'five-year', 'long-range', 'forecast' or 'multi-year' anywhere in them. The city publishes a five-year capital plan; it does not publish a five-year revenue or operating forecast. 5.0% remains this project's assumption and is set well below the budget's own like-for-like step.",
+      "settled": "yes"
+    },
+    "expenditure_growth": {
+      "value": 0.06,
+      "label": "Growth in spending",
+      "summary": "Not a city figure — there is no adopted multi-year plan. 6% sits between ~3% price growth and the city's headcount growth.",
+      "assumption": true,
+      "basis": "Not a city figure — the city has no adopted multi-year plan to take one from. 6.0% sits between the two things that set the cost of running this city. Price growth: staff asked for about 3% and the council said it should be more than that, because 'the average employee of this city is underpaid' (16 June 2026). Caseload growth: the city went from about 32,000 residents in 2017 to about 65,400 in 2025, and its own building department has approved between 1,032 and 1,609 new homes in every year but one since FY2020 — 5,466 of them in the last five years alone, every one of which is a household the city then has to police, plough, light and answer. A city whose caseload grows faster than prices cannot hold expenditure growth to inflation without cutting service per resident, and cannot hold it to population growth without absorbing inflation.",
+      "confirm": "As far as a negative can be confirmed, yes. An adopted five-year financial plan would settle this, and the city's most recent audited financial statements contain no instance of 'five-year', 'long-range', 'forecast' or 'multi-year' anywhere in them; the five-year plan the city does publish is a capital plan, which is a list of projects rather than an operating forecast. A councilmember, in the deliberation after the 6 August hearing closed: 'When I got here, I said, where's our 5-year plan? Where's our 10-year plan? Do we have a 20-year plan? The answer is no to all of those things.' The August recording carries no speaker diarization, so the councilmember is not named here.",
+      "settled": "yes"
+    }
+  },
+  "value_additions": [
+    {
+      "year": 2028,
+      "amount": 1140000000,
+      "label": "QTS data centre — three buildings under construction",
+      "assumption": true,
+      "basis": "Three of the five buildings, at an even share of the $1.9B cross-check above. The split between years is this project's, not the city's; the record gives no completion dates.",
+      "confirm": "Not confirmed, and the search turned up a reason to doubt it that is larger than the roll dates. Every data centre already on Eagle Mountain's roll sits inside a Community Reinvestment Area whose increment is paid straight back out, and value inside a project area is subtracted from the base the certified rate is calculated on. If these buildings land the same way they add nothing to the city's own levy and this row should be zero. See 'What a data centre has actually been worth to this city'. What would settle it: the Utah County Assessor's roll date and assessed value for each building, and whether the parcels fall inside a project area.",
+      "settled": "no"
+    },
+    {
+      "year": 2029,
+      "amount": 760000000,
+      "label": "QTS data centre — two further buildings",
+      "assumption": true,
+      "basis": "The remaining two of five, at the same even share. The city said QTS declined incentives on these two unprompted and will be 'full taxpayers starting day one'.",
+      "confirm": "Not confirmed. These are the two the city said would be full taxpayers, so of the whole $1.9B these are the likeliest to be real — but the same project-area question decides them, and no assessor record has been produced for either. See 'What a data centre has actually been worth to this city'.",
+      "settled": "no"
+    }
+  ],
+  "permit_history": {
+    "heading": "New growth, checked against the city's own permit counts",
+    "lede": "New construction is the only thing that raises money under Utah's system, so this rate decides more than any other input. It used to be a guess between two readings of the published figures. It is now anchored to a count the city keeps itself: how many new homes it approved each year.",
+    "series_label": "New residential permits, by fiscal year",
+    "years": [
+      {
+        "year": 2014,
+        "permits": 371
+      },
+      {
+        "year": 2015,
+        "permits": 410
+      },
+      {
+        "year": 2016,
+        "permits": 579
+      },
+      {
+        "year": 2017,
+        "permits": 782
+      },
+      {
+        "year": 2018,
+        "permits": 920
+      },
+      {
+        "year": 2019,
+        "permits": 883
+      },
+      {
+        "year": 2020,
+        "permits": 1290
+      },
+      {
+        "year": 2021,
+        "permits": 1609
+      },
+      {
+        "year": 2022,
+        "permits": 1440
+      },
+      {
+        "year": 2023,
+        "permits": 573
+      },
+      {
+        "year": 2024,
+        "permits": 1214
+      },
+      {
+        "year": 2025,
+        "permits": 1207
+      },
+      {
+        "year": 2026,
+        "permits": 1032
+      }
+    ],
+    "derivation": "1,032 permits in FY2026, at the $268,400 taxable value the city's own Truth-in-Taxation notice puts on an Eagle Mountain home — 55% of $488,000, the residential exemption applied — is $276,988,800 of new value against a $5,764,530,000 roll. That is 4.81%, and 4.8% is what the model uses. On the five-year average of 1,093 permits it would be 5.09%.",
+    "settles": "It settles the argument this page could not settle before. The city's notice and its certified rate supported two readings of new growth, 0.08% and 7.04%, and this page split the difference at 4.0% and said so. The low reading is now impossible: 0.08% is about $4.5 million of new value, roughly seventeen houses, in a year the city approved 1,032 of them. The high reading, 7.04%, would need about $406 million — some 1,512 homes at the same value, more than any year in this table. The permit count lands between them and much nearer the top.",
+    "corrects": "It also corrects a figure this page carried. At the 6 August hearing a councilmember said the city is 'adding 1,800 building permits a year', and that number was used here for scale. It is above every year on the city's own record: the highest was 1,609 in FY2021, and FY2026 ran 1,032. Had it been right, new growth would work out at about 8.4% — higher than either reading of the published figures. The overstatement runs in the direction of making growth pay for more than it does.",
+    "caveats": [
+      "Houses only. Commercial and industrial construction adds value on top of this and is not in the 4.8%. The data centres are entered separately as named additions below, so they are not double-counted here.",
+      "Permits lead the roll. A house permitted in FY2026 is assessed on the January roll after it is finished, so the permit year and the new-growth year are offset by roughly a year. A permit is also an approval, not a completion.",
+      "The $268,400 is the average home already on the roll, taken from the city's notice, not a newly built one. Whether new construction in Eagle Mountain assesses above or below that average is not something the record settles.",
+      "Growth is not free. Every one of these houses is also a household the city has to serve, which is why the same table is cited under the expenditure growth assumption as well as this one."
+    ],
+    "confirm": "Still the right thing to ask for, and still not published. The Utah County Auditor's certified new-growth figure for Eagle Mountain would replace this derivation with the legal quantity. The Auditor posts the underlying worksheets as 'Report 700' — the 2023 edition for Eagle Mountain is public and is used further down this page — but no 2024, 2025 or 2026 edition has been posted, so the current year cannot be checked that way. One caution the search did add: houses inside a Community Reinvestment Area are subtracted from the certified-rate base along with everything else in the project area, so a building permit is not automatically new growth for the city's own levy.",
+    "source": {
+      "publisher": "Eagle Mountain City",
+      "doc": "New Residential Permits — Fiscal Years, chart provided by city staff",
+      "date": "2026-08-15",
+      "note": "A city figure, supplied on request rather than published in a document, and reproduced here in full. Fiscal years, so FY2026 covers 1 July 2025 to 30 June 2026."
+    },
+    "settled": "no"
+  },
+  "project_areas": {
+    "heading": "What a data centre has actually been worth to this city",
+    "lede": "This page adds $1.9 billion of data-centre value to the tax rolls and lets the city tax it. No other assumption holds the gap down as much. Eagle Mountain already has a data centre, and what it actually pays the city is not what the model assumes.",
+    "finding": "The Utah State Tax Commission's Report 700 lists what sits inside each of the city's redevelopment areas, and how much of the tax on it is paid back out. The Sweetwater areas — the ground the existing campus sits on — hold $300,881,733 of real property and $949,330,872 of personal property. Eagle Mountain's participation in both is 100%: the city levies its rate, and the whole increment goes to the redevelopment agency. Across all five areas that is about $1.42 billion.",
+    "cross_check": "Two independent figures agree. The city's audited statements name Stadion LLC as its largest taxpayer at $305,404,041 — 15.63% of the whole roll, and within 2% of the Sweetwater real-property figure. Stadion LLC is the entity Meta built the campus through. The incentive is on the record too: 20 years of tax increment, 80% of the real property tax to the agency, and a full exemption on personal property.",
+    "why_it_matters": "Value inside a project area is subtracted before the certified rate is calculated (Utah Code § 59-2-924(4)(b)), so it neither raises the rate nor lowers it. If the new buildings land the same way, the $1.9 billion on this page is worth nothing to the General Fund and both rows should be zero. The gap would be worse, not better.",
+    "against_it": "The council was told the opposite, on the record, and this page cannot call that wrong. At the 6 August hearing the city said QTS declined incentives on two of the five buildings and would be “full taxpayers starting day one.” If that holds for all five, the model is right. One document — the assessor's parcel record, or the project-area boundary — would settle it. Neither has been produced.",
+    "sources": [
+      {
+        "title": "Report 700 — Year-End 2023 Project Increment Paid by Entity, Eagle Mountain City Redevelopment Agency",
+        "publisher": "Utah State Tax Commission, Property Tax Division, via the Utah County Auditor",
+        "url": "https://www.utahcounty.gov/Dept/auditor/TaxAdmin/Forms/2023%20Report%20700%20-%20Eagle%20Mountain.pdf",
+        "date": "2024-03-07",
+        "note": "Names the five project areas — Parkside, Pole Canyon, Sweetwater #1, Sweetwater #1 Phase 2 and Pole Canyon CRA — with base year, end year, marginal value and each entity's participation. Sweetwater #1 runs to 2040 and Phase 2 to 2042."
+      },
+      {
+        "title": "Annual Comprehensive Financial Report, FY ended 30 June 2024 — Principal Property Tax Payers, p. 98",
+        "publisher": "Eagle Mountain City, source: Utah County Assessor",
+        "url": "https://eaglemountain.gov/wp-content/uploads/2025/01/EMC-ACFR-2024.pdf",
+        "date": "2024-06-30",
+        "note": "Stadion LLC at $305,404,041 and 15.63% of city taxable value, rank 1. The same company appears in the principal employers table at 96 employees."
+      }
+    ]
+  },
+  "value_additions_derivation": {
+    "heading": "Where the $1.9 billion comes from",
+    "text": "The city never stated a taxable value for the data centres. It stated what each taxing entity would collect, and those figures cross-check. Dividing each by that entity's 2025 adopted rate for the tax area covering most of Eagle Mountain gives the same answer four times over.",
+    "rows": [
+      {
+        "who": "Lake Mountain School District",
+        "amount": 10400000,
+        "rate": 0.005774,
+        "rate_note": "at Alpine School District's 2025 rate — Lake Mountain's own is not yet set",
+        "implies": 1801178
+      },
+      {
+        "who": "Unified Fire Service Area",
+        "amount": 3200000,
+        "rate": 0.00165,
+        "rate_note": "2025 adopted",
+        "implies": 1939394
+      },
+      {
+        "who": "Utah County",
+        "amount": 1700000,
+        "rate": 0.000893,
+        "rate_note": "2025 adopted",
+        "implies": 1903696
+      },
+      {
+        "who": "Eagle Mountain City",
+        "amount": 2700000,
+        "rate": 0.0015,
+        "rate_note": "the rate adopted that night — see the caveat",
+        "implies": 1800000
+      }
+    ],
+    "caveat": "The city's own line was given as '$2.7 million a year' at 'our current tax rate'. At the rate actually current that night — 0.000534 — $2.7M would need a $5.06 billion tax base, which is nearly the entire city. Against the 0.001500 the council adopted an hour later it implies $1.80 billion, in line with the other three. The speaker was using 'current' loosely; the page treats the $2.7M as being at the adopted rate and says so rather than reconciling it silently.",
+    "check": "At $1.9 billion the combined all-entity rate of 0.009377 yields $17.8M against the 'over $19 million' stated. The gap is consistent with Lake Mountain School District setting a rate above Alpine's, which it has not yet done.",
+    "source": {
+      "meeting": 747,
+      "date": "2026-08-06",
+      "speaker": "Mayor Jared Gray, relaying figures supplied by QTS",
+      "quote": "The impact will generate over $19 million a year for our local jurisdictions… Just for Eagle Mountain City alone, in our current tax rate, that would be $2.7 million a year. The Utah County would get $1.7 million… Lake Mountain School District on the current high building would get $10.4 million a year… Unified Fire District under the current taxing system would get $3.2 million."
+    },
+    "why_it_matters": "New construction is new growth, and new growth is the one thing the certified rate does not claw back — the city keeps it at whatever rate it is levying. So what the data centres are worth to Eagle Mountain depends entirely on the rate: $1.9 billion yields about $1.0M a year at the certified rate and about $2.9M at 0.001500. That is Councilmember Whiting's point on 6 August, in arithmetic: 'the only way we can make them pay more is to increase the tax rate.'"
+  },
+  "adjustments": [
+    {
+      "year": 2028,
+      "amount": 412000,
+      "recurring": true,
+      "side": "expenditure",
+      "label": "Two more sworn deputies",
+      "illustrative": true,
+      "note": "The Sheriff's Office workload study pointed to 11–13 more sworn; FY2026–27 funds seven — one sergeant and six deputies, about $1.44 million, roughly $206,000 a position. This phases two of the remaining four to six. It is drawn from the record but it is not an adopted plan, and the council has not voted on any position beyond the seven.",
+      "source": {
+        "meeting": 743,
+        "date": "2026-04-14",
+        "speaker": "Chief Deputy Erik Knutzen, Utah County Sheriff's Office",
+        "quote": "Based on the workload study, an increase of 11 to 13 sworn total is what we're looking at, what we need. Right now, we're too lean. We're not failing. We're not collapsing… We're lean, and in this case, lean means fragile."
+      }
+    },
+    {
+      "year": 2029,
+      "amount": 412000,
+      "recurring": true,
+      "side": "expenditure",
+      "label": "Two more sworn deputies",
+      "illustrative": true,
+      "note": "The second pair, on the same basis. Recurring, not one-time — the Sheriff told the 6 August hearing so directly: 'These deputies that we hire will be ongoing expenses year over year with their salaries.'",
+      "source": {
+        "meeting": 747,
+        "date": "2026-08-06",
+        "speaker": "Mayor Jared Gray, summing up after public comment closed",
+        "quote": "Impact fees and grants, those are all one-time monies. These deputies that we hire will be ongoing expenses year over year with their salaries."
+      }
+    },
+    {
+      "year": 2028,
+      "amount": 0,
+      "recurring": true,
+      "side": "expenditure",
+      "label": "Withdrawal from the Unified Fire Service Area",
+      "confirm": "Left at zero on purpose. On 19 May 2026 the council resolved to initiate the city's withdrawal from UFSA and contract directly with UFA. Two things move at once and the record settles neither: the city stops sitting inside a separate taxing entity that levies 0.001650 on Eagle Mountain property, and it starts paying a fire contract out of its own budget. One councilmember credited Mayor Gray with finding 'potential significant savings by restructuring our relationship with Unified Fire — that could be millions in savings for the city'; another told the same hearing 'next year we're gonna be right back here again as we go through the UFSA'. Both can be true. To model it, three figures are needed: the UFA contract amount, the share of the UFSA levy that transfers into the city's own rate, and the effective date. None of the three is public, so this row stays at zero. Two of the surrounding facts are now confirmed. The UFSA levy of 0.001650 is right: the city's audited statements put UFSA at 0.001346 on Eagle Mountain property in FY2024, and the UFSA board approved a 23% increase on 10 December 2024 — worth $11.47M across its twelve jurisdictions and, on the city's own telling, $93.23 a year on the average Eagle Mountain home — which lands the rate at about 0.001656. And there is a precedent for the reverse move, in this city: when fire service went to UFA in 2013 Eagle Mountain cut its own certified rate from 0.001559 to 0.001380, an 11.5% reduction. Taking the service back is that transaction run backwards, and the size of it is roughly three times the city's entire current levy.",
+      "source": {
+        "meeting": 725,
+        "date": "2026-05-19",
+        "speaker": "Item 14.C., read from the agenda",
+        "quote": "This one's a resolution of Eagle Mountain City initiating the city's withdrawal from United Fire Service Area."
+      },
+      "settled": "partly"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "none",
+      "name": "No increase — certified rate",
+      "short": "No increase",
+      "rate_label": "Certified rate",
+      "blurb": "The county-calculated 2026 “no tax increase” rate.",
+      "rate_noun": "The certified rate",
+      "description": "Utah County calculated this as the FY2026–27 certified, or “no tax increase,” rate. It is slightly lower than the 0.000534 rate shown on current tax bills.",
+      "closer": "This scenario shows what the city's budget would look like without the council-approved tax increase. It also represents the rate that would apply if the referendum succeeds.",
+      "method": "revenue_based",
+      "start_rate": 0.00053,
+      "years": {},
+      "source": {
+        "meeting": 726,
+        "date": "2026-06-16",
+        "doc": "Proposed Property Tax Impact Schedule, 18 June 2026",
+        "quote": "Property Tax Rate with no increase — 0.000530"
+      }
+    },
+    {
+      "id": "half",
+      "name": "Middle — illustrative rate",
+      "short": "Middle",
+      "rate_label": "A partial increase",
+      "blurb": "A middle rate nobody proposed, included by this project to show what a smaller increase would close.",
+      "rate_noun": "The rate",
+      "description": "This is a hypothetical middle option created for this analysis. It was not proposed by the City Council or set by Utah County.",
+      "closer": "This scenario shows how a smaller increase might affect the city's projected budget gap.",
+      "method": "revenue_based",
+      "start_rate": 0.00105,
+      "years": {},
+      "assumption": true,
+      "basis": "A round figure a little above the midpoint of the two rates that are real. Halfway between the 0.000530 certified rate and the 0.001500 adopted rate is 0.001015; 0.001050 rounds that to the nearest half-tenth of a mill and lands inside the range the city itself levied a decade ago, between the 0.001081 of FY2017 and the 0.001011 of FY2018. Nothing in the record proposes it."
+    },
+    {
+      "id": "adopted",
+      "name": "Adopted — council-approved rate",
+      "short": "Adopted",
+      "rate_label": "Council-adopted rate",
+      "blurb": "The rate the City Council adopted on 6 August 2026.",
+      "rate_noun": "The adopted rate",
+      "description": "The City Council approved this rate by a 5–0 vote on August 6, 2026. The city originally gave public notice of a 0.001700 rate, but the council lowered it before voting.",
+      "closer": "This is the rate currently approved unless it is changed or repealed.",
+      "method": "revenue_based",
+      "start_rate": 0.0015,
+      "years": {},
+      "source": {
+        "meeting": 747,
+        "date": "2026-08-06",
+        "speaker": "Councilmember Craig Whiting, moving; seconded by Councilmember Brett Wright",
+        "quote": "Approves and adopts a property tax rate of 0.001500 for fiscal year 2026 to 2027. This rate exceeds the certified tax rate of 0.000530 and will result in an increase in the city's ad valorem property tax budgeted revenue of approximately $5,591,594, or 183.02% above the city's property tax budgeted revenue for the prior year, exclusive of new growth."
+      }
+    }
+  ],
+  "definitions": {
+    "no_increase": {
+      "heading": "What “no tax increase” means here",
+      "revenue_based": "Utah caps the money, not the rate. Each year the county sets a certified rate: the rate that brings in the same dollars from existing homes as last year. When values rise, the rate drops to cancel it out. Charging that rate is legally “no increase.” Two things follow. A household's city tax barely moves. And the city's revenue only grows by what new construction adds.",
+      "warning": "Three rates are easy to mix up. 0.000534 is on today's bills. 0.000530 is the 2026 certified rate — the no-increase rate, recalculated by Utah County on 22 June. 0.001500 is what the council adopted. Only 0.000530 counts as no increase; even the old 0.000534 would be slightly more.\n\nThe full series the city levied, FY2015 to FY2024: 0.001192, 0.001118, 0.001081, 0.001011, 0.000924, 0.000825, 0.000769, 0.000724, 0.000541, 0.000524.",
+      "statute": {
+        "cite": "Utah Code § 59-2-924",
+        "confirm": "Against the statute, this page's arithmetic is the right shape and a simplification. § 59-2-924(1)(g) defines the certified tax rate as 'a tax rate that will provide the same ad valorem property tax revenue for a taxing entity as was budgeted by that taxing entity for the prior year', which is what the engine computes. Subsection (4)(a) divides prior-year budgeted revenue, less qualifying exempt revenue, by the base in (4)(b) — and (4)(b) is where the differences are. It takes aggregate taxable value, subtracts current-year incremental adjustments (redevelopment and community-reinvestment increment, which is why the project-area finding below matters), adjusts by the three-year average percentage change in property values, multiplies by the five-year average collection rate, and only then subtracts collection-adjusted eligible new growth. Subsection (1)(i) defines eligible new growth as the greater of zero or the sum of locally assessed, centrally assessed and project-area new growth. Subsection (6) keeps judgment levies out of the calculation entirely. This page models none of the three- and five-year smoothing and none of the increment adjustment: it is a one-year, one-rate reading of a formula that averages. Treat figures here as planning estimates, not legal quantities.",
+        "settled": "yes"
+      },
+      "misreading": "Most people picture “no increase” as the rate staying put. In Utah it is nearly the opposite: a flat rate on rising values takes more from the same house every year, and a city doing that has to hold a Truth-in-Taxation hearing first. Eagle Mountain's rate did not stay flat. It fell every year for the ten years to FY2024, from 0.001192 to 0.000524. The city's own explainer puts it plainly: “Growth, not rate increases, carried the city's budget for 15 years.”"
+    },
+    "gap": {
+      "tag": "The word this page uses most",
+      "heading": "A gap is one year's money in, minus that year's money out",
+      "text": "General Fund only, one fiscal year at a time. Money in is what that year brings in — property tax, sales tax, the energy tax, fees. Money out is what the city has appropriated, carried forward at the growth rates this page assumes. Below zero the page calls it a deficit and above zero a surplus; “gap” covers both, and every chart, table and card here uses it that way.",
+      "structural": "A draw on savings is not money in. That single exclusion is why a budget can balance to the dollar and this page can still show a gap: the interim budget balances by counting fund balance as revenue, and reserves close a gap once — they cannot be drawn again the year after. Taking them out is what makes the figure structural rather than an accounting result.",
+      "cumulative": "The six-year figure adds the annual gaps together. It is a size, not a debt the city carries. Each year's gap has to be closed when that year's budget is adopted — by the levy, by cuts, or by reserves — so the running total measures how much closing the period takes altogether, not a balance owed at the end of it."
+    }
+  },
+  "reconciliation": {
+    "heading": "How FY2026–27 relates to the adopted budget",
+    "text": "The interim budget balances exactly: $42,650,441 of revenue against $42,650,441 of appropriations. It gets there on two things a structural gap measure cannot use — a draw on reserves counted as revenue, and a property-tax line built on the 0.001700 the city noticed rather than any rate since set. Take both out and put this scenario's own levy back in, and you get the FY2026–27 figure on this page.",
+    "balanced": 0,
+    "reserve_draw": 516231,
+    "interim_levy": 9798139,
+    "reserve_note": "'Beginning General Fund Balance to be Appropriated'. It balances a budget; it does not close a gap, and it cannot be drawn twice.",
+    "levy_note": "The interim budget's two property-tax lines together — 'Property Taxes' $2,839,998 plus 'Property Taxes Interim Budget' $6,958,141. The 18 August adoption trues this up to whatever rate stands.",
+    "rounding_note": "Levies here are this model's rate × taxable value. At 0.001700 that gives $9,799,701 against the $9,798,139 the city published — $1,562 apart, because the city computed its schedule from an unrounded rate."
+  },
+  "interpretation": {
+    "heading": "What a gap does and doesn't mean",
+    "lede": "A gap is arithmetic on two projected lines. It is not a forecast that any service will be cut. A council closes one with some mix of the following, and which mix is a choice nobody has made yet.",
+    "options": [
+      "Spend less — delay hiring, leave jobs unfilled, trim budgets",
+      "Do less — mow less often, slower response times, fewer programmes",
+      "Wait — push projects and maintenance into later years",
+      "Use savings — works once, and only while they last",
+      "Find other money — fees, grants, sales-tax growth, new commercial value",
+      "Grow differently — slow annexation and approvals, or change what the city does in-house"
+    ],
+    "closer": ""
+  },
+  "disclaimer": "Planning estimates from Civic Roll Call, built from the city's published budget and the recordings of its open meetings. Not an adopted budget, not a city forecast, and not a prediction that anything will be cut. The city publishes no multi-year plan. Change any flagged number and every figure here changes.",
+  "sources": [
+    {
+      "title": "Resolution adopting a property tax rate of 0.001500 for FY2026–27",
+      "publisher": "Eagle Mountain City Council",
+      "meeting": 747,
+      "date": "2026-08-06",
+      "note": "Passed 5–0. Supplies the adopted rate, the $5,591,594 increase, the 183.02%, and — in the deliberation and the public hearing before it — the QTS figures, the UFSA commitment and the annual-review commitment. It is also where a councilmember put the city's growth at '1,800 building permits a year', which the city's own permit counts do not bear out; see the permit table under the assumptions."
+    },
+    {
+      "title": "New Residential Permits — Fiscal Years, FY2014 to FY2026",
+      "publisher": "Eagle Mountain City",
+      "date": "2026-08-15",
+      "note": "The city's own count of new residential permits issued in each of the last thirteen fiscal years, provided by city staff on request rather than published in a document. It is what the 4.8% new-growth rate is derived from, and it is the check that rules out the near-zero reading of new growth the tax notice appeared to support."
+    },
+    {
+      "title": "Notice of Proposed Tax Increase — Eagle Mountain City",
+      "publisher": "Eagle Mountain City",
+      "url": "https://eaglemountain.gov/wp-content/uploads/2026/07/updated-tax-notice-6.22.2026.pdf",
+      "date": "2026-06-22",
+      "note": "The statutory notice: the 0.001700, the $6,742,938, the 220.88% and its 'excluding eligible new growth' basis."
+    },
+    {
+      "title": "Proposed Property Tax Impact Schedule",
+      "publisher": "Eagle Mountain City",
+      "url": "https://eaglemountain.gov/wp-content/uploads/2026/06/Proposed-Property-Tax-Impact-Schedule-June-2026.pdf",
+      "date": "2026-06-18",
+      "note": "Prints the 2026 certified rate of 0.000530 and the $3,055,201 it would raise — the two figures the citywide taxable value is derived from."
+    },
+    {
+      "title": "FY2026–27 interim budget, adopted 4–1",
+      "publisher": "Eagle Mountain City via ClearGov line items",
+      "meeting": 726,
+      "date": "2026-06-16",
+      "note": "The General Fund baseline: $42,650,441 of appropriations, the revenue lines behind the $32,336,071, and the reorganisation that moved planning and building inspection into the new Community Development fund."
+    },
+    {
+      "title": "FY2026–27 budget work session — the line-by-line review of new positions",
+      "publisher": "Eagle Mountain City Council",
+      "meeting": 748,
+      "date": "2026-05-26",
+      "note": "Where the freed sales tax was first itemised on the record: the $525,000 wage lift to 90% of the market median, the twenty-eight positions at about $2.6 million with $1.3 million hitting the General Fund, the school-zone speed tables at $28,000–$30,000 apiece, and the $419 million transportation plan. It is the source for most of 'Where a shortfall lands'."
+    },
+    {
+      "title": "Sheriff's Office staffing presentation",
+      "publisher": "Utah County Sheriff's Office",
+      "meeting": 743,
+      "date": "2026-04-14",
+      "note": "0.45 sworn per 1,000, 65–70% patrol saturation, 25,699 calls for service, seven positions requested against 11–13 indicated by the workload study."
+    },
+    {
+      "title": "Resolution initiating withdrawal from the Unified Fire Service Area",
+      "publisher": "Eagle Mountain City Council",
+      "meeting": 725,
+      "date": "2026-05-19",
+      "note": "Item 14.C. The change that makes FY2027–28 unmodellable without three figures the record does not contain."
+    },
+    {
+      "title": "2025 Tax Rates by Tax Area, Report 600",
+      "publisher": "Utah State Tax Commission, Property Tax Division",
+      "url": "https://files.tax.utah.gov/propertytax/tax-rates/area-rates/taxarearates2025.pdf",
+      "date": "2026-01-05",
+      "note": "Every entity's rate in tax area 038-0000 — what the data-centre valuation is cross-checked against."
+    },
+    {
+      "title": "Utah Code § 59-2-924 — certified tax rate",
+      "publisher": "Utah Legislature",
+      "url": "https://le.utah.gov/xcode/Title59/Chapter2/59-2-S924.html",
+      "note": "The statute behind the revenue-based mechanism. The engine implements a simplified reading of it; see the methodology section."
+    },
+    {
+      "title": "Annual Comprehensive Financial Report, fiscal year ended 30 June 2024",
+      "publisher": "Eagle Mountain City (audited)",
+      "url": "https://eaglemountain.gov/wp-content/uploads/2025/01/EMC-ACFR-2024.pdf",
+      "date": "2024-06-30",
+      "note": "The city's own audited statements, and the document that settled most of what this page had flagged. Its statistical section supplies the eleven-year collection record from the Utah County Treasurer, ten years of taxable assessed value from the Utah State Tax Commission, ten years of the rate the city actually levied, the overlapping UFSA rate, and the principal taxpayer and employer tables. It is also the strongest evidence for a negative: it contains no five-year plan, no long-range outlook and no forecast of any kind. The FY2025 report has not been published."
+    },
+    {
+      "title": "Report 700 — Year-End 2023 Project Increment Paid by Entity, Eagle Mountain City Redevelopment Agency",
+      "publisher": "Utah State Tax Commission, Property Tax Division, via the Utah County Auditor",
+      "url": "https://www.utahcounty.gov/Dept/auditor/TaxAdmin/Forms/2023%20Report%20700%20-%20Eagle%20Mountain.pdf",
+      "date": "2024-03-07",
+      "note": "Every Eagle Mountain project area with its marginal value and the share of each entity's tax paid back out. About $1.42 billion of value sits inside them, the city participating at 60–100%, with end years of 2040 and 2042. This is the document behind 'What a data centre has actually been worth to this city'."
+    },
+    {
+      "title": "Utah Code § 59-2-924 — Definitions, certified tax rate, calculation",
+      "publisher": "Utah State Legislature",
+      "url": "https://le.utah.gov/xcode/Title59/Chapter2/59-2-S924.html",
+      "date": "2026-08-15",
+      "note": "Confirms the mechanism this page models and names the four things it leaves out: qualifying exempt revenue, the three-year average change in property values, the five-year average collection rate, and the subtraction of project-area increment from the value base."
+    },
+    {
+      "title": "Your Property Tax, Explained",
+      "publisher": "Eagle Mountain City",
+      "url": "https://eaglemountain.gov/truth-in-taxation-property-tax/your-property-tax-explained/",
+      "date": "2026-08-15",
+      "note": "The city's own account of the fifteen years: the levy rate falling from about 0.001781 in 1997 to 0.000530 in 2026, the 2003 and 2010 Truth-in-Taxation increases, the 2013 cut from 0.001559 to 0.001380 when fire service moved to UFA, and its own summary — 'Growth, not rate increases, carried the city's budget for 15 years.'"
+    },
+    {
+      "title": "2025 Annual Statistical Report of Property Taxes",
+      "publisher": "Utah State Tax Commission",
+      "url": "https://files.tax.utah.gov/propertytax/annual-reports/2025annual.pdf",
+      "date": "2025-12-31",
+      "note": "Supplies the five-year statewide average collection rate of 93.88% that the certified-rate formula uses. Eagle Mountain is not broken out; the statewide figure is well below the city's own, which is why the city's audited record was used instead."
+    }
+  ],
+  "scenario_basis": {
+    "heading": "What separates the three",
+    "text": "One number: the rate charged in FY2026–27. Two of the three are real — the certified 0.000530 on the city's impact schedule, and the 0.001500 the council adopted. The 0.001050 in the middle is this project's own what-if, put there because the record holds no partial increase to model; it is labelled as an assumption wherever it appears. After that first year all three behave the same: the county recalculates the rate, and the city keeps what new construction adds. That is why the first year compounds — the certified rate carries forward whatever base it starts from.",
+    "note": "On 6 August the council promised an ordinance requiring an annual rate review. It named no number, so no scenario models one.",
+    "expenditure_note": "It is the council's own adopted FY2026–27 plan, grown forward. So this is not a claim that the city would have adopted that budget without the money — it is the gap that plan faces at the certified rate."
+  },
+  "exposure": {
+    "heading": "Where the money would have to come from",
+    "lede": "A gap does not fall evenly across $42,650,441. Most of the General Fund is under contract, or paid for with money that can only legally be spent on one thing. What is left is far smaller than the budget.",
+    "pool": {
+      "_departments_comment": "Not rendered. These fed the per-department bar chart, which was cut: its top four bars duplicated the tiers table above it and its tail was fourteen identical stubs. Kept because the figures are the city's own line items and the strain notes are sourced to the record, so the chart is recoverable if it is ever wanted back.",
+      "total": 42650441,
+      "total_label": "FY2026–27 General Fund spending",
+      "tiers": [
+        {
+          "key": "contract",
+          "label": "Under contract — public safety",
+          "amount": 10837430,
+          "note": "The Utah County Sheriff's contract and dispatch. Covering this line was the whole point of the increase: the impact schedule names it at $9,798,139, to the dollar the same as the proposed property tax. It is a signed agreement. A shortfall does not reopen it, and neither would a referendum.",
+          "source": {
+            "meeting": 726,
+            "date": "2026-06-16",
+            "doc": "Proposed Property Tax Impact Schedule, 18 June 2026"
+          }
+        },
+        {
+          "key": "agreements",
+          "label": "Under contract — development agreements",
+          "amount": 6834679,
+          "note": "Filed as Economic Development, but almost entirely one account: signed agreements with developers, paid out as the development happens.",
+          "confirm": "The FY2026–27 line items break it down: 'Development Agreements' is $6,480,000 of the department's $6,834,679 — 94.81%. That leaves $354,679 a council could reach.",
+          "source": {
+            "file": "data.budget-book.json",
+            "publisher": "Eagle Mountain City FY2025–26 line items, account 10-18-41910-6525"
+          },
+          "settled": "yes"
+        },
+        {
+          "key": "transfers",
+          "label": "Transfers to the city's other funds",
+          "amount": 6529840,
+          "confirm": "It cuts against this page. The transfers are 'Due To Cap Proj Fund' $6,393,350 and 'Due To GIS Fund' $136,490. None is debt service. The Capital Projects Fund then spends nearly all of it on named projects — Pony Express Parkway $3,360,000, Campus Drive $2,790,000, land $2,500,000, Airport Road $2,000,000 — against a single $800,000 debt-service transfer. So this is mostly deferrable capital, not a fixed obligation, and holding all $6.5M back understates what a council could reach. It is left here and flagged.",
+          "source": {
+            "file": "data.budget-next.json"
+          },
+          "settled": "yes"
+        },
+        {
+          "key": "restricted",
+          "label": "Funded by restricted road and transit money",
+          "amount": 6270607,
+          "note": "Streets & Roads, set against $6,499,458 that can only be spent on roads and transit — Class B&C $3,154,287, transit tax $1,284,350, public transportation $510,821, street-light contributions $1,500,000, plus small state allotments. That slightly exceeds the department, so counting all of it as spoken for is the cautious read. Cutting this saves nothing: the money leaves with it.",
+          "source": {
+            "file": "data.budget-next.json"
+          }
+        }
+      ],
+      "reachable_label": "What is left — the part a council can change",
+      "reachable_note": "Parks, streets not covered by road funds, recreation, the library, open space, special events, and all of city hall. A gap comes out of here — unless the council reopens something above, finds other money, or spends savings.",
+      "method_note": "The grouping is this project's reading of the FY2026–27 line items. Every department figure is the city's own.",
+      "departments": [
+        {
+          "name": "Public Safety",
+          "total": 10837430,
+          "tier": "contract"
+        },
+        {
+          "name": "Economic Development",
+          "total": 6834679,
+          "tier": "agreements"
+        },
+        {
+          "name": "Transfers out",
+          "total": 6529840,
+          "tier": "transfers"
+        },
+        {
+          "name": "Streets & Roads",
+          "total": 6270607,
+          "tier": "restricted",
+          "strained": true,
+          "strain_note": "“All we can afford to do is crack seal.”"
+        },
+        {
+          "name": "Parks",
+          "total": 4010939,
+          "tier": "reachable",
+          "strained": true,
+          "strain_note": "Ten full-time staff for sixty-eight parks, and “our parks are in poor repair”."
+        },
+        {
+          "name": "Library",
+          "total": 1002737,
+          "tier": "reachable"
+        },
+        {
+          "name": "Recreation",
+          "total": 715971,
+          "tier": "reachable",
+          "strained": true,
+          "strain_note": "The trails the paver cannot build for want of anyone to run it."
+        },
+        {
+          "name": "Executive",
+          "total": 633349,
+          "tier": "reachable"
+        },
+        {
+          "name": "Special Events",
+          "total": 611493,
+          "tier": "reachable"
+        },
+        {
+          "name": "Information Technology",
+          "total": 579078,
+          "tier": "reachable"
+        },
+        {
+          "name": "Neighborhood Improvement",
+          "total": 559755,
+          "tier": "reachable"
+        },
+        {
+          "name": "Finance",
+          "total": 542927,
+          "tier": "reachable"
+        },
+        {
+          "name": "Human Resources",
+          "total": 477034,
+          "tier": "reachable"
+        },
+        {
+          "name": "Operations & Facilities",
+          "total": 463363,
+          "tier": "reachable"
+        },
+        {
+          "name": "Open Space",
+          "total": 458274,
+          "tier": "reachable",
+          "strained": true,
+          "strain_note": "Named at the hearing among the things the city cannot keep up with."
+        },
+        {
+          "name": "Accounting",
+          "total": 328363,
+          "tier": "reachable"
+        },
+        {
+          "name": "Attorney",
+          "total": 308054,
+          "tier": "reachable"
+        },
+        {
+          "name": "Legislative & Strategic Svcs",
+          "total": 276147,
+          "tier": "reachable"
+        },
+        {
+          "name": "Risk Management",
+          "total": 239379,
+          "tier": "reachable"
+        },
+        {
+          "name": "Legislative",
+          "total": 230759,
+          "tier": "reachable"
+        },
+        {
+          "name": "City Recorder's Office",
+          "total": 230214,
+          "tier": "reachable"
+        },
+        {
+          "name": "Communications",
+          "total": 194819,
+          "tier": "reachable"
+        },
+        {
+          "name": "Engineering",
+          "total": 182890,
+          "tier": "reachable"
+        },
+        {
+          "name": "Customer Services",
+          "total": 132340,
+          "tier": "reachable"
+        }
+      ]
+    },
+    "earmarked": {
+      "heading": "What the city said the money was for",
+      "lede": "Property tax was not buying deputies. It was moving the whole Sheriff's contract off sales tax, which had been quietly covering it. The freed-up sales tax is the money that actually moves — and the council said twice, on the record, what it was freed up for. A shortfall is this list not happening.",
+      "items": [
+        {
+          "figure": "$525,000",
+          "label": "Wages",
+          "text": "Bringing city staff to 90% of the market median. Not above average — to the middle."
+        },
+        {
+          "figure": "$1.3M to the General Fund",
+          "label": "Twenty-eight positions",
+          "text": "About $2.6 million all in; the rest is covered by permit, development and utility fees. The heaviest concentration is parks, open space and streets crews."
+        },
+        {
+          "figure": "$28,000–$30,000 each",
+          "label": "School zones",
+          "text": "Concrete speed tables at Silver Lake, Brookhaven, Mountain Trails and Desert Sky, plus a study of the city's other problem streets. The city engineer's figure on 26 May; a councilmember quoted $70,000–$80,000 at the hearing."
+        }
+      ],
+      "source": {
+        "meeting": 748,
+        "date": "2026-05-26",
+        "speaker": "Councilmember Melissa Clark, in the budget work session",
+        "quote": "It's really important for our residents to hear that when we talk about a tax increase, it's not for the things that are on this paper, but without a tax increase, we're going to have to continue subsidizing the public safety part, the cost of our budget, with other areas of revenue."
+      },
+      "note": "Named on 26 May and again at the 6 August hearing. Not a published plan — but not a secret either, and it is what the record has."
+    },
+    "voices": {
+      "heading": "What the council said would give",
+      "lede": "Said in public, before the vote, by the people who would have to make the choice.",
+      "quotes": [
+        {
+          "quote": "Going the other direction with this, that means that we're going to have to say no to things. And I think if you're okay with that as citizens and you're like, we understand there's not money for us to do all the trails, there's not money for us to keep our parks where they need to be, we don't have enough people to even take care of those… But if we continue on the path that was laid for us, everything is going to be in disrepair that's going to cost 2 and 3 times the amount to bring it back to a level that's acceptable.",
+          "speaker": "A councilmember, in the deliberation after the hearing closed",
+          "meeting": 747,
+          "date": "2026-08-06"
+        },
+        {
+          "quote": "We hear you when you say our parks are in poor repair, our parkways are not being taken care of, I can't ride my motorcycle down the road because all we can afford to do is crack seal. We can't raise the level of how we're taking care of the city because we don't have the funds to do so.",
+          "speaker": "A councilmember, in the deliberation after the hearing closed",
+          "meeting": 747,
+          "date": "2026-08-06"
+        },
+        {
+          "quote": "If you guys knew how many employees we had at the parks, it'd probably make you mad. I think it's like 10, isn't it, full-time employees for 68 parks? I mean, that's not going to come from nowhere.",
+          "speaker": "A councilmember, in the deliberation after the hearing closed",
+          "meeting": 747,
+          "date": "2026-08-06"
+        },
+        {
+          "quote": "Why don't we have our paver machine out every day making trails in the city and connecting? And the response to me is, I need people to run it. We've got the machine, we just don't have the people.",
+          "speaker": "A councilmember, relaying a department head, at the interim budget hearing",
+          "meeting": 726,
+          "date": "2026-06-16"
+        }
+      ]
+    },
+    "caveat": "This shows which parts of the budget a gap would come out of, and what the city said the money was for. It does not say any of it will be cut. The city has adopted no plan of reductions, and the record shows this council chasing other routes — federal money, data-centre value, restructuring the fire relationship, and a promise to revisit the rate if the money arrives.",
+    "order": {
+      "heading": "What gets cut first",
+      "lede": "A shortfall is not taken from one department. It is spread, in a fairly predictable order — not by importance, but by what can be cut inside a year without breaking a contract, misspending restricted money, or laying anyone off. That puts maintenance first and people last, which is why a squeezed city always looks the same: grass cut less often, potholes patched instead of resurfaced, equipment kept a year longer.",
+      "basis": "The four steps are the reachable pool split by spending category. The split is this project's: the FY2026–27 line items give each department's total but not its mix, so each department's FY2025–26 mix is applied. Four departments created this year take the blended average of the rest.",
+      "confirm": "The city's FY2026–27 object detail by department. It exists in the accounting system; it is simply not in the published line-item feed.",
+      "rungs": [
+        {
+          "key": "maintenance",
+          "label": "Maintenance, materials and services",
+          "amount": 4015444,
+          "why": "Cut first because it is the only thing that can be: no vote, no broken agreement, nobody loses a job — the work simply isn't done this year. Not a prediction. It is already happening:",
+          "what": "This is the mowing, the tree work, the trail and playground repair, the equipment upkeep and the contracted services in every reachable department.",
+          "lines_note": "The city's own budget-book figures, account by account: what it estimated FY2025 would finish at, against what it then adopted for FY2025–26.",
+          "lines": [
+            {
+              "name": "City Wide Trees",
+              "dept": "Parks",
+              "account": "10-41-45100-5430",
+              "fy24a": 195300,
+              "fy25e": 180000,
+              "adopted": 11943
+            },
+            {
+              "name": "Landscape Maintenance",
+              "dept": "Parks",
+              "account": "10-41-45100-5410",
+              "fy24a": 118000,
+              "fy25e": 120000,
+              "adopted": 61049
+            },
+            {
+              "name": "Park Amenities Repair/Replace",
+              "dept": "Parks",
+              "account": "10-41-45100-5405",
+              "fy24a": 104000,
+              "fy25e": 104000,
+              "adopted": 66939
+            },
+            {
+              "name": "Parks Trail Maintenance",
+              "dept": "Parks",
+              "account": "10-41-45100-5420",
+              "fy24a": 100000,
+              "fy25e": 100000,
+              "adopted": 96346
+            },
+            {
+              "name": "Building & Grounds Maintenance",
+              "dept": "Operations & Facilities",
+              "account": "10-19-41950-2610",
+              "fy24a": 80000,
+              "fy25e": 80000,
+              "adopted": 94255
+            },
+            {
+              "name": "Equipment Supplies and Mainten",
+              "dept": "Parks",
+              "account": "10-41-45100-2513",
+              "fy24a": 40000,
+              "fy25e": 35000,
+              "adopted": 32418
+            },
+            {
+              "name": "Equipment Supplies & Maintnanc",
+              "dept": "Operations & Facilities",
+              "account": "10-19-41950-2513",
+              "fy24a": 27000,
+              "fy25e": 30165,
+              "adopted": 18826
+            },
+            {
+              "name": "Building & Grounds Maintenance",
+              "dept": "Parks",
+              "account": "10-41-45100-2610",
+              "fy24a": 31000,
+              "fy25e": 24000,
+              "adopted": 23154
+            },
+            {
+              "name": "Equipment Supplies & Maint.",
+              "dept": "Recreation",
+              "account": "10-18-41940-2513",
+              "fy24a": 6000,
+              "fy25e": 6000,
+              "adopted": 4714
+            },
+            {
+              "name": "Landscape Maintenance",
+              "dept": "Open Space",
+              "account": "10-41-45200-5410",
+              "fy24a": 45000,
+              "fy25e": 0,
+              "adopted": 0
+            }
+          ],
+          "lines_total": {
+            "fy24a": 746300,
+            "fy25e": 679165,
+            "adopted": 409644
+          },
+          "road_lines": [
+            {
+              "name": "Paved Road Maint.",
+              "dept": "Streets & Roads",
+              "account": "10-41-44100-5122",
+              "fy24a": 1850000,
+              "fy25e": 1650000,
+              "adopted": 1255149
+            },
+            {
+              "name": "Street Light Maintenance",
+              "dept": "Streets & Roads",
+              "account": "10-41-44100-5141",
+              "fy24a": 290000,
+              "fy25e": 240000,
+              "adopted": 301945
+            },
+            {
+              "name": "Seal Coat Road Maint",
+              "dept": "Streets & Roads",
+              "account": "10-41-44100-5125",
+              "fy24a": 0,
+              "fy25e": 150000,
+              "adopted": 0
+            },
+            {
+              "name": "Equipment Supplies and Mainten",
+              "dept": "Streets & Roads",
+              "account": "10-41-44100-2513",
+              "fy24a": 77000,
+              "fy25e": 72000,
+              "adopted": 90055
+            },
+            {
+              "name": "Snow Removal",
+              "dept": "Streets & Roads",
+              "account": "10-41-44100-5123",
+              "fy24a": 100000,
+              "fy25e": 90000,
+              "adopted": 78087
+            },
+            {
+              "name": "Sidewalk Maintenance",
+              "dept": "Streets & Roads",
+              "account": "10-41-44100-5124",
+              "fy24a": 85000,
+              "fy25e": 85000,
+              "adopted": 38655
+            },
+            {
+              "name": "Street Sign Maintenance",
+              "dept": "Streets & Roads",
+              "account": "10-41-44100-5730",
+              "fy24a": 65000,
+              "fy25e": 65000,
+              "adopted": 50589
+            },
+            {
+              "name": "Traffic Signal Maintenance",
+              "dept": "Streets & Roads",
+              "account": "10-41-44100-5142",
+              "fy24a": 30000,
+              "fy25e": 50000,
+              "adopted": 23251
+            },
+            {
+              "name": "Unimproved Road Maint.",
+              "dept": "Streets & Roads",
+              "account": "10-41-44100-5121",
+              "fy24a": 20000,
+              "fy25e": 20000,
+              "adopted": 12890
+            },
+            {
+              "name": "Collar Maintenance",
+              "dept": "Streets & Roads",
+              "account": "10-41-44100-4394",
+              "fy24a": 5000,
+              "fy25e": 10000,
+              "adopted": 0
+            }
+          ],
+          "road_total": {
+            "fy24a": 2522000,
+            "fy25e": 2432000,
+            "adopted": 1850621
+          },
+          "road_note": "The same accounts in Streets & Roads, shown separately because restricted road and transit money largely covers that department — so these are not part of the $4,015,444 above. They are here because they are the lines residents actually notice. That money is a ceiling, not a floor: it does not rise with the length of road, so anything above it competes with everything else.",
+          "already_note": "Two accounts were zeroed outright in the adopted budget: Open Space landscape maintenance, and the seal-coat road line. Whether the seal-coat line is the same treatment a councilmember meant by 'all we can afford to do is crack seal' is not settled by the accounts, and the page does not claim it is."
+        },
+        {
+          "key": "capital",
+          "label": "Equipment and one-off purchases",
+          "amount": 166099,
+          "why": "Deferrable a year at a time, and usually second to go. It is also almost nothing: the General Fund's capital line is small, because the city's capital sits in other funds.",
+          "what": "Vehicles, plant, furniture and building improvements bought outright in the reachable departments."
+        },
+        {
+          "key": "fleet",
+          "label": "Fleet contributions",
+          "amount": 615392,
+          "why": "Third, and least visible. Deferring what departments pay into the fleet fund means vehicles and mowers are kept longer, which shows up two or three years later as higher repair bills.",
+          "what": "The 'Due To Fleet Fund' contributions that sit inside Parks, Recreation, Open Space and Operations & Facilities."
+        },
+        {
+          "key": "personnel",
+          "label": "People",
+          "amount": 7380951,
+          "why": "Last, and slowest. Vacancies go unfilled first, then positions. It is last because it is hardest to undo — and because it is exactly what the increase was meant to fund.",
+          "what": "Salaries, health insurance, retirement and benefits across every reachable department: parks and open-space crews, the library, recreation, and the whole of city hall."
+        }
+      ],
+      "caveat": "This is the order a budget gives way in, not a plan the city has adopted. It says nothing about what matters most. Maintenance goes first because it is the easiest thing to stop, not the least important."
+    }
+  }
+}

@@ -354,13 +354,20 @@
       .join("");
   }
 
+  // A top-level nav item can own more than one page. `data-nav-alias` lists the
+  // extra filenames (space-separated) that should still light it up — that is
+  // how projections.html keeps "Tax" active while its own sub-nav says which
+  // page inside the section you are on. Only the top-level item gets
+  // aria-current; the sub-nav sets its own, and two "current page" markers in
+  // one document would be a lie to a screen reader.
   function highlightActiveNav() {
     const here = location.pathname.split("/").pop() || "index.html";
     document.querySelectorAll("[data-nav]").forEach((a) => {
-      if (a.dataset.nav === here || (here === "" && a.dataset.nav === "index.html")) {
-        a.classList.add("active");
-        a.setAttribute("aria-current", "page");
-      }
+      const own = a.dataset.nav === here || (here === "" && a.dataset.nav === "index.html");
+      const alias = (a.dataset.navAlias || "").split(/\s+/).filter(Boolean).includes(here);
+      if (!own && !alias) return;
+      a.classList.add("active");
+      if (own) a.setAttribute("aria-current", "page");
     });
   }
 
@@ -373,9 +380,10 @@
     { href: "members.html",  label: "Members" },
   ];
   const TABBAR_MORE = [
-    { href: "motions.html", label: "Motions" },
-    { href: "tax.html",     label: "Tax" },
-    { href: "budget.html",  label: "Budget" },
+    { href: "motions.html",     label: "Motions" },
+    { href: "tax.html",         label: "Tax" },
+    { href: "projections.html", label: "Projections" },
+    { href: "budget.html",      label: "Budget" },
   ];
 
   function row(t) {

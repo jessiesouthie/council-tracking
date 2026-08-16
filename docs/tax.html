@@ -27,7 +27,7 @@
          so nothing on this page would use it, and asking for a third family only
          costs a render-blocking round trip. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260812a" />
+    <link rel="stylesheet" href="site.css?v=20260815n" />
   </head>
   <body class="page-tax">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -53,7 +53,7 @@
         <a href="meetings.html" data-nav="meetings.html">Meetings</a>
         <a href="motions.html" data-nav="motions.html">Motions</a>
         <a href="members.html" data-nav="members.html">Members</a>
-        <a href="tax.html" data-nav="tax.html">Tax</a>
+        <a href="tax.html" data-nav="tax.html" data-nav-alias="projections.html">Tax</a>
         <a href="budget.html" data-nav="budget.html">Budget</a>
       </nav>
     </header>
@@ -61,6 +61,13 @@
     <!-- Same measure as the front page: this is a reading page with a tool at
          the top of it, not a table, so it shares the homepage's column. -->
     <main id="main" class="main-reading">
+      <!-- The Tax section's own strip. Static markup rather than injected, so
+           it survives a load where the JSON never arrives. -->
+      <nav class="tax-subnav" aria-label="Tax section">
+        <a href="tax.html" aria-current="page">The increase</a>
+        <a href="projections.html">Projections</a>
+      </nav>
+
       <!-- The page is built from three fetches, so it can't render on first
            paint. Rather than a blank column that snaps to full height when the
            data lands, ship the shape of the page as static markup: a heading
@@ -105,7 +112,7 @@
 
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
 
-    <script src="site.js?v=20260721c"></script>
+    <script src="site.js?v=20260815a"></script>
     <script>
       (async () => {
         const root = document.getElementById("content");
@@ -2910,7 +2917,22 @@
               Eagle Mountain's adopted rate comes from the meeting itself:
               <a href="${ad.source.url}">${CT.escapeHtml(ad.source.title)}</a>.
               ${CT.escapeHtml(ad.vote)}. ${CT.escapeHtml(ad.derivation)}
-            </p>`
+            </p>
+            ${
+              src.corrections
+                ? `<p class="src">
+                     Rows marked † were checked against, and corrected to,
+                     ${src.corrections.checked_against
+                       .map(
+                         (d) =>
+                           `<a href="${d.url}" rel="nofollow noopener">${CT.escapeHtml(d.title)}</a>
+                            (${CT.escapeHtml(d.publisher)}, covering ${CT.escapeHtml(d.covers)})`
+                       )
+                       .join("; and ")}.
+                     ${CT.escapeHtml(src.corrections.note)}
+                   </p>`
+                : ""
+            }`
         );
 
         const body = `
