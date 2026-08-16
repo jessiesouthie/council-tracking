@@ -1,0 +1,156 @@
+{
+  "generated_at": "2026-08-16T19:30:46Z",
+  "source": "Eagle Mountain CivicClerk portal",
+  "timezone": "America/Denver",
+  "bodies": {
+    "city-council": [
+      {
+        "id": 728,
+        "title": "City Council Meeting",
+        "date": "2026-08-18",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/728/overview",
+        "agenda_posted": true,
+        "sessions": [
+          {
+            "start": "16:00",
+            "start_label": "4:00 PM",
+            "label": "Work Session",
+            "public_comment": false
+          },
+          {
+            "start": "19:00",
+            "start_label": "7:00 PM",
+            "label": "Policy Session",
+            "public_comment": true
+          }
+        ]
+      },
+      {
+        "id": 716,
+        "title": "City Council Meeting",
+        "date": "2026-09-01",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/716/overview",
+        "agenda_posted": false,
+        "sessions": []
+      },
+      {
+        "id": 729,
+        "title": "City Council Meeting",
+        "date": "2026-09-15",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/729/overview",
+        "agenda_posted": false,
+        "sessions": []
+      },
+      {
+        "id": 717,
+        "title": "City Council Meeting",
+        "date": "2026-10-06",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/717/overview",
+        "agenda_posted": false,
+        "sessions": []
+      },
+      {
+        "id": 730,
+        "title": "City Council Meeting",
+        "date": "2026-10-20",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/730/overview",
+        "agenda_posted": false,
+        "sessions": []
+      },
+      {
+        "id": 718,
+        "title": "City Council Meeting",
+        "date": "2026-11-04",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/718/overview",
+        "agenda_posted": false,
+        "sessions": []
+      }
+    ],
+    "planning-commission": [
+      {
+        "id": 690,
+        "title": "Planning Commission Meeting",
+        "date": "2026-08-25",
+        "start": "17:30",
+        "start_label": "5:30 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/690/overview",
+        "agenda_posted": false,
+        "sessions": []
+      },
+      {
+        "id": 678,
+        "title": "Planning Commission Meeting",
+        "date": "2026-09-08",
+        "start": "17:30",
+        "start_label": "5:30 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/678/overview",
+        "agenda_posted": false,
+        "sessions": []
+      },
+      {
+        "id": 691,
+        "title": "Planning Commission Meeting",
+        "date": "2026-09-22",
+        "start": "17:30",
+        "start_label": "5:30 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/691/overview",
+        "agenda_posted": false,
+        "sessions": []
+      },
+      {
+        "id": 679,
+        "title": "Planning Commission Meeting",
+        "date": "2026-10-13",
+        "start": "17:30",
+        "start_label": "5:30 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/679/overview",
+        "agenda_posted": false,
+        "sessions": []
+      },
+      {
+        "id": 692,
+        "title": "Planning Commission Meeting",
+        "date": "2026-10-27",
+        "start": "17:30",
+        "start_label": "5:30 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/692/overview",
+        "agenda_posted": false,
+        "sessions": []
+      },
+      {
+        "id": 680,
+        "title": "Planning Commission Meeting",
+        "date": "2026-11-10",
+        "start": "17:30",
+        "start_label": "5:30 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/680/overview",
+        "agenda_posted": false,
+        "sessions": []
+      }
+    ]
+  }
+}

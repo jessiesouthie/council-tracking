@@ -976,6 +976,145 @@ body.page-tax::before {
 }
 .pulse-cap b { color: var(--danger-ink); font-weight: 600; }
 
+/* ---------- Next meeting ----------
+   The one card on the homepage that points forward. It sits between the ledger
+   and the record, and is styled as a single quiet row — a date block, the when,
+   and a way in — so it reads as a standing notice rather than as another
+   decision to click through. Hidden entirely when nothing is scheduled. */
+.next-section { margin-top: -8px; margin-bottom: 30px; }
+.next-meeting {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 18px 14px 14px;
+  box-shadow: var(--shadow-hair);
+  color: inherit;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+.next-meeting:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.next-meeting:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* A torn-off calendar leaf: month above, day below, in the brand navy. */
+.nm-cal {
+  flex: none;
+  width: 56px;
+  padding: 8px 0 10px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.nm-cal-mon {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .75;
+}
+.nm-cal-day {
+  font-family: var(--display);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.nm-main { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1; }
+.nm-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.nm-away {
+  background: var(--warm-soft);
+  color: var(--warm-ink);
+  border-radius: 999px;
+  padding: 2px 8px;
+  letter-spacing: .05em;
+}
+/* Only present when the meeting is not the fortnightly regular one. */
+.nm-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--warm-ink);
+  letter-spacing: .01em;
+}
+.nm-when {
+  font-family: var(--display);
+  font-size: 18.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+  color: var(--fg-soft);
+}
+.nm-sessions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.nm-ses {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  background: var(--bg-muted);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  color: var(--fg-muted);
+}
+.nm-ses b {
+  font-weight: 700;
+  color: var(--fg-soft);
+  font-variant-numeric: tabular-nums;
+}
+/* The half of the night a resident can actually speak in. */
+.nm-ses.is-comment { background: var(--warm-soft); color: var(--warm-ink); }
+.nm-ses.is-comment b { color: var(--warm-ink); }
+.nm-ses em {
+  font-style: normal;
+  font-weight: 600;
+}
+.nm-ses em::before { content: "· "; }
+.nm-place {
+  font-size: 12.5px;
+  color: var(--fg-muted);
+  margin-top: 4px;
+}
+.nm-cta {
+  flex: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--link);
+  white-space: nowrap;
+}
+.next-meeting:hover .nm-cta { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  /* On a phone the row wraps: the leaf and the "Next meeting / when" line stay
+     together on top, everything else falls under them. */
+  .next-meeting { flex-wrap: wrap; padding: 14px; gap: 12px; }
+  .nm-main { flex: 1 1 60%; }
+  .nm-when { font-size: 17px; }
+  .nm-cta { flex: 1 0 100%; padding-left: 68px; }
+}
+
 /* ---------- Section headers ----------
    Title, then a hairline rule running out to the link — the masthead rule of a
    broadsheet section. */

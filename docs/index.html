@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260816c" />
+    <link rel="stylesheet" href="site.css?v=20260816e" />
   </head>
   <body class="home-paper">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -95,8 +95,12 @@
         </div>
       </section>
 
+      <section class="section next-section" id="next-section" hidden>
+        <a class="next-meeting reveal" style="--i:6" id="next-meeting" href="#"></a>
+      </section>
+
       <section class="section" id="decisions-section">
-        <div class="section-head reveal" style="--i:6">
+        <div class="section-head reveal" style="--i:7">
           <h2 id="decisions-title">Latest decisions</h2>
           <a href="motions.html">See all →</a>
         </div>
@@ -118,7 +122,7 @@
       <span>Data from the Eagle Mountain CivicClerk public portal · last refreshed <span id="generated-at">—</span></span>
     </footer>
 
-    <script src="site.js?v=20260815a"></script>
+    <script src="site.js?v=20260816e"></script>
     <script>
       (async () => {
         const data = await CT.loadData().catch((e) => {
@@ -133,9 +137,83 @@
 
         renderTopics(data);
         renderLedger(data);
+        renderNextMeeting(data);
         renderDecisions(data);
         renderCouncil(data);
       })();
+
+      /* ---------- Next meeting ---------- */
+
+      // The only forward-looking thing on the site. Everything below it is the
+      // record of what already happened; this is the meeting a resident can
+      // still turn up to, so it sits directly under the ledger.
+      //
+      // Rendered from docs/data.upcoming.json and hidden outright when that file
+      // holds nothing dated today or later — a build that goes stale should show
+      // no meeting rather than advertise one that has already been and gone.
+      async function renderNextMeeting(data) {
+        const ev = await CT.nextMeeting().catch(() => null);
+        if (!ev) return;
+
+        const d = new Date(ev.date + "T12:00:00Z");
+        const fmt = (opts) => d.toLocaleDateString(undefined, { timeZone: "UTC", ...opts });
+        const when = [fmt({ weekday: "long", month: "long", day: "numeric" }),
+                      ev.start_label].filter(Boolean).join(" · ");
+
+        const n = ev.days_away;
+        const away = n === 0 ? "Today" : n === 1 ? "Tomorrow" : `In ${n} days`;
+
+        // Eagle Mountain splits its night: a work session for discussion, then a
+        // policy session hours later where the votes and the public comment
+        // happen. The line above gives the 4:00 PM start, which on its own would
+        // send a resident who wants to speak to the wrong half of the meeting —
+        // so when the posted agenda breaks the night up, print the split and
+        // mark the session that takes comment.
+        const list = (ev.sessions || []).length > 1 ? ev.sessions : [];
+        const sessions = list.map(s => `
+          <span class="nm-ses${s.public_comment ? " is-comment" : ""}">
+            <b>${CT.escapeHtml(s.start_label)}</b>
+            ${CT.escapeHtml(s.label)}${
+              s.public_comment ? `<em>public comment</em>` : ""}
+          </span>`).join("");
+        const timing = sessions ? `<span class="nm-sessions">${sessions}</span>` : "";
+
+        // Regular meetings are all called "City Council Meeting" — saying so
+        // under a card headed "Next meeting" adds nothing. A special session or
+        // a truth-in-taxation hearing is worth naming.
+        const routine =
+          (ev.title || "").trim().toLowerCase() ===
+          `${data.body_label} meeting`.toLowerCase();
+        const title = routine
+          ? ""
+          : `<span class="nm-title">${CT.escapeHtml(ev.title)}</span>`;
+
+        const el = document.getElementById("next-meeting");
+        el.href = ev.url || "#";
+        el.target = "_blank";
+        el.rel = "noopener";
+        el.innerHTML = `
+          <span class="nm-cal" aria-hidden="true">
+            <span class="nm-cal-mon">${CT.escapeHtml(fmt({ month: "short" }))}</span>
+            <span class="nm-cal-day">${CT.escapeHtml(fmt({ day: "numeric" }))}</span>
+          </span>
+          <span class="nm-main">
+            <span class="nm-eyebrow">
+              Next meeting<span class="nm-away">${CT.escapeHtml(away)}</span>
+            </span>
+            ${title}
+            <span class="nm-when">${CT.escapeHtml(when)}</span>
+            ${timing}
+            ${ev.location
+                ? `<span class="nm-place">${CT.escapeHtml(ev.location)}</span>`
+                : ""}
+          </span>
+          <span class="nm-cta">${
+            ev.agenda_posted ? "Agenda" : "Meeting details"
+          } <span aria-hidden="true">→</span></span>`;
+
+        document.getElementById("next-section").hidden = false;
+      }
 
       // A quiet way into the record for someone who does not know what to search
       // for. Deliberately understated — it must not compete with the ledger.
@@ -346,7 +424,7 @@
         const href = `meetings.html?id=${encodeURIComponent(m.meeting_id)}#m${m.id}`;
 
         return `
-          <a class="decision-card is-${outcome.cls} reveal" style="--i:${7 + i}" href="${href}">
+          <a class="decision-card is-${outcome.cls} reveal" style="--i:${8 + i}" href="${href}">
             <div class="decision-top">
               <span class="decision-meta">${meta}</span>
               <span class="pill ${outcome.cls}">${CT.escapeHtml(outcome.text)}</span>

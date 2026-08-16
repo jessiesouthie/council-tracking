@@ -46,6 +46,17 @@ jobs:
       - name: Publish transcripts
         run: python -m ingest.build_transcripts
 
+      # The homepage's "next meeting" card. Monday morning is the right slot for
+      # it: agendas for a Tuesday meeting are posted the week before, so this run
+      # picks up the session times a resident needs before the meeting happens.
+      #
+      # Non-fatal: if the portal's calendar endpoint is down this week, the rest
+      # of the ingest should still publish. The site keeps showing the meetings
+      # from the last good run and hides the card once they're past.
+      - name: Refresh the meeting calendar
+        run: python -m ingest.build_upcoming
+        continue-on-error: true
+
       - name: Rebuild agent corpus
         run: python -m ingest.build_agent_corpus --all-bodies
 

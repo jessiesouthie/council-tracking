@@ -97,6 +97,55 @@
     return Array.isArray(idx[body]) ? idx[body] : [];
   }
 
+  // The forward-looking calendar (docs/data.upcoming.json, written by
+  // ingest.build_upcoming from the city's portal). Cached; resolves to null if
+  // the file is missing so a page simply shows nothing scheduled.
+  let upcomingPromise = null;
+  async function loadUpcoming() {
+    if (upcomingPromise) return upcomingPromise;
+    const url = new URL("data.upcoming.json", document.baseURI).toString();
+    upcomingPromise = fetch(url)
+      .then((r) => (r.ok ? r.json() : null))
+      .catch(() => null);
+    return upcomingPromise;
+  }
+
+  // Today's date in Eagle Mountain, not in whatever timezone the reader is in.
+  // A resident checking from a trip east must not be told a meeting is over
+  // while it is still hours away back home.
+  function cityToday(tz = "America/Denver") {
+    try {
+      return new Intl.DateTimeFormat("en-CA", {
+        timeZone: tz, year: "numeric", month: "2-digit", day: "2-digit",
+      }).format(new Date());
+    } catch {
+      return new Date().toISOString().slice(0, 10);
+    }
+  }
+
+  // Whole days from today (city time) to an ISO day: 0 today, 1 tomorrow.
+  function daysUntil(iso, tz) {
+    const day = (s) => Date.UTC(+s.slice(0, 4), +s.slice(5, 7) - 1, +s.slice(8, 10));
+    return Math.round((day(iso) - day(cityToday(tz))) / 86400000);
+  }
+
+  // The body's next scheduled meeting, or null when the calendar is empty, too
+  // stale to hold anything future, or missing entirely. A meeting stays "next"
+  // for the whole of its own day: to-the-minute precision would only mean the
+  // card disappears mid-meeting, which is when it is most worth showing.
+  async function nextMeeting(body = currentBody()) {
+    const feed = await loadUpcoming();
+    const list = feed && feed.bodies && feed.bodies[body];
+    if (!Array.isArray(list) || !list.length) return null;
+    const tz = (feed && feed.timezone) || "America/Denver";
+    const today = cityToday(tz);
+    const ahead = list
+      .filter((e) => e.date && e.date >= today)
+      .sort((a, b) => a.date.localeCompare(b.date) || (a.start || "").localeCompare(b.start || ""));
+    if (!ahead.length) return null;
+    return { ...ahead[0], timezone: tz, days_away: daysUntil(ahead[0].date, tz) };
+  }
+
   async function registerServiceWorker() {
     if (!("serviceWorker" in navigator)) return;
     try {
@@ -598,6 +647,9 @@
     loadData,
     loadTranscripts,
     transcriptsForBody,
+    loadUpcoming,
+    nextMeeting,
+    cityToday,
     currentBody,
     linkBody,
     escapeHtml,
