@@ -601,9 +601,16 @@
     const robots = document.head.querySelector('meta[name="robots"]');
     if (robots && /noindex/i.test(robots.content || "")) return;
 
+    // A page that ships its own canonical and marks it data-fixed keeps it. The
+    // generated meeting pages need this: decorateBodyLinks() appends ?body= to
+    // in-site links when a non-default body is active, so a reader who last
+    // looked at the planning commission would otherwise have every council
+    // meeting page canonicalise itself to a ?body= variant of its own URL.
+    let link = document.head.querySelector('link[rel="canonical"]');
+    if (link && link.hasAttribute("data-fixed")) return;
+
     const url = href || canonicalUrl();
     if (!url) return;
-    let link = document.head.querySelector('link[rel="canonical"]');
     if (!link) {
       link = document.createElement("link");
       link.setAttribute("rel", "canonical");
@@ -611,6 +618,17 @@
     }
     link.setAttribute("href", url);
     setMetaTag('meta[property="og:url"]', "property", "og:url", url);
+  }
+
+  // Where a meeting's own page lives.
+  //
+  // ingest/build_meeting_pages.py writes one static page per meeting and names it
+  // <date>-<body id>-<event id>.html. This has to produce byte-identical output
+  // or the index links somewhere that doesn't exist, so the two are deliberately
+  // kept trivial: no slugifying, no lookups, just the three fields joined.
+  function meetingHref(meeting, bodyId = currentBody()) {
+    if (!meeting || !meeting.date || meeting.id == null) return null;
+    return `/meetings/${meeting.date}-${bodyId}-${meeting.id}.html`;
   }
 
   // Append a JSON-LD node to the document.
@@ -766,5 +784,6 @@
     setCanonical,
     canonicalUrl,
     addSchema,
+    meetingHref,
   };
 })();

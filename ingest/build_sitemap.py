@@ -16,20 +16,21 @@ What goes in:
   /<page>.html?body=<body>      meetings, members and motions for the
                                 non-default bodies (city council is the
                                 default and needs no param)
-  /meetings.html?id=<meeting>   only with --meetings; see below
+  /meetings/<date>-<body>-<id>.html
+                                one per meeting, read off docs/meetings/ —
+                                whatever build_meeting_pages.py wrote, plus the
+                                -transcript.html page where there is a recording
 
-The per-meeting URLs are real pages with real content (summary, votes,
-transcript) but there are hundreds of them and they are not linked from a
-crawlable index, so they're opt-in:
-
-    python -m ingest.build_sitemap --meetings
+Those per-meeting pages were once opt-in, on the grounds that they were query
+strings on a single shell and nothing linked to them. They're static files with
+the night's whole record in them now, and the prerendered index links every one,
+so they are always listed. Run build_meeting_pages before this.
 
 <lastmod> is the later of the page's last git commit and the generated_at of
 whatever data files that page reads — the shell and its data both change what a
 visitor sees, and the data changes far more often.
 
 Run:  python -m ingest.build_sitemap
-      python -m ingest.build_sitemap --meetings
       python -m ingest.build_sitemap --base https://example.com
 """
 
@@ -37,6 +38,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -198,7 +200,7 @@ def body_registry() -> tuple[list[dict], str]:
     return listed, default_id
 
 
-def build_urls(base: str, include_meetings: bool = False) -> list[dict]:
+def build_urls(base: str) -> list[dict]:
     registry, default_id = body_registry()
     cache: dict[str, datetime | None] = {}
     urls: list[dict] = []
@@ -254,19 +256,61 @@ def build_urls(base: str, include_meetings: bool = False) -> list[dict]:
             add(f"{base}/member.html?id={member_id}{suffix}", body_changed,
                 "monthly", lower_priority(MEMBER_PRIORITY, drop))
 
-        if include_meetings:
-            for meeting in data.get("meetings") or []:
-                meeting_id = meeting.get("id")
-                if meeting_id is None:
-                    continue
-                # A meeting's record stops changing once it's minuted, so its
-                # own date beats the build stamp as a lastmod.
-                held = _parse_iso(f"{meeting.get('date', '')}T00:00:00+00:00")
-                add(f"{base}/meetings.html?id={meeting_id}{suffix}",
-                    held or body_changed, "yearly",
-                    lower_priority(MEETING_PRIORITY, drop))
+    # Every meeting's own static page, written by build_meeting_pages.py, plus the
+    # transcript page where there is a recording.
+    #
+    # These used to be listed as meetings.html?id= behind an opt-in flag, on the
+    # grounds that they weren't linked from a crawlable index and there were
+    # hundreds of them. Both halves of that have changed: they're real files with
+    # real content now, and the prerendered index links every one. Leaving several
+    # hundred pages of the actual record out of the sitemap was its biggest gap.
+    #
+    # Read off the directory rather than back out of the datasets, so this can't
+    # claim a page that wasn't built — and so it also catches the meetings that
+    # exist only as a recording, which are absent from every dataset because
+    # build_dataset only ever sees approved minutes.
+    urls.extend(meeting_page_urls(base))
 
     return urls
+
+
+# <date>-<body id>-<event id>[-transcript].html
+MEETING_PAGE = re.compile(
+    r"^(\d{4}-\d{2}-\d{2})-(.+?)-(\d+)(-transcript)?\.html$")
+
+
+def meeting_page_urls(base: str) -> list[dict]:
+    pages = sorted((DOCS / "meetings").glob("*.html")) if (DOCS / "meetings").is_dir() else []
+    if not pages:
+        print("  docs/meetings is empty; run build_meeting_pages first",
+              file=sys.stderr)
+        return []
+
+    _, default_id = body_registry()
+    rows: list[dict] = []
+    for path in pages:
+        hit = MEETING_PAGE.match(path.name)
+        if not hit:
+            print(f"  unexpected file in docs/meetings: {path.name}",
+                  file=sys.stderr)
+            continue
+        held_date, body_id, _, is_transcript = hit.groups()
+        stamp = _parse_iso(f"{held_date}T00:00:00+00:00")
+        if not stamp:
+            continue
+        drop = 0.0 if body_id == default_id else OTHER_BODY_DROP
+        # The transcript sits a notch below the meeting it belongs to: same
+        # night, but the minutes are the record and it is the aid to them.
+        if is_transcript:
+            drop += 0.1
+        rows.append({
+            "loc": f"{base}/meetings/{path.name}",
+            "lastmod": stamp.astimezone(timezone.utc)
+                            .strftime("%Y-%m-%dT%H:%M:%S+00:00"),
+            "changefreq": "yearly",
+            "priority": lower_priority(MEETING_PRIORITY, drop),
+        })
+    return rows
 
 
 def render_sitemap(urls: list[dict]) -> str:
@@ -294,14 +338,12 @@ def render_robots(base: str) -> str:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[1])
     ap.add_argument("--base", help="site origin (default: read docs/CNAME)")
-    ap.add_argument("--meetings", action="store_true",
-                    help="include one URL per meeting (hundreds of them)")
     ap.add_argument("--no-robots", action="store_true",
                     help="leave docs/robots.txt alone")
     args = ap.parse_args(argv)
 
     base = site_base(args.base)
-    urls = build_urls(base, include_meetings=args.meetings)
+    urls = build_urls(base)
     if not urls:
         print("no URLs built; leaving the existing files alone", file=sys.stderr)
         return 1

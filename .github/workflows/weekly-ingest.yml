@@ -60,10 +60,17 @@ jobs:
       - name: Rebuild agent corpus
         run: python -m ingest.build_agent_corpus --all-bodies
 
-      # Both of these read docs/data.json, so they have to run after the dataset
-      # rebuild and before the commit. The prerendered copy is what a crawler
-      # that runs no JavaScript reads; if it isn't refreshed here it silently
-      # describes last week's record while the live page shows this week's.
+      # These three read docs/data.json — and build_meeting_pages also reads
+      # docs/transcripts — so they run after the dataset and transcript steps and
+      # before the commit. They're ordered: the meeting pages have to exist
+      # before build_sitemap reads the directory to list them.
+      #
+      # Skipping any of them leaves the site quietly describing last week: the
+      # generated pages and the prerendered index are what a crawler that runs no
+      # JavaScript reads, and nothing else refreshes them.
+      - name: Write the per-meeting pages
+        run: python -m ingest.build_meeting_pages --prune
+
       - name: Refresh the prerendered record
         run: python -m ingest.build_prerender
 
@@ -75,8 +82,11 @@ jobs:
           git config user.name  "council-bot"
           git config user.email "council-bot@users.noreply.github.com"
           git add data/raw data/parsed data/transcripts docs/data.json docs/data.*.json docs/bodies.json docs/transcripts docs/agent-corpus.json
-          # The pages the prerender writes into, plus what build_sitemap emits.
+          # The pages the prerender writes into, the generated per-meeting pages,
+          # and what build_sitemap emits. -A on docs/meetings so a pruned page is
+          # staged as a deletion rather than left behind in the tree.
           git add docs/meetings.html docs/members.html docs/motions.html docs/sitemap.xml docs/robots.txt
+          git add -A docs/meetings
           if git diff --cached --quiet; then
             echo "No changes — nothing to commit."
             exit 0

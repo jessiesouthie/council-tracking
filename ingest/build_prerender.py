@@ -18,10 +18,10 @@ no way for the two to disagree for longer than one paint.
 
 What gets written, and why it stops where it does:
 
-  meetings.html  every meeting, each a real <a> to its own page, with the top
-                 couple of headlines. This is also the only crawlable path to
-                 the several hundred per-meeting URLs — the scripted card has an
-                 "Open →" link, but nothing follows it before render.
+  meetings.html  every meeting, each a real <a> to the static page
+                 ingest/build_meeting_pages.py writes for it. This is the only
+                 crawlable path to those several hundred pages — the scripted
+                 card links to them too, but nothing follows that before render.
   members.html   the sitting roster as table rows, linked to each member page.
   motions.html   the most recent MOTION_LIMIT motions. There are over a thousand
                  and they're addressed by fragment on this one page, so listing
@@ -97,7 +97,7 @@ def is_current_member(member: dict, today: str) -> bool:
 # Page bodies
 # ---------------------------------------------------------------------------
 
-def render_meetings(data: dict) -> str:
+def render_meetings(data: dict, body_id: str = "city-council") -> str:
     meetings = sorted(data.get("meetings") or [],
                       key=lambda m: m.get("date") or "", reverse=True)
     if not meetings:
@@ -124,8 +124,11 @@ def render_meetings(data: dict) -> str:
                   f"{meeting.get('ord_count', 0)} ordinance lines · "
                   f"{meeting.get('res_count', 0)} resolution lines")
         summary = f"<span class=\"pre-heads\">{esc('; '.join(heads))}</span>" if heads else ""
+        # The meeting's own page, not meetings.html?id= — the static page is the
+        # canonical URL for a meeting, and this list is the crawl path to it.
+        href = f'/meetings/{meeting.get("date")}-{body_id}-{mid}.html'
         rows.append(
-            f'        <li><a href="meetings.html?id={esc(mid)}">{fmt_date(meeting.get("date", ""))}</a>'
+            f'        <li><a href="{esc(href)}">{fmt_date(meeting.get("date", ""))}</a>'
             f' <span class="muted">{esc(counts)}</span>{summary}</li>'
         )
 
