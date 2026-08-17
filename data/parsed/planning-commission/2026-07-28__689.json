@@ -1,0 +1,467 @@
+{
+  "meeting": {
+    "id": 689,
+    "date": "2026-07-28",
+    "source_file": "2026-07-28__689.pdf",
+    "motion_count": 11,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 315,
+      "meeting_id": 689,
+      "date": "2026-07-28",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of July 14, 2026, Planning Commission meeting with the correction of changi…",
+      "motion": "Commissioner Allen moved to approve the minutes of July 14, 2026, Planning Commission meeting with the correction of changing Commissioner Hess’ vote for the minutes from “YES” to “ABSTAIN.” Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 316,
+      "meeting_id": 689,
+      "date": "2026-07-28",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Transportation Master Plan and Impact Fee…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.A., Transportation Master Plan and Impact Fee Facilities Plan (IFFP) with the noted changes made by David Salazar. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 317,
+      "meeting_id": 689,
+      "date": "2026-07-28",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve Item 7.B., Angel’s Landing Lot Split. Commissioner Jensen seconded the motion",
+      "motion": "Commissioner Allen moved to approve Item 7.B., Angel’s Landing Lot Split. Commissioner Jensen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 318,
+      "meeting_id": 689,
+      "date": "2026-07-28",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.C., EMMC 16.20.040 – Preliminary Plats. Commis…",
+      "motion": "Commissioner Strong moved to recommend approval to the City Council of Item 7.C., EMMC 16.20.040 – Preliminary Plats. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 319,
+      "meeting_id": 689,
+      "date": "2026-07-28",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.D., EMMC 16.25.040 – Final Plats. Commissioner…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.D., EMMC 16.25.040 – Final Plats. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 320,
+      "meeting_id": 689,
+      "date": "2026-07-28",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.E., Eagle Mountain Chapel and Recreation Build…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.E., Eagle Mountain Chapel and Recreation Building Development Agreement. Commissioner Strong seconded the motion. Eagle Mountain Planning Commission Meeting – July 28, 2026 Page 4 of 8",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "parks"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 321,
+      "meeting_id": 689,
+      "date": "2026-07-28",
+      "page": 5,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.F., Eagle Mountain Chapel and Recreation Build…",
+      "motion": "Commissioner Jensen moved to recommend approval to the City Council of Item 7.F., Eagle Mountain Chapel and Recreation Building – Site Plan, with the following recommendations from staff: 1. Approval be contingent on the Development Agreement for the project being approved. 2. The applicant works with staff to bring the lighting plan into compliance. Commissioner Hess seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development",
+        "parks"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 322,
+      "meeting_id": 689,
+      "date": "2026-07-28",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.G., EMMC 17.60.12C Barbed Wire Fencing with th…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.G., EMMC 17.60.12C Barbed Wire Fencing with the following clerical errors being corrected: 1. The original “C.” Roman numeral five will read: Chain link fencing as specified in this title around industrial zoned properties. Eagle Mountain Planning Commission Meeting – July 28, 2026 Page 5 of 8 2. The second change is the proposed Roman numeral five under “C.” will be revised to Roman numeral six. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 323,
+      "meeting_id": 689,
+      "date": "2026-07-28",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.H., EMMC 17.24.040 – Residential Standards Tab…",
+      "motion": "Commissioner Strong moved to recommend approval to the City Council of Item 7.H., EMMC 17.24.040 – Residential Standards Table. Commissioner Jensen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 324,
+      "meeting_id": 689,
+      "date": "2026-07-28",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.I., EMMC 17.100.404 – Master Site Plans. Commi…",
+      "motion": "Commissioner Jensen moved to recommend approval to the City Council of Item 7.I., EMMC 17.100.404 – Master Site Plans. Commissioner Hess seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 325,
+      "meeting_id": 689,
+      "date": "2026-07-28",
+      "page": 7,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.J., Pinnacles Rezone. Commissioner Jensen seco…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.J., Pinnacles Rezone. Commissioner Jensen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "raw_voters": [
+        {
+          "name": "Laura Jensen",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}
