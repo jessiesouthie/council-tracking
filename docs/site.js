@@ -429,7 +429,6 @@
     { href: "members.html",  label: "Members" },
   ];
   const TABBAR_MORE = [
-    { href: "motions.html",     label: "Motions" },
     { href: "tax.html",         label: "Tax" },
     { href: "projections.html", label: "Projections" },
     { href: "budget.html",      label: "Budget" },
