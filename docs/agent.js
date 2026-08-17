@@ -303,6 +303,23 @@
       restore(history);
       if (saved.open) open({ silent: true });
     }
+
+    // The one thing a page needs from the widget: put this question to it. The
+    // homepage's hero chips call it. Because this script is injected by site.js
+    // and lands after the page's own script, a click that arrives first parks
+    // its question on window.CT_AGENT_ASK, which is drained here.
+    window.CTAgent = {
+      open,
+      ask(q) {
+        open({ silent: true });
+        if (q) ask(q);
+      },
+    };
+    if (window.CT_AGENT_ASK) {
+      const pending = window.CT_AGENT_ASK;
+      window.CT_AGENT_ASK = null;
+      window.CTAgent.ask(pending);
+    }
   }
 
   if (document.readyState === "loading")

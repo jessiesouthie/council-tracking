@@ -187,7 +187,7 @@
     if (document.getElementById("ct-agent-js")) return;
     const s = document.createElement("script");
     s.id = "ct-agent-js";
-    s.src = "agent.js?v=20260817i";
+    s.src = "agent.js?v=20260817k";
     s.defer = true;
     document.body.appendChild(s);
   }
