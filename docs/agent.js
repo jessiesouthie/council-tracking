@@ -167,8 +167,14 @@
       const ok = (u) => /^(https?:\/\/|[\w.\-]+\.html|\.?\/)/.test(u);
       const items = sources
         .filter((s) => s.url && ok(s.url) && !seen.has(s.url) && seen.add(s.url))
-        .slice(0, 5)
-        .map((s) => `<a href="${esc(s.url)}">${esc(s.title)}</a>`)
+        .slice(0, 4)
+        // Some older motions carry a whole ordinance as their title; the Worker
+        // clips them, but don't trust a source label to be link-sized.
+        .map((s) => {
+          const t = String(s.title || "");
+          const label = t.length > 80 ? t.slice(0, 78).replace(/\s+\S*$/, "") + "…" : t;
+          return `<a href="${esc(s.url)}">${esc(label)}</a>`;
+        })
         .join("");
       const src = document.createElement("div");
       src.className = "agent-sources";
@@ -196,10 +202,23 @@
       );
     }
 
+    // The conversation so far, in the shape the Worker replays to the model.
+    // Without this every question arrives cold and follow-ups like "what about
+    // last year?" have nothing to attach to. Trimmed to the recent tail — the
+    // Worker caps it again, but no reason to ship the whole log every time.
+    function priorTurns() {
+      return history.slice(-6).map((m) =>
+        m.r === "u"
+          ? { role: "user", text: m.t }
+          : { role: "assistant", text: m.md }
+      );
+    }
+
     async function ask(question) {
       if (busy) return;
       busy = true;
       input.value = "";
+      const prior = priorTurns();
       bubble("user", esc(question));
       history.push({ r: "u", t: question });
       save();
@@ -220,7 +239,7 @@
         const resp = await fetch(ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question, body: currentBody() }),
+          body: JSON.stringify({ question, body: currentBody(), history: prior }),
         });
         if (!resp.ok || !resp.body) {
           const e = await resp.json().catch(() => ({}));
