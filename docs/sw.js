@@ -14,12 +14,19 @@
 // precache namespace. Bumping it is now only a way to force a one-time flush, which
 // is exactly what the bump below does for everyone still pinned to a stale v32.
 
-const SHELL_CACHE = "council-shell-v38";
+const SHELL_CACHE = "council-shell-v41";
 const PYODIDE_CACHE = "council-pyodide-v1";
 const DATA_CACHE = "council-data-v1";
 
 // Static app-shell assets. data.json is handled separately (stale-while-revalidate)
 // so the site picks up freshly-ingested data quickly without a SW bump.
+//
+// Every path here has to exist in the deployed docs/ before this file ships:
+// install() uses cache.addAll(), which rejects the whole batch if a single
+// request 404s, and a rejected install means no precache at all for anyone.
+// So a new page and its line below belong in the same commit — adding the line
+// first, or the page in a branch that hasn't merged, silently disables the
+// service worker for every visitor rather than just missing one file.
 const SHELL_ASSETS = [
   "./",
   "index.html",
@@ -30,7 +37,10 @@ const SHELL_ASSETS = [
   "tax.html",
   "projections.html",
   "budget.html",
+  "definitions.html",
+  "about.html",
   "site.css",
+  "fonts.css",
   "site.js",
   "projections.js",
   "agent.js",

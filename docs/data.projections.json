@@ -385,24 +385,28 @@
       }
     }
   ],
-  "definitions": {
-    "no_increase": {
-      "heading": "What “no tax increase” means here",
-      "revenue_based": "Utah caps the money, not the rate. Each year the county sets a certified rate: the rate that brings in the same dollars from existing homes as last year. When values rise, the rate drops to cancel it out. Charging that rate is legally “no increase.” Two things follow. A household's city tax barely moves. And the city's revenue only grows by what new construction adds.",
-      "warning": "Three rates are easy to mix up. 0.000534 is on today's bills. 0.000530 is the 2026 certified rate — the no-increase rate, recalculated by Utah County on 22 June. 0.001500 is what the council adopted. Only 0.000530 counts as no increase; even the old 0.000534 would be slightly more.\n\nThe full series the city levied, FY2015 to FY2024: 0.001192, 0.001118, 0.001081, 0.001011, 0.000924, 0.000825, 0.000769, 0.000724, 0.000541, 0.000524.",
-      "statute": {
-        "cite": "Utah Code § 59-2-924",
-        "confirm": "Against the statute, this page's arithmetic is the right shape and a simplification. § 59-2-924(1)(g) defines the certified tax rate as 'a tax rate that will provide the same ad valorem property tax revenue for a taxing entity as was budgeted by that taxing entity for the prior year', which is what the engine computes. Subsection (4)(a) divides prior-year budgeted revenue, less qualifying exempt revenue, by the base in (4)(b) — and (4)(b) is where the differences are. It takes aggregate taxable value, subtracts current-year incremental adjustments (redevelopment and community-reinvestment increment, which is why the project-area finding below matters), adjusts by the three-year average percentage change in property values, multiplies by the five-year average collection rate, and only then subtracts collection-adjusted eligible new growth. Subsection (1)(i) defines eligible new growth as the greater of zero or the sum of locally assessed, centrally assessed and project-area new growth. Subsection (6) keeps judgment levies out of the calculation entirely. This page models none of the three- and five-year smoothing and none of the increment adjustment: it is a one-year, one-rate reading of a formula that averages. Treat figures here as planning estimates, not legal quantities.",
-        "settled": "yes"
-      },
-      "misreading": "Most people picture “no increase” as the rate staying put. In Utah it is nearly the opposite: a flat rate on rising values takes more from the same house every year, and a city doing that has to hold a Truth-in-Taxation hearing first. Eagle Mountain's rate did not stay flat. It fell every year for the ten years to FY2024, from 0.001192 to 0.000524. The city's own explainer puts it plainly: “Growth, not rate increases, carried the city's budget for 15 years.”"
+  "_methodology_notes_comment": "This was a `definitions` block carrying full-length copy for the certified-rate explanation, the meaning of 'gap', and the three-rates warning. All of that is now written directly into projections.html — the page renders it as plain definition rather than reading it from here, so the copy here was dead and drifting. What is left is the two things the page could not say in a sentence and had nowhere else to keep: how far this model departs from the statute it approximates, and the rate the city actually levied each year. Both render as fine print inside the Methodology panel in section 03.",
+  "methodology_notes": {
+    "statute": {
+      "cite": "Utah Code § 59-2-924",
+      "confirm": "Against the statute, this page's arithmetic is the right shape and a simplification. § 59-2-924(1)(g) defines the certified tax rate as 'a tax rate that will provide the same ad valorem property tax revenue for a taxing entity as was budgeted by that taxing entity for the prior year', which is what the engine computes. Subsection (4)(a) divides prior-year budgeted revenue, less qualifying exempt revenue, by the base in (4)(b) — and (4)(b) is where the differences are. It takes aggregate taxable value, subtracts current-year incremental adjustments (redevelopment and community-reinvestment increment, which is why the project-area finding below matters), adjusts by the three-year average percentage change in property values, multiplies by the five-year average collection rate, and only then subtracts collection-adjusted eligible new growth. Subsection (1)(i) defines eligible new growth as the greater of zero or the sum of locally assessed, centrally assessed and project-area new growth. Subsection (6) keeps judgment levies out of the calculation entirely. This page models none of the three- and five-year smoothing and none of the increment adjustment: it is a one-year, one-rate reading of a formula that averages. Treat figures here as planning estimates, not legal quantities.",
+      "settled": "yes"
     },
-    "gap": {
-      "tag": "The word this page uses most",
-      "heading": "A gap is one year's money in, minus that year's money out",
-      "text": "General Fund only, one fiscal year at a time. Money in is what that year brings in — property tax, sales tax, the energy tax, fees. Money out is what the city has appropriated, carried forward at the growth rates this page assumes. Below zero the page calls it a deficit and above zero a surplus; “gap” covers both, and every chart, table and card here uses it that way.",
-      "structural": "A draw on savings is not money in. That single exclusion is why a budget can balance to the dollar and this page can still show a gap: the interim budget balances by counting fund balance as revenue, and reserves close a gap once — they cannot be drawn again the year after. Taking them out is what makes the figure structural rather than an accounting result.",
-      "cumulative": "The six-year figure adds the annual gaps together. It is a size, not a debt the city carries. Each year's gap has to be closed when that year's budget is adopted — by the levy, by cuts, or by reserves — so the running total measures how much closing the period takes altogether, not a balance owed at the end of it."
+    "rate_history": {
+      "heading": "What the city actually levied, FY2015 to FY2024",
+      "note": "The rate fell in every one of those ten years. That is the certified-rate system working as designed: values rose, the rate dropped to cancel it out, and growth rather than rate increases carried the budget. It is also the comparison for the 0.001500 adopted on 6 August 2026, which is above every rate in this series.",
+      "rates": [
+        { "year": 2015, "rate": 0.001192 },
+        { "year": 2016, "rate": 0.001118 },
+        { "year": 2017, "rate": 0.001081 },
+        { "year": 2018, "rate": 0.001011 },
+        { "year": 2019, "rate": 0.000924 },
+        { "year": 2020, "rate": 0.000825 },
+        { "year": 2021, "rate": 0.000769 },
+        { "year": 2022, "rate": 0.000724 },
+        { "year": 2023, "rate": 0.000541 },
+        { "year": 2024, "rate": 0.000524 }
+      ]
     }
   },
   "reconciliation": {
@@ -426,10 +430,9 @@
       "Find other money — fees, grants, sales-tax growth, new commercial value",
       "Amend what looks fixed — contracts, transfers and planned capital, where commitments allow",
       "Grow differently — slow annexation and approvals, or change what the city does in-house"
-    ],
-    "closer": ""
+    ]
   },
-  "disclaimer": "Planning estimates from Civic Roll Call, built from the city's published budget and the recordings of its open meetings. Not an adopted budget, not a city forecast, not a legal determination, and not a prediction that anything will be cut. FY2026–27 figures come from the interim budget; the final hearing is 18 August 2026. Results change when the assumptions change.",
+  "disclaimer": "This is an independent planning estimate from Civic Roll Call, built from the city's published budget and the recordings of its open meetings. It is not an adopted budget, a city forecast, a legal determination, or a prediction of service reductions. FY2026–27 figures come from the interim budget; the final hearing is 18 August 2026. Results change when the assumptions change.",
   "sources": [
     {
       "title": "Resolution adopting a property tax rate of 0.001500 for FY2026–27",
@@ -535,17 +538,12 @@
       "note": "Supplies the five-year statewide average collection rate of 93.88% that the certified-rate formula uses. Eagle Mountain is not broken out; the statewide figure is well below the city's own, which is why the city's audited record was used instead."
     }
   ],
-  "scenario_basis": {
-    "heading": "What separates the three",
-    "text": "One number: the rate charged in FY2026–27. Two of the three are real — the certified 0.000530 on the city's impact schedule, and the 0.001500 the council adopted. The 0.001050 in the middle is this project's own what-if, put there because the record holds no partial increase to model; it is labelled as an assumption wherever it appears. After that first year all three behave the same: the county recalculates the rate, and the city keeps what new construction adds. That is why the first year compounds — the certified rate carries forward whatever base it starts from.",
-    "note": "On 6 August the council promised an ordinance requiring an annual rate review. It named no number, so no scenario models one.",
-    "expenditure_note": "It is the council's own adopted FY2026–27 plan, grown forward. So this is not a claim that the city would have adopted that budget without the money — it is the gap that plan faces at the certified rate."
-  },
+  "_scenario_basis_comment": "A `scenario_basis` block stood here and was not rendered. Every sentence in it is now said on the page itself: which two of the three rates are real and which is this project's own, in section 01; that all three share one spending projection, in the Methodology panel.",
   "exposure": {
     "heading": "What a projected gap could affect",
     "lede": "A gap would not fall evenly across $42,650,441, and would not automatically produce cuts — a council can also raise other revenue, defer, or spend reserves. But the parts of the budget are not equally movable. This is what it is made of.",
     "pool": {
-      "_departments_comment": "Not rendered. These fed the per-department bar chart, which was cut: its top four bars duplicated the tiers table above it and its tail was fourteen identical stubs. Kept because the figures are the city's own line items and the strain notes are sourced to the record, so the chart is recoverable if it is ever wanted back.",
+      "_departments_comment": "A 24-entry `departments` list stood here, feeding a per-department bar chart that was cut: its top four bars duplicated the tiers table below it and its tail was fourteen identical stubs. The list itself has now gone too — it was never rendered, and the four tiers plus the composition panel answer the same question. It is in git history if the chart is ever wanted back.",
       "total": 42650441,
       "total_label": "FY2026–27 General Fund spending",
       "tiers": [
@@ -603,137 +601,7 @@
       "reachable_note": "Parks, recreation, the library, open space, special events and all of city hall.",
       "deferrable_label": "With deferrable transfers and capital added back",
       "deferrable_note": "The flexible operating money plus the transfers row. How much of it is genuinely uncommitted is not settled by the published line items.",
-      "method_note": "The grouping is this project's reading of the FY2026–27 line items, sorted by how constrained each part is. Every department figure is the city's own.",
-      "departments": [
-        {
-          "name": "Public Safety",
-          "total": 10837430,
-          "tier": "contract"
-        },
-        {
-          "name": "Economic Development",
-          "total": 6834679,
-          "tier": "agreements"
-        },
-        {
-          "name": "Transfers out",
-          "total": 6529840,
-          "tier": "transfers"
-        },
-        {
-          "name": "Streets & Roads",
-          "total": 6270607,
-          "tier": "restricted",
-          "strained": true,
-          "strain_note": "“All we can afford to do is crack seal.”"
-        },
-        {
-          "name": "Parks",
-          "total": 4010939,
-          "tier": "reachable",
-          "strained": true,
-          "strain_note": "Ten full-time staff for sixty-eight parks, and “our parks are in poor repair”."
-        },
-        {
-          "name": "Library",
-          "total": 1002737,
-          "tier": "reachable"
-        },
-        {
-          "name": "Recreation",
-          "total": 715971,
-          "tier": "reachable",
-          "strained": true,
-          "strain_note": "The trails the paver cannot build for want of anyone to run it."
-        },
-        {
-          "name": "Executive",
-          "total": 633349,
-          "tier": "reachable"
-        },
-        {
-          "name": "Special Events",
-          "total": 611493,
-          "tier": "reachable"
-        },
-        {
-          "name": "Information Technology",
-          "total": 579078,
-          "tier": "reachable"
-        },
-        {
-          "name": "Neighborhood Improvement",
-          "total": 559755,
-          "tier": "reachable"
-        },
-        {
-          "name": "Finance",
-          "total": 542927,
-          "tier": "reachable"
-        },
-        {
-          "name": "Human Resources",
-          "total": 477034,
-          "tier": "reachable"
-        },
-        {
-          "name": "Operations & Facilities",
-          "total": 463363,
-          "tier": "reachable"
-        },
-        {
-          "name": "Open Space",
-          "total": 458274,
-          "tier": "reachable",
-          "strained": true,
-          "strain_note": "Named at the hearing among the things the city cannot keep up with."
-        },
-        {
-          "name": "Accounting",
-          "total": 328363,
-          "tier": "reachable"
-        },
-        {
-          "name": "Attorney",
-          "total": 308054,
-          "tier": "reachable"
-        },
-        {
-          "name": "Legislative & Strategic Svcs",
-          "total": 276147,
-          "tier": "reachable"
-        },
-        {
-          "name": "Risk Management",
-          "total": 239379,
-          "tier": "reachable"
-        },
-        {
-          "name": "Legislative",
-          "total": 230759,
-          "tier": "reachable"
-        },
-        {
-          "name": "City Recorder's Office",
-          "total": 230214,
-          "tier": "reachable"
-        },
-        {
-          "name": "Communications",
-          "total": 194819,
-          "tier": "reachable"
-        },
-        {
-          "name": "Engineering",
-          "total": 182890,
-          "tier": "reachable"
-        },
-        {
-          "name": "Customer Services",
-          "total": 132340,
-          "tier": "reachable"
-        }
-      ]
+      "method_note": "The grouping is this project's reading of the FY2026–27 line items, sorted by how constrained each part is. Every department figure is the city's own."
     },
     "earmarked": {
       "heading": "What the city said the money was for",

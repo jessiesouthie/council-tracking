@@ -4,28 +4,60 @@
     <meta charset="utf-8" />
     <script>document.documentElement.classList.remove("no-js");</script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>How Three Property-Tax Rates Could Affect the General Fund — Eagle Mountain Council Tracking</title>
+    <title>Eagle Mountain General Fund Projections to FY2031–32</title>
     <meta name="description" content="A planning estimate to FY2031–32. At the certified rate — legally “no increase” — the model estimates $35.4M of recurring revenue against $42.7M of interim-budget spending, a projected gap of $7.3M in the first year." />
+    <link rel="canonical" href="https://civicrollcall.com/projections.html" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Council Tracking" />
-    <meta property="og:title" content="How Three Property-Tax Rates Could Affect the General Fund — Eagle Mountain Council Tracking" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Civic Roll Call" />
+    <meta property="og:url" content="https://civicrollcall.com/projections.html" />
+    <meta property="og:title" content="Eagle Mountain General Fund Projections to FY2031–32" />
     <meta property="og:description" content="An independent planning estimate, not a city forecast. Projected General Fund revenue against projected spending to FY2031–32 under the certified rate, an illustrative middle rate, and the rate the council adopted." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="How Three Property-Tax Rates Could Affect the General Fund — Eagle Mountain Council Tracking" />
+    <meta name="twitter:title" content="Eagle Mountain General Fund Projections to FY2031–32" />
     <meta name="twitter:description" content="Projected General Fund revenue against projected spending to FY2031–32, under three property-tax rates. A planning estimate, not a city forecast." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Same pair as tax.html, for the same reason: this page is part of the
          Tax section and shares its typography through body.page-tax. Inter is
-         deliberately not requested. -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260817c" />
+         declared in fonts.css but never painted here, so it is never fetched. -->
+    <link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts.css?v=20260817g" />
+    <link rel="stylesheet" href="site.css?v=20260817g" />
+
+    <!-- disambiguatingDescription carries the disclaimer the page itself leads
+         with. An answer engine that quotes this page without it is quoting a
+         city forecast that does not exist. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": "https://civicrollcall.com/projections.html#article",
+      "headline": "Eagle Mountain General Fund Projections to FY2031–32",
+      "description": "Projected General Fund revenue against projected spending to FY2031–32, under three property-tax rates.",
+      "disambiguatingDescription": "An independent planning estimate produced by Civic Roll Call. Not a forecast published or endorsed by Eagle Mountain City.",
+      "mainEntityOfPage": "https://civicrollcall.com/projections.html",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://civicrollcall.com/#website" },
+      "author": { "@id": "https://civicrollcall.com/#publisher" },
+      "publisher": { "@id": "https://civicrollcall.com/#publisher" },
+      "about": { "@id": "https://civicrollcall.com/#council" },
+      "isAccessibleForFree": true,
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://civicrollcall.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Tax", "item": "https://civicrollcall.com/tax.html" },
+          { "@type": "ListItem", "position": 3, "name": "Projections", "item": "https://civicrollcall.com/projections.html" }
+        ]
+      }
+    }
+    </script>
   </head>
   <body class="page-tax">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -52,6 +84,7 @@
         <a href="members.html" data-nav="members.html">Members</a>
         <a href="tax.html" data-nav="tax.html" data-nav-alias="projections.html">Tax</a>
         <a href="budget.html" data-nav="budget.html">Budget</a>
+        <a href="definitions.html" data-nav="definitions.html">Definitions</a>
       </nav>
     </header>
 
@@ -67,13 +100,18 @@
       <div id="content" aria-busy="true">
         <noscript>
           <div class="tax-page">
+            <!-- Heading names the page, not the failure — same reasoning as the
+                 matching block on tax.html. This is the H1 a crawler that runs no
+                 JavaScript reads, so it has to be the page's real subject. -->
             <div class="tax-fail">
-              <p class="eyebrow">Needs JavaScript</p>
-              <h1 class="tax-h1">The projection needs JavaScript</h1>
-              <p class="tax-lede">The figures behind it are public without it. The budget is on the
+              <p class="eyebrow">Eagle Mountain &middot; Planning estimate</p>
+              <h1 class="tax-h1">How three property-tax rates could affect the General Fund</h1>
+              <p class="tax-lede">Drawing the projection needs JavaScript. The figures behind it are
+                public without it: the budget is on the
                 <a href="budget.html">budget page</a>, the adopted rate is on the
                 <a href="tax.html">tax page</a>, and every meeting they went through is in the
-                <a href="meetings.html">meeting record</a>.</p>
+                <a href="meetings.html">meeting record</a>. This is an independent planning
+                estimate, not a forecast published by Eagle Mountain City.</p>
             </div>
           </div>
         </noscript>
@@ -95,9 +133,9 @@
       </div>
     </main>
 
-    <footer class="footer"><span>Planning estimates built from Eagle Mountain's published budget and its own meeting recordings — not a city forecast</span></footer>
+    <footer class="footer"><span>Planning estimates built from Eagle Mountain's published budget and its own meeting recordings — not a city forecast &middot; <a href="about.html">How this site is built</a></span></footer>
 
-    <script src="site.js?v=20260817c"></script>
+    <script src="site.js?v=20260817g"></script>
     <script src="projections.js?v=20260816a"></script>
     <script>
       /* =======================================================================
@@ -301,13 +339,16 @@
          first-year figure. Three lines, and the third is the only one that
          moves between scenarios.
 
-         This used to be a closed panel in the methodology section, filed as
-         bookkeeping. It is not bookkeeping — it is the answer to the question
-         a reader has the instant they read the summary cards, and for the
-         no-increase case it reconciles to the dollar: the levy the interim
-         budget assumed and did not get, plus the reserve draw, IS the gap.
-         Nothing else is in it. So it sits open, directly under the cards it
-         explains — which now follow the charts rather than lead them. */
+         It reconciles to the dollar in the no-increase case: the levy the
+         interim budget assumed and did not get, plus the reserve draw, IS the
+         gap. Nothing else is in it.
+
+         It is a panel rather than open prose because it is an account-level
+         calculation, and the main flow of section 02 is meant to be chart,
+         chart, cards, table. But it sits directly under the cards it explains,
+         with the answer already in its summary line, so a reader who wants the
+         working is one click from it rather than hunting the methodology
+         section for it. */
 
       function paintReconciliation(r) {
         const el = document.getElementById("recon");
@@ -359,9 +400,13 @@
               ? `Why ${y1.label} lands at a ${usd0(y1.gap)} surplus`
               : `Why ${y1.label} lands exactly level`;
 
-        el.innerHTML = `
+        // This block is rebuilt on every scenario change, so a panel a reader
+        // had opened would slam shut under them when they pressed Mid. Carry
+        // the open state across the rewrite.
+        const wasOpen = !!(el.querySelector("details.panel") || {}).open;
+
+        el.innerHTML = panel(heading, "Three lines, from the balanced interim budget to this scenario's first-year figure", `
           <div class="proj-why">
-            <h3 class="proj-sub-h2">${esc(heading)}</h3>
             <p class="proj-ear-lede">${esc(c.text)}</p>
             <div class="tablewrap">
               <table class="data">
@@ -384,7 +429,7 @@
               </table>
             </div>
             ${drift}
-          </div>`;
+          </div>`, wasOpen, "p-recon");
       }
 
       /* ---------------------------------------------------------------- hero */
@@ -611,7 +656,58 @@
             18 August 2026, so that figure can still change. Holding spending constant isolates the
             effect of each rate; it does not mean the city would adopt the same plan under every
             scenario.</p>
+
+          ${statuteHtml(c)}
+          ${rateHistoryHtml(c)}
         `, false, "p-method");
+      }
+
+      /* Where the model departs from the law it approximates. It is the page's
+         most important limitation and the least readable paragraph on it — a
+         subsection-by-subsection walk of § 59-2-924 — so it is fine print
+         inside the methodology panel rather than anywhere a reader meets by
+         accident. The one-line summary above it is the part that matters. */
+
+      function statuteHtml(c) {
+        const s = ((c.methodology_notes || {}).statute) || {};
+        if (!s.confirm) return "";
+        return `
+          <h4 class="proj-sub-h">How far this departs from the statute</h4>
+          <p>The real certified-rate formula averages: it smooths property values over three years and the
+            collection rate over five, and it subtracts project-area increment before it divides. This page
+            does none of that — it is a one-year, one-rate reading of a formula that averages, which is why
+            every figure on it is a planning estimate rather than a legal quantity.</p>
+          ${finePrint(`The full comparison against ${s.cite || "the statute"}`, `<p>${esc(s.confirm)}</p>`)}`;
+      }
+
+      /* Ten years of the rate the city actually levied. Not part of the
+         argument — the projection starts at FY2026–27 and never looks back —
+         but it is the only place on the site that holds the series, and it is
+         the direct answer to "was the rate always this low", which is the
+         first thing anyone asks about a rate that nearly tripled. Fine print,
+         inside a panel, two levels below the main flow. */
+
+      function rateHistoryHtml(c) {
+        const h = (c.methodology_notes || {}).rate_history;
+        if (!h || !Array.isArray(h.rates) || !h.rates.length) return "";
+        const rows = h.rates
+          .map(
+            (x) => `
+            <tr>
+              <th scope="row">FY${esc(x.year)}</th>
+              <td class="num mono">${esc(rate6(x.rate))}</td>
+            </tr>`
+          )
+          .join("");
+        // finePrint escapes its own label — passing esc(...) would double it.
+        return finePrint(h.heading, `
+          <p>${esc(h.note)}</p>
+          <div class="tablewrap">
+            <table class="data">
+              <thead><tr><th scope="col">Fiscal year</th><th scope="col" class="num">Rate levied</th></tr></thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>`);
       }
 
       function wireControls() {
@@ -1272,8 +1368,13 @@
       }
 
       /* The text alternative for each SVG. It carries the shape of the chart,
-         not a re-reading of every number — the results table below is the
-         complete figure-by-figure equivalent and is never collapsed. */
+         not a re-reading of every number — the "Year by year" panel below is
+         the complete figure-by-figure equivalent.
+         That panel is collapsed by default, and a closed <details> is out of
+         the accessibility tree, so these descriptions name it as expandable
+         rather than saying "the table below" and leaving a screen-reader user
+         looking for a table that is not there yet. The gap chart's description
+         carries every annual figure in full for the same reason. */
       function chartDescription(r) {
         const s = r.summary;
         const cross = r.crossings.length
@@ -1283,7 +1384,7 @@
           `Line chart, ${s.firstLabel} to ${s.lastLabel}. Money in runs from ${usd0(r.rows[0].totalRevenue)} to ` +
           `${usd0(r.rows.at(-1).totalRevenue)}; money out from ${usd0(r.rows[0].expenditures)} to ` +
           `${usd0(r.rows.at(-1).expenditures)}. ${s.deficitYears} of ${r.rows.length} years show a projected gap.${cross} ` +
-          `Full figures are in the table below.`
+          `Full figures are in the expandable “Year by year” table below.`
         );
       }
       function gapDescription(r) {
@@ -1329,13 +1430,13 @@
 
         const anyAdj = r.rows.some((x) => x.adjustments.some((a) => a.amount));
 
-        el.innerHTML = `
-          <div class="proj-table-head">
-            <h3 id="table-title">Year by year</h3>
-            <p>Every figure the charts are drawn from.</p>
-          </div>
+        // Same reason as the reconciliation walk: rebuilt on every scenario
+        // change, so an opened table has to stay open across the rewrite.
+        const wasOpen = !!(el.querySelector("details.panel") || {}).open;
+
+        el.innerHTML = panel("Year by year", "Every figure the two charts are drawn from — taxable value, rate charged, revenue, spending and the result, for each of the six years", `
           <div class="tablewrap">
-            <table class="data proj-table" aria-labelledby="table-title">
+            <table class="data proj-table" aria-label="Projected General Fund figures by fiscal year">
               <thead>
                 <tr>
                   <th scope="col">Fiscal year</th>
@@ -1364,7 +1465,7 @@
             <button type="button" class="tx-exp-btn" id="proj-csv">Download CSV</button>
             <button type="button" class="tx-exp-btn" id="proj-copy">Copy</button>
             <span class="tx-exp-note" id="proj-exp-note" role="status" aria-live="polite"></span>
-          </div>`;
+          </div>`, wasOpen, "p-table");
 
         wireExport(el.querySelector("table"));
         wireStickyEdge(el.querySelector(".tablewrap"));
@@ -1572,6 +1673,8 @@
                 <tbody>${GUESSES.map(guessRow).join("")}</tbody>
               </table>
             </div>
+
+            ${methodologyHtml(c)}
 
             ${panel("Where each number comes from", "The full working for all nine, and what would settle the four that are open", `
               ${FACTS.concat(GUESSES).map(provenance).join("")}
@@ -1917,21 +2020,27 @@
 
             <div id="exposure-pool"></div>
 
-            <div class="proj-ear">
-              <h3 class="proj-sub-h2">${esc(x.earmarked.heading)}</h3>
-              <p class="proj-ear-lede">${esc(x.earmarked.lede)}</p>
+            <!-- Both of these are evidence rather than analysis, and both are
+                 behind a click for the same reason.
+
+                 The earmarked list is the city's own statement of what the
+                 money was for — three figures and a quotation from the work
+                 session. It is the strongest thing this section has, but it is
+                 an argument about intent, not one of the four things the
+                 section sets out to show (contracted, restricted, capital,
+                 flexible), so it supports the pool table rather than
+                 interrupting it.
+
+                 The quotations are the least compressible thing on the page —
+                 four councilmembers making one point at length. Nothing is
+                 paraphrased away; the panel carries them in full, attributed
+                 exactly as the recording allows. -->
+            ${panel(x.earmarked.heading, x.earmarked.lede, `
               <ul class="proj-ear-list">${earmarked}</ul>
               ${srcQuote(x.earmarked.source)}
               <p class="proj-input-note">${esc(x.earmarked.note)}</p>
-            </div>
+            `, false, "p-earmarked")}
 
-            <!-- Quotations are evidence: they are what the record actually
-                 says, and a reader who wants to check the section's claims
-                 needs them verbatim. But they are also the least compressible
-                 thing on the page — four councilmembers making one point at
-                 length — so they sit behind a click rather than in the run of
-                 the text. Nothing is paraphrased away; the panel carries them
-                 in full, attributed exactly as the recording allows. -->
             <div class="proj-voices">
               ${panel(x.voices.heading, x.voices.lede, voices, false, "p-voices")}
             </div>
@@ -2010,6 +2119,13 @@
 
         const gapWord = first.gap < 0 ? "gap" : "surplus";
 
+        // The composition panel and its inner card panel are rebuilt with this
+        // block on every scenario change. Remember which were open so pressing
+        // Mid does not fold up whatever the reader had just opened.
+        const openIds = new Set(
+          [...poolEl.querySelectorAll("details.panel[open]")].map((d) => d.id).filter(Boolean)
+        );
+
         poolEl.innerHTML = `
           <div class="proj-pool">
             <div class="proj-pool-head">
@@ -2083,6 +2199,11 @@
             <p class="proj-input-note">${esc(P.method_note)}
               <a href="budget.html#next-year">Open the FY2026–27 budget <span aria-hidden="true">→</span></a></p>
           </div>`;
+
+        openIds.forEach((id) => {
+          const d = poolEl.querySelector("#" + CSS.escape(id));
+          if (d) d.open = true;
+        });
 
         // "What the gap is the size of" used to hang here, sizing the gap
         // against a wage lift, the 28 positions and a school speed table.
@@ -2166,16 +2287,16 @@
           )
           .join("");
 
-        // The bar and the one-paragraph finding stay in the open; the four
-        // detail cards go behind a click. The finding is that the flexible pool
-        // is mostly payroll, and the bar plus one sentence carries it — the
-        // cards restate the same four figures with a paragraph each, which is
-        // reference material rather than the point.
-        return `
+        // The whole composition is now one panel rather than a bar in the open
+        // with a panel under it. The section above it already answers the
+        // question the section exists for — what is contracted, what is
+        // restricted, what is deferrable capital, and what is left — and this
+        // is a second, finer split of the last of those four. Useful, and one
+        // level of detail past the main flow. The four detail cards keep their
+        // own inner panel, so the maintenance accounts stay two clicks down
+        // rather than unfolding at full length the moment this opens.
+        return panel(O.heading, O.lede, `
           <div class="proj-order">
-            <h3 class="proj-sub-h2">${esc(O.heading)}</h3>
-            <p class="proj-ear-lede">${esc(O.lede)}</p>
-
             <div class="proj-rung-bar" role="img"
                  aria-label="${esc(`What the flexible operating pool of ${usd0(total)} is made of: ${parts.map((x) => `${x.label} ${usd0(x.amount)}`).join(", ")}.`)}">${segs}</div>
             <div class="legend">
@@ -2191,7 +2312,7 @@
             `, false, "p-categories")}
 
             <p class="note-fine"><strong>A composition, not a plan.</strong> ${esc(O.caveat)}</p>
-          </div>`;
+          </div>`, false, "p-composition");
       }
 
       /* The paragraph under the composition bar.
@@ -2381,6 +2502,29 @@
               <p class="sec-sub">City documents, the city's own line items, and recordings of open meetings.
                 Nothing here comes from anywhere else.</p>
             </div>
+
+            <!-- The limitations half of "sources and limitations". The split
+                 itself is section 03's whole structure — two tables, one of
+                 published figures and one of estimates — but a reader who jumps
+                 straight to the sources needs it stated here too, or the
+                 citation list reads as if it covered every number on the page.
+                 It does not: four of the nine have nothing to cite, which is
+                 the finding, not an omission. -->
+            <div class="proj-def-card">
+              <h3>What is published, and what this page assumes</h3>
+              <p>Five of the nine numbers behind the projection come from the record and are cited below:
+                the taxable value, the certified rate, the collection rate, and both sides of the adopted
+                interim budget. The other four — how fast spending grows, how fast other revenue grows, how
+                much new construction adds, and how much existing property is revalued — are this project's
+                estimates. The city has published no multi-year financial plan, so there is no document to
+                cite for them; each is tagged on the page and its basis is set out in
+                <a href="#s-assumptions">section 03</a>.</p>
+              <p>Everything downstream of those four is a projection rather than a finding. The
+                ${esc(c.year_labels[String(c.first_year)] || c.first_year)} column is the exception: it is
+                the city's interim budget as adopted, and the final hearing was still to come when this was
+                built.</p>
+            </div>
+
             ${panel(
               `All ${numWord(count)} sources`,
               "Every document and recording behind a figure on this page",

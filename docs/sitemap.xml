@@ -44,9 +44,15 @@
   </url>
   <url>
     <loc>https://civicrollcall.com/definitions.html</loc>
-    <lastmod>2026-08-17T07:50:20+00:00</lastmod>
+    <lastmod>2026-08-17T08:32:34+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/about.html</loc>
+    <lastmod>2026-08-17T08:32:02+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://civicrollcall.com/member.html?id=brett-wright</loc>

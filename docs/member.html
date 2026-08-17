@@ -3,24 +3,28 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Member · Council Tracking</title>
+    <title>Eagle Mountain City Council Member Voting Record</title>
     <meta name="description" content="Roll-call voting record and agreement scores for an Eagle Mountain City Council member." />
+    <!-- No static <link rel="canonical"> here on purpose. One shell serves every
+         member behind ?id=, so a hard-coded canonical would point all fourteen of
+         them at the bare URL and tell Google to drop thirteen. CT.setCanonical()
+         in site.js writes the self-referencing one, params and all. -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="profile" />
-    <meta property="og:site_name" content="Council Tracking" />
-    <meta property="og:title" content="Member · Council Tracking" />
+    <meta property="og:site_name" content="Civic Roll Call" />
+    <meta property="og:title" content="Eagle Mountain City Council Member Voting Record" />
     <meta property="og:description" content="Roll-call voting record and agreement scores for an Eagle Mountain City Council member." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Member · Council Tracking" />
+    <meta name="twitter:title" content="Eagle Mountain City Council Member Voting Record" />
     <meta name="twitter:description" content="Roll-call voting record and agreement scores for an Eagle Mountain City Council member." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260817c" />
+    <link rel="preload" href="fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts.css?v=20260817g" />
+    <link rel="stylesheet" href="site.css?v=20260817g" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -44,6 +48,7 @@
         <a href="members.html" data-nav="members.html">Members</a>
         <a href="tax.html" data-nav="tax.html" data-nav-alias="projections.html">Tax</a>
         <a href="budget.html" data-nav="budget.html">Budget</a>
+        <a href="definitions.html" data-nav="definitions.html">Definitions</a>
       </nav>
     </header>
 
@@ -51,9 +56,9 @@
       <div id="content"></div>
     </main>
 
-    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
+    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a></span></footer>
 
-    <script src="site.js?v=20260817c"></script>
+    <script src="site.js?v=20260817g"></script>
     <script>
       (async () => {
         const data = await CT.loadData();
@@ -65,8 +70,45 @@
           return;
         }
         CT.setMeta({
-          title: `${member.name} · Council Tracking`,
+          title: `${member.name} — Voting Record, Eagle Mountain City Council`,
           description: `Roll-call voting record, agreement scores, and vote history for ${member.name} on the Eagle Mountain City Council.`,
+        });
+        // The shell's static markup can't name whoever ?id= asked for, so the
+        // Person node is built here. Searches for a councilmember by name are
+        // the highest-intent queries this site gets; this is what ties the page
+        // to the human being searched for.
+        const memberUrl = CT.canonicalUrl();
+        CT.addSchema({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "ProfilePage",
+              "@id": `${memberUrl}#webpage`,
+              url: memberUrl,
+              name: `${member.name} — Voting Record, Eagle Mountain City Council`,
+              inLanguage: "en-US",
+              isPartOf: { "@id": "https://civicrollcall.com/#website" },
+              publisher: { "@id": "https://civicrollcall.com/#publisher" },
+              mainEntity: { "@id": `${memberUrl}#person` },
+              breadcrumb: {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: "https://civicrollcall.com/" },
+                  { "@type": "ListItem", position: 2, name: "Members", item: "https://civicrollcall.com/members.html" },
+                  { "@type": "ListItem", position: 3, name: member.name, item: memberUrl },
+                ],
+              },
+            },
+            {
+              "@type": "Person",
+              "@id": `${memberUrl}#person`,
+              name: member.name,
+              url: memberUrl,
+              jobTitle: member.role,
+              memberOf: { "@id": "https://civicrollcall.com/#council" },
+              worksFor: { "@id": "https://civicrollcall.com/#council" },
+            },
+          ],
         });
         const s = data.stats.by_member[id] || { total:0,yes:0,no:0,nay:0,abstain:0,excused:0,absent:0,yes_rate:0,by_tag:{} };
         const opposed = s.no + (s.nay || 0);

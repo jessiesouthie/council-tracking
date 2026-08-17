@@ -3,30 +3,81 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Budget Spending — Eagle Mountain Council Tracking</title>
-    <meta name="description" content="What Eagle Mountain plans to spend in FY2026–27 — a $200M sewer bond, a restricted tax line, and the capital slate — with the FY2025–26 adopted budget searchable line by line, every fund, department and account." />
+    <title>Eagle Mountain City Budget FY2026–27, Line by Line</title>
+    <meta name="description" content="What Eagle Mountain plans to spend in FY2026–27 — a $200M sewer bond, a restricted tax line and the capital slate — plus the FY2025–26 adopted budget line by line." />
+    <link rel="canonical" href="https://civicrollcall.com/budget.html" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Council Tracking" />
-    <meta property="og:title" content="Budget Spending — Eagle Mountain Council Tracking" />
-    <meta property="og:description" content="What Eagle Mountain plans to spend in FY2026–27 — a $200M sewer bond, a restricted tax line, and the capital slate — with the FY2025–26 adopted budget searchable line by line, every fund, department and account." />
+    <meta property="og:site_name" content="Civic Roll Call" />
+    <meta property="og:url" content="https://civicrollcall.com/budget.html" />
+    <meta property="og:title" content="Eagle Mountain City Budget FY2026–27, Line by Line" />
+    <meta property="og:description" content="What Eagle Mountain plans to spend in FY2026–27 — a $200M sewer bond, a restricted tax line and the capital slate — plus the FY2025–26 adopted budget line by line." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Budget Spending — Eagle Mountain Council Tracking" />
+    <meta name="twitter:title" content="Eagle Mountain City Budget FY2026–27, Line by Line" />
     <meta name="twitter:description" content="What Eagle Mountain plans to spend in FY2026–27, with the FY2025–26 adopted budget searchable line by line." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Fraunces is the FY2025–26 book's display face and nothing else's. It is
-         asked for at one pinned instance — weight 700, SOFT 0, WONK 1 — rather
-         than as a variable font: the axes are what make Fraunces large, and
-         pinning them takes the latin subset from 118KB to 34KB. Figures and
-         filing codes use the mono the site already ships with. -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,700,0,1&family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260817c" />
+    <!-- Fraunces is the FY2025–26 book's display face and nothing else's. It was
+         fetched at one pinned instance — weight 700, SOFT 0, WONK 1 — rather than
+         as a variable font: the axes are what make Fraunces large, and pinning
+         them takes the latin subset from 118KB to 34KB. That pinning is baked
+         into the file ingest/build_fonts.py downloaded, so it still holds; the
+         instance is fixed at build time now rather than requested per page. -->
+    <link rel="preload" href="fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/fraunces-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts.css?v=20260817g" />
+    <link rel="stylesheet" href="site.css?v=20260817g" />
+
+    <!-- Dataset rather than Article: the page is a searchable copy of the city's
+         own budget book, not a piece written about it. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Dataset",
+          "@id": "https://civicrollcall.com/budget.html#dataset",
+          "name": "Eagle Mountain City budget — FY2025–26 adopted and FY2026–27 proposed",
+          "description": "Eagle Mountain City's adopted FY2025–26 budget and proposed FY2026–27 budget, broken out by fund, department and account.",
+          "url": "https://civicrollcall.com/budget.html",
+          "inLanguage": "en-US",
+          "creator": { "@id": "https://civicrollcall.com/#publisher" },
+          "isAccessibleForFree": true,
+          "keywords": [
+            "Eagle Mountain",
+            "municipal budget",
+            "general fund",
+            "capital projects",
+            "sewer bond",
+            "property tax"
+          ],
+          "spatialCoverage": { "@type": "Place", "name": "Eagle Mountain, Utah" },
+          "about": { "@id": "https://civicrollcall.com/#council" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://civicrollcall.com/budget.html#webpage",
+          "url": "https://civicrollcall.com/budget.html",
+          "name": "Eagle Mountain City Budget FY2026–27, Line by Line",
+          "inLanguage": "en-US",
+          "isPartOf": { "@id": "https://civicrollcall.com/#website" },
+          "publisher": { "@id": "https://civicrollcall.com/#publisher" },
+          "mainEntity": { "@id": "https://civicrollcall.com/budget.html#dataset" },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://civicrollcall.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Budget", "item": "https://civicrollcall.com/budget.html" }
+            ]
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -53,6 +104,7 @@
         <a href="members.html" data-nav="members.html">Members</a>
         <a href="tax.html" data-nav="tax.html" data-nav-alias="projections.html">Tax</a>
         <a href="budget.html" data-nav="budget.html">Budget</a>
+        <a href="definitions.html" data-nav="definitions.html">Definitions</a>
       </nav>
     </header>
 
@@ -60,11 +112,11 @@
       <div id="content"></div>
     </main>
 
-    <footer class="footer"><span>Budget figures from the Eagle Mountain City ClearGov budget book and line items</span></footer>
+    <footer class="footer"><span>Budget figures from the Eagle Mountain City ClearGov budget book and line items &middot; <a href="about.html">How this site is built</a></span></footer>
 
     <div class="sk-tip" id="sk-tip" role="status" aria-live="off"></div>
 
-    <script src="site.js?v=20260817c"></script>
+    <script src="site.js?v=20260817g"></script>
     <script>
       (async () => {
         const root = document.getElementById("content");
@@ -1163,6 +1215,11 @@
             <dl>
               ${terms.map(([t, d]) => `<div><dt>${esc(t)}</dt><dd>${esc(d)}</dd></div>`).join("")}
             </dl>
+            <p class="bn-gloss-more">
+              These are the budget words only. The
+              <a href="definitions.html">Definitions</a> page covers the rest of the
+              city's vocabulary — impact fees, tax increment, plats, PIDs.
+            </p>
           </details>`;
       }
 

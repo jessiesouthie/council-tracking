@@ -3,25 +3,91 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Civic Roll Call — Eagle Mountain City Council</title>
+    <title>Eagle Mountain City Council Votes — Civic Roll Call</title>
     <meta name="description" content="Every Eagle Mountain City Council vote, clearly explained. Search decisions, see who voted how, and understand what changed." />
+    <link rel="canonical" href="https://civicrollcall.com/" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Civic Roll Call" />
-    <meta property="og:title" content="Civic Roll Call — Eagle Mountain City Council" />
+    <meta property="og:url" content="https://civicrollcall.com/" />
+    <meta property="og:title" content="Eagle Mountain City Council Votes — Civic Roll Call" />
     <meta property="og:description" content="Every Eagle Mountain City Council vote, clearly explained. Search decisions, see who voted how, and understand what changed." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Civic Roll Call — Eagle Mountain City Council" />
+    <meta name="twitter:title" content="Eagle Mountain City Council Votes — Civic Roll Call" />
     <meta name="twitter:description" content="Every Eagle Mountain City Council vote, clearly explained. Search decisions, see who voted how, and understand what changed." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260817c" />
+    <link rel="preload" href="fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts.css?v=20260817g" />
+    <link rel="stylesheet" href="site.css?v=20260817g" />
+
+    <!-- Structured data, written inline rather than injected by site.js: the
+         crawlers that most need it (Bing, and every AI answer engine) don't run
+         our JavaScript. The @id values are stable so the other pages can point
+         at #website / #publisher / #council instead of restating them. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://civicrollcall.com/#website",
+          "url": "https://civicrollcall.com/",
+          "name": "Civic Roll Call",
+          "description": "Every Eagle Mountain City Council vote, clearly explained.",
+          "inLanguage": "en-US",
+          "publisher": { "@id": "https://civicrollcall.com/#publisher" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://civicrollcall.com/motions.html?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://civicrollcall.com/#publisher",
+          "name": "Civic Roll Call",
+          "url": "https://civicrollcall.com/",
+          "description": "An independent public-record project publishing Eagle Mountain, Utah city government meetings, roll-call votes, budgets and tax rates from primary sources.",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://civicrollcall.com/icons/icon-512.png",
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "@type": "GovernmentOrganization",
+          "@id": "https://civicrollcall.com/#council",
+          "name": "Eagle Mountain City Council",
+          "url": "https://civicrollcall.com/members.html",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Eagle Mountain",
+            "addressRegion": "UT",
+            "addressCountry": "US"
+          },
+          "areaServed": { "@type": "City", "name": "Eagle Mountain, Utah" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://civicrollcall.com/#webpage",
+          "url": "https://civicrollcall.com/",
+          "name": "Eagle Mountain City Council Votes — Civic Roll Call",
+          "isPartOf": { "@id": "https://civicrollcall.com/#website" },
+          "about": { "@id": "https://civicrollcall.com/#council" },
+          "inLanguage": "en-US"
+        }
+      ]
+    }
+    </script>
   </head>
   <body class="home-paper">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -48,6 +114,7 @@
         <a href="members.html" data-nav="members.html">Members</a>
         <a href="tax.html" data-nav="tax.html" data-nav-alias="projections.html">Tax</a>
         <a href="budget.html" data-nav="budget.html">Budget</a>
+        <a href="definitions.html" data-nav="definitions.html">Definitions</a>
       </nav>
     </header>
 
@@ -55,7 +122,7 @@
       <section class="hero">
         <p class="hero-eyebrow reveal" style="--i:0">Eagle Mountain · Public record</p>
         <h1 class="hero-title reveal" style="--i:1">
-          Every council vote, <span class="mark">clearly explained</span>.
+          Every <span data-body-noun>council</span> vote, <span class="mark">clearly explained</span>.
         </h1>
         <p class="hero-sub reveal" style="--i:2">
           Search decisions, see who voted how, and understand what changed.
@@ -108,7 +175,7 @@
 
       <section class="section" id="council-section">
         <div class="section-head">
-          <h2>Current council</h2>
+          <h2>Current <span data-body-noun>council</span></h2>
           <a href="members.html">Full directory →</a>
         </div>
         <div id="council"></div>
@@ -118,10 +185,10 @@
     </main>
 
     <footer class="footer">
-      <span>Data from the Eagle Mountain CivicClerk public portal · last refreshed <span id="generated-at">—</span></span>
+      <span>Data from the Eagle Mountain CivicClerk public portal · last refreshed <span id="generated-at">—</span> · <a href="about.html">How this site is built</a></span>
     </footer>
 
-    <script src="site.js?v=20260817c"></script>
+    <script src="site.js?v=20260817g"></script>
     <script>
       (async () => {
         const data = await CT.loadData().catch((e) => {

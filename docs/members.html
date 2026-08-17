@@ -3,24 +3,51 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Members · Council Tracking</title>
-    <meta name="description" content="Roll-call vote totals and voting-agreement analysis for every Eagle Mountain City Council member." />
+    <title>Eagle Mountain City Council Members &amp; Voting Records</title>
+    <meta name="description" content="Roll-call vote totals for every Eagle Mountain City Council member, plus how often each pair of members voted the same way." />
+    <link rel="canonical" href="https://civicrollcall.com/members.html" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Council Tracking" />
-    <meta property="og:title" content="Members · Council Tracking" />
-    <meta property="og:description" content="Roll-call vote totals and voting-agreement analysis for every Eagle Mountain City Council member." />
+    <meta property="og:site_name" content="Civic Roll Call" />
+    <meta property="og:url" content="https://civicrollcall.com/members.html" />
+    <meta property="og:title" content="Eagle Mountain City Council Members &amp; Voting Records" />
+    <meta property="og:description" content="Roll-call vote totals for every Eagle Mountain City Council member, plus how often each pair of members voted the same way." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Members · Council Tracking" />
-    <meta name="twitter:description" content="Roll-call vote totals and voting-agreement analysis for every Eagle Mountain City Council member." />
+    <meta name="twitter:title" content="Eagle Mountain City Council Members &amp; Voting Records" />
+    <meta name="twitter:description" content="Roll-call vote totals for every Eagle Mountain City Council member, plus how often each pair of members voted the same way." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260817c" />
+    <link rel="preload" href="fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts.css?v=20260817g" />
+    <link rel="stylesheet" href="site.css?v=20260817g" />
+
+    <!-- The roster itself is data-driven and turns over with each election, so
+         the ItemList of members is added from the dataset at the foot of this
+         page rather than pinned here where it would quietly go stale. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "@id": "https://civicrollcall.com/members.html#webpage",
+      "url": "https://civicrollcall.com/members.html",
+      "name": "Eagle Mountain City Council Members & Voting Records",
+      "description": "Roll-call vote totals for every Eagle Mountain City Council member, plus how often each pair of members voted the same way.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://civicrollcall.com/#website" },
+      "about": { "@id": "https://civicrollcall.com/#council" },
+      "publisher": { "@id": "https://civicrollcall.com/#publisher" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://civicrollcall.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Members", "item": "https://civicrollcall.com/members.html" }
+        ]
+      }
+    }
+    </script>
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -44,6 +71,7 @@
         <a href="members.html" data-nav="members.html">Members</a>
         <a href="tax.html" data-nav="tax.html" data-nav-alias="projections.html">Tax</a>
         <a href="budget.html" data-nav="budget.html">Budget</a>
+        <a href="definitions.html" data-nav="definitions.html">Definitions</a>
       </nav>
     </header>
 
@@ -58,7 +86,70 @@
             <thead>
               <tr><th>Member</th><th>Role</th><th>Tenure</th><th class="text-right">Total votes</th><th class="text-right">Yes</th><th class="text-right">No</th><th class="text-right">Abstain</th><th class="text-right">Yes rate</th></tr>
             </thead>
-            <tbody id="rows"></tbody>
+            <tbody id="rows">
+            <!-- BEGIN generated:prerender (ingest/build_prerender.py) -->
+              <tr>
+                <td data-role="title" data-label="Member"><a href="member.html?id=brett-wright"><strong>Brett Wright</strong></a></td>
+                <td data-label="Role">Councilmember</td>
+                <td data-label="Tenure" class="muted nowrap">1 January 2026&ndash; 31 December 2029</td>
+                <td data-label="Total votes" class="text-right mono">380</td>
+                <td data-label="Yes" class="text-right mono">371</td>
+                <td data-label="No" class="text-right mono">7</td>
+                <td data-label="Abstain" class="text-right mono muted">2</td>
+                <td data-label="Yes rate" class="text-right mono">98%</td>
+              </tr>
+              <tr>
+                <td data-role="title" data-label="Member"><a href="member.html?id=melissa-clark"><strong>Melissa Clark</strong></a></td>
+                <td data-label="Role">Councilmember</td>
+                <td data-label="Tenure" class="muted nowrap">1 January 2024&ndash; 31 December 2027</td>
+                <td data-label="Total votes" class="text-right mono">383</td>
+                <td data-label="Yes" class="text-right mono">373</td>
+                <td data-label="No" class="text-right mono">6</td>
+                <td data-label="Abstain" class="text-right mono muted">4</td>
+                <td data-label="Yes rate" class="text-right mono">98%</td>
+              </tr>
+              <tr>
+                <td data-role="title" data-label="Member"><a href="member.html?id=rich-wood"><strong>Rich Wood</strong></a></td>
+                <td data-label="Role">Councilmember</td>
+                <td data-label="Tenure" class="muted nowrap">1 January 2024&ndash; 31 December 2027</td>
+                <td data-label="Total votes" class="text-right mono">383</td>
+                <td data-label="Yes" class="text-right mono">321</td>
+                <td data-label="No" class="text-right mono">28</td>
+                <td data-label="Abstain" class="text-right mono muted">34</td>
+                <td data-label="Yes rate" class="text-right mono">92%</td>
+              </tr>
+              <tr>
+                <td data-role="title" data-label="Member"><a href="member.html?id=jared-gray"><strong>Jared Gray</strong></a></td>
+                <td data-label="Role">Mayor</td>
+                <td data-label="Tenure" class="muted nowrap">1 January 2026&ndash; 31 December 2029</td>
+                <td data-label="Total votes" class="text-right mono">277</td>
+                <td data-label="Yes" class="text-right mono">236</td>
+                <td data-label="No" class="text-right mono">10</td>
+                <td data-label="Abstain" class="text-right mono muted">31</td>
+                <td data-label="Yes rate" class="text-right mono">96%</td>
+              </tr>
+              <tr>
+                <td data-role="title" data-label="Member"><a href="member.html?id=craig-whiting"><strong>Craig Whiting</strong></a></td>
+                <td data-label="Role">Councilmember</td>
+                <td data-label="Tenure" class="muted nowrap">1 January 2026&ndash; 31 December 2029</td>
+                <td data-label="Total votes" class="text-right mono">110</td>
+                <td data-label="Yes" class="text-right mono">108</td>
+                <td data-label="No" class="text-right mono">2</td>
+                <td data-label="Abstain" class="text-right mono muted">0</td>
+                <td data-label="Yes rate" class="text-right mono">98%</td>
+              </tr>
+              <tr>
+                <td data-role="title" data-label="Member"><a href="member.html?id=zachory-huish"><strong>Zachory Huish</strong></a></td>
+                <td data-label="Role">Councilmember</td>
+                <td data-label="Tenure" class="muted nowrap">15 January 2026&ndash; 31 December 2027</td>
+                <td data-label="Total votes" class="text-right mono">100</td>
+                <td data-label="Yes" class="text-right mono">95</td>
+                <td data-label="No" class="text-right mono">3</td>
+                <td data-label="Abstain" class="text-right mono muted">2</td>
+                <td data-label="Yes rate" class="text-right mono">97%</td>
+              </tr>
+            <!-- END generated:prerender -->
+            </tbody>
           </table>
         </div>
       </section>
@@ -79,16 +170,55 @@
       </section>
     </main>
 
-    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
+    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a></span></footer>
 
-    <script src="site.js?v=20260817c"></script>
+    <script src="site.js?v=20260817g"></script>
     <script>
       (async () => {
         const data = await CT.loadData();
         renderRows(data);
         renderPairs(data);
+        addRosterSchema(data);
         document.getElementById("sort").addEventListener("change", () => renderPairs(data));
       })();
+
+      // Name the sitting members as an ItemList of Person nodes pointing at their
+      // own pages. Built from the dataset rather than pinned in the <head> so it
+      // turns over with the roster instead of naming last term's council.
+      function addRosterSchema(data) {
+        const members = data.members.filter(m =>
+          (m.role === "Councilmember" || m.role === "Mayor") && CT.isCurrentMember(m)
+        );
+        if (!members.length) return;
+        CT.addSchema({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "@id": "https://civicrollcall.com/members.html#roster",
+          name: "Eagle Mountain City Council members",
+          numberOfItems: members.length,
+          itemListOrder: "https://schema.org/ItemListUnordered",
+          itemListElement: members.map((m, i) => {
+            // linkBody carries the active body through; canonicalUrl then drops
+            // it again when it's the default, so the council's own members land
+            // on the bare ?id= URL the sitemap lists.
+            const url = CT.canonicalUrl(new URL(
+              CT.linkBody(`member.html?id=${encodeURIComponent(m.id)}`), location.href
+            ).toString());
+            return {
+              "@type": "ListItem",
+              position: i + 1,
+              item: {
+                "@type": "Person",
+                "@id": `${url}#person`,
+                name: m.name,
+                url,
+                jobTitle: m.role,
+                memberOf: { "@id": "https://civicrollcall.com/#council" },
+              },
+            };
+          }),
+        });
+      }
 
       function renderRows(data) {
         const members = data.members.filter(m =>

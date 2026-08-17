@@ -96,6 +96,9 @@
   --ico-more:     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black' stroke='none'><circle cx='5' cy='12' r='1.7'/><circle cx='12' cy='12' r='1.7'/><circle cx='19' cy='12' r='1.7'/></svg>");
   /* Two lines diverging — the projection page's whole subject in 22px. */
   --ico-trend:    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M3.5 4v16h17'/><path d='M6.5 15l4-4 3 2 4.5-6'/><path d='M6.5 11l4 2 3-4 4.5 2' stroke-dasharray='3 2.4'/></svg>");
+  /* An open book — the glossary. Two short rules on the right page read as text
+     without turning to mush at 22px, which full ruling on both pages does. */
+  --ico-book:     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M12 6.6C10.6 5.4 8.6 4.8 6 4.8H3.2v13.4H6c2.6 0 4.6.6 6 1.8'/><path d='M12 6.6c1.4-1.2 3.4-1.8 6-1.8h2.8v13.4H18c-2.6 0-4.6.6-6 1.8'/><path d='M12 6.6V20'/><path d='M15.2 9.4h3.2M15.2 12.6h3.2'/></svg>");
 
   /* One typeface across the site. Inter is a neutral UI grotesque, so it carries
      the display sizes on tracking and weight rather than on character — hence the
@@ -2402,7 +2405,6 @@ details.motion-row .motion-detail {
   font-size: 14px;
   line-height: 1.5;
   color: var(--fg);
-  max-width: 68ch;
 }
 
 /* ---------- Expanded motion detail: decided → impact → roll call → legalese ----------
@@ -2415,7 +2417,6 @@ details.motion-row .motion-detail {
   line-height: 1.55;
   color: var(--fg-soft);
   font-weight: 500;
-  max-width: 66ch;
   text-wrap: pretty;
 }
 
@@ -2441,7 +2442,6 @@ details.motion-row .motion-detail {
   font-size: 14.5px;
   line-height: 1.6;
   color: var(--fg);
-  max-width: 64ch;
   text-wrap: pretty;
 }
 
@@ -2449,7 +2449,6 @@ details.motion-row .motion-detail {
   margin: 0 0 14px;
   font-size: 13.5px;
   line-height: 1.55;
-  max-width: 64ch;
 }
 
 .m-block { margin: 0 0 14px; }
@@ -2566,7 +2565,6 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
   font-size: 14px;
   line-height: 1.6;
   color: var(--fg-muted);
-  max-width: 64ch;
   text-wrap: pretty;
 }
 .m-impact-routine-label {
@@ -2824,6 +2822,7 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
   [data-nav="tax.html"]      .tab-ico { -webkit-mask-image: var(--ico-receipt);  mask-image: var(--ico-receipt); }
   [data-nav="budget.html"]   .tab-ico { -webkit-mask-image: var(--ico-flow);     mask-image: var(--ico-flow); }
   [data-nav="projections.html"] .tab-ico { -webkit-mask-image: var(--ico-trend); mask-image: var(--ico-trend); }
+  [data-nav="definitions.html"] .tab-ico { -webkit-mask-image: var(--ico-book);  mask-image: var(--ico-book); }
   .tabbar .tab-more .tab-ico { -webkit-mask-image: var(--ico-more); mask-image: var(--ico-more); }
 
   /* Four tabs — comfortable on a 320px screen without truncation. */
@@ -5170,7 +5169,6 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
 
 .arg-h {
   margin: 0 0 12px;
-  max-width: 30em;
   font-size: clamp(19px, 2.6vw, 22px);
   font-weight: 700;
   line-height: 1.25;
@@ -5554,7 +5552,6 @@ a.aq-src:hover { color: var(--t-gold); text-decoration: underline; }
 .acost > li {
   padding: 16px 0;
   border-top: 1px solid var(--t-line);
-  max-width: 46em;
 }
 .acost > li:first-child { border-top: 0; padding-top: 0; }
 .acost-fig {
@@ -6593,7 +6590,7 @@ table.data.statewide thead th { background: var(--t-card); }
 }
 .b-lede {
   font-family: var(--serif); font-size: clamp(17px, 2.4vw, 21px); line-height: 1.45;
-  color: var(--fg); max-width: 68ch; margin: 14px 0 0;
+  color: var(--fg); margin: 14px 0 0;
 }
 
 /* ---- the two budgets, side by side --------------------------------------
@@ -6947,6 +6944,16 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
 .bn-gloss dl > div { break-inside: avoid; padding: 8px 0; border-top: 1px solid var(--border); }
 .bn-gloss dt { font-size: 13.5px; font-weight: 800; color: var(--fg-soft); }
 .bn-gloss dd { margin: 3px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--fg-muted); }
+/* Pointer out to the full glossary. Sits under the two columns, so it reads as
+   "and there is more" rather than as an eleventh term. */
+.bn-gloss-more {
+  margin: 0;
+  padding: 12px 16px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--fg-muted);
+}
 
 /* Sits between the all-funds chart and the General Fund one: the caveat a
    reader needs in order to read the widest ribbon correctly. Set in two columns
@@ -7256,7 +7263,7 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
 }
 .bx-head { padding: 18px 22px 0; }
 .bx-head h3 { font-family: var(--serif); font-size: 20px; line-height: 1.25; color: var(--fg-soft); margin: 0; }
-.bx-head p { margin: 7px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--fg-muted); max-width: 76ch; }
+.bx-head p { margin: 7px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--fg-muted); }
 .bx-tools { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; padding: 14px 22px 0; }
 .bx-search { flex: 1 1 300px; display: flex; }
 .bx-search .input { width: 100%; min-width: 0; }
@@ -7372,13 +7379,11 @@ table.data.bx-lines .bx-tot td {
 .bp-lede { margin: 4px 0 0; font-size: 15px; line-height: 1.6; color: var(--fg); }
 
 @media (max-width: 860px) {
-  /* Below the rail breakpoint every two-column head and block stacks. Nothing
-     is holding the measure in once the rail is gone, so a cap goes back on —
-     it only bites on tablets, where a full-width line would run past 85
-     characters; on phones the container is already narrower than the cap. */
+  /* Below the rail breakpoint every two-column head and block stacks. Once the
+     rail is gone the prose takes the container it is given, same as everywhere
+     else on the site — no measure cap goes back on. */
   .bn-head, .bp-head, .bn-block { grid-template-columns: minmax(0, 1fr); gap: 10px 0; }
   .bn-lede, .bp-lede { margin-top: 0; }
-  .bn-body p, .bn-lede, .bp-lede, .bn-chartnote, .b-chart-head p { max-width: 76ch; }
   .bn-stat { flex-direction: row; align-items: baseline; gap: 10px; flex-wrap: wrap; }
   .bn-stat .k { margin-top: 0; }
   .b-chart-head { grid-template-columns: minmax(0, 1fr); gap: 10px; }
@@ -7993,7 +7998,6 @@ table.data.bx-lines .bx-tot td {
   font-size: 14.5px;
   line-height: 1.65;
   color: var(--t-fg-2);
-  max-width: 72ch;
 }
 .proj-hero-scale strong { color: var(--t-fg); font-variant-numeric: tabular-nums; }
 
@@ -8096,7 +8100,6 @@ table.data.bx-lines .bx-tot td {
   font-size: 14px;
   line-height: 1.6;
   color: var(--t-fg-2);
-  max-width: 74ch;
 }
 .proj-scenario-note strong { color: var(--t-fg); }
 .proj-scenario-note p { margin: 0; }
@@ -8137,20 +8140,19 @@ table.data.bx-lines .bx-tot td {
 /* ---------- why the gap is what it is ----------
    Sits under the summary cards, which sit under the charts: the six years get
    drawn first, the cards state the answer in figures, and this states where
-   that answer came from. It was a closed panel down in the methodology
-   section, which put the one explanation a reader needs behind a click and two
-   screens of scrolling.
+   that answer came from.
 
-   Deliberately not a card. The cards above it are figures; this is a short
-   argument with a table in it, so it takes the section's own prose treatment
-   with a rule down the left to tie it to the cards it explains. */
+   It carried a gold rule down its left edge when it was open prose in the run
+   of section 02, to tie it to the cards it explains. It is a panel now — the
+   working is an account-level calculation and the section's main line is
+   chart, chart, cards, table — so the panel's own border does that job, and
+   the rule plus its 18px indent would only be a second inset inside the
+   panel's 22px one. */
 .proj-why {
-  margin: 22px 0 4px;
-  padding: 18px 0 2px 18px;
-  border-left: 3px solid var(--t-gold-line);
+  margin: 0;
+  padding: 0;
 }
-.proj-why .proj-sub-h2 { margin-bottom: 6px; }
-.proj-why .proj-ear-lede { margin-bottom: 14px; }
+.proj-why .proj-ear-lede { margin: 0 0 14px; }
 .proj-why .tablewrap { margin: 0; }
 .proj-why table.data th[scope="row"] { font-weight: 600; }
 .proj-why-drift {
@@ -8158,13 +8160,8 @@ table.data.bx-lines .bx-tot td {
   font-size: 13.5px;
   line-height: 1.65;
   color: var(--t-fg-2);
-  max-width: 72ch;
 }
 .proj-why-drift strong { color: var(--t-fg); }
-
-@media (max-width: 719px) {
-  .proj-why { padding-left: 13px; }
-}
 
 /* ---------- validation ---------- */
 .proj-alert {
@@ -8280,24 +8277,24 @@ table.data.bx-lines .bx-tot td {
       11px, because at this density they are signposts, not reading.
    4. The adjustment dagger is hung in the gutter at zero width instead of
       widening the spending column by 13px for a single mark.
-   5. The table gives back the card's 30px inset and rules across the full
-      width of the card. Its heading, footnote and export bar stay in the
-      inset — a wide figure inside the card, not a card of a different width.
-      The card's edges are untouched, which is the part that has to hold: they
+   5. The table gives back the inset of whatever encloses it and rules across
+      its full width. Its footnote and export bar stay in the inset — a wide
+      figure inside the container, not a container of a different width. The
+      enclosing edges are untouched, which is the part that has to hold: they
       line up with every other card on the page.
 
-   That leaves 850px of table in the 870px the card gives back — the whole
-   thing on screen at every width down to the page's own 920px measure. Under
-   that the card itself is the constraint and the figures do scroll, which is
-   what the sticky year column further down is for. */
-.proj-table-block { --sec-pad-x: 30px; }
+   The inset it gives back is now the panel's rather than the card's. The table
+   moved into a "Year by year" panel — every figure is still there, and the
+   panel summary says so, but section 02's main line is chart, chart, cards,
+   and a ten-column table is what a reader opens rather than what they scroll
+   past. The three values below track .panel-body's padding at the same two
+   breakpoints; the old heading block went with the move, since the panel
+   summary carries the title and the description now. */
+.proj-table-block { --sec-pad-x: 22px; }
 .proj-table-block .tablewrap { margin-inline: calc(var(--sec-pad-x) * -1); }
 @media (max-width: 760px) { .proj-table-block { --sec-pad-x: 18px; } }
 @media (max-width: 400px) { .proj-table-block { --sec-pad-x: 14px; } }
 
-.proj-table-head { margin: 30px 0 12px; }
-.proj-table-head h3 { margin: 0 0 4px; font-size: 17px; font-weight: 700; color: var(--t-fg); }
-.proj-table-head p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--t-muted); }
 table.data.proj-table { font-size: 12px; }
 table.data.proj-table :is(th, td) { padding-left: 6px; padding-right: 6px; }
 /* The rules run to the card's edge; the figures stop short of it, so nothing
@@ -8571,7 +8568,6 @@ table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi
   table.data.proj-table,
   table.data.proj-base { font-size: 12px; }
   .proj-base th[scope="row"] { width: auto; }
-  .proj-table-head { margin-top: 24px; }
 }
 @media (max-width: 480px) {
   /* One column. Two was tried: an eight-digit figure at nowrap needs about
@@ -8608,7 +8604,6 @@ table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi
   font-size: 14px;
   line-height: 1.65;
   color: var(--t-fg-2);
-  max-width: 72ch;
 }
 .proj-ear-lede strong { color: var(--t-fg); }
 
@@ -8770,7 +8765,9 @@ table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi
    is a plain composition, so the colours no longer need to read as a gradient
    of seriousness — they only need to be four distinguishable bands that match
    their legend keys. */
-.proj-order { margin-top: 34px; }
+/* Inside the composition panel now, so its top margin would be a gap between
+   the panel's own inset and its first element. */
+.proj-order { margin-top: 0; }
 
 .proj-rung-bar {
   display: flex;
@@ -8964,3 +8961,575 @@ table.data.proj-maint tr.is-total :is(th, td) {
   color: var(--t-fg);
 }
 .proj-rung-card:first-child .tablewrap { margin: 6px 0 2px; }
+
+/* =========================================================================
+   DEFINITIONS — definitions.html
+   =========================================================================
+   The page is a reference book, so it is built like one rather than like the
+   data pages: a masthead, a running head, numbered groups, and entries set as
+   a dictionary sets them — headword hanging in its own column, definition in a
+   measure beside it, the local note as marginalia underneath.
+
+   Newsreader carries the display and the headwords; Inter still sets the
+   definitions. Eighty-three entries in one weight of one sans is a wall, and
+   a text serif is what makes an entry look like an entry. The pair is loaded
+   by definitions.html and every selector here is scoped under .page-defs or
+   .def-*, so no other page changes.
+
+   Colour comes only from tokens that invert. --warm-ink is NOT one of them
+   (it has no dark-mode value and would leave a brown margin note on a near
+   black ground), so warm text and warm rules here use --link, which the dark
+   palette redefines and documents as clearing 8:1.
+   ========================================================================= */
+
+/* The glossary drops the site's warm paper for plain white. The other pages are
+   read once through, where the cream is atmosphere; this one is scanned, and
+   across eighty-three entries the warmth reads as a tint rather than as paper.
+   Overriding the token rather than the property so the sticky filter bar, which
+   paints --bg to mask the entries scrolling under it, follows without a second
+   rule. --bg-elev is already white, so the search pill now sits flush on the
+   page and is carried by its border alone — which is the intended effect.
+
+   Set on the root, not on body: html carries background too and it is html's
+   that propagates to the canvas, so overriding only body leaves the old cream
+   showing on overscroll.
+
+   Scoped to light: --bg inverts to near-black in the dark palette and a white
+   page there would be the opposite of lighter. The data-theme guards mirror
+   what body.page-tax does, for a forced theme with no system preference. */
+html:has(body.page-defs) { --bg: #FFFFFF; }
+@media (prefers-color-scheme: dark) {
+  html:has(body.page-defs):not([data-theme="light"]) { --bg: #191C18; }
+}
+html[data-theme="dark"]:has(body.page-defs) { --bg: #191C18; }
+
+body.page-defs {
+  --df-serif: "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  /* Headword column. One number, so the group numerals, the headwords and the
+     hanging link marks all sit on the same vertical. */
+  --df-gutter: 232px;
+  --df-gap: 40px;
+  /* The right margin the cross-references sit in. 232 + 40 + 470 + 40 + 250 is
+     the 1032px content box of a 1080px page, which leaves the definition itself
+     at ~62 characters — the measure it wants regardless of how wide the page is.
+     Widening the page buys apparatus, not longer lines. */
+  --df-margin: 250px;
+}
+
+/* ---------- masthead ---------- */
+
+.def-hero { margin: 4px 0 30px; }
+
+.def-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--link);
+}
+/* The brand mark's accent stripe, borrowed: it is the site's one piece of
+   ornament, and repeating it here ties the page to the wordmark. */
+.def-eyebrow::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--link);
+}
+
+.def-h1 {
+  margin: 0;
+  font-family: var(--df-serif);
+  font-optical-sizing: auto;
+  font-size: clamp(46px, 8.5vw, 78px);
+  font-weight: 400;
+  line-height: .92;
+  letter-spacing: -0.028em;
+  color: var(--fg-soft);
+}
+
+.def-lede {
+  margin: 20px 0 0;
+  max-width: 54ch;
+  font-family: var(--df-serif);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.52;
+  color: var(--fg);
+}
+
+/* The book's colophon line: what is in here, in three figures. */
+.def-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+  margin: 22px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.def-meta b {
+  font-family: var(--df-serif);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-soft);
+  margin-right: 3px;
+}
+
+/* ---------- filter, running head, thumb index ---------- */
+
+/* Pins beneath the topbar: with eighty-odd entries the reader is usually deep
+   in the page when they realise they want to search, and sending them back to
+   the top is the friction this control exists to remove. --topbar-h is measured
+   in definitions.html — the bar shrinks at the 760px breakpoint and grows with
+   the notch inset, so it cannot be a constant. */
+.def-tools {
+  position: sticky;
+  top: calc(var(--topbar-h, 62px) - 1px);
+  z-index: 5;
+  margin: 0 0 40px;
+  padding: 14px 0 12px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+/* The bar sits on the page background, so without this the entries scrolling
+   under it show through at its top edge where sub-pixel heights round apart. */
+.def-tools::before {
+  content: "";
+  position: absolute;
+  inset: -14px 0 auto;
+  height: 14px;
+  background: var(--bg);
+}
+
+.def-tools-row { display: flex; align-items: center; gap: 18px; }
+
+.def-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 460px;
+  padding: 0 16px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  box-shadow: var(--shadow-hair);
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+.def-search:focus-within {
+  border-color: var(--link);
+  box-shadow: 0 0 0 3px var(--accent-tint);
+}
+.def-search-glyph {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--fg-muted);
+  stroke-width: 1.9;
+  stroke-linecap: round;
+}
+.def-input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  border: none;
+  background: transparent;
+  font-family: var(--sans);
+  font-size: 16px;   /* 16px, or iOS zooms the page on focus */
+  color: var(--fg-soft);
+  padding: 8px 0;
+}
+.def-input:focus { outline: none; }   /* the pill takes the ring */
+.def-input::placeholder { color: var(--fg-muted); }
+.def-input::-webkit-search-decoration { -webkit-appearance: none; }
+
+/* The running head. Set in the serif's italic, the way a book sets one. */
+.def-running {
+  flex: 0 1 auto;
+  min-width: 0;
+  margin: 0;
+  font-family: var(--df-serif);
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--fg-muted);
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+.def-running.is-on { opacity: 1; }
+.def-running-num {
+  margin-right: 8px;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .06em;
+  color: var(--link);
+}
+
+.def-count {
+  margin: 10px 2px 0;
+  font-family: var(--sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-muted);
+}
+
+/* Thumb index. Each tab carries its own count, so the strip doubles as the
+   book's table of contents rather than being six bare labels. */
+.def-jump { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.def-jump a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--bg-muted);
+  color: var(--fg-muted);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 140ms ease, color 140ms ease;
+}
+.def-jump a b {
+  font-family: var(--df-serif);
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--link);
+}
+.def-jump a:hover { background: var(--accent-soft); color: var(--fg-soft); text-decoration: none; }
+/* Nothing in this group survived the filter. Dimmed rather than removed: a thumb
+   index that loses tabs stops being a map of the book. */
+.def-jump a.is-empty { opacity: .42; }
+.def-jump a.is-empty b { color: var(--fg-muted); }
+.def-jump a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.def-empty {
+  margin: 0;
+  padding: 8px 0 40px;
+  max-width: 52ch;
+  font-family: var(--df-serif);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--fg-muted);
+}
+
+/* ---------- groups ---------- */
+
+.def-group { margin: 0 0 56px; scroll-margin-top: calc(var(--topbar-h, 62px) + 128px); }
+
+/* The numeral hangs in the headword column, so the six of them run down the
+   page's left edge as a spine and the group titles start where every
+   definition starts. */
+.def-group-head {
+  display: grid;
+  grid-template-columns: var(--df-gutter) minmax(0, 1fr);
+  gap: 0 var(--df-gap);
+  align-items: start;
+  padding-top: 18px;
+  border-top: 2px solid var(--fg-soft);
+  margin-bottom: 26px;
+}
+.def-group-num {
+  margin: 0;
+  font-family: var(--df-serif);
+  font-size: 40px;
+  font-weight: 300;
+  line-height: .8;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--link);
+  opacity: .5;
+}
+.def-group-h {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin: 0;
+  font-family: var(--df-serif);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  text-transform: none;
+  color: var(--fg-soft);
+}
+.def-group-count {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+.def-group-sub {
+  margin: 12px 0 0;
+  max-width: 58ch;
+  font-family: var(--df-serif);
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.58;
+  color: var(--fg-muted);
+}
+
+/* ---------- entries ---------- */
+
+.def-list { margin: 0; }
+
+/* The dictionary setting: headword in its own column, definition beside it.
+   No left border per entry — the headword column is the structure, and a rule
+   on all eighty-three would fight it. */
+.def {
+  display: grid;
+  grid-template-columns: var(--df-gutter) minmax(0, 1fr) var(--df-margin);
+  gap: 0 var(--df-gap);
+  padding: 18px 0;
+  border-top: 1px solid var(--hairline);
+}
+.def > dt { grid-column: 1; }
+.def > .def-body { grid-column: 2; }
+.def > .def-see { grid-column: 3; }
+.def:first-child { border-top: none; padding-top: 4px; }
+
+/* An explicit `display` beats the UA's [hidden] { display: none }, so the grid
+   above would leave filtered-out entries on screen — visible, but not counted.
+   Every element the filter toggles needs this restated. */
+.def[hidden],
+.def-group[hidden] { display: none; }
+
+.def dt {
+  position: relative;
+  /* Newsreader sets small for its point size where Inter sets large, so the
+     headword needs a few points on the definition to still outrank it. */
+  font-family: var(--df-serif);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: -0.012em;
+  color: var(--fg-soft);
+  text-wrap: balance;
+}
+
+/* The citation handle. Idle it is nearly invisible; it only resolves when the
+   reader is on the entry, so eighty-three of them don't turn the column into
+   a field of pilcrows. */
+.def-mark {
+  margin-left: 7px;
+  font-family: var(--df-serif);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--border-strong);
+  opacity: 0;
+  transition: opacity 140ms ease, color 140ms ease;
+}
+.def:hover .def-mark, .def:focus-within .def-mark { opacity: 1; }
+.def-mark:hover { color: var(--link); text-decoration: none; }
+.def-mark:focus-visible { opacity: 1; outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.def .def-body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.62;
+  color: var(--fg);
+}
+.def .def-body strong { font-weight: 700; color: var(--fg-soft); }
+.def .def-body em { font-style: italic; }
+
+/* The Eagle Mountain note — what the record actually shows. It is the part a
+   resident is here for, so it is set as marginalia in the serif's italic
+   rather than folded invisibly into the end of a general definition. */
+.def-local {
+  display: block;
+  margin-top: 10px;
+  padding-left: 14px;
+  border-left: 2px solid var(--link);
+  font-family: var(--df-serif);
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--link);
+}
+.def-local a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.def-local a:hover { color: var(--fg-soft); }
+
+/* Cross-references. A glossary's real value is the graph between its entries,
+   not the entries — this is that graph, made walkable. */
+/* In the margin, set as a column — apparatus beside the entry rather than a
+   line trailing under it. The hairline is what makes the page read as ruled to
+   its full width instead of as text that stopped early. */
+.def-see {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  margin: 0;
+  padding-left: 18px;
+  border-left: 1px solid var(--hairline);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--fg-muted);
+}
+.def-see-lab {
+  margin-bottom: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.def-see a { color: var(--link); font-weight: 600; }
+.def-see a:hover { color: var(--link-strong); }
+
+/* Landed on via #anchor. A held tint, not a flash: the reader may reach the
+   tab minutes after clicking the link. --highlight-soft is one of the tokens
+   the dark palette redefines, so this needs no second rule. */
+.def.is-target {
+  background: var(--highlight-soft);
+  /* the tint has to reach under the margin column, not stop at the definition */
+  box-shadow: inset 3px 0 0 var(--highlight);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding-left: 14px;
+  margin-left: -14px;
+}
+
+.def-foot {
+  margin: 0;
+  padding-top: 22px;
+  border-top: 2px solid var(--fg-soft);
+  max-width: 56ch;
+  font-family: var(--df-serif);
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--fg-muted);
+}
+
+/* ---------- narrow ---------- */
+
+/* Below this the headword column costs more than it gives: 232px of a 375px
+   screen leaves the definition an unreadable ribbon. Entries stack, and the
+   headword goes back to being a heading above its text. */
+/* Below the full page width there is no room for a margin, so the references
+   fold back under the definition and set inline — with the separators the
+   markup no longer carries, since a column doesn't want them. */
+@media (max-width: 1040px) {
+  .def { grid-template-columns: var(--df-gutter) minmax(0, 1fr); }
+  .def > .def-see {
+    grid-column: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 3px 9px;
+    margin-top: 12px;
+    padding-left: 0;
+    border-left: none;
+  }
+  .def-see-lab { margin-bottom: 0; }
+  .def-see a + a::before {
+    content: "\00B7";
+    margin-right: 9px;
+    color: var(--border-strong);
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 860px) {
+  .def,
+  .def-group-head {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .def > dt,
+  .def > .def-body,
+  .def > .def-see { grid-column: 1; }
+  .def dt { margin-bottom: 6px; font-size: 17px; }
+  .def-group-num { font-size: 30px; margin-bottom: 10px; }
+  .def-group-h { font-size: 25px; }
+  .def-group-sub { font-size: 16px; }
+  .def dd { font-size: 14.5px; }
+  /* Touch has no hover, so the handle would never appear. Show it, but faintly —
+     at this size a solid pilcrow beside every headword reads as a typo. */
+  .def-mark { opacity: .38; }
+}
+
+@media (max-width: 700px) {
+  /* The tab bar owns the bottom of the screen and the topbar the top; a sticky
+     filter as well leaves too little reading window on a phone. */
+  .def-tools { position: static; }
+  .def-running { display: none; }   /* no scroll context to report when static */
+  .def-group,
+  .def { scroll-margin-top: calc(var(--topbar-h, 60px) + 14px); }
+  .def-hero { margin-bottom: 24px; }
+  .def-lede { font-size: 18px; }
+}
+
+/* ---------------------------------------------------------------------------
+   Prerendered record — ingest/build_prerender.py
+
+   The static copy of the meeting, member and motion lists that now ships inside
+   the HTML, so a crawler that runs no JavaScript has the record to read instead
+   of a nav bar. A visitor sees it only for as long as data.json is in flight,
+   after which each page's own render replaces the container wholesale.
+
+   That short life is the whole brief for this styling: it has to read as the
+   page arriving, not as a page that failed. Plain rules, site tokens, no
+   components — the real ones are a moment behind it.
+   --------------------------------------------------------------------------- */
+.pre-list {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+.pre-list > li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.pre-list > li > a { font-weight: 600; }
+.pre-list .muted { font-size: 12px; }
+.pre-list p { margin: 0 0 4px; font-size: 14px; }
+
+/* The night's headline, under the date it was decided on. */
+.pre-heads {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--fg-muted);
+}
+
+.pre-motion-title {
+  margin: 0 0 2px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--fg-soft);
+}
+.pre-motion-meta { margin: 0 0 4px; font-size: 12px; }

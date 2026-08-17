@@ -4,30 +4,64 @@
     <meta charset="utf-8" />
     <script>document.documentElement.classList.remove("no-js");</script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Property Tax Estimator — Eagle Mountain Council Tracking</title>
+    <title>Eagle Mountain Property Tax Increase — What It Costs You</title>
     <meta name="description" content="See what the property tax increase Eagle Mountain adopted on August 6 costs you, and every council meeting it moved through." />
+    <link rel="canonical" href="https://civicrollcall.com/tax.html" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Council Tracking" />
-    <meta property="og:title" content="Property Tax Estimator — Eagle Mountain Council Tracking" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Civic Roll Call" />
+    <meta property="og:url" content="https://civicrollcall.com/tax.html" />
+    <meta property="og:title" content="Eagle Mountain Property Tax Increase — What It Costs You" />
     <meta property="og:description" content="See what the property tax increase Eagle Mountain adopted on August 6 costs you, and every council meeting it moved through." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Property Tax Estimator — Eagle Mountain Council Tracking" />
+    <meta name="twitter:title" content="Eagle Mountain Property Tax Increase — What It Costs You" />
     <meta name="twitter:description" content="See what the property tax increase Eagle Mountain adopted on August 6 costs you, and every council meeting it moved through." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- This page runs on its own typeface pair: Instrument Sans for text and
          IBM Plex Mono for every rate, share, and dollar figure. Inter is
-         deliberately not requested here — body.page-tax remaps the font tokens,
-         so nothing on this page would use it, and asking for a third family only
-         costs a render-blocking round trip. -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260817c" />
+         deliberately not used here — body.page-tax remaps the font tokens, so
+         nothing on this page would render with it. fonts.css declares every
+         family the site owns, but @font-face is a declaration and not a fetch:
+         a browser downloads only the faces it actually paints with, so the two
+         preloaded below are the only ones this page costs. -->
+    <link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts.css?v=20260817g" />
+    <link rel="stylesheet" href="site.css?v=20260817g" />
+
+    <!-- No datePublished/dateModified. Schema.org wants both on an Article and
+         Google leans on them for anything time-sensitive, but this page's dates
+         belong to the record it describes, not to the file, and a stamped guess
+         would be worse than a gap. Fill them in from the tax data's
+         generated_at when that's wired through the build. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": "https://civicrollcall.com/tax.html#article",
+      "headline": "Eagle Mountain Property Tax Increase — What It Costs You",
+      "description": "See what the property tax increase Eagle Mountain adopted on August 6 costs you, and every council meeting it moved through.",
+      "mainEntityOfPage": "https://civicrollcall.com/tax.html",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://civicrollcall.com/#website" },
+      "author": { "@id": "https://civicrollcall.com/#publisher" },
+      "publisher": { "@id": "https://civicrollcall.com/#publisher" },
+      "about": { "@id": "https://civicrollcall.com/#council" },
+      "isAccessibleForFree": true,
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://civicrollcall.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Tax", "item": "https://civicrollcall.com/tax.html" }
+        ]
+      }
+    }
+    </script>
   </head>
   <body class="page-tax">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -54,6 +88,7 @@
         <a href="members.html" data-nav="members.html">Members</a>
         <a href="tax.html" data-nav="tax.html" data-nav-alias="projections.html">Tax</a>
         <a href="budget.html" data-nav="budget.html">Budget</a>
+        <a href="definitions.html" data-nav="definitions.html">Definitions</a>
       </nav>
     </header>
 
@@ -79,10 +114,17 @@
              shimmering underneath it forever. -->
         <noscript>
           <div class="tax-page">
+            <!-- The heading here names the page, not the failure. This block is
+                 what a reader without JavaScript gets — and what a crawler that
+                 doesn't execute any reads as the page's H1 — so "The estimator
+                 needs JavaScript" was the site telling Google that a script
+                 requirement is the subject of the page. The missing estimator is
+                 now the second sentence, where it belongs. -->
             <div class="tax-fail">
-              <p class="eyebrow">Needs JavaScript</p>
-              <h1 class="tax-h1">The estimator needs JavaScript</h1>
-              <p class="tax-lede">The figures behind it are public: the city's Truth-in-Taxation
+              <p class="eyebrow">Eagle Mountain &middot; Property tax</p>
+              <h1 class="tax-h1">Eagle Mountain&rsquo;s property tax increase, and what it costs you</h1>
+              <p class="tax-lede">The estimator that works your own household&rsquo;s figure out needs
+                JavaScript. The numbers behind it are public either way: the city's Truth-in-Taxation
                 schedule was read into the record on June 16, 2026, and the
                 <a href="meetings.html">meeting records</a> carry it in full.</p>
             </div>
@@ -109,9 +151,9 @@
       </div>
     </main>
 
-    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
+    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a></span></footer>
 
-    <script src="site.js?v=20260817c"></script>
+    <script src="site.js?v=20260817g"></script>
     <script>
       (async () => {
         const root = document.getElementById("content");

@@ -432,6 +432,7 @@
     { href: "tax.html",         label: "Tax" },
     { href: "projections.html", label: "Projections" },
     { href: "budget.html",      label: "Budget" },
+    { href: "definitions.html", label: "Definitions" },
   ];
 
   function row(t) {
@@ -549,6 +550,83 @@
     }
   }
 
+  // The URL a page wants to be indexed under.
+  //
+  // One shell serves many pages behind a query string, so the canonical has to
+  // be computed rather than written into the HTML. member.html?id=rich-wood is
+  // genuinely its own page and has to say so — a hard-coded canonical would
+  // point all fourteen members at the bare shell and tell Google to drop
+  // thirteen of them. motions.html?q=sewer&outcome=passed is the opposite case:
+  // one filtered view of a single page, which must fold back to the bare URL or
+  // every filter combination becomes a duplicate in the index.
+  //
+  // CONTENT_PARAMS is the whitelist that separates the two. Anything not on it —
+  // filter state, utm_*, fbclid, a stray fragment of session junk — is dropped.
+  // Order matters: it's the order build_sitemap.py writes these URLs in, and the
+  // canonical has to match the sitemap byte for byte to be believed.
+  const CONTENT_PARAMS = ["id", "body"];
+
+  // Pinned rather than read from location.origin so a page opened from a preview
+  // host, a github.io fallback or a file:// checkout can't publish a canonical
+  // pointing somewhere nobody can fetch. Same reasoning as DEFAULT_HOST in
+  // ingest/build_sitemap.py, and the two have to agree.
+  const SITE_ORIGIN = "https://civicrollcall.com";
+
+  function canonicalUrl(href = location.href) {
+    let u;
+    try { u = new URL(href); } catch { return null; }
+
+    const keep = new URLSearchParams();
+    for (const key of CONTENT_PARAMS) {
+      const value = u.searchParams.get(key);
+      if (!value) continue;
+      // ?body=city-council is the default and renders the bare URL exactly, so
+      // carrying it would manufacture a duplicate of every council page.
+      if (key === "body" && value === DEFAULT_BODY) continue;
+      keep.set(key, value);
+    }
+
+    // /index.html and / are the same page. The sitemap lists the bare origin.
+    const path = u.pathname.replace(/\/index\.html$/, "/");
+    const qs = keep.toString();
+    return SITE_ORIGIN + path + (qs ? "?" + qs : "");
+  }
+
+  // Upsert <link rel="canonical"> and keep og:url pointing at the same place —
+  // a share card that disagrees with the canonical is a mixed signal.
+  function setCanonical(href) {
+    // 404.html answers on every missing URL and is noindex for that reason.
+    // Stamping a canonical onto it would name whatever path the reader mistyped
+    // as a real page.
+    const robots = document.head.querySelector('meta[name="robots"]');
+    if (robots && /noindex/i.test(robots.content || "")) return;
+
+    const url = href || canonicalUrl();
+    if (!url) return;
+    let link = document.head.querySelector('link[rel="canonical"]');
+    if (!link) {
+      link = document.createElement("link");
+      link.setAttribute("rel", "canonical");
+      document.head.appendChild(link);
+    }
+    link.setAttribute("href", url);
+    setMetaTag('meta[property="og:url"]', "property", "og:url", url);
+  }
+
+  // Append a JSON-LD node to the document.
+  //
+  // Only for schema that can't be known until the data lands — the Person behind
+  // member.html?id=, the Event behind meetings.html?id=. Everything describable
+  // without the dataset is written inline in the page <head> instead, because
+  // Bing and the AI answer engines read the HTML without running any of this.
+  function addSchema(node) {
+    if (!node) return;
+    const el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.textContent = JSON.stringify(node);
+    document.head.appendChild(el);
+  }
+
   // Append ?body= to a same-origin in-site link, preserving any existing query.
   function linkBody(href, body = currentBody()) {
     try {
@@ -611,6 +689,12 @@
     topbar.insertBefore(sel, nav || null);
   }
 
+  // The bare noun a body goes by in prose — "council", "commission", "board".
+  // The last word of the label carries it for every body the city seats.
+  function bodyNoun(label) {
+    return String(label).trim().split(/\s+/).pop().toLowerCase();
+  }
+
   // Reflect the active body in page chrome for non-default bodies. The default
   // (City Council) view is left exactly as authored.
   async function applyBodyChrome() {
@@ -622,16 +706,24 @@
     document.querySelectorAll(".topbar .city").forEach((el) => {
       el.textContent = `Eagle Mountain, UT · ${label}`;
     });
-    // Homepage hero headline names the body explicitly; keep it accurate.
-    document.querySelectorAll(".hero-title").forEach((el) => {
-      if (/City Council/.test(el.textContent)) {
-        el.textContent = el.textContent.replace(/City Council/g, label);
-      }
+    // Copy written for the council calls it by its bare noun — the homepage
+    // headline, the members section head. Swap the noun, not the sentence, so
+    // the surrounding markup (the highlighted span in the hero) survives.
+    const noun = bodyNoun(label);
+    document.querySelectorAll("[data-body-noun]").forEach((el) => {
+      el.textContent = noun;
+    });
+    // Tab and share titles spell the body out in full.
+    const desc = document.head.querySelector('meta[name="description"]');
+    setMeta({
+      title: document.title.replace(/City Council/g, label),
+      description: (desc?.content || "").replace(/City Council/g, label),
     });
   }
 
   // Boot every page: mount switcher + mobile nav, paint nav highlight, register SW.
   document.addEventListener("DOMContentLoaded", () => {
+    setCanonical();
     mountBodySwitch();
     mountTabbar();
     highlightActiveNav();
@@ -671,5 +763,8 @@
     tagChips,
     paramsFromUrl,
     setMeta,
+    setCanonical,
+    canonicalUrl,
+    addSchema,
   };
 })();
