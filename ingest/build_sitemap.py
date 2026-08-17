@@ -80,6 +80,11 @@ PAGES: list[dict] = [
      "data": ["data.json"], "body_scoped": "motions"},
     {"path": "definitions.html", "priority": "0.7", "changefreq": "monthly",
      "data": []},
+    # Low priority and rarely changing, but it has to be listed: it's the page
+    # that says who publishes this and where every figure came from, and a site
+    # making tax claims about a named city needs that reachable.
+    {"path": "about.html", "priority": "0.4", "changefreq": "yearly",
+     "data": []},
 ]
 
 MEMBER_PRIORITY = "0.6"
