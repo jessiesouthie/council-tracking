@@ -51,7 +51,7 @@ DOCS = ROOT / "docs"
 OUT_DIR = DOCS / "meetings"
 PARSED = ROOT / "data" / "parsed"
 TRANSCRIPTS = DOCS / "transcripts"
-CSS_VERSION = "20260817h"
+CSS_VERSION = "20260817j"
 
 CNAME = DOCS / "CNAME"
 DEFAULT_HOST = "civicrollcall.com"
@@ -245,6 +245,17 @@ def transcript_index() -> dict[str, dict[int, dict]]:
     for body_id, entries in manifest.items():
         out[body_id] = {e["id"]: e for e in entries if "id" in e}
     return out
+
+
+def agenda_only_index() -> dict[str, dict[int, dict]]:
+    """body id -> meeting id -> entry, from ingest.build_agenda_only.
+
+    Meetings the city held and noticed but never minuted or recorded. Empty (and
+    the pages simply absent) until that build has run.
+    """
+    manifest = (load_json(DOCS / "data.agenda-only.json") or {}).get("bodies") or {}
+    return {bid: {e["id"]: e for e in entries if "id" in e}
+            for bid, entries in manifest.items()}
 
 
 def read_text(rel: str | None) -> str:
@@ -498,6 +509,123 @@ def render_meeting(body: dict, meeting: dict, motions: list[dict],
     return "\n".join(parts), title, description
 
 
+def render_agenda(entry: dict) -> list[str]:
+    """The posted agenda, as the only account of a meeting that has no other.
+
+    Prints the city's own numbering and wording. An item's plain-English line
+    goes first when ingest.summarize_agenda has one cached, with the official
+    title kept underneath it — the same order the upcoming-meeting card uses, so
+    a reader who saw the meeting coming recognises it afterwards.
+    """
+    parts: list[str] = []
+    sessions = {s["start"]: s for s in entry.get("sessions") or []}
+    current: str | None = None
+
+    parts.append('      <section class="section">')
+    parts.append("        <h2>What was on the agenda</h2>")
+    for head in entry.get("agenda") or []:
+        session = head.get("session")
+        if session and session != current and session in sessions:
+            s = sessions[session]
+            parts.append(f'        <h3 class="mp-session">{esc(s["label"])}'
+                         f' &middot; {esc(s["start_label"])}</h3>')
+            current = session
+        title = head.get("title") or ""
+        cls = "mp-ag-head muted" if head.get("procedural") else "mp-ag-head"
+        parts.append(f'        <h3 class="{cls}">'
+                     f'<span class="mono muted">{esc(head.get("number"))}.</span> '
+                     f"{esc(title)}</h3>")
+        if head.get("note"):
+            parts.append(f'        <p class="muted">{esc(head["note"])}</p>')
+        if not head.get("items"):
+            continue
+        parts.append('        <ul class="mp-ag-items">')
+        for item in head["items"]:
+            bits = [f'<span class="mono muted">{esc(item.get("number"))}</span>']
+            if item.get("kind"):
+                bits.append(f'<span class="ag-kind">{esc(item["kind"].title())}</span>')
+            if item.get("plain"):
+                bits.append(f'<span class="mp-ag-plain">{esc(item["plain"])}</span>'
+                            f'<span class="muted mp-ag-official">'
+                            f'{esc(item.get("title"))}</span>')
+            else:
+                bits.append(esc(item.get("title")))
+            if item.get("time"):
+                bits.append(f'<span class="muted">({esc(item["time"])})</span>')
+            parts.append("          <li>" + " ".join(bits) + "</li>")
+        parts.append("        </ul>")
+    parts.append("      </section>")
+    return parts
+
+
+def render_agenda_only(body: dict, meeting: dict, entry: dict,
+                       base: str, slug: str) -> tuple[str, str, str]:
+    """A meeting whose only public record is the agenda. Returns (html, title,
+    description)."""
+    when = fmt_date(meeting.get("date", ""))
+    label = body["label"]
+    title = f"{label}, {when} — Eagle Mountain"
+    heads = [h for h in (entry.get("agenda") or []) if not h.get("procedural")]
+    topics = "; ".join(h["title"].title() for h in heads[:3] if h.get("title"))
+    description = (
+        f"The posted agenda for the Eagle Mountain {label} meeting on {when}"
+        + (f": {topics}." if topics else ".")
+        + " The city published no minutes for this meeting."
+    )
+
+    parts: list[str] = ['    <main id="main">']
+    parts.append('      <nav class="crumbs" aria-label="Breadcrumb">'
+                 '<a href="/meetings.html">All meetings</a>'
+                 f'<span aria-hidden="true"> / </span><span>{esc(when)}</span></nav>')
+    if entry.get("title"):
+        parts.append(f'      <p class="meeting-type">{esc(entry["title"])}</p>')
+    parts.append(f'      <h1 class="page-title">Eagle Mountain {esc(label)}, {esc(when)}</h1>')
+
+    sub = " · ".join(p for p in (entry.get("start_label"), entry.get("location")) if p)
+    if sub:
+        parts.append(f'      <p class="page-sub">{esc(sub)}</p>')
+
+    # Said plainly and said first: this page is the notice of a meeting, not a
+    # record of one. Everything below it is what the council meant to take up.
+    recording = entry.get("recording_url")
+    parts.append(
+        '      <div class="mp-notice"><p><strong>The city published no minutes '
+        'for this meeting.</strong> What follows is the agenda it posted beforehand, '
+        'so it says what the council intended to take up — not what was decided, and '
+        'not who voted for it. If minutes are approved later, they will replace this '
+        'page.</p>'
+        + (f'<p>The city did post a recording of this meeting. It has not been '
+           f'transcribed here, so nothing in it is searchable, but you can '
+           f'<a href="{esc(recording)}">watch it on the city&rsquo;s portal</a>.</p>'
+           if recording else "")
+        + "</div>"
+    )
+
+    if entry.get("agenda"):
+        parts.extend(render_agenda(entry))
+    else:
+        parts.append('      <section class="section"><p class="muted">The posted '
+                     'agenda for this meeting doesn&rsquo;t follow the city&rsquo;s '
+                     'usual template, so it isn&rsquo;t reproduced here. The PDF is '
+                     'linked below.</p></section>')
+
+    parts.append('      <section class="section"><h2>Source</h2><p class="muted">')
+    links = []
+    if entry.get("agenda_url"):
+        links.append(f'<a href="{esc(entry["agenda_url"])}">the agenda PDF</a>')
+    if entry.get("url"):
+        links.append(f'<a href="{esc(entry["url"])}">the event on the city&rsquo;s portal</a>')
+    parts.append("Read " + " and ".join(links) + "." if links else
+                 "Published through the Eagle Mountain CivicClerk portal.")
+    if entry.get("agenda_posted_on"):
+        parts.append(f' The city recorder certifies the agenda was posted on '
+                     f'{esc(fmt_date(entry["agenda_posted_on"]))}.')
+    parts.append("</p></section>")
+
+    parts.append("    </main>")
+    return "\n".join(parts), title, description
+
+
 def meeting_schema(body: dict, meeting: dict, motions: list[dict],
                    base: str, slug: str, title: str, description: str) -> str:
     canonical = f"{base}/meetings/{slug}.html"
@@ -742,6 +870,7 @@ def build() -> tuple[dict[str, str], list[dict]]:
     pages: dict[str, str] = {}
     rows: list[dict] = []
     tx_index = transcript_index()
+    ao_index = agenda_only_index()
 
     for body in body_registry():
         data = load_json(DOCS / body["data_file"])
@@ -776,7 +905,27 @@ def build() -> tuple[dict[str, str], list[dict]]:
             if entry.get("id") not in known and entry.get("date")
         ]
 
-        for meeting in (data.get("meetings") or []) + pending:
+        # Meetings the city held, noticed, and then never minuted or recorded.
+        # The agenda is the whole surviving record, so these pages say so and
+        # print it — see ingest.build_agenda_only. Excluded there if minutes or
+        # a transcript exist, so they can't shadow a fuller page.
+        body_ao = {eid: e for eid, e in (ao_index.get(body["id"]) or {}).items()
+                   if eid not in known and e.get("date")}
+        agenda_only = [
+            {
+                "id": e["id"],
+                "date": e["date"],
+                "type": e.get("title"),
+                "source_file": None,
+                "motion_count": 0,
+                "ord_count": 0,
+                "res_count": 0,
+                "agenda_only": True,
+            }
+            for e in body_ao.values()
+        ]
+
+        for meeting in (data.get("meetings") or []) + pending + agenda_only:
             mid = meeting.get("id")
             if mid is None or not meeting.get("date"):
                 continue
@@ -795,9 +944,13 @@ def build() -> tuple[dict[str, str], list[dict]]:
                 if not (transcript["summary_md"] or transcript["text"]):
                     transcript = None
 
-            page, title, description = render_meeting(
-                body, meeting, motions, members, detail_for(meeting),
-                transcript, base, slug)
+            if meeting.get("agenda_only"):
+                page, title, description = render_agenda_only(
+                    body, meeting, body_ao[mid], base, slug)
+            else:
+                page, title, description = render_meeting(
+                    body, meeting, motions, members, detail_for(meeting),
+                    transcript, base, slug)
             schema = meeting_schema(body, meeting, motions, base, slug,
                                     title, description)
             canonical = f"{base}/meetings/{slug}.html"

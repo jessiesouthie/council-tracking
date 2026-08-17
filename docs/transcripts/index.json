@@ -142,6 +142,32 @@
       "media_url": "https://eaglemountainut.portal.civicclerk.com/event/722/media",
       "duration": "4h 37m",
       "words": 48570
+    },
+    {
+      "id": 467,
+      "date": "2024-10-29",
+      "stem": "2024-10-29__467",
+      "title": "City Council Meeting",
+      "summary_file": "transcripts/city-council/2024-10-29__467.summary.md",
+      "text_file": "transcripts/city-council/2024-10-29__467.txt",
+      "speakers_file": null,
+      "diarized": false,
+      "media_url": "https://eaglemountainut.portal.civicclerk.com/event/467/media",
+      "duration": "2h 11m",
+      "words": 7032
+    },
+    {
+      "id": 321,
+      "date": "2024-05-23",
+      "stem": "2024-05-23__321",
+      "title": "City Council Meeting",
+      "summary_file": "transcripts/city-council/2024-05-23__321.summary.md",
+      "text_file": "transcripts/city-council/2024-05-23__321.txt",
+      "speakers_file": null,
+      "diarized": false,
+      "media_url": "https://eaglemountainut.portal.civicclerk.com/event/321/media",
+      "duration": "2h 03m",
+      "words": 19911
     }
   ],
   "community-services-board": [

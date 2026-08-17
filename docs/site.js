@@ -97,6 +97,27 @@
     return Array.isArray(idx[body]) ? idx[body] : [];
   }
 
+  // Meetings whose only surviving public record is the posted agenda —
+  // docs/data.agenda-only.json, written by ingest.build_agenda_only. Same
+  // graceful-degradation contract as the transcripts: a missing file means the
+  // list is simply built from minutes and recordings, as it was before.
+  let agendaOnlyPromise = null;
+  async function loadAgendaOnly() {
+    if (agendaOnlyPromise) return agendaOnlyPromise;
+    const url = new URL("data.agenda-only.json", document.baseURI).toString();
+    agendaOnlyPromise = fetch(url)
+      .then((r) => (r.ok ? r.json() : null))
+      .catch(() => null);
+    return agendaOnlyPromise;
+  }
+
+  // Agenda-only entries for a body (default: the active one), newest first.
+  async function agendaOnlyForBody(body = currentBody()) {
+    const feed = await loadAgendaOnly();
+    const list = feed && feed.bodies && feed.bodies[body];
+    return Array.isArray(list) ? list : [];
+  }
+
   // The forward-looking calendar (docs/data.upcoming.json, written by
   // ingest.build_upcoming from the city's portal). Cached; resolves to null if
   // the file is missing so a page simply shows nothing scheduled.
@@ -213,6 +234,32 @@
     } catch {
       return iso;
     }
+  }
+
+  const MONTH_NAMES = ["january", "february", "march", "april", "may", "june",
+                       "july", "august", "september", "october", "november",
+                       "december"];
+
+  // Every spelling of one day, joined into a single lower-cased haystack a
+  // search box can substring-match against.
+  //
+  // The record stores ISO days and the search matched them literally, so a
+  // reader looking for "July 2" — or "7/2/2024", or "2 July 2024" — was told
+  // there was no such meeting while its page sat in the list underneath. A date
+  // is the one thing people type in their own notation, so accept all of them.
+  function dateForms(iso) {
+    if (!iso) return "";
+    const [y, mm, dd] = iso.split("-");
+    const month = MONTH_NAMES[parseInt(mm, 10) - 1] || "";
+    const d = String(parseInt(dd, 10));
+    const m = String(parseInt(mm, 10));
+    return [
+      iso,
+      `${month} ${d}, ${y}`, `${month} ${d} ${y}`, `${month.slice(0, 3)} ${d} ${y}`,
+      `${d} ${month} ${y}`,
+      `${m}/${d}/${y}`, `${mm}/${dd}/${y}`, `${m}/${d}/${y.slice(2)}`,
+      `${m}-${d}-${y}`,
+    ].join(" ").toLowerCase();
   }
 
   function classifyOutcome(s) {
@@ -756,6 +803,8 @@
     loadData,
     loadTranscripts,
     transcriptsForBody,
+    loadAgendaOnly,
+    agendaOnlyForBody,
     loadUpcoming,
     nextMeeting,
     cityToday,
@@ -767,6 +816,7 @@
     cleanTitle,
     isCurrentMember,
     fmtDate,
+    dateForms,
     classifyOutcome,
     isUnknownOutcome,
     isRoutine,

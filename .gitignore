@@ -2,7 +2,8 @@
 __pycache__/
 *.pyc
 output/*.xlsx
-# Agendas are a scratch download for ingest.build_upcoming — superseded by the
-# minutes in data/raw once the meeting happens. Only the JSON it writes ships.
+# Agendas are a scratch download for ingest.build_upcoming and
+# ingest.build_agenda_only — cheap to re-fetch, and superseded by the minutes in
+# data/raw for any meeting that gets minuted. Only the JSON they write ships.
 data/agendas/
 .DS_Store

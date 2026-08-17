@@ -85,8 +85,10 @@ AGENDA_LOOKAHEAD = 3
 # "4:00 PM WORK SESSION - CITY COUNCIL CHAMBERS" — the agenda's own session
 # headings. Eagle Mountain runs a work session first and the voting (policy)
 # session hours later, and which one a resident wants is the whole question.
+# CONFERENCE is in there for the strategic planning conferences, which print the
+# same banner ("8:00 AM STRATEGIC PLANNING CONFERENCE") under another name.
 SESSION_RE = re.compile(
-    r"^\s*(\d{1,2}):(\d{2})\s*([AP])\.?M\.?\s+([A-Z][A-Z' \-]*SESSION)\b",
+    r"^\s*(\d{1,2}):(\d{2})\s*([AP])\.?M\.?\s+([A-Z][A-Z' \-]*(?:SESSION|CONFERENCE))\b",
     re.MULTILINE,
 )
 
@@ -101,7 +103,11 @@ PUBLIC_COMMENT_RE = re.compile(
 # Headings are numbered ("13. TRUTH-IN-TAXATION") and the business under them
 # is lettered ("13.C. RESOLUTION/PUBLIC HEARING - ...").
 HEADING_RE = re.compile(r"^(\d{1,2})\.\s+(\S.*)$")
-ITEM_RE = re.compile(r"^(\d{1,2})\.([A-Z])\.\s+(\S.*)$")
+# The dot after the letter is optional: most agendas print "2.A." but the
+# special-session template drops it ("2.A DISCUSSION - Items of Mutual
+# Interest"). No heading can be mistaken for an item either way — a heading puts
+# a space after its number, and this needs a capital hard against the dot.
+ITEM_RE = re.compile(r"^(\d{1,2})\.([A-Z])\.?\s+(\S.*)$")
 
 # An unnumbered all-caps banner that divides the night ("CONSENT AGENDA",
 # "SCHEDULED ITEMS"). Two words or more, no trailing punctuation, and — the part
@@ -316,6 +322,14 @@ def read_agenda(text: str) -> list[dict]:
     # Everything above the first session banner or numbered heading is the
     # letterhead — the city's name, the date, the address of the chambers — all
     # of which the page already prints for itself.
+    #
+    # A numbered heading opens the agenda as readily as a session banner does.
+    # Requiring the banner cost the special sessions and joint work meetings
+    # their whole item list: they run one undivided sitting, so they print no
+    # banner to start on, and the parser walked past "1. MAYOR'S WELCOME" and
+    # everything under it. Nothing in the letterhead is numbered that way — the
+    # street address ("1650 E. Stagecoach Run") has no space after its dot — so
+    # starting on a heading doesn't drag the masthead in behind it.
     started = False
 
     for i, ln in enumerate(lines):
@@ -345,7 +359,8 @@ def read_agenda(text: str) -> list[dict]:
             continue
 
         m = HEADING_RE.match(ln)
-        if m and started:
+        if m:
+            started = True
             heading = {"number": m.group(1), "title": m.group(2), "note": "",
                        "session": session, "group": group, "items": []}
             headings.append(heading)

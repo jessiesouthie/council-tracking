@@ -8,7 +8,8 @@ already publishes:
 
   * every motion, with its plain-English enrichment and full roll-call vote
   * every meeting (as a compact record, plus the prose summary when transcribed),
-    including ones held but not yet minuted, which exist only as a transcript
+    including ones held but not yet minuted, which exist only as a transcript,
+    and ones never minuted at all, which exist only as a posted agenda
   * the next meeting on the calendar and the business its agenda lists
   * transcript passages, windowed so a quote can be retrieved and cited
   * each council member, their role and tenure, and how often they vote yes
@@ -190,7 +191,65 @@ def _meeting_docs(
                 "text": _clean(" ".join(text_parts)),
             }
         )
+
+    # And the meetings that were held but never minuted or recorded at all: the
+    # special sessions and work sessions whose agenda is the entire surviving
+    # record (ingest.build_agenda_only). Without these the agent would answer
+    # "there was no meeting that night", which is worse than saying what little
+    # is known — so the entry leads with what it is and isn't.
+    for entry in sorted(_agenda_only(body["id"]), key=lambda e: e.get("date", "")):
+        mid = entry.get("id")
+        if mid is None or mid in known or mid in (tx_meta or {}):
+            continue
+        date = entry.get("date", "")
+        items = [_clean(it.get("plain") or it.get("title"))
+                 for head in entry.get("agenda") or []
+                 for it in head.get("items") or []]
+        headings = [_clean(h.get("title")) for h in entry.get("agenda") or []
+                    if h.get("title") and not h.get("procedural")]
+        text_parts = [
+            f"Meeting of {date}: {entry.get('title') or 'Meeting'}"
+            + (f", {entry['start_label']}" if entry.get("start_label") else "")
+            + (f", {entry['location']}" if entry.get("location") else "") + ".",
+            "The city published no minutes for this meeting, so there is no motion "
+            "list and no roll-call record of it anywhere on this site. What follows "
+            "is the agenda posted beforehand — what the council intended to take up, "
+            "not what it decided.",
+        ]
+        if headings:
+            text_parts.append("On the agenda: " + "; ".join(headings[:40]) + ".")
+        if items:
+            text_parts.append("Items listed: " + "; ".join(i for i in items[:40] if i) + ".")
+        if entry.get("recording_url"):
+            text_parts.append("The city posted a recording of this meeting on its "
+                              "portal, but it has not been transcribed, so its "
+                              "contents cannot be quoted.")
+        docs.append(
+            {
+                "id": f"{body['id']}:meeting:{mid}",
+                "kind": "meeting",
+                "body": body["id"],
+                "title": f"{entry.get('title') or 'Meeting'} — {date} (agenda only, no minutes)",
+                "date": date,
+                "url": f"meetings.html?id={mid}&body={body['id']}",
+                "tags": [],
+                "text": _clean(" ".join(text_parts)),
+            }
+        )
     return docs
+
+
+def _agenda_only(body_id: str) -> list[dict]:
+    """Agenda-only meetings for a body, or [] before that build has ever run."""
+    path = DOCS / "data.agenda-only.json"
+    if not path.exists():
+        return []
+    try:
+        feed = json.loads(path.read_text(encoding="utf-8"))
+    except ValueError:
+        return []
+    entries = (feed.get("bodies") or {}).get(body_id)
+    return entries if isinstance(entries, list) else []
 
 
 def _member_docs(data: dict, body: dict) -> list[dict]:

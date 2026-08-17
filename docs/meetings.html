@@ -21,8 +21,8 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="preload" href="fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="fonts.css?v=20260817h" />
-    <link rel="stylesheet" href="site.css?v=20260817h" />
+    <link rel="stylesheet" href="fonts.css?v=20260817j" />
+    <link rel="stylesheet" href="site.css?v=20260817j" />
 
     <!-- The list view. A single meeting (?id=) adds its own Event node from
          site.js once the record is in hand — see the foot of this page. -->
@@ -297,23 +297,26 @@
 
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a></span></footer>
 
-    <script src="site.js?v=20260817i"></script>
+    <script src="site.js?v=20260817j"></script>
     <script src="vendor/marked.min.js"></script>
     <script>
       (async () => {
-        const [data, txList] = await Promise.all([CT.loadData(), CT.transcriptsForBody()]);
+        const [data, txList, aoList] = await Promise.all([
+          CT.loadData(), CT.transcriptsForBody(), CT.agendaOnlyForBody(),
+        ]);
         const txById = new Map(txList.map((t) => [t.id, t]));
+        const aoById = new Map(aoList.map((a) => [a.id, a]));
         const params = CT.paramsFromUrl();
         const root = document.getElementById("content");
 
         if (params.id) {
-          renderMeeting(data, parseInt(params.id, 10), root, txById);
+          renderMeeting(data, parseInt(params.id, 10), root, txById, aoById);
         } else {
-          renderList(data, root, txById);
+          renderList(data, root, txById, aoById);
         }
       })();
 
-      function renderList(data, root, txById = new Map()) {
+      function renderList(data, root, txById = new Map(), aoById = new Map()) {
         // Group motions by meeting once, up-front.
         const motionsByMeeting = new Map();
         for (const m of data.motions) {
@@ -332,7 +335,34 @@
             motion_count: 0, ord_count: 0, res_count: 0,
             type: t.title, transcript_only: true,
           }));
-        const meetings = [...transcriptOnly, ...data.meetings];
+        // Meetings the city held and noticed but never minuted or recorded. The
+        // agenda is the whole surviving record; the card says so rather than
+        // pretending to a motion count it doesn't have. Written by
+        // ingest.build_agenda_only, which drops a meeting the moment minutes or
+        // a transcript exist — so these can't shadow a fuller entry.
+        const agendaOnly = [...aoById.values()]
+          .filter(a => !known.has(a.id) && a.date)
+          .map(a => ({
+            id: a.id, date: a.date, source_file: null,
+            motion_count: 0, ord_count: 0, res_count: 0,
+            type: a.title, agenda_only: true,
+            agenda_items: (a.agenda || []).reduce((n, h) => n + (h.items || []).length, 0),
+          }));
+
+        // Three sources, one chronology. The dataset is already newest-first and
+        // the pending recordings are newer than all of it, but the agenda-only
+        // meetings reach back to 2019, so the union has to be sorted rather than
+        // concatenated. The sort is stable, so meetings sharing a date keep the
+        // order above: the recording first, then the agenda, then the minutes.
+        const meetings = [...transcriptOnly, ...agendaOnly, ...data.meetings]
+          .sort((a, b) => b.date.localeCompare(a.date));
+
+        // The box invites a date, but the record only stores the ISO day — so
+        // "July 2", "7/2/2024" and "2 July 2024" each returned nothing for a
+        // meeting sitting right there in the list. Match a day against every
+        // form a reader is likely to type, built once per meeting rather than
+        // per keystroke.
+        const dateText = new Map(meetings.map(m => [m.id, CT.dateForms(m.date)]));
 
         const years = [...new Set(meetings.map(m => m.date.slice(0,4)))].sort((a,b) => b.localeCompare(a));
         const yearOpts = `<option value="">All years</option>` + years.map(y => `<option>${y}</option>`).join("");
@@ -353,19 +383,37 @@
         const grid = document.getElementById("grid");
         const rc = document.getElementById("result-count");
 
+        // "July 2" is a substring of "July 27" but not the same day, so a digit
+        // running straight on from the match makes it the weaker kind of hit.
+        // Without this the meeting someone searched for by date sits below every
+        // meeting that merely *mentions* that date — council minutes approve the
+        // previous meeting's minutes by name, so those mentions are everywhere.
+        const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
         function paint() {
           const filt = q.value.trim().toLowerCase();
           const yy = yearSel.value;
-          const list = meetings.filter(m => {
-            if (yy && m.date.slice(0,4) !== yy) return false;
-            if (!filt) return true;
-            if (m.date.includes(filt)) return true;
+          const asDay = filt ? new RegExp(escapeRe(filt) + "(?!\\d)") : null;
+
+          // 0: the query names this meeting's day. 1: it is inside the day some
+          // other way. 2: it only turns up in what was decided that night.
+          const rank = (m) => {
+            const day = dateText.get(m.id) || m.date;
+            if (asDay.test(day)) return 0;
+            if (day.includes(filt)) return 1;
             const ms = motionsByMeeting.get(m.id) || [];
             return ms.some(mo =>
               [mo.headline, mo.summary, mo.impact, mo.item_title, mo.business_type, mo.motion]
                 .filter(Boolean).join(" ").toLowerCase().includes(filt)
-            );
-          });
+            ) ? 2 : 3;
+          };
+
+          let list = meetings.filter(m => !(yy && m.date.slice(0,4) !== yy));
+          if (filt) {
+            // Sort is stable, so meetings of equal rank stay newest-first.
+            list = list.map(m => [m, rank(m)]).filter(([, r]) => r < 3)
+                       .sort((a, b) => a[1] - b[1]).map(([m]) => m);
+          }
           rc.textContent = `${list.length} meeting${list.length===1?"":"s"}`;
 
           grid.innerHTML = list.map(m => renderMeetingCard(data, m, motionsByMeeting.get(m.id) || [], filt, txById.get(m.id)))
@@ -703,9 +751,13 @@
           : "";
         const countsLine = meeting.transcript_only
           ? `<div class="muted" style="font-size:12px">Recording available · official minutes pending</div>`
+          : meeting.agenda_only
+          ? `<div class="muted" style="font-size:12px">Agenda only · no minutes published${meeting.agenda_items ? ` · ${meeting.agenda_items} item${meeting.agenda_items===1?"":"s"}` : ""}</div>`
           : `<div class="muted" style="font-size:12px">${meeting.motion_count} motion${meeting.motion_count===1?"":"s"} · ${meeting.ord_count} ord. lines · ${meeting.res_count} res. lines</div>`;
         const emptyBody = meeting.transcript_only
           ? '<p class="muted" style="margin:8px 0 0">Minutes not published yet — open to read the enriched summary generated from the recording.</p>'
+          : meeting.agenda_only
+          ? `${typeLine}<p class="muted" style="margin:8px 0 0">The city never published minutes for this meeting — open to read the agenda it posted beforehand.</p>`
           : (meeting.summary
               ? `${typeLine}<p class="meeting-summary">${CT.escapeHtml(meeting.summary)}</p>`
               : '<p class="muted" style="margin:8px 0 0">No motions parsed.</p>');
@@ -726,13 +778,21 @@
         `;
       }
 
-      async function renderMeeting(data, id, root, txById = new Map()) {
+      async function renderMeeting(data, id, root, txById = new Map(), aoById = new Map()) {
         const txEntry = txById.get(id);
         const meeting = data._byMeetingId[id];
         if (!meeting) {
           // Not in the parsed dataset. If we have a transcript for it (minutes
           // not published yet), render a transcript-only meeting page.
           if (txEntry) return renderTranscriptOnly(id, txEntry, root, data);
+          // Held but never minuted or recorded. The agenda page is a static file
+          // built at ingest time rather than rendered here, so hand the reader
+          // over to it instead of reproducing it in script.
+          const aoEntry = aoById.get(id);
+          if (aoEntry) {
+            location.replace(CT.meetingHref(aoEntry));
+            return;
+          }
           root.innerHTML = `<div class="error-block">No meeting found with id ${id}.</div>`;
           return;
         }

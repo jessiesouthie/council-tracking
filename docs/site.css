@@ -9665,6 +9665,45 @@ body.page-defs {
   line-height: 1.55;
 }
 
+/* The posted agenda, on a meeting that left no other record. Set as an outline
+   rather than as the motion list above it: nothing here was decided, and it
+   should not read like the pages where something was. */
+.mp-session {
+  margin: 20px 0 2px;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.mp-ag-head {
+  margin: 16px 0 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--fg-soft);
+  line-height: 1.35;
+}
+.mp-ag-head.muted { font-weight: 600; }
+.mp-ag-items {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0 0 0 2px;
+  font-size: 14px;
+}
+.mp-ag-items li {
+  padding: 6px 0;
+  border-top: 1px solid var(--border);
+  line-height: 1.55;
+}
+/* The plain sentence leads; the city's own wording follows it in a quieter
+   register, so the official title is still there to be checked against. */
+.mp-ag-plain { display: block; }
+.mp-ag-official {
+  display: block;
+  margin-top: 2px;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
 /* The transcript itself. Set narrow and loose: this is the longest reading on
    the site by an order of magnitude, and speech broken into one line per segment
    needs the leading to stop it turning into a wall. */

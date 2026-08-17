@@ -57,6 +57,17 @@ jobs:
         run: python -m ingest.build_upcoming
         continue-on-error: true
 
+      # The meetings that were held and noticed but never minuted or recorded —
+      # special sessions, joint work sessions, planning conferences. Runs after
+      # the dataset and transcript builds because it reads both to decide which
+      # meetings still have nothing but an agenda to show for them.
+      #
+      # Non-fatal for the same reason as the calendar above: it talks to the same
+      # portal, and a bad week there shouldn't hold up the rest of the ingest.
+      - name: Refresh the agenda-only meetings
+        run: python -m ingest.build_agenda_only
+        continue-on-error: true
+
       - name: Rebuild agent corpus
         run: python -m ingest.build_agent_corpus --all-bodies
 

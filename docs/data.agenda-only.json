@@ -1,0 +1,2575 @@
+{
+  "generated_at": "2026-08-17T14:59:44Z",
+  "source": "Eagle Mountain CivicClerk portal",
+  "timezone": "America/Denver",
+  "bodies": {
+    "city-council": [
+      {
+        "id": 756,
+        "title": "City Council - Special Session",
+        "date": "2026-08-10",
+        "start": "15:30",
+        "start_label": "3:30 PM",
+        "location": "1650 Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/756/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2901,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/756/media",
+        "agenda_posted_on": "2026-08-07",
+        "sessions": [
+          {
+            "start": "15:30",
+            "start_label": "3:30 PM",
+            "label": "City Council - Special Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "15:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "PLEDGE OF ALLEGIANCE",
+            "note": "",
+            "session": "15:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": "15:30",
+            "group": null,
+            "items": [
+              {
+                "number": "3.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Approving the Fiscal Year 2026 Community Development Block Grant (CDBG) Annual Action Plan and Authorizing Its Submission to the U.S. Department of Housing and Urban Development.",
+                "time": "",
+                "background": "(Presented by Affordable Housing Coordinator, Kiara Polee) Eagle Mountain City receives annual funding as an Entitlement Community under the U.S. Department of Housing and Urban Development's (HUD) Community Development Block Grant (CDBG) Program. HUD requires the City to adopt an Annual Action Plan each year identifying how those funds will be used during the upcoming program year in accordance with the 2025\u2013 2029 Consolidated Plan. Staff has completed the required public participation process, including public notice, a public comment period, and public hearings. Council approval will authorize submission of the Annual Action Plan to HUD by the August 14, 2026 deadline.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "4",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "15:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 755,
+        "title": "City Council - Interlocal Meeting",
+        "date": "2026-07-30",
+        "start": "18:00",
+        "start_label": "6:00 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/755/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2878,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/755/media",
+        "agenda_posted_on": "2026-07-29",
+        "sessions": [
+          {
+            "start": "18:00",
+            "start_label": "6:00 PM",
+            "label": "Special Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "WELCOME BY CITY MANAGER BEN REEVES",
+            "note": "",
+            "session": "18:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "TRANSPORTATION PROJECTS",
+            "note": "",
+            "session": "18:00",
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "Lake Mountain Corridor (UDOT facility formally known as Mid Valley Road).",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.B",
+                "kind": "",
+                "title": "Silverlake Neighborhood to School District Connections.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "OTHER CONNECTIONS (TIME PERMITTING)",
+            "note": "",
+            "session": "18:00",
+            "group": null,
+            "items": [
+              {
+                "number": "3.A",
+                "kind": "",
+                "title": "Pony Express Pkwy Widening to 7 Lanes from Lake Mountain Corridor to Mountain View Corridor.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "3.B",
+                "kind": "",
+                "title": "Inverness Ln to Talus Ridge Dr Connection.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "3.C",
+                "kind": "",
+                "title": "Wild Blossom Boulevard.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "3.D",
+                "kind": "",
+                "title": "Wagstaff Way East Alignment.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "4",
+            "title": "OTHER GENERAL QUESTIONS AND DISCUSSION (TIME PERMITTING)",
+            "note": "",
+            "session": "18:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "5",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "18:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 664,
+        "title": "Special Session - Joint Multi-City Work Session",
+        "date": "2025-10-29",
+        "start": "18:00",
+        "start_label": "6:00 PM",
+        "location": "1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/664/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1517,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/664/media",
+        "agenda_posted_on": "2025-10-23",
+        "sessions": [
+          {
+            "start": "18:00",
+            "start_label": "6:00 PM",
+            "label": "Work Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "MAYOR'S WELCOME AND INTRODUCTIONS",
+            "note": "",
+            "session": "18:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "DISCUSSION AND INFORMATION ITEMS",
+            "note": "The City Council will review items on the Consent Agenda and Policy Session Agenda.",
+            "session": "18:00",
+            "group": "Joint Work Session With Neighboring Municipalities",
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "PRESENTATION \u2014 Project Overview of the \u201cWest Utah County Inter-Agency Action Plan\u201d \u2014 Mountainland Association of Governments (MAG) and the Project Team",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.B",
+                "kind": "DISCUSSION",
+                "title": "Regional Challenges and Recommendations for Improved Regional Coordination",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "CONSIDERATION OF OTHER ITEMS OF MUTUAL INTEREST",
+            "note": "",
+            "session": "18:00",
+            "group": "Joint Work Session With Neighboring Municipalities",
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "4",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "18:00",
+            "group": "Joint Work Session With Neighboring Municipalities",
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 609,
+        "title": "Special City Council Meeting",
+        "date": "2025-07-28",
+        "start": "07:30",
+        "start_label": "7:30 AM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/609/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1400,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "",
+        "sessions": [
+          {
+            "start": "07:30",
+            "start_label": "7:30 AM",
+            "label": "Special Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "ADJOURN TO A CLOSED SESSION",
+            "note": "The City Council will adjourn into a Closed Session for the purpose of discussion of pending or reasonably imminent litigation; the character, professional competence, or physical or mental health of an individual; and/or the purchase, lease, or exchange of real property, pursuant to Section 52-4-205(1) of the Utah Code, Annotated.",
+            "session": "07:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "07:30",
+            "group": "Reconvene Regular Special Session - City Council Chambers",
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 608,
+        "title": "City Council - Budget Work Session",
+        "date": "2025-05-13",
+        "start": "13:00",
+        "start_label": "1:00 PM",
+        "location": "1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/608/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1319,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/608/media",
+        "agenda_posted_on": "",
+        "sessions": [
+          {
+            "start": "13:00",
+            "start_label": "1:00 PM",
+            "label": "Budget Work Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "13:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "DISCUSSION AND INFORMATION ITEMS",
+            "note": "This is an opportunity for the City Council to review the FY2026 Tentative Budget. There will be no formal action taken by the City Council.",
+            "session": "13:00",
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "FY2026 Tentative Budget Review",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.B",
+                "kind": "",
+                "title": "3:00 PM DISCUSSION - Explanation and Benefits of C-PACE Projects and Financing",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.C",
+                "kind": "",
+                "title": "FY2026 Tentative Budget Review, continued",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "13:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 607,
+        "title": "Joint City Council / Planning Commission Work Session w/VCBO",
+        "date": "2025-05-13",
+        "start": "17:00",
+        "start_label": "5:00 PM",
+        "location": "1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/607/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1322,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/607/media",
+        "agenda_posted_on": "",
+        "sessions": [
+          {
+            "start": "17:00",
+            "start_label": "5:00 PM",
+            "label": "Joint Work Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "17:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "PRESENTATION / DISCUSSION",
+            "note": "",
+            "session": "17:00",
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "Eagle Mountain City Commercial and Multi-Family Design Standards - VCBO Architecture",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "17:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 586,
+        "title": "City Council Special Work Session",
+        "date": "2025-04-29",
+        "start": "15:00",
+        "start_label": "3:00 PM",
+        "location": "1650 Stage Coach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/586/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1302,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/586/media",
+        "agenda_posted_on": "",
+        "sessions": [
+          {
+            "start": "15:00",
+            "start_label": "3:00 PM",
+            "label": "Work Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "15:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "DISCUSSION",
+            "note": "This is an opportunity to provide information to the City Council. These items are for information only and do not require action by the City Council.",
+            "session": "15:00",
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "DISCUSSION",
+                "title": "General Plan Part 1 Review and Moderate-Income Housing Element",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "15:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 585,
+        "title": "City Council-Budget Work Session",
+        "date": "2025-04-08",
+        "start": "13:00",
+        "start_label": "1:00 PM",
+        "location": "1650 Stage Coach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/585/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1285,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/585/media",
+        "agenda_posted_on": "",
+        "sessions": [
+          {
+            "start": "13:00",
+            "start_label": "1:00 PM",
+            "label": "Budget Work Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "13:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "DISCUSSION OF PROPOSED BUDGET",
+            "note": "",
+            "session": "13:00",
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "Capital Projects",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURN TO A CLOSED SESSION",
+            "note": "The City Council will adjourn into a Closed Session for the purpose of discussion of pending or reasonably imminent litigation; the character, professional competence, or physical or mental health of an individual; and/or the purchase, lease, or exchange of real property, pursuant to Section 52-4-205(1) of the Utah Code, Annotated.",
+            "session": "13:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "4",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "13:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 588,
+        "title": "City Council Meeting - Joint Work Session",
+        "date": "2025-02-04",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/588/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1180,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/588/media",
+        "agenda_posted_on": "2025-01-30",
+        "sessions": [
+          {
+            "start": "16:00",
+            "start_label": "4:00 PM",
+            "label": "Work Session - Joint Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "DISCUSSION ITEMS",
+            "note": "This is an opportunity to provide information to the City Council and Planning Commission. These items are for discussion only and no action will be taken.",
+            "session": "16:00",
+            "group": null,
+            "items": [
+              {
+                "number": "1.A",
+                "kind": "DISCUSSION",
+                "title": "Joint CC/PC Review of Architectural Standards",
+                "time": "",
+                "background": "(Presented by Senior Planner David Stroud) Joint discussion item with the Planning Commission and City Council to review and discuss architectural standards regarding commercial and multifamily structures. VCBO will present architectural renderings to the City Council and Planning Commission.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "16:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 581,
+        "title": "Special City Council Meeting - Joint Work Session",
+        "date": "2025-01-09",
+        "start": "14:30",
+        "start_label": "2:30 PM",
+        "location": "1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/581/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1136,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/581/media",
+        "agenda_posted_on": "2025-01-03",
+        "sessions": [
+          {
+            "start": "14:30",
+            "start_label": "2:30 PM",
+            "label": "Special Work Session - Joint Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "WELCOME AND INTRODUCTIONS",
+            "note": "This is an electronic meeting with the anchor location of City Hall. Most City Officials will be participating remotely.",
+            "session": "14:30",
+            "group": "Planning Commission",
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "Q & A WITH IDAHO NATIONAL LABORATORY",
+            "note": "The City Council and Planning Commission will have the opportunity to ask the Idaho National Laboratory questions about the testing, development, and operations of nuclear power generation facilities.",
+            "session": "14:30",
+            "group": "Planning Commission",
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "14:30",
+            "group": "Planning Commission",
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 474,
+        "title": "Strategic Planning Conference",
+        "date": "2024-11-15",
+        "start": "08:00",
+        "start_label": "8:00 AM",
+        "location": "Eagle Mountain Chamber of Commerce, 3688 E Campus Drive, Suite 101",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/474/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1081,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/474/media",
+        "agenda_posted_on": "2024-11-12",
+        "sessions": [
+          {
+            "start": "08:00",
+            "start_label": "8:00 AM",
+            "label": "Strategic Planning Conference",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "LEGISLATIVE BREAKFAST",
+            "note": "",
+            "session": "08:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "DISCUSSION ITEMS",
+            "note": "",
+            "session": "08:00",
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "Annexation Discussion",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.B",
+                "kind": "",
+                "title": "Facilities and Other Master Plans",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.C",
+                "kind": "",
+                "title": "Legislative Priorities List",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.D",
+                "kind": "",
+                "title": "Other Municipal Items",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "08:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 473,
+        "title": "Strategic Planning Conference",
+        "date": "2024-11-14",
+        "start": "08:00",
+        "start_label": "8:00 AM",
+        "location": "Eagle Mountain Chamber of Commerce, 3688 E Campus Drive, Suite 101",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/473/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1078,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/473/media",
+        "agenda_posted_on": "2024-11-12",
+        "sessions": [
+          {
+            "start": "08:00",
+            "start_label": "8:00 AM",
+            "label": "Strategic Planning Conference",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "WELCOME",
+            "note": "",
+            "session": "08:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "DISCUSSION ITEMS",
+            "note": "",
+            "session": "08:00",
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "OpenGov Asset Management",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.B",
+                "kind": "",
+                "title": "Strategic Goals: Objectives and Actions",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.C",
+                "kind": "",
+                "title": "Growth and Housing Update",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.D",
+                "kind": "",
+                "title": "Economic Development Strategy",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.E",
+                "kind": "",
+                "title": "Facilities and Other Master Plans",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.F",
+                "kind": "",
+                "title": "Legislative Priorities List",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.G",
+                "kind": "",
+                "title": "Other Municipal Items",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "08:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 466,
+        "title": "Special City Council Meeting - Joint Work Session",
+        "date": "2024-07-30",
+        "start": "18:00",
+        "start_label": "6:00 PM",
+        "location": "Saratoga Springs Public Safety Building, 367 S Saratoga Road",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/466/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=898,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "2024-07-25",
+        "sessions": [
+          {
+            "start": "18:00",
+            "start_label": "6:00 PM",
+            "label": "Special Session - Joint Work Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "WELCOME",
+            "note": "",
+            "session": "18:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "NORTH UTAH COUNTY TRANSPORTATION PROJECTS",
+            "note": "",
+            "session": "18:00",
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "UDOT Projects",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.B",
+                "kind": "",
+                "title": "City-specific Projects",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "2.C",
+                "kind": "",
+                "title": "Future Projects",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "OTHER GENERAL QUESTIONS AND DISCUSSION",
+            "note": "",
+            "session": "18:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "4",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "18:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 433,
+        "title": "City Council Special Session",
+        "date": "2024-01-30",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/433/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=817,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "",
+        "sessions": [],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "MAYOR'S WELCOME AND INTRODUCITONS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "JOINT WORK SESSION WITH NEIGHBORING MUNICIPALITIES",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "DISCUSSION",
+                "title": "Items of Mutual Interest to include: \u2022 Coordination of Regional Transportation \u2022 Transit Corridors \u2022 Schools",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          }
+        ]
+      },
+      {
+        "id": 338,
+        "title": "City Council Special Session",
+        "date": "2023-05-09",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/338/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1140,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/338/media",
+        "agenda_posted_on": "",
+        "sessions": [
+          {
+            "start": "14:30",
+            "start_label": "2:30 PM",
+            "label": "Work Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "14:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "SMALL AREA PLAN DISCUSSION",
+            "note": "",
+            "session": "14:30",
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "Small Areal Plan Discussion",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "DISCUSSION OF PROPOSED BUDGET",
+            "note": "",
+            "session": "14:30",
+            "group": null,
+            "items": [
+              {
+                "number": "3.A",
+                "kind": "",
+                "title": "Budget Assumptions",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "4",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "14:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 394,
+        "title": "City Council Special Session",
+        "date": "2023-03-14",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/394/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1139,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/394/media",
+        "agenda_posted_on": "",
+        "sessions": [
+          {
+            "start": "15:00",
+            "start_label": "3:00 PM",
+            "label": "Budget Work Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "15:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "DISCUSSION OF PROPOSED BUDGET",
+            "note": "",
+            "session": "15:00",
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "Budget Assumptions",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "15:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 412,
+        "title": "City Council Special Session",
+        "date": "2023-02-23",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/412/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=757,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "2023-02-22",
+        "sessions": [],
+        "agenda": []
+      },
+      {
+        "id": 446,
+        "title": "City Council Special Session",
+        "date": "2023-01-19",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/446/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=848,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "",
+        "sessions": [
+          {
+            "start": "07:30",
+            "start_label": "7:30 AM",
+            "label": "Work Session - City Hall Conference",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "WELCOME",
+            "note": "",
+            "session": "07:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "ITEMS OF MUTUAL INTEREST",
+            "note": "",
+            "session": "07:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "07:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 183,
+        "title": "City Council Special Session",
+        "date": "2022-11-22",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/183/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=130,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/183/media",
+        "agenda_posted_on": "",
+        "sessions": [
+          {
+            "start": "17:30",
+            "start_label": "5:30 PM",
+            "label": "Work Session - City Hall Conference",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "17:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "DISCUSSION ITEM",
+            "note": "",
+            "session": "17:30",
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "DISCUSSION",
+                "title": "General Plan Chapter 9, Moderate Income Housing 3 . ADJOURNMENT",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          }
+        ]
+      },
+      {
+        "id": 411,
+        "title": "City Council Special Session",
+        "date": "2022-02-24",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/411/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=756,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "2022-02-22",
+        "sessions": [],
+        "agenda": []
+      },
+      {
+        "id": 220,
+        "title": "City Council Special Session",
+        "date": "2021-09-23",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/220/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=241,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "2021-09-21",
+        "sessions": [],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "WELCOME AND INTRODUCTIONS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "ITEMS OF MUTUAL INTEREST AND CONCERN",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 285,
+        "title": "City Council Special Session",
+        "date": "2021-06-23",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/285/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=419,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "2021-06-21",
+        "sessions": [],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "Welcome, Mayor Miller",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "Introductions",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "Dinner",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "1",
+            "title": "Saratoga Road Update",
+            "note": "a. Pony Express Construction Update i. UDOT transfer and future east extension b. Foothill Blvd Design and Construction Update i. 800 West: Pony Express to SR-73 - Intersection next phase ii. Environmental Impact Statement (EIS) - SR-73 to south end of City iii. ROW Preservation c. Transportation Master Planning",
+            "session": null,
+            "group": "Work Session",
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "North Marina: Update and Grant Opportunity",
+            "note": "",
+            "session": null,
+            "group": "Work Session",
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "MAG Update: Shawn Seager - Transportation Update for City-related Projects and Studies",
+            "note": "",
+            "session": null,
+            "group": "Work Session",
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "4",
+            "title": "UTA Discussion: Mayor Acerson - Lindon City Mayor",
+            "note": "a. UTA Park and Ride - Connectivity to Lehi and American Fork b. Increased service and alternative options",
+            "session": null,
+            "group": "Work Session",
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "5",
+            "title": "Other Items for Joint City Discussion or Future Study",
+            "note": "a. Access Management Plan for Pony Express (Woodhaven Blvd) b. Petroglyph/Artifact Protection c. Dust Control d. Trail Alignments e. Future Legislative Issues",
+            "session": null,
+            "group": "Work Session",
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "6",
+            "title": "Adjournment",
+            "note": "1",
+            "session": null,
+            "group": "Work Session",
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 288,
+        "title": "City Council Special Session",
+        "date": "2021-06-22",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/288/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=426,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "2021-06-17",
+        "sessions": [],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "SITE VISIT #1",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "1.A",
+                "kind": "",
+                "title": "3152 E Cedar Pass Road 3152 E Cedar Pass Road Map",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "SITE VISIT #2",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "2853 E Cedar Pass Road 2853 E Cedar Pass Road Map",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          }
+        ]
+      },
+      {
+        "id": 348,
+        "title": "City Council Special Session",
+        "date": "2021-04-29",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/348/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=585,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "2021-04-27",
+        "sessions": [
+          {
+            "start": "07:30",
+            "start_label": "7:30 AM",
+            "label": "Work Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "WELCOME AND INTRODUCTIONS",
+            "note": "",
+            "session": "07:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "ITEMS OF MUTUAL INTEREST AND CONCERN",
+            "note": "",
+            "session": "07:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "1",
+            "session": "07:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 377,
+        "title": "City Council Special Session",
+        "date": "2021-03-30",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/377/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=668,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "2021-03-25",
+        "sessions": [
+          {
+            "start": "17:30",
+            "start_label": "5:30 PM",
+            "label": "Work Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "17:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "DISCUSSION ITEMS",
+            "note": "",
+            "session": "17:30",
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "DISCUSSION",
+                "title": "General Plan Review 1",
+                "time": "",
+                "background": "(Presented by Assistant City Administrator/Community Development Director Steve Mumford) The City Council and Planning Commission will discuss the City's goals, objectives, and strategies within the General Plan.",
+                "plain": ""
+              },
+              {
+                "number": "2.B",
+                "kind": "DISCUSSION",
+                "title": "Future Land Use Map Review",
+                "time": "",
+                "background": "(Presented by Assistant City Administrator/Community Development Director Steve Mumford) The City Council and Planning Commission will discuss the City's Future Land Use Map.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "17:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 453,
+        "title": "City Council Special Session",
+        "date": "2020-01-13",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/453/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=867,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "2020-01-10",
+        "sessions": [],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "WELCOME AND INTRODUCTIONS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "ITEMS OF MUTUAL INTEREST AND CONCERN",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 238,
+        "title": "City Council Joint Session",
+        "date": "2019-08-27",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/238/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=294,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "2019-08-23",
+        "sessions": [],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "WELCOME AND INTRODUCTIONS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "ITEMS OF MUTUAL INTEREST AND CONCERN",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 281,
+        "title": "City Council Regular Session",
+        "date": "2019-07-05",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/281/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=409,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "2023-07-13",
+        "sessions": [
+          {
+            "start": "15:00",
+            "start_label": "3:00 PM",
+            "label": "Work Session",
+            "public_comment": false
+          },
+          {
+            "start": "19:00",
+            "start_label": "7:00 PM",
+            "label": "Policy Session",
+            "public_comment": true
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CITY ADMINISTRATOR INFORMATION ITEMS",
+            "note": "This is an opportunity for the City Administrator to provide information to the City Council. These items are for information only and do not require action by the City Council.",
+            "session": "15:00",
+            "group": null,
+            "items": [
+              {
+                "number": "1.A",
+                "kind": "UPDATE",
+                "title": "City Administrator Items",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "1.B",
+                "kind": "DISCUSSION",
+                "title": "Comprehensive Marketing Plan Update (Emotional Map) - REDKOR Brand Campaigns",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "AGENDA REVIEW",
+            "note": "The City Council will review items on the Consent Agenda and Policy Session Agenda.",
+            "session": "15:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "ADJOURN TO A CLOSED EXECUTIVE SESSION",
+            "note": "The City Council will adjourn into a Closed Executive Session for the purpose of discussing reasonably imminent litigation; the character, professional competence, or physical or mental health of an individual; and/or the purchase, lease, or exchange of real property, pursuant to Section 52-4-205(1) of the Utah Code, Annotated.",
+            "session": "15:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "4",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "5",
+            "title": "PLEDGE OF ALLEGIANCE",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "6",
+            "title": "INFORMATION ITEMS/UPCOMING EVENTS",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "7",
+            "title": "PUBLIC COMMENTS",
+            "note": "Time has been set aside for the public to express their ideas, concerns and comments. (Please limit your comments to three minutes each.)",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "8",
+            "title": "CITY COUNCIL/MAYOR'S ITEMS",
+            "note": "Time has been set aside for the City Council and Mayor to make comments.",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "9",
+            "title": "CONSENT AGENDA",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "10",
+            "title": "BID AWARDS",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [
+              {
+                "number": "10.A",
+                "kind": "",
+                "title": "2 MG Tank Design - Sunrise Engineering",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "10.B",
+                "kind": "",
+                "title": "Well #5 Upgrade Design - Jones and DeMille Engineering",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "11",
+            "title": "BOND RELEASES",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [
+              {
+                "number": "11.A",
+                "kind": "",
+                "title": "Hidden Hollow Phase B, Plat 2 - Into Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "11.B",
+                "kind": "",
+                "title": "Parkway Fields Phase A, Plat 1 - Into Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "11.C",
+                "kind": "",
+                "title": "Parkway Fields Phase B, Plat 1 - Into Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "11.D",
+                "kind": "",
+                "title": "SilverLake Plat 34 - Into Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "11.E",
+                "kind": "",
+                "title": "Arrival Phase B, Plat 5 - Out of Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "11.F",
+                "kind": "",
+                "title": "Arrival Phase B, Plat 7 - Out of Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "11.G",
+                "kind": "",
+                "title": "Arrival Phase B, Plat 8 - Out of Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "11.H",
+                "kind": "",
+                "title": "Brandon Park Phase A, Plat 15 - Out of Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "11.I",
+                "kind": "",
+                "title": "Harmony Phase A, Plat 3 - Out of Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "11.J",
+                "kind": "",
+                "title": "Harmony Phase A, Plat 5 - Out of Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "11.K",
+                "kind": "",
+                "title": "Sage Park Phase A, Plat 5 - Out of Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "11.L",
+                "kind": "",
+                "title": "Sage Park Phase A, Plat 6 - Out of Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "12",
+            "title": "CHANGE ORDERS",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [
+              {
+                "number": "12.A",
+                "kind": "",
+                "title": "2023 Pony Express Paving Project Change Order #1 - Geneva Rock",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "13",
+            "title": "MINUTES",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [
+              {
+                "number": "13.A",
+                "kind": "",
+                "title": "June 20, 2023 Minutes - Regular City Council Meeting",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "13.B",
+                "kind": "",
+                "title": "July 5, 2023 Minutes - Special City Council Meeting",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "14",
+            "title": "PRELIMINARY PLATS & SITE PLANS",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [
+              {
+                "number": "14.A",
+                "kind": "PRELIMINARY PLAT",
+                "title": "Parkway Fields Phase D",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "14.B",
+                "kind": "PRELIMINARY PLAT",
+                "title": "Parkway Fields Phase E",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "15",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [
+              {
+                "number": "15.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Approving the Modified Third Amendment to the Porter's Crossing Town Center Master Development Agreement.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "16",
+            "title": "EAGLE MOUNTAIN RETAIL",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "16.A",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Amending the General Plan Future Land Use Map and Rezoning Certain Lands Known As Eagle Mountain Retail.",
+                "time": "",
+                "background": "(Presented by Senior Planner David Stroud) The proposed ordinance amends the General Plan Land Use Map from Neighborhood Residential One and Community Commercial to Regional Commercial and Parks and Open Space, and rezones the subject parcel from Agriculture and Commercial to Commercial Regional and Open Space-I for the purpose of permitting \"big box\" development. The subject property is located at the northwest intersection of SR-73 and Spring Run Parkway. This is the proposed location for a Walmart Supercenter.",
+                "plain": ""
+              },
+              {
+                "number": "16.B",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Approving the Eagle Mountain Retail Development Agreement with Armstrong Commercial Services.",
+                "time": "",
+                "background": "(Presented by Senior Planner David Stroud) The proposed development agreement is in relation to a large-scale retail development on Parcel 58:033:0404.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "17",
+            "title": "EAGLE MOUNTAIN BENCHES",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "17.A",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Approving an Amendment to the General Plan Future Land Use Map from Agriculture/Rural Density 1 to Agriculture/Rural Density 2, and Rezoning Certain Lands Known as Eagle Mountain Benches from RA2 and AG to RD1.",
+                "time": "",
+                "background": "(Presented by Planning Manager Robert Hobbs) The proposed ordinance amends the Eagle Mountain City General Plan Future Land Use Map and rezones approximately 102 acres of property on Utah County Parcel Numbers 59:006:0042, 59:006:0046, 59:006:0047, 59:006:0054, and 59:006:0055. The applications also include a request to waive the Master Development requirements found in EMMC 16.10 Master Developments. This item was remanded back to the Planning Commission at the May 16, 2023 City Council meeting to consider all of the applicants\u2019 land and provide a recommendation regarding the minimum average lot size.",
+                "plain": ""
+              },
+              {
+                "number": "17.B",
+                "kind": "MOTION/PUBLIC HEARING",
+                "title": "Request for the Waiver of the Master Development Approval Requirement for Eagle Mountain Benches.",
+                "time": "",
+                "background": "(Presented by Planning Manager Robert Hobbs) The applicants are requesting the City Council waive the requirements found in Eagle Mountain Municipal Code Chapter 16.10 Master Developments.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "18",
+            "title": "ORDINANCES/PUBLIC HEARINGS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "18.A",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Amending Eagle Mountain Municipal Code Chapter 17.75 Standards for Special Uses, and Sections 17.20.050 Conditional Uses (Agriculture Zone), 17.35.030 Land Use Table (Commercial Zones), and 17.40.040 Conditional Uses (Industrial Zone) Regarding Automobile Sales, Kennels, Racetracks, and Communication Facility Generators.",
+                "time": "",
+                "background": "(Presented by Planner Steven Lehmitz) The proposed ordinance adds kennels as a Conditional Use in the Agriculture and Industrial Zones, adds racetracks as a Conditional Use in the Industrial Zone, outlines Special Use standards for automobile sales and racetrack uses, and permits generators in conjunction with communication facilities and towers. The amendment also removes superscript \"5\" from the Commercial Zone Land Use Table; the footnote stating, \"These special uses are considered prohibited until special use standards specific to these uses are approved and included in Chapter 17.75 EMMC.\" This item was tabled at the June 20, 2023 City Council meeting, and the public hearing was continued to this meeting.",
+                "plain": ""
+              },
+              {
+                "number": "18.B",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapter 17.10 Definitions, Chapter 17.38 Commercial Storage Zone, and Chapter 17.40 Industrial Zone, Regarding Caretaker Dwellings.",
+                "time": "",
+                "background": "(Presented by Senior Planner David Stroud) The proposed ordinance amends EMMC Chapter 17.10 Definitions to add \"Caretaker Dwelling,\" and amends Chapter 17.38 Commercial Storage Zone and Chapter 17.40 Industrial Zone to permit a caretaker dwelling as a conditional use in each zone. This item was tabled at the June 20, 2023 City Council meeting, and the public hearing was continued to this meeting. ORD--EMMC Title 17 Changes - Caretaker Dwellings EMMC 17.10, 17.38, & 17.40 Caretaker Dwellings - Redlines",
+                "plain": ""
+              },
+              {
+                "number": "18.C",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Chapters 17.10 Definitions, 17.25 Residential Zones, 17.72 Commercial and Multifamily Design Standards, and 17.55 Off-street Parking Regarding Alleys and Service Drives, Fire Department-related Access Standards, and ADA Parking Standards.",
+                "time": "",
+                "background": "(Presented by Planning Manager Robert Hobbs) The proposed ordinance includes amendments to Title 17 that provide definitions and parameters for alleys, service drives and ADA parking clarifications. This item was tabled at the June 20, 2023, City Council meeting, and the public hearing was continued to this meeting.",
+                "plain": ""
+              },
+              {
+                "number": "18.D",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Enacting Eagle Mountain Municipal Code Chapter 16.56 Vacation of Rights-of-Way.",
+                "time": "",
+                "background": "(Presented by Planning Manager Robert Hobbs) The proposed ordinance enacts EMMC Chapter 16.56 Vacation of Rights-of-Way to allow for the vacation of public streets and alleys without having to execute a plat amendment. This item was tabled at the June 20, 2023 City Council meeting, and the public hearing was continued to this meeting.",
+                "plain": ""
+              },
+              {
+                "number": "18.E",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code, Section 17.60.120 General Fencing Provisions, Regarding Golf Course Netting.",
+                "time": "",
+                "background": "(Presented by Senior Planner David Stroud) The proposed ordinance amends EMMC Section 17.60.120 General Fencing Provisions, to create netting standards on property adjacent to a golf course.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "19",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "19.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Redevelopment Agency of Eagle Mountain City, Utah, and Eagle Mountain City for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater Industrial Park Community Reinvestment Area #3.",
+                "time": "",
+                "background": "(Presented by Economic Development Director Evan Berrett) This project allows for the creation of a Community Reinvestment Area in order to allow for a data center project development on approximately 490 acres on the western border of the Meta datacenter property. When all phases have been triggered for the first six buildings, the City will receive approximately $140,000 annually in property tax until the incentive expires. The interlocal agreement allows Utah County to transmit certain incremental tax revenue for Eagle Mountain City to the Redevelopment Agency of Eagle Mountain City for execution of the project area plan and budget.",
+                "plain": ""
+              },
+              {
+                "number": "19.B",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Approving the QTS Eagle Mountain I, LLC Development Agreement.",
+                "time": "",
+                "background": "(Presented by Economic Development Director Evan Berrett) The development agreement relates to the development of the QTS Eagle Mountain I, LLC property within the Sweetwater Industrial Park Community Reinvestment Area #3.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "20",
+            "title": "ORDINANCES",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "20.A",
+                "kind": "ORDINANCE",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Amending Eagle Mountain Municipal Code Section 2.16.030 Hiring and Employment Terms to Remove Reference to a Six-Month Severance Stipulation.",
+                "time": "",
+                "background": "(Presented by City Attorney Marcus Draper) The proposed ordinance amends Eagle Mountain Municipal Code Section 2.16.030 Hiring and Employment Terms to remove the stipulation that severance benefits for a city administrator shall not exceed six months.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "21",
+            "title": "AGREEMENTS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "21.A",
+                "kind": "AGREEMENT",
+                "title": "Approving an Amended and Restated Agreement between Eagle Mountain City and Paul Jerome for City Administrator Services.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "22",
+            "title": "LEGISLATIVE ITEMS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "22.A",
+                "kind": "UPDATE",
+                "title": "Legislative Priorities List",
+                "time": "",
+                "background": "",
+                "plain": "The council will receive an update on its list of legislative priorities."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "23",
+            "title": "CITY COUNCIL/MAYOR'S BUSINESS",
+            "note": "This time is set aside for the City Council's and Mayor's comments on City business.",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "24",
+            "title": "CITY COUNCIL BOARD LIAISON REPORTS",
+            "note": "This time is set aside for Councilmembers to report on the boards they are assigned to as liaisons to the City Council.",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "25",
+            "title": "COMMUNICATION ITEMS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "25.A",
+                "kind": "",
+                "title": "Upcoming Agenda Items",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "26",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 444,
+        "title": "City Council Special Session",
+        "date": "2019-01-22",
+        "start": "16:00",
+        "start_label": "4:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/444/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=844,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "2019-01-20",
+        "sessions": [
+          {
+            "start": "15:30",
+            "start_label": "3:30 PM",
+            "label": "Budget Work Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "15:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "DISCUSSION OF PROPOSED BUDGET \u2013 Department Heads will discuss specific budget",
+            "note": "needs.",
+            "session": "15:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "15:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      }
+    ],
+    "planning-commission": [
+      {
+        "id": 677,
+        "title": "Planning Commission Meeting",
+        "date": "2026-08-11",
+        "start": "17:30",
+        "start_label": "5:30 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/677/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2898,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/677/media",
+        "agenda_posted_on": "",
+        "sessions": [
+          {
+            "start": "18:30",
+            "start_label": "6:30 PM",
+            "label": "Planning Commission Policy Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "DISCUSSION ITEMS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "1.A",
+                "kind": "TRAINING",
+                "title": "Site Plans",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "1.B",
+                "kind": "",
+                "title": "AGENDA REVIEW",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "PLEDGE OF ALLEGIANCE",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "4",
+            "title": "DECLARATION OF CONFLICTS OF INTEREST",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "5",
+            "title": "MINUTES",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [
+              {
+                "number": "5.A",
+                "kind": "",
+                "title": "July 28, 2026 Planning Commission Minutes",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "6",
+            "title": "STATUS REPORT",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "7",
+            "title": "ACTION AND ADVISORY ITEMS",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [
+              {
+                "number": "7.A",
+                "kind": "PUBLIC HEARING / ACTION ITEM",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as Pinnacles and Approving the Pinnacles Master Development Plan/Master Development Agreement Amendment.",
+                "time": "",
+                "background": "(Presented by Senior Planner, Robert Hobbs) A request by Andy Flamm for Master Development Plan and Agreement Amendment (with an associated Rezone and Future Land Use Map Amendment) to change the identification and zoning of one parcel of land (County Assessor Acct./Serial #s 59:034:0191) 2.48 acres, from Commercial Neighborhood to Agriculture and the future land use setting/category from Neighborhood Residential 1 to Ag. (The property was to be rezoned simultaneously with parcels 59:034:0192 & 59:034:0193 but was inadvertently overlooked.)",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "8",
+            "title": "DISCUSSION ITEMS",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "9",
+            "title": "AGENDA REVIEW",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "10",
+            "title": "NEXT SCHEDULED MEETING",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "11",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 195,
+        "title": "Planning Commission Regular Session",
+        "date": "2020-10-27",
+        "start": "17:30",
+        "start_label": "5:30 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/195/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=166,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "2020-10-23",
+        "sessions": [],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "Discussion Items",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "1.A",
+                "kind": "DISCUSSION ITEM",
+                "title": "Proposed Code Amendment to Change EMMC 17.58 Historical Preservation Zone to Historical Preservation Overlay Zone A discussion on proposed changes to EMMC 17.58 Historical Preservation Zone to change the zoning tool to an overlay zone and add clarity to the designation process.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "1.B",
+                "kind": "DISCUSSION ITEM",
+                "title": "Proposed Code Amendment to Revise EMMC 17.62 Ridgeline Protection Standards to Ridgeline Protection Overlay Zone A discussion on proposed changes to EMMC 17.62 Ridgeline Protection Standards in order to establish an overlay zone under the current regulations.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "1.C",
+                "kind": "DISCUSSION ITEM",
+                "title": "Proposed Code Amendment to Remove Lot Size Transitioning from EMMC 17.60 A discussion about the proposed code amendment to remove the lot size transition section (and related references to it) within EMMC 17.60 Landscaping, Buffering, Fencing and Transitioning. The recent adoption of the zoning transition section to this chapter achieves the same purpose and intent. 6:30 P.M. - Eagle Mountain City Planning Commission Policy Session",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "Pledge of Allegiance",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "Declaration of Conflicts of Interest",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "4",
+            "title": "Approval of Meeting Minutes",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "4.A",
+                "kind": "",
+                "title": "October 13, 2020, Planning Commission Minutes",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "5",
+            "title": "Status Report",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "6",
+            "title": "Action and Advisory Items",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "6.A",
+                "kind": "",
+                "title": "Pony Express Townhomes (Concept Plan) Concept plan review for the next phase of Pony Express Townhomes located on approximately 4.6 acres. Access to this portion of the development would be off of N Sun Crest Drive in the New Park at Porter's Crossing subdivision. The concept plan includes 27 townhome units, with nine buildings of three units each.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "6.B",
+                "kind": "",
+                "title": "Scenic Mountain Phase C (Concept Plan) A concept plan for Phase C of the Scenic Mountain project. The Scenic Mountain project includes an approved Master Development Agreement (MDA). Portions of Phases A and B have been built or are under construction. The applicant is looking to develop the plans for Phase C based on the and is seeking feedback on the concept plan before submitting their next set of applications.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "6.C",
+                "kind": "",
+                "title": "Oquirrh Mountain Ranch Phase B (Concept Plan) A concept plan for Phase B of the Oquirrh Mountain Ranch project. The Oquirrh Mountain Ranch project includes an approved Master Development Agreement. A majority of Phase A has been built. The applicant is considering an amendment request to the Master Development Agreement with regards to Phase B and is seeking feedback on the concept plan.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "6.D",
+                "kind": "PUBLIC HEARING",
+                "title": "Development Code Amendment to Remove Tier and Bonus Density Language (EMMC Titles 7, 16, and 17) This is a request to amend the municipal development code for EMMC Title 7 Parks, Trails and Special Events; Title 16 Subdivisions; and Title 17 Zoning in order to remove references to \"tier\" and \"base/bonus density.\" These phrases related to EMMC 17.30 Residential Zone Bonus Density Entitlements which was repealed by ordinance of the City Council in 2019.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "6.E",
+                "kind": "",
+                "title": "Development Code Amendment for Fencing Standards (EMMC 16.35 & 17.60) This is a request to amend the municipal development code for EMMC Chapter 16.35 Development Standards for Required Public Facilities and Chapter 17.60 Landscaping, Buffering, Fencing and Transitioning. The amendment includes revisions to clarify fencing standards and requirements. The Planning Commission held a public hearing on this request on October 13, 2020. The public hearing was opened and closed at that time. The request was tabled for minor edits to the code amendment.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "7",
+            "title": "Discussion Items",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "8",
+            "title": "Next scheduled meeting",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "9",
+            "title": "Adjournment",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      }
+    ]
+  }
+}
