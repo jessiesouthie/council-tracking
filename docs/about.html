@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>How Civic Roll Call Is Built — Sources &amp; Method</title>
+    <meta name="description" content="Where every figure on this site comes from: the minutes, the recordings, the budget book and the tax notices — and which parts are written by a machine." />
+    <link rel="canonical" href="https://civicrollcall.com/about.html" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Civic Roll Call" />
+    <meta property="og:url" content="https://civicrollcall.com/about.html" />
+    <meta property="og:title" content="How Civic Roll Call Is Built — Sources &amp; Method" />
+    <meta property="og:description" content="Where every figure on this site comes from: the minutes, the recordings, the budget book and the tax notices — and which parts are written by a machine." />
+    <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="How Civic Roll Call Is Built — Sources &amp; Method" />
+    <meta name="twitter:description" content="Where every figure on this site comes from: the minutes, the recordings, the budget book and the tax notices — and which parts are written by a machine." />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="preload" href="fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts.css?v=20260817g" />
+    <link rel="stylesheet" href="site.css?v=20260817g" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "@id": "https://civicrollcall.com/about.html#webpage",
+      "url": "https://civicrollcall.com/about.html",
+      "name": "How Civic Roll Call Is Built — Sources & Method",
+      "description": "Where every figure on this site comes from, and which parts are written by a machine.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://civicrollcall.com/#website" },
+      "about": { "@id": "https://civicrollcall.com/#publisher" },
+      "publisher": { "@id": "https://civicrollcall.com/#publisher" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://civicrollcall.com/" },
+          { "@type": "ListItem", "position": 2, "name": "About", "item": "https://civicrollcall.com/about.html" }
+        ]
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 512 512" focusable="false">
+            <circle class="m-accent" cx="153" cy="153" r="33.5" />
+            <rect class="m-fg" x="220" y="133" width="175" height="41" rx="20.5" />
+            <circle class="m-fg" cx="153" cy="256" r="33.5" />
+            <rect class="m-dim" x="220" y="235" width="144" height="42" rx="21" />
+            <circle class="m-accent" cx="153" cy="358" r="33.5" />
+            <rect class="m-dim" x="220" y="338" width="113" height="41" rx="20.5" />
+          </svg>
+        </span>
+        <div><p class="brand-title">Roll Call</p><p class="city">Eagle Mountain, UT</p></div>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" data-nav="index.html">Home</a>
+        <a href="meetings.html" data-nav="meetings.html">Meetings</a>
+        <a href="members.html" data-nav="members.html">Members</a>
+        <a href="tax.html" data-nav="tax.html" data-nav-alias="projections.html">Tax</a>
+        <a href="budget.html" data-nav="budget.html">Budget</a>
+        <a href="definitions.html" data-nav="definitions.html">Definitions</a>
+      </nav>
+    </header>
+
+    <main id="main" class="main-reading">
+      <h1 class="page-title">How this site is built</h1>
+      <p class="page-sub">
+        Civic Roll Call republishes Eagle Mountain&rsquo;s public record in a form residents can
+        search. It is not run by the city, and nothing here is an official city document.
+        Everything on it traces back to a source you can check yourself, and this page says
+        which source, for which page &mdash; including the parts a machine wrote.
+      </p>
+
+      <section class="section">
+        <h2>Where the record comes from</h2>
+        <p>
+          Four sources, each feeding different pages.
+        </p>
+        <dl>
+          <dt><strong>Approved minutes</strong> &mdash; <a href="meetings.html">Meetings</a>, <a href="motions.html">Motions</a>, <a href="members.html">Members</a></dt>
+          <dd>
+            The city publishes its minutes as PDFs through the CivicClerk portal. Only
+            <em>approved</em> minutes are collected &mdash; a draft can still change on the floor.
+            Each PDF is parsed into individual motions, each motion into the roll call
+            underneath it, and each name in that roll call is matched to a member. The vote
+            totals on the Members page are counted from those roll calls and nothing else.
+          </dd>
+
+          <dt><strong>Meeting recordings</strong> &mdash; <a href="meetings.html">Meetings</a></dt>
+          <dd>
+            Where a recording exists, it is transcribed by speech recognition and published
+            alongside the minutes. Speech recognition mis-hears names and technical terms;
+            the transcript is offered as a searchable aid to the recording, not as a record
+            of equal standing to the minutes. Some meetings appear here with a transcript
+            before their minutes are approved &mdash; those are marked.
+          </dd>
+
+          <dt><strong>The budget book</strong> &mdash; <a href="budget.html">Budget</a></dt>
+          <dd>
+            Figures come from the city&rsquo;s own ClearGov budget data, at full precision with
+            the account number attached, and are checked line by line against the published
+            PDF budget book. Where the two disagree, the published book wins and the
+            difference is noted on the page.
+          </dd>
+
+          <dt><strong>Tax notices</strong> &mdash; <a href="tax.html">Tax</a></dt>
+          <dd>
+            Rates and valuations come from the city&rsquo;s Truth-in-Taxation notice, Utah
+            County&rsquo;s combined notice, and the Utah State Tax Commission. Where those three
+            disagree on a figure, the page says so rather than picking one quietly.
+          </dd>
+        </dl>
+      </section>
+
+      <section class="section">
+        <h2>What a machine wrote, and what it didn&rsquo;t</h2>
+        <p>
+          This matters enough to state plainly rather than bury.
+        </p>
+        <p>
+          <strong>Never machine-written:</strong> vote counts, who voted which way, dates,
+          budget figures, tax rates, and the text of the motion as the minutes recorded it.
+          Those are read out of the source documents mechanically. If one of them is wrong,
+          either the source is wrong or the parser has a bug &mdash; not a model.
+        </p>
+        <p>
+          <strong>Machine-written:</strong> the plain-English headline, summary and
+          &ldquo;what this means for you&rdquo; note attached to each motion, and the prose
+          summaries of transcribed meetings. The minutes record motions in the form
+          <em>&ldquo;An Ordinance of Eagle Mountain City, Utah, amending Municipal Code 16.15
+          Concept Plans&hellip;&rdquo;</em>, which tells a resident nothing. A language model
+          rewrites that into a sentence, working only from the parsed motion text. It can
+          still misread emphasis or nuance. Where a headline and the motion text seem to
+          disagree, the motion text is the record.
+        </p>
+        <p>
+          Motions with no clean machine-readable text are left out of the plain-English
+          layer rather than published with scanning damage in them, so some older motions
+          appear only in their original wording.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>The projections are a model, not a forecast</h2>
+        <p>
+          The <a href="projections.html">projections page</a> is the one page on this site
+          that is not a republication of anything. It is an independent planning estimate,
+          built here, from the city&rsquo;s adopted budget and adopted rate. Eagle Mountain City
+          has not published, reviewed or endorsed it, and it should not be quoted as a city
+          forecast. Its assumptions are stated on the page so they can be argued with.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>How current it is</h2>
+        <p>
+          Minutes are collected as the city approves and posts them, which usually puts a
+          meeting on this site a few weeks after it was held. Recordings appear sooner. The
+          budget and tax pages update when the city or the county issues a new document, not
+          on a schedule. Each page carries the date of the data behind it.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Corrections</h2>
+        <p>
+          Errors here are worth reporting, and get fixed rather than argued with. The most
+          useful report names the meeting date and the figure, so it can be traced back to
+          the source document. Where a correction changes something a reader may already
+          have relied on, the change is noted on the page rather than made silently.
+        </p>
+        <!-- ===================================================================
+             TODO — this is the one thing on the page that can't be filled in
+             from the repository, and it has to be settled before the page ships.
+             A corrections policy with no route to send a correction is worse
+             than not claiming one: it reads to a reader, and to Google, as a
+             trust signal the site doesn't actually honour.
+
+             Decide what you're willing to publish — a role address, a form, the
+             GitHub issues URL — and replace the paragraph below with it. The
+             GitHub repo is the lowest-friction option if you'd rather not put an
+             email address on a public page.
+             =================================================================== -->
+        <p class="error-block">
+          <strong>Not yet published:</strong> this page needs a contact route before it goes
+          live. See the note in the page source.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Who runs it</h2>
+        <!-- TODO — same call as above. Say who is behind the site, in a sentence
+             or two. Even "an Eagle Mountain resident, independently, with no
+             affiliation to the city or any candidate" is a real answer and does
+             the E-E-A-T work; an unsigned site making tax claims about a named
+             city does not. -->
+        <p class="error-block">
+          <strong>Not yet published:</strong> a sentence naming who publishes this site.
+          See the note in the page source.
+        </p>
+        <p>
+          What can be said now: Civic Roll Call is independent of Eagle Mountain City, is
+          not affiliated with any candidate or campaign, carries no advertising, and sells
+          nothing. The code that builds it, including every parser and every figure check
+          described above, is open for inspection.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a></span></footer>
+
+    <script src="site.js?v=20260817g"></script>
+  </body>
+</html>
