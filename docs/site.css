@@ -98,6 +98,9 @@
   --ico-trend:    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M3.5 4v16h17'/><path d='M6.5 15l4-4 3 2 4.5-6'/><path d='M6.5 11l4 2 3-4 4.5 2' stroke-dasharray='3 2.4'/></svg>");
   /* An open book — the glossary. Two short rules on the right page read as text
      without turning to mush at 22px, which full ruling on both pages does. */
+  /* A speech bubble, traced from the agent launcher's own path, so the question
+     chips in the hero read as the same object as the button in the corner. */
+  --ico-ask:      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8A2.5 2.5 0 0 1 17.5 16H9l-4 4v-4H6.5A2.5 2.5 0 0 1 4 13.5z'/></svg>");
   --ico-book:     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M12 6.6C10.6 5.4 8.6 4.8 6 4.8H3.2v13.4H6c2.6 0 4.6.6 6 1.8'/><path d='M12 6.6c1.4-1.2 3.4-1.8 6-1.8h2.8v13.4H18c-2.6 0-4.6.6-6 1.8'/><path d='M12 6.6V20'/><path d='M15.2 9.4h3.2M15.2 12.6h3.2'/></svg>");
 
   /* One typeface across the site. Inter is a neutral UI grotesque, so it carries
@@ -685,8 +688,8 @@ details.motion-row[open] {
    The organising idea is the roll call itself. This site is named for it, and
    the one thing this dataset has that no news story does is *who voted how* —
    by name, every time. So the decision cards put named councilmembers on the
-   front page rather than an anonymous bar, and the hero carries a pulse strip
-   of the council's recent verdicts. Everything else recedes to serve that.
+   front page rather than an anonymous bar. Everything else recedes to serve
+   that.
    ========================================================================= */
 
 /* The front page runs a touch narrower than the data pages. It is a reading
@@ -723,13 +726,55 @@ body.page-tax::before {
   body.page-tax::before { opacity: .28; mix-blend-mode: soft-light; }
 }
 
+/* ---------- The front page's own type ----------
+   Every page built this year picked up a voice of its own — the tax page runs
+   Instrument Sans over IBM Plex Mono, the budget book Fraunces, the glossary
+   Newsreader — while the homepage stayed on the interface's Inter. The front
+   door ended up the least characterful page of the site.
+
+   So it borrows the book's face: Fraunces at the one instance already subsetted
+   for budget.html (700, wonky alternates on), on the display line and the heads
+   only. Chrome — buttons, avatars, the calendar leaf — stays on Inter, because
+   that is interface and not editorial. Figures go to the mono the tax page
+   uses, so a rate on the front page is set in the same type as the rate on the
+   page it links to. No new font files: both faces are already in docs/fonts and
+   already paid for elsewhere. */
+body.home-paper {
+  --hm-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --hm-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+.home-paper .hero-title,
+.home-paper .section-head h2,
+.home-paper .decision-title,
+.home-paper .mayor-name .n {
+  font-family: var(--hm-display);
+  /* Fraunces ships here at 700 only; anything heavier would be synthesised. */
+  font-weight: 700;
+}
+/* Fraunces sets wider and rounder than Inter at the same size, and it does not
+   need Inter's -0.035em to stop a display line falling apart. */
+.home-paper .hero-title      { letter-spacing: -.018em; }
+.home-paper .section-head h2 { letter-spacing: -.012em; }
+.home-paper .decision-title  { letter-spacing: -.008em; line-height: 1.24; }
+.home-paper .mayor-name .n   { letter-spacing: -.008em; }
+
+/* Anything that is a figure rather than a word: the date and topic stamp on a
+   decision card, a member's vote line. */
+.home-paper .decision-meta,
+.home-paper .council-card .r {
+  font-family: var(--hm-mono);
+  font-variant-numeric: tabular-nums;
+}
+.home-paper .decision-meta   { font-size: 10.5px; letter-spacing: .04em; }
+.home-paper .council-card .r { font-size: 11.5px; letter-spacing: -.01em; }
+
 /* ---------- Hero ---------- */
-/* No cap here: the title, sub and search pill carry their own measures and stay
-   centered, so the ledger below them is free to fill the column and line up with
-   the decision cards. */
+/* Left-aligned to the same column the tax page and the budget book open on, so
+   the front door reads as the front of that site rather than as a product
+   landing page. The title, sub and search pill carry their own measures. */
 .hero {
-  text-align: center;
-  padding: 54px 0 38px;
+  text-align: left;
+  padding: 54px 0 34px;
   margin-bottom: 8px;
   border-bottom: none;
 }
@@ -781,10 +826,10 @@ body.page-tax::before {
   line-height: 1.03;
   letter-spacing: -0.035em;   /* Inter opens up at display size; pull it back in */
   color: var(--fg-soft);
-  /* Wide enough to hold "Every council vote," on one line, so the marked phrase
-     lands on a line of its own underneath. */
-  max-width: 20ch;
-  margin: 0 auto 18px;
+  /* Wide enough to hold "Every decision the council" on one line, so the marked
+     phrase lands on the line underneath with "makes,". */
+  max-width: 24ch;
+  margin: 0 0 18px;
   text-wrap: balance;
 }
 /* The promise of the whole site is "in plain English" — so mark it, the way you
@@ -811,11 +856,11 @@ body.page-tax::before {
 }
 
 .hero-sub {
-  margin: 0 auto 28px;
+  margin: 0 0 26px;
   color: var(--fg-muted);
   font-size: 17.5px;
   line-height: 1.55;
-  max-width: 44ch;
+  max-width: 56ch;
 }
 
 /* Search: one pill, input and button inside a single rounded field. */
@@ -823,8 +868,8 @@ body.page-tax::before {
   display: flex;
   align-items: center;
   gap: 6px;
-  max-width: 512px;
-  margin: 0 auto 30px;
+  max-width: 552px;
+  margin: 0 0 18px;
   padding: 5px 5px 5px 16px;
   background: var(--bg-elev);
   border: 1.5px solid var(--border-strong);
@@ -878,10 +923,9 @@ body.page-tax::before {
 .quick-topics {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 0 0 26px;
+  margin: 0 0 12px;
   font-size: 13px;
   color: var(--fg-muted);
 }
@@ -900,91 +944,196 @@ body.page-tax::before {
 }
 .quick-topics a:hover { text-decoration: none; border-bottom-color: var(--accent); }
 
-/* ---------- The ledger: stats + pulse ----------
-   One bordered slab rather than three floating numbers. Hairline dividers and
-   tabular figures give it the alignment of a printed table. */
-.ledger {
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: color-mix(in srgb, var(--bg-elev) 55%, transparent);
-  backdrop-filter: blur(2px);
-  overflow: hidden;
+/* The other way in: a question, put to the site's own assistant. Same row
+   grammar as the topic links above it — a small label, then the options — so
+   the two read as a pair of doors rather than as a feature callout. The chips
+   are buttons, not links: they open the panel that is already on the page. */
+.hero-ask {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: var(--fg-muted);
 }
-.ledger-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-.ledger-stat {
-  padding: 16px 12px 15px;
-  border-right: 1px solid var(--border);
-}
-.ledger-stat:last-child { border-right: none; }
-.ledger-stat .num {
-  font-family: var(--display);
-  font-size: 29px;
-  font-weight: 700;
-  line-height: 1;
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
-}
-.ledger-stat .lab {
+.hero-ask .ha-lab {
   font-size: 10.5px;
   font-weight: 600;
   letter-spacing: .11em;
   text-transform: uppercase;
   color: var(--fg-muted);
-  margin-top: 7px;
+}
+.hero-ask .ha-q {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 6px 13px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 99px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--fg);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 140ms ease, background-color 140ms ease, color 140ms ease;
+}
+.hero-ask .ha-q::before {
+  content: "";
+  flex: none;
+  width: 13px;
+  height: 13px;
+  background: currentColor;
+  opacity: .55;
+  -webkit-mask: var(--ico-ask) center / contain no-repeat;
+          mask: var(--ico-ask) center / contain no-repeat;
+}
+.hero-ask .ha-q:hover {
+  border-style: solid;
+  border-color: var(--accent);
+  background: var(--accent-tint);
+  color: var(--accent-ink);
+}
+.hero-ask .ha-q:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* ---------- Live now ----------
+   The two things on this page that have not happened yet, or have only just
+   happened: what the council did to the tax rate, and when it next sits. They
+   sit directly under the hero because everything below them is the record of
+   what is already over. Either card can be absent — a body with no tax page, a
+   build with nothing scheduled — so the band is a grid of what there is. */
+.livenow-section { margin-bottom: 30px; }
+.livenow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.livenow > * { margin: 0; }
+/* Both cards declare their own display, which outranks the UA's [hidden] — so a
+   body with no tax page would otherwise show an empty amber box. */
+.livenow > [hidden] { display: none; }
+.livenow.is-single { grid-template-columns: 1fr; }
+.livenow.is-single .next-meeting { align-items: center; }
+.livenow.is-single .nm-cta { flex: none; padding-left: 0; }
+/* Two half-width cards need the meeting row to stack rather than run out. */
+.livenow .next-meeting { flex-wrap: wrap; align-items: flex-start; }
+.livenow .nm-cta { flex: 1 0 100%; padding-left: 72px; }
+@media (max-width: 860px) {
+  .livenow { grid-template-columns: 1fr; }
+  .livenow .next-meeting { align-items: center; }
 }
 
-/* The pulse: one tick per recent motion, coloured by how it went. Almost all of
-   them are green, and that IS the finding — this council rarely says no. The few
-   red ticks are the ones worth clicking, so they are the ones that stand out. */
-.pulse {
-  border-top: 1px solid var(--border);
-  padding: 13px 16px 14px;
-  background: color-mix(in srgb, var(--bg-muted) 40%, transparent);
-}
-.pulse-bars {
+/* The tax card. Warm ground and a gold edge — the tax page's own voice, so the
+   card looks like the page it opens. The figure is the only thing set large,
+   because the figure is the reason anybody clicks. */
+.live-tax {
+  /* Two tokens rather than literal colours, because the warm pair the light
+     theme writes in — cream ground, brown ink — has no dark counterpart:
+     --warm-soft and --warm-ink are the only accents the dark block leaves
+     alone, so a brown eyebrow would land unreadable on a dark card. The gold
+     pair is redefined for both themes, and that is what dark uses. */
+  --lt-ground: color-mix(in srgb, var(--warm-soft) 52%, var(--bg-elev));
+  --lt-ink: var(--warm-ink);
+
   display: flex;
-  align-items: stretch;
-  gap: 2px;
-  height: 26px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 15px 18px 16px;
+  border: 1px solid rgb(182 116 26 / .38);
+  border-radius: 16px;
+  background: var(--lt-ground);
+  box-shadow: var(--shadow-hair);
+  color: inherit;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
-.pulse-bars .tick {
-  flex: 1;
-  display: flex;
-  flex-direction: column-reverse;   /* the "no" votes stack up from the floor */
-  border-radius: 2px;
-  overflow: hidden;
-  background: var(--hairline);
-  transition: transform 140ms ease;
-  cursor: pointer;
+@media (prefers-color-scheme: dark) {
+  .live-tax {
+    --lt-ground: color-mix(in srgb, var(--highlight-soft) 55%, var(--bg-elev));
+    --lt-ink: var(--highlight-ink);
+  }
 }
-.pulse-bars .tick:hover { transform: scaleY(1.16); }
-.pulse-bars .tick .y { background: color-mix(in oklab, var(--ok) 50%, transparent); }
-.pulse-bars .tick .n { background: var(--danger); }
-/* A motion that failed outright is red top to bottom, whatever the split. */
-.pulse-bars .tick.failed .y { background: color-mix(in oklab, var(--danger) 45%, transparent); }
-/* No roll call recorded — a blank in the ledger, not a zero. */
-.pulse-bars .tick.blank { background: repeating-linear-gradient(
-    -45deg, var(--hairline) 0 3px, transparent 3px 5px); }
-.pulse-cap {
+:root[data-theme="dark"] .live-tax {
+  --lt-ground: color-mix(in srgb, var(--highlight-soft) 55%, var(--bg-elev));
+  --lt-ink: var(--highlight-ink);
+}
+:root[data-theme="light"] .live-tax {
+  --lt-ground: color-mix(in srgb, var(--warm-soft) 52%, var(--bg-elev));
+  --lt-ink: var(--warm-ink);
+}
+
+.live-tax:hover {
+  border-color: var(--warm);
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.live-tax:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+/* The label and the stamp each stay whole: on a narrow card the stamp drops to
+   its own line rather than the fiscal year breaking off the label in front of
+   it. */
+.lt-eyebrow {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 9px;
-  font-size: 11.5px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  row-gap: 5px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--lt-ink);
+}
+.lt-lab { white-space: nowrap; }
+.lt-flag {
+  white-space: nowrap;
+  background: var(--fg-soft);
+  color: var(--bg-elev);
+  border-radius: 3px;
+  padding: 3px 7px 2px;
+  letter-spacing: .09em;
+}
+.lt-head {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -.012em;
+  color: var(--fg-soft);
+  margin-top: 3px;
+  text-wrap: balance;
+}
+.lt-figure {
+  font-size: 13.5px;
+  color: var(--lt-ink);
+  margin-top: 5px;
+}
+.lt-figure b {
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  margin-right: 5px;
+}
+.lt-note {
+  font-size: 12.5px;
+  line-height: 1.5;
   color: var(--fg-muted);
+  max-width: 46ch;
 }
-.pulse-cap b { color: var(--danger-ink); font-weight: 600; }
+.lt-cta {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--link);
+}
+.live-tax:hover .lt-cta { text-decoration: underline; }
 
 /* ---------- Next meeting ----------
-   The one card on the homepage that points forward. It sits between the ledger
-   and the record, and is styled as a single quiet row — a date block, the when,
-   and a way in — so it reads as a standing notice rather than as another
-   decision to click through. Hidden entirely when nothing is scheduled. */
-.next-section { margin-top: -8px; margin-bottom: 30px; }
+   The forward-looking half of the live band. Styled as a single quiet row — a
+   date block, the when, and a way in — so it reads as a standing notice rather
+   than as another decision to click through. Hidden when nothing is scheduled. */
 .next-meeting {
   display: flex;
   align-items: center;
@@ -1154,12 +1303,26 @@ body.page-tax::before {
   order: 2;
 }
 
-/* ---------- Decision cards ---------- */
-.decision-list { display: flex; flex-direction: column; gap: 14px; }
+/* ---------- Decision cards ----------
+   Two across on a wide screen. Stacked full-width they cost about 280px each,
+   which spent most of the page on three items and pushed everything the site
+   has learned since below the fold. */
+.decision-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+@media (max-width: 780px) {
+  .decision-list { grid-template-columns: 1fr; }
+}
 
 .decision-card {
   position: relative;
-  display: block;
+  /* A column, so that in a two-up row the "read the full decision" line sits on
+     the floor of every card rather than wherever its summary happened to end. */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -1192,18 +1355,25 @@ body.page-tax::before {
 .decision-card:hover::before { width: 7px; }
 .decision-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
+/* The stamp and the verdict share one line. In a two-up column a long topic
+   name would otherwise push the pill onto a line of its own and start that
+   card's title lower than its neighbour's — so the stamp is the part that
+   wraps, and the pill holds the corner. */
 .decision-top {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-bottom: 9px;
 }
 .decision-meta {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  min-width: 0;
   gap: 8px;
+  padding-top: 3px;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: .07em;
@@ -1265,6 +1435,19 @@ body.page-tax::before {
   font-size: 13px;
   font-weight: 600;
   color: var(--accent-ink);
+}
+/* Everything above the roll call is elastic; the roll call and the link are
+   not, so they hold the bottom of the card. */
+.decision-card .rollcall { margin-top: auto; align-self: stretch; }
+.decision-top { align-self: stretch; }
+/* Three lines of summary is enough to know what a decision was; the rest is on
+   the page the card opens. Without a clamp one long motion sets the height of
+   the whole row. */
+.decision-summary {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .decision-card:hover .decision-more { text-decoration: underline; }
 
@@ -1346,6 +1529,74 @@ body.page-tax::before {
   font-size: 12.5px;
   color: var(--fg-muted);
   font-style: italic;
+}
+
+/* ---------- The rest of the record ----------
+   Until this band existed the homepage had no link at all to the tax page, the
+   budget book, the projections or the glossary — they were reachable only from
+   the nav bar, which is to say only by people who already knew they were there.
+
+   Each card carries a figure read from the same file the page it opens reads,
+   so the band is a set of facts that happen to be navigation rather than a menu
+   of section names. The glyphs are the tab bar's, reused: the record has one
+   icon per destination and this is it. */
+.record-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 900px) { .record-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .record-grid { grid-template-columns: 1fr; } }
+
+.rec-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 15px 16px 16px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-hair);
+  color: inherit;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+.rec-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.rec-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.rec-ico {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 7px;
+  background: var(--accent);
+  opacity: .8;
+  -webkit-mask: var(--rec-glyph) center / contain no-repeat;
+          mask: var(--rec-glyph) center / contain no-repeat;
+}
+.rec-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--fg-soft);
+  letter-spacing: -.008em;
+}
+/* The figure, in the mono — a rate reads here the way it reads on the tax page. */
+.rec-figure {
+  font-family: var(--hm-mono, var(--mono));
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--link);
+  letter-spacing: -.01em;
+}
+.rec-blurb {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--fg-muted);
+  margin-top: 4px;
+  text-wrap: pretty;
 }
 
 /* ---------- Council ---------- */
@@ -1500,21 +1751,19 @@ body.page-tax::before {
 
 @media (max-width: 600px) {
   .hero { padding: 36px 0 30px; }
-  /* No room for "Every council vote," on one line here — pull the measure back
-     in so the marked phrase still gets a line to itself. */
-  .hero-title { max-width: 12ch; }
+  /* No room for a 24ch measure here — let the line break where it must. */
+  .hero-title { max-width: 100%; }
   .hero-sub { font-size: 16px; }
-  .hero-search {
-    flex-wrap: wrap;
-    border-radius: 22px;
-    padding: 10px 14px;
-  }
-  .hero-field { flex: 1 1 100%; }
-  .hero-search .btn { width: 100%; }
+  /* The pill stays one object all the way down. It used to break in two here —
+     field on top, a full-width button under it — which was drawn for a 375px
+     phone but fires at 600, where the field is wide enough that the stacked
+     button just reads as a stray bar. Tightening the padding buys back the room
+     an inline button needs instead. */
+  .hero-search { padding: 4px 4px 4px 14px; gap: 4px; }
+  .hero-search .btn { padding: 12px 17px; }
 
-  .ledger-stat { padding: 13px 8px; }
-  .ledger-stat .num { font-size: 24px; }
-  .ledger-stat .lab { font-size: 9.5px; letter-spacing: .08em; }
+  /* One question fits a phone line; two would wrap into a wall of chips. */
+  .hero-ask .ha-q:nth-of-type(n + 2) { display: none; }
 
   .council-grid { grid-template-columns: 1fr; }
   .decision-card { padding: 18px 16px 16px 20px; }

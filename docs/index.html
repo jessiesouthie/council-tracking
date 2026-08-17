@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Eagle Mountain City Council Votes — Civic Roll Call</title>
-    <meta name="description" content="Every Eagle Mountain City Council vote, clearly explained. Search decisions, see who voted how, and understand what changed." />
+    <meta name="description" content="Every Eagle Mountain City Council decision on the record — roll-call votes, budgets, tax rates and full meeting transcripts, each traced back to the city's own documents." />
     <link rel="canonical" href="https://civicrollcall.com/" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
@@ -13,17 +13,20 @@
     <meta property="og:site_name" content="Civic Roll Call" />
     <meta property="og:url" content="https://civicrollcall.com/" />
     <meta property="og:title" content="Eagle Mountain City Council Votes — Civic Roll Call" />
-    <meta property="og:description" content="Every Eagle Mountain City Council vote, clearly explained. Search decisions, see who voted how, and understand what changed." />
+    <meta property="og:description" content="Every Eagle Mountain City Council decision on the record — roll-call votes, budgets, tax rates and full meeting transcripts, each traced back to the city's own documents." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Eagle Mountain City Council Votes — Civic Roll Call" />
-    <meta name="twitter:description" content="Every Eagle Mountain City Council vote, clearly explained. Search decisions, see who voted how, and understand what changed." />
+    <meta name="twitter:description" content="Every Eagle Mountain City Council decision on the record — roll-call votes, budgets, tax rates and full meeting transcripts, each traced back to the city's own documents." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
     <link rel="preload" href="fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="fonts.css?v=20260817j" />
-    <link rel="stylesheet" href="site.css?v=20260817j" />
+    <!-- Fraunces sets the headline, which is this page's largest text and the
+         thing a reader waits on; the other faces can swap in when they arrive. -->
+    <link rel="preload" href="fonts/fraunces-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts.css?v=20260817k" />
+    <link rel="stylesheet" href="site.css?v=20260817k" />
 
     <!-- Structured data, written inline rather than injected by site.js: the
          crawlers that most need it (Bing, and every AI answer engine) don't run
@@ -38,7 +41,7 @@
           "@id": "https://civicrollcall.com/#website",
           "url": "https://civicrollcall.com/",
           "name": "Civic Roll Call",
-          "description": "Every Eagle Mountain City Council vote, clearly explained.",
+          "description": "Every Eagle Mountain City Council decision on the record — votes, budgets, tax rates and meeting transcripts.",
           "inLanguage": "en-US",
           "publisher": { "@id": "https://civicrollcall.com/#publisher" },
           "potentialAction": {
@@ -122,10 +125,11 @@
       <section class="hero">
         <p class="hero-eyebrow reveal" style="--i:0">Eagle Mountain · Public record</p>
         <h1 class="hero-title reveal" style="--i:1">
-          Every <span data-body-noun>council</span> vote, <span class="mark">clearly explained</span>.
+          Every decision the <span data-body-noun>council</span> makes, <span class="mark">on the record</span>.
         </h1>
         <p class="hero-sub reveal" style="--i:2">
-          Search decisions, see who voted how, and understand what changed.
+          Votes, budgets, tax rates and whole meetings transcribed — each one read
+          back to the document the city published it in.
         </p>
 
         <form class="hero-search reveal" style="--i:3" action="motions.html" method="get" role="search">
@@ -149,20 +153,25 @@
 
         <p class="quick-topics reveal" style="--i:4" id="quick-topics"></p>
 
-        <div class="ledger reveal" style="--i:5">
-          <div class="ledger-stats" id="ledger-stats"></div>
-          <div class="pulse" id="pulse" hidden>
-            <div class="pulse-bars" id="pulse-bars"></div>
-            <div class="pulse-cap">
-              <span id="pulse-cap-left"></span>
-              <span id="pulse-cap-right"></span>
-            </div>
-          </div>
-        </div>
+        <!-- The second door. The search above matches words in motions; these put
+             a question to the site's assistant, which is the thing to do when you
+             don't know what the record calls what you're after. -->
+        <p class="hero-ask reveal" style="--i:5">
+          <span class="ha-lab">Or ask</span>
+          <button type="button" class="ha-q"
+                  data-ask="Who voted against the property tax increase?">Who voted against the tax increase?</button>
+          <button type="button" class="ha-q"
+                  data-ask="How much of my property tax bill goes to the city, and how much to everyone else?">How much of my bill goes to the city?</button>
+        </p>
       </section>
 
-      <section class="section next-section" id="next-section" hidden>
-        <a class="next-meeting reveal" style="--i:6" id="next-meeting" href="#"></a>
+      <!-- Live now: what has just happened to the tax rate, and when the council
+           next sits. Both are hidden until their data says otherwise. -->
+      <section class="section livenow-section" id="livenow-section" hidden>
+        <div class="livenow" id="livenow">
+          <a class="live-tax reveal" style="--i:6" id="live-tax" href="tax.html" hidden></a>
+          <a class="next-meeting reveal" style="--i:6" id="next-meeting" href="#" hidden></a>
+        </div>
       </section>
 
       <section class="section" id="decisions-section">
@@ -171,6 +180,14 @@
           <a href="motions.html">See all →</a>
         </div>
         <div class="decision-list" id="decision-list"></div>
+      </section>
+
+      <section class="section" id="record-section">
+        <div class="section-head">
+          <h2>The rest of the record</h2>
+          <a href="about.html">How this is built →</a>
+        </div>
+        <div class="record-grid" id="record-grid"></div>
       </section>
 
       <section class="section" id="council-section">
@@ -188,8 +205,24 @@
       <span>Data from the Eagle Mountain CivicClerk public portal · last refreshed <span id="generated-at">—</span> · <a href="about.html">How this site is built</a></span>
     </footer>
 
-    <script src="site.js?v=20260817j"></script>
+    <script src="site.js?v=20260817k"></script>
     <script>
+      // The money pages are the city council's; a Planning Commission visitor has
+      // no tax rate and no budget of its own, so the cards that carry them are
+      // built only for the default body.
+      const IS_COUNCIL = CT.currentBody() === "city-council";
+
+      // One shot at each side file, shared between the live band and the record
+      // band so neither waits on the other and nothing is fetched twice. A miss
+      // resolves to null: every card that reads one is written to be droppable.
+      const grab = (f) =>
+        fetch(new URL(f, document.baseURI))
+          .then((r) => (r.ok ? r.json() : null))
+          .catch(() => null);
+      const taxP = IS_COUNCIL ? grab("data.tax.json") : Promise.resolve(null);
+      const budgetP = IS_COUNCIL ? grab("data.budget-next.json") : Promise.resolve(null);
+      const projP = IS_COUNCIL ? grab("data.projections.json") : Promise.resolve(null);
+
       (async () => {
         const data = await CT.loadData().catch((e) => {
           document.getElementById("loading").outerHTML =
@@ -202,24 +235,101 @@
           data.generated_at.replace("T", " ").replace("Z", " UTC");
 
         renderTopics(data);
-        renderLedger(data);
-        renderNextMeeting(data);
+        renderLive(data);
         renderDecisions(data);
+        renderRecord(data);
         renderCouncil(data);
       })();
 
-      /* ---------- Next meeting ---------- */
+      /* ---------- The hero's question chips ----------
+         Wired at parse time, not after the dataset lands: these ask the agent,
+         which has its own corpus and does not wait on ours. agent.js is injected
+         by site.js and may not have run yet either, so a click that gets there
+         first parks its question on window for the widget to drain on boot. */
 
-      // The only forward-looking thing on the site. Everything below it is the
-      // record of what already happened; this is the meeting a resident can
-      // still turn up to, so it sits directly under the ledger.
+      // The agent answers against the body you are looking at, and only the
+      // council has a tax rate — so the questions change with the switcher.
+      if (!IS_COUNCIL) {
+        const swap = [
+          ["What did they decide at the last meeting?", "What was decided at the last meeting?"],
+          ["Who sits on it, and since when?", "Who sits on this body, and since when?"],
+        ];
+        document.querySelectorAll(".hero-ask .ha-q").forEach((btn, i) => {
+          if (!swap[i]) return;
+          btn.textContent = swap[i][0];
+          btn.dataset.ask = swap[i][1];
+        });
+      }
+
+      document.querySelectorAll(".hero-ask .ha-q").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const q = btn.dataset.ask || btn.textContent.trim();
+          if (window.CTAgent) window.CTAgent.ask(q);
+          else window.CT_AGENT_ASK = q;
+        });
+      });
+
+      /* ---------- Live now ---------- */
+
+      // The band under the hero: what the council has just done to the tax rate,
+      // and when it next sits. Everything below it is the record of what is over.
+      // Either card can be missing, and the band goes with them if both are.
+      async function renderLive(data) {
+        const shown = await Promise.all([renderTaxCard(), renderNextMeeting(data)]);
+        const n = shown.filter(Boolean).length;
+        if (!n) return;
+        // One card alone takes the whole width rather than sitting in a half
+        // column with a hole beside it.
+        if (n === 1) document.getElementById("livenow").classList.add("is-single");
+        document.getElementById("livenow-section").hidden = false;
+      }
+
+      // The rate the council adopted, priced on the home the city itself used to
+      // notice the increase — the Truth-in-Taxation notice's average residence.
+      // Quoting the city's own example rather than picking a house keeps the
+      // card to a figure the city published and can be held to.
+      async function renderTaxCard() {
+        const tax = await taxP;
+        const rate = tax && tax.rates && (tax.rates.adopted || tax.rates.proposed);
+        const home = rate && rate.home_example;
+        if (!rate || !home || !home.increase) return false;
+
+        const adopted = !!(tax.rates && tax.rates.adopted);
+        const when = rate.date ? CT.fmtDate(rate.date) : "";
+        const flag = adopted
+          ? `Adopted${when ? " " + when : ""}`
+          : `Proposed${when ? " " + when : ""}`;
+        const money = (n) =>
+          n.toLocaleString(undefined, { style: "currency", currency: "USD" });
+
+        const el = document.getElementById("live-tax");
+        el.innerHTML = `
+          <span class="lt-eyebrow">
+            <span class="lt-lab">Property tax${
+              tax.fiscal_year_label ? ` · ${CT.escapeHtml(tax.fiscal_year_label)}` : ""
+            }</span>
+            <span class="lt-flag">${CT.escapeHtml(flag)}</span>
+          </span>
+          <span class="lt-head">The council ${
+            adopted ? "raised" : "has proposed raising"
+          } the city's property tax rate</span>
+          <span class="lt-figure"><b>+${CT.escapeHtml(money(home.increase))}</b> a year</span>
+          <span class="lt-note">on the average Eagle Mountain home — the city's own
+            example, a ${CT.escapeHtml(money(home.market_value).replace(/\.00$/, ""))}
+            primary residence.</span>
+          <span class="lt-cta">What it costs you <span aria-hidden="true">→</span></span>`;
+        el.hidden = false;
+        return true;
+      }
+
+      // The meeting a resident can still turn up to.
       //
       // Rendered from docs/data.upcoming.json and hidden outright when that file
       // holds nothing dated today or later — a build that goes stale should show
       // no meeting rather than advertise one that has already been and gone.
       async function renderNextMeeting(data) {
         const ev = await CT.nextMeeting().catch(() => null);
-        if (!ev) return;
+        if (!ev) return false;
 
         const d = new Date(ev.date + "T12:00:00Z");
         const fmt = (opts) => d.toLocaleDateString(undefined, { timeZone: "UTC", ...opts });
@@ -278,7 +388,8 @@
             ev.agenda_posted ? "Agenda" : "Meeting details"
           } <span aria-hidden="true">→</span></span>`;
 
-        document.getElementById("next-section").hidden = false;
+        el.hidden = false;
+        return true;
       }
 
       // A quiet way into the record for someone who does not know what to search
@@ -293,78 +404,6 @@
           top.map(t =>
             `<a href="motions.html?tag=${encodeURIComponent(t.id)}">${CT.escapeHtml(t.label)}</a>`
           ).join(`<span class="qt-sep">·</span>`);
-      }
-
-      /* ---------- Ledger: the three numbers + the pulse ---------- */
-
-      const PULSE_N = 60;
-
-      function renderLedger(data) {
-        const c = data.counts;
-        const o = data.stats.by_outcome || {};
-        // Pass rate is over motions whose outcome the minutes actually record. A third
-        // of the archive has no readable outcome line, and folding those into the
-        // denominator would understate the pass rate rather than leave it unknown.
-        const decided = (o.passed || 0) + (o.failed || 0);
-        const passRate = decided ? Math.round((o.passed / decided) * 100) : null;
-
-        const stats = [
-          { num: c.votes.toLocaleString(), lab: "votes tracked" },
-          { num: c.meetings.toLocaleString(), lab: "meetings" },
-        ];
-        if (passRate !== null) stats.push({ num: `${passRate}%`, lab: "passed" });
-
-        document.getElementById("ledger-stats").innerHTML = stats.map(s => `
-          <div class="ledger-stat">
-            <div class="num">${CT.escapeHtml(s.num)}</div>
-            <div class="lab">${CT.escapeHtml(s.lab)}</div>
-          </div>
-        `).join("");
-
-        renderPulse(data);
-      }
-
-      // One tick per recent motion, each a stacked yes/no column. Almost every
-      // motion here passes, so a flat "did it pass" strip would just be a green
-      // wall. Stacking the split instead means the eye lands on the handful of
-      // votes somebody actually argued about — which is the interesting part.
-      function renderPulse(data) {
-        const recent = [...data.motions]
-          .sort((a, b) => a.date.localeCompare(b.date) || a.id - b.id)
-          .slice(-PULSE_N);
-        if (recent.length < 10) return;
-
-        let dissented = 0;
-        const ticks = recent.map(m => {
-          const sp = voteSplit(m);
-          const k = CT.classifyOutcome(m.outcome);
-          const total = sp.yes + sp.no + sp.other;
-          if (!total) {
-            const t = `${CT.fmtDate(m.date)} — no roll call recorded`;
-            return `<span class="tick blank" title="${CT.escapeHtml(t)}"></span>`;
-          }
-          if (sp.no > 0) dissented++;
-
-          const title = `${CT.fmtDate(m.date)} — ${sp.yes} yes, ${sp.no} no${
-            k === "failed" ? " (failed)" : ""}`;
-          const seg = (n, c) => n ? `<span class="${c}" style="flex:${n}"></span>` : "";
-          return `
-            <span class="tick ${k}" title="${CT.escapeHtml(title)}">
-              ${seg(sp.no, "n")}${seg(sp.yes + sp.other, "y")}
-            </span>`;
-        }).join("");
-
-        document.getElementById("pulse-bars").innerHTML = ticks;
-
-        const first = CT.fmtDate(recent[0].date);
-        const last = CT.fmtDate(recent[recent.length - 1].date);
-        document.getElementById("pulse-cap-left").innerHTML =
-          `Last ${recent.length} motions · ${CT.escapeHtml(first)} → ${CT.escapeHtml(last)}`;
-        document.getElementById("pulse-cap-right").innerHTML = dissented
-          ? `<b>${dissented}</b> drew a no vote`
-          : `no one voted no`;
-
-        document.getElementById("pulse").hidden = false;
       }
 
       /* ---------- Decision cards ---------- */
@@ -442,11 +481,12 @@
         const sorted = [...data.motions].sort((a, b) =>
           b.date.localeCompare(a.date) || b.id - a.id
         );
+        // Four, laid out two-up: a full row either way, on a phone and on a desk.
         const picked = [
           ...sorted.filter(m => CT.isNotable(m)),
           ...sorted.filter(m => m.headline && !CT.isNotable(m)),
           ...sorted.filter(m => !m.headline),
-        ].slice(0, 3);
+        ].slice(0, 4);
 
         // Keep the design's "This month at City Hall" voice, but only when it is
         // true — minutes are published weeks late, so most of the year the newest
@@ -490,7 +530,7 @@
         const href = `meetings.html?id=${encodeURIComponent(m.meeting_id)}#m${m.id}`;
 
         return `
-          <a class="decision-card is-${outcome.cls} reveal" style="--i:${8 + i}" href="${href}">
+          <a class="decision-card is-${outcome.cls} reveal" style="--i:${7 + i}" href="${href}">
             <div class="decision-top">
               <span class="decision-meta">${meta}</span>
               <span class="pill ${outcome.cls}">${CT.escapeHtml(outcome.text)}</span>
@@ -503,6 +543,94 @@
             ${rollcall(data, m)}
             <span class="decision-more">Read the full decision <span aria-hidden="true">→</span></span>
           </a>`;
+      }
+
+      /* ---------- The rest of the record ----------
+         Everything the site has grown into that the front page had no way of
+         showing: the tax rate, the budget book, the projections, the recordings,
+         the glossary, and the other two bodies. Each card states a figure read
+         from the same file the page it opens reads, so a stale build shows a
+         stale number rather than a confident wrong one — and a card whose data
+         didn't arrive prints without its figure instead of vanishing. */
+
+      async function renderRecord(data) {
+        const [tax, budget, proj, transcripts, bodies] = await Promise.all([
+          taxP,
+          budgetP,
+          projP,
+          CT.transcriptsForBody().catch(() => []),
+          grab("bodies.json"),
+        ]);
+
+        const rate = tax && tax.rates && (tax.rates.adopted || tax.rates.proposed);
+        const gross = budget && budget.totals && budget.totals.fy2027
+          ? budget.totals.fy2027.gross
+          : null;
+        const millions = (n) => `$${(n / 1e6).toFixed(1)}M`;
+
+        // The bodies this site covers that the reader is not currently looking at.
+        const here = CT.currentBody();
+        const others = (Array.isArray(bodies) ? bodies : []).filter(b => b.id !== here);
+
+        const cards = [
+          IS_COUNCIL && rate && {
+            glyph: "--ico-receipt",
+            name: "Property tax",
+            figure: rate.rate_display
+              ? `${rate.rate_display} · ${tax.fiscal_year_label || ""}`.trim().replace(/ ·\s*$/, "")
+              : "",
+            blurb: "The rate, the case the city made for it, and what it does to your bill.",
+            href: "tax.html",
+          },
+          IS_COUNCIL && {
+            glyph: "--ico-flow",
+            name: "Budget",
+            figure: gross ? `${millions(gross)} · ${budget.fiscal_year_label || ""}`.trim() : "",
+            blurb: "Every dollar the city budgets, traced from the fund that holds it to what it buys.",
+            href: "budget.html",
+          },
+          IS_COUNCIL && proj && {
+            glyph: "--ico-trend",
+            name: "Projections",
+            figure: `${(proj.scenarios || []).length} rates · FY${proj.first_year}–${
+              String(proj.last_year).slice(2)}`,
+            blurb: "What each property-tax rate would do to the General Fund, year by year.",
+            href: "projections.html",
+          },
+          {
+            glyph: "--ico-calendar",
+            name: "Meetings",
+            figure: transcripts.length
+              ? `${transcripts.length} transcribed in full`
+              : "",
+            blurb: "Agendas, minutes and summaries — and for recent meetings, every word said.",
+            href: "meetings.html",
+          },
+          {
+            glyph: "--ico-book",
+            // definitions.html states this count in its own masthead; the two are
+            // written by hand and change together.
+            figure: "83 entries",
+            name: "Definitions",
+            blurb: "City business runs on a vocabulary nobody is taught. This is that vocabulary.",
+            href: "definitions.html",
+          },
+          others.length && {
+            glyph: "--ico-people",
+            name: "The other bodies",
+            figure: "",
+            blurb: others.map(b => b.label).join(" · ") + " — the same record, kept the same way.",
+            href: CT.linkBody("meetings.html", others[0].id),
+          },
+        ].filter(Boolean);
+
+        document.getElementById("record-grid").innerHTML = cards.map((c, i) => `
+          <a class="rec-card reveal" style="--i:${11 + i}; --rec-glyph: var(${c.glyph})" href="${c.href}">
+            <span class="rec-ico" aria-hidden="true"></span>
+            <span class="rec-name">${CT.escapeHtml(c.name)}</span>
+            ${c.figure ? `<span class="rec-figure">${CT.escapeHtml(c.figure)}</span>` : ""}
+            <span class="rec-blurb">${CT.escapeHtml(c.blurb)}</span>
+          </a>`).join("");
       }
 
       /* ---------- Council ---------- */
