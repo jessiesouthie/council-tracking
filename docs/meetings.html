@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-    <link rel="stylesheet" href="site.css?v=20260817c" />
+    <link rel="stylesheet" href="site.css?v=20260817f" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -53,7 +53,7 @@
 
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal</span></footer>
 
-    <script src="site.js?v=20260817c"></script>
+    <script src="site.js?v=20260817f"></script>
     <script src="vendor/marked.min.js"></script>
     <script>
       (async () => {
@@ -95,6 +95,7 @@
         root.innerHTML = `
           <h1 class="page-title">Meetings</h1>
           <p class="page-sub">${data.meetings.length} meetings on file. Each card lists the motions decided that night — click anywhere on a card to dig in.</p>
+          <div id="next-agenda"></div>
           <div class="toolbar">
             <input id="q" class="input" type="search" placeholder="Search motion titles or date…" autocomplete="off" />
             <select id="year" class="select" aria-label="Filter by year">${yearOpts}</select>
@@ -129,6 +130,266 @@
         q.addEventListener("input", paint);
         yearSel.addEventListener("change", paint);
         paint();
+
+        // Doesn't block the list: the record paints from data.json, the band
+        // above it from the calendar file, and either can arrive first.
+        renderNextAgenda(data, document.getElementById("next-agenda"));
+      }
+
+      // ---------------------------------------------------------------------
+      // The posted agenda for the next meeting.
+      //
+      // Everything below this card is the record of meetings already held. This
+      // is the one meeting a resident can still turn up to: a card that says
+      // when and where, and opens onto what the council will actually take up.
+      //
+      // Two editorial decisions shape what's inside. The procedural scaffolding
+      // — call to order, the pledge, the manager's standing slot, the vote to go
+      // into closed session, adjournment — is on every agenda and is not why
+      // anyone attends, so it is left to the PDF (ingest flags it; see
+      // PROCEDURAL_RE in build_upcoming.py). And each item leads with the plain
+      // sentence written by ingest.summarize_agenda rather than with the city's
+      // own "A Resolution of Eagle Mountain City, Utah, Awarding the Bid for…",
+      // which the reader can still open underneath it.
+      //
+      // Source is docs/data.upcoming.json. The card degrades in steps — a parsed
+      // agenda, then a link to the PDF, then the date and time alone — so a
+      // re-templated agenda costs detail rather than the section. Nothing
+      // scheduled at all and there is no card.
+      // ---------------------------------------------------------------------
+
+      // Items the agenda marks as talk rather than business. The rest — an
+      // ordinance, a resolution, a bid award — is something the council is
+      // being asked to decide that night.
+      const AGENDA_TALK_RE = /discussion|update|presentation|report|information/i;
+
+      const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
+      // "ORDINANCE/PUBLIC HEARING" -> a chip reading "Ordinance / Public hearing".
+      function agendaKind(kind) {
+        if (!kind) return "";
+        const cls = /public hearing/i.test(kind) ? "is-hearing"
+                  : AGENDA_TALK_RE.test(kind) ? "is-talk" : "is-vote";
+        const label = kind.toLowerCase().split("/").map(p => capitalize(p.trim())).join(" / ");
+        return `<span class="ag-kind ${cls}">${CT.escapeHtml(label)}</span>`;
+      }
+
+      // One item: the plain sentence out front, and the city's own wording — the
+      // thing that will actually be read out and voted on — one click below it,
+      // so the plain English is a way in rather than a replacement.
+      //
+      // A public hearing is marked on the item's own edge rather than only in a
+      // chip: it is the difference between a night a resident can watch and a
+      // night a resident can speak at.
+      function agendaItem(item) {
+        const plain = item.plain || "";
+        const hearing = /public hearing/i.test(item.kind || "");
+        const chips = [
+          agendaKind(item.kind),
+          item.time ? `<span class="ag-clock">${CT.escapeHtml(item.time)}</span>` : "",
+        ].filter(Boolean).join("");
+        const asPosted = [
+          plain && item.title ? `<p class="ag-official">${CT.escapeHtml(item.title)}</p>` : "",
+          item.background ? `<p>${CT.escapeHtml(item.background)}</p>` : "",
+        ].filter(Boolean).join("");
+        // Chips and the disclosure share one line: seventeen items each spending
+        // a row of their own on a four-word toggle is most of a screen.
+        return `
+          <li class="ag-item${hearing ? " is-hearing" : ""}">
+            <span class="ag-num is-sub mono">${CT.escapeHtml(item.number)}</span>
+            <div class="ag-item-body">
+              <p class="ag-item-t">${CT.escapeHtml(plain || item.title)}</p>
+              ${chips || asPosted ? `
+                <div class="ag-meta">
+                  ${chips}
+                  ${asPosted ? `
+                    <details class="ag-bg">
+                      <summary>${plain ? "As posted" : "Background"}</summary>
+                      ${asPosted}
+                    </details>` : ""}
+                </div>` : ""}
+            </div>
+          </li>`;
+      }
+
+      // One numbered heading and the business under it. A heading with no
+      // lettered items carries only whatever the agenda says about it — which
+      // for public comment is the sentence telling residents they get three
+      // minutes, and that is the whole reason the block survives the cut.
+      function agendaHeading(head, i = 0) {
+        const comment = /^public comment/i.test(head.title);
+        return `
+          <li class="ag-head${comment ? " is-comment" : ""}" style="--i:${i}">
+            <span class="ag-num mono">${CT.escapeHtml(head.number)}</span>
+            <div class="ag-head-body">
+              <h4 class="ag-head-t">${CT.escapeHtml(head.title)}</h4>
+              ${head.note && !head.items.length
+                  ? `<p class="ag-note">${CT.escapeHtml(head.note)}</p>` : ""}
+              ${head.items.length
+                  ? `<ul class="ag-items">${head.items.map(agendaItem).join("")}</ul>`
+                  : ""}
+            </div>
+          </li>`;
+      }
+
+      // The agenda in order, with the consent/scheduled banners printed where
+      // the agenda prints them — as dividers, not as containers, which is how
+      // they read on the page.
+      // The consent/scheduled banners the printed agenda uses to break the night
+      // up become full-width dividers, with each run of headings packed into its
+      // own two-column block underneath. Panels pack by height inside a run, so
+      // a short one next to a tall one costs nothing — the ragged holes a single
+      // grid leaves between rows were most of the wasted space on this card.
+      function agendaColumn(heads) {
+        const runs = [];
+        for (const h of heads) {
+          const key = h.group || "";
+          let run = runs[runs.length - 1];
+          if (!run || run.key !== key) runs.push(run = { key, heads: [] });
+          run.heads.push(h);
+        }
+        return runs.map(run => `
+          ${run.key ? `<p class="ag-group">${CT.escapeHtml(run.key)}</p>` : ""}
+          <ul class="ag-list${run.heads.length === 1 ? " is-solo" : ""}">
+            ${run.heads.map((h, i) => agendaHeading(h, Math.min(i, 7))).join("")}
+          </ul>`).join("");
+      }
+
+      async function renderNextAgenda(data, mount) {
+        if (!mount) return;
+        const ev = await CT.nextMeeting().catch(() => null);
+        if (!ev) return;
+
+        const d = new Date(ev.date + "T12:00:00Z");
+        const fmt = (opts) => d.toLocaleDateString(undefined, { timeZone: "UTC", ...opts });
+        const n = ev.days_away;
+        const away = n === 0 ? "Today" : n === 1 ? "Tomorrow" : `In ${n} days`;
+
+        // Regular meetings are all called "City Council Meeting", which under a
+        // band already headed "Next meeting" says nothing. A special session or
+        // a truth-in-taxation hearing is worth naming.
+        const routine = (ev.title || "").trim().toLowerCase() ===
+          `${data.body_label} meeting`.toLowerCase();
+
+        // The business of the night, minus the scaffolding, grouped under the
+        // session it sits in. Agendas that don't split the night leave session
+        // null and fall into one block.
+        const heads = (ev.agenda || []).filter(h => !h.procedural);
+        const cols = [];
+        for (const h of heads) {
+          const key = h.session || "";
+          let col = cols.find(c => c.key === key);
+          if (!col) cols.push(col = { key, heads: [] });
+          col.heads.push(h);
+        }
+        const byStart = new Map((ev.sessions || []).map(s => [s.start, s]));
+
+        // What the night amounts to, in one line: how much business, how much of
+        // it the public gets to speak on, and when their own slot is. This is
+        // what the closed card has to answer "is any of this for me?" with, so
+        // the numbers in it are set in ink and the words around them recede.
+        const items = heads.flatMap(h => h.items);
+        const hearings = items.filter(i => /public hearing/i.test(i.kind)).length;
+        const openMic = (ev.sessions || []).find(s => s.public_comment);
+        const fig = (n, unit) => `<b>${CT.escapeHtml(String(n))}</b> ${unit}${n === 1 ? "" : "s"}`;
+        const gist = [
+          items.length ? fig(items.length, "item") : "",
+          hearings ? fig(hearings, "public hearing") : "",
+          openMic ? `public comment at <b>${CT.escapeHtml(openMic.start_label)}</b>` : "",
+        ].filter(Boolean).join(" <i>·</i> ")
+          || (ev.agenda_posted ? "Agenda posted" : "Agenda not posted yet");
+
+        const links = `
+          <p class="ag-links">
+            ${ev.agenda_url
+              ? `<a class="ag-btn" href="${CT.escapeHtml(ev.agenda_url)}" target="_blank" rel="noopener">Agenda PDF</a>`
+              : ""}
+            ${ev.url
+              ? `<a class="ag-alt" href="${CT.escapeHtml(ev.url)}" target="_blank" rel="noopener">Meeting page ↗</a>`
+              : ""}
+          </p>`;
+
+        const body = cols.length
+          ? `${links}
+             <div class="ag-cols">
+               ${cols.map(col => {
+                 const s = byStart.get(col.key);
+                 return `
+                   <section class="ag-col">
+                     ${s ? `
+                       <h3 class="ag-col-h${s.public_comment ? " is-comment" : ""}">
+                         <b>${CT.escapeHtml(s.start_label)}</b>
+                         ${CT.escapeHtml(s.label)}
+                         ${s.public_comment ? `<em>public comment</em>` : ""}
+                       </h3>` : ""}
+                     ${agendaColumn(col.heads)}
+                   </section>`;
+               }).join("")}
+             </div>
+             <p class="ag-foot">Summarised in plain English from the posted agenda,
+               and trimmed of the procedural steps every meeting carries — the roll
+               call, the closed session, the adjournment. The PDF above is the full
+               notice.</p>`
+          : `<p class="ag-empty">${ev.agenda_posted
+                ? "The agenda is posted — open the PDF for the items."
+                : "The agenda isn't posted yet. The city posts it at least 24 hours before the meeting, and this page picks it up on the next refresh."}</p>
+             ${links}`;
+
+        // The recorder's certificate at the foot of the agenda, printed as what
+        // it is: the city's stamp attesting that it gave lawful notice, and the
+        // date it did. Only ever shown when the PDF actually says so.
+        const posted = ev.agenda_posted_on
+          ? new Date(ev.agenda_posted_on + "T12:00:00Z").toLocaleDateString(undefined,
+              { timeZone: "UTC", month: "short", day: "numeric" })
+          : "";
+
+        // The whole card is the control: a summary holding when and where, and
+        // the agenda folded underneath it. Links live in the body rather than the
+        // summary, because an anchor inside a <summary> makes one target do two
+        // jobs — the click either follows the link or works the fold, and the
+        // reader can't tell which they're about to get.
+        mount.innerHTML = `
+          <details class="agenda-card">
+            <summary class="ag-bar">
+              <span class="ag-leaf" aria-hidden="true">
+                <span class="ag-leaf-mon">${CT.escapeHtml(fmt({ month: "short" }))}</span>
+                <span class="ag-leaf-day">${CT.escapeHtml(fmt({ day: "numeric" }))}</span>
+              </span>
+              <div class="ag-bar-when">
+                <p class="ag-eyebrow">Next meeting<span class="ag-away">${CT.escapeHtml(away)}</span></p>
+                <h2 class="ag-title">${CT.escapeHtml(fmt({ weekday: "long", month: "long", day: "numeric" }))}</h2>
+                ${routine ? "" : `<p class="ag-kicker">${CT.escapeHtml(ev.title)}</p>`}
+                <p class="ag-when">
+                  ${ev.start_label ? `<b>${CT.escapeHtml(ev.start_label)}</b>` : ""}
+                  ${ev.location ? `<span>${CT.escapeHtml(ev.location)}</span>` : ""}
+                </p>
+                <p class="ag-gist">${gist}</p>
+              </div>
+              ${posted ? `
+                <span class="ag-stamp" title="The date the city recorder certifies this agenda was posted">
+                  <span class="ag-stamp-l">Notice posted</span>
+                  <b>${CT.escapeHtml(posted)}</b>
+                </span>` : ""}
+              <span class="ag-open" aria-hidden="true"></span>
+            </summary>
+            <div class="ag-body">${body}</div>
+          </details>`;
+
+        wireAgendaFold(mount);
+      }
+
+      // The card opens closed. A five-page agenda held open by default would
+      // push the record itself two screens down the page on a laptop and seven
+      // on a phone, and most visits to this page are visits to the record. Once
+      // a reader opens it, that is their setting from then on.
+      const AGENDA_FOLD_KEY = "ct-agenda-open";
+      function wireAgendaFold(root) {
+        const card = root.querySelector(".agenda-card");
+        if (!card) return;
+        try { card.open = localStorage.getItem(AGENDA_FOLD_KEY) === "1"; } catch {}
+        card.addEventListener("toggle", () => {
+          try { localStorage.setItem(AGENDA_FOLD_KEY, card.open ? "1" : "0"); } catch {}
+        });
       }
 
       function voteSplit(motion) {

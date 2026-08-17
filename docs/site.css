@@ -1669,6 +1669,567 @@ body.page-tax::before {
 }
 .motion-line-meta { font-size: 12px; }
 
+/* ---------- Next meeting's posted agenda (meetings page) ----------
+   Everything else on this page is the record: cards, chips, tallies, a grid of
+   nights that have already happened. This one card is not a record — it is a
+   NOTICE, the thing the city recorder posts on the board, and it is styled as
+   one. A torn calendar leaf, a masthead set in a book serif, the recorder's own
+   posting stamp pressed into the corner, and — once opened — the agenda itself.
+
+   Two typographic rules carry the idea:
+     · The serif is the city's voice. It sets the masthead date and the official
+       "as posted" wording of each item — the words that will actually be read
+       out in the room. Everything the site says for itself stays in the sans.
+     · Numbers are ink, words around them recede. Times, counts and item numbers
+       are set in the mono face with tabular figures, so a reader scanning for
+       "when" and "how many" lands on them first.
+
+   Legibility rules over texture, and it was not always so here: an earlier pass
+   put a grain overlay on the paper and set the agenda as hairline-ruled rows at
+   13.5px. It read as a handsome document and was miserable to actually read —
+   dim, and with nothing to hold onto. Hence: no overlay, a light card, and each
+   numbered heading and its items grouped onto a panel of their own, so the eye
+   has an object to land on before it has a line to read.
+
+   The serif is a system stack: no extra font request on any page, and every
+   platform has something with the right bookish weight. */
+.agenda-card {
+  --notice-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --ag-gutter: 38px;   /* the hanging-number column, as on a printed agenda */
+  position: relative;
+  overflow: hidden;    /* keeps the index tab inside the radius */
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-hair);
+  margin-bottom: 24px;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+/* The index tab: a stub of brand navy along the top edge, the way a filed
+   document carries a coloured tab. It is also the only saturated thing on the
+   closed card, so the eye starts here. */
+.agenda-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0 96px, var(--border) 96px);
+}
+.agenda-card:hover { border-color: var(--border-strong); }
+.agenda-card[open] { box-shadow: var(--shadow); }
+
+/* ---- The masthead (and the whole control) ---- */
+.ag-bar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "leaf when stamp"
+    "leaf when open";
+  gap: 10px 20px;
+  padding: 22px 24px 20px;
+  cursor: pointer;
+  list-style: none;
+}
+.ag-bar::-webkit-details-marker { display: none; }
+.ag-bar:focus-visible { outline: 3px solid var(--focus); outline-offset: -4px; }
+
+/* A torn-off calendar leaf, the same object the homepage's next-meeting card
+   uses, so the two read as one system across the site. */
+.ag-leaf {
+  grid-area: leaf;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 68px;
+  padding: 10px 0 12px;
+  border-radius: 14px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  box-shadow: 0 10px 20px -14px rgb(var(--shadow-rgb) / .9);
+}
+/* The binding stub at the head of the leaf. */
+.ag-leaf::before {
+  content: "";
+  width: 26px;
+  height: 3px;
+  border-radius: 2px;
+  margin-bottom: 7px;
+  background: color-mix(in oklab, var(--accent-fg) 40%, transparent);
+}
+.ag-leaf-mon {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  opacity: .85;
+}
+.ag-leaf-day {
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+}
+
+.ag-bar-when { grid-area: when; min-width: 0; }
+.ag-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .11em;
+  color: var(--fg-muted);
+}
+.ag-away {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-radius: 999px;
+  padding: 3px 11px;
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+/* The masthead line, in the notice's own voice. */
+.ag-title {
+  margin: 0;
+  font-family: var(--notice-serif);
+  font-size: 33px;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  color: var(--fg-soft);
+}
+.ag-kicker {
+  margin: 6px 0 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--warm-ink);
+}
+.ag-when {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin: 9px 0 0;
+  font-size: 14px;
+  color: var(--fg);
+}
+.ag-when b {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--fg-soft);
+  font-variant-numeric: tabular-nums;
+}
+/* The one line the closed card has to earn its place with: what the night
+   amounts to. The figures carry the ink; the words between them recede. */
+.ag-gist {
+  margin: 11px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--fg);
+}
+.ag-gist b {
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--fg-soft);
+  font-variant-numeric: tabular-nums;
+}
+.ag-gist i { font-style: normal; opacity: .4; margin: 0 4px; }
+
+/* The recorder's stamp: the city attesting, on the agenda itself, that it gave
+   lawful notice and when. Rotated a few degrees and double-ruled, because that
+   is what a stamp looks like — and because the one hand-placed thing on a
+   machine-set page is what makes it read as a document. */
+.ag-stamp {
+  grid-area: stamp;
+  justify-self: end;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 8px 14px 9px;
+  border: 1.5px solid color-mix(in oklab, var(--link) 45%, transparent);
+  border-radius: 5px;
+  outline: 1px solid color-mix(in oklab, var(--link) 22%, transparent);
+  outline-offset: 3px;
+  color: var(--link);
+  transform: rotate(-3.5deg);
+  animation: ag-press 520ms cubic-bezier(.16, .9, .3, 1) backwards;
+}
+.ag-stamp-l {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  opacity: .85;
+}
+.ag-stamp b {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  font-variant-numeric: tabular-nums;
+}
+@keyframes ag-press {
+  0%   { opacity: 0; transform: rotate(-9deg) scale(1.3); }
+  55%  { opacity: 1; }
+  100% { opacity: 1; transform: rotate(-3.5deg) scale(1); }
+}
+
+/* The affordance: a word and a chevron that turns, because "what happens if I
+   click this card" should never be a guess. */
+.ag-open {
+  grid-area: open;
+  justify-self: end;
+  align-self: end;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--link);
+  white-space: nowrap;
+}
+.ag-open::before { content: "See the agenda"; }
+.agenda-card[open] .ag-open::before { content: "Close"; }
+.ag-open::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 260ms cubic-bezier(.2, .7, .3, 1);
+}
+.agenda-card[open] .ag-open::after { transform: rotate(-135deg) translate(-2px, -2px); }
+.ag-bar:hover .ag-open { color: var(--link-strong); }
+
+/* ---- The agenda itself ---- */
+.ag-body { padding: 0 24px 20px; }
+.ag-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 0 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.ag-btn {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  box-shadow: 0 8px 18px -12px rgb(var(--shadow-rgb) / .9);
+  transition: transform 140ms ease, background 140ms ease;
+}
+.ag-btn:hover { background: var(--accent-strong); text-decoration: none; transform: translateY(-1px); }
+.ag-alt { font-size: 13.5px; }
+.ag-empty { margin: 18px 0 0; font-size: 15px; line-height: 1.6; color: var(--fg); max-width: 62ch; }
+/* Says what was left out, so a trimmed agenda is never a silently trimmed one. */
+.ag-foot {
+  margin: 16px 0 0;
+  padding-top: 13px;
+  border-top: 1px solid var(--border);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--fg-muted);
+  max-width: 80ch;
+}
+
+/* The work session and the policy session run hours apart, and which one an
+   item sits in is the whole question for a resident deciding when to turn up —
+   so the night stays split, one session under the other.
+
+   Each session then flows into two columns of panels rather than one long
+   ladder: a five-page agenda printed as a single list would push the record
+   itself off the bottom of the page. */
+.ag-cols { margin-top: 2px; }
+.ag-col { min-width: 0; }
+.ag-col + .ag-col { margin-top: 22px; }
+/* The session's own rule: the hour as a node, the label, then a line running out
+   to the margin — a chapter heading rather than a table header. */
+.ag-col-h {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 11px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .11em;
+  color: var(--fg-muted);
+}
+.ag-col-h b {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: var(--accent-fg);
+  font-variant-numeric: tabular-nums;
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 5px 13px;
+}
+.ag-col-h em {
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: .01em;
+  font-size: 12.5px;
+  font-weight: 600;
+  background: var(--warm-soft);
+  color: var(--warm-ink);
+  border-radius: 999px;
+  padding: 4px 11px;
+}
+.ag-col-h::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Two up, on a grid rather than in newspaper columns. Columns balance by height
+   and strand a hole at the foot of the shorter one; a grid pairs the panels off
+   evenly and — the reason it wins — lets the CONSENT AGENDA / SCHEDULED ITEMS
+   banners run the full width, so they divide the night instead of captioning
+   one column of it. */
+/* Panels pack into two columns by height, so a one-item panel beside a
+   four-item one costs nothing. (A grid was tried here and read well, but it
+   aligns rows to their tallest panel, and the holes that leaves under the short
+   ones were most of the wasted space on an opened card.) */
+.ag-list { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 16px; }
+.ag-head { break-inside: avoid; }
+.ag-list.is-solo { columns: 1; }
+/* A session with one panel spreads that panel across the card, so its items
+   take the two columns the panels would have. */
+.ag-list.is-solo .ag-items { columns: 2; column-gap: 26px; }
+.ag-list.is-solo .ag-item { break-inside: avoid; }
+@media (max-width: 900px) {
+  .ag-list, .ag-list.is-solo .ag-items { columns: 1; }
+}
+
+/* CONSENT AGENDA / SCHEDULED ITEMS — the banners the printed agenda uses to
+   break the night up. Full width, outside the columns, so they divide the night
+   rather than caption one column of it. */
+.ag-group {
+  margin: 18px 0 10px;
+  padding-top: 12px;
+  border-top: 2px solid var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--fg-soft);
+}
+
+/* A numbered heading and everything under it, grouped onto one panel. Seventeen
+   free-floating rows are a wall; eight labelled panels are a page you can scan
+   and pick from. Outlined rather than filled — a tinted panel on a light card
+   reads as a grey box, and there are eight of them. */
+.ag-head {
+  display: grid;
+  grid-template-columns: var(--ag-gutter) minmax(0, 1fr);
+  gap: 0 10px;
+  margin-bottom: 12px;
+  padding: 11px 14px 12px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.ag-head-body { min-width: 0; }
+.ag-num {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--fg-muted);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  padding-top: 1px;
+}
+.ag-num.is-sub { font-size: 12px; font-weight: 500; }
+.ag-head-t {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--fg-soft);
+  line-height: 1.35;
+}
+/* The residents' slot, marked so someone scanning for their three minutes finds
+   them without reading the night. */
+.ag-head.is-comment { border-color: color-mix(in oklab, var(--warm) 45%, var(--border)); }
+.ag-head.is-comment .ag-head-t { color: var(--warm-ink); }
+.ag-head.is-comment .ag-num { color: var(--warm); }
+.ag-note { margin: 6px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--fg-muted); max-width: 68ch; }
+
+/* Items inside a panel: rows ruled off from each other. The rule is a real
+   border rather than a hairline — separating one item from the next is the
+   whole job here. */
+.ag-items { list-style: none; margin: 9px 0 0; padding: 0; }
+.ag-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: calc(var(--ag-gutter) - 10px) minmax(0, 1fr);
+  gap: 0 10px;
+  padding: 9px 0 10px 10px;
+  border-top: 1px solid var(--border);
+}
+.ag-item:first-child { border-top: none; padding-top: 1px; }
+.ag-item:last-child { padding-bottom: 1px; }
+/* A hearing is the difference between a night you can watch and a night you can
+   speak at, so it gets an edge of its own. */
+.ag-item.is-hearing::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--warm);
+}
+.ag-item:first-child.is-hearing::before { top: 1px; }
+.ag-item-body { min-width: 0; }
+/* The plain-English sentence carries the item, so it gets the ink and the size. */
+.ag-item-t {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--fg-soft);
+  max-width: 68ch;
+}
+/* Chips and the "as posted" toggle ride one line together. Opened, the
+   disclosure takes a row of its own so its text isn't squeezed into a chip's
+   worth of width. */
+.ag-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 7px 0 0; }
+.ag-kind, .ag-clock {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 3px 9px;
+}
+/* Something the council will decide that night. */
+.ag-kind.is-vote { background: var(--accent-tint); color: var(--accent-ink); }
+/* Something the public gets to speak on first. */
+.ag-kind.is-hearing { background: var(--warm-soft); color: var(--warm-ink); }
+/* Talk only — no vote scheduled. */
+.ag-kind.is-talk { background: transparent; color: var(--fg-muted); box-shadow: inset 0 0 0 1px var(--border-strong); }
+.ag-clock {
+  background: transparent;
+  color: var(--fg-muted);
+  font-family: var(--mono);
+  letter-spacing: .02em;
+  text-transform: none;
+  box-shadow: inset 0 0 0 1px var(--border-strong);
+}
+
+.ag-bg { margin: 0; }
+.ag-bg[open] { flex: 1 0 100%; margin-top: 2px; }
+/* Seventeen of these open the same door, so they stay quiet until asked for —
+   the warm ink on this card is spent on the stamp and on the hearings, and it
+   only means something while it is rare. */
+.ag-bg summary {
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  list-style: none;
+  transition: color 140ms ease;
+}
+.ag-bg summary::-webkit-details-marker { display: none; }
+.ag-bg summary::before { content: "+ "; }
+.ag-bg[open] summary::before { content: "– "; }
+.ag-bg summary:hover, .ag-bg[open] summary { color: var(--link); }
+.ag-bg p { margin: 7px 0 0; font-size: 13.5px; line-height: 1.65; color: var(--fg-muted); max-width: 72ch; }
+/* The city's own wording — what will be read out and voted on — quoted in the
+   notice's serif, so it is visibly the document speaking and not the site. */
+.ag-official {
+  font-family: var(--notice-serif);
+  font-size: 14.5px;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--fg);
+  border-left: 2px solid var(--border-strong);
+  padding-left: 12px;
+}
+
+/* ---- Opening the card ----
+   One orchestrated reveal rather than scattered motion: the links, then each
+   session's rule, then its panels, each a beat behind the last. */
+@keyframes ag-rise {
+  from { opacity: 0; transform: translateY(7px); }
+  to   { opacity: 1; transform: none; }
+}
+.agenda-card[open] .ag-links,
+.agenda-card[open] .ag-col-h,
+.agenda-card[open] .ag-head,
+.agenda-card[open] .ag-group,
+.agenda-card[open] .ag-foot {
+  animation: ag-rise 400ms cubic-bezier(.2, .7, .3, 1) backwards;
+}
+.agenda-card[open] .ag-links { animation-delay: 20ms; }
+.agenda-card[open] .ag-col-h { animation-delay: 70ms; }
+.agenda-card[open] .ag-group { animation-delay: 100ms; }
+.agenda-card[open] .ag-head  { animation-delay: calc(var(--i, 0) * 40ms + 110ms); }
+.agenda-card[open] .ag-foot  { animation-delay: 260ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .agenda-card[open] .ag-links,
+  .agenda-card[open] .ag-col-h,
+  .agenda-card[open] .ag-head,
+  .agenda-card[open] .ag-group,
+  .agenda-card[open] .ag-foot,
+  .ag-stamp { animation: none; }
+  .ag-open::after { transition: none; }
+}
+
+@media (max-width: 700px) {
+  /* On a phone the leaf and the stamp become a header strip of their own, and
+     the notice below them gets the full width — a masthead broken over two
+     lines to leave room for a date block reads like neither. */
+  .ag-bar {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "leaf  stamp"
+      "when  when"
+      "open  open";
+    gap: 12px 14px;
+    padding: 18px 16px 16px;
+  }
+  .ag-stamp { justify-self: start; align-self: center; padding: 6px 11px 7px; }
+  .ag-stamp-l { font-size: 8px; letter-spacing: .16em; }
+  .ag-stamp b { font-size: 12.5px; }
+  .ag-open { justify-self: start; padding-top: 6px; }
+  .ag-body { padding: 0 16px 20px; }
+  .ag-title { font-size: 27px; }
+  .ag-leaf { width: 58px; }
+  .ag-leaf-day { font-size: 26px; }
+  .ag-links { width: 100%; }
+  .ag-btn { flex: 1; text-align: center; min-height: 44px; line-height: 24px; }
+  /* Give the sentences back the width the number gutter was taking. */
+  .agenda-card { --ag-gutter: 32px; }
+  .ag-head { padding: 13px 13px 14px 10px; }
+}
+
 /* ---------- Motions page (search-first) ---------- */
 .search-bar { margin-bottom: 14px; max-width: 720px; }
 .search-bar .input { width: 100%; min-height: 46px; font-size: 16px; }

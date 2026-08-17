@@ -174,16 +174,21 @@ def _publish_ts(file_entry: dict) -> int:
     return int("".join(c for c in s if c.isdigit())[:14] or "0")
 
 
+def file_url(file_id: int) -> str:
+    """Public URL for a publishedFile — the PDF itself, no portal page around it.
+
+    Safe to publish: the endpoint needs no authentication, which is what lets the
+    site link a posted agenda straight through to the document.
+    """
+    return f"{BASE}/Meetings/GetMeetingFileStream(fileId={file_id},plainText=false)"
+
+
 def download_file(
     file_id: int, dest: Path, session: requests.Session | None = None
 ) -> int:
     """Stream a PDF for the given publishedFile.fileId to dest. Returns bytes written."""
     s = session or _session()
-    url = (
-        f"{BASE}/Meetings/GetMeetingFileStream("
-        f"fileId={file_id},plainText=false)"
-    )
-    with s.get(url, timeout=60, stream=True) as r:
+    with s.get(file_url(file_id), timeout=60, stream=True) as r:
         r.raise_for_status()
         dest.parent.mkdir(parents=True, exist_ok=True)
         n = 0

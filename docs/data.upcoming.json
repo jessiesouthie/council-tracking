@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-16T19:30:46Z",
+  "generated_at": "2026-08-17T08:04:35Z",
   "source": "Eagle Mountain CivicClerk portal",
   "timezone": "America/Denver",
   "bodies": {
@@ -13,6 +13,8 @@
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/728/overview",
         "agenda_posted": true,
+        "agenda_posted_on": "2026-08-13",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2911,plainText=false)",
         "sessions": [
           {
             "start": "16:00",
@@ -26,6 +28,363 @@
             "label": "Policy Session",
             "public_comment": true
           }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "DISCUSSION AND INFORMATION ITEMS",
+            "note": "This is an opportunity to provide information to the City Council. These items are for information only and do not require action by the City Council.",
+            "session": "16:00",
+            "group": null,
+            "items": [
+              {
+                "number": "1.A",
+                "kind": "DISCUSSION",
+                "title": "Pony Express Business Park.",
+                "time": "15 minutes",
+                "background": "",
+                "plain": "Staff will brief the council on the Pony Express Business Park."
+              },
+              {
+                "number": "1.B",
+                "kind": "DISCUSSION",
+                "title": "Archery Overlay Zone.",
+                "time": "15 minutes",
+                "background": "",
+                "plain": "Staff will brief the council on an archery overlay zone."
+              },
+              {
+                "number": "1.C",
+                "kind": "DISCUSSION",
+                "title": "City Staffing Analysis.",
+                "time": "15 minutes",
+                "background": "",
+                "plain": "Staff will walk the council through a study of how many employees the city needs."
+              },
+              {
+                "number": "1.D",
+                "kind": "DISCUSSION",
+                "title": "Proposed Policy Regarding Property Tax Funding for the Sheriff\u2019s Office.",
+                "time": "10 minutes",
+                "background": "",
+                "plain": "Staff will present a proposed policy on using property tax money to fund the sheriff's office."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "CITY MANAGER INFORMATION ITEMS",
+            "note": "This is an opportunity for the City Manager to provide information to the City Council.",
+            "session": "16:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "AGENDA REVIEW",
+            "note": "The City Council will review items on the Consent Agenda and Policy Session Agenda.",
+            "session": "16:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "4",
+            "title": "ADJOURN TO A CLOSED SESSION",
+            "note": "The City Council will adjourn into a Closed Session for the purpose of discussion of pending or reasonably imminent litigation; the character, professional competence, or physical or mental health of an individual; the purchase, lease, sale, or exchange of real property; a proposed development agreement, project proposal, or financing proposal related to the development of land owned by the state or a political subdivision; and/or the deployment of security personnel, devices, or systems, pursuant to Section 52-4-205(1) of the Utah Code, Annotated.",
+            "session": "16:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "5",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "6",
+            "title": "PLEDGE OF ALLEGIANCE",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "7",
+            "title": "PUBLIC COMMENTS",
+            "note": "Time has been set aside for the public to express their ideas, concerns, and comments. (Please limit your comments to three minutes each.)",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "8",
+            "title": "CITY COUNCIL/MAYOR ITEMS",
+            "note": "Time has been set aside for the City Council and Mayor to make comments.",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "9",
+            "title": "BOND RELEASES",
+            "note": "",
+            "session": "19:00",
+            "group": "Consent Agenda",
+            "items": [
+              {
+                "number": "9.A",
+                "kind": "",
+                "title": "The Towns at Brylee Farms Phase B, Plat 4 - Into Warranty",
+                "time": "",
+                "background": "",
+                "plain": "The council will consider moving the developer's bond for a section of The Towns at Brylee Farms into the warranty stage."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "10",
+            "title": "MINUTES",
+            "note": "",
+            "session": "19:00",
+            "group": "Consent Agenda",
+            "items": [
+              {
+                "number": "10.A",
+                "kind": "",
+                "title": "July 30, 2026 Minutes - Transportation Interlocal Meeting",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "10.B",
+                "kind": "",
+                "title": "August 4, 2026 Minutes - Regular City Council Meeting",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "10.C",
+                "kind": "",
+                "title": "August 6, 2026 Minutes - Council Meeting - Truth-in-Taxation",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "10.D",
+                "kind": "",
+                "title": "August 10, 2026 Minutes - Council Meeting - Special Session",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "11",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": "19:00",
+            "group": "Consent Agenda",
+            "items": [
+              {
+                "number": "11.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Awarding the Bid for EMC 6.0 MGD Wastewater Treatment Facility Expansion - GMP-2 Oxidation Ditch and Miscellaneous Site Improvements to MGC Contractors, Inc. and Approving the Contract.",
+                "time": "",
+                "background": "",
+                "plain": "The council will decide whether to award MGC Contractors the contract for the next stage of the city's sewer plant expansion."
+              },
+              {
+                "number": "11.B",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Accepting the Eagle Mountain City Fiscal Year 2025 Audited Financial Statements.",
+                "time": "",
+                "background": "",
+                "plain": "The council will decide whether to accept the city's audited books for last year."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "12",
+            "title": "ORDINANCES/PUBLIC HEARINGS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "12.A",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code 16.20.040 (Preliminary Plats) regarding Street Names.",
+                "time": "",
+                "background": "(Presented by Senior Planner, David Stroud) The proposed ordinance amends Eagle Mountain Municipal Code Section 16.20.040 regarding street names on Preliminary Plats.",
+                "plain": "The council will hold a public hearing on changing the rules for street names on early subdivision maps."
+              },
+              {
+                "number": "12.B",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain, Utah, Amending Eagle Mountain Municipal Code 16.25.040, Final Plats.",
+                "time": "",
+                "background": "(Presented by Senior Planner, David Stroud) The proposed ordinance amends Eagle Mountain Municipal Code Section 16.25.040 to include street naming standards required of final plats, and other plat requirements.",
+                "plain": "The council will hold a public hearing on adding street-naming standards and other requirements to final subdivision maps."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "13",
+            "title": "TRUTH-IN-TAXATION",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "13.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Repealing a Property Tax Increase Above the Certified Tax Rate for Fiscal Year 2026-2027.",
+                "time": "",
+                "background": "On August 6, 2026, the City Council held a Truth in Taxation public hearing and approved a property tax rate of 0.001500 for Fiscal Year 2026\u20132027, exceeding the certified tax rate of 0.000530. The proposed resolution formally rescinds the previously approved property tax increase.",
+                "plain": "The council will decide whether to undo the property tax increase it approved on August 6."
+              },
+              {
+                "number": "13.B",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Approving a Property Tax Increase Above the Certified Tax Rate for Fiscal Year 2026\u20132027.",
+                "time": "",
+                "background": "Following the required Truth in Taxation public hearing, the City Council will consider approval of the proposed property tax increase above the certified tax rate for Fiscal Year 2026\u20132027, as required by Utah law. Approval of the proposed increase allows the City to incorporate the associated property tax revenue into the final Fiscal Year 2026\u20132027 budget.",
+                "plain": "The council will decide whether to approve the property tax increase above the certified rate for the coming year."
+              },
+              {
+                "number": "13.C",
+                "kind": "RESOLUTION/PUBLIC HEARING",
+                "title": "A Resolution of Eagle Mountain City, Utah, Adopting the Fiscal Year 2026-2027 Annual Budget Totaling $363,992,973.",
+                "time": "",
+                "background": "(Presented by Administrative Services Director Kimberly Ruesch) State statute requires taxing entities proposing a property tax increase above the certified tax rate to complete the Truth-in-Taxation process prior to adopting a final property tax rate and budget. A Truth-in-Taxation public hearing was held on August 6, 2026, to receive public comment regarding the proposed property tax increase and the Council adopted a tax rate of 0.001500. This rate was a reduction from the interim budget proposed rate and reduces property tax revenue by $1,151,343.",
+                "plain": "The council will hold a public hearing and decide whether to adopt the city's $363,992,973 budget for the coming year."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "14",
+            "title": "MID-VALLEY COMMUNITY REINVESTMENT PROJECT AREA",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "14.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Redevelopment Agency of Eagle Mountain City and Eagle Mountain City for the Collection and Remittance of Incremental Property Taxes Collected from Property within the Mid-Valley Community Reinvestment Project Area.",
+                "time": "",
+                "background": "(Presented by Director of Legislative and Strategic Services, Evan Berrett): The Mid-Valley CRA encompasses approximately 53 acres currently under review for commercial retail development. The proposed Interlocal Agreement outlines the City's participation in tax increment financing for off-site project improvements and establishes the related administrative procedures and terms.",
+                "plain": "The council will decide whether to approve an agreement with the city's redevelopment agency to collect and pass on property taxes from the 53-acre Mid-Valley area."
+              },
+              {
+                "number": "14.B",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Approving the Mid-Valley CRA Participation Agreement between Eagle Mountain City, the Redevelopment Agency of Eagle Mountain City, and Terra Smith's Eagle Mountain, LLC.",
+                "time": "",
+                "background": "(Presented by Director of Legislative and Strategic Services, Evan Berrett): The Mid-Valley CRA encompasses approximately 53 acres currently under review for commercial retail development. The proposed resolution establishes the terms and conditions for the distribution and use of project area funds and addresses the obligations agreed upon by the participating parties through the negotiation process.",
+                "plain": "The council will decide whether to approve an agreement with the redevelopment agency and Terra Smith's Eagle Mountain on how Mid-Valley project money is shared and spent."
+              },
+              {
+                "number": "14.C",
+                "kind": "ORDINANCE",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Adopting the Mid-Valley Community Reinvestment Project Area Plan, as Approved by the Redevelopment Agency of Eagle Mountain City, as the Official Community Reinvestment Project Area Plan for the Project Area and Directing that Notice of the Adoption be Given as Required by Statute.",
+                "time": "",
+                "background": "(Presented by Director of Legislative and Strategic Services, Evan Berrett): The proposed ordinance adopts the Mid-Valley Community Reinvestment Project Area Plan as the official plan for the Mid-Valley Project Area. The Plan outlines the proposed development and establishes the framework for community reinvestment activities within the Project Area.",
+                "plain": "The council will decide whether to adopt the official redevelopment plan for the Mid-Valley project area."
+              },
+              {
+                "number": "14.D",
+                "kind": "ORDINANCE",
+                "title": "An Ordinance of Eagle Mountain, Utah Approving the 5th Amendment to the Amended and Restated Overland Master Development Agreement.",
+                "time": "",
+                "background": "(Presented by City Attorney, Marcus Draper) This item was approved at the March 25, 2026 Special City Council meeting. The parties have corrected some clerical errors in the document and have altered the language in sections 5.3, 5.4, and 5.6 for the City Council's review. The changes in the language relate to the infrastructure funding and directly incorporate the provisions of the participation agreement to ensure that there is no discrepancy between the agreements. It also adds some stronger language that reinforces existing language that the infrastructure improvements discussed in the agreement will be fully reimbursed.",
+                "plain": "The council will review a corrected version of the Overland development agreement change it approved in March, with new wording on paying back infrastructure costs."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "15",
+            "title": "LEGISLATIVE ITEMS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "15.A",
+                "kind": "UPDATE",
+                "title": "Legislative Priorities List",
+                "time": "",
+                "background": "",
+                "plain": "The council will receive an update on its list of legislative priorities."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "16",
+            "title": "CITY COUNCIL/MAYOR'S BUSINESS AND LIAISON REPORTS",
+            "note": "This time is set aside for the City Council's and Mayor's comments on City business, and for Councilmembers to report on the boards they are assigned to as liaisons to the City Council.",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "17",
+            "title": "COMMUNICATION ITEMS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "17.A",
+                "kind": "",
+                "title": "Financial Report",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "17.B",
+                "kind": "",
+                "title": "Upcoming Agenda Items",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "18",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [],
+            "procedural": true
+          }
         ]
       },
       {
@@ -37,7 +396,10 @@
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/716/overview",
         "agenda_posted": false,
-        "sessions": []
+        "agenda_posted_on": "",
+        "agenda_url": "",
+        "sessions": [],
+        "agenda": []
       },
       {
         "id": 729,
@@ -48,7 +410,10 @@
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/729/overview",
         "agenda_posted": false,
-        "sessions": []
+        "agenda_posted_on": "",
+        "agenda_url": "",
+        "sessions": [],
+        "agenda": []
       },
       {
         "id": 717,
@@ -59,7 +424,10 @@
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/717/overview",
         "agenda_posted": false,
-        "sessions": []
+        "agenda_posted_on": "",
+        "agenda_url": "",
+        "sessions": [],
+        "agenda": []
       },
       {
         "id": 730,
@@ -70,7 +438,10 @@
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/730/overview",
         "agenda_posted": false,
-        "sessions": []
+        "agenda_posted_on": "",
+        "agenda_url": "",
+        "sessions": [],
+        "agenda": []
       },
       {
         "id": 718,
@@ -81,7 +452,10 @@
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/718/overview",
         "agenda_posted": false,
-        "sessions": []
+        "agenda_posted_on": "",
+        "agenda_url": "",
+        "sessions": [],
+        "agenda": []
       }
     ],
     "planning-commission": [
@@ -94,7 +468,10 @@
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/690/overview",
         "agenda_posted": false,
-        "sessions": []
+        "agenda_posted_on": "",
+        "agenda_url": "",
+        "sessions": [],
+        "agenda": []
       },
       {
         "id": 678,
@@ -105,7 +482,10 @@
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/678/overview",
         "agenda_posted": false,
-        "sessions": []
+        "agenda_posted_on": "",
+        "agenda_url": "",
+        "sessions": [],
+        "agenda": []
       },
       {
         "id": 691,
@@ -116,7 +496,10 @@
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/691/overview",
         "agenda_posted": false,
-        "sessions": []
+        "agenda_posted_on": "",
+        "agenda_url": "",
+        "sessions": [],
+        "agenda": []
       },
       {
         "id": 679,
@@ -127,7 +510,10 @@
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/679/overview",
         "agenda_posted": false,
-        "sessions": []
+        "agenda_posted_on": "",
+        "agenda_url": "",
+        "sessions": [],
+        "agenda": []
       },
       {
         "id": 692,
@@ -138,7 +524,10 @@
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/692/overview",
         "agenda_posted": false,
-        "sessions": []
+        "agenda_posted_on": "",
+        "agenda_url": "",
+        "sessions": [],
+        "agenda": []
       },
       {
         "id": 680,
@@ -149,7 +538,10 @@
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/680/overview",
         "agenda_posted": false,
-        "sessions": []
+        "agenda_posted_on": "",
+        "agenda_url": "",
+        "sessions": [],
+        "agenda": []
       }
     ]
   }

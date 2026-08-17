@@ -143,6 +143,38 @@ test("a missing calendar file, or an unknown body, is simply nothing", async () 
   assert.equal(await present.nextMeeting("planning-commission"), null);
 });
 
+test("the posted agenda is carried through untouched", async () => {
+  // The meetings page prints this straight out of the file — the numbering, the
+  // session each heading sits in, and the order — so nothing here may be
+  // reshaped on the way through.
+  const agenda = [
+    {
+      number: "13", title: "TRUTH-IN-TAXATION", note: "",
+      session: "19:00", group: "Scheduled Items", procedural: false,
+      items: [{
+        number: "13.C", kind: "RESOLUTION/PUBLIC HEARING",
+        title: "A Resolution … Adopting the Fiscal Year 2026-2027 Annual Budget.",
+        plain: "The council will hold a public hearing and decide whether to adopt the city's budget for the coming year.",
+        time: "", background: "State statute requires …",
+      }],
+    },
+    {
+      number: "18", title: "ADJOURNMENT", note: "",
+      session: "19:00", group: "Scheduled Items", procedural: true, items: [],
+    },
+  ];
+  const feed = feedOf(["2026-08-18"]);
+  Object.assign(feed.bodies["city-council"][0], {
+    agenda, agenda_posted: true,
+    agenda_url: "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2911,plainText=false)",
+  });
+
+  const CT = loadSite({ feed, now: "2026-08-16T18:00:00Z" });
+  const next = await CT.nextMeeting("city-council");
+  assert.deepEqual(next.agenda, agenda);
+  assert.match(next.agenda_url, /fileId=2911/);
+});
+
 test("the sessions the agenda names are carried through untouched", async () => {
   const sessions = [
     { start: "16:00", start_label: "4:00 PM", label: "Work Session", public_comment: false },
