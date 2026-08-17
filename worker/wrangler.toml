@@ -11,7 +11,7 @@ account_id = "b9275329e66ae5f3c9d1ab5071f8ade1"
 [vars]
 # Where the Worker fetches the knowledge corpus (published by the weekly ingest).
 # The ?v= bit is a cache-buster: bump it if the edge ever pins a stale corpus.
-CORPUS_URL = "https://civicrollcall.com/agent-corpus.json?v=1"
+CORPUS_URL = "https://civicrollcall.com/agent-corpus.json?v=2"
 # The site origin allowed to call this Worker (CORS). Set to your dev origin
 # too if testing locally, or leave as the production site.
 ALLOWED_ORIGIN = "https://civicrollcall.com"
