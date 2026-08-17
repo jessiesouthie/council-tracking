@@ -132,6 +132,15 @@ function expand(tokens) {
 // Ordinary keyword tokens can't tell "what did they decide last month" from
 // "what did they decide in 2021". These two cues change how scoring weights age
 // and how much raw meeting speech is allowed into the context.
+// "Who is X" is already answered in full by the pinned roster — role, term and
+// vote record. Handed eight motion passages on top of that, the model pads the
+// answer with whatever it can see the person doing in them, which for a
+// councilmember is mostly seconding other people's motions. That tells a
+// visitor nothing about who they are, so these questions get a much smaller
+// retrieval and an explicit instruction to stop at the facts.
+const IDENTITY_RE = /^\s*who(?:'s|\s+(?:is|was|are|were))\b|\b(?:tell me|what do you know)\s+about\b/i;
+const IDENTITY_TOP_K = 3;
+
 const TEMPORAL_RE =
   /\b(latest|recent|recently|current|currently|now|today|tonight|this (?:year|month|week)|upcoming|next|new|lately|so far|still|last (?:meeting|night|week|month|year))\b/i;
 const DISCUSSION_RE =
@@ -232,7 +241,11 @@ function buildFacts(docs, bodies) {
 
     lines.push("", "How current the record is:");
     if (lastMeeting)
-      lines.push(`- Most recent meeting summarized: ${lastMeeting.date} <${lastMeeting.url}>`);
+      // Deliberately "on file" and not "summarized": a meeting record may be a
+      // full summary, a transcript account, or just the posted agenda, and
+      // promising a summary the corpus doesn't hold invites the model to
+      // apologize for missing one.
+      lines.push(`- Most recent meeting on file: ${lastMeeting.date} <${lastMeeting.url}>`);
     if (lastMotion) lines.push(`- Most recent motion on file: ${lastMotion.date}`);
     if (lastTranscript) lines.push(`- Most recent meeting transcript: ${lastTranscript.date}`);
     if (
@@ -247,6 +260,19 @@ function buildFacts(docs, bodies) {
     facts.set(b.id, lines.join("\n"));
   }
   return facts;
+}
+
+// True when the visitor is asking who a person on the roster is — which the
+// pinned facts answer outright, so there is nothing for retrieval to add.
+function isIdentityQuestion(corpus, body, question) {
+  if (!IDENTITY_RE.test(question)) return false;
+  const asked = new Set(tokenize(question));
+  return corpus.docs.some(
+    (d) =>
+      d.kind === "member" &&
+      d.body === body &&
+      tokenize(d.title).some((t) => asked.has(t))
+  );
 }
 
 // If the visitor names another body, honour that over whichever page they
@@ -422,6 +448,10 @@ function systemPrompt(today) {
     "- Link sparingly: at most two or three Markdown links, each on the specific",
     "  thing worth clicking, e.g. [the 5–0 vote on 6 August](URL). Do not list",
     "  every passage you were given — the interface shows sources separately.",
+    "- Asked who someone is, give their role and their term, and stop there —",
+    "  add their vote record only if the visitor asked about it. Never pad the",
+    "  answer with motions they moved or seconded: that a member seconded",
+    "  something is procedural noise and says nothing about who they are.",
     "- Quote vote counts, dates, names and dollar figures exactly as written.",
     "  Never round, estimate, or infer a total the passages don't state.",
     "- If the passages don't answer it, say so in one sentence and name the",
@@ -533,7 +563,8 @@ async function handleAsk(request, env) {
   const priorQuestions = history.filter((m) => m.role === "user").map((m) => m.content);
   const body = resolveBody(corpus, question, payload.body ? String(payload.body) : null);
 
-  const chunks = retrieve(corpus, question, priorQuestions, body, TOP_K);
+  const k = isIdentityQuestion(corpus, body, question) ? IDENTITY_TOP_K : TOP_K;
+  const chunks = retrieve(corpus, question, priorQuestions, body, k);
   const today = new Date().toISOString().slice(0, 10);
   const userContent = buildUserContent(
     body ? corpus.facts.get(body) : null,
