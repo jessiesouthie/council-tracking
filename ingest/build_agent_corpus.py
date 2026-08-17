@@ -7,7 +7,9 @@ docs/agent-corpus.json, which this script assembles from everything the site
 already publishes:
 
   * every motion, with its plain-English enrichment and full roll-call vote
-  * every meeting (as a compact record, plus the prose summary when transcribed)
+  * every meeting (as a compact record, plus the prose summary when transcribed),
+    including ones held but not yet minuted, which exist only as a transcript
+  * the next meeting on the calendar and the business its agenda lists
   * transcript passages, windowed so a quote can be retrieved and cited
   * each council member, their role and tenure, and how often they vote yes
   * the tax change — as noticed and as adopted — and the adopted budget
@@ -116,7 +118,12 @@ def _motion_docs(data: dict, body: dict, member_name) -> list[dict]:
     return docs
 
 
-def _meeting_docs(data: dict, body: dict, summaries: dict[int, str]) -> list[dict]:
+def _meeting_docs(
+    data: dict,
+    body: dict,
+    summaries: dict[int, str],
+    tx_meta: dict[int, dict] | None = None,
+) -> list[dict]:
     docs = []
     motions_by_meeting: dict[int, list[dict]] = {}
     for m in data.get("motions", []):
@@ -145,6 +152,39 @@ def _meeting_docs(data: dict, body: dict, summaries: dict[int, str]) -> list[dic
                 "body": body["id"],
                 "title": f"Council meeting — {mt.get('date','')}",
                 "date": mt.get("date", ""),
+                "url": f"meetings.html?id={mid}&body={body['id']}",
+                "tags": [],
+                "text": _clean(" ".join(text_parts)),
+            }
+        )
+
+    # Meetings that have been held and transcribed but whose minutes the city
+    # hasn't published yet exist only in the transcript index — data.json has no
+    # row for them, so without this the agent's most recent meeting was weeks
+    # stale and the newest ones existed only as loose transcript passages with
+    # nothing to date or frame them. meetings.html already surfaces these the
+    # same way (see its `transcriptOnly` list); this is that rule, corpus-side.
+    known = {mt["id"] for mt in data.get("meetings", [])}
+    for mid, meta in sorted((tx_meta or {}).items(), key=lambda kv: kv[1].get("date", "")):
+        if mid in known:
+            continue
+        date = meta.get("date", "")
+        text_parts = [
+            f"Meeting of {date}.",
+            "The minutes for this meeting have not been published yet, so the site "
+            "has no motion list or roll-call record for it — the account below comes "
+            "from the meeting recording and its transcript.",
+        ]
+        summary = summaries.get(mid, "")
+        if summary:
+            text_parts.append(summary)
+        docs.append(
+            {
+                "id": f"{body['id']}:meeting:{mid}",
+                "kind": "meeting",
+                "body": body["id"],
+                "title": f"{meta.get('title') or 'Meeting'} — {date} (minutes not yet published)",
+                "date": date,
                 "url": f"meetings.html?id={mid}&body={body['id']}",
                 "tags": [],
                 "text": _clean(" ".join(text_parts)),
@@ -220,18 +260,25 @@ def _overview_doc(data: dict, body: dict) -> dict:
     }
 
 
-def _load_transcripts(body_id: str) -> tuple[dict[int, str], list[dict]]:
-    """Return (meeting_id -> summary text, transcript passage docs)."""
+def _load_transcripts(body_id: str) -> tuple[dict[int, str], list[dict], dict[int, dict]]:
+    """Return (meeting_id -> summary text, transcript passage docs, meeting_id -> meta).
+
+    The third value carries the date and title of every transcribed meeting, so
+    _meeting_docs can give a meeting whose minutes aren't published yet a dated,
+    citable record of its own instead of leaving it as loose passages.
+    """
     index_path = DOCS / "transcripts" / "index.json"
     if not index_path.exists():
-        return {}, []
+        return {}, [], {}
     index = json.loads(index_path.read_text(encoding="utf-8"))
     entries = index.get(body_id, [])
     summaries: dict[int, str] = {}
     passages: list[dict] = []
+    meta: dict[int, dict] = {}
     for e in entries:
         mid = e.get("id")
         date = e.get("date", "")
+        meta[mid] = {"date": date, "title": _clean(e.get("title", "")) or "Meeting"}
         summ_file = e.get("summary_file")
         if summ_file and (DOCS / summ_file).exists():
             summaries[mid] = _clean((DOCS / summ_file).read_text(encoding="utf-8"))
@@ -255,7 +302,90 @@ def _load_transcripts(body_id: str) -> tuple[dict[int, str], list[dict]]:
                         "text": chunk,
                     }
                 )
-    return summaries, passages
+    return summaries, passages, meta
+
+
+def _upcoming_doc(body: dict) -> dict | None:
+    """The one meeting a resident can still turn up to.
+
+    Everything else in the corpus is the record of what already happened, so
+    "when is the next council meeting" — one of the few questions a visitor can
+    act on — had nothing to retrieve and got answered from whatever old motion
+    happened to contain the word "next". The meetings page has carried this card
+    since it was built; the agent just couldn't see the file behind it.
+    """
+    path = DOCS / "data.upcoming.json"
+    if not path.exists():
+        return None
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    events = (payload.get("bodies") or {}).get(body["id"]) or []
+    events = [e for e in events if e.get("date")]
+    if not events:
+        return None
+    ev = sorted(events, key=lambda e: (e.get("date", ""), e.get("start", "")))[0]
+
+    label = body.get("label", body["id"])
+    date = ev.get("date", "")
+    parts = [
+        f"The next {label} meeting — the upcoming one, not yet held — is scheduled for "
+        f"{date}"
+        + (f" at {ev['start_label']}" if ev.get("start_label") else "")
+        + (f", at {_clean(ev['location'])}" if ev.get("location") else "")
+        + "."
+    ]
+    sessions = ev.get("sessions") or []
+    if sessions:
+        parts.append(
+            "Sessions: "
+            + "; ".join(
+                f"{_clean(s.get('label') or 'Session')} at {s.get('start_label', '')}"
+                + (" (public comment)" if s.get("public_comment") else "")
+                for s in sessions
+            )
+            + "."
+        )
+    if not ev.get("agenda_posted"):
+        parts.append("The agenda for it has not been posted yet.")
+    else:
+        # Procedural scaffolding — the pledge, the vote to close the session —
+        # is on every agenda and is not why anyone attends. The meetings page
+        # drops it from this card for the same reason.
+        items = [
+            _clean(i.get("title"))
+            for h in (ev.get("agenda") or [])
+            if not h.get("procedural")
+            for i in (h.get("items") or [])
+        ]
+        items = [i for i in items if i]
+        hearings = sum(
+            1
+            for h in (ev.get("agenda") or [])
+            if not h.get("procedural")
+            for i in (h.get("items") or [])
+            if re.search(r"public hearing", str(i.get("kind") or ""), re.I)
+        )
+        posted = ev.get("agenda_posted_on")
+        parts.append(
+            f"Its agenda was posted{f' on {posted}' if posted else ''} and lists "
+            f"{len(items)} items of business"
+            + (f", including {hearings} public hearing{'s' if hearings != 1 else ''}" if hearings else "")
+            + "."
+        )
+        if items:
+            parts.append("On the agenda: " + "; ".join(items[:25]) + ".")
+    parts.append(
+        "Nothing here has been voted on — it is what the body is scheduled to take up."
+    )
+    return {
+        "id": f"{body['id']}:upcoming:{ev.get('id', date)}",
+        "kind": "upcoming",
+        "body": body["id"],
+        "title": f"Next {label} meeting — {date}",
+        "date": date,
+        "url": f"meetings.html?body={body['id']}",
+        "tags": [],
+        "text": _clean(" ".join(parts)),
+    }
 
 
 def _extra_docs() -> list[dict]:
@@ -798,10 +928,13 @@ def build(body_ids: list[str] | None = None) -> dict:
             m = _by.get(mid)
             return m["name"] if m else (mid or "")
 
-        summaries, passages = _load_transcripts(body["id"])
+        summaries, passages, tx_meta = _load_transcripts(body["id"])
         docs.append(_overview_doc(data, body))
+        upcoming = _upcoming_doc(body)
+        if upcoming:
+            docs.append(upcoming)
         docs += _member_docs(data, body)
-        docs += _meeting_docs(data, body, summaries)
+        docs += _meeting_docs(data, body, summaries, tx_meta)
         docs += _motion_docs(data, body, member_name)
         docs += passages
         body_meta.append(
