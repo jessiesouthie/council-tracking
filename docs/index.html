@@ -25,8 +25,8 @@
     <!-- Fraunces sets the headline, which is this page's largest text and the
          thing a reader waits on; the other faces can swap in when they arrive. -->
     <link rel="preload" href="fonts/fraunces-700-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="fonts.css?v=20260817k" />
-    <link rel="stylesheet" href="site.css?v=20260817k" />
+    <link rel="stylesheet" href="fonts.css?v=20260818c" />
+    <link rel="stylesheet" href="site.css?v=20260818c" />
 
     <!-- Structured data, written inline rather than injected by site.js: the
          crawlers that most need it (Bing, and every AI answer engine) don't run
@@ -112,12 +112,14 @@
         </div>
       </a>
       <nav class="nav" aria-label="Primary">
+        <!-- BEGIN generated:nav (ingest/build_nav.py) -->
         <a href="index.html" data-nav="index.html">Home</a>
         <a href="meetings.html" data-nav="meetings.html">Meetings</a>
-        <a href="members.html" data-nav="members.html">Members</a>
-        <a href="tax.html" data-nav="tax.html" data-nav-alias="projections.html">Tax</a>
-        <a href="budget.html" data-nav="budget.html">Budget</a>
-        <a href="definitions.html" data-nav="definitions.html">Definitions</a>
+        <a href="motions.html" data-nav="motions.html">Votes</a>
+        <a href="members.html" data-nav="members.html" data-nav-alias="member.html">Members</a>
+        <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html" data-nav-body="city-council">Finances</a>
+        <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+        <!-- END generated:nav -->
       </nav>
     </header>
 
@@ -202,10 +204,10 @@
     </main>
 
     <footer class="footer">
-      <span>Data from the Eagle Mountain CivicClerk public portal · last refreshed <span id="generated-at">—</span> · <a href="about.html">How this site is built</a></span>
+      <span>Data from the Eagle Mountain CivicClerk public portal · last refreshed <span id="generated-at">—</span> · <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span>
     </footer>
 
-    <script src="site.js?v=20260817k"></script>
+    <script src="site.js?v=20260818c"></script>
     <script>
       // The money pages are the city council's; a Planning Commission visitor has
       // no tax rate and no budget of its own, so the cards that carry them are
@@ -221,7 +223,9 @@
           .catch(() => null);
       const taxP = IS_COUNCIL ? grab("data.tax.json") : Promise.resolve(null);
       const budgetP = IS_COUNCIL ? grab("data.budget-next.json") : Promise.resolve(null);
-      const projP = IS_COUNCIL ? grab("data.projections.json") : Promise.resolve(null);
+      // The projections figure moved to finances.html, which is where the four
+      // money pages now introduce themselves. The homepage no longer fetches
+      // a 65KB model to print a scenario count on a card.
 
       (async () => {
         const data = await CT.loadData().catch((e) => {
@@ -546,18 +550,23 @@
       }
 
       /* ---------- The rest of the record ----------
-         Everything the site has grown into that the front page had no way of
-         showing: the tax rate, the budget book, the projections, the recordings,
-         the glossary, and the other two bodies. Each card states a figure read
-         from the same file the page it opens reads, so a stale build shows a
-         stale number rather than a confident wrong one — and a card whose data
-         didn't arrive prints without its figure instead of vanishing. */
+         One card per section of the site, in the order the nav carries them, so
+         the front page teaches the same shape the nav does: the record first
+         (meetings, votes, members), then what was built on top of it, then how
+         it was built. This grid used to be its own taxonomy — it listed
+         Projections and the other bodies, which the nav didn't, and omitted
+         Motions, which the nav also didn't — and it was one of four lists on the
+         site that disagreed about what is here. Now it follows ingest/nav.py.
+
+         Each card states a figure read from the same file the page it opens
+         reads, so a stale build shows a stale number rather than a confident
+         wrong one — and a card whose data didn't arrive prints without its
+         figure instead of vanishing. */
 
       async function renderRecord(data) {
-        const [tax, budget, proj, transcripts, bodies] = await Promise.all([
+        const [tax, budget, transcripts, bodies] = await Promise.all([
           taxP,
           budgetP,
-          projP,
           CT.transcriptsForBody().catch(() => []),
           grab("bodies.json"),
         ]);
@@ -572,51 +581,63 @@
         const here = CT.currentBody();
         const others = (Array.isArray(bodies) ? bodies : []).filter(b => b.id !== here);
 
+        const motions = (data.motions || []).length;
+        const members = data.members.filter(m => CT.isCurrentMember(m)).length;
+
+        // The Finances card stands for four pages, so it leads with whichever
+        // figure the reader most likely came for: what the tax change costs a
+        // household, priced on the city's own example home, else the budget
+        // total. Not the rate itself — "0.001500" is the number in the
+        // resolution and means nothing to anyone paying it.
+        const home = rate && rate.home_example;
+        const money = (n) =>
+          n.toLocaleString(undefined, { style: "currency", currency: "USD" }).replace(/\.00$/, "");
+        const financeFigure = home && home.increase
+          ? `+${money(home.increase)} a year in tax`
+          : gross
+            ? `${millions(gross)} budgeted · ${budget.fiscal_year_label || ""}`.trim()
+            : "";
+
         const cards = [
-          IS_COUNCIL && rate && {
-            glyph: "--ico-receipt",
-            name: "Property tax",
-            figure: rate.rate_display
-              ? `${rate.rate_display} · ${tax.fiscal_year_label || ""}`.trim().replace(/ ·\s*$/, "")
-              : "",
-            blurb: "The rate, the case the city made for it, and what it does to your bill.",
-            href: "tax.html",
-          },
-          IS_COUNCIL && {
-            glyph: "--ico-flow",
-            name: "Budget",
-            figure: gross ? `${millions(gross)} · ${budget.fiscal_year_label || ""}`.trim() : "",
-            blurb: "Every dollar the city budgets, traced from the fund that holds it to what it buys.",
-            href: "budget.html",
-          },
-          IS_COUNCIL && proj && {
-            glyph: "--ico-trend",
-            name: "Projections",
-            figure: `${(proj.scenarios || []).length} rates · FY${proj.first_year}–${
-              String(proj.last_year).slice(2)}`,
-            blurb: "What each property-tax rate would do to the General Fund, year by year.",
-            href: "projections.html",
-          },
           {
             glyph: "--ico-calendar",
             name: "Meetings",
-            figure: transcripts.length
-              ? `${transcripts.length} transcribed in full`
-              : "",
+            figure: transcripts.length ? `${transcripts.length} transcribed in full` : "",
             blurb: "Agendas, minutes and summaries — and for recent meetings, every word said.",
             href: "meetings.html",
           },
           {
+            glyph: "--ico-gavel",
+            name: "Votes",
+            figure: motions ? `${motions.toLocaleString()} motions` : "",
+            blurb: "Search the whole roll-call record by topic, member, outcome or year.",
+            href: "motions.html",
+          },
+          {
+            glyph: "--ico-people",
+            name: "Members",
+            figure: members ? `${members} sitting` : "",
+            blurb: "How each member votes, how often they agree, and on what.",
+            href: "members.html",
+          },
+          IS_COUNCIL && {
+            glyph: "--ico-receipt",
+            name: "Finances",
+            figure: financeFigure,
+            blurb: "The tax rate, the budget it funds, the projections against it, and the payroll behind them.",
+            href: "finances.html",
+          },
+          {
             glyph: "--ico-book",
+            name: "About",
             // definitions.html states this count in its own masthead; the two are
             // written by hand and change together.
-            figure: "83 entries",
-            name: "Definitions",
-            blurb: "City business runs on a vocabulary nobody is taught. This is that vocabulary.",
-            href: "definitions.html",
+            figure: "83 definitions",
+            blurb: "Where every figure comes from, and the vocabulary city business runs on.",
+            href: "about.html",
           },
           others.length && {
-            glyph: "--ico-people",
+            glyph: "--ico-flow",
             name: "The other bodies",
             figure: "",
             blurb: others.map(b => b.label).join(" · ") + " — the same record, kept the same way.",

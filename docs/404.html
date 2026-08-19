@@ -24,8 +24,8 @@
     <link rel="icon" href="/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <link rel="preload" href="/fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/fonts.css?v=20260817k" />
-    <link rel="stylesheet" href="/site.css?v=20260817k" />
+    <link rel="stylesheet" href="/fonts.css?v=20260818c" />
+    <link rel="stylesheet" href="/site.css?v=20260818c" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -44,12 +44,14 @@
         <div><p class="brand-title">Roll Call</p><p class="city">Eagle Mountain, UT</p></div>
       </a>
       <nav class="nav" aria-label="Primary">
+        <!-- BEGIN generated:nav (ingest/build_nav.py) -->
         <a href="/index.html" data-nav="index.html">Home</a>
         <a href="/meetings.html" data-nav="meetings.html">Meetings</a>
-        <a href="/members.html" data-nav="members.html">Members</a>
-        <a href="/tax.html" data-nav="tax.html" data-nav-alias="projections.html">Tax</a>
-        <a href="/budget.html" data-nav="budget.html">Budget</a>
-        <a href="/definitions.html" data-nav="definitions.html">Definitions</a>
+        <a href="/motions.html" data-nav="motions.html">Votes</a>
+        <a href="/members.html" data-nav="members.html" data-nav-alias="member.html">Members</a>
+        <a href="/finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html" data-nav-body="city-council">Finances</a>
+        <a href="/about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+        <!-- END generated:nav -->
       </nav>
     </header>
 
@@ -62,19 +64,20 @@
 
       <section class="section">
         <h2>Where to go instead</h2>
-        <ul>
+        <ul id="fallback">
+          <!-- BEGIN generated:nav (ingest/build_nav.py) -->
           <li><a href="/meetings.html">Meetings</a> &mdash; every council meeting on file, the motions decided each night, and the transcripts.</li>
+          <li><a href="/motions.html">Votes</a> &mdash; search the whole roll-call record by topic, member, outcome or year.</li>
           <li><a href="/members.html">Members</a> &mdash; roll-call totals for each member, and how often each pair voted together.</li>
-          <li><a href="/motions.html">Motions</a> &mdash; search the whole record by topic, member, outcome or year.</li>
-          <li><a href="/tax.html">Tax</a> &mdash; what the property tax increase costs a household, and the meetings it moved through.</li>
-          <li><a href="/budget.html">Budget</a> &mdash; the city&rsquo;s spending, fund by fund and line by line.</li>
-          <li><a href="/definitions.html">Definitions</a> &mdash; the words the city uses, in plain English.</li>
+          <li><a href="/finances.html">Finances</a> &mdash; the tax rate, the budget, the projections and the payroll behind them.</li>
+          <li><a href="/about.html">About</a> &mdash; where the record comes from, and the words the city uses in plain English.</li>
+          <!-- END generated:nav -->
         </ul>
       </section>
     </main>
 
-    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a></span></footer>
+    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="/about.html">How this site is built</a> &middot; <a href="/definitions.html">Definitions</a></span></footer>
 
-    <script src="/site.js?v=20260817k"></script>
+    <script src="/site.js?v=20260818c"></script>
   </body>
 </html>

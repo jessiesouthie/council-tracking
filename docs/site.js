@@ -5,6 +5,36 @@
   const DEFAULT_BODY = "city-council";
   const BODY_KEY = "ct_body";
 
+  // Resolve a site file against the site root, not against the current page.
+  //
+  // Every fetch below used to resolve against document.baseURI. That is the
+  // same thing on the flat top-level pages, and wrong on the several hundred
+  // pages under /meetings/, where "bodies.json" resolved to
+  // /meetings/bodies.json and 404'd — which silently cost those pages their
+  // body switcher and their Ask widget.
+  //
+  // site.js is always loaded from the root, so its own URL is the one reliable
+  // anchor here. Resolved once, on first use rather than at load: this file is
+  // also evaluated in the test harness's stub browser, which has a location but
+  // no script tags to read.
+  let siteRoot = null;
+  function siteUrl(path) {
+    if (!siteRoot) {
+      let src = null;
+      try {
+        src =
+          (document.currentScript && document.currentScript.src) ||
+          (document.querySelector &&
+            document.querySelector('script[src*="site.js"]')?.src) ||
+          null;
+      } catch {}
+      // No script tag to read: fall back to the page's own base, which is
+      // correct everywhere except /meetings/, and /meetings/ always has one.
+      siteRoot = new URL(src || document.baseURI, document.baseURI);
+    }
+    return new URL(path, siteRoot).toString();
+  }
+
   // Per-body caches so switching bodies in-session reloads the right dataset
   // instead of returning the first one fetched.
   const DATA_CACHE = {};   // body id -> parsed dataset
@@ -31,7 +61,7 @@
   // body so the site keeps working even if bodies.json is missing.
   async function loadBodies() {
     if (bodiesPromise) return bodiesPromise;
-    const url = new URL("bodies.json", document.baseURI).toString();
+    const url = siteUrl("bodies.json");
     bodiesPromise = fetch(url)
       .then((r) => (r.ok ? r.json() : null))
       .catch(() => null)
@@ -64,11 +94,11 @@
     if (DATA_PROMISE[body]) return DATA_PROMISE[body];
     DATA_PROMISE[body] = (async () => {
       const file = await dataFileFor(body);
-      let r = await fetch(new URL(file, document.baseURI).toString());
+      let r = await fetch(siteUrl(file));
       // Unknown body or missing file → fall back to the default body's data.
       if (!r.ok && body !== DEFAULT_BODY) {
         const defFile = await dataFileFor(DEFAULT_BODY);
-        r = await fetch(new URL(defFile, document.baseURI).toString());
+        r = await fetch(siteUrl(defFile));
       }
       if (!r.ok) throw new Error(`data file HTTP ${r.status}`);
       const d = indexData(await r.json());
@@ -84,7 +114,7 @@
   let transcriptsPromise = null;
   async function loadTranscripts() {
     if (transcriptsPromise) return transcriptsPromise;
-    const url = new URL("transcripts/index.json", document.baseURI).toString();
+    const url = siteUrl("transcripts/index.json");
     transcriptsPromise = fetch(url)
       .then((r) => (r.ok ? r.json() : {}))
       .catch(() => ({}));
@@ -104,7 +134,7 @@
   let agendaOnlyPromise = null;
   async function loadAgendaOnly() {
     if (agendaOnlyPromise) return agendaOnlyPromise;
-    const url = new URL("data.agenda-only.json", document.baseURI).toString();
+    const url = siteUrl("data.agenda-only.json");
     agendaOnlyPromise = fetch(url)
       .then((r) => (r.ok ? r.json() : null))
       .catch(() => null);
@@ -124,7 +154,7 @@
   let upcomingPromise = null;
   async function loadUpcoming() {
     if (upcomingPromise) return upcomingPromise;
-    const url = new URL("data.upcoming.json", document.baseURI).toString();
+    const url = siteUrl("data.upcoming.json");
     upcomingPromise = fetch(url)
       .then((r) => (r.ok ? r.json() : null))
       .catch(() => null);
@@ -187,7 +217,7 @@
     if (document.getElementById("ct-agent-js")) return;
     const s = document.createElement("script");
     s.id = "ct-agent-js";
-    s.src = "agent.js?v=20260817k";
+    s.src = siteUrl("agent.js?v=20260817k");
     s.defer = true;
     document.body.appendChild(s);
   }
@@ -468,85 +498,58 @@
   }
 
   // Inject the mobile bottom tab bar once per page. Hidden via CSS on desktop.
-  // A bottom bar should hold at most ~5 destinations, so the primary pages sit
-  // on the bar and the rest live in a "More" sheet — every page stays reachable.
-  const TABBAR_PRIMARY = [
-    { href: "index.html",    label: "Home" },
-    { href: "meetings.html", label: "Meetings" },
-    { href: "members.html",  label: "Members" },
-  ];
-  const TABBAR_MORE = [
-    { href: "tax.html",         label: "Tax" },
-    { href: "projections.html", label: "Projections" },
-    { href: "budget.html",      label: "Budget" },
-    { href: "definitions.html", label: "Definitions" },
+  //
+  // Five destinations and no overflow sheet. The bar used to carry three items
+  // plus a "More" button covering five more, which meant the mobile taxonomy
+  // and the desktop one disagreed about what the site contains — and the sheet
+  // buried the money pages two taps down on the devices most people read this
+  // on. Both lists now come from ingest/nav.py. About, the one top-level
+  // section not on the bar, sits in the footer of every page.
+  //
+  // Hrefs are root-absolute. This bar is injected into docs/meetings/*.html
+  // too, where a relative "meetings.html" resolved to /meetings/meetings.html
+  // and 404'd on every one of several hundred pages.
+  const TABBAR = [
+    // BEGIN generated:nav (ingest/build_nav.py)
+    { href: "/index.html", label: "Home" },
+    { href: "/meetings.html", label: "Meetings" },
+    { href: "/motions.html", label: "Votes" },
+    { href: "/members.html", label: "Members" },
+    { href: "/finances.html", label: "Finances", body: "city-council" },
+    // END generated:nav
   ];
 
+  // A section some bodies don't have. The Planning Commission levies no tax and
+  // adopts no budget, so carrying Finances into that view would offer figures
+  // that aren't theirs. Everything unmarked belongs to every body.
+  function inThisBody(item) {
+    return !item.body || item.body === currentBody();
+  }
+
   function row(t) {
-    return `<a href="${t.href}" data-nav="${t.href}"><span class="tab-ico" aria-hidden="true"></span><span class="tab-lbl">${t.label}</span></a>`;
+    // data-nav stays the bare filename: highlightActiveNav() compares it
+    // against the last path segment, and the CSS icon masks are keyed on it.
+    const nav = t.href.replace(/^\//, "");
+    return `<a href="${t.href}" data-nav="${nav}"><span class="tab-ico" aria-hidden="true"></span><span class="tab-lbl">${t.label}</span></a>`;
   }
 
   function mountTabbar() {
     if (document.querySelector("nav.tabbar")) return;
-    const here = location.pathname.split("/").pop() || "index.html";
-    const onMorePage = TABBAR_MORE.some((t) => t.href === here);
-
     const nav = document.createElement("nav");
     nav.className = "tabbar";
     nav.setAttribute("aria-label", "Primary (mobile)");
-    nav.innerHTML =
-      TABBAR_PRIMARY.map(row).join("") +
-      `<button type="button" class="tab-more${onMorePage ? " active" : ""}"
-         aria-haspopup="true" aria-expanded="false" aria-controls="more-sheet">
-         <span class="tab-ico" aria-hidden="true"></span><span class="tab-lbl">More</span>
-       </button>`;
+    nav.innerHTML = TABBAR.filter(inThisBody).map(row).join("");
     document.body.appendChild(nav);
+  }
 
-    // The overflow sheet + its backdrop. Both start hidden; the .open class is
-    // added a frame after un-hiding so the slide/fade transitions actually run.
-    const backdrop = document.createElement("div");
-    backdrop.className = "more-backdrop";
-    backdrop.hidden = true;
-
-    const sheet = document.createElement("div");
-    sheet.className = "more-sheet";
-    sheet.id = "more-sheet";
-    sheet.hidden = true;
-    sheet.setAttribute("role", "dialog");
-    sheet.setAttribute("aria-modal", "true");
-    sheet.setAttribute("aria-label", "More pages");
-    sheet.innerHTML =
-      `<div class="more-sheet-grip" aria-hidden="true"></div>` +
-      TABBAR_MORE.map(row).join("");
-    document.body.append(backdrop, sheet);
-
-    const btn = nav.querySelector(".tab-more");
-    const open = () => {
-      backdrop.hidden = false;
-      sheet.hidden = false;
-      // Next frame → run transitions from the hidden starting state.
-      requestAnimationFrame(() => {
-        backdrop.classList.add("open");
-        sheet.classList.add("open");
-      });
-      btn.setAttribute("aria-expanded", "true");
-    };
-    const close = () => {
-      backdrop.classList.remove("open");
-      sheet.classList.remove("open");
-      btn.setAttribute("aria-expanded", "false");
-      const done = () => { backdrop.hidden = true; sheet.hidden = true; };
-      // Hide after the slide-out; fall back if transitionend doesn't fire.
-      sheet.addEventListener("transitionend", done, { once: true });
-      setTimeout(done, 300);
-    };
-    const toggle = () => (btn.getAttribute("aria-expanded") === "true" ? close() : open());
-
-    btn.addEventListener("click", toggle);
-    backdrop.addEventListener("click", close);
-    sheet.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") close();
+  // Drop the body-scoped items from the desktop nav for a body that has no such
+  // section. applyBodyChrome() rewrites labels but never touched the nav, so a
+  // Planning Commission visitor was offered a tax rate and a budget that belong
+  // to the council. Marked in the markup with data-nav-body.
+  function applyBodyNav() {
+    const body = currentBody();
+    document.querySelectorAll("[data-nav-body]").forEach((a) => {
+      if (a.dataset.navBody !== body) a.remove();
     });
   }
 
@@ -789,6 +792,8 @@
   // Boot every page: mount switcher + mobile nav, paint nav highlight, register SW.
   document.addEventListener("DOMContentLoaded", () => {
     setCanonical();
+    // Before the highlight, so a removed item can't be the one lit up.
+    applyBodyNav();
     mountBodySwitch();
     mountTabbar();
     highlightActiveNav();

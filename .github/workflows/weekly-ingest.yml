@@ -79,6 +79,13 @@ jobs:
       # Skipping any of them leaves the site quietly describing last week: the
       # generated pages and the prerendered index are what a crawler that runs no
       # JavaScript reads, and nothing else refreshes them.
+      # The nav is spliced into every page from one definition in ingest/nav.py.
+      # This doesn't rewrite it here — the ingest run has no reason to change
+      # it — but it fails the run if someone hand-edited one of the copies and
+      # didn't re-splice, which is how the four copies drifted apart before.
+      - name: Check the nav is in sync
+        run: python -m ingest.build_nav --check
+
       - name: Write the per-meeting pages
         run: python -m ingest.build_meeting_pages --prune
 

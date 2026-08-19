@@ -29,8 +29,8 @@
          on demand; only the upright is on the first-paint path. -->
     <link rel="preload" href="fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/newsreader-300-600-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="fonts.css?v=20260817k" />
-    <link rel="stylesheet" href="site.css?v=20260817k" />
+    <link rel="stylesheet" href="fonts.css?v=20260818c" />
+    <link rel="stylesheet" href="site.css?v=20260818c" />
 
     <script type="application/ld+json">
     {
@@ -588,12 +588,14 @@
         <div><p class="brand-title">Roll Call</p><p class="city">Eagle Mountain, UT</p></div>
       </a>
       <nav class="nav" aria-label="Primary">
+        <!-- BEGIN generated:nav (ingest/build_nav.py) -->
         <a href="index.html" data-nav="index.html">Home</a>
         <a href="meetings.html" data-nav="meetings.html">Meetings</a>
-        <a href="members.html" data-nav="members.html">Members</a>
-        <a href="tax.html" data-nav="tax.html" data-nav-alias="projections.html">Tax</a>
-        <a href="budget.html" data-nav="budget.html">Budget</a>
-        <a href="definitions.html" data-nav="definitions.html">Definitions</a>
+        <a href="motions.html" data-nav="motions.html">Votes</a>
+        <a href="members.html" data-nav="members.html" data-nav-alias="member.html">Members</a>
+        <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html" data-nav-body="city-council">Finances</a>
+        <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+        <!-- END generated:nav -->
       </nav>
     </header>
 
@@ -601,6 +603,12 @@
          width over the reading pages is what carries the cross-reference margin;
          see .def in site.css. -->
     <main id="main">
+      <!-- The section's own strip, matching the Finances one a level down. -->
+      <nav class="subnav" aria-label="About section">
+        <a href="about.html">How this site is built</a>
+        <a href="definitions.html" aria-current="page">Definitions</a>
+      </nav>
+
       <!-- Masthead. The lede is the argument for the page existing, so it is set
            as text rather than as a caption under a label. -->
       <header class="def-hero reveal" style="--i:0">
@@ -657,7 +665,7 @@
 
       <p class="def-empty" id="def-empty" hidden>
         Nothing here matches that. Try a shorter word &mdash; or search the record itself on
-        the <a href="motions.html">Motions</a> page.
+        the <a href="motions.html">Votes</a> page.
       </p>
 
       <!-- ============================== WHO ============================= -->
@@ -1659,9 +1667,9 @@
       </p>
     </main>
 
-    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a></span></footer>
+    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span></footer>
 
-    <script src="site.js?v=20260817k"></script>
+    <script src="site.js?v=20260818c"></script>
     <script>
       /* The filter bar pins directly beneath the topbar, and #term anchors have to
          clear both — so the stylesheet needs the bar's real height. It shrinks at

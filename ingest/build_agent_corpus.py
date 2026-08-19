@@ -303,6 +303,11 @@ def _overview_doc(data: dict, body: dict) -> dict:
         f"and {counts.get('votes', 0)} recorded votes. "
         f"Common topics: {tag_line}. "
         f"People on record: {members}. "
+        "The site is organised in five sections: Meetings (every meeting, its agenda, "
+        "minutes and transcript), Votes (the searchable roll-call record, at motions.html), "
+        "Members (each member's voting record), Finances (at finances.html, covering the "
+        "property tax rate, the budget, the General Fund projections and city staffing), and "
+        "About (how the site is built, plus a glossary at definitions.html). "
         "Visitors can search motions by topic, member, outcome, or year, browse meetings, "
         "read the proposed property tax change and the adopted budget, and open full meeting "
         "transcripts."
@@ -680,6 +685,82 @@ def _extra_docs() -> list[dict]:
         )
     docs += _county_docs()
     docs += _state_docs()
+    # Staffing is the one question the budget files cannot answer: ClearGov
+    # carries personnel as dollars and has no headcount anywhere. Two chunks,
+    # because "how many people work for the city" and "are we understaffed
+    # compared to other cities" are different questions and the second one has
+    # a contested answer that should retrieve whole rather than in pieces.
+    staff_path = DOCS / "data.staffing.json"
+    if staff_path.exists():
+        st = json.loads(staff_path.read_text(encoding="utf-8"))
+        em = st.get("eagle_mountain", {})
+        fns = {f["key"]: f["label"] for f in st.get("functions", [])}
+        split = ", ".join(
+            f"{fns.get(k, k)} {v}" for k, v in (em.get("by_function") or {}).items()
+        )
+        series = em.get("series") or []
+        first = series[0] if series else {}
+        docs.append(
+            {
+                "id": "city-council:staffing",
+                "kind": "staffing",
+                "body": "city-council",
+                "title": f"How many people work for Eagle Mountain — FY{st.get('fiscal_year','')}",
+                "date": "",
+                "url": "staffing.html",
+                "tags": ["budget"],
+                "text": _clean(
+                    f"Eagle Mountain City employed {em.get('total')} full-time equivalents in "
+                    f"FY{st.get('fiscal_year','')}, for a Census-estimated {em.get('population',0):,} "
+                    f"residents — {em.get('per_1k',{}).get('raw')} per 1,000. The city employs nobody "
+                    "in police or fire: patrol is contracted from the Utah County Sheriff's Office "
+                    "(Eagle Mountain Division) and fire and ambulance come from Unified Fire "
+                    f"Authority, so the {em.get('public_safety')} FTE it reports under public safety "
+                    "are crossing guards. By function: " + split + ". "
+                    f"In {first.get('year','')} the city had {first.get('fte')} FTE for "
+                    f"{first.get('population',0):,} residents, so headcount has grown more slowly "
+                    "than population. Separately, the city's HR director told the Council in May 2026 "
+                    "that the city then had 236 employees against fewer than 100 full-time in 2019 — "
+                    "that is a headcount including part-time staff two years later, not the same "
+                    "measure as full-time equivalents."
+                ),
+            }
+        )
+        claim = st.get("claim", {})
+        peers = ", ".join(
+            f"{c['city']} {c['per_1k']['raw']} raw and {c['per_1k']['excl_public_safety']} excluding "
+            f"police and fire" for c in st.get("peers", [])
+        )
+        docs.append(
+            {
+                "id": "city-council:staffing-comparison",
+                "kind": "staffing",
+                "body": "city-council",
+                "title": "Is Eagle Mountain a third the size of comparable cities?",
+                "date": "",
+                "url": "staffing.html",
+                "tags": ["budget"],
+                "text": _clean(
+                    "The city manager told the Council in August 2026 that Eagle Mountain's staff is "
+                    "about a third the size of cities of equivalent population. Checked against the "
+                    "audited FTE schedules of the Utah cities nearest Eagle Mountain in population, "
+                    "the answer depends on whether contracted services are counted. On raw headcount "
+                    f"Eagle Mountain is {claim.get('raw',{}).get('pct_of_median')}% of the peer median "
+                    f"({claim.get('raw',{}).get('eagle_mountain')} per 1,000 against "
+                    f"{claim.get('raw',{}).get('peer_median')}) — the leanest city in the set, and the "
+                    "claim is about right. Excluding police and fire on every city's side, which is "
+                    "the like-for-like comparison because Eagle Mountain contracts both, it is "
+                    f"{claim.get('excl_public_safety',{}).get('pct_of_median')}% of the median "
+                    f"({claim.get('excl_public_safety',{}).get('eagle_mountain')} against "
+                    f"{claim.get('excl_public_safety',{}).get('peer_median')}) — nearer two thirds than "
+                    "one third. Excluding utilities as well it is "
+                    f"{claim.get('core',{}).get('pct_of_median')}%. So the claim is true of the "
+                    "headcount and overstated as a measure of how thinly the city is staffed: most of "
+                    "the gap is that other cities employ their own police and firefighters. Peers, per "
+                    "1,000 residents: " + peers + "."
+                ),
+            }
+        )
     return docs
 
 

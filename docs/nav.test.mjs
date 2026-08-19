@@ -1,0 +1,232 @@
+/* =============================================================================
+   Tests that the site tells one story about what is on it — node --test docs/nav.test.mjs
+
+   Before ingest/nav.py there were four copies of the destination list: the
+   <nav> block pasted into twelve pages, the NAV constant in
+   build_meeting_pages.py, the TABBAR array in site.js, and 404.html's "where to
+   go instead". No two agreed, because each was hand-edited at a different time
+   for a different reason. ingest/build_nav.py now writes all four from one
+   definition — and this is what notices if someone edits a copy by hand and the
+   splicer hasn't been re-run.
+
+   What is covered:
+     · every generated block matches the canonical list, spliced or not
+     · the mobile bar stays inside the five items a bottom bar can hold
+     · every nav href points at a file that exists
+     · every listed page is in the sitemap and precached by the service worker
+     · the accessibility contract each page owes: one skip link, one <main id="main">,
+       and at most one aria-current per document
+   ============================================================================= */
+
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { readFileSync, readdirSync, existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+
+const DOCS = fileURLToPath(new URL("./", import.meta.url));
+const ROOT = path.resolve(DOCS, "..");
+const read = (p) => readFileSync(path.join(ROOT, p), "utf8");
+
+const PAGES = readdirSync(DOCS).filter((f) => f.endsWith(".html"));
+
+/* ---------------------------------------------------------------------------
+   The canonical list, parsed out of ingest/nav.py rather than restated here.
+   A test that keeps its own copy of the thing under test is a fifth copy, and
+   the fifth copy is exactly the problem this file exists to prevent.
+   --------------------------------------------------------------------------- */
+function canonical() {
+  const src = read("ingest/nav.py");
+  const block = src.slice(src.indexOf("NAV: tuple[Item, ...] = ("), src.indexOf("\n)\n", src.indexOf("NAV: tuple[Item, ...] = (")));
+  const items = [];
+  for (const m of block.matchAll(/Item\(([\s\S]*?)\n    \)/g)) {
+    const body = m[1];
+    const field = (name) => {
+      const hit = body.match(new RegExp(`${name}="([^"]*)"`));
+      return hit ? hit[1] : null;
+    };
+    items.push({
+      label: field("label"),
+      href: field("href"),
+      alias: [...body.matchAll(/alias=\(([^)]*)\)/g)]
+        .flatMap((a) => [...a[1].matchAll(/"([^"]+)"/g)].map((x) => x[1])),
+      mobile: !/mobile=False/.test(body),
+      bodyScoped: /body_scoped=True/.test(body),
+    });
+  }
+  return items;
+}
+
+const NAV = canonical();
+const TABBAR = NAV.filter((i) => i.mobile);
+
+test("the canonical list parsed, and is not empty", () => {
+  assert.ok(NAV.length >= 5, `parsed only ${NAV.length} items from ingest/nav.py`);
+  assert.deepEqual(
+    NAV.map((i) => i.label),
+    ["Home", "Meetings", "Votes", "Members", "Finances", "About"]
+  );
+});
+
+/* ---------------------------------------------------------------------------
+   The four copies
+   --------------------------------------------------------------------------- */
+
+/* Pull the <a> elements out of one <nav class="nav"> block. */
+function navLinks(html) {
+  const block = html.match(/<nav class="nav" aria-label="Primary">([\s\S]*?)<\/nav>/);
+  if (!block) return null;
+  return [...block[1].matchAll(/<a\s([^>]*)>([^<]*)<\/a>/g)].map((m) => ({
+    attrs: m[1],
+    label: m[2],
+    href: (m[1].match(/href="([^"]*)"/) || [])[1],
+    nav: (m[1].match(/data-nav="([^"]*)"/) || [])[1],
+  }));
+}
+
+for (const page of PAGES) {
+  test(`${page} carries the canonical nav`, () => {
+    const links = navLinks(read(`docs/${page}`));
+    assert.ok(links, `${page} has no <nav class="nav"> block`);
+    assert.deepEqual(links.map((l) => l.label), NAV.map((i) => i.label));
+    assert.deepEqual(links.map((l) => l.nav), NAV.map((i) => i.href));
+
+    // 404.html is served for whatever path was missed, so it — and only it —
+    // uses root-absolute hrefs among the top-level pages.
+    const wantRoot = page === "404.html";
+    for (const l of links) {
+      assert.equal(l.href.startsWith("/"), wantRoot,
+        `${page}: ${l.label} href "${l.href}" should ${wantRoot ? "" : "not "}be root-absolute`);
+    }
+  });
+
+  test(`${page} keeps its accessibility contract`, () => {
+    const html = read(`docs/${page}`);
+    assert.match(html, /<a href="#main" class="skip-link">/, `${page}: no skip link`);
+    assert.match(html, /<main id="main"/, `${page}: no <main id="main"> for it to reach`);
+
+    // Two "you are here" markers in one document is a lie to a screen reader.
+    // The top-level item claims it; a sub-nav item claims it; never both, and
+    // never twice at the same level.
+    const inNav = (navLinks(html) || []).filter((l) => /aria-current/.test(l.attrs));
+    assert.ok(inNav.length <= 1, `${page}: ${inNav.length} aria-current in the primary nav`);
+  });
+}
+
+test("the meeting-page generator emits the same nav", () => {
+  const src = read("ingest/build_meeting_pages.py");
+  // It builds NAV by calling nav_links() rather than restating the list, which
+  // is the whole point — assert it still does, and hasn't been forked back into
+  // a literal that can drift.
+  assert.match(src, /from \.nav import nav_links/);
+  assert.match(src, /nav_links\(root=True, active="meetings\.html"\)/);
+  assert.doesNotMatch(src, /<a href="\/tax\.html" data-nav=/,
+    "build_meeting_pages.py has a hand-written nav link again");
+});
+
+test("the mobile tab bar matches, and fits", () => {
+  const src = read("docs/site.js");
+  const block = src.match(/const TABBAR = \[([\s\S]*?)\];/);
+  assert.ok(block, "site.js has no TABBAR array");
+
+  const rows = [...block[1].matchAll(/\{\s*href:\s*"([^"]+)",\s*label:\s*"([^"]+)"([^}]*)\}/g)]
+    .map((m) => ({ href: m[1], label: m[2], bodyScoped: /body:/.test(m[3]) }));
+
+  assert.deepEqual(rows.map((r) => r.label), TABBAR.map((i) => i.label));
+  assert.deepEqual(rows.map((r) => r.bodyScoped), TABBAR.map((i) => i.bodyScoped));
+
+  // A bottom bar past five items stops being readable, which is what the
+  // retired "More" sheet was working around.
+  assert.ok(rows.length <= 5, `tab bar holds ${rows.length} items; five is the maximum`);
+
+  // The bar is injected into docs/meetings/*.html too, where a relative
+  // "meetings.html" resolves to /meetings/meetings.html and 404s. That was live.
+  for (const r of rows) {
+    assert.ok(r.href.startsWith("/"), `tab bar href "${r.href}" must be root-absolute`);
+  }
+
+  assert.doesNotMatch(src, /TABBAR_MORE|tab-more/, "the More sheet is retired");
+});
+
+test("404.html offers the same destinations", () => {
+  const html = read("docs/404.html");
+  const block = html.match(/<ul id="fallback">([\s\S]*?)<\/ul>/);
+  assert.ok(block, "404.html has no #fallback list");
+  const hrefs = [...block[1].matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
+  // Home is not offered — the brand already goes there.
+  assert.deepEqual(hrefs, NAV.filter((i) => i.href !== "index.html").map((i) => `/${i.href}`));
+});
+
+/* ---------------------------------------------------------------------------
+   Everything the list points at has to exist, and be registered
+   --------------------------------------------------------------------------- */
+
+test("every nav destination is a real page", () => {
+  for (const item of NAV) {
+    assert.ok(existsSync(path.join(DOCS, item.href)), `${item.href} does not exist`);
+    for (const alias of item.alias) {
+      assert.ok(existsSync(path.join(DOCS, alias)), `${item.href} aliases missing ${alias}`);
+    }
+  }
+});
+
+test("every section page is in the sitemap", () => {
+  const src = read("ingest/build_sitemap.py");
+  const listed = new Set([...src.matchAll(/"path": "([^"]*)"/g)].map((m) => m[1] || "index.html"));
+  for (const item of NAV) {
+    assert.ok(listed.has(item.href), `${item.href} is not in build_sitemap.py PAGES`);
+    for (const alias of item.alias) {
+      if (alias === "member.html") continue; // expanded per member from the dataset
+      assert.ok(listed.has(alias), `${alias} is not in build_sitemap.py PAGES`);
+    }
+  }
+});
+
+test("every section page is precached by the service worker", () => {
+  const src = read("docs/sw.js");
+  const block = src.match(/const SHELL_ASSETS = \[([\s\S]*?)\];/);
+  assert.ok(block, "sw.js has no SHELL_ASSETS");
+  const listed = new Set([...block[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]));
+
+  // cache.addAll() rejects the whole batch on a single 404, which disables the
+  // service worker for every visitor rather than missing one file. So the list
+  // must name real files, and must name every page the nav can reach.
+  for (const asset of listed) {
+    if (asset === "./") continue;
+    assert.ok(existsSync(path.join(DOCS, asset)), `sw.js precaches missing ${asset}`);
+  }
+  for (const item of NAV) {
+    assert.ok(listed.has(item.href), `${item.href} is not in sw.js SHELL_ASSETS`);
+  }
+});
+
+/* ---------------------------------------------------------------------------
+   Section sub-navs
+   --------------------------------------------------------------------------- */
+
+test("each section page carries its section's sub-nav", () => {
+  const sections = {
+    "Finances section": ["finances.html", "tax.html", "projections.html",
+                         "budget.html", "staffing.html"],
+    "About section": ["about.html", "definitions.html"],
+  };
+
+  for (const [label, pages] of Object.entries(sections)) {
+    const hrefs = pages.map((p) => p);
+    for (const page of pages) {
+      const html = read(`docs/${page}`);
+      const block = html.match(
+        new RegExp(`<nav class="subnav" aria-label="${label}">([\\s\\S]*?)</nav>`)
+      );
+      assert.ok(block, `${page} has no "${label}" sub-nav`);
+
+      const links = [...block[1].matchAll(/<a href="([^"]+)"([^>]*)>/g)];
+      assert.deepEqual(links.map((l) => l[1]), hrefs, `${page}: sub-nav destinations`);
+
+      // Exactly one item marks itself current, and it is this page.
+      const current = links.filter((l) => /aria-current/.test(l[2]));
+      assert.equal(current.length, 1, `${page}: ${current.length} aria-current in the sub-nav`);
+      assert.equal(current[0][1], page, `${page}: sub-nav marks the wrong page current`);
+    }
+  }
+});

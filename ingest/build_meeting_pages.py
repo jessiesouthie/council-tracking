@@ -45,13 +45,14 @@ from datetime import date
 from pathlib import Path
 
 from . import bodies
+from .nav import nav_links
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 OUT_DIR = DOCS / "meetings"
 PARSED = ROOT / "data" / "parsed"
 TRANSCRIPTS = DOCS / "transcripts"
-CSS_VERSION = "20260817j"
+CSS_VERSION = "20260818c"
 
 CNAME = DOCS / "CNAME"
 DEFAULT_HOST = "civicrollcall.com"
@@ -300,18 +301,14 @@ NAV = """    <header class="topbar">
         <div><p class="brand-title">Roll Call</p><p class="city">Eagle Mountain, UT</p></div>
       </a>
       <nav class="nav" aria-label="Primary">
-        <a href="/index.html" data-nav="index.html">Home</a>
-        <a href="/meetings.html" data-nav="meetings.html" class="active" aria-current="page">Meetings</a>
-        <a href="/members.html" data-nav="members.html">Members</a>
-        <a href="/tax.html" data-nav="tax.html" data-nav-alias="projections.html">Tax</a>
-        <a href="/budget.html" data-nav="budget.html">Budget</a>
-        <a href="/definitions.html" data-nav="definitions.html">Definitions</a>
+""" + nav_links(root=True, active="meetings.html") + """
       </nav>
     </header>
 """
 
 FOOTER = ('    <footer class="footer"><span>Data from Eagle Mountain CivicClerk '
           'portal &middot; <a href="/about.html">How this site is built</a>'
+          ' &middot; <a href="/definitions.html">Definitions</a>'
           "</span></footer>\n")
 
 

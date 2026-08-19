@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Eagle Mountain&rsquo;s Money — Tax, Budget, Projections, Staffing</title>
+    <meta name="description" content="The tax rate the council adopted, the budget it funds, what three rates would do to the General Fund, and the payroll behind it — each traced to the document it came from." />
+    <link rel="canonical" href="https://civicrollcall.com/finances.html" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Civic Roll Call" />
+    <meta property="og:url" content="https://civicrollcall.com/finances.html" />
+    <meta property="og:title" content="Eagle Mountain&rsquo;s Money — Tax, Budget, Projections, Staffing" />
+    <meta property="og:description" content="The tax rate the council adopted, the budget it funds, what three rates would do to the General Fund, and the payroll behind it — each traced to the document it came from." />
+    <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Eagle Mountain&rsquo;s Money — Tax, Budget, Projections, Staffing" />
+    <meta name="twitter:description" content="The tax rate the council adopted, the budget it funds, what three rates would do to the General Fund, and the payroll behind it — each traced to the document it came from." />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Fraunces sets the display line and the four station names, which are this
+         page's largest text and the thing a reader waits on; the body face can
+         swap in when it arrives. -->
+    <link rel="preload" href="fonts/fraunces-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts.css?v=20260818c" />
+    <link rel="stylesheet" href="site.css?v=20260818c" />
+  </head>
+  <body class="page-finances">
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 512 512" focusable="false">
+            <circle class="m-accent" cx="153" cy="153" r="33.5" />
+            <rect class="m-fg" x="220" y="133" width="175" height="41" rx="20.5" />
+            <circle class="m-fg" cx="153" cy="256" r="33.5" />
+            <rect class="m-dim" x="220" y="235" width="144" height="42" rx="21" />
+            <circle class="m-accent" cx="153" cy="358" r="33.5" />
+            <rect class="m-dim" x="220" y="338" width="113" height="41" rx="20.5" />
+          </svg>
+        </span>
+        <div><p class="brand-title">Roll Call</p><p class="city">Eagle Mountain, UT</p></div>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <!-- BEGIN generated:nav (ingest/build_nav.py) -->
+        <a href="index.html" data-nav="index.html">Home</a>
+        <a href="meetings.html" data-nav="meetings.html">Meetings</a>
+        <a href="motions.html" data-nav="motions.html">Votes</a>
+        <a href="members.html" data-nav="members.html" data-nav-alias="member.html">Members</a>
+        <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html" data-nav-body="city-council">Finances</a>
+        <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+        <!-- END generated:nav -->
+      </nav>
+    </header>
+
+    <main id="main" class="main-reading">
+      <!-- The section's own strip. Static markup rather than injected, so it
+           survives a load where the JSON never arrives. -->
+      <nav class="subnav" aria-label="Finances section">
+        <a href="finances.html" aria-current="page">Overview</a>
+        <a href="tax.html">Tax</a>
+        <a href="projections.html">Projections</a>
+        <a href="budget.html">Budget</a>
+        <a href="staffing.html">Staffing</a>
+      </nav>
+
+      <div class="fin-mast">
+        <p class="fin-kicker reveal" style="--i:0">Eagle Mountain, Utah &middot; Statement of the record</p>
+        <h1 class="fin-title reveal" style="--i:1">
+          The city&rsquo;s money,<br class="fin-br" />
+          <span class="mark">followed all the way through</span>.
+        </h1>
+        <p class="fin-stand reveal" style="--i:2">
+          A rate is levied, a budget appropriates it, a model carries it forward, and payroll is
+          the largest thing it buys. <strong>Four pages, one chain</strong> &mdash; and three of
+          them republish figures the city published first. One does not, and says so.
+        </p>
+        <hr class="fin-rule reveal" style="--i:3" />
+      </div>
+
+      <section class="section">
+        <h2 class="sr-only">The four pages</h2>
+        <!-- The chain, in the order the money moves rather than the order the
+             strip above lists it. Each station's figure is read from the same
+             file the page it opens reads, so a stale build shows a stale number
+             rather than a confident wrong one; a station whose file never
+             arrives keeps its words and prints without a figure. That is what
+             a crawler and a dead connection both see, and it is navigable. -->
+        <ol class="fin-chain" id="fin-chain">
+          <li class="fin-step reveal" style="--i:4">
+            <span class="fin-node" aria-hidden="true">01</span>
+            <a class="fin-step-a" href="tax.html">
+              <span class="fin-q">What the city charges<span class="fin-when" data-when="tax"></span></span>
+              <span class="fin-line">
+                <span class="fin-name">Tax</span>
+                <span class="fin-lead" aria-hidden="true"></span>
+                <span class="fin-fig" data-fig="tax"></span>
+              </span>
+              <span class="fin-sub">
+                <span class="fin-blurb">The rate the council adopted, the case the city made for it in public, and what it does to your bill.</span>
+                <span class="fin-fig2" data-fig2="tax"></span>
+              </span>
+              <span class="fin-go" aria-hidden="true">The rate, and the vote &rarr;</span>
+            </a>
+          </li>
+
+          <li class="fin-step reveal" style="--i:5">
+            <span class="fin-node" aria-hidden="true">02</span>
+            <a class="fin-step-a" href="budget.html">
+              <span class="fin-q">What it spends<span class="fin-when" data-when="budget"></span></span>
+              <span class="fin-line">
+                <span class="fin-name">Budget</span>
+                <span class="fin-lead" aria-hidden="true"></span>
+                <span class="fin-fig" data-fig="budget"></span>
+              </span>
+              <span class="fin-sub">
+                <span class="fin-blurb">Every dollar the city appropriates, traced from the fund that holds it to what it buys.</span>
+                <span class="fin-fig2" data-fig2="budget"></span>
+              </span>
+              <span class="fin-go" aria-hidden="true">Fund by fund &rarr;</span>
+            </a>
+          </li>
+
+          <li class="fin-step is-model reveal" style="--i:6">
+            <span class="fin-node" aria-hidden="true">03</span>
+            <a class="fin-step-a" href="projections.html">
+              <span class="fin-q">What a different rate would bring in<span class="fin-when" data-when="proj"></span></span>
+              <span class="fin-line">
+                <span class="fin-name">Projections</span>
+                <span class="fin-lead" aria-hidden="true"></span>
+                <span class="fin-fig" data-fig="proj"></span>
+              </span>
+              <span class="fin-sub">
+                <span class="fin-blurb">A model, not a city forecast: what each property-tax rate would do to the General Fund, year by year.</span>
+                <span class="fin-fig2" data-fig2="proj"></span>
+              </span>
+              <span class="fin-go" aria-hidden="true">Run the scenarios &rarr;</span>
+            </a>
+          </li>
+
+          <li class="fin-step reveal" style="--i:7">
+            <span class="fin-node" aria-hidden="true">04</span>
+            <a class="fin-step-a" href="staffing.html">
+              <span class="fin-q">What it pays people to do the work<span class="fin-when" data-when="staffing"></span></span>
+              <span class="fin-line">
+                <span class="fin-name">Staffing</span>
+                <span class="fin-lead" aria-hidden="true"></span>
+                <span class="fin-fig" data-fig="staffing"></span>
+              </span>
+              <span class="fin-sub">
+                <span class="fin-blurb">Who the city employs, how that compares with cities its size, and what it contracts out instead.</span>
+                <span class="fin-fig2" data-fig2="staffing"></span>
+              </span>
+              <span class="fin-go" aria-hidden="true">Headcount, checked &rarr;</span>
+            </a>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>How the four fit together</h2>
+        <div class="fin-prose">
+          <p>
+            They are a chain, and it runs in one direction. The <a href="tax.html">tax rate</a> is
+            what the council adopted and what a household pays. The <a href="budget.html">budget</a>
+            is what that revenue, plus every other source, is appropriated to. The
+            <a href="projections.html">projections</a> take the first and carry it forward against
+            the second to ask whether the two stay in line. And <a href="staffing.html">staffing</a>
+            is the largest recurring thing the budget buys, which is why a claim about how many
+            people the city employs is really a claim about the budget.
+          </p>
+          <p class="fin-pull">
+            Read in that order they answer one question: does what the city collects cover what it
+            has committed to spend &mdash; and if not, when does that stop being true.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>What is republished, and what is not</h2>
+        <div class="fin-prov">
+          <div class="fin-card">
+            <p class="fin-badge">Republished</p>
+            <h3>Somebody else published it first. This site reprints it and links back.</h3>
+            <dl class="fin-src">
+              <div>
+                <dt>Tax</dt>
+                <dd>The city&rsquo;s Truth-in-Taxation notice, Utah County&rsquo;s combined notice, and the State Tax Commission.</dd>
+              </div>
+              <div>
+                <dt>Budget</dt>
+                <dd>The city&rsquo;s own ClearGov budget book, line by line &mdash; checked by reproducing its published total to the dollar.</dd>
+              </div>
+              <div>
+                <dt>Staffing</dt>
+                <dd>Audited annual financial reports, with population from the Census Bureau.</dd>
+              </div>
+            </dl>
+            <p class="fin-note">Every figure on those three pages links back to the document it was read from.</p>
+          </div>
+
+          <div class="fin-card is-model">
+            <p class="fin-badge is-model">Modelled</p>
+            <h3>Nobody published this one. It was built here.</h3>
+            <p>
+              <a href="projections.html">Projections</a> is the one page on this site that is not a
+              republication of anything. It is a model built from the city&rsquo;s published budget
+              and its own meeting recordings &mdash; not a city forecast, and not a finding.
+            </p>
+            <p class="fin-note">
+              Every assumption in it carries the basis it rests on, and the ones still unconfirmed
+              are marked as such on the page. Treat its numbers as arithmetic about a scenario,
+              not as a prediction.
+            </p>
+          </div>
+        </div>
+
+        <p class="fin-more">
+          <a href="about.html">How this site is built &rarr;</a>
+          <a href="definitions.html">The words the city uses, in plain English &rarr;</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer"><span>Tax rates from the city, county and state notices; budget from the ClearGov budget book; headcount from audited annual financial reports &middot; <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span></footer>
+
+    <script src="site.js?v=20260818c"></script>
+    <script>
+      // Each station's figures are read from the same file the page it opens
+      // reads, so a stale build shows a stale number rather than a confident
+      // wrong one. A station whose data didn't arrive keeps its static copy and
+      // prints without a figure, rather than vanishing — the same rule the
+      // homepage grid uses. The dotted leader hides itself when the figure it
+      // was drawn to reach is empty, so a missing file leaves a clean line.
+      const grab = (f) =>
+        fetch(new URL(f, document.baseURI))
+          .then((r) => (r.ok ? r.json() : null))
+          .catch(() => null);
+
+      (async () => {
+        // The Planning Commission levies no tax and adopts no budget. If someone
+        // arrives here with that body selected, say so rather than showing them
+        // the council's figures under their name.
+        if (CT.currentBody() !== "city-council") {
+          const label = (await grab("bodies.json").then((l) =>
+            (Array.isArray(l) ? l : []).find((b) => b.id === CT.currentBody())
+          )) || {};
+          document.getElementById("main").innerHTML = `
+            <h1 class="page-title">These are City Council figures</h1>
+            <p class="page-sub">
+              The ${CT.escapeHtml(label.label || "body")} levies no property tax and adopts no
+              budget of its own, so there is no version of this page for it. The tax rate, the
+              budget, the projections and the staffing figures all belong to the City
+              Council.
+            </p>
+            <p class="page-sub">
+              <a href="${CT.linkBody("finances.html", "city-council")}">See the City Council&rsquo;s finances &rarr;</a>
+              &middot;
+              <a href="meetings.html">Back to ${CT.escapeHtml((label.label || "this body").toLowerCase())} meetings &rarr;</a>
+            </p>`;
+          return;
+        }
+
+        const [tax, budget, proj, staffing] = await Promise.all([
+          grab("data.tax.json"),
+          grab("data.budget-next.json"),
+          grab("data.projections.json"),
+          grab("data.staffing.json"),
+        ]);
+
+        const money = (n) =>
+          n.toLocaleString(undefined, { style: "currency", currency: "USD" }).replace(/\.00$/, "");
+        const millions = (n) => `$${(n / 1e6).toFixed(1)}M`;
+
+        const rate = tax && tax.rates && (tax.rates.adopted || tax.rates.proposed);
+        const home = rate && rate.home_example;
+        const gross =
+          budget && budget.totals && budget.totals.fy2027 ? budget.totals.fy2027.gross : null;
+        const gf =
+          budget && budget.general_fund_chart ? budget.general_fund_chart.total : null;
+        const head = staffing && staffing.headline;
+
+        // Three slots per station and all three optional: the fiscal-year stamp
+        // in the eyebrow, the ledger figure, and the gloss under it. The rate
+        // takes the ledger line and the dollars take the gloss — 0.001500 is the
+        // number in the resolution and the entry a ledger would carry, but it
+        // means nothing to a household until the city's own Truth-in-Taxation
+        // notice prices it on an average home.
+        const slots = {
+          tax: {
+            when: tax && tax.fiscal_year_label,
+            fig: rate && rate.rate_display,
+            fig2: home && home.increase
+              ? `+${money(home.increase)} a year on the average home`
+              : rate && rate.pct
+                ? `+${rate.pct}% over the certified rate`
+                : null,
+          },
+          budget: {
+            when: budget && budget.fiscal_year_label,
+            fig: gross ? `${millions(gross)} all funds` : null,
+            fig2: gf ? `${millions(gf)} of it is the General Fund` : null,
+          },
+          // No fiscal-year stamp here: the span *is* the figure, and printing
+          // FY2026–27 in the eyebrow next to FY2027–32 on the line reads as two
+          // different years rather than as the start of the one range.
+          proj: {
+            when: null,
+            fig: proj ? `FY${proj.first_year}–${String(proj.last_year).slice(2)}` : null,
+            fig2: proj && (proj.scenarios || []).length
+              ? `${proj.scenarios.length} rates, one General Fund`
+              : null,
+          },
+          staffing: {
+            when: staffing && staffing.fiscal_year_label,
+            fig: head && head.fte ? `${head.fte} FTE` : null,
+            fig2: head && head.per_1k
+              ? `${head.per_1k.toFixed(2)} per 1,000 residents`
+              : null,
+          },
+        };
+
+        // Spliced into the static markup rather than rebuilt, so nothing moves
+        // on the page when the JSON lands.
+        for (const [key, v] of Object.entries(slots)) {
+          const set = (sel, text) => {
+            const el = document.querySelector(`[${sel}="${key}"]`);
+            if (el && text) el.textContent = text;
+          };
+          set("data-when", v.when ? ` · ${v.when}` : "");
+          set("data-fig", v.fig);
+          set("data-fig2", v.fig2);
+        }
+      })();
+    </script>
+  </body>
+</html>

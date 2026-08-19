@@ -1,0 +1,2144 @@
+{
+ "_comment": "How many people Eagle Mountain employs, and how that compares with Utah cities its own size. Headcount is full-time equivalents from each city's audited ACFR statistical section (the GASB 44 schedule, ten years wide); population is the Census Bureau's sub-county estimate for every city, so the denominator is one consistent series rather than each city's own claim. Eagle Mountain employs nobody in police or fire — patrol is a Utah County Sheriff contract, fire is Unified Fire Authority — so raw per-capita headcount compares service-delivery models rather than staffing levels, and three measures are carried: raw, excluding public safety, and excluding public safety and utilities. Built by ingest/build_staffing.py, which fails if it stops reproducing the totals printed in each city's own report.",
+ "body": "city-council",
+ "fiscal_year": 2024,
+ "fiscal_year_label": "FY2024",
+ "generated_from": "2026-08-18",
+ "method": {
+  "headcount": "Full-time equivalents as each city reports them in the statistical section of its own audited annual financial report. FTE is not headcount: it counts hours, so two half-time staff are one FTE.",
+  "population": "US Census Bureau sub-county estimates, vintage 2025 — the newest published — used for every city including Eagle Mountain, so the comparison is measured one way throughout. Utah's own estimates, from the Utah Population Committee, are carried alongside as a check and agree closely: for 2024 they differ by 122 people out of 61,362. The city's own figures run higher, and the page sets them out rather than choosing between them.",
+  "normalisation": "Cities group departments differently, so every row is re-filed by function from its own label. Public safety means police, fire, ambulance, dispatch, animal control, crossing guards and emergency management — the services Eagle Mountain buys rather than staffs. Courts are counted as general government: a justice court is a judicial function a city keeps whoever polices it.",
+  "why_2024": "2024 is the most recent year Eagle Mountain has published an audited staff count for. The city's FY2025 audit was accepted by the Council, but the full annual report — the volume that carries the staffing schedule — is not posted on the city's finance page, where every year from 2019 to 2024 is. Comparing Eagle Mountain's 2024 against other cities' 2025 would not be a comparison, so every city here is 2024.",
+  "peer_rule": "Take the 15 Utah cities closest to Eagle Mountain in population, and compare the ones that publish a comparable staffing schedule. Every city inside that cut is either compared or named below with the reason it could not be — the build refuses to run otherwise, so no city can be dropped quietly and none can be added by hand. Nine of the 15 are unusable: three publish no statistical section, two count full-time staff rather than full-time equivalents, and four could not be retrieved at all.",
+  "caveats": [
+   "FTE excludes contracted labour entirely. That is the whole point for Eagle Mountain, and it means the raw column understates what the city actually commands.",
+   "Murray's and Draper's newest reports are FY2025; the FY2024 column of their ten-year schedules is the one read here, so every city is the same year.",
+   "Lehi's schedule prints no total; its figure is the sum of its own rows.",
+   "Logan and Murray run municipal power utilities and Eagle Mountain does not, which is why the third measure sets utilities aside as well."
+  ]
+ },
+ "headline": {
+  "fte": 146.58,
+  "population": 61362,
+  "per_1k": 2.389,
+  "public_safety_fte": 4.82,
+  "claim": "Our city staff is about the third of the size of city staff of equivalent population.",
+  "claim_speaker": "Ben Reeves, City Manager",
+  "claim_meetings": [
+   "2026-08-06",
+   "2026-08-04"
+  ],
+  "verdict": {
+   "raw": 36,
+   "excl_public_safety": 64,
+   "core": 65
+  }
+ },
+ "eagle_mountain": {
+  "population": 61362,
+  "fiscal_year": 2024,
+  "public_safety_model": "contract",
+  "public_safety_note": "Patrol is contracted from the Utah County Sheriff's Office (Eagle Mountain Division); fire and EMS come from Unified Fire Authority, a separate district funded through the UFSA levy. The 4.82 FTE the city does employ under public safety are crossing guards.",
+  "by_function": {
+   "general_gov": 30.27,
+   "community_dev": 21.75,
+   "public_works": 24.35,
+   "public_safety": 4.82,
+   "parks_rec": 22.38,
+   "library": 10.25,
+   "utilities": 32.76
+  },
+  "departments": [
+   {
+    "label": "Administration",
+    "function": "general_gov",
+    "fte": 8.6
+   },
+   {
+    "label": "Finance",
+    "function": "general_gov",
+    "fte": 4.5
+   },
+   {
+    "label": "Planning",
+    "function": "community_dev",
+    "fte": 10.55
+   },
+   {
+    "label": "Building",
+    "function": "community_dev",
+    "fte": 11.2
+   },
+   {
+    "label": "Recorder",
+    "function": "general_gov",
+    "fte": 5.5
+   },
+   {
+    "label": "Facilities",
+    "function": "public_works",
+    "fte": 4.13
+   },
+   {
+    "label": "Public Information",
+    "function": "general_gov",
+    "fte": 2.63
+   },
+   {
+    "label": "Human Resources",
+    "function": "general_gov",
+    "fte": 1.0
+   },
+   {
+    "label": "Attorney",
+    "function": "general_gov",
+    "fte": 1.0
+   },
+   {
+    "label": "Other",
+    "function": "general_gov",
+    "fte": 3.95
+   },
+   {
+    "label": "Crossing Guards",
+    "function": "public_safety",
+    "fte": 4.82
+   },
+   {
+    "label": "Firefighters and officer",
+    "function": "public_safety",
+    "fte": 0.0
+   },
+   {
+    "label": "Parks and recreation",
+    "function": "parks_rec",
+    "fte": 22.38
+   },
+   {
+    "label": "Library",
+    "function": "library",
+    "fte": 10.25
+   },
+   {
+    "label": "Management",
+    "function": "general_gov",
+    "fte": 0.0
+   },
+   {
+    "label": "Engineering",
+    "function": "public_works",
+    "fte": 9.5
+   },
+   {
+    "label": "Streets",
+    "function": "public_works",
+    "fte": 8.47
+   },
+   {
+    "label": "Water",
+    "function": "utilities",
+    "fte": 15.25
+   },
+   {
+    "label": "Wastewater",
+    "function": "utilities",
+    "fte": 9.0
+   },
+   {
+    "label": "Utility Billing",
+    "function": "utilities",
+    "fte": 3.88
+   },
+   {
+    "label": "Other",
+    "function": "general_gov",
+    "fte": 0.09
+   },
+   {
+    "label": "Stormwater",
+    "function": "utilities",
+    "fte": 4.63
+   },
+   {
+    "label": "GIS",
+    "function": "general_gov",
+    "fte": 3.0
+   },
+   {
+    "label": "Fleet",
+    "function": "public_works",
+    "fte": 2.25
+   },
+   {
+    "label": "Energy",
+    "function": "general_gov",
+    "fte": 0.0
+   }
+  ],
+  "total": 146.58,
+  "public_safety": 4.82,
+  "utilities": 32.76,
+  "excl_public_safety": 141.76,
+  "core": 109.0,
+  "per_1k": {
+   "raw": 2.389,
+   "excl_public_safety": 2.31,
+   "core": 1.776
+  },
+  "series": [
+   {
+    "year": 2014,
+    "fte": 84.35,
+    "printed": 84.35,
+    "population": 25919,
+    "per_1k": 3.254,
+    "by_function": {
+     "general_gov": 31.18,
+     "community_dev": 9.5,
+     "public_works": 10.46,
+     "public_safety": 4.75,
+     "parks_rec": 7.2,
+     "library": 5.15,
+     "utilities": 16.11
+    }
+   },
+   {
+    "year": 2015,
+    "fte": 72.48,
+    "printed": 72.48,
+    "population": 27035,
+    "per_1k": 2.681,
+    "by_function": {
+     "general_gov": 20.28,
+     "community_dev": 9.75,
+     "public_works": 11.0,
+     "public_safety": 5.25,
+     "parks_rec": 7.2,
+     "library": 5.5,
+     "utilities": 13.5
+    }
+   },
+   {
+    "year": 2016,
+    "fte": 76.0,
+    "printed": 76.0,
+    "population": 28878,
+    "per_1k": 2.632,
+    "by_function": {
+     "general_gov": 18.5,
+     "community_dev": 9.0,
+     "public_works": 15.5,
+     "public_safety": 5.0,
+     "parks_rec": 7.5,
+     "library": 6.0,
+     "utilities": 14.5
+    }
+   },
+   {
+    "year": 2017,
+    "fte": 84.02,
+    "printed": 84.02,
+    "population": 32114,
+    "per_1k": 2.616,
+    "by_function": {
+     "general_gov": 27.42,
+     "community_dev": 9.25,
+     "public_works": 12.44,
+     "public_safety": 4.52,
+     "parks_rec": 9.33,
+     "library": 6.33,
+     "utilities": 14.73
+    }
+   },
+   {
+    "year": 2018,
+    "fte": 91.61,
+    "printed": 91.61,
+    "population": 35556,
+    "per_1k": 2.576,
+    "by_function": {
+     "general_gov": 27.55,
+     "community_dev": 10.76,
+     "public_works": 12.99,
+     "public_safety": 4.52,
+     "parks_rec": 12.66,
+     "library": 6.33,
+     "utilities": 16.8
+    }
+   },
+   {
+    "year": 2019,
+    "fte": 104.11,
+    "printed": 104.09,
+    "population": 38391,
+    "per_1k": 2.712,
+    "by_function": {
+     "general_gov": 28.71,
+     "community_dev": 13.52,
+     "public_works": 17.49,
+     "public_safety": 4.52,
+     "parks_rec": 14.55,
+     "library": 6.5,
+     "utilities": 18.82
+    }
+   },
+   {
+    "year": 2020,
+    "fte": 113.09,
+    "printed": 113.09,
+    "population": 44502,
+    "per_1k": 2.541,
+    "by_function": {
+     "general_gov": 29.71,
+     "community_dev": 15.52,
+     "public_works": 19.99,
+     "public_safety": 5.5,
+     "parks_rec": 15.55,
+     "library": 7.0,
+     "utilities": 19.82
+    }
+   },
+   {
+    "year": 2021,
+    "fte": 112.5,
+    "printed": 112.5,
+    "population": 49530,
+    "per_1k": 2.271,
+    "by_function": {
+     "general_gov": 18.0,
+     "community_dev": 17.0,
+     "public_works": 26.0,
+     "public_safety": 6.5,
+     "parks_rec": 15.5,
+     "library": 7.5,
+     "utilities": 22.0
+    }
+   },
+   {
+    "year": 2022,
+    "fte": 113.25,
+    "printed": 113.25,
+    "population": 54651,
+    "per_1k": 2.072,
+    "by_function": {
+     "general_gov": 17.75,
+     "community_dev": 20.5,
+     "public_works": 27.0,
+     "public_safety": 5.0,
+     "parks_rec": 15.0,
+     "library": 7.25,
+     "utilities": 20.75
+    }
+   },
+   {
+    "year": 2023,
+    "fte": 137.34,
+    "printed": 137.45,
+    "population": 58190,
+    "per_1k": 2.36,
+    "by_function": {
+     "general_gov": 28.1,
+     "community_dev": 19.75,
+     "public_works": 24.6,
+     "public_safety": 3.82,
+     "parks_rec": 21.31,
+     "library": 10.25,
+     "utilities": 29.51
+    }
+   },
+   {
+    "year": 2024,
+    "fte": 146.58,
+    "printed": 146.57,
+    "population": 61362,
+    "per_1k": 2.389,
+    "by_function": {
+     "general_gov": 30.27,
+     "community_dev": 21.75,
+     "public_works": 24.35,
+     "public_safety": 4.82,
+     "parks_rec": 22.38,
+     "library": 10.25,
+     "utilities": 32.76
+    }
+   }
+  ],
+  "department_series": [
+   {
+    "label": "Parks and recreation",
+    "function": "parks_rec",
+    "values": {
+     "2014": 7.2,
+     "2015": 7.2,
+     "2016": 7.5,
+     "2017": 9.33,
+     "2018": 12.66,
+     "2019": 14.55,
+     "2020": 15.55,
+     "2021": 15.5,
+     "2022": 15.0,
+     "2023": 21.31,
+     "2024": 22.38
+    }
+   },
+   {
+    "label": "Water",
+    "function": "utilities",
+    "values": {
+     "2014": 5.3,
+     "2015": 5.5,
+     "2016": 7.0,
+     "2017": 5.93,
+     "2018": 7.47,
+     "2019": 9.09,
+     "2020": 10.09,
+     "2021": 10.5,
+     "2022": 10.25,
+     "2023": 12.63,
+     "2024": 15.25
+    }
+   },
+   {
+    "label": "Building",
+    "function": "community_dev",
+    "values": {
+     "2014": 5.5,
+     "2015": 5.75,
+     "2016": 5.0,
+     "2017": 5.25,
+     "2018": 6.26,
+     "2019": 9.02,
+     "2020": 10.02,
+     "2021": 10.0,
+     "2022": 10.0,
+     "2023": 11.2,
+     "2024": 11.2
+    }
+   },
+   {
+    "label": "Planning",
+    "function": "community_dev",
+    "values": {
+     "2014": 4.0,
+     "2015": 4.0,
+     "2016": 4.0,
+     "2017": 4.0,
+     "2018": 4.5,
+     "2019": 4.5,
+     "2020": 5.5,
+     "2021": 7.0,
+     "2022": 10.5,
+     "2023": 8.55,
+     "2024": 10.55
+    }
+   },
+   {
+    "label": "Library",
+    "function": "library",
+    "values": {
+     "2014": 5.15,
+     "2015": 5.5,
+     "2016": 6.0,
+     "2017": 6.33,
+     "2018": 6.33,
+     "2019": 6.5,
+     "2020": 7.0,
+     "2021": 7.5,
+     "2022": 7.25,
+     "2023": 10.25,
+     "2024": 10.25
+    }
+   },
+   {
+    "label": "Engineering",
+    "function": "public_works",
+    "values": {
+     "2014": 4.96,
+     "2015": 5.0,
+     "2016": 5.0,
+     "2017": 4.33,
+     "2018": 4.33,
+     "2019": 5.83,
+     "2020": 6.83,
+     "2021": 7.0,
+     "2022": 10.0,
+     "2023": 8.5,
+     "2024": 9.5
+    }
+   },
+   {
+    "label": "Wastewater",
+    "function": "utilities",
+    "values": {
+     "2014": 5.31,
+     "2015": 4.0,
+     "2016": 4.5,
+     "2017": 5.3,
+     "2018": 5.83,
+     "2019": 5.83,
+     "2020": 5.83,
+     "2021": 8.0,
+     "2022": 8.0,
+     "2023": 9.0,
+     "2024": 9.0
+    }
+   },
+   {
+    "label": "Administration",
+    "function": "general_gov",
+    "values": {
+     "2014": 5.0,
+     "2015": 5.5,
+     "2016": 4.0,
+     "2017": 5.41,
+     "2018": 5.41,
+     "2019": 5.41,
+     "2020": 5.41,
+     "2021": 5.5,
+     "2022": 6.0,
+     "2023": 6.6,
+     "2024": 8.6
+    }
+   },
+   {
+    "label": "Streets",
+    "function": "public_works",
+    "values": {
+     "2014": 4.5,
+     "2015": 4.5,
+     "2016": 7.5,
+     "2017": 6.01,
+     "2018": 5.91,
+     "2019": 7.41,
+     "2020": 8.41,
+     "2021": 12.0,
+     "2022": 11.25,
+     "2023": 8.97,
+     "2024": 8.47
+    }
+   },
+   {
+    "label": "Recorder",
+    "function": "general_gov",
+    "values": {
+     "2014": 3.0,
+     "2015": 3.0,
+     "2016": 3.0,
+     "2017": 3.0,
+     "2018": 3.0,
+     "2019": 3.5,
+     "2020": 3.5,
+     "2021": 5.5,
+     "2022": 4.75,
+     "2023": 4.5,
+     "2024": 5.5
+    }
+   },
+   {
+    "label": "Crossing Guards",
+    "function": "public_safety",
+    "values": {
+     "2014": 4.75,
+     "2015": 5.25,
+     "2016": 5.0,
+     "2017": 4.52,
+     "2018": 4.52,
+     "2019": 4.52,
+     "2020": 5.5,
+     "2021": 6.5,
+     "2022": 5.0,
+     "2023": 3.82,
+     "2024": 4.82
+    }
+   },
+   {
+    "label": "Stormwater",
+    "function": "utilities",
+    "values": {
+     "2014": 0.0,
+     "2015": 0.0,
+     "2016": 0.0,
+     "2017": 0.0,
+     "2018": 0.0,
+     "2019": 0.0,
+     "2020": 0.0,
+     "2021": 0.0,
+     "2022": 0.0,
+     "2023": 4.0,
+     "2024": 4.63
+    }
+   },
+   {
+    "label": "Finance",
+    "function": "general_gov",
+    "values": {
+     "2014": 4.0,
+     "2015": 4.0,
+     "2016": 4.0,
+     "2017": 3.6,
+     "2018": 3.6,
+     "2019": 3.6,
+     "2020": 3.6,
+     "2021": 4.0,
+     "2022": 4.0,
+     "2023": 4.5,
+     "2024": 4.5
+    }
+   },
+   {
+    "label": "Facilities",
+    "function": "public_works",
+    "values": {
+     "2014": 1.0,
+     "2015": 1.5,
+     "2016": 3.0,
+     "2017": 2.1,
+     "2018": 2.75,
+     "2019": 4.25,
+     "2020": 4.75,
+     "2021": 7.0,
+     "2022": 5.75,
+     "2023": 5.13,
+     "2024": 4.13
+    }
+   },
+   {
+    "label": "Utility Billing",
+    "function": "utilities",
+    "values": {
+     "2014": 5.5,
+     "2015": 4.0,
+     "2016": 3.0,
+     "2017": 3.5,
+     "2018": 3.5,
+     "2019": 3.9,
+     "2020": 3.9,
+     "2021": 3.5,
+     "2022": 2.5,
+     "2023": 3.88,
+     "2024": 3.88
+    }
+   },
+   {
+    "label": "GIS",
+    "function": "general_gov",
+    "values": {
+     "2014": 0.0,
+     "2015": 0.0,
+     "2016": 0.0,
+     "2017": 0.0,
+     "2018": 0.0,
+     "2019": 0.0,
+     "2020": 0.0,
+     "2021": 0.0,
+     "2022": 0.0,
+     "2023": 2.0,
+     "2024": 3.0
+    }
+   },
+   {
+    "label": "Public Information",
+    "function": "general_gov",
+    "values": {
+     "2014": 1.0,
+     "2015": 1.25,
+     "2016": 2.0,
+     "2017": 2.4,
+     "2018": 2.18,
+     "2019": 2.18,
+     "2020": 3.18,
+     "2021": 2.0,
+     "2022": 2.0,
+     "2023": 3.25,
+     "2024": 2.63
+    }
+   },
+   {
+    "label": "Fleet",
+    "function": "public_works",
+    "values": {
+     "2014": 0.0,
+     "2015": 0.0,
+     "2016": 0.0,
+     "2017": 0.0,
+     "2018": 0.0,
+     "2019": 0.0,
+     "2020": 0.0,
+     "2021": 0.0,
+     "2022": 0.0,
+     "2023": 2.0,
+     "2024": 2.25
+    }
+   },
+   {
+    "label": "Human Resources",
+    "function": "general_gov",
+    "values": {
+     "2014": 1.0,
+     "2015": 1.0,
+     "2016": 1.0,
+     "2017": 1.0,
+     "2018": 1.0,
+     "2019": 1.0,
+     "2020": 1.0,
+     "2021": 1.0,
+     "2022": 1.0,
+     "2023": 1.0,
+     "2024": 1.0
+    }
+   },
+   {
+    "label": "Attorney",
+    "function": "general_gov",
+    "values": {
+     "2014": 0.0,
+     "2015": 0.0,
+     "2016": 0.0,
+     "2017": 0.0,
+     "2018": 0.0,
+     "2019": 0.0,
+     "2020": 0.0,
+     "2021": 0.0,
+     "2022": 0.0,
+     "2023": 1.0,
+     "2024": 1.0
+    }
+   },
+   {
+    "label": "Other",
+    "function": "general_gov",
+    "values": {
+     "2014": 2.68,
+     "2015": 3.38,
+     "2016": 3.0,
+     "2017": 4.63,
+     "2018": 4.58,
+     "2019": 5.24,
+     "2020": 5.24,
+     "2021": 0.0,
+     "2022": 0.0,
+     "2023": 2.25,
+     "2024": 0.09
+    }
+   },
+   {
+    "label": "Firefighters and officer",
+    "function": "public_safety",
+    "values": {
+     "2014": 0.0,
+     "2015": 0.0,
+     "2016": 0.0,
+     "2017": 0.0,
+     "2018": 0.0,
+     "2019": 0.0,
+     "2020": 0.0,
+     "2021": 0.0,
+     "2022": 0.0,
+     "2023": 0.0,
+     "2024": 0.0
+    }
+   },
+   {
+    "label": "Management",
+    "function": "general_gov",
+    "values": {
+     "2014": 0.0,
+     "2015": 0.0,
+     "2016": 0.0,
+     "2017": 0.0,
+     "2018": 0.0,
+     "2019": 0.0,
+     "2020": 0.0,
+     "2021": 0.0,
+     "2022": 0.0,
+     "2023": 0.0,
+     "2024": 0.0
+    }
+   },
+   {
+    "label": "Energy",
+    "function": "general_gov",
+    "values": {
+     "2014": 13.0,
+     "2015": 0.0,
+     "2016": 0.0,
+     "2017": 0.0,
+     "2018": 0.0,
+     "2019": 0.0,
+     "2020": 0.0,
+     "2021": 0.0,
+     "2022": 0.0,
+     "2023": 0.0,
+     "2024": 0.0
+    }
+   }
+  ],
+  "printed_total_deltas": [
+   {
+    "year": 2019,
+    "rebuilt": 104.11,
+    "printed": 104.09,
+    "delta": 0.02
+   },
+   {
+    "year": 2023,
+    "rebuilt": 137.34,
+    "printed": 137.45,
+    "delta": -0.11
+   },
+   {
+    "year": 2024,
+    "rebuilt": 146.58,
+    "printed": 146.57,
+    "delta": 0.01
+   }
+  ],
+  "source": {
+   "title": "Eagle Mountain City ACFR, fiscal year ended 30 June 2024",
+   "url": "https://eaglemountain.gov/wp-content/uploads/2025/01/EMC-ACFR-2024.pdf",
+   "page": 111,
+   "retrieved": "2026-08-18"
+  }
+ },
+ "peers": [
+  {
+   "city": "Murray",
+   "population": 53376,
+   "fiscal_year": 2024,
+   "public_safety_model": "in_house",
+   "population_upc": 52158,
+   "by_function": {
+    "general_gov": 59.0,
+    "public_safety": 161.0,
+    "public_works": 29.0,
+    "parks_rec": 50.0,
+    "library": 11.0,
+    "community_dev": 16.0,
+    "utilities": 89.0
+   },
+   "departments": [
+    {
+     "label": "General Government",
+     "function": "general_gov",
+     "fte": 59.0
+    },
+    {
+     "label": "Officers",
+     "function": "public_safety",
+     "fte": 83.0
+    },
+    {
+     "label": "Civilians",
+     "function": "public_safety",
+     "fte": 10.0
+    },
+    {
+     "label": "Firefighters",
+     "function": "public_safety",
+     "fte": 67.0
+    },
+    {
+     "label": "Civilians",
+     "function": "public_safety",
+     "fte": 1.0
+    },
+    {
+     "label": "Streets & Public Improvements",
+     "function": "public_works",
+     "fte": 24.0
+    },
+    {
+     "label": "Parks & Recreation",
+     "function": "parks_rec",
+     "fte": 44.0
+    },
+    {
+     "label": "Library",
+     "function": "library",
+     "fte": 11.0
+    },
+    {
+     "label": "Community & Economic Development",
+     "function": "community_dev",
+     "fte": 16.0
+    },
+    {
+     "label": "Central Garage",
+     "function": "public_works",
+     "fte": 5.0
+    },
+    {
+     "label": "Power",
+     "function": "utilities",
+     "fte": 48.0
+    },
+    {
+     "label": "Water",
+     "function": "utilities",
+     "fte": 22.0
+    },
+    {
+     "label": "Wastewater",
+     "function": "utilities",
+     "fte": 9.0
+    },
+    {
+     "label": "Golf Course",
+     "function": "parks_rec",
+     "fte": 6.0
+    },
+    {
+     "label": "Solid Waste",
+     "function": "utilities",
+     "fte": 1.0
+    },
+    {
+     "label": "Storm Water",
+     "function": "utilities",
+     "fte": 9.0
+    }
+   ],
+   "total": 415.0,
+   "public_safety": 161.0,
+   "utilities": 89.0,
+   "excl_public_safety": 254.0,
+   "core": 165.0,
+   "per_1k": {
+    "raw": 7.775,
+    "excl_public_safety": 4.759,
+    "core": 3.091
+   },
+   "source": {
+    "title": "Murray City ACFR, fiscal year ended 30 June 2025",
+    "url": "https://murray.utah.gov/DocumentCenter/View/17252",
+    "page": null,
+    "retrieved": "2026-08-18",
+    "note": "FY2025 report; its ten-year schedule carries the FY2024 column used here.",
+    "printed_total": 415.0
+   }
+  },
+  {
+   "city": "Logan",
+   "population": 56475,
+   "fiscal_year": 2024,
+   "public_safety_model": "in_house",
+   "population_upc": 57060,
+   "by_function": {
+    "general_gov": 67.0,
+    "public_safety": 159.0,
+    "parks_rec": 39.0,
+    "public_works": 40.0,
+    "utilities": 127.0
+   },
+   "departments": [
+    {
+     "label": "General government",
+     "function": "general_gov",
+     "fte": 67.0
+    },
+    {
+     "label": "Officers",
+     "function": "public_safety",
+     "fte": 62.0
+    },
+    {
+     "label": "Support staff",
+     "function": "public_safety",
+     "fte": 12.0
+    },
+    {
+     "label": "Dispatch",
+     "function": "public_safety",
+     "fte": 17.0
+    },
+    {
+     "label": "Firefighters/EMTs",
+     "function": "public_safety",
+     "fte": 67.0
+    },
+    {
+     "label": "Support staff",
+     "function": "public_safety",
+     "fte": 1.0
+    },
+    {
+     "label": "Parks, recreation, and culture",
+     "function": "parks_rec",
+     "fte": 39.0
+    },
+    {
+     "label": "Engineering",
+     "function": "public_works",
+     "fte": 11.0
+    },
+    {
+     "label": "Streets",
+     "function": "public_works",
+     "fte": 18.0
+    },
+    {
+     "label": "Storm water",
+     "function": "utilities",
+     "fte": 1.0
+    },
+    {
+     "label": "Shops",
+     "function": "public_works",
+     "fte": 11.0
+    },
+    {
+     "label": "Water/sewer",
+     "function": "utilities",
+     "fte": 36.0
+    },
+    {
+     "label": "Environmental health",
+     "function": "utilities",
+     "fte": 58.0
+    },
+    {
+     "label": "Electric",
+     "function": "utilities",
+     "fte": 32.0
+    }
+   ],
+   "total": 432.0,
+   "public_safety": 159.0,
+   "utilities": 127.0,
+   "excl_public_safety": 273.0,
+   "core": 146.0,
+   "per_1k": {
+    "raw": 7.649,
+    "excl_public_safety": 4.834,
+    "core": 2.585
+   },
+   "source": {
+    "title": "City of Logan ACFR, fiscal year ended 30 June 2024",
+    "url": "https://cms9files.revize.com/loganut/departments/finance/FY%202024%20Final%20ACFR%20with%20Cover.pdf",
+    "page": 105,
+    "retrieved": "2026-08-18",
+    "note": null,
+    "printed_total": 432.0
+   }
+  },
+  {
+   "city": "American Fork",
+   "population": 41119,
+   "fiscal_year": 2024,
+   "public_safety_model": "in_house",
+   "population_upc": 42476,
+   "by_function": {
+    "general_gov": 14.78,
+    "community_dev": 16.54,
+    "public_safety": 139.85,
+    "public_works": 19.74,
+    "utilities": 15.72,
+    "parks_rec": 70.57,
+    "library": 15.2
+   },
+   "departments": [
+    {
+     "label": "Administration",
+     "function": "general_gov",
+     "fte": 13.78
+    },
+    {
+     "label": "Economic Development",
+     "function": "community_dev",
+     "fte": 0.0
+    },
+    {
+     "label": "Officers",
+     "function": "public_safety",
+     "fte": 55.62
+    },
+    {
+     "label": "Civilians",
+     "function": "public_safety",
+     "fte": 13.5
+    },
+    {
+     "label": "Firefighters",
+     "function": "public_safety",
+     "fte": 57.19
+    },
+    {
+     "label": "Ambulance",
+     "function": "public_safety",
+     "fte": 12.54
+    },
+    {
+     "label": "Civilians",
+     "function": "public_safety",
+     "fte": 1.0
+    },
+    {
+     "label": "Engineering",
+     "function": "public_works",
+     "fte": 6.16
+    },
+    {
+     "label": "Public Infrastructure",
+     "function": "public_works",
+     "fte": 2.88
+    },
+    {
+     "label": "Public Works Admin",
+     "function": "public_works",
+     "fte": 4.4
+    },
+    {
+     "label": "Secondary Irrigation",
+     "function": "utilities",
+     "fte": 2.27
+    },
+    {
+     "label": "Sewer",
+     "function": "utilities",
+     "fte": 3.05
+    },
+    {
+     "label": "Storm Drain",
+     "function": "utilities",
+     "fte": 3.05
+    },
+    {
+     "label": "Streets",
+     "function": "public_works",
+     "fte": 6.3
+    },
+    {
+     "label": "Water",
+     "function": "utilities",
+     "fte": 5.3
+    },
+    {
+     "label": "Building Inspections",
+     "function": "community_dev",
+     "fte": 8.14
+    },
+    {
+     "label": "Planning",
+     "function": "community_dev",
+     "fte": 4.35
+    },
+    {
+     "label": "Administration",
+     "function": "general_gov",
+     "fte": 1.0
+    },
+    {
+     "label": "Boat Harbor",
+     "function": "parks_rec",
+     "fte": 0.42
+    },
+    {
+     "label": "Buildings and Grounds",
+     "function": "community_dev",
+     "fte": 4.05
+    },
+    {
+     "label": "Cemetery",
+     "function": "parks_rec",
+     "fte": 5.57
+    },
+    {
+     "label": "Fitness",
+     "function": "parks_rec",
+     "fte": 42.39
+    },
+    {
+     "label": "Library",
+     "function": "library",
+     "fte": 15.2
+    },
+    {
+     "label": "Literacy",
+     "function": "library",
+     "fte": 0.0
+    },
+    {
+     "label": "Parks",
+     "function": "parks_rec",
+     "fte": 13.57
+    },
+    {
+     "label": "Recreation",
+     "function": "parks_rec",
+     "fte": 7.63
+    },
+    {
+     "label": "Senior Citizens",
+     "function": "parks_rec",
+     "fte": 0.99
+    },
+    {
+     "label": "Broadband",
+     "function": "utilities",
+     "fte": 2.05
+    }
+   ],
+   "total": 292.4,
+   "public_safety": 139.85,
+   "utilities": 15.72,
+   "excl_public_safety": 152.55,
+   "core": 136.83,
+   "per_1k": {
+    "raw": 7.111,
+    "excl_public_safety": 3.71,
+    "core": 3.328
+   },
+   "source": {
+    "title": "City of American Fork ACFR, fiscal year ended 30 June 2024",
+    "url": "https://www.americanfork.gov/DocumentCenter/View/17570/FY-2024-Annual-Comprehensive-Financial-Report",
+    "page": 141,
+    "retrieved": "2026-08-18",
+    "note": "American Fork prints its schedule as two five-year tables; the later one, covering 2020-2024, is the one read here.",
+    "printed_total": 292.4
+   }
+  },
+  {
+   "city": "Draper",
+   "population": 50179,
+   "fiscal_year": 2024,
+   "public_safety_model": "in_house",
+   "population_upc": 52142,
+   "by_function": {
+    "general_gov": 50.45,
+    "public_works": 38.6,
+    "public_safety": 131.84,
+    "community_dev": 16.0,
+    "parks_rec": 39.69,
+    "utilities": 33.35
+   },
+   "departments": [
+    {
+     "label": "Legislative                       6.00",
+     "function": "general_gov",
+     "fte": 6.0
+    },
+    {
+     "label": "Executive                        12.87",
+     "function": "general_gov",
+     "fte": 21.1
+    },
+    {
+     "label": "Finance/Treasurer                 7.75",
+     "function": "general_gov",
+     "fte": 9.25
+    },
+    {
+     "label": "Human Resources                   2.15",
+     "function": "general_gov",
+     "fte": 3.0
+    },
+    {
+     "label": "Facilities Management             6.13",
+     "function": "public_works",
+     "fte": 7.25
+    },
+    {
+     "label": "Fleet Management                  2.00",
+     "function": "public_works",
+     "fte": 0.0
+    },
+    {
+     "label": "Police                           54.29",
+     "function": "public_safety",
+     "fte": 67.44
+    },
+    {
+     "label": "Fire (1)",
+     "function": "public_safety",
+     "fte": 38.22
+    },
+    {
+     "label": "Animal Control                    3.38",
+     "function": "public_safety",
+     "fte": 3.38
+    },
+    {
+     "label": "Courts                            5.60",
+     "function": "general_gov",
+     "fte": 5.6
+    },
+    {
+     "label": "Administrative                    2.00",
+     "function": "general_gov",
+     "fte": 4.5
+    },
+    {
+     "label": "Building                          9.00",
+     "function": "community_dev",
+     "fte": 10.0
+    },
+    {
+     "label": "Planning                          4.00",
+     "function": "community_dev",
+     "fte": 5.0
+    },
+    {
+     "label": "Code Enforcement                  1.67",
+     "function": "community_dev",
+     "fte": 1.0
+    },
+    {
+     "label": "Public Works Admin                2.00",
+     "function": "public_works",
+     "fte": 4.72
+    },
+    {
+     "label": "Engineering (2)                   7.50",
+     "function": "public_works",
+     "fte": 11.63
+    },
+    {
+     "label": "Streets                           7.00",
+     "function": "public_works",
+     "fte": 9.0
+    },
+    {
+     "label": "Parks & Recreation Admin          5.25",
+     "function": "parks_rec",
+     "fte": 4.19
+    },
+    {
+     "label": "Parks & Trails                   20.00",
+     "function": "parks_rec",
+     "fte": 31.5
+    },
+    {
+     "label": "Recreation                        2.20",
+     "function": "parks_rec",
+     "fte": 4.0
+    },
+    {
+     "label": "Utility Admin",
+     "function": "utilities",
+     "fte": 3.63
+    },
+    {
+     "label": "Water",
+     "function": "utilities",
+     "fte": 12.0
+    },
+    {
+     "label": "Storm Water",
+     "function": "utilities",
+     "fte": 8.72
+    },
+    {
+     "label": "Solid Waste",
+     "function": "utilities",
+     "fte": 9.0
+    },
+    {
+     "label": "Ambulance",
+     "function": "public_safety",
+     "fte": 22.8
+    },
+    {
+     "label": "Risk Management",
+     "function": "general_gov",
+     "fte": 1.0
+    },
+    {
+     "label": "Fleet Management",
+     "function": "public_works",
+     "fte": 6.0
+    }
+   ],
+   "total": 309.93,
+   "public_safety": 131.84,
+   "utilities": 33.35,
+   "excl_public_safety": 178.09,
+   "core": 144.74,
+   "per_1k": {
+    "raw": 6.176,
+    "excl_public_safety": 3.549,
+    "core": 2.884
+   },
+   "source": {
+    "title": "City of Draper ACFR, fiscal year ended 30 June 2025",
+    "url": "https://www.draperutah.gov/media/rqxfju1m/draper-city-acfr-fy25.pdf",
+    "page": null,
+    "retrieved": "2026-08-18",
+    "note": "FY2025 report; its ten-year schedule carries the FY2024 column used here.",
+    "printed_total": 309.93
+   }
+  },
+  {
+   "city": "Riverton",
+   "population": 46703,
+   "fiscal_year": 2024,
+   "public_safety_model": "in_house",
+   "population_upc": 47298,
+   "by_function": {
+    "general_gov": 30.5,
+    "public_works": 35.0,
+    "community_dev": 7.0,
+    "public_safety": 47.46,
+    "parks_rec": 21.0,
+    "utilities": 25.0
+   },
+   "departments": [
+    {
+     "label": "City Council",
+     "function": "general_gov",
+     "fte": 2.5
+    },
+    {
+     "label": "Mayor's Office",
+     "function": "general_gov",
+     "fte": 0.5
+    },
+    {
+     "label": "City Manager's Office",
+     "function": "general_gov",
+     "fte": 1.0
+    },
+    {
+     "label": "Facilities maintenance",
+     "function": "public_works",
+     "fte": 6.5
+    },
+    {
+     "label": "City Recorder's Office",
+     "function": "general_gov",
+     "fte": 1.0
+    },
+    {
+     "label": "City Attorney's Office",
+     "function": "general_gov",
+     "fte": 3.0
+    },
+    {
+     "label": "Communications",
+     "function": "general_gov",
+     "fte": 4.5
+    },
+    {
+     "label": "Information Technology",
+     "function": "general_gov",
+     "fte": 3.0
+    },
+    {
+     "label": "Administrative Services",
+     "function": "general_gov",
+     "fte": 13.0
+    },
+    {
+     "label": "Justice Court",
+     "function": "general_gov",
+     "fte": 2.0
+    },
+    {
+     "label": "Planning and zoning",
+     "function": "community_dev",
+     "fte": 4.0
+    },
+    {
+     "label": "Building inspections",
+     "function": "community_dev",
+     "fte": 3.0
+    },
+    {
+     "label": "Ordinance enforcement/AC",
+     "function": "public_safety",
+     "fte": 3.0
+    },
+    {
+     "label": "Police",
+     "function": "public_safety",
+     "fte": 41.0
+    },
+    {
+     "label": "Crossing Guards",
+     "function": "public_safety",
+     "fte": 3.46
+    },
+    {
+     "label": "Parks",
+     "function": "parks_rec",
+     "fte": 13.5
+    },
+    {
+     "label": "Recreation and comm. events",
+     "function": "parks_rec",
+     "fte": 6.0
+    },
+    {
+     "label": "Senior center",
+     "function": "parks_rec",
+     "fte": 1.5
+    },
+    {
+     "label": "Engineering",
+     "function": "public_works",
+     "fte": 11.0
+    },
+    {
+     "label": "Fleet",
+     "function": "public_works",
+     "fte": 3.0
+    },
+    {
+     "label": "Secondary Water Bond Project",
+     "function": "utilities",
+     "fte": 0.0
+    },
+    {
+     "label": "Street maintenance",
+     "function": "public_works",
+     "fte": 12.5
+    },
+    {
+     "label": "Street lighting",
+     "function": "public_works",
+     "fte": 2.0
+    },
+    {
+     "label": "Storm water",
+     "function": "utilities",
+     "fte": 7.0
+    },
+    {
+     "label": "Water",
+     "function": "utilities",
+     "fte": 18.0
+    }
+   ],
+   "total": 165.96,
+   "public_safety": 47.46,
+   "utilities": 25.0,
+   "excl_public_safety": 118.5,
+   "core": 93.5,
+   "per_1k": {
+    "raw": 3.554,
+    "excl_public_safety": 2.537,
+    "core": 2.002
+   },
+   "source": {
+    "title": "Riverton City ACFR, fiscal year ended 30 June 2024",
+    "url": "https://www.rivertonutah.gov/departments/finance/cafr/riverton-city-acfr-2024.pdf",
+    "page": null,
+    "retrieved": "2026-08-18",
+    "note": null,
+    "printed_total": 165.96
+   }
+  },
+  {
+   "city": "Herriman",
+   "population": 62340,
+   "fiscal_year": 2024,
+   "public_safety_model": "in_house",
+   "population_upc": 62722,
+   "by_function": {
+    "general_gov": 38.13,
+    "public_works": 32.0,
+    "parks_rec": 25.94,
+    "community_dev": 15.1,
+    "public_safety": 60.32,
+    "utilities": 26.84
+   },
+   "departments": [
+    {
+     "label": "Legislative",
+     "function": "general_gov",
+     "fte": 2.5
+    },
+    {
+     "label": "Administration",
+     "function": "general_gov",
+     "fte": 4.97
+    },
+    {
+     "label": "Communications",
+     "function": "general_gov",
+     "fte": 3.0
+    },
+    {
+     "label": "Human Resources",
+     "function": "general_gov",
+     "fte": 3.0
+    },
+    {
+     "label": "Information Technology",
+     "function": "general_gov",
+     "fte": 3.0
+    },
+    {
+     "label": "Legal",
+     "function": "general_gov",
+     "fte": 3.0
+    },
+    {
+     "label": "Courts",
+     "function": "general_gov",
+     "fte": 2.96
+    },
+    {
+     "label": "Recorder",
+     "function": "general_gov",
+     "fte": 3.41
+    },
+    {
+     "label": "Customer Service",
+     "function": "general_gov",
+     "fte": 4.0
+    },
+    {
+     "label": "Finance",
+     "function": "general_gov",
+     "fte": 4.78
+    },
+    {
+     "label": "Public Works Administration",
+     "function": "public_works",
+     "fte": 4.0
+    },
+    {
+     "label": "Facilities",
+     "function": "public_works",
+     "fte": 2.93
+    },
+    {
+     "label": "Fleet Management",
+     "function": "public_works",
+     "fte": 4.0
+    },
+    {
+     "label": "Street Maintenance",
+     "function": "public_works",
+     "fte": 11.45
+    },
+    {
+     "label": "Community Events and Recreation",
+     "function": "parks_rec",
+     "fte": 5.53
+    },
+    {
+     "label": "Parks/Cemetery",
+     "function": "parks_rec",
+     "fte": 20.41
+    },
+    {
+     "label": "Community Development Administration",
+     "function": "community_dev",
+     "fte": 2.0
+    },
+    {
+     "label": "Building",
+     "function": "community_dev",
+     "fte": 8.0
+    },
+    {
+     "label": "Economic Development",
+     "function": "community_dev",
+     "fte": 1.0
+    },
+    {
+     "label": "Planning",
+     "function": "community_dev",
+     "fte": 4.0
+    },
+    {
+     "label": "Planning Commision",
+     "function": "community_dev",
+     "fte": 0.1
+    },
+    {
+     "label": "Engineering",
+     "function": "public_works",
+     "fte": 9.62
+    },
+    {
+     "label": "GIS",
+     "function": "general_gov",
+     "fte": 3.51
+    },
+    {
+     "label": "Emergency Services",
+     "function": "public_safety",
+     "fte": 0.05
+    },
+    {
+     "label": "Police",
+     "function": "public_safety",
+     "fte": 49.66
+    },
+    {
+     "label": "Animal Services",
+     "function": "public_safety",
+     "fte": 3.0
+    },
+    {
+     "label": "Crossing Guards",
+     "function": "public_safety",
+     "fte": 7.61
+    },
+    {
+     "label": "Water",
+     "function": "utilities",
+     "fte": 22.55
+    },
+    {
+     "label": "Storm Water",
+     "function": "utilities",
+     "fte": 4.29
+    }
+   ],
+   "total": 198.33,
+   "public_safety": 60.32,
+   "utilities": 26.84,
+   "excl_public_safety": 138.01,
+   "core": 111.17,
+   "per_1k": {
+    "raw": 3.181,
+    "excl_public_safety": 2.214,
+    "core": 1.783
+   },
+   "source": {
+    "title": "Herriman City ACFR, fiscal year ended 30 June 2024",
+    "url": "https://herriman-website-files.s3.us-west-1.amazonaws.com/finance_reports/CAFR/99+12-31-24+ACFR+FINAL.pdf",
+    "page": 139,
+    "retrieved": "2026-08-18",
+    "note": null,
+    "printed_total": 198.33
+   }
+  }
+ ],
+ "peer_rule": {
+  "depth": 15,
+  "measured_on": 2024,
+  "ranked": [
+   {
+    "rank": 1,
+    "city": "Herriman",
+    "population": 62340,
+    "gap": 978,
+    "used": true
+   },
+   {
+    "rank": 2,
+    "city": "Millcreek",
+    "population": 64198,
+    "gap": 2836,
+    "used": false
+   },
+   {
+    "rank": 3,
+    "city": "Taylorsville",
+    "population": 57850,
+    "gap": 3512,
+    "used": false
+   },
+   {
+    "rank": 4,
+    "city": "Saratoga Springs",
+    "population": 57155,
+    "gap": 4207,
+    "used": false
+   },
+   {
+    "rank": 5,
+    "city": "Logan",
+    "population": 56475,
+    "gap": 4887,
+    "used": true
+   },
+   {
+    "rank": 6,
+    "city": "Murray",
+    "population": 53376,
+    "gap": 7986,
+    "used": true
+   },
+   {
+    "rank": 7,
+    "city": "Draper",
+    "population": 50179,
+    "gap": 11183,
+    "used": true
+   },
+   {
+    "rank": 8,
+    "city": "Spanish Fork",
+    "population": 47624,
+    "gap": 13738,
+    "used": false
+   },
+   {
+    "rank": 9,
+    "city": "Riverton",
+    "population": 46703,
+    "gap": 14659,
+    "used": true
+   },
+   {
+    "rank": 10,
+    "city": "Bountiful",
+    "population": 45039,
+    "gap": 16323,
+    "used": false
+   },
+   {
+    "rank": 11,
+    "city": "American Fork",
+    "population": 41119,
+    "gap": 20243,
+    "used": true
+   },
+   {
+    "rank": 12,
+    "city": "Tooele",
+    "population": 41073,
+    "gap": 20289,
+    "used": false
+   },
+   {
+    "rank": 13,
+    "city": "Cedar City",
+    "population": 41010,
+    "gap": 20352,
+    "used": false
+   },
+   {
+    "rank": 14,
+    "city": "Syracuse",
+    "population": 38970,
+    "gap": 22392,
+    "used": false
+   },
+   {
+    "rank": 15,
+    "city": "Roy",
+    "population": 38906,
+    "gap": 22456,
+    "used": false
+   }
+  ]
+ },
+ "how_many_people": {
+  "comparison_year": 2024,
+  "comparison_population": 61362,
+  "latest_year": 2025,
+  "census": {
+   "2020": 44502,
+   "2021": 49530,
+   "2022": 54651,
+   "2023": 58190,
+   "2024": 61362,
+   "2025": 66557
+  },
+  "upc": {
+   "2023": 58002,
+   "2024": 61240,
+   "2025": 65409
+  },
+  "census_latest": 66557,
+  "upc_latest": 65409,
+  "city_claims": [
+   {
+    "figure": 66500,
+    "year": 2024,
+    "source": "Eagle Mountain City ACFR 2024, statistical section",
+    "note": "The city's own demographic table, for the same year the staff count covers."
+   },
+   {
+    "figure": 77000,
+    "as_of": "2026-04-14",
+    "source": "Utah County Sheriff's Office workload study, presented to Council",
+    "note": "Used as the service population behind the officers-per-1,000 figure."
+   },
+   {
+    "figure": 80000,
+    "as_of": "2026-08-06",
+    "source": "City officials at the property-tax hearing",
+    "note": "Given as “almost 80,000”."
+   }
+  ],
+  "note": "Two independent official estimates — the Census Bureau's and Utah's own — agree with each other closely and both run well below the figures the city uses in its own meetings. The comparison on this page has to use one series measured the same way for every city, so it uses the Census figure; if the city's higher number is right, Eagle Mountain is leaner still, not less lean."
+ },
+ "excluded": [
+  {
+   "city": "Millcreek",
+   "reason": "Publishes basic financial statements only — 64 pages with no statistical section, so no staffing schedule exists to read.",
+   "population": 64198
+  },
+  {
+   "city": "Taylorsville",
+   "reason": "The city's finance pages refuse automated requests (HTTP 403), so the report could not be retrieved.",
+   "population": 57850
+  },
+  {
+   "city": "Saratoga Springs",
+   "reason": "The city's public audit archive stops at FY2017. No recent report is posted where it can be found — worth noting on its own account, since this is the city Eagle Mountain is most often compared with.",
+   "population": 57155
+  },
+  {
+   "city": "Spanish Fork",
+   "reason": "Publishes basic financial statements only — no statistical section, so no staffing schedule exists to read.",
+   "population": 47624
+  },
+  {
+   "city": "Bountiful",
+   "reason": "Its report is served through a viewer that returns a web page rather than the PDF, and could not be retrieved for this build.",
+   "population": 45039
+  },
+  {
+   "city": "Tooele",
+   "reason": "Publishes an audit report with no statistical section, so no staffing schedule exists to read.",
+   "population": 41073
+  },
+  {
+   "city": "Cedar City",
+   "reason": "No finance or archive page could be located that serves the report.",
+   "population": 41010
+  },
+  {
+   "city": "Syracuse",
+   "reason": "Publishes a schedule of full-time employees rather than full-time equivalents — a headcount of permanent staff that leaves part-time and seasonal work out entirely. That is a different measure from the one every other city here reports, and mixing the two would overstate nobody consistently.",
+   "population": 38970
+  },
+  {
+   "city": "Roy",
+   "reason": "Same as Syracuse: reports a headcount of full-time employees, not full-time equivalents, so it is not comparable with the rest.",
+   "population": 38906
+  }
+ ],
+ "claim": {
+  "raw": {
+   "eagle_mountain": 2.389,
+   "peer_median": 6.643,
+   "peer_mean": 5.908,
+   "pct_of_median": 36,
+   "pct_of_mean": 40
+  },
+  "excl_public_safety": {
+   "eagle_mountain": 2.31,
+   "peer_median": 3.63,
+   "peer_mean": 3.601,
+   "pct_of_median": 64,
+   "pct_of_mean": 64
+  },
+  "core": {
+   "eagle_mountain": 1.776,
+   "peer_median": 2.734,
+   "peer_mean": 2.612,
+   "pct_of_median": 65,
+   "pct_of_mean": 68
+  }
+ },
+ "personnel_cost": {
+  "series": [
+   {
+    "key": "fy24a",
+    "label": "FY2024 actual",
+    "value": 11728965
+   },
+   {
+    "key": "fy25b",
+    "label": "FY2025 budget",
+    "value": 15342183
+   },
+   {
+    "key": "adopted",
+    "label": "FY2026 adopted",
+    "value": 16992670
+   },
+   {
+    "key": "amended",
+    "label": "FY2026 amended",
+    "value": 17071670
+   },
+   {
+    "key": "fy2027",
+    "label": "FY2027 tentative",
+    "value": 20466716
+   }
+  ],
+  "share_of_budget": {
+   "personnel": 16992670,
+   "all_funds": 119105860
+  },
+  "by_department": [
+   {
+    "department": "Building Inspections",
+    "fund": "General Fund",
+    "adopted": 1354806,
+    "fy24a": 1007475
+   },
+   {
+    "department": "Executive",
+    "fund": "General Fund",
+    "adopted": 1227714,
+    "fy24a": 928004
+   },
+   {
+    "department": "Parks",
+    "fund": "General Fund",
+    "adopted": 1207008,
+    "fy24a": 916435
+   },
+   {
+    "department": "Engineering",
+    "fund": "General Fund",
+    "adopted": 1158553,
+    "fy24a": 893816
+   },
+   {
+    "department": "Finance",
+    "fund": "General Fund",
+    "adopted": 1070403,
+    "fy24a": 531040
+   },
+   {
+    "department": "Streets & Roads",
+    "fund": "General Fund",
+    "adopted": 1058290,
+    "fy24a": 678298
+   },
+   {
+    "department": "Stormwater",
+    "fund": "Storm Drain Fund",
+    "adopted": 915150,
+    "fy24a": 358341
+   },
+   {
+    "department": "Water Utility",
+    "fund": "Water Fund",
+    "adopted": 882920,
+    "fy24a": 1132314
+   },
+   {
+    "department": "Planning & Zoning",
+    "fund": "General Fund",
+    "adopted": 787979,
+    "fy24a": 925180
+   },
+   {
+    "department": "Wastewater Utility",
+    "fund": "Sewer Fund",
+    "adopted": 748801,
+    "fy24a": 808019
+   },
+   {
+    "department": "Water Resource",
+    "fund": "Water Fund",
+    "adopted": 747814,
+    "fy24a": 0
+   },
+   {
+    "department": "Library",
+    "fund": "General Fund",
+    "adopted": 684578,
+    "fy24a": 550889
+   },
+   {
+    "department": "Wastewater Treatment",
+    "fund": "Sewer Fund",
+    "adopted": 524597,
+    "fy24a": 0
+   },
+   {
+    "department": "City Recorder's Office",
+    "fund": "General Fund",
+    "adopted": 432406,
+    "fy24a": 576572
+   },
+   {
+    "department": "Recreation",
+    "fund": "General Fund",
+    "adopted": 356069,
+    "fy24a": 281298
+   },
+   {
+    "department": "Operations & Facilities",
+    "fund": "General Fund",
+    "adopted": 337533,
+    "fy24a": 211024
+   },
+   {
+    "department": "Human Resources",
+    "fund": "General Fund",
+    "adopted": 328309,
+    "fy24a": 139447
+   },
+   {
+    "department": "Legislative",
+    "fund": "General Fund",
+    "adopted": 321974,
+    "fy24a": 90326
+   },
+   {
+    "department": "GIS",
+    "fund": "GIS Fund",
+    "adopted": 316982,
+    "fy24a": 158241
+   },
+   {
+    "department": "Fleet Services",
+    "fund": "Fleet Fund",
+    "adopted": 312738,
+    "fy24a": 269571
+   }
+  ],
+  "fy2027_change": 3395046,
+  "source": {
+   "note": "Wages and benefits as budgeted, from the same ClearGov line items the Budget page is built from. Dollars, not headcount: ClearGov carries no position count.",
+   "files": [
+    "data.budget-book.json",
+    "data.budget-next.json"
+   ]
+  }
+ },
+ "population_sources": {
+  "census": {
+   "title": "Annual Estimates of the Resident Population for Incorporated Places",
+   "publisher": "US Census Bureau, vintage 2025",
+   "url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv",
+   "note": "Used as the denominator for every city, so the comparison is measured one way throughout."
+  },
+  "upc": {
+   "title": "Utah Population Committee subcounty estimates, 2025",
+   "publisher": "Kem C. Gardner Policy Institute, University of Utah",
+   "url": "https://gardner.utah.edu/demographics/population-estimates/",
+   "note": "Utah's first statewide subcounty estimates, released May 2026."
+  }
+ },
+ "functions": [
+  {
+   "key": "general_gov",
+   "label": "General government"
+  },
+  {
+   "key": "public_safety",
+   "label": "Police, fire & emergency"
+  },
+  {
+   "key": "community_dev",
+   "label": "Planning & development"
+  },
+  {
+   "key": "utilities",
+   "label": "Utilities"
+  },
+  {
+   "key": "public_works",
+   "label": "Streets & public works"
+  },
+  {
+   "key": "parks_rec",
+   "label": "Parks & recreation"
+  },
+  {
+   "key": "library",
+   "label": "Library"
+  },
+  {
+   "key": "unmapped",
+   "label": "Unclassified"
+  }
+ ]
+}

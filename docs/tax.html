@@ -31,8 +31,8 @@
          preloaded below are the only ones this page costs. -->
     <link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="fonts.css?v=20260817k" />
-    <link rel="stylesheet" href="site.css?v=20260817k" />
+    <link rel="stylesheet" href="fonts.css?v=20260818c" />
+    <link rel="stylesheet" href="site.css?v=20260818c" />
 
     <!-- No datePublished/dateModified. Schema.org wants both on an Article and
          Google leans on them for anything time-sensitive, but this page's dates
@@ -83,12 +83,14 @@
         </div>
       </a>
       <nav class="nav" aria-label="Primary">
+        <!-- BEGIN generated:nav (ingest/build_nav.py) -->
         <a href="index.html" data-nav="index.html">Home</a>
         <a href="meetings.html" data-nav="meetings.html">Meetings</a>
-        <a href="members.html" data-nav="members.html">Members</a>
-        <a href="tax.html" data-nav="tax.html" data-nav-alias="projections.html">Tax</a>
-        <a href="budget.html" data-nav="budget.html">Budget</a>
-        <a href="definitions.html" data-nav="definitions.html">Definitions</a>
+        <a href="motions.html" data-nav="motions.html">Votes</a>
+        <a href="members.html" data-nav="members.html" data-nav-alias="member.html">Members</a>
+        <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html" data-nav-body="city-council">Finances</a>
+        <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+        <!-- END generated:nav -->
       </nav>
     </header>
 
@@ -97,9 +99,12 @@
     <main id="main" class="main-reading">
       <!-- The Tax section's own strip. Static markup rather than injected, so
            it survives a load where the JSON never arrives. -->
-      <nav class="tax-subnav" aria-label="Tax section">
-        <a href="tax.html" aria-current="page">The increase</a>
+      <nav class="subnav" aria-label="Finances section">
+        <a href="finances.html">Overview</a>
+        <a href="tax.html" aria-current="page">Tax</a>
         <a href="projections.html">Projections</a>
+        <a href="budget.html">Budget</a>
+        <a href="staffing.html">Staffing</a>
       </nav>
 
       <!-- The page is built from three fetches, so it can't render on first
@@ -151,9 +156,9 @@
       </div>
     </main>
 
-    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a></span></footer>
+    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span></footer>
 
-    <script src="site.js?v=20260817k"></script>
+    <script src="site.js?v=20260818c"></script>
     <script>
       (async () => {
         const root = document.getElementById("content");

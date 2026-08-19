@@ -70,6 +70,13 @@ PAGES: list[dict] = [
      "data": ["data.json", "data.upcoming.json"], "body_scoped": "meetings"},
     {"path": "members.html", "priority": "0.9", "changefreq": "monthly",
      "data": ["data.json"], "body_scoped": "members"},
+    # The Finances section's landing page. It carries no data of its own — the
+    # figures on it are read from the four pages below — but it is the only URL
+    # that names the section, so it is what a search for the city's budget or
+    # tax rate should be able to land on.
+    {"path": "finances.html", "priority": "0.8", "changefreq": "weekly",
+     "data": ["data.tax.json", "data.budget-next.json",
+              "data.projections.json", "data.staffing.json"]},
     {"path": "tax.html", "priority": "0.8", "changefreq": "monthly",
      "data": ["data.tax.json", "data.tax-bill.json", "data.tax-case.json",
               "data.tax-county.json", "data.tax-state.json"]},
@@ -78,6 +85,8 @@ PAGES: list[dict] = [
               "data.budget-next.json"]},
     {"path": "projections.html", "priority": "0.8", "changefreq": "monthly",
      "data": ["data.projections.json"]},
+    {"path": "staffing.html", "priority": "0.8", "changefreq": "monthly",
+     "data": ["data.staffing.json"]},
     {"path": "motions.html", "priority": "0.7", "changefreq": "weekly",
      "data": ["data.json"], "body_scoped": "motions"},
     {"path": "definitions.html", "priority": "0.7", "changefreq": "monthly",

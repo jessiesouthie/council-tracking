@@ -93,7 +93,6 @@
   --ico-people:   url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='9' cy='9' r='3.2'/><path d='M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6'/><circle cx='17' cy='8' r='2.6'/><path d='M15.5 14.2c2.6.5 4.5 2.8 4.5 5.6'/></svg>");
   --ico-receipt:  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M6 2.8h12v18.4l-2.4-1.6-2.4 1.6-2.4-1.6-2.4 1.6L6 19.6z'/><path d='M9.5 8h5'/><path d='M9.5 12h5'/></svg>");
   --ico-flow:     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='3.2' height='6'/><rect x='3' y='14' width='3.2' height='6'/><rect x='17.8' y='9' width='3.2' height='6'/><path d='M6.2 7h5c1.5 0 1.5 5 3 5h3.6'/><path d='M6.2 17h5c1.5 0 1.5-5 3-5'/></svg>");
-  --ico-more:     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black' stroke='none'><circle cx='5' cy='12' r='1.7'/><circle cx='12' cy='12' r='1.7'/><circle cx='19' cy='12' r='1.7'/></svg>");
   /* Two lines diverging — the projection page's whole subject in 22px. */
   --ico-trend:    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M3.5 4v16h17'/><path d='M6.5 15l4-4 3 2 4.5-6'/><path d='M6.5 11l4 2 3-4 4.5 2' stroke-dasharray='3 2.4'/></svg>");
   /* An open book — the glossary. Two short rules on the right page read as text
@@ -322,12 +321,26 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   display: flex;
   gap: 2px;
   flex: 1;
-  justify-content: center;
-  flex-wrap: wrap;
+  /* Never wrap: a second row stands the topbar up from 69px to 115px, and it
+     happens at the widths and body labels that are hardest to notice. Overflow
+     scrolls instead, the way .subnav does.
+
+     Centred by auto margins on the end items rather than justify-content, which
+     is not the same thing once the row overflows: centred overflow spills off
+     both edges at once and the start of it can't be scrolled back to, so the
+     first item sits permanently half-cut. Auto margins collapse to nothing when
+     there isn't room, leaving the row start-aligned and fully scrollable. */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+.nav > :first-child { margin-left: auto; }
+.nav > :last-child { margin-right: auto; }
+.nav::-webkit-scrollbar { display: none; }
 .nav a {
   display: inline-flex;
   align-items: center;
+  flex: none;
   min-height: 44px;
   padding: 8px 14px;
   border-radius: 999px;
@@ -341,12 +354,6 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   color: var(--accent-fg);
 }
 
-.nav .nav-divider {
-  width: 1px;
-  align-self: stretch;
-  background: var(--border);
-  margin: 4px 4px;
-}
 
 .topbar-actions { display: flex; align-items: center; gap: 8px; }
 
@@ -1285,7 +1292,14 @@ body.home-paper {
   color: var(--fg-soft);
   text-transform: none;
   margin: 0;
-  flex: none;
+  /* Was flex: none, which meant a heading too long for the viewport pushed the
+     whole page sideways instead of wrapping — visible at 390px on the staffing
+     page, whose headings are full sentences. Shrinking is allowed now; a
+     heading that already fits is laid out identically, because 0 1 auto and
+     none size the same whenever there is room. */
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow-wrap: break-word;
   order: 0;
 }
 .section-head::after {
@@ -2993,7 +3007,12 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
   /* ---- The bottom tab bar itself ---- */
   .tabbar {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    /* One equal column per item, however many there are. It was pinned at four
+       when the bar held three links and a "More" button; it now holds five, and
+       four again for a body that has no Finances section, so the count is not
+       something the stylesheet can know. */
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
     position: fixed;
     bottom: 0; left: 0; right: 0;
     z-index: 20;
@@ -3004,8 +3023,7 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
     padding-bottom: var(--safe-bottom);
     box-shadow: 0 -1px 0 rgb(var(--shadow-rgb) / .04), 0 -10px 24px rgb(var(--shadow-rgb) / .06);
   }
-  .tabbar a,
-  .tabbar .tab-more {
+  .tabbar a {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -3021,23 +3039,12 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
     position: relative;
     -webkit-tap-highlight-color: transparent;
   }
-  /* The More trigger is a <button>; strip its native chrome so it matches the
-     tab links exactly. */
-  .tabbar .tab-more {
-    background: none;
-    border: 0;
-    font-family: inherit;
-    cursor: pointer;
-  }
-  .tabbar a:hover,
-  .tabbar .tab-more:hover { text-decoration: none; color: var(--fg-soft); }
-  .tabbar a.active, .tabbar a[aria-current="page"],
-  .tabbar .tab-more.active {
+  .tabbar a:hover { text-decoration: none; color: var(--fg-soft); }
+  .tabbar a.active, .tabbar a[aria-current="page"] {
     color: var(--accent);
   }
   .tabbar a.active::after,
-  .tabbar a[aria-current="page"]::after,
-  .tabbar .tab-more.active::after {
+  .tabbar a[aria-current="page"]::after {
     /* Park-sign accent stripe — same micro-language as the brand wordmark. */
     content: "";
     position: absolute;
@@ -3049,8 +3056,7 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
     border-radius: 1px;
     background: var(--accent);
   }
-  .tabbar .tab-ico,
-  .more-sheet .tab-ico {
+  .tabbar .tab-ico {
     width: 24px;
     height: 24px;
     display: block;
@@ -3062,74 +3068,21 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
     -webkit-mask-size: 22px 22px;
             mask-size: 22px 22px;
   }
-  /* Icon masks keyed by destination, so a row looks the same whether it lives
-     on the bar or in the More sheet. */
+  /* Icon masks keyed by destination. */
   [data-nav="index.html"]    .tab-ico { -webkit-mask-image: var(--ico-home);     mask-image: var(--ico-home); }
   [data-nav="meetings.html"] .tab-ico { -webkit-mask-image: var(--ico-calendar); mask-image: var(--ico-calendar); }
   [data-nav="motions.html"]  .tab-ico { -webkit-mask-image: var(--ico-gavel);    mask-image: var(--ico-gavel); }
   [data-nav="members.html"]  .tab-ico { -webkit-mask-image: var(--ico-people);   mask-image: var(--ico-people); }
+  [data-nav="finances.html"] .tab-ico { -webkit-mask-image: var(--ico-receipt);  mask-image: var(--ico-receipt); }
   [data-nav="tax.html"]      .tab-ico { -webkit-mask-image: var(--ico-receipt);  mask-image: var(--ico-receipt); }
   [data-nav="budget.html"]   .tab-ico { -webkit-mask-image: var(--ico-flow);     mask-image: var(--ico-flow); }
   [data-nav="projections.html"] .tab-ico { -webkit-mask-image: var(--ico-trend); mask-image: var(--ico-trend); }
   [data-nav="definitions.html"] .tab-ico { -webkit-mask-image: var(--ico-book);  mask-image: var(--ico-book); }
-  .tabbar .tab-more .tab-ico { -webkit-mask-image: var(--ico-more); mask-image: var(--ico-more); }
 
-  /* Four tabs — comfortable on a 320px screen without truncation. */
-  .tabbar a, .tabbar .tab-more { padding-left: 2px; padding-right: 2px; letter-spacing: 0; }
+  /* Five tabs — the most the bar holds before labels start truncating. */
+  .tabbar a { padding-left: 2px; padding-right: 2px; letter-spacing: 0; }
   @media (max-width: 360px) {
-    .tabbar a, .tabbar .tab-more { font-size: 10px; }
-  }
-
-  /* ---- "More" overflow sheet (holds the pages that don't fit on the bar) ---- */
-  .more-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 25;
-    background: var(--scrim);
-    opacity: 0;
-    transition: opacity 0.18s ease;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .more-sheet {
-    position: fixed;
-    left: 0; right: 0; bottom: 0;
-    z-index: 30;
-    background: var(--bg-elev);
-    border-top: 1px solid var(--border);
-    border-top-left-radius: 18px;
-    border-top-right-radius: 18px;
-    padding: 8px 12px calc(14px + var(--safe-bottom));
-    box-shadow: 0 -8px 32px rgb(var(--shadow-rgb) / .18);
-    transform: translateY(100%);
-    transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .more-sheet[hidden], .more-backdrop[hidden] { display: none; }
-  /* .open is toggled a frame after un-hiding so the transition runs. */
-  .more-backdrop.open { opacity: 1; }
-  .more-sheet.open { transform: translateY(0); }
-  .more-sheet-grip {
-    width: 36px; height: 4px;
-    border-radius: 2px;
-    background: var(--border);
-    margin: 4px auto 10px;
-  }
-  .more-sheet a {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 10px;
-    min-height: 52px;
-    color: var(--fg);
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 12px;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .more-sheet a:hover { text-decoration: none; background: var(--bg-muted); }
-  .more-sheet a.active, .more-sheet a[aria-current="page"] { color: var(--accent); }
-  @media (prefers-reduced-motion: reduce) {
-    .more-backdrop, .more-sheet { transition: none; }
+    .tabbar a { font-size: 10px; }
   }
 
   /* ---- Hero scaling ----
@@ -8088,7 +8041,7 @@ table.data.bx-lines .bx-tot td {
    assumption controls, and the three-way tagging (derived / assumption /
    needs confirming) that keeps a placeholder from reading as a fact.
 
-   Everything is scoped under .tax-subnav or .proj-*, so nothing here can
+   Everything is scoped under .subnav or .proj-*, so nothing here can
    reach the tax page, the budget page, or anything else.
 
    Colour never carries meaning alone. Surplus and deficit are also a word in
@@ -8096,11 +8049,40 @@ table.data.bx-lines .bx-tot td {
    markers, and a plain-vs-hatched fill.
    ========================================================================= */
 
-/* ---------- the Tax section's sub-nav ----------
-   Two destinations, so a strip rather than a menu. It sits inside the reading
+/* ---------- tablet / narrow-desktop topbar (760–1099px) ----------
+   The desktop nav is still on — the bottom tab bar doesn't take over until
+   759px — but brand + body switcher + six pills need about 500px of nav and
+   there isn't that much until well past 1000px. The upper bound is set for the
+   worst case rather than the default one: on a non-default body the topbar
+   grows from both sides at once, because applyBodyChrome() appends the body
+   name to the brand line and "Planning Commission" is a wider option in the
+   switcher than "City Council". Rather than let the bar wrap to
+   two rows and stand the topbar up at 115px, tighten the pieces that carry the
+   width. Everything here is spacing; nothing is hidden, and no tap target
+   drops below the 44px minimum. */
+@media (min-width: 760px) and (max-width: 1099px) {
+  .body-switch {
+    max-width: 30vw;
+    font-size: 12.5px;
+    padding: 6px 26px 6px 10px;
+    background-position: right 11px center, right 7px center;
+  }
+  .nav { gap: 0; }
+  .nav a {
+    padding: 8px 9px;
+    font-size: 13.5px;
+  }
+}
+
+/* ---------- section sub-nav ----------
+   A few destinations, so a strip rather than a menu. It sits inside the reading
    column above the page's own hero, and reads as a level below the topbar:
-   smaller, quieter, and underlined on the current page rather than filled. */
-.tax-subnav {
+   smaller, quieter, and tinted on the current page rather than filled.
+
+   Used by the Finances section (five destinations) and by About (two). It
+   scrolls horizontally rather than wrapping, so a narrow screen never gets a
+   two-line strip that pushes the page's own heading below the fold. */
+.subnav {
   display: flex;
   gap: 4px;
   margin: 0 0 6px;
@@ -8109,8 +8091,8 @@ table.data.bx-lines .bx-tot td {
   overflow-x: auto;
   scrollbar-width: none;
 }
-.tax-subnav::-webkit-scrollbar { display: none; }
-.tax-subnav a {
+.subnav::-webkit-scrollbar { display: none; }
+.subnav a {
   flex: none;
   padding: 7px 13px;
   border-radius: var(--radius-sm);
@@ -8121,12 +8103,12 @@ table.data.bx-lines .bx-tot td {
   white-space: nowrap;
   transition: background 140ms ease, color 140ms ease;
 }
-.tax-subnav a:hover { background: var(--bg-muted); color: var(--fg-soft); }
-.tax-subnav a[aria-current="page"] {
+.subnav a:hover { background: var(--bg-muted); color: var(--fg-soft); }
+.subnav a[aria-current="page"] {
   background: var(--accent-tint);
   color: var(--fg-soft);
 }
-.tax-subnav a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.subnav a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 /* ---------- this page's own accents ----------
    Two of them, and they are the only new colours on the site: a projection
@@ -8833,7 +8815,7 @@ table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi
    targets have to be worth aiming at. */
 @media (pointer: coarse) {
   .proj-hit rect { fill: transparent; }
-  .tax-subnav a { padding: 9px 14px; }
+  .subnav a { padding: 9px 14px; }
 }
 
 /* ---------- exposure: where a shortfall lands ----------
@@ -9975,3 +9957,912 @@ body.page-defs {
   .mp-vote { padding: 3px 8px; font-size: 12.5px; }
   .mp-tx-line { font-size: 14.5px; }
 }
+
+/* ---------------------------------------------------------------------------
+   Staffing — the headcount page and its comparison charts.
+
+   Everything here is prefixed .staff-* or .sf-* so it cannot reach the other
+   pages, the same containment .tax-* and .proj-* already have. Charts are
+   coloured through classes rather than by reading computed styles into inline
+   fills: the palette then follows a reader switching to dark mode without the
+   page having to re-render, which is what the JS-computed approach on the
+   Budget page cannot do.
+--------------------------------------------------------------------------- */
+
+/* Loading. Hidden for unscripted browsers, which get the <noscript> block
+   instead — otherwise they would get the explanation *and* a skeleton
+   shimmering underneath it forever. */
+.no-js .staff-skeleton { display: none; }
+.staff-skeleton { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+.staff-skeleton .sk-line,
+.staff-skeleton .sk-block {
+  display: block;
+  border-radius: 4px;
+  background: var(--bg-muted);
+  animation: sk-breathe 1.6s ease-in-out infinite;
+}
+.staff-skeleton .sk-line { height: 15px; }
+.staff-skeleton .sk-tall { height: 40px; }
+.staff-skeleton .sk-w30 { width: min(100%, 190px); }
+.staff-skeleton .sk-w60 { width: min(100%, 420px); }
+.staff-skeleton .sk-w80 { width: min(100%, 560px); }
+.staff-skeleton .sk-block { height: 260px; margin-top: 12px; }
+@media (prefers-reduced-motion: reduce) {
+  .staff-skeleton .sk-line, .staff-skeleton .sk-block { animation: none; }
+}
+
+/* Prose inside the page runs to a reading measure even though the tables and
+   charts want the full column. */
+.sf-prose { max-width: 68ch; margin: 0 0 16px; line-height: 1.62; }
+.sf-prose-tight { margin-bottom: 4px; font-size: 14.5px; color: var(--fg-muted); }
+.sf-note-lead { margin: 0 0 12px; }
+.sf-note { max-width: 74ch; margin: 10px 0 0; font-size: 13.5px; color: var(--fg-muted); line-height: 1.55; }
+.sf-h3 { margin: 30px 0 12px; font-size: 16px; font-weight: 650; }
+
+/* The quote the page is built around. */
+.sf-quote {
+  margin: 0 0 22px;
+  padding: 18px 22px;
+  border-left: 3px solid var(--accent);
+  background: var(--bg-muted);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.sf-quote p { margin: 0 0 8px; font-size: 19px; line-height: 1.5; font-weight: 500; }
+.sf-quote cite { font-style: normal; font-size: 13px; color: var(--fg-muted); }
+.sf-quote-sm { margin: 18px 0 0; }
+.sf-quote-sm p { font-size: 15.5px; font-weight: 400; }
+
+/* Three readings of the same claim, side by side. The middle one is the
+   answer the page argues for, so it carries the emphasis. */
+.sf-verdicts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+  margin: 22px 0;
+}
+.sf-verdict {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+}
+.sf-verdict.is-key { border-color: var(--accent); border-width: 2px; padding: 17px; }
+.sf-verdict-k {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.sf-verdict-n { margin: 0; font-size: 42px; font-weight: 700; line-height: .95; letter-spacing: -.03em; }
+.sf-verdict-n span { font-size: 24px; font-weight: 600; letter-spacing: 0; }
+.sf-verdict-sub { margin: 6px 0 12px; font-size: 12.5px; line-height: 1.35; color: var(--fg-muted); }
+.sf-verdict-d { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--fg); }
+
+/* Charts.
+   A viewBox scales its text along with everything else, so on a phone the
+   axis labels came out around eight pixels — present, unreadable. The chart
+   holds a floor width and scrolls inside its own box instead, which is what
+   .tablewrap already does for the wide tables on this page and the Budget
+   page. The page itself still never scrolls sideways. */
+.sf-chartwrap { overflow-x: auto; margin: 18px 0 6px; }
+.sf-chart { display: block; width: 100%; min-width: 520px; height: auto; }
+.sf-grid   { stroke: var(--border); stroke-width: 1; }
+.sf-tick   { fill: var(--fg-muted); font-size: 11px; font-family: var(--mono); }
+.sf-cityname { fill: var(--fg); font-size: 13px; }
+.sf-cityname.is-em { font-weight: 700; }
+.sf-val    { fill: var(--fg); font-size: 11px; font-family: var(--mono); dominant-baseline: middle; }
+.sf-val-dim { fill: var(--fg-muted); }
+.sf-bar    { fill: var(--sk-c4); }
+.sf-raw    { fill: var(--sk-c4); }
+.sf-excl   { fill: var(--sk-c2); }
+/* The subject city is marked by a band behind its row, not by recolouring its
+   bars: giving Eagle Mountain its own two hues made the key under the chart
+   wrong for the single row every reader looks at first. */
+.sf-em-band { fill: var(--accent-tint); }
+.sf-line   { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.sf-line-pop { stroke: var(--sk-c1); }
+.sf-line-fte { stroke: var(--sk-c0); }
+.sf-lbl    { font-size: 12px; font-weight: 600; }
+.sf-lbl-pop { fill: var(--sk-c1); }
+.sf-lbl-fte { fill: var(--sk-c0); }
+
+.sf-axis { fill: var(--fg-muted); font-size: 12px; font-style: italic; }
+.sf-chart-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  align-items: center;
+  margin: 4px 0 18px;
+  font-size: 13px;
+  color: var(--fg-muted);
+}
+.sf-key {
+  display: inline-block;
+  width: 11px; height: 11px;
+  border-radius: 2px;
+  margin-right: 7px;
+  vertical-align: -1px;
+  background: var(--fg-muted);
+}
+.sf-k-raw  { background: var(--sk-c4); }
+.sf-k-excl { background: var(--sk-c2); }
+.sf-k-pop  { background: var(--sk-c1); }
+.sf-k-fte  { background: var(--sk-c0); }
+.sf-key-note { font-style: italic; }
+
+/* One bar of the payroll split by function, with the legend under it. */
+.sf-split { display: flex; height: 34px; border-radius: 5px; overflow: hidden; margin: 6px 0 14px; }
+.sf-split-seg { display: block; min-width: 2px; }
+.sf-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+  font-size: 13.5px;
+}
+.sf-legend li { display: flex; align-items: center; gap: 0; }
+.sf-legend-v { margin-left: 7px; font-family: var(--mono); color: var(--fg-muted); }
+
+/* The six harmonised source hues, reused so a function keeps one colour
+   wherever it appears — the split bar, the legend and the department table. */
+.sf-fn-general_gov   { background: var(--sk-c4); }
+.sf-fn-public_safety { background: var(--sk-c3); }
+.sf-fn-community_dev { background: var(--sk-c1); }
+.sf-fn-public_works  { background: var(--sk-c5); }
+.sf-fn-utilities     { background: var(--sk-c0); }
+.sf-fn-parks_rec     { background: var(--sk-c2); }
+.sf-fn-library       { background: color-mix(in srgb, var(--sk-c2) 52%, var(--bg-muted)); }
+.sf-fn-unmapped      { background: var(--fg-muted); }
+
+/* Reconciling the three headcounts that all mean "how many people work here". */
+.sf-recon {
+  margin: 24px 0 0;
+  padding: 20px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-muted);
+}
+.sf-recon h3 { margin: 0 0 6px; font-size: 16px; font-weight: 650; }
+.sf-recon > p { margin: 0 0 16px; font-size: 14px; color: var(--fg-muted); max-width: 68ch; }
+.sf-recon dl { display: flex; flex-direction: column; gap: 14px; margin: 0; }
+.sf-recon dl > div { display: grid; grid-template-columns: 84px 1fr; gap: 16px; align-items: baseline; }
+.sf-recon dt { font-family: var(--mono); font-size: 21px; font-weight: 700; text-align: right; }
+.sf-recon dd { margin: 0; font-size: 14px; line-height: 1.55; }
+
+/* Tables. The subject city is marked so it can be found at a glance in a
+   list sorted by something else. */
+.staff-table th[scope="row"] { font-weight: 500; text-align: left; white-space: nowrap; }
+.staff-table tr.is-em th[scope="row"] { font-weight: 700; }
+.staff-table tr.is-em { background: var(--accent-tint); }
+.staff-table td.num, .staff-table th.num { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.staff-table .sf-fn { white-space: nowrap; font-size: 13px; color: var(--fg-muted); }
+/* Deliberately not green-up / red-down. A department gaining four posts is not
+   good news or bad news, it is a fact about a budget, and colour-coding the
+   sign would have this page taking a position it has no business taking. The
+   +/- carries the direction; the muted tone only separates a fall from a rise
+   at a glance. */
+.staff-table .is-up { color: var(--fg); }
+.staff-table .is-down { color: var(--fg-muted); }
+.sf-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: var(--accent-tint);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+}
+.sf-sort {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+.sf-sort:hover { color: var(--accent-ink); }
+.sf-sort[aria-sort]::after { content: " ▾"; font-size: 10px; }
+.sf-sort[aria-sort="ascending"]::after { content: " ▴"; }
+
+.btn-quiet {
+  font: inherit;
+  font-size: 13.5px;
+  color: var(--accent-ink);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.btn-quiet:hover { color: var(--fg); }
+
+/* What the city buys instead of staffing. */
+.sf-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+  gap: 16px;
+  margin: 20px 0 0;
+}
+.sf-card {
+  padding: 20px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+}
+.sf-card h3 { margin: 0 0 10px; font-size: 15.5px; font-weight: 650; }
+.sf-card p { margin: 0 0 10px; font-size: 14px; line-height: 1.6; }
+.sf-card-src { margin: 12px 0 0 !important; font-size: 13px; color: var(--fg-muted); }
+
+/* Personnel cost over time. */
+.sf-bars { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.sf-bars li { display: grid; grid-template-columns: minmax(120px, 168px) 1fr minmax(96px, auto); gap: 14px; align-items: center; }
+.sf-bars-k { font-size: 13.5px; color: var(--fg-muted); }
+.sf-bars-track { height: 18px; background: var(--bg-muted); border-radius: 3px; overflow: hidden; }
+.sf-bars-fill { display: block; height: 100%; background: var(--sk-c4); border-radius: 3px; }
+.sf-bars-v { font-family: var(--mono); font-size: 13.5px; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* The city's own strain figures, mirrored from the Tax page. */
+.sf-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin: 18px 0 0;
+}
+.sf-fact { padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-elev); }
+.sf-fact-n { margin: 0 0 6px; font-size: 22px; font-weight: 700; font-family: var(--mono); letter-spacing: -.01em; }
+.sf-fact-t { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--fg); }
+
+/* Method and sources. */
+.sf-method { display: flex; flex-direction: column; gap: 14px; margin: 0 0 26px; max-width: 78ch; }
+.sf-method > div { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: baseline; }
+.sf-method dt { font-weight: 650; font-size: 14px; }
+.sf-method dd { margin: 0; font-size: 14px; line-height: 1.6; color: var(--fg); }
+.sf-caveats, .sf-sources, .sf-missing { max-width: 78ch; padding-left: 20px; }
+.sf-caveats li, .sf-sources li, .sf-missing li { margin-bottom: 9px; font-size: 14px; line-height: 1.55; }
+.sf-sources li { font-size: 13.5px; }
+
+.sf-details { margin: 18px 0 0; }
+.sf-details summary { cursor: pointer; font-size: 14px; font-weight: 600; }
+.sf-details > p { max-width: 74ch; font-size: 14px; line-height: 1.6; }
+
+@media (max-width: 700px) {
+  .sf-verdict-n { font-size: 28px; }
+  .sf-quote p { font-size: 16.5px; }
+  .sf-recon dl > div { grid-template-columns: 66px 1fr; gap: 12px; }
+  .sf-recon dt { font-size: 18px; }
+  .sf-method > div { grid-template-columns: 1fr; gap: 4px; }
+  .sf-bars li { grid-template-columns: 1fr; gap: 3px; }
+  .sf-bars-v { text-align: left; }
+}
+
+/* ---- Staffing: the explainer that has to land before anything else -------
+   Every figure further down is a rate, and a rate nobody can decode is just a
+   decimal. The primer teaches the three ideas the page depends on — what an
+   FTE is, why headcount gets divided by population, and how to picture the
+   result — using the page's own numbers, so a reader can check the worked
+   example against the tables below instead of taking it on trust.
+
+   It is numbered and stepped rather than laid out as prose because the ideas
+   are sequential: the second makes no sense without the first. */
+.sf-primer {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--bg-elev);
+  padding: 6px 26px 22px;
+}
+.sf-steps { counter-reset: sf-step; list-style: none; margin: 0; padding: 0; }
+.sf-steps > li {
+  counter-increment: sf-step;
+  position: relative;
+  padding: 20px 0 0 46px;
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
+}
+.sf-steps > li:first-child { border-top: 0; margin-top: 0; }
+.sf-steps > li::before {
+  content: counter(sf-step);
+  position: absolute;
+  left: 0;
+  top: 19px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+}
+.sf-steps h3 { margin: 0 0 8px; font-size: 16.5px; font-weight: 650; line-height: 1.3; }
+.sf-steps p { margin: 0 0 10px; font-size: 14.5px; line-height: 1.6; max-width: 64ch; }
+.sf-steps p:last-child { margin-bottom: 0; }
+.sf-step-lead { margin-bottom: 6px !important; color: var(--fg-muted); }
+.sf-step-eg {
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: var(--bg-muted);
+  font-size: 14px !important;
+}
+
+/* The arithmetic, set out as an equation rather than a sentence: the whole
+   point is that a reader can see it is nothing more than a division. */
+.sf-eq {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  padding: 14px 16px;
+  border-radius: 6px;
+  background: var(--bg-muted);
+  font-family: var(--mono);
+  font-size: 13.5px !important;
+}
+.sf-eq-op { color: var(--fg-muted); font-size: 15px; }
+.sf-eq strong { font-weight: 700; }
+
+/* The one paragraph a reader should leave with, if they leave with one. */
+.sf-takeaway {
+  margin: 26px 0 0;
+  padding: 20px 24px;
+  border-radius: var(--radius);
+  background: var(--accent-tint);
+}
+.sf-takeaway-k {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.sf-takeaway p:last-child { margin: 0; font-size: 15px; line-height: 1.62; max-width: 70ch; }
+
+/* Two-row table headings: the unit belongs with the column, not in a footnote
+   under the table where it has to be carried back up by memory. */
+.sf-th-sub {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .01em;
+  text-transform: none;
+  color: var(--fg-muted);
+}
+.sf-th-group {
+  border-bottom: 1px solid var(--border);
+  text-align: center !important;
+  font-size: 11.5px;
+}
+.staff-table thead tr:first-child th { vertical-align: bottom; }
+
+@media (max-width: 700px) {
+  .sf-primer { padding: 4px 18px 18px; }
+  .sf-steps > li { padding-left: 38px; }
+  .sf-steps > li::before { width: 24px; height: 24px; font-size: 13px; }
+  .sf-verdict-n { font-size: 36px; }
+  .sf-takeaway { padding: 18px; }
+}
+
+/* =========================================================================
+   FINANCES OVERVIEW (finances.html) — the statement of account
+   =========================================================================
+   Four pages hang off this one, and the hub used to introduce them as four
+   identical tiles: a menu of section names with a figure bolted on. That threw
+   away the only interesting thing about the four, which is that they are not
+   four topics but one chain — a rate is levied, a budget appropriates it, a
+   model carries it forward, and payroll is the largest thing it buys.
+
+   So the hub is set as a statement of account. A numbered spine runs down the
+   left with a station on it per page; each station is a ledger line — name on
+   the left, figure on the right, a dotted leader between them, the way a bill
+   or a table of contents sets a pair that has to be read across a gap. The one
+   station that is a model rather than a document sits on a dashed segment of
+   that spine and carries a dashed node, so the page says which of the four is
+   not republication before a word of prose does.
+
+   Everything here is scoped to .page-finances or a .fin- prefix. No rule in
+   this block can reach another page.
+   ========================================================================= */
+
+/* The page's faces, mapped onto the site's font tokens so every inherited rule
+   follows without restating. Instrument Sans and IBM Plex Mono are the tax
+   page's pair; Fraunces at 700 is the budget book's display face. The hub
+   borrows from its own children rather than introducing a fifth voice, and no
+   new font file ships for it — all three are already in docs/fonts. */
+body.page-finances {
+  --display: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Arial, sans-serif;
+  --sans:    var(--display);
+  --serif:   var(--display);
+  --mono:    "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --fin-display: "Fraunces", Georgia, "Times New Roman", serif;
+
+  /* The warm pair, resolved per theme. --warm-soft/--warm-ink are the two
+     accents the dark block deliberately leaves alone, so a card painted in
+     them lands as a cream wash on ink; dark takes the gold pair instead. Same
+     three-way handling the homepage's tax card uses. */
+  --fin-warm-ground: color-mix(in srgb, var(--warm-soft) 46%, var(--bg-elev));
+  --fin-warm-edge:   rgb(182 116 26 / .42);
+  --fin-warm-ink:    var(--warm-ink);
+}
+@media (prefers-color-scheme: dark) {
+  body.page-finances {
+    --fin-warm-ground: color-mix(in srgb, var(--highlight-soft) 55%, var(--bg-elev));
+    --fin-warm-edge:   rgb(233 174 85 / .38);
+    --fin-warm-ink:    var(--highlight-ink);
+  }
+}
+:root[data-theme="dark"] body.page-finances {
+  --fin-warm-ground: color-mix(in srgb, var(--highlight-soft) 55%, var(--bg-elev));
+  --fin-warm-edge:   rgb(233 174 85 / .38);
+  --fin-warm-ink:    var(--highlight-ink);
+}
+:root[data-theme="light"] body.page-finances {
+  --fin-warm-ground: color-mix(in srgb, var(--warm-soft) 46%, var(--bg-elev));
+  --fin-warm-edge:   rgb(182 116 26 / .42);
+  --fin-warm-ink:    var(--warm-ink);
+}
+
+/* ---------- masthead ----------
+   A statement header: a ruled kicker, the display line, the standfirst, then a
+   double rule. The double rule is the one bit of pure ornament on the page and
+   it earns its place by naming the genre — ledgers close their headers this
+   way, and nothing else on this site does. */
+.fin-mast {
+  padding: 12px 0 0;
+  margin: 0 0 34px;
+}
+.fin-kicker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 20px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.fin-kicker::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-strong);
+}
+h1.fin-title {
+  font-family: var(--fin-display);
+  /* Fraunces ships at 700 only here; anything heavier would be synthesised. */
+  font-weight: 700;
+  font-size: clamp(33px, 6.4vw, 50px);
+  line-height: 1.05;
+  letter-spacing: -.019em;
+  color: var(--fg-soft);
+  /* Wide enough to hold "followed all the way through." whole on one line
+     once .fin-br has put it there. */
+  max-width: 21ch;
+  margin: 0 0 18px;
+  text-wrap: pretty;
+}
+/* Where the display line breaks. text-wrap: balance kept finding a break after
+   "followed", which splits the marked phrase across two lines and reads as a
+   stumble; the clause boundary is the break the sentence wants. Below the width
+   at which the second clause fits on one line it comes out and the line wraps
+   wherever it must, which on a phone is three lines either way. */
+.fin-br { display: none; }
+@media (min-width: 820px) { .fin-br { display: inline; } }
+/* The same drawn brush rule the front page marks its promise with, so the
+   operative phrase reads as ink rather than as a link — but drawn as a clipped
+   background on the inline rather than as one absolutely-positioned pseudo.
+
+   The homepage can afford the pseudo because the phrase it marks is three words
+   and it sets `white-space: nowrap` to guarantee they stay on one line. This
+   phrase is six, and at the clamp's floor it is wider than a 375px phone: it has
+   to be allowed to wrap, and a single absolute box drawn behind a two-line inline
+   covers both lines and the gutter between them as one rectangle. box-decoration-
+   break: clone draws the band once per line fragment instead, which is what a
+   highlighter actually does. The cost is the pseudo's half-degree of rotation —
+   transforms do not apply to a non-replaced inline — so the uneven corner radii
+   carry the drawn-by-hand feel on their own. */
+.fin-title .mark {
+  --fin-mark: linear-gradient(103deg,
+    rgb(182 116 26 / .30) 0%,
+    rgb(182 116 26 / .44) 45%,
+    rgb(182 116 26 / .26) 100%);
+  background-image: var(--fin-mark);
+  background-repeat: no-repeat;
+  background-size: 100% .26em;
+  background-position: 0 calc(100% - .28em);
+  border-radius: 2px 6px 3px 5px;   /* uneven — a drawn stroke, not a rectangle */
+  -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+}
+@media (prefers-color-scheme: dark) {
+  .fin-title .mark {
+    --fin-mark: linear-gradient(103deg,
+      rgb(233 174 85 / .26) 0%,
+      rgb(233 174 85 / .38) 45%,
+      rgb(233 174 85 / .22) 100%);
+  }
+}
+:root[data-theme="dark"] .fin-title .mark {
+  --fin-mark: linear-gradient(103deg,
+    rgb(233 174 85 / .26) 0%,
+    rgb(233 174 85 / .38) 45%,
+    rgb(233 174 85 / .22) 100%);
+}
+:root[data-theme="light"] .fin-title .mark {
+  --fin-mark: linear-gradient(103deg,
+    rgb(182 116 26 / .30) 0%,
+    rgb(182 116 26 / .44) 45%,
+    rgb(182 116 26 / .26) 100%);
+}
+
+.fin-stand {
+  margin: 0 0 26px;
+  max-width: 60ch;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--fg-muted);
+  text-wrap: pretty;
+}
+.fin-stand strong { color: var(--fg-soft); font-weight: 600; }
+/* The double rule that closes a statement header. */
+.fin-rule {
+  height: 6px;
+  border: 0;
+  border-top: 2px solid var(--fg-soft);
+  border-bottom: 1px solid var(--border-strong);
+  margin: 0;
+  opacity: .85;
+}
+
+/* ---------- the chain ----------
+   One <ol>, four stations. The spine is drawn per row rather than as a single
+   element so the projections row can dash its own segment without a second
+   overlay, and so the first and last rows can stop the line at their node
+   instead of running it off the top and bottom of the list. */
+.fin-chain {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  counter-reset: fin;
+}
+.fin-step {
+  position: relative;
+  padding-left: 64px;
+}
+/* The spine segment for this row. */
+.fin-step::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.fin-step:first-child::before  { top: 34px; }
+.fin-step:last-child::before   { bottom: auto; height: 34px; }
+/* The modelled station: its segment is dotted, and so is its node. The page
+   makes the distinction in the drawing before it makes it in prose. */
+.fin-step.is-model::before {
+  background: none;
+  border-left: 2px dashed var(--border-strong);
+  width: 0;
+}
+.fin-node {
+  position: absolute;
+  left: 0;
+  top: 15px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--border-strong);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-muted);
+  transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease;
+}
+.fin-step.is-model .fin-node {
+  border-style: dashed;
+  background: var(--fin-warm-ground);
+  border-color: var(--fin-warm-edge);
+  color: var(--fin-warm-ink);
+}
+
+/* The clickable body of a station. Sits on the paper with no card of its own —
+   the spine already groups the four — and only lifts a ground on hover. */
+.fin-step-a {
+  display: block;
+  padding: 15px 16px 18px;
+  margin: 0 0 4px;
+  border-radius: 12px;
+  color: inherit;
+  border: 1px solid transparent;
+  transition: background-color 170ms ease, border-color 170ms ease, transform 170ms ease;
+}
+.fin-step-a:hover,
+.fin-step-a:focus-visible {
+  background: var(--bg-elev);
+  border-color: var(--border);
+  text-decoration: none;
+  transform: translateX(2px);
+}
+.fin-step-a:hover .fin-name { color: var(--link-strong); }
+.fin-step-a:hover .fin-go   { opacity: 1; transform: translateX(0); }
+.fin-step:hover .fin-node,
+.fin-step:focus-within .fin-node {
+  border-color: var(--accent);
+  color: var(--fg-soft);
+}
+.fin-step.is-model:hover .fin-node { border-color: var(--warm); color: var(--fin-warm-ink); }
+
+.fin-q {
+  display: block;
+  margin: 0 0 6px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.fin-q .fin-when { color: var(--link); }
+
+/* The ledger line: name, leader, figure. The leader is the row — it takes all
+   the slack, so the figure sits hard against the right edge at every width and
+   the eye has a rule to travel along to reach it. */
+.fin-line {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.fin-name {
+  font-family: var(--fin-display);
+  font-weight: 700;
+  font-size: clamp(21px, 3.4vw, 26px);
+  line-height: 1.15;
+  letter-spacing: -.012em;
+  color: var(--fg-soft);
+  transition: color 170ms ease;
+}
+.fin-lead {
+  flex: 1 1 auto;
+  min-width: 14px;
+  height: 0;
+  border-bottom: 1.5px dotted color-mix(in oklab, var(--fg-muted) 46%, transparent);
+  transform: translateY(-3px);
+}
+.fin-fig {
+  flex: 0 0 auto;
+  font-family: var(--mono);
+  font-size: clamp(16px, 2.8vw, 21px);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.02em;
+  color: var(--fg-soft);
+  white-space: nowrap;
+}
+.fin-step.is-model .fin-fig { color: var(--fin-warm-ink); }
+/* Empty until its JSON lands. A station whose file never arrives prints its
+   words and no figure, rather than a hole or a confident wrong number. */
+.fin-fig:empty, .fin-fig2:empty { display: none; }
+/* A leader that runs to nothing reads as a broken line rather than as a ledger,
+   so it goes with the figure it was drawn to reach. */
+.fin-lead:has(+ .fin-fig:empty) { display: none; }
+
+.fin-sub {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 7px 0 0;
+}
+.fin-blurb {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--fg-muted);
+  max-width: 46ch;
+  text-wrap: pretty;
+}
+.fin-fig2 {
+  flex: 0 0 auto;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.01em;
+  color: var(--link);
+  text-align: right;
+}
+.fin-go {
+  display: inline-block;
+  margin: 9px 0 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--link);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 170ms ease, transform 170ms ease;
+}
+/* Touch and keyboard never hover, so the affordance is simply always on there. */
+@media (hover: none) {
+  .fin-go { opacity: 1; transform: none; }
+}
+.fin-step-a:focus-visible .fin-go { opacity: 1; transform: none; }
+
+@media (max-width: 620px) {
+  .fin-step { padding-left: 48px; }
+  .fin-step::before { left: 15px; }
+  .fin-node { width: 32px; height: 32px; font-size: 11px; top: 12px; }
+  .fin-step:first-child::before { top: 28px; }
+  .fin-step:last-child::before  { height: 28px; }
+  .fin-step-a { padding: 11px 10px 14px; }
+  /* The leader has nothing left to lead across at this width, so the figure
+     goes under the name and the dots come out rather than shrink to two. */
+  .fin-line { flex-wrap: wrap; gap: 2px 10px; }
+  .fin-lead { display: none; }
+  .fin-fig { flex-basis: 100%; }
+  .fin-sub { display: block; }
+  .fin-fig2 { text-align: left; margin-top: 5px; display: block; }
+}
+
+/* ---------- the prose band ---------- */
+.fin-prose {
+  max-width: 66ch;
+  font-size: 16px;
+  line-height: 1.68;
+  color: var(--fg);
+}
+.fin-prose p { margin: 0 0 14px; }
+.fin-prose p:last-child { margin-bottom: 0; }
+/* The one sentence the four pages exist to answer, lifted out of the column
+   and set in the display face so it reads as a statement rather than as the
+   end of a paragraph. */
+.fin-pull {
+  margin: 22px 0 0;
+  padding: 4px 0 4px 22px;
+  border-left: 3px solid var(--warm);
+  font-family: var(--fin-display);
+  font-weight: 700;
+  font-size: clamp(18px, 2.6vw, 21px);
+  line-height: 1.4;
+  letter-spacing: -.012em;
+  color: var(--fg-soft);
+  max-width: 42ch;
+  text-wrap: pretty;
+}
+
+/* ---------- provenance ----------
+   Two cards, and the difference between them is the whole point: one is paper
+   the city already printed, the other is arithmetic this site did. They get
+   equal weight and unequal texture — solid border against dashed — so the
+   distinction survives being skimmed. */
+.fin-prov {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 14px;
+  align-items: start;
+}
+@media (max-width: 760px) { .fin-prov { grid-template-columns: 1fr; } }
+
+.fin-card {
+  padding: 20px 22px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--bg-elev);
+  box-shadow: var(--shadow-hair);
+}
+.fin-card.is-model {
+  border-style: dashed;
+  border-color: var(--fin-warm-edge);
+  background: var(--fin-warm-ground);
+  box-shadow: none;
+}
+.fin-badge {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 4px 11px;
+  border-radius: 99px;
+  background: var(--accent-tint);
+  border: 1px solid var(--border-strong);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--fg-soft);
+}
+.fin-badge.is-model {
+  background: transparent;
+  border-style: dashed;
+  border-color: var(--fin-warm-edge);
+  color: var(--fin-warm-ink);
+}
+.fin-card h3 {
+  margin: 0 0 12px;
+  font-family: var(--fin-display);
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 1.25;
+  letter-spacing: -.012em;
+  color: var(--fg-soft);
+}
+.fin-card p {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.62;
+  color: var(--fg);
+  text-wrap: pretty;
+}
+.fin-card p:last-child { margin-bottom: 0; }
+.fin-card .fin-note {
+  font-size: 12.5px;
+  color: var(--fg-muted);
+}
+
+/* Source list: the page, then the document it is read out of. */
+.fin-src { margin: 0 0 12px; }
+.fin-src > div {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 4px 14px;
+  padding: 9px 0;
+  border-top: 1px solid var(--hairline);
+}
+.fin-src > div:first-child { border-top: 0; padding-top: 2px; }
+.fin-src dt {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  padding-top: 2px;
+}
+.fin-src dd {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--fg);
+  text-wrap: pretty;
+}
+@media (max-width: 420px) {
+  .fin-src > div { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fin-step-a, .fin-go, .fin-node, .fin-name { transition: none; }
+  .fin-step-a:hover, .fin-step-a:focus-visible { transform: none; }
+}
+
+/* The two footer doors, set as a ruled row rather than a trailing sentence. */
+.fin-more {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 26px;
+  margin: 30px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+}
+.fin-more a { font-weight: 600; }
