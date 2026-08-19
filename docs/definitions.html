@@ -30,7 +30,7 @@
     <link rel="preload" href="fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/newsreader-300-600-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20260818c" />
-    <link rel="stylesheet" href="site.css?v=20260818c" />
+    <link rel="stylesheet" href="site.css?v=20260819a" />
 
     <script type="application/ld+json">
     {
@@ -593,8 +593,23 @@
         <a href="meetings.html" data-nav="meetings.html">Meetings</a>
         <a href="motions.html" data-nav="motions.html">Votes</a>
         <a href="members.html" data-nav="members.html" data-nav-alias="member.html">Members</a>
-        <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html" data-nav-body="city-council">Finances</a>
-        <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+        <div class="nav-group" data-nav-body="city-council">
+          <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html">Finances</a>
+          <div class="nav-menu" role="group" aria-label="Finances section">
+            <a href="finances.html">Overview</a>
+            <a href="tax.html">Tax</a>
+            <a href="projections.html">Projections</a>
+            <a href="budget.html">Budget</a>
+            <a href="staffing.html">Staffing</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+          <div class="nav-menu" role="group" aria-label="About section">
+            <a href="about.html">How this site is built</a>
+            <a href="definitions.html">Definitions</a>
+          </div>
+        </div>
         <!-- END generated:nav -->
       </nav>
     </header>
@@ -1025,7 +1040,8 @@
               <em>revenue</em>, not by rate &mdash; so as assessed values rise, the certified rate
               automatically falls to hold collections flat.
               <span class="def-local">Eagle Mountain&rsquo;s 2026 certified rate was 0.000530. The
-              council adopted 0.001500 for FY2026&ndash;27.</span>
+              council adopted 0.001500 for FY2026&ndash;27 on 6 August, repealed it on 18 August,
+              and adopted 0.000900 in its place.</span>
             </dd>
             <dd class="def-see"><span class="def-see-lab">See also</span><a href="#truth-in-taxation">Truth in Taxation</a><a href="#new-growth">New growth</a><a href="#taxable-value">Taxable value</a></dd>
           </div>
@@ -1669,7 +1685,7 @@
 
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span></footer>
 
-    <script src="site.js?v=20260818c"></script>
+    <script src="site.js?v=20260819a"></script>
     <script>
       /* The filter bar pins directly beneath the topbar, and #term anchors have to
          clear both — so the stylesheet needs the bar's real height. It shrinks at

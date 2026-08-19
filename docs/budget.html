@@ -30,7 +30,7 @@
     <link rel="preload" href="fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/fraunces-700-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20260818c" />
-    <link rel="stylesheet" href="site.css?v=20260818c" />
+    <link rel="stylesheet" href="site.css?v=20260819a" />
 
     <!-- Dataset rather than Article: the page is a searchable copy of the city's
          own budget book, not a piece written about it. -->
@@ -104,8 +104,23 @@
         <a href="meetings.html" data-nav="meetings.html">Meetings</a>
         <a href="motions.html" data-nav="motions.html">Votes</a>
         <a href="members.html" data-nav="members.html" data-nav-alias="member.html">Members</a>
-        <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html" data-nav-body="city-council">Finances</a>
-        <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+        <div class="nav-group" data-nav-body="city-council">
+          <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html">Finances</a>
+          <div class="nav-menu" role="group" aria-label="Finances section">
+            <a href="finances.html">Overview</a>
+            <a href="tax.html">Tax</a>
+            <a href="projections.html">Projections</a>
+            <a href="budget.html">Budget</a>
+            <a href="staffing.html">Staffing</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+          <div class="nav-menu" role="group" aria-label="About section">
+            <a href="about.html">How this site is built</a>
+            <a href="definitions.html">Definitions</a>
+          </div>
+        </div>
         <!-- END generated:nav -->
       </nav>
     </header>
@@ -128,7 +143,7 @@
 
     <div class="sk-tip" id="sk-tip" role="status" aria-live="off"></div>
 
-    <script src="site.js?v=20260818c"></script>
+    <script src="site.js?v=20260819a"></script>
     <script>
       (async () => {
         const root = document.getElementById("content");
@@ -370,12 +385,14 @@
           <div class="b-years${book ? " is-three" : ""}" role="tablist" aria-label="Which budget to show">
             <button class="b-year is-open" type="button" role="tab" id="tab-next-year"
                     aria-controls="next-year" aria-selected="true" tabindex="0">
-              <span class="b-year-flag"><span class="b-full">In effect now · not final</span><span class="b-min">Not final</span></span>
+              <span class="b-year-flag"><span class="b-full">In effect now · interim line items</span><span class="b-min">Interim lines</span></span>
               <span class="b-year-fy"><span class="nowrap">${esc(n.fiscal_year_label)}</span><em>1 July 2026 – 30 June 2027</em></span>
               <span class="b-year-v">${short(t.fy2027.gross)}</span>
               <span class="b-year-d">
-                The city has been spending against this budget since 1 July, but the Council has not taken
-                its final vote on it — that is 18 August, and the figures can still change. Only
+                The city has been spending against this budget since 1 July. The Council took its final vote
+                on <a href="meetings.html?id=728">18 August</a>, adopting a budget of
+                ${short(n.final_adopted.total)}; the line items below are still the interim ones the city
+                published in June, because the adopted book has not been published line by line yet. Only
                 ${short(t.fy2027.net)} of that headline total is money planned to actually go out the door;
                 the rest is set aside.
               </span>
@@ -532,7 +549,7 @@
           <section class="bn" id="next-year" role="tabpanel" aria-labelledby="tab-next-year" tabindex="0">
             <div class="bn-head">
               <div class="bn-head-t">
-                <p class="bn-flag">In effect now · not final</p>
+                <p class="bn-flag">In effect now · interim line items</p>
                 <h2 id="bn-title">The year now running: the <span class="nowrap">${esc(n.fiscal_year_label)}</span> budget</h2>
               </div>
               <p class="bn-lede">
@@ -541,8 +558,8 @@
                 <strong>interim</strong> budget — meaning not final. Utah law makes a city hold a public hearing
                 before it can raise property tax, and this budget proposed one. That hearing was
                 <a href="meetings.html?id=747">6 August</a>, where the Council set the rate at 0.001500 rather than
-                the 0.001700 it had noticed; the final vote is <strong>18 August</strong>, and the numbers can still
-                change there.
+                the 0.001700 it had noticed. On <a href="meetings.html?id=728">18 August</a> it repealed that rate,
+                adopted <strong>0.000900</strong>, and adopted the final budget the same night.
               </p>
             </div>
 
@@ -587,17 +604,21 @@
                 </p>`)}
 
               ${readBlock("The tax increase is already written into the budget", short(n.tax_line.interim_revenue), "counted twice — once coming in, once going out",
-                `The Council approved the increase on <a href="meetings.html?id=747">6 August</a>, but at a lower rate
-                 than this budget was built on. The budget still carries the noticed figure twice — as money coming in,
-                 and as the same amount going out — and the 18 August adoption is where it gets trued up.`, `
+                `The Council approved the increase on <a href="meetings.html?id=747">6 August</a>, then cut it again on
+                 <a href="meetings.html?id=728">18 August</a> — twice below the rate this budget was built on. The
+                 budget still carries the noticed figure twice — as money coming in, and as the same amount going
+                 out — and the 18 August adoption is where it got trued up.`, `
                 <p>
                   Both entries are for the same <strong>${usdC(n.tax_line.interim_revenue)}</strong>. On the income side it
                   is a line the city calls <em>${esc(n.tax_line.revenue_account)}</em>, sitting next to the
                   ${usdC(n.tax_line.base_revenue)} of property tax it collects today. On the spending side the identical
                   figure is parked inside ${esc(n.tax_line.department)} on a line called
                   <em>${esc(n.tax_line.expense_account)}</em>. “Restricted” means what it sounds like: the money was set
-                  aside and could not be spent unless the increase survived the hearing. It did, at 0.001500, so the
-                  figure the city actually collects is settled at the 18 August adoption rather than here. The
+                  aside and could not be spent unless the increase survived the hearing. It survived twice over — at 0.001500
+                  on 6 August and at 0.000900 on 18 August — so the figure the city actually collects was settled at
+                  the 18 August adoption rather than here, and the city's whole property-tax
+                  levy at that rate is about ${usdC(n.tax_line.adopted_revenue)}, against the
+                  ${usdC(n.tax_line.base_revenue + n.tax_line.interim_revenue)} this budget was written around. The
                   <a href="tax.html">Tax page</a> goes through the rates and what it would cost a household.
                 </p>`)}
 

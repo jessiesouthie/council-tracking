@@ -1,5 +1,5 @@
 {
-  "_comment": "The property tax increase, tracked per fiscal year. Every figure here is transcribed from a source meeting; `evidence` names where, and `documents` links the city's own published notice and impact schedule, which print the noticed figures. Rates are decimal multipliers applied to taxable value, matching the Truth-in-Taxation schedule read into the record. `rates.adopted` is what the council actually set on August 6 and what the page is about; `rates.proposed` is the 0.001700 it noticed and did not adopt, kept because the notice, the schedule and every figure quoted before that night were built on it.",
+  "_comment": "The property tax increase, tracked per fiscal year. Every figure here is transcribed from a source meeting; `evidence` names where, and `documents` links the city's own published notice and impact schedule, which print the noticed figures. Rates are decimal multipliers applied to taxable value, matching the Truth-in-Taxation schedule read into the record. `rates.adopted` is the rate in force — the 0.000900 the council set on August 18 after repealing the 0.001500 it had adopted on August 6. `rates.repealed` is that repealed 0.001500, kept in full because it stood for twelve days and because every figure the city, the county and this page published in between was built on it; `rates.proposed` is the 0.001700 noticed and never adopted. A rate block is only ever added, never overwritten: the record is the sequence.",
   "body": "city-council",
   "fiscal_year": "2026-27",
   "fiscal_year_label": "FY2026–27",
@@ -24,10 +24,40 @@
       "derivation": "The city published this figure once, as a line in its own Proposed Property Tax Impact Schedule: “Property Tax Rate with no increase — 0.000530”, against the 0.001700 proposed beside it. The notice's other figures imply it to slightly different decimals: a $314.03 rise on a $488,000 primary residence against 0.001700 implies 0.00053014, and the noticed 220.88% implies 0.00052976. Both round to the published 0.000530 — but 0.001700 against 0.000530 is +220.75%, so the noticed percentage is not a ratio of rates at all. It is a ratio of revenue, and the schedule shows both sides of it: $6,742,938 of new revenue against the $3,055,201 the certified rate would raise is +220.70%, and the 220.88% on the notice implies a base near $3,052,760 — about $2,400 lower, which is what “excluding eligible new growth” takes out. Utah County delivered the recalculated certified rate on June 22, after the June 16 schedule was read."
     },
     "adopted": {
+      "rate": 0.0009,
+      "rate_display": "0.000900",
+      "label": "Adopted 2026–27",
+      "note": "Public safety · +69.81% over the certified rate",
+      "pct": 69.81,
+      "pct_derived": true,
+      "pct_basis": "Derived here, not yet checked against the motion. It is what 0.000900 is over the 0.000530 certified rate, and — as with the 183.02% before it — the same number on either basis: the extra revenue the rate raises, $2,132,876, is 69.81% of the $3,055,201 the certified rate would raise. Whatever percentage the adopting resolution states, it is not a percentage of anyone's total bill; the city is one of seven lines on it.",
+      "revenue": 5188077,
+      "revenue_increase": 2132876,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "provisional": true,
+      "unverified": "Reported the night of the vote, before the recording, the resolution or the minutes were available. What is certain is the rate: 0.000900. The vote, the mover, the wording of the motion and the figures the resolution recites are all still to be read off the record, and the fields below that would normally carry them are empty rather than guessed. Everything on this page priced at 0.000900 is this project's arithmetic on that rate, not the city's published figures.",
+      "vote": null,
+      "motion": null,
+      "home_example": {
+        "market_value": 488000,
+        "taxable_value": 268400,
+        "increase": 99.31,
+        "derived": true,
+        "note": "The Truth-in-Taxation notice's own average home, priced the way the notice prices it: $268,400 of taxable value — 55% of $488,000 — times the 0.000370 the adopted rate sits above the certified rate. The same home was $260.35 under the 0.001500 adopted on August 6 and $314.03 under the 0.001700 noticed in June."
+      },
+      "derivation": "Every figure here except the rate is derived. The $5,188,077 is the certified rate's own $3,055,201 scaled by 0.000900 ÷ 0.000530 — which is the same as taking 0.000900 × the $5,764,530,000 of citywide taxable value that the city's published rate-and-revenue pairs imply, and the same again as three fifths of the $8,646,795 the repealed 0.001500 would have raised. Three routes, one number, because they are all the same arithmetic on figures the city did publish. The $2,132,876 is that revenue less the $3,055,201 on the impact schedule.",
+      "supersedes": "repealed",
+      "context": "A repeal and a re-adoption on one night: the council rescinded the 0.001500 it had set on August 6 and adopted 0.000900 in its place, then took up the FY2026–27 budget the rate has to fund. Utah's Truth-in-Taxation process fixes a ceiling, not a floor — the noticed 0.001700 is the most the council could levy without starting the notice and hearing over, and it can adopt anything at or below it. The referendum petition citizens began organising in early August was aimed at the 0.001500."
+    },
+    "repealed": {
       "rate": 0.0015,
       "rate_display": "0.001500",
-      "label": "Adopted 2026–27",
-      "note": "Public safety · +183.02% over the certified rate",
+      "label": "Adopted August 6, repealed August 18",
+      "note": "Repealed · was +183.02% over the certified rate",
+      "repealed_on": "2026-08-18",
+      "repealed_meeting_id": 728,
+      "in_force_days": 12,
       "pct": 183.02,
       "pct_basis": "The figure stated in the motion: the increase in budgeted revenue over the prior year, exclusive of new growth — $5,591,594 against the $3,055,201 the certified rate would raise. It is also, to the second decimal, what 0.001500 is over the 0.000530 certified rate, so this one percentage comes out the same whether it is read as a ratio of revenue or a ratio of rates. Either way it is not a percentage of anyone's total bill.",
       "revenue": 8646795,
@@ -43,18 +73,20 @@
         "note": "The Truth-in-Taxation notice's own average home. Its $268,400 taxable value — 55% of $488,000 — times the 0.000970 the rate rose over the certified rate. The notice put the same home at $314.03 under the 0.001700 that was noticed. Around the table the council called it “about $250 a year” and “closer to 70 cents per day”; those are this figure spoken loosely, not a different one."
       },
       "derivation": "The rate, the 183.02% and the $5,591,594 are read verbatim from the motion Councilmember Whiting made and the council passed 5–0 on August 6; nothing about them is inferred. The $8,646,795 is the one derived figure: the noticed schedule's $9,798,139 less the $1,151,344 the council took off the increase ($6,742,938 noticed against $5,591,594 adopted). It prices out against the same citywide taxable value the 0.001700 schedule implies to within 0.02%, which is the check that it is the right kind of number.",
-      "supersedes": "proposed"
+      "supersedes": "proposed",
+      "superseded_by": "adopted",
+      "repeal_note": "Never billed. The county sets tax notices from the rate a city certifies after its budget is adopted, and Eagle Mountain adopted its FY2026–27 budget on August 18 — the same night this rate was repealed. It governed nothing but twelve days of published figures."
     },
     "proposed": {
       "rate": 0.0017,
       "rate_display": "0.001700",
       "label": "Noticed 2026–27, not adopted",
-      "note": "Superseded by the adopted 0.001500 · was noticed at +220.88%",
+      "note": "Never adopted · was noticed at +220.88%",
       "pct": 220.88,
       "pct_rate_basis": 220.75,
       "pct_basis": "The figure printed on the city's Truth-in-Taxation notice, in the notice's own words: 220.88% above last year's property tax budgeted revenue excluding eligible new growth. It is a ratio of revenue, not of rates — 0.001700 against the 0.000530 certified rate is +220.75%, which is the figure the Utah Taxpayers Association's statewide list carries for Eagle Mountain. The two differ because 'excluding eligible new growth' takes about $2,400 out of the base; see `rates.certified_2026.derivation`.",
       "revenue": 9798139,
-      "derivation": "Confirmed twice over by the schedule read on June 16: a $500,000 primary residence at $467.43 in total city tax, and an average business at $4,341.62 on a $2,554,303 market value, each independently imply a rate of 0.0016997 — 0.001700 at the six decimal places the city publishes. It is also printed outright, as “Eagle Mountain City's 2026 Proposed Property Tax Rate” on the impact schedule the city posted two days later. It is not the rate in force: on August 6 the council adopted 0.001500 instead."
+      "derivation": "Confirmed twice over by the schedule read on June 16: a $500,000 primary residence at $467.43 in total city tax, and an average business at $4,341.62 on a $2,554,303 market value, each independently imply a rate of 0.0016997 — 0.001700 at the six decimal places the city publishes. It is also printed outright, as “Eagle Mountain City's 2026 Proposed Property Tax Rate” on the impact schedule the city posted two days later. It is not the rate in force, and never was: the council adopted 0.001500 on August 6 and 0.000900 on August 18. What the notice fixed was the ceiling — under Utah Code § 59-2-919 a council may levy at or below the rate it advertised, but not above it without noticing again."
     },
     "tentative": {
       "rate": 0.00184233,
@@ -67,9 +99,9 @@
   },
 
   "revenue_increase": 6958141,
-  "revenue_increase_note": "The noticed schedule's own figure: $9,798,139 against the $2,839,998 the city collects today. The adopted rate's equivalent is $5,806,797, and the motion's own $5,591,594 — the figure the council voted on — is measured against prior-year budgeted revenue exclusive of new growth instead. See `rates.adopted`.",
-  "revenue_ratio_pct": 204.5,
-  "revenue_ratio_note": "Collections against collections: $2,839,998 today against the $8,646,795 the adopted rate raises is a 204.5% increase. That is a larger number than the 183.02% in the motion, because the motion compares rates against the certified rate rather than comparing collections. The noticed 0.001700 would have been 245%.",
+  "revenue_increase_note": "The noticed schedule's own figure: $9,798,139 against the $2,839,998 the city collects today. The adopted 0.000900 raises $5,188,077, which is $2,348,079 more than the city collects today and $2,132,876 more than the certified rate would raise — the same increase measured against two different bases. The repealed 0.001500 stood at $8,646,795 and $5,591,594. See `rates.adopted`.",
+  "revenue_ratio_pct": 82.68,
+  "revenue_ratio_note": "Collections against collections: $2,839,998 today against the $5,188,077 the adopted 0.000900 raises is an 82.68% increase. That is a larger number than the 69.81% measured against the certified rate, because this compares collections rather than measuring one rate against another. The repealed 0.001500 was 204.5% on this basis and the noticed 0.001700 would have been 245%.",
 
   "as_read": {
     "meeting_id": 726,
@@ -252,7 +284,8 @@
       "group": "hearing",
       "kind": "Action taken",
       "title": "Council adopts 0.001500, not the 0.001700 it noticed",
-      "note": "The statutory hearing on the increase itself, set by resolution 17.C. on May 5, and the night the rate was actually set. Roughly sixty people spoke over nearly three hours, almost all of them against the advertised 220%; the hearing closed at 9:00 PM and the council then talked the rate down and adopted 0.001500 — 183.02% over the 0.000530 certified rate, raising $5,591,594 rather than the $6,742,938 on the notice. Councilmember Huish opened the responses with an apology on how the increase had been explained — \"we failed you\" — and said the \"100% public safety\" framing came from the application filed with the state, which was built around covering the Sheriff's contract entirely with property tax. Council also agreed to bring back an ordinance requiring an annual rate review, and a resolution creating a dedicated public safety fund. Minutes not yet published; the figures here are transcribed from the recording, and every rate on this page is the adopted 0.001500 except where it says otherwise.",
+      "superseded": true,
+      "note": "The statutory hearing on the increase itself, set by resolution 17.C. on May 5, and the night the rate was actually set. Roughly sixty people spoke over nearly three hours, almost all of them against the advertised 220%; the hearing closed at 9:00 PM and the council then talked the rate down and adopted 0.001500 — 183.02% over the 0.000530 certified rate, raising $5,591,594 rather than the $6,742,938 on the notice. Councilmember Huish opened the responses with an apology on how the increase had been explained — \"we failed you\" — and said the \"100% public safety\" framing came from the application filed with the state, which was built around covering the Sheriff's contract entirely with property tax. Council also agreed to bring back an ordinance requiring an annual rate review, and a resolution creating a dedicated public safety fund. Minutes not yet published; the figures here are transcribed from the recording. This rate stood for twelve days: on August 18 the council repealed it and adopted 0.000900 in its place.",
       "transcript": true,
       "items": [
         {
@@ -268,13 +301,30 @@
       ]
     },
     {
-      "id": null,
+      "id": 728,
       "date": "2026-08-18",
       "group": "hearing",
-      "kind": "Upcoming",
-      "title": "Budget adoption hearing",
-      "note": "Where the FY2026–27 budget is finally adopted. Set by resolution 17.A. on May 5. What passed on June 16 was an interim budget; this is the final one. Public comment is taken.",
-      "upcoming": true
+      "kind": "Action taken",
+      "title": "Council repeals the 0.001500 and adopts 0.000900",
+      "note": "The budget-adoption hearing, set by resolution 17.A. back on May 5, and the night the rate changed again. The council took two resolutions in order — one repealing the property tax increase it had approved on August 6, one approving an increase above the certified rate in its place — and set the rate at 0.000900, a third of the way from the certified 0.000530 to the 0.001700 it had noticed. It then adopted the FY2026–27 budget the rate has to fund. Reported here the night it happened: the rate is certain, and the vote, the motions and the figures the resolutions recite are transcribed from the record as soon as it is published.",
+      "provisional": true,
+      "items": [
+        {
+          "ref": "13.A.",
+          "text": "Resolution repealing the property tax increase above the certified rate for FY2026–27 — the 0.001500 adopted on August 6",
+          "outcome": "Passed — vote not yet transcribed"
+        },
+        {
+          "ref": "13.B.",
+          "text": "Resolution approving a property tax increase above the certified rate for FY2026–27, at 0.000900",
+          "outcome": "Passed — vote not yet transcribed"
+        },
+        {
+          "ref": "13.C.",
+          "text": "Public hearing and resolution adopting the FY2026–27 annual budget",
+          "outcome": "Vote not yet transcribed"
+        }
+      ]
     },
 
     {
@@ -310,11 +360,11 @@
   "groups": {
     "record": {
       "label": "On the record",
-      "note": "Meetings where the increase was acted on, read into the record, or taken up in front of the public. The schedule has been read four times."
+      "note": "Meetings where the increase was acted on, read into the record, or taken up in front of the public. The schedule has been read four times, and the rate has been set twice."
     },
     "hearing": {
       "label": "The two hearings",
-      "note": "The Truth-in-Taxation hearing on August 6 set the rate at 0.001500. The budget-adoption hearing on August 18 is still to come, and the increase does not take effect until the full budget passes there."
+      "note": "Both hearings set a rate. The Truth-in-Taxation hearing on August 6 set 0.001500; the budget-adoption hearing on August 18 repealed that and set 0.000900, then adopted the budget it funds. The rate in force is the second one."
     },
     "context": {
       "label": "Leading up to it",

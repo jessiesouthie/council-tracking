@@ -45,11 +45,19 @@ function canonical() {
       const hit = body.match(new RegExp(`${name}="([^"]*)"`));
       return hit ? hit[1] : null;
     };
+    const href = field("href");
+    const children = [...body.matchAll(/Child\("([^"]+)",\s*"([^"]+)"\)/g)]
+      .map((c) => ({ label: c[1], href: c[2] }));
+    const extra = [...body.matchAll(/alias=\(([^)]*)\)/g)]
+      .flatMap((a) => [...a[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]));
+    // Item.aliases: children first, then the extras, minus the item's own href.
+    const alias = [...new Set([...children.map((c) => c.href), ...extra])]
+      .filter((h) => h !== href);
     items.push({
       label: field("label"),
-      href: field("href"),
-      alias: [...body.matchAll(/alias=\(([^)]*)\)/g)]
-        .flatMap((a) => [...a[1].matchAll(/"([^"]+)"/g)].map((x) => x[1])),
+      href,
+      children,
+      alias,
       mobile: !/mobile=False/.test(body),
       bodyScoped: /body_scoped=True/.test(body),
     });
@@ -72,16 +80,44 @@ test("the canonical list parsed, and is not empty", () => {
    The four copies
    --------------------------------------------------------------------------- */
 
-/* Pull the <a> elements out of one <nav class="nav"> block. */
-function navLinks(html) {
-  const block = html.match(/<nav class="nav" aria-label="Primary">([\s\S]*?)<\/nav>/);
-  if (!block) return null;
-  return [...block[1].matchAll(/<a\s([^>]*)>([^<]*)<\/a>/g)].map((m) => ({
+/* The raw contents of one <nav class="nav"> block. */
+function navBlock(html) {
+  const m = html.match(/<nav class="nav" aria-label="Primary">([\s\S]*?)\n\s*<\/nav>/);
+  return m ? m[1] : null;
+}
+
+const asLinks = (s) =>
+  [...s.matchAll(/<a\s([^>]*)>([^<]*)<\/a>/g)].map((m) => ({
     attrs: m[1],
     label: m[2],
     href: (m[1].match(/href="([^"]*)"/) || [])[1],
     nav: (m[1].match(/data-nav="([^"]*)"/) || [])[1],
   }));
+
+/* The top-level row: the bar's own items, with each section menu's contents
+   taken out first so a menu link is never mistaken for a destination on the
+   bar. That distinction is the whole point of the structure. */
+function navLinks(html) {
+  const block = navBlock(html);
+  if (block === null) return null;
+  return asLinks(block.replace(/<div class="nav-menu"[\s\S]*?<\/div>/g, ""));
+}
+
+/* The menus, keyed by the section they hang under. */
+function navMenus(html) {
+  const block = navBlock(html) || "";
+  const out = {};
+  for (const g of block.matchAll(
+    /<div class="nav-group"([^>]*)>([\s\S]*?)<div class="nav-menu"([^>]*)>([\s\S]*?)<\/div>/g
+  )) {
+    const trigger = asLinks(g[2])[0];
+    out[trigger.nav] = {
+      groupAttrs: g[1],
+      menuAttrs: g[3],
+      links: asLinks(g[4]),
+    };
+  }
+  return out;
 }
 
 for (const page of PAGES) {
@@ -205,28 +241,101 @@ test("every section page is precached by the service worker", () => {
    --------------------------------------------------------------------------- */
 
 test("each section page carries its section's sub-nav", () => {
-  const sections = {
-    "Finances section": ["finances.html", "tax.html", "projections.html",
-                         "budget.html", "staffing.html"],
-    "About section": ["about.html", "definitions.html"],
-  };
-
-  for (const [label, pages] of Object.entries(sections)) {
-    const hrefs = pages.map((p) => p);
-    for (const page of pages) {
-      const html = read(`docs/${page}`);
+  // Driven from the same children as the menus. A sub-nav that gains a page the
+  // menu doesn't have — or loses one it does — is the drift this file exists to
+  // catch, and it was two hand-written copies before.
+  for (const item of NAV.filter((i) => i.children.length)) {
+    for (const child of item.children) {
+      const html = read(`docs/${child.href}`);
       const block = html.match(
-        new RegExp(`<nav class="subnav" aria-label="${label}">([\\s\\S]*?)</nav>`)
+        new RegExp(`<nav class="subnav" aria-label="${item.label} section">([\\s\\S]*?)</nav>`)
       );
-      assert.ok(block, `${page} has no "${label}" sub-nav`);
+      assert.ok(block, `${child.href} has no "${item.label} section" sub-nav`);
 
-      const links = [...block[1].matchAll(/<a href="([^"]+)"([^>]*)>/g)];
-      assert.deepEqual(links.map((l) => l[1]), hrefs, `${page}: sub-nav destinations`);
+      const links = [...block[1].matchAll(/<a href="([^"]+)"([^>]*)>([^<]*)</g)];
+      assert.deepEqual(links.map((l) => l[1]), item.children.map((c) => c.href),
+        `${child.href}: sub-nav destinations`);
+      assert.deepEqual(links.map((l) => l[3]), item.children.map((c) => c.label),
+        `${child.href}: sub-nav labels`);
 
       // Exactly one item marks itself current, and it is this page.
       const current = links.filter((l) => /aria-current/.test(l[2]));
-      assert.equal(current.length, 1, `${page}: ${current.length} aria-current in the sub-nav`);
-      assert.equal(current[0][1], page, `${page}: sub-nav marks the wrong page current`);
+      assert.equal(current.length, 1, `${child.href}: ${current.length} aria-current in the sub-nav`);
+      assert.equal(current[0][1], child.href, `${child.href}: sub-nav marks the wrong page current`);
     }
+  }
+});
+
+/* ---------------------------------------------------------------------------
+   The hover/focus menus
+   --------------------------------------------------------------------------- */
+
+const WITH_MENUS = NAV.filter((i) => i.children.length);
+
+test("the definition has menus to test", () => {
+  assert.deepEqual(WITH_MENUS.map((i) => i.label), ["Finances", "About"]);
+});
+
+for (const page of PAGES) {
+  test(`${page} carries the section menus`, () => {
+    const html = read(`docs/${page}`);
+    const menus = navMenus(html);
+    const wantRoot = page === "404.html";
+
+    assert.deepEqual(Object.keys(menus), WITH_MENUS.map((i) => i.href),
+      `${page}: wrong set of section menus`);
+
+    for (const item of WITH_MENUS) {
+      const menu = menus[item.href];
+      assert.deepEqual(menu.links.map((l) => l.label), item.children.map((c) => c.label),
+        `${page}: ${item.label} menu labels`);
+      assert.deepEqual(
+        menu.links.map((l) => l.href),
+        item.children.map((c) => (wantRoot ? `/${c.href}` : c.href)),
+        `${page}: ${item.label} menu hrefs`);
+
+      // The panel names itself for a screen reader, since it is a bare div.
+      assert.match(menu.menuAttrs, new RegExp(`aria-label="${item.label} section"`),
+        `${page}: ${item.label} menu has no accessible name`);
+
+      // A body-scoped section marks the wrapper, not the trigger — otherwise
+      // applyBodyNav() strips the link and leaves its menu behind.
+      const scoped = /data-nav-body=/.test(menu.groupAttrs);
+      assert.equal(scoped, item.bodyScoped,
+        `${page}: ${item.label} body scoping is on the wrong element`);
+    }
+  });
+}
+
+test("the menu is real markup, not built at runtime", () => {
+  // It has to be in the page for a crawler and for a reader with no JS, and
+  // revealing it must need no script — that is what makes focus-within the
+  // keyboard route rather than a keydown handler.
+  // site.js may read the menus — it marks which row is the current page — but
+  // it must not be the thing that puts them in the document.
+  const src = read("docs/site.js");
+  assert.doesNotMatch(src, /<a[^>]*>\$\{[^}]*\}<\/a>[\s\S]{0,80}nav-menu/,
+    "site.js is building the section menus");
+  assert.doesNotMatch(src, /class="nav-menu"/, "site.js is emitting menu markup");
+  assert.doesNotMatch(src, /nav-group/, "site.js is emitting menu wrappers");
+
+  const css = read("docs/site.css");
+  assert.match(css, /\.nav-group:focus-within \.nav-menu/,
+    "the menus don't open on keyboard focus");
+  assert.match(css, /\.nav-group:hover \.nav-menu/, "the menus don't open on hover");
+});
+
+test("the menus are not opened inside a scroll container", () => {
+  // overflow-x:auto computes overflow-y to auto, not visible, so a .nav that
+  // scrolls clips its menus to the height of the bar. The narrow band that
+  // needs to scroll must therefore switch them off.
+  const css = read("docs/site.css");
+  const scrollBands = [...css.matchAll(/@media([^{]*)\{((?:[^{}]|\{[^{}]*\})*)\}/g)]
+    .filter((m) => /\.nav\s*\{[^}]*overflow-x:\s*auto/.test(m[2]));
+
+  assert.ok(scrollBands.length, "expected a band where .nav scrolls");
+  for (const band of scrollBands) {
+    assert.match(band[2], /\.nav-menu\s*\{[^}]*display:\s*none/,
+      `.nav scrolls in "@media${band[1].trim()}" without hiding .nav-menu`);
   }
 });

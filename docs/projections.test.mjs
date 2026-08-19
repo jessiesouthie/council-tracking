@@ -67,8 +67,8 @@ function toyConfig(over) {
 test("the scenarios levy the rates the page says they levy", () => {
   const rates = Object.fromEntries(CONFIG.scenarios.map((s) => [s.id, s.start_rate]));
   assert.equal(rates.none, 0.00053, "no increase = the 2026 certified rate");
-  assert.equal(rates.half, 0.00105, "half = the partial increase this project models");
-  assert.equal(rates.adopted, 0.0015, "adopted = the rate adopted 6 August");
+  assert.equal(rates.adopted, 0.0009, "adopted = the rate adopted 18 August");
+  assert.equal(rates.repealed, 0.0015, "repealed = the rate adopted 6 August and repealed on the 18th");
   // No scenario carries an invented annual step on top of the certified rate.
   CONFIG.scenarios.forEach((s) => {
     assert.ok(!s.default_above_certified, `${s.id} must not carry a made-up annual step`);
@@ -93,11 +93,12 @@ test("every scenario carries the copy section 01 renders for it", () => {
   });
 });
 
-test("a rate nobody proposed is declared as an assumption, and only that one is", () => {
-  // 0.001050 is this project's own middle case. The file's rule is that a
-  // chosen number carries `assumption: true` and a `basis`; a real one carries
-  // a `source`. This is what keeps the invented rate from reading as a
-  // published one — on the page and in the file both.
+test("every scenario rate is one a council actually voted for", () => {
+  // The file's rule is that a chosen number carries `assumption: true` and a
+  // `basis`; a real one carries a `source`. Since 18 August every rate on the
+  // page is real — the certified rate, the rate adopted, and the rate adopted
+  // and repealed — so the invented middle case is gone and nothing here may
+  // carry `assumption`.
   CONFIG.scenarios.forEach((s) => {
     if (s.assumption) {
       assert.ok(s.basis, `${s.id} must say what its rate is based on`);
@@ -108,8 +109,8 @@ test("a rate nobody proposed is declared as an assumption, and only that one is"
   });
   assert.deepEqual(
     CONFIG.scenarios.filter((s) => s.assumption).map((s) => s.id),
-    ["half"],
-    "exactly one scenario is this project's own"
+    [],
+    "no scenario on the page is this project's own invention"
   );
 });
 
@@ -118,17 +119,21 @@ test("each published scenario's FY2026-27 levy reproduces the city's own figure"
   // revenue and the motion's adopted levy. To the dollar, not the cent: the
   // city publishes $3,055,201 and the rate it publishes gives $3,055,200.90.
   close(project(CONFIG, "none").rows[0].propertyTax, 3_055_201, 1, "certified rate raises");
-  money(project(CONFIG, "adopted").rows[0].propertyTax, 8_646_795, "adopted rate raises");
-  // The middle case has nothing published to check against, so it is checked
-  // against its own arithmetic: rate × the roll the other two agree on.
-  money(project(CONFIG, "half").rows[0].propertyTax, 0.00105 * 5_764_530_000, "the modelled middle rate raises");
+  money(project(CONFIG, "repealed").rows[0].propertyTax, 8_646_795, "the repealed rate raised");
+  // The rate in force has no published revenue figure yet — the resolution
+  // adopting it was not out when this was written — so it is checked against
+  // the arithmetic the page states: rate × the roll the other two agree on,
+  // which is also three fifths of the repealed rate's levy.
+  money(project(CONFIG, "adopted").rows[0].propertyTax, 0.0009 * 5_764_530_000, "adopted rate raises");
+  money(project(CONFIG, "adopted").rows[0].propertyTax, 5_188_077, "and that is the $5,188,077 the page prints");
 });
 
 test("the above-certified percentages fall out at the figures in the record", () => {
   // Not fed to the model anywhere — it is rate ÷ certified rate, and it lands
   // on the motion's own 183.02%. If the taxable value or either rate were
   // wrong, this would not agree.
-  close(project(CONFIG, "adopted").rows[0].aboveCertified * 100, 183.02, 0.01, "adopted vs certified");
+  close(project(CONFIG, "adopted").rows[0].aboveCertified * 100, 69.81, 0.01, "adopted vs certified");
+  close(project(CONFIG, "repealed").rows[0].aboveCertified * 100, 183.02, 0.01, "repealed vs certified");
   close(project(CONFIG, "none").rows[0].aboveCertified * 100, 0, 1e-9, "no increase is 0% above certified");
 });
 
@@ -152,20 +157,23 @@ test("the FY2026-27 bridge from the balanced budget holds for every scenario", (
     money(row.totalRevenue, row.propertyTax + 32_336_071, `${s.id} FY2027 revenue`);
   });
 
-  // And for the adopted rate the bridge is the rate cut plus the reserve draw,
-  // which is the arithmetic the page states in words.
-  money(project(CONFIG, "adopted").rows[0].gap, -(1_151_344 + 516_231), "adopted-rate gap");
+  // And for each adopted rate the bridge is the distance from the levy the
+  // interim budget was written around, plus the reserve draw — the arithmetic
+  // the page states in words. The 0.001500 was $1,151,344 below the noticed
+  // levy; the 0.000900 that replaced it is $4,610,062 below it.
+  money(project(CONFIG, "repealed").rows[0].gap, -(1_151_344 + 516_231), "repealed-rate gap");
+  money(project(CONFIG, "adopted").rows[0].gap, -(4_610_062 + 516_231), "adopted-rate gap");
 });
 
-test("the no-increase case is the widest gap and the adopted rate the narrowest", () => {
-  const [none, half, adopted] = ["none", "half", "adopted"].map((id) => project(CONFIG, id));
-  assert.ok(none.summary.cumulative < half.summary.cumulative);
-  assert.ok(half.summary.cumulative < adopted.summary.cumulative);
+test("the no-increase case is the widest gap and the repealed rate the narrowest", () => {
+  const [none, adopted, repealed] = ["none", "adopted", "repealed"].map((id) => project(CONFIG, id));
+  assert.ok(none.summary.cumulative < adopted.summary.cumulative);
+  assert.ok(adopted.summary.cumulative < repealed.summary.cumulative);
   // None of the three recovers. Every scenario on the page is in deficit in
   // every projected year, so no line ever crosses: the highest rate the page
-  // now models is the one the council actually adopted, and even that does not
-  // reach spending. Any future scenario that does cross will trip this.
-  [["none", none], ["half", half], ["adopted", adopted]].forEach(([id, r]) => {
+  // now models is the one the council adopted and then repealed, and even that
+  // does not reach spending. Any future scenario that does cross will trip this.
+  [["none", none], ["adopted", adopted], ["repealed", repealed]].forEach(([id, r]) => {
     assert.equal(r.summary.deficitYears, r.rows.length, `${id} is in deficit every year`);
     assert.equal(r.crossings.length, 0, `${id} never crosses`);
   });
@@ -194,15 +202,15 @@ test("every shipped scenario runs clean and covers the stated period", () => {
 
 test("more rate means more revenue, in every projected year", () => {
   const none = project(CONFIG, "none");
-  const half = project(CONFIG, "half");
   const adopted = project(CONFIG, "adopted");
+  const repealed = project(CONFIG, "repealed");
   // The anchor year is common to all three, so compare from the first projected year.
   for (let i = 1; i < none.rows.length; i++) {
-    assert.ok(half.rows[i].propertyTax > none.rows[i].propertyTax, `half > none in year ${i}`);
-    assert.ok(adopted.rows[i].propertyTax > half.rows[i].propertyTax, `adopted > half in year ${i}`);
+    assert.ok(adopted.rows[i].propertyTax > none.rows[i].propertyTax, `adopted > none in year ${i}`);
+    assert.ok(repealed.rows[i].propertyTax > adopted.rows[i].propertyTax, `repealed > adopted in year ${i}`);
   }
-  assert.ok(adopted.summary.cumulative > half.summary.cumulative);
-  assert.ok(half.summary.cumulative > none.summary.cumulative);
+  assert.ok(repealed.summary.cumulative > adopted.summary.cumulative);
+  assert.ok(adopted.summary.cumulative > none.summary.cumulative);
 });
 
 test("the data-center cross-check in the config is internally consistent", () => {
@@ -223,7 +231,7 @@ test("the data-center cross-check in the config is internally consistent", () =>
 
 test("the additions mode defaults to full, and junk falls back to it", () => {
   const full = project(CONFIG, "none", { additions: "full" });
-  ["", null, undefined, "half", "FULL", 1].forEach((junk) => {
+  ["", null, undefined, "middle", "FULL", 1].forEach((junk) => {
     const r = project(CONFIG, "none", { additions: junk });
     assert.equal(r.additions, "full", `additions=${String(junk)} should fall back`);
     money(r.summary.cumulative, full.summary.cumulative, `additions=${String(junk)}`);
@@ -269,7 +277,7 @@ test("dropping the data-center additions is what section 02 quotes as the downsi
   // names the alternative in a sentence. But that sentence's figure is computed
   // by rerunning the model with the additions dropped rather than written into
   // the copy, so the option has to keep working even with no UI on it.
-  ["none", "half", "adopted"].forEach((id) => {
+  ["none", "adopted", "repealed"].forEach((id) => {
     const full = project(CONFIG, id);
     const without = project(CONFIG, id, { additions: "none" });
     assert.ok(without.ok, `${id} must still run with the additions dropped`);

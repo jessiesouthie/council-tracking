@@ -20,7 +20,7 @@
       "label": "Citywide taxable value, FY2026–27",
       "summary": "Implied identically by two figures the city did publish — the adopted rate and the certified rate — agreeing to 0.000003%.",
       "derived": true,
-      "derivation": "Not published as a figure; implied identically by two the city did publish. The adopted 0.001500 raises $8,646,795 — 8,646,795 ÷ 0.001500 = $5,764,530,000. The 2026 certified rate 0.000530 raises $3,055,201 — 3,055,201 ÷ 0.000530 = $5,764,530,189. The two agree to 0.000003%. The noticed 0.001700 against $9,798,139 implies $5,763,611,176, which is 0.016% lower; the city computed the noticed schedule from an unrounded rate.",
+      "derivation": "Not published as a figure; implied identically by two the city did publish. The 0.001500 adopted on 6 August raises $8,646,795 — 8,646,795 ÷ 0.001500 = $5,764,530,000. That rate was repealed on 18 August, but the taxable value it implies did not move with it, and the 0.000900 adopted in its place is priced against the same base: 0.000900 × $5,764,530,000 = $5,188,077. The 2026 certified rate 0.000530 raises $3,055,201 — 3,055,201 ÷ 0.000530 = $5,764,530,189. The two agree to 0.000003%. The noticed 0.001700 against $9,798,139 implies $5,763,611,176, which is 0.016% lower; the city computed the noticed schedule from an unrounded rate.",
       "source": {
         "meeting": 747,
         "date": "2026-08-06",
@@ -50,7 +50,7 @@
         "date": "2024-06-30"
       },
       "note": "Utah's certified-rate formula has a collection rate inside it. Utah Code § 59-2-924(4)(b) multiplies the value base by a five-year average collection rate before subtracting new growth, and the Tax Commission's 2025 annual report puts the five-year statewide average at 93.88%. That is the statewide figure across all counties; Eagle Mountain's own is materially higher.",
-      "why_not_applied": "The city's Truth-in-Taxation schedule states its revenue as rate × taxable value, with no allowance for tax that goes uncollected, and every anchor figure here is checked against that schedule to the cent — 0.000530 raising $3,055,201, 0.001500 raising $8,646,795. Applying 99.38% inside the model would break that check while telling you nothing new: the shortfall is a flat 0.62% in every year and every scenario. There is also a double-count risk — the county already builds a five-year average collection rate into the certified rate before it publishes it.",
+      "why_not_applied": "The city's Truth-in-Taxation schedule states its revenue as rate × taxable value, with no allowance for tax that goes uncollected, and every anchor figure here is checked against that schedule to the cent — 0.000530 raising $3,055,201, 0.001500 raising $8,646,795 before it was repealed. Applying 99.38% inside the model would break that check while telling you nothing new: the shortfall is a flat 0.62% in every year and every scenario. There is also a double-count risk — the county already builds a five-year average collection rate into the certified rate before it publishes it.",
       "effect": "Applying it scales every property-tax figure on the page down by 0.62% — about $54,000 in FY2026–27 at the adopted rate — and no curve changes shape."
     },
     "other_revenue": {
@@ -273,7 +273,7 @@
         "implies": 1800000
       }
     ],
-    "caveat": "The city's own line was given as '$2.7 million a year' at 'our current tax rate'. At the rate actually current that night — 0.000534 — $2.7M would need a $5.06 billion tax base, which is nearly the entire city. Against the 0.001500 the council adopted an hour later it implies $1.80 billion, in line with the other three. The speaker was using 'current' loosely; the page treats the $2.7M as being at the adopted rate and says so rather than reconciling it silently.",
+    "caveat": "The city's own line was given as '$2.7 million a year' at 'our current tax rate'. At the rate actually current that night — 0.000534 — $2.7M would need a $5.06 billion tax base, which is nearly the entire city. Against the 0.001500 the council adopted an hour later it implies $1.80 billion, in line with the other three. The speaker was using 'current' loosely; the page treats the $2.7M as being at the rate adopted that night and says so rather than reconciling it silently. The rate has since changed — 0.001500 was repealed on 18 August and 0.000900 adopted — and this row is deliberately left at 0.001500, because it is reconstructing what a figure spoken on 6 August meant on 6 August. Read forward instead of backward, the same $1.9 billion of value is worth about $1.7 million a year to the city at 0.000900 rather than the $2.7 million quoted.",
     "check": "At $1.9 billion the combined all-entity rate of 0.009377 yields $17.8M against the 'over $19 million' stated. The gap is consistent with Lake Mountain School District setting a rate above Alpine's, which it has not yet done.",
     "source": {
       "meeting": 747,
@@ -351,40 +351,46 @@
       }
     },
     {
-      "id": "half",
-      "name": "Middle — illustrative rate",
-      "short": "Middle",
-      "rate_label": "A partial increase",
-      "blurb": "A middle rate nobody proposed, included by this project to show what a smaller increase would close.",
-      "rate_noun": "The rate",
-      "description": "This is a hypothetical middle option created for this analysis. It was not proposed by the City Council or set by Utah County.",
-      "closer": "This scenario shows how a smaller increase might affect the city's projected budget gap.",
-      "method": "revenue_based",
-      "start_rate": 0.00105,
-      "years": {},
-      "assumption": true,
-      "basis": "A round figure a little above the midpoint of the two rates that are real. Halfway between the 0.000530 certified rate and the 0.001500 adopted rate is 0.001015; 0.001050 rounds that to the nearest half-tenth of a mill and lands inside the range the city itself levied a decade ago, between the 0.001081 of FY2017 and the 0.001011 of FY2018. Nothing in the record proposes it."
-    },
-    {
       "id": "adopted",
       "name": "Adopted — council-approved rate",
       "short": "Adopted",
       "rate_label": "Council-adopted rate",
-      "blurb": "The rate the City Council adopted on 6 August 2026.",
+      "blurb": "The rate the City Council adopted on 18 August 2026.",
       "rate_noun": "The adopted rate",
-      "description": "The City Council approved this rate by a 5–0 vote on August 6, 2026. The city originally gave public notice of a 0.001700 rate, but the council lowered it before voting.",
-      "closer": "This is the rate currently approved unless it is changed or repealed.",
+      "description": "The rate in force. On 18 August 2026 the council repealed the 0.001500 it had adopted twelve days earlier and adopted 0.000900 in its place, then adopted the budget it funds. The city had given public notice of 0.001700; under Truth-in-Taxation that notice is a ceiling, so the council could go below it without noticing again.",
+      "closer": "This is the rate the city will levy for FY2026–27 unless it is changed again. It raises about $5.19 million against the $9.80 million of property tax the interim budget was written around, which is the gap this page projects forward.",
+      "method": "revenue_based",
+      "start_rate": 0.0009,
+      "years": {},
+      "provisional": true,
+      "provisional_note": "The rate is the council's; the figures this scenario produces from it are this page's arithmetic. The adopting resolution, the vote and the motion's own revenue figures were not yet published when the scenario was written, and this note comes off when they are read into `sources`.",
+      "source": {
+        "meeting": 728,
+        "date": "2026-08-18",
+        "doc": "Resolution approving a property tax increase above the certified tax rate for FY2026–27, item 13.B, following the repeal at 13.A",
+        "quote": null
+      }
+    },
+    {
+      "id": "repealed",
+      "name": "Repealed — the August 6 rate",
+      "short": "Repealed",
+      "rate_label": "Rate repealed on 18 August",
+      "blurb": "The 0.001500 the council adopted on 6 August and repealed twelve days later.",
+      "rate_noun": "The repealed rate",
+      "description": "Adopted 5–0 on 6 August 2026 after a three-hour hearing, and repealed on 18 August before a single bill was issued. It is kept here because it is the only other rate a council of this city has actually voted for this year, and because it shows what the 0.000900 gave up: $3,458,718 a year at the anchor year's taxable value.",
+      "closer": "Not a proposal and not a forecast — a rate that was law for twelve days. It stands in this page as the upper bound the council itself set, against the certified rate at the bottom and the adopted rate between them.",
       "method": "revenue_based",
       "start_rate": 0.0015,
       "years": {},
+      "superseded": true,
       "source": {
         "meeting": 747,
         "date": "2026-08-06",
         "speaker": "Councilmember Craig Whiting, moving; seconded by Councilmember Brett Wright",
         "quote": "Approves and adopts a property tax rate of 0.001500 for fiscal year 2026 to 2027. This rate exceeds the certified tax rate of 0.000530 and will result in an increase in the city's ad valorem property tax budgeted revenue of approximately $5,591,594, or 183.02% above the city's property tax budgeted revenue for the prior year, exclusive of new growth."
       }
-    }
-  ],
+    }  ],
   "_methodology_notes_comment": "This was a `definitions` block carrying full-length copy for the certified-rate explanation, the meaning of 'gap', and the three-rates warning. All of that is now written directly into projections.html — the page renders it as plain definition rather than reading it from here, so the copy here was dead and drifting. What is left is the two things the page could not say in a sentence and had nowhere else to keep: how far this model departs from the statute it approximates, and the rate the city actually levied each year. Both render as fine print inside the Methodology panel in section 03.",
   "methodology_notes": {
     "statute": {
@@ -394,7 +400,7 @@
     },
     "rate_history": {
       "heading": "What the city actually levied, FY2015 to FY2024",
-      "note": "The rate fell in every one of those ten years. That is the certified-rate system working as designed: values rose, the rate dropped to cancel it out, and growth rather than rate increases carried the budget. It is also the comparison for the 0.001500 adopted on 6 August 2026, which is above every rate in this series.",
+      "note": "The rate fell in every one of those ten years. That is the certified-rate system working as designed: values rose, the rate dropped to cancel it out, and growth rather than rate increases carried the budget. It is also the comparison for the two rates adopted in August 2026: the 0.001500 of 6 August, above every rate in this series, and the 0.000900 that replaced it on 18 August, which lands inside this same series: just under the 0.000924 of FY2019 and above the 0.000825 of FY2020. Measured against the rate history, the increase in force returns the city to roughly what it was levying seven years ago.",
       "rates": [
         { "year": 2015, "rate": 0.001192 },
         { "year": 2016, "rate": 0.001118 },
@@ -411,12 +417,12 @@
   },
   "reconciliation": {
     "heading": "How FY2026–27 relates to the interim budget",
-    "text": "The interim budget balances exactly: $42,650,441 of revenue against $42,650,441 of appropriations. It gets there on two things a structural gap measure cannot use — a draw on reserves counted as revenue, and a property-tax line built on the 0.001700 the city noticed rather than any rate since set. Take both out and put this scenario's own levy back in, and you get the FY2026–27 figure on this page.",
+    "text": "The interim budget balances exactly: $42,650,441 of revenue against $42,650,441 of appropriations. It gets there on two things a structural gap measure cannot use — a draw on reserves counted as revenue, and a property-tax line built on the 0.001700 the city noticed rather than either rate since set. Take both out and put this scenario's own levy back in, and you get the FY2026–27 figure on this page. The distance is larger than it was: the interim budget carries $9,798,139 of property tax and the adopted 0.000900 raises $5,188,077, so $4,610,062 of the interim levy is not there to be spent.",
     "balanced": 0,
     "reserve_draw": 516231,
     "interim_levy": 9798139,
     "reserve_note": "'Beginning General Fund Balance to be Appropriated'. It balances a budget; it does not close a gap, and it cannot be drawn twice.",
-    "levy_note": "The interim budget's two property-tax lines together — 'Property Taxes' $2,839,998 plus 'Property Taxes Interim Budget' $6,958,141. The 18 August adoption trues this up to whatever rate stands.",
+    "levy_note": "The interim budget's two property-tax lines together — 'Property Taxes' $2,839,998 plus 'Property Taxes Interim Budget' $6,958,141. The 18 August adoption trued this up to the 0.000900 the council set the same night.",
     "rounding_note": "Levies here are this model's rate × taxable value. At 0.001700 that gives $9,799,701 against the $9,798,139 the city published — $1,562 apart, because the city computed its schedule from an unrounded rate."
   },
   "interpretation": {
@@ -435,11 +441,19 @@
   "disclaimer": "This is an independent planning estimate from Civic Roll Call, built from the city's published budget and the recordings of its open meetings. It is not an adopted budget, a city forecast, a legal determination, or a prediction of service reductions. FY2026–27 figures come from the interim budget; the final hearing is 18 August 2026. Results change when the assumptions change.",
   "sources": [
     {
-      "title": "Resolution adopting a property tax rate of 0.001500 for FY2026–27",
+      "title": "Resolutions repealing the 0.001500 and adopting a property tax rate of 0.000900 for FY2026–27",
+      "publisher": "Eagle Mountain City Council",
+      "meeting": 728,
+      "date": "2026-08-18",
+      "provisional": true,
+      "note": "Items 13.A and 13.B at the budget-adoption meeting, taken in that order: the repeal of the increase approved on 6 August, then a new increase above the certified rate at 0.000900. The FY2026–27 budget was adopted at 13.C the same night. Recorded here from the meeting as it happened; the resolutions, the vote and the figures they recite are read in from the record when it is published, and until then every figure this page derives from 0.000900 is its own arithmetic."
+    },
+    {
+      "title": "Resolution adopting a property tax rate of 0.001500 for FY2026–27, repealed 18 August",
       "publisher": "Eagle Mountain City Council",
       "meeting": 747,
       "date": "2026-08-06",
-      "note": "Passed 5–0. Supplies the adopted rate, the $5,591,594 increase, the 183.02%, and — in the deliberation and the public hearing before it — the QTS figures, the UFSA commitment and the annual-review commitment. It is also where a councilmember put the city's growth at '1,800 building permits a year', which the city's own permit counts do not bear out; see the permit table under the assumptions."
+      "note": "Passed 5–0, and repealed twelve days later. Supplies the repealed rate, the $5,591,594 increase, the 183.02%, and — in the deliberation and the public hearing before it — the QTS figures, the UFSA commitment and the annual-review commitment. It is also where a councilmember put the city's growth at '1,800 building permits a year', which the city's own permit counts do not bear out; see the permit table under the assumptions."
     },
     {
       "title": "New Residential Permits — Fiscal Years, FY2014 to FY2026",

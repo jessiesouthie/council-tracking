@@ -41,16 +41,36 @@
   "eagle_mountain": {
     "entity": "Eagle Mountain City",
     "adopted": {
-      "rate": 0.0015,
-      "rate_display": "0.001500",
-      "pct": 183.02,
-      "annual_increase": 260.35,
-      "revenue": 5591594,
-      "budget_total": 8646795,
+      "rate": 0.0009,
+      "rate_display": "0.000900",
+      "pct": 69.81,
+      "annual_increase": 99.31,
+      "revenue": 2132876,
+      "budget_total": 5188077,
       "home_value": 488000,
       "taxable_value": 268400,
-      "date": "2026-08-06",
-      "meeting_id": 747,
+      "date": "2026-08-18",
+      "meeting_id": 728,
+      "provisional": true,
+      "vote": null,
+      "motion": null,
+      "source": {
+        "title": "City Council meeting, August 18, 2026 — budget adoption, items 13.A and 13.B",
+        "publisher": "Eagle Mountain City",
+        "url": "meetings.html?id=728",
+        "retrieved": "2026-08-18"
+      },
+      "derivation": "The rate is the council's; every other figure in this row is derived from it, because the adopting resolution and the recording were not yet published when it was written. The $2,132,876 is the certified rate's own $3,055,201 scaled by 0.000900 ÷ 0.000530, less that $3,055,201; the 69.81% is the same ratio as a percentage, and comes out identical whether it is read as a ratio of rates or of revenue. The $99.31 is this list's own arithmetic, the one it applies to every row: an average home's taxable value — $268,400, being 55% of the $488,000 on the city's notice — times the 0.000370 the rate rose over the certified rate.",
+      "repealed": {
+        "rate": 0.0015,
+        "rate_display": "0.001500",
+        "pct": 183.02,
+        "annual_increase": 260.35,
+        "revenue": 5591594,
+        "budget_total": 8646795,
+        "date": "2026-08-06",
+        "meeting_id": 747,
+        "repealed_on": "2026-08-18",
       "vote": "Passed 5–0 on a roll call — moved by Whiting, seconded by Wright; Wood, Whiting, Wright, Clark and Huish all in favour",
       "motion": "Approves and adopts a property tax rate of 0.001500 for fiscal year 2026 to 2027. This rate exceeds the certified tax rate of 0.000530 and will result in an increase in the city's ad valorem property tax budgeted revenue of approximately $5,591,594, or 183.02% above the city's property tax budgeted revenue for the prior year, exclusive of new growth.",
       "source": {
@@ -60,6 +80,7 @@
         "retrieved": "2026-08-07"
       },
       "derivation": "The rate, the 183.02% and the $5,591,594 are read verbatim from the motion Councilmember Whiting made and the council passed 5–0; nothing about them is inferred. The $260.35 is the one derived figure: the Truth-in-Taxation notice's own $268,400 taxable value — 55% of a $488,000 home — times the 0.000970 the rate rose, which is the same arithmetic behind the $314.03 on the notice and behind every other entity's dollar column. Around the table the council put it as “about $250 a year” and “closer to 70 cents per day”; those are the same figure spoken loosely, not a different one."
+      }
     }
   },
   "caveats": [
@@ -68,7 +89,7 @@
     "79 notices, 68 entities: Central Utah Water Conservancy District notices in seven counties, Weber Basin in five, and Draper in two, each with its own hearing and its own figures. Ranking by revenue counts each notice separately, so those entities' totals are split across rows.",
     "The Utah Taxpayers Association's own headline — 67 entities, $93,580,522 — leaves out Ogden Valley City, which incorporated too recently to have a certified rate and shows ‘Not Available’ in both rate columns. Its $2,475,138 is included in the $96.1M total here, and it is ranked on the 512.61% its notice states.",
     "Six rows have been corrected against the counties' own notices, and are marked † in the table. The Association's dollar column is derived — an entity's taxable value times the gap between its two rate columns — so where a rate column is wrong or missing, the dollars are too. Cedar Hills, Orem, Springville, Pleasant Grove and American Fork carried a proposed rate above the one Utah County advertised, which put their percentages and dollar figures roughly two to fifteen times too high; each is now read off the county's combined notice. Ogden Valley, having no certified rate to subtract, carried its whole proposed tax bill in the increase column; it now carries the increase its own impact schedule states. No revenue figure changed, and every correction moved a row down. None of it disturbs Eagle Mountain's position: the five Utah County rows sit well below it on every measure either way, and Ogden Valley stays above it on percentage and on the average home, as it was.",
-    "Eagle Mountain's row is the rate its council adopted on August 6, which is why it is the one figure here that cannot still move. Every other row is that entity's noticed figure, and a hearing can end in a smaller increase than the one noticed, or in none at all — Eagle Mountain's did, after nearly three hours of public comment. So the ranking compares one settled rate against seventy-eight opening asks, and several of those will come down."
+    "Eagle Mountain's row is the rate its council adopted on August 18, replacing the 0.001500 it adopted on August 6 and repealed the same night — the one row here that is a decision rather than a proposal, and the one that has already shown a council can move a long way between the two. Every other row is that entity's noticed figure, and a hearing can end in a smaller increase than the one noticed, or in none at all — Eagle Mountain's did, after nearly three hours of public comment. So the ranking compares one settled rate against seventy-eight opening asks, and several of those will come down."
   ],
   "notices": [
     {

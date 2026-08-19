@@ -470,12 +470,31 @@ def _extra_docs() -> list[dict]:
         # file is still listed, including the one that was noticed and dropped,
         # so a question about the 0.001700 people saw on the notice still lands.
         adopted = rates.get("adopted") or {}
+        repealed = rates.get("repealed") or {}
+        # A rate can arrive before its paperwork. Where the file carries no
+        # motion and no vote yet, the chunk says so rather than printing an
+        # empty quotation the agent would repeat as if it had read one.
+        vote = (adopted.get("vote") or "").strip()
+        pending = (
+            "" if vote
+            else "The vote and the motion are not transcribed yet; the rate is what the council set. "
+        )
+        # A rate the council repealed is the second question anyone asks, so the
+        # chunk carries it rather than leaving the agent to infer it from a
+        # date.
+        replaced = (
+            f"It replaced the {repealed.get('rate_display','')} the same council adopted on "
+            f"{repealed.get('date','')} and repealed on {repealed.get('repealed_on','')}. "
+            if repealed else ""
+        )
         headline = (
             f"Adopted property tax rate for {tax.get('fiscal_year_label', tax.get('fiscal_year',''))}: "
             f"{adopted.get('rate_display','')}, adopted {adopted.get('date','')} — "
             f"{adopted.get('pct','')}% over the certified rate, raising "
-            f"${adopted.get('revenue_increase',0):,}. {adopted.get('vote','')}. "
-            f"It is not the {rates.get('proposed',{}).get('rate_display','')} the city noticed. "
+            f"${adopted.get('revenue_increase',0):,}. "
+            + (f"{vote}. " if vote else pending)
+            + replaced
+            + f"It is not the {rates.get('proposed',{}).get('rate_display','')} the city noticed. "
             if adopted
             else f"Proposed property tax change for {tax.get('fiscal_year_label', tax.get('fiscal_year',''))}, "
                  f"status: {tax.get('status','')}. "
@@ -842,20 +861,38 @@ def _state_docs() -> list[dict]:
         + " ".join(s.get("caveats", []))
     )
 
+    rep = ad.get("repealed") or {}
+    ad_vote = (ad.get("vote") or "").strip()
+    ad_motion = (ad.get("motion") or "").strip()
+    # The rate this one replaced, and what is still missing from the record of
+    # the night it was set. Both are stated rather than implied: an agent that
+    # cannot see a motion must not sound as though it has read one.
+    repealed_text = (
+        f"It replaced {rep.get('rate_display','')}, which the same council adopted on "
+        f"{rep.get('date','')} — {rep.get('pct',0)}% over the certified rate, about "
+        f"${rep.get('annual_increase',0):,.2f} a year on the same home — and repealed on "
+        f"{rep.get('repealed_on','')} before any bill was issued. "
+        if rep else ""
+    )
     adopted_text = (
-        f"What Eagle Mountain's City Council actually adopted. On {ad.get('date','')}, at the "
-        f"truth-in-taxation hearing, the council voted to set the city property tax rate at "
+        f"What Eagle Mountain's City Council actually adopted. On {ad.get('date','')} the council "
+        f"voted to set the city property tax rate at "
         f"{ad.get('rate_display','')} — not the {em.get('proposed_rate',0):.6f} on the public notice. "
-        f"{ad.get('vote','')}. That is an increase of {ad.get('pct',0)}% over the "
+        + (f"{ad_vote}. " if ad_vote else "")
+        + f"That is an increase of {ad.get('pct',0)}% over the "
         f"{em.get('certified_rate',0):.6f} certified rate, rather than the {em.get('pct',0)}% noticed. "
         f"It adds about ${ad.get('annual_increase',0):,.2f} a year to a "
         f"${ad.get('home_value',0):,} primary residence, instead of ${em.get('annual_increase',0):,.2f}, "
         f"and raises roughly ${ad.get('revenue',0):,} rather than ${em.get('revenue',0):,}. "
         f"The money goes to the Utah County Sheriff's contract and the deputies it funds. "
-        f"The increase does not take effect until the full budget passes at the budget adoption "
-        f"hearing on August 18, 2026. The motion as read: \"{ad.get('motion','')}\" "
-        f"Source: {ad.get('source',{}).get('title','')}, transcribed from the recording; "
-        f"the minutes were not published when this was written. {ad.get('derivation','')}"
+        + repealed_text
+        + (f"The motion as read: \"{ad_motion}\" " if ad_motion else "")
+        + (
+            "The resolution, the vote and the motion had not been published when this was written, "
+            "so every figure here except the rate itself is derived from the rate. "
+            if ad.get("provisional") else ""
+        )
+        + f"Source: {ad.get('source',{}).get('title','')}. {ad.get('derivation','')}"
     )
 
     return [

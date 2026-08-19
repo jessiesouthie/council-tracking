@@ -326,14 +326,48 @@
       }
     ],
     "vote": "Passed 5–0 on a roll call — including Councilmember Huish, who voted against the proposed rate on June 16 and told the hearing he did not support 0.001700 either.",
-    "shortfall": "One consequence the council did not dwell on: at 0.001500 the levy raises about $8.6 million against a $9.8 million Sheriff's contract. The rate that passed does not, in fact, fully fund public safety from property tax — it leaves roughly $1.15 million still coming out of sales tax. The stated policy was cut back along with the rate, and less sales tax is freed than the May and June discussions assumed.",
+    "shortfall": "One consequence the council did not dwell on, and which the August 18 cut made larger: at 0.001500 the levy raises about $8.6 million against a $9.8 million Sheriff's contract. The rate that passed does not, in fact, fully fund public safety from property tax — it leaves roughly $1.15 million still coming out of sales tax. The stated policy was cut back along with the rate, and less sales tax is freed than the May and June discussions assumed.",
     "closer": {
       "speaker": "Mayor Jared Gray",
       "quote": "Though I am not excited about going to the 0.15, because I feel like that is, if we felt like that's what it was, we should have started with that, frankly. I heard what you said too, and I felt what each one of you said about how it's impacting your homes. So maybe that's the direction we need to go for this year."
     }
   },
+  "response_second": {
+    "heading": "What August 18 changed",
+    "lede": "Twelve days later the council cut it again. At the budget-adoption meeting it took two resolutions in order — one repealing the increase it had approved on August 6, one approving an increase above the certified rate in its place — and set the rate at 0.000900, then adopted the budget the rate has to fund.",
+    "changes": [
+      {
+        "from": "0.001500",
+        "to": "0.000900",
+        "label": "The rate",
+        "text": "A little over a third of the way from the 0.000530 certified rate to the 0.001700 the city noticed, where the August 6 rate was most of the way there. Under Truth-in-Taxation the noticed rate is a ceiling and not a floor, so the council could go down to this without noticing again — but it could not have gone up."
+      },
+      {
+        "from": "183.02%",
+        "to": "69.81%",
+        "label": "The percentage",
+        "text": "Over the same 0.000530 certified rate, on the same basis the motion used in August: the rise in budgeted property tax revenue over the prior year, excluding eligible new growth. Derived here rather than quoted, because the adopting resolution was not published when this was written."
+      },
+      {
+        "from": "$5,591,594",
+        "to": "$2,132,876",
+        "label": "The money",
+        "text": "A further $3,458,718 off the increase, and $4,610,062 below the $9,798,139 of property tax the interim budget was written around. What that means for the General Fund is the projections page's question, not this one's."
+      },
+      {
+        "from": "about $260",
+        "to": "about $99",
+        "label": "The average home",
+        "text": "On the notice's own $488,000 primary residence — $268,400 of taxable value times the 0.000370 the rate rose over the certified rate. The noticed rate would have put the same home at $314.03."
+      }
+    ],
+    "commitments": [],
+    "provisional_note": "Recorded the night it happened. The rate is certain; the vote, the motions and the figures the resolutions recite are transcribed here as soon as the city publishes the recording or the minutes, and until then every figure above except the two rates is this project's own arithmetic on them.",
+    "shortfall": "It also widens the hole the August 6 rate had already left. The stated policy was to move the Sheriff's contract off sales tax and onto property tax; at 0.000900 the levy raises about $5.19 million against a contract of $9,798,139, so roughly $4.61 million of it still comes out of sales tax — four times what the 0.001500 left short. The increase is now a little over a third of what the city noticed in June, and whether the city intends to close that difference, absorb it, or come back for it is not answered in anything published so far."
+  },
   "referendum": {
     "heading": "If a referendum happens",
+    "update": "Read this against August 18. The resolution a petition would have targeted — the 0.001500 adopted on August 6 — was repealed that night, and a new increase at 0.000900 adopted in its place. What that does to a referendum already being organised depends on what was filed and when, and this page will not guess at it: the sequence below is the statute as it reads, and the parts that turn on which resolution is the target are checked against the city recorder and Utah Code before anything here says otherwise.",
     "lede": "A referendum against this rate is legally available — Utah Code § 20A-7-613 exists for exactly this situation, and a Utah city property tax referendum ran as recently as last autumn. What follows is the sequence, then what it would cost the city, then what happened the last time someone tried it. None of it is an argument for or against signing; it is what the statute and the precedent say.",
     "steps": [
       {

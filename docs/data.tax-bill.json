@@ -1,5 +1,5 @@
 {
-  "_comment": "Every property tax levied on an Eagle Mountain parcel, not just the city's line. Rates are the 2025 Final Adopted Tax Rate for each entity in the tax area that covers most of the city, read from the Utah State Tax Commission's Report 600 — the same document behind the county comparison in data.tax-county.json. `certified` is that year's Auditor's Certified Rate, so a rate above it means the entity went through Truth-in-Taxation in 2025 and raised. `proposed` is the entity's 2026 figure where it has one and its 2025 rate where it does not; only Eagle Mountain City's is settled — the 0.001500 its council adopted on August 6, not a proposal. Of the other six, only Central Utah Water noticed a 2026 increase at all, and its notice is +0.76% (0.000397 certified to 0.000400 proposed, hearing August 25) — a rate it already levies, so its figure here is unchanged. Alpine School District, Unified Fire, Utah County and both assessing levies appear on neither Utah County's combined notice nor the Utah Taxpayers Association's statewide list of every 2026 notice, so none of them is proposing an increase. Rates are decimal multipliers on taxable value; a primary residence is taxed on 55% of market value, and every entity here levies against that same taxable value.",
+  "_comment": "Every property tax levied on an Eagle Mountain parcel, not just the city's line. Rates are the 2025 Final Adopted Tax Rate for each entity in the tax area that covers most of the city, read from the Utah State Tax Commission's Report 600 — the same document behind the county comparison in data.tax-county.json. `certified` is that year's Auditor's Certified Rate, so a rate above it means the entity went through Truth-in-Taxation in 2025 and raised. `proposed` is the entity's 2026 figure where it has one and its 2025 rate where it does not; only Eagle Mountain City's is settled — the 0.000900 its council adopted on August 18, after repealing the 0.001500 it had adopted on August 6. It is a rate, not a proposal. Of the other six, only Central Utah Water noticed a 2026 increase at all, and its notice is +0.76% (0.000397 certified to 0.000400 proposed, hearing August 25) — a rate it already levies, so its figure here is unchanged. Alpine School District, Unified Fire, Utah County and both assessing levies appear on neither Utah County's combined notice nor the Utah Taxpayers Association's statewide list of every 2026 notice, so none of them is proposing an increase. Rates are decimal multipliers on taxable value; a primary residence is taxed on 55% of market value, and every entity here levies against that same taxable value.",
 
   "rate_year": 2025,
   "rate_basis": "2025 Final Adopted Tax Rate, by taxing entity, for Utah County tax area 038-0000 — the area that covers most of Eagle Mountain. These are the rates on today's bills.",
@@ -58,7 +58,10 @@
       "short": "Eagle Mountain City",
       "rate": 0.000534,
       "certified": 0.000534,
-      "proposed": 0.0015,
+      "proposed": 0.0009,
+      "adopted": true,
+      "adopted_date": "2026-08-18",
+      "superseded_proposed": 0.0015,
       "is_city": true,
       "what": "The city's own general levy — the one line on this bill the City Council sets, and the one the estimator above is about."
     },
@@ -107,7 +110,7 @@
   ],
 
   "caveats": [
-    "Rates are the 2025 final adopted figures — the ones on bills mailed in 2025. The 2026 rates for the county, the school district, the water district and the fire service area are set on their own schedules and are not final yet; only Eagle Mountain's 2026 rate is settled, adopted by its council on August 6. Of the six, only Central Utah Water has noticed an increase for 2026, of 0.76% — about a dollar a year on an average home.",
+    "Rates are the 2025 final adopted figures — the ones on bills mailed in 2025. The 2026 rates for the county, the school district, the water district and the fire service area are set on their own schedules and are not final yet; only Eagle Mountain's 2026 rate is settled, adopted by its council on August 18 — 0.000900, replacing the 0.001500 it adopted on August 6 and repealed that night. Of the six, only Central Utah Water has noticed an increase for 2026, of 0.76% — about a dollar a year on an average home.",
     "This is the picture for the tax area covering most of Eagle Mountain. Your own parcel's tax area is printed on your valuation notice, and three areas add a local district on top of these seven levies.",
     "Property tax is not the whole bill. City utility charges, garbage, and stormwater fees are billed separately and are not property taxes.",
     "A primary residence is taxed on 55% of its market value. Every entity in the table levies against that same reduced value, so the exemption applies to all of them at once."

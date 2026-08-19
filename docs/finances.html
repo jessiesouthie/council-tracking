@@ -27,7 +27,7 @@
          swap in when it arrives. -->
     <link rel="preload" href="fonts/fraunces-700-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20260818c" />
-    <link rel="stylesheet" href="site.css?v=20260818c" />
+    <link rel="stylesheet" href="site.css?v=20260819a" />
   </head>
   <body class="page-finances">
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -51,8 +51,23 @@
         <a href="meetings.html" data-nav="meetings.html">Meetings</a>
         <a href="motions.html" data-nav="motions.html">Votes</a>
         <a href="members.html" data-nav="members.html" data-nav-alias="member.html">Members</a>
-        <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html" data-nav-body="city-council">Finances</a>
-        <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+        <div class="nav-group" data-nav-body="city-council">
+          <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html">Finances</a>
+          <div class="nav-menu" role="group" aria-label="Finances section">
+            <a href="finances.html">Overview</a>
+            <a href="tax.html">Tax</a>
+            <a href="projections.html">Projections</a>
+            <a href="budget.html">Budget</a>
+            <a href="staffing.html">Staffing</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+          <div class="nav-menu" role="group" aria-label="About section">
+            <a href="about.html">How this site is built</a>
+            <a href="definitions.html">Definitions</a>
+          </div>
+        </div>
         <!-- END generated:nav -->
       </nav>
     </header>
@@ -228,7 +243,7 @@
 
     <footer class="footer"><span>Tax rates from the city, county and state notices; budget from the ClearGov budget book; headcount from audited annual financial reports &middot; <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span></footer>
 
-    <script src="site.js?v=20260818c"></script>
+    <script src="site.js?v=20260819a"></script>
     <script>
       // Each station's figures are read from the same file the page it opens
       // reads, so a stale build shows a stale number rather than a confident
@@ -286,8 +301,8 @@
 
         // Three slots per station and all three optional: the fiscal-year stamp
         // in the eyebrow, the ledger figure, and the gloss under it. The rate
-        // takes the ledger line and the dollars take the gloss — 0.001500 is the
-        // number in the resolution and the entry a ledger would carry, but it
+        // takes the ledger line and the dollars take the gloss — 0.000900 is the
+        // number the council set and the entry a ledger would carry, but it
         // means nothing to a household until the city's own Truth-in-Taxation
         // notice prices it on an average home.
         const slots = {

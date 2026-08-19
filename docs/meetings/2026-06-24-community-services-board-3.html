@@ -22,8 +22,8 @@
     <link rel="icon" href="/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <link rel="preload" href="/fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/fonts.css?v=20260818c" />
-    <link rel="stylesheet" href="/site.css?v=20260818c" />
+    <link rel="stylesheet" href="/fonts.css?v=20260819a" />
+    <link rel="stylesheet" href="/site.css?v=20260819a" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -116,8 +116,23 @@
         <a href="/meetings.html" data-nav="meetings.html" class="active" aria-current="page">Meetings</a>
         <a href="/motions.html" data-nav="motions.html">Votes</a>
         <a href="/members.html" data-nav="members.html" data-nav-alias="member.html">Members</a>
-        <a href="/finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html" data-nav-body="city-council">Finances</a>
-        <a href="/about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+        <div class="nav-group" data-nav-body="city-council">
+          <a href="/finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html">Finances</a>
+          <div class="nav-menu" role="group" aria-label="Finances section">
+            <a href="/finances.html">Overview</a>
+            <a href="/tax.html">Tax</a>
+            <a href="/projections.html">Projections</a>
+            <a href="/budget.html">Budget</a>
+            <a href="/staffing.html">Staffing</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <a href="/about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+          <div class="nav-menu" role="group" aria-label="About section">
+            <a href="/about.html">How this site is built</a>
+            <a href="/definitions.html">Definitions</a>
+          </div>
+        </div>
       </nav>
     </header>
 
@@ -150,6 +165,6 @@
     </main>
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="/about.html">How this site is built</a> &middot; <a href="/definitions.html">Definitions</a></span></footer>
 
-    <script src="/site.js?v=20260818c"></script>
+    <script src="/site.js?v=20260819a"></script>
   </body>
 </html>

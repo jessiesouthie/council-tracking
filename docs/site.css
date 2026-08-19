@@ -322,21 +322,23 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   gap: 2px;
   flex: 1;
   /* Never wrap: a second row stands the topbar up from 69px to 115px, and it
-     happens at the widths and body labels that are hardest to notice. Overflow
-     scrolls instead, the way .subnav does.
+     happens at the widths and body labels that are hardest to notice.
 
      Centred by auto margins on the end items rather than justify-content, which
      is not the same thing once the row overflows: centred overflow spills off
      both edges at once and the start of it can't be scrolled back to, so the
      first item sits permanently half-cut. Auto margins collapse to nothing when
-     there isn't room, leaving the row start-aligned and fully scrollable. */
+     there isn't room, leaving the row start-aligned.
+
+     Deliberately NOT overflow:auto here. A scroll container clips its children
+     on both axes — overflow-x:auto computes overflow-y to auto, not visible —
+     which would cut every section menu off at the height of the bar. The narrow
+     band that actually needs to scroll turns it on for itself, and turns the
+     menus off, further down. */
   flex-wrap: nowrap;
-  overflow-x: auto;
-  scrollbar-width: none;
 }
 .nav > :first-child { margin-left: auto; }
 .nav > :last-child { margin-right: auto; }
-.nav::-webkit-scrollbar { display: none; }
 .nav a {
   display: inline-flex;
   align-items: center;
@@ -349,6 +351,65 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   font-weight: 600;
 }
 .nav a:hover { background: var(--bg-muted); text-decoration: none; color: var(--fg-soft); }
+
+/* ---------- section menus ----------
+   Finances and About hold four or five pages each. Before this the only way in
+   was to land on the section page and take its strip from there; now the bar
+   opens on hover, and on keyboard focus, which is the half that usually gets
+   left out. Focus-within is what does it: focusing the trigger reveals the
+   menu, so Tab walks straight into the links rather than skipping a panel that
+   was display:none a moment ago.
+
+   The trigger stays a real link to the section page. That is what makes this
+   safe on touch, where there is no hover at all — a tap follows the link and
+   the section page carries the same list as its strip. */
+.nav-group { position: relative; display: flex; }
+.nav-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -4px);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  min-width: max(100%, 190px);
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-elev);
+  box-shadow: 0 12px 32px rgb(var(--shadow-rgb) / .14), 0 2px 6px rgb(var(--shadow-rgb) / .06);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 140ms ease, transform 140ms ease, visibility 140ms;
+}
+/* A gap between the trigger and the panel would drop the hover on the way
+   down. Bridge it with padding on the panel's own top edge instead. */
+.nav-menu::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: -10px;
+  height: 10px;
+}
+.nav-group:hover .nav-menu,
+.nav-group:focus-within .nav-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 4px);
+}
+.nav-menu a {
+  min-height: 40px;
+  padding: 8px 12px;
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+.nav-menu a:hover { background: var(--bg-muted); color: var(--fg-soft); text-decoration: none; }
+.nav-menu a.here { background: var(--accent-tint); color: var(--fg-soft); }
+@media (prefers-reduced-motion: reduce) {
+  .nav-menu { transition: opacity 140ms ease, visibility 140ms; transform: translate(-50%, 4px); }
+}
 .nav a.active, .nav a[aria-current="page"] {
   background: var(--accent-strong);
   color: var(--accent-fg);
@@ -4769,6 +4830,22 @@ blockquote.record p {
 }
 blockquote.record footer { font-size: 13px; color: var(--t-muted); }
 
+/* A rate the council repealed is still part of the record, so its motion stays
+   quotable — but it is not the rate anyone will be billed at, and a reader
+   skimming the paper trail must not mistake the two. Grey rule, muted text:
+   present, plainly secondary. */
+blockquote.record.is-superseded {
+  border-left-color: var(--t-line-2);
+}
+blockquote.record.is-superseded p { color: var(--t-fg-2); }
+
+/* The other half of the same problem: a rate set in the room before its
+   resolution is published. The slot the motion will occupy says so rather than
+   standing empty. */
+.derivation.is-pending {
+  border-top-style: dashed;
+}
+
 .derivation {
   margin: 18px 0 0;
   padding-top: 14px;
@@ -8074,6 +8151,23 @@ table.data.bx-lines .bx-tot td {
   }
 }
 
+/* ---------- where the bar has to scroll (760–999px) ----------
+   Tightened, the six items still need about 425px and there isn't that much
+   below roughly 1000px. Scroll the row rather than wrap it — same thing
+   .subnav does elsewhere on the site — and give up the section menus for the
+   duration: a scroll container clips on both axes, so a menu opened here would
+   be sliced off at the height of the bar. Nothing is lost by that. The trigger
+   is still a link to the section page, and the section page carries the same
+   list as its strip, which is exactly the route a touch device takes anyway. */
+@media (min-width: 760px) and (max-width: 999px) {
+  .nav {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav-menu { display: none; }
+}
+
 /* ---------- section sub-nav ----------
    A few destinations, so a strip rather than a menu. It sits inside the reading
    column above the page's own hero, and reads as a level below the topbar:
@@ -8665,6 +8759,13 @@ table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi
   white-space: nowrap;
 }
 .proj-tag.is-derived { background: var(--t-tray); color: var(--t-fg-2); }
+/* A rate that was law and is not any more. Reads as struck through rather than
+   as a warning: it is a fact about the record, not a caution about the data. */
+.proj-tag.is-superseded {
+  background: var(--t-tray);
+  color: var(--t-muted);
+  text-decoration: line-through;
+}
 .proj-tag.is-assumed { background: var(--warm-soft); color: var(--warm-ink); }
 .proj-tag.is-confirm { background: var(--proj-confirm-bg); color: var(--proj-confirm-fg); }
 /* The answered counterpart of "Needs confirming" — green, because a flag that

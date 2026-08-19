@@ -532,11 +532,30 @@ def build(cache: Path | None = None):
         "fiscal_year_label": "FY2026–27",
         "status": "interim",
         "status_note": (
-            "Passed 16 June 2026 by a 4–1 vote as an interim budget — meaning it is in force but "
+            "Passed 16 June 2026 by a 4–1 vote as an interim budget — meaning it was in force but "
             "not final. Utah law requires that step when a city proposes a property-tax increase, "
-            "because the increase has to go to a public hearing first. The final vote on this "
-            "budget is scheduled for 18 August 2026, and the figures can change before then."
+            "because the increase has to go to a public hearing first. The final budget was adopted "
+            "on 18 August 2026, the same night the council repealed its 0.001500 tax rate and set "
+            "0.000900 in its place. Every line item on this page is still the interim book: the "
+            "city publishes its adopted line items through ClearGov, and until that is refreshed "
+            "these figures are the June ones, not the August ones."
         ),
+        # The adopted budget exists as a total on the adoption resolution and not
+        # yet as line items, so it is carried as its own fact rather than folded
+        # into figures that are still June's.
+        "final_adopted": {
+            "date": "2026-08-18",
+            "meeting_id": 728,
+            "total": 363992973,
+            "note": (
+                "The total in the adoption resolution as agendised — 'A Resolution … Adopting the "
+                "Fiscal Year 2026-2027 Annual Budget Totaling $363,992,973'. It is a different "
+                "number from the gross on this page because this page is the interim book; the "
+                "adopted line items are not published yet."
+            ),
+            "source": "Agenda item 13.C, City Council meeting 18 August 2026",
+            "provisional": True,
+        },
         "as_of": "2026-07-16",
         "source": {
             "title": "Eagle Mountain City line items",
@@ -582,15 +601,19 @@ def build(cache: Path | None = None):
                 "date": "2026-08-06",
                 "meeting_id": 747,
                 "label": "Tax increase adopted, 5–0",
-                "note": "Roughly sixty people spoke at the Truth-in-Taxation hearing; the Council then set the rate at 0.001500, not the 0.001700 it noticed.",
+                "note": "Roughly sixty people spoke at the Truth-in-Taxation hearing; the Council then set the rate at 0.001500, not the 0.001700 it noticed. Repealed twelve days later.",
                 "done": True,
             },
             {
                 "date": "2026-08-18",
-                "meeting_id": None,
-                "label": "Final budget adoption",
-                "note": "Set by the 5 May resolution accepting the tentative budget.",
-                "done": False,
+                "meeting_id": 728,
+                "label": "Final budget adopted; tax rate cut to 0.000900",
+                "note": (
+                    "The Council repealed the 0.001500 it adopted on 6 August, set the rate at "
+                    "0.000900, and adopted the final FY2026–27 budget. Recorded from the meeting "
+                    "itself; the votes are transcribed when the record is published."
+                ),
+                "done": True,
             },
         ],
         "totals": {
@@ -663,12 +686,22 @@ def build(cache: Path | None = None):
             "revenue_account": "Property Taxes Interim Budget",
             "expense_account": "Restricted Interim Budget",
             "department": "Public Safety",
+            # What the levy actually comes to at the adopted rate. Derived, and
+            # marked as such: the city has published a rate and not yet a
+            # revenue figure to go with it. 0.000900 × the citywide taxable
+            # value the city's own rate-and-revenue pairs imply.
+            "adopted_rate": 0.0009,
+            "adopted_revenue": 5188077,
+            "adopted_revenue_derived": True,
             "note": (
                 "The proposed property-tax increase appears in the budget as its own revenue line "
                 "and, for the identical amount, as a restricted expense line inside Public Safety. "
-                "The Council approved an increase on 6 August, but at 0.001500 rather than the "
-                "0.001700 this budget was built on, so the figure is trued up at the 18 August "
-                "adoption."
+                "The Council approved an increase twice and never at the rate this budget was "
+                "built on: 0.001500 on 6 August, then — after repealing that — 0.000900 on 18 "
+                "August, the night the final budget was adopted. `adopted_revenue` is the whole "
+                "property-tax levy at 0.000900, derived rather than published: the certified "
+                "rate's $3,055,201 scaled to 0.000900. Against the $9,798,139 of property tax this "
+                "interim budget carries, that is $4,610,062 less."
             ),
         },
         # The single clearest thing the line items show: the Sheriff contract is

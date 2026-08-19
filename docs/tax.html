@@ -5,7 +5,7 @@
     <script>document.documentElement.classList.remove("no-js");</script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Eagle Mountain Property Tax Increase — What It Costs You</title>
-    <meta name="description" content="See what the property tax increase Eagle Mountain adopted on August 6 costs you, and every council meeting it moved through." />
+    <meta name="description" content="See what the property tax rate Eagle Mountain adopted on August 18 costs you, what it repealed to get there, and every council meeting it moved through." />
     <link rel="canonical" href="https://civicrollcall.com/tax.html" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
@@ -14,11 +14,11 @@
     <meta property="og:site_name" content="Civic Roll Call" />
     <meta property="og:url" content="https://civicrollcall.com/tax.html" />
     <meta property="og:title" content="Eagle Mountain Property Tax Increase — What It Costs You" />
-    <meta property="og:description" content="See what the property tax increase Eagle Mountain adopted on August 6 costs you, and every council meeting it moved through." />
+    <meta property="og:description" content="See what the property tax rate Eagle Mountain adopted on August 18 costs you, what it repealed to get there, and every council meeting it moved through." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Eagle Mountain Property Tax Increase — What It Costs You" />
-    <meta name="twitter:description" content="See what the property tax increase Eagle Mountain adopted on August 6 costs you, and every council meeting it moved through." />
+    <meta name="twitter:description" content="See what the property tax rate Eagle Mountain adopted on August 18 costs you, what it repealed to get there, and every council meeting it moved through." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
@@ -32,7 +32,7 @@
     <link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20260818c" />
-    <link rel="stylesheet" href="site.css?v=20260818c" />
+    <link rel="stylesheet" href="site.css?v=20260819a" />
 
     <!-- No datePublished/dateModified. Schema.org wants both on an Article and
          Google leans on them for anything time-sensitive, but this page's dates
@@ -45,7 +45,7 @@
       "@type": "Article",
       "@id": "https://civicrollcall.com/tax.html#article",
       "headline": "Eagle Mountain Property Tax Increase — What It Costs You",
-      "description": "See what the property tax increase Eagle Mountain adopted on August 6 costs you, and every council meeting it moved through.",
+      "description": "See what the property tax rate Eagle Mountain adopted on August 18 costs you, what it repealed to get there, and every council meeting it moved through.",
       "mainEntityOfPage": "https://civicrollcall.com/tax.html",
       "inLanguage": "en-US",
       "isPartOf": { "@id": "https://civicrollcall.com/#website" },
@@ -88,8 +88,23 @@
         <a href="meetings.html" data-nav="meetings.html">Meetings</a>
         <a href="motions.html" data-nav="motions.html">Votes</a>
         <a href="members.html" data-nav="members.html" data-nav-alias="member.html">Members</a>
-        <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html" data-nav-body="city-council">Finances</a>
-        <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+        <div class="nav-group" data-nav-body="city-council">
+          <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html">Finances</a>
+          <div class="nav-menu" role="group" aria-label="Finances section">
+            <a href="finances.html">Overview</a>
+            <a href="tax.html">Tax</a>
+            <a href="projections.html">Projections</a>
+            <a href="budget.html">Budget</a>
+            <a href="staffing.html">Staffing</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+          <div class="nav-menu" role="group" aria-label="About section">
+            <a href="about.html">How this site is built</a>
+            <a href="definitions.html">Definitions</a>
+          </div>
+        </div>
         <!-- END generated:nav -->
       </nav>
     </header>
@@ -158,7 +173,7 @@
 
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span></footer>
 
-    <script src="site.js?v=20260818c"></script>
+    <script src="site.js?v=20260819a"></script>
     <script>
       (async () => {
         const root = document.getElementById("content");
@@ -250,6 +265,7 @@
       function render(tax, county, bill, state, kase, root) {
         const CURRENT = tax.rates.current.rate;
         const NEWRATE = newRate(tax).rate;
+        const PCTBASE = pctBase(tax);
         const RATIO = tax.residential_ratio;
 
         root.innerHTML = `
@@ -291,7 +307,7 @@
         // Wired before the estimator, so the estimator's first paint already
         // finds the bill breakdown and syncs its dollar figures to it.
         if (bill) wireBillPanel(bill);
-        wireEstimator({ CURRENT, NEWRATE, RATIO, tax });
+        wireEstimator({ CURRENT, NEWRATE, PCTBASE, RATIO, tax });
         wireMeasures();
         wirePictureNav();
         wireTableExports();
@@ -315,19 +331,44 @@
       /* ---------------- hero ---------------- */
 
       /* ---------------- which rate the page is about ----------------
-         The council noticed 0.001700 and adopted 0.001500 on August 6, and the
-         page has to speak with one voice about which of those a reader is
-         looking at. Everything that describes what the city will actually
-         charge reads `newRate(tax)`; the noticed rate is quoted by name, only
-         where the record is the point — the schedule as read, the timeline, the
-         statewide list that ranks every entity on what it noticed.
+         The council noticed 0.001700, adopted 0.001500 on August 6, repealed it
+         on August 18 and adopted 0.000900 the same night. The page has to speak
+         with one voice about which of those a reader is looking at. Everything
+         that describes what the city will actually charge reads `newRate(tax)`;
+         the other two are quoted by name, only where the record is the point —
+         the schedule as read, the timeline, the statewide list that ranks every
+         entity on what it noticed.
 
          Written as a fallback rather than a constant so a future year's data,
          which will start life with a proposal and no adopted rate, renders as a
          proposal without a code change — `isAdopted` is what switches the
-         page's tense. */
+         page's tense. The rate a council repealed lives under its own key and
+         is never what `newRate` returns: a page about what you will be billed
+         cannot be uncertain about which number that is. */
       const newRate = (tax) => tax.rates.adopted || tax.rates.proposed;
       const isAdopted = (tax) => !!tax.rates.adopted;
+      /* The rate every percentage in the estimator is measured against.
+         Truth-in-Taxation states an increase against the recalculated certified
+         rate, never against the rate on the last bill, so this is what makes the
+         percent field agree with the figure the city published and with the one
+         the ranking charts sort on. It is deliberately not the rate the dollars
+         are compared with: the panel prices a bill against the 0.000534 a reader
+         is actually paying, because that is the number on their notice.
+         Falls back to the current rate for a year whose certified rate the county
+         has not returned yet — the same shape as `newRate`. */
+      function pctBase(tax) {
+        return (tax.rates.certified_2026 || tax.rates.current).rate;
+      }
+      // "August 18". Every sentence that names the day the rate was set takes
+      // it from the data, because this council has now set one twice and may
+      // yet do it again.
+      const MONTH_WORDS = ["January", "February", "March", "April", "May", "June",
+                           "July", "August", "September", "October", "November", "December"];
+      const dayWords = (iso) => {
+        if (!iso) return "";
+        const [, m, d] = iso.split("-").map(Number);
+        return `${MONTH_WORDS[m - 1]} ${d}`;
+      };
       // Where the citywide collections figure beside the rate comes from. The
       // noticed one was printed on the schedule; the adopted one is the motion's
       // own increase carried through that schedule, so it doesn't claim to have
@@ -405,12 +446,12 @@
       // and it's the one number this page exists to state.
       const DEFAULT_VALUE = 500000;
       // Where the "some other rate" row opens: a round number between what the
-      // city charges today and what it is asking for.
-      const DEFAULT_CUSTOM = 0.0011;
+      // city charges today and the rate it has set.
+      const DEFAULT_CUSTOM = 0.0007;
 
-      // A percentage typed into the estimator is measured against the rate in
-      // effect today, so it matches the dollars the panel prints: a rate 50%
-      // higher is a city tax bill 50% higher. One decimal, no trailing zero
+      // A percentage typed into the estimator is measured against the certified
+      // rate — see `pctBase` — so it is the same comparison the city, the county
+      // notice and the ranking charts all state. One decimal, no trailing zero
       // noise, and never "-0.0".
       const fmtPct = (p) => (Math.abs(p) < 0.05 ? "0.0" : p.toFixed(1));
       // Read aloud rather than typed: past a hundred points the tenth is noise.
@@ -418,30 +459,40 @@
       // A true minus, not a hyphen: these sit beside tabular figures.
       const signed = (p) => (p < -0.05 ? "−" : "+") + pctStr(Math.abs(p));
 
-      // The one thing a reader has to be told about the percent field, because
-      // the number most of them arrived with — the 183.02% in the motion, or
-      // the 220.88% on the notice before it — is measured against a different
-      // rate than the one they pay.
+      // The percent field states the same comparison the city does, so the two
+      // agree on their face. What still has to be said is that the dollars above
+      // it do not use that basis: they are priced against the rate on a real
+      // bill, and the certified rate is not one anybody was ever billed at.
       function basisNote(tax) {
         const cur = tax.rates.current;
         const nw = newRate(tax);
         const cert = tax.rates.certified_2026;
-        const overToday = fmtPct((nw.rate / cur.rate - 1) * 100);
-        const base = `Percentages here are measured against the
-          ${cur.rate.toFixed(6)} you pay today, the way the increase was read on June 16.`;
-        if (!cert) return base;
-        // A rate whose headline percentage is a ratio of revenue rather than of
-        // rates carries `pct_rate_basis`; saying it "is measured against the
-        // certified rate" would be wrong for those, and the noticed 220.88% is
-        // one of them.
-        return nw.pct_rate_basis
-          ? `${base} The ${isAdopted(tax) ? "adopted" : "noticed"} +${nw.pct}% is the notice's own
-             figure — a rise in revenue, not in the rate. The same rate is +${overToday}% against
-             today's, and +${nw.pct_rate_basis}% against the
-             ${CT.escapeHtml(cert.rate_display)} certified rate.`
-          : `${base} The ${isAdopted(tax) ? "adopted" : "noticed"} +${nw.pct}% is measured
-             against the ${CT.escapeHtml(cert.rate_display)} certified rate instead — the same rate is
-             +${overToday}% against today's.`;
+        const word = isAdopted(tax) ? "adopted" : "noticed";
+        // No certified rate — a future year, before the county returns one — and
+        // the rate on today's bills is the only basis there is.
+        if (!cert)
+          return `Percentages here are measured against the ${cur.rate.toFixed(6)} you pay today,
+                  which is also what the dollars above compare with.`;
+        // A headline percentage that is a ratio of revenue rather than of rates
+        // carries `pct_rate_basis`; it is not what this field shows for the same
+        // rate, and the noticed 220.88% is one of those.
+        const headline = nw.pct_rate_basis
+          ? `The ${word} +${nw.pct}% is the notice's own figure — a rise in revenue, not in the
+             rate; measured rate against rate it is +${nw.pct_rate_basis}%, which is what this
+             field gives.`
+          : `The ${word} +${nw.pct}% is that same comparison.`;
+        // Only worth saying where the two rates actually differ. They will not,
+        // in a year the county leaves the certified rate where the levy already
+        // is, and "0.0% below" would be noise.
+        const d = (cert.rate / cur.rate - 1) * 100;
+        const gap =
+          Math.abs(d) < 0.05
+            ? ""
+            : ` The dollars above compare with the ${cur.rate.toFixed(6)} on today's bills, which
+                the certified rate sits ${fmtPct(Math.abs(d))}% ${d < 0 ? "below" : "above"}.`;
+        return `Percentages here are measured against the
+          ${CT.escapeHtml(cert.rate_display)} certified rate — the Truth-in-Taxation basis, and the
+          one the city's own figure uses. ${headline}${gap}`;
       }
 
       // What a rate raises across the whole city. The city's own schedule gives
@@ -560,7 +611,7 @@
                       <span class="rname">Some other rate</span>
                       <span class="rmeta" id="custom-meta">Type a rate or a percent, or drag</span>
                     </span>
-                    <span class="rrate mono" id="custom-rate">0.001100</span>
+                    <span class="rrate mono" id="custom-rate">${DEFAULT_CUSTOM.toFixed(6)}</span>
                   </label>
                   <div class="customwrap" id="customwrap" hidden>
                     <!-- Two ways of saying the same scenario. Almost nobody
@@ -582,7 +633,7 @@
                         <div class="cnum">
                           <button type="button" class="cstep" id="pct-down" aria-label="Lower the percentage">−</button>
                           <input id="custom-pct" class="crate cpct mono" type="text" inputmode="decimal"
-                                 value="${fmtPct((DEFAULT_CUSTOM / cur.rate - 1) * 100)}" aria-describedby="custom-basis" />
+                                 value="${fmtPct((DEFAULT_CUSTOM / pctBase(tax) - 1) * 100)}" aria-describedby="custom-basis" />
                           <span class="csuffix" aria-hidden="true">%</span>
                           <button type="button" class="cstep" id="pct-up" aria-label="Raise the percentage">+</button>
                         </div>
@@ -621,7 +672,7 @@
           ? `Utah taxes a primary residence on ${+(ratio * 100).toFixed(1)}% of its market value.`
           : "Business, rental, and secondary property is taxed on its full market value.";
 
-      function wireEstimator({ CURRENT, NEWRATE, RATIO, tax }) {
+      function wireEstimator({ CURRENT, NEWRATE, PCTBASE, RATIO, tax }) {
         const $ = (id) => document.getElementById(id);
         const mv = $("mv"),
           mvRange = $("mv-range"),
@@ -661,8 +712,8 @@
         // The rate and the percent are one control wearing two faces. Both are
         // derived from `customMicro` — nothing is stored as a percentage, so the
         // two fields can never drift apart.
-        const microToPct = (micro) => (CURRENT ? (micro / 1e6 / CURRENT - 1) * 100 : 0);
-        const pctToMicro = (p) => CURRENT * 1e6 * (1 + p / 100);
+        const microToPct = (micro) => (PCTBASE ? (micro / 1e6 / PCTBASE - 1) * 100 : 0);
+        const pctToMicro = (p) => PCTBASE * 1e6 * (1 + p / 100);
 
         // `typed` names the field being edited, so a half-finished entry ("0.0"
         // on the way to "0.0018", or a lone "-") isn't reformatted out from
@@ -942,13 +993,27 @@
         const rankNew = county ? rankByResulting(county) : 0;
         const times = nw.rate / tax.rates.current.rate;
 
+        /* Where the new rate lands decides how the fact is written. A rate in
+           the top half is news as a position — "into the top five"; one that is
+           still in the bottom half is news as a move, and calling 20th of 26
+           "the top 20" would be true arithmetic and a false impression. Both
+           ends of the shift are then counted from the same end, because
+           "2nd-lowest → 20th-highest" makes a reader do the subtraction. */
+        const N = county ? county.cities.length : 0;
+        const lowNow = N - rankNow + 1;
+        const lowNew = N - rankNew + 1;
+        const upper = rankNew <= N / 2;
+        const moved = rankNow - rankNew;
         const rankFact = em
           ? `
             <li class="fact">
-              <b class="shift"><span class="nb">${ordinal(county.cities.length - rankNow + 1)}-lowest</span> <span class="to" aria-hidden="true">→</span> <span class="nb">${ordinal(rankNew)}-highest</span></b>
-              <p>Eagle Mountain charges nearly the least of the ${county.cities.length} cities in Utah
-                County today. ${done ? "The new rate moves" : "This would move"} it into the top
-                ${numWord(rankNew)}.</p>
+              <b class="shift"><span class="nb">${ordinal(lowNow)}-lowest</span> <span class="to" aria-hidden="true">→</span> <span class="nb">${upper ? `${ordinal(rankNew)}-highest` : `${ordinal(lowNew)}-lowest`}</span></b>
+              <p>Eagle Mountain charges nearly the least of the ${N} cities in Utah
+                County today. ${done ? "The new rate moves" : "This would move"} it ${
+                  upper
+                    ? `into the top ${numWord(rankNew)}`
+                    : `up ${numWord(moved)} place${moved === 1 ? "" : "s"}, still in the lower half`
+                }.</p>
             </li>`
           : "";
 
@@ -958,7 +1023,7 @@
               <b>About ${times.toFixed(1)}&times; more</b>
               <p>The city's part of your tax bill ${done ? "is" : "would be"} about
                 ${times.toFixed(1)}× what it is today${
-                  em ? " — the biggest increase any Utah County city has on the table this year" : ""
+                  em ? " — the largest percentage increase any Utah County city has on the table this year" : ""
                 }.</p>
             </li>
             ${rankFact}
@@ -1026,6 +1091,7 @@
             ${argStrain(k.strain)}
             ${argLedger(k.ledger)}
             ${argResponse(k.response)}
+            ${argResponse(k.response_second)}
             ${argReferendum(k.referendum)}
             ${argCounter(k.counter)}
 
@@ -1163,9 +1229,12 @@
           </div>`;
       }
 
-      /* What the hearing changed. The four deltas are the single most-missed fact
-         about August 6 — the rate on the signs is not the rate that passed — so
-         they get the largest type in the section. */
+      /* What each night changed. The four deltas are the single most-missed fact
+         about this increase — the rate on the signs is not the rate that passed,
+         and it has now been cut twice — so they get the largest type in the
+         section. Rendered twice off the same shape: once for August 6, once for
+         August 18. A block with no vote transcribed yet prints its provisional
+         note instead of a roll call. */
       function argResponse(r) {
         if (!r) return "";
         const deltas = (r.changes || [])
@@ -1193,7 +1262,8 @@
             <p class="arg-lede">${CT.escapeHtml(r.lede)}</p>
             <ul class="arg-deltas">${deltas}</ul>
             <ul class="arg-commits">${commits}</ul>
-            <p class="arg-vote">${CT.escapeHtml(r.vote)}</p>
+            ${r.vote ? `<p class="arg-vote">${CT.escapeHtml(r.vote)}</p>` : ""}
+            ${r.provisional_note ? `<p class="arg-note">${CT.escapeHtml(r.provisional_note)}</p>` : ""}
             ${r.shortfall ? `<p class="arg-punch">${CT.escapeHtml(r.shortfall)}</p>` : ""}
             ${
               r.closer
@@ -1265,6 +1335,7 @@
         return `
           <div class="arg-block arg-referendum" id="p-referendum">
             <h3 class="arg-h">${CT.escapeHtml(rf.heading)}</h3>
+            ${rf.update ? `<p class="arg-punch">${CT.escapeHtml(rf.update)}</p>` : ""}
             <p class="arg-lede">${CT.escapeHtml(rf.lede)}</p>
             <ol class="arg-steps">${steps}</ol>
             ${cost}
@@ -1464,11 +1535,12 @@
          to a proposal that lost; a reader who opens a panel called "the
          official schedule" wants the rate they will be billed at.
 
-         Two of the six lines are quoted rather than computed: the rate and the
-         percentage are the motion's own words. The other four are that rate
-         applied to the same revenue base and the same two properties the city
-         used, which is the only way to state them — nobody read a schedule for
-         0.001500 aloud.
+         Only the rate is quoted; the schedule that goes with it does not exist.
+         Nobody read one aloud for 0.001500, and nobody read one for the 0.000900
+         that replaced it, so the other five lines are that rate applied to the
+         same revenue base and the same two properties the city used — which is
+         the only way to state them, and the panel says so where a figure is
+         worked rather than quoted.
 
          The noticed figures are directly under the table rather than gone,
          because they are what the mailed notice, the county's combined ad and
@@ -1479,9 +1551,10 @@
          county returned on June 22; and the noticed 220.88% is a ratio of
          revenue rather than of rates, so it never quite fell out of the rate
          arithmetic — 0.001700 over the 0.000530 certified rate is +220.75%.
-         The adopted 183.02% is the one figure that comes out the same on either
-         basis, so the asterisk under this table has less to explain than it
-         used to.
+         The adopted 69.81% is worked from the two rates rather than from
+         revenue — and comes out the same either way — so the asterisk under
+         this table has less to explain than it used to. (The 183.02% the
+         repealed 0.001500 carried was the same both ways for the same reason.)
 
          Because of that, the noticed percentage below is labelled as the
          notice's own figure rather than as an increase over the certified rate.
@@ -1555,8 +1628,10 @@
           done && nw.revenue_increase
             ? ` <span aria-hidden="true">†</span> <strong>+${usd0(col.newRevenue)}</strong> is
                 ${usd0(nw.revenue)} against the ${usd0(cur.revenue)} the city collects today, which is
-                how the schedule states this line. The motion's own ${usd0(nw.revenue_increase)} is the
-                same increase measured against last year's budgeted revenue excluding new growth.`
+                how the schedule states this line. The ${usd0(nw.revenue_increase)} beside it is the
+                same increase measured against last year's budgeted revenue excluding new growth${
+                  nw.pct_derived ? ", worked from the certified rate rather than quoted" : ", which is the motion's own figure"
+                }.`
             : "";
 
         // The schedule the city published, for a reader who wants the noticed
@@ -1592,10 +1667,17 @@
               done
                 ? `The statutory schedule the city has to publish, carried at the
                    <strong>${CT.escapeHtml(nw.rate_display)}</strong> the council adopted on
-                   <a href="meetings.html?id=${nw.meeting_id}">August 6</a>. The rate and the
-                   +${nw.pct}% are the motion's own; the other four lines are that rate applied to the
-                   same revenue base and the same two properties the city read into the record on
-                   <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a>.`
+                   <a href="meetings.html?id=${nw.meeting_id}">${dayWords(nw.date)}</a>. ${
+                     nw.pct_derived
+                       ? `The rate is the council's; every other line is that rate applied to the
+                          same revenue base and the same two properties the city read into the record on
+                          <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a>, because the
+                          resolution stating them has not been published yet.`
+                       : `The rate and the
+                          +${nw.pct}% are the motion's own; the other four lines are that rate applied to the
+                          same revenue base and the same two properties the city read into the record on
+                          <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a>.`
+                   }`
                 : `Read aloud on <a href="meetings.html?id=${tax.as_read.meeting_id}">June 16</a>,
                    transcribed from the recording.`
             }
@@ -1638,7 +1720,9 @@
             ${CT.escapeHtml(col.rate)} against the ${CT.escapeHtml(certified.rate_display)}
             certified rate — ${
               done
-                ? "the basis the motion states, and the one the city's notice used before it"
+                ? nw.pct_derived
+                  ? "the comparison Truth-in-Taxation is measured on, worked out here from the two rates"
+                  : "the basis the motion states, and the one the city's notice used before it"
                 : "the comparison the city's own notice uses, and the figure it states"
             }.${gapNote}${asReadNote}${newRevNote}
           </p>
@@ -1684,7 +1768,6 @@
         const nw = newRate(tax).rate;
         const propTotal = total - city.rate + nw;
         const propPos = ents.filter((e) => !e.is_city && e.rate > nw).length + 1;
-        const raised = ents.filter((e) => e.rate > e.certified).length;
 
         // One row per levy, laid out like the bill itself: who takes it, how much
         // of the whole it is, and what that comes to on this property. The bar
@@ -1891,19 +1974,47 @@
       }
 
       /* ---------------- the paper trail ----------------
-         Two quotes, in the order they happened: the schedule that noticed the
-         increase, and the motion that set it. The motion goes first, because it
-         is the rate in force and the one every figure above is drawn from. */
+         The quotes, in the order they happened: the rate in force, the rate it
+         replaced, and the schedule that noticed the increase in the first
+         place. The rate in force goes first, because it is the one every figure
+         above is drawn from.
+
+         A rate can arrive before its paperwork does. When the data carries a
+         motion, this quotes it; when it carries only `unverified`, it says so
+         in the same slot rather than leaving a silence a reader would read as
+         "no record exists". Nothing here is ever printed in quotation marks
+         unless it is a quotation. */
       function sourcePanel(tax) {
         const ad = tax.rates.adopted;
+        const rep = tax.rates.repealed;
         const body = `
           ${
-            ad
+            ad && ad.motion
               ? `<blockquote class="record">
                    <p>“${CT.escapeHtml(ad.motion)}”</p>
                    <footer>
-                     The motion adopting the rate — ${CT.escapeHtml(ad.vote)} —
+                     The motion adopting the rate${ad.vote ? ` — ${CT.escapeHtml(ad.vote)} —` : " — "}
                      <a href="meetings.html?id=${ad.meeting_id}">meeting #${ad.meeting_id}, ${CT.fmtDate(ad.date)}</a>
+                   </footer>
+                 </blockquote>`
+              : ad
+                ? `<p class="derivation is-pending">
+                     <strong>The rate is set; the paperwork is not published yet.</strong>
+                     The council set ${CT.escapeHtml(ad.rate_display)} at
+                     <a href="meetings.html?id=${ad.meeting_id}">meeting #${ad.meeting_id}, ${CT.fmtDate(ad.date)}</a>.
+                     ${CT.escapeHtml(ad.unverified || "")}
+                   </p>`
+                : ""
+          }
+          ${
+            rep && rep.motion
+              ? `<blockquote class="record is-superseded">
+                   <p>“${CT.escapeHtml(rep.motion)}”</p>
+                   <footer>
+                     The motion that set the rate repealed on ${dayWords(rep.repealed_on)}${
+                       rep.vote ? ` — ${CT.escapeHtml(rep.vote)} —` : " — "
+                     }
+                     <a href="meetings.html?id=${rep.meeting_id}">meeting #${rep.meeting_id}, ${CT.fmtDate(rep.date)}</a>
                    </footer>
                  </blockquote>`
               : ""
@@ -2262,7 +2373,7 @@
             const levy = p && p.levy ? '<span class="ast" aria-hidden="true">‡</span>' : "";
 
             const tip = isRef
-              ? `${EM} — ${rate6(r.current_rate)} → ${rate6(res)}${refAdopted ? ", adopted August 6" : ""} (Utah County, shown for comparison)`
+              ? `${EM} — ${rate6(r.current_rate)} → ${rate6(res)}${refAdopted ? `, adopted ${dayWords(sl.reference.adopted_date)}` : ""} (Utah County, shown for comparison)`
               : p
                 ? `${r.name} — ${rate6(r.current_rate)} → ${rate6(res)} (+${p.pct}%, derived rate) · ${p.purpose}`
                 : `${r.name} — no increase noticed; holds at ${rate6(r.current_rate)}`;
@@ -2459,7 +2570,8 @@
          the increase on top of it.
 
          One of the twenty-six is no longer a proposal: Eagle Mountain adopted
-         its rate on August 6, and its row says so — in the bar's label, in the
+         its rate — twice, on August 6 and again on August 18 — and its row says
+         so at the rate in force: in the bar's label, in the
          tooltip and in the table. The other nine are still notices, with
          hearings to come, which is the whole reason the distinction is drawn
          rather than calling them all "proposed".
@@ -2502,7 +2614,7 @@
 
             // "adopted" is a third state beside published and derived: the rate
             // is not an estimate and not a proposal, it is what the council set.
-            const rateWord = { published: "published rate", adopted: "adopted August 6" }[p && p.rate_source]
+            const rateWord = { published: "published rate", adopted: `adopted ${dayWords(p && p.adopted_date)}` }[p && p.rate_source]
               || (p ? p.rate_source + " rate" : "");
             const tip = p
               ? `${city.name} — ${rate6(city.current_rate)} → ${rate6(res)} (+${p.pct}%, ${rateWord}) · ${p.purpose}`
@@ -2758,7 +2870,7 @@
          the cities can have only the cities.
 
          Eagle Mountain is the one row that has stopped being a proposal, and it
-         is carried at the rate the council actually set on August 6 — the same
+         is carried at the rate the council actually set on August 18 — the same
          rate the rest of this page is about. The 0.001700 it noticed belongs to
          the record, not to the list: it is in the schedule as read and in the
          timeline, and it is not quoted here. Every other row is still that
@@ -2851,7 +2963,7 @@
                 ? "no rate published"
                 : `${rate6(n.certified_rate)} → ${rate6(rateOf(n))}`;
               const tip = isEM
-                ? `${n.entity} — ${b.fmt(v)} · levy ${levy} · adopted August 6 · ${n.type}, ${n.county} County`
+                ? `${n.entity} — ${b.fmt(v)} · levy ${levy} · adopted ${dayWords(ad.date)} · ${n.type}, ${n.county} County`
                 : `${n.entity} — ${b.fmt(v)} · levy ${levy} · ${n.type}, ${n.county} County · hearing ${hearingLabel(n)}`;
               return `
                 <div class="crow ${isEM ? "is-em" : ""} ${off ? "off" : ""}" data-tip="${CT.escapeHtml(tip)}">
@@ -2876,7 +2988,7 @@
             </div>
             <div class="chart-body">${bars}</div>
             <p class="chart-foot">
-              Eagle Mountain's bar is the rate its council set on August 6. Every other bar is a
+              Eagle Mountain's bar is the rate its council set on ${dayWords(ad.date)}. Every other bar is a
               proposal, and its hearing has yet to happen or has yet to be recorded here.${offCount ? " " + OFF_NOTE : ""}
             </p>
           </figure>`;
@@ -2970,7 +3082,7 @@
               <a href="${src.reported_by.url}" rel="nofollow noopener">${CT.escapeHtml(src.reported_by.publisher)}</a>.
               Eagle Mountain's adopted rate comes from the meeting itself:
               <a href="${ad.source.url}">${CT.escapeHtml(ad.source.title)}</a>.
-              ${CT.escapeHtml(ad.vote)}. ${CT.escapeHtml(ad.derivation)}
+              ${ad.vote ? `${CT.escapeHtml(ad.vote)}. ` : ""}${CT.escapeHtml(ad.derivation)}
             </p>
             ${
               src.corrections
@@ -3058,15 +3170,21 @@
         const em = sw.eagle_mountain;
         const N = sw.total_cities;
 
-        /* Eagle Mountain's second rate stopped being a proposal on August 6:
-           the council noticed 0.001700, took three hours of comment and adopted
-           0.001500. The ranking is drawn on what it will actually levy — from
+        /* Eagle Mountain's second rate stopped being a proposal on August 6 and
+           changed again on August 18: the council noticed 0.001700, took three
+           hours of comment and adopted 0.001500, then repealed that and adopted
+           0.000900. The ranking is drawn on what it will actually levy — from
            the vote itself where the statewide dataset loaded, and from this
            file's own adopted_rate where it didn't, so the panel never ranks one
            rate while the rest of the page states another. Only the sentence
            quoting the vote needs the richer record. */
         const swAd = (state && state.eagle_mountain && state.eagle_mountain.adopted) || null;
         const ad = swAd || (em.adopted_rate ? { rate: em.adopted_rate } : null);
+        // The day the rate in force was set — from the statewide file if it
+        // loaded, from this one if it didn't. Named once so the three sentences
+        // below cannot drift apart, and so a rate set on some later night needs
+        // no edit here.
+        const adDay = dayWords((swAd && swAd.date) || em.adopted_date);
         const emNew = ad ? ad.rate : em.proposed_rate;
         const emWord = ad ? "adopted" : "proposed";
 
@@ -3251,8 +3369,11 @@
             equal groups by percentile. Eagle Mountain is <strong>${ordinal(emCur)}</strong>
             today — in ${QBAND[readCur.emQ]} — and is
             <strong>${ordinal(emProp)}</strong> at the ${rate6(emNew)} it
-            ${ad ? "adopted on August 6" : "has proposed"}, a climb of ${climbed} places
-            into ${QBAND[readProp.emQ]}.
+            ${ad ? `adopted on ${adDay}` : "has proposed"}, a climb of ${climbed} places${
+              readProp.emQ === readCur.emQ
+                ? ` without leaving ${QBAND[readCur.emQ]}`
+                : ` into ${QBAND[readProp.emQ]}`
+            }.
           </p>
 
           <div class="sw-tools">
@@ -3291,10 +3412,11 @@
             <p class="chart-foot">
               ${ad
                 ? `Eagle Mountain is at the <b>${rate6(emNew)}</b> its council adopted on
-                   <b>August 6</b>${
+                   <b>${adDay}</b>${
                      swAd
-                       ? ` — ${pctStr(swAd.pct)}% over the certified rate,
-                          ${CT.escapeHtml(swAd.vote.split("—")[0].trim().toLowerCase())}`
+                       ? ` — ${pctStr(swAd.pct)}% over the certified rate${
+                           swAd.vote ? `, ${CT.escapeHtml(swAd.vote.split("—")[0].trim().toLowerCase())}` : ""
+                         }`
                        : ""
                    }. The other ${othersCount} tracked increases are still proposals, each marked
                    <span class="prop-pill">proposed</span>, and their hearings run to late August.`
@@ -3316,7 +3438,7 @@
           </p>`;
         return panel(
           "Where Eagle Mountain ranks statewide",
-          `Its current rate — and the ${ad ? "rate it adopted on August 6" : "rate it has proposed"} — against all ${N} Utah cities, by percentile`,
+          `Its current rate — and the ${ad ? `rate it adopted on ${adDay}` : "rate it has proposed"} — against all ${N} Utah cities, by percentile`,
           body, false, "p-statewide"
         );
       }

@@ -28,7 +28,7 @@
     <link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20260818c" />
-    <link rel="stylesheet" href="site.css?v=20260818c" />
+    <link rel="stylesheet" href="site.css?v=20260819a" />
 
     <!-- disambiguatingDescription carries the disclaimer the page itself leads
          with. An answer engine that quotes this page without it is quoting a
@@ -84,8 +84,23 @@
         <a href="meetings.html" data-nav="meetings.html">Meetings</a>
         <a href="motions.html" data-nav="motions.html">Votes</a>
         <a href="members.html" data-nav="members.html" data-nav-alias="member.html">Members</a>
-        <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html" data-nav-body="city-council">Finances</a>
-        <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+        <div class="nav-group" data-nav-body="city-council">
+          <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html">Finances</a>
+          <div class="nav-menu" role="group" aria-label="Finances section">
+            <a href="finances.html">Overview</a>
+            <a href="tax.html">Tax</a>
+            <a href="projections.html">Projections</a>
+            <a href="budget.html">Budget</a>
+            <a href="staffing.html">Staffing</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
+          <div class="nav-menu" role="group" aria-label="About section">
+            <a href="about.html">How this site is built</a>
+            <a href="definitions.html">Definitions</a>
+          </div>
+        </div>
         <!-- END generated:nav -->
       </nav>
     </header>
@@ -140,7 +155,7 @@
 
     <footer class="footer"><span>Planning estimates built from Eagle Mountain's published budget and its own meeting recordings — not a city forecast &middot; <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span></footer>
 
-    <script src="site.js?v=20260818c"></script>
+    <script src="site.js?v=20260819a"></script>
     <script src="projections.js?v=20260816a"></script>
     <script>
       /* =======================================================================
@@ -743,10 +758,11 @@
         const anchor = r.rows[0];
         // What this rate raises, and where it sits against the county's
         // certified rate. Neither figure is written into the copy: for the
-        // adopted rate the comparison comes out at 183.02%, which is the figure
-        // the motion itself carries, and it falls out of the arithmetic rather
-        // than being fed in — the check that the rate and the taxable value
-        // agree. Written into the sentence they would go stale the moment an
+        // repealed 0.001500 the comparison comes out at 183.02%, which is the
+        // figure that motion itself carries, and it falls out of the arithmetic
+        // rather than being fed in — the check that the rate and the taxable
+        // value agree. The adopted 0.000900 lands the same way at 69.81%.
+        // Written into the sentence they would go stale the moment an
         // assumption moved.
         const above = anchor && anchor.aboveCertified != null ? anchor.aboveCertified : null;
         const money =
@@ -757,10 +773,16 @@
             ? `${esc(s.rate_noun)} is <strong>${esc(pctBare(above))}</strong> ${above > 0 ? "higher" : "lower"} than the certified rate and is projected to generate ${money}.`
             : `At this rate, the city is projected to receive ${money}.`;
 
-        // One of the three rates is this project's own — no councilmember moved
-        // it and the city never noticed it — so it carries the same Assumption
-        // chip the assumption table uses, rather than reading as published.
-        const tag = s.assumption ? `<span class="proj-tag is-assumed">Assumption</span>` : "";
+        // Two chips, and a rate can take at most one. A rate this project
+        // invented carries the same Assumption chip the assumption table uses,
+        // rather than reading as published. A rate a council adopted and then
+        // repealed is real, and the chip stops a reader taking it for the rate
+        // in force — the 0.001500 stood for twelve days.
+        const tag = s.assumption
+          ? `<span class="proj-tag is-assumed">Assumption</span>`
+          : s.superseded
+            ? `<span class="proj-tag is-superseded">Repealed</span>`
+            : "";
 
         document.getElementById("scenario-note").innerHTML = `
           <p class="proj-scenario-h">${esc(s.name)}${tag}</p>

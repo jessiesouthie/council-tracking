@@ -495,6 +495,29 @@
       a.classList.add("active");
       if (own) a.setAttribute("aria-current", "page");
     });
+
+    // Inside an open section menu, show which row is the page you are on. A
+    // class rather than aria-current: on these pages the sub-nav in the reading
+    // column already claims that, and it should stay the only one.
+    document.querySelectorAll(".nav-menu a").forEach((a) => {
+      const href = (a.getAttribute("href") || "").split("/").pop();
+      if (href === here) a.classList.add("here");
+    });
+  }
+
+  // The menus open on hover and on focus-within, both of which CSS handles on
+  // its own. The one thing it can't do is close one on demand: a keyboard user
+  // who has opened a menu by tabbing to its trigger needs a way out that isn't
+  // "tab through every item in it". Escape returns focus to the trigger, which
+  // is what closes the panel.
+  function wireMenuEscape() {
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      const menu = e.target.closest && e.target.closest(".nav-menu");
+      if (!menu) return;
+      const trigger = menu.parentElement.querySelector("a");
+      if (trigger) trigger.focus();
+    });
   }
 
   // Inject the mobile bottom tab bar once per page. Hidden via CSS on desktop.
@@ -800,6 +823,7 @@
     decorateBodyLinks();
     applyBodyChrome();
     wireSheetDismiss();
+    wireMenuEscape();
     registerServiceWorker();
     mountAgent();
   });
