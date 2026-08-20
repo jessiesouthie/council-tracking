@@ -89,26 +89,45 @@ NAV: tuple[Item, ...] = (
         href="index.html",
         blurb="the front page — what changed most recently, and what is coming up.",
     ),
-    Item(
-        label="Meetings",
-        href="meetings.html",
-        blurb="every council meeting on file, the motions decided each night, and the transcripts.",
-    ),
+    # Votes is a tab of this section rather than a section of its own. Both
+    # pages read the same record from the other end: meetings.html is the
+    # archive by night, motions.html is the same motions cut loose from their
+    # night and searchable by topic, member, outcome or year. A reader who has
+    # found the meeting and a reader who has found the subject are after the
+    # same thing, so the two sit one tab apart instead of one bar apart.
+    #
     # motions.html keeps its filename. It is the target of the homepage search
     # form and of every tag chip on the site, and it has been indexed under that
     # name for months — renaming the file to match the label would break all of
     # it to no reader's benefit. "Votes" is what the page is; "motions" is what
     # the minutes call it, which is why definitions.html has an entry for it.
     Item(
-        label="Votes",
-        href="motions.html",
-        blurb="search the whole roll-call record by topic, member, outcome or year.",
+        label="Meetings",
+        href="meetings.html",
+        children=(
+            Child("Meetings", "meetings.html"),
+            Child("Votes", "motions.html"),
+        ),
+        blurb="every council meeting on file, the motions decided each night, "
+              "the transcripts, and the whole roll-call record searchable by topic.",
     ),
     Item(
         label="Members",
         href="members.html",
         alias=("member.html",),
         blurb="roll-call totals for each member, and how often each pair voted together.",
+    ),
+    # Claims cut across every section — tax, staffing, the petition — so it is
+    # not a child of any of them. It stays off the mobile bar: the bar carries
+    # the sections someone opens the site to browse, and a claim is arrived at
+    # from a link someone sent, and from the card on the front page. Folding
+    # Votes into Meetings left the bar a spare slot rather than a vacancy — four
+    # readable destinations beat five for the sake of five.
+    Item(
+        label="Claims",
+        href="claims.html",
+        mobile=False,
+        blurb="what is going around about the city, checked against the recordings and the notices.",
     ),
     Item(
         label="Finances",
@@ -141,8 +160,9 @@ NAV: tuple[Item, ...] = (
     ),
 )
 
-# The mobile bottom bar. Five items, no overflow sheet: everything on the bar is
-# a top-level section, and the one item that isn't on it lives in the footer.
+# The mobile bottom bar. No overflow sheet: everything on the bar is a top-level
+# section, and the sections that aren't on it live in the footer or on the front
+# page. Five is the ceiling, not the target — see MOBILE_MAX.
 TABBAR: tuple[Item, ...] = tuple(i for i in NAV if i.mobile)
 
 MOBILE_MAX = 5

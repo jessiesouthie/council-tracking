@@ -1,0 +1,533 @@
+{
+  "_comment": "Claims that circulate about the city, checked against the record this site already publishes. Hand-authored, like data.tax-case.json — nothing here is generated, because deciding what a claim actually asserts is not a thing a script can do. The rules the page states in `how` are binding on this file: a claim is only listed when it can be answered out of an open-meeting recording, a document the city or the state published, or arithmetic on figures from one of those, and every entry carries the citation next to the sentence it supports. Claims are quoted as they circulate and never attributed to a private individual by name; officials speaking in an open meeting are named, because that is the record. `verdict` is one of the keys in `verdicts` below. `checked` is when the entry was last read against the record; a claim about a live dispute goes stale quickly, which is why every card prints that date.",
+  "body": "city-council",
+  "updated": "2026-08-19",
+  "eyebrow": "Claims",
+  "title": "What's going around, and what the record says",
+  "sub": "Things residents are telling each other about the city — the tax increase, the staffing, the petition — set against the meetings, the notices and the audited figures they can be checked against. Some are true, some are out of date, and the ones the city itself put into circulation get the same treatment as the ones aimed at it.",
+  "how": {
+    "heading": "How something gets on this page",
+    "rules": [
+      "It has to be circulating. Not a hypothetical, not a strawman — something being repeated in a comment thread, on a sign, at a hearing, or in the city's own messaging.",
+      "It has to be checkable against a source that exists. A recording of an open meeting, a document published by a government body — this city, another one, the county, the state or the federal government — or arithmetic done here on figures from one of those. A claim about how Eagle Mountain compares with anywhere else can only be settled from outside Eagle Mountain, so the sources go where the answer is. If nothing can settle it, the entry says so rather than guessing.",
+      "The claim gets quoted; the person doesn't get named. Residents in a comment thread are not public figures. Officials speaking in an open meeting are, and are named.",
+      "The city's own claims are checked the same way. Two of the entries below are things the city said, not things said about it.",
+      "Every card carries the date it was last checked, because half of these turn on a rate the council has already changed twice."
+    ],
+    "submit": "Something being repeated that isn't here? The claim as you heard it, and where you saw it, is enough to start with."
+  },
+  "verdicts": [
+    {
+      "key": "accurate",
+      "label": "Accurate",
+      "note": "The record supports it as stated."
+    },
+    {
+      "key": "incomplete",
+      "label": "Accurate, but incomplete",
+      "note": "True as far as it goes, and it leaves out something that changes the picture."
+    },
+    {
+      "key": "misleading",
+      "label": "Misleading",
+      "note": "Built on a real figure, used to say something the figure does not support."
+    },
+    {
+      "key": "out-of-date",
+      "label": "Overtaken by events",
+      "note": "It was true of a decision that has since been changed or repealed."
+    },
+    {
+      "key": "unsupported",
+      "label": "Unsupported by the record",
+      "note": "The record is complete enough to check it, and does not bear it out."
+    },
+    {
+      "key": "inaccurate",
+      "label": "Not accurate",
+      "note": "The record contradicts it."
+    },
+    {
+      "key": "unresolved",
+      "label": "Not settled",
+      "note": "A real question the record cannot yet answer."
+    }
+  ],
+  "claims": [
+    {
+      "id": "tax-220-percent",
+      "claim": "The council raised your property taxes 220 percent.",
+      "verdict": "out-of-date",
+      "ruling": "220.88% was noticed in June and never adopted. The rate that survives is 0.000900 — 69.81% over the certified rate, on the city's own line, which is about a twentieth of a property tax bill.",
+      "seen": "Yard signs, petition sheets and city Facebook groups, June to August 2026",
+      "checked": "2026-08-19",
+      "true_part": "The number was real and the city printed it. The Truth-in-Taxation notice mailed in June proposed 0.001700 against a 0.000530 certified rate and stated the increase as 220.88% — a rise in the city's budgeted property tax revenue over the prior year, excluding eligible new growth.",
+      "wrong_part": "Two things. The figure is three rates out of date: the council adopted 0.001500 on August 6, repealed it on August 18, and adopted 0.000900 in its place. And it was never a percentage of anybody's tax bill — it is a percentage of the city's own levy, which is one of seven lines on an Eagle Mountain bill and the fourth-largest of them.",
+      "detail": [
+        "On the notice's own average home — $488,000 of market value, $268,400 taxable after Utah's 55% primary-residence exemption — the noticed rate would have added $314.03 a year. The rate in force adds $99.31.",
+        "On that same home the city's line goes from about $143 a year to about $242, inside a total bill of about $2,517 at 2025 rates. That is the city's share moving from roughly 5.7% of the bill to roughly 9.2% of it. Alpine School District's line alone is more than six times the city's."
+      ],
+      "figures": [
+        {
+          "label": "Noticed, June",
+          "value": "0.001700",
+          "note": "+220.88% · never adopted"
+        },
+        {
+          "label": "Adopted 6 August",
+          "value": "0.001500",
+          "note": "+183.02% · repealed 12 days later"
+        },
+        {
+          "label": "In force",
+          "value": "0.000900",
+          "note": "+69.81% over the certified rate"
+        },
+        {
+          "label": "Average home",
+          "value": "+$99.31 a year",
+          "note": "was $314.03 as noticed"
+        }
+      ],
+      "provisional": "The 0.000900 is certain; the vote, the motion and the figures the adopting resolution recites were not published when this was written, so everything priced at that rate here is this project's arithmetic on it.",
+      "sources": [
+        {
+          "meeting": 726,
+          "date": "2026-06-16",
+          "speaker": "Mayor Jared Gray, reading the impact schedule",
+          "quote": "Eagle Mountain City will consider an increase to its property tax rate to generate an additional $6,958,141… Eagle Mountain City's current property tax rate is 0.000534… The estimated increase to Eagle Mountain City's property tax revenue is 218%… The affected budget is the Sheriff contract.",
+          "doc": {
+            "title": "Proposed Property Tax Impact Schedule",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2026/06/Proposed-Property-Tax-Impact-Schedule-June-2026.pdf"
+          }
+        },
+        {
+          "meeting": 728,
+          "date": "2026-08-18",
+          "speaker": "The repeal and re-adoption",
+          "note": "Two resolutions taken in order: one repealing the increase approved on August 6, one approving an increase above the certified rate in its place at 0.000900."
+        }
+      ],
+      "read_more": [
+        {
+          "label": "The rate, and how it was set",
+          "href": "tax.html"
+        },
+        {
+          "label": "Every levy on an Eagle Mountain bill",
+          "href": "tax.html#s-bill"
+        }
+      ]
+    },
+    {
+      "id": "every-dollar-public-safety",
+      "claim": "Every dollar of the increase goes straight to public safety.",
+      "claim_note": "The city's own claim, not one aimed at it.",
+      "verdict": "incomplete",
+      "ruling": "True in the schedule's own terms — the levy is smaller than the Sheriff's contract, so there is no second dollar to allocate. What it left out is that the money largely replaces sales tax already paying that contract, and frees the sales tax for other things.",
+      "seen": "City messaging, quoted back to the council at the August 6 hearing",
+      "checked": "2026-08-19",
+      "true_part": "The statutory impact schedule names the Sheriff's contract as the affected budget and puts it at $9,798,139 — the same figure, to the dollar, as the proposed property tax revenue. Designed that way, the levy covers the contract and nothing else.",
+      "wrong_part": "What actually changes is which pot pays. Property tax takes over a contract sales tax had been subsidising, and the freed sales tax goes to other city spending — parks, roads, staff. That is a defensible policy and it is not what \"every dollar goes to public safety\" conveys, which is why residents who did the subtraction — $6.74 million noticed against a $1.5 million rise in the contract — concluded they had been lied to.",
+      "detail": [
+        "At the rate finally adopted the gap runs the other way and is larger. 0.000900 raises about $5.19 million against a contract of $9,798,139, so roughly $4.61 million of the Sheriff's contract still comes out of sales tax — four times what the repealed rate would have left short."
+      ],
+      "figures": [
+        {
+          "label": "Sheriff's contract",
+          "value": "$9,798,139",
+          "note": "the affected budget on the schedule"
+        },
+        {
+          "label": "Rise in the contract",
+          "value": "$1,507,939",
+          "note": "over the no-change budget"
+        },
+        {
+          "label": "Raised at 0.000900",
+          "value": "≈$5.19M",
+          "note": "leaving ≈$4.61M on sales tax"
+        }
+      ],
+      "sources": [
+        {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Mayor Jared Gray, reading the schedule",
+          "quote": "The affected budget, sheriff's contract. The proposed budget is $9,798,139. The budget with no tax change is $8,290,000, and the budget change would be $1,507,939."
+        },
+        {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Councilmember Craig Whiting",
+          "quote": "When we say that 100% of the property tax increase goes to public safety, that is the correct answer. What we need to do is help you understand — and this means we didn't communicate this well enough — how public safety has been paid… we're essentially robbing from sales tax to help subsidize our police."
+        },
+        {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Duncan Searcy, resident, quoting the city",
+          "quote": "Eagle Mountain City is proposing a property tax increase with every dollar going straight to public safety, period. So that's a lie, and we all know that now."
+        }
+      ],
+      "read_more": [
+        {
+          "label": "\"100% for public safety\" — what it meant",
+          "href": "tax.html#s-argument"
+        }
+      ]
+    },
+    {
+      "id": "staff-one-third",
+      "claim": "City staff is about a third the size of a city our size.",
+      "claim_note": "The city manager's claim, made at the August 6 hearing.",
+      "verdict": "misleading",
+      "ruling": "Right on raw headcount — 36% of the median of comparable Utah cities — but most of that gap is that those cities employ their own police and firefighters and Eagle Mountain contracts both. Compared like for like it is 64%, nearer two thirds than one third.",
+      "seen": "Repeated in city messaging and in argument for and against the increase since August 2026",
+      "checked": "2026-08-19",
+      "true_part": "On raw headcount the claim is about right, and the underlying point stands: Eagle Mountain is the leanest city in the comparison set. It employed 146.58 full-time equivalents in FY2024 for about 61,400 residents — 2.389 per 1,000, against a peer median of 6.643.",
+      "wrong_part": "The comparison counts other cities' police officers and firefighters and cannot count Eagle Mountain's, because Eagle Mountain has none to count. Set public safety aside on every city's side and the ratio is 2.31 against 3.63 per 1,000 — 64% of the median. Set utilities aside too and it is 65%.",
+      "detail": [
+        "So the sentence is true of the payroll and overstated as a measure of how thinly the city is run. Both halves matter: a resident hearing \"a third the size\" is being told the city is stretched three times thinner than its neighbours, and on the work the city actually does itself the honest figure is about a third thinner."
+      ],
+      "figures": [
+        {
+          "label": "Raw headcount",
+          "value": "36%",
+          "note": "2.389 per 1,000 against a 6.643 median"
+        },
+        {
+          "label": "Excluding police and fire",
+          "value": "64%",
+          "note": "2.31 against 3.63 — the like-for-like figure"
+        },
+        {
+          "label": "City employees",
+          "value": "146.58 FTE",
+          "note": "FY2024, for about 61,400 residents"
+        }
+      ],
+      "sources": [
+        {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "City Manager Ben Reeves",
+          "quote": "Our city staff is about the third of the size of city staff of equivalent population, and they are working their hearts out… I truly feel like for many, many years that they've been working with basically an arm tied behind their back. We haven't invested in them."
+        },
+        {
+          "date": "2026-08-18",
+          "speaker": "Audited headcount, eight Utah cities",
+          "note": "Every figure is the GASB 44 full-time-equivalent schedule in each city's own annual financial report, compared against Census population for the same year.",
+          "doc": {
+            "title": "Eagle Mountain City ACFR, year ended 30 June 2024",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2025/01/EMC-ACFR-2024.pdf"
+          }
+        }
+      ],
+      "read_more": [
+        {
+          "label": "The full staffing comparison",
+          "href": "staffing.html"
+        }
+      ]
+    },
+    {
+      "id": "rushed-in-secret",
+      "claim": "They did this in secret and rushed it through.",
+      "verdict": "unsupported",
+      "ruling": "Two different charges are tangled together. On whether it was done in the open the record is unusually complete — seven open meetings from April 14, both August hearings set three months ahead, the schedule read into the record four times. On whether residents found out, the council agrees with the criticism: four of five said so from the dais before voting.",
+      "seen": "Comment threads and hearing testimony, June to August 2026",
+      "checked": "2026-08-19",
+      "true_part": "Residents did not hear about it in time to weigh in early, and that is not in dispute. The council conceded it on the record before the vote, and the concession is the strongest evidence for the complaint.",
+      "wrong_part": "Nothing was done outside a noticed public meeting. The Sheriff's Office presented the staffing case in an open work session on April 14; on May 5 the council accepted the tentative budget, acknowledged the proposed increase and declared its intent to exceed the certified rate, setting both August hearings; the impact schedule was read on May 26, June 2 and June 16, and the June 16 hearing ran with public comment answered at length. The August 6 hearing took about sixty speakers over three hours.",
+      "figures": [
+        {
+          "label": "Open meetings",
+          "value": "7",
+          "note": "April 14 to August 6, before the first adoption"
+        },
+        {
+          "label": "Schedule read",
+          "value": "4 times",
+          "note": "May 26, June 2, June 16, August 6"
+        },
+        {
+          "label": "Hearings set",
+          "value": "3 months ahead",
+          "note": "both fixed by resolution on May 5"
+        }
+      ],
+      "sources": [
+        {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Councilmember Zac Huish",
+          "quote": "Transparency — we failed you. We absolutely failed you."
+        },
+        {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Councilmember Rich Wood",
+          "quote": "I think we did a horrible job of communication. I think that's been highlighted by every person here. And so for that, I want to apologize… I will own that. I should have communicated."
+        },
+        {
+          "meeting": 712,
+          "date": "2026-05-05",
+          "speaker": "Three resolutions in one night",
+          "note": "Tentative budget accepted, the Budget Officer's statement of a proposed increase acknowledged, and intent to exceed the certified rate declared — which is what fixed both August hearing dates."
+        }
+      ],
+      "read_more": [
+        {
+          "label": "The whole paper trail, meeting by meeting",
+          "href": "tax.html#s-argument"
+        },
+        {
+          "label": "Every meeting on file",
+          "href": "meetings.html"
+        }
+      ]
+    },
+    {
+      "id": "city-police-department",
+      "claim": "The increase pays for the city's own police department.",
+      "verdict": "inaccurate",
+      "ruling": "Eagle Mountain employs no police officers and no firefighters. Patrol is bought from the Utah County Sheriff's Office; fire and ambulance come from Unified Fire Authority, which bills residents on a separate line of the same tax notice.",
+      "seen": "Recurring in comment threads whenever the Sheriff's contract comes up",
+      "checked": "2026-08-19",
+      "true_part": "The money does pay for policing. The affected budget on the impact schedule is the Sheriff's contract, and the deputies it funds are assigned to the Eagle Mountain division.",
+      "wrong_part": "It is a contract, not a department. The city's audited schedule shows 4.82 full-time equivalents under public safety and every one of them is a crossing guard; the line for firefighters and officers reads zero, and has read zero for eleven years. Fire and ambulance are not the city's at all — Unified Fire Service Area levies 0.001650 directly, which is nearly twice the city's own new rate.",
+      "detail": [
+        "This matters for reading a tax bill. Someone comparing Eagle Mountain's rate against a neighbouring city that runs its own police and fire is comparing a city that buys those services against one that levies for them, and the neighbour's higher rate is partly that difference."
+      ],
+      "figures": [
+        {
+          "label": "City police officers",
+          "value": "0",
+          "note": "patrol contracted from the county Sheriff"
+        },
+        {
+          "label": "City firefighters",
+          "value": "0",
+          "note": "Unified Fire Authority, on its own levy"
+        },
+        {
+          "label": "City \"public safety\" staff",
+          "value": "4.82 FTE",
+          "note": "crossing guards"
+        }
+      ],
+      "sources": [
+        {
+          "date": "2026-08-18",
+          "speaker": "The city's own audited staffing schedule",
+          "note": "The ten-year full-time-equivalent table in the city's annual financial report: public safety 4.82, firefighters and officers 0.00.",
+          "doc": {
+            "title": "Eagle Mountain City ACFR, year ended 30 June 2024",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2025/01/EMC-ACFR-2024.pdf"
+          }
+        },
+        {
+          "date": "2026-01-05",
+          "speaker": "Utah State Tax Commission, Report 600",
+          "note": "The seven levies on an Eagle Mountain bill, including Unified Fire Service Area at 0.001650 and the city at 0.000534 for 2025.",
+          "doc": {
+            "title": "2025 Tax Rates by Tax Area, Report 600",
+            "url": "https://files.tax.utah.gov/propertytax/tax-rates/area-rates/taxarearates2025.pdf"
+          }
+        }
+      ],
+      "read_more": [
+        {
+          "label": "Who works for the city",
+          "href": "staffing.html"
+        },
+        {
+          "label": "Every levy on the bill",
+          "href": "tax.html#s-bill"
+        }
+      ]
+    },
+    {
+      "id": "referendum-repeals-it",
+      "claim": "Sign the petition and the tax goes away.",
+      "verdict": "unresolved",
+      "ruling": "A referendum on a property tax rate is legally available, and one ran in a Utah city as recently as last autumn. But the resolution a petition was organised against was repealed on August 18 and replaced, and the signature test is two thresholds rather than one.",
+      "seen": "Petition drives and organising posts, August 2026",
+      "checked": "2026-08-19",
+      "true_part": "Utah Code § 20A-7-613 exists for exactly this situation. Five sponsors file a notarised application with the resolution attached; the city's budget officer must then produce an unbiased fiscal and legal impact statement within days; then signatures are gathered against a statutory threshold.",
+      "wrong_part": "Nothing about it is automatic, and two things are genuinely unsettled. The first is what a petition aimed at the August 6 resolution does now that the resolution has been repealed and a smaller increase adopted in its place — that turns on what was filed and when, and the city recorder is the authority on it, not this page. The second is the threshold itself.",
+      "detail": [
+        "For a city of the second class it is 8.25% of active voters citywide and 8.25% within at least 75% of the city's voter participation areas. Both must be met, and the second is what decides these — it is the one almost nobody organising a petition budgets for.",
+        "Whether Eagle Mountain is second class yet is itself open. The statutory line is 65,000 residents, the first statewide subcounty estimates put the city at 65,409 in 2025, and the class changes on the lieutenant governor's certificate rather than on the estimate. If that certificate has not issued, the thresholds are 10% rather than 8.25%."
+      ],
+      "figures": [
+        {
+          "label": "Citywide signatures",
+          "value": "8.25%",
+          "note": "of active voters — 10% if still third class"
+        },
+        {
+          "label": "And by area",
+          "value": "75%",
+          "note": "of voter participation areas must each clear 8.25%"
+        }
+      ],
+      "sources": [
+        {
+          "date": "2026-08-19",
+          "speaker": "Utah Code",
+          "note": "§ 20A-7-601 (thresholds and filing deadline), § 20A-7-602.5 (the city's impact statement), § 20A-7-613 (referendum on a tax), § 10-2-301 and § 67-1a-2(3)(d) (city class, and the certificate that changes it).",
+          "doc": {
+            "title": "Utah Code Title 20A, Chapter 7, Part 6",
+            "url": "https://le.utah.gov/xcode/Title20A/Chapter7/20A-7-P6.html"
+          }
+        }
+      ],
+      "read_more": [
+        {
+          "label": "The referendum route in full",
+          "href": "tax.html#s-argument"
+        }
+      ]
+    },
+    {
+      "id": "another-data-center",
+      "claim": "They're building another data center in Eagle Mountain.",
+      "verdict": "accurate",
+      "ruling": "Yes, and the votes are on file. What is being built is more of what is already here — every data center approval in the record since 2024 is an expansion by Meta or QTS, not a new company arriving.",
+      "seen": "A city Facebook group, August 2026; and public comment to the council since at least February 2026",
+      "checked": "2026-08-19",
+      "true_part": "Three campuses are already named in the city's own record — Meta, Google and QTS — and building has not stopped. QTS's SLC1 site was still under construction this spring, when the council let it work outside the hours city code normally allows. A second QTS parcel, the land the motion calls QTS-SCL 2, was rezoned on March 3. And on October 21 the council approved a development agreement with Stadion, LLC, the company known as Meta, on a 4–1 vote, along with a third amendment to its water and sewer agreement the same night.",
+      "wrong_part": "“Another” suggests a new operator. Nothing in the record shows one. It is also worth knowing what has not happened yet: the newest land in play — the parcel west of the Pony Express area that QTS has bought — was described to the council on August 4 as still zoned agricultural. Farmland cannot be built on until the council rezones it, and a rezone is a public vote with a public hearing in front of it.",
+      "detail": [
+        "The scale of it gets overstated in both directions. A resident told the council in February that they had read five more had been approved. In the twelve months before that comment the council passed four measures touching the data centers — a road realignment at the Meta site, the Meta development agreement, the water and sewer amendment beside it, and a sign-code rule for directional signage — and none of the four approved a new data center.",
+        "The motions themselves are thin, which is a fair complaint about the record rather than about the claim. The QTS-SCL 2 rezone does not state the acreage or the new zoning, and the Meta development agreement does not list its terms. The votes are public; what was voted on is often summarised in a single line."
+      ],
+      "figures": [
+        {
+          "label": "Operators on file",
+          "value": "3",
+          "note": "Meta, Google and QTS"
+        },
+        {
+          "label": "QTS-SCL 2 rezoned",
+          "value": "3 Mar 2026",
+          "note": "acreage and new zoning not stated in the motion"
+        },
+        {
+          "label": "Meta agreement",
+          "value": "4–1",
+          "note": "21 Oct 2025, with Stadion, LLC"
+        }
+      ],
+      "sources": [
+        {
+          "motion": 1046,
+          "date": "2026-03-03",
+          "speaker": "Rezone the land known as QTS-SCL 2",
+          "note": "Passed unanimously. The motion does not state the acreage or the new zoning."
+        },
+        {
+          "motion": 1055,
+          "date": "2026-03-25",
+          "speaker": "Longer construction hours at the QTS SLC1 site",
+          "note": "Passed 4–0 — the site was under construction this spring."
+        },
+        {
+          "motion": 972,
+          "date": "2025-10-21",
+          "speaker": "Development agreement with Stadion, LLC, the company known as Meta",
+          "note": "Passed 4–1, the only split vote among these."
+        },
+        {
+          "meeting": 715,
+          "date": "2026-08-04",
+          "speaker": "A business owner, addressing the council",
+          "quote": "We've also learned that QTS, of course, bought the property to the west, which is zoned agricultural now but could also go industrial."
+        }
+      ],
+      "read_more": [
+        {
+          "label": "Every vote on file, searchable",
+          "href": "motions.html"
+        },
+        {
+          "label": "The claim about the size of it",
+          "href": "claims.html#largest-data-center"
+        }
+      ]
+    },
+    {
+      "id": "largest-data-center",
+      "claim": "It's going to be the largest data center in the country, maybe the world.",
+      "verdict": "inaccurate",
+      "ruling": "No. A single project already approved in Box Elder County covers 40,000 acres — more ground than the whole of Eagle Mountain, which is 32,256 acres of land. Whatever gets built here, the largest in the country is not going in this city.",
+      "seen": "A city Facebook group, August 2026, in a thread about the new site",
+      "checked": "2026-08-19",
+      "true_part": "The premise underneath it is sound. Eagle Mountain has three data center campuses, it keeps approving work on them, and QTS has bought more ground west of the Pony Express area that has not been through the council yet. Somebody hearing that a company is buying more land here is hearing something true, and the state as a whole genuinely is getting enormous ones.",
+      "wrong_part": "It is the superlative that fails, and it fails on a comparison anyone can make. The Stratos project area in western Box Elder County — a data and energy campus approved by the MIDA board on April 24 and agreed to by the Box Elder County Commission on May 4 — covers 40,000 acres. Eagle Mountain City is 50.4 square miles of land, which is 32,256 acres. The project area 200 miles north is about a quarter larger than this entire city, and it is the one Utah newsrooms have been calling the largest in the country.",
+      "detail": [
+        "Two honest qualifications, neither of which rescues the claim. The 40,000 acres is the project area rather than the buildings: the state's own FAQ says most of it will stay undeveloped and the data center footprint will be “a fraction” of it. And those April and May votes created the project area, not the project — the state says plainly that they did not approve the full development, which still needs air, water and wildlife review.",
+        "The other half of the problem is local, and it is the more useful half. Nothing Eagle Mountain has voted on states a size for anything. The QTS-SCL 2 rezone does not give the acreage or the zoning it granted; the Meta development agreement does not list its terms. So there is no figure in the city's record that a claim about size could be measured against — which is exactly why a superlative can circulate here for weeks without meeting a number."
+      ],
+      "figures": [
+        {
+          "label": "Stratos project area",
+          "value": "40,000 acres",
+          "note": "Box Elder County, approved April–May 2026"
+        },
+        {
+          "label": "All of Eagle Mountain",
+          "value": "32,256 acres",
+          "note": "50.4 sq mi of land, US Census"
+        },
+        {
+          "label": "Size stated locally",
+          "value": "None",
+          "note": "no acreage or footprint in any Eagle Mountain motion"
+        }
+      ],
+      "sources": [
+        {
+          "date": "2026-05-04",
+          "speaker": "Utah Governor's Office, on the Stratos Project Area",
+          "quote": "While the entire project area encompasses 40,000 acres, most of the acres will remain undeveloped… The actual data center footprint will be a fraction of the size of the MIDA project area.",
+          "doc": {
+            "title": "Frequently Asked Questions — Stratos Project Area (PDF)",
+            "url": "https://governor.utah.gov/wp-content/uploads/FAQ-on-Stratos-Project.pdf"
+          }
+        },
+        {
+          "date": "2026-04-24",
+          "speaker": "What was actually approved, per the same FAQ",
+          "note": "The MIDA Board created the Stratos Project Area on April 24 and the Box Elder County Commission agreed to it on May 4. Asked whether those votes approved the full project, the state answers: “No. This is just the beginning of a multi-step process.”"
+        },
+        {
+          "speaker": "Eagle Mountain city land area",
+          "note": "50.4 square miles of land — 32,256 acres — against the 40,000 of the Stratos project area.",
+          "doc": {
+            "title": "US Census Bureau profile, Eagle Mountain city, Utah",
+            "url": "https://data.census.gov/profile/Eagle_Mountain_city,_Utah?g=160XX00US4920810"
+          }
+        },
+        {
+          "motion": 1046,
+          "date": "2026-03-03",
+          "speaker": "Rezone the land known as QTS-SCL 2",
+          "note": "The most recent data center land vote here, and it states neither acreage nor zoning — which is why nothing local answers a question about size."
+        }
+      ],
+      "read_more": [
+        {
+          "label": "Whether another one is being built",
+          "href": "claims.html#another-data-center"
+        },
+        {
+          "label": "What is on the next agenda",
+          "href": "meetings.html"
+        }
+      ]
+    }
+  ],
+  "sources_note": "Every quotation on this page is transcribed from the city's own recording of an open meeting and links to that meeting's page, where the full transcript sits. Figures come from the city's published notice and impact schedule, its audited annual financial report, the Utah State Tax Commission's rate tables, or arithmetic done here on those — and where a figure is derived rather than published, the card says so."
+}

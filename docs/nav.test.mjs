@@ -72,7 +72,7 @@ test("the canonical list parsed, and is not empty", () => {
   assert.ok(NAV.length >= 5, `parsed only ${NAV.length} items from ingest/nav.py`);
   assert.deepEqual(
     NAV.map((i) => i.label),
-    ["Home", "Meetings", "Votes", "Members", "Finances", "About"]
+    ["Home", "Meetings", "Members", "Claims", "Finances", "About"]
   );
 });
 
@@ -273,7 +273,7 @@ test("each section page carries its section's sub-nav", () => {
 const WITH_MENUS = NAV.filter((i) => i.children.length);
 
 test("the definition has menus to test", () => {
-  assert.deepEqual(WITH_MENUS.map((i) => i.label), ["Finances", "About"]);
+  assert.deepEqual(WITH_MENUS.map((i) => i.label), ["Meetings", "Finances", "About"]);
 });
 
 for (const page of PAGES) {

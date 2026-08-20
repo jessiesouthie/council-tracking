@@ -22,8 +22,8 @@
     <link rel="icon" href="/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <link rel="preload" href="/fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/fonts.css?v=20260819b" />
-    <link rel="stylesheet" href="/site.css?v=20260819b" />
+    <link rel="stylesheet" href="/fonts.css?v=20260819c" />
+    <link rel="stylesheet" href="/site.css?v=20260819c" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -113,9 +113,15 @@
       </a>
       <nav class="nav" aria-label="Primary">
         <a href="/index.html" data-nav="index.html">Home</a>
-        <a href="/meetings.html" data-nav="meetings.html" class="active" aria-current="page">Meetings</a>
-        <a href="/motions.html" data-nav="motions.html">Votes</a>
+        <div class="nav-group">
+          <a href="/meetings.html" data-nav="meetings.html" data-nav-alias="motions.html" class="active" aria-current="page">Meetings</a>
+          <div class="nav-menu" role="group" aria-label="Meetings section">
+            <a href="/meetings.html">Meetings</a>
+            <a href="/motions.html">Votes</a>
+          </div>
+        </div>
         <a href="/members.html" data-nav="members.html" data-nav-alias="member.html">Members</a>
+        <a href="/claims.html" data-nav="claims.html">Claims</a>
         <div class="nav-group" data-nav-body="city-council">
           <a href="/finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html">Finances</a>
           <div class="nav-menu" role="group" aria-label="Finances section">
@@ -176,6 +182,6 @@ Read <a href="https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingF
     </main>
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="/about.html">How this site is built</a> &middot; <a href="/definitions.html">Definitions</a></span></footer>
 
-    <script src="/site.js?v=20260819b"></script>
+    <script src="/site.js?v=20260819c"></script>
   </body>
 </html>

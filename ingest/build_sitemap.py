@@ -87,6 +87,11 @@ PAGES: list[dict] = [
      "data": ["data.projections.json"]},
     {"path": "staffing.html", "priority": "0.8", "changefreq": "monthly",
      "data": ["data.staffing.json"]},
+    # Claims are the page most likely to be arrived at cold, from a link
+    # dropped into an argument somewhere else, so it is worth a crawler's time
+    # even though it changes only when a claim is checked or re-checked.
+    {"path": "claims.html", "priority": "0.7", "changefreq": "weekly",
+     "data": ["data.claims.json"]},
     {"path": "motions.html", "priority": "0.7", "changefreq": "weekly",
      "data": ["data.json"], "body_scoped": "motions"},
     {"path": "definitions.html", "priority": "0.7", "changefreq": "monthly",

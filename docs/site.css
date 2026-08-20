@@ -3937,11 +3937,16 @@ body.page-tax {
    sits on the same paper as the rest of the site and follows the theme toggle;
    only the four accents are stated literally, with dark variants below.
 
+   Shared with body.page-claims: the claims page reuses the argument
+   components below (.arg-quote, .aq-*) verbatim, and a component that
+   reads tokens its page doesn't define renders as transparent, not as a
+   fallback. One palette, two pages, rather than a second copy of it.
+
    Declared on body.page-tax, not on .tax-page alone: the shared chart tooltip
    is appended to the body so it can be positioned in page coordinates without
    inheriting a containing block, and a token scoped to .tax-page would be
    undefined there — which reads as a transparent background, not a fallback. */
-body.page-tax, .tax-page {
+body.page-tax, .tax-page, body.page-claims, .claims-page {
   --t-page:   var(--bg);
   --t-card:   var(--bg-elev);
   --t-tray:   #F1EDE2;               /* segmented-control tray */
@@ -3975,7 +3980,7 @@ body.page-tax, .tax-page {
    become tints rather than washes. Cream clears 12:1 on the band; gold, rust,
    and sage each clear AA against both grounds. */
 @media (prefers-color-scheme: dark) {
-  body.page-tax, .tax-page {
+  body.page-tax, .tax-page, body.page-claims, .claims-page {
     --t-tray:      #2C3128;
     --t-ink:       #14170F;
     --t-ink-2:     #1C2016;
@@ -3990,12 +3995,14 @@ body.page-tax, .tax-page {
     --t-pass:      #46B183;
   }
 }
-:root[data-theme="dark"] body.page-tax, :root[data-theme="dark"] .tax-page {
+:root[data-theme="dark"] body.page-tax, :root[data-theme="dark"] .tax-page,
+:root[data-theme="dark"] body.page-claims, :root[data-theme="dark"] .claims-page {
   --t-tray: #2C3128; --t-ink: #14170F; --t-ink-2: #1C2016; --t-ink-line: #33372B;
   --t-gold: #EFC868; --t-gold-line: #8A6A12; --t-gold-bg: #2C2515; --t-gold-hi: #3E331A;
   --t-rust: #C4643A; --t-sage: #8B948A; --t-pass: #46B183;
 }
-:root[data-theme="light"] body.page-tax, :root[data-theme="light"] .tax-page {
+:root[data-theme="light"] body.page-tax, :root[data-theme="light"] .tax-page,
+:root[data-theme="light"] body.page-claims, :root[data-theme="light"] .claims-page {
   --t-tray: #F1EDE2; --t-ink: #23261F; --t-ink-2: #2B2E24; --t-ink-line: #3A3C31;
   --t-gold: #8A6A12; --t-gold-line: #E3C766; --t-gold-bg: #FDF7E6; --t-gold-hi: #F6E7BA;
   --t-rust: #A8542F; --t-sage: #6F7C68; --t-pass: #2C6B47;
@@ -8178,9 +8185,10 @@ table.data.bx-lines .bx-tot td {
    column above the page's own hero, and reads as a level below the topbar:
    smaller, quieter, and tinted on the current page rather than filled.
 
-   Used by the Finances section (five destinations) and by About (two). It
-   scrolls horizontally rather than wrapping, so a narrow screen never gets a
-   two-line strip that pushes the page's own heading below the fold. */
+   Used by the Finances section (five destinations), by Meetings (the archive
+   and the searchable roll-call record) and by About (two). It scrolls
+   horizontally rather than wrapping, so a narrow screen never gets a two-line
+   strip that pushes the page's own heading below the fold. */
 .subnav {
   display: flex;
   gap: 4px;
@@ -10972,3 +10980,465 @@ h1.fin-title {
   font-size: 14px;
 }
 .fin-more a { font-weight: 600; }
+
+/* =============================================================================
+   CLAIMS — claims.html
+
+   A claim, and what the record does to it. The card is the unit and the
+   permalink is the point: these are written to be answered with a URL dropped
+   into the argument they are circulating in, so every card is an #anchor, every
+   card carries its own copy-link, and every card states the date it was last
+   checked.
+
+   The page's own voice, on the convention every page built this year follows —
+   the tax page runs Instrument Sans over IBM Plex Mono, the budget book
+   Fraunces, the glossary Newsreader. Here the type does the arguing:
+
+     the claim      Newsreader, the text serif. It is somebody else's sentence,
+                    quoted, and setting it as an editorial pull-quote is what
+                    stops it reading as the site's own assertion.
+     the check      Inter. Interface voice for the page's own findings, so the
+                    quoted thing and the answer to it never look like one voice.
+     the figures    IBM Plex Mono, tabular — the same face a rate is set in on
+                    tax.html, so a number carried from that page looks like the
+                    same number.
+
+   No new font files: Newsreader is already subsetted for definitions.html and
+   Plex Mono for the tax page.
+
+   Layout is the glossary's hanging column, turned to a different job: the
+   verdict, the date and the actions sit in a rail beside the argument rather
+   than inside it, so the reading column holds one measure from the claim to the
+   citation, and the rail reads down the page as a spine of findings.
+
+   Palette and the quotation component are the tax page's; see the note beside
+   body.page-tax. Only the layout and the type below are this page's own.
+   ============================================================================= */
+body.page-claims {
+  --cl-serif: "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --cl-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  /* Two of the four verdict colours are borrowed from the tax page, where they
+     carry chart bars and section labels. Here they carry the finding itself, at
+     label size, and two of them miss 4.5:1 at that size: sage measures 4.41 on
+     white and rust 3.79 on the dark card. Deepened on this page only — the tax
+     page's own uses are large or non-text and its tokens are left alone. */
+  --cl-sage: #68745F;   /* 4.94 on white, 4.62 on the gold tint */
+  --cl-rust: var(--t-rust);
+}
+@media (prefers-color-scheme: dark) {
+  body.page-claims { --cl-sage: var(--t-sage); --cl-rust: #D87F55; }
+}
+:root[data-theme="dark"] body.page-claims { --cl-sage: var(--t-sage); --cl-rust: #D87F55; }
+:root[data-theme="light"] body.page-claims { --cl-sage: #68745F; --cl-rust: var(--t-rust); }
+.claims-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  --cl-measure: 66ch;
+  /* The rail. One number: the docket's verdict column, the card rails and the
+     legend all hang on the same vertical, so the page has a single left edge
+     for findings and a single one for prose. */
+  --cl-rail: 210px;
+  --cl-gap: 40px;
+}
+.claims-page .page-title {
+  font-family: var(--cl-serif);
+  font-weight: 600;
+  /* Newsreader carries a display line without Inter's negative tracking, and
+     sets a shade smaller at the same size, so it takes a little back. */
+  font-size: clamp(31px, 4.2vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -.012em;
+  text-wrap: balance;
+}
+.claims-page .page-sub { max-width: var(--cl-measure); }
+
+/* The standing promise, directly under the title: what the page will and won't
+   print. It is the reason to read anything below it, so it goes above the
+   claims — the rules themselves are long and sit at the foot, one link away. */
+.cl-standing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--t-line);
+  max-width: var(--cl-measure);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--t-muted);
+  text-wrap: pretty;
+}
+.cl-count, .cl-reviewed {
+  font-family: var(--cl-mono);
+  font-size: 11.5px;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.cl-count {
+  padding: 2px 8px;
+  background: var(--t-gold-bg);
+  border: 1px solid var(--t-gold-line);
+  border-radius: 999px;
+  color: var(--t-gold);
+  font-weight: 600;
+}
+.cl-standing a { color: var(--t-gold); font-weight: 600; }
+
+.cl-h2 {
+  margin: 0 0 14px;
+  font-family: var(--cl-serif);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -.008em;
+  color: var(--t-fg);
+}
+
+/* ---------- the docket ----------
+   Verdict first, claim second, so the list reads as a set of findings rather
+   than a table of contents. */
+.cl-docket-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--t-line);
+}
+.cl-docket-list li { border-bottom: 1px solid var(--t-line-2); }
+.cl-docket-list a {
+  display: grid;
+  grid-template-columns: var(--cl-rail) 1fr;
+  gap: 6px var(--cl-gap);
+  align-items: baseline;
+  /* 44px of target height at the smallest text this row can hold. */
+  padding: 13px 8px 13px 10px;
+  text-decoration: none;
+  color: inherit;
+  /* Inset rule rather than a padding shift: hover must not move the text it is
+     pointing at, and a transition on padding animates layout besides. */
+  box-shadow: inset 3px 0 0 transparent;
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+.cl-docket-list a:hover {
+  background: var(--t-gold-bg);
+  box-shadow: inset 3px 0 0 var(--t-gold);
+}
+.cl-docket-list a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: -3px;
+  border-radius: 4px;
+}
+.cl-docket-claim {
+  font-family: var(--cl-serif);
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--t-fg);
+  text-wrap: pretty;
+}
+.cl-docket-list a:hover .cl-docket-claim { color: var(--t-gold); }
+
+/* ---------- the verdict pill ---------- */
+.cl-verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 3px 11px 3px 9px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-family: var(--cl-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.cl-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+/* Colour is never the only carrier — the word is spelled out beside the dot on
+   every one of these — but it is what makes the spine scannable. */
+.cl-verdict.is-ok   { color: var(--t-pass); }
+.cl-verdict.is-warn { color: var(--t-gold); }
+.cl-verdict.is-bad  { color: var(--cl-rust); }
+.cl-verdict.is-cool { color: var(--cl-sage); }
+
+/* ---------- the card ---------- */
+.cl-list { display: flex; flex-direction: column; gap: 30px; }
+.cl-card {
+  display: grid;
+  grid-template-columns: var(--cl-rail) 1fr;
+  gap: var(--cl-gap);
+  padding: 28px 30px 26px;
+  background: var(--t-card);
+  border: 1px solid var(--t-line);
+  border-radius: var(--t-r);
+  scroll-margin-top: calc(var(--topbar-h, 62px) + 14px);
+}
+/* Arrived here from a shared link. A ruled edge rather than a flash: the reader
+   may land at any moment after the fetch, and a flash they miss is nothing. */
+.cl-card.is-linked { border-color: var(--t-gold-line); box-shadow: 0 0 0 3px var(--t-gold-bg); }
+
+.cl-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  /* Follows a long card down, so the verdict is still on screen at the
+     citations. The card is the containing block, so it never escapes its own
+     claim. */
+  position: sticky;
+  top: calc(var(--topbar-h, 62px) + 20px);
+  align-self: start;
+}
+.cl-rail-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--t-muted);
+  text-wrap: pretty;
+}
+.cl-checked { font-family: var(--cl-mono); font-size: 11px; letter-spacing: .01em; }
+.cl-rail-acts { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; margin: 0; }
+.cl-act {
+  /* 44px of target without 44px of ink: the padding is the hit area. */
+  padding: 11px 10px 11px 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--t-gold);
+  text-align: left;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+.cl-act:hover { text-decoration: underline; }
+.cl-act:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
+.cl-act[data-ask] { color: var(--t-muted); }
+.cl-act[data-ask]:hover { color: var(--t-gold); }
+
+.cl-body { min-width: 0; }
+
+/* The quoted sentence. Newsreader, one size up from anything else on the page,
+   with the quote marks set in the type rather than added as ornament. */
+.cl-claim {
+  margin: 0;
+  max-width: var(--cl-measure);
+  font-family: var(--cl-serif);
+  font-size: clamp(21px, 2.4vw, 27px);
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: -.005em;
+  color: var(--t-fg);
+  text-wrap: pretty;
+}
+.cl-claimnote {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--t-muted);
+}
+/* The finding. Inter, deliberately: the page's own voice is never the serif. */
+.cl-ruling {
+  margin: 14px 0 0;
+  max-width: var(--cl-measure);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--t-fg-2);
+  text-wrap: pretty;
+}
+
+/* Two halves, always in this order. Nearly every claim in a live dispute has
+   something true in it, and leading with that is the difference between a check
+   somebody forwards and one they dismiss. */
+.cl-split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  gap: 20px 34px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--t-line-2);
+}
+.cl-half p { margin: 0; font-size: 14.5px; line-height: 1.62; color: var(--t-fg-2); text-wrap: pretty; }
+.cl-half-lab {
+  margin: 0 0 7px !important;
+  font-family: var(--cl-mono);
+  font-size: 10.5px !important;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.cl-half.is-true .cl-half-lab  { color: var(--t-pass); }
+.cl-half.is-wrong .cl-half-lab { color: var(--cl-rust); }
+
+.cl-detail {
+  margin: 18px 0 0;
+  max-width: var(--cl-measure);
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--t-fg-2);
+  text-wrap: pretty;
+}
+
+.cl-figs {
+  display: grid;
+  /* 148px, not 170: four figures is the most any card carries and at 170 the
+     fourth wrapped to a row of its own beside three-quarters of empty. */
+  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+  gap: 18px 28px;
+  margin-top: 24px;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--t-line-2);
+}
+.cl-fig > b {
+  display: block;
+  font-family: var(--cl-mono);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  color: var(--t-gold);
+  font-variant-numeric: tabular-nums;
+  text-wrap: balance;
+}
+.cl-fig-lab { display: block; margin-top: 5px; font-size: 13px; font-weight: 600; color: var(--t-fg-2); }
+.cl-fig-note { display: block; margin-top: 2px; font-size: 12px; line-height: 1.45; color: var(--t-muted); }
+
+.cl-prov {
+  margin: 22px 0 0;
+  padding: 12px 14px;
+  max-width: var(--cl-measure);
+  background: var(--t-gold-bg);
+  border-left: 3px solid var(--t-gold);
+  border-radius: 0 4px 4px 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--t-fg-2);
+}
+
+.cl-srcs { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--t-line-2); }
+.cl-srcs-lab {
+  margin: 0 0 6px;
+  font-family: var(--cl-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+}
+.cl-srcs .arg-quote { max-width: var(--cl-measure); }
+.cl-srcnote {
+  margin: 8px 0 0 16px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--t-fg-2);
+  text-wrap: pretty;
+}
+/* A citation with no quotation in it — a vote, a document — is the page
+   speaking about the record rather than quoting it, so it sits flush with the
+   attribution instead of hanging like a pull-quote. */
+.arg-quote > .cl-srcnote:first-child {
+  margin-left: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--t-fg-2);
+  text-wrap: pretty;
+}
+
+.cl-more {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  margin: 24px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--t-line-2);
+  font-size: 13.5px;
+}
+.cl-more a {
+  padding: 8px 0;
+  font-weight: 600;
+  color: var(--t-gold);
+  text-decoration: none;
+}
+.cl-more a:hover { text-decoration: underline; }
+.cl-more a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 3px; }
+
+/* ---------- the rules, and the way out ---------- */
+.cl-rules {
+  padding: 26px 28px;
+  background: var(--t-gold-bg);
+  border: 1px solid var(--t-gold-line);
+  border-radius: var(--t-r);
+  scroll-margin-top: calc(var(--topbar-h, 62px) + 14px);
+}
+.cl-rulelist {
+  margin: 0;
+  padding-left: 20px;
+  max-width: var(--cl-measure);
+  display: grid;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--t-fg-2);
+  text-wrap: pretty;
+}
+.cl-rulelist::marker { color: var(--t-gold); font-family: var(--cl-mono); }
+
+.cl-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
+  gap: 14px 28px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--t-gold-line);
+}
+/* Pill above its gloss, not beside it: the labels are different lengths, and
+   inline they left every row starting at a different column. */
+.cl-leg { display: grid; justify-items: start; gap: 5px; align-content: start; }
+.cl-leg-note { font-size: 12.5px; line-height: 1.5; color: var(--t-muted); text-wrap: pretty; }
+
+.cl-submit {
+  padding: 26px 28px;
+  background: var(--t-tray);
+  border-radius: var(--t-r);
+}
+.cl-submit p { margin: 0 0 12px; max-width: var(--cl-measure); font-size: 14.5px; line-height: 1.6; color: var(--t-fg-2); }
+.cl-submit p:last-child { margin-bottom: 0; }
+
+.cl-foot {
+  margin: 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--t-line);
+  max-width: var(--cl-measure);
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--t-muted);
+  text-wrap: pretty;
+}
+
+/* ---------- narrow ----------
+   The rail folds back into the card at the width where 210px of it would leave
+   the argument under 40 characters. Verdict, date and actions become a header
+   row above the claim, in that order, so the reading order is unchanged. */
+@media (max-width: 860px) {
+  .claims-page { --cl-rail: 0px; --cl-gap: 0px; }
+  .cl-card { grid-template-columns: 1fr; gap: 18px; }
+  .cl-rail { position: static; gap: 10px; }
+  .cl-rail-meta { flex-direction: row; flex-wrap: wrap; gap: 4px 14px; }
+  .cl-rail-acts { flex-direction: row; gap: 20px; }
+  .cl-docket-list a { grid-template-columns: 1fr; gap: 8px; justify-items: start; }
+}
+@media (max-width: 620px) {
+  .cl-card { padding: 22px 18px; }
+  .cl-rules, .cl-submit { padding: 20px 18px; }
+  .cl-h2 { font-size: 21px; }
+}

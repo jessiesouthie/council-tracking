@@ -522,12 +522,14 @@
 
   // Inject the mobile bottom tab bar once per page. Hidden via CSS on desktop.
   //
-  // Five destinations and no overflow sheet. The bar used to carry three items
-  // plus a "More" button covering five more, which meant the mobile taxonomy
-  // and the desktop one disagreed about what the site contains — and the sheet
-  // buried the money pages two taps down on the devices most people read this
-  // on. Both lists now come from ingest/nav.py. About, the one top-level
-  // section not on the bar, sits in the footer of every page.
+  // Top-level sections only, no overflow sheet. The bar used to carry three
+  // items plus a "More" button covering five more, which meant the mobile
+  // taxonomy and the desktop one disagreed about what the site contains — and
+  // the sheet buried the money pages two taps down on the devices most people
+  // read this on. Both lists now come from ingest/nav.py. The sections not on
+  // the bar are reachable without it: About from the footer of every page,
+  // Claims from its card on the front page, and Votes from the Meetings
+  // section's own strip, which is where it now lives.
   //
   // Hrefs are root-absolute. This bar is injected into docs/meetings/*.html
   // too, where a relative "meetings.html" resolved to /meetings/meetings.html
@@ -536,7 +538,6 @@
     // BEGIN generated:nav (ingest/build_nav.py)
     { href: "/index.html", label: "Home" },
     { href: "/meetings.html", label: "Meetings" },
-    { href: "/motions.html", label: "Votes" },
     { href: "/members.html", label: "Members" },
     { href: "/finances.html", label: "Finances", body: "city-council" },
     // END generated:nav

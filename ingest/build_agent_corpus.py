@@ -16,7 +16,10 @@ already publishes:
   * the tax change — as noticed and as adopted — and the adopted budget
   * how the city's rate compares with other cities, and the road fees on utility
     bills that a rate comparison can't see
+  * every claim checked on claims.html, as the claim and its verdict together,
+    so "is it true that…" retrieves the check rather than the raw record
   * a short per-body overview so the agent knows what's on the site
+  * how to reach the site, so "how do I tell you this is wrong" has an answer
 
 Each corpus entry is a self-contained, *citable* chunk: it carries a `url` that
 deep-links back into the site (motions.html?id=, meetings.html?id=, …) so the
@@ -304,10 +307,12 @@ def _overview_doc(data: dict, body: dict) -> dict:
         f"Common topics: {tag_line}. "
         f"People on record: {members}. "
         "The site is organised in five sections: Meetings (every meeting, its agenda, "
-        "minutes and transcript), Votes (the searchable roll-call record, at motions.html), "
-        "Members (each member's voting record), Finances (at finances.html, covering the "
-        "property tax rate, the budget, the General Fund projections and city staffing), and "
-        "About (how the site is built, plus a glossary at definitions.html). "
+        "minutes and transcript, with the searchable roll-call record on its Votes tab at "
+        "motions.html), Members (each member's voting record), Claims (rumours about the city "
+        "checked against the recordings and the notices, at claims.html), Finances (at "
+        "finances.html, covering the property tax rate, the budget, the General Fund "
+        "projections and city staffing), and About (how the site is built, plus a glossary "
+        "at definitions.html). "
         "Visitors can search motions by topic, member, outcome, or year, browse meetings, "
         "read the proposed property tax change and the adopted budget, and open full meeting "
         "transcripts."
@@ -778,6 +783,108 @@ def _extra_docs() -> list[dict]:
                     "the gap is that other cities employ their own police and firefighters. Peers, per "
                     "1,000 residents: " + peers + "."
                 ),
+            }
+        )
+    docs += _claim_docs()
+    docs.append(_contact_doc())
+    return docs
+
+
+def _contact_doc() -> dict:
+    """How to reach the site.
+
+    "Who runs this / how do I tell you it's wrong" is asked of the widget more
+    often than of any page, and answering it from the corpus keeps the address
+    in one voice with about.html. `body` is empty on purpose: retrieval filters
+    by body (worker/src/index.js), and this chunk belongs to every one of them.
+    """
+    return {
+        "id": "site:contact",
+        "kind": "site",
+        "body": "",
+        "title": "Contact, corrections and submissions",
+        "date": "",
+        "url": "about.html",
+        "tags": ["site"],
+        "text": _clean(
+            "Corrections, questions and submissions go to civicrollcall@gmail.com. That is the "
+            "only contact route for Civic Roll Call, and it is the address on the about page and "
+            "on the claims page. Use it to report an error in a figure, a vote or a summary, to "
+            "point out a meeting that is missing, or to send a claim that is circulating so it "
+            "can be checked against the record. A report that names the page and the figure, or "
+            "the meeting date, is the easiest to trace back to the source document. Errors get "
+            "fixed rather than argued with, and where a correction changes something a reader may "
+            "already have relied on, the change is noted on the page rather than made silently. "
+            "Civic Roll Call is independent of Eagle Mountain City, is not affiliated with any "
+            "candidate or campaign, carries no advertising and sells nothing; it is not the city, "
+            "so it cannot take utility, permit or other city business \u2014 those go to Eagle "
+            "Mountain City itself."
+        ),
+    }
+
+
+def _claim_docs() -> list[dict]:
+    """One chunk per checked claim, from docs/data.claims.json.
+
+    These are the highest-value chunks in the corpus for the question people
+    actually ask a widget on a city site — "is it true that…" — because each one
+    is already written as a claim and its answer. Retrieval is keyword-based, so
+    the claim goes into the text verbatim rather than paraphrased: someone
+    quoting the rumour at the agent should hit the chunk that checks it.
+
+    The verdict label is spelled out in the text rather than left as a key, so a
+    model reading the chunk cannot mistake "out-of-date" for "false" — those are
+    different findings and the distinction is most of what this page is for.
+    """
+    path = DOCS / "data.claims.json"
+    if not path.exists():
+        return []
+
+    data = json.loads(path.read_text(encoding="utf-8"))
+    labels = {v["key"]: v.get("label", v["key"]) for v in data.get("verdicts", [])}
+    docs = []
+    for c in data.get("claims", []):
+        parts = [
+            f"Claim in circulation: \u201c{c.get('claim','')}\u201d",
+            f"Verdict: {labels.get(c.get('verdict'), c.get('verdict',''))}.",
+            _clean(c.get("ruling", "")),
+        ]
+        if c.get("claim_note"):
+            parts.append(_clean(c["claim_note"]))
+        if c.get("true_part"):
+            parts.append("What is true: " + _clean(c["true_part"]))
+        if c.get("wrong_part"):
+            parts.append("Where it goes wrong: " + _clean(c["wrong_part"]))
+        parts += [_clean(d) for d in c.get("detail", [])]
+        for f in c.get("figures", []):
+            note = f" ({f['note']})" if f.get("note") else ""
+            parts.append(f"{f.get('label')}: {f.get('value')}{note}.")
+        if c.get("provisional"):
+            parts.append("Still provisional: " + _clean(c["provisional"]))
+        # Quotations carry their attribution inline: a quote the agent repeats
+        # without the meeting it came from is exactly what this page exists to
+        # argue against.
+        for src in c.get("sources", []):
+            who = src.get("speaker", "")
+            where = (f", vote #{src['motion']}" if src.get("motion")
+                     else f", meeting #{src['meeting']}" if src.get("meeting") else "")
+            when = f" on {src['date']}" if src.get("date") else ""
+            if src.get("quote"):
+                parts.append(f"{who}{when}{where}: \u201c{_clean(src['quote'])}\u201d")
+            elif src.get("note"):
+                parts.append(f"{who}{when}{where}: {_clean(src['note'])}")
+        parts.append(f"Last checked {c.get('checked','')}.")
+
+        docs.append(
+            {
+                "id": f"city-council:claim-{c.get('id')}",
+                "kind": "claim",
+                "body": "city-council",
+                "title": _clean(c.get("claim", "")),
+                "date": c.get("checked", ""),
+                "url": f"claims.html#{c.get('id')}",
+                "tags": ["claim"],
+                "text": _clean(" ".join(p for p in parts if p)),
             }
         )
     return docs

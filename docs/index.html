@@ -26,7 +26,7 @@
          thing a reader waits on; the other faces can swap in when they arrive. -->
     <link rel="preload" href="fonts/fraunces-700-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20260818c" />
-    <link rel="stylesheet" href="site.css?v=20260819b" />
+    <link rel="stylesheet" href="site.css?v=20260819c" />
 
     <!-- Structured data, written inline rather than injected by site.js: the
          crawlers that most need it (Bing, and every AI answer engine) don't run
@@ -59,6 +59,14 @@
           "name": "Civic Roll Call",
           "url": "https://civicrollcall.com/",
           "description": "An independent public-record project publishing Eagle Mountain, Utah city government meetings, roll-call votes, budgets and tax rates from primary sources.",
+          "email": "civicrollcall@gmail.com",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "corrections and submissions",
+            "email": "civicrollcall@gmail.com",
+            "url": "https://civicrollcall.com/about.html",
+            "availableLanguage": "en"
+          },
           "logo": {
             "@type": "ImageObject",
             "url": "https://civicrollcall.com/icons/icon-512.png",
@@ -114,9 +122,15 @@
       <nav class="nav" aria-label="Primary">
         <!-- BEGIN generated:nav (ingest/build_nav.py) -->
         <a href="index.html" data-nav="index.html">Home</a>
-        <a href="meetings.html" data-nav="meetings.html">Meetings</a>
-        <a href="motions.html" data-nav="motions.html">Votes</a>
+        <div class="nav-group">
+          <a href="meetings.html" data-nav="meetings.html" data-nav-alias="motions.html">Meetings</a>
+          <div class="nav-menu" role="group" aria-label="Meetings section">
+            <a href="meetings.html">Meetings</a>
+            <a href="motions.html">Votes</a>
+          </div>
+        </div>
         <a href="members.html" data-nav="members.html" data-nav-alias="member.html">Members</a>
+        <a href="claims.html" data-nav="claims.html">Claims</a>
         <div class="nav-group" data-nav-body="city-council">
           <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html">Finances</a>
           <div class="nav-menu" role="group" aria-label="Finances section">
@@ -222,7 +236,7 @@
       <span>Data from the Eagle Mountain CivicClerk public portal · last refreshed <span id="generated-at">—</span> · <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span>
     </footer>
 
-    <script src="site.js?v=20260819b"></script>
+    <script src="site.js?v=20260819c"></script>
     <script>
       // The money pages are the city council's; a Planning Commission visitor has
       // no tax rate and no budget of its own, so the cards that carry them are
@@ -238,6 +252,7 @@
           .catch(() => null);
       const taxP = IS_COUNCIL ? grab("data.tax.json") : Promise.resolve(null);
       const budgetP = IS_COUNCIL ? grab("data.budget-next.json") : Promise.resolve(null);
+      const claimsP = IS_COUNCIL ? grab("data.claims.json") : Promise.resolve(null);
       // The projections figure moved to finances.html, which is where the four
       // money pages now introduce themselves. The homepage no longer fetches
       // a 65KB model to print a scenario count on a card.
@@ -579,9 +594,10 @@
          figure instead of vanishing. */
 
       async function renderRecord(data) {
-        const [tax, budget, transcripts, bodies] = await Promise.all([
+        const [tax, budget, claims, transcripts, bodies] = await Promise.all([
           taxP,
           budgetP,
+          claimsP,
           CT.transcriptsForBody().catch(() => []),
           grab("bodies.json"),
         ]);
@@ -596,6 +612,7 @@
         const here = CT.currentBody();
         const others = (Array.isArray(bodies) ? bodies : []).filter(b => b.id !== here);
 
+        const claimCount = claims && Array.isArray(claims.claims) ? claims.claims.length : 0;
         const motions = (data.motions || []).length;
         const members = data.members.filter(m => CT.isCurrentMember(m)).length;
 
@@ -634,6 +651,15 @@
             figure: members ? `${members} sitting` : "",
             blurb: "How each member votes, how often they agree, and on what.",
             href: "members.html",
+          },
+          IS_COUNCIL && {
+            glyph: "--ico-ask",
+            name: "Claims",
+            // Read from the file the page itself reads, so a stale build shows
+            // a stale count rather than a confident wrong one.
+            figure: claimCount ? `${claimCount} checked` : "",
+            blurb: "What is going around about the city, set against the recordings and the notices.",
+            href: "claims.html",
           },
           IS_COUNCIL && {
             glyph: "--ico-receipt",

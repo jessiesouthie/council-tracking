@@ -1,0 +1,11 @@
+# One JSON object per line. See README.md. Lines starting with # are ignored.
+# `published_as` names the entry in docs/data.claims.json once it has shipped —
+# a row with one is done, and --inbox skips it.
+{"claim": "The council raised your property taxes 220 percent.", "seen": "yard signs, petition sheets, city Facebook groups", "first_seen": "2026-06-20", "published_as": "tax-220-percent"}
+{"claim": "Every dollar of the increase goes straight to public safety.", "seen": "city messaging, quoted back at the August 6 hearing", "first_seen": "2026-06-16", "published_as": "every-dollar-public-safety"}
+{"claim": "City staff is about a third the size of a city our size.", "seen": "city manager at the August 6 hearing, repeated since", "first_seen": "2026-08-06", "published_as": "staff-one-third"}
+{"claim": "They did this in secret and rushed it through.", "seen": "comment threads and hearing testimony", "first_seen": "2026-06-16", "published_as": "rushed-in-secret"}
+{"claim": "The increase pays for the city's own police department.", "seen": "comment threads, recurring", "first_seen": "2026-07-07", "published_as": "city-police-department"}
+{"claim": "Sign the petition and the tax goes away.", "seen": "petition organising posts", "first_seen": "2026-08-08", "published_as": "referendum-repeals-it"}
+{"claim": "They're building another data center in Eagle Mountain.", "seen": "a city Facebook group; and public comment to the council", "first_seen": "2026-02-17", "published_as": "another-data-center"}
+{"claim": "It's going to be the largest data center in the country, maybe the world.", "seen": "a city Facebook group, in a thread about the new site", "first_seen": "2026-08-19", "published_as": "largest-data-center"}
