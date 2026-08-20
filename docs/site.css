@@ -801,13 +801,14 @@ details.motion-row[open] {
    that.
    ========================================================================= */
 
-/* The front page runs a touch narrower than the data pages. It is a reading
-   page, not a table, and the decision cards want a column they can fill rather
-   than a measure they leave half empty. The tax page opts into the same measure
-   (main.main-reading), so flipping between the two keeps the column edges put —
-   which is why the width lives here, once, rather than being restated. */
-.home main,
-main.home,
+/* The front page used to run a touch narrower than the data pages. It doesn't
+   any more: it takes the site measure (--max-w, set on main), so the column
+   edges sit exactly where Meetings and Votes put them and nothing shifts when
+   you move between them.
+
+   The genuinely long-form pages — the tax case, About, the projections notes —
+   still want a shorter line than 1080px of running prose, and keep the old
+   measure by opting into main.main-reading. */
 main.main-reading {
   max-width: 920px;
 }
