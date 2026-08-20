@@ -539,6 +539,7 @@
     { href: "/index.html", label: "Home" },
     { href: "/meetings.html", label: "Meetings" },
     { href: "/members.html", label: "Members" },
+    { href: "/claims.html", label: "Claims", body: "city-council" },
     { href: "/finances.html", label: "Finances", body: "city-council" },
     // END generated:nav
   ];

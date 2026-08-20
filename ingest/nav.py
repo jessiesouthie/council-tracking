@@ -118,15 +118,23 @@ NAV: tuple[Item, ...] = (
         blurb="roll-call totals for each member, and how often each pair voted together.",
     ),
     # Claims cut across every section — tax, staffing, the petition — so it is
-    # not a child of any of them. It stays off the mobile bar: the bar carries
-    # the sections someone opens the site to browse, and a claim is arrived at
-    # from a link someone sent, and from the card on the front page. Folding
-    # Votes into Meetings left the bar a spare slot rather than a vacancy — four
-    # readable destinations beat five for the sake of five.
+    # not a child of any of them.
+    #
+    # It was off the mobile bar while Votes held a slot, which meant the page
+    # was reachable on a phone only from its card on the front page: a reader
+    # who arrived on a claim from a link someone sent had no way back to the
+    # rest of them. Folding Votes into Meetings freed the slot, and this is what
+    # it is for. Most people meet this site on a phone, and a claim is the thing
+    # they are most often sent.
+    # Body-scoped for the same reason the front page only shows its Claims card
+    # to the council, and for the reason claims.html itself gives when it is
+    # opened under another body: every claim on file is about something the City
+    # Council did. Offering it from the Planning Commission's bar would spend a
+    # slot on a page that opens saying "not this body".
     Item(
         label="Claims",
         href="claims.html",
-        mobile=False,
+        body_scoped=True,
         blurb="what is going around about the city, checked against the recordings and the notices.",
     ),
     Item(
