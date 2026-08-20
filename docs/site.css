@@ -8126,18 +8126,24 @@ table.data.bx-lines .bx-tot td {
    markers, and a plain-vs-hatched fill.
    ========================================================================= */
 
-/* ---------- tablet / narrow-desktop topbar (760–1099px) ----------
-   The desktop nav is still on — the bottom tab bar doesn't take over until
-   759px — but brand + body switcher + six pills need about 500px of nav and
-   there isn't that much until well past 1000px. The upper bound is set for the
-   worst case rather than the default one: on a non-default body the topbar
-   grows from both sides at once, because applyBodyChrome() appends the body
-   name to the brand line and "Planning Commission" is a wider option in the
-   switcher than "City Council". Rather than let the bar wrap to
-   two rows and stand the topbar up at 115px, tighten the pieces that carry the
-   width. Everything here is spacing; nothing is hidden, and no tap target
-   drops below the 44px minimum. */
-@media (min-width: 760px) and (max-width: 1099px) {
+/* ---------- tablet / narrow-desktop topbar (760–1199px) ----------
+   The desktop nav is on from 760px — the bottom tab bar takes over below that —
+   but brand + body switcher + six pills need about 500px and there isn't that
+   much until well past 1000px. The upper bound is set for the worst case rather
+   than the default one: on a non-default body the topbar grows from both sides
+   at once, because applyBodyChrome() appends the body name to the brand line
+   and "Planning Commission" is a wider option in the switcher than "City
+   Council".
+
+   The row must FIT here, not scroll. A scrolling nav is a scroll container, and
+   a scroll container clips its children on both axes — overflow-x:auto computes
+   overflow-y to auto, not visible — which would slice every section menu off at
+   the height of the bar. The menus are the point of the bar, so the width is
+   found elsewhere: tighter pills, a tighter switcher, and below 1000px the Home
+   pill steps aside. Nothing is lost by that last one — the brand at the far left
+   is a link to the same page, on every page, and the bottom tab bar still
+   carries Home on the widths that use it. */
+@media (min-width: 760px) and (max-width: 1199px) {
   .body-switch {
     max-width: 30vw;
     font-size: 12.5px;
@@ -8149,23 +8155,22 @@ table.data.bx-lines .bx-tot td {
     padding: 8px 9px;
     font-size: 13.5px;
   }
+  /* The Home pill steps aside for the whole band. Nothing is lost: the brand at
+     the far left is a link to the same page, on every page, and the bottom tab
+     bar still carries Home on the widths that use it. */
+  .nav > a[data-nav="index.html"] { display: none; }
 }
 
-/* ---------- where the bar has to scroll (760–999px) ----------
-   Tightened, the six items still need about 425px and there isn't that much
-   below roughly 1000px. Scroll the row rather than wrap it — same thing
-   .subnav does elsewhere on the site — and give up the section menus for the
-   duration: a scroll container clips on both axes, so a menu opened here would
-   be sliced off at the height of the bar. Nothing is lost by that. The trigger
-   is still a link to the section page, and the section page carries the same
-   list as its strip, which is exactly the route a touch device takes anyway. */
+/* Under 1000px the last of the width has to come from somewhere. */
 @media (min-width: 760px) and (max-width: 999px) {
-  .nav {
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .nav::-webkit-scrollbar { display: none; }
-  .nav-menu { display: none; }
+  .body-switch { max-width: 26vw; font-size: 12px; }
+  .nav a { padding: 8px 6px; font-size: 13px; }
+  /* The menu is centred under its trigger, which sits close to the right edge
+     once the row is this tight. Pull it back inside the viewport. */
+  .nav-menu { min-width: max(100%, 168px); }
+  .nav-group:last-child .nav-menu { left: auto; right: 0; transform: translate(0, -4px); }
+  .nav-group:last-child:hover .nav-menu,
+  .nav-group:last-child:focus-within .nav-menu { transform: translate(0, 4px); }
 }
 
 /* ---------- section sub-nav ----------

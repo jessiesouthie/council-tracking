@@ -325,17 +325,39 @@ test("the menu is real markup, not built at runtime", () => {
   assert.match(css, /\.nav-group:hover \.nav-menu/, "the menus don't open on hover");
 });
 
-test("the menus are not opened inside a scroll container", () => {
-  // overflow-x:auto computes overflow-y to auto, not visible, so a .nav that
-  // scrolls clips its menus to the height of the bar. The narrow band that
-  // needs to scroll must therefore switch them off.
-  const css = read("docs/site.css");
-  const scrollBands = [...css.matchAll(/@media([^{]*)\{((?:[^{}]|\{[^{}]*\})*)\}/g)]
-    .filter((m) => /\.nav\s*\{[^}]*overflow-x:\s*auto/.test(m[2]));
-
-  assert.ok(scrollBands.length, "expected a band where .nav scrolls");
-  for (const band of scrollBands) {
-    assert.match(band[2], /\.nav-menu\s*\{[^}]*display:\s*none/,
-      `.nav scrolls in "@media${band[1].trim()}" without hiding .nav-menu`);
+test(".nav is never a scroll container", () => {
+  // The invariant behind the whole layout. overflow-x:auto computes overflow-y
+  // to auto, not visible, so the moment .nav scrolls it clips its own menus off
+  // at the height of the bar. The menus were switched off under 1000px for
+  // exactly that reason once, which meant a browser window that wasn't
+  // maximised silently lost them. The width is found by tightening the row
+  // instead — see the 760–1199px band — and this is what stops the scroll from
+  // creeping back in.
+  // Comments stripped first — the rule below explains this very hazard in
+  // prose, and matching the explanation instead of a declaration would fail on
+  // its own documentation.
+  const css = read("docs/site.css").replace(/\/\*[\s\S]*?\*\//g, "");
+  const navRules = [...css.matchAll(/(^|\})\s*\.nav\s*\{([^}]*)\}/g)].map((m) => m[2]);
+  assert.ok(navRules.length, "no .nav rule found");
+  for (const rule of navRules) {
+    assert.doesNotMatch(rule, /overflow[^:]*:\s*(auto|scroll|hidden)/,
+      ".nav has been made a scroll container again; its section menus will be clipped");
   }
+
+  // And nothing may hide the menus at a width — that was the old workaround.
+  assert.doesNotMatch(css, /\.nav-menu[^{]*\{[^}]*display:\s*none/,
+    "a breakpoint is hiding the section menus again");
+});
+
+test("the row fits without the Home pill under 1200px", () => {
+  // How the width is found. Measured: brand + body switcher + six full-size
+  // pills need about 500px of bar and there isn't that much until past 1200px
+  // on a non-default body, whose name is appended to the brand line and is the
+  // wider option in the switcher. The brand is a link to the same page, so the
+  // pill is the redundant one.
+  const css = read("docs/site.css");
+  assert.match(css, /@media \(min-width: 760px\) and \(max-width: 1199px\)/,
+    "the narrow-desktop band is gone");
+  assert.match(css, /\.nav > a\[data-nav="index\.html"\] \{ display: none; \}/,
+    "the Home pill no longer steps aside, so the row will overflow under 1200px");
 });
