@@ -369,6 +369,39 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
    safe on touch, where there is no hover at all — a tap follows the link and
    the section page carries the same list as its strip. */
 .nav-group { position: relative; display: flex; }
+
+/* The trigger says, before you point at it, that there is more behind it.
+   Drawn from two borders rather than set as a glyph: an arrow character takes
+   the label's font metrics and lands off the optical centre, and it would be
+   read out by a screen reader that already has the menu's own group label.
+   A pseudo-element has no text to announce.
+
+   It is paid for out of the pill's own right padding rather than added on top
+   of it, because the desktop row must fit — see the band rules near the foot of
+   this file, where a nav wide enough to scroll would clip every menu. */
+.nav-group > a { gap: 4px; padding-right: 9px; }
+.nav-group > a::after {
+  content: "";
+  flex: none;
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  /* The rotated square hangs its corner below the label's midline; the nudge
+     up puts the chevron's mass back on it. */
+  transform: translateY(-2px) rotate(45deg);
+  opacity: .5;
+  transition: transform 140ms ease, opacity 140ms ease;
+}
+.nav-group:hover > a::after,
+.nav-group:focus-within > a::after {
+  opacity: .85;
+  transform: translateY(2px) rotate(-135deg);
+}
+/* On the section's own page the pill is filled, and a half-faded arrow on it
+   reads as disabled rather than quiet. */
+.nav-group > a.active::after,
+.nav-group > a[aria-current="page"]::after { opacity: .8; }
 .nav-menu {
   position: absolute;
   top: 100%;
@@ -414,6 +447,9 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
 .nav-menu a.here { background: var(--accent-tint); color: var(--fg-soft); }
 @media (prefers-reduced-motion: reduce) {
   .nav-menu { transition: opacity 140ms ease, visibility 140ms; transform: translate(-50%, 4px); }
+  .nav-group > a::after { transition: opacity 140ms ease; }
+  .nav-group:hover > a::after,
+  .nav-group:focus-within > a::after { transform: translateY(2px) rotate(-135deg); }
 }
 .nav a.active, .nav a[aria-current="page"] {
   background: var(--accent-strong);
@@ -8168,6 +8204,7 @@ table.data.bx-lines .bx-tot td {
     padding: 8px 9px;
     font-size: 13.5px;
   }
+  .nav-group > a { gap: 3px; padding-right: 5px; }
   /* The Home pill steps aside for the whole band. Nothing is lost: the brand at
      the far left is a link to the same page, on every page, and the bottom tab
      bar still carries Home on the widths that use it. */
@@ -8178,6 +8215,7 @@ table.data.bx-lines .bx-tot td {
 @media (min-width: 760px) and (max-width: 999px) {
   .body-switch { max-width: 26vw; font-size: 12px; }
   .nav a { padding: 8px 6px; font-size: 13px; }
+  .nav-group > a { gap: 3px; padding-right: 3px; }
   /* The menu is centred under its trigger, which sits close to the right edge
      once the row is this tight. Pull it back inside the viewport. */
   .nav-menu { min-width: max(100%, 168px); }
