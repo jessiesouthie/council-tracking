@@ -1,0 +1,91 @@
+# Render blueprint for the Civic Roll Call site.
+#
+# The site is a static tree — docs/ is exactly what ships, byte for byte, with
+# no build step. GitHub Actions (weekly-ingest.yml, transcribe-meetings.yml)
+# commit fresh data straight into docs/ on main; Render redeploys on each push.
+#
+# To use it: Render Dashboard > New > Blueprint, point it at this repo. The
+# same settings can be clicked in by hand under New > Static Site — this file
+# just keeps them in the repo instead of in someone's browser.
+
+services:
+  - name: civic-roll-call
+    type: web
+    runtime: static
+
+    # Nothing to build: the ingest scripts already wrote every file.
+    buildCommand: echo "static site - docs/ is published as-is"
+    staticPublishPath: ./docs
+
+    branch: main
+    autoDeploy: true
+
+    # The bot pushes several times a day, most of them touching data/ and
+    # data/transcripts/ rather than the published site. Only rebuild when
+    # something under docs/ actually moved — it keeps pipeline minutes for
+    # deploys that change what a visitor sees.
+    buildFilter:
+      paths:
+        - docs/**
+        - render.yaml
+
+    domains:
+      - civicrollcall.com
+      - www.civicrollcall.com
+
+    # Caching. The site's own cache-busting is the ?v= token on site.css and
+    # site.js plus the service worker's stale-while-revalidate, so HTML and
+    # data must stay revalidated while fingerprinted assets can sit still.
+    #
+    # Render matches these paths as written: /*.css is root-level only,
+    # /**/*.css is nested. Verify after the first deploy with
+    #   curl -sI https://<service>.onrender.com/data.json | grep -i cache
+    headers:
+      # Pages and generated data: always revalidate, so an ingest run is live
+      # on the next visit rather than whenever an edge copy expires.
+      - path: /*.html
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /meetings/*
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /*.json
+        name: Cache-Control
+        value: public, max-age=60, must-revalidate
+      - path: /transcripts/**/*
+        name: Cache-Control
+        value: public, max-age=60, must-revalidate
+
+      # The service worker script. Browsers bypass the HTTP cache for it by
+      # default, but say so explicitly — a cached sw.js is the one file that
+      # can pin every visitor to an old shell.
+      - path: /sw.js
+        name: Cache-Control
+        value: no-cache
+
+      # Versioned by the ?v= query token in every <link>/<script>, so ten
+      # minutes is only the window between a deploy and the next request.
+      - path: /*.css
+        name: Cache-Control
+        value: public, max-age=600
+      - path: /*.js
+        name: Cache-Control
+        value: public, max-age=600
+
+      # Content-addressed by filename; safe to pin for a year.
+      - path: /fonts/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /icons/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /vendor/**/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
