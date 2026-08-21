@@ -812,6 +812,15 @@
         `;
       }
 
+      // The packet filename ("2019-01-15__451.pdf") is the city's own meeting
+      // number with scaffolding around it. Show the number; fall back to the
+      // raw name if it isn't shaped the way we expect.
+      function meetingLabel(sourceFile) {
+        if (!sourceFile) return "";
+        const m = String(sourceFile).match(/__(\d+)\.[a-z]+$/i);
+        return m ? `Meeting #${m[1]}` : sourceFile;
+      }
+
       async function renderMeeting(data, id, root, txById = new Map(), aoById = new Map()) {
         const txEntry = txById.get(id);
         const meeting = data._byMeetingId[id];
@@ -903,7 +912,7 @@
           <p style="margin-top:0"><a href="meetings.html">← All meetings</a></p>
           ${typeLine}
           <h1 class="page-title">${CT.fmtDate(meeting.date)}</h1>
-          <p class="page-sub">${motions.length} motion${motions.length === 1 ? "" : "s"} · ${meeting.ord_count} ordinance lines · ${meeting.res_count} resolution lines · <span class="mono muted">${CT.escapeHtml(meeting.source_file)}</span></p>
+          <p class="page-sub">${motions.length} motion${motions.length === 1 ? "" : "s"} · ${meeting.ord_count} ordinance lines · ${meeting.res_count} resolution lines · <span class="mono muted">${CT.escapeHtml(meetingLabel(meeting.source_file))}</span></p>
 
           ${txEntry ? '<div id="transcript-slot"></div>' : ''}
 
