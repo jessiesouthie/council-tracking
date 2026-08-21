@@ -30,8 +30,8 @@
          sets the largest text here and is what a reader sees first. -->
     <link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/newsreader-300-600-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="fonts.css?v=20260821b" />
-    <link rel="stylesheet" href="site.css?v=20260821b" />
+    <link rel="stylesheet" href="fonts.css?v=20260821c" />
+    <link rel="stylesheet" href="site.css?v=20260821c" />
 
     <!-- The page-level graph is static; one ClaimReview per claim is added at
          render time from data.claims.json, because the claims are data and a
@@ -210,6 +210,16 @@
         inaccurate: 1,
       };
 
+      /* The topic vocabulary sits in data.claims.json beside the verdicts, and
+         is resolved into a lookup once per render. A claim's `topics` is an
+         ordered list — the first is the shelf it files under, the rest are the
+         other shelves it also sits on, because most of these are about two
+         things at once. That is why the filter is a view of the page and not a
+         partition of it: the counts on the buttons add up to more than the
+         number of claims, and they are supposed to. */
+      let CATS = {};
+      let TOPIC = "";
+
       /* A sourced citation. Four shapes, one component: a quotation from a
          meeting, a recorded vote, a meeting with no quotation transcribed yet,
          and a document or a statute with no meeting at all. The attribution is
@@ -245,9 +255,17 @@
           </figure>`;
       }
 
-      function card(c, verdicts, i) {
+      function card(c, verdicts, i, cats = CATS) {
         const v = verdicts[c.verdict] || { label: c.verdict, note: "" };
         const tone = TONE[c.verdict] || "cool";
+        const topics = (c.topics || [])
+          .filter((t) => cats[t])
+          .map(
+            (t) => `<button type="button" class="cl-topic" data-topic="${esc(t)}"
+                            aria-label="Show only claims filed under ${esc(cats[t].label)}"
+                    >${esc(cats[t].label)}</button>`
+          )
+          .join("");
         const figs = (c.figures || [])
           .map(
             (f) => `
@@ -269,11 +287,14 @@
         // a spine the whole page can be scanned down — which is how somebody
         // arriving from a link reads a page like this, verdict first.
         return `
-          <article class="cl-card reveal" style="--i:${i}" id="${esc(c.id)}" aria-labelledby="${esc(c.id)}-h">
+          <article class="cl-card reveal" style="--i:${i}" id="${esc(c.id)}"
+                   data-topics="${esc((c.topics || []).join(" "))}"
+                   aria-labelledby="${esc(c.id)}-h">
             <div class="cl-rail">
               <p class="cl-verdict is-${tone}">
                 <span class="cl-dot" aria-hidden="true"></span>${esc(v.label)}
               </p>
+              ${topics ? `<p class="cl-topics">${topics}</p>` : ""}
               <p class="cl-rail-meta">
                 <span class="cl-checked">Checked ${CT.fmtDate(c.checked)}</span>
                 ${c.seen ? `<span class="cl-seen">Seen: ${esc(c.seen)}</span>` : ""}
@@ -324,8 +345,10 @@
       /* The docket. Six claims is already more than fits on a screen, and the
          reader arriving from a shared link wants to know what else was checked
          without scrolling the whole argument. Verdict first here too, so the
-         list reads as a set of findings rather than a table of contents. */
-      function docket(claims, verdicts) {
+         list reads as a set of findings rather than a table of contents, with
+         the claim's own shelf under it — a row answers "what was found" and
+         "about what" before the reader has committed to the card. */
+      function docket(claims, verdicts, cats = CATS) {
         return `
           <nav class="cl-docket" aria-labelledby="cl-docket-h">
             <h2 class="cl-h2" id="cl-docket-h">Checked so far</h2>
@@ -333,11 +356,15 @@
               ${claims
                 .map((c) => {
                   const v = verdicts[c.verdict] || { label: c.verdict };
+                  const primary = (c.topics || []).find((t) => cats[t]);
                   return `
-                    <li>
+                    <li data-topics="${esc((c.topics || []).join(" "))}">
                       <a href="#${esc(c.id)}">
-                        <span class="cl-verdict is-${TONE[c.verdict] || "cool"}">
-                          <span class="cl-dot" aria-hidden="true"></span>${esc(v.label)}
+                        <span class="cl-docket-rail">
+                          <span class="cl-verdict is-${TONE[c.verdict] || "cool"}">
+                            <span class="cl-dot" aria-hidden="true"></span>${esc(v.label)}
+                          </span>
+                          ${primary ? `<span class="cl-docket-topic">${esc(cats[primary].label)}</span>` : ""}
                         </span>
                         <span class="cl-docket-claim">&ldquo;${esc(c.claim)}&rdquo;</span>
                       </a>
@@ -348,8 +375,48 @@
           </nav>`;
       }
 
+      /* The filter bar. Twenty claims is past the point where a reader scans
+         the lot, and the ones they came for are usually one subject: the tax,
+         the road, the data centres. Buttons rather than a <select> because the
+         set is small enough to show, and the counts are on them because "how
+         much of this page is about roads" is itself an answer.
+
+         A category with nothing under it is not offered — an empty result is a
+         dead end the reader has to undo, and the vocabulary can outrun the
+         claims whenever one is retired. */
+      function filters(claims, cats) {
+        const counts = {};
+        for (const c of claims) {
+          for (const t of c.topics || []) counts[t] = (counts[t] || 0) + 1;
+        }
+        const btn = (key, label, n, on) => `
+          <button type="button" class="cl-filter" data-topic="${esc(key)}" aria-pressed="${on}">
+            ${esc(label)} <span class="cl-filter-n">${n}</span>
+          </button>`;
+
+        return `
+          <section class="cl-filterbar" aria-labelledby="cl-filter-h">
+            <h2 class="cl-filter-h" id="cl-filter-h">Filter by topic</h2>
+            <div class="cl-filter-row" role="group" aria-labelledby="cl-filter-h">
+              ${btn("", "Everything", claims.length, "true")}
+              ${Object.values(cats)
+                .filter((cat) => counts[cat.key])
+                .map((cat) => btn(cat.key, cat.label, counts[cat.key], "false"))
+                .join("")}
+            </div>
+            <p class="cl-filter-status" id="cl-filter-status" aria-live="polite">${esc(statusLine(claims.length, claims.length, null))}</p>
+          </section>`;
+      }
+
+      function statusLine(shown, total, cat) {
+        return cat
+          ? `Showing ${shown} of ${total}. ${cat.note}`
+          : `All ${total} claims. Most are filed under two topics, so the counts add up to more than ${total}.`;
+      }
+
       function render(d, root) {
         const verdicts = Object.fromEntries((d.verdicts || []).map((v) => [v.key, v]));
+        CATS = Object.fromEntries((d.categories || []).map((c) => [c.key, c]));
         const claims = d.claims || [];
 
         root.innerHTML = `
@@ -367,10 +434,12 @@
               </p>
             </header>
 
-            ${docket(claims, verdicts)}
+            ${filters(claims, CATS)}
+
+            ${docket(claims, verdicts, CATS)}
 
             <div class="cl-list">
-              ${claims.map((c, i) => card(c, verdicts, i + 1)).join("")}
+              ${claims.map((c, i) => card(c, verdicts, i + 1, CATS)).join("")}
             </div>
 
             <section class="cl-rules" aria-labelledby="cl-rules-h">
@@ -387,6 +456,21 @@
                               </span>
                               <span class="cl-leg-note">${esc(v.note)}</span>
                             </div>`
+                  )
+                  .join("")}
+              </div>
+
+              <!-- The topics, spelled out. The buttons at the top of the page
+                   carry a two-word label and a count; what a shelf actually
+                   holds is a sentence, and it belongs here with the rest of the
+                   page's vocabulary rather than in a tooltip. -->
+              <div class="cl-legend cl-legend-topics" role="list" aria-label="What each topic covers">
+                ${(d.categories || [])
+                  .map(
+                    (cat) => `<div class="cl-leg" role="listitem">
+                                <span class="cl-topic-tag">${esc(cat.label)}</span>
+                                <span class="cl-leg-note">${esc(cat.note)}</span>
+                              </div>`
                   )
                   .join("")}
               </div>
@@ -437,11 +521,73 @@
         wire(root);
       }
 
+      /* Filtering hides; it does not re-render. Every card keeps its anchor and
+         its place, so a permalink to a claim that the current filter excludes is
+         still a real address — the page widens back out to reach it (below), and
+         nothing that was on screen moves except what left. */
+      const all = (root, sel) => (root.querySelectorAll ? [...root.querySelectorAll(sel)] : []);
+
+      function applyTopic(root, key) {
+        const cat = CATS[key] || null;
+        TOPIC = cat ? key : "";
+        const holds = (el) => !TOPIC || (el.dataset.topics || "").split(" ").includes(TOPIC);
+
+        const cards = all(root, ".cl-card[data-topics]");
+        let shown = 0;
+        for (const el of cards) {
+          const ok = holds(el);
+          el.hidden = !ok;
+          if (ok) shown++;
+        }
+        for (const row of all(root, ".cl-docket-list li[data-topics]")) row.hidden = !holds(row);
+
+        for (const b of all(root, ".cl-filter")) {
+          b.setAttribute("aria-pressed", String((b.dataset.topic || "") === TOPIC));
+        }
+        for (const t of all(root, ".cl-topic")) {
+          t.classList.toggle("is-on", TOPIC !== "" && t.dataset.topic === TOPIC);
+        }
+
+        const status = root.querySelector && root.querySelector("#cl-filter-status");
+        if (status) status.textContent = statusLine(shown, cards.length, cat);
+      }
+
+      /* The filter is a view, not content: it stays out of the canonical (see
+         CONTENT_PARAMS in site.js) but it belongs in the address bar, because
+         "the four claims about roads" is a thing worth sending someone. The
+         fragment rides along, so a copied URL reopens the card with the
+         reader's filter intact. */
+      function syncUrl() {
+        if (typeof history === "undefined" || !history.replaceState) return;
+        const p = new URLSearchParams();
+        const body = CT.currentBody();
+        if (body && body !== "city-council") p.set("body", body);
+        if (TOPIC) p.set("topic", TOPIC);
+        const qs = p.toString();
+        history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash);
+      }
+
       /* Two behaviours, both about the link being the point of the page: a claim
          is meant to be answered with a URL, and the reader who arrives on one
          should land on the card rather than hunt for it. */
       function wire(root) {
         root.addEventListener("click", (e) => {
+          // The filter bar, and the same tags on the card rails. A tag that is
+          // already the filter clears it: a control that shows it is on has to
+          // be able to turn off, and on a card rail it is the only way back.
+          const pick = e.target.closest("[data-topic]");
+          if (pick) {
+            const key = pick.dataset.topic || "";
+            const card = pick.closest(".cl-card");
+            applyTopic(root, key === TOPIC ? "" : key);
+            syncUrl();
+            // Filtering from a card rail pulls the page out from under the
+            // reader — everything above the card they are reading may have just
+            // gone. Put that card back where their eyes are.
+            if (card && card.scrollIntoView) card.scrollIntoView({ block: "start", behavior: "auto" });
+            return;
+          }
+
           const copy = e.target.closest("[data-copy]");
           if (copy) {
             const url = `${location.origin}${location.pathname}#${copy.dataset.copy}`;
@@ -466,11 +612,24 @@
           }
         });
 
+        // An arrival on ?topic=roads. An unknown key is not an error worth a
+        // message — it renders the whole page, which is what the reader wanted
+        // a superset of anyway.
+        const params = (CT.paramsFromUrl && CT.paramsFromUrl()) || {};
+        applyTopic(root, params.topic || "");
+
         // The cards do not exist until the fetch lands, so the browser's own
         // fragment scroll has already failed by the time we get here.
         if (location.hash.length > 1) {
           const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
           if (target) {
+            // A permalink outranks a filter. Someone sent this card to this
+            // reader; a filter that happens to exclude it would open the page on
+            // an anchor pointing at nothing.
+            if (target.hidden) {
+              applyTopic(root, "");
+              syncUrl();
+            }
             target.scrollIntoView({ block: "start", behavior: "auto" });
             target.classList.add("is-linked");
           }

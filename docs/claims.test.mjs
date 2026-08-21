@@ -104,6 +104,34 @@ test("every verdict has a colour and a rating", () => {
   }
 });
 
+test("every claim is filed under a topic the page defines", () => {
+  // The filter is only as honest as this: a claim with no topic is reachable
+  // from "Everything" and from nowhere else, which reads as "not about roads"
+  // to a reader who filtered to roads.
+  const known = new Set(data.categories.map((c) => c.key));
+  assert.ok(known.size >= 4, "the topic vocabulary has collapsed");
+  for (const c of data.claims) {
+    assert.ok(c.topics && c.topics.length, `${c.id} has no topics`);
+    assert.equal(new Set(c.topics).size, c.topics.length, `${c.id} repeats a topic`);
+    for (const t of c.topics) {
+      assert.ok(known.has(t), `${c.id}: topic "${t}" is not in categories[]`);
+    }
+  }
+});
+
+test("every topic has a label, a note, and something filed under it", () => {
+  const used = new Set(data.claims.flatMap((c) => c.topics || []));
+  for (const cat of data.categories) {
+    assert.match(cat.key, /^[a-z0-9-]+$/, `bad topic key "${cat.key}" — it goes in a URL`);
+    assert.ok(cat.label && cat.label.length < 24, `${cat.key}: no label, or one too long for a button`);
+    assert.ok(cat.note && cat.note.length > 20, `${cat.key}: no note for the legend`);
+    // A button that filters twenty claims down to none is a dead end the reader
+    // has to undo. filters() drops empty topics from the bar; this catches the
+    // legend, which prints the vocabulary whole.
+    assert.ok(used.has(cat.key), `topic "${cat.key}" is defined but nothing is filed under it`);
+  }
+});
+
 test("every claim is sourced", () => {
   // The page's first rule. A card with no citation is an assertion, and this
   // site's whole argument is that it doesn't publish those.
@@ -174,8 +202,9 @@ test("every in-site link a card offers points at a real page", () => {
 
 test("every claim renders, and renders its citation", () => {
   const verdicts = Object.fromEntries(data.verdicts.map((v) => [v.key, v]));
+  const cats = Object.fromEntries(data.categories.map((c) => [c.key, c]));
   for (const [i, c] of data.claims.entries()) {
-    const out = page.card(c, verdicts, i + 1);
+    const out = page.card(c, verdicts, i + 1, cats);
     assert.ok(out.includes(`id="${c.id}"`), `${c.id}: card lost its anchor`);
     assert.ok(out.includes(verdicts[c.verdict].label), `${c.id}: verdict label missing`);
     assert.ok(out.includes(`data-copy="${c.id}"`), `${c.id}: no copy-link button`);
@@ -232,6 +261,42 @@ test("the docket lists every claim, verdict first", () => {
   const hrefs = [...docket[0].matchAll(/href="#([^"]+)"/g)].map((m) => m[1]);
   assert.deepEqual(hrefs, data.claims.map((c) => c.id),
     "the docket and the cards disagree about what is on the page");
+});
+
+test("the filter bar offers every topic, with its count", () => {
+  const cats = Object.fromEntries(data.categories.map((c) => [c.key, c]));
+  const out = page.filters(data.claims, cats);
+  for (const cat of data.categories) {
+    const n = data.claims.filter((c) => (c.topics || []).includes(cat.key)).length;
+    assert.ok(out.includes(`data-topic="${cat.key}"`), `${cat.key} is missing from the filter bar`);
+    const button = out.slice(out.indexOf(`data-topic="${cat.key}"`));
+    assert.match(button.slice(0, 220), new RegExp(`<span class="cl-filter-n">${n}</span>`),
+      `${cat.key}: the button's count disagrees with the claims`);
+  }
+  // "Everything" is the way back, and it starts pressed.
+  assert.match(out, /data-topic=""\s+aria-pressed="true"/, "no unpressed-by-default reset button");
+});
+
+test("every card and every docket row carries what the filter reads", () => {
+  const root = { innerHTML: "", addEventListener() {} };
+  page.render(data, root);
+  const out = root.innerHTML;
+  for (const c of data.claims) {
+    // Hidden-not-re-rendered filtering means the topics have to be on the
+    // element itself; a card the filter can't read stays on screen under every
+    // topic, which is worse than being missing.
+    assert.ok(out.includes(`data-topics="${c.topics.join(" ")}"`),
+      `${c.id}: nothing on the page carries its topics`);
+    for (const t of c.topics) {
+      assert.ok(out.includes(`data-topic="${t}"`), `${c.id}: topic "${t}" is not clickable anywhere`);
+    }
+  }
+  // The card rail and the docket row both have to be hideable, so each claim's
+  // topics appear twice: once on the <article>, once on the <li>.
+  const cards = [...out.matchAll(/<article class="cl-card[\s\S]*?data-topics="/g)].length;
+  const rows = [...out.matchAll(/<li data-topics="/g)].length;
+  assert.equal(cards, data.claims.length, "a card lost its topics");
+  assert.equal(rows, data.claims.length, "a docket row lost its topics");
 });
 
 test("the verdict colours are the ones that clear 4.5:1", () => {

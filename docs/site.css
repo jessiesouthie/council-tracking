@@ -11216,9 +11216,118 @@ body.page-claims {
   color: var(--t-fg);
 }
 
+/* ---------- the topic filter ----------
+   Twenty claims, seven shelves, and a reader who nearly always arrived for one
+   subject: the tax, the road, the data centres. Buttons rather than a select —
+   the whole set fits on two lines, and the counts are worth showing, because
+   how much of this page is about roads is itself an answer.
+
+   Deliberately not sticky. It sits once, above the docket, and the docket is
+   what carries a reader back up to it; a bar that followed them down twenty
+   long cards would be a permanent strip of chrome laid over an argument. */
+.cl-filterbar {
+  padding-top: 4px;
+}
+.cl-filter-h {
+  margin: 0 0 12px;
+  font-family: var(--cl-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+}
+.cl-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cl-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  /* 42px of target at 11.5px of label. */
+  padding: 11px 14px;
+  background: none;
+  border: 1px solid var(--t-line);
+  border-radius: 999px;
+  font-family: var(--cl-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--t-fg-2);
+  cursor: pointer;
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+.cl-filter:hover { color: var(--t-gold); border-color: var(--t-gold-line); }
+.cl-filter:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+/* The pressed state is carried three ways — fill, border and weight — because
+   this is the one control on the page that changes what the page contains, and
+   a reader who missed it would read a filtered page as the whole record. */
+.cl-filter[aria-pressed="true"] {
+  background: var(--t-gold-bg);
+  border-color: var(--t-gold);
+  color: var(--t-gold);
+}
+.cl-filter-n {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--t-muted);
+  font-variant-numeric: tabular-nums;
+}
+.cl-filter[aria-pressed="true"] .cl-filter-n { color: var(--t-gold); }
+.cl-filter-status {
+  margin: 12px 0 0;
+  max-width: var(--cl-measure);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--t-muted);
+  text-wrap: pretty;
+}
+
+/* ---------- the topic tag ----------
+   On the card rail, under the verdict. Quieter than the verdict pill in every
+   dimension — no colour, no dot, no capitals — because the finding is the thing
+   being scanned down the page and the shelf is only how it was filed. */
+.cl-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+}
+.cl-topic, .cl-topic-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: none;
+  border: 1px solid var(--t-line-2);
+  border-radius: 999px;
+  font-family: var(--cl-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .02em;
+  line-height: 1.5;
+  color: var(--t-muted);
+  text-align: left;
+}
+.cl-topic { cursor: pointer; transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease; }
+.cl-topic:hover { color: var(--t-gold); border-color: var(--t-gold-line); }
+.cl-topic:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.cl-topic.is-on {
+  background: var(--t-gold-bg);
+  border-color: var(--t-gold-line);
+  color: var(--t-gold);
+  font-weight: 600;
+}
+/* .cl-card sets display:grid, which outranks the user-agent rule that makes
+   [hidden] disappear. Filtering hides rather than re-renders, so this line is
+   what the filter actually does. */
+.cl-card[hidden], .cl-docket-list li[hidden] { display: none; }
+.cl-legend-topics { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--t-line-2); }
+
 /* ---------- the docket ----------
    Verdict first, claim second, so the list reads as a set of findings rather
-   than a table of contents. */
+   than a table of contents, with the shelf under the verdict — a row answers
+   what was found and what about before the reader commits to the card. */
 .cl-docket-list {
   list-style: none;
   margin: 0;
@@ -11248,6 +11357,19 @@ body.page-claims {
   outline: 3px solid var(--focus);
   outline-offset: -3px;
   border-radius: 4px;
+}
+.cl-docket-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+.cl-docket-topic {
+  font-family: var(--cl-mono);
+  font-size: 10.5px;
+  letter-spacing: .02em;
+  color: var(--t-muted);
+  padding-left: 10px;
 }
 .cl-docket-claim {
   font-family: var(--cl-serif);
@@ -11556,11 +11678,27 @@ body.page-claims {
   .cl-rail-meta { flex-direction: row; flex-wrap: wrap; gap: 4px 14px; }
   .cl-rail-acts { flex-direction: row; gap: 20px; }
   .cl-docket-list a { grid-template-columns: 1fr; gap: 8px; justify-items: start; }
+  /* The rail is a row once it has the full width, so a docket entry is two
+     lines rather than three. */
+  .cl-docket-rail { flex-direction: row; align-items: center; gap: 10px; }
+  .cl-docket-topic { padding-left: 0; }
 }
 @media (max-width: 620px) {
   .cl-card { padding: 22px 18px; }
   .cl-rules, .cl-submit { padding: 20px 18px; }
   .cl-h2 { font-size: 21px; }
+  /* Eight buttons at 42px would be four lines of chrome before the first claim.
+     The bar scrolls sideways instead, as the motions filters do. */
+  .cl-filter-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0 -16px;
+    padding: 0 16px 4px;
+  }
+  .cl-filter-row::-webkit-scrollbar { display: none; }
+  .cl-filter { flex: none; }
 }
 
 /* =========================================================================
