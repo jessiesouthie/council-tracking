@@ -24,6 +24,8 @@ const data = JSON.parse(readFileSync(join(DOCS, "data.claims.json"), "utf8"));
 const record = JSON.parse(readFileSync(join(DOCS, "data.json"), "utf8"));
 const transcripts = JSON.parse(readFileSync(join(DOCS, "transcripts", "index.json"), "utf8"));
 const upcoming = JSON.parse(readFileSync(join(DOCS, "data.upcoming.json"), "utf8"));
+const agendaOnly = JSON.parse(readFileSync(join(DOCS, "data.agenda-only.json"), "utf8"));
+const meetingsPage = readFileSync(join(DOCS, "meetings.html"), "utf8");
 
 function loadPage() {
   const source = html.match(/<script>\n([\s\S]*?)\n {4}<\/script>\s*<\/body>/)[1];
@@ -150,13 +152,24 @@ test("every claim is sourced", () => {
 test("every cited meeting exists in the record", () => {
   // The citation is the point of the card. An id the site can't resolve renders
   // a link to a meeting page that will not load — and a meeting is resolvable
-  // from any of the three files meetings.html reads, not just the minuted ones.
+  // from any of the four files meetings.html reads, not just the minuted ones.
   // The August hearings are exactly that case: #747 exists only as a transcript
   // and #728 only as a calendar entry, because neither has been minuted yet.
+  //
+  // The four files are asserted here rather than assumed: this test once passed
+  // on #728 while meetings.html looked in three of them and rendered "No meeting
+  // found", which is the failure it exists to catch.
+  for (const file of ["transcriptsForBody", "agendaOnlyForBody", "loadUpcoming"]) {
+    assert.ok(meetingsPage.includes(`CT.${file}(`),
+      `meetings.html no longer reads ${file} — this test's idea of "resolvable" is stale`);
+  }
   const known = new Set((record.meetings || []).map((m) => m.id));
   assert.ok(known.size > 100, "data.json didn't load the way this test expects");
   for (const list of Object.values(transcripts)) {
     for (const t of list) known.add(t.id);
+  }
+  for (const list of Object.values(agendaOnly.bodies || {})) {
+    for (const a of list) known.add(a.id);
   }
   for (const list of Object.values(upcoming.bodies || {})) {
     for (const u of list) known.add(u.id);
@@ -181,6 +194,13 @@ test("every claim has an id, a ruling and a checked date", () => {
     assert.ok(!seen.has(c.id), `duplicate id ${c.id}; two cards would share one permalink`);
     seen.add(c.id);
     assert.ok(c.claim && c.claim.length > 10, `${c.id}: no claim text`);
+    // The heading is the summary and the quotation sits under it, so a card
+    // with no summary silently promotes the quote back into the heading.
+    assert.ok(c.summary && c.summary.length > 10, `${c.id}: no summary`);
+    assert.ok(c.summary.length <= 60,
+      `${c.id}: summary is ${c.summary.length} chars — it has to read as a heading`);
+    assert.notEqual(c.summary, c.claim, `${c.id}: the summary is just the claim again`);
+    assert.ok(!/[."]$/.test(c.summary), `${c.id}: the summary is punctuated like a sentence`);
     assert.ok(c.ruling && c.ruling.length > 20, `${c.id}: no ruling`);
     assert.match(c.checked, /^\d{4}-\d{2}-\d{2}$/, `${c.id}: checked date is not ISO`);
     assert.ok(c.checked <= data.updated, `${c.id}: checked after the page's own updated date`);
@@ -208,6 +228,10 @@ test("every claim renders, and renders its citation", () => {
     assert.ok(out.includes(`id="${c.id}"`), `${c.id}: card lost its anchor`);
     assert.ok(out.includes(verdicts[c.verdict].label), `${c.id}: verdict label missing`);
     assert.ok(out.includes(`data-copy="${c.id}"`), `${c.id}: no copy-link button`);
+    // Both halves of the claim: this page's summary as the heading, the wording
+    // that circulates quoted underneath it.
+    assert.ok(out.includes(`${c.id}-h">${page.__esc(c.summary)}</h2>`), `${c.id}: heading is not the summary`);
+    assert.ok(out.includes(page.__esc(c.claim)), `${c.id}: the claim itself is not quoted on the card`);
     for (const s of c.sources || []) {
       if (s.motion != null) {
         assert.ok(out.includes(`motions.html?id=${s.motion}`), `${c.id}: vote #${s.motion} not linked`);

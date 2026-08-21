@@ -847,6 +847,7 @@ def _claim_docs() -> list[dict]:
     for c in data.get("claims", []):
         parts = [
             f"Claim in circulation: \u201c{c.get('claim','')}\u201d",
+            f"In short: {_clean(c['summary'])}." if c.get("summary") else "",
             f"Verdict: {labels.get(c.get('verdict'), c.get('verdict',''))}.",
             _clean(c.get("ruling", "")),
         ]
@@ -881,7 +882,7 @@ def _claim_docs() -> list[dict]:
                 "id": f"city-council:claim-{c.get('id')}",
                 "kind": "claim",
                 "body": "city-council",
-                "title": _clean(c.get("claim", "")),
+                "title": _clean(c.get("summary") or c.get("claim", "")),
                 "date": c.get("checked", ""),
                 "url": f"claims.html#{c.get('id')}",
                 "tags": ["claim"],

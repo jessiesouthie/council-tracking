@@ -31,7 +31,7 @@
     <link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/newsreader-300-600-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20260821c" />
-    <link rel="stylesheet" href="site.css?v=20260821c" />
+    <link rel="stylesheet" href="site.css?v=20260821d" />
 
     <!-- The page-level graph is static; one ClaimReview per claim is added at
          render time from data.claims.json, because the claims are data and a
@@ -307,7 +307,10 @@
             </div>
 
             <div class="cl-body">
-              <h2 class="cl-claim" id="${esc(c.id)}-h">&ldquo;${esc(c.claim)}&rdquo;</h2>
+              <h2 class="cl-claim" id="${esc(c.id)}-h">${esc(c.summary || c.claim)}</h2>
+              ${c.summary
+                ? `<blockquote class="cl-quote"><p>&ldquo;${esc(c.claim)}&rdquo;</p></blockquote>`
+                : ""}
               ${c.claim_note ? `<p class="cl-claimnote">${esc(c.claim_note)}</p>` : ""}
               <p class="cl-ruling">${esc(c.ruling)}</p>
 
@@ -347,7 +350,9 @@
          without scrolling the whole argument. Verdict first here too, so the
          list reads as a set of findings rather than a table of contents, with
          the claim's own shelf under it — a row answers "what was found" and
-         "about what" before the reader has committed to the card. */
+         "about what" before the reader has committed to the card. The rows
+         carry the summary rather than the quotation: twenty quoted sentences
+         read as a comment thread, and the list is meant to be scannable. */
       function docket(claims, verdicts, cats = CATS) {
         return `
           <nav class="cl-docket" aria-labelledby="cl-docket-h">
@@ -366,7 +371,7 @@
                           </span>
                           ${primary ? `<span class="cl-docket-topic">${esc(cats[primary].label)}</span>` : ""}
                         </span>
-                        <span class="cl-docket-claim">&ldquo;${esc(c.claim)}&rdquo;</span>
+                        <span class="cl-docket-claim">${esc(c.summary || c.claim)}</span>
                       </a>
                     </li>`;
                 })
@@ -500,7 +505,9 @@
             "@context": "https://schema.org",
             "@type": "ClaimReview",
             url: `${location.origin}/claims.html#${c.id}`,
-            claimReviewed: c.claim,
+            // Google asks for a short summary here, not the quotation, and the
+            // wording that circulates is kept on the Claim itself below.
+            claimReviewed: c.summary || c.claim,
             datePublished: c.checked,
             author: { "@id": "https://civicrollcall.com/#publisher" },
             itemReviewed: {

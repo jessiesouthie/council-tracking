@@ -1,5 +1,5 @@
 {
-  "_comment": "Claims that circulate about the city, checked against the record this site already publishes. Hand-authored, like data.tax-case.json — nothing here is generated, because deciding what a claim actually asserts is not a thing a script can do. The rules the page states in `how` are binding on this file: a claim is only listed when it can be answered out of an open-meeting recording, a document the city or the state published, or arithmetic on figures from one of those, and every entry carries the citation next to the sentence it supports. Claims are quoted as they circulate and never attributed to a private individual by name; officials speaking in an open meeting are named, because that is the record. `verdict` is one of the keys in `verdicts` below. `checked` is when the entry was last read against the record; a claim about a live dispute goes stale quickly, which is why every card prints that date. `topics` are keys from `categories`, which is what the filter bar at the top of the page is built from: the first topic is the heading a claim files under and the rest are the other shelves it belongs on, because most of these claims are about two things at once.",
+  "_comment": "Claims that circulate about the city, checked against the record this site already publishes. Hand-authored, like data.tax-case.json — nothing here is generated, because deciding what a claim actually asserts is not a thing a script can do. The rules the page states in `how` are binding on this file: a claim is only listed when it can be answered out of an open-meeting recording, a document the city or the state published, or arithmetic on figures from one of those, and every entry carries the citation next to the sentence it supports. Claims are quoted as they circulate and never attributed to a private individual by name; officials speaking in an open meeting are named, because that is the record. `verdict` is one of the keys in `verdicts` below. `checked` is when the entry was last read against the record; a claim about a live dispute goes stale quickly, which is why every card prints that date. `summary` is this project's one-line description of what was claimed and is what the card heading and the docket row carry; `claim` stays the wording as it circulates and is printed under the heading, quoted, so the reader can always see which sentence is theirs and which is ours. `topics` are keys from `categories`, which is what the filter bar at the top of the page is built from: the first topic is the heading a claim files under and the rest are the other shelves it belongs on, because most of these claims are about two things at once.",
   "body": "city-council",
   "updated": "2026-08-21",
   "eyebrow": "Claims",
@@ -93,16 +93,17 @@
   "claims": [
     {
       "id": "tax-220-percent",
+      "summary": "A 220 percent property tax increase",
       "claim": "The council raised your property taxes 220 percent.",
       "verdict": "out-of-date",
       "topics": [
         "tax"
       ],
-      "ruling": "220.88% was noticed in June and never adopted. The rate that survives is 0.000900 — 69.81% over the certified rate, on the city's own line, which is about a twentieth of a property tax bill.",
+      "ruling": "220.88% was noticed in June and never adopted. The rate that survives is 0.000900 — 69.81% over the certified rate, on the city's own line, which is about a tenth of a property tax bill.",
       "seen": "Yard signs, petition sheets and city Facebook groups, June to August 2026",
       "checked": "2026-08-19",
       "true_part": "The number was real and the city printed it. The Truth-in-Taxation notice mailed in June proposed 0.001700 against a 0.000530 certified rate and stated the increase as 220.88% — a rise in the city's budgeted property tax revenue over the prior year, excluding eligible new growth.",
-      "wrong_part": "Two things. The figure is three rates out of date: the council adopted 0.001500 on August 6, repealed it on August 18, and adopted 0.000900 in its place. And it was never a percentage of anybody's tax bill — it is a percentage of the city's own levy, which is one of seven lines on an Eagle Mountain bill and the fourth-largest of them.",
+      "wrong_part": "Two things. The figure is three rates out of date: the council adopted 0.001500 on August 6, repealed it on August 18, and adopted 0.000900 in its place. And it was never a percentage of anybody's tax bill — it is a percentage of the city's own levy, which is one of seven lines on an Eagle Mountain bill — the fourth-largest of them on today's bill, and the third once the new rate is levied.",
       "detail": [
         "On the notice's own average home — $488,000 of market value, $268,400 taxable after Utah's 55% primary-residence exemption — the noticed rate would have added $314.03 a year. The rate in force adds $99.31.",
         "On that same home the city's line goes from about $143 a year to about $242, inside a total bill of about $2,517 at 2025 rates. That is the city's share moving from roughly 5.7% of the bill to roughly 9.2% of it. Alpine School District's line alone is more than six times the city's."
@@ -161,6 +162,7 @@
     },
     {
       "id": "every-dollar-public-safety",
+      "summary": "Every dollar of the increase goes to public safety",
       "claim": "Every dollar of the increase goes straight to public safety.",
       "claim_note": "The city's own claim, not one aimed at it.",
       "verdict": "incomplete",
@@ -198,13 +200,15 @@
           "meeting": 747,
           "date": "2026-08-06",
           "speaker": "Mayor Jared Gray, reading the schedule",
-          "quote": "The affected budget, sheriff's contract. The proposed budget is $9,798,139. The budget with no tax change is $8,290,000, and the budget change would be $1,507,939."
+          "quote": "The affected budget, sheriff's contract. The proposed budget is $9,798,139. The budget with no tax change is $8,290,000, and the budget change would be $1,507,939.",
+          "note": "Quoted as read. The schedule's own figures do not quite reconcile — $9,798,139 less $8,290,000 is $1,508,139 — and the recording carries the last of them as “$1,507,000. $939”."
         },
         {
           "meeting": 747,
           "date": "2026-08-06",
-          "speaker": "Councilmember Craig Whiting",
-          "quote": "When we say that 100% of the property tax increase goes to public safety, that is the correct answer. What we need to do is help you understand — and this means we didn't communicate this well enough — how public safety has been paid… we're essentially robbing from sales tax to help subsidize our police."
+          "speaker": "A councilmember, in the open deliberation",
+          "quote": "When we say that 100% of the property tax increase goes to public safety, that is the correct answer. What we need to do is help you understand — and this means we didn't communicate this well enough — how public safety has been paid… we're essentially robbing from sales tax to help subsidize our police.",
+          "note": "Said after about 03:42, where the chair stops introducing anyone and the transcript is left unlabelled, so it is quoted here without a name. The meeting summary reads the passage as Councilmember Whiting's."
         },
         {
           "meeting": 747,
@@ -222,27 +226,28 @@
     },
     {
       "id": "rushed-in-secret",
+      "summary": "The tax was rushed through in secret",
       "claim": "They did this in secret and rushed it through.",
       "verdict": "unsupported",
       "topics": [
         "process",
         "tax"
       ],
-      "ruling": "Two different charges are tangled together. On whether it was done in the open the record is unusually complete — seven open meetings from April 14, both August hearings set three months ahead, the schedule read into the record four times. On whether residents found out, the council agrees with the criticism: four of five said so from the dais before voting.",
+      "ruling": "Two different charges are tangled together. On whether it was done in the open the record is unusually complete — eight open meetings from April 14, both August hearings set three months ahead, the schedule read into the record five times. On whether residents found out, the council agrees with the criticism: three of the five said so by name from the dais before voting, and a fourth voice said it in the cross-talk that followed.",
       "seen": "Comment threads and hearing testimony, June to August 2026",
       "checked": "2026-08-19",
       "true_part": "Residents did not hear about it in time to weigh in early, and that is not in dispute. The council conceded it on the record before the vote, and the concession is the strongest evidence for the complaint.",
-      "wrong_part": "Nothing was done outside a noticed public meeting. The Sheriff's Office presented the staffing case in an open work session on April 14; on May 5 the council accepted the tentative budget, acknowledged the proposed increase and declared its intent to exceed the certified rate, setting both August hearings; the impact schedule was read on May 26, June 2 and June 16, and the June 16 hearing ran with public comment answered at length. The August 6 hearing took about sixty speakers over three hours.",
+      "wrong_part": "Nothing was done outside a noticed public meeting. The Sheriff's Office presented the staffing case in an open work session on April 14; on May 5 the council accepted the tentative budget, acknowledged the proposed increase and declared its intent to exceed the certified rate, setting both August hearings; the mayor read the impact schedule that night, and again on May 26, June 2 and June 16, and the June 16 hearing ran with public comment answered at length. The June 2 reading is recorded in the minutes rather than the recording, which runs out partway through public comment. The August 6 hearing took about sixty speakers over three hours.",
       "figures": [
         {
           "label": "Open meetings",
-          "value": "7",
+          "value": "8",
           "note": "April 14 to August 6, before the first adoption"
         },
         {
           "label": "Schedule read",
-          "value": "4 times",
-          "note": "May 26, June 2, June 16, August 6"
+          "value": "5 times",
+          "note": "May 5, May 26, June 2, June 16, August 6"
         },
         {
           "label": "Hearings set",
@@ -283,6 +288,7 @@
     },
     {
       "id": "city-police-department",
+      "summary": "The money pays for a city police department",
       "claim": "The increase pays for the city's own police department.",
       "verdict": "inaccurate",
       "topics": [
@@ -293,7 +299,7 @@
       "seen": "Recurring in comment threads whenever the Sheriff's contract comes up",
       "checked": "2026-08-19",
       "true_part": "The money does pay for policing. The affected budget on the impact schedule is the Sheriff's contract, and the deputies it funds are assigned to the Eagle Mountain division.",
-      "wrong_part": "It is a contract, not a department. The city's audited schedule shows 4.82 full-time equivalents under public safety and every one of them is a crossing guard; the line for firefighters and officers reads zero, and has read zero for eleven years. Fire and ambulance are not the city's at all — Unified Fire Service Area levies 0.001650 directly, which is nearly twice the city's own new rate.",
+      "wrong_part": "It is a contract, not a department. The city's audited schedule shows 4.82 full-time equivalents under public safety and every one of them is a crossing guard; the line for firefighters and officers reads zero, and has read zero in all eleven years that schedule covers. Fire and ambulance are not the city's at all — Unified Fire Service Area levies 0.001650 directly, which is nearly twice the city's own new rate.",
       "detail": [
         "This matters for reading a tax bill. Someone comparing Eagle Mountain's rate against a neighbouring city that runs its own police and fire is comparing a city that buys those services against one that levies for them, and the neighbour's higher rate is partly that difference."
       ],
@@ -318,7 +324,7 @@
         {
           "date": "2026-08-18",
           "speaker": "The city's own audited staffing schedule",
-          "note": "The ten-year full-time-equivalent table in the city's annual financial report: public safety 4.82, firefighters and officers 0.00.",
+          "note": "The full-time-equivalent schedule in the city's annual financial report — titled “Last Ten Fiscal Years” and printing eleven, 2014 through 2024: public safety 4.82, firefighters and officers 0.00.",
           "doc": {
             "title": "Eagle Mountain City ACFR, year ended 30 June 2024",
             "url": "https://eaglemountain.gov/wp-content/uploads/2025/01/EMC-ACFR-2024.pdf"
@@ -347,6 +353,7 @@
     },
     {
       "id": "referendum-repeals-it",
+      "summary": "Signing the petition repeals the tax",
       "claim": "Sign the petition and the tax goes away.",
       "verdict": "unresolved",
       "topics": [
@@ -394,6 +401,7 @@
     },
     {
       "id": "another-data-center",
+      "summary": "Another data center is being built",
       "claim": "They're building another data center in Eagle Mountain.",
       "verdict": "accurate",
       "topics": [
@@ -449,6 +457,13 @@
           "date": "2026-08-04",
           "speaker": "A business owner, addressing the council",
           "quote": "We've also learned that QTS, of course, bought the property to the west, which is zoned agricultural now but could also go industrial."
+        },
+        {
+          "meeting": 722,
+          "date": "2026-02-17",
+          "speaker": "A resident, in public comment",
+          "quote": "I ask that the city pass a law to help stop further data centers from being approved to build in our city. I read that 5 more have been approved.",
+          "note": "The February comment the detail above refers to — six months before the same claim reached a Facebook thread."
         }
       ],
       "read_more": [
@@ -464,6 +479,7 @@
     },
     {
       "id": "largest-data-center",
+      "summary": "It will be the largest data center in the country",
       "claim": "It's going to be the largest data center in the country, maybe the world.",
       "verdict": "inaccurate",
       "topics": [
@@ -537,7 +553,134 @@
       ]
     },
     {
+      "id": "data-centers-150-million-tax-break",
+      "summary": "A $150 million tax break for the data centers",
+      "claim": "You gave the data centers a $150 million tax break and now you are asking residents to pay.",
+      "verdict": "incomplete",
+      "topics": [
+        "growth",
+        "tax"
+      ],
+      "ruling": "The break is real and the council was a party to it, but the $150 million was granted by five taxing entities together and Eagle Mountain City's own line is about six cents of every dollar — roughly $9 million of it. What the claim leaves out cuts both ways: the deals struck since 2018 are worth several times $150 million, and the city's share of the newest one alone is larger than twenty years of the tax increase.",
+      "seen": "Eagle Mountain City Tax Referendum Facebook group, August 2026; and twice in public comment at the 6 August hearing",
+      "checked": "2026-08-21",
+      "true_part": "The 2018 deal is in the city's own minutes, in plain language. On 15 May 2018 the council adopted the Sweetwater Industrial Park Community Reinvestment Area #1 plan for a 487-acre data center, and staff told it exactly what the company had asked for: 80% of the real property taxes and 100% of the personal property taxes returned to it, against an investment of $750 million. The vote was unanimous — Burnham, Clark, Curtis, Gricius and Reaves — and the same evening the term in the interlocal agreement was changed from twenty years to forty. Melissa Clark, who voted for it, was on the dais for the 6 August hearing. Nor did it stop there: the council adopted Sweetwater #2 in March 2021, #3 in April 2023, and #4 on 5 November 2025 by four votes to one.",
+      "wrong_part": "The $150 million was never the city's to spend. Five taxing entities signed those interlocals, and the only per-entity splits the city has ever published — the hearing notices for project areas #3 and #4 — put Eagle Mountain City at 6.3% and 6.0% of the money, against 63% for Alpine School District. At that share the city's part of a $150 million break is about $9 million spread across the life of the agreement. And it is increment rather than cash: it is levied on value that did not exist before, on ground the 2018 minutes record as paying $66 a year in property tax across all entities, $6 of it Eagle Mountain's.",
+      "detail": [
+        "Two details in the version spoken at the hearing are worth separating. The percentage is not the 77% quoted from the floor; the minutes state 80% of the real property tax and 100% of the personal property tax. The forty years is right, and it is the part most worth knowing — the request was presented to the council as a twenty-year incentive, and the interlocal was amended to forty the same night, which is the maximum state law allows.",
+        "The counterweight is audited and sits in the city's own annual report. Stadion, LLC — the company known as Meta — is the largest property taxpayer in Eagle Mountain at $305,404,041 of taxable value, 15.63% of everything taxable in the city, and that is with 80% of its real property rebated. In the year to 30 June 2024 the Redevelopment Agency took in $9,746,126 of Sweetwater increment and paid $9,546,141 of it back out.",
+        "The strongest version of this argument is bigger than the number it is usually made with, and the city published it itself. Eagle Mountain's own line on project area #4 — noticed in January at $778,540,678 across the five entities — is $46,857,489, which is about twenty-two years of what the new rate raises above the certified rate. Against that sits what the same notice says of the same money: it is generated “only if the Project Area is developed”. Whether these buildings would have gone up without the incentive is the argument, and it is not something the record can settle."
+      ],
+      "figures": [
+        {
+          "label": "Eagle Mountain's share",
+          "value": "6.0%",
+          "note": "$46,857,489 of the $778,540,678 noticed for area #4"
+        },
+        {
+          "label": "Alpine School District's",
+          "value": "63.4%",
+          "note": "$493,641,645 of the same pot"
+        },
+        {
+          "label": "The land before it",
+          "value": "$66 a year",
+          "note": "all taxing entities; $6 of it the city's"
+        },
+        {
+          "label": "Meta as a taxpayer",
+          "value": "1st",
+          "note": "15.63% of all taxable value in the city"
+        }
+      ],
+      "sources": [
+        {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "A resident, in public comment",
+          "quote": "So in 2018, Facebook got tax breaks on their property taxes that was pretty hefty, and some of you were involved in that. It was $150 million in property tax incentives that they are not paying for, what, 40 years?",
+          "note": "A second speaker the same night put it as “tax breaks of up to 77%. $150 million, and that's a large percentage more than the $6 million revenue that you're trying to get.”"
+        },
+        {
+          "date": "2018-05-15",
+          "speaker": "Eagle Mountain City Council, adopting the first project area",
+          "note": "The economic development director told the council the project covered 487 acres and would bring $750 million of investment: “At this time the property brings in $66 in total property taxes per year, divided among all taxing entities, giving Eagle Mountain City $6 per year”, and at the end of the incentive “the data center would generate over $8M annually among all taxing entities, of which Eagle Mountain would receive $758K annually.” The company had made “a significant request for 80% of the real property taxes and 100% of the personal property taxes to be returned to the company over 20 years”, against roughly $100 million of public infrastructure it would build and $21 million it would reimburse the city for improvements its own project did not require. The plan, the interlocal, the development agreement and the water and sewer agreement all passed unanimously; the minutes then record the amendment made that evening: “The duration of the tax increment agreement was changed to 40 years.”",
+          "doc": {
+            "title": "Eagle Mountain City Council minutes, 2018 (15 May, pp. 146–150 and 157–158 of the PDF)",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2026/04/cc-minutes-2018.pdf"
+          }
+        },
+        {
+          "date": "2026-01-06",
+          "speaker": "The Redevelopment Agency's own hearing notice, project area #4",
+          "note": "The amended plan and budget the agency noticed for hearing on 6 January 2026: “the Agency has requested $778,540,678 in property tax incremental revenues”, and a table of where it comes from — Alpine School District $493,641,645, Unified Fire District $144,784,376, Utah County $78,359,059, Eagle Mountain City $46,857,489, Central Utah Water Conservancy District $14,898,109. The city's line is 6.0% of the total; the school district's is 63.4%. The notice also states the terms on which any of it exists: the increment is “taxes that will be generated only if the Project Area is developed.”",
+          "doc": {
+            "title": "Notice of hearing, Sweetwater Industrial Park Community Reinvestment Project Area #4 (Utah Public Notice Website)",
+            "url": "https://www.utah.gov/pmn/sitemap/notice/1043296.html"
+          }
+        },
+        {
+          "date": "2023-04-18",
+          "speaker": "The same notice, three years earlier, for project area #3",
+          "note": "$20,419,625 requested for the first phase, split Alpine School District $13,518,614, Unified Fire District $3,117,500, Utah County $1,561,112, Eagle Mountain City $1,277,703, Central Utah Water $944,697. The city's share there is 6.3% — the second of the only two per-entity breakdowns the city has published, and close enough to the first to be worth trusting as the shape of these deals.",
+          "doc": {
+            "title": "Notice of hearing, Sweetwater Industrial Park Community Reinvestment Project Area #3 (Utah Public Notice Website)",
+            "url": "https://www.utah.gov/pmn/sitemap/notice/821305.html"
+          }
+        },
+        {
+          "motion": 978,
+          "date": "2025-11-05",
+          "speaker": "Adopting the Sweetwater #4 project area plan",
+          "note": "Passed 4–1, Councilmember Burnham against — the only vote against any of these on file. Burnham is the member who moved the adoption of the first one in 2018."
+        },
+        {
+          "motion": 979,
+          "date": "2025-11-05",
+          "speaker": "The interlocal agreement that routes the city's own share of the increment",
+          "note": "Passed unanimously the same night. Of those five votes, Wright, Clark, Wood and Gray — who took office as mayor in January — were on the dais nine months later for the tax hearing."
+        },
+        {
+          "motion": 318,
+          "date": "2021-03-16",
+          "speaker": "Adopting the Sweetwater #2 project area plan",
+          "note": "Passed unanimously — the 2021 deal the hearing comment refers to. The dollar figure noticed for it is not in the record this site holds."
+        },
+        {
+          "date": "2024-06-30",
+          "speaker": "The city's audited annual report, on what the agency actually moved",
+          "note": "Note 14 records $9,746,126 of tax increment received by the Redevelopment Agency from the Sweetwater project area in the year to 30 June 2024, $10,457,606 across all five of its project areas, and $9,546,141 expended — $8,759,718 of that on site and improvements. The statistical section lists Stadion, LLC as the city's largest property taxpayer, $305,404,041 of taxable value, 15.63% of the city's total.",
+          "doc": {
+            "title": "Eagle Mountain City ACFR, year ended 30 June 2024",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2025/01/EMC-ACFR-2024.pdf"
+          }
+        },
+        {
+          "meeting": 747,
+          "date": "2026-08-06",
+          "speaker": "Mayor Jared Gray, answering the question from the dais",
+          "quote": "QTS was granted some tax incentives when they started those first 3 buildings. They came back on these next 2 — we didn't even ask this — and said, hey, by the way, you guys have been so great to us, we don't want any incentives on these next builds. Just, we're going to be full taxpayers starting day one.",
+          "note": "He put the buildings under construction at over $19 million a year across all taxing jurisdictions and “$2.7 million a year” for Eagle Mountain at the current rate. None of it is collected yet."
+        }
+      ],
+      "read_more": [
+        {
+          "label": "The rate, and how it was set",
+          "href": "tax.html"
+        },
+        {
+          "label": "Whether another data center is being built",
+          "href": "claims.html#another-data-center"
+        },
+        {
+          "label": "Every vote on file, searchable",
+          "href": "motions.html"
+        }
+      ]
+    },
+    {
       "id": "tax-cover-for-rodeo",
+      "summary": "The tax is really about the rodeo grounds",
       "claim": "The public safety reason was misleading — the tax increase is really to cover up his misdeeds on the rodeo grounds and build their new kingdom.",
       "verdict": "misleading",
       "topics": [
@@ -614,7 +757,136 @@
       ]
     },
     {
+      "id": "developer-owed-the-rodeo-grounds",
+      "summary": "A developer was let out of building the rodeo grounds",
+      "claim": "The developer was supposed to build the rodeo grounds out in Pole Canyon, and the city let them out of it.",
+      "verdict": "incomplete",
+      "topics": [
+        "spending",
+        "process"
+      ],
+      "ruling": "The promise was real, it was in a signed contract, and it had a date on it: about twenty acres of public rodeo grounds, built and dedicated by June 1, 2015. The city did release it — nine weeks after residents stood at the podium and asked the council to enforce it. What the claim leaves out is that the release was a noticed agenda item carried 3–2 with two members voting no, and that the city took something in exchange each time it gave ground.",
+      "seen": "Public comment and public hearing, Eagle Mountain City Council, March 18, 2014",
+      "checked": "2026-08-21",
+      "claim_note": "This is on the page now because the FY2026–27 budget carries $1,000,000 to relocate the rodeo grounds, which puts the question of who was supposed to build them in the first place back in front of residents.",
+      "true_part": "Section 8.2 of the Pole Canyon Annexation and Master Development Agreement, dated January 19, 2010 and signed under Mayor Heather Jackson, required the Pole Canyon Investment Group to subdivide and dedicate to the city a parcel of approximately twenty acres as a public rodeo grounds, and to build it by the earlier of the date the property's aggregate market value reached $250 million or June 1, 2015. It specified the facility down to the fittings: a rodeo-equipped arena, holding pens, bleachers for 500, a warm-up pen, lighting, restrooms and concessions, capable of hosting a high school rodeo. On July 1, 2014 the city deleted that section in its entirety. The deadline has never come back.",
+      "wrong_part": "It was not done quietly, and it was not done for nothing. The council took the First Amendment up as item 16 on the noticed May 20, 2014 agenda and adopted it 3–2 — Burnham, Steinkopf and Westmoreland in favour, Bradley and Ireland against. In place of the deadline the developer paid $90,000 for publicly owned bleachers and still owed at least twenty acres as a regional park, and in 2016 that was traded again for at least one hundred acres of recreational land. The framing also skips who was in the room: the president of the rodeo committee who negotiated the bleacher purchase across the dais that night was Jared Gray, later the mayor.",
+      "detail": [
+        "The rodeo Eagle Mountain has actually had since 2010 was the interim facility. Section 8.3 required the developer to provide, by May 1, 2010, a temporary arena at the existing Pony Express Park for use until the permanent Pole Canyon grounds were finished. On March 30, 2010 the council bought the arena equipment for $98,369.20 on a 4–1 vote, with DAI — the Pole Canyon developer — repaying $107,000 of it against its obligation under the agreement, and the minutes record that the equipment “could be relocated to the proposed Pole Canyon rodeo arena site when it was ready”. The First Amendment declared section 8.3 fulfilled.",
+        "The amendment the city published is not quite the amendment the council voted for. Councilmember Burnham's motion approved the First Amendment with wording added into section 8.2.2 fixing development to the date the property's market value reached $250 million, with the word “consider” struck, and subject to a rodeo grounds operation, management and lease agreement with the rodeo committee. The signed copy stamped by the City Recorder's office carries none of the three: 8.2.2 has no date and no market-value trigger, and the city still only agrees to “consider” putting the park in its impact fee plan.",
+        "By 2016 the rodeo grounds were gone from the agreement altogether. The Second Amendment, effective April 19, 2016, replaced section 8.2 again — “in lieu of any requirement relating to the dedication or construction of any public rodeo grounds” — with at least 100 acres for a Boy Scout high adventure camp, a wake park and a trail system. In July 2023 the whole 2010 agreement was novated and superseded by the Firefly Amended and Restated Master Development Agreement, which mentions rodeo grounds once, as a permitted land use.",
+        "Residents saw it coming. On March 18, 2014, two months before the vote, a White Hills resident told the council that the developer had promised rodeo grounds when Pole Canyon and White Hills were annexed and asked the elected officials to hold him to it; another said that if the city had held the developer to the agreement the rodeo would not be a problem, because a rodeo grounds was to be built as part of it; a third told the public hearing that the agreement promised a rodeo facility in Pole Canyon by 2015 and that the council had failed to require it."
+      ],
+      "figures": [
+        {
+          "label": "Owed under section 8.2",
+          "value": "≈20 acres",
+          "note": "dedicated and built as public rodeo grounds"
+        },
+        {
+          "label": "Deadline",
+          "value": "1 June 2015",
+          "note": "or $250M in market value, whichever came first"
+        },
+        {
+          "label": "Council vote to remove it",
+          "value": "3–2",
+          "note": "20 May 2014; Bradley and Ireland against"
+        },
+        {
+          "label": "Paid in its place",
+          "value": "$90,000",
+          "note": "bleachers, reimbursable to the developer through impact fees"
+        }
+      ],
+      "sources": [
+        {
+          "date": "2010-01-19",
+          "speaker": "The Pole Canyon Annexation and Master Development Agreement",
+          "note": "Section 8.2, “Rodeo Grounds”, at printed page 17: the PCIG “shall cause to be subdivided and dedicated to the City as a specialized Recreation Area … a Parcel of approximately twenty (20) acres … for the purpose of a public rodeo grounds”, developed by the earlier of a $250 million aggregate market value or June 1, 2015, “unless such deadline is extended at the request of the PCIG (at the discretion of the Council)”. Section 8.3 required an interim equestrian facility at Pony Express Park by May 1, 2010.",
+          "doc": {
+            "title": "Pole Canyon Annexation and Master Development Agreement, 19 January 2010 (archived copy)",
+            "url": "https://web.archive.org/web/20250402235458/https://eaglemountain.gov/wp-content/uploads/2024/10/mda-pole-canyon.pdf"
+          }
+        },
+        {
+          "date": "2009-12-16",
+          "speaker": "The council, authorising the agreement",
+          "note": "The resolution approving and authorising execution of the Pole Canyon Master Development Agreement. The city attorney told the council the agreement “incorporates the recommendations of the Planning Commission with respect to land use, it incorporates zoning, transportation and special recreation features such as rodeo grounds all developed at the expense of the applicants.”",
+          "doc": {
+            "title": "Eagle Mountain City Council minutes, 2009 (16 December, pp. 220–222 of the PDF)",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2026/04/cc-minutes-2009.pdf"
+          }
+        },
+        {
+          "date": "2010-03-30",
+          "speaker": "Eagle Mountain City Council, special meeting",
+          "note": "Mayor Heather Jackson opened the rodeo equipment item by noting that “the recent Pole Canyon annexation included the construction of rodeo grounds”. The minutes name DAI as the developer for the Pole Canyon annexation, repaying the city $107,000 for the equipment “to cover DAI's obligation included in their Master Development Agreement”, and record that the 2010 rodeo would be held next to Pony Express Park with the equipment relocatable “to the proposed Pole Canyon rodeo arena site when it was ready”.",
+          "doc": {
+            "title": "Eagle Mountain City Council minutes, 2010 (30 March, pp. 58–63 of the PDF)",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2026/04/cc-minutes-2010.pdf"
+          }
+        },
+        {
+          "date": "2014-03-18",
+          "speaker": "Residents, in public comment and at the public hearing",
+          "note": "Three speakers in one evening asked the council to enforce the Pole Canyon rodeo grounds commitment. The same meeting handed the city's rodeo to a private nonprofit committee, whose president told the council that “because there are plans to build a rodeo grounds in Pole Canyon, the rodeo can be moved to that facility if desired”.",
+          "doc": {
+            "title": "Eagle Mountain City Council minutes, 2014 (18 March and 20 May, pp. 43–55 and 85–96 of the PDF)",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2026/04/cc-minutes-2014.pdf"
+          }
+        },
+        {
+          "date": "2014-05-20",
+          "speaker": "The council, adopting the First Amendment",
+          "note": "Item 16 on the noticed agenda. The city administrator's summary: the amendment “removes a deadline by which certain property is required to be developed and dedicated to the City as public rodeo grounds”, and the Pole Canyon rodeo grounds requirement “will be changed to a regional park of equal value, to be built on a schedule determined by population growth in that area.” Adopted 3–2: Burnham, Steinkopf and Westmoreland aye; Bradley and Ireland no.",
+          "doc": {
+            "title": "Eagle Mountain City Council minutes, 2014 (18 March and 20 May, pp. 43–55 and 85–96 of the PDF)",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2026/04/cc-minutes-2014.pdf"
+          }
+        },
+        {
+          "date": "2014-07-01",
+          "speaker": "The First Amendment, as filed with the City Recorder",
+          "note": "Section 8.2 is deleted in its entirety and replaced by “Bleachers; Regional Park Facility”: a $90,000 payment for publicly owned bleachers, reimbursable to the developer through impact fees, and a parcel of at least twenty acres as a specialized Recreation Area for public park purposes — with no date attached. Section 8.3's interim equestrian facility is declared fulfilled.",
+          "doc": {
+            "title": "First Amendment to the Pole Canyon Annexation and Master Development Agreement, 1 July 2014 (archived copy)",
+            "url": "https://web.archive.org/web/20251012200213/https://eaglemountain.gov/wp-content/uploads/2024/10/mda-pole-canyon-1st-amendment.pdf"
+          }
+        },
+        {
+          "date": "2016-04-19",
+          "speaker": "The Second Amendment",
+          "note": "Section 8.2 is replaced again, this time “in lieu of any requirement relating to the dedication or construction of any public rodeo grounds”, with not less than one hundred acres for a Boy Scout high adventure camp, a wake park and a public trail system. Its recitals date the First Amendment to July 1, 2014.",
+          "doc": {
+            "title": "Second Amendment to the Pole Canyon Annexation and Master Development Agreement, 19 April 2016 (archived copy)",
+            "url": "https://web.archive.org/web/20250403022945/https://eaglemountain.gov/wp-content/uploads/2024/10/mda-pole-canyon-2nd-amendment.pdf"
+          }
+        },
+        {
+          "date": "2023-07-05",
+          "speaker": "The Firefly Amended and Restated Master Development Agreement",
+          "note": "The 2010 agreement, as amended in 2014, 2016 and 2018, is defined as the “Prior Agreement” and is “hereby novated and superseded and shall be of no effect regarding the Property.” Nothing in the replacement obliges anyone to build rodeo grounds.",
+          "doc": {
+            "title": "Firefly Amended and Restated Master Development Agreement, July 2023 (archived copy)",
+            "url": "https://web.archive.org/web/20250402224418/https://eaglemountain.gov/wp-content/uploads/2024/10/Firefly-Master-Development-Agreement-Amended-and-Restated.pdf"
+          }
+        }
+      ],
+      "read_more": [
+        {
+          "label": "The rodeo grounds and the tax increase",
+          "href": "claims.html#tax-cover-for-rodeo"
+        },
+        {
+          "label": "Where the money actually goes",
+          "href": "finances.html"
+        }
+      ]
+    },
+    {
       "id": "qts-gave-5-5-million",
+      "summary": "A $5.5 million gift was spent on a road",
       "claim": "QTS gave 5.5 million dollars to help citizens and the mayor decided to use those funds to fix a road.",
       "verdict": "inaccurate",
       "topics": [
@@ -628,7 +900,7 @@
       "wrong_part": "It was road money in the sentence it was first mentioned — there were never general funds sitting there to be redirected. And the $5.5 million in circulation is a different number from the same meeting: the net revenue above the certified rate that a rate of 0.001500 would raise, $5,591,594, which finance staff computed during the deliberation and which was read into the adopting motion. That rate was repealed twelve days later.",
       "detail": [
         "The mayor's stated reason for making the call is the same argument the post makes: that traffic generated by the data center's workers should not be a burden carried by residents.",
-        "The wider corridor work is not city property tax either. The $11.4 million Ranches Parkway and Pony Express project discussed on August 4 runs on MAG regional funding, with the city cash-flowing parts of it against a reimbursement interlocal."
+        "The wider corridor work is not city property tax either. The Ranches Parkway and Pony Express project discussed on August 4 runs on MAG regional funding, with the city cash-flowing parts of it against a reimbursement interlocal. Staff put the design and construction at $11.4 million that night, and the programmed figure at $11.8 million in current dollars, $13.8 million as MAG budgets it for 2030."
       ],
       "figures": [
         {
@@ -680,6 +952,7 @@
     },
     {
       "id": "big-tech-should-have-bonded",
+      "summary": "Big Tech should have bonded for the road",
       "claim": "Big Tech should have bonded for that road from the beginning.",
       "verdict": "incomplete",
       "topics": [
@@ -690,7 +963,7 @@
       "seen": "Eagle Mountain City Tax Referendum Facebook group, August 2026",
       "checked": "2026-08-21",
       "true_part": "On February 18, 2025 the council voted unanimously — Gray among them — to partially suspend the transportation impact fee for nonresidential development, and removed the restaurant carve-out at every building size. The city chose to charge commercial building less toward roads, and that is the strongest fact available to anyone arguing large employers under-contributed.",
-      "wrong_part": "The framing assumes a bond was available and refused. Utah cities cannot set a separate tax rate for data centers, and Councilmember Whiting told the August 6 hearing the city already charges the maximum impact fees state law allows. What the city got instead was QTS funding the full cost of the widening, and declining incentives it had already been granted on its next two buildings — more than a bond would have guaranteed on this particular road.",
+      "wrong_part": "The framing assumes a bond was available and refused. Utah cities cannot set a separate tax rate for data centers, and a councilmember told the August 6 hearing the city already charges the maximum impact fees state law allows. What the city got instead was QTS funding the full cost of the widening, and declining incentives it had already been granted on its next two buildings — more than a bond would have guaranteed on this particular road.",
       "figures": [
         {
           "label": "Nonresidential transportation impact fee",
@@ -713,8 +986,8 @@
         {
           "meeting": 747,
           "date": "2026-08-06",
-          "speaker": "Councilmember Craig Whiting",
-          "note": "Told the hearing the city charges the maximum impact fees state law allows and cannot tax data centers at a separate rate."
+          "speaker": "A councilmember, in the open deliberation",
+          "note": "“We're charging the maximum we can charge… I would love if we could tax the data centers separately. The state of Utah doesn't allow it.” Said after about 03:42, in the stretch the transcript leaves unlabelled; the meeting summary reads it as Councilmember Whiting's."
         }
       ],
       "read_more": [
@@ -730,6 +1003,7 @@
     },
     {
       "id": "mayor-road-construction-eight-years",
+      "summary": "The mayor's road business and eight years in office",
       "claim": "Jared was in road construction as his business and he has been on planning and council for 8 years.",
       "verdict": "accurate",
       "topics": [
@@ -779,6 +1053,7 @@
     },
     {
       "id": "no-bond-for-pony-express",
+      "summary": "No bond was required for Pony Express Parkway",
       "claim": "Why didn't the city make big tech bond for Pony Express since they were going to ruin it from driving on it?",
       "verdict": "inaccurate",
       "topics": [
@@ -829,6 +1104,7 @@
     },
     {
       "id": "impact-fees-thirty-years",
+      "summary": "Thirty years of impact fees for Pony Express",
       "claim": "The Waldens built Pony Express 30 years ago. The city has been collecting impact fees for 30 years for that road.",
       "verdict": "misleading",
       "topics": [
@@ -838,7 +1114,7 @@
       "seen": "Eagle Mountain City Tax Referendum Facebook group, August 2026",
       "checked": "2026-08-21",
       "true_part": "The founding is a matter of record. John Walden and two partners bought roughly 8,000 acres in Cedar Valley in 1994; the town of Eagle Mountain incorporated on December 3, 1996 and became a city in 2001. The original parkway came out of that development, and “thirty years” is close enough to right.",
-      "wrong_part": "Impact fees cannot accumulate that way. Utah's Impact Fees Act requires a city to spend or encumber an impact fee within six years of collecting it, and only on a system improvement named in the impact fee facilities plan for that fee type; holding longer requires a written finding of an extraordinary and compelling reason and a date certain. Nor is it one continuous fee: Eagle Mountain re-enacted its transportation impact fee on May 19, 2020, updated it again on March 6, 2024, and partially suspended it for nonresidential building on February 18, 2025. And for the first two of those thirty years there was no city to collect anything.",
+      "wrong_part": "Impact fees cannot accumulate that way. Utah's Impact Fees Act requires a city to spend or encumber an impact fee within six years of collecting it, and only on a system improvement named in the impact fee facilities plan for that fee type; holding longer requires a written finding of an extraordinary and compelling reason and a date certain. Nor is it one continuous fee: Eagle Mountain tabled an updated transportation impact fee twice in May 2020, adopted the update on March 6, 2024, and partially suspended the fee for nonresidential building on February 18, 2025. And for the first two of those thirty years there was no city to collect anything.",
       "figures": [
         {
           "label": "Statutory spending window",
@@ -852,8 +1128,8 @@
         },
         {
           "label": "Transportation impact fee",
-          "value": "Re-set 3 times",
-          "note": "2020, 2024, partly suspended 2025"
+          "value": "Reset twice",
+          "note": "updated 2024, partly suspended 2025"
         }
       ],
       "sources": [
@@ -867,10 +1143,10 @@
           }
         },
         {
-          "motion": 194,
-          "date": "2020-05-19",
-          "speaker": "Ordinance adopting an updated transportation impact fee",
-          "note": "One of three separate transportation impact fee actions in the record, with an update on 6 March 2024 and a partial suspension on 18 February 2025."
+          "motion": 699,
+          "date": "2024-03-06",
+          "speaker": "Councilmember Wright, moving the updated transportation impact fee",
+          "note": "The ordinance adopting an updated impact fee enactment for the transportation impact fee. The same update was tabled on 5 May and again on 19 May 2020; the fee was partially suspended for nonresidential building on 18 February 2025."
         }
       ],
       "read_more": [
@@ -886,6 +1162,7 @@
     },
     {
       "id": "developers-bond-for-roads",
+      "summary": "Developers are made to bond for roads",
       "claim": "They make builders and developers bond for roads that they could potentially ruin all the time!",
       "verdict": "incomplete",
       "topics": [
@@ -895,7 +1172,7 @@
       "seen": "Eagle Mountain City Tax Referendum Facebook group, August 2026",
       "checked": "2026-08-21",
       "true_part": "Cities do require this constantly, Eagle Mountain included. A subdivision improvement bond is posted as a condition of plat approval and guarantees that the developer builds, completes and warranties the roads inside its own project — so the city is not left holding an unfinished street if the builder walks away. The record carries bond releases as routine consent items.",
-      "wrong_part": "The posture does not transfer. An operating employer whose staff drive an existing public arterial has no obligation to build to guarantee. The lawful ways to make growth pay for road capacity are impact fees — which the city says it already charges at the statutory maximum — and negotiated reimbursement or participation agreements, which is the route that produced the QTS commitment.",
+      "wrong_part": "The posture does not transfer. An operating employer whose staff drive an existing public arterial has no obligation to build to guarantee. The lawful ways to make growth pay for road capacity are impact fees — which a councilmember told the August 6 hearing the city already charges at the statutory maximum — and negotiated reimbursement or participation agreements, which is the route that produced the QTS commitment.",
       "figures": [
         {
           "label": "What a subdivision bond secures",
@@ -912,8 +1189,8 @@
         {
           "meeting": 747,
           "date": "2026-08-06",
-          "speaker": "Councilmember Craig Whiting",
-          "note": "Said the city charges the maximum impact fees state law allows and cannot tax data centers at a separate rate."
+          "speaker": "A councilmember, in the open deliberation",
+          "note": "Said the city charges the maximum impact fees state law allows and cannot tax data centers at a separate rate. It falls after about 03:42, where the transcript is left unlabelled; the meeting summary reads it as Councilmember Whiting's."
         },
         {
           "date": "2026-08-21",
@@ -938,6 +1215,7 @@
     },
     {
       "id": "build-a-jail-for-revenue",
+      "summary": "A city jail would be a revenue source",
       "claim": "Jared should have used 5.5 to build a new jail. Then we would have a revenue source and be able to ticket for city laws and keep all the money from fines instead of giving it to Utah County.",
       "verdict": "inaccurate",
       "topics": [
@@ -947,11 +1225,11 @@
       "ruling": "Right that fine money is going to the county. Wrong about the building that fixes it — that is a justice court, not a jail — and wrong about the scale, which is thousands of dollars, not millions.",
       "seen": "Eagle Mountain City Tax Referendum Facebook group, August 2026",
       "checked": "2026-08-21",
-      "true_part": "The underlying complaint is real, and councilmembers agree with it. Eagle Mountain has no justice court, and its ordinances are not on the county's Master Offense Table, so charges for city-ordinance violations cannot even be filed. A councilmember said on April 14, 2026 that the city had been talking about a justice court “for over 18 months and we're nowhere closer to it.”",
+      "true_part": "The underlying complaint is real, and councilmembers agree with it. Eagle Mountain has no justice court, and its ordinances are not loaded in the system the county justice court files charges from, so charges for city-ordinance violations cannot even be brought. A councilmember said on April 14, 2026 that the city had been talking about a justice court “for over 18 months and we're nowhere closer to it.”",
       "wrong_part": "Three things. There was no $5.5 million to spend — see the QTS entry. A jail is not the mechanism: what lets a city keep fines from its own ordinances is a justice court, and in Utah the sheriff is the statutory keeper of the county jail, with the nearest booking facility in Spanish Fork. And the money is not there: the entire budgeted general-fund Fines line for FY2026–27 is $6,180, against $9,798,139 of budgeted public safety. A city jail is a cost centre with staffing, medical care and liability attached, not a revenue line.",
       "detail": [
         "The city attorney told the council on May 26, 2026 that the city is “legally entitled” to a justice court and that what stands in the way is process, not money for a building.",
-        "The broader “Fines & Forfeitures” category in the budget, about $157,700, is mostly NSF fees, library fines, code enforcement fines and late utility charges — not traffic citations."
+        "The broader “Fines & Forfeitures” category citywide, $157,700 in the FY2025–26 budget book, is mostly NSF fees, library fines, code enforcement fines and late utility charges — not traffic citations."
       ],
       "figures": [
         {
@@ -974,7 +1252,7 @@
         {
           "meeting": 743,
           "date": "2026-04-14",
-          "speaker": "A Utah County Sheriff's Office lieutenant",
+          "speaker": "The Utah County Sheriff's Office chief deputy over the Eagle Mountain Division",
           "quote": "the discussion came up about getting our city ordinances onto the computer system that allows Utah County Justice Court to actually file charges and for us to actually issue citations for some of these city ordinance violations. You don't have that right now."
         },
         {
@@ -986,10 +1264,10 @@
         {
           "date": "2026-08-21",
           "speaker": "Utah Code on county jails",
-          "note": "The sheriff shall take charge of and keep the county jail and the prisoners in it. Jails are a county function in Utah; a municipality that wants to keep fines from its own ordinances needs a justice court, which is a court, not a jail.",
+          "note": "The county jail is kept by the sheriff, and jails are a county function in Utah; a municipality that wants to keep fines from its own ordinances needs a justice court, which is a court, not a jail. The duty sat at § 17-22-2 until the 2025 special session renumbered it.",
           "doc": {
-            "title": "Utah Code § 17-22-2, Sheriff — general duties",
-            "url": "https://le.utah.gov/xcode/Title17/Chapter22/17-22-S2.html"
+            "title": "Utah Code § 17-72-401, County jails — sheriff as keeper",
+            "url": "https://le.utah.gov/xcode/Title17/Chapter72/17-72-S401.html"
           }
         }
       ],
@@ -1006,6 +1284,7 @@
     },
     {
       "id": "wright-said-city-is-broke",
+      "summary": "A councilman said the city has no money",
       "claim": "Brett Wright talked about how broke the city is and how there is NO MONEY.",
       "verdict": "unsupported",
       "topics": [
@@ -1061,17 +1340,18 @@
     },
     {
       "id": "own-utilities-own-police",
+      "summary": "The city should own its utilities and its police",
       "claim": "Build a revenue source. Like owning your own utilities or owning your own police officers.",
       "verdict": "inaccurate",
       "topics": [
         "public-safety",
         "spending"
       ],
-      "ruling": "The city already owns its utilities, on a scale six times its general fund. And city-owned police is exactly what the tax increase funds — the same policy this post's opening sentence calls a cover story.",
+      "ruling": "The city already owns its utilities, on a scale six times its general fund. And city-funded policing is exactly what the tax increase pays for — the same policy this post's opening sentence calls a cover story, though the city buys it under contract rather than employing it.",
       "seen": "Eagle Mountain City Tax Referendum Facebook group, August 2026",
       "checked": "2026-08-21",
       "true_part": "Both are sound instincts about municipal finance, and the second one is city policy. Eagle Mountain employs no police officers today: patrol is bought from the Utah County Sheriff's Office, and fire and ambulance come from Unified Fire Authority, which bills residents on a separate line of the same tax notice.",
-      "wrong_part": "The utilities half describes something that has been true for years. Eagle Mountain runs water, sewer, storm drain and solid waste as city-owned funds, plus an internal utility billing fund; in FY2026–27 those total roughly $269.7 million against a $42.7 million general fund, and on February 17, 2026 the council authorised up to $220,000,000 in water and sewer revenue bonds. The police half is the increase itself. A post cannot call public safety a pretext in its first line and propose city-owned police as the alternative in its ninth.",
+      "wrong_part": "The utilities half describes something that has been true for years. Eagle Mountain runs water, sewer, storm drain and solid waste as city-owned funds, plus an internal utility billing fund; in FY2026–27 those total roughly $269.7 million against a $42.7 million general fund — a gap that is mostly one year's borrowing, because the sewer fund alone jumps from $17.5 million to $217.5 million on the up to $230,000,000 of water and sewer revenue bonds the council authorised on February 17, 2026. The police half is the increase itself, and what it buys is a contract rather than a department. A post cannot call public safety a pretext in its first line and propose city-owned police as the alternative in its ninth.",
       "detail": [
         "Municipal utilities in Utah are also rate-funded enterprises, not general revenue: an enterprise fund charges users for the service and is expected to cover its own costs, which is why a water fund cannot quietly subsidise a police department."
       ],
@@ -1106,7 +1386,7 @@
           "motion": 1032,
           "date": "2026-02-17",
           "speaker": "Resolution authorising water and sewer revenue bonds",
-          "note": "Authorising the issuance and sale of not more than $220,000,000 aggregate principal amount of Water and Sewer Revenue Bonds, Series 2026."
+          "note": "Authorising the issuance and sale of not more than $230,000,000 aggregate principal amount of Water and Sewer Revenue Bonds, Series 2026. The agenda item read $220,000,000; bond counsel raised it to $230,000,000 on the record before the vote, to leave room to refinance."
         },
         {
           "meeting": 743,
@@ -1128,35 +1408,30 @@
     },
     {
       "id": "mayor-shopping-for-rodeo-grounds",
+      "summary": "The mayor is shopping for new rodeo grounds",
       "claim": "And Jared has been out asking everyone he can for new RODEO GROUNDS, I heard.",
-      "verdict": "incomplete",
+      "verdict": "unresolved",
       "topics": [
         "spending",
         "officials"
       ],
-      "ruling": "Relocating the rodeo grounds is real, funded and entirely on the public record. It is also a council decision the mayor declined to vote for.",
+      "ruling": "A new rodeo grounds is a real, funded, adopted city project, and a mayor pursuing one would be doing his job. Whether Jared Gray has personally been asking anyone for a site is a different question, and the record does not answer it.",
       "seen": "Eagle Mountain City Tax Referendum Facebook group, August 2026",
       "checked": "2026-08-21",
-      "true_part": "The substance is right. On April 15, 2025 the council adopted a resolution expressing intent to work with the West Traverse Sentinel Landscape committee on relocating the rodeo grounds into the Army Compatible Use Buffer around Camp Williams, and the FY2026–27 capital schedule carries $1,000,000 for it.",
-      "wrong_part": "The framing, and the sourcing. This is not a quiet errand by one man: it is a noticed agenda item that passed 4–0, with Wright, Burnham, Clark and Wood in favour — and Jared Gray abstaining. He is the one person on that dais who did not vote for it. The sourcing offered for the quiet part is “I heard.”",
+      "wrong_part": "None of that is evidence that he has. The claim is about one named person doing a specific thing, and everything above it is about a council decision and a budget line — a different subject. Nothing in the agendas, minutes or recordings shows Jared Gray approaching anyone about a site, and nothing in them rules it out: private calls do not appear in the record this page checks against. His one recorded act on the item is an abstention, while Wright, Burnham, Clark and Wood voted yes — and that is not the rebuttal it looks like, since standing aside is the ordinary response to a declared interest rather than proof there is none. The sourcing offered is “I heard.”",
       "detail": [
-        "The line sits fifteenth on the FY2026–27 capital list, below $3,360,000 for a Pony Express trailhead, $2,790,000 for Campus Drive, $2,500,000 for land acquisition and $2,000,000 for Airport Road. The capital projects fund as a whole is down $2,851,305 year over year."
+        "What would settle it: a site named in an agenda, a property owner on the record, correspondence released under GRAMA, or the mayor answering the question in an open meeting. None of those exists yet."
       ],
       "figures": [
         {
           "label": "Council vote, 15 April 2025",
           "value": "4–0",
-          "note": "Gray abstained"
+          "note": "Gray abstained; it settles nothing either way"
         },
         {
           "label": "Relocate Rodeo Grounds",
           "value": "$1,000,000",
           "note": "FY2026–27 capital schedule"
-        },
-        {
-          "label": "Rank on the capital list",
-          "value": "15th",
-          "note": "of the funded projects"
         }
       ],
       "sources": [
@@ -1178,17 +1453,19 @@
       ],
       "read_more": [
         {
-          "label": "Every vote on file",
-          "href": "motions.html"
+          "label": "The relocation, and what pays for it",
+          "href": "claims.html#tax-cover-for-rodeo"
         },
         {
-          "label": "Where the money actually goes",
-          "href": "finances.html"
+          "label": "Every vote on file",
+          "href": "motions.html"
         }
-      ]
+      ],
+      "true_part": "The thing he is said to be shopping for exists. On April 15, 2025 the council adopted a resolution expressing intent to work with the West Traverse Sentinel Landscape committee on relocating the rodeo grounds into the Army Compatible Use Buffer around Camp Williams; the FY2026–27 capital schedule carries $1,000,000 for it; and staff still listed “rodeo grounds planning” among the year's open projects on August 4, 2026. Finding a site means talking to people who own land, so the behaviour described is plausible — and, for an adopted project, unremarkable."
     },
     {
       "id": "free-offer-eagle-monument",
+      "summary": "A free repair of the eagle monument was ignored",
       "claim": "I offered to fix the eagle by 73 for free since it was ours and was never called back. The city could have saved money.",
       "verdict": "unresolved",
       "topics": [
@@ -1198,7 +1475,7 @@
       "ruling": "A private offer and an unreturned phone call leave no trace in an open-meeting record, so this site cannot settle it either way. What can be checked is what happened to the monument.",
       "seen": "Eagle Mountain City Tax Referendum Facebook group, August 2026",
       "checked": "2026-08-21",
-      "true_part": "The eagle monument was down, it mattered to people, and the city spent money putting it back. A councilmember said on May 19, 2026 that residents cared about it more than anyone realised — “until it was gone.”",
+      "true_part": "The eagle monument was down, it mattered to people, and the city spent money putting it back. On May 19, 2026 one voice on the dais said of the monument, “I really didn't know that people cared that much”, and another finished the thought: “until it was gone.”",
       "wrong_part": "Nothing is contradicted, and nothing is confirmed. Offers made by phone do not appear in agendas, minutes or recordings, which are the only things this page checks claims against. It would be settled by a written offer or by the city's correspondence — a records request, not a meeting recording.",
       "detail": [
         "What the record does carry: by April 28, 2026 city staff had rebuilt the retaining wall and the contractor had poured the footings and pad, with installation scheduled for around the end of May. It was named as one of the few capital projects expected to finish without rolling into the next year."
@@ -1216,6 +1493,13 @@
         }
       ],
       "sources": [
+        {
+          "meeting": 725,
+          "date": "2026-05-19",
+          "speaker": "Two voices on the dais, on what the monument turned out to be worth",
+          "quote": "I really didn't know that people cared that much. — Until it was gone.",
+          "note": "An exchange between two speakers. This recording carries no names, so neither half is attributed here."
+        },
         {
           "meeting": 744,
           "date": "2026-04-28",

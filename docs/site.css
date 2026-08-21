@@ -11470,8 +11470,9 @@ body.page-claims {
 
 .cl-body { min-width: 0; }
 
-/* The quoted sentence. Newsreader, one size up from anything else on the page,
-   with the quote marks set in the type rather than added as ornament. */
+/* The heading is what the claim says, in a line: this page's own summary of it,
+   so a card can be scanned and a docket row read at a glance. Newsreader, one
+   size up from anything else on the page. */
 .cl-claim {
   margin: 0;
   max-width: var(--cl-measure);
@@ -11481,6 +11482,23 @@ body.page-claims {
   line-height: 1.32;
   letter-spacing: -.005em;
   color: var(--t-fg);
+  text-wrap: pretty;
+}
+/* The wording as it actually circulates, under the summary. Quoted, ruled and
+   set smaller, because the distinction the whole page turns on is which
+   sentences are theirs and which are ours — the summary above is ours. */
+.cl-quote {
+  margin: 12px 0 0;
+  max-width: var(--cl-measure);
+  padding-left: 14px;
+  border-left: 2px solid var(--t-line);
+}
+.cl-quote p {
+  margin: 0;
+  font-family: var(--cl-serif);
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--t-fg-2);
   text-wrap: pretty;
 }
 .cl-claimnote {
