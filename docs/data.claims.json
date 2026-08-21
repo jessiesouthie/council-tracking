@@ -221,64 +221,6 @@
       ]
     },
     {
-      "id": "staff-one-third",
-      "claim": "City staff is about a third the size of a city our size.",
-      "claim_note": "The city manager's claim, made at the August 6 hearing.",
-      "verdict": "misleading",
-      "topics": [
-        "spending",
-        "public-safety"
-      ],
-      "ruling": "Right on raw headcount — 36% of the median of comparable Utah cities — but most of that gap is that those cities employ their own police and firefighters and Eagle Mountain contracts both. Compared like for like it is 64%, nearer two thirds than one third.",
-      "seen": "Repeated in city messaging and in argument for and against the increase since August 2026",
-      "checked": "2026-08-19",
-      "true_part": "On raw headcount the claim is about right, and the underlying point stands: Eagle Mountain is the leanest city in the comparison set. It employed 146.58 full-time equivalents in FY2024 for about 61,400 residents — 2.389 per 1,000, against a peer median of 6.643.",
-      "wrong_part": "The comparison counts other cities' police officers and firefighters and cannot count Eagle Mountain's, because Eagle Mountain has none to count. Set public safety aside on every city's side and the ratio is 2.31 against 3.63 per 1,000 — 64% of the median. Set utilities aside too and it is 65%.",
-      "detail": [
-        "So the sentence is true of the payroll and overstated as a measure of how thinly the city is run. Both halves matter: a resident hearing \"a third the size\" is being told the city is stretched three times thinner than its neighbours, and on the work the city actually does itself the honest figure is about a third thinner."
-      ],
-      "figures": [
-        {
-          "label": "Raw headcount",
-          "value": "36%",
-          "note": "2.389 per 1,000 against a 6.643 median"
-        },
-        {
-          "label": "Excluding police and fire",
-          "value": "64%",
-          "note": "2.31 against 3.63 — the like-for-like figure"
-        },
-        {
-          "label": "City employees",
-          "value": "146.58 FTE",
-          "note": "FY2024, for about 61,400 residents"
-        }
-      ],
-      "sources": [
-        {
-          "meeting": 747,
-          "date": "2026-08-06",
-          "speaker": "City Manager Ben Reeves",
-          "quote": "Our city staff is about the third of the size of city staff of equivalent population, and they are working their hearts out… I truly feel like for many, many years that they've been working with basically an arm tied behind their back. We haven't invested in them."
-        },
-        {
-          "date": "2026-08-18",
-          "speaker": "Audited headcount, eight Utah cities",
-          "note": "Every figure is the GASB 44 full-time-equivalent schedule in each city's own annual financial report, compared against Census population for the same year.",
-          "doc": {
-            "title": "Eagle Mountain City ACFR, year ended 30 June 2024",
-            "url": "https://eaglemountain.gov/wp-content/uploads/2025/01/EMC-ACFR-2024.pdf"
-          }
-        }
-      ],
-      "read_more": [
-        {
-          "label": "The full staffing comparison",
-          "href": "staffing.html"
-        }
-      ]
-    },
-    {
       "id": "rushed-in-secret",
       "claim": "They did this in secret and rushed it through.",
       "verdict": "unsupported",
