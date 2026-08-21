@@ -18,7 +18,10 @@ services:
     staticPublishPath: ./docs
 
     branch: main
-    autoDeploy: true
+
+    # Deploy on every push to main. (The old spelling for this was
+    # `autoDeploy: true`, which Render still honours but has deprecated.)
+    autoDeployTrigger: commit
 
     # The bot pushes several times a day, most of them touching data/ and
     # data/transcripts/ rather than the published site. Only rebuild when
