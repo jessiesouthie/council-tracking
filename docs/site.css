@@ -325,8 +325,16 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   gap: 12px;
   text-decoration: none;
   color: inherit;
-  flex: none;
+  /* Shrinkable, and the last thing to give. On a non-default body the second
+     line grows to "EAGLE MOUNTAIN, UT · PLANNING COMMISSION" — some 290px of
+     it — and between 760 and 800px that was enough to push the nav's last pill
+     out through the right-hand gutter. It ellipsises now instead: the city is
+     the one line in the bar whose tail a reader can lose and still know where
+     they are, because the switcher beside it names the same body in full. */
+  flex: 0 1 auto;
+  min-width: 0;
 }
+.brand > div { min-width: 0; }
 .brand:hover { text-decoration: none; }
 /* Brand mark: the same roll-call glyph as icons/icon-512.png, inlined as SVG so the
    header and the installed app icon are recognisably one object. The tile keeps the
@@ -373,6 +381,8 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   position: relative;
   padding-bottom: 4px;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .brand .brand-title::after {
   /* Park-sign accent stripe: tiny rule under the wordmark. The same 2px mark
@@ -396,6 +406,8 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   text-transform: uppercase;
   letter-spacing: 0.08em;
   white-space: nowrap;   /* "EAGLE MOUNTAIN, UT" is one unit, never two lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .nav {
@@ -11853,6 +11865,8 @@ body.roster-paper {
 
 .rc-go {
   display: block;
+  width: fit-content;
+  text-decoration: none;
   margin-top: auto;
   padding-top: 2px;
   font-size: 12.5px;
@@ -11978,6 +11992,12 @@ body.roster-paper {
 @media (max-width: 820px) {
   .rc-roster { grid-template-columns: minmax(0, 1fr); }
   .rc-card.is-chair .rc-meters { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+}
+@media (max-width: 700px) {
+  /* Stacked, both halves of a pair should present the same way round — face,
+     then name. The shared rule above leaves the second one reading
+     name-then-face, which makes the column of initials zig-zag. */
+  .pair-member.right { flex-direction: row-reverse; justify-content: flex-end; }
 }
 @media (max-width: 600px) {
   .rc-keys { gap: 12px 24px; }

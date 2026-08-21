@@ -308,7 +308,7 @@ def render_members(data: dict, today: str) -> str:
             f'              </span>\n'
             f'              {split_meter(split)}\n'
             f'            </span>\n'
-            f'            <span class="rc-go">Full voting record</span>\n'
+            f'            <a class="rc-go" href="{href}">Full voting record</a>\n'
             f"          </li>"
         )
     return "\n".join(cards)
