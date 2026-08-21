@@ -24,8 +24,8 @@ What it does:
 
 The families are declared in one file even though no page uses all of them.
 @font-face is a declaration, not a fetch: a browser downloads only the faces its
-CSS actually renders with, so budget.html still pulls Fraunces and nothing else
-pulls it at all.
+CSS actually renders with, so budget.html still pulls Fraunces and a page with
+no book matter on it never pulls Newsreader.
 
 Run:  python -m ingest.build_fonts
       python -m ingest.build_fonts --check    # verify every file is present
@@ -54,17 +54,15 @@ UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
 # each page — build_fonts --check won't catch a family that was added there and
 # never added here, it will only catch a file that has gone missing.
 SOURCES = [
-    # index, meetings, members, member, motions, about, 404
-    "https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap",
-    # definitions — Newsreader for the headwords
-    "https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800"
-    "&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&display=swap",
-    # tax, projections — their own pair, Inter deliberately absent
+    # definitions, claims, the agenda cards — Newsreader for book matter
+    "https://fonts.googleapis.com/css2?"
+    "family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&display=swap",
+    # every page — the site pair: text in Instrument Sans, figures in Plex Mono
     "https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700"
     "&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
-    # budget — Fraunces pinned to one instance
+    # index, budget, finances — Fraunces pinned to one instance
     "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,700,0,1"
-    "&family=Inter:opsz,wght@14..32,400..800&display=swap",
+    "&display=swap",
 ]
 
 KEEP_SUBSETS = {"latin", "latin-ext"}
@@ -101,8 +99,8 @@ def collect() -> list[dict]:
     """Every distinct face we intend to ship, in the order first seen.
 
     Faces are deduplicated twice over, on two different keys. First on the face
-    itself, because Inter is requested by three of the four stylesheets and we
-    want one rule for it, not three. Then on the remote URL, because Google
+    itself, so a family named by two of the stylesheets yields one rule and not
+    two. Then on the remote URL, because Google
     answers Instrument Sans at four weights with four @font-face rules that all
     point at the same variable file — four rules is correct and they all stay,
     but downloading that file four times under four names would put 120KB of

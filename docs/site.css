@@ -78,6 +78,12 @@
   --radius-sm: 6px;
   --radius-card: 18px;   /* the redesign's roomier card */
   --max-w: 1080px;
+  /* One column for the whole site. Every page's <main> is --max-w wide, so the
+     left and right edges land on the same pixel on Meetings, Tax, Budget and
+     the front page, and nothing shifts sideways when you move between them.
+     Long-form pages keep a short line by capping their *prose* at --measure
+     inside that column, never by narrowing the column itself. */
+  --measure: 68ch;
 
   /* Mobile rhythm */
   --tabbar-h: 60px;
@@ -107,14 +113,28 @@
   --ico-check:    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='8.6'/><path d='M8.2 12.4l2.6 2.6 5-5.6'/></svg>");
   --ico-book:     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M12 6.6C10.6 5.4 8.6 4.8 6 4.8H3.2v13.4H6c2.6 0 4.6.6 6 1.8'/><path d='M12 6.6c1.4-1.2 3.4-1.8 6-1.8h2.8v13.4H18c-2.6 0-4.6.6-6 1.8'/><path d='M12 6.6V20'/><path d='M15.2 9.4h3.2M15.2 12.6h3.2'/></svg>");
 
-  /* One typeface across the site. Inter is a neutral UI grotesque, so it carries
-     the display sizes on tracking and weight rather than on character — hence the
-     negative letter-spacing on every large heading below. Numbers everywhere use
-     tabular figures so columns and tallies line up. */
-  --display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+  /* One interface voice and one figure voice, for the whole site. These four
+     tokens are the only place a face is named for text or numbers; no page
+     redefines them. Sentences, navigation and buttons read the same on Meetings
+     as on Tax, and a rate carried from the tax page onto the front page is set
+     in the type it was set in where it was derived.
+
+     Instrument Sans is the grotesque: neutral enough for chrome, with enough
+     cut to carry a display line on tracking and weight — hence the negative
+     letter-spacing on every large heading below. IBM Plex Mono takes every
+     figure, so a column of dollars lines up on its own rather than on whatever
+     monospace the reader's OS happens to ship.
+
+     Two pages' worth of editorial display type sits on top of this and is
+     declared where it is used: Fraunces (--hm-display / --bk-display /
+     --fin-display) on the front page, the budget book and the finance hub, and
+     Newsreader (--df-serif / --cl-serif / --notice-serif) on the glossary, the
+     claims page and the agenda cards. Those are the only two exceptions, and
+     they only ever set headings and quoted matter — never chrome. */
+  --display: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
   --sans:    var(--display);
   --serif:   var(--display);  /* legacy alias — .serif and h1–h3 still reference it */
-  --mono:    ui-monospace, Menlo, Consolas, monospace;
+  --mono:    "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
 
   /* Agreement-bar ramp (low frac → high frac). JS interpolates between these in
      OKLCH via color-mix(). High agreement lands on pass-green, not on amber —
@@ -242,18 +262,61 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
 }
 .skip-link:focus { transform: translateY(0); text-decoration: none; }
 
+/* ---------- the masthead ----------
+   Full-bleed bar, but the row inside it is set to the same measure as the page
+   it sits over. Before this the bar was padded a flat 24px from the viewport
+   edge while <main> was a 1080px column centred in it, so on a wide screen the
+   brand hung ~180px out to the left of every heading, rule and sub-nav beneath
+   it, and the nav floated in the middle of the remaining space, anchored to
+   nothing. Now the brand starts on the column's left edge and the nav ends on
+   its right, and the header reads as the top of the page rather than a strip
+   laid across it.
+
+   The gutter is computed from 100% (the bar's own width, scrollbar already
+   subtracted) rather than 100vw, which would over-indent by the scrollbar's
+   width on every desktop that shows one. max() keeps the flat 24px on anything
+   narrower than the column. */
 .topbar {
+  --bar-gutter: max(24px, calc((100% - var(--max-w)) / 2 + 24px));
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 12px 24px;
+  padding: 12px var(--bar-gutter);
   background: var(--bg-raised);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 10;
   gap: 18px;
-  backdrop-filter: saturate(140%) blur(8px);
+}
+/* The bar has carried backdrop-filter since it was written, over an opaque
+   --bg-raised, where it did precisely nothing but cost a compositing layer.
+   Either commit to it or drop it: this lets a little of the page through, the
+   way the mobile tab bar already does at 92%. The @supports arm keeps the bar
+   opaque where the blur can't be drawn, because 90% paper with nothing behind
+   it is just paper with the type underneath showing through. */
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .topbar {
+    background: color-mix(in oklab, var(--bg-raised) 90%, transparent);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+  }
+}
+/* Off the top of the page the bar is a hairline; once the page has moved under
+   it, it earns an edge. Scroll-driven, so no scroll listener and no class
+   toggling — where the timeline isn't supported the bar simply keeps its
+   hairline, which is what it had before. */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .topbar {
+      animation: topbar-settle linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 72px;
+    }
+    @keyframes topbar-settle {
+      from { border-bottom-color: var(--border); box-shadow: 0 0 0 rgb(var(--shadow-rgb) / 0); }
+      to   { border-bottom-color: var(--border-strong); box-shadow: 0 10px 24px -18px rgb(var(--shadow-rgb) / .55); }
+    }
+  }
 }
 
 .brand {
@@ -262,6 +325,7 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   gap: 12px;
   text-decoration: none;
   color: inherit;
+  flex: none;
 }
 .brand:hover { text-decoration: none; }
 /* Brand mark: the same roll-call glyph as icons/icon-512.png, inlined as SVG so the
@@ -278,6 +342,15 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   height: 32px;
   border-radius: 9px;
   background: var(--mark-bg);
+  transition: transform 160ms cubic-bezier(.2, .8, .2, 1);
+}
+/* The one piece of play in the bar, and it is on the object that can afford it:
+   the tile lifts a hair under the pointer, so the whole brand block reads as the
+   link it has always been. */
+.brand:hover .brand-mark { transform: translateY(-1px); }
+@media (prefers-reduced-motion: reduce) {
+  .brand-mark { transition: none; }
+  .brand:hover .brand-mark { transform: none; }
 }
 /* viewBox is the icon's own 512 grid, so the glyph sits at exactly the inset it has
    in the PNG — no re-centring by hand. */
@@ -299,9 +372,12 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   color: var(--fg-soft);
   position: relative;
   padding-bottom: 4px;
+  white-space: nowrap;
 }
 .brand .brand-title::after {
-  /* Park-sign accent stripe: tiny burnt-orange rule under the wordmark. */
+  /* Park-sign accent stripe: tiny rule under the wordmark. The same 2px mark
+     says "here" under the active nav item and over the active mobile tab —
+     one gesture, used three times, is what makes it read as a language. */
   content: "";
   display: block;
   position: absolute;
@@ -325,35 +401,50 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
 .nav {
   display: flex;
   gap: 2px;
-  flex: 1;
-  /* Never wrap: a second row stands the topbar up from 69px to 115px, and it
-     happens at the widths and body labels that are hardest to notice.
+  /* Anchored to the right end of the column, by its own auto margin rather than
+     by justify-content or by auto margins on the end items.
 
-     Centred by auto margins on the end items rather than justify-content, which
-     is not the same thing once the row overflows: centred overflow spills off
-     both edges at once and the start of it can't be scrolled back to, so the
-     first item sits permanently half-cut. Auto margins collapse to nothing when
-     there isn't room, leaving the row start-aligned.
+     The end-item version was in here for a while and it had a hole in it: below
+     1000px the Home pill is display:none, and a display:none element is still
+     :first-child — so the margin it carried applied to nothing and the whole
+     row fell back to hugging the switcher, which is exactly the width where the
+     alignment mattered most. Putting the margin on the container instead means
+     it can't be switched off by hiding a child.
+
+     Auto margin rather than justify-content:flex-end for the overflow case: an
+     auto margin collapses to zero when there is no free space, so a row too
+     wide for the bar starts at the switcher and loses its tail, instead of
+     spilling off the left edge where nothing can scroll it back into view.
+
+     Never wrap: a second row stands the topbar up from 69px to 115px, and it
+     happens at the widths and body labels that are hardest to notice.
 
      Deliberately NOT overflow:auto here. A scroll container clips its children
      on both axes — overflow-x:auto computes overflow-y to auto, not visible —
-     which would cut every section menu off at the height of the bar. The narrow
-     band that actually needs to scroll turns it on for itself, and turns the
-     menus off, further down. */
+     which would cut every section menu off at the height of the bar. */
+  flex: 0 1 auto;
+  min-width: 0;
+  margin-left: auto;
   flex-wrap: nowrap;
 }
-.nav > :first-child { margin-left: auto; }
-.nav > :last-child { margin-right: auto; }
+/* The pill's horizontal padding is a variable because the "you are here" rule
+   under the label has to line up with the label, and the tight desktop bands
+   further down this file re-cut that padding twice. One number, read by both. */
 .nav a {
+  --pill-x: 14px;
+  --pill-xr: var(--pill-x);
+  position: relative;
   display: inline-flex;
   align-items: center;
   flex: none;
   min-height: 44px;
-  padding: 8px 14px;
+  padding: 8px var(--pill-xr) 8px var(--pill-x);
   border-radius: 999px;
   color: var(--fg);
   font-size: 14px;
   font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 140ms ease, color 140ms ease;
 }
 .nav a:hover { background: var(--bg-muted); text-decoration: none; color: var(--fg-soft); }
 
@@ -379,7 +470,7 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
    It is paid for out of the pill's own right padding rather than added on top
    of it, because the desktop row must fit — see the band rules near the foot of
    this file, where a nav wide enough to scroll would clip every menu. */
-.nav-group > a { gap: 4px; padding-right: 9px; }
+.nav-group > a { --pill-xr: 9px; gap: 4px; }
 .nav-group > a::after {
   content: "";
   flex: none;
@@ -398,8 +489,6 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   opacity: .85;
   transform: translateY(2px) rotate(-135deg);
 }
-/* On the section's own page the pill is filled, and a half-faded arrow on it
-   reads as disabled rather than quiet. */
 .nav-group > a.active::after,
 .nav-group > a[aria-current="page"]::after { opacity: .8; }
 .nav-menu {
@@ -410,12 +499,12 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   z-index: 40;
   display: flex;
   flex-direction: column;
-  min-width: max(100%, 190px);
-  padding: 6px;
+  min-width: max(100%, 200px);
+  padding: 7px;
   border: 1px solid var(--border);
   border-radius: 14px;
   background: var(--bg-elev);
-  box-shadow: 0 12px 32px rgb(var(--shadow-rgb) / .14), 0 2px 6px rgb(var(--shadow-rgb) / .06);
+  box-shadow: 0 1px 2px rgb(var(--shadow-rgb) / .05), 0 18px 40px -12px rgb(var(--shadow-rgb) / .28);
   opacity: 0;
   visibility: hidden;
   transition: opacity 140ms ease, transform 140ms ease, visibility 140ms;
@@ -435,6 +524,7 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   transform: translate(-50%, 4px);
 }
 .nav-menu a {
+  position: relative;
   min-height: 40px;
   padding: 8px 12px;
   border-radius: 9px;
@@ -442,51 +532,97 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   font-weight: 600;
   color: var(--fg-muted);
   white-space: nowrap;
+  transition: background-color 140ms ease, color 140ms ease;
 }
 .nav-menu a:hover { background: var(--bg-muted); color: var(--fg-soft); text-decoration: none; }
 .nav-menu a.here { background: var(--accent-tint); color: var(--fg-soft); }
+/* Same 2px mark as the wordmark and the active pill, stood on its end: inside
+   an open menu it says which of the section's pages you are reading. */
+.nav-menu a.here::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 16px;
+  border-radius: 1px;
+  background: var(--accent);
+}
 @media (prefers-reduced-motion: reduce) {
   .nav-menu { transition: opacity 140ms ease, visibility 140ms; transform: translate(-50%, 4px); }
   .nav-group > a::after { transition: opacity 140ms ease; }
   .nav-group:hover > a::after,
   .nav-group:focus-within > a::after { transform: translateY(2px) rotate(-135deg); }
 }
+
+/* "You are here", written the way the rest of the site writes it.
+   It used to be a solid navy lozenge — the darkest object in the bar after the
+   brand tile, and the one piece of the header that spoke app rather than
+   broadsheet. It also disagreed with the mobile tab bar two breakpoints away,
+   which has always marked the current tab with a 2px accent stripe.
+
+   So: ink instead of --fg, the weight up a step, and that same stripe seated
+   along the foot of the pill. Three signals, none of them colour alone, and
+   aria-current carries it for anyone who can't see any of them. */
 .nav a.active, .nav a[aria-current="page"] {
-  background: var(--accent-strong);
-  color: var(--accent-fg);
+  color: var(--fg-soft);
+  font-weight: 700;
 }
+.nav a.active::before,
+.nav a[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  left: var(--pill-x);
+  right: var(--pill-xr);
+  bottom: 7px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--accent);
+}
+/* On a section trigger the rule stops at the label. The chevron lives in the
+   pill's right padding and is a control, not part of the name of the place. */
+.nav-group > a.active::before,
+.nav-group > a[aria-current="page"]::before { right: calc(var(--pill-xr) + 9px); }
+/* Hovering the page you are already on shouldn't read as an offer to go
+   somewhere; keep the ink and drop the pill fill to a whisper. */
+.nav a.active:hover,
+.nav a[aria-current="page"]:hover { background: var(--accent-tint); color: var(--fg-soft); }
 
-
-.topbar-actions { display: flex; align-items: center; gap: 8px; }
-
-/* Government-body switcher: sits between the brand and the primary nav. */
+/* Government-body switcher: sits between the brand and the primary nav.
+   Quieter than it was. Filled with --bg-muted it was a 210px beige lozenge
+   immediately beside the brand, and it out-weighed the wordmark it stood next
+   to — the loudest thing in the bar was a form control. A hairline outline and
+   ink type says "you can change this" without saying it twice as loudly as the
+   masthead does. */
 .body-switch {
   /* Shrinkable, not fixed: at 375px the brand + this select were 2px wider than
      the viewport, which is enough to give the whole page a horizontal scroll. */
   flex: 0 1 auto;
   min-width: 0;
-  max-width: 46vw;
+  max-width: min(220px, 46vw);
   text-overflow: ellipsis;
-  min-height: 40px;
-  padding: 6px 30px 6px 12px;
+  min-height: 34px;
+  padding: 6px 26px 6px 11px;
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: var(--bg-muted);
+  background: transparent;
   color: var(--fg);
   font-family: var(--sans);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease;
   -webkit-appearance: none;
   appearance: none;
   /* chevron */
   background-image: linear-gradient(45deg, transparent 50%, var(--fg-muted) 50%),
                     linear-gradient(135deg, var(--fg-muted) 50%, transparent 50%);
-  background-position: right 14px center, right 9px center;
+  background-position: right 12px center, right 7px center;
   background-size: 5px 5px, 5px 5px;
   background-repeat: no-repeat;
 }
-.body-switch:hover { border-color: var(--accent); }
+.body-switch:hover { border-color: var(--border-strong); background-color: var(--bg-muted); }
 .body-switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
 main {
@@ -801,16 +937,26 @@ details.motion-row[open] {
    that.
    ========================================================================= */
 
-/* The front page used to run a touch narrower than the data pages. It doesn't
-   any more: it takes the site measure (--max-w, set on main), so the column
-   edges sit exactly where Meetings and Votes put them and nothing shifts when
-   you move between them.
+/* Every page takes the site measure (--max-w, set on main), so the column edges
+   sit on the same pixel everywhere and nothing shifts sideways as you move
+   between the front page, Meetings, Tax and Budget.
 
    The genuinely long-form pages — the tax case, About, the projections notes —
-   still want a shorter line than 1080px of running prose, and keep the old
-   measure by opting into main.main-reading. */
+   used to buy their shorter reading line by shrinking this column to 920px,
+   which is what made the site's left edge jump by 80px on those four pages.
+   They opt into main.main-reading instead: the column stays --max-w and the
+   *running prose inside it* takes --measure. Structure keeps the full column,
+   sentences get a readable line, and the edge never moves.
+
+   Bare typography only — :not([class]) leaves every component (.fin-chain,
+   the tax cards, the projection tables) at its own designed width, so opting a
+   page in can never squeeze a layout that was built for the full column. */
 main.main-reading {
-  max-width: 920px;
+  --measure: 68ch;
+}
+main.main-reading > .page-sub,
+main.main-reading :is(.section, .learn) > :is(p, dl, ul, ol, blockquote):not([class]) {
+  max-width: var(--measure);
 }
 
 /* Paper. A fractal-noise grain sits behind the content (never over the type, so
@@ -836,22 +982,22 @@ body.page-tax::before {
   body.page-tax::before { opacity: .28; mix-blend-mode: soft-light; }
 }
 
-/* ---------- The front page's own type ----------
-   Every page built this year picked up a voice of its own — the tax page runs
-   Instrument Sans over IBM Plex Mono, the budget book Fraunces, the glossary
-   Newsreader — while the homepage stayed on the interface's Inter. The front
-   door ended up the least characterful page of the site.
+/* ---------- The front page's display face ----------
+   The front door was the least characterful page on the site while every page
+   built after it took a voice: the budget book Fraunces, the glossary
+   Newsreader. So it borrows the book's face — Fraunces at the one instance
+   already subsetted for budget.html (700, wonky alternates on) — on the display
+   line and the heads only.
 
-   So it borrows the book's face: Fraunces at the one instance already subsetted
-   for budget.html (700, wonky alternates on), on the display line and the heads
-   only. Chrome — buttons, avatars, the calendar leaf — stays on Inter, because
-   that is interface and not editorial. Figures go to the mono the tax page
-   uses, so a rate on the front page is set in the same type as the rate on the
-   page it links to. No new font files: both faces are already in docs/fonts and
-   already paid for elsewhere. */
+   Chrome and figures are not this page's to choose. Buttons, avatars, the
+   calendar leaf and every rate on the page take the site tokens like everywhere
+   else, so the front page reads as the front door of this site rather than as a
+   fourth typographic opinion. --hm-mono is kept as a name only: the figure rules
+   below were written against it, and pointing it at --mono is cheaper than
+   restating them. */
 body.home-paper {
   --hm-display: "Fraunces", Georgia, "Times New Roman", serif;
-  --hm-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --hm-mono: var(--mono);
 }
 .home-paper .hero-title,
 .home-paper .section-head h2,
@@ -861,8 +1007,8 @@ body.home-paper {
   /* Fraunces ships here at 700 only; anything heavier would be synthesised. */
   font-weight: 700;
 }
-/* Fraunces sets wider and rounder than Inter at the same size, and it does not
-   need Inter's -0.035em to stop a display line falling apart. */
+/* Fraunces sets wider and rounder than the site sans at the same size, and it
+   does not need the sans's -0.035em to stop a display line falling apart. */
 .home-paper .hero-title      { letter-spacing: -.018em; }
 .home-paper .section-head h2 { letter-spacing: -.012em; }
 .home-paper .decision-title  { letter-spacing: -.008em; line-height: 1.24; }
@@ -881,7 +1027,8 @@ body.home-paper {
 /* ---------- Hero ---------- */
 /* Left-aligned to the same column the tax page and the budget book open on, so
    the front door reads as the front of that site rather than as a product
-   landing page. The title, sub and search pill carry their own measures. */
+   landing page. Title, sub and search pill all run the full width of that
+   column, flush with the band of cards underneath. */
 .hero {
   text-align: left;
   padding: 54px 0 34px;
@@ -934,11 +1081,11 @@ body.home-paper {
   font-size: clamp(35px, 7.4vw, 55px);
   font-weight: 800;
   line-height: 1.03;
-  letter-spacing: -0.035em;   /* Inter opens up at display size; pull it back in */
+  letter-spacing: -0.035em;   /* the sans opens up at display size; pull it back in */
   color: var(--fg-soft);
-  /* Wide enough to hold "Every decision the council" on one line, so the marked
-     phrase lands on the line underneath with "makes,". */
-  max-width: 24ch;
+  /* Runs the full width of the column, so the hero squares off with the band
+     of cards below it rather than sitting in a narrower gutter of its own.
+     Line breaking is left to text-wrap: balance. */
   margin: 0 0 18px;
   text-wrap: balance;
 }
@@ -970,7 +1117,9 @@ body.home-paper {
   color: var(--fg-muted);
   font-size: 17.5px;
   line-height: 1.55;
-  max-width: 56ch;
+  /* Full column too, balanced so the two lines come out even rather than
+     leaving a short orphan under a very long first one. */
+  text-wrap: balance;
 }
 
 /* Search: one pill, input and button inside a single rounded field. */
@@ -978,7 +1127,6 @@ body.home-paper {
   display: flex;
   align-items: center;
   gap: 6px;
-  max-width: 552px;
   margin: 0 0 18px;
   padding: 5px 5px 5px 16px;
   background: var(--bg-elev);
@@ -1868,8 +2016,6 @@ body.home-paper {
 
 @media (max-width: 600px) {
   .hero { padding: 36px 0 30px; }
-  /* No room for a 24ch measure here — let the line break where it must. */
-  .hero-title { max-width: 100%; }
   .hero-sub { font-size: 16px; }
   /* The pill stays one object all the way down. It used to break in two here —
      field on top, a full-width button under it — which was drawn for a 375px
@@ -2060,10 +2206,14 @@ body.home-paper {
    numbered heading and its items grouped onto a panel of their own, so the eye
    has an object to land on before it has a line to read.
 
-   The serif is a system stack: no extra font request on any page, and every
-   platform has something with the right bookish weight. */
+   The serif is Newsreader, the glossary's and the claims page's — not a system
+   stack. A system stack resolves to Palatino on a Mac, Georgia on Windows and
+   something else again on Android, so the agenda was the one component on the
+   site whose type depended on who was reading it. Newsreader is the site's book
+   serif and this is book matter, so it goes here too; the system faces stay
+   behind it as the fallback they always were. */
 .agenda-card {
-  --notice-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --notice-serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   --ag-gutter: 38px;   /* the hanging-number column, as on a printed agenda */
   position: relative;
   overflow: hidden;    /* keeps the index tab inside the radius */
@@ -3088,8 +3238,16 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
     border-bottom-color: var(--border);
   }
   .topbar .nav { display: none; }
-  /* Switcher stays (nav moves to the bottom tabbar); keep it compact. */
-  .body-switch { min-height: 36px; font-size: 12px; padding: 5px 26px 5px 10px; max-width: 52vw; }
+  /* Switcher stays (nav moves to the bottom tabbar); keep it compact. It takes
+     the auto margin the hidden nav used to carry, so it stays pinned to the
+     right edge of the bar with the brand at the left. */
+  .body-switch {
+    margin-left: auto;
+    min-height: 36px;
+    font-size: 12px;
+    padding: 5px 26px 5px 10px;
+    max-width: 52vw;
+  }
   .brand-mark { width: 28px; height: 28px; border-radius: 6px; }
   .brand .brand-title { font-size: 17px; padding-bottom: 3px; }
   .brand .brand-title::after { width: 18px; }
@@ -3941,23 +4099,13 @@ html.has-modal { overflow: hidden; }
 
    Figures are set in IBM Plex Mono throughout — rates, shares, and dollars are
    things a reader compares down a column, and the mono face makes the columns
-   line up on their own. Text is Instrument Sans. Both are loaded by tax.html and
-   scoped to it via body.page-tax, so no other page changes typeface.
+   line up on their own. Text is Instrument Sans. This pair started here and is
+   now the site's, declared once on :root; the page names no face of its own.
 
    All selectors are scoped under .tax-page / .tax-tool / .panel / .chart so they
    can't reach other pages. The one exception is .reveal below, which index.html
    shares.
    ========================================================================= */
-
-/* tax.html only: the page's own typeface pair, mapped onto the site's font
-   tokens so every inherited rule (headings, tables, buttons) follows without
-   being restated. */
-body.page-tax {
-  --display: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Arial, sans-serif;
-  --sans:    var(--display);
-  --serif:   var(--display);
-  --mono:    "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
-}
 
 /* ---------- entrance ----------
    The page is injected after three fetches, so it arrives all at once. A short
@@ -4122,6 +4270,9 @@ body.page-tax, .tax-page, body.page-claims, .claims-page {
   line-height: 1.5;
   color: var(--t-fg-2);
   text-wrap: pretty;
+  /* The standfirst is the one run of sentences above the cards, and the cards
+     are what wanted the full site column. It keeps a reading line of its own. */
+  max-width: var(--measure);
 }
 
 /* =========================================================================
@@ -6770,10 +6921,12 @@ table.data.statelist :is(th, td) { padding-left: 8px; padding-right: 8px; }
    to out-specify `.tax-page .tax-sec` above, which sets all four paddings in one
    shorthand and is declared later — hence the doubled class. The narrow
    overrides restate that section's own numbers for the same reason. */
-/* 90px a side on the widest card leaves ~698px of column — near enough the 44em
-   the section's paragraphs were already capped at, so the measure is unchanged
-   and only the things that used to overshoot it have moved. */
-.tax-page .tax-sec.argument { padding-inline: clamp(30px, 10%, 90px); }
+/* The inset is solved for the measure rather than guessed as a percentage: the
+   middle term pads whatever it takes to leave a 700px column, so the essay
+   reads at the same line length it always did even though the card behind it
+   grew with the site column. Below ~760px of card there is nothing left to
+   give and the 30px floor takes over. */
+.tax-page .tax-sec.argument { padding-inline: clamp(30px, calc((100% - 700px) / 2), 166px); }
 
 /* `gap: 0` is the argument's own rule, restated at a weight that survives the
    card layer: `.tax-page .argument` and `.tax-page .tax-sec` are both (0,2,0)
@@ -6905,7 +7058,11 @@ table.data.statewide thead th { background: var(--t-card); }
    Colour tokens (--sk-*) are defined with the palette at the top of the file so
    both themes stay in sync.
    ========================================================================= */
-.budget-page { max-width: 980px; margin: 0 auto; }
+/* No max-width here. This wrapper used to cap the page at 980px inside a
+   1032px column, which put Budget's edges 26px inside every other page's for
+   no reason a reader could see. It fills the site column like everything
+   else; the lede below carries the reading measure instead. */
+.budget-page { margin: 0 auto; }
 
 .b-hero { margin: 8px 0 4px; }
 .b-eyebrow {
@@ -6920,6 +7077,9 @@ table.data.statewide thead th { background: var(--t-card); }
 .b-lede {
   font-family: var(--serif); font-size: clamp(17px, 2.4vw, 21px); line-height: 1.45;
   color: var(--fg); margin: 14px 0 0;
+  /* The one run of sentences on a page of diagrams — it takes the reading
+     measure so widening the column widened the charts, not the line length. */
+  max-width: 58ch;
 }
 
 /* ---- the two budgets, side by side --------------------------------------
@@ -8201,11 +8361,13 @@ table.data.bx-lines .bx-tot td {
     background-position: right 11px center, right 7px center;
   }
   .nav { gap: 0; }
+  /* Re-cut through --pill-x rather than padding, so the "you are here" rule
+     under the active label narrows with the pill instead of overhanging it. */
   .nav a {
-    padding: 8px 9px;
+    --pill-x: 9px;
     font-size: 13.5px;
   }
-  .nav-group > a { gap: 3px; padding-right: 5px; }
+  .nav-group > a { --pill-xr: 5px; gap: 3px; }
   /* The Home pill steps aside for the whole band. Nothing is lost: the brand at
      the far left is a link to the same page, on every page, and the bottom tab
      bar still carries Home on the widths that use it. */
@@ -8215,8 +8377,8 @@ table.data.bx-lines .bx-tot td {
 /* Under 1000px the last of the width has to come from somewhere. */
 @media (min-width: 760px) and (max-width: 999px) {
   .body-switch { max-width: 26vw; font-size: 12px; }
-  .nav a { padding: 8px 6px; font-size: 13px; }
-  .nav-group > a { gap: 3px; padding-right: 3px; }
+  .nav a { --pill-x: 6px; font-size: 13px; }
+  .nav-group > a { --pill-xr: 3px; gap: 3px; }
   /* The menu is centred under its trigger, which sits close to the right edge
      once the row is this tight. Pull it back inside the viewport. */
   .nav-menu { min-width: max(100%, 168px); }
@@ -8381,6 +8543,9 @@ table.data.bx-lines .bx-tot td {
   font-size: 14.5px;
   line-height: 1.65;
   color: var(--t-fg-2);
+  /* Same reason as .tax-lede: a sentence, not a figure, so it takes the
+     reading measure rather than the column the charts below it need. */
+  max-width: var(--measure);
 }
 .proj-hero-scale strong { color: var(--t-fg); font-variant-numeric: tabular-nums; }
 
@@ -9360,7 +9525,7 @@ table.data.proj-maint tr.is-total :is(th, td) {
    a dictionary sets them — headword hanging in its own column, definition in a
    measure beside it, the local note as marginalia underneath.
 
-   Newsreader carries the display and the headwords; Inter still sets the
+   Newsreader carries the display and the headwords; the site sans still sets the
    definitions. Eighty-three entries in one weight of one sans is a wall, and
    a text serif is what makes an entry look like an entry. The pair is loaded
    by definitions.html and every selector here is scoped under .page-defs or
@@ -9715,7 +9880,7 @@ body.page-defs {
 
 .def dt {
   position: relative;
-  /* Newsreader sets small for its point size where Inter sets large, so the
+  /* Newsreader sets small for its point size where the sans sets large, so the
      headword needs a few points on the definition to still outrank it. */
   font-family: var(--df-serif);
   font-size: 19px;
@@ -10537,16 +10702,12 @@ body.page-defs {
    this block can reach another page.
    ========================================================================= */
 
-/* The page's faces, mapped onto the site's font tokens so every inherited rule
-   follows without restating. Instrument Sans and IBM Plex Mono are the tax
-   page's pair; Fraunces at 700 is the budget book's display face. The hub
-   borrows from its own children rather than introducing a fifth voice, and no
-   new font file ships for it — all three are already in docs/fonts. */
+/* Text and figures come from the site tokens like everywhere else. The hub's
+   own face is the display line only: Fraunces at 700, the budget book's, so the
+   page that indexes the book is set in the book's type. It borrows from its own
+   children rather than introducing another voice, and ships no font file that
+   some other page has not already paid for. */
 body.page-finances {
-  --display: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Arial, sans-serif;
-  --sans:    var(--display);
-  --serif:   var(--display);
-  --mono:    "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
   --fin-display: "Fraunces", Georgia, "Times New Roman", serif;
 
   /* The warm pair, resolved per theme. --warm-soft/--warm-ink are the two
@@ -10937,21 +11098,19 @@ h1.fin-title {
    card carries its own copy-link, and every card states the date it was last
    checked.
 
-   The page's own voice, on the convention every page built this year follows —
-   the tax page runs Instrument Sans over IBM Plex Mono, the budget book
-   Fraunces, the glossary Newsreader. Here the type does the arguing:
+   The page's one departure from the site's type is the claim itself. Here the
+   type does the arguing:
 
-     the claim      Newsreader, the text serif. It is somebody else's sentence,
+     the claim      Newsreader, the book serif. It is somebody else's sentence,
                     quoted, and setting it as an editorial pull-quote is what
                     stops it reading as the site's own assertion.
-     the check      Inter. Interface voice for the page's own findings, so the
-                    quoted thing and the answer to it never look like one voice.
-     the figures    IBM Plex Mono, tabular — the same face a rate is set in on
-                    tax.html, so a number carried from that page looks like the
-                    same number.
+     the check      Instrument Sans, the site's voice, for the page's own
+                    findings — so the quoted thing and the answer to it never
+                    look like one voice.
+     the figures    IBM Plex Mono, tabular, as on every page.
 
    No new font files: Newsreader is already subsetted for definitions.html and
-   Plex Mono for the tax page.
+   the agenda cards, and Plex Mono ships site-wide.
 
    Layout is the glossary's hanging column, turned to a different job: the
    verdict, the date and the actions sit in a rail beside the argument rather
@@ -10963,7 +11122,9 @@ h1.fin-title {
    ============================================================================= */
 body.page-claims {
   --cl-serif: "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
-  --cl-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  /* A name only — the figures here are the site's mono, as they are everywhere.
+     Kept so the rules written against it below don't all have to be restated. */
+  --cl-mono: var(--mono);
 
   /* Two of the four verdict colours are borrowed from the tax page, where they
      carry chart bars and section labels. Here they carry the finding itself, at
@@ -10992,7 +11153,7 @@ body.page-claims {
 .claims-page .page-title {
   font-family: var(--cl-serif);
   font-weight: 600;
-  /* Newsreader carries a display line without Inter's negative tracking, and
+  /* Newsreader carries a display line without the sans's negative tracking, and
      sets a shade smaller at the same size, so it takes a little back. */
   font-size: clamp(31px, 4.2vw, 44px);
   line-height: 1.1;
@@ -11194,7 +11355,7 @@ body.page-claims {
   font-style: italic;
   color: var(--t-muted);
 }
-/* The finding. Inter, deliberately: the page's own voice is never the serif. */
+/* The finding. The site sans, deliberately: the page's own voice is never the serif. */
 .cl-ruling {
   margin: 14px 0 0;
   max-width: var(--cl-measure);
@@ -11388,4 +11549,443 @@ body.page-claims {
   .cl-card { padding: 22px 18px; }
   .cl-rules, .cl-submit { padding: 20px 18px; }
   .cl-h2 { font-size: 21px; }
+}
+
+/* =========================================================================
+   MEMBERS — the roll-call sheet (members.html)
+
+   The page is about people, and it used to be an eight-column spreadsheet in
+   which every member's row read the same: near-380 votes, near-98% yes. The
+   figures that separate one member from another were there but invisible, and
+   the mayor sat fourth from the top because that is where the dataset put him.
+
+   So the roster is a sheet of cards, one per seat, chair first. Each card
+   carries two meters rather than eight cells: the whole record (yes / no / not
+   voting), and the only stretch of it where members actually differ — the
+   roll calls the body did NOT decide unanimously. On a council that passes
+   97% of everything 5-0, the second meter is the page's entire subject.
+
+   Type follows the front page rather than the data pages: Fraunces on the
+   names and heads, IBM Plex Mono on the figures. Both faces are already
+   subsetted in docs/fonts, and the roster appears on the front page too — it
+   should read as the same object, printed larger.
+   ========================================================================= */
+
+body.roster-paper {
+  --rc-display: "Fraunces", Georgia, "Times New Roman", serif;
+  /* A name only — figures here are the site's mono, as they are everywhere. */
+  --rc-mono: var(--mono);
+}
+.roster-paper .page-title,
+.roster-paper .section-head h2,
+.roster-paper .rc-name {
+  font-family: var(--rc-display);
+  /* Fraunces ships here at 700 only; anything else would be synthesised. */
+  font-weight: 700;
+}
+.roster-paper .page-title      { letter-spacing: -.018em; }
+.roster-paper .section-head h2 { letter-spacing: -.012em; }
+.roster-paper .rc-name         { letter-spacing: -.008em; }
+
+/* Anything that is a count rather than a word. */
+.roster-paper :is(.rc-keyfig, .rc-fig, .rc-legend, .rc-splitline, .pair-pct, .pair-n) {
+  font-family: var(--rc-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Masthead ---------- */
+.rc-head { margin-bottom: 30px; }
+.rc-kicker {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.rc-head .page-sub { margin-bottom: 18px; max-width: 60ch; }
+
+/* The four figures that frame the roster, set as a rule-separated strip rather
+   than as stat cards: they are context for the cards below, not competition
+   for them. */
+/* Both are filled by script. Empty, they would draw a rule under the page sub
+   with nothing beneath it — which is what the no-JS copy of this page shows. */
+.rc-keys:empty, .rc-note:empty { display: none; }
+.rc-keys {
+  list-style: none;
+  margin: 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 34px;
+}
+.rc-key { min-width: 0; }
+.rc-keyfig {
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--fg-soft);
+}
+.rc-key.is-date .rc-keyfig {
+  /* A date is not a quantity. Set it at label weight so the eye reads three
+     figures and a timestamp, rather than four figures. */
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--fg);
+}
+.rc-keylab {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: var(--fg-muted);
+}
+
+/* ---------- The roster ---------- */
+.rc-roster {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.rc-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 22px 18px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: var(--shadow-hair);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+.rc-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.rc-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* The chair takes the full width and runs its two meters side by side. One
+   seat presides; the sheet should say so before the reader counts names. */
+.rc-card.is-chair {
+  grid-column: 1 / -1;
+  position: relative;
+  overflow: hidden;
+}
+.rc-card.is-chair::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* An ellipse solved against the card's own box. A `circle` in a box this wide
+     gets clipped by the sides and shows up as a tinted rectangle instead of a
+     glow — which is exactly what it did at phone widths. */
+  background: radial-gradient(120% 150% at 6% 0%, var(--accent-tint) 0%, transparent 60%);
+  pointer-events: none;
+}
+.rc-card.is-chair > * { position: relative; }
+.rc-card.is-chair .rc-meters { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+
+/* ---- the person ---- */
+.rc-who {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  min-width: 0;
+}
+.rc-ava {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--avatar-tint);
+  color: var(--ok-ink);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: .01em;
+}
+.is-chair .rc-ava {
+  width: 50px;
+  height: 50px;
+  font-size: 16px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  box-shadow: 0 0 0 4px var(--accent-tint);
+}
+.rc-id { display: block; min-width: 0; flex: 1; }
+.rc-nameline {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 9px;
+}
+.rc-name {
+  font-size: 19px;
+  line-height: 1.2;
+  color: var(--fg-soft);
+}
+.is-chair .rc-name { font-size: 23px; }
+.rc-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  background: var(--accent-tint);
+  border: 1px solid var(--border-strong);
+  padding: 3px 8px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+.rc-term {
+  display: block;
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--fg-muted);
+}
+.rc-term .rc-prior { display: block; font-size: 11.5px; opacity: .85; }
+
+/* ---- the meters ---- */
+.rc-meters {
+  display: grid;
+  gap: 16px;
+  padding-top: 15px;
+  border-top: 1px solid var(--hairline);
+}
+.rc-meter { min-width: 0; }
+.rc-mlab {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 7px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.rc-fig {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  text-transform: none;
+  color: var(--fg-soft);
+}
+
+/* The whole record: yes, no, everything else, to scale. */
+.rc-spine {
+  display: flex;
+  height: 10px;
+  border-radius: 99px;
+  overflow: hidden;
+  background: var(--hairline);
+}
+.rc-spine span { display: block; height: 100%; }
+/* A single dissent out of 380 is 0.26% of the bar — under a pixel, and the one
+   thing on this page worth seeing. Anything non-zero gets a sliver. */
+.rc-spine span:not([data-n="0"]) { min-width: 3px; }
+.rc-spine .s-yes   { background: var(--ok); }
+.rc-spine .s-no    { background: var(--danger); }
+.rc-spine .s-other { background: var(--fg-muted); opacity: .55; }
+
+.rc-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin: 8px 0 0;
+  font-size: 11.5px;
+  color: var(--fg-muted);
+}
+.rc-legend b { font-weight: 600; color: var(--fg); }
+.rc-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.rc-legend i {
+  width: 7px; height: 7px; border-radius: 50%; flex: none;
+}
+.rc-legend .l-yes i   { background: var(--ok); }
+.rc-legend .l-no i    { background: var(--danger); }
+.rc-legend .l-other i { background: var(--fg-muted); opacity: .55; }
+
+/* Divided roll calls: the track is every split vote they sat for, the fill is
+   the share of those they were on the losing side of. */
+.rc-split {
+  display: block;
+  height: 6px;
+  border-radius: 99px;
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.rc-split span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-radius: 99px;
+}
+.rc-splitline {
+  display: block;
+  margin: 8px 0 0;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--fg-muted);
+}
+.rc-splitline b { font-weight: 600; color: var(--fg); }
+.rc-none {
+  display: block;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--fg-muted);
+}
+
+.rc-go {
+  display: block;
+  margin-top: auto;
+  padding-top: 2px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--link);
+}
+.rc-card:hover .rc-go { color: var(--link-strong); }
+.rc-go::after { content: " →"; }
+
+/* ---------- Agreement ---------- */
+.rc-note {
+  margin: -4px 0 16px;
+  max-width: 64ch;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--fg-muted);
+}
+#former.rc-note { margin: 18px 0 0; }
+.rc-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  margin-bottom: 14px;
+}
+.rc-ctl { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; min-width: 0; }
+.rc-ctl-lab {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+/* Focus chips — the same object as the attendance chips on a meeting page. */
+.rc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 12px 4px 5px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 140ms ease, background 140ms ease, color 140ms ease;
+}
+.rc-chip.is-plain { padding: 5px 13px; }
+.rc-chip:hover { border-color: var(--border-strong); background: var(--bg-muted); }
+.rc-chip:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.rc-chip[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+}
+.rc-chip-ava {
+  width: 24px; height: 24px; flex: none; border-radius: 50%;
+  display: inline-grid; place-items: center;
+  background: var(--avatar-tint); color: var(--ok-ink);
+  font-size: 10px; font-weight: 700;
+}
+.rc-chip[aria-pressed="true"] .rc-chip-ava { background: var(--bg-elev); color: var(--accent-ink); }
+
+/* Sort — the tax page's segmented tray, in the site palette. */
+.rc-seg {
+  display: inline-flex;
+  padding: 3px;
+  gap: 3px;
+  background: var(--bg-muted);
+  border-radius: 8px;
+}
+.rc-seg input { position: absolute; opacity: 0; pointer-events: none; }
+.rc-seg label {
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--fg-muted);
+  white-space: nowrap;
+  transition: background 140ms ease, color 140ms ease;
+}
+.rc-seg label:hover { color: var(--fg-soft); }
+.rc-seg input:checked + label { background: var(--bg-elev); color: var(--fg-soft); box-shadow: var(--shadow-hair); }
+.rc-seg input:focus-visible + label { outline: 3px solid var(--focus); outline-offset: -2px; }
+
+.rc-summary {
+  margin: 0 0 12px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--fg-muted);
+}
+.rc-summary b { font-weight: 600; color: var(--fg); }
+
+/* The average, drawn once across every bar. A row above the list explains the
+   line; without the reference every bar just reads "long and green". */
+.pair-list.has-avg .pair-bar-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: var(--avg);
+  width: 0;
+  border-left: 1px dashed var(--fg-soft);
+  opacity: .42;
+  /* Above the fill, below the percentage chip — a reference line that struck
+     through the number it is a reference for would be worse than none. */
+  z-index: 0;
+  pointer-events: none;
+}
+.rc-avgkey { display: inline-flex; align-items: center; gap: 6px; }
+.rc-avgkey::before {
+  content: "";
+  width: 0; height: 12px;
+  border-left: 1px dashed var(--fg-muted);
+  opacity: .7;
+}
+
+/* ---------- narrow ---------- */
+@media (max-width: 820px) {
+  .rc-roster { grid-template-columns: minmax(0, 1fr); }
+  .rc-card.is-chair .rc-meters { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+}
+@media (max-width: 600px) {
+  .rc-keys { gap: 12px 24px; }
+  .rc-keyfig { font-size: 19px; }
+  .rc-card { padding: 18px 17px 16px; border-radius: 14px; }
+  .rc-name { font-size: 18px; }
+  .is-chair .rc-name { font-size: 20px; }
+  .rc-controls { justify-content: flex-start; }
+  .rc-seg { width: 100%; }
+  .rc-seg label { flex: 1; text-align: center; }
 }

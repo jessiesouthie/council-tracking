@@ -21,16 +21,17 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
-    <!-- Fraunces is the FY2025–26 book's display face and nothing else's. It was
+    <!-- Fraunces is the book's display face; the text and every figure take the
+         site pair like every other page. It was
          fetched at one pinned instance — weight 700, SOFT 0, WONK 1 — rather than
          as a variable font: the axes are what make Fraunces large, and pinning
          them takes the latin subset from 118KB to 34KB. That pinning is baked
          into the file ingest/build_fonts.py downloaded, so it still holds; the
          instance is fixed at build time now rather than requested per page. -->
-    <link rel="preload" href="fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/fraunces-700-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="fonts.css?v=20260818c" />
-    <link rel="stylesheet" href="site.css?v=20260820b" />
+    <link rel="stylesheet" href="fonts.css?v=20260821b" />
+    <link rel="stylesheet" href="site.css?v=20260821b" />
 
     <!-- Dataset rather than Article: the page is a searchable copy of the city's
          own budget book, not a piece written about it. -->

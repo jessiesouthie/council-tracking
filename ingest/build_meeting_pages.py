@@ -52,7 +52,7 @@ DOCS = ROOT / "docs"
 OUT_DIR = DOCS / "meetings"
 PARSED = ROOT / "data" / "parsed"
 TRANSCRIPTS = DOCS / "transcripts"
-CSS_VERSION = "20260820a"
+CSS_VERSION = "20260821b"
 
 CNAME = DOCS / "CNAME"
 DEFAULT_HOST = "civicrollcall.com"
@@ -338,7 +338,7 @@ def head(title: str, description: str, canonical: str, extra: str = "") -> str:
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
-    <link rel="preload" href="/fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/fonts.css?v={CSS_VERSION}" />
     <link rel="stylesheet" href="/site.css?v={CSS_VERSION}" />
 {extra}  </head>

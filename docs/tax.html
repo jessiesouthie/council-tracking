@@ -22,17 +22,16 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
-    <!-- This page runs on its own typeface pair: Instrument Sans for text and
-         IBM Plex Mono for every rate, share, and dollar figure. Inter is
-         deliberately not used here — body.page-tax remaps the font tokens, so
-         nothing on this page would render with it. fonts.css declares every
+    <!-- The site pair: Instrument Sans for text, IBM Plex Mono for every rate,
+         share and dollar figure. It began as this page's own and is now every
+         page's, declared once on :root in site.css. fonts.css declares every
          family the site owns, but @font-face is a declaration and not a fetch:
          a browser downloads only the faces it actually paints with, so the two
          preloaded below are the only ones this page costs. -->
     <link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="fonts.css?v=20260818c" />
-    <link rel="stylesheet" href="site.css?v=20260820b" />
+    <link rel="stylesheet" href="fonts.css?v=20260821b" />
+    <link rel="stylesheet" href="site.css?v=20260821b" />
 
     <!-- No datePublished/dateModified. Schema.org wants both on an Article and
          Google leans on them for anything time-sensitive, but this page's dates

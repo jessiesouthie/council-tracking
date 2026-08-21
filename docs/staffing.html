@@ -22,9 +22,13 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
-    <link rel="preload" href="fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="fonts.css?v=20260818c" />
-    <link rel="stylesheet" href="site.css?v=20260820b" />
+    <!-- The site pair. Instrument Sans sets the text, IBM Plex Mono every
+         figure in the tables below — both on the first-paint path because
+         this page is text and numbers and nothing else. -->
+    <link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts.css?v=20260821b" />
+    <link rel="stylesheet" href="site.css?v=20260821b" />
 
     <!-- Dataset rather than Article: the page is a comparison built out of eight
          cities' audited schedules, and the schedules are the substance. -->

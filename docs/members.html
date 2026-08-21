@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Eagle Mountain City Council Members &amp; Voting Records</title>
-    <meta name="description" content="Roll-call vote totals for every Eagle Mountain City Council member, plus how often each pair of members voted the same way." />
+    <meta name="description" content="Every Eagle Mountain City Council member's roll-call record: how they voted, how often the council split, and how often each pair of members voted the same way." />
     <link rel="canonical" href="https://civicrollcall.com/members.html" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
@@ -13,16 +13,21 @@
     <meta property="og:site_name" content="Civic Roll Call" />
     <meta property="og:url" content="https://civicrollcall.com/members.html" />
     <meta property="og:title" content="Eagle Mountain City Council Members &amp; Voting Records" />
-    <meta property="og:description" content="Roll-call vote totals for every Eagle Mountain City Council member, plus how often each pair of members voted the same way." />
+    <meta property="og:description" content="Every Eagle Mountain City Council member's roll-call record: how they voted, how often the council split, and how often each pair of members voted the same way." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Eagle Mountain City Council Members &amp; Voting Records" />
-    <meta name="twitter:description" content="Roll-call vote totals for every Eagle Mountain City Council member, plus how often each pair of members voted the same way." />
+    <meta name="twitter:description" content="Every Eagle Mountain City Council member's roll-call record: how they voted, how often the council split, and how often each pair of members voted the same way." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="preload" href="fonts/inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- The roster is set in the front page's editorial face, and the front page
+         carries the same six names — so the file is warm in most caches by the
+         time anyone reaches this page. Preloaded anyway: it sets every name on
+         the sheet, and a swap would reflow all six cards at once. -->
+    <link rel="preload" href="fonts/fraunces-700-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20260818c" />
-    <link rel="stylesheet" href="site.css?v=20260820b" />
+    <link rel="stylesheet" href="site.css?v=20260821a" />
 
     <!-- The roster itself is data-driven and turns over with each election, so
          the ItemList of members is added from the dataset at the foot of this
@@ -34,7 +39,7 @@
       "@id": "https://civicrollcall.com/members.html#webpage",
       "url": "https://civicrollcall.com/members.html",
       "name": "Eagle Mountain City Council Members & Voting Records",
-      "description": "Roll-call vote totals for every Eagle Mountain City Council member, plus how often each pair of members voted the same way.",
+      "description": "Every Eagle Mountain City Council member's roll-call record: how they voted, how often the council split, and how often each pair of members voted the same way.",
       "inLanguage": "en-US",
       "isPartOf": { "@id": "https://civicrollcall.com/#website" },
       "about": { "@id": "https://civicrollcall.com/#council" },
@@ -49,7 +54,7 @@
     }
     </script>
   </head>
-  <body>
+  <body class="roster-paper">
     <a href="#main" class="skip-link">Skip to main content</a>
     <header class="topbar">
       <a class="brand" href="index.html">
@@ -99,96 +104,196 @@
     </header>
 
     <main id="main">
-      <h1 class="page-title">Council members</h1>
-      <p class="page-sub">Roll-call vote totals and how often each pair voted the same way.</p>
+      <div class="rc-head">
+        <p class="rc-kicker">Eagle Mountain &middot; the roll-call record</p>
+        <h1 class="page-title">Every member of the <span data-body-noun>council</span></h1>
+        <p class="page-sub">
+          One card per seat: the whole voting record, and the far smaller number of
+          roll calls where the <span data-body-noun>council</span> did not agree with itself.
+        </p>
+        <ul class="rc-keys" id="keys"></ul>
+      </div>
 
       <section class="section">
-        <h2>Roll-call totals</h2>
-        <div class="tablewrap">
-          <table class="data" data-mobile="cards">
-            <thead>
-              <tr><th>Member</th><th>Role</th><th>Tenure</th><th class="text-right">Total votes</th><th class="text-right">Yes</th><th class="text-right">No</th><th class="text-right">Abstain</th><th class="text-right">Yes rate</th></tr>
-            </thead>
-            <tbody id="rows">
-            <!-- BEGIN generated:prerender (ingest/build_prerender.py) -->
-              <tr>
-                <td data-role="title" data-label="Member"><a href="member.html?id=brett-wright"><strong>Brett Wright</strong></a></td>
-                <td data-label="Role">Councilmember</td>
-                <td data-label="Tenure" class="muted nowrap">1 January 2026&ndash; 31 December 2029</td>
-                <td data-label="Total votes" class="text-right mono">380</td>
-                <td data-label="Yes" class="text-right mono">371</td>
-                <td data-label="No" class="text-right mono">7</td>
-                <td data-label="Abstain" class="text-right mono muted">2</td>
-                <td data-label="Yes rate" class="text-right mono">98%</td>
-              </tr>
-              <tr>
-                <td data-role="title" data-label="Member"><a href="member.html?id=melissa-clark"><strong>Melissa Clark</strong></a></td>
-                <td data-label="Role">Councilmember</td>
-                <td data-label="Tenure" class="muted nowrap">1 January 2024&ndash; 31 December 2027</td>
-                <td data-label="Total votes" class="text-right mono">383</td>
-                <td data-label="Yes" class="text-right mono">373</td>
-                <td data-label="No" class="text-right mono">6</td>
-                <td data-label="Abstain" class="text-right mono muted">4</td>
-                <td data-label="Yes rate" class="text-right mono">98%</td>
-              </tr>
-              <tr>
-                <td data-role="title" data-label="Member"><a href="member.html?id=rich-wood"><strong>Rich Wood</strong></a></td>
-                <td data-label="Role">Councilmember</td>
-                <td data-label="Tenure" class="muted nowrap">1 January 2024&ndash; 31 December 2027</td>
-                <td data-label="Total votes" class="text-right mono">383</td>
-                <td data-label="Yes" class="text-right mono">321</td>
-                <td data-label="No" class="text-right mono">28</td>
-                <td data-label="Abstain" class="text-right mono muted">34</td>
-                <td data-label="Yes rate" class="text-right mono">92%</td>
-              </tr>
-              <tr>
-                <td data-role="title" data-label="Member"><a href="member.html?id=jared-gray"><strong>Jared Gray</strong></a></td>
-                <td data-label="Role">Mayor</td>
-                <td data-label="Tenure" class="muted nowrap">1 January 2026&ndash; 31 December 2029</td>
-                <td data-label="Total votes" class="text-right mono">277</td>
-                <td data-label="Yes" class="text-right mono">236</td>
-                <td data-label="No" class="text-right mono">10</td>
-                <td data-label="Abstain" class="text-right mono muted">31</td>
-                <td data-label="Yes rate" class="text-right mono">96%</td>
-              </tr>
-              <tr>
-                <td data-role="title" data-label="Member"><a href="member.html?id=craig-whiting"><strong>Craig Whiting</strong></a></td>
-                <td data-label="Role">Councilmember</td>
-                <td data-label="Tenure" class="muted nowrap">1 January 2026&ndash; 31 December 2029</td>
-                <td data-label="Total votes" class="text-right mono">110</td>
-                <td data-label="Yes" class="text-right mono">108</td>
-                <td data-label="No" class="text-right mono">2</td>
-                <td data-label="Abstain" class="text-right mono muted">0</td>
-                <td data-label="Yes rate" class="text-right mono">98%</td>
-              </tr>
-              <tr>
-                <td data-role="title" data-label="Member"><a href="member.html?id=zachory-huish"><strong>Zachory Huish</strong></a></td>
-                <td data-label="Role">Councilmember</td>
-                <td data-label="Tenure" class="muted nowrap">15 January 2026&ndash; 31 December 2027</td>
-                <td data-label="Total votes" class="text-right mono">100</td>
-                <td data-label="Yes" class="text-right mono">95</td>
-                <td data-label="No" class="text-right mono">3</td>
-                <td data-label="Abstain" class="text-right mono muted">2</td>
-                <td data-label="Yes rate" class="text-right mono">97%</td>
-              </tr>
-            <!-- END generated:prerender -->
-            </tbody>
-          </table>
-        </div>
+        <div class="section-head"><h2>The roster</h2></div>
+        <p class="rc-note" id="divided-note"></p>
+        <!-- The prerendered roster (ingest/build_prerender.py) is what a crawler
+             that runs no JavaScript sees; the script below rebuilds the same
+             cards from the live dataset. Keep the two in step — no <ul> inside a
+             card, because the splicer's container regex closes on the first one. -->
+        <ul id="roster" class="rc-roster">
+        <!-- BEGIN generated:prerender (ingest/build_prerender.py) -->
+          <li class="rc-card is-chair" data-href="member.html?id=jared-gray">
+            <span class="rc-who">
+              <span class="rc-ava" aria-hidden="true">JG</span>
+              <span class="rc-id">
+                <span class="rc-nameline">
+                  <a class="rc-name" href="member.html?id=jared-gray">Jared Gray</a><span class="rc-tag">Mayor</span>
+                </span>
+                <span class="rc-term">Mayor &middot; 1st term, 2026–2029<span class="rc-prior">Previously Councilmember 2024–2025 and 2020–2023</span></span>
+              </span>
+            </span>
+            <span class="rc-meters">
+              <span class="rc-meter">
+                <span class="rc-mlab">Roll-call record <span class="rc-fig">277 votes</span></span>
+                <span class="rc-spine" role="img" aria-label="236 yes, 10 no, 31 not voting"><span class="s-yes" data-n="236" style="width:85.20%"></span><span class="s-no" data-n="10" style="width:3.61%"></span><span class="s-other" data-n="31" style="width:11.19%"></span></span>
+                <span class="rc-legend"><span class="l-yes"><i></i><b>236</b> yes</span><span class="l-no"><i></i><b>10</b> no</span><span class="l-other"><i></i><b>31</b> not voting</span></span>
+              </span>
+              <span class="rc-meter">
+                  <span class="rc-mlab">On divided votes <span class="rc-fig">6 of 36</span></span>
+                  <span class="rc-split" role="img" aria-label="On the minority side of 6 of 36 divided roll calls"><span style="width:16.7%"></span></span>
+                  <span class="rc-splitline">on the losing side of <b>17%</b> of them</span>
+                </span>
+            </span>
+            <span class="rc-go">Full voting record</span>
+          </li>
+          <li class="rc-card" data-href="member.html?id=melissa-clark">
+            <span class="rc-who">
+              <span class="rc-ava" aria-hidden="true">MC</span>
+              <span class="rc-id">
+                <span class="rc-nameline">
+                  <a class="rc-name" href="member.html?id=melissa-clark">Melissa Clark</a>
+                </span>
+                <span class="rc-term">Councilmember &middot; 2nd term, 2024–2027<span class="rc-prior">Previously 2018–2021</span></span>
+              </span>
+            </span>
+            <span class="rc-meters">
+              <span class="rc-meter">
+                <span class="rc-mlab">Roll-call record <span class="rc-fig">383 votes</span></span>
+                <span class="rc-spine" role="img" aria-label="373 yes, 6 no, 4 not voting"><span class="s-yes" data-n="373" style="width:97.39%"></span><span class="s-no" data-n="6" style="width:1.57%"></span><span class="s-other" data-n="4" style="width:1.04%"></span></span>
+                <span class="rc-legend"><span class="l-yes"><i></i><b>373</b> yes</span><span class="l-no"><i></i><b>6</b> no</span><span class="l-other"><i></i><b>4</b> not voting</span></span>
+              </span>
+              <span class="rc-meter">
+                  <span class="rc-mlab">On divided votes <span class="rc-fig">3 of 52</span></span>
+                  <span class="rc-split" role="img" aria-label="On the minority side of 3 of 52 divided roll calls"><span style="width:5.8%"></span></span>
+                  <span class="rc-splitline">on the losing side of <b>6%</b> of them</span>
+                </span>
+            </span>
+            <span class="rc-go">Full voting record</span>
+          </li>
+          <li class="rc-card" data-href="member.html?id=brett-wright">
+            <span class="rc-who">
+              <span class="rc-ava" aria-hidden="true">BW</span>
+              <span class="rc-id">
+                <span class="rc-nameline">
+                  <a class="rc-name" href="member.html?id=brett-wright">Brett Wright</a>
+                </span>
+                <span class="rc-term">Councilmember &middot; 2nd term, 2026–2029<span class="rc-prior">Previously 2022–2025</span></span>
+              </span>
+            </span>
+            <span class="rc-meters">
+              <span class="rc-meter">
+                <span class="rc-mlab">Roll-call record <span class="rc-fig">380 votes</span></span>
+                <span class="rc-spine" role="img" aria-label="371 yes, 7 no, 2 not voting"><span class="s-yes" data-n="371" style="width:97.63%"></span><span class="s-no" data-n="7" style="width:1.84%"></span><span class="s-other" data-n="2" style="width:0.53%"></span></span>
+                <span class="rc-legend"><span class="l-yes"><i></i><b>371</b> yes</span><span class="l-no"><i></i><b>7</b> no</span><span class="l-other"><i></i><b>2</b> not voting</span></span>
+              </span>
+              <span class="rc-meter">
+                  <span class="rc-mlab">On divided votes <span class="rc-fig">8 of 52</span></span>
+                  <span class="rc-split" role="img" aria-label="On the minority side of 8 of 52 divided roll calls"><span style="width:15.4%"></span></span>
+                  <span class="rc-splitline">on the losing side of <b>15%</b> of them</span>
+                </span>
+            </span>
+            <span class="rc-go">Full voting record</span>
+          </li>
+          <li class="rc-card" data-href="member.html?id=rich-wood">
+            <span class="rc-who">
+              <span class="rc-ava" aria-hidden="true">RW</span>
+              <span class="rc-id">
+                <span class="rc-nameline">
+                  <a class="rc-name" href="member.html?id=rich-wood">Rich Wood</a>
+                </span>
+                <span class="rc-term">Councilmember &middot; 1st term, 2024–2027</span>
+              </span>
+            </span>
+            <span class="rc-meters">
+              <span class="rc-meter">
+                <span class="rc-mlab">Roll-call record <span class="rc-fig">383 votes</span></span>
+                <span class="rc-spine" role="img" aria-label="321 yes, 28 no, 34 not voting"><span class="s-yes" data-n="321" style="width:83.81%"></span><span class="s-no" data-n="28" style="width:7.31%"></span><span class="s-other" data-n="34" style="width:8.88%"></span></span>
+                <span class="rc-legend"><span class="l-yes"><i></i><b>321</b> yes</span><span class="l-no"><i></i><b>28</b> no</span><span class="l-other"><i></i><b>34</b> not voting</span></span>
+              </span>
+              <span class="rc-meter">
+                  <span class="rc-mlab">On divided votes <span class="rc-fig">29 of 49</span></span>
+                  <span class="rc-split" role="img" aria-label="On the minority side of 29 of 49 divided roll calls"><span style="width:59.2%"></span></span>
+                  <span class="rc-splitline">on the losing side of <b>59%</b> of them</span>
+                </span>
+            </span>
+            <span class="rc-go">Full voting record</span>
+          </li>
+          <li class="rc-card" data-href="member.html?id=craig-whiting">
+            <span class="rc-who">
+              <span class="rc-ava" aria-hidden="true">CW</span>
+              <span class="rc-id">
+                <span class="rc-nameline">
+                  <a class="rc-name" href="member.html?id=craig-whiting">Craig Whiting</a>
+                </span>
+                <span class="rc-term">Councilmember &middot; 1st term, 2026–2029</span>
+              </span>
+            </span>
+            <span class="rc-meters">
+              <span class="rc-meter">
+                <span class="rc-mlab">Roll-call record <span class="rc-fig">110 votes</span></span>
+                <span class="rc-spine" role="img" aria-label="108 yes, 2 no, 0 not voting"><span class="s-yes" data-n="108" style="width:98.18%"></span><span class="s-no" data-n="2" style="width:1.82%"></span><span class="s-other" data-n="0" style="width:0.00%"></span></span>
+                <span class="rc-legend"><span class="l-yes"><i></i><b>108</b> yes</span><span class="l-no"><i></i><b>2</b> no</span><span class="l-other"><i></i><b>0</b> not voting</span></span>
+              </span>
+              <span class="rc-meter">
+                  <span class="rc-mlab">On divided votes <span class="rc-fig">0 of 17</span></span>
+                  <span class="rc-split" role="img" aria-label="On the minority side of 0 of 17 divided roll calls"><span style="width:0.0%"></span></span>
+                  <span class="rc-splitline">never on the losing side of one</span>
+                </span>
+            </span>
+            <span class="rc-go">Full voting record</span>
+          </li>
+          <li class="rc-card" data-href="member.html?id=zachory-huish">
+            <span class="rc-who">
+              <span class="rc-ava" aria-hidden="true">ZH</span>
+              <span class="rc-id">
+                <span class="rc-nameline">
+                  <a class="rc-name" href="member.html?id=zachory-huish">Zachory Huish</a>
+                </span>
+                <span class="rc-term">Councilmember &middot; 1st term, 2026–2027</span>
+              </span>
+            </span>
+            <span class="rc-meters">
+              <span class="rc-meter">
+                <span class="rc-mlab">Roll-call record <span class="rc-fig">100 votes</span></span>
+                <span class="rc-spine" role="img" aria-label="95 yes, 3 no, 2 not voting"><span class="s-yes" data-n="95" style="width:95.00%"></span><span class="s-no" data-n="3" style="width:3.00%"></span><span class="s-other" data-n="2" style="width:2.00%"></span></span>
+                <span class="rc-legend"><span class="l-yes"><i></i><b>95</b> yes</span><span class="l-no"><i></i><b>3</b> no</span><span class="l-other"><i></i><b>2</b> not voting</span></span>
+              </span>
+              <span class="rc-meter">
+                  <span class="rc-mlab">On divided votes <span class="rc-fig">2 of 14</span></span>
+                  <span class="rc-split" role="img" aria-label="On the minority side of 2 of 14 divided roll calls"><span style="width:14.3%"></span></span>
+                  <span class="rc-splitline">on the losing side of <b>14%</b> of them</span>
+                </span>
+            </span>
+            <span class="rc-go">Full voting record</span>
+          </li>
+        <!-- END generated:prerender -->
+        </ul>
+        <p class="rc-note" id="former" hidden></p>
       </section>
 
       <section class="section">
-        <h2>Voting agreement</h2>
-        <p class="muted" style="margin-top:0;font-size:13px">How often each pair voted the same way (yes/no) on motions where both were recorded. Pairs with under 10 shared votes are hidden.</p>
-        <div class="agreement-controls">
-          <label class="muted" style="font-size:13px">
-            Sort:
-            <select id="sort" class="select" style="margin-left:6px;min-height:32px;font-size:13px;padding:4px 8px">
-              <option value="desc">Most aligned first</option>
-              <option value="asc">Most divergent first</option>
-            </select>
-          </label>
+        <div class="section-head"><h2>Voting agreement</h2></div>
+        <p class="rc-note">
+          How often each pair voted the same way &mdash; yes or no &mdash; on the motions where
+          both were recorded. Pairs with fewer than 10 shared votes are hidden, because a
+          handful of shared roll calls says more about attendance than about agreement.
+        </p>
+        <div class="rc-controls">
+          <div class="rc-ctl" id="focus" role="group" aria-label="Show one member's pairs">
+            <span class="rc-ctl-lab">Focus</span>
+          </div>
+          <div class="rc-ctl">
+            <span class="rc-ctl-lab" id="sort-lab">Sort</span>
+            <div class="rc-seg" role="group" aria-labelledby="sort-lab">
+              <input type="radio" name="sort" id="sort-desc" value="desc" checked />
+              <label for="sort-desc">Most aligned</label>
+              <input type="radio" name="sort" id="sort-asc" value="asc" />
+              <label for="sort-asc">Most divergent</label>
+            </div>
+          </div>
         </div>
+        <p class="rc-summary" id="pair-summary" role="status"></p>
         <ul id="pair-list" class="pair-list"></ul>
       </section>
     </main>
@@ -199,25 +304,393 @@
     <script>
       (async () => {
         const data = await CT.loadData();
-        renderRows(data);
-        renderPairs(data);
+        const splits = splitRecord(data);
+        renderKeys(data, splits);
+        renderNote(data, splits);
+        renderRoster(data, splits);
+        renderFormer(data);
+        wirePairs(data);
         addRosterSchema(data);
-        document.getElementById("sort").addEventListener("change", () => renderPairs(data));
       })();
 
-      // Name the sitting members as an ItemList of Person nodes pointing at their
-      // own pages. Built from the dataset rather than pinned in the <head> so it
-      // turns over with the roster instead of naming last term's council.
+      /* ---------------------------------------------------------------------
+         Who is seated.
+
+         This used to hard-filter on "Councilmember" or "Mayor", which meant the
+         Planning Commission — whose members are Commissioners — rendered an
+         empty table under a heading that said "Council members". The datasets
+         only ever list people who hold a seat and vote, so the role string is
+         not the test; whether their term has run out is.
+         --------------------------------------------------------------------- */
+      const CHAIR = /^(mayor|chair|chairman|chairwoman|president)/i;
+
+      function seated(data) {
+        const members = data.members.filter(m => CT.isCurrentMember(m));
+        const by = data.stats.by_member;
+        return members.sort((a, b) => {
+          const chair = (CHAIR.test(b.role || "") ? 1 : 0) - (CHAIR.test(a.role || "") ? 1 : 0);
+          if (chair) return chair;
+          // Then longest-serving first: the seat's own history, not the order
+          // the parser happened to meet them in.
+          const sa = firstSeated(a), sb = firstSeated(b);
+          if (sa !== sb) return sa < sb ? -1 : 1;
+          return (by[b.id]?.total || 0) - (by[a.id]?.total || 0);
+        });
+      }
+
+      // Earliest term start on file; members with no dates (the commission keeps
+      // none) sort after those who have them rather than ahead of everyone.
+      function firstSeated(m) {
+        const starts = (m.terms || []).map(t => t.start).filter(Boolean);
+        return starts.length ? starts.sort()[0] : "9999";
+      }
+
+      /* ---------------------------------------------------------------------
+         The divided roll calls.
+
+         A body that passes 97% of everything unanimously tells you almost
+         nothing through a yes-rate: every member's is 92–99%. What separates
+         them is the handful of votes that split — so those get counted
+         separately, per member: how many they sat for, and how many they were
+         on the losing side of.
+
+         "Split" means at least one yes and at least one no on the same motion.
+         Abstentions, excusals and absences are not sides, so they neither make
+         a vote divided nor put anyone in the minority.
+         --------------------------------------------------------------------- */
+      const isYes = v => /^(yes|aye)$/i.test(v || "");
+      const isNo  = v => /^(no|nay)$/i.test(v || "");
+
+      function splitRecord(data) {
+        const byMember = {};
+        let divided = 0;
+        for (const m of data.motions) {
+          const votes = (m.votes || []).filter(v => isYes(v.vote) || isNo(v.vote));
+          const yes = votes.filter(v => isYes(v.vote)).length;
+          const no = votes.length - yes;
+          if (!yes || !no) continue;
+          divided++;
+          // A tie loses nobody, so nobody is in the minority on one.
+          const losing = yes === no ? null : (yes < no ? "yes" : "no");
+          for (const v of votes) {
+            const rec = byMember[v.member_id] || (byMember[v.member_id] = { seen: 0, minority: 0 });
+            rec.seen++;
+            if (losing && (isYes(v.vote) ? "yes" : "no") === losing) rec.minority++;
+          }
+        }
+        return { divided, byMember };
+      }
+
+      /* ---------------------------------------------------------------------
+         The masthead figures
+         --------------------------------------------------------------------- */
+      function renderKeys(data, splits) {
+        const n = (x) => x.toLocaleString();
+        const withVotes = data.motions.filter(m => (m.votes || []).length).length;
+        const noun = (data.body_label || "council").trim().split(/\s+/).pop().toLowerCase();
+        const keys = [
+          [seated(data).length, "seats filled", ""],
+          [n(withVotes), "roll calls with names recorded", ""],
+          [n(splits.divided), `of them split the ${noun}`, ""],
+          [CT.fmtDate((data.generated_at || "").slice(0, 10)), "record last updated", " is-date"],
+        ];
+        document.getElementById("keys").innerHTML = keys.map(([fig, lab, mod]) => `
+          <li class="rc-key${mod}">
+            <span class="rc-keyfig">${CT.escapeHtml(String(fig))}</span>
+            <span class="rc-keylab">${CT.escapeHtml(lab)}</span>
+          </li>`).join("");
+      }
+
+      // Every card counts in "divided" roll calls, so the page owes the reader
+      // the definition before it uses it — and the ratio it applies to.
+      function renderNote(data, splits) {
+        const withVotes = data.motions.filter(m => (m.votes || []).length).length;
+        const noun = (data.body_label || "council").trim().split(/\s+/).pop().toLowerCase();
+        const unanimous = withVotes - splits.divided;
+        document.getElementById("divided-note").innerHTML =
+          `A roll call counts as <strong>divided</strong> when at least one member voted yes and at ` +
+          `least one voted no. The ${CT.escapeHtml(noun)} was unanimous on ` +
+          `<strong>${unanimous.toLocaleString()}</strong> of the ` +
+          `<strong>${withVotes.toLocaleString()}</strong> roll calls on file, so the second meter on ` +
+          `each card is the part of the record where members actually differ.`;
+      }
+
+      /* ---------------------------------------------------------------------
+         The roster cards. Mirrored by render_members() in
+         ingest/build_prerender.py — change one, change the other.
+         --------------------------------------------------------------------- */
+      function renderRoster(data, splits) {
+        const list = document.getElementById("roster");
+        const members = seated(data);
+        if (!members.length) {
+          list.innerHTML = '<li class="rc-none">No seated members on file for this body yet.</li>';
+          return;
+        }
+        list.innerHTML = members.map(m => card(data, splits, m)).join("");
+
+        // The name and the footer link are the real targets; this makes the
+        // whole card behave like one, the way the table rows used to. A click
+        // that ends a text selection is a read, not a navigation.
+        list.querySelectorAll(".rc-card[data-href]").forEach(el => {
+          el.addEventListener("click", (e) => {
+            if (e.target.closest("a")) return;
+            if ((window.getSelection() || "").toString()) return;
+            location.href = el.dataset.href;
+          });
+        });
+      }
+
+      function card(data, splits, m) {
+        const s = data.stats.by_member[m.id] || { total: 0, yes: 0, no: 0, nay: 0, abstain: 0, excused: 0, absent: 0, yes_rate: 0 };
+        const yes = s.yes;
+        const no = s.no + (s.nay || 0);
+        const other = s.abstain + s.excused + s.absent;
+        const total = s.total || (yes + no + other);
+        const pct = (x) => total ? (x / total * 100).toFixed(2) : 0;
+        const href = `member.html?id=${encodeURIComponent(m.id)}`;
+        const chair = CHAIR.test(m.role || "");
+        const split = splits.byMember[m.id] || { seen: 0, minority: 0 };
+
+        return `
+          <li class="rc-card${chair ? " is-chair" : ""}" data-href="${href}">
+            <span class="rc-who">
+              <span class="rc-ava" aria-hidden="true">${CT.escapeHtml(initials(m.name))}</span>
+              <span class="rc-id">
+                <span class="rc-nameline">
+                  <a class="rc-name" href="${href}">${CT.escapeHtml(m.name)}</a>
+                  ${chair ? `<span class="rc-tag">${CT.escapeHtml(m.role)}</span>` : ""}
+                </span>
+                <span class="rc-term">${termLine(m)}</span>
+              </span>
+            </span>
+            <span class="rc-meters">
+              <span class="rc-meter">
+                <span class="rc-mlab">Roll-call record <span class="rc-fig">${total.toLocaleString()} votes</span></span>
+                <span class="rc-spine" role="img" aria-label="${yes} yes, ${no} no, ${other} not voting">
+                  <span class="s-yes" data-n="${yes}" style="width:${pct(yes)}%"></span>
+                  <span class="s-no" data-n="${no}" style="width:${pct(no)}%"></span>
+                  <span class="s-other" data-n="${other}" style="width:${pct(other)}%"></span>
+                </span>
+                <span class="rc-legend">
+                  <span class="l-yes"><i></i><b>${yes.toLocaleString()}</b> yes</span>
+                  <span class="l-no"><i></i><b>${no}</b> no</span>
+                  <span class="l-other"><i></i><b>${other}</b> not voting</span>
+                </span>
+              </span>
+              ${splitMeter(split)}
+            </span>
+            <span class="rc-go">Full voting record</span>
+          </li>`;
+      }
+
+      function splitMeter(split) {
+        if (!split.seen) {
+          return `<span class="rc-meter"><span class="rc-mlab">On divided votes</span>
+            <span class="rc-none">No roll call they have sat for has split yet.</span></span>`;
+        }
+        const share = (split.minority / split.seen * 100).toFixed(1);
+        const caption = split.minority === 0
+          ? "never on the losing side of one"
+          : `on the losing side of <b>${(split.minority / split.seen * 100).toFixed(0)}%</b> of them`;
+        return `
+          <span class="rc-meter">
+            <span class="rc-mlab">On divided votes <span class="rc-fig">${split.minority} of ${split.seen}</span></span>
+            <span class="rc-split" role="img" aria-label="On the minority side of ${split.minority} of ${split.seen} divided roll calls">
+              <span style="width:${share}%"></span>
+            </span>
+            <span class="rc-splitline">${caption}</span>
+          </span>`;
+      }
+
+      // "Councilmember · 2nd term, 2026–2029", with anything earlier on its own
+      // line. Bodies that publish no term dates (the commission) get the role.
+      function termLine(m) {
+        const terms = m.terms || [];
+        const [now, ...prior] = terms;
+        const role = CT.escapeHtml(m.role || "Member");
+        if (!now || !(now.start || now.end)) return role;
+
+        // How many consecutive terms in the seat they hold now.
+        let run = 1;
+        for (const t of prior) { if (t.role === now.role) run++; else break; }
+        const head = `${role} &middot; ${ordinal(run)} term, ${CT.escapeHtml(termYears(now))}`;
+
+        const before = prior.filter(t => t.start || t.end);
+        if (!before.length) return head;
+        const roles = [...new Set(before.map(t => t.role || ""))];
+        const years = before.map(t => CT.escapeHtml(termYears(t))).join(" and ");
+        const listed = roles.length === 1 && roles[0] && roles[0] !== now.role
+          ? `${CT.escapeHtml(roles[0])} ${years}`
+          : before.map(t => t.role === now.role
+              ? CT.escapeHtml(termYears(t))
+              : `${CT.escapeHtml(t.role || "member")} ${CT.escapeHtml(termYears(t))}`).join(", ");
+        return `${head}<span class="rc-prior">Previously ${listed}</span>`;
+      }
+
+      function ordinal(n) {
+        const suffix = (n % 100 >= 11 && n % 100 <= 13) ? "th"
+          : ["th", "st", "nd", "rd"][n % 10] || "th";
+        return `${n}${suffix}`;
+      }
+
+      function termYears(t) {
+        const a = (t.start || "").slice(0, 4);
+        const b = t.end ? (t.end || "").slice(0, 4) : "present";
+        if (!a) return b;
+        return a === b ? a : `${a}–${b}`;
+      }
+
+      // Everyone whose term has run out but whose votes are still in the record.
+      // They have pages; without this line there is no way to reach them except
+      // through an old motion.
+      function renderFormer(data) {
+        const past = data.members
+          .filter(m => !CT.isCurrentMember(m))
+          .sort((a, b) => (b.tenure_end || "").localeCompare(a.tenure_end || ""));
+        if (!past.length) return;
+        const el = document.getElementById("former");
+        el.innerHTML = "Still on file, from earlier terms: " + past.map(m =>
+          `<a href="member.html?id=${encodeURIComponent(m.id)}">${CT.escapeHtml(m.name)}</a>` +
+          `<span class="muted"> (${CT.escapeHtml(termYears((m.terms || [])[0] || { start: m.tenure_start, end: m.tenure_end }))})</span>`
+        ).join(", ") + ".";
+        el.hidden = false;
+      }
+
+      /* ---------------------------------------------------------------------
+         Agreement
+         --------------------------------------------------------------------- */
+      const MIN_SHARED = 10;
+
+      function wirePairs(data) {
+        const active = seated(data).filter(m => (data.stats.by_member[m.id]?.total || 0) >= 5);
+        const idTo = Object.fromEntries(active.map(m => [m.id, m]));
+
+        const pairs = [];
+        for (const key of Object.keys(data.stats.agreement)) {
+          const [aId, bId] = key.split("|");
+          if (!idTo[aId] || !idTo[bId]) continue;
+          const n = data.stats.agreement_n[key] || 0;
+          if (n < MIN_SHARED) continue;
+          pairs.push({ a: idTo[aId], b: idTo[bId], frac: data.stats.agreement[key], n });
+        }
+
+        const state = { sort: "desc", focus: "" };
+        const focusBar = document.getElementById("focus");
+
+        // One chip per member who appears in at least one shown pair, plus the
+        // way back out. Filtering by person is the question people actually
+        // bring to this list — "who does my councilmember side with?"
+        const inPairs = active.filter(m => pairs.some(p => p.a.id === m.id || p.b.id === m.id));
+        if (inPairs.length) {
+          focusBar.insertAdjacentHTML("beforeend",
+            `<button type="button" class="rc-chip is-plain" data-focus="" aria-pressed="true">Everyone</button>` +
+            inPairs.map(m => `
+              <button type="button" class="rc-chip" data-focus="${CT.escapeHtml(m.id)}" aria-pressed="false">
+                <span class="rc-chip-ava" aria-hidden="true">${CT.escapeHtml(initials(m.name))}</span>
+                ${CT.escapeHtml(m.name)}
+              </button>`).join(""));
+        } else {
+          focusBar.hidden = true;
+        }
+
+        focusBar.addEventListener("click", (e) => {
+          const btn = e.target.closest("[data-focus]");
+          if (!btn) return;
+          state.focus = btn.dataset.focus;
+          focusBar.querySelectorAll("[data-focus]").forEach(b =>
+            b.setAttribute("aria-pressed", String(b.dataset.focus === state.focus)));
+          draw();
+        });
+
+        document.querySelectorAll('.rc-seg input[name="sort"]').forEach(input =>
+          input.addEventListener("change", () => { state.sort = input.value; draw(); }));
+
+        draw();
+
+        function draw() {
+          const ul = document.getElementById("pair-list");
+          const summary = document.getElementById("pair-summary");
+          let shown = pairs.slice();
+          if (state.focus) shown = shown.filter(p => p.a.id === state.focus || p.b.id === state.focus);
+          shown.sort((x, y) => state.sort === "desc" ? y.frac - x.frac : x.frac - y.frac);
+
+          if (!shown.length) {
+            ul.innerHTML = '<li class="rc-none">Not enough overlapping vote data yet.</li>';
+            ul.classList.remove("has-avg");
+            summary.textContent = "";
+            return;
+          }
+
+          // The average is the average of every shown pair, and it is drawn down
+          // the list as a dashed line. Without it a wall of 74–99% bars all read
+          // the same: long, and green.
+          const avg = shown.reduce((t, p) => t + p.frac, 0) / shown.length;
+          const lo = Math.min(...shown.map(p => p.frac));
+          const hi = Math.max(...shown.map(p => p.frac));
+          const who = state.focus ? `${idTo[state.focus].name}'s ` : "";
+          summary.innerHTML =
+            `<b>${shown.length}</b> ${who}pair${shown.length === 1 ? "" : "s"} shown &middot; ` +
+            `agreement runs <b>${pct(lo)}</b> to <b>${pct(hi)}</b> &middot; ` +
+            `<span class="rc-avgkey">average <b>${pct(avg)}</b></span>`;
+
+          const css = getComputedStyle(document.documentElement);
+          const barLo = css.getPropertyValue("--bar-lo").trim() || "#D9563A";
+          const barHi = css.getPropertyValue("--bar-hi").trim() || "#1F8A5B";
+
+          ul.style.setProperty("--avg", pct(avg));
+          ul.classList.add("has-avg");
+          ul.innerHTML = shown.map(p => {
+            // In focus mode the person you asked about is always on the left, so
+            // the column of faces stays still and only the other name changes.
+            const flip = state.focus && p.b.id === state.focus;
+            const left = flip ? p.b : p.a, right = flip ? p.a : p.b;
+            const share = (p.frac * 100).toFixed(0);
+            // Perceptual mix between the two palette endpoints; falls back
+            // gracefully on browsers without color-mix() support.
+            const colour = `color-mix(in oklch, ${barLo} ${100 - share}%, ${barHi} ${share}%)`;
+            return `
+              <li class="pair">
+                <a class="pair-member left" href="member.html?id=${encodeURIComponent(left.id)}">
+                  <span class="pair-avatar">${CT.escapeHtml(initials(left.name))}</span>
+                  <span class="pair-name">${CT.escapeHtml(left.name)}</span>
+                </a>
+                <div class="pair-bar-wrap" title="${CT.escapeHtml(left.name)} and ${CT.escapeHtml(right.name)} agreed on ${share}% of ${p.n} shared roll calls">
+                  <div class="pair-bar" style="width:${share}%;background:${colour}"></div>
+                  <span class="pair-meta">
+                    <span class="pair-pct">${share}%</span>
+                    <span class="pair-n">n=${p.n}</span>
+                  </span>
+                </div>
+                <a class="pair-member right" href="member.html?id=${encodeURIComponent(right.id)}">
+                  <span class="pair-name">${CT.escapeHtml(right.name)}</span>
+                  <span class="pair-avatar">${CT.escapeHtml(initials(right.name))}</span>
+                </a>
+              </li>`;
+          }).join("");
+        }
+      }
+
+      const pct = (frac) => `${(frac * 100).toFixed(0)}%`;
+
+      function initials(name) {
+        const p = (name || "").split(/\s+/).filter(Boolean);
+        return ((p[0] || "")[0] + (p[p.length - 1] || "")[0] || "?").toUpperCase();
+      }
+
+      /* ---------------------------------------------------------------------
+         Name the sitting members as an ItemList of Person nodes pointing at
+         their own pages. Built from the dataset rather than pinned in the
+         <head> so it turns over with the roster instead of naming last term's
+         council.
+         --------------------------------------------------------------------- */
       function addRosterSchema(data) {
-        const members = data.members.filter(m =>
-          (m.role === "Councilmember" || m.role === "Mayor") && CT.isCurrentMember(m)
-        );
+        const members = seated(data);
         if (!members.length) return;
         CT.addSchema({
           "@context": "https://schema.org",
           "@type": "ItemList",
           "@id": "https://civicrollcall.com/members.html#roster",
-          name: "Eagle Mountain City Council members",
+          name: `Eagle Mountain ${data.body_label || "City Council"} members`,
           numberOfItems: members.length,
           itemListOrder: "https://schema.org/ItemListUnordered",
           itemListElement: members.map((m, i) => {
@@ -241,117 +714,6 @@
             };
           }),
         });
-      }
-
-      function renderRows(data) {
-        const members = data.members.filter(m =>
-          (m.role === "Councilmember" || m.role === "Mayor") && CT.isCurrentMember(m)
-        );
-        const rows = members.map(m => {
-          const s = data.stats.by_member[m.id] || { total:0,yes:0,no:0,nay:0,abstain:0,excused:0,absent:0,yes_rate:0 };
-          const opposed = s.no + (s.nay || 0);
-          const prior = (m.terms || []).slice(1);
-          const tenureCell = `${CT.fmtDate(m.tenure_start)}${m.tenure_end ? "&ndash; " + CT.fmtDate(m.tenure_end) : "&ndash; present"}` +
-            (prior.length ? `<div class="muted" style="font-size:11px;margin-top:2px">prior: ${prior.map(t => `${CT.escapeHtml(t.role)} ${termYears(t)}`).join(", ")}</div>` : "");
-          return `
-            <tr class="clickable" data-href="member.html?id=${encodeURIComponent(m.id)}">
-              <td data-role="title" data-label="Member"><a href="member.html?id=${encodeURIComponent(m.id)}"><strong>${CT.escapeHtml(m.name)}</strong></a></td>
-              <td data-label="Role">${CT.escapeHtml(m.role)}</td>
-              <td data-label="Tenure" class="muted nowrap">${tenureCell}</td>
-              <td data-label="Total votes" class="text-right mono">${s.total}</td>
-              <td data-label="Yes" class="text-right mono" style="color:var(--ok)">${s.yes}</td>
-              <td data-label="No" class="text-right mono" style="color:var(--danger)">${opposed}</td>
-              <td data-label="Abstain" class="text-right mono muted">${s.abstain + s.excused + s.absent}</td>
-              <td data-label="Yes rate" class="text-right mono">${(s.yes_rate*100).toFixed(0)}%</td>
-            </tr>
-          `;
-        }).join("");
-        document.getElementById("rows").innerHTML = rows;
-        document.querySelectorAll('#rows tr.clickable').forEach(tr => {
-          tr.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A') return;
-            location.href = tr.dataset.href;
-          });
-        });
-      }
-
-      const MIN_SHARED = 10;
-
-      function renderPairs(data) {
-        const sortDir = document.getElementById("sort").value || "desc";
-
-        const active = data.members.filter(m =>
-          (m.role === "Councilmember" || m.role === "Mayor") &&
-          CT.isCurrentMember(m) &&
-          (data.stats.by_member[m.id]?.total || 0) >= 5
-        );
-        const idToMember = Object.fromEntries(active.map(m => [m.id, m]));
-
-        const pairs = [];
-        for (const key of Object.keys(data.stats.agreement)) {
-          const [aId, bId] = key.split("|");
-          if (!idToMember[aId] || !idToMember[bId]) continue;
-          const n = data.stats.agreement_n[key] || 0;
-          if (n < MIN_SHARED) continue;
-          pairs.push({
-            a: idToMember[aId],
-            b: idToMember[bId],
-            frac: data.stats.agreement[key],
-            n,
-          });
-        }
-        pairs.sort((x, y) => sortDir === "desc" ? y.frac - x.frac : x.frac - y.frac);
-
-        const ul = document.getElementById("pair-list");
-        if (pairs.length === 0) {
-          ul.innerHTML = '<li class="muted">Not enough overlapping vote data yet.</li>';
-          return;
-        }
-
-        // Read palette ramp endpoints from CSS custom properties so the
-        // bar follows light/dark mode automatically.
-        const css = getComputedStyle(document.documentElement);
-        const lo = css.getPropertyValue("--bar-lo").trim() || "#D9563A";
-        const hi = css.getPropertyValue("--bar-hi").trim() || "#1F8A5B";
-
-        ul.innerHTML = pairs.map(p => {
-          const pct = (p.frac * 100).toFixed(0);
-          const loW = ((1 - p.frac) * 100).toFixed(0);
-          const hiW = (p.frac * 100).toFixed(0);
-          // Perceptual mix between the two palette endpoints; falls back
-          // gracefully on browsers without color-mix() support.
-          const barColor = `color-mix(in oklch, ${lo} ${loW}%, ${hi} ${hiW}%)`;
-          return `
-            <li class="pair">
-              <a class="pair-member left" href="member.html?id=${encodeURIComponent(p.a.id)}">
-                <span class="pair-avatar">${CT.escapeHtml(initials(p.a.name))}</span>
-                <span class="pair-name">${CT.escapeHtml(p.a.name)}</span>
-              </a>
-              <div class="pair-bar-wrap" title="${p.a.name} & ${p.b.name} agreed on ${pct}% of ${p.n} shared roll calls">
-                <div class="pair-bar" style="width:${pct}%;background:${barColor}"></div>
-                <span class="pair-meta">
-                  <span class="pair-pct">${pct}%</span>
-                  <span class="pair-n">n=${p.n}</span>
-                </span>
-              </div>
-              <a class="pair-member right" href="member.html?id=${encodeURIComponent(p.b.id)}">
-                <span class="pair-name">${CT.escapeHtml(p.b.name)}</span>
-                <span class="pair-avatar">${CT.escapeHtml(initials(p.b.name))}</span>
-              </a>
-            </li>
-          `;
-        }).join("");
-      }
-
-      function initials(name) {
-        const p = (name||"").split(/\s+/).filter(Boolean);
-        return ((p[0]||"")[0] + (p[p.length-1]||"")[0] || "?").toUpperCase();
-      }
-
-      function termYears(t) {
-        const a = (t.start || "").slice(0,4);
-        const b = t.end ? (t.end || "").slice(0,4) : "present";
-        return a && a === b ? a : `${a}–${b}`;
       }
     </script>
   </body>

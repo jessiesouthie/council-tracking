@@ -22,7 +22,7 @@ What gets written, and why it stops where it does:
                  ingest/build_meeting_pages.py writes for it. This is the only
                  crawlable path to those several hundred pages — the scripted
                  card links to them too, but nothing follows that before render.
-  members.html   the sitting roster as table rows, linked to each member page.
+  members.html   the sitting roster as cards, linked to each member page.
   motions.html   the most recent MOTION_LIMIT motions. There are over a thousand
                  and they're addressed by fragment on this one page, so listing
                  all of them would add page weight without adding a single URL.
@@ -141,39 +141,177 @@ def render_meetings(data: dict, body_id: str = "city-council") -> str:
     )
 
 
+CHAIR = re.compile(r"^(mayor|chair|chairman|chairwoman|president)", re.I)
+
+
+def split_record(data: dict) -> tuple[int, dict[str, dict[str, int]]]:
+    """Divided roll calls, and each member's minority side of them.
+
+    Mirrors splitRecord() in docs/members.html. A roll call is divided when at
+    least one member voted yes and at least one voted no; abstentions and
+    excusals are not sides, so they neither divide a vote nor lose one.
+    """
+    per: dict[str, dict[str, int]] = {}
+    divided = 0
+    for motion in data.get("motions") or []:
+        votes = [v for v in (motion.get("votes") or [])
+                 if str(v.get("vote", "")).lower() in ("yes", "aye", "no", "nay")]
+        yes = [v for v in votes if str(v.get("vote", "")).lower() in ("yes", "aye")]
+        no = [v for v in votes if v not in yes]
+        if not yes or not no:
+            continue
+        divided += 1
+        losing = None if len(yes) == len(no) else ("yes" if len(yes) < len(no) else "no")
+        for vote in votes:
+            rec = per.setdefault(vote.get("member_id"), {"seen": 0, "minority": 0})
+            rec["seen"] += 1
+            side = "yes" if vote in yes else "no"
+            if losing and side == losing:
+                rec["minority"] += 1
+    return divided, per
+
+
+def first_seated(member: dict) -> str:
+    starts = sorted(t["start"] for t in (member.get("terms") or []) if t.get("start"))
+    return starts[0] if starts else "9999"
+
+
+def term_years(term: dict) -> str:
+    start = (term.get("start") or "")[:4]
+    end = (term.get("end") or "")[:4] or "present"
+    if not start:
+        return end
+    return start if start == end else f"{start}\u2013{end}"
+
+
+def ordinal(n: int) -> str:
+    suffix = "th" if 11 <= n % 100 <= 13 else {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    return f"{n}{suffix}"
+
+
+def term_line(member: dict) -> str:
+    """Mirrors termLine() in docs/members.html."""
+    terms = member.get("terms") or []
+    role = esc(member.get("role") or "Member")
+    now = terms[0] if terms else None
+    prior = terms[1:]
+    if not now or not (now.get("start") or now.get("end")):
+        return role
+
+    run = 1
+    for term in prior:
+        if term.get("role") == now.get("role"):
+            run += 1
+        else:
+            break
+    head = f"{role} &middot; {ordinal(run)} term, {esc(term_years(now))}"
+
+    before = [t for t in prior if t.get("start") or t.get("end")]
+    if not before:
+        return head
+    roles = list(dict.fromkeys(t.get("role") or "" for t in before))
+    if len(roles) == 1 and roles[0] and roles[0] != now.get("role"):
+        listed = f'{esc(roles[0])} {" and ".join(esc(term_years(t)) for t in before)}'
+    else:
+        listed = ", ".join(
+            esc(term_years(t)) if t.get("role") == now.get("role")
+            else f'{esc(t.get("role") or "member")} {esc(term_years(t))}'
+            for t in before)
+    return f'{head}<span class="rc-prior">Previously {listed}</span>'
+
+
+def initials(name: str) -> str:
+    parts = [p for p in str(name or "").split() if p]
+    first = parts[0][0] if parts else ""
+    last = parts[-1][0] if parts else ""
+    return (first + last or "?").upper()
+
+
+def split_meter(split: dict[str, int]) -> str:
+    """Mirrors splitMeter() in docs/members.html."""
+    if not split["seen"]:
+        return ('<span class="rc-meter"><span class="rc-mlab">On divided votes</span>'
+                '<span class="rc-none">No roll call they have sat for has split yet.</span>'
+                "</span>")
+    share = split["minority"] / split["seen"] * 100
+    caption = ("never on the losing side of one" if not split["minority"]
+               else f'on the losing side of <b>{share:.0f}%</b> of them')
+    return (
+        '<span class="rc-meter">\n'
+        f'                  <span class="rc-mlab">On divided votes '
+        f'<span class="rc-fig">{split["minority"]} of {split["seen"]}</span></span>\n'
+        f'                  <span class="rc-split" role="img" aria-label="On the minority side of '
+        f'{split["minority"]} of {split["seen"]} divided roll calls">'
+        f'<span style="width:{share:.1f}%"></span></span>\n'
+        f'                  <span class="rc-splitline">{caption}</span>\n'
+        "                </span>"
+    )
+
+
 def render_members(data: dict, today: str) -> str:
-    members = [m for m in (data.get("members") or [])
-               if m.get("role") in ("Councilmember", "Mayor")
-               and is_current_member(m, today)]
+    """The roster, as the cards docs/members.html renders from the live data.
+
+    The two have to agree: this copy is what a crawler and the first paint see,
+    and the scripted one replaces it wholesale a moment later. card() and
+    splitMeter() in that page are the other half of this function — change one,
+    change the other.
+    """
+    members = [m for m in (data.get("members") or []) if is_current_member(m, today)]
     if not members:
         return ""
 
     by_member = (data.get("stats") or {}).get("by_member") or {}
-    rows = []
+    # Chair first, then longest-serving, then by how much record they carry.
+    members.sort(key=lambda m: (
+        0 if CHAIR.match(m.get("role") or "") else 1,
+        first_seated(m),
+        -(by_member.get(m.get("id"), {}).get("total") or 0),
+    ))
+
+    _, splits = split_record(data)
+    cards = []
     for member in members:
         s = by_member.get(member.get("id")) or {}
-        total = s.get("total", 0)
         yes = s.get("yes", 0)
-        opposed = s.get("no", 0) + s.get("nay", 0)
+        no = s.get("no", 0) + s.get("nay", 0)
         other = s.get("abstain", 0) + s.get("excused", 0) + s.get("absent", 0)
-        rate = f"{round((s.get('yes_rate') or 0) * 100)}%"
-        start = fmt_date(member.get("tenure_start", ""))
-        end = fmt_date(member["tenure_end"]) if member.get("tenure_end") else "present"
+        total = s.get("total") or (yes + no + other)
+        pct = (lambda x: f"{x / total * 100:.2f}" if total else "0")
         href = f'member.html?id={esc(member.get("id"))}'
-        rows.append(
-            f"              <tr>\n"
-            f'                <td data-role="title" data-label="Member">'
-            f'<a href="{href}"><strong>{esc(member.get("name"))}</strong></a></td>\n'
-            f'                <td data-label="Role">{esc(member.get("role"))}</td>\n'
-            f'                <td data-label="Tenure" class="muted nowrap">{esc(start)}&ndash; {esc(end)}</td>\n'
-            f'                <td data-label="Total votes" class="text-right mono">{total}</td>\n'
-            f'                <td data-label="Yes" class="text-right mono">{yes}</td>\n'
-            f'                <td data-label="No" class="text-right mono">{opposed}</td>\n'
-            f'                <td data-label="Abstain" class="text-right mono muted">{other}</td>\n'
-            f'                <td data-label="Yes rate" class="text-right mono">{rate}</td>\n'
-            f"              </tr>"
+        chair = bool(CHAIR.match(member.get("role") or ""))
+        split = splits.get(member.get("id")) or {"seen": 0, "minority": 0}
+        tag = (f'<span class="rc-tag">{esc(member.get("role"))}</span>' if chair else "")
+        cards.append(
+            f'          <li class="rc-card{" is-chair" if chair else ""}" data-href="{href}">\n'
+            f'            <span class="rc-who">\n'
+            f'              <span class="rc-ava" aria-hidden="true">{esc(initials(member.get("name")))}</span>\n'
+            f'              <span class="rc-id">\n'
+            f'                <span class="rc-nameline">\n'
+            f'                  <a class="rc-name" href="{href}">{esc(member.get("name"))}</a>{tag}\n'
+            f'                </span>\n'
+            f'                <span class="rc-term">{term_line(member)}</span>\n'
+            f'              </span>\n'
+            f'            </span>\n'
+            f'            <span class="rc-meters">\n'
+            f'              <span class="rc-meter">\n'
+            f'                <span class="rc-mlab">Roll-call record '
+            f'<span class="rc-fig">{total:,} votes</span></span>\n'
+            f'                <span class="rc-spine" role="img" aria-label="{yes} yes, {no} no, '
+            f'{other} not voting">'
+            f'<span class="s-yes" data-n="{yes}" style="width:{pct(yes)}%"></span>'
+            f'<span class="s-no" data-n="{no}" style="width:{pct(no)}%"></span>'
+            f'<span class="s-other" data-n="{other}" style="width:{pct(other)}%"></span></span>\n'
+            f'                <span class="rc-legend">'
+            f'<span class="l-yes"><i></i><b>{yes:,}</b> yes</span>'
+            f'<span class="l-no"><i></i><b>{no}</b> no</span>'
+            f'<span class="l-other"><i></i><b>{other}</b> not voting</span></span>\n'
+            f'              </span>\n'
+            f'              {split_meter(split)}\n'
+            f'            </span>\n'
+            f'            <span class="rc-go">Full voting record</span>\n'
+            f"          </li>"
         )
-    return "\n".join(rows)
+    return "\n".join(cards)
 
 
 def render_motions(data: dict) -> str:
@@ -247,11 +385,13 @@ def splice(source: str, container: re.Pattern[str], body: str, indent: str) -> s
 # (open tag)(inner)(close tag) for each container the pages hand to innerHTML.
 CONTAINERS = {
     "meetings.html": re.compile(r'(<div id="content">)(.*?)(</div>)', re.S),
-    "members.html": re.compile(r'(<tbody id="rows">)(.*?)(</tbody>)', re.S),
+    # The roster's cards are built from <span>s, not <div>s, precisely so this
+    # non-greedy close lands on the container and not on the first card.
+    "members.html": re.compile(r'(<ul id="roster" class="rc-roster">)(.*?)(</ul>)', re.S),
     "motions.html": re.compile(r'(<div id="rows">)(.*?)(</div>)', re.S),
 }
 
-INDENTS = {"meetings.html": "      ", "members.html": "            ",
+INDENTS = {"meetings.html": "      ", "members.html": "        ",
            "motions.html": "      "}
 
 
