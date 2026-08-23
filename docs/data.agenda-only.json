@@ -1,76 +1,9 @@
 {
-  "generated_at": "2026-08-17T15:34:43Z",
+  "generated_at": "2026-08-23T23:34:38Z",
   "source": "Eagle Mountain CivicClerk portal",
   "timezone": "America/Denver",
   "bodies": {
     "city-council": [
-      {
-        "id": 756,
-        "title": "City Council - Special Session",
-        "date": "2026-08-10",
-        "start": "15:30",
-        "start_label": "3:30 PM",
-        "location": "1650 Stagecoach Run",
-        "url": "https://eaglemountainut.portal.civicclerk.com/event/756/overview",
-        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2901,plainText=false)",
-        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/756/media",
-        "agenda_posted_on": "2026-08-07",
-        "sessions": [
-          {
-            "start": "15:30",
-            "start_label": "3:30 PM",
-            "label": "City Council - Special Session",
-            "public_comment": false
-          }
-        ],
-        "agenda": [
-          {
-            "number": "1",
-            "title": "CALL TO ORDER",
-            "note": "",
-            "session": "15:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "2",
-            "title": "PLEDGE OF ALLEGIANCE",
-            "note": "",
-            "session": "15:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "3",
-            "title": "RESOLUTIONS",
-            "note": "",
-            "session": "15:30",
-            "group": null,
-            "items": [
-              {
-                "number": "3.A",
-                "kind": "RESOLUTION",
-                "title": "A Resolution of Eagle Mountain City, Utah, Approving the Fiscal Year 2026 Community Development Block Grant (CDBG) Annual Action Plan and Authorizing Its Submission to the U.S. Department of Housing and Urban Development.",
-                "time": "",
-                "background": "(Presented by Affordable Housing Coordinator, Kiara Polee) Eagle Mountain City receives annual funding as an Entitlement Community under the U.S. Department of Housing and Urban Development's (HUD) Community Development Block Grant (CDBG) Program. HUD requires the City to adopt an Annual Action Plan each year identifying how those funds will be used during the upcoming program year in accordance with the 2025\u2013 2029 Consolidated Plan. Staff has completed the required public participation process, including public notice, a public comment period, and public hearings. Council approval will authorize submission of the Annual Action Plan to HUD by the August 14, 2026 deadline.",
-                "plain": ""
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "4",
-            "title": "ADJOURNMENT",
-            "note": "",
-            "session": "15:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          }
-        ]
-      },
       {
         "id": 755,
         "title": "City Council - Interlocal Meeting",
@@ -2374,6 +2307,380 @@
           {
             "number": "9",
             "title": "Adjournment",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      }
+    ],
+    "redevelopment-agency-board": [
+      {
+        "id": 750,
+        "title": "Redevelopment Agency Board Meeting",
+        "date": "2026-06-16",
+        "start": "20:00",
+        "start_label": "8:00 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/750/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1843,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/750/media",
+        "agenda_posted_on": "2026-06-12",
+        "sessions": [],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "MINUTES",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "June 2, 2026 Minutes - Regular Redevelopment Agency Board Meeting",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "4",
+            "title": "RESOLUTIONS/PUBLIC HEARINGS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "4.A",
+                "kind": "RESOLUTION/PUBLIC HEARING",
+                "title": "A Resolution of the Redevelopment Agency Board of Eagle Mountain City, Utah, Adopting the RDA Budget for Fiscal Year 2026-2027.",
+                "time": "",
+                "background": "(Presented by Administrative Services Director Kimberly Ruesch) State law requires the RDA Board to hold a public hearing on the tentative budget and adopt a final budget. The RDA Board approved the tentative budget on May 6, 2026, and set the public hearing for budget adoption on June 16, 2026.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "5",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 751,
+        "title": "Redevelopment Agency Board Meeting",
+        "date": "2026-06-02",
+        "start": "20:00",
+        "start_label": "8:00 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/751/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1808,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/751/media",
+        "agenda_posted_on": "2025-05-29",
+        "sessions": [],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "MINUTES",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "May 5, 2026 Minutes - Regular Redevelopment Agency Board Meeting",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "3.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of the Redevelopment Agency Board of Eagle Mountain City, Utah, Approving the Issuance of the Agency's Sales Tax and Tax Increment Revenue Bonds, Series 2026 (the \"Bonds\") in Par Amount of Not to Exceed $10,000,000 and Authorizing the Execution of Related Bond Documents Thereto and all other Actions Required to Issue the Bonds.",
+                "time": "",
+                "background": "(Presented by Director of Administrative Services, Kimberly Ruesch) This resolution authorizes the City to pledge a portion of its sales and use tax revenue toward the Redevelopment Agency\u2019s Series 2026 bonds to finance these infrastructure improvements. The project involves a proposed 50-acre retail development anchored by Smith\u2019s Marketplace and Lowe\u2019s Home Improvement, using CRA and TIF financing to help fund nearby roadway improvements, including Old Airport Road, Lake Mountain Corridor, and Pony Express Parkway. The City Council previously directed Staff on May 19, 2026, to move forward with financing options to support favorable bond terms.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "4",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 668,
+        "title": "Redevelopment Agency Board Meeting",
+        "date": "2025-12-16",
+        "start": "20:00",
+        "start_label": "8:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/668/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1584,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/668/media",
+        "agenda_posted_on": "",
+        "sessions": [],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "MINUTES",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "December 2, 2025 Minutes - Redevelopment Agency Board Meeting",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "3.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving the Sweetwater #4 CRA Participation Agreement between the Redevelopment Agency of Eagle Mountain City and Stadion, LLC",
+                "time": "",
+                "background": "(Presented by Director of Legislative and Strategic Services Evan Berrett) This Sweetwater #4 CRA Participation Agreement sets out the terms under which the Eagle Mountain Redevelopment Agency will reimburse Stadion LLC with a negotiated share of tax increment generated by new development within the Sweetwater Industrial Park #4 CRA, contingent on the company constructing data-center facilities in the project area.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "4",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 293,
+        "title": "Redevelopment Agency Board Regular Session",
+        "date": "2024-06-18",
+        "start": "19:00",
+        "start_label": "7:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/293/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=437,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/293/media",
+        "agenda_posted_on": "2024-06-13",
+        "sessions": [],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "MINUTES",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "April 2, 2024 Meeting Minutes - Regular Redevelopment Agency Board Meeting",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "3.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of the Redevelopment Agency of Eagle Mountain City, Appointing and Electing Officers to Serve in the Redevelopment Agency of Eagle Mountain City.",
+                "time": "",
+                "background": "(Presented by Executive Director Evan Berrett) The Redevelopment Agency of Eagle Mountain City operates under bylaws which were adopted in 2008. The bylaws call for the election of a Chairperson and Vice Chairperson, to hold office for one year each, and state that the Mayor shall be the Chairperson and the Vice Chairperson shall be a member of the governing board of the Agency.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "4",
+            "title": "RESOLUTIONS/PUBLIC HEARINGS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "4.A",
+                "kind": "PUBLIC HEARING/RESOLUTION",
+                "title": "A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Adopting the Fiscal Year 2024-2025 Agency Budget.",
+                "time": "",
+                "background": "(Presented by City Staff) The Redevelopment Agency of Eagle Mountain City will review and adopt a budget for Fiscal Year 2024-2025, as required by Section 17C-1-601.5, Utah Code Annotated.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "5",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
+      {
+        "id": 374,
+        "title": "Redevelopment Agency Board Regular Session",
+        "date": "2024-04-02",
+        "start": "19:00",
+        "start_label": "7:00 PM",
+        "location": "",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/374/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=660,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/374/media",
+        "agenda_posted_on": "2024-03-28",
+        "sessions": [],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "MINUTES",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "October 3, 2023 Minutes - Regular Redevelopment Agency Board Meeting",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "3.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Designating a survey area known as the Triple Tail Survey Area, and authorizing agency staff, consultants and legal counsel to prepare a proposed Community Reinvestment Project Area Plan, and accompanying Project Area Budget for a proposed Community Reinvestment Area within the survey area.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "4",
+            "title": "ADJOURNMENT",
             "note": "",
             "session": null,
             "group": null,

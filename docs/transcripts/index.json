@@ -1,6 +1,32 @@
 {
   "city-council": [
     {
+      "id": 728,
+      "date": "2026-08-18",
+      "stem": "2026-08-18__728",
+      "title": "City Council Meeting",
+      "summary_file": "transcripts/city-council/2026-08-18__728.summary.md",
+      "text_file": "transcripts/city-council/2026-08-18__728.txt",
+      "speakers_file": null,
+      "diarized": true,
+      "media_url": "https://eaglemountainut.portal.civicclerk.com/event/728/media",
+      "duration": "6h 40m",
+      "words": 68377
+    },
+    {
+      "id": 756,
+      "date": "2026-08-10",
+      "stem": "2026-08-10__756",
+      "title": "City Council Meeting",
+      "summary_file": "transcripts/city-council/2026-08-10__756.summary.md",
+      "text_file": "transcripts/city-council/2026-08-10__756.txt",
+      "speakers_file": null,
+      "diarized": true,
+      "media_url": "https://eaglemountainut.portal.civicclerk.com/event/756/media",
+      "duration": "20m",
+      "words": 3104
+    },
+    {
       "id": 747,
       "date": "2026-08-06",
       "stem": "2026-08-06__747",
@@ -209,6 +235,21 @@
       "media_url": "https://eaglemountainut.portal.civicclerk.com/event/4/media",
       "duration": "2h 25m",
       "words": 28075
+    }
+  ],
+  "redevelopment-agency-board": [
+    {
+      "id": 753,
+      "date": "2026-08-18",
+      "stem": "2026-08-18__753",
+      "title": "Redevelopment Agency Board Meeting",
+      "summary_file": "transcripts/redevelopment-agency-board/2026-08-18__753.summary.md",
+      "text_file": "transcripts/redevelopment-agency-board/2026-08-18__753.txt",
+      "speakers_file": null,
+      "diarized": true,
+      "media_url": "https://eaglemountainut.portal.civicclerk.com/event/753/media",
+      "duration": "6m",
+      "words": 1077
     }
   ]
 }
