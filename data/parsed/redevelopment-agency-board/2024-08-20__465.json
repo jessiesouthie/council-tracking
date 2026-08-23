@@ -1,0 +1,269 @@
+{
+  "meeting": {
+    "id": 465,
+    "date": "2024-08-20",
+    "source_file": "2024-08-20__465.pdf",
+    "motion_count": 6,
+    "ord_count": 0,
+    "res_count": 8
+  },
+  "motions": [
+    {
+      "id": 38,
+      "meeting_id": 465,
+      "date": "2024-08-20",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the June 18, 2024 Minutes. Board Member Wood seconded the motion",
+      "motion": "Board Member Burnham moved to approve the June 18, 2024 Minutes. Board Member Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "meeting_id": 465,
+      "date": "2024-08-20",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Adopting the Off…",
+      "motion": "Board Member Burnham moved to approve a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Adopting the Official Project Area Plan for the Triple Tail Community Reinvestment Project Area. Board Member Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "meeting_id": 465,
+      "date": "2024-08-20",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Reconsider a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Adopting the…",
+      "motion": "Board Member Clark moved to reconsider a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Adopting the Official Project Area Plan for the Triple Tail Community Reinvestment Project Area. Board Member Burnham seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "meeting_id": 465,
+      "date": "2024-08-20",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Adopting the Off…",
+      "motion": "Board Member Burnham moved to approve a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Adopting the Official Project Area Plan for the Triple Tail Community Reinvestment Project Area with the following change: 1. Replacing any language stating the project area of 671.49 Acres with 1,170.44 acres. Board Member Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "meeting_id": 465,
+      "date": "2024-08-20",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Adopting the Off…",
+      "motion": "Board Member Clark moved to approve a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Adopting the Official Project Area Budget for the Triple Tail Community Reinvestment Project Area with the following change: 1. Replacing any language stating the project area of 671.49 Acres with 1,170.44 acres. Board Member Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "meeting_id": 465,
+      "date": "2024-08-20",
+      "page": 3,
+      "agenda_ref": "4.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving the Second Amendment to the QTS Participation Agreement.",
+      "motion": "Board Member Wood moved to approve a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving the Second Amendment to the QTS Participation Agreement. Board Member Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2024-08-20__465.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "3.A. RESOLUTION/PUBLIC HEARING - A Resolution of the Redevelopment Agency of Eagle"
+    },
+    {
+      "source_file": "2024-08-20__465.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "MOTION: Board Member Burnham moved to approve a Resolution of the Redevelopment"
+    },
+    {
+      "source_file": "2024-08-20__465.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "MOTION: Board Member Clark moved to reconsider a Resolution of the Redevelopment Agency"
+    },
+    {
+      "source_file": "2024-08-20__465.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "MOTION: Board Member Burnham moved to approve a Resolution of the Redevelopment"
+    },
+    {
+      "source_file": "2024-08-20__465.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "3.B. RESOLUTION/PUBLIC HEARING - A Resolution of the Redevelopment Agency of Eagle"
+    },
+    {
+      "source_file": "2024-08-20__465.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "MOTION: Board Member Clark moved to approve a Resolution of the Redevelopment Agency"
+    },
+    {
+      "source_file": "2024-08-20__465.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "4.A. RESOLUTION - A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2024-08-20__465.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "MOTION: Board Member Wood moved to approve a Resolution of the Redevelopment Agency"
+    }
+  ]
+}

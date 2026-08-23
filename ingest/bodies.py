@@ -75,6 +75,19 @@ BODIES: list[dict] = [
         "data_file": "docs/data.community-services-board.json",
         "default": False,
     },
+    {
+        "id": "redevelopment-agency-board",
+        "label": "Redevelopment Agency Board",
+        "source": "civicclerk",
+        "category": "Redevelopment Agency Board",
+        "members": "members.redevelopment-agency-board.json",
+        "summaries": "meeting_summaries.redevelopment-agency-board.json",
+        "motion_summaries": "motion_summaries.redevelopment-agency-board.json",
+        "raw_dir": "data/raw/redevelopment-agency-board",
+        "parsed_dir": "data/parsed/redevelopment-agency-board",
+        "data_file": "docs/data.redevelopment-agency-board.json",
+        "default": False,
+    },
 ]
 
 

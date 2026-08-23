@@ -16,5 +16,11 @@
     "label": "Community Services Board",
     "data_file": "data.community-services-board.json",
     "default": false
+  },
+  {
+    "id": "redevelopment-agency-board",
+    "label": "Redevelopment Agency Board",
+    "data_file": "data.redevelopment-agency-board.json",
+    "default": false
   }
 ]

@@ -1,0 +1,55 @@
+{
+  "meeting": {
+    "id": 325,
+    "date": "2019-05-21",
+    "source_file": "2019-05-21__325.pdf",
+    "motion_count": 2,
+    "ord_count": 2,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 13,
+      "meeting_id": 325,
+      "date": "2019-05-21",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Adopting the Eagle Mountain City Fiscal Year 2019-2020Budget. **This is not an action item, public hearing only*x Assistant City Administrator Paul Jerome said the budget has not changed from previous years Board Chair Westmoreland opened the public hearing at 9:31 p.m. As there were no comments, he closed the hearing. 4. ADJOURNMENT",
+      "motion": "Board Member Grícius moved to approve the May 7, 2019 Redevelopment Agency Boørd meeting mínutes. Boørd Member Clørk seconded the motion. Those votíng øye: Colby Curtís, Stephaníe Grícius, Benjømin Reaves, Donna Burnhøm, and Melíssø Clsrk. The motion passed with a ununímous vote. 3. ORDINANCE/PUBLIC HEARING 3.4. ORDINANCE - An Ordinance of Eagle Mountain City, Utah, Adopting the Eagle Mountain City Fiscal Year 2019-2020Budget. **This is not an action item, public hearing only*x Assistant City Administrator Paul Jerome said the budget has not changed from previous years Board Chair Westmoreland opened the public hearing at 9:31 p.m. As there were no comments, he closed the hearing. 4. ADJOURNMENT",
+      "outcome": "passed with a ununímous vote.",
+      "tags": [
+        "budget"
+      ],
+      "votes": []
+    },
+    {
+      "id": 14,
+      "meeting_id": 325,
+      "date": "2019-05-21",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Ødjourn the meeting at 9:34 p.m. Boørd Memher Grícius seconded the motíon. Those voting aye: Co…",
+      "motion": "Board Member Clark moved to ødjourn the meeting at 9:34 p.m. Boørd Memher Grícius seconded the motíon. Those voting aye: Colby Curtís, Eagle Mountain Redevelopment Agency Meeting -May 21,2019 Page I of2 Stephanie Gricius, Benjamin Reøves, Donna Burnhøm, ønd Melíssø Clark The motìon pøssed wìth a unønimous vote. Approved by the Redevelopment Agency on June 18, 2019 Aaron Sanborn Executive Director Eagle Mountain Redevelopment Agency Meeting - May 21, 2019 Page2 of2",
+      "outcome": "",
+      "tags": [],
+      "votes": []
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2019-05-21__325.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "ORDINANCE/PUBLIC HEARING"
+    },
+    {
+      "source_file": "2019-05-21__325.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "ORDINANCE - An Ordinance of Eagle Mountain City, Utah, Adopting the Eagle"
+    }
+  ],
+  "resolutions": []
+}

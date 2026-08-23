@@ -1,0 +1,63 @@
+{
+  "meeting": {
+    "id": 587,
+    "date": "2025-02-04",
+    "source_file": "2025-02-04__587.pdf",
+    "motion_count": 1,
+    "ord_count": 0,
+    "res_count": 2
+  },
+  "motions": [
+    {
+      "id": 53,
+      "meeting_id": 587,
+      "date": "2025-02-04",
+      "page": 1,
+      "agenda_ref": "3.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Amended Interlocal Cooperation Agreement between the Redevelopment Agency and Unified Fire Service Area (UFSA) for the Collection and Remittance of Incremental Property Taxes Collected from Property within the Triple Tail Community Reinvestment Area. RDA Executive Director Evan Berrett outlined the item.",
+      "motion": "Board Member Burnham moved to approve a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Amended Interlocal Cooperation Agreement between the Redevelopment Agency and Unified Fire Service Area (UFSA) for the Collection and Remittance of Incremental Property Taxes Collected from Property within the Triple Tail Community Reinvestment Area. Board Member Clark seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "public_safety"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Absent"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2025-02-04__587.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "3.A. RESOLUTION - A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-02-04__587.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "MOTION: Board Member Burnham moved to approve a Resolution of the Redevelopment"
+    }
+  ]
+}

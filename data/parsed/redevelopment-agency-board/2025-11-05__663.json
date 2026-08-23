@@ -1,0 +1,315 @@
+{
+  "meeting": {
+    "id": 663,
+    "date": "2025-11-05",
+    "source_file": "2025-11-05__663.pdf",
+    "motion_count": 7,
+    "ord_count": 0,
+    "res_count": 12
+  },
+  "motions": [
+    {
+      "id": 58,
+      "meeting_id": 663,
+      "date": "2025-11-05",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the Redevelopment Agency Board Meeting Minutes from October 21, 2025. Board Member Wood…",
+      "motion": "Board Member Clark moved to approve the Redevelopment Agency Board Meeting Minutes from October 21, 2025. Board Member Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "meeting_id": 663,
+      "date": "2025-11-05",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Adopt a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving the Offi…",
+      "motion": "Board Member Wood moved to adopt a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving the Official Project Area Plan for the Sweetwater #4 Community Reinvestment Area Project Area. Board Member Wright seconded the motion.",
+      "outcome": "passed with a 4:1 vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "No"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "meeting_id": 663,
+      "date": "2025-11-05",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Adopt a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving the Offi…",
+      "motion": "Board Member Wright moved to adopt a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving the Official Project Area Budget for the Sweetwater #4 Community Reinvestment Area Project Area. Board Member Wood seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "meeting_id": 663,
+      "date": "2025-11-05",
+      "page": 3,
+      "agenda_ref": "4.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Eagle Mountain City, Utah for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area",
+      "motion": "Board Member Wright moved to adopt a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Eagle Mountain City, Utah for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area. Board Member Gray seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "meeting_id": 663,
+      "date": "2025-11-05",
+      "page": 4,
+      "agenda_ref": "4.B.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Utah County for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area",
+      "motion": "Board Member Gray moved to adopt a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Utah County for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area. Board Member Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "meeting_id": 663,
+      "date": "2025-11-05",
+      "page": 4,
+      "agenda_ref": "4.C.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Central Utah Water Conservancy District for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area",
+      "motion": "Board Member Gray moved to adopt a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Central Utah Water Conservancy District for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area. Board Member Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "meeting_id": 663,
+      "date": "2025-11-05",
+      "page": 5,
+      "agenda_ref": "4.D.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Unified Fire Service Area (UFSA) for the Eagle Mountain Redevelopment Agency Minutes – November 5, 2025 Page 4 of 5 Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area",
+      "motion": "Board Member Burnham moved to adopt a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Unified Fire Service Area (UFSA) for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area. Board Member Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "public_safety"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2025-11-05__663.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "3.A. RESOLUTION / PUBLIC HEARING - A Resolution of the Redevelopment Agency"
+    },
+    {
+      "source_file": "2025-11-05__663.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "MOTION: Board Member Wood moved to adopt a Resolution of the Redevelopment"
+    },
+    {
+      "source_file": "2025-11-05__663.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "3.B. RESOLUTION / PUBLIC HEARING - A Resolution of the Redevelopment Agency"
+    },
+    {
+      "source_file": "2025-11-05__663.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "MOTION: Board Member Wright moved to adopt a Resolution of the Redevelopment"
+    },
+    {
+      "source_file": "2025-11-05__663.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "4.A. RESOLUTION - A Resolution of the Redevelopment Agency of Eagle Mountain"
+    },
+    {
+      "source_file": "2025-11-05__663.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "MOTION: Board Member Wright moved to adopt a Resolution of the Redevelopment"
+    },
+    {
+      "source_file": "2025-11-05__663.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "4.B. RESOLUTION - A Resolution of the Redevelopment Agency of Eagle Mountain"
+    },
+    {
+      "source_file": "2025-11-05__663.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "MOTION: Board Member Gray moved to adopt a Resolution of the Redevelopment"
+    },
+    {
+      "source_file": "2025-11-05__663.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "4.C. RESOLUTION - A Resolution of the Redevelopment Agency of Eagle Mountain"
+    },
+    {
+      "source_file": "2025-11-05__663.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "MOTION: Board Member Gray moved to adopt a Resolution of the Redevelopment"
+    },
+    {
+      "source_file": "2025-11-05__663.pdf",
+      "meeting_date": "",
+      "page": 4,
+      "line_text": "4.D. RESOLUTION - A Resolution of the Redevelopment Agency of Eagle Mountain"
+    },
+    {
+      "source_file": "2025-11-05__663.pdf",
+      "meeting_date": "",
+      "page": 5,
+      "line_text": "MOTION: Board Member Burnham moved to adopt a Resolution of the"
+    }
+  ]
+}

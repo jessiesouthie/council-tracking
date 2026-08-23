@@ -1,0 +1,70 @@
+{
+  "meeting": {
+    "id": 658,
+    "date": "2025-09-02",
+    "source_file": "2025-09-02__658.pdf",
+    "motion_count": 1,
+    "ord_count": 0,
+    "res_count": 3
+  },
+  "motions": [
+    {
+      "id": 54,
+      "meeting_id": 658,
+      "date": "2025-09-02",
+      "page": 1,
+      "agenda_ref": "2.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of the Governing Board of the Eagle Mountain Redevelopment Agency, Designating a Survey Area and Authorizing the Preparation of a Draft Community Reinvestment Project Area Plan and Budget for the Proposed Sweetwater Industrial Park Community Reinvestment Project Area #4",
+      "motion": "Board Member Wood moved to adopt a Resolution of the Governing Board of the Eagle Mountain Redevelopment Agency, Designating a Survey Area and Authorizing the Preparation of a Draft Community Reinvestment Project Area Plan and Budget for the Proposed Sweetwater Industrial Park Community Reinvestment Project Area #4. Board Member Clark seconded the motion.",
+      "outcome": "passed with a 3:1 vote.",
+      "tags": [
+        "budget",
+        "parks"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "No"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2025-09-02__658.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "2. RESOLUTION"
+    },
+    {
+      "source_file": "2025-09-02__658.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "2.A. RESOLUTION - A Resolution of the Governing Board of the Eagle Mountain Redevelopment"
+    },
+    {
+      "source_file": "2025-09-02__658.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "MOTION: Board Member Wood moved to adopt a Resolution of the Governing Board of the Eagle"
+    }
+  ]
+}

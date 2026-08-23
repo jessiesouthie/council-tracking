@@ -1,0 +1,168 @@
+{
+  "_doc": "Redevelopment Agency (RDA) board members, same schema as councilmembers.json. The RDA board IS the City Council: under the agency's 2008 bylaws — recited into the record at the January 6, 2026 organizing meeting — the Mayor serves as Chairperson and the councilmembers serve as Board Members, with a Vice Chairperson elected from the board for a one-year term. So every person here is the same person as in councilmembers.json, with the council role mapped to its agency role (Mayor -> Chairperson, Councilmember -> Board Member) and the same term dates. Keep this file in step with councilmembers.json: when a council term changes there, change it here. Vice Chairperson is an annual office rather than a term and is not modelled. Extend `aliases` whenever the minutes' OCR introduces a new spelling.",
+  "members": [
+    {
+      "id": "brett-wright",
+      "name": "Brett Wright",
+      "terms": [
+        {
+          "role": "Board Member",
+          "start": "2022-01-01",
+          "end": "2025-12-31"
+        },
+        {
+          "role": "Board Member",
+          "start": "2026-01-01",
+          "end": "2029-12-31"
+        }
+      ],
+      "aliases": [
+        "Brett Wright",
+        "Brett Wight"
+      ]
+    },
+    {
+      "id": "melissa-clark",
+      "name": "Melissa Clark",
+      "terms": [
+        {
+          "role": "Board Member",
+          "start": "2018-01-01",
+          "end": "2021-12-31"
+        },
+        {
+          "role": "Board Member",
+          "start": "2024-01-01",
+          "end": "2027-12-31"
+        }
+      ],
+      "aliases": [
+        "Melissa Clark",
+        "Meliss Clark"
+      ]
+    },
+    {
+      "id": "rich-wood",
+      "name": "Rich Wood",
+      "terms": [
+        {
+          "role": "Board Member",
+          "start": "2024-01-01",
+          "end": "2027-12-31"
+        }
+      ],
+      "aliases": [
+        "Rich Wood"
+      ]
+    },
+    {
+      "id": "jared-gray",
+      "name": "Jared Gray",
+      "terms": [
+        {
+          "role": "Board Member",
+          "start": "2020-01-01",
+          "end": "2023-12-31"
+        },
+        {
+          "role": "Board Member",
+          "start": "2024-01-01",
+          "end": "2025-12-31"
+        },
+        {
+          "role": "Chairperson",
+          "start": "2026-01-01",
+          "end": "2029-12-31"
+        }
+      ],
+      "aliases": [
+        "Jared Gray",
+        "Jared Gray*",
+        "Jared Grag",
+        "Mayor Gray",
+        "Chairperson Gray",
+        "Chair Gray"
+      ]
+    },
+    {
+      "id": "donna-burnham",
+      "name": "Donna Burnham",
+      "terms": [
+        {
+          "role": "Board Member",
+          "start": "2018-01-01",
+          "end": "2021-12-31"
+        },
+        {
+          "role": "Board Member",
+          "start": "2022-01-01",
+          "end": "2025-12-31"
+        }
+      ],
+      "aliases": [
+        "Donna Burnham",
+        "Donna"
+      ]
+    },
+    {
+      "id": "craig-whiting",
+      "name": "Craig Whiting",
+      "terms": [
+        {
+          "role": "Board Member",
+          "start": "2026-01-01",
+          "end": "2029-12-31"
+        }
+      ],
+      "aliases": [
+        "Craig Whiting"
+      ]
+    },
+    {
+      "id": "zachory-huish",
+      "name": "Zachory Huish",
+      "terms": [
+        {
+          "role": "Board Member",
+          "start": "2026-01-15",
+          "end": "2027-12-31",
+          "note": "Appointed Jan 15, 2026 to fill Jared Gray's unexpired council seat."
+        }
+      ],
+      "aliases": [
+        "Zachory Huish",
+        "Zac Huish",
+        "Zach Huish",
+        "Zac Hewish",
+        "Zachory Hewish"
+      ]
+    },
+    {
+      "id": "tom-westmoreland",
+      "name": "Tom Westmoreland",
+      "terms": [
+        {
+          "role": "Chairperson",
+          "start": "2018-01-01",
+          "end": "2021-12-31"
+        },
+        {
+          "role": "Chairperson",
+          "start": "2022-01-01",
+          "end": "2025-12-31"
+        }
+      ],
+      "aliases": [
+        "Tom Westmoreland",
+        "Mayor Westmorland"
+      ]
+    }
+  ],
+  "ignore": [
+    "Yes",
+    "No",
+    "Abstain",
+    "Aye",
+    "Nay"
+  ]
+}
