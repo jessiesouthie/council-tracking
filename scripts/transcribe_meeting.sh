@@ -113,6 +113,17 @@ if [ "$CLOUD" = 1 ]; then
     API_KEY="$(tr -d '[:space:]' < "$ASSEMBLYAI_KEYFILE")"
   fi
   [ -n "$API_KEY" ] || die "no AssemblyAI key. Put it in $ASSEMBLYAI_KEYFILE (chmod 600) or export ASSEMBLYAI_API_KEY"
+
+  # The AssemblyAI calls below use urllib, which — unlike requests — has no
+  # bundled CA store and falls back to the platform's. A python.org build on
+  # macOS ships without one until its "Install Certificates" script is run, so
+  # every https call dies on CERTIFICATE_VERIFY_FAILED before a single byte is
+  # uploaded. Point urllib at certifi when it is importable and the caller has
+  # not already chosen a bundle. Linux CI has a system store and skips this.
+  if [ -z "${SSL_CERT_FILE:-}" ]; then
+    _certs="$(python3 -c 'import certifi; print(certifi.where())' 2>/dev/null || true)"
+    [ -n "$_certs" ] && export SSL_CERT_FILE="$_certs"
+  fi
 fi
 
 # ---- 1. resolve the meeting from the API ----
