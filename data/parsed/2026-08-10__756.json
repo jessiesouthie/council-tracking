@@ -1,0 +1,63 @@
+{
+  "meeting": {
+    "id": 756,
+    "date": "2026-08-10",
+    "source_file": "2026-08-10__756.pdf",
+    "motion_count": 1,
+    "ord_count": 0,
+    "res_count": 2
+  },
+  "motions": [
+    {
+      "id": 1127,
+      "meeting_id": 756,
+      "date": "2026-08-10",
+      "page": 2,
+      "agenda_ref": "15.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the Fiscal Year 2026 Community Development Block Grant (CDBG) Annual Action Plan and Authorizing Its Submission to the U.S. Department of Housing and Urban Development .",
+      "motion": "Councilmember Clark moved to approve a Resolution of Eagle Mountain City, Utah, Approving the Fiscal Year 2026 Community Development Block Grant (CDBG) Annual Action Plan and Authorizing Its Submission to the U.S. Department of Housing and Urban Development . Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2026-08-10__756.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "15.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Approving the Fiscal"
+    },
+    {
+      "source_file": "2026-08-10__756.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "MOTION: Councilmember Clark moved to approve a Resolution of Eagle Mountain"
+    }
+  ]
+}

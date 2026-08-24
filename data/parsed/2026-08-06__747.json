@@ -1,0 +1,63 @@
+{
+  "meeting": {
+    "id": 747,
+    "date": "2026-08-06",
+    "source_file": "2026-08-06__747.pdf",
+    "motion_count": 1,
+    "ord_count": 0,
+    "res_count": 2
+  },
+  "motions": [
+    {
+      "id": 1126,
+      "meeting_id": 747,
+      "date": "2026-08-06",
+      "page": 3,
+      "agenda_ref": "4.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving a Property Tax Increase above the Certified Tax Rate for Fiscal Year 20226 -2027. Mayor Gray read the Proposed Property Tax Impact Schedule. The City Council discussed the proposed property tax increase , including concerns raised by citizens, the reason for the proposed increase and the use of additional funds.",
+      "motion": "Councilmember Whiting moved to adopt a Resolution of Eagle Mountain City, Utah, to approve and adopt a property tax rate of 0.001500 for Fiscal Year 2026 -2027. This rate exceeds the certified tax rate of 0.000530 and will result in an increase in the City’s ad valorem property tax budgeted revenue of approximately $5,591,594.00 or 183.02% above the City’s p roperty tax budgeted revenue for the prior year, exclusive of new growth. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2026-08-06__747.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "4.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving a Property"
+    },
+    {
+      "source_file": "2026-08-06__747.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "MOTION: Councilmember Whiting moved to adopt a Resolution of Eagle Mountain"
+    }
+  ]
+}
