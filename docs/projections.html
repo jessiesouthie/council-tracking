@@ -256,7 +256,7 @@
       // the assumption table reads them as words in a sentence ("6% a year
       // against 5%"), where "6.00%" implies a precision nobody published.
       const rateShort = (p) => +(p * 100).toFixed(2) + "%";
-      // "gap"/"surplus" always travels with the colour, never instead of it.
+      // "gap"/"surplus" always travels with the color, never instead of it.
       //
       // These said "deficit" until the review. A deficit is an accounting fact
       // about a budget as adopted, and by that test Eagle Mountain does not have
@@ -590,8 +590,8 @@
          increase" means something specific in Utah and close to the opposite
          of what most people assume, and "gap" is this page's own measure — a
          draw on reserves is not counted as money in — so both have to be
-         settled before a reader presses the button labelled with one and reads
-         six years labelled with the other. The copy here is written into the
+         settled before a reader presses the button labeled with one and reads
+         six years labeled with the other. The copy here is written into the
          page rather than read out of data.projections.json: it is plain
          definition, not a figure that moves when the file is rebuilt. */
 
@@ -634,7 +634,7 @@
             <div class="proj-def-card">
               <h3>The three rates used on this page</h3>
               <ul class="proj-def-list">${rateList}</ul>
-              <p>Only the first and last are rates anyone set; the 0.001050 is this project's own, labelled
+              <p>Only the first and last are rates anyone set; the 0.001050 is this project's own, labeled
                 as an assumption wherever it appears. Two others are easy to confuse with these:
                 <strong>0.000534</strong> is on current bills, superseded when Utah County recalculated the
                 certified rate to 0.000530 on 22 June 2026, and <strong>0.001700</strong> is the rate the
@@ -912,7 +912,7 @@
          green where revenue is on top, red and hatched where spending is. Its
          vertical axis does not start at zero, because both lines sit between
          $40M and $60M and a zero-based axis would squash a $3M gap into two
-         pixels. That is a real distortion and it is labelled as one on the
+         pixels. That is a real distortion and it is labeled as one on the
          chart itself.
 
          The gap chart underneath is the honest counterpart: the annual gap
@@ -1082,7 +1082,7 @@
 
         // Crossovers get a marked point and a dashed drop, so the moment the
         // city changes sign is a thing on the chart rather than something the
-        // reader has to infer from where the colour changes.
+        // reader has to infer from where the color changes.
         const crossMarks = r.crossings
           .map((c) => {
             const a = rows[c.fromIndex], b = rows[c.toIndex];
@@ -1437,7 +1437,7 @@
         const body = r.rows
           .map((x) => {
             const adj = x.adjustments.filter((a) => a.amount);
-            // Sign colouring belongs to the two gap cells, not to the row: a
+            // Sign coloring belongs to the two gap cells, not to the row: a
             // whole line of figures in deficit red reads as if every one of
             // them were the deficit.
             return `
@@ -1671,7 +1671,7 @@
             </div>
 
             <div class="proj-scope">
-              <p><strong>What is being modelled:</strong> ${esc(c.scope_note)}</p>
+              <p><strong>What is being modeled:</strong> ${esc(c.scope_note)}</p>
             </div>
 
             <h3 class="proj-sub-h2">Taken from the record</h3>
@@ -1769,8 +1769,8 @@
          which would settle the number does not exist. Next to the full note
          that reads correctly; next to a one-line summary "Confirmed" reads as
          "this number is verified", which is the reverse of what it says. So the
-         table tags the standing of the estimate rather than of the enquiry, and
-         a finished enquiry gets neutral grey rather than green. */
+         table tags the standing of the estimate rather than of the inquiry, and
+         a finished inquiry gets neutral gray rather than green. */
 
       const STANDING = {
         yes:    { tag: "Nothing better published", cls: "is-derived" },
@@ -2247,9 +2247,9 @@
       }
 
       /* The department chart stood here: every General Fund department as a bar,
-         coloured by tier, with the gap drawn across them. It was cut. Its top
+         colored by tier, with the gap drawn across them. It was cut. Its top
          four bars were the first four rows of the pool table directly above it,
-         at the same figures and the same colours, and its own caption then had
+         at the same figures and the same colors, and its own caption then had
          to explain that none of those four was available. Below them fourteen
          departments rendered as identical stubs. What it showed that the table
          did not — that the reachable money is many small pots rather than one —
@@ -2278,9 +2278,9 @@
          decision, and the page has no standing to draw one.
 
          The arithmetic at the end was worse. "The gap reaches 33% of it",
-         pointed at a bar labelled People, invited exactly one reading: a third
+         pointed at a bar labeled People, invited exactly one reading: a third
          of the staff. What the figure actually measured was the remainder as a
-         share of a modelled personnel cost, which is not a headcount, not a
+         share of a modeled personnel cost, which is not a headcount, not a
          payroll reduction, and not a thing anyone had proposed.
 
          So the composition stays and the walk is gone. The four figures still
@@ -2380,7 +2380,7 @@
             <strong>${esc(usd0(gap))}</strong> is ` +
           (over > 0
             ? `larger than that non-personnel total; the excess is equivalent to
-               <strong>${esc(((over / staff.amount) * 100).toFixed(0))}%</strong> of the modelled personnel
+               <strong>${esc(((over / staff.amount) * 100).toFixed(0))}%</strong> of the modeled personnel
                cost — a ratio between two dollar figures, not a share of staff or payroll that anyone has
                proposed reducing.`
             : `smaller than it, so the size of the gap alone implies nothing about staffing.`)
@@ -2398,7 +2398,7 @@
          Two money columns, not three. The change is computed from the FY2025
          estimate against the adopted figure; the FY2024 actual was background
          and cost a column in both tables. It was also the source of a real
-         bug once — an earlier version read it and labelled it "FY2025–26
+         bug once — an earlier version read it and labeled it "FY2025–26
          adopted", so City Wide Trees showed $195,300 against an adopted
          $11,943. The columns are mapped explicitly here for that reason. */
       function maintTable(x) {

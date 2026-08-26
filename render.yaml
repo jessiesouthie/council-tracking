@@ -20,7 +20,7 @@ services:
     branch: main
 
     # Deploy on every push to main. (The old spelling for this was
-    # `autoDeploy: true`, which Render still honours but has deprecated.)
+    # `autoDeploy: true`, which Render still honors but has deprecated.)
     autoDeployTrigger: commit
 
     # The bot pushes several times a day, most of them touching data/ and

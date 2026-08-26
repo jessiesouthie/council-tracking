@@ -10,7 +10,7 @@
   "url": "https://cleargov.com/api/statistics/municipalities/315552/lineItems",
   "document": "25-26budget.pdf, 646 pages, produced by the city through ClearGov",
   "note": "The figures are the line items behind the book rather than text scraped from it — the same data one step earlier, with the account number attached and no rounding. The build asserts them against totals printed in the book at citywide, fund, department and single-account level.",
-  "caveat": "The book's cover calls it the adopted budget; its page footers still read “Tentative Budget”, an artefact of the template it was produced from. The figures are the adopted ones."
+  "caveat": "The book's cover calls it the adopted budget; its page footers still read “Tentative Budget”, an artifact of the template it was produced from. The figures are the adopted ones."
  },
  "columns": [
   {

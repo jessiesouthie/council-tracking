@@ -213,7 +213,7 @@ test("render() survives every optional file failing to load", () => {
   assert.ok(!/undefined|NaN/.test(out), "placeholder leaked when optional data was absent");
 });
 
-test("the rate on the page is the rate in the data, and the repealed one is labelled", () => {
+test("the rate on the page is the rate in the data, and the repealed one is labeled", () => {
   const out = renderTo(tax, county, bill, state, kase);
   const ad = tax.rates.adopted;
   assert.ok(out.includes(ad.rate_display), "the adopted rate is not on the page");

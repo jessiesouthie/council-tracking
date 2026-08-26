@@ -77,7 +77,7 @@ ended up putting a phone next to the speaker).
 **Personal, from the record.** Roughly 20-year resident, lives in Sage Valley. Works in
 business — his company reimburses $60/month for cell phones and uses contract-analysis
 AI; he says he's neither an attorney nor from a real estate background. His homeowner's
-insurance was cancelled despite living in a subdivision, which is why he asks fire-rating
+insurance was canceled despite living in a subdivision, which is why he asks fire-rating
 questions. Daughter served as Miss Eagle Mountain Teen in 2019 (two years, because of the
 pandemic). Once lived beside the bike park and confessed to "having PTSD remembering an
 experience I had going off one of those ramps."
@@ -235,7 +235,7 @@ electric bike; not a mountain biker. Wears a wig to the youth council dunk tank.
 pro tem** — she chaired both sessions on 21 July when Gray was out, and ran them briskly
 and by the book.
 
-**Record.** 383 votes, 373 yes, 6 no, 4 excused (98.4%). The council's consensus centre:
+**Record.** 383 votes, 373 yes, 6 no, 4 excused (98.4%). The council's consensus center:
 99.1% agreement with Whiting, 96% with Wright, 95% with Huish, 82% with Wood, 84% with
 Gray. Her handful of no votes are telling — against the 2024 mayor and council pay raise,
 against the $95,000/acre land sale and against the lower $45,000 price, against pausing
@@ -361,7 +361,7 @@ colleagues' willingness to table into a 5-0 denial. That is his method in one it
   clear path. He is against exceptions and *for* rules, which is a different thing from
   being against the applicant.
 - *Small modular reactors, in detail.* On the alternative energy overlay he wanted named
-  technologies (he favours liquid metal fast and molten salt reactors, partly because
+  technologies (he favors liquid metal fast and molten salt reactors, partly because
   byproducts could support a royalty agreement), geothermal stripped out until the council
   is briefed on injection and seismic risk, every administrative approval removed so
   elected officials keep the decision, the water-assessment waiver deleted, weed mitigation
@@ -392,7 +392,7 @@ financially, that the Lake Mountain Corridor exists because of that council, tha
 eight-to-ten-year timeline is a money problem and not a will problem, and invited critics
 to call him rather than fight it out on Facebook. And on the tax, his is the sharpest
 formulation anyone produced: **"we've been running cheaply, not conservatively."** He also
-publicly apologised to a resident for the city's messaging: "you're not hearing what we're
+publicly apologized to a resident for the city's messaging: "you're not hearing what we're
 saying. We're not saying it in a way that it's being understood... For that, I want to
 apologize."
 

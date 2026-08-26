@@ -58,7 +58,7 @@
       "label": "All other General Fund income, FY2026–27",
       "summary": "Adopted interim General Fund revenue, less the two property-tax lines and the reserve draw. Sales and energy tax are 72% of it.",
       "derived": true,
-      "derivation": "The FY2026–27 interim General Fund revenue of $42,650,441, less the two current-levy property tax lines — 'Property Taxes' $2,839,998 and 'Property Taxes Interim Budget' $6,958,141 — and less the $516,231 'Beginning General Fund Balance to be Appropriated', which is a draw on reserves rather than revenue. 42,650,441 − 6,958,141 − 2,839,998 − 516,231 = 32,336,071. Sales and use tax ($14,535,424) and the municipal energy tax ($8,896,371) are 72% of it. The $105,000 delinquent and prior-year property tax line is left inside this total rather than modelled as part of the levy.",
+      "derivation": "The FY2026–27 interim General Fund revenue of $42,650,441, less the two current-levy property tax lines — 'Property Taxes' $2,839,998 and 'Property Taxes Interim Budget' $6,958,141 — and less the $516,231 'Beginning General Fund Balance to be Appropriated', which is a draw on reserves rather than revenue. 42,650,441 − 6,958,141 − 2,839,998 − 516,231 = 32,336,071. Sales and use tax ($14,535,424) and the municipal energy tax ($8,896,371) are 72% of it. The $105,000 delinquent and prior-year property tax line is left inside this total rather than modeled as part of the levy.",
       "source": {
         "file": "data.budget-next.json",
         "publisher": "Eagle Mountain City line items via ClearGov"
@@ -113,7 +113,7 @@
       "label": "Growth in spending",
       "summary": "No adopted multi-year plan exists to take one from. 6% sits between ~3% price growth and the city's headcount growth.",
       "assumption": true,
-      "basis": "Not a city figure — the city has no adopted multi-year plan to take one from. 6.0% sits between the two things that set the cost of running this city. Price growth: staff asked for about 3% and the council said it should be more than that, because 'the average employee of this city is underpaid' (16 June 2026). Caseload growth: the city went from about 32,000 residents in 2017 to about 65,400 in 2025, and its own building department has approved between 1,032 and 1,609 new homes in every year but one since FY2020 — 5,466 of them in the last five years alone, every one of which is a household the city then has to police, plough, light and answer. A city whose caseload grows faster than prices cannot hold expenditure growth to inflation without cutting service per resident, and cannot hold it to population growth without absorbing inflation.",
+      "basis": "Not a city figure — the city has no adopted multi-year plan to take one from. 6.0% sits between the two things that set the cost of running this city. Price growth: staff asked for about 3% and the council said it should be more than that, because 'the average employee of this city is underpaid' (16 June 2026). Caseload growth: the city went from about 32,000 residents in 2017 to about 65,400 in 2025, and its own building department has approved between 1,032 and 1,609 new homes in every year but one since FY2020 — 5,466 of them in the last five years alone, every one of which is a household the city then has to police, plow, light and answer. A city whose caseload grows faster than prices cannot hold expenditure growth to inflation without cutting service per resident, and cannot hold it to population growth without absorbing inflation.",
       "confirm": "As far as a negative can be confirmed, yes. An adopted five-year financial plan would settle this, and the city's most recent audited financial statements contain no instance of 'five-year', 'long-range', 'forecast' or 'multi-year' anywhere in them; the five-year plan the city does publish is a capital plan, which is a list of projects rather than an operating forecast. A councilmember, in the deliberation after the 6 August hearing closed: 'When I got here, I said, where's our 5-year plan? Where's our 10-year plan? Do we have a 20-year plan? The answer is no to all of those things.' The August recording carries no speaker diarization, so the councilmember is not named here.",
       "settled": "yes"
     }
@@ -430,7 +430,7 @@
     "lede": "A gap is arithmetic on two projected lines, not a forecast that any service will be cut and not a debt. Utah requires a balanced budget each year, so every year's gap gets closed — but by which mix is a choice nobody has made.",
     "options": [
       "Spend less — delay hiring, leave jobs unfilled, trim departmental budgets",
-      "Do less — mow less often, slower response times, fewer programmes",
+      "Do less — mow less often, slower response times, fewer programs",
       "Wait — push projects, equipment and maintenance into later years",
       "Use savings — works once, and only while they last",
       "Find other money — fees, grants, sales-tax growth, new commercial value",
@@ -480,14 +480,14 @@
       "publisher": "Eagle Mountain City via ClearGov line items",
       "meeting": 726,
       "date": "2026-06-16",
-      "note": "The General Fund baseline: $42,650,441 of appropriations, the revenue lines behind the $32,336,071, and the reorganisation that moved planning and building inspection into the new Community Development fund."
+      "note": "The General Fund baseline: $42,650,441 of appropriations, the revenue lines behind the $32,336,071, and the reorganization that moved planning and building inspection into the new Community Development fund."
     },
     {
       "title": "FY2026–27 budget work session — the line-by-line review of new positions",
       "publisher": "Eagle Mountain City Council",
       "meeting": 748,
       "date": "2026-05-26",
-      "note": "Where the freed sales tax was first itemised on the record: the $525,000 wage lift to 90% of the market median, the twenty-eight positions at about $2.6 million with $1.3 million hitting the General Fund, the school-zone speed tables at $28,000–$30,000 apiece, and the $419 million transportation plan. It is the source for most of 'Where a shortfall lands'."
+      "note": "Where the freed sales tax was first itemized on the record: the $525,000 wage lift to 90% of the market median, the twenty-eight positions at about $2.6 million with $1.3 million hitting the General Fund, the school-zone speed tables at $28,000–$30,000 apiece, and the $419 million transportation plan. It is the source for most of 'Where a shortfall lands'."
     },
     {
       "title": "Sheriff's Office staffing presentation",

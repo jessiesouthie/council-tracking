@@ -25,7 +25,7 @@ does not sit in the standing lineage, because an interim budget has no finished
 entry to sit in. And every "last year" figure on the next-year page is FY2025-26
 as that year ended up, not as it was adopted — the fairer comparison, since it
 is the budget the city was actually working to, but $44M larger than the book,
-so it is labelled everywhere it appears.
+so it is labeled everywhere it appears.
 
 Usage:  python -m ingest.build_budget_next [--cache DIR]
 """
@@ -62,7 +62,7 @@ EXPENSE_PREFIX = "7.8.996.5"
 # The charts do not plot raw taxonomy names. Fund groups and functions are the
 # depth-5 parents in ClearGov's own hierarchy, but a handful carry friendlier
 # labels, and the General Fund's 20-odd departments collapse into nine service
-# areas a resident would recognise. None of that is derivable from the API — it
+# areas a resident would recognize. None of that is derivable from the API — it
 # was authored by hand for the FY2025 page. Rather than invent a second, subtly
 # different grouping for FY2027, the maps below were recovered by regenerating
 # FY2025 from raw line items until it reproduced docs/data.budget.json, and
@@ -88,7 +88,7 @@ REVENUE_RENAME = {
 # the RDA fund — so the General Fund's own 10-00-31111-0000, which the city uses
 # for the restricted property-tax increase, inherits the object "RDA". It carried
 # $0 in FY2025 and FY2026 so it never mattered; at $6.96M it would render as the
-# General Fund's second-largest revenue source, labelled "RDA". It is property
+# General Fund's second-largest revenue source, labeled "RDA". It is property
 # tax, and it is not collected yet, so it gets a node that says both. Kept short
 # because the Sankey's left label gutter clips anything much longer.
 REVENUE_ACCOUNT_OVERRIDE = {"10-00-31111-0000": "Proposed property tax"}
@@ -138,7 +138,7 @@ SERVICE_AREA = {
 # in FY2027 it is not a rounding issue: the General Fund's entire "Planning &
 # Zoning" figure is transfers, because the real department moved to the new
 # Community Development fund. So categories are keyed on (function, name) and
-# the transfer ones are relabelled for what they are.
+# the transfer ones are relabeled for what they are.
 DISAMBIGUATE = {"Interfund Transfers": "Transfers out"}
 
 # The General Fund revenue accounts that move to the Community Development fund
@@ -213,7 +213,7 @@ class Book:
 
         ClearGov reuses names across functions, so the raw name is ambiguous;
         this resolves the ones that would otherwise be summed together. Passing
-        disambiguate=False reproduces the older, conflated behaviour, which is
+        disambiguate=False reproduces the older, conflated behavior, which is
         how verify_grouping proves the fix changes nothing else.
         """
         if disambiguate:
@@ -472,7 +472,7 @@ def build(cache: Path | None = None):
     # FY2025-26 twice: what the Council adopted, and what the year became once
     # unfinished capital rolled into it. The comparison columns on this page are
     # against the second — that is the budget the city actually ran — but a
-    # figure that big cannot go unlabelled, so the adopted one travels with it.
+    # figure that big cannot go unlabeled, so the adopted one travels with it.
     # See ingest/build_budget_book.py, which publishes the adopted book in full.
     gross26b = fy26book.total()
 
@@ -548,7 +548,7 @@ def build(cache: Path | None = None):
             "meeting_id": 728,
             "total": 363992973,
             "note": (
-                "The total in the adoption resolution as agendised — 'A Resolution … Adopting the "
+                "The total in the adoption resolution as agendized — 'A Resolution … Adopting the "
                 "Fiscal Year 2026-2027 Annual Budget Totaling $363,992,973'. It is a different "
                 "number from the gross on this page because this page is the interim book; the "
                 "adopted line items are not published yet."

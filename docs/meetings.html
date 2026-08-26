@@ -662,7 +662,7 @@
                    </section>`;
                }).join("")}
              </div>
-             <p class="ag-foot">Summarised in plain English from the posted agenda,
+             <p class="ag-foot">Summarized in plain English from the posted agenda,
                and trimmed of the procedural steps every meeting carries — the roll
                call, the closed session, the adjournment. The PDF above is the full
                notice.</p>`
@@ -864,7 +864,7 @@
         // working: it's what the agent corpus emits and what bookmarks hold.
         // Through canonicalUrl(), not new URL(..., location.origin): that would
         // publish whatever host the page happens to be served from, so a preview
-        // build would canonicalise to localhost.
+        // build would canonicalize to localhost.
         const ownPage = CT.meetingHref(meeting);
         if (ownPage) CT.setCanonical(CT.canonicalUrl(new URL(ownPage, location.href).toString()));
         // A council meeting is an Event in the literal schema.org sense, and this
@@ -1037,7 +1037,7 @@
                   </section>`;
               }).join("")}
             </div>
-            <p class="ag-foot">Summarised in plain English from the posted agenda, and trimmed of the
+            <p class="ag-foot">Summarized in plain English from the posted agenda, and trimmed of the
               procedural steps every meeting carries. The PDF above is the full notice, and it is the
               notice rather than a record of what the council did.</p>`
             : `<p class="ag-empty">No parsed agenda for this meeting.</p>`}
@@ -1052,13 +1052,13 @@
       // wall — so instead we split it on its H2s and hand each section to a
       // renderer that knows what that section *is*: motions become decision rows
       // with outcome pills, and the meeting map becomes a timeline. Anything
-      // unrecognised still renders as plain prose, so an off-format summary
+      // unrecognized still renders as plain prose, so an off-format summary
       // degrades instead of breaking.
       // ---------------------------------------------------------------------
 
       // A 1.8-stroke line set, matching the tab-bar glyphs. (Emoji were standing
       // in here; they render inconsistently across platforms and can't take a
-      // colour from the palette.)
+      // color from the palette.)
       const ICON = {
         clock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`,
         words: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 11h16M4 16h9"/></svg>`,
@@ -1142,7 +1142,7 @@
         header ? header.findIndex((h) => names.some((n) => slug(h).includes(n))) : -1;
 
       // Motions: one row per vote taken. The outcome pill reuses the site's vote
-      // colours, so "passed" is the same green here as everywhere else.
+      // colors, so "passed" is the same green here as everywhere else.
       function renderDecisions(md) {
         const { header, rows, rest } = extractTable(md);
         let html = "";
@@ -1172,7 +1172,7 @@
 
       // The label the summary gives the no-roll-call list. It's a bold line inside
       // the Decisions section normally, and the section's own heading once the
-      // vote table has been dropped in favour of the minutes.
+      // vote table has been dropped in favor of the minutes.
       const SETTLED = "Settled without a vote";
 
       // Drop a standalone "**Label:**" line — used when that label has been
@@ -1261,7 +1261,7 @@
       };
 
       // Short rail labels. The section keeps its full heading; the tab only has to
-      // be recognisable at a glance and survive a 360px screen.
+      // be recognizable at a glance and survive a 360px screen.
       const TAB_LABEL = {
         decisions: "Decisions",
         settled: "Settled without a vote",

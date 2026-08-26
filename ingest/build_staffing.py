@@ -61,7 +61,7 @@ source documents make a naive parse wrong, and both are handled explicitly:
 
 ACFR_CHECKS holds the total each city prints for FY2024, read off the page. The
 build fails if a rebuild stops reproducing them. That check is the whole
-defence against a silent column-alignment bug, which is exactly the failure
+defense against a silent column-alignment bug, which is exactly the failure
 mode that would produce a plausible-looking wrong answer.
 
 Usage:  python -m ingest.build_staffing [--cache DIR]
@@ -270,8 +270,8 @@ CITY_CLAIMED_POPULATION = [
 #
 # Rules match the row's own label, in order, first match wins. The group heading
 # above a row is deliberately NOT used: pdftotext carries a heading forward
-# across page breaks, so Herriman's Water and Storm Water rows arrive labelled
-# "Public Safety" and Murray's entire schedule arrives labelled "Fire".
+# across page breaks, so Herriman's Water and Storm Water rows arrive labeled
+# "Public Safety" and Murray's entire schedule arrives labeled "Fire".
 #
 # PUBLIC_SAFETY is the consequential one. It is drawn to match the services
 # Eagle Mountain buys instead of staffing. Courts are NOT in it: a justice court
@@ -310,11 +310,11 @@ FUNCTION_LABELS = {
     "general_gov": "General government",
     "unmapped": "Unclassified",
 }
-# Order drives the stacked bar and its legend, so it is also a colour decision:
+# Order drives the stacked bar and its legend, so it is also a color decision:
 # community_dev and public_works take the two warm hues, which sit too close
 # together in dark mode to be told apart when adjacent. Utilities between them
 # separates the pair and still groups sensibly — public works and utilities are
-# neighbours either way round.
+# neighbors either way round.
 FUNCTION_ORDER = ["general_gov", "public_safety", "community_dev", "utilities",
                   "public_works", "parks_rec", "library", "unmapped"]
 
@@ -455,8 +455,8 @@ def row_values(line: str, cols):
     A row carrying a figure for every year is zipped straight across: exact, and
     what most rows are. Geometry is only needed for ragged rows — Draper leaves
     early years blank where a department did not exist yet — and there a wide
-    figure's centre can drift most of a column away from the header token above
-    it, so nearest-centre is a last resort rather than the rule.
+    figure's center can drift most of a column away from the header token above
+    it, so nearest-center is a last resort rather than the rule.
     """
     nums = [(t, s, e) for t, s, e in tokens_with_pos(line) if numeric(t) is not None]
     if len(nums) == len(cols):
@@ -502,7 +502,7 @@ def tol(x: float) -> float:
     The floor covers ordinary cent rounding. The proportional part covers the
     fact that some cities' printed totals do not equal the sum of their own
     printed rows — Eagle Mountain's FY2023 column adds to 137.34 against a
-    printed 137.45. That is a rounding artefact in the source document, not a
+    printed 137.45. That is a rounding artifact in the source document, not a
     parse error, and the build records the delta rather than hiding it. 0.15% is
     still far tighter than any real mistake: miscounting a subtotal moves a
     total by whole FTEs, not hundredths.
@@ -984,7 +984,7 @@ def main():
                 "The city's own figures run higher, and the page sets them out rather "
                 "than choosing between them."
             ),
-            "normalisation": (
+            "normalization": (
                 "Cities group departments differently, so every row is re-filed by "
                 "function from its own label. Public safety means police, fire, "
                 "ambulance, dispatch, animal control, crossing guards and emergency "
@@ -1011,7 +1011,7 @@ def main():
                 "not be retrieved at all."
             ),
             "caveats": [
-                "FTE excludes contracted labour entirely. That is the whole point for "
+                "FTE excludes contracted labor entirely. That is the whole point for "
                 "Eagle Mountain, and it means the raw column understates what the city "
                 "actually commands.",
                 "Murray's and Draper's newest reports are FY2025; the FY2024 column of "

@@ -180,7 +180,7 @@
       /* =========================================================================
          The page answers one question — where does Eagle Mountain's money go? —
          and it has to answer it for three budgets at once, which is the whole
-         organising problem. The city is operating right now on an *interim*
+         organizing problem. The city is operating right now on an *interim*
          FY2026–27 budget that is not final until 18 August. Behind it sit two
          budgets the city published in full: FY2025–26, the year just ended, and
          FY2025 before it. So the page runs in time order, newest first, each
@@ -192,10 +192,10 @@
          Within each year the money is shown at two altitudes — the whole budget
          across every fund, then the General Fund alone traced revenue-in to
          service-out, because that is the fund of the services residents
-         recognise and the one the Council most directly steers. FY2025–26 adds
+         recognize and the one the Council most directly steers. FY2025–26 adds
          a third: its own budget book, rebuilt line by line, so any figure on
          the page can be followed down to the account it is paid from. Every
-         figure is the city's own line items; nothing here is modelled or
+         figure is the city's own line items; nothing here is modeled or
          estimated.
          ========================================================================= */
 
@@ -209,7 +209,7 @@
       };
       const pct = (v, t) => ((v / t) * 100).toFixed(1) + "%";
       const cssv = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-      // Six harmonised source hues (forest → ochre); greens vs oranges hold CVD
+      // Six harmonized source hues (forest → ochre); greens vs oranges hold CVD
       // separation. Defined as tokens in site.css so both themes stay in sync.
       const RAMP = ["--sk-c0", "--sk-c1", "--sk-c2", "--sk-c3", "--sk-c4", "--sk-c5"];
 
@@ -343,7 +343,7 @@
           wireYearTabs();
         }
 
-        // Redraw on theme flips so token-driven colours refresh (keeps any drill state).
+        // Redraw on theme flips so token-driven colors refresh (keeps any drill state).
         new MutationObserver(drawAll)
           .observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
@@ -376,7 +376,7 @@
          years are not comparable line for line and a reader scrolling past the
          seam had no way to tell which year a figure belonged to. The year
          between them has neither a published book nor a chart, so it is named in
-         the note underneath rather than given a card it can't honour.
+         the note underneath rather than given a card it can't honor.
 
          Below the width where the two cards fit side by side they collapse to a
          compact switcher that pins under the topbar (see .b-years in site.css),
@@ -672,7 +672,7 @@
                   The biggest named jobs after the treatment plant:
                   ${named.slice(0, 5).map((c) => `${esc(c.name)} (${short(c.total)})`).join(", ")}.
                   Another ${short(pooled.reduce((a, c) => a + c.total, 0))} sits in ${pooled.length} catch-all lines
-                  labelled only “Capital Projects” or “Capital Outlay”, with no project attached — so there is no way
+                  labeled only “Capital Projects” or “Capital Outlay”, with no project attached — so there is no way
                   to tell from the budget what that money builds. The FY2025 budget had the same gap.
                 </p>`)}
             </div>
@@ -789,7 +789,7 @@
               <div class="b-fig"><span class="k">As adopted</span><span class="v">${short(t.adopted)}</span><span class="d">what the Council voted for, before the year started</span></div>
               <div class="b-fig"><span class="k">As it ended up</span><span class="v">${short(t.amended)}</span><span class="d">${short(t.carried_forward)} added during the year, nearly all of it building work</span></div>
               <div class="b-fig"><span class="k">Day-to-day services</span><span class="v">${short(gf.adopted)}</span><span class="d">the General Fund · down ${gfDrop}% on the year before</span></div>
-              <div class="b-fig"><span class="k">Itemised to</span><span class="v">${Number(t.line_count).toLocaleString("en-US")}</span><span class="d">separate lines, every one of them below</span></div>
+              <div class="b-fig"><span class="k">Itemized to</span><span class="v">${Number(t.line_count).toLocaleString("en-US")}</span><span class="d">separate lines, every one of them below</span></div>
             </div>
 
             <div class="bn-read">
@@ -855,7 +855,7 @@
 
             ${generalFundCard("bgf", `The <span class="nowrap">${esc(b.fiscal_year_label)}</span> General Fund, from income to service`, `
               The ${short(gf.adopted)} General Fund is the money the Council has real discretion over — property
-              and sales tax coming in on the left, the services residents recognise going out on the right.`)}
+              and sales tax coming in on the left, the services residents recognize going out on the right.`)}
 
             ${explorer(b)}
 
@@ -943,7 +943,7 @@
 
       /* ---------------- the explorer: the book itself ----------------
          Everything above this point is a summary of something. This is the
-         thing being summarised — every account in the budget, grouped the two
+         thing being summarized — every account in the budget, grouped the two
          ways the book groups them, with a search across all of them.
 
          It is built as nested <details>: the browser gives keyboard support,
@@ -1437,7 +1437,7 @@
       }
 
       // The diagram stays legible at ~12 rows; the table below carries the full
-      // itemisation. Everything past the 11th line folds into one "Other" ribbon.
+      // itemization. Everything past the 11th line folds into one "Other" ribbon.
       //
       // Credits are dropped here, not summed. Some General Fund lines are
       // negative — administrative cost recharged to the utility funds, booked as
@@ -1516,7 +1516,7 @@
       const LUMP = new Set(["Capital Projects", "Capital Outlay"]);
 
       // Drill table: every line item with its specific fund, a per-row "pooled"
-      // marker, and a reconciliation of how much is itemised vs. pooled — so a
+      // marker, and a reconciliation of how much is itemized vs. pooled — so a
       // reader can see every dollar is accounted for even where a name isn't.
       function fillDrillTable(id, items, total, side, focusName, credit = 0) {
         let pooled = 0;
@@ -1524,16 +1524,16 @@
           const isLump = LUMP.has(it.name);
           if (isLump) pooled += it.value;
           const where = it.f
-            ? `<span class="b-where">${esc(it.f)}${isLump ? " · pooled, not itemised" : ""}</span>`
+            ? `<span class="b-where">${esc(it.f)}${isLump ? " · pooled, not itemized" : ""}</span>`
             : "";
           return `<tr${isLump ? ' class="is-lump"' : ""}><td>${esc(it.name)}${where}</td>`
             + `<td class="num">${usdC(it.value)}</td><td class="num">${pct(it.value, total)}</td></tr>`;
         }).join("");
         const h = side === "target" ? "Line item / project" : "Line item";
         const name = exportSlug(focusName + " line items");
-        const itemised = total - pooled;
+        const itemized = total - pooled;
         const recon = pooled > 0
-          ? `<p class="b-recon"><strong>${short(itemised)}</strong> is itemised to named line items;
+          ? `<p class="b-recon"><strong>${short(itemized)}</strong> is itemized to named line items;
              <strong>${short(pooled)}</strong> (${pct(pooled, total)}) is pooled lump appropriations —
              chiefly the impact-fee <em>“Capital Projects”</em> and <em>“Capital Outlay”</em> lines the
              city budgets as a single amount and spends on projects as they come up. Every dollar is
@@ -1755,7 +1755,7 @@
           nodes.map((n) => `<span class="lg"><i style="background:${n.color}"></i>${esc(n.name)} · ${short(n.total)}</span>`).join("");
       }
 
-      // A table view for every chart — identity is never carried by colour alone.
+      // A table view for every chart — identity is never carried by color alone.
       // `names` supplies the export filename for each table, in order.
       function fillTable(id, head, rows, T, head2, rows2, names) {
         const body = (rs) => rs.slice().sort((a, b) => b.value - a.value).map((l) =>

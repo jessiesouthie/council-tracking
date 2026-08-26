@@ -183,7 +183,7 @@
 
       const esc = (s) => CT.escapeHtml(s);
 
-      /* Verdicts carry colour, so the vocabulary and the palette are defined in
+      /* Verdicts carry color, so the vocabulary and the palette are defined in
          one place rather than a class per card. The keys match data.claims.json;
          an unknown key falls back to neutral rather than rendering unstyled. */
       const TONE = {
@@ -382,7 +382,7 @@
 
       /* The filter bar. Twenty claims is past the point where a reader scans
          the lot, and the ones they came for are usually one subject: the tax,
-         the road, the data centres. Buttons rather than a <select> because the
+         the road, the data centers. Buttons rather than a <select> because the
          set is small enough to show, and the counts are on them because "how
          much of this page is about roads" is itself an answer.
 
@@ -574,7 +574,7 @@
         history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash);
       }
 
-      /* Two behaviours, both about the link being the point of the page: a claim
+      /* Two behaviors, both about the link being the point of the page: a claim
          is meant to be answered with a URL, and the reader who arrives on one
          should land on the card rather than hunt for it. */
       function wire(root) {

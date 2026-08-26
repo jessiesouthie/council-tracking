@@ -140,11 +140,11 @@ test("the claim comparison is computed against the peers actually shown", () => 
 });
 
 test("excluding public safety narrows the gap rather than widening it", () => {
-  // The page's central sentence. If normalisation ever stopped moving the
+  // The page's central sentence. If normalization ever stopped moving the
   // number toward the peers, the argument on the page would be wrong.
   assert.ok(
     data.claim.excl_public_safety.pct_of_median > data.claim.raw.pct_of_median,
-    "normalisation no longer closes the gap; the claim section needs rewriting"
+    "normalization no longer closes the gap; the claim section needs rewriting"
   );
 });
 

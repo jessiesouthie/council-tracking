@@ -56,7 +56,7 @@ jobs:
   transcribe:
     runs-on: ubuntu-latest
     # A four-hour meeting is roughly 20 minutes of AssemblyAI turnaround plus a
-    # few minutes of summarising, so three meetings fit comfortably.
+    # few minutes of summarizing, so three meetings fit comfortably.
     timeout-minutes: 180
 
     steps:
@@ -124,7 +124,7 @@ jobs:
           fi
           cat work.tsv
 
-      - name: Transcribe and summarise
+      - name: Transcribe and summarize
         if: steps.find.outputs.count != '0'
         env:
           ASSEMBLYAI_API_KEY: ${{ secrets.ASSEMBLYAI_API_KEY }}

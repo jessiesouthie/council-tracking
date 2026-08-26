@@ -512,7 +512,7 @@ def render_agenda(entry: dict) -> list[str]:
     Prints the city's own numbering and wording. An item's plain-English line
     goes first when ingest.summarize_agenda has one cached, with the official
     title kept underneath it — the same order the upcoming-meeting card uses, so
-    a reader who saw the meeting coming recognises it afterwards.
+    a reader who saw the meeting coming recognizes it afterwards.
     """
     parts: list[str] = []
     sessions = {s["start"]: s for s in entry.get("sessions") or []}
@@ -694,11 +694,11 @@ SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
 def transcript_turns(text: str) -> list[tuple[str | None, str]]:
     """Reflow one-line-per-segment ASR output into readable turns.
 
-    The .txt files carry one line per recogniser segment, which is a clause and
+    The .txt files carry one line per recognizer segment, which is a clause and
     not a sentence — rendered a paragraph each, a three-hour meeting comes out as
     two thousand orphaned fragments. Some files label the speaker on each segment
     and some don't, so there are two jobs: merge consecutive segments from the
-    same speaker into one turn, and where nothing is labelled, fall back to
+    same speaker into one turn, and where nothing is labeled, fall back to
     breaking on sentences so the page is still readable prose.
     """
     turns: list[tuple[str | None, list[str]]] = []
@@ -727,7 +727,7 @@ def transcript_turns(text: str) -> list[tuple[str | None, str]]:
         if who is not None:
             out.append((who, body))
             continue
-        # Unlabelled: break the run into paragraphs a few sentences long.
+        # Unlabeled: break the run into paragraphs a few sentences long.
         sentences = SENTENCE_END.split(body)
         for i in range(0, len(sentences), SENTENCES_PER_PARA):
             para = " ".join(sentences[i:i + SENTENCES_PER_PARA]).strip()

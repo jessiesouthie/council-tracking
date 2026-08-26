@@ -564,7 +564,7 @@ def _refine_motion_anchors(block: MotionBlock, motion_text: str) -> None:
 
     # Fallback cascade for motions that didn't pick up a title from an agenda
     # heading. First try the resolution/ordinance preamble inside the motion
-    # text; then fall back to summarising the action verb phrase.
+    # text; then fall back to summarizing the action verb phrase.
     if not block.item_title:
         title, btype = _title_from_motion(motion_text or "")
         if title:

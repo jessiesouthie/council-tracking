@@ -45,7 +45,7 @@ DOCS = ROOT / "docs"
 FONT_DIR = DOCS / "fonts"
 OUT_CSS = DOCS / "fonts.css"
 
-# Google serves woff2 only to browsers it recognises. A urllib default UA gets
+# Google serves woff2 only to browsers it recognizes. A urllib default UA gets
 # TrueType, which is roughly twice the size and unnecessary everywhere we ship.
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")

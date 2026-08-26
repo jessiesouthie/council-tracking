@@ -41,7 +41,7 @@ Design notes, following the conventions already in this repo:
   summaries to the wrong motions.
 
 * One `claude` call per meeting, not per motion. That is ~200 calls instead of
-  ~1,100 for a full backfill, and it lets the model see the neighbouring items,
+  ~1,100 for a full backfill, and it lets the model see the neighboring items,
   which is what makes "the typical homeowner pays about $18 more" possible.
 """
 

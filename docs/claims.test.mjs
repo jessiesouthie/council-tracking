@@ -97,7 +97,7 @@ test("every claim carries a verdict the page defines", () => {
   }
 });
 
-test("every verdict has a colour and a rating", () => {
+test("every verdict has a color and a rating", () => {
   // An unmapped verdict renders as neutral and rates as a 3, which would quietly
   // publish "Not accurate" as an even-handed shrug.
   for (const v of data.verdicts) {
@@ -323,7 +323,7 @@ test("every card and every docket row carries what the filter reads", () => {
   assert.equal(rows, data.claims.length, "a docket row lost its topics");
 });
 
-test("the verdict colours are the ones that clear 4.5:1", () => {
+test("the verdict colors are the ones that clear 4.5:1", () => {
   // Sage measures 4.41 on white and rust 3.79 on the dark card — both below AA
   // for text this size. The page defines deepened variants for exactly that
   // reason, and a revert to the shared tokens would silently drop the verdict —

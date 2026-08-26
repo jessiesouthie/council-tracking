@@ -105,6 +105,7 @@ const ALIASES = {
   hewish: ["huish"],
   councilman: ["councilmember"],
   councilwoman: ["councilmember"],
+  councilor: ["councilmember"],
   councillor: ["councilmember"],
   alderman: ["councilmember"],
   rezone: ["zoning"],
@@ -275,7 +276,7 @@ function isIdentityQuestion(corpus, body, question) {
   );
 }
 
-// If the visitor names another body, honour that over whichever page they
+// If the visitor names another body, honor that over whichever page they
 // happen to be on — otherwise the page-derived filter silently hides the only
 // docs that could answer them.
 function resolveBody(corpus, question, fallback) {
@@ -615,7 +616,7 @@ async function handleAsk(request, env) {
 
 /**
  * Show the sources the answer actually leaned on, not everything retrieved.
- * The old behaviour listed all twelve passages under every reply, which read as
+ * The old behavior listed all twelve passages under every reply, which read as
  * a wall of links and buried whichever one mattered.
  */
 function usedSources(sources, answer) {

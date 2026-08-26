@@ -330,7 +330,7 @@ test(".nav is never a scroll container", () => {
   // to auto, not visible, so the moment .nav scrolls it clips its own menus off
   // at the height of the bar. The menus were switched off under 1000px for
   // exactly that reason once, which meant a browser window that wasn't
-  // maximised silently lost them. The width is found by tightening the row
+  // maximized silently lost them. The width is found by tightening the row
   // instead — see the 760–1199px band — and this is what stops the scroll from
   // creeping back in.
   // Comments stripped first — the rule below explains this very hazard in

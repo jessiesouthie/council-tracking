@@ -648,7 +648,7 @@
             const share = (p.frac * 100).toFixed(0);
             // Perceptual mix between the two palette endpoints; falls back
             // gracefully on browsers without color-mix() support.
-            const colour = `color-mix(in oklch, ${barLo} ${100 - share}%, ${barHi} ${share}%)`;
+            const color = `color-mix(in oklch, ${barLo} ${100 - share}%, ${barHi} ${share}%)`;
             return `
               <li class="pair">
                 <a class="pair-member left" href="member.html?id=${encodeURIComponent(left.id)}">
@@ -656,7 +656,7 @@
                   <span class="pair-name">${CT.escapeHtml(left.name)}</span>
                 </a>
                 <div class="pair-bar-wrap" title="${CT.escapeHtml(left.name)} and ${CT.escapeHtml(right.name)} agreed on ${share}% of ${p.n} shared roll calls">
-                  <div class="pair-bar" style="width:${share}%;background:${colour}"></div>
+                  <div class="pair-bar" style="width:${share}%;background:${color}"></div>
                   <span class="pair-meta">
                     <span class="pair-pct">${share}%</span>
                     <span class="pair-n">n=${p.n}</span>

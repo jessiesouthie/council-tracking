@@ -48,7 +48,7 @@
       },
       "derivation": "Every figure here except the rate is derived. The $5,188,077 is the certified rate's own $3,055,201 scaled by 0.000900 ÷ 0.000530 — which is the same as taking 0.000900 × the $5,764,530,000 of citywide taxable value that the city's published rate-and-revenue pairs imply, and the same again as three fifths of the $8,646,795 the repealed 0.001500 would have raised. Three routes, one number, because they are all the same arithmetic on figures the city did publish. The $2,132,876 is that revenue less the $3,055,201 on the impact schedule.",
       "supersedes": "repealed",
-      "context": "A repeal and a re-adoption on one night: the council rescinded the 0.001500 it had set on August 6 and adopted 0.000900 in its place, then took up the FY2026–27 budget the rate has to fund. Utah's Truth-in-Taxation process fixes a ceiling, not a floor — the noticed 0.001700 is the most the council could levy without starting the notice and hearing over, and it can adopt anything at or below it. The referendum petition citizens began organising in early August was aimed at the 0.001500."
+      "context": "A repeal and a re-adoption on one night: the council rescinded the 0.001500 it had set on August 6 and adopted 0.000900 in its place, then took up the FY2026–27 budget the rate has to fund. Utah's Truth-in-Taxation process fixes a ceiling, not a floor — the noticed 0.001700 is the most the council could levy without starting the notice and hearing over, and it can adopt anything at or below it. The referendum petition citizens began organizing in early August was aimed at the 0.001500."
     },
     "repealed": {
       "rate": 0.0015,
@@ -64,7 +64,7 @@
       "revenue_increase": 5591594,
       "meeting_id": 747,
       "date": "2026-08-06",
-      "vote": "Passed 5–0 on a roll call — moved by Whiting, seconded by Wright; Wood, Whiting, Wright, Clark and Huish all in favour",
+      "vote": "Passed 5–0 on a roll call — moved by Whiting, seconded by Wright; Wood, Whiting, Wright, Clark and Huish all in favor",
       "motion": "Approves and adopts a property tax rate of 0.001500 for fiscal year 2026 to 2027. This rate exceeds the certified tax rate of 0.000530 and will result in an increase in the city's ad valorem property tax budgeted revenue of approximately $5,591,594, or 183.02% above the city's property tax budgeted revenue for the prior year, exclusive of new growth.",
       "home_example": {
         "market_value": 488000,

@@ -680,7 +680,7 @@
     // generated meeting pages need this: decorateBodyLinks() appends ?body= to
     // in-site links when a non-default body is active, so a reader who last
     // looked at the planning commission would otherwise have every council
-    // meeting page canonicalise itself to a ?body= variant of its own URL.
+    // meeting page canonicalize itself to a ?body= variant of its own URL.
     let link = document.head.querySelector('link[rel="canonical"]');
     if (link && link.hasAttribute("data-fixed")) return;
 

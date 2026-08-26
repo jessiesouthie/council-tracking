@@ -67,7 +67,7 @@
      data-center value assumed onto the roll, and whether any of it lands there
      is not settled: value inside a community reinvestment area is subtracted
      from the certified-rate base, and every data center already in this city
-     sits inside one. Modelling it as a fact would be asserting the answer, so
+     sits inside one. Modeling it as a fact would be asserting the answer, so
      the reader gets all three.
 
      "partial" is not half. It is the subset the record actually distinguishes:
@@ -322,7 +322,7 @@
       warnings,
       rows,
       crossings: findCrossings(rows),
-      summary: summarise(rows),
+      summary: summarize(rows),
       scenario,
       method,
       additions: additionMode,
@@ -361,7 +361,7 @@
 
   /* ---------------------------------------------------------------- summary */
 
-  function summarise(rows) {
+  function summarize(rows) {
     if (!rows.length) return null;
     const firstRow = rows[0];
     const lastRow = rows[rows.length - 1];
@@ -394,7 +394,7 @@
   /* ------------------------------------------------------------------ export */
 
   const api = {
-    project, validate, findCrossings, summarise, scenarioById, readBaseline,
+    project, validate, findCrossings, summarize, scenarioById, readBaseline,
     BASE_FIELDS, ADDITION_MODES,
   };
 

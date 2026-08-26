@@ -604,7 +604,7 @@ def main():
             ),
             "caveat": (
                 "The book's cover calls it the adopted budget; its page footers still read “Tentative "
-                "Budget”, an artefact of the template it was produced from. The figures are the adopted ones."
+                "Budget”, an artifact of the template it was produced from. The figures are the adopted ones."
             ),
         },
         "columns": [

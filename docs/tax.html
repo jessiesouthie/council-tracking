@@ -858,7 +858,7 @@
         // Slider drags are excluded: a pulse per tick would be a strobe.
         // Named `numflash`, not `pulse`: the home page's motion ledger already
         // owns `.pulse` as a boxed component, and sharing the name dropped the
-        // figure into a padded grey block for the length of the animation.
+        // figure into a padded gray block for the length of the animation.
         const pulse = () => {
           heronum.classList.remove("numflash");
           void heronum.offsetWidth; // restart the animation
@@ -1046,8 +1046,8 @@
          Everything above this point is arithmetic: what the rate is, what it
          costs one household, where it sits against other cities. None of that
          tells a reader why the council says it needs the money, what was said in
-         public before the vote, or what the people organising against it are
-         actually organising against.
+         public before the vote, or what the people organizing against it are
+         actually organizing against.
 
          This section carries that, and it has one rule: nothing goes in it that
          isn't a quotation from a recording of an open meeting or a citation to
@@ -1459,7 +1459,7 @@
       }
 
       /* Chips and in-page links glide to their target, opening it first if it is
-         a panel. A shared URL that names one does the same on load. Both honour
+         a panel. A shared URL that names one does the same on load. Both honor
          reduced-motion by dropping the smooth scroll. */
       function wirePictureNav() {
         const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1561,7 +1561,7 @@
          this table has less to explain than it used to. (The 183.02% the
          repealed 0.001500 carried was the same both ways for the same reason.)
 
-         Because of that, the noticed percentage below is labelled as the
+         Because of that, the noticed percentage below is labeled as the
          notice's own figure rather than as an increase over the certified rate.
          The adopted row is both, and says so.
       */
@@ -2627,7 +2627,7 @@
 
             return `
               <div class="crow ${isEM ? "is-em" : ""} ${p ? "" : "no-prop"} ${off ? "off" : ""}" data-tip="${CT.escapeHtml(tip)}">
-                ${/* No pill here: .cname is a fixed, ellipsised column, so a tag
+                ${/* No pill here: .cname is a fixed, ellipsized column, so a tag
                      on it would truncate the city's name. The adopted row says
                      so in its tooltip, in the foot and in the table instead. */ ""}
                 <span class="cname">${CT.escapeHtml(city.name)}${levy}${mark}</span>
@@ -2820,7 +2820,7 @@
         table.querySelectorAll("thead tr").forEach((tr) => lines.push(line(tr)));
         table.querySelectorAll("tbody tr").forEach((tr) => {
           // The percentile dividers are furniture, not rows of data — a spreadsheet
-          // wants the 253 cities and their Q column, not three labelled rules.
+          // wants the 253 cities and their Q column, not three labeled rules.
           if (!tr.hidden && !tr.classList.contains("qdiv")) lines.push(line(tr));
         });
         return lines.join("\r\n");
@@ -2862,7 +2862,7 @@
       }
 
       /* ---------------- every proposal in the state ----------------
-         The county charts answer "how does this compare to my neighbours". This
+         The county charts answer "how does this compare to my neighbors". This
          answers the question they raise next: is Eagle Mountain's the biggest
          anywhere? Every August the Utah Taxpayers Association collects every
          county's truth-in-taxation notices into one list; this is that list,
@@ -3233,10 +3233,10 @@
            Cut by position rather than by rate, so the four groups come out the
            same size — 253 doesn't divide by four, so they run 63/64/63/63 — and
            each boundary falls between two rows, where a line can be drawn and
-           labelled. The cost is that cities tied at a boundary rate can land on
+           labeled. The cost is that cities tied at a boundary rate can land on
            either side of it; the footnote says so.
 
-           Labelled in percentiles, never as "Q1"–"Q4": on a page about tax years
+           Labeled in percentiles, never as "Q1"–"Q4": on a page about tax years
            and budget cycles, a Q-number reads as a quarter of the calendar, and
            the statistical convention runs the other way anyway (the "first
            quartile" is the lowest 25%). Group 1 here is the highest-rate 25%, so
@@ -3482,7 +3482,7 @@
       }
 
       /* The percentile boundaries only mean something while the table is in rank
-         order and showing every city. A line labelled "the median" sitting
+         order and showing every city. A line labeled "the median" sitting
          between two alphabetically adjacent rows, or between two survivors of a
          filter, would be a plain lie — so the dividers are re-placed after every
          sort and withdrawn the moment either condition breaks. Called by both

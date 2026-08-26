@@ -306,7 +306,7 @@ def _overview_doc(data: dict, body: dict) -> dict:
         f"and {counts.get('votes', 0)} recorded votes. "
         f"Common topics: {tag_line}. "
         f"People on record: {members}. "
-        "The site is organised in five sections: Meetings (every meeting, its agenda, "
+        "The site is organized in five sections: Meetings (every meeting, its agenda, "
         "minutes and transcript, with the searchable roll-call record on its Votes tab at "
         "motions.html), Members (each member's voting record), Claims (rumours about the city "
         "checked against the recordings and the notices, at claims.html), Finances (at "
@@ -664,7 +664,7 @@ def _extra_docs() -> list[dict]:
                 "text": _clean(text),
             }
         )
-    # The FY2025-26 book: the one budget itemised to the account, so the agent
+    # The FY2025-26 book: the one budget itemized to the account, so the agent
     # can answer "how much went to the library" rather than only "how much went
     # to community services". Its own chunk, because the year has two totals and
     # an answer that quotes the wrong one is wrong by $44M.
@@ -682,7 +682,7 @@ def _extra_docs() -> list[dict]:
             f"{o['name']} ${o['adopted']:,}" for o in bb.get("citywide", {}).get("expense", []))
         text = (
             f"{bb.get('fiscal_year_label','')} adopted budget — the year {bb.get('period','')}, "
-            "published in full as a budget book and itemised on this site down to every account. "
+            "published in full as a budget book and itemized on this site down to every account. "
             f"Adopted at ${bt.get('adopted',0):,} across {bt.get('fund_count',0)} funds and "
             f"{bt.get('department_count',0)} departments, {bt.get('line_count',0):,} lines in all. "
             f"The same year stood at ${bt.get('amended',0):,} by the end of it: "

@@ -23,13 +23,13 @@ So attribution here is textual and auditable: every label traces to a phrase in
 the transcript, recorded as `basis` below. That is a different and *narrower*
 claim than diarization — it says "the chair called this name and a new voice
 began", not "these waveforms match". Where the recording gives no such handle —
-the open cross-talk after 03:20 — the lines are deliberately left unlabelled
+the open cross-talk after 03:20 — the lines are deliberately left unlabeled
 rather than guessed, which is the same rule the meeting summaries follow.
 
 Output is one `Name: text` line per cue, the shape `build_meeting_pages.py`
 already renders (`SPEAKER_LINE` accepts real names, not just "Speaker A").
 `diarized` stays false in the index, because it is: these are not turn labels
-from the recogniser.
+from the recognizer.
 
 Run:  python3 -m ingest.attribute_747          # rewrite the .txt
       python3 -m ingest.attribute_747 --report # coverage only, write nothing
@@ -105,7 +105,7 @@ PUBLIC_COMMENT: list[tuple[int, str, str]] = [
 
 # The chair hands off by name before each of these. The five opening responses
 # are unambiguous; the later ones are the handoffs that survive in the
-# cross-talk, and everything between them is left unlabelled on purpose.
+# cross-talk, and everything between them is left unlabeled on purpose.
 DELIBERATION: list[tuple[int, str, str]] = [
     (2631, "Zac Huish", "handed off at 2630: 'I'm going to start on my right, which is Zach. Councilmember Dewish'"),
     (2676, "Rich Wood", "handed off at 2675: 'Councilmember Wood. Go ahead, start my timer.'"),
@@ -123,7 +123,7 @@ DELIBERATION: list[tuple[int, str, str]] = [
 ]
 
 # Points where the chair takes the floor back for something long enough to be
-# worth labelling, rather than the one-line "Thank you" between speakers.
+# worth labeling, rather than the one-line "Thank you" between speakers.
 CHAIR_TURNS: list[tuple[int, str, str]] = [
     (0, CHAIR, "opens the meeting and asks Wright for the prayer; asks 'Can you hear me okay, Lacey?', so this voice is not the recorder"),
     (2578, CHAIR, "'I'd like to read our proposed property tax impact schedule' — the summary records the mayor reading the schedule into the record"),
@@ -140,7 +140,7 @@ ROLL_CALL_FROM = 4028
 
 # After the last usable handoff the floor is open — members interrupt each
 # other, staff answer by name, and the chair stops introducing anyone. Nothing
-# in here is labelled except the roll call.
+# in here is labeled except the roll call.
 UNATTRIBUTED_FROM = 3169
 
 
@@ -160,7 +160,7 @@ def cues(path: Path) -> list[tuple[str, str]]:
 
 SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
 
-# A cue boundary is not a speaker boundary: the recogniser breaks on pauses, so
+# A cue boundary is not a speaker boundary: the recognizer breaks on pauses, so
 # the chair's "Thank you. Betty Peralta." and the first words of Betty Peralta's
 # comment routinely share one cue. Attribution therefore happens at sentence
 # level, and these are the sentences that belong to whoever is running the
@@ -223,7 +223,7 @@ def turns(rows: list[tuple[str, str]]) -> list[tuple[str | None, int, str]]:
     sents = sentences(rows)
     marks = [(start_of(sents, cue), who) for cue, who, _ in anchors()]
     # The floor opens up after the last usable hand-off; nothing past it is
-    # labelled except by a later anchor.
+    # labeled except by a later anchor.
     stop = start_of(sents, UNATTRIBUTED_FROM)
 
     who: list[str | None] = [None] * len(sents)

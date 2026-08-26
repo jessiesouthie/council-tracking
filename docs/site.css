@@ -14,7 +14,7 @@
 
      Contrast: navy fills and ink are dark enough to carry text on paper. Ochre
      for small text uses --link (#A2650F, deeper for legibility on white); the
-     lighter --warm (#B6741A) is a *fill/mark* colour, not body-size text. Same
+     lighter --warm (#B6741A) is a *fill/mark* color, not body-size text. Same
      split for red: --danger fills, --danger-ink writes. */
   --bg:            #FDFCF8;  /* near-white paper, faint warmth — page bg */
   --bg-elev:       #FFFFFF;  /* white — cards */
@@ -41,13 +41,13 @@
   --warm-soft:     #F5EAD8;  /* tag / highlight fills */
   --warm-ink:      #8A5312;  /* text on --warm-soft */
 
-  /* App-icon colours. These are the icon's, not the palette's — they stay put in dark
+  /* App-icon colors. These are the icon's, not the palette's — they stay put in dark
      mode so the brand mark reads as the same object as the installed icon. */
   --mark-bg:       #141E2E;  /* icon tile ground — navy ink */
   --mark-fg:       #FFFFFF;  /* lead dot + lead bar */
   --mark-dim:      #A0A0A0;  /* trailing bars */
 
-  /* Attention, distinct from both brand and vote colours: a highlighter gold.
+  /* Attention, distinct from both brand and vote colors: a highlighter gold.
      Used for search hits and "look here" chips. */
   --highlight:     #E8B93E;
   --highlight-fg:  #2A2103;
@@ -265,7 +265,7 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
 /* ---------- the masthead ----------
    Full-bleed bar, but the row inside it is set to the same measure as the page
    it sits over. Before this the bar was padded a flat 24px from the viewport
-   edge while <main> was a 1080px column centred in it, so on a wide screen the
+   edge while <main> was a 1080px column centered in it, so on a wide screen the
    brand hung ~180px out to the left of every heading, rule and sub-nav beneath
    it, and the nav floated in the middle of the remaining space, anchored to
    nothing. Now the brand starts on the column's left edge and the nav ends on
@@ -337,9 +337,9 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
 .brand > div { min-width: 0; }
 .brand:hover { text-decoration: none; }
 /* Brand mark: the same roll-call glyph as icons/icon-512.png, inlined as SVG so the
-   header and the installed app icon are recognisably one object. The tile keeps the
+   header and the installed app icon are recognizably one object. The tile keeps the
    icon's near-black ground in both themes rather than following the palette — an
-   icon that changes colour with the OS theme stops being an icon. The glyph's own
+   icon that changes color with the OS theme stops being an icon. The glyph's own
    amber is literally --accent (the artwork was drawn in #B6741A), so it tracks the
    palette's light/dark amber for free. */
 .brand-mark {
@@ -361,7 +361,7 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
   .brand:hover .brand-mark { transform: none; }
 }
 /* viewBox is the icon's own 512 grid, so the glyph sits at exactly the inset it has
-   in the PNG — no re-centring by hand. */
+   in the PNG — no re-centering by hand. */
 .brand-mark svg { display: block; width: 100%; height: 100%; }
 .brand-mark .m-accent { fill: var(--accent); }
 .brand-mark .m-fg     { fill: var(--mark-fg); }
@@ -475,7 +475,7 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
 
 /* The trigger says, before you point at it, that there is more behind it.
    Drawn from two borders rather than set as a glyph: an arrow character takes
-   the label's font metrics and lands off the optical centre, and it would be
+   the label's font metrics and lands off the optical center, and it would be
    read out by a screen reader that already has the menu's own group label.
    A pseudo-element has no text to announce.
 
@@ -575,7 +575,7 @@ a:hover { color: var(--link-strong); text-decoration: underline; }
    which has always marked the current tab with a 2px accent stripe.
 
    So: ink instead of --fg, the weight up a step, and that same stripe seated
-   along the foot of the pill. Three signals, none of them colour alone, and
+   along the foot of the pill. Three signals, none of them color alone, and
    aria-current carries it for anyone who can't see any of them. */
 .nav a.active, .nav a[aria-current="page"] {
   color: var(--fg-soft);
@@ -942,7 +942,7 @@ details.motion-row[open] {
    editorial hierarchy — the look of a record that was *kept*, not a dashboard
    that was generated.
 
-   The organising idea is the roll call itself. This site is named for it, and
+   The organizing idea is the roll call itself. This site is named for it, and
    the one thing this dataset has that no news story does is *who voted how* —
    by name, every time. So the decision cards put named councilmembers on the
    front page rather than an anonymous bar. Everything else recedes to serve
@@ -1016,7 +1016,7 @@ body.home-paper {
 .home-paper .decision-title,
 .home-paper .mayor-name .n {
   font-family: var(--hm-display);
-  /* Fraunces ships here at 700 only; anything heavier would be synthesised. */
+  /* Fraunces ships here at 700 only; anything heavier would be synthesized. */
   font-weight: 700;
 }
 /* Fraunces sets wider and rounder than the site sans at the same size, and it
@@ -1299,7 +1299,7 @@ body.home-paper {
    card looks like the page it opens. The figure is the only thing set large,
    because the figure is the reason anybody clicks. */
 .live-tax {
-  /* Two tokens rather than literal colours, because the warm pair the light
+  /* Two tokens rather than literal colors, because the warm pair the light
      theme writes in — cream ground, brown ink — has no dark counterpart:
      --warm-soft and --warm-ink are the only accents the dark block leaves
      alone, so a brown eyebrow would land unreadable on a dark card. The gold
@@ -1634,7 +1634,7 @@ body.home-paper {
 
 /* The stamp and the verdict share one line. In a two-up column a long topic
    name would otherwise push the pill onto a line of its own and start that
-   card's title lower than its neighbour's — so the stamp is the part that
+   card's title lower than its neighbor's — so the stamp is the part that
    wraps, and the pill holds the corner. */
 .decision-top {
   display: flex;
@@ -1741,7 +1741,7 @@ body.home-paper {
 /* ---------- The roll call ----------
    The point of the whole site: not "4–1" but *which four*. Each councilmember
    present is a named chip, tinted by how they voted. This is the detail a
-   neighbour actually wants — did MY councilmember vote for this? */
+   neighbor actually wants — did MY councilmember vote for this? */
 .rollcall {
   display: flex;
   align-items: center;
@@ -2237,7 +2237,7 @@ body.home-paper {
   transition: border-color 200ms ease, box-shadow 200ms ease;
 }
 /* The index tab: a stub of brand navy along the top edge, the way a filed
-   document carries a coloured tab. It is also the only saturated thing on the
+   document carries a colored tab. It is also the only saturated thing on the
    closed card, so the eye starts here. */
 .agenda-card::before {
   content: "";
@@ -2568,9 +2568,9 @@ body.home-paper {
 }
 
 /* A numbered heading and everything under it, grouped onto one panel. Seventeen
-   free-floating rows are a wall; eight labelled panels are a page you can scan
+   free-floating rows are a wall; eight labeled panels are a page you can scan
    and pick from. Outlined rather than filled — a tinted panel on a light card
-   reads as a grey box, and there are eight of them. */
+   reads as a gray box, and there are eight of them. */
 .ag-head {
   display: grid;
   grid-template-columns: var(--ag-gutter) minmax(0, 1fr);
@@ -3651,7 +3651,7 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
 
    So the document is broken along its own seams and each part is given the shape
    its content already had: the lede leads, the motions become decision rows that
-   carry the site's vote colours, and the meeting map becomes a timeline you can
+   carry the site's vote colors, and the meeting map becomes a timeline you can
    scrub against. The caveats — true but not why anyone came — wait behind a
    disclosure at the foot.
 
@@ -3772,7 +3772,7 @@ details.motion-row.is-notable { border-left: 3px solid var(--accent); }
 .cast-role { font-size: 10.5px; color: var(--fg-muted); }
 /* The attendance sentence — kept only when it says something the chips can't
    (who was remote, who was excused, who stepped out before a vote). It repeats
-   the names, so it's sized and coloured as a footnote to the chips above it. */
+   the names, so it's sized and colored as a footnote to the chips above it. */
 .cast-note {
   margin: 9px 0 0;
   font-size: 12.5px; line-height: 1.55; color: var(--fg-muted);
@@ -4160,7 +4160,7 @@ body.page-tax, .tax-page, body.page-claims, .claims-page {
   --t-muted:  var(--fg-muted);
 
   --t-ink:      #23261F;             /* the result band's ground */
-  --t-ink-2:    #2B2E24;             /* its emphasised half */
+  --t-ink-2:    #2B2E24;             /* its emphasized half */
   --t-ink-line: #3A3C31;
   --t-on-ink:     #EFEADB;
   --t-on-ink-dim: #A7A895;
@@ -5643,7 +5643,7 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
 
    Do NOT fix that by capping this section's width — it is a card in the
    SURFACES layer below, and a max-width here shrinks the card itself, leaving a
-   short card hanging beside its full-width neighbours. SURFACES insets this one
+   short card hanging beside its full-width neighbors. SURFACES insets this one
    card's side padding instead, until its inner width *is* the measure; then
    `--arg-measure: 100%` lets everything fill that column and share one edge.
 
@@ -5907,7 +5907,7 @@ a.aq-src:hover { color: var(--t-gold); text-decoration: underline; }
 }
 
 /* What changed on the night. Same "was → now" idiom as the three facts near the
-   top of the page, so a reader recognises it as the page's way of saying a
+   top of the page, so a reader recognizes it as the page's way of saying a
    number moved rather than reading it as a new kind of chart — and the same
    hairline grid, for the same reason.
 
@@ -5933,7 +5933,7 @@ a.aq-src:hover { color: var(--t-gold); text-decoration: underline; }
   }
   /* The 1px gaps are the rules; each cell paints the surface back over its own
      area. --t-card, not --t-page: this grid sits on the argument's section card,
-     and the paper colour would show as a tinted rectangle on it. Outer edges
+     and the paper color would show as a tinted rectangle on it. Outer edges
      stay flush to the section spine so the block squares up with the hairlines
      above and below it. */
   .adelta { background: var(--t-card); padding: 16px 22px 18px; }
@@ -6285,7 +6285,7 @@ table.data.statewide tr.is-em-row td {
    A rank out of 253 is a precise answer to a question nobody asked; the quarter
    is the answer. One ordered ramp, not four categories: sage for the low end
    walking up to the same rust the charts use for the top, so the four read as a
-   scale even in greyscale. The ramp never carries meaning alone — every chip
+   scale even in grayscale. The ramp never carries meaning alone — every chip
    also says which quarter it is, and the text on it is page ink, so contrast
    never depends on the tint behind it. */
 #p-statewide {
@@ -6314,7 +6314,7 @@ table.data.statewide tr.is-em-row td {
 
 /* The four percentile groups as a strip of buttons: what each covers, how big
    it is, which one Eagle Mountain is in — and pressed, it filters the table to
-   that group alone. The colour band sits on top of each button, so the strip
+   that group alone. The color band sits on top of each button, so the strip
    reads left to right as the ramp running from the highest rates to the lowest. */
 .qstrip {
   display: grid;
@@ -6388,7 +6388,7 @@ table.data.statewide tr.is-em-row td {
   border: 1px solid color-mix(in oklab, var(--qc) 48%, transparent);
   border-radius: 999px;
 }
-/* In the table: the percentile column, and a colour rule down the rank cell so
+/* In the table: the percentile column, and a color rule down the rank cell so
    the bands are legible while scrolling even with the column off the side. */
 table.data.statewide .qcell { width: 1%; white-space: nowrap; }
 table.data.statewide td.qlead { border-left: 3px solid var(--qc); }
@@ -6399,7 +6399,7 @@ table.data.statewide tr.is-em-row .qchip { background: transparent; border-color
 
 /* The three lines drawn through the ranking: the percentile boundaries, the
    middle one of which is the median. Shown only while the table is in rank order and
-   unfiltered — see syncDividers() — because between two alphabetised rows they
+   unfiltered — see syncDividers() — because between two alphabetized rows they
    would be describing an order that isn't there. */
 table.data.statewide tr.qdiv td {
   padding: 5px 10px;
@@ -6538,7 +6538,7 @@ table.data.statewide tr.qdiv.is-median td {
    The skeleton mirrors the real first screen — eyebrow, two heading lines, two
    lede lines, the input card, the ink band — at close to its real height, so
    nothing jumps when the data lands. It breathes rather than sweeps: a shimmer
-   travelling across five bars reads as activity the page doesn't have. */
+   traveling across five bars reads as activity the page doesn't have. */
 /* Hidden without scripting: the <noscript> block explains the situation, and a
    skeleton that will never resolve is just noise under it. The class is
    dropped by an inline <script> in <head>, so a scripted browser never sees
@@ -6581,8 +6581,8 @@ table.data.statewide tr.qdiv.is-median td {
 .tax-skeleton .sk-field  { height: 52px; border-radius: 5px; }
 .tax-skeleton .sk-slider { height: 10px; border-radius: 5px; }
 /* The real band is the page's one filled surface, so the placeholder for it is
-   the one filled shape here — at a fraction of the ink, not a grey box. The
-   tint lives in the colour, not in `opacity`: sk-breathe animates opacity, and
+   the one filled shape here — at a fraction of the ink, not a gray box. The
+   tint lives in the color, not in `opacity`: sk-breathe animates opacity, and
    a declared opacity here would simply be overridden by the keyframes. */
 .tax-skeleton .sk-band {
   height: 300px;
@@ -6896,7 +6896,7 @@ table.data.statelist :is(th, td) { padding-left: 8px; padding-right: 8px; }
    band raised off those — and lets the shadow do the work the rules were doing.
 
    The shadow is the site's own --shadow token, which is warm-tinted rather than
-   neutral grey, so a lifted card still looks like it belongs on cream.
+   neutral gray, so a lifted card still looks like it belongs on cream.
    ========================================================================= */
 
 /* The page's own spacing opens up a little, because cards need air around them
@@ -6925,7 +6925,7 @@ table.data.statelist :is(th, td) { padding-left: 8px; padding-right: 8px; }
    Every other section is figures, which want the full 812px of card. This one
    is sentences, and 812px of 15.5px text is past a hundred characters a line.
    So this card alone pulls its sides in until the inner width is a reading
-   measure — the card still squares up with its neighbours, and the essay gets a
+   measure — the card still squares up with its neighbors, and the essay gets a
    column with equal air on both sides instead of a short right edge.
 
    Two things this must not be done with. A `max-width` on the section shrinks
@@ -7067,7 +7067,7 @@ table.data.statewide thead th { background: var(--t-card); }
 /* =========================================================================
    Budget spending page — two Sankey diagrams of the adopted budget.
    The chart engine lives in budget.html; these are the styles it renders into.
-   Colour tokens (--sk-*) are defined with the palette at the top of the file so
+   Color tokens (--sk-*) are defined with the palette at the top of the file so
    both themes stay in sync.
    ========================================================================= */
 /* No max-width here. This wrapper used to cap the page at 980px inside a
@@ -7158,7 +7158,7 @@ table.data.statewide thead th { background: var(--t-card); }
 }
 .b-year[aria-selected="true"]:hover { transform: none; }
 /* A wedge under the open tab, pointing into the panel it controls, in that
-   year's own edge colour. White-on-cream and a shadow are too fine a difference
+   year's own edge color. White-on-cream and a shadow are too fine a difference
    to carry "this is the one you're reading" on their own — and unlike a tinted
    background, a shape reads the same in both themes. Only while the tabs are
    side by side: stacked, the wedge under the top card would point at the card
@@ -7341,7 +7341,7 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
    final. It leads the page and has to read as a different kind of thing from
    the settled book below it — provisional, prose-led — so it takes a tinted
    ground and the highlighter accent rather than the white card the adopted
-   figures use. Colours are all tokens, so dark mode follows. */
+   figures use. Colors are all tokens, so dark mode follows. */
 .bn {
   margin-top: 30px; padding: 22px 24px 24px;
   background: var(--bg-muted); border: 1px solid var(--border);
@@ -7748,7 +7748,7 @@ svg.sankey { display: block; width: 100%; min-width: 660px; height: auto; }
 
 /* ---- The explorer: the budget book itself ---------------------------------
    Everything else on the page is a summary of something; this is the thing
-   being summarised, so it is built to be worked rather than read — a search
+   being summarized, so it is built to be worked rather than read — a search
    across every line, two ways of grouping them, and tables that open only when
    asked for. Nested disclosures, so a reader can hold one department open and
    still see the shape of the fund it sits in.
@@ -7813,7 +7813,7 @@ table.data.bx-lines { font-size: 13px; }
    columns will squeeze it to three wrapped words otherwise, and the account
    number under it must not break — half an account number is unsearchable.
    Past the floor the table scrolls inside its own wrapper, which is the
-   behaviour every other wide table on the site has. */
+   behavior every other wide table on the site has. */
 table.data.bx-lines td:first-child, table.data.bx-lines thead th:first-child { min-width: 210px; }
 table.data.bx-lines td:first-child .b-where { white-space: nowrap; }
 table.data.bx-lines .num { white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }
@@ -7921,7 +7921,7 @@ table.data.bx-lines .bx-tot td {
     top: calc(var(--topbar-h, 60px) - 1px);
     z-index: 6;
     /* Full-bleed, so it reads as chrome the page scrolls under rather than as
-       a card inside the article. main's inline padding is what's cancelled. */
+       a card inside the article. main's inline padding is what's canceled. */
     margin-inline: calc(-1 * max(16px, var(--safe-left))) calc(-1 * max(16px, var(--safe-right)));
     padding-block: 8px 9px;
     padding-inline: max(16px, var(--safe-left)) max(16px, var(--safe-right));
@@ -7965,7 +7965,7 @@ table.data.bx-lines .bx-tot td {
   .b-year.is-set  { border-top-width: 2px; }
   /* Which one is open is carried by fill, not by depth — at this size a shadow
      is indistinguishable from none — and the fill is that year's own status
-     colour, so "which is open" and "what kind of budget it is" stay one fact.
+     color, so "which is open" and "what kind of budget it is" stay one fact.
      The unread year keeps its full ink; it is a control, not a footnote. */
   .b-year[aria-selected="false"] { background: transparent; }
   .b-year[aria-selected="true"] { box-shadow: none; }
@@ -7980,7 +7980,7 @@ table.data.bx-lines .bx-tot td {
   }
   /* Mixed from the ink rather than taken from --accent-soft: in dark mode that
      token and --highlight-soft are both browns a few points apart, so the two
-     selected states would have been the same colour — the one thing this bar
+     selected states would have been the same color — the one thing this bar
      exists to tell apart. Mixing --fg-soft into the card surface tracks the
      theme instead: a pale navy on paper, a lifted neutral on ink, never amber. */
   .b-year.is-set[aria-selected="true"] {
@@ -7998,8 +7998,8 @@ table.data.bx-lines .bx-tot td {
   .b-year.is-set[aria-selected="true"]::after  { border-top-color: var(--fg-soft); }
 
   /* The chip loses its pill here. Selecting a segment fills it with that year's
-     own status tint, which is the very colour the chip was filled with — the
-     chip would have vanished into it. Set as coloured caps instead, it survives
+     own status tint, which is the very color the chip was filled with — the
+     chip would have vanished into it. Set as colored caps instead, it survives
      both states, and the width it gives back is what lets the year and the
      status share one line. */
   .b-year-flag {
@@ -8343,7 +8343,7 @@ table.data.bx-lines .bx-tot td {
    Everything is scoped under .subnav or .proj-*, so nothing here can
    reach the tax page, the budget page, or anything else.
 
-   Colour never carries meaning alone. Surplus and deficit are also a word in
+   Color never carries meaning alone. Surplus and deficit are also a word in
    every table cell and every tooltip, a solid-vs-dashed line, round-vs-square
    markers, and a plain-vs-hatched fill.
    ========================================================================= */
@@ -8391,7 +8391,7 @@ table.data.bx-lines .bx-tot td {
   .body-switch { max-width: 26vw; font-size: 12px; }
   .nav a { --pill-x: 6px; font-size: 13px; }
   .nav-group > a { --pill-xr: 3px; gap: 3px; }
-  /* The menu is centred under its trigger, which sits close to the right edge
+  /* The menu is centered under its trigger, which sits close to the right edge
      once the row is this tight. Pull it back inside the viewport. */
   .nav-menu { min-width: max(100%, 168px); }
   .nav-group:last-child .nav-menu { left: auto; right: 0; transform: translate(0, -4px); }
@@ -8437,7 +8437,7 @@ table.data.bx-lines .bx-tot td {
 .subnav a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 /* ---------- this page's own accents ----------
-   Two of them, and they are the only new colours on the site: a projection
+   Two of them, and they are the only new colors on the site: a projection
    green and a projection red, both derived from the existing --ok / --danger
    so a surplus here reads as the same kind of green as a passed vote. Fills
    are tints; lines and ink are the deeper variants, which is what keeps a
@@ -8504,7 +8504,7 @@ table.data.bx-lines .bx-tot td {
   --tier-contract: #23261F; --tier-agreements: #5C6152;
 }
 
-/* Sign colour is applied to the figure that carries the sign and to nothing
+/* Sign color is applied to the figure that carries the sign and to nothing
    else. It was briefly a bare .is-def/.is-sur pair, which meant a table row
    tagged as a deficit year turned all ten of its cells rust — every figure in
    the line reading as if it were the deficit. */
@@ -8541,9 +8541,9 @@ table.data.bx-lines .bx-tot td {
   text-transform: uppercase;
   vertical-align: 1px;
 }
-/* The gap figure inside the lede. It carries deficit colour because it is the
+/* The gap figure inside the lede. It carries deficit color because it is the
    one number in the paragraph that has a sign; the rest are plain quantities
-   and colouring them too would make the sentence a wall of rust. */
+   and coloring them too would make the sentence a wall of rust. */
 .proj-hero-gap { color: var(--proj-def-ink); white-space: nowrap; }
 /* The scale line: property tax against the budget and against the Sheriff's
    contract. A rule rather than a box — it is a continuation of the lede, not a
@@ -8575,7 +8575,7 @@ table.data.bx-lines .bx-tot td {
 /* ---------- the definition, before anything else ----------
    One card, set apart from the prose around it, because the reader has to
    settle what "no increase" means before a single figure will land — and it
-   now opens the same section as the switcher labelled with it. */
+   now opens the same section as the switcher labeled with it. */
 .proj-def-card {
   padding: 18px 20px 20px;
   border: 1px solid var(--t-line);
@@ -8759,7 +8759,7 @@ table.data.bx-lines .bx-tot td {
 .proj-mark-exp { fill: var(--proj-exp); }
 
 /* The crossover: a filled dot on the lines plus a drop to the axis, so the
-   moment the sign changes is a marked event and not just where the colour
+   moment the sign changes is a marked event and not just where the color
    under the lines happens to change. */
 .proj-cross line { stroke: var(--t-fg-2); stroke-width: 1.3; stroke-dasharray: 3 3; }
 .proj-cross circle { fill: var(--t-page); stroke: var(--t-fg); stroke-width: 2; }
@@ -8890,7 +8890,7 @@ table.data.proj-table th[scope="row"] {
 }
 table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi); }
 /* Drawn as a pseudo-element rather than a border or a shadow: the table is
-   border-collapse, where a cell's own edge is negotiated with its neighbour's
+   border-collapse, where a cell's own edge is negotiated with its neighbor's
    and a 1px change would shift every column across as the reader scrolled. */
 .tablewrap.is-scrolled table.data.proj-table :is(thead th:first-child, th[scope="row"])::after {
   content: "";
@@ -9176,7 +9176,7 @@ table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi
 
 /* The narrowing bar. Four segments, and the only one that matters is the last
    — so the three that come off are muted and the remainder is the one with
-   colour in it. */
+   color in it. */
 .proj-pool-head p { margin: 0 0 16px; font-size: 14px; line-height: 1.65; color: var(--t-fg-2); }
 .proj-pool-head strong { color: var(--t-fg); }
 .proj-pool-bar {
@@ -9193,7 +9193,7 @@ table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi
 /* Hatched, not filled: this is the tier the line items do not break down, and
    the texture says so. It was briefly a tray-on-hairline hatch, which measured
    1.1:1 against the card in both themes — technically a bar, visually a gap in
-   one. The stripe is --t-muted now, which is a text-grade grey in both. */
+   one. The stripe is --t-muted now, which is a text-grade gray in both. */
 .proj-seg-transfers,
 .legend .sw.proj-seg-transfers,
 .proj-key.proj-seg-transfers {
@@ -9207,7 +9207,7 @@ table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi
    agreements rather than a service contract. Striped rather than merely a
    lighter shade: the two contract tiers sit next to a sage one and a gold one,
    and separating them by hue alone gets fragile in dark mode. The texture also
-   carries the distinction for anyone who cannot use the colour. */
+   carries the distinction for anyone who cannot use the color. */
 .proj-seg-agreements,
 .legend .sw.proj-seg-agreements,
 .proj-key.proj-seg-agreements {
@@ -9219,7 +9219,7 @@ table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi
 .legend .sw.proj-seg-restricted,
 .legend .sw.proj-seg-transfers,
 .legend .sw.proj-seg-reach { border-radius: 2px; }
-/* The same four colours as a key beside each table row, so the bar and the
+/* The same four colors as a key beside each table row, so the bar and the
    table are readable as one object. */
 .proj-key {
   display: inline-block;
@@ -9329,7 +9329,7 @@ table.data.proj-table tr.is-anchor th[scope="row"] { background: var(--t-gold-hi
    into each segment, and the cards below it were marked as "reached". Both are
    gone: the walk asserted a reduction sequence no council has adopted, and the
    rust overlay was the loudest thing on the page in service of it. What is left
-   is a plain composition, so the colours no longer need to read as a gradient
+   is a plain composition, so the colors no longer need to read as a gradient
    of seriousness — they only need to be four distinguishable bands that match
    their legend keys. */
 /* Inside the composition panel now, so its top margin would be a gap between
@@ -9543,7 +9543,7 @@ table.data.proj-maint tr.is-total :is(th, td) {
    by definitions.html and every selector here is scoped under .page-defs or
    .def-*, so no other page changes.
 
-   Colour comes only from tokens that invert. --warm-ink is NOT one of them
+   Color comes only from tokens that invert. --warm-ink is NOT one of them
    (it has no dark-mode value and would leave a brown margin note on a near
    black ground), so warm text and warm rules here use --link, which the dark
    palette redefines and documents as clearing 8:1.
@@ -9659,7 +9659,7 @@ body.page-defs {
 /* ---------- filter, running head, thumb index ---------- */
 
 /* Pins beneath the topbar: with eighty-odd entries the reader is usually deep
-   in the page when they realise they want to search, and sending them back to
+   in the page when they realize they want to search, and sending them back to
    the top is the friction this control exists to remove. --topbar-h is measured
    in definitions.html — the bar shrinks at the 760px breakpoint and grows with
    the notch inset, so it cannot be a constant. */
@@ -10202,7 +10202,7 @@ body.page-defs {
 .mp-vote.mp-danger .mp-how { color: var(--danger-ink, var(--danger)); font-weight: 600; }
 
 /* The minutes' own wording, and the scanned ordinance and resolution lines.
-   Both are OCR of the PDF, so both are folded away and labelled as source text
+   Both are OCR of the PDF, so both are folded away and labeled as source text
    rather than presented as the site's prose. */
 .mp-src { margin: 8px 0 0; }
 .mp-src > summary {
@@ -10299,7 +10299,7 @@ body.page-defs {
 
    Everything here is prefixed .staff-* or .sf-* so it cannot reach the other
    pages, the same containment .tax-* and .proj-* already have. Charts are
-   coloured through classes rather than by reading computed styles into inline
+   colored through classes rather than by reading computed styles into inline
    fills: the palette then follows a reader switching to dark mode without the
    page having to re-render, which is what the JS-computed approach on the
    Budget page cannot do.
@@ -10393,7 +10393,7 @@ body.page-defs {
 .sf-bar    { fill: var(--sk-c4); }
 .sf-raw    { fill: var(--sk-c4); }
 .sf-excl   { fill: var(--sk-c2); }
-/* The subject city is marked by a band behind its row, not by recolouring its
+/* The subject city is marked by a band behind its row, not by recoloring its
    bars: giving Eagle Mountain its own two hues made the key under the chart
    wrong for the single row every reader looks at first. */
 .sf-em-band { fill: var(--accent-tint); }
@@ -10443,7 +10443,7 @@ body.page-defs {
 .sf-legend li { display: flex; align-items: center; gap: 0; }
 .sf-legend-v { margin-left: 7px; font-family: var(--mono); color: var(--fg-muted); }
 
-/* The six harmonised source hues, reused so a function keeps one colour
+/* The six harmonized source hues, reused so a function keeps one color
    wherever it appears — the split bar, the legend and the department table. */
 .sf-fn-general_gov   { background: var(--sk-c4); }
 .sf-fn-public_safety { background: var(--sk-c3); }
@@ -10477,7 +10477,7 @@ body.page-defs {
 .staff-table td.num, .staff-table th.num { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
 .staff-table .sf-fn { white-space: nowrap; font-size: 13px; color: var(--fg-muted); }
 /* Deliberately not green-up / red-down. A department gaining four posts is not
-   good news or bad news, it is a fact about a budget, and colour-coding the
+   good news or bad news, it is a fact about a budget, and color-coding the
    sign would have this page taking a position it has no business taking. The
    +/- carries the direction; the muted tone only separates a fall from a rise
    at a glance. */
@@ -10777,7 +10777,7 @@ body.page-finances {
 }
 h1.fin-title {
   font-family: var(--fin-display);
-  /* Fraunces ships at 700 only here; anything heavier would be synthesised. */
+  /* Fraunces ships at 700 only here; anything heavier would be synthesized. */
   font-weight: 700;
   font-size: clamp(33px, 6.4vw, 50px);
   line-height: 1.05;
@@ -10889,7 +10889,7 @@ h1.fin-title {
 }
 .fin-step:first-child::before  { top: 34px; }
 .fin-step:last-child::before   { bottom: auto; height: 34px; }
-/* The modelled station: its segment is dotted, and so is its node. The page
+/* The modeled station: its segment is dotted, and so is its node. The page
    makes the distinction in the drawing before it makes it in prose. */
 .fin-step.is-model::before {
   background: none;
@@ -11138,7 +11138,7 @@ body.page-claims {
      Kept so the rules written against it below don't all have to be restated. */
   --cl-mono: var(--mono);
 
-  /* Two of the four verdict colours are borrowed from the tax page, where they
+  /* Two of the four verdict colors are borrowed from the tax page, where they
      carry chart bars and section labels. Here they carry the finding itself, at
      label size, and two of them miss 4.5:1 at that size: sage measures 4.41 on
      white and rust 3.79 on the dark card. Deepened on this page only — the tax
@@ -11218,7 +11218,7 @@ body.page-claims {
 
 /* ---------- the topic filter ----------
    Twenty claims, seven shelves, and a reader who nearly always arrived for one
-   subject: the tax, the road, the data centres. Buttons rather than a select —
+   subject: the tax, the road, the data centers. Buttons rather than a select —
    the whole set fits on two lines, and the counts are worth showing, because
    how much of this page is about roads is itself an answer.
 
@@ -11287,7 +11287,7 @@ body.page-claims {
 
 /* ---------- the topic tag ----------
    On the card rail, under the verdict. Quieter than the verdict pill in every
-   dimension — no colour, no dot, no capitals — because the finding is the thing
+   dimension — no color, no dot, no capitals — because the finding is the thing
    being scanned down the page and the shelf is only how it was filed. */
 .cl-topics {
   display: flex;
@@ -11403,7 +11403,7 @@ body.page-claims {
   background: currentColor;
   flex: none;
 }
-/* Colour is never the only carrier — the word is spelled out beside the dot on
+/* Color is never the only carrier — the word is spelled out beside the dot on
    every one of these — but it is what makes the spine scannable. */
 .cl-verdict.is-ok   { color: var(--t-pass); }
 .cl-verdict.is-warn { color: var(--t-gold); }
@@ -11748,7 +11748,7 @@ body.roster-paper {
 .roster-paper .section-head h2,
 .roster-paper .rc-name {
   font-family: var(--rc-display);
-  /* Fraunces ships here at 700 only; anything else would be synthesised. */
+  /* Fraunces ships here at 700 only; anything else would be synthesized. */
   font-weight: 700;
 }
 .roster-paper .page-title      { letter-spacing: -.018em; }
