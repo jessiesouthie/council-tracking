@@ -1,0 +1,69 @@
+{
+  "meeting": {
+    "id": 741,
+    "date": "2026-03-05",
+    "source_file": "2026-03-05__741.pdf",
+    "motion_count": 1,
+    "ord_count": 0,
+    "res_count": 3
+  },
+  "motions": [
+    {
+      "id": 1054,
+      "meeting_id": 741,
+      "date": "2026-03-05",
+      "page": 2,
+      "agenda_ref": "4.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the Form of Preliminary Official Statement Relating to the Sale of the Bonds. Representative from LRB Public Finance Advisors, Laura Lewis outline d details about the bond issuance and the process moving forward. Councilmember Huish recused himself due to a conflict of interest.",
+      "motion": "Councilmember Wright moved to approve a Resolution of Eagle Mountain City, Utah, Approving the Form of Preliminary Official Statement Relating to the Sale of the Bonds. Councilmember Wood seconded the motion.",
+      "outcome": "passed with a 4:0 vote.",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Excused"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2026-03-05__741.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "Ben Reeves read the Memo Re: Water/Wastewater Bond Parameters Resolution 2026"
+    },
+    {
+      "source_file": "2026-03-05__741.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "4.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving the Form"
+    },
+    {
+      "source_file": "2026-03-05__741.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "MOTION: Councilmember Wright moved to approve a Resolution of Eagle"
+    }
+  ]
+}

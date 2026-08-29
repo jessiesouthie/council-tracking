@@ -22,6 +22,7 @@ SPA bundle (assets/index-*.js):
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 from typing import Iterator
 
@@ -37,6 +38,14 @@ USER_AGENT = "council-tracking/0.1 (+https://github.com/jessiesouthie/Council-Tr
 # Commission") for non-council bodies. If a label ever shifts ("City Council" ->
 # "City Council Meetings" etc.) update the body config in ingest/bodies.py.
 COUNCIL_CATEGORY = "City Council"
+
+# The portal's catch-all category. Anything built from the "One Time Event"
+# template lands here rather than under the body it belongs to: special sessions
+# called at short notice, retreats, joint sittings, and also things that are not
+# meetings at all (a candidate debate, another government's board). Filtering by
+# a body's own category therefore misses real meetings, so the listings below
+# sweep this category too and keep whatever matches the body's `strays` regex.
+STRAY_CATEGORY = "General"
 
 # Published-file types (observed from the API payload).
 FILE_TYPE_AGENDA = 1
@@ -55,22 +64,18 @@ def _session() -> requests.Session:
     return s
 
 
-def list_council_events(
-    session: requests.Session | None = None,
-    category: str = COUNCIL_CATEGORY,
-) -> Iterator[dict]:
-    """Yield every published event in `category` the API exposes, newest first.
+def _page_category(category: str, session: requests.Session) -> Iterator[dict]:
+    """Yield every published event in one category, newest first.
 
     The API silently caps each response at ~15 rows regardless of $top, so we
     advance $skip by the page length we actually received and stop when the
     server returns an empty page. A guard cap prevents an infinite loop if the
     API ever starts returning duplicate pages.
     """
-    s = session or _session()
     skip = 0
     GUARD_CAP = 2000
     while skip < GUARD_CAP:
-        r = s.get(
+        r = session.get(
             f"{BASE}/Events",
             params={
                 "$top": 100,  # server may ignore but doesn't hurt
@@ -89,13 +94,62 @@ def list_council_events(
         skip += len(page)
 
 
+def find_strays(strays: str, session: requests.Session) -> list[dict]:
+    """Events in the catch-all category whose name marks them as this body's.
+
+    Returned newest first. The catch-all holds a couple of dozen events across
+    the whole archive, so this pages it in full rather than trying to be clever.
+    """
+    pattern = re.compile(strays)
+    out = [ev for ev in _page_category(STRAY_CATEGORY, session)
+           if pattern.search(ev.get("eventName") or "")]
+    out.sort(key=lambda ev: (ev.get("eventDate") or "", ev.get("id") or 0), reverse=True)
+    return out
+
+
+def list_council_events(
+    session: requests.Session | None = None,
+    category: str = COUNCIL_CATEGORY,
+    strays: str | None = None,
+) -> Iterator[dict]:
+    """Yield every published event belonging to a body, newest first.
+
+    That is the body's own `category`, plus — when `strays` is given — the
+    meetings of the same body that the recorder filed under STRAY_CATEGORY.
+    The two streams are merged on eventDate so the caller still sees one
+    newest-first sequence, and an event that somehow appears in both is yielded
+    once.
+    """
+    s = session or _session()
+    pending = find_strays(strays, s) if strays else []
+    seen: set[int] = set()
+
+    def emit(ev: dict) -> Iterator[dict]:
+        eid = ev.get("id")
+        if eid in seen:
+            return
+        seen.add(eid)
+        yield ev
+
+    for ev in _page_category(category, s):
+        # Strays newer than the event in hand come first, so the merged stream
+        # stays in date order rather than tacking them all on at one end.
+        while pending and (pending[0].get("eventDate") or "") > (ev.get("eventDate") or ""):
+            yield from emit(pending.pop(0))
+        yield from emit(ev)
+
+    for ev in pending:
+        yield from emit(ev)
+
+
 def list_upcoming_events(
     on_or_after: str,
     session: requests.Session | None = None,
     category: str = COUNCIL_CATEGORY,
     limit: int = 25,
+    strays: str | None = None,
 ) -> list[dict]:
-    """Return published events in `category` scheduled on/after a day, oldest first.
+    """Return a body's published events scheduled on/after a day, oldest first.
 
     `on_or_after` is a YYYY-MM-DD day compared against eventDate, which the API
     reports in local wall-clock time (see LOCAL_TZ) — so the boundary is the
@@ -104,23 +158,37 @@ def list_upcoming_events(
 
     Unlike list_council_events this asks the server for the window we want
     rather than paging the whole archive: the calendar runs a year or more ahead
-    of today, and we only ever show the front of it.
+    of today, and we only ever show the front of it. `strays` widens the same
+    window to the catch-all category, so a special session called for next week
+    reaches the calendar card like any other meeting.
     """
     s = session or _session()
-    r = s.get(
-        f"{BASE}/Events",
-        params={
-            "$top": limit,
-            "$orderby": "eventDate asc",
-            "$filter": (
-                f"categoryName eq '{category}' "
-                f"and eventDate ge {on_or_after}T00:00:00Z"
-            ),
-        },
-        timeout=30,
-    )
-    r.raise_for_status()
-    return r.json().get("value", [])[:limit]
+
+    def window(cat: str) -> list[dict]:
+        r = s.get(
+            f"{BASE}/Events",
+            params={
+                "$top": limit,
+                "$orderby": "eventDate asc",
+                "$filter": (
+                    f"categoryName eq '{cat}' "
+                    f"and eventDate ge {on_or_after}T00:00:00Z"
+                ),
+            },
+            timeout=30,
+        )
+        r.raise_for_status()
+        return r.json().get("value", [])
+
+    events = window(category)
+    if strays:
+        pattern = re.compile(strays)
+        known = {ev.get("id") for ev in events}
+        events += [ev for ev in window(STRAY_CATEGORY)
+                   if ev.get("id") not in known
+                   and pattern.search(ev.get("eventName") or "")]
+        events.sort(key=lambda ev: (ev.get("eventDate") or "", ev.get("id") or 0))
+    return events[:limit]
 
 
 def find_agenda(event: dict) -> dict | None:

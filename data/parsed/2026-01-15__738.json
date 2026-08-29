@@ -1,0 +1,44 @@
+{
+  "meeting": {
+    "id": 738,
+    "date": "2026-01-15",
+    "source_file": "2026-01-15__738.pdf",
+    "motion_count": 1,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 1015,
+      "meeting_id": 738,
+      "date": "2026-01-15",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Take a brief recess to prepare Oath of Office Councilmember Wood seconded the motion",
+      "motion": "Councilmember Wright moved to take a brief recess to prepare Oath of Office Councilmember Wood seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

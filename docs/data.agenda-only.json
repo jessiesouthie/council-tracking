@@ -1,9 +1,76 @@
 {
-  "generated_at": "2026-08-29T01:05:19Z",
+  "generated_at": "2026-08-29T02:29:50Z",
   "source": "Eagle Mountain CivicClerk portal",
   "timezone": "America/Denver",
   "bodies": {
     "city-council": [
+      {
+        "id": 770,
+        "title": "City Council Meeting - Special Session",
+        "date": "2026-08-26",
+        "start": "17:15",
+        "start_label": "5:15 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/770/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2939,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/770/media",
+        "agenda_posted_on": "2026-08-26",
+        "sessions": [
+          {
+            "start": "17:15",
+            "start_label": "5:15 PM",
+            "label": "City Council - Special Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "17:15",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "PLEDGE OF ALLEGIANCE",
+            "note": "",
+            "session": "17:15",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": "17:15",
+            "group": null,
+            "items": [
+              {
+                "number": "3.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Protesting the Red Cedar Corporation Annexation Petition Filed with the Town of Cedar Fort on July 27, 2026.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "4",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "17:15",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
       {
         "id": 664,
         "title": "Special Session - Joint Multi-City Work Session",
@@ -2060,162 +2127,6 @@
         ]
       },
       {
-        "id": 677,
-        "title": "Planning Commission Meeting",
-        "date": "2026-08-11",
-        "start": "17:30",
-        "start_label": "5:30 PM",
-        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
-        "url": "https://eaglemountainut.portal.civicclerk.com/event/677/overview",
-        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2898,plainText=false)",
-        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/677/media",
-        "agenda_posted_on": "",
-        "sessions": [
-          {
-            "start": "18:30",
-            "start_label": "6:30 PM",
-            "label": "Planning Commission Policy Session",
-            "public_comment": false
-          }
-        ],
-        "agenda": [
-          {
-            "number": "1",
-            "title": "DISCUSSION ITEMS",
-            "note": "",
-            "session": null,
-            "group": null,
-            "items": [
-              {
-                "number": "1.A",
-                "kind": "TRAINING",
-                "title": "Site Plans",
-                "time": "",
-                "background": "",
-                "plain": ""
-              },
-              {
-                "number": "1.B",
-                "kind": "",
-                "title": "AGENDA REVIEW",
-                "time": "",
-                "background": "",
-                "plain": ""
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "2",
-            "title": "CALL TO ORDER",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "3",
-            "title": "PLEDGE OF ALLEGIANCE",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "4",
-            "title": "DECLARATION OF CONFLICTS OF INTEREST",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "5",
-            "title": "MINUTES",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [
-              {
-                "number": "5.A",
-                "kind": "",
-                "title": "July 28, 2026 Planning Commission Minutes",
-                "time": "",
-                "background": "",
-                "plain": ""
-              }
-            ],
-            "procedural": true
-          },
-          {
-            "number": "6",
-            "title": "STATUS REPORT",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "7",
-            "title": "ACTION AND ADVISORY ITEMS",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [
-              {
-                "number": "7.A",
-                "kind": "PUBLIC HEARING / ACTION ITEM",
-                "title": "An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as Pinnacles and Approving the Pinnacles Master Development Plan/Master Development Agreement Amendment.",
-                "time": "",
-                "background": "(Presented by Senior Planner, Robert Hobbs) A request by Andy Flamm for Master Development Plan and Agreement Amendment (with an associated Rezone and Future Land Use Map Amendment) to change the identification and zoning of one parcel of land (County Assessor Acct./Serial #s 59:034:0191) 2.48 acres, from Commercial Neighborhood to Agriculture and the future land use setting/category from Neighborhood Residential 1 to Ag. (The property was to be rezoned simultaneously with parcels 59:034:0192 & 59:034:0193 but was inadvertently overlooked.)",
-                "plain": ""
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "8",
-            "title": "DISCUSSION ITEMS",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "9",
-            "title": "AGENDA REVIEW",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "10",
-            "title": "NEXT SCHEDULED MEETING",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "11",
-            "title": "ADJOURNMENT",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          }
-        ]
-      },
-      {
         "id": 195,
         "title": "Planning Commission Regular Session",
         "date": "2020-10-27",
@@ -2388,153 +2299,6 @@
       }
     ],
     "redevelopment-agency-board": [
-      {
-        "id": 750,
-        "title": "Redevelopment Agency Board Meeting",
-        "date": "2026-06-16",
-        "start": "20:00",
-        "start_label": "8:00 PM",
-        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
-        "url": "https://eaglemountainut.portal.civicclerk.com/event/750/overview",
-        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1843,plainText=false)",
-        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/750/media",
-        "agenda_posted_on": "2026-06-12",
-        "sessions": [],
-        "agenda": [
-          {
-            "number": "1",
-            "title": "CALL TO ORDER",
-            "note": "",
-            "session": null,
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "2",
-            "title": "MINUTES",
-            "note": "",
-            "session": null,
-            "group": null,
-            "items": [
-              {
-                "number": "2.A",
-                "kind": "",
-                "title": "June 2, 2026 Minutes - Regular Redevelopment Agency Board Meeting",
-                "time": "",
-                "background": "",
-                "plain": ""
-              }
-            ],
-            "procedural": true
-          },
-          {
-            "number": "3",
-            "title": "RESOLUTIONS",
-            "note": "",
-            "session": null,
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "4",
-            "title": "RESOLUTIONS/PUBLIC HEARINGS",
-            "note": "",
-            "session": null,
-            "group": null,
-            "items": [
-              {
-                "number": "4.A",
-                "kind": "RESOLUTION/PUBLIC HEARING",
-                "title": "A Resolution of the Redevelopment Agency Board of Eagle Mountain City, Utah, Adopting the RDA Budget for Fiscal Year 2026-2027.",
-                "time": "",
-                "background": "(Presented by Administrative Services Director Kimberly Ruesch) State law requires the RDA Board to hold a public hearing on the tentative budget and adopt a final budget. The RDA Board approved the tentative budget on May 6, 2026, and set the public hearing for budget adoption on June 16, 2026.",
-                "plain": ""
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "5",
-            "title": "ADJOURNMENT",
-            "note": "",
-            "session": null,
-            "group": null,
-            "items": [],
-            "procedural": true
-          }
-        ]
-      },
-      {
-        "id": 751,
-        "title": "Redevelopment Agency Board Meeting",
-        "date": "2026-06-02",
-        "start": "20:00",
-        "start_label": "8:00 PM",
-        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
-        "url": "https://eaglemountainut.portal.civicclerk.com/event/751/overview",
-        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1808,plainText=false)",
-        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/751/media",
-        "agenda_posted_on": "2025-05-29",
-        "sessions": [],
-        "agenda": [
-          {
-            "number": "1",
-            "title": "CALL TO ORDER",
-            "note": "",
-            "session": null,
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "2",
-            "title": "MINUTES",
-            "note": "",
-            "session": null,
-            "group": null,
-            "items": [
-              {
-                "number": "2.A",
-                "kind": "",
-                "title": "May 5, 2026 Minutes - Regular Redevelopment Agency Board Meeting",
-                "time": "",
-                "background": "",
-                "plain": ""
-              }
-            ],
-            "procedural": true
-          },
-          {
-            "number": "3",
-            "title": "RESOLUTIONS",
-            "note": "",
-            "session": null,
-            "group": null,
-            "items": [
-              {
-                "number": "3.A",
-                "kind": "RESOLUTION",
-                "title": "A Resolution of the Redevelopment Agency Board of Eagle Mountain City, Utah, Approving the Issuance of the Agency's Sales Tax and Tax Increment Revenue Bonds, Series 2026 (the \"Bonds\") in Par Amount of Not to Exceed $10,000,000 and Authorizing the Execution of Related Bond Documents Thereto and all other Actions Required to Issue the Bonds.",
-                "time": "",
-                "background": "(Presented by Director of Administrative Services, Kimberly Ruesch) This resolution authorizes the City to pledge a portion of its sales and use tax revenue toward the Redevelopment Agency\u2019s Series 2026 bonds to finance these infrastructure improvements. The project involves a proposed 50-acre retail development anchored by Smith\u2019s Marketplace and Lowe\u2019s Home Improvement, using CRA and TIF financing to help fund nearby roadway improvements, including Old Airport Road, Lake Mountain Corridor, and Pony Express Parkway. The City Council previously directed Staff on May 19, 2026, to move forward with financing options to support favorable bond terms.",
-                "plain": ""
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "4",
-            "title": "ADJOURNMENT",
-            "note": "",
-            "session": null,
-            "group": null,
-            "items": [],
-            "procedural": true
-          }
-        ]
-      },
       {
         "id": 668,
         "title": "Redevelopment Agency Board Meeting",

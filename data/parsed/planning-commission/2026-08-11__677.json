@@ -1,0 +1,68 @@
+{
+  "meeting": {
+    "id": 677,
+    "date": "2026-08-11",
+    "source_file": "2026-08-11__677.pdf",
+    "motion_count": 2,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 330,
+      "meeting_id": 677,
+      "date": "2026-08-11",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of July 28, 2026, Planning Commission meeting with the correction of adding…",
+      "motion": "Commissioner Strong moved to approve the minutes of July 28, 2026, Planning Commission meeting with the correction of adding Commissioner Hess to Item 7.A. as the Commissioner who made the motion. Commissioner Hess seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "jason-allen",
+          "vote": "Abstain"
+        }
+      ]
+    },
+    {
+      "id": 331,
+      "meeting_id": 677,
+      "date": "2026-08-11",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Pinnacles Rezone and Master Development Pl…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.A., Pinnacles Rezone and Master Development Plan Agreement Amendment. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

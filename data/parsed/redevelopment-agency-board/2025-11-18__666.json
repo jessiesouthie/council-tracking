@@ -1,0 +1,61 @@
+{
+  "meeting": {
+    "id": 666,
+    "date": "2025-11-18",
+    "source_file": "2025-11-18__666.pdf",
+    "motion_count": 1,
+    "ord_count": 0,
+    "res_count": 2
+  },
+  "motions": [
+    {
+      "id": 71,
+      "meeting_id": 666,
+      "date": "2025-11-18",
+      "page": 2,
+      "agenda_ref": "2.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Redevelopment Agency and Alpine School District for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area",
+      "motion": "Board Member Wood moved adopt a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Redevelopment Agency and Alpine School District for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area with the following changes: • Section 6 Total Payment to Agency is amended to change the first 5- o year remittance from 65% of annual personal property tax to 63%. The “per-phase tax-increment not-to-exceed total” is o amended from $83,583,512 to $82,273,607; and The project-wide not-to-exceed total is revised from o $494,001,073 to $493,641,645. • Section 8 – “No Impact Fees” is removed; therefore, the school will pay Impact Fees. • Renumbering of subsequent sections accordingly. Board Member Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2025-11-18__666.pdf",
+      "meeting_date": "",
+      "page": 1,
+      "line_text": "2.A. RESOLUTION - A Resolution of the Redevelopment Agency of Eagle Mountain"
+    },
+    {
+      "source_file": "2025-11-18__666.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "MOTION: Board Member Wood moved adopt a Resolution of the Redevelopment"
+    }
+  ]
+}

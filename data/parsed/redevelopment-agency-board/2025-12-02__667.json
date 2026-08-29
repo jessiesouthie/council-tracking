@@ -1,0 +1,177 @@
+{
+  "meeting": {
+    "id": 667,
+    "date": "2025-12-02",
+    "source_file": "2025-12-02__667.pdf",
+    "motion_count": 4,
+    "ord_count": 0,
+    "res_count": 4
+  },
+  "motions": [
+    {
+      "id": 72,
+      "meeting_id": 667,
+      "date": "2025-12-02",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the Redevelopment Agency Board Meeting Minutes from November 5, 2025. Board Member Clar…",
+      "motion": "Board Member Gray moved to approve the Redevelopment Agency Board Meeting Minutes from November 5, 2025. Board Member Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "meeting_id": 667,
+      "date": "2025-12-02",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the Redevelopment Agency Board Meeting Minutes from November 18, 2025. Board Member Woo…",
+      "motion": "Board Member Gray moved to approve the Redevelopment Agency Board Meeting Minutes from November 18, 2025. Board Member Wood seconded the motion. Eagle Mountain Redevelopment Agency Minutes – December 2, 2025 Page 1 of 4",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "meeting_id": 667,
+      "date": "2025-12-02",
+      "page": 2,
+      "agenda_ref": "3.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Amended Interlocal Cooperation Agreement between the Redevelopment Agency and Utah County for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area",
+      "motion": "Board Member Burnham moved to adopt a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Amended Interlocal Cooperation Agreement between the Redevelopment Agency and Utah County for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area. Board Member Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 75,
+      "meeting_id": 667,
+      "date": "2025-12-02",
+      "page": 3,
+      "agenda_ref": "3.B.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Amended Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Central Utah Water Conservancy District for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area Eagle Mountain Redevelopment Agency Minutes – December 2, 2025 Page 2 of 4",
+      "motion": "Board Member Wood moved to adopt a Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Amended Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Central Utah Water Conservancy District for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Sweetwater #4 Community Reinvestment Project Area. Board Member Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "donna-burnham",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jared-gray",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2025-12-02__667.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "3.A. RESOLUTION - A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-12-02__667.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "MOTION: Board Member Burnham moved to adopt a Resolution of the Redevelopment"
+    },
+    {
+      "source_file": "2025-12-02__667.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "3.B. RESOLUTION - A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2025-12-02__667.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "MOTION: Board Member Wood moved to adopt a Resolution of the Redevelopment Agency"
+    }
+  ]
+}

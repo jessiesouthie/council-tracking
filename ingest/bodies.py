@@ -8,6 +8,14 @@ Each body has one of two sources:
   "manual"     — no crawl; minutes PDFs are dropped into the body's raw_dir by
                  hand (named "<YYYY-MM-DD>__<n>.pdf") and parsed like the rest.
 
+A civicclerk body may also carry `strays`: a regex matched against the event
+name inside the portal's catch-all "General" category. The recorder files most
+meetings under the body's own category, but a one-off — a special session called
+at short notice, a retreat, a joint sitting — is sometimes created from the
+"One Time Event" template and lands in "General" instead. Category filtering
+alone never sees those, so a real meeting can be held, noticed and minuted while
+every builder here looks straight past it. See civicclerk.STRAY_CATEGORY.
+
 City Council keeps the original flat paths (data/raw, data/parsed, docs/data.json)
 so existing files and links never move. New bodies nest under per-body subdirs
 and get their own docs/data.<id>.json, loaded on demand by the site.
@@ -41,6 +49,13 @@ BODIES: list[dict] = [
         "label": "City Council",
         "source": "civicclerk",
         "category": "City Council",
+        # Council sittings the recorder filed under "General". A debate between
+        # candidates is held in the chamber and named for the council, but it is
+        # not the council meeting — no motion, no vote, nothing to minute — so it
+        # is excluded by name. The visioning retreat is the opposite case: it
+        # doesn't say "City Council" anywhere, and it is a noticed meeting of the
+        # council with approved minutes, so it is named in.
+        "strays": r"(?i)^(?!.*\bdebate\b)(?=.*(city council|annual visioning retreat))",
         "members": "councilmembers.json",
         "summaries": "meeting_summaries.json",
         "motion_summaries": "motion_summaries.json",
@@ -54,6 +69,11 @@ BODIES: list[dict] = [
         "label": "Planning Commission",
         "source": "civicclerk",
         "category": "Planning Commission",
+        # A joint sitting with the council is already carried in the Planning
+        # Commission's own category under its own event id, so matching it here
+        # too would file the same night twice. It stays with the council, which
+        # is the body whose archive is otherwise missing it.
+        "strays": r"(?i)^(?!.*\bdebate\b)(?!.*city council)(?=.*planning commission)",
         "members": "members.planning-commission.json",
         "summaries": "meeting_summaries.planning-commission.json",
         "motion_summaries": "motion_summaries.planning-commission.json",
@@ -80,6 +100,9 @@ BODIES: list[dict] = [
         "label": "Redevelopment Agency Board",
         "source": "civicclerk",
         "category": "Redevelopment Agency Board",
+        # The board sits immediately after the council on the same night, and
+        # three of its 2025 meetings were created as one-off events.
+        "strays": r"(?i)redevelopment agency",
         "members": "members.redevelopment-agency-board.json",
         "summaries": "meeting_summaries.redevelopment-agency-board.json",
         "motion_summaries": "motion_summaries.redevelopment-agency-board.json",
