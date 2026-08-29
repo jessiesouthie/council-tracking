@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T13:20:23Z",
+  "generated_at": "2026-08-29T01:05:19Z",
   "source": "Eagle Mountain CivicClerk portal",
   "timezone": "America/Denver",
   "bodies": {
@@ -1871,6 +1871,194 @@
       }
     ],
     "planning-commission": [
+      {
+        "id": 690,
+        "title": "Planning Commission Meeting",
+        "date": "2026-08-25",
+        "start": "17:30",
+        "start_label": "5:30 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/690/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2926,plainText=false)",
+        "recording_url": "https://eaglemountainut.portal.civicclerk.com/event/690/media",
+        "agenda_posted_on": "",
+        "sessions": [
+          {
+            "start": "18:30",
+            "start_label": "6:30 PM",
+            "label": "Planning Commission Policy Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "DISCUSSION ITEMS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "1.A",
+                "kind": "TRAINING",
+                "title": "Rules of Order and Procedure",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "1.B",
+                "kind": "",
+                "title": "AGENDA REVIEW",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "PLEDGE OF ALLEGIANCE",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "4",
+            "title": "DECLARATION OF CONFLICTS OF INTEREST",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "5",
+            "title": "MINUTES",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [
+              {
+                "number": "5.A",
+                "kind": "",
+                "title": "August 11, 2026 Planning Commission Minutes",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "6",
+            "title": "STATUS REPORT",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "7",
+            "title": "ACTION AND ADVISORY ITEMS",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [
+              {
+                "number": "7.A",
+                "kind": "ACTION ITEM",
+                "title": "A Resolution of Eagle Mountain City, Utah, Approving the Second Amendment to the Brylee Farms Phase B Development Agreement.",
+                "time": "",
+                "background": "(Presented by Planner, Steven Lehmitz)",
+                "plain": ""
+              },
+              {
+                "number": "7.B",
+                "kind": "PRELIMINARY PLAT",
+                "title": "Gateway Park Phase 3",
+                "time": "",
+                "background": "",
+                "plain": "The council will consider the preliminary plat, the first-stage lot layout, for phase 3 of Gateway Park."
+              },
+              {
+                "number": "7.C",
+                "kind": "SITE PLAN",
+                "title": "Spring Run Plaza Lot 1",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "7.D",
+                "kind": "SITE PLAN",
+                "title": "Spring Run Plaza Lot 2",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "7.E",
+                "kind": "PUBLIC HEARING / ACTION ITEM",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code 17.60.130 Retaining Wall Construction Standards.",
+                "time": "",
+                "background": "(Presented by City Engineer, Vince Hogge) Consideration of an amendment to Eagle Mountain Municipal Code Chapter 17.60.130. This amendment adds detailed design requirements for retaining walls, and includes clarification on building permit requirements, field inspections, and allowable retaining wall locations.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "8",
+            "title": "DISCUSSION ITEMS",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "9",
+            "title": "AGENDA REVIEW",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "10",
+            "title": "NEXT SCHEDULED MEETING",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "11",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
       {
         "id": 677,
         "title": "Planning Commission Meeting",
