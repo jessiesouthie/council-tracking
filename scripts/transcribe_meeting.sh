@@ -8,6 +8,8 @@
 #   3. writes .txt/.srt/.vtt into data/transcripts/<body>/
 #   4. generates the prose "enriched summary" with the `claude` CLI
 #   5. publishes to docs/ via `python -m ingest.build_transcripts`
+#   6. emails a copy of the summary (with the transcript attached) if a
+#      recipient is configured — see ingest/mail_summary.py
 #
 # Idempotent: steps whose output already exists are skipped (override with
 # --force to re-transcribe, --resummarize to regenerate the summary).
@@ -15,19 +17,30 @@
 # Usage:
 #   scripts/transcribe_meeting.sh <EVENT_ID> [--body city-council]
 #                                [--force] [--resummarize] [--no-summary] [--cloud]
-#                                [--audio <path>]
+#                                [--audio <path>] [--email|--no-email]
+#                                [--email-to <addr>]
 #
 #   --no-summary   transcribe + publish only; skip the summary (uses NO Claude
 #                  credits). Run again later without the flag to add the summary.
 #   --audio PATH   transcribe this local audio/video file instead of downloading
 #                  the portal recording. Useful when the recording is huge or not
 #                  posted yet. The file is read, never modified or deleted.
+#   --email        send the summary even if it already existed before this run
+#                  (by default a copy goes out only when the summary is newly
+#                  written, so re-running never re-mails the same meeting).
+#   --no-email     never send, whatever is configured.
+#   --email-to A   send to this address instead of the configured list.
 #   --cloud        transcribe via AssemblyAI with speaker diarization instead of
 #                  local Whisper. Needs an API key in
 #                  ~/.config/council-tracking/assemblyai.key (or $ASSEMBLYAI_API_KEY).
 #                  ~$0.15/hr (~$1/meeting). Default is free local Whisper.
 #                  Recordings too large for AssemblyAI to fetch (>5.5 GB) have
 #                  their audio extracted with ffmpeg and uploaded instead.
+#
+# Emailing is off until a recipient exists: put COUNCIL_MAIL_TO and the SMTP
+# credentials in ~/.config/council-tracking/mail.env (chmod 600), or set them in
+# the environment. ingest/mail_summary.py documents every key. With nothing
+# configured this step prints one line and does nothing.
 #
 # Requirements: ffmpeg, whisper-cli (brew install ffmpeg whisper-cpp),
 #               claude CLI (for the summary), python3.
@@ -50,6 +63,9 @@ NO_SUMMARY=0
 CLOUD=0
 EVENT_ID=""
 AUDIO=""
+EMAIL=auto            # auto = only when the summary is written by this run
+EMAIL_TO=""
+SUMMARY_FRESH=0
 ASSEMBLYAI_KEYFILE="${COUNCIL_ASSEMBLYAI_KEYFILE:-$HOME/.config/council-tracking/assemblyai.key}"
 API_BASE="${COUNCIL_API_BASE:-https://eaglemountainut.api.civicclerk.com/v1}"
 PORTAL="${COUNCIL_PORTAL:-https://eaglemountainut.portal.civicclerk.com}"
@@ -66,12 +82,15 @@ while [ $# -gt 0 ]; do
     --no-summary)  NO_SUMMARY=1; shift;;
     --cloud)       CLOUD=1; shift;;
     --audio)       AUDIO="$2"; shift 2;;
+    --email)       EMAIL=always; shift;;
+    --no-email)    EMAIL=never; shift;;
+    --email-to)    EMAIL_TO="$2"; shift 2;;
     -h|--help)     grep '^#' "$0" | sed 's/^# \{0,1\}//'; exit 0;;
     -*)            echo "unknown flag: $1" >&2; exit 2;;
     *)             EVENT_ID="$1"; shift;;
   esac
 done
-[ -n "$EVENT_ID" ] || { echo "usage: $0 <EVENT_ID> [--body <id>] [--force] [--resummarize] [--no-summary] [--cloud] [--audio <path>]" >&2; exit 2; }
+[ -n "$EVENT_ID" ] || { echo "usage: $0 <EVENT_ID> [--body <id>] [--force] [--resummarize] [--no-summary] [--cloud] [--audio <path>] [--email|--no-email] [--email-to <addr>]" >&2; exit 2; }
 [ -z "$AUDIO" ] || [ -f "$AUDIO" ] || { echo "--audio: no such file: $AUDIO" >&2; exit 2; }
 
 say() { printf '\033[1;32m▸ %s\033[0m\n' "$*"; }
@@ -123,6 +142,7 @@ if [ "$CLOUD" = 1 ]; then
   if [ -z "${SSL_CERT_FILE:-}" ]; then
     _certs="$(python3 -c 'import certifi; print(certifi.where())' 2>/dev/null || true)"
     [ -n "$_certs" ] && export SSL_CERT_FILE="$_certs"
+    true
   fi
 fi
 
@@ -332,20 +352,20 @@ speech-to-text transcript of an Eagle Mountain, UT public meeting. The official
 agenda and the transcript follow this instruction block as input.
 
 Write for a reader who did NOT attend: explanatory PROSE, not fragmentary
-bullets. Ground every claim ONLY in the transcript — do not invent facts, names,
+bullets. Ground every claim ONLY in the transcript. Do not invent facts, names,
 numbers, or votes. Keep short direct quotes (in quotation marks) where useful.
 
 KNOWN ROSTER (correct these common Whisper mishearings):
 - Mayor Jared Gray.
 - Councilmembers: Melissa Clark, Brett Wright, Craig Whiting, Rich Wood, Zac Huish.
   "Hewish" in the transcript = Zac Huish. Roll-call surnames are reliable.
-- Zac Hilton is a STAFF member (parks/rec) — a different person from Councilmember Zac Huish.
+- Zac Hilton is a STAFF member (parks/rec), a different person from Councilmember Zac Huish.
 Attribute discussion to a named member only when the transcript makes it clear
 (explicit names, or roll-call context); otherwise say "a councilmember."
 
 Write PLAINLY. Prefer the short word to the long one, expand an acronym the first
 time it appears, and keep paragraphs under ~120 words. The reader is a resident,
-not a clerk — so no in-house jargon and no section numbers in the prose.
+not a clerk, so no in-house jargon and no section numbers in the prose.
 
 Do NOT emit a title/H1 and do NOT emit a standing disclaimer about automatic
 generation or approximate times: the web page renders the meeting title and
@@ -353,23 +373,23 @@ carries that notice itself, so both would only be duplicated.
 
 Produce exactly these sections, in this order, with these exact headings:
 
-**In short:** 2–4 plain-English sentences (~70 words max) opening the document —
-what this meeting was for, and what actually came of it. This is the only thing
+**In short:** 2–4 plain-English sentences (~70 words max) opening the document:
+what this meeting was for, and what came of it. This is the only thing
 many readers will read. No jargon, no acronyms, no cross-references.
 
 Then a **Present:** line (elected officials, noting who was excused or remote)
 and a **Staff:** line (staff and presenters, each with their role in parentheses).
 
 ## Decisions
-A Markdown TABLE with columns: # | Agenda ref | Motion | Moved / Seconded | Vote | Result — one row per motion, in the order they occurred. Include ONLY motions on which a vote was actually taken, procedural ones included (closed session, consent agenda, adjournment). Give the tally as "5-0" when stated, otherwise "Voice vote"; name members only where the transcript records how they voted. Result is Passed or Failed. If no vote of any kind was taken, replace the table with the single italic line *No motions were voted on.*
+A Markdown TABLE with columns: # | Agenda ref | Motion | Moved / Seconded | Vote | Result. One row per motion, in the order they occurred. Include ONLY motions on which a vote was actually taken, procedural ones included (closed session, consent agenda, adjournment). Give the tally as "5-0" when stated, otherwise "Voice vote"; name members only where the transcript records how they voted. Result is Passed or Failed. If no vote of any kind was taken, replace the table with the single italic line *No motions were voted on.*
 
-Then, ONLY if the body settled something without voting on it, a bulleted list under the bold lead **Settled without a vote:** — consensus, direction to staff, deferrals, questions left open. Each bullet is a complete sentence. Never restate a motion that is already a row in the table above; a reader should not meet the same decision twice.
+Then, ONLY if the body settled something without voting on it, a bulleted list under the bold lead **Settled without a vote:** covering consensus, direction to staff, deferrals and questions left open. Each bullet is a complete sentence. Never restate a motion that is already a row in the table above; a reader should not meet the same decision twice.
 
 ## Meeting map
-A Markdown TABLE with columns: Agenda ref | Topic | ~Start (elapsed) | One-line note — one row per distinct item/topic. After the table, a short "Discussed but NOT on the agenda" line and an "On agenda but little/no discussion" line.
+A Markdown TABLE with columns: Agenda ref | Topic | ~Start (elapsed) | One-line note. One row per distinct item/topic. After the table, a short "Discussed but NOT on the agenda" line and an "On agenda but little/no discussion" line.
 
 ## What was discussed
-For each substantive item, a `### <ref> — <title>` heading followed by 1–3 explanatory PARAGRAPHS that open by stating what the item is and why it was before the body, then narrate the debate, concerns, and staff answers. This is the substance of the page — do not thin it out.
+For each substantive item, a `### <ref> — <title>` heading followed by 1–3 explanatory PARAGRAPHS that open by stating what the item is and why it was before the body, then narrate the debate, concerns, and staff answers. This is the substance of the page. Do not thin it out.
 
 ## Notable moments
 A bulleted list; each bullet a short **bold lead-in.** then a self-contained sentence or two (public comments, disagreements, off-agenda items).
@@ -380,6 +400,12 @@ Brief plain prose: likely misheard proper nouns, speaker-attribution limits, and
 Output ONLY the Markdown document, starting at the `**In short:**` line. No preamble or commentary.
 PROMPT
 )
+    # The same five rules the motion summarizer is held to. One file, three
+    # prompts: ingest/house_style.txt, ingest/summarize_motions.py and the
+    # worker's systemPrompt() all read from or mirror it.
+    INSTRUCTIONS="$INSTRUCTIONS
+
+$(cat "$ROOT/ingest/house_style.txt")"
 
     if {
         printf '%s\n\n' "$INSTRUCTIONS"
@@ -398,6 +424,7 @@ i = t.find("**In short:**")
 open(dst, "w", encoding="utf-8").write(t[i:] if i >= 0 else t)
 PY
         rm -f "$SUMMARY.tmp"
+        SUMMARY_FRESH=1
         say "Summary written: $SUMMARY"
     else
         rm -f "$SUMMARY.tmp"
@@ -411,6 +438,26 @@ fi
 # ---- 5. publish to docs/ ----
 say "Publishing to docs/ …"
 python3 -m ingest.build_transcripts
+
+# ---- 6. email a copy ----
+# The rule: a meeting is mailed once, at the moment its transcript, diarization
+# and summary are all finished — which is exactly the run that writes the
+# summary. Re-running the script (to republish, or after --force on a meeting
+# that already had a summary) sends nothing unless asked with --email, so the
+# nightly job and any hand re-runs can never mail the same meeting twice.
+# The step is best-effort by design: a bounced email must not fail a meeting
+# whose transcript and summary are already on disk and published.
+if [ "$EMAIL" = never ]; then
+  :
+elif [ "$EMAIL" = always ] || [ "$SUMMARY_FRESH" = 1 ]; then
+  say "Emailing the summary …"
+  MAIL_ARGS=(--body "$BODY")
+  if [ -n "$EMAIL_TO" ]; then MAIL_ARGS+=(--to "$EMAIL_TO"); fi
+  python3 -m ingest.mail_summary "$EVENT_ID" "${MAIL_ARGS[@]}" \
+    || echo "⚠ email step failed — the transcript and summary are still published." >&2
+elif [ "$NO_SUMMARY" = 0 ]; then
+  say "Summary was already on disk — not re-sending (use --email to send anyway)."
+fi
 
 echo
 say "Done: $STEM"

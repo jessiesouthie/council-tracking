@@ -17,6 +17,13 @@ name: Publish meeting transcripts
 #   ASSEMBLYAI_API_KEY      transcription (~$1 per meeting)
 #   CLAUDE_CODE_OAUTH_TOKEN summary; generate locally with `claude setup-token`
 #                           (or set ANTHROPIC_API_KEY instead to use API credits)
+#
+# Optional secrets — set all three and each newly published meeting is emailed
+# (summary in the body, transcript attached) as soon as it finishes. Leave them
+# unset and the mail step prints one line and does nothing:
+#   COUNCIL_MAIL_TO         comma-separated recipients
+#   COUNCIL_SMTP_USER       SMTP login, e.g. civicrollcall@gmail.com
+#   COUNCIL_SMTP_PASS       Gmail App Password (not the account password)
 
 on:
   schedule:
@@ -134,6 +141,13 @@ jobs:
           # ask a question, and must give up rather than hang for hours.
           COUNCIL_CLAUDE_FLAGS: "--dangerously-skip-permissions"
           COUNCIL_CLAUDE_TIMEOUT: "30m"
+          # Mailing the finished summary. Unset secrets are empty strings here,
+          # and mail_summary.py treats "no recipient" as "skip quietly", so the
+          # job behaves exactly as before until these are configured.
+          COUNCIL_MAIL_TO: ${{ secrets.COUNCIL_MAIL_TO }}
+          COUNCIL_SMTP_USER: ${{ secrets.COUNCIL_SMTP_USER }}
+          COUNCIL_SMTP_PASS: ${{ secrets.COUNCIL_SMTP_PASS }}
+          COUNCIL_MAIL_FROM: ${{ secrets.COUNCIL_MAIL_FROM }}
         run: |
           # An empty credential is worse than an absent one — the CLI would try
           # it and fail confusingly. Drop whichever secret wasn't configured.
