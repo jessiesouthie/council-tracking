@@ -1,0 +1,16 @@
+# Speaker voiceprints (ingest/voiceprints.py) — deliberately NOT in
+# requirements.txt. These pull in torch and are two orders of magnitude larger
+# than the rest of the pipeline's dependencies, so the nightly transcription
+# job, the weekly ingest and every other script stay light and install in
+# seconds. Only voiceprint work needs them.
+#
+#   python3 -m venv .venv-voice
+#   .venv-voice/bin/python -m pip install -r ingest/requirements-voice.txt
+#
+# On Linux, add the CPU wheel index or pip pulls the multi-gigabyte CUDA build:
+#   --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple
+torch>=2.4
+torchaudio>=2.4
+speechbrain>=1.0
+soundfile>=0.12
+numpy>=1.26

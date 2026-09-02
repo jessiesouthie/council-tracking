@@ -7,3 +7,9 @@ output/*.xlsx
 # data/raw for any meeting that gets minuted. Only the JSON they write ships.
 data/agendas/
 .DS_Store
+
+# Voiceprint work: the speaker-matching venv and its cached model/samples are
+# all rebuildable from data/voiceprints/*.json — see ingest/voiceprints.py.
+.venv-voice/
+data/voiceprints/.model/
+data/voiceprints/cache/

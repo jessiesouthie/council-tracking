@@ -13,6 +13,12 @@ name: Publish meeting transcripts
 # the same night, sometimes the next afternoon. Runs that find nothing new cost
 # nothing but a couple of API calls, and a meeting is only ever transcribed once.
 #
+# Diarized speakers are named by voice where the committed voiceprint library
+# (data/voiceprints/library.json) recognizes them — see ingest/voiceprints.py.
+# That environment is heavy, so it is built only on runs that actually have a
+# meeting to publish, and cached between runs. If it fails to install, the
+# meeting still publishes with "Speaker A" labels rather than not at all.
+#
 # Required repository secrets:
 #   ASSEMBLYAI_API_KEY      transcription (~$1 per meeting)
 #   CLAUDE_CODE_OAUTH_TOKEN summary; generate locally with `claude setup-token`
@@ -131,6 +137,37 @@ jobs:
           fi
           cat work.tsv
 
+      # Only built when there is a meeting to publish: it is by far the largest
+      # install in this job, and most scheduled runs find nothing to do.
+      - name: Cache the voiceprint environment
+        if: steps.find.outputs.count != '0'
+        uses: actions/cache@v4
+        with:
+          path: |
+            .venv-voice
+            data/voiceprints/.model
+          key: voice-${{ runner.os }}-py312-${{ hashFiles('ingest/requirements-voice.txt') }}
+
+      - name: Set up the voiceprint environment
+        if: steps.find.outputs.count != '0'
+        continue-on-error: true
+        run: |
+          # Non-fatal by design. Speaker names are an enrichment; a night where
+          # this install breaks should still publish transcripts and summaries.
+          if [ -x .venv-voice/bin/python ]; then
+            echo "Restored from cache."
+          else
+            python -m venv .venv-voice
+            .venv-voice/bin/python -m pip install -q --upgrade pip
+            # The CPU wheel index: the default PyPI torch bundles CUDA and is
+            # several gigabytes, none of which a GitHub runner can use.
+            .venv-voice/bin/python -m pip install -q \
+              --index-url https://download.pytorch.org/whl/cpu \
+              --extra-index-url https://pypi.org/simple \
+              -r ingest/requirements-voice.txt
+          fi
+          .venv-voice/bin/python -c "import torch, speechbrain; print('torch', torch.__version__)"
+
       - name: Transcribe and summarize
         if: steps.find.outputs.count != '0'
         env:
@@ -148,6 +185,10 @@ jobs:
           COUNCIL_SMTP_USER: ${{ secrets.COUNCIL_SMTP_USER }}
           COUNCIL_SMTP_PASS: ${{ secrets.COUNCIL_SMTP_PASS }}
           COUNCIL_MAIL_FROM: ${{ secrets.COUNCIL_MAIL_FROM }}
+          # Where step 4 of transcribe_meeting.sh looks for the voiceprint
+          # environment. If the setup step above failed, this path simply does
+          # not exist and the script prints one line and moves on.
+          COUNCIL_VOICE_PYTHON: ${{ github.workspace }}/.venv-voice/bin/python
         run: |
           # An empty credential is worse than an absent one — the CLI would try
           # it and fail confusingly. Drop whichever secret wasn't configured.

@@ -52,7 +52,7 @@ DOCS = ROOT / "docs"
 OUT_DIR = DOCS / "meetings"
 PARSED = ROOT / "data" / "parsed"
 TRANSCRIPTS = DOCS / "transcripts"
-CSS_VERSION = "20260821c"
+CSS_VERSION = "20260826a"
 
 CNAME = DOCS / "CNAME"
 DEFAULT_HOST = "civicrollcall.com"
@@ -90,6 +90,23 @@ def fmt_date(iso: str) -> str:
 
 def slugify(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", (text or "").lower()).strip("-")
+
+
+def counts_line(motions: int, ordinances: int, resolutions: int) -> str:
+    """The "7 motions · 8 ordinance lines · 7 resolution lines" strip.
+
+    Written out twice for a while, here and in build_prerender.py, and only
+    this copy ever learned to say "1 motion". The other printed "1 motions"
+    down the meetings index and "1 ordinance lines" on 43 meeting pages. One
+    string now, imported by both, so a plural cannot disagree with its count
+    on a site whose case rests on the figures being read out mechanically.
+    """
+    def plural(count: int, noun: str) -> str:
+        return f"{count} {noun}" if count == 1 else f"{count} {noun}s"
+
+    return " · ".join((plural(motions, "motion"),
+                       plural(ordinances, "ordinance line"),
+                       plural(resolutions, "resolution line")))
 
 
 # ---------------------------------------------------------------------------
@@ -397,9 +414,16 @@ def render_meeting(body: dict, meeting: dict, motions: list[dict],
     elif meeting.get("summary"):
         description = first_sentence(meeting["summary"], 300)
     elif written:
-        description = first_sentence(
-            f"{len(motions)} motions decided, including: "
-            + "; ".join(m["headline"] for m in written[:3]), 300)
+        # A night with one motion has nothing to be "including" — it gets the
+        # headline outright. This is the meta description, so it is the sentence
+        # a search result and a shared link both show.
+        if len(motions) == 1:
+            description = first_sentence(
+                f"1 motion decided: {written[0]['headline']}", 300)
+        else:
+            description = first_sentence(
+                f"{len(motions)} motions decided, including: "
+                + "; ".join(m["headline"] for m in written[:3]), 300)
     else:
         description = (f"Motions and roll-call votes from the Eagle Mountain "
                        f"{label} meeting on {when}.")
@@ -412,9 +436,9 @@ def render_meeting(body: dict, meeting: dict, motions: list[dict],
         parts.append(f'      <p class="meeting-type">{esc(meeting["type"])}</p>')
     parts.append(f'      <h1 class="page-title">Eagle Mountain {esc(label)}, {esc(when)}</h1>')
 
-    counts = (f'{len(motions)} motion{"" if len(motions) == 1 else "s"} · '
-              f'{meeting.get("ord_count", 0)} ordinance lines · '
-              f'{meeting.get("res_count", 0)} resolution lines')
+    counts = counts_line(len(motions),
+                         meeting.get("ord_count", 0),
+                         meeting.get("res_count", 0))
     parts.append(f'      <p class="page-sub">{esc(counts)}</p>')
 
     if transcript and transcript.get("text"):
@@ -782,10 +806,38 @@ def render_transcript(body: dict, meeting: dict, transcript: dict,
             f"<td class=\"muted\">{esc(v.get('basis'))}</td></tr>"
             for k, v in sorted(speakers.items())
         )
+        # Two different kinds of claim can land in this table and the page must
+        # not blur them. A transcript identification quotes the meeting naming its
+        # own speaker — the chair's name-call, a roll call, someone introducing
+        # themselves — and a reader can check it against the transcript printed
+        # below. A voice match (ingest/voiceprints.py) says this label's audio
+        # resembles audio of a person identified in an earlier meeting: a
+        # statistical claim, with an error rate, and with no evidence visible on
+        # this page. Both are labeled "probable", but only one can be checked
+        # here, so the reader is told which they are looking at.
+        methods = {(v.get("method") or "transcript") for v in speakers.values()}
+        if methods == {"voiceprint"}:
+            blurb = (
+                "Identified by comparing each voice against recordings of people named "
+                "in earlier meetings. That is an acoustic match, not something said out "
+                "loud here, so it cannot be checked against the transcript below. Treat "
+                "these as probable, not certain."
+            )
+        elif "voiceprint" in methods:
+            blurb = (
+                "Identified two ways: from what each voice says during the meeting, and "
+                "\u2014 where the basis column says so \u2014 by comparing the voice against "
+                "recordings of people named in earlier meetings. Neither is a label from "
+                "the recording itself. Treat these as probable, not certain."
+            )
+        else:
+            blurb = (
+                "Identified from what each voice says during the meeting, not from any "
+                "label in the recording. Treat these as probable, not certain."
+            )
         parts.append(
             '      <section class="section"><h2>Who is speaking</h2>'
-            '<p class="muted">Identified from what each voice says during the meeting, '
-            'not from any label in the recording. Treat these as probable, not certain.</p>'
+            f'<p class="muted">{esc(blurb)}</p>'
             '<div class="tablewrap"><table class="data"><thead><tr><th>Label</th>'
             "<th>Probably</th><th>On what basis</th></tr></thead>"
             f"<tbody>{rows}</tbody></table></div></section>"

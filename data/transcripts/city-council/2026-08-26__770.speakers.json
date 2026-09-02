@@ -1,0 +1,42 @@
+{
+ "A": {
+  "name": "Melissa Clark",
+  "basis": "Voice match. This label's audio scores 0.96 cosine similarity against the voiceprint for Melissa Clark, built from 78 sampled turns across 6 other meetings, versus 0.37 for the next-closest person, Bailey Tolton. Sampled from 11 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.96,
+  "runner_up": {
+   "name": "Bailey Tolton",
+   "similarity": 0.374
+  }
+ },
+ "B": {
+  "name": "Rich Wood",
+  "basis": "Voice match. This label's audio scores 0.61 cosine similarity against the voiceprint for Rich Wood, built from 70 sampled turns across 5 other meetings, versus 0.36 for the next-closest person, Zac Huish. Sampled from 5 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.613,
+  "runner_up": {
+   "name": "Zac Huish",
+   "similarity": 0.364
+  }
+ },
+ "C": {
+  "name": "Marcus Draper",
+  "basis": "Voice match. This label's audio scores 0.90 cosine similarity against the voiceprint for Marcus Draper, built from 23 sampled turns across 3 other meetings, versus 0.32 for the next-closest person, Eric Knutson. Sampled from 7 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.902,
+  "runner_up": {
+   "name": "Eric Knutson",
+   "similarity": 0.318
+  }
+ },
+ "D": {
+  "name": "Steve Mumford",
+  "basis": "Voice match. This label's audio scores 0.73 cosine similarity against the voiceprint for Steve Mumford, built from 20 sampled turns across 2 other meetings, versus 0.38 for the next-closest person, Melissa Clark. Sampled from 3 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.732,
+  "runner_up": {
+   "name": "Melissa Clark",
+   "similarity": 0.38
+  }
+ }
+}

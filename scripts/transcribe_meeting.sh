@@ -6,8 +6,9 @@
 #   1. looks up the meeting (date + recording URL) from the public API
 #   2. streams the audio and transcribes it on-device (whisper.cpp, Metal)
 #   3. writes .txt/.srt/.vtt into data/transcripts/<body>/
-#   4. generates the prose "enriched summary" with the `claude` CLI
-#   5. publishes to docs/ via `python -m ingest.build_transcripts`
+#   4. names the diarized speakers by voice, where a voiceprint library exists
+#   5. generates the prose "enriched summary" with the `claude` CLI
+#   6. publishes to docs/ via `python -m ingest.build_transcripts`
 #   6. emails a copy of the summary (with the transcript attached) if a
 #      recipient is configured — see ingest/mail_summary.py
 #
@@ -18,7 +19,7 @@
 #   scripts/transcribe_meeting.sh <EVENT_ID> [--body city-council]
 #                                [--force] [--resummarize] [--no-summary] [--cloud]
 #                                [--audio <path>] [--email|--no-email]
-#                                [--email-to <addr>]
+#                                [--email-to <addr>] [--speakers|--no-speakers]
 #
 #   --no-summary   transcribe + publish only; skip the summary (uses NO Claude
 #                  credits). Run again later without the flag to add the summary.
@@ -30,6 +31,10 @@
 #                  written, so re-running never re-mails the same meeting).
 #   --no-email     never send, whatever is configured.
 #   --email-to A   send to this address instead of the configured list.
+#   --speakers     re-run voice identification even if a speaker map already
+#                  exists, overwriting it. By default the map is written only
+#                  when there isn't one, so a hand-written map is never lost.
+#   --no-speakers  skip voice identification entirely.
 #   --cloud        transcribe via AssemblyAI with speaker diarization instead of
 #                  local Whisper. Needs an API key in
 #                  ~/.config/council-tracking/assemblyai.key (or $ASSEMBLYAI_API_KEY).
@@ -44,6 +49,11 @@
 #
 # Requirements: ffmpeg, whisper-cli (brew install ffmpeg whisper-cpp),
 #               claude CLI (for the summary), python3.
+#
+# Speaker naming is optional and skipped with one printed line when absent. It
+# needs the heavier environment described in ingest/requirements-voice.txt,
+# expected at .venv-voice/ (override with COUNCIL_VOICE_PYTHON), plus a library
+# built once with `.venv-voice/bin/python -m ingest.voiceprints enroll`.
 #
 # This is also the engine behind .github/workflows/transcribe-meetings.yml, which
 # runs it in --cloud mode the morning after each meeting. Two env vars exist for
@@ -65,6 +75,7 @@ EVENT_ID=""
 AUDIO=""
 EMAIL=auto            # auto = only when the summary is written by this run
 EMAIL_TO=""
+SPEAKERS_MODE=auto    # auto = only when no speaker map exists yet
 SUMMARY_FRESH=0
 ASSEMBLYAI_KEYFILE="${COUNCIL_ASSEMBLYAI_KEYFILE:-$HOME/.config/council-tracking/assemblyai.key}"
 API_BASE="${COUNCIL_API_BASE:-https://eaglemountainut.api.civicclerk.com/v1}"
@@ -85,12 +96,14 @@ while [ $# -gt 0 ]; do
     --email)       EMAIL=always; shift;;
     --no-email)    EMAIL=never; shift;;
     --email-to)    EMAIL_TO="$2"; shift 2;;
+    --speakers)    SPEAKERS_MODE=always; shift;;
+    --no-speakers) SPEAKERS_MODE=never; shift;;
     -h|--help)     grep '^#' "$0" | sed 's/^# \{0,1\}//'; exit 0;;
     -*)            echo "unknown flag: $1" >&2; exit 2;;
     *)             EVENT_ID="$1"; shift;;
   esac
 done
-[ -n "$EVENT_ID" ] || { echo "usage: $0 <EVENT_ID> [--body <id>] [--force] [--resummarize] [--no-summary] [--cloud] [--audio <path>] [--email|--no-email] [--email-to <addr>]" >&2; exit 2; }
+[ -n "$EVENT_ID" ] || { echo "usage: $0 <EVENT_ID> [--body <id>] [--force] [--resummarize] [--no-summary] [--cloud] [--audio <path>] [--email|--no-email] [--email-to <addr>] [--speakers|--no-speakers]" >&2; exit 2; }
 [ -z "$AUDIO" ] || [ -f "$AUDIO" ] || { echo "--audio: no such file: $AUDIO" >&2; exit 2; }
 
 say() { printf '\033[1;32m▸ %s\033[0m\n' "$*"; }
@@ -332,7 +345,47 @@ else
   say "Transcript exists — skipping transcription (use --force to redo)."
 fi
 
-# ---- 4. enriched summary via the claude CLI ----
+# ---- 4. name the diarized speakers by voice ----
+# Diarization returns anonymous letters — the mayor is Speaker A one night and
+# Speaker J the next. ingest/voiceprints.py matches each letter against
+# voiceprints built from meetings whose speakers were identified by hand, and
+# writes <stem>.speakers.json so the site can print a name instead of a letter.
+#
+# Optional on purpose, and skipped with one printed line whenever it cannot run:
+# it needs torch and speechbrain (ingest/requirements-voice.txt), which are kept
+# out of the pipeline's own requirements so nothing else has to carry them. A
+# machine without that environment still produces exactly the transcript and
+# summary it did before.
+#
+# Best-effort, like the mail step below: a meeting whose transcript and summary
+# are good must not fail because a speaker could not be named. And an existing
+# map is never overwritten without --speakers, because it may be hand-written.
+VOICE_PY="${COUNCIL_VOICE_PYTHON:-$ROOT/.venv-voice/bin/python}"
+SPEAKERS="$DIR/$STEM.speakers.json"
+if [ "$SPEAKERS_MODE" = never ]; then
+  :
+elif [ ! -s "$TXT" ]; then
+  :
+elif ! grep -qE '^Speaker [A-Z]+:' "$TXT"; then
+  say "Transcript carries no speaker labels — nothing to name (on-device runs are undiarized)."
+elif [ -f "$SPEAKERS" ] && [ "$SPEAKERS_MODE" != always ]; then
+  say "Speaker map already exists — leaving it alone (use --speakers to redo)."
+elif [ ! -x "$VOICE_PY" ]; then
+  echo "· No voiceprint environment at $VOICE_PY — speakers stay as letters."
+  echo "   Build it once with:  python3 -m venv .venv-voice && .venv-voice/bin/python -m pip install -r ingest/requirements-voice.txt"
+elif [ ! -f "$ROOT/data/voiceprints/library.json" ]; then
+  echo "· No voiceprint library yet — speakers stay as letters."
+  echo "   Build it once with:  $VOICE_PY -m ingest.voiceprints enroll"
+else
+  say "Naming diarized speakers by voice …"
+  VP_ARGS=(identify "$STEM" --body "$BODY")
+  [ "$SPEAKERS_MODE" = always ] && VP_ARGS+=(--force)
+  [ -n "$AUDIO" ] && VP_ARGS+=(--audio "$AUDIO")
+  "$VOICE_PY" -m ingest.voiceprints "${VP_ARGS[@]}" \
+    || echo "⚠ speaker identification failed — the transcript and summary are unaffected." >&2
+fi
+
+# ---- 5. enriched summary via the claude CLI ----
 if [ "$NO_SUMMARY" = 1 ]; then
   say "Skipping summary (--no-summary). Transcript will still be published; run again"
   echo "   without --no-summary later to add the AI summary."
@@ -435,11 +488,11 @@ else
   say "Summary exists — skipping (use --resummarize to regenerate)."
 fi
 
-# ---- 5. publish to docs/ ----
+# ---- 6. publish to docs/ ----
 say "Publishing to docs/ …"
 python3 -m ingest.build_transcripts
 
-# ---- 6. email a copy ----
+# ---- 7. email a copy ----
 # The rule: a meeting is mailed once, at the moment its transcript, diarization
 # and summary are all finished — which is exactly the run that writes the
 # summary. Re-running the script (to republish, or after --force on a meeting

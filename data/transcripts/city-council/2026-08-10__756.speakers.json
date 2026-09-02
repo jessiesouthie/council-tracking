@@ -1,0 +1,42 @@
+{
+ "A": {
+  "name": "Jared Gray",
+  "basis": "Voice match. This label's audio scores 0.94 cosine similarity against the voiceprint for Jared Gray, built from 70 sampled turns across 5 other meetings, versus 0.38 for the next-closest person, City IT staff. Sampled from 12 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.935,
+  "runner_up": {
+   "name": "City IT staff",
+   "similarity": 0.378
+  }
+ },
+ "B": {
+  "name": "Elizabeth McNanny",
+  "basis": "Voice match. This label's audio scores 0.61 cosine similarity against the voiceprint for Elizabeth McNanny, built from 21 sampled turns across 2 other meetings, versus 0.32 for the next-closest person, Kiara Poole. Sampled from 14 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.614,
+  "runner_up": {
+   "name": "Kiara Poole",
+   "similarity": 0.322
+  }
+ },
+ "C": {
+  "name": "Zac Huish",
+  "basis": "Voice match. This label's audio scores 0.80 cosine similarity against the voiceprint for Zac Huish, built from 69 sampled turns across 5 other meetings, versus 0.37 for the next-closest person, Marcus Draper. Sampled from 14 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.796,
+  "runner_up": {
+   "name": "Marcus Draper",
+   "similarity": 0.373
+  }
+ },
+ "D": {
+  "name": "Kiara Poole",
+  "basis": "Voice match. This label's audio scores 0.81 cosine similarity against the voiceprint for Kiara Poole, built from 8 sampled turns across one other meeting, versus 0.19 for the next-closest person, Elizabeth McNanny. Sampled from 9 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.807,
+  "runner_up": {
+   "name": "Elizabeth McNanny",
+   "similarity": 0.185
+  }
+ }
+}

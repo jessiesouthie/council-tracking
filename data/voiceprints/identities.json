@@ -1,0 +1,427 @@
+{
+  "Angela Valenzuela (Human Resources Manager)": {
+    "occurrences": [
+      "2026-06-02__713:G"
+    ],
+    "person": "Angela Valenzuela"
+  },
+  "Bailey Tolton (Best Friends Animal Society)": {
+    "occurrences": [
+      "2026-07-21__727:F"
+    ],
+    "person": "Bailey Tolton"
+  },
+  "Ben (City Manager)": {
+    "occurrences": [
+      "2026-05-26__748:B",
+      "2026-06-02__713:S"
+    ],
+    "person": "Ben Reeves",
+    "note": "set by hand: the City Manager is Ben Reeves; the corpus's other Ben is a resident"
+  },
+  "Ben Perez (resident)": {
+    "occurrences": [
+      "2026-08-04__715:T"
+    ],
+    "person": "Ben Perez"
+  },
+  "Ben Reeves (City Manager)": {
+    "occurrences": [
+      "2026-07-21__727:L",
+      "2026-08-04__715:L"
+    ],
+    "person": "Ben Reeves"
+  },
+  "Beth Fuchs (Planner, wildland urban interface standards)": {
+    "occurrences": [
+      "2026-07-21__727:M"
+    ],
+    "person": "Beth Fuchs"
+  },
+  "Brad (Parks / Public Works)": {
+    "occurrences": [
+      "2026-05-26__748:I"
+    ],
+    "person": null,
+    "note": "left unassigned on purpose: NOT Brad Patterson, who is outside bond counsel. Whether these two labels are the same public works Brad is also unproven, so neither is enrolled."
+  },
+  "Brad (Public Works)": {
+    "occurrences": [
+      "2026-08-04__715:N"
+    ],
+    "person": null,
+    "note": "left unassigned on purpose: NOT Brad Patterson, who is outside bond counsel. Whether these two labels are the same public works Brad is also unproven, so neither is enrolled."
+  },
+  "Brad Patterson (bond counsel, Gilmore & Bell)": {
+    "occurrences": [
+      "2026-06-02__713:Y"
+    ],
+    "person": "Brad Patterson"
+  },
+  "Brandon Larsen (Community Development Director)": {
+    "occurrences": [
+      "2026-06-02__713:U",
+      "2026-07-21__727:O",
+      "2026-08-04__715:O"
+    ],
+    "person": "Brandon Larsen"
+  },
+  "Charlotte Dukos (resident; Community Services Board)": {
+    "occurrences": [
+      "2026-08-04__715:R"
+    ],
+    "person": "Charlotte Dukos"
+  },
+  "Chief Deputy Eric Knutson": {
+    "occurrences": [
+      "2026-04-14__743:F"
+    ],
+    "person": "Eric Knutson"
+  },
+  "City IT staff (unnamed)": {
+    "occurrences": [
+      "2026-06-02__713:F"
+    ],
+    "person": "City IT staff"
+  },
+  "Corey Wofford (President, LBiSat)": {
+    "occurrences": [
+      "2026-08-04__715:D"
+    ],
+    "person": "Corey Wofford"
+  },
+  "Councilmember Brett Wright": {
+    "occurrences": [
+      "2026-04-14__743:C",
+      "2026-06-02__713:E",
+      "2026-07-07__714:C",
+      "2026-07-21__727:I",
+      "2026-08-04__715:B"
+    ],
+    "person": "Brett Wright"
+  },
+  "Councilmember Craig Whiting": {
+    "occurrences": [
+      "2026-05-26__748:H",
+      "2026-06-02__713:K",
+      "2026-07-07__714:G",
+      "2026-07-21__727:D",
+      "2026-08-04__715:E"
+    ],
+    "person": "Craig Whiting"
+  },
+  "Councilmember Melissa Clark": {
+    "occurrences": [
+      "2026-04-14__743:E",
+      "2026-05-26__748:F",
+      "2026-06-02__713:L",
+      "2026-07-07__714:D",
+      "2026-08-04__715:J"
+    ],
+    "person": "Melissa Clark"
+  },
+  "Councilmember Melissa Clark (mayor pro tem)": {
+    "occurrences": [
+      "2026-07-21__727:A"
+    ],
+    "person": "Melissa Clark"
+  },
+  "Councilmember Rich Wood": {
+    "occurrences": [
+      "2026-04-14__743:I",
+      "2026-06-02__713:I",
+      "2026-07-07__714:H",
+      "2026-07-21__727:C",
+      "2026-08-04__715:I"
+    ],
+    "person": "Rich Wood"
+  },
+  "Councilmember Zac Huish": {
+    "occurrences": [
+      "2026-04-14__743:H",
+      "2026-05-26__748:J",
+      "2026-06-02__713:N",
+      "2026-07-21__727:H",
+      "2026-08-04__715:G"
+    ],
+    "person": "Zac Huish"
+  },
+  "Dave Ulibarri (Public Safety Director)": {
+    "occurrences": [
+      "2026-06-02__713:O"
+    ],
+    "person": "Dave Ulibarri"
+  },
+  "David (City Engineer)": {
+    "occurrences": [
+      "2026-04-14__743:D"
+    ],
+    "person": "David Salazar",
+    "note": "set by hand: the engineer is David Salazar; the corpus's other David is a contract lobbyist"
+  },
+  "David Salazar (Assistant City Engineer)": {
+    "occurrences": [
+      "2026-06-02__713:J",
+      "2026-08-04__715:K"
+    ],
+    "person": "David Salazar"
+  },
+  "David Salazar (City Engineer)": {
+    "occurrences": [
+      "2026-05-26__748:L"
+    ],
+    "person": "David Salazar"
+  },
+  "David Stewart (contract lobbyist)": {
+    "occurrences": [
+      "2026-07-07__714:E"
+    ],
+    "person": "David Stewart"
+  },
+  "Duncan \"DJ\" Searcy (resident)": {
+    "occurrences": [
+      "2026-08-04__715:S"
+    ],
+    "person": "Duncan Searcy"
+  },
+  "Elizabeth McNanny (Resource Consultants, block grant consultant)": {
+    "occurrences": [
+      "2026-07-21__727:G"
+    ],
+    "person": "Elizabeth McNanny"
+  },
+  "Evan Berrett (Legislative & Strategic Affairs Director)": {
+    "occurrences": [
+      "2026-07-07__714:I"
+    ],
+    "person": "Evan Berrett"
+  },
+  "Evan Berrett (Legislative & Strategic Affairs)": {
+    "occurrences": [
+      "2026-07-21__727:R"
+    ],
+    "person": "Evan Berrett"
+  },
+  "Faina Kofod (retiring city leader)": {
+    "occurrences": [
+      "2026-06-02__713:X"
+    ],
+    "person": "Faina Kofod"
+  },
+  "George Reed (resident, Ira Hodges Drive)": {
+    "occurrences": [
+      "2026-07-21__727:N"
+    ],
+    "person": "George Reed"
+  },
+  "Gwen Whiting (Cedar Valley internship teacher)": {
+    "occurrences": [
+      "2026-06-02__713:R"
+    ],
+    "person": "Gwen Whiting"
+  },
+  "Holly Reimer (resident)": {
+    "occurrences": [
+      "2026-06-02__713:Z"
+    ],
+    "person": "Holly Reimer"
+  },
+  "Holly Thomas (resident)": {
+    "occurrences": [
+      "2026-06-02__713:W"
+    ],
+    "person": "Holly Thomas"
+  },
+  "Jeff Bean (resident)": {
+    "occurrences": [
+      "2026-06-02__713:AB"
+    ],
+    "person": "Jeff Bean"
+  },
+  "John Magnus (Management and Policy Analyst)": {
+    "occurrences": [
+      "2026-07-21__727:Q"
+    ],
+    "person": "John Magnus"
+  },
+  "Kate Hall (Best Friends Animal Society)": {
+    "occurrences": [
+      "2026-07-21__727:E"
+    ],
+    "person": "Kate Hall"
+  },
+  "Kiara Poole (Affordable Housing Coordinator)": {
+    "occurrences": [
+      "2026-08-04__715:V"
+    ],
+    "person": "Kiara Poole"
+  },
+  "Kiara Poole (block grant consultant)": {
+    "occurrences": [
+      "2026-07-21__727:J"
+    ],
+    "person": "Kiara Poole"
+  },
+  "Kimberly (Finance / Admin Services)": {
+    "occurrences": [
+      "2026-05-26__748:C"
+    ],
+    "person": "Kimberly Ruesch",
+    "note": "set by hand: Kimberly Ruesch is named in full in 2026-06-02 in the same role"
+  },
+  "Kimberly (Finance Director)": {
+    "occurrences": [
+      "2026-04-14__743:J"
+    ],
+    "person": "Kimberly Ruesch",
+    "note": "set by hand: Kimberly Ruesch is named in full in 2026-06-02 in the same role"
+  },
+  "Kimberly Ruesch (Administrative Services Director)": {
+    "occurrences": [
+      "2026-06-02__713:C"
+    ],
+    "person": "Kimberly Ruesch"
+  },
+  "Lacie Messerly (City Recorder)": {
+    "occurrences": [
+      "2026-06-02__713:D"
+    ],
+    "person": "Lacie Messerly"
+  },
+  "Laura Gallardo (Teen CERT graduate)": {
+    "occurrences": [
+      "2026-06-02__713:H"
+    ],
+    "person": "Laura Gallardo"
+  },
+  "Marcus (City Attorney)": {
+    "occurrences": [
+      "2026-05-26__748:M"
+    ],
+    "person": "Marcus Draper",
+    "note": "set by hand: Marcus Draper is named in full as City Attorney in two other meetings"
+  },
+  "Marcus Draper (City Attorney)": {
+    "occurrences": [
+      "2026-06-02__713:Q",
+      "2026-07-21__727:K"
+    ],
+    "person": "Marcus Draper"
+  },
+  "Mayor Jared Gray": {
+    "occurrences": [
+      "2026-04-14__743:A",
+      "2026-05-26__748:A",
+      "2026-06-02__713:A",
+      "2026-07-07__714:A",
+      "2026-08-04__715:A"
+    ],
+    "person": "Jared Gray"
+  },
+  "Melissa Powers (resident, Evans Ranch)": {
+    "occurrences": [
+      "2026-08-04__715:H"
+    ],
+    "person": "Melissa Powers"
+  },
+  "Melissa Yates (Purchasing)": {
+    "occurrences": [
+      "2026-05-26__748:D"
+    ],
+    "person": "Melissa Yates"
+  },
+  "Miss Eagle Mountain royalty \u2014 Treea Smith and Emmeline Smith": {
+    "occurrences": [
+      "2026-08-04__715:U"
+    ],
+    "person": "Eagle Mountain royalty \u2014 Treea Smith and Emmeline Smith"
+  },
+  "Mr. Ostler (Eagle Quest East landowner)": {
+    "occurrences": [
+      "2026-07-07__714:F"
+    ],
+    "person": null,
+    "note": "only a first name in the transcript \u2014 set \"person\" to enroll these turns, or leave null to skip them"
+  },
+  "Mr. Reeves (City Administrator)": {
+    "occurrences": [
+      "2026-04-14__743:G"
+    ],
+    "person": "Ben Reeves",
+    "note": "set by hand: surname Reeves in the same role as Ben Reeves, City Manager"
+  },
+  "Quinn Lindy (principal, the new high school)": {
+    "occurrences": [
+      "2026-08-04__715:P"
+    ],
+    "person": "Quinn Lindy"
+  },
+  "Rob Hobbs (Senior Planner)": {
+    "occurrences": [
+      "2026-06-02__713:P",
+      "2026-07-21__727:P"
+    ],
+    "person": "Rob Hobbs"
+  },
+  "Rusty Layton (LBiSat)": {
+    "occurrences": [
+      "2026-08-04__715:Q"
+    ],
+    "person": "Rusty Layton"
+  },
+  "Scott Hazard (Triumph developer)": {
+    "occurrences": [
+      "2026-07-21__727:S"
+    ],
+    "person": "Scott Hazard"
+  },
+  "Shelly Anderson (resident, Ira Hodges Drive)": {
+    "occurrences": [
+      "2026-07-21__727:B"
+    ],
+    "person": "Shelly Anderson"
+  },
+  "Steve (staff liaison to the Community Services Board)": {
+    "occurrences": [
+      "2026-06-02__713:AA"
+    ],
+    "person": "Steve Mumford",
+    "note": "set by hand: Steve Mumford is named in full for Community Services in 2026-08-04"
+  },
+  "Steve Mumford (Community Services)": {
+    "occurrences": [
+      "2026-08-04__715:M"
+    ],
+    "person": "Steve Mumford"
+  },
+  "Steven Lehmitz (Planner)": {
+    "occurrences": [
+      "2026-06-02__713:V"
+    ],
+    "person": "Steven Lehmitz"
+  },
+  "Taylor Keyes (Element Homes)": {
+    "occurrences": [
+      "2026-08-04__715:F"
+    ],
+    "person": "Taylor Keyes"
+  },
+  "Towns at Brylee Farms developer's representative (name not on the record)": {
+    "occurrences": [
+      "2026-08-04__715:C"
+    ],
+    "person": "Towns at Brylee Farms developer's representative"
+  },
+  "Tracy Knight (resident)": {
+    "occurrences": [
+      "2026-06-02__713:T"
+    ],
+    "person": "Tracy Knight"
+  },
+  "Zach Hilton (Parks / Public Works staff)": {
+    "occurrences": [
+      "2026-05-26__748:E"
+    ],
+    "person": "Zach Hilton"
+  }
+}
