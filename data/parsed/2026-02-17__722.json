@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 1031,
+      "id": 1030,
       "meeting_id": 722,
       "date": "2026-02-17",
       "page": 6,
@@ -43,13 +43,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda approved",
-      "summary": "The council approved its consent agenda, the batch of items passed together in one vote; the record of the motion does not list which items were included.",
-      "impact": "This is routine housekeeping — nothing changes for residents.",
+      "headline": "Consent agenda approved in one vote",
+      "summary": "The council passed its consent agenda, the bundle of items handled together without separate discussion.",
+      "impact": "The record here does not list what was in the bundle, so there is nothing a resident can act on.",
       "significance": "routine"
     },
     {
-      "id": 1032,
+      "id": 1031,
       "meeting_id": 722,
       "date": "2026-02-17",
       "page": 8,
@@ -85,11 +85,11 @@
       ],
       "headline": "Mid-year budget update approved",
       "summary": "The council approved a second round of amendments to the city's 2025–26 budget; the motion itself names no specific dollar figures.",
-      "impact": "Cities adjust their budgets partway through the year to match actual spending. Nothing in this motion spells out a change residents would notice — the detail sits in the budget document, not the motion.",
+      "impact": "Cities adjust their budgets partway through the year to match actual spending. Nothing in this motion spells out a change residents would notice: the detail sits in the budget document, not the motion.",
       "significance": "routine"
     },
     {
-      "id": 1033,
+      "id": 1032,
       "meeting_id": 722,
       "date": "2026-02-17",
       "page": 9,
@@ -129,7 +129,7 @@
       "significance": "notable"
     },
     {
-      "id": 1034,
+      "id": 1033,
       "meeting_id": 722,
       "date": "2026-02-17",
       "page": 10,
@@ -169,7 +169,7 @@
       "significance": "notable"
     },
     {
-      "id": 1035,
+      "id": 1034,
       "meeting_id": 722,
       "date": "2026-02-17",
       "page": 11,
@@ -204,10 +204,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Five city boards folded into one",
-      "summary": "The council took up an ordinance replacing five volunteer boards — parks and recreation, sports, cemetery, veterans, and economic development — with a single Community Services Board.",
-      "impact": "If you serve on one of these boards or bring issues to them, they would be consolidated into one Community Services Board. For everyone else, nothing changes day to day.",
-      "significance": "routine"
+      "headline": "Five city advisory boards merged into one",
+      "summary": "The council dissolved the parks and recreation, recreation sports, cemetery, military and veterans, and economic development boards, replacing all five with a single Community Services Board.",
+      "impact": "If you volunteer on one of these boards, or bring ideas about parks, sports, the cemetery or veterans' affairs to them, there is now one board to go to instead of five.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

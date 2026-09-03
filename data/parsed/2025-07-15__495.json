@@ -43,9 +43,9 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Consent agenda approved",
-      "summary": "The council approved its consent agenda, the batch of items passed together without separate discussion.",
-      "impact": "Nothing changes for residents — this is the routine bundle of items the council clears in one vote.",
+      "headline": "Consent agenda approved in one vote",
+      "summary": "The council approved its consent agenda, the batch of items handled together without separate discussion.",
+      "impact": "The record here does not list what was in the batch, so there is nothing specific to point you to. Consent items are the ones the council did not consider worth debating.",
       "significance": "routine"
     },
     {
@@ -162,10 +162,10 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Pay schedule for city officers updated",
-      "summary": "The council amended the compensation schedule for the city's statutory officers.",
-      "impact": "This sets what the city's statutory officers are paid. The motion does not state the new figures, and nothing changes for residents day to day.",
-      "significance": "notable"
+      "headline": "Pay schedule updated for the city's statutory officers",
+      "summary": "The council amended the city code section setting compensation for statutory officers, the positions state law requires Eagle Mountain to fill.",
+      "impact": "The motion does not state the new pay figures. It affects a handful of city officers' salaries and does not change any service or bill you receive.",
+      "significance": "routine"
     },
     {
       "id": 924,
@@ -242,9 +242,9 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Drive-thru lane rules put on hold",
-      "summary": "The council delayed a decision on changes to the city's rules for drive-thru lanes.",
-      "impact": "Nothing changes for residents or businesses — the existing drive-thru rules stay in place until the council takes the item back up.",
+      "headline": "Drive-thru lane rules held for another meeting",
+      "summary": "The council delayed changes to the city code section governing drive-thru lanes.",
+      "impact": "Existing drive-thru rules stay as they are. Restaurant and coffee shop developers waiting on the new standards will have to wait longer; nobody else is touched.",
       "significance": "routine"
     },
     {
@@ -402,8 +402,8 @@
         }
       ],
       "headline": "Zayo fiber franchise agreement put on hold",
-      "summary": "The council delayed a decision on a franchise agreement with Zayo Group, LLC, a fiber network company.",
-      "impact": "Nothing changes for residents right now — the agreement was set aside and will come back to the council another night.",
+      "summary": "The council set aside a decision on a franchise agreement with Zayo Group, the telecom company, rather than voting it up or down.",
+      "impact": "Nothing changes for now. The agreement would govern Zayo's use of city rights of way for fiber, and it can come back to a future meeting.",
       "significance": "routine"
     },
     {
@@ -441,9 +441,9 @@
           "vote": "Excused"
         }
       ],
-      "headline": "Lone Tree road funding added to priorities list",
-      "summary": "The council added a funding plan for roads serving the Lone Tree and Oquirrh Mountain Ranch areas through Airport Road to its legislative priorities list.",
-      "impact": "Nothing changes on the ground yet. This puts the road funding on the city's official ask list; any actual money and construction would still have to be approved later.",
+      "headline": "Push for Airport Road corridor funding at the Legislature",
+      "summary": "The council added a funding plan for the Lone Tree and Oquirrh Mountain Ranch areas through Airport Road to its legislative priorities list.",
+      "impact": "This tells state lawmakers what Eagle Mountain wants money for; it does not build anything or commit city dollars. If the funding ever arrives, drivers on the Airport Road corridor would be the ones to notice.",
       "significance": "routine"
     }
   ],

@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 1101,
+      "id": 1099,
       "meeting_id": 714,
       "date": "2026-07-07",
       "page": 5,
@@ -42,10 +42,14 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Jessi Call added as Youth Council advisor",
+      "summary": "The council also seated Jessi Call as a Youth City Council advisor, on a term ending May 31, 2027.",
+      "impact": "A second volunteer post filled the same evening. Unless a teenager in your house sits on the Youth City Council, you will never run into it.",
+      "significance": "routine"
     },
     {
-      "id": 1102,
+      "id": 1100,
       "meeting_id": 714,
       "date": "2026-07-07",
       "page": 5,
@@ -78,10 +82,14 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Angeline Washburn named Youth Council advisor",
+      "summary": "The council appointed Angeline Washburn as an advisor to the Youth City Council, with a term running through May 31, 2027.",
+      "impact": "This one reaches the Youth City Council and the volunteers around it. For everyone else in the city, nothing changes.",
+      "significance": "routine"
     },
     {
-      "id": 1103,
+      "id": 1101,
       "meeting_id": 714,
       "date": "2026-07-07",
       "page": 7,
@@ -111,6 +119,10 @@
           "vote": "Yes"
         }
       ],
+      "headline": "Consultant renewal tightened, one item pulled",
+      "summary": "The council approved the consent agenda after naming David Stewart in a consultant renewal, adding a two meeting a year attendance requirement, and pulling item 15.D for debate.",
+      "impact": "A batch of routine business cleared in a single vote. The part worth knowing: the Eagle Quest East amendment was lifted out of the batch and argued in the open instead.",
+      "significance": "routine",
       "raw_voters": [
         {
           "name": "Melisssa Clark",
@@ -119,7 +131,7 @@
       ]
     },
     {
-      "id": 1104,
+      "id": 1102,
       "meeting_id": 714,
       "date": "2026-07-07",
       "page": 8,
@@ -149,6 +161,10 @@
           "vote": "Yes"
         }
       ],
+      "headline": "Eagle Quest East development change rejected",
+      "summary": "The council refused a second amendment to the Eagle Quest East master development agreement, leaving the terms already agreed for that project in force.",
+      "impact": "Eagle Quest East proceeds under its existing agreement. What the developer wanted changed is not described in the motion, so the substance of the refusal is not on this record.",
+      "significance": "notable",
       "raw_voters": [
         {
           "name": "Melisssa Clark",
@@ -157,7 +173,7 @@
       ]
     },
     {
-      "id": 1105,
+      "id": 1103,
       "meeting_id": 714,
       "date": "2026-07-07",
       "page": 8,
@@ -191,10 +207,14 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Rules updated for accessory recreation buildings",
+      "summary": "The council changed the code section governing accessory recreation buildings; the motion itself does not spell out what the new rules say.",
+      "impact": "Planning a structure like this on your lot? Read the amended section before you file, because the record of this vote does not state what changed.",
+      "significance": "notable"
     },
     {
-      "id": 1106,
+      "id": 1104,
       "meeting_id": 714,
       "date": "2026-07-07",
       "page": 9,
@@ -227,10 +247,14 @@
           "member_id": "zachory-huish",
           "vote": "No"
         }
-      ]
+      ],
+      "headline": "Bid to postpone the energy zone",
+      "summary": "Before deciding on the alternative energy overlay zone, the council considered setting it aside for a later meeting instead.",
+      "impact": "Jockeying over timing, nothing more. What reaches you is the zone decision itself, taken the same evening.",
+      "significance": "routine"
     },
     {
-      "id": 1107,
+      "id": 1105,
       "meeting_id": 714,
       "date": "2026-07-07",
       "page": 9,
@@ -263,10 +287,14 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Alternative energy overlay zone created",
+      "summary": "The council added an alternative energy overlay zone to the city code and put appeals of staff decisions before elected members rather than an administrator.",
+      "impact": "Energy developers gain a zoning route to apply through that did not exist before, and contested decisions go to the council. No specific project was approved by this vote.",
+      "significance": "notable"
     },
     {
-      "id": 1108,
+      "id": 1106,
       "meeting_id": 714,
       "date": "2026-07-07",
       "page": 10,
@@ -300,10 +328,14 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Senior housing zone sent back for more talk",
+      "summary": "The council delayed a decision on a senior housing overlay zone and asked staff to bring it back to a work session for more discussion.",
+      "impact": "The rules for senior housing are still unwritten, so no property is affected today. If where such projects could go matters to you, the next conversation is at a work session.",
+      "significance": "routine"
     },
     {
-      "id": 1109,
+      "id": 1107,
       "meeting_id": 714,
       "date": "2026-07-07",
       "page": 11,
@@ -336,10 +368,14 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "New rules for political and temporary signs",
+      "summary": "The council rewrote the sign rules covering political and temporary signs, dropped the proposed seasonal sign language, and told staff to draft temporary sign terms for business licenses.",
+      "impact": "Both the sign you stake in your yard at election time and the banner outside a shop fall under this. Business owners face one more temporary sign requirement once staff bring the licensing language back.",
+      "significance": "notable"
     },
     {
-      "id": 1110,
+      "id": 1108,
       "meeting_id": 714,
       "date": "2026-07-07",
       "page": 12,
@@ -372,10 +408,14 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Ground rules set for annexing new land",
+      "summary": "The council adopted an annexation policy plan, the document that sets how Eagle Mountain decides whether to bring neighboring land inside the city.",
+      "impact": "Owners of land just outside the boundary, and anyone hoping to build there, now have a written standard to work from. Inside the current city limits, nothing about your day changes.",
+      "significance": "notable"
     },
     {
-      "id": 1111,
+      "id": 1109,
       "meeting_id": 714,
       "date": "2026-07-07",
       "page": 12,
@@ -387,10 +427,14 @@
       "tags": [
         "code"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Two foot setback floated for side yard parking",
+      "summary": "The council also weighed a version allowing parking on the driveway, garage side and side yard on hard surface, kept two feet back from the sidewalk.",
+      "impact": "A draft, not a rule: the record shows no result for this wording. Nothing here binds a homeowner.",
+      "significance": "routine"
     },
     {
-      "id": 1112,
+      "id": 1110,
       "meeting_id": 714,
       "date": "2026-07-07",
       "page": 12,
@@ -402,10 +446,14 @@
       "tags": [
         "code"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Earlier draft of the front yard parking rule",
+      "summary": "The council took up an earlier version of the front yard parking change, striking one section and adding trailers and other vehicles; no outcome is recorded.",
+      "impact": "This wording never reached your street. The version that governs front yard parking is the one the council settled on later the same night.",
+      "significance": "routine"
     },
     {
-      "id": 1113,
+      "id": 1111,
       "meeting_id": 714,
       "date": "2026-07-07",
       "page": 13,
@@ -438,10 +486,14 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "RVs and trailers barred from front yards",
+      "summary": "The council barred RVs, trailers, farm vehicles and other vehicles from front yards, except on a paved or gravel driveway or the garage side setback.",
+      "impact": "If you keep a camper or a trailer parked on the grass out front, that is now off limits. The driveway and the strip beside the garage remain open to you. Every residential zone is covered.",
+      "significance": "notable"
     },
     {
-      "id": 1114,
+      "id": 1112,
       "meeting_id": 714,
       "date": "2026-07-07",
       "page": 14,
@@ -472,7 +524,11 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Citywide speed study, paid for with speed table money",
+      "summary": "The city approved a citywide speed management study, added roads named by Councilmember Wood, and paid for it with money set aside for speed tables.",
+      "impact": "Money earmarked to build speed tables now buys the study instead, so any street waiting on one waits on this first. The study looks at speeds across the whole city.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

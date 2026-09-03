@@ -1,15 +1,15 @@
 {
- "_comment": "How many people Eagle Mountain employs, and how that compares with Utah cities its own size. Headcount is full-time equivalents from each city's audited ACFR statistical section (the GASB 44 schedule, ten years wide); population is the Census Bureau's sub-county estimate for every city, so the denominator is one consistent series rather than each city's own claim. Eagle Mountain employs nobody in police or fire — patrol is a Utah County Sheriff contract, fire is Unified Fire Authority — so raw per-capita headcount compares service-delivery models rather than staffing levels, and three measures are carried: raw, excluding public safety, and excluding public safety and utilities. Built by ingest/build_staffing.py, which fails if it stops reproducing the totals printed in each city's own report.",
+ "_comment": "How many people Eagle Mountain employs, and how that compares with Utah cities its own size. Headcount is full-time equivalents from each city's audited ACFR statistical section (the GASB 44 schedule, ten years wide); population is the Census Bureau's sub-county estimate for every city, so the denominator is one consistent series rather than each city's own claim. Eagle Mountain employs nobody in police or fire (patrol is a Utah County Sheriff contract, fire is Unified Fire Authority), so raw per-capita headcount compares service-delivery models rather than staffing levels, and three measures are carried: raw, excluding public safety, and excluding public safety and utilities. Built by ingest/build_staffing.py, which fails if it stops reproducing the totals printed in each city's own report.",
  "body": "city-council",
  "fiscal_year": 2024,
  "fiscal_year_label": "FY2024",
  "generated_from": "2026-08-18",
  "method": {
   "headcount": "Full-time equivalents as each city reports them in the statistical section of its own audited annual financial report. FTE is not headcount: it counts hours, so two half-time staff are one FTE.",
-  "population": "US Census Bureau sub-county estimates, vintage 2025 — the newest published — used for every city including Eagle Mountain, so the comparison is measured one way throughout. Utah's own estimates, from the Utah Population Committee, are carried alongside as a check and agree closely: for 2024 they differ by 122 people out of 61,362. The city's own figures run higher, and the page sets them out rather than choosing between them.",
-  "normalization": "Cities group departments differently, so every row is re-filed by function from its own label. Public safety means police, fire, ambulance, dispatch, animal control, crossing guards and emergency management — the services Eagle Mountain buys rather than staffs. Courts are counted as general government: a justice court is a judicial function a city keeps whoever polices it.",
-  "why_2024": "2024 is the most recent year Eagle Mountain has published an audited staff count for. The city's FY2025 audit was accepted by the Council, but the full annual report — the volume that carries the staffing schedule — is not posted on the city's finance page, where every year from 2019 to 2024 is. Comparing Eagle Mountain's 2024 against other cities' 2025 would not be a comparison, so every city here is 2024.",
-  "peer_rule": "Take the 15 Utah cities closest to Eagle Mountain in population, and compare the ones that publish a comparable staffing schedule. Every city inside that cut is either compared or named below with the reason it could not be — the build refuses to run otherwise, so no city can be dropped quietly and none can be added by hand. Nine of the 15 are unusable: three publish no statistical section, two count full-time staff rather than full-time equivalents, and four could not be retrieved at all.",
+  "population": "US Census Bureau sub-county estimates, vintage 2025, the newest published, used for every city including Eagle Mountain, so the comparison is measured one way throughout. Utah's own estimates, from the Utah Population Committee, are carried alongside as a check and agree closely: for 2024 they differ by 122 people out of 61,362. The city's own figures run higher, and the page sets them out rather than choosing between them.",
+  "normalization": "Cities group departments differently, so every row is re-filed by function from its own label. Public safety means police, fire, ambulance, dispatch, animal control, crossing guards and emergency management, the services Eagle Mountain buys rather than staffs. Courts are counted as general government: a justice court is a judicial function a city keeps whoever polices it.",
+  "why_2024": "2024 is the most recent year Eagle Mountain has published an audited staff count for. The city's FY2025 audit was accepted by the Council, but the full annual report, the volume that carries the staffing schedule, is not posted on the city's finance page, where every year from 2019 to 2024 is. Comparing Eagle Mountain's 2024 against other cities' 2025 would not be a comparison, so every city here is 2024.",
+  "peer_rule": "Take the 15 Utah cities closest to Eagle Mountain in population, and compare the ones that publish a comparable staffing schedule. Every city inside that cut is either compared or named below with the reason it could not be: the build refuses to run otherwise, so no city can be dropped quietly and none can be added by hand. Nine of the 15 are unusable: three publish no statistical section, two count full-time staff rather than full-time equivalents, and four could not be retrieved at all.",
   "caveats": [
    "FTE excludes contracted labor entirely. That is the whole point for Eagle Mountain, and it means the raw column understates what the city actually commands.",
    "Murray's and Draper's newest reports are FY2025; the FY2024 column of their ten-year schedules is the one read here, so every city is the same year.",
@@ -1858,12 +1858,12 @@
     "note": "Given as “almost 80,000”."
    }
   ],
-  "note": "Two independent official estimates — the Census Bureau's and Utah's own — agree with each other closely and both run well below the figures the city uses in its own meetings. The comparison on this page has to use one series measured the same way for every city, so it uses the Census figure; if the city's higher number is right, Eagle Mountain is leaner still, not less lean."
+  "note": "Two independent official estimates, the Census Bureau's and Utah's own, agree with each other closely and both run well below the figures the city uses in its own meetings. The comparison on this page has to use one series measured the same way for every city, so it uses the Census figure; if the city's higher number is right, Eagle Mountain is leaner still, not less lean."
  },
  "excluded": [
   {
    "city": "Millcreek",
-   "reason": "Publishes basic financial statements only — 64 pages with no statistical section, so no staffing schedule exists to read.",
+   "reason": "Publishes basic financial statements only: 64 pages with no statistical section, so no staffing schedule exists to read.",
    "population": 64198
   },
   {
@@ -1873,12 +1873,12 @@
   },
   {
    "city": "Saratoga Springs",
-   "reason": "The city's public audit archive stops at FY2017. No recent report is posted where it can be found — worth noting on its own account, since this is the city Eagle Mountain is most often compared with.",
+   "reason": "The city's public audit archive stops at FY2017. No recent report is posted where it can be found: worth noting on its own account, since this is the city Eagle Mountain is most often compared with.",
    "population": 57155
   },
   {
    "city": "Spanish Fork",
-   "reason": "Publishes basic financial statements only — no statistical section, so no staffing schedule exists to read.",
+   "reason": "Publishes basic financial statements only: no statistical section, so no staffing schedule exists to read.",
    "population": 47624
   },
   {
@@ -1898,7 +1898,7 @@
   },
   {
    "city": "Syracuse",
-   "reason": "Publishes a schedule of full-time employees rather than full-time equivalents — a headcount of permanent staff that leaves part-time and seasonal work out entirely. That is a different measure from the one every other city here reports, and mixing the two would overstate nobody consistently.",
+   "reason": "Publishes a schedule of full-time employees rather than full-time equivalents: a headcount of permanent staff that leaves part-time and seasonal work out entirely. That is a different measure from the one every other city here reports, and mixing the two would overstate nobody consistently.",
    "population": 38970
   },
   {

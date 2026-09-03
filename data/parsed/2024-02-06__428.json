@@ -27,8 +27,9 @@
       ],
       "votes": [],
       "headline": "Consent agenda approved",
-      "summary": "The council approved its consent agenda, the batch of routine items passed together in a single vote; the record does not list which items it contained.",
-      "impact": "Nothing here for residents — consent agendas are routine housekeeping like meeting minutes and standard renewals."
+      "summary": "Everything grouped on the consent agenda passed in a single vote, with the record here not listing the individual items it held.",
+      "impact": "Consent items are the ones no councilmember pulled out for debate. Nothing on this list reaches you.",
+      "significance": "routine"
     },
     {
       "id": 682,
@@ -44,9 +45,10 @@
         "development"
       ],
       "votes": [],
-      "headline": "Parkway Fields plan reshuffled, no added homes",
-      "summary": "The council approved a revised Parkway Fields plan: re-phased townhomes, a small strip rezoned for about four extra townhomes offset by fewer lots elsewhere, and no density increase.",
-      "impact": "If you live in or are buying in Parkway Fields, phase labels and the street layout change, and the developer dedicates land for Old Airport Road plus open space with a trail and trailhead. Total home count stays flat."
+      "headline": "Parkway Fields phases and layout redrawn",
+      "summary": "The council approved a redrawn Parkway Fields plan that splits the townhome phase in two and adds about four townhomes, offset by fewer lots in a later phase.",
+      "impact": "The number of homes on the site does not go up. If you are buying there, phase and plat labels changed, and the developer told the council it will dedicate land along Old Airport Road for a trail and trailhead.",
+      "significance": "notable"
     },
     {
       "id": 683,
@@ -64,8 +66,9 @@
       ],
       "votes": [],
       "headline": "Parkway Fields development agreement amended",
-      "summary": "The council approved an amendment to the Parkway Fields (Ault Farms) master development agreement, the contract setting the terms the developer must build to.",
-      "impact": "This matters mainly if you live in or near Parkway Fields. It updates the developer's obligations for that project; nothing changes elsewhere in the city."
+      "summary": "The council updated the master development agreement behind Parkway Fields, the Ault Farms project, so the contract matches the site's revised plan.",
+      "impact": "This is the contract that fixes what the builder owes the city there. Buyers and neighbors in Parkway Fields are the ones it reaches; the rest of the city will not notice.",
+      "significance": "notable"
     },
     {
       "id": 684,
@@ -84,8 +87,9 @@
       ],
       "votes": [],
       "headline": "Residential development standards amended",
-      "summary": "The council approved an amendment to the city's residential development standards; the motion record does not state which requirement changed.",
-      "impact": "Nothing you'd notice day to day. The change applies to future home construction, and the motion itself doesn't say which standard was altered."
+      "summary": "The council amended its residential development standards, section 17.25.040, though the minutes do not record what the amendment changed.",
+      "impact": "Rules for what goes into new subdivisions moved here, but the record is too thin to say how it lands on any particular street.",
+      "significance": "notable"
     },
     {
       "id": 685,
@@ -101,9 +105,10 @@
         "code"
       ],
       "votes": [],
-      "headline": "City updates its building and construction standards",
-      "summary": "The council approved an updated Title 15, the city's building and construction standards and specifications, which now includes truck route approval requirements.",
-      "impact": "This is the technical rulebook builders and engineers follow. If you aren't building anything, nothing changes; if you are, your contractor works to the updated specs."
+      "headline": "Building and construction standards updated",
+      "summary": "The council adopted an updated Title 15, the city's building and construction standards, which now carries truck route approval requirements.",
+      "impact": "Contractors and engineers filing plans build to the new standards from here. For everyone else this is a technical manual you will never open.",
+      "significance": "routine"
     },
     {
       "id": 686,
@@ -120,9 +125,10 @@
         "code"
       ],
       "votes": [],
-      "headline": "New fence and buffer rules, and a way to force repairs",
-      "summary": "The council approved fencing and buffer standards, barring berms or hedges as substitutes for required fences, defining split-rail fencing, and letting the city treat unsafe fences as nuisances.",
-      "impact": "If your fence is falling apart, built from broken or flammable scrap, or put up to spite a neighbor, the city can now declare it a nuisance and make you fix it. Most homeowners are unaffected."
+      "headline": "Fence and buffer rules rewritten",
+      "summary": "The city rewrote its fencing rules, declaring broken, flammable or spite fences unlawful nuisances, adding a split-rail definition, and barring berms or hedges where a wall is required.",
+      "impact": "A fence that is falling apart, or one put up to needle a neighbor, can now be treated as a nuisance and ordered fixed. Staff will bring back separate changes on commercial buffers and fences where the ground drops away.",
+      "significance": "notable"
     },
     {
       "id": 687,
@@ -138,9 +144,10 @@
         "code"
       ],
       "votes": [],
-      "headline": "Liquor license rules updated",
-      "summary": "The council approved an update to the city's liquor licensing rules; the motion record does not spell out what changed.",
-      "impact": "This touches businesses that sell alcohol, not most residents. Because the motion doesn't state the change, check the ordinance text itself if you hold or want a liquor license."
+      "headline": "Liquor license rules amended",
+      "summary": "Council members approved an amendment to section 5.15, the city's liquor license code, without the minutes describing what the change does.",
+      "impact": "Businesses that sell alcohol are the ones who deal with this section. The record is too thin to say what is different for them.",
+      "significance": "routine"
     },
     {
       "id": 688,
@@ -154,9 +161,10 @@
       "outcome": "passed wÍth a unanimous vote.",
       "tags": [],
       "votes": [],
-      "headline": "Decision on lot-size rules pushed to March",
-      "summary": "The council delayed a decision on changes to lot size mixture and residential development standards, sending staff back to collect council feedback before the March 6, 2024 meeting.",
-      "impact": "Nothing changes yet. If you follow how large lots in new subdivisions have to be, the rules come back to the council on March 6 — that's the next chance to weigh in."
+      "headline": "Lot size rules sent back to staff",
+      "summary": "The council delayed changes to lot size mixture and residential development standards, sending staff to collect councilmember feedback before a March 6 return.",
+      "impact": "Builders waiting on the new lot rules wait another month. Anyone with an opinion on lot sizes gets another chance to speak when the item comes back March 6.",
+      "significance": "routine"
     },
     {
       "id": 689,
@@ -172,9 +180,10 @@
         "infrastructure"
       ],
       "votes": [],
-      "headline": "Mayor can't create city policy without a council vote",
-      "summary": "The council adopted rules barring the mayor or staff from enacting policy without a majority council vote, and requiring the council to vote on liaison assignments.",
-      "impact": "This is about who holds power inside city hall, not your street or your bill. New city rules now have to clear a council vote in a public meeting rather than being set by the mayor's office."
+      "headline": "Council limits mayor's power to set policy",
+      "summary": "The council wrote into code that neither the mayor nor staff may enact city policy without a majority council vote, and that no member may speak for the full body.",
+      "impact": "City policy now has to clear a public council vote before it takes effect, so more of it happens in front of you at a meeting. Liaison assignments also go to a council vote rather than the mayor alone.",
+      "significance": "notable"
     },
     {
       "id": 690,
@@ -190,9 +199,10 @@
         "parks"
       ],
       "votes": [],
-      "headline": "Council members assigned to city boards for 2024",
-      "summary": "The council set its 2024 board assignments: Burnham to cemetery and arts, Clark to seniors and library, Gray to veterans, parks and youth, Wood to economic development, Wright to planning.",
-      "impact": "This tells you which council member to contact about a given topic — Wright for planning issues, Clark for the library or senior center, Gray for parks. Nothing else changes."
+      "headline": "2024 board liaison assignments set",
+      "summary": "The council handed each member board assignments for the year, from the cemetery and arts boards to the Planning Commission and the Utah League of Cities and Towns.",
+      "impact": "If you sit on one of those boards, you now know which councilmember will be in the room with you. For everyone else this is an internal calendar.",
+      "significance": "routine"
     },
     {
       "id": 691,
@@ -206,9 +216,10 @@
       "outcome": "passed wÍth a unanÍmous vote.",
       "tags": [],
       "votes": [],
-      "headline": "Jared Gray named mayor pro tem",
-      "summary": "The council elected Councilmember Jared Gray as mayor pro tempore, the member who fills in when the mayor is unavailable.",
-      "impact": "Nothing changes for residents — this is internal housekeeping about who steps in to run a meeting when the mayor can't be there."
+      "headline": "Jared Gray named mayor pro tempore",
+      "summary": "The council picked Councilmember Jared Gray as mayor pro tempore, the member who steps in when the mayor cannot preside.",
+      "impact": "Nothing changes for households. The title matters only on the rare night the mayor is away from the dais.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

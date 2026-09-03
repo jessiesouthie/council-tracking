@@ -43,9 +43,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Josh Biagio appointed to library board",
-      "summary": "The council appointed Josh Biagio to a three-year term on the Library Advisory Board, from January 2026 through December 2028.",
-      "impact": "Nothing changes for residents — this is a volunteer seat on the board that advises the city on the library.",
+      "headline": "Josh Biagio joins Library Advisory Board",
+      "summary": "The council appointed Josh Biagio to a three-year term on the Library Advisory Board running from January 2026 through December 2028.",
+      "impact": "The last of three library board seats filled for the coming term. There is nothing here for a resident to do or pay.",
       "significance": "routine"
     },
     {
@@ -83,9 +83,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Emily Hoehne appointed to library board",
-      "summary": "The council appointed Emily Hoehne to a three-year term on the Library Advisory Board, from January 2026 through December 2028.",
-      "impact": "Nothing changes for residents — this is a volunteer seat on the board that advises the city on the library.",
+      "headline": "Emily Hoehne joins Library Advisory Board",
+      "summary": "The council appointed Emily Hoehne to a three-year term on the Library Advisory Board running from January 2026 through December 2028.",
+      "impact": "Another volunteer seat filled on the board that advises the library. Nobody's day changes because of it.",
       "significance": "routine"
     },
     {
@@ -123,9 +123,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Dani McKean appointed to library board",
-      "summary": "The council appointed Dani McKean to a three-year term on the Library Advisory Board, from January 2026 through December 2028.",
-      "impact": "Nothing changes for residents — this is a volunteer seat on the board that advises the city on the library.",
+      "headline": "Dani McKean joins Library Advisory Board",
+      "summary": "The council appointed Dani McKean to a three-year term on the Library Advisory Board running from January 2026 through December 2028.",
+      "impact": "Library board members advise on the library. Filling the seat changes nothing about hours, cards or fees.",
       "significance": "routine"
     },
     {
@@ -161,9 +161,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "December named Utah PTA Centennial month",
-      "summary": "The council proclaimed December 2025 as Utah PTA Centennial Celebration Month.",
-      "impact": "This is ceremonial — nothing changes for residents. It's a public nod to the PTA's 100th anniversary.",
+      "headline": "December named PTA centennial month",
+      "summary": "The council proclaimed December 2025 as Utah PTA Centennial Celebration Month, marking 100 years of the parent teacher association in the state.",
+      "impact": "A ceremonial nod to the PTA's anniversary. It carries no money and no rules.",
       "significance": "routine"
     },
     {
@@ -202,10 +202,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent items approved, mortgage contract flagged",
-      "summary": "The council approved its consent agenda, pulling the credit card policy out and requiring the mortgage assistance contract to return to council if applications exceed 100.",
-      "impact": "Nothing changes day to day. If the city's mortgage assistance program draws more than 100 loan applications, the contract with its administrator comes back to the council for another look.",
-      "significance": "routine"
+      "headline": "Consent items passed, with a cap on housing loans",
+      "summary": "The council approved its consent agenda and added a condition that the mortgage assistance contract with Ultimate Home Lending returns for review if applications pass 100.",
+      "impact": "If you apply for the city's mortgage assistance program, an outside firm handles it. Should more than 100 people apply, the council takes another look before it continues.",
+      "significance": "notable"
     },
     {
       "id": 991,
@@ -242,9 +242,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Employee credit card policy put on hold",
-      "summary": "The council delayed a decision on changes to the city's employee credit card policy and sent it back for more discussion in a work session.",
-      "impact": "Nothing changes for residents — this is an internal rule about how city staff spend on city cards, and the council wants another look before voting.",
+      "headline": "Staff credit card rules put on hold",
+      "summary": "The council delayed changes to the rules governing city employee credit cards and sent the item back to a work session for more discussion.",
+      "impact": "This is internal spending policy for city staff. Nothing here reaches your household.",
       "significance": "routine"
     },
     {
@@ -326,7 +326,7 @@
       ],
       "headline": "New rules for keeping animals on your property",
       "summary": "The city set standards for alternative animal management plans and tied the permit to the applicant, so it ends automatically when the property is sold.",
-      "impact": "If you keep animals under one of these plans, the approval is yours, not your land's. It does not transfer to a buyer — when you sell, the new owner has to apply on their own.",
+      "impact": "If you keep animals under one of these plans, the approval is yours, not your land's. It does not transfer to a buyer: when you sell, the new owner has to apply on their own.",
       "significance": "notable"
     },
     {
@@ -365,8 +365,8 @@
         }
       ],
       "headline": "Moderate income housing plan updated",
-      "summary": "The council amended the moderate income housing section of the city's General Plan, the long-range document that guides future housing decisions.",
-      "impact": "Nothing changes for you right away. The motion doesn't say which housing policies were changed, only that the long-range plan was amended.",
+      "summary": "The council amended the housing section of the general plan covering moderate income housing, the state-required chapter on homes for middle and lower earners.",
+      "impact": "Utah requires every city to keep this chapter current and file it with the state. Developers and planners work from it; you will not feel it at home.",
       "significance": "notable"
     },
     {
@@ -404,9 +404,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Update the map of land the city could annex",
-      "summary": "The council updated its annexation policy plan, extending Area 1 to Utah Lake and requiring the map to mark old boundaries separately from newly expanded ones.",
-      "impact": "Nothing changes inside the city today. This matters to owners of unincorporated land on the edges — the council deliberately kept overlaps with neighboring cities so an owner can choose which city to join.",
+      "headline": "New map of land the city could annex",
+      "summary": "The council updated the city's annexation policy plan, extending Area 1 to Utah Lake and dropping language about SITLA and Saratoga Springs from the response to other agencies.",
+      "impact": "The map marks land Eagle Mountain would consider taking in. Owners of unincorporated property near the edges may now have a choice of which city to join. Nothing changes inside current city limits.",
       "significance": "notable"
     },
     {

@@ -43,9 +43,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda approved, one item pulled out",
-      "summary": "The council approved its bundle of routine consent items but pulled the Mountainland Supply development agreement out for separate discussion.",
-      "impact": "Nothing changes for residents — this is the batch of routine business the council passes in a single vote, minus the one item it wanted to debate on its own.",
+      "headline": "Consent agenda approved, one item pulled",
+      "summary": "Everything on the consent agenda passed in a single vote except item 14.A, which the council moved to scheduled items for its own discussion.",
+      "impact": "Batching uncontroversial items into one vote is how the council saves floor time. The step touches nobody outside the meeting room.",
       "significance": "routine"
     },
     {
@@ -124,9 +124,9 @@
           "vote": "No"
         }
       ],
-      "headline": "Lower $45,000-an-acre price rejected",
-      "summary": "The council rejected a lower price of $45,000 per acre ($1.03 per square foot) for the same city land, on the argument that the parcel needs no added water rights.",
-      "impact": "Nothing changes for residents — this was a competing price for the same parcel, and the higher price the council approved is what stands.",
+      "headline": "Half-price offer of $45,000 an acre rejected",
+      "summary": "The council rejected a lower price for the same parcel, $45,000 per acre or $1.03 per square foot, noting it needs no additional water rights.",
+      "impact": "Had this one carried, the city would have taken less than half as much per acre for the land. It did not, so the higher figure stands.",
       "significance": "routine"
     },
     {
@@ -165,9 +165,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Bid to pause the land sale over water rules fails",
-      "summary": "The council declined to delay the land-sale resolution while staff refined water requirements and wrote a policy for reviewing future requests to buy city land.",
-      "impact": "Nothing changes for residents — this was an attempt to hold the sale back for more study, and it did not hold.",
+      "headline": "Bid to pause the land sale turned down",
+      "summary": "Council members declined to hold off on the land sale while staff tightened water requirements and wrote a policy for reviewing future purchase requests.",
+      "impact": "A postponement that does not happen leaves nothing for you to notice. The sale itself was decided in a separate vote.",
       "significance": "routine"
     },
     {
@@ -205,9 +205,9 @@
           "vote": "No"
         }
       ],
-      "headline": "City land to be sold at $95,000 an acre",
-      "summary": "The council authorized selling a significant piece of city-owned property at a price of $95,000 per acre, or $2.18 per square foot.",
-      "impact": "The motion doesn't name the parcel or the buyer; what it settles is the price the city will accept for land the public currently owns. Nothing changes day to day for residents.",
+      "headline": "City land sold at $95,000 an acre",
+      "summary": "The council cleared the sale of a significant piece of city-owned real property at $95,000 per acre, or $2.18 per square foot.",
+      "impact": "This settles what the buyer pays, not what goes on the ground. The motion says nothing about future use, so what neighbors will eventually see remains open.",
       "significance": "notable"
     },
     {
@@ -243,9 +243,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Telecom rules added to council's priority list",
-      "summary": "The council added drafting a telecommunications ordinance and/or franchise agreement to its list of legislative priorities.",
-      "impact": "Nothing changes for you yet — this puts the item on the city's to-do list, and any actual rules would have to come back to the council later.",
+      "headline": "City to draft telecom rules",
+      "summary": "The council added a telecommunications ordinance, a franchise agreement, or both to its list of legislative priorities for staff to work on.",
+      "impact": "No rule exists yet, so nothing changes for phone or internet customers. Whatever staff draft would have to come back to the council before it means anything.",
       "significance": "routine"
     },
     {
@@ -281,9 +281,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Land-sale policy added to council's priority list",
-      "summary": "The council put writing a policy for how staff review applications to buy city-owned land onto its list of legislative priorities.",
-      "impact": "Nothing changes right now — this only commits the city to drafting rules later for how it handles requests to buy public land.",
+      "headline": "Rules wanted for selling off city land",
+      "summary": "The council put a written policy for judging applications to buy city-owned land on its list of legislative priorities, so staff review such requests consistently.",
+      "impact": "Nothing changes for you today. If the policy gets written, anyone asking to buy a piece of city ground would face one standard instead of a case-by-case judgment call.",
       "significance": "routine"
     }
   ],

@@ -20,9 +20,10 @@
       "outcome": "passed with a unanÍmous vote.",
       "tags": [],
       "votes": [],
-      "headline": "Rod Hess appointed to the Planning Commission",
-      "summary": "Rod Hess was appointed to the Planning Commission for a three-year term running through December 2026.",
-      "impact": "Routine appointment, but worth knowing: the Planning Commission is the body that reviews development and zoning proposals before they reach the council."
+      "headline": "Rod Hess appointed to Planning Commission",
+      "summary": "The council seated Rod Hess on the Planning Commission for a three-year term through December 2026.",
+      "impact": "That seat reviews zoning changes and subdivision plans before they reach the council, so anyone building or living beside new development eventually meets its recommendations.",
+      "significance": "routine"
     },
     {
       "id": 670,
@@ -36,9 +37,10 @@
       "outcome": "",
       "tags": [],
       "votes": [],
-      "headline": "Karan Heffelfinger joins Senior Citizens Advisory Council",
-      "summary": "Karan Heffelfinger was appointed to the Senior Citizens Advisory Council for a four-year term running through December 2027.",
-      "impact": "Routine appointment — nothing changes for residents."
+      "headline": "Senior advisory seat filled through 2027",
+      "summary": "The council appointed Karan Heffelfinger to the Senior Citizens Advisory Council for a four-year term ending in December 2027.",
+      "impact": "Seniors who use city programs gain one more voice advising the council. For everyone else, nothing shifts.",
+      "significance": "routine"
     },
     {
       "id": 671,
@@ -57,9 +59,10 @@
         "consent"
       ],
       "votes": [],
-      "headline": "Adelle Curtis appointed to the Library Board",
-      "summary": "Adelle Curtis was appointed to the Library Board for a two-year term running through December 2025.",
-      "impact": "Routine appointment — nothing changes for residents. She is one of the people who will advise the city on the library."
+      "headline": "Adelle Curtis joins the Library Board",
+      "summary": "The council filled a Library Board seat with Adelle Curtis, a two-year term running through December 2025.",
+      "impact": "A volunteer seat gets an occupant. Library hours, cards and programs carry on unchanged.",
+      "significance": "routine"
     },
     {
       "id": 672,
@@ -76,9 +79,10 @@
         "consent"
       ],
       "votes": [],
-      "headline": "Consent items approved; school site plan sent back",
-      "summary": "The council approved its batch of routine items — bond releases, minutes, the 2023 audit and site plans — but sent the middle school site plan back over an easement.",
-      "impact": "Mostly housekeeping. The one item to watch: the Alpine School District middle school on Belle Street did not get its final sign-off, because the council wants an easement question settled first."
+      "headline": "Consent items approved, two pulled out",
+      "summary": "The council approved a consent agenda of bond releases, minutes and site plans, pulling one item out for separate discussion and sending a school site plan back over an easement.",
+      "impact": "Bundled housekeeping: warranty releases on finished subdivisions, past meeting minutes, and site plans staff already reviewed. The Alpine School District middle school plan returns later so the council can discuss vacating an easement.",
+      "significance": "routine"
     },
     {
       "id": 673,
@@ -97,9 +101,10 @@
         "parks"
       ],
       "votes": [],
-      "headline": "Adopt a city branding and marketing playbook",
-      "summary": "The council approved the city's brand and marketing playbook and asked for it to come back later with the additions discussed at the meeting.",
-      "impact": "This shapes how the city presents and markets itself. Nothing changes for you day to day."
+      "headline": "City brand and marketing playbook adopted",
+      "summary": "The council adopted the city's brand and market playbook and asked for it to return at a later meeting once the additions raised in discussion are written in.",
+      "impact": "Signs, letterhead and city messaging follow from this document. No resident is asked to do anything.",
+      "significance": "routine"
     },
     {
       "id": 674,
@@ -115,9 +120,10 @@
         "zoning"
       ],
       "votes": [],
-      "headline": "Rezone a City Center lot to neighborhood commercial",
-      "summary": "The city rezoned the newly split City Center lot from its 1997 C-1 zoning to Commercial Neighborhood, a more limited commercial zone.",
-      "impact": "If you live near City Center, this narrows what can open on that lot. The council chose Commercial Neighborhood over the broader zone first proposed because it allows fewer types of business."
+      "headline": "City Center lot rezoned to neighborhood commercial",
+      "summary": "The council rezoned Plat 1 of City Center Commercial Phase A from Commercial C-1 to Commercial Neighborhood, picked over a broader zone after concerns about allowed uses.",
+      "impact": "What can open on that ground is now governed by the Commercial Neighborhood list, which councilmembers preferred to the wider Commercial Community zone. Households next to the site have the stake here.",
+      "significance": "notable"
     },
     {
       "id": 675,
@@ -133,9 +139,10 @@
         "zoning"
       ],
       "votes": [],
-      "headline": "Split a City Center commercial lot in two",
-      "summary": "The city approved dividing Lot 1 of the City Center Commercial property, creating one more lot for commercial use.",
-      "impact": "Nothing opens yet. This is the paperwork that lets the owner divide the property, and anything built there still needs its own approval."
+      "headline": "City Center commercial lot split approved",
+      "summary": "The council signed off on amending the recorded plat for Lot 1 of City Center Commercial Phase A, letting the owners carve out another commercial lot.",
+      "impact": "Owners of the site can now divide it and build on or sell the new piece. Homes backing onto the property get the partial screening wall finished once the site is developed.",
+      "significance": "routine"
     },
     {
       "id": 676,
@@ -153,9 +160,10 @@
         "code"
       ],
       "votes": [],
-      "headline": "Casitas and garage apartments allowed, with parking rule",
-      "summary": "The city set rules for backyard and in-home rentals, allowing casitas, guest houses and apartments over a detached garage, and requiring two off-street parking spaces.",
-      "impact": "If you want to add a casita, guest house, or apartment over your garage, the rules now clearly allow it — but you will have to provide off-street parking for two vehicles."
+      "headline": "Casitas and garage apartments allowed",
+      "summary": "The city approved rules allowing a second dwelling inside a house, over a detached garage, or in a standalone casita, with parking for two vehicles required.",
+      "impact": "If you want a rental casita or a unit above your garage, this sets where it may go and requires two off-street spaces. Your lot's zoning still has to permit it.",
+      "significance": "notable"
     },
     {
       "id": 677,
@@ -174,9 +182,10 @@
         "code"
       ],
       "votes": [],
-      "headline": "Subdivision review deadlines tied to state law",
-      "summary": "The city rewrote its code so deadlines for reviewing subdivision plans point to state law instead of a fixed number of days.",
-      "impact": "Routine housekeeping for builders and planning staff. Nothing changes for residents."
+      "headline": "Plat review deadline tied to state law",
+      "summary": "The council changed the subdivision approval section of city code so review timelines point to state code Chapter 10-9a rather than being spelled out separately.",
+      "impact": "Wording cleanup inside the development code. Builders filing preliminary plats deal with it; nobody else will notice.",
+      "significance": "routine"
     },
     {
       "id": 678,
@@ -195,8 +204,9 @@
       ],
       "votes": [],
       "headline": "Hotel height and parking rules put on hold",
-      "summary": "The council delayed easing the height limit and parking requirements for hotels until the city's hotel feasibility study is finished.",
-      "impact": "No hotel is approved or blocked by this. The rules a would-be hotel developer said were in the way stay as they are until the study comes back."
+      "summary": "The council delayed changes that would let hotels rise above the city's 50-foot limit and provide fewer parking stalls, waiting until the hotel feasibility study is finished.",
+      "impact": "No hotel was approved or blocked here. The current rules stand, so a developer wanting a four-story hotel still runs into the height cap and the stall-per-bed count until the study comes back.",
+      "significance": "routine"
     },
     {
       "id": 679,
@@ -213,9 +223,10 @@
         "code"
       ],
       "votes": [],
-      "headline": "Less water required from builders for new homes",
-      "summary": "The city cut the water rights developers must turn over per new home, dropping the indoor requirement from 0.53 to 0.34 acre-feet, and ordering a study of apartment water use.",
-      "impact": "This lands on developers, not on your water bill. It follows the city's smaller lawn requirements, so new yards will have less sod. The council also wants a closer look at how much water apartments actually use."
+      "headline": "Less water required from builders per lot",
+      "summary": "The council cut the water a builder must hand the city per lot, dropping the indoor share from 0.53 to 0.34 acre-feet, and ordered a study of apartment water use.",
+      "impact": "Builders dedicating water rights for new subdivisions now hand over less, matching the smaller lawns the city already requires. Your own bill and service stay the same. The apartment study may bring the question back.",
+      "significance": "notable"
     },
     {
       "id": 680,
@@ -232,9 +243,10 @@
         "personnel"
       ],
       "votes": [],
-      "headline": "Council rules rewrite delayed to February",
-      "summary": "The council put off an ordinance spelling out the powers of the mayor, council and staff, sending it back to the city attorney for rewording before February 6.",
-      "impact": "Nothing changes for residents. This is an internal rulebook about who at city hall can speak or decide for the city, and the debate returns February 6."
+      "headline": "Council rules rewrite pushed to February",
+      "summary": "The council put off an ordinance spelling out its six-member form of government and how a mayor pro tempore is chosen, sending it back for rewording.",
+      "impact": "Nothing changes for you yet. The rules govern how councilmembers, staff and the mayor may speak for the city, and the reworked version was set to return on February 6.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

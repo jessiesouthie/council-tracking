@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 1070,
+      "id": 1068,
       "meeting_id": 724,
       "date": "2026-04-21",
       "page": 6,
@@ -43,13 +43,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda approved, one item held back",
-      "summary": "The council approved its consent agenda of grouped items, pulling item 10.A. out and setting it aside for later.",
-      "impact": "Nothing changes for residents — the consent agenda is the batch of uncontested items the council passes in a single vote.",
+      "headline": "Consent agenda approved, one item pulled",
+      "summary": "Grouped routine items passed together, with item 10.A held back for later.",
+      "impact": "Batch housekeeping, the kind the council clears in a single vote. Residents feel none of it.",
       "significance": "routine"
     },
     {
-      "id": 1071,
+      "id": 1069,
       "meeting_id": 724,
       "date": "2026-04-21",
       "page": 7,
@@ -64,11 +64,11 @@
       "votes": [],
       "headline": "Motion to delay the land decision withdrawn",
       "summary": "A move to postpone the same land decision, with direction to work out a better solution with neighboring owners and city staff, was withdrawn.",
-      "impact": "Nothing was decided here — the motion was taken back before any vote, so it changes nothing for residents.",
+      "impact": "Nothing was decided here: the motion was taken back before any vote, so it changes nothing for residents.",
       "significance": "routine"
     },
     {
-      "id": 1072,
+      "id": 1070,
       "meeting_id": 724,
       "date": "2026-04-21",
       "page": 8,
@@ -100,13 +100,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "City won't sell off a piece of its land",
-      "summary": "The council rejected a proposal to dispose of part of a city-owned parcel that the city code treats as significant real property.",
-      "impact": "The land stays in city hands and nothing changes on the ground. The request to take over part of the parcel was turned down.",
+      "headline": "City keeps a piece of land it was asked to sell",
+      "summary": "The council rejected the sale of part of a city-owned Utah County parcel that had been flagged as significant real property.",
+      "impact": "The land stays in city hands. Unless you live near that parcel or wanted to buy it, this changes nothing you will notice.",
       "significance": "notable"
     },
     {
-      "id": 1073,
+      "id": 1071,
       "meeting_id": 724,
       "date": "2026-04-21",
       "page": 8,
@@ -141,13 +141,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Screening rules for apartment buildings delayed",
-      "summary": "The council delayed a decision on rules for screening heat pumps and other equipment on apartment buildings, sending it back for revisions.",
-      "impact": "Nothing changes right now. The rewritten rules will come back to the council later, and they mainly affect apartment builders rather than homeowners.",
+      "headline": "Screening rules for apartment buildings sent back",
+      "summary": "The council held off on a change to screening rules for multi-family buildings, asking staff to rework the heat pump and equipment spacing provisions first.",
+      "impact": "Nothing takes effect yet. Apartment builders and their architects are the ones waiting on this; the rules they design to stay as they are until the rewrite comes back.",
       "significance": "routine"
     },
     {
-      "id": 1074,
+      "id": 1072,
       "meeting_id": 724,
       "date": "2026-04-21",
       "page": 9,

@@ -43,9 +43,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda approved, three items pulled",
-      "summary": "The council approved its consent agenda after pulling three items out of the bundle for separate discussion later in the meeting.",
-      "impact": "Nothing changes for residents — this is the batch of routine items the council passes in a single vote, with the three pulled items taken up on their own.",
+      "headline": "Three items pulled off the consent list",
+      "summary": "The council approved its batch of consent items but pulled three of them out for discussion later in the meeting.",
+      "impact": "This is a scheduling move: those three items get talked through in the open rather than passing in a bundle. Nothing about the decisions themselves changed here.",
       "significance": "routine"
     },
     {
@@ -84,10 +84,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "McDonald's plan paused for a traffic study",
-      "summary": "The council put the McDonald's site plan at City Center on hold until a traffic study is completed.",
-      "impact": "The City Center McDonald's cannot be approved until traffic near the site is studied, so the project is pushed back. Nothing changes on the ground in the meantime.",
-      "significance": "routine"
+      "headline": "McDonald's site plan held for a traffic study",
+      "summary": "The council put off approving the McDonald's site plan in City Center until a traffic study is finished.",
+      "impact": "The restaurant cannot move ahead until traffic near City Center is studied. If you drive through that area, the study is meant to answer what a drive-through would do to it.",
+      "significance": "notable"
     },
     {
       "id": 874,
@@ -124,7 +124,7 @@
       ],
       "headline": "City backs moving the rodeo grounds",
       "summary": "The council declared its intent to work with the West Traverse Sentinel Landscape committee on relocating the city rodeo grounds into the buffer area around Camp Williams.",
-      "impact": "Nothing moves yet — this only commits the city to work with the partner group on a possible new site. If you use the rodeo grounds, expect a relocation plan to come back for a real decision later.",
+      "impact": "Nothing moves yet. This only commits the city to work with the partner group on a possible new site. If you use the rodeo grounds, expect a relocation plan to come back for a real decision later.",
       "significance": "notable"
     },
     {
@@ -241,9 +241,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Cedar Valley Holbrook land use change delayed",
-      "summary": "The council delayed a decision on changing the long-range land use map for the land known as Cedar Valley Holbrook.",
-      "impact": "Nothing changes — this map change was set aside along with the related rezoning and will return to the council later.",
+      "headline": "Holbrook land use map change also shelved",
+      "summary": "A companion change to the city's future land use map for Cedar Valley Holbrook was set aside alongside the zoning request.",
+      "impact": "The Holbrook proposal stays frozen in place, map and zoning together. No deadline was set for bringing either back.",
       "significance": "routine"
     },
     {
@@ -281,9 +281,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Cedar Valley Holbrook rezoning put on hold",
-      "summary": "The council delayed a decision on rezoning the land known as Cedar Valley Holbrook.",
-      "impact": "Nothing changes for now. The proposal is set aside and has to come back to the council before anything about that land is decided.",
+      "headline": "Cedar Valley Holbrook zoning change put on hold",
+      "summary": "The council set aside a zoning change for the Cedar Valley Holbrook property without voting it up or down.",
+      "impact": "Nothing changes on that land for now. Neighbors who came to weigh in will have to watch for the item to return to a future agenda.",
       "significance": "routine"
     },
     {
@@ -321,9 +321,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Land use map updated for Cedar Corners Phase 5",
-      "summary": "The council changed the city's long-range land use map for Cedar Corners Phase 5 from Neighborhood Residential 1 to Neighborhood Residential 2.",
-      "impact": "This updates the city's long-term plan for that land so it matches the rezoning approved the same night. Nothing changes anywhere else in the city.",
+      "headline": "Denser housing allowed at Cedar Corners Phase 5",
+      "summary": "The council changed the city's long-range land use map for Cedar Corners Phase 5, moving it from the lower-density residential category to the next one up.",
+      "impact": "If you live near Cedar Corners, expect smaller lots and more homes per acre than the old map allowed when this phase is built. The change is to the plan, so nothing breaks ground yet.",
       "significance": "notable"
     },
     {

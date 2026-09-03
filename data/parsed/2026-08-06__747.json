@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 1128,
+      "id": 1126,
       "meeting_id": 747,
       "date": "2026-08-06",
       "page": 3,
@@ -42,7 +42,11 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Property tax raised to collect $5.6M more",
+      "summary": "The council set the city property tax rate at 0.001500 for the coming year, nearly triple the certified rate of 0.000530, raising about $5.6 million in added revenue.",
+      "impact": "Every property owner in Eagle Mountain pays more, with the city's share of the bill up 183% before new growth. The school and county lines on your tax notice are set by others and are untouched.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

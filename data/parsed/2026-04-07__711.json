@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 1059,
+      "id": 1057,
       "meeting_id": 711,
       "date": "2026-04-07",
       "page": 3,
@@ -44,12 +44,12 @@
         }
       ],
       "headline": "Elizabeth Evans joins Community Services Board",
-      "summary": "The council appointed Elizabeth Evans to the Community Services Board for a term running April 2026 through March 2027.",
-      "impact": "Routine housekeeping — nothing changes for residents. This fills another seat on the advisory board, this one for a single year.",
+      "summary": "The council appointed Elizabeth Evans to the Community Services Board for a one-year term ending March 2027.",
+      "impact": "One more volunteer seat filled on an advisory board. No service, fee, or rule changes because of it.",
       "significance": "routine"
     },
     {
-      "id": 1060,
+      "id": 1058,
       "meeting_id": 711,
       "date": "2026-04-07",
       "page": 3,
@@ -84,12 +84,12 @@
         }
       ],
       "headline": "Marian Burningham joins Community Services Board",
-      "summary": "The council appointed Marian Burningham to the Community Services Board for a term running April 2026 through March 2029.",
-      "impact": "Routine housekeeping — nothing changes for residents. This fills one seat on an advisory board.",
+      "summary": "The council appointed Marian Burningham to the Community Services Board for a three-year term running to March 2029.",
+      "impact": "The board advises the city on parks and recreation programs. Filling a seat on it is not something you will notice day to day.",
       "significance": "routine"
     },
     {
-      "id": 1061,
+      "id": 1059,
       "meeting_id": 711,
       "date": "2026-04-07",
       "page": 5,
@@ -123,13 +123,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine items grouped; two land items pulled out",
-      "summary": "The council took up its batch of routine consent items, pulling the two Overland land agreements out to be handled separately.",
-      "impact": "Nothing changes for residents — this is the housekeeping step that clears routine items in one vote and moves the two land items into open discussion.",
+      "headline": "Two items pulled off the consent agenda",
+      "summary": "The council approved its consent agenda after pulling two items out for separate discussion.",
+      "impact": "A scheduling step that decides which items get debated aloud. It touches how the meeting ran, not your street or your bill.",
       "significance": "routine"
     },
     {
-      "id": 1062,
+      "id": 1060,
       "meeting_id": 711,
       "date": "2026-04-07",
       "page": 5,
@@ -164,12 +164,12 @@
         }
       ],
       "headline": "Land swap with the state in the Overland area",
-      "summary": "The city approved trading properties with the state trust lands agency (SITLA) in the Overland area, conditioned on matching contract language and a clean title guarantee.",
-      "impact": "It reshuffles which parcels the city and the state each own out in the Overland area. Nothing changes at your home now, but it shapes what the city can do with that land later.",
+      "summary": "The city approved trading properties with the state land agency SITLA in the Overland area, on condition the agreement adds matching language and SITLA guarantees clean title.",
+      "impact": "Which parcels the city owns near Overland shifts. Residents will see no immediate change on the ground; what gets built there depends on later decisions.",
       "significance": "notable"
     },
     {
-      "id": 1063,
+      "id": 1061,
       "meeting_id": 711,
       "date": "2026-04-07",
       "page": 6,
@@ -207,7 +207,7 @@
       "significance": "notable"
     },
     {
-      "id": 1064,
+      "id": 1062,
       "meeting_id": 711,
       "date": "2026-04-07",
       "page": 7,
@@ -247,7 +247,7 @@
       "significance": "notable"
     },
     {
-      "id": 1065,
+      "id": 1063,
       "meeting_id": 711,
       "date": "2026-04-07",
       "page": 8,
@@ -287,7 +287,7 @@
       "significance": "routine"
     },
     {
-      "id": 1066,
+      "id": 1064,
       "meeting_id": 711,
       "date": "2026-04-07",
       "page": 9,
@@ -327,7 +327,7 @@
       "significance": "notable"
     },
     {
-      "id": 1067,
+      "id": 1065,
       "meeting_id": 711,
       "date": "2026-04-07",
       "page": 10,
@@ -367,7 +367,7 @@
       "significance": "routine"
     },
     {
-      "id": 1068,
+      "id": 1066,
       "meeting_id": 711,
       "date": "2026-04-07",
       "page": 10,
@@ -399,13 +399,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Justice court with Utah County added to priorities",
-      "summary": "The council added pursuing a justice court with Utah County to its Legislative Priorities List.",
-      "impact": "Nothing changes now, and no court is being created. This only flags the idea as something the city intends to pursue.",
+      "headline": "City to explore a shared justice court",
+      "summary": "The council put pursuing a justice court with Utah County on its list of legislative priorities.",
+      "impact": "A justice court would decide traffic tickets and small local cases closer to home, but this only adds it to the wish list. Nothing is set up yet.",
       "significance": "routine"
     },
     {
-      "id": 1069,
+      "id": 1067,
       "meeting_id": 711,
       "date": "2026-04-07",
       "page": 11,
@@ -437,9 +437,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Temporary business signs added to lobbying list",
-      "summary": "The council added a temporary business signage provision to its Legislative Priorities List and directed staff to come back with a proposal.",
-      "impact": "Nothing changes yet for businesses or sign rules — this only puts the topic on the city's priority list and starts staff working on a proposal.",
+      "headline": "City to push for temporary business sign rules",
+      "summary": "The council added temporary business signage to the city's legislative priorities and asked staff to bring back a proposal.",
+      "impact": "Nothing changes for sign rules yet. Business owners who put out banners or sandwich boards should watch for the staff proposal that follows.",
       "significance": "routine"
     }
   ],

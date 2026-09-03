@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 1115,
+      "id": 1113,
       "meeting_id": 727,
       "date": "2026-07-21",
       "page": 6,
@@ -43,13 +43,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda approved with minutes corrections",
-      "summary": "The council approved its consent agenda, including spelling corrections to the meeting minutes discussed earlier in the work session.",
-      "impact": "Nothing changes for residents — this is the routine batch approval of items the council did not need to debate.",
+      "headline": "Consent agenda approved with corrected minutes",
+      "summary": "The council passed its consent agenda in one vote, with spelling fixes to the minutes worked out in the earlier work session.",
+      "impact": "Housekeeping items cleared in a single batch, plus typo corrections to the meeting record. There is nothing here for a resident to act on.",
       "significance": "routine"
     },
     {
-      "id": 1116,
+      "id": 1114,
       "meeting_id": 727,
       "date": "2026-07-21",
       "page": 7,
@@ -87,7 +87,7 @@
       "significance": "notable"
     },
     {
-      "id": 1117,
+      "id": 1115,
       "meeting_id": 727,
       "date": "2026-07-21",
       "page": 7,
@@ -123,12 +123,12 @@
         }
       ],
       "headline": "New paperwork rules for subdivision and site plans",
-      "summary": "The council updated what developers must submit when applying for preliminary plats, final plats, and site plan review.",
-      "impact": "This affects builders and developers filing applications with the city. If you're not submitting development plans, nothing changes for you.",
+      "summary": "The city rewrote what applicants must submit with preliminary plats, final plats, and site plan reviews.",
+      "impact": "Developers and anyone splitting a lot will file a different set of documents. If you are not submitting plans to the city, this passes you by.",
       "significance": "routine"
     },
     {
-      "id": 1118,
+      "id": 1116,
       "meeting_id": 727,
       "date": "2026-07-21",
       "page": 8,
@@ -141,13 +141,13 @@
         "code"
       ],
       "votes": [],
-      "headline": "Noise rule change withdrawn in favor of revised version",
-      "summary": "A motion to adopt the noise ordinance as originally written was withdrawn before any vote was taken.",
-      "impact": "Nothing changes for residents — the council set this version aside and took up an amended one instead.",
+      "headline": "Noise rule change pulled before a vote",
+      "summary": "A proposed rewrite of the city's noise limits was put forward and then withdrawn, so the existing rule stands unchanged.",
+      "impact": "The noise limits that applied to your neighborhood last week still apply. Whether the council takes the rewrite up again is not recorded here.",
       "significance": "routine"
     },
     {
-      "id": 1119,
+      "id": 1117,
       "meeting_id": 727,
       "date": "2026-07-21",
       "page": 8,
@@ -187,7 +187,7 @@
       "significance": "notable"
     },
     {
-      "id": 1120,
+      "id": 1118,
       "meeting_id": 727,
       "date": "2026-07-21",
       "page": 9,
@@ -229,7 +229,7 @@
       "significance": "notable"
     },
     {
-      "id": 1121,
+      "id": 1119,
       "meeting_id": 727,
       "date": "2026-07-21",
       "page": 10,
@@ -261,9 +261,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Add animal-shelter resources to state lobbying list",
-      "summary": "The council added working with Best Friends Animal Society on animal-related resources to the city's list of legislative priorities.",
-      "impact": "Nothing changes for residents now — this only sets what city staff will raise with state lawmakers on animal issues.",
+      "headline": "Animal shelter alternatives added to lobbying list",
+      "summary": "The council added work with Best Friends Animal Society, and the resources that group presented, to the city's list of legislative priorities.",
+      "impact": "This shapes what the city asks state lawmakers for. Nothing changes at the animal shelter or on your street because of this vote.",
       "significance": "routine"
     }
   ],

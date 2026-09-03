@@ -43,9 +43,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda approved, three items pulled",
-      "summary": "The council approved its consent agenda, dropping one item and pulling three others — including the wayfinding signs and the affordable housing plan — out for full discussion.",
-      "impact": "Nothing changes for residents — this is the procedural step that groups routine business into a single vote and sets aside a few items for debate.",
+      "headline": "Four items pulled off the consent list",
+      "summary": "The council approved its batch of routine items, dropping one from the agenda and pulling three others out for discussion instead.",
+      "impact": "A scheduling move that decided which items got debated in the open rather than passed in a block. The items themselves were decided separately.",
       "significance": "routine"
     },
     {
@@ -140,8 +140,8 @@
         }
       ],
       "headline": "Affordable housing plan put off",
-      "summary": "The council delayed adopting the city's affordable housing plan, sending it back for the changes members discussed before it returns at a future meeting.",
-      "impact": "Nothing changes for now. The plan is the city's road map for housing people can afford, and it comes back to the council at a later meeting.",
+      "summary": "The council delayed adopting the city's affordable housing plan, asking for the changes it discussed before voting.",
+      "impact": "The city's plan for lower-cost housing is not settled yet. Anyone watching housing costs here will have to wait for a future meeting.",
       "significance": "routine"
     },
     {
@@ -262,7 +262,7 @@
       ],
       "headline": "Mid-year budget changes approved",
       "summary": "The council approved the second set of changes to the city's 2024-2025 budget; the record doesn't say which line items changed.",
-      "impact": "The record doesn't spell out what changed, so there's no stated effect on your taxes, fees or services — the details sit in the city's budget amendment documents.",
+      "impact": "The record doesn't spell out what changed, so there's no stated effect on your taxes, fees or services. The details sit in the city's budget amendment documents.",
       "significance": "notable"
     },
     {
@@ -323,7 +323,7 @@
       ],
       "headline": "Street width and sidewalk rules put on hold",
       "summary": "The council delayed a decision on updated street cross-section rules, asking staff to return with recommendations on curb, gutter and a sidewalk for rural 50-foot streets.",
-      "impact": "No change yet. Whatever the council settles on would shape how new streets are built — mainly affecting new subdivisions, not existing ones.",
+      "impact": "No change yet. Whatever the council settles on would shape how new streets are built: mainly affecting new subdivisions, not existing ones.",
       "significance": "routine"
     },
     {
@@ -361,9 +361,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Change to residential zoning rules rejected",
-      "summary": "The council rejected proposed changes to the city's definitions and residential zoning rules, so those sections of the code stay as they are.",
-      "impact": "Nothing changes for homeowners or builders — the existing residential zoning rules remain in force. The motion doesn't say what the rejected changes would have done.",
+      "headline": "Residential zoning rewrite rejected",
+      "summary": "The council turned down proposed changes to the city's definitions and residential zone rules.",
+      "impact": "Rules for residential lots stay as they are. Anyone who was counting on the proposed change, builders in particular, goes back to the existing code.",
       "significance": "notable"
     },
     {
@@ -402,8 +402,8 @@
         }
       ],
       "headline": "Noise and nuisance rules sent back to staff",
-      "summary": "The council delayed a decision on changes to the city's nuisance and noise rules, sending them to staff for revisions before the next meeting.",
-      "impact": "Nothing changes yet. If you've been following the city's noise or nuisance rules, the revised version is due back at the next council meeting.",
+      "summary": "The council held off on changes to the city's nuisance and noise rules, sending them back to staff for revisions and a return at the next meeting.",
+      "impact": "The current noise and nuisance rules stay in force for now. If you have been following this one, the debate picks up again at the next council meeting.",
       "significance": "routine"
     },
     {
@@ -481,9 +481,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Legislative priorities list updated",
-      "summary": "The council marked its review of conditional-use zoning rules as finished and dropped a neighborhood lot-size item it had already tabled.",
-      "impact": "Nothing changes for residents — this is the council keeping its own to-do list current.",
+      "headline": "Legislative to-do list updated",
+      "summary": "The council marked a review of conditional uses in the zoning code complete and dropped a tabled item on lot sizes in Neighborhood Residential 1.",
+      "impact": "Housekeeping on the council's own list of pending work. Nothing about the rules on your property changed here.",
       "significance": "routine"
     }
   ],

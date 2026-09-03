@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 1016,
+      "id": 1015,
       "meeting_id": 501,
       "date": "2026-01-20",
       "page": 5,
@@ -47,7 +47,7 @@
       "significance": "routine"
     },
     {
-      "id": 1017,
+      "id": 1016,
       "meeting_id": 501,
       "date": "2026-01-20",
       "page": 6,
@@ -81,13 +81,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda approved",
-      "summary": "The council approved its consent agenda, correcting a spelling error in the January 6, 2026 meeting minutes.",
-      "impact": "This is routine housekeeping — nothing changes for residents.",
+      "headline": "Consent agenda approved with a minutes fix",
+      "summary": "The council approved its consent agenda after correcting a spelling error in the minutes of the January 6, 2026 meeting.",
+      "impact": "Housekeeping from start to finish. One misspelled word in the record of an earlier meeting was the whole of it.",
       "significance": "routine"
     },
     {
-      "id": 1018,
+      "id": 1017,
       "meeting_id": 501,
       "date": "2026-01-20",
       "page": 6,
@@ -122,12 +122,12 @@
         }
       ],
       "headline": "New sign rules for data center projects",
-      "summary": "The city changed its sign code to set rules for directional signage tied to data centers and other large-scale development projects.",
-      "impact": "You may see new directional signs around large development and data center sites. Nothing changes for ordinary homeowners or their own signs.",
+      "summary": "The city rewrote the part of its sign code covering directional signs for data centers and other large-scale developments, adopting it with edits presented that night.",
+      "impact": "The companies behind big projects and the staff reviewing their sign applications work from a different rule now. Homeowners are not asked to do anything.",
       "significance": "notable"
     },
     {
-      "id": 1019,
+      "id": 1018,
       "meeting_id": 501,
       "date": "2026-01-20",
       "page": 7,
@@ -161,13 +161,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Hillside building rules put on hold",
-      "summary": "The council delayed a decision on changes to the city's rules for building on slopes and hillsides.",
-      "impact": "If you own or plan to build on a hillside lot, the current slope rules still apply. Nothing changes until the council revisits this.",
+      "headline": "Hillside building rules held back",
+      "summary": "The council delayed a set of changes to the city's slope development rules, which govern building on steep ground.",
+      "impact": "Builders working hillside lots keep planning under the rules already on the books. If you are not developing on a slope, this one passes you by.",
       "significance": "routine"
     },
     {
-      "id": 1020,
+      "id": 1019,
       "meeting_id": 501,
       "date": "2026-01-20",
       "page": 8,
@@ -201,13 +201,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Mayor's powers item pushed later in the meeting",
-      "summary": "The council set aside the mayor's powers ordinance until later in the same meeting so the public could comment on it first.",
-      "impact": "This is a scheduling step — it gave residents a chance to speak before the council took the item up. Nothing changes for you.",
+      "headline": "Mayor's powers item held until after public comment",
+      "summary": "The council paused the mayor's powers ordinance until later in the same meeting so that public comment could be reopened first.",
+      "impact": "Anyone who came to speak about the mayor's duties got the microphone before the council took the item back up. For everyone else, only the order of the agenda moved.",
       "significance": "routine"
     },
     {
-      "id": 1021,
+      "id": 1020,
       "meeting_id": 501,
       "date": "2026-01-20",
       "page": 9,
@@ -245,13 +245,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Mayor's powers ordinance held over",
-      "summary": "The council delayed a decision on rewriting the section of city code that spells out the mayor's powers and duties.",
-      "impact": "Nothing changes day to day — the mayor's current authority stays in place until the council returns to this item.",
+      "headline": "Mayor's powers ordinance tabled",
+      "summary": "A proposed rewrite of the code section listing the mayor's powers and duties was set aside, leaving the existing version in place.",
+      "impact": "The mayor's job description is unchanged. This one is watched at city hall and nowhere else.",
       "significance": "routine"
     },
     {
-      "id": 1022,
+      "id": 1021,
       "meeting_id": 501,
       "date": "2026-01-20",
       "page": 10,
@@ -289,9 +289,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Rewrite of city governance rules put on hold",
-      "summary": "The council delayed a decision on rewriting Title 2 of the city code, the section covering how city government itself operates.",
-      "impact": "Nothing changes for residents right now. The rules governing how the city runs stay as they are until the council takes the item back up.",
+      "headline": "Rewrite of city government rules put on hold",
+      "summary": "The council shelved a rewrite of Title 2, the chapter of city code that sets out how Eagle Mountain governs itself.",
+      "impact": "The current rules on how the city runs stay in force. Nothing on your street or your bill changes, and the record does not say when the rewrite returns.",
       "significance": "routine"
     }
   ],

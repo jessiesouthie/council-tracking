@@ -1,0 +1,712 @@
+{
+  "meeting": {
+    "id": 728,
+    "date": "2026-08-18",
+    "source_file": "2026-08-18__728.pdf",
+    "motion_count": 15,
+    "ord_count": 9,
+    "res_count": 19
+  },
+  "motions": [
+    {
+      "id": 1128,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 6,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Wood moved to approve the Consent Agenda with the following amendments: • Remove Item 11.A. and add it to the Scheduled Items; and • Update Item 10.A. to include context of the discussion . Councilmember Clark seconded the motion.",
+      "outcome": "",
+      "tags": [
+        "consent"
+      ],
+      "votes": [],
+      "headline": "Consent agenda taken up with changes",
+      "summary": "The council took up its consent agenda with the sewer plant bid moved to the discussion list and one set of minutes to be filled out with more context.",
+      "impact": "No outcome is recorded for this version; a fuller amended motion followed. Batch business either way, and none of it lands on a resident.",
+      "significance": "routine"
+    },
+    {
+      "id": 1129,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 6,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "",
+      "motion": "Councilmember Wood amended the motion to approve the Consent Agenda with the following amendments: • Remove Item 11.A. and add it to the Scheduled Items ; and • Update Item 10.A. to include context of the discussion ; and • Update Item 10.B. “Youth City Council Motions ,” to reflect the term until the next Youth Council election. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "Consent list reshuffled before the vote",
+      "summary": "Council members pulled the sewer plant bid off the consent list for its own discussion and ordered two sets of minutes reworded, including the Youth City Council's term.",
+      "impact": "Meeting housekeeping. The one part worth knowing is that the sewer contract got a hearing of its own instead of passing in a batch.",
+      "significance": "routine"
+    },
+    {
+      "id": 1130,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 7,
+      "agenda_ref": "11.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Awarding the Bid for EMC 6.0 MGD Wastewater Treatment Facility Expansion – GMP-2 Oxidation Ditch and Miscellaneous Site Improvements to MGC Contractors, Inc. and Approving the Contract.",
+      "motion": "Councilmember Wood moved to a pprove a Resolution of Eagle Mountain City, Utah, Awarding the Bid for EMC 6.0 MGD Wastewater Treatment Facility Expansion – GMP-2 Oxidation Ditch and Miscellaneous Site Improvements to MGC Contractors, Inc and Approving the Contract . Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "Sewer plant expansion contract awarded",
+      "summary": "The council awarded MGC Contractors the job of building the oxidation ditch and related site work for expanding the city sewer plant to 6 million gallons a day.",
+      "impact": "The plant that treats what goes down your drain gets bigger, which is what lets the city keep connecting new homes. No price appears in the motion.",
+      "significance": "notable"
+    },
+    {
+      "id": 1131,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 8,
+      "agenda_ref": "13.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Repealing a Property Tax Increase Above the Certified Tax Rate for Fiscal Year 2026 -2027.",
+      "motion": "Councilmember Wright moved to a pprove a Resolution of Eagle Mountain City, Utah, Repealing a Property Tax Increase Above the Certified Tax Rate for Fiscal Year 2026 -2027. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a 4:1 vote.",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "No"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "Earlier tax increase repealed",
+      "summary": "Eagle Mountain repealed the property tax increase above the certified rate that it had adopted for 2026-27, clearing the way for a replacement rate set the same night.",
+      "impact": "This wipes the earlier increase off the books. Read it alongside the rate the council adopted afterward, which is the one that reaches your bill.",
+      "significance": "notable"
+    },
+    {
+      "id": 1132,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 9,
+      "agenda_ref": "13.B.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City Utah, Approving a Property Tax Increase Above the Certified Tax Rate for Fiscal Year 2026 -2027.",
+      "motion": "Councilmember Clark moved to a pprove a Resolution of Eagle Mountain City, Utah, Approving a Property Tax Increase Above the Certified Tax Rate for Fiscal Year 2026 -2027 of 0.000900 this rate exceeds the certified tax rate of 0.000530 and will result in an increase in the City’s ad valorem property tax budgeted revenue of approximately $2,132,876 or 69.81%, above the City’s property tax budgeted revenue for the prior year, exclusive of new growth. Councilmember Whiting seconded the motion.",
+      "outcome": "passed with a 4:1 vote.",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "No"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "City property tax revenue up 69.81%",
+      "summary": "The council set the property tax rate at 0.000900, above the certified rate of 0.000530, raising city property tax revenue about $2.13 million, or 69.81%, over last year.",
+      "impact": "If you own property in Eagle Mountain, the city share of your next bill goes up. That 69.81% counts existing property only, so new homes being built does not explain it.",
+      "significance": "notable"
+    },
+    {
+      "id": 1133,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Set a time of 12:30 AM to complete the City Council meeting",
+      "motion": "Councilmember Wood moved to set a time of 12:30 AM to complete the City Council meeting. Councilmember Wright seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "Meeting extended to 12:30 a.m.",
+      "summary": "The council gave itself until 12:30 in the morning to finish the night's business.",
+      "impact": "Anyone watching at home sat through a long one. No rule, rate or project moved because of it.",
+      "significance": "routine"
+    },
+    {
+      "id": 1134,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Adopting the Fiscal Year 2026 -2027 Annual Budget , with the adjustment reflected by the new certified rate",
+      "motion": "Councilmember Wood moved to a pprove a Resolution of Eagle Mountain City, Utah, Adopting the Fiscal Year 2026 -2027 Annual Budget , with the adjustment reflected by the new certified rate. Councilmember Clark seconded the motion. City Attorney Marcus Draper requested clarification regarding the motion.",
+      "outcome": "",
+      "tags": [
+        "budget"
+      ],
+      "votes": [],
+      "headline": "Budget reworked to match the certified rate",
+      "summary": "A second version of the 2026-27 budget came up, adjusted to reflect the newly certified property tax rate, with the city attorney asking for the motion to be clarified.",
+      "impact": "No outcome is recorded for this version of the motion. The spending plan itself was settled elsewhere in the same meeting.",
+      "significance": "routine"
+    },
+    {
+      "id": 1135,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 10,
+      "agenda_ref": "",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Adopting the Fiscal Year 2026 -2027 Annual Budget , with amendments: to remove $1 million for the rodeo grounds and $2.5 million for land acquisition, with the remaining amount funded from the reserve",
+      "motion": "Councilmember Wood amended the motion to a pprove a Resolution of Eagle Mountain City, Utah, Adopting the Fiscal Year 2026 -2027 Annual Budget , with amendments: to remove $1 million for the rodeo grounds and $2.5 million for land acquisition, with the remaining amount funded from the reserve . Councilmember Clark seconded the motion.",
+      "outcome": "passed with a 4:1 vote.",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "No"
+        }
+      ],
+      "headline": "$3.5M cut from next year's city budget",
+      "summary": "The council adopted the 2026-27 budget after stripping $1 million for the rodeo grounds and $2.5 million for buying land, covering the rest from reserves.",
+      "impact": "Rodeo grounds money and the land purchase are off the table for the year ahead. What remains gets paid out of the city's savings rather than from new revenue.",
+      "significance": "notable"
+    },
+    {
+      "id": 1136,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 11,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code 16.20.040 Preliminary Plats regarding Street Names",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code 16.20.040 Preliminary Plats regarding Street Names . Councilmember Whiting seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure",
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "Street naming rules for new subdivisions",
+      "summary": "The council amended the preliminary plat section of city code to deal with how streets in new subdivisions get named.",
+      "impact": "Whoever names the roads in the next subdivision works under different language now. Your existing address is unaffected.",
+      "significance": "routine"
+    },
+    {
+      "id": 1137,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 12,
+      "agenda_ref": "",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code 16.25.040 Final Plats",
+      "motion": "Councilmember Wood moved to adopt an Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code 16.25.040 Final Plats . Councilmember Whiting seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "code"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "Subdivision final plat rules changed",
+      "summary": "Council members rewrote the city code section governing final plats, the closing paperwork in getting a subdivision approved.",
+      "impact": "Builders and surveyors filing subdivision paperwork will notice. The motion does not spell out what the new language says, and nobody outside that process is touched by it.",
+      "significance": "routine"
+    },
+    {
+      "id": 1138,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 12,
+      "agenda_ref": "14.A.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Redevelopment Agency of Eagle Mountain City and Eagle Mountain City for the Collection and Remittance of Incremental Property Taxes collected from Property within the Mid -Valley Community Reinvestment Project Area.",
+      "motion": "Councilmember Wright moved to a pprove a Resolution of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Redevelopment Agency of Eagle Mountain City and Eagle Mountain City for the Collection and Remittance of Incremental Property Taxes Collected from P roperty within the Mid -Valley Community Reinvestment Project Area. Councilmember Huish seconded the motion. City Attorney Marcus Draper noted that there was a typo in the agenda and clarified that “property tax ” should be changed to “sales tax. ”",
+      "outcome": "",
+      "tags": [],
+      "votes": [],
+      "headline": "Wording fixed on the tax remittance deal",
+      "summary": "The council took up the collection agreement for the Mid-Valley project area, and the city attorney corrected the agenda, which said property tax where it should have said sales tax.",
+      "impact": "A drafting error caught on the record, and the record shows no vote on this version. Your tax bill is untouched by a spelling correction.",
+      "significance": "routine"
+    },
+    {
+      "id": 1139,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 13,
+      "agenda_ref": "",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Redevelopment Agency of Eagle Mountain City and Eagle Mountain City for the Collection and Remittance of Incremental Sales Taxes Collected from Property within the Mid -Valley Community Reinvestment Project Area",
+      "motion": "Councilmember Wright amended the motion to a pprove a Resolution of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Redevelopment Agency of Eagle Mountain City and Eagle Mountain City for the Collection and Remittance of Incremental Sales Taxes Collected from Property within the Mid -Valley Community Reinvestment Project Area. Councilmember Huish seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "Sales tax growth sent to redevelopment agency",
+      "summary": "Growth in sales tax collected inside the Mid-Valley project area will be gathered by the city and handed to its redevelopment agency under an agreement the council approved.",
+      "impact": "Nothing changes at the register; the rate you pay is untouched. What changes is which arm of city government ends up holding that money.",
+      "significance": "notable"
+    },
+    {
+      "id": 1140,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 13,
+      "agenda_ref": "14.B.",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the Mid - Valley CRA Participation Agreement between Eagle Mountain City, the Redevelopment Agency of Eagle Mountain City, and Terra Smith’s Eagle Mountain.",
+      "motion": "Councilmember Wright moved to a pprove a Resolution of Eagle Mountain City, Utah, Approving the Mid -Valley CRA Participation Agreement between Eagle Mountain City, the Redevelopment Agency of Eagle Mountain City, and Terra Smith’s Eagle Mountain LLC. Councilmember Whiting seconded the motion.",
+      "outcome": "passed with a 4:1 vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "No"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "Mid-Valley deal signed with Terra Smith's",
+      "summary": "Council members signed off on a participation agreement between the city, its redevelopment agency and Terra Smith's Eagle Mountain LLC for the Mid-Valley project area.",
+      "impact": "A private developer is now tied into the Mid-Valley project area. The terms are not laid out in the motion, so what gets built there is not settled by this line alone.",
+      "significance": "notable"
+    },
+    {
+      "id": 1141,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 14,
+      "agenda_ref": "14.C.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain City, Utah, Adopting the Mid - Valley Community Reinvestment Project Area Plan, as Approved by the Redevelopment Agency of Eagle Mountain City, as the Official Community Reinvestment Project Area Plan for the Proj ect Area and Directing that Notice of the Adoption be Given as Required by Statute.",
+      "motion": "Councilmember Wright moved to a dopt the Mid -Valley Community Reinvestment Project Area Plan, as Approved by the Redevelopment Agency of Eagle Mountain City, as the Official Community Reinvestment Project Area Plan for the Project Area and Directing that Notice of the Adoption be Given a s Required by Statute contingent on approval of the Redevelopment Agenc y. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "Mid-Valley reinvestment area plan adopted",
+      "summary": "Eagle Mountain adopted the Mid-Valley Community Reinvestment Project Area Plan as its official plan for that area, contingent on the redevelopment agency approving it first.",
+      "impact": "The plan is the rulebook for what happens in the Mid-Valley project area. Public notice of it goes out as state law requires, and the redevelopment agency has to sign off before it holds.",
+      "significance": "notable"
+    },
+    {
+      "id": 1142,
+      "meeting_id": 728,
+      "date": "2026-08-18",
+      "page": 14,
+      "agenda_ref": "14.D.",
+      "business_type": "Ordinance",
+      "item_title": "An Ordinance of Eagle Mountain, Utah, Approving the 5 th Amendment to the Amended and Restated Overland Master Development Agreement.",
+      "motion": "Councilmember Wright moved to a pprove the Fifth Amendment to the Amended and Restated Overland Master Development Agreement. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a 4:1 vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "No"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "Overland development agreement amended again",
+      "summary": "The council approved a fifth amendment to the Overland master development agreement, the contract that sets the terms for building that project.",
+      "impact": "What the amendment changes is not stated in the motion, so this vote alone will not tell you what shifts on the ground. It binds the city and the developer behind Overland.",
+      "significance": "notable"
+    }
+  ],
+  "ordinances": [
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "approach involving an Ordinance to approv e a new Financial Policy . He responded to"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "12.A. ORDINANCE /PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "12.B. ORDINANCE /PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 11,
+      "line_text": "12.A. ORDINANCE /PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 11,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 11,
+      "line_text": "12.B. ORDINANCE /PUBLIC HEARING – An Ordinance of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 11,
+      "line_text": "MOTION: Councilmember Wood moved to adopt an Ordinance of Eagle Mountain"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 13,
+      "line_text": "14.C. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Adopting the Mid -"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 14,
+      "line_text": "14.D. ORDINANCE – An Ordinance of Eagle Mountain, Utah, Approving the 5 th"
+    }
+  ],
+  "resolutions": [
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "12.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Awarding the Bid"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "12.B. RESOLUTION – A Resolution of E agle Mountain City, Utah, Accepting the Eagle"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "13.C. RESOLUTION/PUBLIC HEARING – A Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 6,
+      "line_text": "11.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Awarding the Bid"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 6,
+      "line_text": "11.B. RESOULUTION – A Resolution of Eagle Mountain City, Utah, Accepting the"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 6,
+      "line_text": "11.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Awarding the Bid"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Wood moved to a pprove a Resolution of Eagle Mountain"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 7,
+      "line_text": "13.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Repealing a"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Wright moved to a pprove a Resolution of Eagle"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "13.B. RESOLUTION – A Resolution of Eagle Mountain City Utah, Approving a"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 8,
+      "line_text": "MOTION: Councilmember Clark moved to a pprove a Resolution of Eagle Mountain"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 9,
+      "line_text": "13.C. RESOLUTION/PUBLIC HEARING – A Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 10,
+      "line_text": "MOTION: Councilmember Wood moved to a pprove a Resolution of Eagle Mountain"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 10,
+      "line_text": "MOTION: Councilmember Wood amended the motion to a pprove a Resolution of"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 12,
+      "line_text": "14.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 12,
+      "line_text": "MOTION: Councilmember Wright moved to a pprove a Resolution of Eagle"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 12,
+      "line_text": "MOTION: Councilmember Wright amended the motion to a pprove a Resolution of"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 13,
+      "line_text": "14.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving the Mid -"
+    },
+    {
+      "source_file": "2026-08-18__728.pdf",
+      "meeting_date": "",
+      "page": 13,
+      "line_text": "MOTION: Councilmember Wright moved to a pprove a Resolution of Eagle"
+    }
+  ]
+}

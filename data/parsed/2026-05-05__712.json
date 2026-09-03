@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 1075,
+      "id": 1073,
       "meeting_id": 712,
       "date": "2026-05-05",
       "page": 7,
@@ -45,11 +45,11 @@
       ],
       "headline": "Consent agenda approved",
       "summary": "The council approved its consent agenda in a single vote, with a change to one item that had been discussed earlier in the work session.",
-      "impact": "This is routine housekeeping — the consent agenda is where the council batches items it does not need to debate one by one.",
+      "impact": "This is routine housekeeping: the consent agenda is where the council batches items it does not need to debate one by one.",
       "significance": "routine"
     },
     {
-      "id": 1076,
+      "id": 1074,
       "meeting_id": 712,
       "date": "2026-05-05",
       "page": 7,
@@ -89,7 +89,7 @@
       "significance": "routine"
     },
     {
-      "id": 1077,
+      "id": 1075,
       "meeting_id": 712,
       "date": "2026-05-05",
       "page": 8,
@@ -123,13 +123,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Tax increase figures formally acknowledged",
-      "summary": "The council acknowledged the budget officer's statement of the proposed property tax increase and the schedule showing what that increase would cost taxpayers.",
-      "impact": "Nothing changes yet. This is a step state law requires before a city can raise property taxes; the real decision comes later at the public hearing.",
-      "significance": "routine"
+      "headline": "Council starts property tax increase process",
+      "summary": "The council formally acknowledged the budget officer's statement that a property tax increase is proposed, along with the schedule of its impact on taxpayers.",
+      "impact": "This is the step Utah law requires before a city can raise property taxes, and it opens the Truth-in-Taxation process that leads to a public hearing. No rate was set here.",
+      "significance": "notable"
     },
     {
-      "id": 1078,
+      "id": 1076,
       "meeting_id": 712,
       "date": "2026-05-05",
       "page": 9,
@@ -167,7 +167,7 @@
       "significance": "notable"
     },
     {
-      "id": 1079,
+      "id": 1077,
       "meeting_id": 712,
       "date": "2026-05-05",
       "page": 9,
@@ -208,7 +208,7 @@
       "significance": "notable"
     },
     {
-      "id": 1080,
+      "id": 1078,
       "meeting_id": 712,
       "date": "2026-05-05",
       "page": 10,
@@ -243,13 +243,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Brandon Park area added to the zoning map",
-      "summary": "The council put the Brandon Park area onto the city's official zoning and future land use maps, recording the zoning designations the area already carries.",
-      "impact": "Nothing changes for Brandon Park property owners — the rules that already applied are now written onto the city's official maps.",
-      "significance": "routine"
+      "headline": "Brandon Park area given formal zoning",
+      "summary": "The council put official zoning designations on the Brandon Park area, updating both the city zoning map and the future land use map.",
+      "impact": "Property owners in and around Brandon Park now have a zoning label on record that governs what can be built there. The motion names no change in allowed uses.",
+      "significance": "notable"
     },
     {
-      "id": 1081,
+      "id": 1079,
       "meeting_id": 712,
       "date": "2026-05-05",
       "page": 11,
@@ -283,13 +283,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Design rules updated for shops and apartments",
-      "summary": "The council updated the city's design standards for commercial buildings and apartments, changing how new projects of that kind must be built and look.",
-      "impact": "Nothing changes for existing homes. The new standards shape the appearance of stores and apartment buildings approved from here on, and developers will have to design to them.",
+      "headline": "New design rules for shops and apartments",
+      "summary": "The council rewrote the city's design standards for commercial buildings and apartment complexes, updating Chapter 17.72 of the municipal code.",
+      "impact": "Developers drawing up plans for stores, offices or apartments will have to meet the revised look-and-materials rules. If you are not building one, nothing changes for you.",
       "significance": "notable"
     },
     {
-      "id": 1082,
+      "id": 1080,
       "meeting_id": 712,
       "date": "2026-05-05",
       "page": 11,
@@ -330,7 +330,7 @@
       "significance": "notable"
     },
     {
-      "id": 1083,
+      "id": 1081,
       "meeting_id": 712,
       "date": "2026-05-05",
       "page": 12,
@@ -370,7 +370,7 @@
       "significance": "notable"
     },
     {
-      "id": 1084,
+      "id": 1082,
       "meeting_id": 712,
       "date": "2026-05-05",
       "page": 13,

@@ -44,8 +44,8 @@
         }
       ],
       "headline": "Emily Buss joins the Library Advisory Board",
-      "summary": "The council appointed Emily Buss to the Library Advisory Board, finishing out a three-year term that runs through December 2027.",
-      "impact": "Nothing changes day to day at the library — this fills one seat on the board that advises the city on library matters.",
+      "summary": "The council appointed Emily Buss to the Library Advisory Board to finish a three-year term running through December 2027.",
+      "impact": "The board advises on library matters. Filling the seat has no effect on hours, fees, or services you use.",
       "significance": "routine"
     },
     {
@@ -84,9 +84,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda approved, four items pulled",
-      "summary": "The council approved its consent agenda while pushing two sets of minutes to a later meeting and moving two other items to full discussion.",
-      "impact": "Nothing changes for residents — this only decides which items get talked through and which wait for a future meeting.",
+      "headline": "Four items pulled off the consent agenda",
+      "summary": "The council approved its consent agenda but pushed two sets of minutes to a later meeting and pulled the Firefly water tank change order and a Pole Canyon annexation out for discussion.",
+      "impact": "Two items residents may care about, a water tank cost change and the annexation of 178 acres into the Pole Canyon district, were moved out for open debate rather than passed in a batch.",
       "significance": "routine"
     },
     {
@@ -176,9 +176,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "City backs an inland port project area",
-      "summary": "The council formally supported creating a Utah Inland Port Authority project area inside Eagle Mountain, a development designation created under state law.",
-      "impact": "This is the city's show of support, not the final word — the state port authority decides whether the project area happens. Nothing changes on the ground yet.",
+      "headline": "City backs an inland port area in Eagle Mountain",
+      "summary": "The council voted to support creating a Utah Inland Port Authority project area inside Eagle Mountain, endorsing state involvement in local development.",
+      "impact": "An inland port area lets a state authority direct development and tax money within its boundaries. The motion does not name the location or acreage, so watch for the boundary to be set later.",
       "significance": "notable"
     },
     {
@@ -256,10 +256,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Lot lines redrawn at Saddle Junction",
-      "summary": "The council approved an amended plat for Saddle Junction Plat 1, known as the Allgood plat amendment.",
-      "impact": "This touches only the property involved. A plat amendment is the paperwork that adjusts how a parcel is drawn on the official map — nothing changes for other residents.",
-      "significance": "routine"
+      "headline": "Lot lines redrawn in Saddle Junction",
+      "summary": "The council approved an amended plat for Saddle Junction Plat 1, known as the Allgood plat amendment, redrawing the recorded lot layout.",
+      "impact": "This touches the property owner and immediate neighbors in Saddle Junction. If you live elsewhere in the city, it changes nothing for you.",
+      "significance": "notable"
     },
     {
       "id": 842,
@@ -298,7 +298,7 @@
       ],
       "headline": "Spring Run Plaza decision delayed",
       "summary": "The council set aside the master development plan and zoning change for Spring Run Plaza instead of voting it up or down.",
-      "impact": "If you live near the proposed Spring Run Plaza, nothing is settled — the plan and the zoning change are still open and can come back to the council later.",
+      "impact": "If you live near the proposed Spring Run Plaza, nothing is settled: the plan and the zoning change are still open and can come back to the council later.",
       "significance": "routine"
     },
     {
@@ -334,9 +334,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Meeting capped at 11 p.m.",
-      "summary": "The council agreed to end the night's meeting at 11:00 p.m.",
-      "impact": "Nothing changes for residents — this is housekeeping the council uses to limit how late the meeting runs.",
+      "headline": "Meeting to end by 11 p.m.",
+      "summary": "The council set 11:00 p.m. as the hard stop for the evening's meeting.",
+      "impact": "Housekeeping for the people in the room. If you were waiting to speak on a late item, it might have been pushed to another night.",
       "significance": "routine"
     },
     {
@@ -376,7 +376,7 @@
       ],
       "headline": "New rules for fences and screening",
       "summary": "The council rewrote the section of city code covering general fencing and screening, changing the rules that apply when property owners put up a fence or wall.",
-      "impact": "If you are planning a fence at your home or business, check the updated code before you build — the requirements are not the same as they were.",
+      "impact": "If you are planning a fence at your home or business, check the updated code before you build. The requirements are not the same as they were.",
       "significance": "notable"
     },
     {
@@ -455,9 +455,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Mid-year budget update approved",
-      "summary": "The council approved the fifth amendment to the city's 2024-2025 budget, adjusting the spending plan partway through the fiscal year.",
-      "impact": "Nothing changes for residents — this is the bookkeeping the city does to keep its budget lined up with actual spending. No dollar figures were stated in the motion.",
+      "headline": "Fifth change to this year's city budget",
+      "summary": "The council approved the fifth amendment to the 2024-2025 city budget, shifting spending inside the current fiscal year.",
+      "impact": "The motion names no dollar figure or department, so there is no specific change a resident would feel from it. This is the city truing up its books mid-year.",
       "significance": "routine"
     },
     {
@@ -495,10 +495,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Updated water conservation plan adopted",
-      "summary": "The city adopted an amended water conservation and management plan, the document that sets out how Eagle Mountain manages and conserves its water supply.",
-      "impact": "Nothing changes day to day — this adopts a planning document. The council did not set any new watering rules or restrictions with this vote.",
-      "significance": "routine"
+      "headline": "New water conservation plan adopted",
+      "summary": "The council adopted an updated water conservation and management plan for Eagle Mountain, replacing the city's earlier version.",
+      "impact": "The plan sets how the city manages and conserves its water supply. Nothing in the motion changes your rates or watering rules today, but it steers future water decisions citywide.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

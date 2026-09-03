@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 1085,
+      "id": 1083,
       "meeting_id": 725,
       "date": "2026-05-19",
       "page": 6,
@@ -43,13 +43,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Chad Decoursey joins the Planning Commission",
-      "summary": "The council appointed Chad Decoursey to fill a vacated Planning Commission seat, a roughly one-year term running from May 2026 through March 2027.",
-      "impact": "Nothing changes for residents right away, though the Planning Commission is the board that reviews zoning and new development before it reaches the council.",
+      "headline": "Chad Decoursey fills Planning Commission seat",
+      "summary": "The council appointed Chad Decoursey to the Planning Commission to finish a vacated term, from May 2026 through March 2027.",
+      "impact": "A seat that had been sitting empty now has someone in it through next March. This one touches the commission's roster and nobody else.",
       "significance": "routine"
     },
     {
-      "id": 1086,
+      "id": 1084,
       "meeting_id": 725,
       "date": "2026-05-19",
       "page": 6,
@@ -85,11 +85,11 @@
       ],
       "headline": "Laura Jensen named Planning Commission alternate",
       "summary": "The council appointed Laura Jensen as an alternate on the Planning Commission for a three-year term running from May 2026 to March 2029.",
-      "impact": "Nothing changes day to day. Alternates step in when a regular commissioner is absent from the board that reviews zoning and development proposals.",
+      "impact": "The Planning Commission reviews zoning and development proposals, so an alternate fills in when a regular member is absent. Filling the seat affects nothing you pay or do.",
       "significance": "routine"
     },
     {
-      "id": 1087,
+      "id": 1085,
       "meeting_id": 725,
       "date": "2026-05-19",
       "page": 7,
@@ -123,13 +123,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda approved",
-      "summary": "The council approved its consent agenda of grouped items, correcting a typo to read 2026-2027 and pulling one item out for separate discussion.",
-      "impact": "This is routine housekeeping — nothing changes for residents. It's the single batch vote that clears uncontested items in one go.",
+      "headline": "Consent agenda approved with two changes",
+      "summary": "The council approved its consent agenda after fixing a typo on one item to read 2026-2027 and pulling another item out for separate discussion.",
+      "impact": "Bundled housekeeping items cleared in one vote. The date fix and the item moved to the main agenda are procedural steps only.",
       "significance": "routine"
     },
     {
-      "id": 1088,
+      "id": 1086,
       "meeting_id": 725,
       "date": "2026-05-19",
       "page": 8,
@@ -170,7 +170,7 @@
       "significance": "notable"
     },
     {
-      "id": 1089,
+      "id": 1087,
       "meeting_id": 725,
       "date": "2026-05-19",
       "page": 9,
@@ -204,13 +204,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Change to home-building rules rejected",
-      "summary": "The council turned down a proposed change to the city's definitions and residential development standards, leaving the current rules for building homes in place.",
-      "impact": "Nothing changes — the rules governing what can be built on residential lots stay as they are, and builders and homeowners keep working under the existing standards.",
+      "headline": "Council rejects change to home building rules",
+      "summary": "The council turned down an ordinance that would have rewritten the city's zoning definitions and its residential development standards.",
+      "impact": "The rules for building homes in Eagle Mountain stay as they are. Builders and anyone drawing up plans for a lot keep working from the existing standards.",
       "significance": "notable"
     },
     {
-      "id": 1090,
+      "id": 1088,
       "meeting_id": 725,
       "date": "2026-05-19",
       "page": 9,
@@ -250,7 +250,7 @@
       "significance": "notable"
     },
     {
-      "id": 1091,
+      "id": 1089,
       "meeting_id": 725,
       "date": "2026-05-19",
       "page": 10,
@@ -282,13 +282,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Add concrete form pricing to the priorities list",
-      "summary": "The council added the pricing of concrete forms to the city's legislative priorities list for staff to look into.",
-      "impact": "Nothing changes for residents — this just flags a topic for future discussion, with no decision or cost attached to it yet.",
+      "headline": "Concrete form pricing added to lobbying list",
+      "summary": "The council put the pricing of concrete forms on the Legislative Priorities List, the running list of issues the city wants worked on.",
+      "impact": "A line item on a priorities list, nothing more. Contractors may care about where it leads; residents will not notice it.",
       "significance": "routine"
     },
     {
-      "id": 1092,
+      "id": 1090,
       "meeting_id": 725,
       "date": "2026-05-19",
       "page": 10,
@@ -322,9 +322,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Study a policy on paper water rights",
-      "summary": "The council directed staff to work with them on a policy covering paper water rights and priority dates, adding it to the city's legislative priorities list.",
-      "impact": "Nothing changes yet — this only puts the topic on the city's to-do list. Any actual water rights policy would have to come back to the council later.",
+      "headline": "Water rights policy added to lobbying list",
+      "summary": "The council directed staff to work with it on a policy covering paper water rights and prioritization dates, adding the item to the Legislative Priorities List.",
+      "impact": "Nothing changes for households yet. Water rights rules eventually shape who can build and how much water the city can promise, but this step only starts the policy work.",
       "significance": "routine"
     }
   ],

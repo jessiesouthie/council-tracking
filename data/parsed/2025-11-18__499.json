@@ -43,7 +43,7 @@
       ],
       "headline": "Election results certified; RAP tax passes",
       "summary": "The council certified the November 4 election, declaring Jared R. Gray mayor, Brett L. Wright and Craig Whiting councilmembers, and the RAP tax approved by voters.",
-      "impact": "Your new mayor and two councilmembers are now officially elected, and Proposition 8 — the RAP tax — is formally adopted because voters approved it.",
+      "impact": "Your new mayor and two councilmembers are now officially elected, and Proposition 8, the RAP tax, is formally adopted because voters approved it.",
       "significance": "notable"
     },
     {
@@ -82,8 +82,8 @@
         }
       ],
       "headline": "Consent agenda approved, two items pulled",
-      "summary": "The council approved its consent agenda, moving the road-closure ordinance to full discussion and removing another item from the agenda entirely.",
-      "impact": "Nothing changes for residents — this is the procedural step that groups routine items into a single vote.",
+      "summary": "The council passed its consent agenda after moving item 13.A. to scheduled items for more discussion and dropping item 14.C. from the agenda.",
+      "impact": "Housekeeping for how the night's business was handled. Item 13.A. got its own debate later in the meeting and 14.C. was not decided at all.",
       "significance": "routine"
     },
     {
@@ -163,9 +163,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Water conservation plan added to the General Plan",
-      "summary": "The city adopted a Water Use and Preservation Plan as an appendix to its 2018 General Plan, setting out how Eagle Mountain will manage water.",
-      "impact": "Nothing changes on your water bill or in your yard today. The plan is the policy the city will point to in future decisions about water and growth.",
+      "headline": "Water plan added to the city General Plan",
+      "summary": "A Water Use and Preservation Plan became an official appendix to Eagle Mountain's 2018 General Plan.",
+      "impact": "The city now has an adopted policy document to point to on water use and conservation. Nothing in the motion changes your water bill or watering rules today.",
       "significance": "notable"
     },
     {
@@ -203,10 +203,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Changes to street-connection and site plan rules",
-      "summary": "The council amended the code sections that govern how new developments connect to surrounding streets and how site plans are reviewed.",
-      "impact": "Nothing changes for existing homes. These standards apply to builders laying out new subdivisions and commercial sites; the motion itself does not spell out what the revised language says.",
-      "significance": "routine"
+      "headline": "Street connection and site plan rules changed",
+      "summary": "The council changed two sections of city code covering how streets must connect between developments and the standards a site plan has to meet.",
+      "impact": "Developers and their engineers work to these rules when laying out new streets and lots. The motion does not say what the standards now require, so no effect on an existing homeowner can be stated.",
+      "significance": "notable"
     },
     {
       "id": 985,
@@ -245,7 +245,7 @@
       ],
       "headline": "Sign height now measured from natural grade",
       "summary": "The city changed its sign rules so a sign's height is measured from the natural ground level rather than an altered one.",
-      "impact": "If you are putting up a sign — mostly businesses and developers — the allowed height is now measured from the original ground, so building up the dirt underneath will not buy extra height.",
+      "impact": "If you are putting up a sign, mostly businesses and developers, the allowed height is now measured from the original ground, so building up the dirt underneath will not buy extra height.",
       "significance": "routine"
     }
   ],

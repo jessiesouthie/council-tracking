@@ -44,8 +44,8 @@
         }
       ],
       "headline": "Consent agenda approved",
-      "summary": "The council approved its consent agenda, the batch of items voted through together without separate discussion.",
-      "impact": "This is routine housekeeping — nothing changes for residents.",
+      "summary": "The council approved its consent agenda, the group of items passed together in one vote. The record here does not list which items were in the group.",
+      "impact": "With no list of items in the record, nothing here names a street, a fee, or a property. Nobody needs to do anything.",
       "significance": "routine"
     },
     {
@@ -85,7 +85,7 @@
       ],
       "headline": "New easement rules added to the land use code",
       "summary": "The city added a new easements chapter to its land use code and updated the code's definitions to match.",
-      "impact": "This mainly touches property owners and developers dealing with easements — the strips of land set aside for things like utilities or access. Most residents will see no change day to day.",
+      "impact": "This mainly touches property owners and developers dealing with easements, the strips of land set aside for things like utilities or access. Most residents will see no change day to day.",
       "significance": "notable"
     },
     {
@@ -100,9 +100,9 @@
       "outcome": "",
       "tags": [],
       "votes": [],
-      "headline": "No decision on city facilities master plan",
-      "summary": "The council did not adopt a Facilities Master Plan; a proposal to treat the Galloway report as a guideline for a future plan went no further.",
-      "impact": "The city still has no adopted long-range plan for its buildings and facilities. Nothing changes for residents right now.",
+      "headline": "Facilities master plan left unsettled",
+      "summary": "A proposal to treat the Galloway report as a guide toward a future city facilities master plan drew no support, and the council took no action on it.",
+      "impact": "How the city plans its buildings for the years ahead stays undecided. Nothing shifts for residents unless the council picks the question back up.",
       "significance": "routine"
     },
     {
@@ -139,8 +139,8 @@
         }
       ],
       "headline": "Public art plan adopted",
-      "summary": "The city adopted a Public Art Plan to guide how Eagle Mountain approaches art in public places.",
-      "impact": "Nothing changes day to day. The plan sets the city's general approach; any specific artwork or spending would still need its own approval.",
+      "summary": "Eagle Mountain adopted a public art plan, the city's written guide for art in public spaces. No money was attached to the motion.",
+      "impact": "The plan by itself buys nothing and commissions nothing. City staff and anyone proposing public art now have a document to work from; the rest of the city sees no change.",
       "significance": "routine"
     },
     {
@@ -179,8 +179,8 @@
         }
       ],
       "headline": "Residential zoning rules queued for review",
-      "summary": "The council added a review of the city's residential zoning rules, Municipal Code Chapter 17.25, to its list of legislative priorities.",
-      "impact": "Nothing changes yet — this only puts residential zoning on the council's to-do list. Any actual change to what can be built in a residential zone would be a separate decision later.",
+      "summary": "The council queued Chapter 17.25, the city's residential zoning rules, for a future review, without changing anything in the rules themselves.",
+      "impact": "Nothing about what you can build on your lot changes today. If the review produces edits, they would come back to the council before taking effect.",
       "significance": "routine"
     }
   ],

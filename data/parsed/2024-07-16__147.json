@@ -43,9 +43,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda approved",
-      "summary": "The council approved its consent agenda, pulling the WDG website change order out of the batch for separate discussion.",
-      "impact": "Nothing changes for residents — this is the routine step that passes uncontested items in a single vote.",
+      "headline": "Consent agenda approved, website item pulled out",
+      "summary": "The council approved its consent agenda after moving the WDG website change order off it for separate discussion.",
+      "impact": "A batch of pre-cleared items cleared in one vote, with one held back for debate. This is meeting mechanics only.",
       "significance": "routine"
     },
     {
@@ -84,8 +84,8 @@
         }
       ],
       "headline": "City website contract change order approved",
-      "summary": "The council approved the first change order on its website contract with WDG, after rewriting a clause about the vendor's budget, timeline, and fees.",
-      "impact": "Nothing changes for residents — this is contract paperwork for the company building the city's website. The reworded clause lets the vendor adjust the final cost or schedule if unknown variables come up.",
+      "summary": "The council approved a change order to its website contract with WDG, rewriting the cost language so the vendor can adjust for unforeseen variables.",
+      "impact": "Work continues on the city's website. The rewritten clause is a matter between the city and its vendor, and you will not notice it.",
       "significance": "routine"
     },
     {
@@ -123,9 +123,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Parking rules changed for hotels and motels",
-      "summary": "The city revised the parking table in its zoning code, changing how many parking spaces hotels, motels, and bed-and-breakfasts must provide.",
-      "impact": "Nothing changes day to day for most residents. This affects anyone building or running a hotel, motel, or bed-and-breakfast in Eagle Mountain, who now works from a different parking requirement.",
+      "headline": "Fewer parking spaces required for hotels",
+      "summary": "The council changed the city code's parking rules for hotels, motels and bed-and-breakfast businesses, altering how many spaces those buildings must provide.",
+      "impact": "This lands on anyone planning or building lodging in Eagle Mountain. If you are not putting up a hotel, nothing in your day changes.",
       "significance": "notable"
     },
     {

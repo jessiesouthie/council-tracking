@@ -43,9 +43,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda and 2025 meeting dates",
-      "summary": "The council approved its consent agenda, pulled two items out for separate discussion, and added November 5 and December 16 to the 2025 meeting calendar.",
-      "impact": "Nothing changes for residents beyond two extra council meetings on next year's calendar — this is the routine batch approval of uncontested items.",
+      "headline": "Consent items approved, two pulled for debate",
+      "summary": "The council approved its consent agenda, pulled items 11.D and 12.A for separate discussion, and added November 5 and December 16 to the 2025 meeting calendar.",
+      "impact": "If you want to weigh in on the two pulled items, they get their own discussion rather than passing in a batch. The added dates give you two more 2025 meetings to attend.",
       "significance": "routine"
     },
     {
@@ -161,9 +161,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Meeting end time set at 10:30 PM",
-      "summary": "The council agreed to stop the meeting at 10:30 PM.",
-      "impact": "Nothing changes for residents — this is housekeeping about how long the meeting runs.",
+      "headline": "Meeting capped at 10:30 PM",
+      "summary": "The council set 10:30 PM as the end time for the December 3 meeting.",
+      "impact": "A scheduling call for the people in the room that night. It touches nobody outside the council chamber.",
       "significance": "routine"
     },
     {
@@ -181,10 +181,10 @@
         "development"
       ],
       "votes": [],
-      "headline": "Rose Ranch agreement without conditions",
-      "summary": "A proposal to approve the Rose Ranch master development agreement without the water conditions was raised but went no further.",
-      "impact": "Nothing changes on its own — this was an alternative to the amended Rose Ranch agreement the council acted on.",
-      "significance": "routine"
+      "headline": "Rose Ranch development agreement fails",
+      "summary": "A master development agreement for the Rose Ranch subdivision was put forward but never taken up by the council.",
+      "impact": "No other councilmember backed the motion, so Rose Ranch has no approved development agreement. Anyone watching that subdivision is back where they started.",
+      "significance": "notable"
     },
     {
       "id": 803,
@@ -225,7 +225,7 @@
       ],
       "headline": "Rose Ranch subdivision agreement approved",
       "summary": "The city approved a master development agreement for the Rose Ranch subdivision, striking one water rights sentence and directing staff to keep negotiating a water delivery schedule.",
-      "impact": "Rose Ranch can now move ahead under an agreed set of terms, so expect building in that area. The water piece isn't settled — staff will keep negotiating when and how the developer turns over water.",
+      "impact": "Rose Ranch can now move ahead under an agreed set of terms, so expect building in that area. The water piece isn't settled: staff will keep negotiating when and how the developer turns over water.",
       "significance": "notable"
     },
     {
@@ -425,10 +425,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Updated city water conservation plan",
-      "summary": "The council adopted an amended water conservation and management plan, the city's blueprint for how it saves and manages its water supply.",
-      "impact": "Nothing changes for you day to day — this updates a planning document. The motion sets no new watering rules or rates.",
-      "significance": "routine"
+      "headline": "Updated water conservation plan adopted",
+      "summary": "The council adopted an amended water conservation and management plan for the city.",
+      "impact": "The plan sets how Eagle Mountain manages and conserves its water supply. The motion itself names no new restriction or charge, so watch for the plan's specifics before assuming your watering habits change.",
+      "significance": "notable"
     },
     {
       "id": 809,
@@ -505,9 +505,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Two items dropped from legislative priorities list",
-      "summary": "The council removed two items from its legislative priorities list, one on discontinued zoning and one on transfer of development rights ordinances.",
-      "impact": "Nothing changes for residents — this only trims the city's own list of policy priorities.",
+      "headline": "Two zoning proposals dropped from lobbying list",
+      "summary": "The council struck two items, on discontinued zoning and transfer of development rights ordinances, from its list of state legislative priorities.",
+      "impact": "This trims what the city asks lawmakers to take up next session. Nothing changes on the ground for residents or property owners.",
       "significance": "routine"
     }
   ],

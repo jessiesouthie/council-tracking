@@ -44,8 +44,8 @@
         }
       ],
       "headline": "Consent agenda approved",
-      "summary": "The council approved its consent agenda, the batch of items voted through together without separate discussion.",
-      "impact": "Nothing changes for residents — this is the routine batch vote the council uses to clear uncontested items in one step.",
+      "summary": "The council approved its consent agenda, the batch of items passed together without separate discussion.",
+      "impact": "The motion text does not list what was in the batch, so there is nothing here to tell you about. Items grouped this way are usually the meeting's housekeeping.",
       "significance": "routine"
     },
     {
@@ -84,9 +84,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Animal rules sent back for more work",
-      "summary": "The council sent proposed rules on alternative animal management plans, and the zoning that goes with them, back to the Planning Commission for further review.",
-      "impact": "If you keep animals on your property, nothing changes yet. The rules are still being rewritten and will have to come back to the council before anything takes effect.",
+      "headline": "Backyard animal rules sent back for more work",
+      "summary": "The council sent proposed rules on alternative animal management plans, and the related zoning changes, back to the Planning Commission for further review.",
+      "impact": "Nothing changes for you yet. If you keep animals on your property, or want to, the rules stay as they are until the Planning Commission finishes its review and the council takes it up again.",
       "significance": "routine"
     },
     {
@@ -125,7 +125,7 @@
         }
       ],
       "headline": "Development agreement with Meta approved",
-      "summary": "The city approved a development agreement with Stadion, LLC — the company known as Meta — setting the terms for its Eagle Mountain project.",
+      "summary": "The city approved a development agreement with Stadion, LLC, the company known as Meta, setting the terms for its Eagle Mountain project.",
       "impact": "This sets the ground rules for what Meta may build here and what it owes the city. The motion doesn't list those terms, so residents won't see anything change day to day.",
       "significance": "notable"
     },
@@ -165,7 +165,7 @@
         }
       ],
       "headline": "Water and sewer deal with Meta updated",
-      "summary": "The council approved a third change to the water and sewer agreement with Stadion, LLC — the company known as Meta.",
+      "summary": "The council approved a third change to the water and sewer agreement with Stadion, LLC, the company known as Meta.",
       "impact": "This governs the water and sewer service the Meta site gets and on what terms. The motion doesn't say what the change does, so no effect on your household bill is stated.",
       "significance": "notable"
     },

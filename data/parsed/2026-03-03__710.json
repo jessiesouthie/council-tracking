@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 1036,
+      "id": 1035,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 5,
@@ -43,13 +43,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Jay Johnson joins the Community Services Board",
-      "summary": "The council appointed Jay Johnson to a one-year term on the Community Services Board, from April 2026 through March 2027.",
-      "impact": "Nothing changes for residents — this is a volunteer appointment to an advisory board.",
+      "headline": "Jay Johnson gets a one-year board term",
+      "summary": "The council appointed Jay Johnson to a one-year term on the Community Services Board, April 2026 through March 2027.",
+      "impact": "The shortest of the terms handed out that night, and the last seat filled. Nobody outside the board is touched by it.",
       "significance": "routine"
     },
     {
-      "id": 1037,
+      "id": 1036,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 5,
@@ -83,13 +83,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "ShaRee Curtis joins Community Services Board",
-      "summary": "The council appointed ShaRee Curtis to a two-year term on the Community Services Board, from April 2026 through March 2028.",
-      "impact": "Nothing changes for residents — this is a volunteer appointment to an advisory board.",
+      "headline": "ShaRee Curtis gets a two-year board term",
+      "summary": "The council appointed ShaRee Curtis to a two-year term on the Community Services Board, April 2026 through March 2028.",
+      "impact": "Volunteer seat, two years, no cost or change to residents.",
       "significance": "routine"
     },
     {
-      "id": 1038,
+      "id": 1037,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 6,
@@ -123,13 +123,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Charlotte Ducos joins Community Services Board",
-      "summary": "The council appointed Charlotte Ducos to a two-year term on the Community Services Board, from April 2026 through March 2028.",
-      "impact": "Nothing changes for residents — this is a volunteer appointment to an advisory board.",
+      "headline": "Charlotte Ducos gets a two-year board term",
+      "summary": "The council appointed Charlotte Ducos to a two-year term on the Community Services Board, April 2026 through March 2028.",
+      "impact": "Staggered terms keep the board from turning over all at once. That is the whole effect of this one.",
       "significance": "routine"
     },
     {
-      "id": 1039,
+      "id": 1038,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 6,
@@ -163,13 +163,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Steve Conger joins the Community Services Board",
-      "summary": "The council appointed Steve Conger to a three-year term on the Community Services Board, from April 2026 through March 2029.",
-      "impact": "Nothing changes for residents — this is a volunteer appointment to an advisory board.",
+      "headline": "Steve Conger appointed to Community Services",
+      "summary": "The council appointed Steve Conger to a three-year term on the Community Services Board, April 2026 through March 2029.",
+      "impact": "Another advisory seat filled for three years. Day to day, you will notice nothing.",
       "significance": "routine"
     },
     {
-      "id": 1040,
+      "id": 1039,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 6,
@@ -203,13 +203,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Jessie Southworth joins Community Services Board",
-      "summary": "The council appointed Jessie Southworth to a three-year term on the Community Services Board, from April 2026 through March 2029.",
-      "impact": "Nothing changes for residents — this is a volunteer appointment to an advisory board.",
+      "headline": "Jessie Southworth appointed to Community Services",
+      "summary": "The council appointed Jessie Southworth to a three-year term on the Community Services Board, April 2026 through March 2029.",
+      "impact": "A volunteer seat gets an occupant. There is no change to any city service attached to it.",
       "significance": "routine"
     },
     {
-      "id": 1041,
+      "id": 1040,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 7,
@@ -244,12 +244,12 @@
         }
       ],
       "headline": "Debra Kimbrough joins the Senior Advisory Board",
-      "summary": "The council appointed Debra Kimbrough to a three-year term on the Senior Advisory Board, from April 2026 through March 2029.",
-      "impact": "Nothing changes for residents — this fills a volunteer seat on a board that advises the council rather than making decisions.",
+      "summary": "The council appointed Debra Kimbrough to a three-year term on the Senior Advisory Board, running April 2026 through March 2029.",
+      "impact": "One seat filled on a volunteer board. Residents feel nothing from the appointment itself.",
       "significance": "routine"
     },
     {
-      "id": 1042,
+      "id": 1041,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 9,
@@ -280,8 +280,8 @@
         }
       ],
       "headline": "Consent agenda approved",
-      "summary": "The council approved its consent agenda, the group of items passed together in a single vote without separate discussion.",
-      "impact": "Nothing changes for residents on its own — this is the routine business the council clears in one vote.",
+      "summary": "The council approved its consent agenda in a single vote, covering the routine items grouped there.",
+      "impact": "Consent items are the ones no councilmember flagged for discussion. Nothing here reaches your street or your bill.",
       "significance": "routine",
       "raw_voters": [
         {
@@ -291,7 +291,7 @@
       ]
     },
     {
-      "id": 1043,
+      "id": 1042,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 9,
@@ -325,13 +325,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Overland development changes put on hold",
-      "summary": "The council delayed a decision on the fifth amendment to the Overland master development agreement and will take it up at a future meeting.",
-      "impact": "Nothing changes for now — the existing Overland agreement stays as written until the council revisits the amendment.",
-      "significance": "routine"
+      "headline": "Overland development change delayed",
+      "summary": "The council postponed the fifth amendment to the Overland master development agreement and will take it up at a later meeting.",
+      "impact": "Terms for building out Overland stay as they are for now. If you live near it or are following what gets built there, the decision is still open.",
+      "significance": "notable"
     },
     {
-      "id": 1044,
+      "id": 1043,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 10,
@@ -367,13 +367,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Hire a consultant to study Eagle's Landing",
-      "summary": "The city hired Economic & Planning Systems to run a market study for Eagle's Landing, a large commercial project planned on Pony Express Parkway north of downtown.",
-      "impact": "Nothing changes for you now. The study, expected to take one to three months, will help the city decide whether to use a TIF bond to pay for roads and utilities at the site.",
-      "significance": "routine"
+      "headline": "Market study hired for Eagle's Landing",
+      "summary": "The council hired Economic & Planning Systems to study demand for Eagle's Landing, a large commercial project on Pony Express Parkway north of downtown.",
+      "impact": "The study takes one to three months and feeds a decision on whether to use a TIF bond for roads and utilities there. Nothing breaks ground yet.",
+      "significance": "notable"
     },
     {
-      "id": 1045,
+      "id": 1044,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 11,
@@ -386,13 +386,13 @@
         "code"
       ],
       "votes": [],
-      "headline": "Move to reject fence rules found no support",
-      "summary": "A proposal to reject the fencing code changes outright drew no support and died without coming to a vote.",
-      "impact": "Nothing changes for residents. The fencing rules were neither rejected nor adopted here, and this proposal never reached a vote.",
+      "headline": "Move to reject the fence rules got no second",
+      "summary": "A motion to turn down the fencing code changes outright failed when no other councilmember seconded it.",
+      "impact": "The rejection never came to a vote, so nothing was settled here. The fencing question moved forward under a different motion the same night.",
       "significance": "routine"
     },
     {
-      "id": 1046,
+      "id": 1045,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 11,
@@ -427,12 +427,12 @@
         }
       ],
       "headline": "Fence rule changes put on hold",
-      "summary": "The council delayed a decision on changes to the city's fencing rules and sent them back for discussion at a future work session.",
-      "impact": "The current fence rules still apply — nothing changes for your yard yet. The proposal is expected to come back at a later meeting.",
+      "summary": "The council set aside proposed changes to the city's fencing rules and sent them back for a future work session.",
+      "impact": "Current fence rules stay in place. If you were waiting to see whether the limits on your fence would change, the answer is not yet.",
       "significance": "routine"
     },
     {
-      "id": 1047,
+      "id": 1046,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 12,
@@ -472,7 +472,7 @@
       "significance": "notable"
     },
     {
-      "id": 1048,
+      "id": 1047,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 13,
@@ -512,7 +512,7 @@
       "significance": "notable"
     },
     {
-      "id": 1049,
+      "id": 1048,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 13,
@@ -552,7 +552,7 @@
       "significance": "notable"
     },
     {
-      "id": 1050,
+      "id": 1049,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 14,
@@ -586,13 +586,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Create a Senior Citizens Advisory Board",
-      "summary": "The city created a Senior Citizens Advisory Board by adding a new chapter to the municipal code.",
-      "impact": "Nothing changes day to day. Older residents now have a formal board that can bring their concerns to the council; the seats are filled by separate appointments.",
+      "headline": "New advisory board for older residents",
+      "summary": "The council created a Senior Citizens Advisory Board in city code, giving older residents a standing group to advise the city.",
+      "impact": "If you are a senior in Eagle Mountain, there is now a formal channel to raise concerns to the council. The board advises; it does not decide.",
       "significance": "routine"
     },
     {
-      "id": 1051,
+      "id": 1050,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 15,
@@ -633,7 +633,7 @@
       "significance": "notable"
     },
     {
-      "id": 1052,
+      "id": 1051,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 16,
@@ -665,13 +665,13 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Support America250 and a local anniversary group",
-      "summary": "The city backed America250 Utah and formally recognized an Eagle Mountain committee to mark the nation's 250th anniversary.",
-      "impact": "Nothing changes day to day. You may see the committee plan anniversary events, but the resolution itself is a statement of support and commits no money.",
+      "headline": "Backing for the 250th anniversary committee",
+      "summary": "The council endorsed America250 Utah and recognized a local committee to plan Eagle Mountain's part in the nation's 250th anniversary.",
+      "impact": "A volunteer committee now has the city's blessing to organize commemorations. Watch for events, but this resolution itself spends nothing and asks nothing of you.",
       "significance": "routine"
     },
     {
-      "id": 1053,
+      "id": 1052,
       "meeting_id": 710,
       "date": "2026-03-03",
       "page": 16,
@@ -703,9 +703,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Study letting people pay the city in bitcoin",
-      "summary": "The council added a study of whether the city could accept bitcoin as a form of payment to its legislative priorities list.",
-      "impact": "Nothing changes for you yet — you still cannot pay the city in bitcoin. This only puts the idea on the list of things to look into.",
+      "headline": "City to study accepting bitcoin for payments",
+      "summary": "The council added a study of bitcoin as a way to pay the city to its list of legislative priorities.",
+      "impact": "Nothing changes at the utility billing counter for now. This puts the question on a list to look into, not into practice.",
       "significance": "routine"
     }
   ],

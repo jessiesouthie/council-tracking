@@ -25,9 +25,10 @@
         "consent"
       ],
       "votes": [],
-      "headline": "Dillon Boss appointed to the library board",
-      "summary": "The council appointed Dillon Boss to the Library Advisory Board for a one-year term through December 2024.",
-      "impact": "Nothing changes at the library — this is a volunteer advisory seat being filled."
+      "headline": "Dillon Boss joins the Library Advisory Board",
+      "summary": "Dillon Boss was appointed to the Library Advisory Board for a one-year term through December 2024 and sworn in at the meeting.",
+      "impact": "An advisory seat is filled. Library users will see the same hours, books and staff as before.",
+      "significance": "routine"
     },
     {
       "id": 694,
@@ -43,9 +44,10 @@
         "consent"
       ],
       "votes": [],
-      "headline": "Routine items passed in one vote",
-      "summary": "The council approved its consent agenda — land and equipment purchases, two bond releases, meeting minutes, and two treasurer appointments — pulling two items out for separate discussion.",
-      "impact": "This is routine housekeeping — nothing changes for residents. The recruiting-consultant contract was one of the items pulled out."
+      "headline": "Consent agenda passed, two items pulled",
+      "summary": "The council passed its consent agenda covering a right-of-way land purchase, arena equipment, two bond releases, February minutes and two treasurer appointments, pulling two items out.",
+      "impact": "Housekeeping cleared in a single vote. The two items lifted out, including the recruitment consultants' contract, went to open discussion later in the evening.",
+      "significance": "routine"
     },
     {
       "id": 695,
@@ -59,9 +61,10 @@
       "outcome": "passed wÍth a unanÍmous vote.",
       "tags": [],
       "votes": [],
-      "headline": "Recruiting consultants contract put on hold",
-      "summary": "The council delayed a decision on a professional services contract with recruitment consultants Jason Walker and David Kitchen.",
-      "impact": "Nothing changes for residents — this is a staffing contract the council chose to look at again later."
+      "headline": "Recruiting consultants' contract put off",
+      "summary": "The council set aside a professional service agreement with recruitment consultants Jason Walker and David Kitchen rather than voting it up or down.",
+      "impact": "Hiring help for the city waits for a later meeting. Nothing here reaches a resident.",
+      "significance": "routine"
     },
     {
       "id": 696,
@@ -81,9 +84,10 @@
         "public_safety"
       ],
       "votes": [],
-      "headline": "Wendy's approved on Pony Express Parkway",
-      "summary": "The city approved the site plan for a Wendy's at 4302 Pony Express Parkway, adding conditions on trees, crosswalk lighting, and building lighting.",
-      "impact": "A new Wendy's is coming to that stretch of Pony Express Parkway in The Ranches. The site's crosswalk has to be lit brightly enough to meet the city's safety code before it opens."
+      "headline": "Wendy's approved at 4302 Pony Express Parkway",
+      "summary": "A site plan for a Wendy's at 4302 Pony Express Parkway was approved, with conditions covering two trees on the north side, crosswalk lighting and building lights.",
+      "impact": "Drivers and neighbors near that stretch of Pony Express Parkway get a new restaurant, with a lit crosswalk on the site. Elsewhere in the city, no difference.",
+      "significance": "notable"
     },
     {
       "id": 697,
@@ -100,9 +104,10 @@
         "parks"
       ],
       "votes": [],
-      "headline": "Land stays marked commercial on the city map",
-      "summary": "The council refused to change the general plan for the same two parcels from community commercial and civic/school use to neighborhood housing.",
-      "impact": "The city's long-range map still shows this land for commercial and civic use, not homes. That is the companion decision to the rezoning denial — together they close the door on this proposal for now."
+      "headline": "General plan change for the same land denied",
+      "summary": "Alongside the zoning refusal, the council declined to change the general plan for the same parcels from community commercial and civic uses to neighborhood residential.",
+      "impact": "The city's long-range map still shows commercial and civic use for this ground. A housing-only project there would need a fresh application and a fresh argument.",
+      "significance": "notable"
     },
     {
       "id": 698,
@@ -118,9 +123,10 @@
         "parks"
       ],
       "votes": [],
-      "headline": "Rezone of Village Core land rejected",
-      "summary": "The council turned down a request to rezone two parcels from village core commercial and community open space to a residential zone.",
-      "impact": "The land keeps its current commercial and open-space zoning, so the housing proposed there cannot move forward as filed. Nothing changes for neighbors nearby."
+      "headline": "Rezoning of two parcels for houses denied",
+      "summary": "The council rejected a request to rezone one parcel and part of another from village core commercial and community open space to the RC residential zone.",
+      "impact": "That ground keeps its commercial and open space zoning, so the 59 houses the applicant proposed will not go ahead under this application. Nothing changes on the land itself.",
+      "significance": "notable"
     },
     {
       "id": 699,
@@ -139,8 +145,9 @@
       ],
       "votes": [],
       "headline": "Updated transportation impact fee adopted",
-      "summary": "The city adopted an updated transportation impact fee, the charge new development pays toward roads, plus rules for collecting, appealing, and accounting for it.",
-      "impact": "This is paid by builders on new construction, not by homes already standing, so nothing changes on your bill. The motion does not state the new fee amount."
+      "summary": "An updated transportation impact fee on new development was adopted, along with rules for calculating it, collecting it and appealing it.",
+      "impact": "Whoever builds pays this at the permit counter, though the motion does not state the amount. If you are not developing land, nothing on your own bills moves.",
+      "significance": "notable"
     },
     {
       "id": 700,
@@ -157,9 +164,10 @@
         "code"
       ],
       "votes": [],
-      "headline": "Wildlife corridor rules put on hold",
-      "summary": "The council delayed a decision on updated wildlife corridor overlay zone rules for Chapter 17.49 of the city code.",
-      "impact": "Nothing changes yet for landowners along the corridor — the existing rules stay in place until the council takes the update back up. Fencing and setback requirements were the sticking point."
+      "headline": "Wildlife corridor rules held for rewrites",
+      "summary": "A vote on updated wildlife corridor overlay rules was put off by the council until staff makes the changes members asked for.",
+      "impact": "Landowners inside the corridor keep building under today's rules until the item returns. Questions raised about fencing around livestock and setbacks from washes stay unsettled.",
+      "significance": "routine"
     },
     {
       "id": 701,
@@ -173,9 +181,10 @@
       "outcome": "",
       "tags": [],
       "votes": [],
-      "headline": "Easier lot line changes between neighbors",
-      "summary": "The city allowed a property line between a subdivision and a neighboring parcel to be moved by survey instead of a full plat amendment.",
-      "impact": "If you own property and want to shift a boundary with a neighbor, the process is now shorter. The city will also record a notice on the property so owners can tell when a parcel sits in more than one zone."
+      "headline": "Lot line changes allowed by survey, not a plat",
+      "summary": "The council changed city code so a property line between a subdivision and an outlying parcel can be adjusted by survey instead of a plat amendment.",
+      "impact": "Shifting a boundary with a neighboring parcel now takes a survey rather than a full plat amendment. Staff will also record a zoning notice on the property, so future buyers can see when land sits in more than one zone.",
+      "significance": "notable"
     },
     {
       "id": 702,
@@ -190,8 +199,9 @@
       "tags": [],
       "votes": [],
       "headline": "Meeting recessed at 10:57 p.m.",
-      "summary": "The council recessed its March 6 meeting at 10:57 p.m.",
-      "impact": "This is routine housekeeping — nothing changes for residents."
+      "summary": "The council recessed for the night at 10:57 p.m.",
+      "impact": "This is the clock stopping on a long agenda. Nobody outside the council chamber is touched by it.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

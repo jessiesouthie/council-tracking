@@ -24,7 +24,7 @@
       "votes": [],
       "headline": "Consent agenda approved",
       "summary": "The council approved its consent agenda, the batch of items passed together in a single vote; the motion does not list what was included.",
-      "impact": "Routine housekeeping — nothing here changes for residents.",
+      "impact": "Routine housekeeping. Nothing here changes for residents.",
       "significance": "routine"
     },
     {
@@ -103,9 +103,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Decision on easement rules delayed",
-      "summary": "The council delayed a proposed easement ordinance to November 6, asking the city attorney to define \"conservation easement\" and set who signs off on easement approvals.",
-      "impact": "Nothing changes for now. The city's existing easement rules stay in place until the council takes the item up again in November.",
+      "headline": "Easement rules sent back for rewrite",
+      "summary": "The council delayed new rules on easements until November 6, asking the city attorney to define \"conservation easement\" and to give the Planning Commission approval power over those, with golf course easements staying with the council.",
+      "impact": "Property owners and developers dealing with easements keep the current rules for now. The change would decide which body signs off on an easement crossing your land.",
       "significance": "routine"
     },
     {
@@ -179,10 +179,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Affordable housing fund set up",
-      "summary": "The city created a separate Affordable Housing Fund to hold money earmarked for affordable housing, with a small wording fix changing \"adopted\" to \"received.\"",
-      "impact": "Nothing changes day to day — this creates the account, not the spending. How much goes in and what it pays for would be decided later.",
-      "significance": "routine"
+      "headline": "New affordable housing fund created",
+      "summary": "Eagle Mountain set up a separate city account, the Affordable Housing Fund, to hold and track money for affordable housing.",
+      "impact": "The account is a container: the motion does not put any dollars in it or name a project. Watch for later votes that decide what goes in and what it pays for.",
+      "significance": "notable"
     },
     {
       "id": 786,
@@ -259,9 +259,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Housing data and new road corridors added to priorities",
-      "summary": "The council added two items to its legislative priorities list: gathering citywide housing data, and planning new road corridors on the city's south and west sides.",
-      "impact": "Nothing changes on the ground yet — this only tells city staff and state lawmakers what to work on. Any actual road or housing decision would come back to the council later.",
+      "headline": "City to gather housing data, plan west-side roads",
+      "summary": "The council added two items to its state legislative priorities: collecting data on existing housing types and sizes, and planning new transportation corridors for the city's south and west ends.",
+      "impact": "Nothing changes on the ground yet. This sets what city staff research and what they raise with state lawmakers, and it puts a future road west of Mid Valley on the planning map.",
       "significance": "routine"
     }
   ],

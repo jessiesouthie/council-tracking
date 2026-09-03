@@ -41,9 +41,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Brett Wright named mayor pro tempore for 2025",
-      "summary": "The council named Councilmember Brett Wright as mayor pro tempore for 2025.",
-      "impact": "Nothing changes for residents — this simply decides who leads a council meeting when the mayor cannot be there.",
+      "headline": "Brett Wright named mayor pro tem for 2025",
+      "summary": "Councilmember Brett Wright was chosen as mayor pro tempore for 2025.",
+      "impact": "Wright runs council meetings when the mayor cannot attend. It decides who holds the gavel on a given night and nothing more.",
       "significance": "routine"
     },
     {
@@ -81,9 +81,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Adam Jacobs joins the Library Advisory Board",
-      "summary": "The council appointed Adam Jacobs to a three-year term on the Library Advisory Board, running through 2027.",
-      "impact": "Nothing changes for library users — this fills one volunteer seat on the board that advises the city on the library.",
+      "headline": "Adam Jacobs joins the library board",
+      "summary": "Adam Jacobs was appointed to the Library Advisory Board for three years, through 2027.",
+      "impact": "A second seat on the same volunteer board was filled the same night. Library hours, services and fees are untouched.",
       "significance": "routine"
     },
     {
@@ -121,9 +121,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Benjamin Perez joins the Library Advisory Board",
-      "summary": "The council appointed Benjamin Perez to a three-year term on the Library Advisory Board, running through 2027.",
-      "impact": "Nothing changes for library users — this fills one volunteer seat on the board that advises the city on the library.",
+      "headline": "Benjamin Perez joins the library board",
+      "summary": "Benjamin Perez was appointed to a three year term on the Library Advisory Board, running through 2027.",
+      "impact": "The board advises on library matters. Unless you go to those meetings, this one passes you by.",
       "significance": "routine"
     },
     {
@@ -163,9 +163,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda and new city recorder approved",
-      "summary": "The council passed its consent agenda, including changes to the year's financial audit discussed in work session, and appointed Gina Olsen as city recorder.",
-      "impact": "Nothing changes day to day — this is the batch of routine items the council passes together, plus the staff appointment that keeps the city's official records.",
+      "headline": "Gina Olsen named city recorder",
+      "summary": "The council adopted its consent agenda with two changes from the work session: revisions to the fiscal year financial audit and the appointment of Gina Olsen as city recorder.",
+      "impact": "Olsen now keeps the city's official records and handles public records requests, so hers is the office you deal with when you ask for a document. The audit change is bookkeeping.",
       "significance": "routine"
     },
     {
@@ -203,9 +203,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Cedar Corners land-use map change put off",
-      "summary": "The council delayed a change to the city's future land use map for Cedar Corners Phase 5 and left its public hearing open.",
-      "impact": "Nothing changes yet for the Cedar Corners area — the city's long-range map for the site stays as is, and the hearing remains open for comment.",
+      "headline": "Cedar Corners land use map change delayed",
+      "summary": "A change to the general plan's future land use map covering Cedar Corners Phase 5 was delayed, with the public hearing continued.",
+      "impact": "This is the companion piece to the zoning item on the same ground, and it waits with it. Neighbors keep their chance to comment at a later meeting.",
       "significance": "routine"
     },
     {
@@ -243,9 +243,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Cedar Corners Phase 5 rezoning put off",
-      "summary": "The council delayed a decision on rezoning the land known as Cedar Corners Phase 5 and left its public hearing open.",
-      "impact": "If you live near Cedar Corners, nothing changes yet — the current zoning stays, and you will still be able to speak when the hearing resumes.",
+      "headline": "Cedar Corners Phase 5 zoning change put off",
+      "summary": "The council delayed a zoning change for the land known as Cedar Corners Phase 5 and left the public hearing open.",
+      "impact": "If you live near Cedar Corners, you still have a chance to speak: the hearing was continued rather than closed. The zoning on that ground is unchanged for now.",
       "significance": "routine"
     },
     {
@@ -285,7 +285,7 @@
       ],
       "headline": "Rules changed for building into yard setbacks",
       "summary": "The council amended the city code rule governing how far a structure may project into a required yard setback.",
-      "impact": "If you are planning to build near your property line, the limits on how far a structure can extend into the setback have changed. The motion itself does not state the new limits — check with the city first.",
+      "impact": "If you are planning to build near your property line, the limits on how far a structure can extend into the setback have changed. The motion itself does not state the new limits, so check with the city first.",
       "significance": "notable"
     },
     {
@@ -367,9 +367,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Setback measuring change delayed",
-      "summary": "The council put off a change to how the city measures setbacks on site plans, measuring from the existing right-of-way instead of the curb.",
-      "impact": "Nothing changes for now. The current measuring rules stay in place for anyone submitting a site plan until the council takes the item up again.",
+      "headline": "Setback measuring rules left unsettled",
+      "summary": "The council delayed a code change that would measure site plan distances from the existing right-of-way rather than the existing curb, with a diagram added for clarity.",
+      "impact": "Nothing changes for now. When it returns, it will matter to anyone drawing up a site plan for a commercial or residential project, and to nobody else.",
       "significance": "routine"
     },
     {
@@ -405,10 +405,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Outside brokers allowed for big city land deals",
-      "summary": "The city authorized staff to hire a real estate brokerage or a real estate attorney when buying or selling major city property.",
-      "impact": "Nothing changes day to day — this only sets who the city can bring in to handle its larger land purchases and sales.",
-      "significance": "routine"
+      "headline": "City can hire brokers to buy and sell land",
+      "summary": "Staff were authorized to hire an outside real estate brokerage or attorney when the city buys or sells significant property.",
+      "impact": "Big city land deals will now run through a paid outside broker or lawyer rather than staff alone. Residents see nothing directly, though it shapes how the city handles the property it owns.",
+      "significance": "notable"
     },
     {
       "id": 821,
@@ -443,9 +443,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Council board assignments put on hold",
-      "summary": "The council kept its 2024 board liaison assignments until the mayor can meet with members to set new ones, and asked staff for a list of all boards.",
-      "impact": "Nothing changes for residents — this is internal housekeeping about which councilmember sits in on which city board and commission.",
+      "headline": "Board liaison assignments put off",
+      "summary": "The council kept its 2024 board liaison assignments in place until the mayor can meet with members to set new ones, and asked the city manager for a list of every board that needs a liaison.",
+      "impact": "Which councilmember sits in on which board stays as it was last year. Nothing here changes a city service or a bill.",
       "significance": "routine"
     }
   ],

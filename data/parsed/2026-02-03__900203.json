@@ -1,16 +1,16 @@
 {
   "meeting": {
-    "id": 735,
+    "id": 900203,
     "date": "2026-02-03",
-    "source_file": "2026-02-03__735.pdf",
+    "source_file": "2026-02-03__900203.pdf",
     "motion_count": 8,
     "ord_count": 4,
     "res_count": 2
   },
   "motions": [
     {
-      "id": 1023,
-      "meeting_id": 735,
+      "id": 1022,
+      "meeting_id": 900203,
       "date": "2026-02-03",
       "page": 4,
       "agenda_ref": "",
@@ -43,14 +43,14 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Library board seat for Marcia Vasquez",
-      "summary": "The council took up appointing Marcia Vasquez as a library board advisor for a three-year term through December 2028; the record does not show the result.",
-      "impact": "Nothing changes for residents either way — this is a volunteer advisory seat tied to the city library.",
+      "headline": "Marcia Vasquez appointed to library board",
+      "summary": "Marcia Vasquez was appointed a Library Board advisor for a three-year term through December 2028.",
+      "impact": "The board advises on how the library runs. Library hours, cards and services are unchanged by the appointment itself.",
       "significance": "routine"
     },
     {
-      "id": 1024,
-      "meeting_id": 735,
+      "id": 1023,
+      "meeting_id": 900203,
       "date": "2026-02-03",
       "page": 5,
       "agenda_ref": "",
@@ -83,14 +83,14 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Mandy Lane appointed to planning commission",
-      "summary": "The council appointed Mandy Lane to the planning commission for a one-year term through December 2026.",
-      "impact": "Routine housekeeping — nothing changes day to day. She joins the board that reviews zoning and development proposals before they reach the council.",
+      "headline": "Mandy Lane appointed planning commissioner",
+      "summary": "Mandy Lane was appointed to the Planning Commission for a one-year term through December 2026.",
+      "impact": "The Planning Commission reviews zoning and development proposals before they reach the council. Her seat comes up again at the end of the year.",
       "significance": "routine"
     },
     {
-      "id": 1025,
-      "meeting_id": 735,
+      "id": 1024,
+      "meeting_id": 900203,
       "date": "2026-02-03",
       "page": 5,
       "agenda_ref": "",
@@ -123,14 +123,14 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Chad Decoursey named planning commission alternate",
-      "summary": "The council appointed Chad Decoursey as an alternate on the planning commission for a three-year term running through December 2028.",
-      "impact": "Routine housekeeping — nothing changes for residents. An alternate fills in on the board that reviews zoning and development proposals when a regular member cannot attend.",
+      "headline": "Chad Decoursey joins planning commission as alternate",
+      "summary": "Chad Decoursey was appointed a Planning Commission alternate for a three-year term running through December 2028.",
+      "impact": "An alternate fills in when a regular commissioner is absent. If you bring a development or zoning item to the commission, he may be one of the people hearing it.",
       "significance": "routine"
     },
     {
-      "id": 1026,
-      "meeting_id": 735,
+      "id": 1025,
+      "meeting_id": 900203,
       "date": "2026-02-03",
       "page": 6,
       "agenda_ref": "Consent",
@@ -163,14 +163,14 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda approved",
-      "summary": "The council approved its consent agenda, the batch of items passed together in a single vote without separate discussion.",
-      "impact": "Nothing changes for residents on its own — consent items are the routine business the council clears all at once.",
+      "headline": "Consent agenda approved in one vote",
+      "summary": "The council approved its consent agenda, the batch of items handled together without separate discussion.",
+      "impact": "Consent items are the ones the council considers uncontroversial enough to pass in a single vote. The motion text does not list what was included.",
       "significance": "routine"
     },
     {
-      "id": 1027,
-      "meeting_id": 735,
+      "id": 1026,
+      "meeting_id": 900203,
       "date": "2026-02-03",
       "page": 7,
       "agenda_ref": "16.A.",
@@ -202,13 +202,13 @@
         }
       ],
       "headline": "Lacie Messerly named city recorder",
-      "summary": "The council appointed Lacie Messerly as Eagle Mountain's city recorder.",
-      "impact": "Nothing changes for residents — the recorder is the staff position that keeps the city's official records and meeting minutes.",
+      "summary": "Lacie Messerly was appointed as Eagle Mountain City Recorder.",
+      "impact": "The recorder keeps the city's official records and meeting minutes. If you request a public document, this is the office you deal with.",
       "significance": "routine"
     },
     {
-      "id": 1028,
-      "meeting_id": 735,
+      "id": 1027,
+      "meeting_id": 900203,
       "date": "2026-02-03",
       "page": 7,
       "agenda_ref": "15.A.",
@@ -247,8 +247,8 @@
       "significance": "routine"
     },
     {
-      "id": 1029,
-      "meeting_id": 735,
+      "id": 1028,
+      "meeting_id": 900203,
       "date": "2026-02-03",
       "page": 8,
       "agenda_ref": "",
@@ -287,8 +287,8 @@
       "significance": "notable"
     },
     {
-      "id": 1030,
-      "meeting_id": 735,
+      "id": 1029,
+      "meeting_id": 900203,
       "date": "2026-02-03",
       "page": 9,
       "agenda_ref": "",
@@ -319,33 +319,33 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Amenity swap rules added to code to-do list",
-      "summary": "The council put a future code change on its legislative priorities list requiring developers to request amenity exchanges early in the approval process.",
-      "impact": "Nothing changes yet — this only adds the rule to the city's list of code updates to write later. If it is eventually adopted, developers swapping promised neighborhood amenities would have to ask sooner.",
+      "headline": "Amenity swap rules added to city's law wish list",
+      "summary": "The council put a new rule on its legislative priorities list requiring developers to raise amenity exchange requests early in the approval process.",
+      "impact": "Nothing changes yet: this only flags the idea for a future code change. Developers swapping one promised amenity for another would eventually have to ask sooner.",
       "significance": "routine"
     }
   ],
   "ordinances": [
     {
-      "source_file": "2026-02-03__735.pdf",
+      "source_file": "2026-02-03__900203.pdf",
       "meeting_date": "",
       "page": 2,
       "line_text": "15.A. ORDINANCE – An Ordinance of Eagle Mountain City, Utah, Amending the Eagle"
     },
     {
-      "source_file": "2026-02-03__735.pdf",
+      "source_file": "2026-02-03__900203.pdf",
       "meeting_date": "",
       "page": 7,
       "line_text": "15.A. ORDINANCE - An Ordinance of Eagle Mountain City, Utah, Amending the"
     },
     {
-      "source_file": "2026-02-03__735.pdf",
+      "source_file": "2026-02-03__900203.pdf",
       "meeting_date": "",
       "page": 7,
       "line_text": "Assistant to the City Manager Natalie Winterton presented a proposed ordinance"
     },
     {
-      "source_file": "2026-02-03__735.pdf",
+      "source_file": "2026-02-03__900203.pdf",
       "meeting_date": "",
       "page": 7,
       "line_text": "MOTION: Councilmember Wright moved to adopt an Ordinance of Eagle Mountain"
@@ -353,13 +353,13 @@
   ],
   "resolutions": [
     {
-      "source_file": "2026-02-03__735.pdf",
+      "source_file": "2026-02-03__900203.pdf",
       "meeting_date": "",
       "page": 6,
       "line_text": "16.A. RESOLUTION - A Resolution of Eagle Mountain City, Utah, Appointing the"
     },
     {
-      "source_file": "2026-02-03__735.pdf",
+      "source_file": "2026-02-03__900203.pdf",
       "meeting_date": "",
       "page": 7,
       "line_text": "MOTION: Councilmember Wood moved to adopt a Resolution of Eagle Mountain"

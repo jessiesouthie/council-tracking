@@ -45,7 +45,7 @@
       ],
       "headline": "Consent agenda approved",
       "summary": "The council approved its consent agenda, the batch of items passed together without separate discussion; the motion does not list what was included.",
-      "impact": "Nothing here changes for residents on its own — the individual items are listed on the meeting agenda.",
+      "impact": "Nothing here changes for residents on its own. The individual items are listed on the meeting agenda.",
       "significance": "routine"
     },
     {
@@ -83,10 +83,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Steeplechase South subdivision plat amended",
-      "summary": "The city approved a second plat amendment for the Steeplechase South subdivision at 877 N Pony Express Parkway.",
-      "impact": "This adjusts the recorded layout of one subdivision on Pony Express Parkway. Unless you live in or are buying in Steeplechase South, nothing changes for you.",
-      "significance": "routine"
+      "headline": "Redraw lot lines at Steeplechase South",
+      "summary": "The council approved a second plat amendment for the Steeplechase South subdivision at 877 N Pony Express Parkway, adjusting the recorded subdivision map.",
+      "impact": "This touches property boundaries inside one subdivision on Pony Express Parkway. If you do not own or plan to build on land there, it passes you by.",
+      "significance": "notable"
     },
     {
       "id": 901,
@@ -123,9 +123,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Update street cross-section diagrams in city code",
-      "summary": "The city updated the right-of-way profile illustrations in its code — the standard diagrams showing how streets are to be laid out.",
-      "impact": "Nothing changes day to day. These are the technical drawings engineers and developers follow when designing new streets.",
+      "headline": "Update road right-of-way drawings in city code",
+      "summary": "The council amended the city's code section covering the illustrations that show how streets and the land beside them must be laid out.",
+      "impact": "Engineers and developers drawing up new streets work from these diagrams. For everyone else it is a technical drawing swap with nothing to see.",
       "significance": "routine"
     },
     {
@@ -166,7 +166,7 @@
       ],
       "headline": "New rules for fences and privacy screening",
       "summary": "The city amended its code covering fences, privacy screening, and the table of land uses allowed in each zone; the motion does not state what specifically changed.",
-      "impact": "If you are planning a fence or a screening wall on your property, the rules you have to build to have changed — check the current code before you start.",
+      "impact": "If you are planning a fence or a screening wall on your property, the rules you have to build to have changed, so check the current code before you start.",
       "significance": "notable"
     },
     {
@@ -204,9 +204,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Change the sign-off process for change orders",
-      "summary": "The city rewrote its purchasing rules to change how change orders — the cost adjustments made after a contract is already underway — get approved.",
-      "impact": "This is internal paperwork and nothing changes for residents. It affects how city staff and the council sign off on added costs for work already under contract.",
+      "headline": "Change how contract change orders get approved",
+      "summary": "The council rewrote the purchasing rules to change who signs off when the cost or scope of a city contract changes mid-project.",
+      "impact": "An internal spending control that lives inside city hall. You will not run into it unless you hold a contract with the city.",
       "significance": "routine"
     },
     {
@@ -282,9 +282,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Youth court and justice court added to priority list",
-      "summary": "The council added a youth court, a justice court, and other public safety measures to the city's list of legislative priorities.",
-      "impact": "Nothing changes yet. This only puts these ideas on the city's priority list — an actual youth or justice court would take separate decisions later.",
+      "headline": "Push for a youth court and justice court",
+      "summary": "The council added a youth court, a justice court and other public safety measures to the city's legislative priorities list, to be discussed with public safety partners and the Public Safety Director.",
+      "impact": "Nothing changes yet. This puts the idea on the city's wish list for talks with its public safety partners; any actual court would need separate decisions later.",
       "significance": "routine"
     }
   ],

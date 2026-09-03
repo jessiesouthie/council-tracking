@@ -2,14 +2,14 @@
   "_comment": "The argument, as opposed to the arithmetic. Everything here is transcribed from a recording of an open meeting; `source` names the meeting id, the date and the speaker, and `quote` is verbatim where it is in quotation marks. Speaker attribution on August 6 follows the mayor's own call order from the chair — Huish, Wood, Whiting, Wright, Clark — and anything the recording does not let us attribute confidently is left unattributed rather than guessed. This file takes no side; the section it feeds sets out the city's case, the record of what was said in public and when, the charge that the money was misdescribed, and the places where that charge lands.",
   "eyebrow": "The argument",
   "title": "Why the city says it needs this, and what it said in public",
-  "sub": "The rate is one number. The case behind it, the objections to it, and the record of when each was made in public are what the argument is actually about.",
+  "sub": "The rate is one number. The case behind it, the objections to it, and the record of when each was made in public are what the argument is about.",
   "case": {
     "heading": "The mechanism nobody voted for",
-    "lede": "Utah sets a city's property tax by revenue, not by rate. As assessed values rise, the certified rate falls to hold collections roughly flat, so a household's city property tax bill barely moves for years while the cost of serving that household does not stop rising. Eagle Mountain went about fifteen years without touching the rate — the last increase was in 2010 — and roughly doubled in population in the eight years after that, from about 32,000 in 2017 to about 65,400 in 2025. Those two facts together are the whole of the city's case.",
+    "lede": "Utah sets a city's property tax by revenue, not by rate. As assessed values rise, the certified rate falls to hold collections roughly flat, so a household's city property tax bill barely moves for years while the cost of serving that household does not stop rising. Eagle Mountain went about fifteen years without touching the rate (the last increase was in 2010), and roughly doubled in population in the eight years after that, from about 32,000 in 2017 to about 65,400 in 2025. Those two facts together are the whole of the city's case.",
     "points": [
       {
         "stat": "About $200 a year",
-        "text": "What one councilmember's own household has paid the city in property tax, essentially unchanged for a decade while the city's cost to police that household rose every year.",
+        "text": "What one councilmember's own household has paid the city in property tax, little changed for a decade while the city's cost to police that household rose every year.",
         "source": {
           "meeting": 747,
           "date": "2026-08-06",
@@ -29,7 +29,7 @@
       },
       {
         "stat": "0.45 officers per 1,000",
-        "text": "Eagle Mountain's sworn staffing ratio — one deputy per roughly 2,200 residents. Lehi is at 0.7, Saratoga Springs about 0.9. The Sheriff's Office says the city was near 0.7–0.8 in the early 2000s and has fallen since.",
+        "text": "Eagle Mountain's sworn staffing ratio: one deputy per roughly 2,200 residents. Lehi is at 0.7, Saratoga Springs about 0.9. The Sheriff's Office says the city was near 0.7–0.8 in the early 2000s and has fallen since.",
         "source": {
           "meeting": 743,
           "date": "2026-04-14",
@@ -49,7 +49,7 @@
       },
       {
         "stat": "25,699 calls, up 18.6%",
-        "text": "Calls for service in a year — about 70 a day, averaging 32 minutes each, roughly 38 hours a day of deputy time before backup, report writing or travel. The Sheriff's Office attributes the rise to population, not to a crime wave.",
+        "text": "Calls for service in a year: about 70 a day, averaging 32 minutes each, roughly 38 hours a day of deputy time before backup, report writing or travel. The Sheriff's Office attributes the rise to population, not to a crime wave.",
         "source": {
           "meeting": 743,
           "date": "2026-04-14",
@@ -59,7 +59,7 @@
       },
       {
         "stat": "7 asked for, 11–13 indicated",
-        "text": "The request that became this budget line was one sergeant and six deputies — about $1.44 million, taking the ratio to 0.55. The workload study the Sheriff's Office ran pointed to eleven to thirteen more sworn.",
+        "text": "The request that became this budget line was one sergeant and six deputies: about $1.44 million, taking the ratio to 0.55. The workload study the Sheriff's Office ran pointed to eleven to thirteen more sworn.",
         "source": {
           "meeting": 743,
           "date": "2026-04-14",
@@ -79,12 +79,12 @@
     }
   },
   "displacement": {
-    "heading": "“100% for public safety” — what it meant, and why it was heard as a lie",
+    "heading": "“100% for public safety”: what it meant, and why it was heard as a lie",
     "lede": "This is the charge at the center of the referendum, and it deserves setting out precisely rather than defending or dismissing. The notice said the money was for public safety. The noticed increase was $6.74 million. The Sheriff's contract was going up about $1.5 million. Residents did that subtraction, found roughly $5.2 million unaccounted for, and concluded they had been misled.",
     "steps": [
       {
         "label": "What the statutory schedule actually says",
-        "text": "The Truth-in-Taxation impact schedule — the legally required text, read aloud at every budget meeting from May onward and again at the hearing — names the Sheriff's contract as the affected budget and puts it at $9,798,139. That is the same figure, to the dollar, as the proposed property tax revenue. The whole design was that the levy exactly covers the contract and nothing else, which is why the claim is arithmetically true in its own terms: there is no second dollar to allocate.",
+        "text": "The Truth-in-Taxation impact schedule (the legally required text, read aloud at every budget meeting from May onward and again at the hearing) names the Sheriff's contract as the affected budget and puts it at $9,798,139. That is the same figure, to the dollar, as the proposed property tax revenue. The whole design was that the levy exactly covers the contract and nothing else, which is why the claim is arithmetically true in its own terms: there is no second dollar to allocate.",
         "source": {
           "meeting": 747,
           "date": "2026-08-06",
@@ -99,7 +99,7 @@
       },
       {
         "label": "What actually changes",
-        "text": "Property tax is not paying for new deputies so much as taking over the whole contract from sales tax, which had been quietly subsidizing it. The money that moves is the freed sales tax — and that is what residents were never told, because it was not in the application filed with the state.",
+        "text": "Property tax is not paying for new deputies so much as taking over the whole contract from sales tax, which had been subsidizing it. The money that moves is the freed sales tax, and that is what residents were never told, because it was not in the application filed with the state.",
         "source": {
           "meeting": 747,
           "date": "2026-08-06",
@@ -129,7 +129,7 @@
       },
       {
         "label": "Where the criticism lands anyway",
-        "text": "The sharpest version of the objection came from a resident who had spent an hour with the mayor, the city manager, a councilmember and finance staff the day before the hearing — and still concluded that funding the contract entirely from property tax is a policy choice, not a restoration of how things used to work.",
+        "text": "The sharpest version of the objection came from a resident who had spent an hour with the mayor, the city manager, a councilmember and finance staff the day before the hearing, and still concluded that funding the contract entirely from property tax is a policy choice, not a restoration of how things used to work.",
         "source": {
           "meeting": 747,
           "date": "2026-08-06",
@@ -140,11 +140,11 @@
     ],
     "freed": {
       "heading": "What the freed sales tax was earmarked for",
-      "note": "Named on the record on May 26 and again on August 6 — ten weeks and then the night of the hearing. Not a published plan, but not a secret either.",
+      "note": "Named on the record on May 26 and again on August 6: ten weeks and then the night of the hearing. Not a published plan, but not a secret either.",
       "items": [
         {
           "figure": "Wages",
-          "text": "$525,000 to bring city staff to 90% of the market median. Not above average — to the middle."
+          "text": "$525,000 to bring city staff to 90% of the market median. Not above average, to the middle."
         },
         {
           "figure": "Hiring",
@@ -152,7 +152,7 @@
         },
         {
           "figure": "School zones",
-          "text": "Concrete speed tables at four schools — Silver Lake, Brookhaven, Mountain Trails and Desert Sky — plus a commissioned study of the city's other problem streets. The city engineer put a concrete retrofit at $28,000–$30,000 apiece on May 26; a councilmember quoted $70,000–$80,000 at the hearing."
+          "text": "Concrete speed tables at four schools (Silver Lake, Brookhaven, Mountain Trails and Desert Sky), plus a commissioned study of the city's other problem streets. The city engineer put a concrete retrofit at $28,000–$30,000 apiece on May 26; a councilmember quoted $70,000–$80,000 at the hearing."
         },
         {
           "figure": "Roads",
@@ -177,20 +177,20 @@
   },
   "ledger": {
     "heading": "Transparency and communication are not the same charge",
-    "lede": "Almost every speaker at the hearing used the word transparency. Reading the record, two different complaints are tangled inside it: whether the city did this in the open, and whether residents found out. On the first, the paper trail is unusually complete. On the second, the council does not contest the criticism — it made the criticism itself, from the dais, before anyone voted.",
+    "lede": "Almost every speaker at the hearing used the word transparency. Reading the record, two different complaints are tangled inside it: whether the city did this in the open, and whether residents found out. On the first, the paper trail is unusually complete. On the second, the council does not contest the criticism. It made the criticism itself, from the dais, before anyone voted.",
     "open": {
       "heading": "What was done in public, and when",
       "rows": [
         {
           "date": "2026-04-14",
           "meeting": 743,
-          "text": "Sheriff's Office presents the staffing case in an open budget work session — the ratio, the workload study, the cost per deputy, the ask. Council openly discusses that a tax increase may be the mechanism.",
+          "text": "Sheriff's Office presents the staffing case in an open budget work session: the ratio, the workload study, the cost per deputy, the ask. Council openly discusses that a tax increase may be the mechanism.",
           "weight": "strong"
         },
         {
           "date": "2026-05-05",
           "meeting": 712,
-          "text": "Three resolutions in one night: tentative budget accepted, Budget Officer's statement of a proposed increase acknowledged, intent to exceed the certified rate declared. Both August hearings are set here — the Truth-in-Taxation hearing and the budget adoption hearing — three months ahead.",
+          "text": "Three resolutions in one night: tentative budget accepted, Budget Officer's statement of a proposed increase acknowledged, intent to exceed the certified rate declared. Both August hearings are set here, the Truth-in-Taxation hearing and the budget adoption hearing, three months ahead.",
           "weight": "strong"
         },
         {
@@ -226,7 +226,7 @@
       ],
       "always": [
         {
-          "text": "The full line-item budget — this year's and every prior year's — has been on eaglemountain.gov throughout, with an interactive breakdown by department.",
+          "text": "The full line-item budget, this year's and every prior year's, has been on eaglemountain.gov throughout, with an interactive breakdown by department.",
           "source": {
             "meeting": 747,
             "date": "2026-08-06",
@@ -274,7 +274,7 @@
         }
       ]
     },
-    "distinction": "Every decision was taken in a recorded meeting on a published agenda, with the budget published the whole time and the schedule read aloud at every budget meeting from May onward. That is the ordinary meaning of transparent. What the city did not do was translate any of it — the notice said public safety, said nothing about displaced sales tax, and left residents to find the $5 million gap themselves and draw the obvious conclusion. Those are different failures with different remedies, and the second one is real."
+    "distinction": "Every decision was taken in a recorded meeting on a published agenda, with the budget published the whole time and the schedule read aloud at every budget meeting from May onward. That is the ordinary meaning of transparent. What the city did not do was translate any of it: the notice said public safety, said nothing about displaced sales tax, and left residents to find the $5 million gap themselves and draw the obvious conclusion. Those are different failures with different remedies, and the second one is real."
   },
   "response": {
     "heading": "What the hearing actually changed",
@@ -284,13 +284,13 @@
         "from": "0.001700",
         "to": "0.001500",
         "label": "The rate",
-        "text": "Noticed at 0.001700. Adopted at 0.001500 — a little above where Saratoga Springs' own noticed increase would land it, and described from the dais as around the 65th to 70th percentile for Utah County rather than the middle of it."
+        "text": "Noticed at 0.001700. Adopted at 0.001500: a little above where Saratoga Springs' own noticed increase would land it, and described from the dais as around the 65th to 70th percentile for Utah County rather than the middle of it."
       },
       {
         "from": "220.88%",
         "to": "183.02%",
         "label": "The percentage",
-        "text": "Both are the same measure — the rise in budgeted property tax revenue over the prior year, excluding eligible new growth — so they are comparable to each other. The adopted 183.02% happens also to be exactly what 0.001500 is over the 0.000530 certified rate; the noticed 220.88% is not that figure, which is 220.75%. Either way, the 220% on the notices, the signs and the petitions is not the rate in force."
+        "text": "Both are the same measure (the rise in budgeted property tax revenue over the prior year, excluding eligible new growth), so they are comparable to each other. The adopted 183.02% happens also to be exactly what 0.001500 is over the 0.000530 certified rate; the noticed 220.88% is not that figure, which is 220.75%. Either way, the 220% on the notices, the signs and the petitions is not the rate in force."
       },
       {
         "from": "$6,742,938",
@@ -307,7 +307,7 @@
     ],
     "commitments": [
       {
-        "text": "An ordinance requiring every future council to review the rate annually — so that a fifteen-year gap cannot recur, and so the rate can be brought back down when data-center revenue arrives. Asked for from the floor by a resident on June 16 and again on August 6.",
+        "text": "An ordinance requiring every future council to review the rate annually, so that a fifteen-year gap cannot recur, and so the rate can be brought back down when data-center revenue arrives. Asked for from the floor by a resident on June 16 and again on August 6.",
         "source": {
           "meeting": 747,
           "date": "2026-08-06",
@@ -325,8 +325,8 @@
         }
       }
     ],
-    "vote": "Passed 5–0 on a roll call — including Councilmember Huish, who voted against the proposed rate on June 16 and told the hearing he did not support 0.001700 either.",
-    "shortfall": "One consequence the council did not dwell on, and which the August 18 cut made larger: at 0.001500 the levy raises about $8.6 million against a $9.8 million Sheriff's contract. The rate that passed does not, in fact, fully fund public safety from property tax — it leaves roughly $1.15 million still coming out of sales tax. The stated policy was cut back along with the rate, and less sales tax is freed than the May and June discussions assumed.",
+    "vote": "Passed 5–0 on a roll call, including Councilmember Huish, who voted against the proposed rate on June 16 and told the hearing he did not support 0.001700 either.",
+    "shortfall": "One consequence the council did not dwell on, and which the August 18 cut made larger: at 0.001500 the levy raises about $8.6 million against a $9.8 million Sheriff's contract. The rate that passed does not, in fact, fully fund public safety from property tax. It leaves roughly $1.15 million still coming out of sales tax. The stated policy was cut back along with the rate, and less sales tax is freed than the May and June discussions assumed.",
     "closer": {
       "speaker": "Mayor Jared Gray",
       "quote": "Though I am not excited about going to the 0.15, because I feel like that is, if we felt like that's what it was, we should have started with that, frankly. I heard what you said too, and I felt what each one of you said about how it's impacting your homes. So maybe that's the direction we need to go for this year."
@@ -334,13 +334,13 @@
   },
   "response_second": {
     "heading": "What August 18 changed",
-    "lede": "Twelve days later the council cut it again. At the budget-adoption meeting it took two resolutions in order — one repealing the increase it had approved on August 6, one approving an increase above the certified rate in its place — and set the rate at 0.000900, then adopted the budget the rate has to fund.",
+    "lede": "Twelve days later the council cut it again. At the budget-adoption meeting it took two resolutions in order (one repealing the increase it had approved on August 6, one approving an increase above the certified rate in its place), and set the rate at 0.000900, then adopted the budget the rate has to fund.",
     "changes": [
       {
         "from": "0.001500",
         "to": "0.000900",
         "label": "The rate",
-        "text": "A little over a third of the way from the 0.000530 certified rate to the 0.001700 the city noticed, where the August 6 rate was most of the way there. Under Truth-in-Taxation the noticed rate is a ceiling and not a floor, so the council could go down to this without noticing again — but it could not have gone up."
+        "text": "A little over a third of the way from the 0.000530 certified rate to the 0.001700 the city noticed, where the August 6 rate was most of the way there. Under Truth-in-Taxation the noticed rate is a ceiling and not a floor, so the council could go down to this without noticing again, but it could not have gone up."
       },
       {
         "from": "183.02%",
@@ -358,17 +358,17 @@
         "from": "about $260",
         "to": "about $99",
         "label": "The average home",
-        "text": "On the notice's own $488,000 primary residence — $268,400 of taxable value times the 0.000370 the rate rose over the certified rate. The noticed rate would have put the same home at $314.03."
+        "text": "On the notice's own $488,000 primary residence: $268,400 of taxable value times the 0.000370 the rate rose over the certified rate. The noticed rate would have put the same home at $314.03."
       }
     ],
     "commitments": [],
     "provisional_note": "Recorded the night it happened. The rate is certain; the vote, the motions and the figures the resolutions recite are transcribed here as soon as the city publishes the recording or the minutes, and until then every figure above except the two rates is this project's own arithmetic on them.",
-    "shortfall": "It also widens the hole the August 6 rate had already left. The stated policy was to move the Sheriff's contract off sales tax and onto property tax; at 0.000900 the levy raises about $5.19 million against a contract of $9,798,139, so roughly $4.61 million of it still comes out of sales tax — four times what the 0.001500 left short. The increase is now a little over a third of what the city noticed in June, and whether the city intends to close that difference, absorb it, or come back for it is not answered in anything published so far."
+    "shortfall": "It also widens the hole the August 6 rate had already left. The stated policy was to move the Sheriff's contract off sales tax and onto property tax; at 0.000900 the levy raises about $5.19 million against a contract of $9,798,139, so roughly $4.61 million of it still comes out of sales tax, four times what the 0.001500 left short. The increase is now a little over a third of what the city noticed in June, and whether the city intends to close that difference, absorb it, or come back for it is not answered in anything published so far."
   },
   "referendum": {
     "heading": "If a referendum happens",
-    "update": "Read this against August 18. The resolution a petition would have targeted — the 0.001500 adopted on August 6 — was repealed that night, and a new increase at 0.000900 adopted in its place. What that does to a referendum already being organized depends on what was filed and when, and this page will not guess at it: the sequence below is the statute as it reads, and the parts that turn on which resolution is the target are checked against the city recorder and Utah Code before anything here says otherwise.",
-    "lede": "A referendum against this rate is legally available — Utah Code § 20A-7-613 exists for exactly this situation, and a Utah city property tax referendum ran as recently as last autumn. What follows is the sequence, then what it would cost the city, then what happened the last time someone tried it. None of it is an argument for or against signing; it is what the statute and the precedent say.",
+    "update": "Read this against August 18. The resolution a petition would have targeted, the 0.001500 adopted on August 6, was repealed that night, and a new increase at 0.000900 adopted in its place. What that does to a referendum already being organized depends on what was filed and when, and this page will not guess at it: the sequence below is the statute as it reads, and the parts that turn on which resolution is the target are checked against the city recorder and Utah Code before anything here says otherwise.",
+    "lede": "A referendum against this rate is legally available: Utah Code § 20A-7-613 exists for exactly this situation, and a Utah city property tax referendum ran as recently as last autumn. What follows is the sequence, then what it would cost the city, then what happened the last time someone tried it. None of it is an argument for or against signing; it is what the statute and the precedent say.",
     "steps": [
       {
         "label": "File the application",
@@ -376,15 +376,15 @@
       },
       {
         "label": "The city writes the impact statement",
-        "text": "Within three business days the recorder hands the application to the city's budget officer, who must produce — with legal counsel — an unbiased fiscal and legal impact statement estimating what repealing the rate would do (§ 20A-7-602.5). This is a legal obligation on city staff, on a short clock, and it is the first real cost."
+        "text": "Within three business days the recorder hands the application to the city's budget officer, who must produce, with legal counsel, an unbiased fiscal and legal impact statement estimating what repealing the rate would do (§ 20A-7-602.5). This is a legal obligation on city staff, on a short clock, and it is the first real cost."
       },
       {
-        "label": "Gather signatures — against two thresholds",
+        "label": "Gather signatures, against two thresholds",
         "text": "For a city of the second class it is 8.25% of active voters citywide, and 8.25% within at least 75% of the city's voter participation areas (§ 20A-7-601(2)(d)). Both must be met. The second one is the one that decides these, and almost nobody organizing a petition budgets for it. Eagle Mountain has only just become a second-class city: the threshold in state law is 65,000 residents, the first statewide subcounty estimates put the city at 65,409 in 2025, and the class changes on the lieutenant governor's certificate rather than on the estimate itself (§ 10-2-301, § 67-1a-2(3)(d)). If that certificate has not issued, it is still a third-class city and the two thresholds are 10% rather than 8.25%. The city recorder is the authority on which applies, not this page."
       },
       {
         "label": "Beat a 30- or 40-day clock",
-        "text": "Packets go to the county clerk by 5 p.m. on the first business day at least 30 calendar days after the first person signs that packet, or the first business day at least 40 calendar days after the local clerk hands the sponsors the petition and signature sheets under § 20A-7-604(3) — whichever of the two falls first (§ 20A-7-613(3)). So a packet started early expires early."
+        "text": "Packets go to the county clerk by 5 p.m. on the first business day at least 30 calendar days after the first person signs that packet, or the first business day at least 40 calendar days after the local clerk hands the sponsors the petition and signature sheets under § 20A-7-604(3), whichever of the two falls first (§ 20A-7-613(3)). So a packet started early expires early."
       },
       {
         "label": "The county verifies",
@@ -392,35 +392,35 @@
       },
       {
         "label": "If it qualifies, this year's rate reverts",
-        "text": "The certified tax rate for the fiscal year in which the petition was filed becomes the city's most recent certified rate (§ 20A-7-613(10)(a)(i)). FY2026–27 would be collected at the old rate — before anybody votes. This is the provision that actually matters, and it favors the sponsors."
+        "text": "The certified tax rate for the fiscal year in which the petition was filed becomes the city's most recent certified rate (§ 20A-7-613(10)(a)(i)). FY2026–27 would be collected at the old rate, before anybody votes. This is the provision that matters, and it favors the sponsors."
       },
       {
         "label": "Then the vote, on November 3, 2026",
-        "text": "The next regular general election, unless a special election is called (§ 20A-7-613(7)). If the timing runs past the ballot printing deadline, the question is printed anyway and simply not counted if it never qualifies (§ 20A-7-613(13))."
+        "text": "The next regular general election, unless a special election is called (§ 20A-7-613(7)). If the timing runs past the ballot printing deadline, the question is printed anyway and not counted if it never qualifies (§ 20A-7-613(13))."
       },
       {
         "label": "And the outcome is asymmetric",
-        "text": "A majority voting against the rate kills the increase. Anything else and the proposed increased revenues set the certified rate for the following fiscal year — with § 20A-7-613(10)(c) letting the city skip re-running the Truth-in-Taxation notice and hearing to get there. Losing delays the increase by a year. Only winning stops it."
+        "text": "A majority voting against the rate kills the increase. Anything else and the proposed increased revenues set the certified rate for the following fiscal year, with § 20A-7-613(10)(c) letting the city skip re-running the Truth-in-Taxation notice and hearing to get there. Losing delays the increase by a year. Only winning stops it."
       }
     ],
     "cost": {
       "heading": "What it would cost Eagle Mountain",
-      "lede": "Two costs, and they are nothing like the same size. The one people talk about is the county reimbursement. The one that would actually reshape the year is the suspended levy.",
+      "lede": "Two costs, and they are nothing like the same size. The one people talk about is the county reimbursement. The one that would reshape the year is the suspended levy.",
       "items": [
         {
           "figure": "≈ $5.59M",
           "label": "A year of the levy, suspended",
-          "text": "If the petition qualifies, FY2026–27 is collected at the old certified rate whatever the voters later decide. That is the whole adopted increase, gone for a year — and the city cannot re-notice its way around it mid-year. Every figure below is downstream of this one."
+          "text": "If the petition qualifies, FY2026–27 is collected at the old certified rate whatever the voters later decide. That is the whole adopted increase, gone for a year, and the city cannot re-notice its way around it mid-year. Every figure below is downstream of this one."
         },
         {
           "figure": "Not published",
           "label": "The county reimbursement",
-          "text": "§ 20A-7-613(12) makes the city repay Utah County the costs it would not have incurred but for the referendum — signature verification, ballot preparation, printing. Neither the city nor the county has published a figure, and the size depends on whether the question rides the already-scheduled November 3 general election or triggers a special one. It is a real bill, and next to the suspended levy it is a rounding error. This page will not invent a number for it."
+          "text": "§ 20A-7-613(12) makes the city repay Utah County the costs it would not have incurred but for the referendum: signature verification, ballot preparation, printing. Neither the city nor the county has published a figure, and the size depends on whether the question rides the already-scheduled November 3 general election or triggers a special one. It is a real bill, and next to the suspended levy it is a rounding error. This page will not invent a number for it."
         },
         {
           "figure": "28 positions",
           "label": "The hiring, first",
-          "text": "The council was told plainly in May that every position in the tentative budget depends on this revenue — not because the tax pays their salaries, but because without it the sales tax stays pinned under the Sheriff's contract and the general fund has nothing left.",
+          "text": "The council was told plainly in May that every position in the tentative budget depends on this revenue, not because the tax pays their salaries, but because without it the sales tax stays pinned under the Sheriff's contract and the general fund has nothing left.",
           "source": {
             "meeting": 748,
             "date": "2026-05-26",
@@ -451,11 +451,11 @@
           }
         }
       ],
-      "note": "One thing a referendum would not do: reopen the Sheriff's contract. That is a signed agreement with Utah County, and it is the line the schedule names. If the revenue goes, the contract does not — it goes back to being paid out of sales tax, which is the arrangement the whole increase was meant to end."
+      "note": "One thing a referendum would not do: reopen the Sheriff's contract. That is a signed agreement with Utah County, and it is the line the schedule names. If the revenue goes, the contract does not. It goes back to being paid out of sales tax, which is the arrangement the whole increase was meant to end."
     },
     "precedent": {
       "heading": "The last Utah city to try this",
-      "text": "Ivins City, Washington County, autumn 2025. The council raised the rate in August for about $860,000 — a 33.76% increase, $121.37 a year on the $743,000 home its notice used. Residents ran a referendum and got the raw signature count. On October 16 the city recorder declared it insufficient anyway: the threshold was met in only two of the four voter participation areas, and the law requires three. The question had already been printed on the ballots, so Washington County printed it and did not count it. The tax increase took effect.",
+      "text": "Ivins City, Washington County, autumn 2025. The council raised the rate in August for about $860,000: a 33.76% increase, $121.37 a year on the $743,000 home its notice used. Residents ran a referendum and got the raw signature count. On October 16 the city recorder declared it insufficient anyway: the threshold was met in only two of the four voter participation areas, and the law requires three. The question had already been printed on the ballots, so Washington County printed it and did not count it. The tax increase took effect.",
       "note": "Ivins is a city of about 11,000, divided into four voter participation areas, so it needed three. Eagle Mountain is roughly six times larger; how many areas it is divided into, and what 75% of them works out to, is a question for the city recorder rather than for this page. The point that carries over is the shape of the test: a petition has to be built around geographic spread, not around a headline signature count. That is what sank the last one."
     }
   },
@@ -464,7 +464,7 @@
     "lede": "A page that only made the city's case would not be worth reading. These are the objections the record does not answer, or answers badly.",
     "items": [
       {
-        "text": "The public messaging overreached where the statutory schedule did not. The schedule says the revenue funds public safety operations and supports the Sheriff's Office including added deputies — accurate, and narrower than it sounds. What residents quoted back to the council was blunter.",
+        "text": "The public messaging overreached where the statutory schedule did not. The schedule says the revenue funds public safety operations and supports the Sheriff's Office including added deputies: accurate, and narrower than it sounds. What residents quoted back to the council was blunter.",
         "source": {
           "meeting": 747,
           "date": "2026-08-06",
@@ -473,7 +473,7 @@
         }
       },
       {
-        "text": "The council discussed a possible state cap on city tax increases as a reason to act now. A cap bill was floated and failed, and the underlying revenue threat — a proposal to socialize the municipal energy tax that data centers generate — is real. But “raise it before the state stops us” reads badly however true the pressure is, and residents who heard it said so.",
+        "text": "The council discussed a possible state cap on city tax increases as a reason to act now. A cap bill was floated and failed, and the underlying revenue threat, a proposal to socialize the municipal energy tax that data centers generate, is real. But “raise it before the state stops us” reads badly however true the pressure is, and residents who heard it said so.",
         "source": {
           "meeting": 747,
           "date": "2026-08-06",
@@ -491,7 +491,7 @@
         }
       },
       {
-        "text": "The schedule the city noticed moved three times before it settled — 245% on May 26, 218% read on June 16, 220.88% on the notice — and the certified rate underneath it moved with it, from 0.000534 to the 0.000530 the city printed once, in a schedule posted on June 18. That is mostly the county's calendar rather than concealment, but it made the number look unstable to anyone watching.",
+        "text": "The schedule the city noticed moved three times before it settled (245% on May 26, 218% read on June 16, 220.88% on the notice), and the certified rate underneath it moved with it, from 0.000534 to the 0.000530 the city printed once, in a schedule posted on June 18. That is mostly the county's calendar rather than concealment, but it made the number look unstable to anyone watching.",
         "source": {
           "meeting": 726,
           "date": "2026-06-16",
@@ -509,7 +509,7 @@
         }
       },
       {
-        "text": "Data-center incentives are the grievance underneath the grievance, and the city's answer is partly good and partly beside the point. State law and the redevelopment agreements both prevent taxing data centers at a different rate from houses, so the city genuinely cannot single them out. But the incentives that were granted were granted, and the revenue they were meant to bring has not arrived yet.",
+        "text": "Data-center incentives are the grievance underneath the grievance, and the city's answer is partly good and partly beside the point. State law and the redevelopment agreements both prevent taxing data centers at a different rate from houses, so the city cannot single them out. But the incentives that were granted were granted, and the revenue they were meant to bring has not arrived yet.",
         "source": {
           "meeting": 747,
           "date": "2026-08-06",
@@ -520,7 +520,7 @@
     ],
     "coming": {
       "heading": "The revenue everyone is waiting for",
-      "text": "Presented at the hearing as figures from QTS, for buildings under construction and not yet on the tax rolls. Estimates, given as such — and the reason several councilmembers said they expect to revisit the rate downward rather than upward.",
+      "text": "Presented at the hearing as figures from QTS, for buildings under construction and not yet on the tax rolls. Estimates, given as such, and the reason several councilmembers said they expect to revisit the rate downward rather than upward.",
       "rows": [
         {
           "who": "All local jurisdictions",
@@ -552,10 +552,10 @@
       }
     }
   },
-  "sources_note": "Every quotation on this page is transcribed from the city's own recording of the meeting named beside it. Transcripts for all of these meetings are on this site; the August 6 minutes had not been published when this was written, so the figures from that night come from the recording. The documents behind the noticed figures — the notice itself, the impact schedule it was built on, and Utah County's combined notice — are linked in full under “Where these numbers come from”. Statutory citations are to Utah Code Title 20A, Chapter 7, Part 6 (local referenda) as amended through the 2026 General Session.",
+  "sources_note": "Every quotation on this page is transcribed from the city's own recording of the meeting named beside it. Transcripts for all of these meetings are on this site; the August 6 minutes had not been published when this was written, so the figures from that night come from the recording. The documents behind the noticed figures (the notice itself, the impact schedule it was built on, and Utah County's combined notice) are linked in full under “Where these numbers come from”. Statutory citations are to Utah Code Title 20A, Chapter 7, Part 6 (local referenda) as amended through the 2026 General Session.",
   "strain": {
     "heading": "Most of the complaints at the hearing were descriptions of the problem",
-    "lede": "This is the strangest thing in the transcript, and it is worth reading the room for it. Speaker after speaker opposed the increase and then, in the same three minutes, described dying parks, broken roads, uncut weeds, unanswered calls and a city that looks worse every year. Those are not separate grievances from the budget argument. They are what a city looks like when it runs on a fifteen-year-old rate — and they are the specific things the freed money was earmarked to fix.",
+    "lede": "This is the strangest thing in the transcript, and it is worth reading the room for it. Speaker after speaker opposed the increase and then, in the same three minutes, described dying parks, broken roads, uncut weeds, unanswered calls and a city that looks worse every year. Those are not separate grievances from the budget argument. They are what a city looks like when it runs on a fifteen-year-old rate, and they are the specific things the freed money was earmarked to fix.",
     "pairs": [
       {
         "said": "Look at our parks, look at our walking paths. Even behind my house, which is a new build for the most part, it's all gone to crap. It looks unpresentable, ugly on the eye — and I don't think that a 220% increase is going to help with that.",
@@ -610,7 +610,7 @@
         },
         {
           "figure": "$525,000",
-          "text": "What it costs to lift city wages to 90% of the market median — not above it, to just under the middle of it."
+          "text": "What it costs to lift city wages to 90% of the market median, not above it, to just under the middle of it."
         },
         {
           "figure": "236 staff, 115 hires",
@@ -618,7 +618,7 @@
         },
         {
           "figure": "~$150,000",
-          "text": "Spent on outside counsel in a year, because the one city attorney has no bandwidth — the weekly development review meeting he is required by code to attend is among the things that go undone."
+          "text": "Spent on outside counsel in a year, because the one city attorney has no bandwidth, the weekly development review meeting he is required by code to attend is among the things that go undone."
         },
         {
           "figure": "8–9 short",
@@ -646,6 +646,6 @@
         }
       ]
     },
-    "closer": "None of this obliges anyone to support the increase. Plenty of speakers argued the money should come from data centers, from impact fees, from cuts elsewhere, or more slowly — all reasonable positions. But \"the city looks terrible, so don't give them more money\" is the one argument the record does not support, because the looking-terrible and the not-having-money are the same fact seen from two ends."
+    "closer": "None of this obliges anyone to support the increase. Plenty of speakers argued the money should come from data centers, from impact fees, from cuts elsewhere, or more slowly, all reasonable positions. But \"the city looks terrible, so don't give them more money\" is the one argument the record does not support, because the looking-terrible and the not-having-money are the same fact seen from two ends."
   }
 }

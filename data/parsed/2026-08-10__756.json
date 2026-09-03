@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 1129,
+      "id": 1127,
       "meeting_id": 756,
       "date": "2026-08-10",
       "page": 2,
@@ -42,7 +42,11 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Federal housing grant plan sent to Washington",
+      "summary": "The council signed off on Eagle Mountain's spending plan for its 2026 federal Community Development Block Grant money and sent it to HUD for approval.",
+      "impact": "HUD requires this plan before the city can draw its block grant funds. The motion names no projects or amounts, so nothing here tells you what the money will buy.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

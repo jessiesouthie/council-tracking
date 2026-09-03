@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 1097,
+      "id": 1095,
       "meeting_id": 726,
       "date": "2026-06-16",
       "page": 7,
@@ -49,7 +49,7 @@
       "significance": "routine"
     },
     {
-      "id": 1098,
+      "id": 1096,
       "meeting_id": 726,
       "date": "2026-06-16",
       "page": 7,
@@ -85,11 +85,11 @@
       ],
       "headline": "Third change to this year's city budget",
       "summary": "The council approved a third amendment to the 2025-2026 budget, adjusting the city's spending plan for the fiscal year now ending.",
-      "impact": "The motion doesn't say what was moved or added, so no change to your bills or services is stated — this is the city squaring its books before the year closes.",
+      "impact": "The motion doesn't say what was moved or added, so no change to your bills or services is stated. This is the city squaring its books before the year closes.",
       "significance": "routine"
     },
     {
-      "id": 1099,
+      "id": 1097,
       "meeting_id": 726,
       "date": "2026-06-16",
       "page": 9,
@@ -129,7 +129,7 @@
       "significance": "notable"
     },
     {
-      "id": 1100,
+      "id": 1098,
       "meeting_id": 726,
       "date": "2026-06-16",
       "page": 10,
@@ -163,9 +163,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Council must be told when concept plans go forward",
-      "summary": "The city changed its development rules so the council is notified every time a concept plan is set to go before the Planning Commission.",
-      "impact": "Nothing changes day to day for residents. Council members simply get advance notice of proposed developments before the Planning Commission reviews them.",
+      "headline": "Council to be told when concept plans reach Planning",
+      "summary": "The council changed the city code so it must be notified every time a concept plan is set to go before the Planning Commission.",
+      "impact": "This one lands on city staff, who now have to send council a heads-up on each concept plan. Nothing changes for you as a resident, though elected members will see early development ideas sooner.",
       "significance": "routine"
     }
   ],

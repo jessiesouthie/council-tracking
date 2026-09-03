@@ -25,9 +25,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Recycling zoning change sent back to staff",
-      "summary": "The council pushed back on a set of zoning definition and land-use code changes, directing staff to return with the recycling portion as a 'special use' instead.",
-      "impact": "Nothing changes for now. A recycling operation looking to open in Eagle Mountain would have to wait for a revised version of the rules to come back to the council."
+      "headline": "Recycling use sent back for a rewrite",
+      "summary": "The council turned down changes to zoning definitions, conditional uses and land use tables, and asked staff to return with the recycling piece as a special use.",
+      "impact": "Nothing in the zoning code changed today. The recycling part comes back to the council later as a special use; the rest of the proposal is off the table.",
+      "significance": "routine"
     },
     {
       "id": 710,
@@ -46,9 +47,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Taller screening fences where businesses sit above homes",
-      "summary": "The council considered measuring fence height from the higher grade of an adjoining commercial or industrial pad, so fences screening homes from businesses can be taller.",
-      "impact": "If you live next to a business or industrial site built on higher ground, the fence between you could be built tall enough to actually block the view. Fence rules elsewhere in the city are unchanged."
+      "headline": "Taller fences where businesses sit above homes",
+      "summary": "Fence height gets measured differently now: where a commercial or industrial pad sits above neighboring homes, the council set the taller screen as the standard.",
+      "impact": "If a business lot beside your yard is built up higher than your property, the screening fence is measured from that higher pad and blocks more. Only homes on those boundaries, and the builders next door, are touched.",
+      "significance": "notable"
     },
     {
       "id": 711,
@@ -70,8 +72,9 @@
         }
       ],
       "headline": "New rules for hiring a city manager",
-      "summary": "The council took up a rewrite of the code covering its top staff job, renaming it 'city manager' and spelling out how a vacancy would be filled.",
-      "impact": "This is internal government housekeeping — nothing changes for residents. It only matters if the city's top administrator leaves: the council could name an interim and would interview at least three recruiting firms before choosing."
+      "summary": "The city rewrote the code covering its top appointed job, renaming it city manager and setting how a vacancy is filled and candidates recruited.",
+      "impact": "Candidate interviews stay closed to the public, so when the job next opens you will see the appointment rather than the choosing. Nothing about city services changes.",
+      "significance": "routine"
     },
     {
       "id": 712,
@@ -90,9 +93,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "City's legislative wish list, plus a grant program",
-      "summary": "The council took up its list of priorities to push at the Utah Legislature, adding a matching-grant program for future consideration.",
-      "impact": "Nothing changes for you day to day — this is the city deciding what to ask state lawmakers for. Any real effect would depend on what the Legislature does later."
+      "headline": "City's asks of the state legislature set",
+      "summary": "The council adopted its list of priorities to push at the state legislature, adding a matching grant program to be taken up later.",
+      "impact": "This one shapes what the city asks lawmakers for, nothing more. No resident feels it.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

@@ -43,9 +43,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda approved, four items pulled",
-      "summary": "The council approved its consent agenda after pulling four items out of it for separate discussion.",
-      "impact": "This is routine housekeeping — nothing changes for residents. The four pulled items were taken up individually later in the meeting.",
+      "headline": "Four items pulled off the consent list",
+      "summary": "The council approved its consent agenda but pulled four items out of it for open discussion later in the meeting.",
+      "impact": "Those four items got debated in public rather than passing in a single silent vote. The step itself reaches no resident directly.",
       "significance": "routine"
     },
     {
@@ -77,9 +77,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Firefly tank change order put on hold",
-      "summary": "The council delayed a decision on the second change order for the Firefly 4MG tank project.",
-      "impact": "Nothing changes for residents right now — the item comes back to the council at a later meeting.",
+      "headline": "Firefly water tank change order put off",
+      "summary": "The council set aside a second change order on the Firefly 4 million gallon water tank without deciding it.",
+      "impact": "The tank work waits on a later meeting for this piece. Nothing about your water service changes in the meantime.",
       "significance": "routine"
     },
     {
@@ -199,7 +199,7 @@
       ],
       "headline": "City buys 21 acres for a future civic campus",
       "summary": "The city agreed to buy 20.99 acres of land from Ivory Homes and SITLA for a future civic campus.",
-      "impact": "The city now has land set aside for future civic buildings. Nothing is built yet — the motion doesn't say what will go there, what it cost, or when.",
+      "impact": "The city now has land set aside for future civic buildings. Nothing is built yet: the motion doesn't say what will go there, what it cost, or when.",
       "significance": "notable"
     },
     {
@@ -238,9 +238,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Water rights rules for new development changed",
-      "summary": "The council amended the city code covering water rights and concept plans, adopting the changes discussed at the meeting.",
-      "impact": "This lands mainly on developers and landowners bringing new projects forward; what they must supply before approval is changing. Nothing changes for existing homes or your water bill.",
+      "headline": "New water rights rules for new development",
+      "summary": "The council changed the city's development code to alter how water rights and early-stage concept plans are handled, with amendments made during the meeting.",
+      "impact": "Landowners and builders bringing new projects forward will have to meet the revised water rights requirements. If you are not proposing a development, nothing changes for you.",
       "significance": "notable"
     },
     {
@@ -280,7 +280,7 @@
       ],
       "headline": "Four zoning code sections updated",
       "summary": "The council amended four sections of the city's zoning code; the motion gives no detail on what the changes actually do.",
-      "impact": "We can't tell you what changed — the record names only section numbers. They sit in Title 17, the zoning rules that govern what can be built and where.",
+      "impact": "We can't tell you what changed: the record names only section numbers. They sit in Title 17, the zoning rules that govern what can be built and where.",
       "significance": "notable"
     },
     {
@@ -320,7 +320,7 @@
       ],
       "headline": "New standards for RV and trailer storage",
       "summary": "The council rewrote the city's rules for outdoor storage of recreational vehicles and trailers, changing the standards that apply to that use.",
-      "impact": "This touches properties used to store RVs and trailers outdoors — storage yard owners and operators more than ordinary homeowners. The record doesn't spell out the new requirements, so check the updated chapter before relying on the old rules.",
+      "impact": "This touches properties used to store RVs and trailers outdoors: storage yard owners and operators more than ordinary homeowners. The record doesn't spell out the new requirements, so check the updated chapter before relying on the old rules.",
       "significance": "notable"
     }
   ],

@@ -42,8 +42,9 @@
         }
       ],
       "headline": "Bryan Free added as planning commission alternate",
-      "summary": "The council appointed Bryan Free as an alternate on the planning commission, finishing a two-year term that runs through December 2025.",
-      "impact": "Nothing changes for you now. He steps in when a regular commissioner is absent from the board that reviews zoning and development plans."
+      "summary": "Bryan Free was appointed an alternate on the planning commission, finishing a two-year term that runs through December 2025.",
+      "impact": "Alternates fill in when a regular commissioner cannot attend a zoning or development hearing. Filling the seat changes no rule you live under.",
+      "significance": "routine"
     },
     {
       "id": 704,
@@ -80,9 +81,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Consent agenda approved, two items pulled for debate",
-      "summary": "The council approved its batch of routine consent items, pulling two of them out to be taken up separately.",
-      "impact": "This is routine housekeeping — nothing changes for residents."
+      "headline": "Consent agenda passed, two items pulled",
+      "summary": "The council pulled two items off its consent agenda for separate discussion and approved everything else in a single vote.",
+      "impact": "Housekeeping items cleared together, with two held back for their own hearing. Nothing lands on a resident at this step.",
+      "significance": "routine"
     },
     {
       "id": 705,
@@ -120,8 +122,9 @@
         }
       ],
       "headline": "Site plan approved for LKL Associates",
-      "summary": "The council approved a site plan for LKL Associates; the record does not say what the project is or where it would go.",
-      "impact": "The record is too thin to say who this touches. A site plan approval is the step that lets a developer move ahead with building on a lot."
+      "summary": "The council signed off on the site plan for LKL Associates, letting the project proceed on the layout submitted.",
+      "impact": "Neighbors of the site are the people this touches. The motion names no address, no acreage and no use, so what will be built there is not in the record.",
+      "significance": "notable"
     },
     {
       "id": 706,
@@ -156,9 +159,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Set the rules for hiring a city administrator",
-      "summary": "The city adopted the process it will follow to hire its next city administrator, using the standard national guidelines for municipal recruitment.",
-      "impact": "This is procedural housekeeping — nothing changes for residents. It only settles how the search will be run before anyone is chosen."
+      "headline": "Hiring process set for a new city administrator",
+      "summary": "Council members adopted a process for hiring a permanent city administrator, following the recruitment handbook of the national city and county managers' association.",
+      "impact": "This sets the rules the city follows while it recruits. Nothing here reaches a resident.",
+      "significance": "routine"
     },
     {
       "id": 707,
@@ -190,8 +194,9 @@
         }
       ],
       "headline": "Steve Mumford named interim city administrator",
-      "summary": "The council appointed Steve Mumford to run the city's day-to-day operations on an interim basis.",
-      "impact": "Nothing changes for you day to day. This temporarily fills the city's top staff job while a permanent hire is worked out."
+      "summary": "Steve Mumford was appointed interim city administrator, the staff job that runs the city's day-to-day operations, on a temporary basis.",
+      "impact": "City Hall has someone in charge again. You deal with the same offices and the same counter staff as before.",
+      "significance": "routine"
     },
     {
       "id": 708,
@@ -230,9 +235,10 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Shift road money to Mid Valley Road widening",
-      "summary": "The city amended its 2023-24 budget to move money set aside for Walden Park Road over to the Mid Valley Road widening project.",
-      "impact": "If you drive Mid Valley Road, this is the funding step that has to happen before widening work can go ahead. Nothing changes in what you pay."
+      "headline": "Walden Park Road money moved to Mid Valley Road",
+      "summary": "The council amended its 2023-24 budget to take Capital Fund money set aside for Walden Park Road and put it toward widening Mid Valley Road.",
+      "impact": "Drivers on Mid Valley Road are the ones who stand to gain. Walden Park Road loses the money it was holding this budget year, with no replacement named in the motion.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

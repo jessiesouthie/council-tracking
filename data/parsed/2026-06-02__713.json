@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 1093,
+      "id": 1091,
       "meeting_id": 713,
       "date": "2026-06-02",
       "page": 8,
@@ -45,11 +45,11 @@
       ],
       "headline": "Consent agenda approved, with trails added",
       "summary": "The council approved its consent agenda, adding \"trails\" to the scope of review in one of the items it covered.",
-      "impact": "This is routine housekeeping — the consent agenda bundles uncontested items into one vote, and nothing here changes for residents.",
+      "impact": "This is routine housekeeping: the consent agenda bundles uncontested items into one vote, and nothing here changes for residents.",
       "significance": "routine"
     },
     {
-      "id": 1094,
+      "id": 1092,
       "meeting_id": 713,
       "date": "2026-06-02",
       "page": 9,
@@ -90,7 +90,7 @@
       "significance": "notable"
     },
     {
-      "id": 1095,
+      "id": 1093,
       "meeting_id": 713,
       "date": "2026-06-02",
       "page": 10,
@@ -130,7 +130,7 @@
       "significance": "notable"
     },
     {
-      "id": 1096,
+      "id": 1094,
       "meeting_id": 713,
       "date": "2026-06-02",
       "page": 11,
@@ -162,9 +162,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Speed bumps added to council's study list",
-      "summary": "The council added an evaluation of speed bumps and speed tables to its Legislative Priorities List.",
-      "impact": "Nothing changes on your street. This only puts the question of speed bumps and speed tables on the council's list of things to look at later.",
+      "headline": "Study speed bumps for city streets",
+      "summary": "The council added a review of speed bumps and speed tables to its Legislative Priorities List, the running list of items the city wants to work on.",
+      "impact": "Nothing has been built or funded here. It puts traffic calming on the list of things the city intends to look at, so any actual bumps on your street are still some way off.",
       "significance": "routine"
     }
   ],

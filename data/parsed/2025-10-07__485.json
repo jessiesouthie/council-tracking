@@ -43,9 +43,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Routine items approved, four pulled off the list",
-      "summary": "The council approved its consent agenda after pulling three items out for full discussion and dropping a fourth item from the agenda entirely.",
-      "impact": "Nothing changes for residents — this is the housekeeping step that clears uncontroversial items in a single vote. The three pulled items were debated separately later in the meeting.",
+      "headline": "Consent agenda passed, four items pulled out",
+      "summary": "The council approved its batch of routine items, moved three of them into the discussion portion of the meeting and struck a fourth from the agenda.",
+      "impact": "Meeting mechanics only. Pulling an item means the council argued it separately rather than passing it in the batch, and one item came off the agenda without being decided.",
       "significance": "routine"
     },
     {
@@ -85,7 +85,7 @@
       ],
       "headline": "Hidden Hollow keeps its pool",
       "summary": "The council rejected Cadence Homes' request to swap the planned swimming pool at the Hidden Hollow clubhouse for a gym and lawn games.",
-      "impact": "If you live in or are buying into Hidden Hollow, the clubhouse amenity stays as it was originally approved — a swimming pool, not a gym.",
+      "impact": "If you live in or are buying into Hidden Hollow, the clubhouse amenity stays as it was originally approved: a swimming pool, not a gym.",
       "significance": "notable"
     },
     {
@@ -281,7 +281,7 @@
       ],
       "headline": "Lot lines redrawn in Rush Creek industrial area",
       "summary": "The council approved changes to two lots, 102 and 111, in Phase A of the Rush Creek Industrial plat.",
-      "impact": "This is a boundary change on paper in an industrial area. It affects the property owner and what can be built on those two lots — not the average resident.",
+      "impact": "This is a boundary change on paper in an industrial area. It affects the property owner and what can be built on those two lots, not the average resident.",
       "significance": "routine"
     },
     {
@@ -319,9 +319,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Design rules for shops and apartments put on hold",
-      "summary": "The council delayed a decision on updated design standards for commercial and apartment buildings, sending them back for final changes before another vote.",
-      "impact": "Nothing changes yet. The rules that govern what new stores and apartment buildings must look like stay as they are until the council takes the item up again.",
+      "headline": "Rules for shops and apartments put on hold",
+      "summary": "The council tabled changes to the city's design standards for commercial buildings and apartments, waiting on final edits from its October 21 discussion.",
+      "impact": "Anyone planning a store or an apartment project keeps building under the current standards until the council picks the item back up. Homeowners are untouched either way.",
       "significance": "routine"
     },
     {
@@ -357,9 +357,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Franchise deal approved with Zayo Group",
-      "summary": "The city approved a franchise agreement with Zayo Group, LLC, the standard permission a telecom company needs to do business in Eagle Mountain.",
-      "impact": "Nothing changes for you today. The motion does not say what Zayo will build or when — this is the paperwork step that lets the company operate in the city.",
+      "headline": "Zayo Group gets a city franchise agreement",
+      "summary": "Eagle Mountain approved a franchise agreement with Zayo Group, LLC, the second telecom deal the council passed that night.",
+      "impact": "A company-and-city arrangement, not a change to anyone's internet service. The record of this motion does not say what Zayo will build or when.",
       "significance": "routine"
     },
     {
@@ -395,9 +395,9 @@
           "vote": "Yes"
         }
       ],
-      "headline": "Franchise deal approved with SummitIG Fiber",
-      "summary": "The city approved a franchise agreement with SummitIG Fiber, LLC, the standard permission a fiber-optic company needs to do business in Eagle Mountain.",
-      "impact": "Nothing changes for you today. The motion does not say what SummitIG will build, where, or when — only that the company now has a franchise agreement with the city.",
+      "headline": "Franchise deal approved for SummitIG Fiber",
+      "summary": "The council approved a franchise agreement with SummitIG Fiber, LLC, the arrangement a telecom company needs before it can operate in Eagle Mountain.",
+      "impact": "Nothing here lands on your street or your bill. The terms sit between the city and the company, and the motion itself spells out none of them.",
       "significance": "routine"
     }
   ],

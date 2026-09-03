@@ -9,7 +9,7 @@
   },
   "motions": [
     {
-      "id": 1122,
+      "id": 1120,
       "meeting_id": 715,
       "date": "2026-08-04",
       "page": 4,
@@ -42,10 +42,14 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "KJ Call named youth council mayor",
+      "summary": "KJ Call will lead the Youth City Council as its mayor until the next Youth Council election, under an appointment the council approved.",
+      "impact": "A title for one student, and a line for the city's youth program. Nothing in how the city runs shifts.",
+      "significance": "routine"
     },
     {
-      "id": 1123,
+      "id": 1121,
       "meeting_id": 715,
       "date": "2026-08-04",
       "page": 4,
@@ -78,10 +82,14 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Youth council members appointed",
+      "summary": "The city seated new Youth City Council members, who serve until the next Youth Council election.",
+      "impact": "This one matters to the teenagers who applied and their families. City services and your wallet are untouched.",
+      "significance": "routine"
     },
     {
-      "id": 1124,
+      "id": 1122,
       "meeting_id": 715,
       "date": "2026-08-04",
       "page": 6,
@@ -114,10 +122,14 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Consent agenda approved",
+      "summary": "The council cleared its consent agenda, the batch of routine items handled in one vote; the record does not list what was in it.",
+      "impact": "Consent items are the ones nobody flagged for discussion. Nothing here lands on your street or your bill.",
+      "significance": "routine"
     },
     {
-      "id": 1125,
+      "id": 1123,
       "meeting_id": 715,
       "date": "2026-08-04",
       "page": 7,
@@ -127,10 +139,14 @@
       "motion": "Councilmember Whiting moved to a pprove Agenda Item 16.A. according to the chart of effected properties. Councilmember Wood seconded the motion.",
       "outcome": "",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "Vote on item 16.A property chart",
+      "summary": "Item 16.A came to a vote on the terms of a chart of affected properties; the record does not show what the item covers or how it ended.",
+      "impact": "Without a description or a result in the record, there is nothing here we can tell you about your own property. The chart in the meeting packet is the place to check.",
+      "significance": "routine"
     },
     {
-      "id": 1126,
+      "id": 1124,
       "meeting_id": 715,
       "date": "2026-08-04",
       "page": 7,
@@ -163,10 +179,14 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Zoning changed on a list of properties",
+      "summary": "The council approved general plan and zoning changes for the properties listed on a chart, with each parcel rezoned according to the proposed rezoning map.",
+      "impact": "Owners of the listed parcels, and their neighbors, are the people this reaches: what can be built there changes. The record names a chart rather than addresses, so check the meeting packet for your parcel.",
+      "significance": "notable"
     },
     {
-      "id": 1127,
+      "id": 1125,
       "meeting_id": 715,
       "date": "2026-08-04",
       "page": 9,
@@ -200,7 +220,11 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Road plan adds E 1000 N, drops Canyon Wash link",
+      "summary": "The council updated the city road plan, adding E 1000 N as a minor collector from Pony Express Parkway to the East Expressway and dropping a Canyon Wash connection.",
+      "impact": "If you live near E 1000 N, that stretch is now mapped as a through road between Pony Express Parkway and the East Expressway, and the Canyon Wash connection is off the map. Nothing is built yet; the plan also steers impact fees.",
+      "significance": "notable"
     }
   ],
   "ordinances": [
