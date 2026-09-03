@@ -36,6 +36,15 @@ SPEAKER_RE = re.compile(r"^Speaker [A-Z]+:")
 # CivicClerk public portal for Eagle Mountain; event id -> media page.
 PORTAL_MEDIA = "https://eaglemountainut.portal.civicclerk.com/event/{id}/media"
 
+# A meeting the recorder filed under the portal's catch-all category is hand-filed
+# here under a synthetic id (900000 + MMDD) rather than its portal event id, so the
+# crawler cannot later re-add it under the real id and leave the site showing the
+# night twice. That id is ours; the recording still lives under the city's, so the
+# "watch it" link has to be sent back to the event the city actually published.
+SYNTHETIC_TO_PORTAL = {
+    900826: 770,   # 26 August 2026 special session
+}
+
 
 def _duration_from_srt(srt: Path) -> str | None:
     """Return a human duration ("4h 44m") from the last cue end time, or None."""
@@ -101,7 +110,8 @@ def build() -> dict:
                 "text_file": f"transcripts/{bid}/{txt.name}",
                 "speakers_file": speakers_file,
                 "diarized": diarized,
-                "media_url": PORTAL_MEDIA.format(id=event_id),
+                "media_url": PORTAL_MEDIA.format(
+                    id=SYNTHETIC_TO_PORTAL.get(event_id, event_id)),
                 "duration": _duration_from_srt(src_dir / f"{stem}.srt"),
                 "words": len(text.split()),
             })

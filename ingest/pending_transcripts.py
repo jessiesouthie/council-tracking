@@ -94,8 +94,7 @@ def pending(
             continue
         skip_ids = skips.get(bid, set())
 
-        for ev in civicclerk.list_council_events(session=session, category=body["category"],
-                                                 strays=body.get("strays")):
+        for ev in civicclerk.list_council_events(session=session, category=body["category"]):
             day = (ev.get("eventDate") or "")[:10]
             if not day:
                 continue

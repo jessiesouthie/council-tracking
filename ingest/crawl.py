@@ -47,8 +47,7 @@ def crawl_body(body: dict, *, since, full: bool, limit: int | None,
     failures: list[tuple[int, str]] = []
 
     print(f"\n== {body['label']} ({body['id']}) ==", flush=True)
-    for ev in civicclerk.list_council_events(session=session, category=body["category"],
-                                             strays=body.get("strays")):
+    for ev in civicclerk.list_council_events(session=session, category=body["category"]):
         seen += 1
         eid = ev["id"]
         ed = ev.get("eventDate") or ""

@@ -428,8 +428,7 @@ def merge_plain(entries: list[dict]) -> int:
 def build_body(body: dict, *, horizon: int, since: str,
                session: requests.Session) -> list[dict]:
     events = civicclerk.list_upcoming_events(
-        since, session=session, category=body["category"], limit=horizon * 3,
-        strays=body.get("strays"),
+        since, session=session, category=body["category"], limit=horizon * 3
     )
 
     out: list[dict] = []

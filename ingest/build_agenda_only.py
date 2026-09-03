@@ -101,8 +101,7 @@ def build_body(body: dict, *, since: str, until: str,
     covered = minuted_ids(body) | transcribed_ids(body)
 
     out: list[dict] = []
-    for ev in civicclerk.list_council_events(session=session, category=body["category"],
-                                             strays=body.get("strays")):
+    for ev in civicclerk.list_council_events(session=session, category=body["category"]):
         date, start = split_event_time(ev.get("eventDate") or "")
         if not date or date > until:
             continue          # still to come — that's build_upcoming's file
