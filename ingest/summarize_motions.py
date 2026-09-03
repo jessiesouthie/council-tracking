@@ -135,12 +135,13 @@ For EACH numbered motion below, produce:
   "impact"   — ONE or TWO sentences, at most 45 words, on what this means for an
                ordinary resident: what changes, who it touches, what they will see,
                pay, or have to do, and when. Address the reader as "you" where it fits,
-               and be concrete about WHO is affected — the whole city, one
+               and be concrete about WHO is affected: the whole city, one
                neighborhood, homeowners, developers, a single business.
                Good: "Expect lane closures on Pony Express through 2027. Once it opens,
                       the morning backup at Ranches Parkway should ease."
-               Good: "Nothing changes day to day — this is the routine paperwork the
-                      city files to keep the grant money flowing."
+               Good: "This is the paperwork that keeps the grant money coming. You
+                      will not see it anywhere."
+               Good: "Builders filing plans will notice. Everyone else will not."
                Bad:  "This decision may have various impacts on the community."  (says nothing)
                Bad:  "Residents will benefit from improved services."  (invented)
 
@@ -165,24 +166,28 @@ For EACH numbered motion below, produce:
                decision is that a resident has to scroll; the cost of marking
                everything "notable" is that the flag stops meaning anything at all.
 
-HONESTY ABOUT IMPACT — the most important rule on this page.
+HONESTY ABOUT IMPACT. The most important rule on this page.
 Most motions are procedural: approving minutes, setting a public hearing date, renewing
 a routine contract, appointing someone to a board. A resident feels nothing. When that
-is the case, SAY SO plainly ("This is routine housekeeping — nothing changes for
-residents") instead of manufacturing a consequence. A truthful "this one doesn't affect
-you" is more useful than an invented effect, and inventing effects would destroy the
-credibility of the whole site. Never inflate a small item into a big one.
+is the case, SAY SO plainly instead of manufacturing a consequence. A truthful "this one
+doesn't affect you" is more useful than an invented effect, and inventing effects would
+destroy the credibility of the whole site. Never inflate a small item into a big one.
+
+Say it a different way each time. These notes stack up the length of a page, and a
+reader who meets the same sentence five times stops reading the field. "No resident is
+affected." "You will not see this one." "This one touches the clerk's office and nobody
+else." Any of those beats reaching for the phrase you used on the motion above.
 
 RULES
 - Ground every word ONLY in the motion text below. Do NOT invent figures, names,
   addresses, dollar amounts, or effects that are not stated. If the motion is too
   thin to say anything concrete, write a summary that plainly says what little was
-  decided — never pad it with invented specifics. This applies double to "impact":
+  decided, and never pad it with invented specifics. This applies double to "impact":
   if the motion does not support a claim about what residents will see or pay, do
   not make one.
 - Describe the DECISION, not the parliamentary mechanics. Do not write "Councilmember
   X moved to…" or "seconded" or "the motion carried".
-- Do not state the vote count or the outcome — the page already shows those next to
+- Do not state the vote count or the outcome: the page already shows those next to
   your text, and repeating them wastes the sentence.
 - Write in past tense for decided items ("The city approved…", "The council rejected…").
   If the outcome is unclear or the item was continued/tabled, describe it neutrally
@@ -190,13 +195,21 @@ RULES
 - Use plain words: "zoning change" not "rezone application"; "apartments" not
   "multi-family residential units"; "sewer plant" not "wastewater treatment facility".
 
+{house_style}
 Output ONLY a JSON object mapping each motion's number (as a string) to an object with
 "headline", "summary", "impact", and "significance". No markdown, no code fence, no
 commentary.
 
 Example of the exact output shape:
-{"1": {"headline": "Widen Pony Express Parkway", "summary": "The city approved $2.4M to add lanes on Pony Express Parkway, the main route out of the valley.", "impact": "Expect lane closures through 2027. Once it opens, the morning backup at Ranches Parkway should ease.", "significance": "notable"}, "2": {"headline": "March minutes approved", "summary": "The council approved the minutes of its March 4 meeting.", "impact": "Nothing changes for residents — this is the record-keeping step that makes the last meeting official.", "significance": "routine"}}
+{"1": {"headline": "Widen Pony Express Parkway", "summary": "The city approved $2.4M to add lanes on Pony Express Parkway, the main route out of the valley.", "impact": "Expect lane closures through 2027. Once it opens, the morning backup at Ranches Parkway should ease.", "significance": "notable"}, "2": {"headline": "March minutes approved", "summary": "The council approved the minutes of its March 4 meeting.", "impact": "This is the record-keeping step that makes the last meeting official. No resident is affected by it.", "significance": "routine"}}
 """
+
+# The style rules live in one file because three prompts need the same ones: this
+# one, scripts/transcribe_meeting.sh, and the "ask about this site" Worker. PROMPT
+# holds JSON braces of its own, so this is a literal replace rather than str.format.
+PROMPT = PROMPT.replace(
+    "{house_style}",
+    (ROOT / "ingest" / "house_style.txt").read_text(encoding="utf-8"))
 
 
 def build_prompt(meeting_date: str, motions: list[dict]) -> str:

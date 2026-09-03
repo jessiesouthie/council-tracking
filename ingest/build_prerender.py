@@ -41,6 +41,11 @@ import sys
 from datetime import date
 from pathlib import Path
 
+# The index and the page it links to have to print a meeting's counts the same
+# way, so the string is built in one place and imported rather than written out
+# again here.
+from .build_meeting_pages import counts_line
+
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 DATA = DOCS / "data.json"
@@ -120,9 +125,9 @@ def render_meetings(data: dict, body_id: str = "city-council") -> str:
         heads = [m["headline"] for m in motions
                  if m.get("headline")][:HEADLINES_PER_MEETING]
 
-        counts = (f"{meeting.get('motion_count', 0)} motions · "
-                  f"{meeting.get('ord_count', 0)} ordinance lines · "
-                  f"{meeting.get('res_count', 0)} resolution lines")
+        counts = counts_line(meeting.get("motion_count", 0),
+                             meeting.get("ord_count", 0),
+                             meeting.get("res_count", 0))
         summary = f"<span class=\"pre-heads\">{esc('; '.join(heads))}</span>" if heads else ""
         # The meeting's own page, not meetings.html?id= — the static page is the
         # canonical URL for a meeting, and this list is the crawl path to it.

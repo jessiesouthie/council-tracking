@@ -175,14 +175,14 @@ PEER_SOURCES = {
 # Cities in the size band that had to be left out, and why. Naming them is the
 # difference between a peer set and a selection.
 EXCLUDED = [
-    {"city": "Millcreek", "reason": "Publishes basic financial statements only — 64 "
+    {"city": "Millcreek", "reason": "Publishes basic financial statements only: 64 "
      "pages with no statistical section, so no staffing schedule exists to read."},
     {"city": "Taylorsville", "reason": "The city's finance pages refuse automated "
      "requests (HTTP 403), so the report could not be retrieved."},
     {"city": "Saratoga Springs", "reason": "The city's public audit archive stops at "
-     "FY2017. No recent report is posted where it can be found — worth noting on its "
+     "FY2017. No recent report is posted where it can be found: worth noting on its "
      "own account, since this is the city Eagle Mountain is most often compared with."},
-    {"city": "Spanish Fork", "reason": "Publishes basic financial statements only — no "
+    {"city": "Spanish Fork", "reason": "Publishes basic financial statements only: no "
      "statistical section, so no staffing schedule exists to read."},
     {"city": "Bountiful", "reason": "Its report is served through a viewer that returns "
      "a web page rather than the PDF, and could not be retrieved for this build."},
@@ -191,7 +191,7 @@ EXCLUDED = [
     {"city": "Cedar City", "reason": "No finance or archive page could be located that "
      "serves the report."},
     {"city": "Syracuse", "reason": "Publishes a schedule of full-time employees rather "
-     "than full-time equivalents — a headcount of permanent staff that leaves part-time "
+     "than full-time equivalents: a headcount of permanent staff that leaves part-time "
      "and seasonal work out entirely. That is a different measure from the one every "
      "other city here reports, and mixing the two would overstate nobody consistently."},
     {"city": "Roy", "reason": "Same as Syracuse: reports a headcount of full-time "
@@ -858,8 +858,8 @@ def build(cache: Path | None):
         "upc_latest": em_upc.get(max(em_upc)) if em_upc else None,
         "city_claims": CITY_CLAIMED_POPULATION,
         "note": (
-            "Two independent official estimates — the Census Bureau's and Utah's own "
-            "— agree with each other closely and both run well below the figures the "
+            "Two independent official estimates, the Census Bureau's and Utah's own, "
+            "agree with each other closely and both run well below the figures the "
             "city uses in its own meetings. The comparison on this page has to use one "
             "series measured the same way for every city, so it uses the Census "
             "figure; if the city's higher number is right, Eagle Mountain is leaner "
@@ -957,8 +957,8 @@ def main():
             "audited ACFR statistical section (the GASB 44 schedule, ten years wide); "
             "population is the Census Bureau's sub-county estimate for every city, so "
             "the denominator is one consistent series rather than each city's own "
-            "claim. Eagle Mountain employs nobody in police or fire — patrol is a Utah "
-            "County Sheriff contract, fire is Unified Fire Authority — so raw "
+            "claim. Eagle Mountain employs nobody in police or fire (patrol is a Utah "
+            "County Sheriff contract, fire is Unified Fire Authority), so raw "
             "per-capita headcount compares service-delivery models rather than "
             "staffing levels, and three measures are carried: raw, excluding public "
             "safety, and excluding public safety and utilities. Built by "
@@ -976,8 +976,8 @@ def main():
                 "headcount: it counts hours, so two half-time staff are one FTE."
             ),
             "population": (
-                "US Census Bureau sub-county estimates, vintage 2025 — the newest "
-                "published — used for every city including Eagle Mountain, so the "
+                "US Census Bureau sub-county estimates, vintage 2025, the newest "
+                "published, used for every city including Eagle Mountain, so the "
                 "comparison is measured one way throughout. Utah's own estimates, from "
                 "the Utah Population Committee, are carried alongside as a check and "
                 f"agree closely: for 2024 they differ by 122 people out of {em['population']:,}. "
@@ -988,15 +988,15 @@ def main():
                 "Cities group departments differently, so every row is re-filed by "
                 "function from its own label. Public safety means police, fire, "
                 "ambulance, dispatch, animal control, crossing guards and emergency "
-                "management — the services Eagle Mountain buys rather than staffs. "
+                "management, the services Eagle Mountain buys rather than staffs. "
                 "Courts are counted as general government: a justice court is a "
                 "judicial function a city keeps whoever polices it."
             ),
             "why_2024": (
                 "2024 is the most recent year Eagle Mountain has published an audited "
                 "staff count for. The city's FY2025 audit was accepted by the Council, "
-                "but the full annual report — the volume that carries the staffing "
-                "schedule — is not posted on the city's finance page, where every year "
+                "but the full annual report, the volume that carries the staffing "
+                "schedule, is not posted on the city's finance page, where every year "
                 "from 2019 to 2024 is. Comparing Eagle Mountain's 2024 against other "
                 "cities' 2025 would not be a comparison, so every city here is 2024."
             ),
@@ -1004,7 +1004,7 @@ def main():
                 f"Take the {PEER_RANK_DEPTH} Utah cities closest to Eagle Mountain in "
                 "population, and compare the ones that publish a comparable staffing "
                 "schedule. Every city inside that cut is either compared or named below "
-                "with the reason it could not be — the build refuses to run otherwise, so "
+                "with the reason it could not be: the build refuses to run otherwise, so "
                 "no city can be dropped quietly and none can be added by hand. Nine of the "
                 f"{PEER_RANK_DEPTH} are unusable: three publish no statistical section, two "
                 "count full-time staff rather than full-time equivalents, and four could "
