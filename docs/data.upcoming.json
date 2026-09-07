@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03T02:35:34Z",
+  "generated_at": "2026-09-07T17:56:44Z",
   "source": "Eagle Mountain CivicClerk portal",
   "timezone": "America/Denver",
   "bodies": {
@@ -98,11 +98,170 @@
         "start_label": "5:30 PM",
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/678/overview",
-        "agenda_posted": false,
+        "agenda_posted": true,
         "agenda_posted_on": "",
-        "agenda_url": "",
-        "sessions": [],
-        "agenda": []
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2953,plainText=false)",
+        "sessions": [
+          {
+            "start": "18:30",
+            "start_label": "6:30 PM",
+            "label": "Planning Commission Policy Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "DISCUSSION ITEMS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "1.A",
+                "kind": "TRAINING",
+                "title": "Ethics",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "1.B",
+                "kind": "DISCUSSION",
+                "title": "Agenda Review",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "PLEDGE OF ALLEGIANCE",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "4",
+            "title": "DECLARATION OF CONFLICTS OF INTEREST",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "5",
+            "title": "MINUTES",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [
+              {
+                "number": "5.A",
+                "kind": "",
+                "title": "August 25, 2026 Planning Commission Minutes",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "6",
+            "title": "STATUS REPORT",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "7",
+            "title": "ACTION AND ADVISORY ITEMS",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [
+              {
+                "number": "7.A",
+                "kind": "PUBLIC HEARING / ACTION ITEM",
+                "title": "An ordinance of Eagle Mountain City, Utah updating the Culinary Water Impact Fee Facility Plan (IFFP).",
+                "time": "",
+                "background": "(Presented by City Engineer, Vince Hogge) Consideration of an update to the Culinary Water IFFP. This update adds the Spring Run/Talons Cove area to the IFFP which adds improvements needed to the culinary water system to handle water demand from this area. The IFFP also includes updated cost estimates adding the projects for the Spring Run/Talons Cove area and updating costs for future projects based on the rising costs of current construction projects.",
+                "plain": ""
+              },
+              {
+                "number": "7.B",
+                "kind": "PUBLIC HEARING / ACTION ITEM",
+                "title": "An ordinance of Eagle Mountain City, Utah updating the Wastewater Master Plan and the Wastewater Impact Fee Facility Plan (IFFP).",
+                "time": "",
+                "background": "(Presented by City Engineer, Vince Hogge) Consideration of an update to the Wastewater Master Plan and the Wastewater IFFP. This update adds the Spring Run/Talons Cove area to the Master Plan and IFFP which adds improvements needed to the wastewater system to handle sewer flows from this area. The IFFP also includes updated cost estimates adding the projects for the Spring Run/Talons Cove area and updating costs for future projects based on the rising costs of current construction projects.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "8",
+            "title": "DISCUSSION ITEMS",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [
+              {
+                "number": "8.A",
+                "kind": "",
+                "title": "\"Agricultural Rural Large-Lot Zone\" / Alternatively, the \"Cedar Pass Ranch Historical Zone\"",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "9",
+            "title": "AGENDA REVIEW",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "10",
+            "title": "NEXT SCHEDULED MEETING",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "11",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "18:30",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
       },
       {
         "id": 691,
