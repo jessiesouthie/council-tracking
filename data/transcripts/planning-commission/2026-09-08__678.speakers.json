@@ -1,0 +1,32 @@
+{
+ "A": {
+  "name": "Brandon Larsen",
+  "basis": "Voice match. This label's audio scores 0.92 cosine similarity against the voiceprint for Brandon Larsen, built from 27 sampled turns across 3 other meetings, versus 0.29 for the next-closest person, Zac Huish. Sampled from 8 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.915,
+  "runner_up": {
+   "name": "Zac Huish",
+   "similarity": 0.287
+  }
+ },
+ "B": {
+  "name": "Marcus Draper",
+  "basis": "Voice match. This label's audio scores 0.91 cosine similarity against the voiceprint for Marcus Draper, built from 23 sampled turns across 3 other meetings, versus 0.28 for the next-closest person, Towns at Brylee Farms developer's representative. Sampled from 14 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.908,
+  "runner_up": {
+   "name": "Towns at Brylee Farms developer's representative",
+   "similarity": 0.277
+  }
+ },
+ "I": {
+  "name": "Rob Hobbs",
+  "basis": "Voice match. This label's audio scores 0.84 cosine similarity against the voiceprint for Rob Hobbs, built from 13 sampled turns across 2 other meetings, versus 0.53 for the next-closest person, Taylor Keyes. Sampled from 14 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.843,
+  "runner_up": {
+   "name": "Taylor Keyes",
+   "similarity": 0.527
+  }
+ }
+}

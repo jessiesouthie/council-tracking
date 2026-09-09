@@ -248,6 +248,21 @@
       "words": 19911
     }
   ],
+  "planning-commission": [
+    {
+      "id": 678,
+      "date": "2026-09-08",
+      "stem": "2026-09-08__678",
+      "title": "Planning Commission Meeting",
+      "summary_file": "transcripts/planning-commission/2026-09-08__678.summary.md",
+      "text_file": "transcripts/planning-commission/2026-09-08__678.txt",
+      "speakers_file": "transcripts/planning-commission/2026-09-08__678.speakers.json",
+      "diarized": true,
+      "media_url": "https://eaglemountainut.portal.civicclerk.com/event/678/media",
+      "duration": "2h 22m",
+      "words": 22343
+    }
+  ],
   "community-services-board": [
     {
       "id": 4,

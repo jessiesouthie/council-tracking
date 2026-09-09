@@ -378,11 +378,22 @@ elif [ ! -f "$ROOT/data/voiceprints/library.json" ]; then
   echo "   Build it once with:  $VOICE_PY -m ingest.voiceprints enroll"
 else
   say "Naming diarized speakers by voice …"
-  VP_ARGS=(identify "$STEM" --body "$BODY")
+  # --body is a top-level argument on voiceprints, declared before the
+  # subparsers, so argparse only accepts it ahead of the subcommand.
+  VP_ARGS=(--body "$BODY" identify "$STEM")
   [ "$SPEAKERS_MODE" = always ] && VP_ARGS+=(--force)
   [ -n "$AUDIO" ] && VP_ARGS+=(--audio "$AUDIO")
-  "$VOICE_PY" -m ingest.voiceprints "${VP_ARGS[@]}" \
-    || echo "⚠ speaker identification failed — the transcript and summary are unaffected." >&2
+  VP_RC=0
+  "$VOICE_PY" -m ingest.voiceprints "${VP_ARGS[@]}" || VP_RC=$?
+  if [ "$VP_RC" -eq 2 ]; then
+    # argparse exits 2 on a usage error: this script called the tool wrongly.
+    # That is a bug here, not a meeting whose speakers could not be named, and
+    # it hid for months behind the best-effort warning below while every run
+    # printed one line and moved on. Calling it wrongly is now fatal.
+    die "voiceprints rejected its arguments (exit 2): ${VP_ARGS[*]}"
+  elif [ "$VP_RC" -ne 0 ]; then
+    echo "⚠ speaker identification failed (exit $VP_RC) — the transcript and summary are unaffected." >&2
+  fi
 fi
 
 # ---- 5. enriched summary via the claude CLI ----
@@ -399,7 +410,15 @@ elif [ "$RESUMMARIZE" = 1 ] || [ ! -f "$SUMMARY" ]; then
       AGENDA_TXT="$(curl -fsS "$API_BASE/Meetings/GetMeetingFileStream(fileId=$AGENDA_FILE_ID,plainText=true)" || true)"
     fi
 
-    INSTRUCTIONS=$(cat <<'PROMPT'
+    # The roster block is body-specific: the council's names must never be
+    # handed to another body's summary as people to attribute discussion to.
+    # ingest/roster_prompt.py builds it — City Council verbatim, every other
+    # body from data/meta/<members file>.
+    ROSTER="$(python3 -m ingest.roster_prompt "$BODY" --date "$DATE")" \
+      || die "could not build the roster block for body $BODY"
+
+
+    PROMPT_HEAD=$(cat <<'PROMPT'
 You are producing an "enriched meeting summary" in Markdown from the full
 speech-to-text transcript of an Eagle Mountain, UT public meeting. The official
 agenda and the transcript follow this instruction block as input.
@@ -407,15 +426,10 @@ agenda and the transcript follow this instruction block as input.
 Write for a reader who did NOT attend: explanatory PROSE, not fragmentary
 bullets. Ground every claim ONLY in the transcript. Do not invent facts, names,
 numbers, or votes. Keep short direct quotes (in quotation marks) where useful.
+PROMPT
+)
 
-KNOWN ROSTER (correct these common Whisper mishearings):
-- Mayor Jared Gray.
-- Councilmembers: Melissa Clark, Brett Wright, Craig Whiting, Rich Wood, Zac Huish.
-  "Hewish" in the transcript = Zac Huish. Roll-call surnames are reliable.
-- Zac Hilton is a STAFF member (parks/rec), a different person from Councilmember Zac Huish.
-Attribute discussion to a named member only when the transcript makes it clear
-(explicit names, or roll-call context); otherwise say "a councilmember."
-
+    PROMPT_TAIL=$(cat <<'PROMPT'
 Write PLAINLY. Prefer the short word to the long one, expand an acronym the first
 time it appears, and keep paragraphs under ~120 words. The reader is a resident,
 not a clerk, so no in-house jargon and no section numbers in the prose.
@@ -453,6 +467,12 @@ Brief plain prose: likely misheard proper nouns, speaker-attribution limits, and
 Output ONLY the Markdown document, starting at the `**In short:**` line. No preamble or commentary.
 PROMPT
 )
+
+    INSTRUCTIONS="$PROMPT_HEAD
+
+$ROSTER
+
+$PROMPT_TAIL"
     # The same five rules the motion summarizer is held to. One file, three
     # prompts: ingest/house_style.txt, ingest/summarize_motions.py and the
     # worker's systemPrompt() all read from or mirror it.
@@ -460,8 +480,31 @@ PROMPT
 
 $(cat "$ROOT/ingest/house_style.txt")"
 
+    # The model has no clock: it infers elapsed positions from how far through
+    # the transcript it is, and on a long meeting that estimate runs late — the
+    # 1 September council map put its last five items up to 1h38m past the end
+    # of the recording. The .srt knows the real length, so state it.
+    DURATION_NOTE="$(python3 - "$DIR/$STEM.srt" <<'PY'
+import re, sys
+try:
+    text = open(sys.argv[1], encoding="utf-8", errors="ignore").read()
+except OSError:
+    raise SystemExit(0)
+last = 0
+for h, m, s, _ms in re.findall(r"(\d{2}):(\d{2}):(\d{2})[,.](\d{3})\s*-->", text):
+    last = max(last, int(h) * 3600 + int(m) * 60 + int(s))
+if last:
+    print("NOTE: this recording is %d:%02d:%02d long. Every Meeting map elapsed "
+          "value is a position inside it, written H:MM from the start. None may "
+          "exceed %d:%02d:%02d and they must not decrease down the table."
+          % (last // 3600, last % 3600 // 60, last % 60,
+             last // 3600, last % 3600 // 60, last % 60))
+PY
+)"
+
     if {
         printf '%s\n\n' "$INSTRUCTIONS"
+        [ -n "$DURATION_NOTE" ] && printf '%s\n\n' "$DURATION_NOTE"
         [ "$CLOUD" = 1 ] && printf 'NOTE: transcript lines are prefixed with diarized speaker labels (Speaker A, Speaker B, …) that are consistent per speaker but not mapped to names. Use them to follow turn-taking and to attribute discussion, inferring real names from roll-call and context.\n\n'
         printf '=== OFFICIAL AGENDA ===\n%s\n\n' "${AGENDA_TXT:-(agenda unavailable)}"
         printf '=== FULL TRANSCRIPT ===\n'
@@ -486,6 +529,15 @@ PY
   fi
 else
   say "Summary exists — skipping (use --resummarize to regenerate)."
+fi
+
+# ---- 5b. cross-check the summary against what the pipeline already knows ----
+# Reports, never corrects: a drifting timestamp is a symptom, and the response is
+# a person reading the meeting rather than a script editing a model's prose. Runs
+# on every invocation, so re-running is how you re-check an older meeting.
+if [ -f "$SUMMARY" ]; then
+  python3 -m ingest.check_summary --body "$BODY" --stem "$STEM" \
+    || echo "⚠ the cross-check flagged this meeting (above) — worth a look before it goes out." >&2
 fi
 
 # ---- 6. publish to docs/ ----
