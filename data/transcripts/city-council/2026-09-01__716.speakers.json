@@ -60,53 +60,33 @@
   }
  },
  "J": {
-  "name": "Bailey Tolton",
-  "basis": "Voice match. This label's audio scores 0.80 cosine similarity against the voiceprint for Bailey Tolton, built from 11 sampled turns across one other meeting, versus 0.30 for the next-closest person, Kate Hall. Sampled from 12 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
-  "method": "voiceprint",
-  "confidence": 0.796,
-  "runner_up": {
-   "name": "Kate Hall",
-   "similarity": 0.305
-  }
- },
- "L": {
-  "name": "Scott Hazard",
-  "basis": "Voice match. This label's audio scores 0.84 cosine similarity against the voiceprint for Scott Hazard, built from 14 sampled turns across one other meeting, versus 0.38 for the next-closest person, Ben Reeves. Sampled from 11 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
-  "method": "voiceprint",
-  "confidence": 0.836,
-  "runner_up": {
-   "name": "Ben Reeves",
-   "similarity": 0.377
+  "name": "Jessie Southworth",
+  "basis": "Named in the meeting: parks staff says \"as Jessie reached out, my conversation with her was...\" while responding to this speaker's own proposal. She presents item 1.C on behalf of the Community Services Board, whose chair she is recorded as in the 2026-05-19 meeting. Textual attribution, not an acoustic match.",
+  "supersedes": {
+   "name": "Bailey Tolton",
+   "method": "voiceprint",
+   "confidence": 0.796,
+   "why_wrong": "No voiceprint exists for Jessie Southworth, so the closed-set matcher returned the nearest enrolled voice. Bailey Tolton is a Best Friends Animal Society presenter enrolled from 11 slices of one meeting (2026-07-21) and is a different person."
   }
  },
  "M": {
   "name": "Melissa Clark",
-  "basis": "Voice match. This label's audio scores 0.97 cosine similarity against the voiceprint for Melissa Clark, built from 78 sampled turns across 6 other meetings, versus 0.34 for the next-closest person, Bailey Tolton. Sampled from 14 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "basis": "Voice match. This label's audio scores 0.97 cosine similarity against the voiceprint for Melissa Clark, built from 78 sampled turns across 6 other meetings, versus 0.30 for the next-closest person, Kimberly Ruesch. Sampled from 14 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
   "method": "voiceprint",
   "confidence": 0.974,
   "runner_up": {
-   "name": "Bailey Tolton",
-   "similarity": 0.344
+   "name": "Kimberly Ruesch",
+   "similarity": 0.297
   }
  },
  "N": {
-  "name": "John Magnus",
-  "basis": "Voice match. This label's audio scores 0.75 cosine similarity against the voiceprint for John Magnus, built from 6 sampled turns across one other meeting, versus 0.37 for the next-closest person, Rich Wood. Sampled from 5 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
-  "method": "voiceprint",
-  "confidence": 0.751,
-  "runner_up": {
-   "name": "Rich Wood",
-   "similarity": 0.371
-  }
- },
- "O": {
-  "name": "Steven Lehmitz",
-  "basis": "Voice match. This label's audio scores 0.87 cosine similarity against the voiceprint for Steven Lehmitz, built from 10 sampled turns across one other meeting, versus 0.31 for the next-closest person, David Stewart. Sampled from 9 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
-  "method": "voiceprint",
-  "confidence": 0.869,
-  "runner_up": {
-   "name": "David Stewart",
-   "similarity": 0.308
+  "name": "Brad (Parks / Public Works)",
+  "basis": "Introduced by the mayor opening item 1.C: \"I know Brad's also had some, uh, insight here\"; later the mayor names him again as a candidate to manage the program (\"I pick Brad\"). Gives the parks history of the two prior garden attempts. Textual attribution, not an acoustic match; this person is deliberately unenrolled in identities.json.",
+  "supersedes": {
+   "name": "John Magnus",
+   "method": "voiceprint",
+   "confidence": 0.751,
+   "why_wrong": "Parks Brad has no voiceprint by design, so the closed-set matcher returned the nearest enrolled voice. John Magnus is enrolled from 6 slices of one meeting, the bare enrollment minimum."
   }
  },
  "P": {
@@ -131,12 +111,12 @@
  },
  "U": {
   "name": "Kimberly Ruesch",
-  "basis": "Voice match. This label's audio scores 0.93 cosine similarity against the voiceprint for Kimberly Ruesch, built from 29 sampled turns across 3 other meetings, versus 0.40 for the next-closest person, Elizabeth McNanny. Sampled from 5 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "basis": "Voice match. This label's audio scores 0.93 cosine similarity against the voiceprint for Kimberly Ruesch, built from 29 sampled turns across 3 other meetings, versus 0.39 for the next-closest person, Elizabeth McNanny. Sampled from 5 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
   "method": "voiceprint",
   "confidence": 0.926,
   "runner_up": {
    "name": "Elizabeth McNanny",
-   "similarity": 0.4
+   "similarity": 0.392
   }
  }
 }

@@ -1,12 +1,12 @@
 {
  "B": {
   "name": "Melissa Clark",
-  "basis": "Voice match. This label's audio scores 0.96 cosine similarity against the voiceprint for Melissa Clark, built from 78 sampled turns across 6 other meetings, versus 0.37 for the next-closest person, Bailey Tolton. Sampled from 14 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "basis": "Voice match. This label's audio scores 0.96 cosine similarity against the voiceprint for Melissa Clark, built from 78 sampled turns across 6 other meetings, versus 0.30 for the next-closest person, Jessie Southworth. Sampled from 14 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
   "method": "voiceprint",
   "confidence": 0.963,
   "runner_up": {
-   "name": "Bailey Tolton",
-   "similarity": 0.366
+   "name": "Jessie Southworth",
+   "similarity": 0.3
   }
  },
  "C": {
@@ -51,12 +51,12 @@
  },
  "G": {
   "name": "Kimberly Ruesch",
-  "basis": "Voice match. This label's audio scores 0.86 cosine similarity against the voiceprint for Kimberly Ruesch, built from 29 sampled turns across 3 other meetings, versus 0.43 for the next-closest person, Kate Hall. Sampled from 14 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "basis": "Voice match. This label's audio scores 0.86 cosine similarity against the voiceprint for Kimberly Ruesch, built from 29 sampled turns across 3 other meetings, versus 0.41 for the next-closest person, Elizabeth McNanny. Sampled from 14 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
   "method": "voiceprint",
   "confidence": 0.86,
   "runner_up": {
-   "name": "Kate Hall",
-   "similarity": 0.431
+   "name": "Elizabeth McNanny",
+   "similarity": 0.411
   }
  },
  "H": {
@@ -77,16 +77,6 @@
   "runner_up": {
    "name": "Rich Wood",
    "similarity": 0.295
-  }
- },
- "K": {
-  "name": "Lacie Messerly",
-  "basis": "Voice match. This label's audio scores 0.69 cosine similarity against the voiceprint for Lacie Messerly, built from 10 sampled turns across one other meeting, versus 0.39 for the next-closest person, Bailey Tolton. Sampled from 14 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
-  "method": "voiceprint",
-  "confidence": 0.686,
-  "runner_up": {
-   "name": "Bailey Tolton",
-   "similarity": 0.389
   }
  }
 }

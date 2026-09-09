@@ -118,6 +118,35 @@ TRIM_FRACTION = 0.25
 MATCH_FLOOR = 0.50      # absolute cosine to the winning voiceprint
 MATCH_MARGIN = 0.08     # how far the winner must beat the runner-up
 
+# Open-set rejection.
+#
+# The floor/margin pair answers "which enrolled voice is nearest". It cannot
+# answer "is this anyone we know at all", and for a stranger the two questions
+# come apart badly: someone with no voiceprint sits far from EVERYONE, so the
+# nearest name wins by a very wide margin and the margin test — built to
+# separate two similar enrolled voices — waves the stranger straight through.
+# On 2026-09-01 that published a Community Services Board chair under another
+# resident's name at 0.796 with a 0.49 margin, twice the required gap.
+#
+# These gates exist so that "unknown speaker" is the answer when it is the true
+# one. Saying nothing is the correct output for a voice we have never met.
+MIN_MEETINGS_TO_TRUST = 2   # one night proves no night-to-night consistency
+COHORT_Z_MIN = 3.0          # winner must be an outlier against the whole cohort
+MIN_PER_MEETING_HITS = 2    # ...and must match on 2+ of the winner's own nights
+PER_MEETING_HIT = 0.45      # what counts as matching one of those nights
+
+# Enrollment coherence.
+#
+# A diarizer label that holds two people averages into a centroid belonging to
+# nobody. Such a blend sits abnormally close to every voice at once and becomes
+# a magnet for strangers — the 0.796 above was scored against exactly this: a
+# "Bailey Tolton" print built from a label carrying Bailey, a land-disposal
+# applicant, and a third voice. Refuse to enroll a split label; a human splits
+# it in identities.json instead.
+SPLIT_MIN_SLICES = 6    # below this there is not enough to test for a split
+SPLIT_TIGHT = 0.55      # both halves internally at least this alike...
+SPLIT_APART = 0.45      # ...while being at most this alike to each other
+
 
 # ---------------------------------------------------------------------------
 # Transcript timing recovery
@@ -430,15 +459,27 @@ def canonical(label: str) -> tuple[str, str]:
 
 
 def labeled_meetings(body: str = "city-council") -> list[tuple[str, dict]]:
-    """Every meeting that has a hand-written letter->name map."""
+    """Every meeting that has a hand-written letter->name map.
+
+    Entries this module wrote itself (`"method": "voiceprint"`) are dropped.
+    They are guesses, and enrolling from a guess would let one bad match teach
+    the library to make it again — the machine grading its own homework and
+    then studying from it. Only attribution grounded in the transcript, where
+    a name was actually spoken, is allowed to become a voiceprint.
+    """
     d = TRANSCRIPTS / body
     out = []
     for f in sorted(d.glob("*.speakers.json")):
         stem = f.name[: -len(".speakers.json")]
         try:
-            out.append((stem, json.loads(f.read_text(encoding="utf-8"))))
+            mapping = json.loads(f.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
             print(f"  skip (bad JSON): {f.name}")
+            continue
+        by_hand = {k: v for k, v in mapping.items()
+                   if v.get("method") != "voiceprint"}
+        if by_hand:
+            out.append((stem, by_hand))
     return out
 
 
@@ -662,6 +703,7 @@ def cmd_enroll(args) -> int:
     print(f"Enrolling from {len(meetings)} labeled meeting(s).")
     # person -> list of (stem, vectors)
     collected: dict[str, list[tuple[str, object]]] = {}
+    split_labels: list[tuple[str, str, str, str]] = []
 
     for stem, mapping in meetings:
         if args.only_meeting and stem not in args.only_meeting:
@@ -678,6 +720,12 @@ def cmd_enroll(args) -> int:
         sampled = sample_meeting(stem, args.body, SLICES_PER_SPEAKER,
                                 jobs=args.jobs, only=set(wanted))
         for letter, (vecs, _spans) in sampled.items():
+            split, detail = label_is_split(vecs)
+            if split:
+                # Enrolling this would average two people into one voiceprint
+                # that belongs to neither and attracts strangers. Say nothing.
+                split_labels.append((stem, letter, wanted[letter], detail))
+                continue
             collected.setdefault(wanted[letter], []).append((stem, vecs))
 
     VOICEPRINTS.mkdir(parents=True, exist_ok=True)
@@ -710,6 +758,12 @@ def cmd_enroll(args) -> int:
         print(f"\nToo little audio to enroll (under {MIN_SLICES_TO_ENROLL} slices):")
         for person, n, stems in skipped:
             print(f"  {person:34} {n:3d} slices  ({', '.join(stems)})")
+    if split_labels:
+        print(f"\nNot enrolled — the diarizer label holds more than one voice.")
+        print("Split it in the speaker map before this person can be enrolled:")
+        for stem, letter, person, detail in split_labels:
+            print(f"  {stem} Speaker {letter:2} ({person})")
+            print(f"      {detail}")
     unresolved = [n for n, e in identities.items() if not e.get("person")]
     if unresolved:
         print(f"\n{len(unresolved)} label(s) left unassigned in "
@@ -733,7 +787,8 @@ def load_library() -> dict:
     return json.loads(LIBRARY.read_text(encoding="utf-8"))
 
 
-def score(vectors, library: dict, exclude_meeting: str | None = None):
+def score(vectors, library: dict, exclude_meeting: str | None = None,
+          exclude_person: str | None = None):
     """Score one speaker's slices against every enrolled person.
 
     Returns [(person, similarity), ...] best first. The score is the cosine
@@ -751,6 +806,9 @@ def score(vectors, library: dict, exclude_meeting: str | None = None):
         return []
     out = []
     for person, e in library["people"].items():
+        if exclude_person and person == exclude_person:
+            # Pretend we have never enrolled them: this is how a stranger looks.
+            continue
         if exclude_meeting:
             others = {k: v for k, v in e.get("per_meeting", {}).items()
                       if k != exclude_meeting}
@@ -765,15 +823,122 @@ def score(vectors, library: dict, exclude_meeting: str | None = None):
     return out
 
 
-def decide(ranked, floor: float, margin: float):
-    """Apply the two-part rule. Returns (person or None, best, runner_up)."""
+def decide(ranked, floor: float, margin: float,
+           library: dict | None = None, centroid=None):
+    """Apply the match rule. Returns (person or None, best, runner_up, why).
+
+    Two questions have to be answered before a name is written, and only the
+    first was ever asked here:
+
+      1. Which enrolled voice is nearest, and is it clearly nearest?
+         -> the absolute floor and the runner-up margin.
+      2. Is this person enrolled at all?
+         -> the open-set gates below.
+
+    Question 2 is the one that matters for a public record. A stranger cannot
+    be declined by question 1: being far from everyone, their nearest match
+    wins by a large margin, which question 1 reads as *confidence*. So the
+    winner must also be an outlier against the whole cohort rather than merely
+    ahead of second place, must be backed by a voiceprint solid enough to be
+    evidence, and must match that person on more than one of their own nights.
+
+    `why` names the gate that refused, for the operator log; it is None on a
+    clean match.
+    """
+    import numpy as np
+
     if not ranked:
-        return None, 0.0, 0.0
+        return None, 0.0, 0.0, "nobody enrolled"
     best_person, best = ranked[0]
     second = ranked[1][1] if len(ranked) > 1 else 0.0
-    if best >= floor and (best - second) >= margin:
-        return best_person, best, second
-    return None, best, second
+
+    if best < floor:
+        return None, best, second, f"below floor {floor}"
+    if (best - second) < margin:
+        return None, best, second, f"within margin {margin} of {ranked[1][0]}"
+
+    # --- open-set gates ---------------------------------------------------
+    rest = [v for _p, v in ranked[1:]]
+    if len(rest) >= 3:
+        mu, sd = float(np.mean(rest)), float(np.std(rest))
+        z = (best - mu) / max(sd, 1e-6)
+        if z < COHORT_Z_MIN:
+            return None, best, second, (
+                f"not an outlier against the cohort (z={z:.1f} < {COHORT_Z_MIN})")
+
+    if library is not None:
+        entry = library["people"].get(best_person, {})
+        per_meeting = entry.get("per_meeting", {})
+        if len(entry.get("meetings", [])) < MIN_MEETINGS_TO_TRUST:
+            return None, best, second, (
+                f"{best_person} is enrolled from one meeting only — too thin to "
+                f"name a voice on")
+        if centroid is not None and per_meeting:
+            c = np.asarray(centroid, dtype="float64")
+            hits = 0
+            for vec in per_meeting.values():
+                r = np.array(vec, dtype="float64")
+                r /= max(np.linalg.norm(r), 1e-9)
+                if float(c @ r) >= PER_MEETING_HIT:
+                    hits += 1
+            if hits < min(MIN_PER_MEETING_HITS, len(per_meeting)):
+                return None, best, second, (
+                    f"matches {best_person} on only {hits} of "
+                    f"{len(per_meeting)} enrolled nights")
+
+    return best_person, best, second, None
+
+
+def label_is_split(vectors):
+    """Does one diarizer label hold two different people?
+
+    Splits the slices in two and asks whether each half is internally alike
+    while the halves are unalike to each other. That is the signature of a
+    folded-in second speaker, and it is different from a single speaker
+    recorded under varying conditions, who is diffuse but not *bimodal* — the
+    mayor's own label averages 0.42 across a long night and must not be thrown
+    away for it.
+
+    Returns (True, detail) when the label should not be enrolled.
+    """
+    import numpy as np
+
+    V = np.asarray(vectors, dtype="float64")
+    if len(V) < SPLIT_MIN_SLICES:
+        return False, None
+    V = V / np.maximum(np.linalg.norm(V, axis=1, keepdims=True), 1e-9)
+
+    sim = V @ V.T
+    i, j = np.unravel_index(np.argmin(sim), sim.shape)   # seed on the two least alike
+    c = np.vstack([V[i], V[j]])
+    lab = None
+    for _ in range(60):
+        new = np.argmax(V @ c.T, axis=1)
+        if lab is not None and (new == lab).all():
+            break
+        lab = new
+        for k in (0, 1):
+            if (lab == k).sum() == 0:
+                return False, None
+            m = V[lab == k].mean(axis=0)
+            c[k] = m / max(np.linalg.norm(m), 1e-9)
+
+    n0, n1 = int((lab == 0).sum()), int((lab == 1).sum())
+    if min(n0, n1) < 2:
+        return False, None
+    within = []
+    for k in (0, 1):
+        Vk = V[lab == k]
+        nk = len(Vk)
+        sk = Vk @ Vk.T
+        within.append(float((sk.sum() - nk) / (nk * nk - nk)))
+    between = float((V[lab == 0] @ V[lab == 1].T).mean())
+
+    if min(within) >= SPLIT_TIGHT and between <= SPLIT_APART:
+        return True, (f"{n0}+{n1} slices in two groups, each internally "
+                      f"{within[0]:.2f}/{within[1]:.2f} alike but only "
+                      f"{between:.2f} alike to each other")
+    return False, None
 
 
 # ---------------------------------------------------------------------------
@@ -812,7 +977,9 @@ def cmd_verify(args) -> int:
             ranked = score(sampled[letter][0], library, exclude_meeting=stem)
             if not ranked:
                 continue
-            guess, best, second = decide(ranked, args.floor, args.margin)
+            guess, best, second, _why = decide(
+                ranked, args.floor, args.margin, library=library,
+                centroid=trimmed_centroid(sampled[letter][0]))
             trials.append({
                 "stem": stem, "letter": letter, "truth": person,
                 "top": ranked[0][0], "best": best, "second": second,
@@ -870,6 +1037,52 @@ def cmd_verify(args) -> int:
               f"{sum(1 for t in impossible if not t['guess'])} of them"
               f" and misnamed {sum(1 for t in impossible if t['guess'])}.")
 
+    # --- open-set: what happens to a voice we have never enrolled? --------
+    # The trials above all ask "can we re-find someone we know". They cannot
+    # fail the way this pipeline actually failed, because a speaker only enters
+    # that set once they are already in the library. So run each labeled voice
+    # again against a library with their person removed outright. Every one of
+    # them is now a stranger, and the only correct answer for all of them is
+    # silence.
+    strangers, misnamed = 0, []
+    for stem, mapping in labeled_meetings(args.body):
+        truth = {}
+        for letter, info in mapping.items():
+            label = (info.get("name") or "").strip()
+            person = (identities.get(label) or {}).get("person")
+            if person and person in library["people"]:
+                truth[letter] = person
+        if not truth:
+            continue
+        sampled = sample_meeting(stem, args.body, SLICES_PER_SPEAKER,
+                                 jobs=args.jobs, only=set(truth),
+                                 cache=not args.refresh)
+        for letter, person in sorted(truth.items()):
+            if letter not in sampled:
+                continue
+            vecs = sampled[letter][0]
+            ranked = score(vecs, library, exclude_person=person)
+            if not ranked:
+                continue
+            strangers += 1
+            guess, best, second, _why = decide(
+                ranked, args.floor, args.margin, library=library,
+                centroid=trimmed_centroid(vecs))
+            if guess:
+                misnamed.append((stem, letter, person, guess, best, second))
+
+    if strangers:
+        ok = strangers - len(misnamed)
+        print(f"\n  Open-set: {strangers} voices re-run with their own person")
+        print(f"  removed from the library, so every one is a stranger:")
+        print(f"    correctly declined                   : {ok}/{strangers}"
+              f"  ({100 * ok / strangers:.0f}%)")
+        if misnamed:
+            print(f"    GIVEN SOMEONE ELSE'S NAME            : {len(misnamed)}")
+            for stem, letter, person, guess, best, second in misnamed:
+                print(f"      {stem} {letter}: {person} published as "
+                      f"{guess} ({best:.3f}, next {second:.3f})")
+
     if wrong:
         print("\n  WRONG (these are what the thresholds exist to prevent):")
         for t in wrong:
@@ -900,7 +1113,20 @@ def cmd_identify(args) -> int:
     stem_dir = TRANSCRIPTS / args.body
     out_path = stem_dir / f"{stem}.speakers.json"
 
-    if out_path.exists() and not (args.force or args.report):
+    # Anything already attributed by hand outranks anything this module can
+    # say: "the chair called this name and a new voice began" is a fact in the
+    # transcript, an acoustic match is a statistic about waveforms. Keep those
+    # entries and only fill in the letters they leave open.
+    by_hand: dict[str, dict] = {}
+    if out_path.exists():
+        try:
+            existing = json.loads(out_path.read_text(encoding="utf-8"))
+            by_hand = {k: v for k, v in existing.items()
+                       if v.get("method") != "voiceprint"}
+        except json.JSONDecodeError:
+            by_hand = {}
+
+    if out_path.exists() and not (args.force or args.report or by_hand):
         print(f"{out_path.relative_to(ROOT)} already exists — it may be hand-written.\n"
               f"Re-run with --report to see what the voiceprints would say, or "
               f"--force to overwrite it.")
@@ -912,13 +1138,18 @@ def cmd_identify(args) -> int:
         return 1
 
     speakers: dict[str, dict] = {}
-    unmatched: list[tuple[str, str, float, float]] = []
+    unmatched: list[tuple[str, str, float, float, str]] = []
     for letter, (vecs, spans) in sorted(sampled.items()):
+        if letter in by_hand:
+            continue
         ranked = score(vecs, library)
-        person, best, second = decide(ranked, args.floor, args.margin)
+        person, best, second, why = decide(ranked, args.floor, args.margin,
+                                           library=library,
+                                           centroid=trimmed_centroid(vecs))
         runner = ranked[1][0] if len(ranked) > 1 else "nobody"
         if not person:
-            unmatched.append((letter, ranked[0][0] if ranked else "-", best, second))
+            unmatched.append((letter, ranked[0][0] if ranked else "-",
+                              best, second, why))
             continue
         entry = library["people"][person]
         n_meet = len(entry["meetings"])
@@ -947,18 +1178,23 @@ def cmd_identify(args) -> int:
     if unmatched:
         print(f"  left unlabeled ({len(unmatched)}) — below floor {args.floor} "
               f"or margin {args.margin}:")
-        for letter, top, best, second in unmatched:
+        for letter, top, best, second, why in unmatched:
             print(f"    Speaker {letter:2}    closest was {top} at {best:.3f} "
-                  f"(next {second:.3f})")
+                  f"(next {second:.3f}) — {why}")
 
     if args.report:
         print("\n(--report: nothing written)")
         return 0
-    if not speakers:
+    if not speakers and not by_hand:
         print("\nNothing cleared the threshold — no file written, which is the "
               "right outcome rather than a map of guesses.")
         return 0
-    out_path.write_text(json.dumps(speakers, indent=1) + "\n", encoding="utf-8")
+    if by_hand:
+        print(f"  kept {len(by_hand)} hand-written entr"
+              + ("y" if len(by_hand) == 1 else "ies")
+              + ": " + ", ".join(sorted(by_hand)))
+    merged = dict(sorted({**by_hand, **speakers}.items()))
+    out_path.write_text(json.dumps(merged, indent=1) + "\n", encoding="utf-8")
     print(f"\nwrote {out_path.relative_to(ROOT)}")
     print("Publish it with:  python3 -m ingest.build_transcripts")
     return 0

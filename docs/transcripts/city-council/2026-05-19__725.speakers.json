@@ -61,12 +61,12 @@
  },
  "I": {
   "name": "Melissa Clark",
-  "basis": "Voice match. This label's audio scores 0.96 cosine similarity against the voiceprint for Melissa Clark, built from 78 sampled turns across 6 other meetings, versus 0.29 for the next-closest person, Bailey Tolton. Sampled from 14 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "basis": "Voice match. This label's audio scores 0.96 cosine similarity against the voiceprint for Melissa Clark, built from 78 sampled turns across 6 other meetings, versus 0.27 for the next-closest person, Kimberly Ruesch. Sampled from 14 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
   "method": "voiceprint",
   "confidence": 0.956,
   "runner_up": {
-   "name": "Bailey Tolton",
-   "similarity": 0.294
+   "name": "Kimberly Ruesch",
+   "similarity": 0.273
   }
  },
  "J": {
@@ -90,13 +90,13 @@
   }
  },
  "P": {
-  "name": "Bailey Tolton",
-  "basis": "Voice match. This label's audio scores 0.60 cosine similarity against the voiceprint for Bailey Tolton, built from 11 sampled turns across one other meeting, versus 0.48 for the next-closest person, Elizabeth McNanny. Sampled from 13 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
-  "method": "voiceprint",
-  "confidence": 0.598,
-  "runner_up": {
-   "name": "Elizabeth McNanny",
-   "similarity": 0.481
+  "name": "Jessie Southworth",
+  "basis": "Presents the Community Services Board sponsorship item; this meeting's own published summary names her as \"Jessie Southworth (chair, Community Services Board)\". Textual attribution, not an acoustic match.",
+  "supersedes": {
+   "name": "Bailey Tolton",
+   "method": "voiceprint",
+   "confidence": 0.598,
+   "why_wrong": "Same cause as 2026-09-01 Speaker J: no voiceprint for Jessie Southworth, so the nearest enrolled voice was returned."
   }
  }
 }
