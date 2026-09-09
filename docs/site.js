@@ -404,7 +404,7 @@
     }
 
     const cls = classifyOutcome(m.outcome);
-    if (t.total === 0) return `${outcomeWord(m.outcome)} — no roll-call vote was recorded.`;
+    if (t.total === 0) return `${outcomeWord(m.outcome)}. No roll-call vote was recorded.`;
     if (cls === "passed" && t.no === 0 && t.other === 0) return `Passed unanimously, ${t.yes}–0.`;
 
     const parts = [`${t.yes} yes`, `${t.no} no`];

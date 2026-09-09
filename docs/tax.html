@@ -178,7 +178,7 @@
 
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span></footer>
 
-    <script src="site.js?v=20260820a"></script>
+    <script src="site.js?v=20260826a"></script>
     <script>
       (async () => {
         const root = document.getElementById("content");
@@ -392,7 +392,7 @@
           return `
             <p class="tax-lede">
               Enter what your home is worth and see what it would cost you.
-              Nothing is final — the council still has to vote.
+              Nothing is final. The council still has to vote.
             </p>`;
         return `
           <p class="tax-lede">
@@ -482,8 +482,7 @@
         // carries `pct_rate_basis`; it is not what this field shows for the same
         // rate, and the noticed 220.88% is one of those.
         const headline = nw.pct_rate_basis
-          ? `The ${word} +${nw.pct}% is the notice's own figure — a rise in revenue, not in the
-             rate; measured rate against rate it is +${nw.pct_rate_basis}%, which is what this
+          ? `The ${word} +${nw.pct}% is the notice's own figure, a rise in revenue, not in the rate; measured rate against rate it is +${nw.pct_rate_basis}%, which is what this
              field gives.`
           : `The ${word} +${nw.pct}% is that same comparison.`;
         // Only worth saying where the two rates actually differ. They will not,
@@ -496,8 +495,7 @@
             : ` The dollars above compare with the ${cur.rate.toFixed(6)} on today's bills, which
                 the certified rate sits ${fmtPct(Math.abs(d))}% ${d < 0 ? "below" : "above"}.`;
         return `Percentages here are measured against the
-          ${CT.escapeHtml(cert.rate_display)} certified rate — the Truth-in-Taxation basis, and the
-          one the city's own figure uses. ${headline}${gap}`;
+          ${CT.escapeHtml(cert.rate_display)} certified rate, the Truth-in-Taxation basis, and the one the city's own figure uses. ${headline}${gap}`;
       }
 
       // What a rate raises across the whole city. The city's own schedule gives
@@ -659,7 +657,7 @@
 
             <p class="tool-foot">
               <strong>This is only the city's part of your property tax bill.</strong>
-              Schools, the county and four others charge you separately — see below.
+              Schools, the county and four others charge you separately. See below.
             </p>
           </div>
 
@@ -1028,14 +1026,13 @@
               <b>About ${times.toFixed(1)}&times; more</b>
               <p>The city's part of your tax bill ${done ? "is" : "would be"} about
                 ${times.toFixed(1)}× what it is today${
-                  em ? " — the largest percentage increase any Utah County city has on the table this year" : ""
+                  em ? ", the largest percentage increase any Utah County city has on the table this year" : ""
                 }.</p>
             </li>
             ${rankFact}
             <li class="fact">
               <b>Sheriff's deputies</b>
-              <p>The ${usd0(nw.revenue_increase || tax.revenue_increase)} it raises is set aside for
-                policing — Eagle Mountain contracts with the Utah County Sheriff.</p>
+              <p>The ${usd0(nw.revenue_increase || tax.revenue_increase)} it raises is set aside for policing. Eagle Mountain contracts with the Utah County Sheriff.</p>
             </li>
           </ul>`;
       }
@@ -1619,8 +1616,7 @@
         // Before the vote, the one figure in the table that was not as spoken.
         const asReadNote =
           !done && tax.as_read.pct !== prop.pct
-            ? ` <strong>On the night, this line was read as +${tax.as_read.pct}%</strong> —
-                the same ${CT.escapeHtml(prop.rate_display)} measured against the
+            ? ` <strong>On the night, this line was read as +${tax.as_read.pct}%</strong>, the same ${CT.escapeHtml(prop.rate_display)} measured against the
                 ${cur.rate.toFixed(6)} then in effect, because Utah County did not return the
                 recalculated certified rate until June 22. Every other figure in this table is
                 as read.`
@@ -1655,7 +1651,7 @@
                }, ${usd(cents(home.proposed))} on the same
                ${usd0(home.market_value)} home and ${usd(cents(biz.proposed))} on the same business.
                Those are the figures on the mailed notice, and they are still what most of the signs
-               say. On the night the percentage was read as +${tax.as_read.pct}% — the same
+               say. On the night the percentage was read as +${tax.as_read.pct}%, the same
                ${CT.escapeHtml(prop.rate_display)} against the ${cur.rate.toFixed(6)} then in effect,
                because Utah County did not return the recalculated certified rate until June 22.${
                  schedDoc
@@ -1723,8 +1719,7 @@
           <p class="chart-foot">
             <span aria-hidden="true">*</span> <strong>+${col.pct}%</strong> is
             ${CT.escapeHtml(col.rate)} against the ${CT.escapeHtml(certified.rate_display)}
-            certified rate — ${
-              done
+            certified rate, ${ done
                 ? nw.pct_derived
                   ? "the comparison Truth-in-Taxation is measured on, worked out here from the two rates"
                   : "the basis the motion states, and the one the city's notice used before it"
@@ -1849,8 +1844,7 @@
               <p>
                 Your whole bill goes from
                 <strong><span data-billrate="${attrRate(total)}"></span></strong> to
-                <strong><span data-billrate="${attrRate(propTotal)}"></span></strong> — up
-                ${pct1(((propTotal - total) / total) * 100)} — and the city moves from the
+                <strong><span data-billrate="${attrRate(propTotal)}"></span></strong>, up ${pct1(((propTotal - total) / total) * 100)}, and the city moves from the
                 ${ordinal(cityPos)}-largest line on it to the ${ordinal(propPos)}-largest.
               </p>
               <p class="note-fine">Every other entity held at its ${bill.rate_year} rate; none has set a
@@ -1894,15 +1888,14 @@
                 <li>${CT.escapeHtml(bill.tax_area.note)}
                   <ul>
                     ${bill.variants
-                      .map((v) => `<li><b>${CT.escapeHtml(v.name)}</b> — ${CT.escapeHtml(v.note)}</li>`)
+                      .map((v) => `<li><b>${CT.escapeHtml(v.name)}</b>: ${CT.escapeHtml(v.note)}</li>`)
                       .join("")}
                   </ul>
                 </li>
               </ul>
               <p class="src">
                 Rates: <a href="${bill.source.url}" rel="nofollow noopener">${CT.escapeHtml(bill.source.title)}</a>,
-                ${CT.escapeHtml(bill.source.publisher)} — ${CT.escapeHtml(bill.source.page)},
-                published ${CT.fmtDate(bill.source.published)}.
+                ${CT.escapeHtml(bill.source.publisher)} · ${CT.escapeHtml(bill.source.page)}, published ${CT.fmtDate(bill.source.published)}.
               </p>`
             )}
           </section>`;
@@ -1998,7 +1991,7 @@
               ? `<blockquote class="record">
                    <p>“${CT.escapeHtml(ad.motion)}”</p>
                    <footer>
-                     The motion adopting the rate${ad.vote ? ` — ${CT.escapeHtml(ad.vote)} —` : " — "}
+                     The motion adopting the rate${ad.vote ? `, ${CT.escapeHtml(ad.vote)},` : ","}
                      <a href="meetings.html?id=${ad.meeting_id}">meeting #${ad.meeting_id}, ${CT.fmtDate(ad.date)}</a>
                    </footer>
                  </blockquote>`
@@ -2017,7 +2010,7 @@
                    <p>“${CT.escapeHtml(rep.motion)}”</p>
                    <footer>
                      The motion that set the rate repealed on ${dayWords(rep.repealed_on)}${
-                       rep.vote ? ` — ${CT.escapeHtml(rep.vote)} —` : " — "
+                       rep.vote ? `, ${CT.escapeHtml(rep.vote)},` : ","
                      }
                      <a href="meetings.html?id=${rep.meeting_id}">meeting #${rep.meeting_id}, ${CT.fmtDate(rep.date)}</a>
                    </footer>
@@ -2028,8 +2021,7 @@
           <blockquote class="record">
             <p>“${CT.escapeHtml(tax.source.quote)}”</p>
             <footer>
-              ${CT.escapeHtml(tax.source.speaker)}, reading the required tax schedule —
-              <a href="meetings.html?id=${tax.source.meeting_id}">meeting #${tax.source.meeting_id}, ${CT.fmtDate(tax.source.date)}</a>
+              ${CT.escapeHtml(tax.source.speaker)}, reading the required tax schedule · <a href="meetings.html?id=${tax.source.meeting_id}">meeting #${tax.source.meeting_id}, ${CT.fmtDate(tax.source.date)}</a>
             </footer>
           </blockquote>
 
@@ -2141,7 +2133,7 @@
             </table>
             <p class="consider-foot">
               The last column is what each fee would cost as a property tax rate on a
-              ${usd0(TUF_HOME)} primary residence — for scale only, since the fee is flat and
+              ${usd0(TUF_HOME)} primary residence, for scale only, since the fee is flat and
               the same on every home. Eagle Mountain charges no such fee, so its bar is the
               whole of what the city asks a household for; ${CT.escapeHtml(top.name)}'s
               ${usd0(topAnnual)} a year is ${cmp} the ${usd(emTax)} Eagle Mountain's own
@@ -2164,7 +2156,7 @@
         const notes = t.cities
           .map(
             (r) =>
-              `<li><b>${CT.escapeHtml(r.name)}</b> — ${CT.escapeHtml(r.label)}, ${usd(r.monthly)} a month. ${CT.escapeHtml(r.note)}</li>`
+              `<li><b>${CT.escapeHtml(r.name)}</b>: ${CT.escapeHtml(r.label)}, ${usd(r.monthly)} a month. ${CT.escapeHtml(r.note)}</li>`
           )
           .join("");
         return `
@@ -2173,8 +2165,7 @@
           <ul>${notes}</ul>
           <p class="src">
             Utility fees, each from the city's own current fee schedule: ${cited}.
-            Eagle Mountain charges none —
-            <a href="${t.eagle_mountain.source.url}" rel="nofollow noopener">${CT.escapeHtml(t.eagle_mountain.source.title)}</a>.
+            Eagle Mountain charges none. <a href="${t.eagle_mountain.source.url}" rel="nofollow noopener">${CT.escapeHtml(t.eagle_mountain.source.title)}</a>.
             Which cities charge one:
             <a href="${t.list_source.url}" rel="nofollow noopener">${CT.escapeHtml(t.list_source.publisher)}</a>,
             ${CT.fmtDate(t.list_source.published)}.
@@ -2308,7 +2299,7 @@
         return `
         <figure class="chart">
           <figcaption>
-            <h3>City property tax rate, today — Salt Lake County</h3>
+            <h3>City property tax rate, today: Salt Lake County</h3>
             <p>Each city's own general levy. Eagle Mountain is dropped in dashed, as an
                out-of-county reference.</p>
           </figcaption>
@@ -2319,8 +2310,7 @@
           </div>
           <div class="chart-body">${med.rail}${bars}</div>
           <p class="chart-foot">
-            Dashed line: the median Salt Lake County city levy, ${rate6(med.value)} — Eagle Mountain,
-            as a visitor here, is left out of it.
+            Dashed line: the median Salt Lake County city levy, ${rate6(med.value)}. Eagle Mountain, as a visitor here, is left out of it.
             <span aria-hidden="true">†</span> Funds police/fire through separate service districts, not shown
             in these bars.${offCount ? " " + OFF_NOTE : ""}
           </p>
@@ -2399,7 +2389,7 @@
         return `
         <figure class="chart chart--wide-val">
           <figcaption>
-            <h3>Where the ${sl.proposal_year} proposals would leave each city — Salt Lake County</h3>
+            <h3>Where the ${sl.proposal_year} proposals would leave each city: Salt Lake County</h3>
             <p>${proposing} of ${sl.cities.length} cities noticed a ${sl.proposal_year} increase.
                Eagle Mountain is the dashed reference, at
                ${refAdopted ? "the rate it adopted" : "its proposed rate"}.</p>
@@ -2444,7 +2434,7 @@
           `<ul>${sl.caveats.map((x) => `<li>${CT.escapeHtml(x)}</li>`).join("")}</ul>
             <p class="src">
               Rates: <a href="${sl.rate_source.url}" rel="nofollow noopener">${CT.escapeHtml(sl.rate_source.title)}</a>,
-              ${CT.escapeHtml(sl.rate_source.publisher)} — ${sl.rate_year} final adopted, city levy only.
+              ${CT.escapeHtml(sl.rate_source.publisher)} · ${sl.rate_year} final adopted, city levy only.
               ${sl.proposal_source ? `Proposed increases: <a href="${sl.proposal_source.notice_url || sl.proposal_source.url}" rel="nofollow noopener">Salt Lake County ${sl.proposal_year} truth-in-taxation notices</a> (per-city purposes via <a href="${sl.proposal_source.url}" rel="nofollow noopener">${CT.escapeHtml(sl.proposal_source.publisher)}</a>).` : ""}
             </p>`
         );
@@ -2561,8 +2551,7 @@
           </div>
           <div class="chart-body">${med.rail}${bars}</div>
           <p class="chart-foot">
-            Dashed line: the median Utah County city levy, ${rate6(med.value)} — half of these
-            ${rows.length} cities charge more, half less.
+            Dashed line: the median Utah County city levy, ${rate6(med.value)}. Half of these ${rows.length} cities charge more, half less.
             <span aria-hidden="true">*</span> Mostly in Salt Lake County.${offCount ? " " + OFF_NOTE : ""}
           </p>
           ${tableView(["City", "Current rate"], rows.map((r) => [r.name, rate6(r.current_rate)]))}
@@ -2646,7 +2635,7 @@
           <figcaption>
             <h3>Where the ${c.proposal_year} increases leave each city</h3>
             <p>${proposing} of ${rows.length} cities have a ${c.proposal_year} increase${
-              emAdopted ? ` — Eagle Mountain's adopted, the other ${numWord(proposing - 1)} still notices` : ""
+              emAdopted ? `, Eagle Mountain's adopted, the other ${numWord(proposing - 1)} still notices` : ""
             }. Re-sorted by the rate each ends up at.</p>
           </figcaption>
           <div class="legend">
@@ -2910,7 +2899,7 @@
           {
             key: "pct", label: "Percentage", of: (n) => n.pct, adopted: ad.pct, fmt: pct2,
             title: "The twelve steepest increases proposed in Utah",
-            sub: "Each entity's proposed rate against its own certified rate — the percentage on its notice, not a percentage of anyone's bill.",
+            sub: "Each entity's proposed rate against its own certified rate, the percentage on its notice, not a percentage of anyone's bill.",
           },
           {
             key: "home", label: "Per home", of: (n) => n.annual_increase, adopted: ad.annual_increase, fmt: usd,
@@ -2989,7 +2978,7 @@
             </figcaption>
             <div class="legend">
               <span class="lg"><i class="sw sw-base"></i>Proposed</span>
-              <span class="lg"><i class="sw sw-em"></i>Eagle Mountain — adopted</span>
+              <span class="lg"><i class="sw sw-em"></i>Eagle Mountain, adopted</span>
             </div>
             <div class="chart-body">${bars}</div>
             <p class="chart-foot">
@@ -3040,7 +3029,7 @@
                    reader comparing this table against the published list should
                    be able to see where the two part company, and why. */
                 n.corrected_from_notice
-                  ? `<span class="ast" title="Corrected against the county's own notice — see About these numbers">†</span>`
+                  ? `<span class="ast" title="Corrected against the county's own notice. See About these numbers">†</span>`
                   : ""
               }</span>
               <span class="st-meta">${CT.escapeHtml(n.type)} · ${CT.escapeHtml(n.county)} County${
@@ -3082,7 +3071,7 @@
           `<ul>${state.caveats.map((x) => `<li>${CT.escapeHtml(x)}</li>`).join("")}</ul>
             <p class="src">
               The list: <a href="${src.url}" rel="nofollow noopener">${CT.escapeHtml(src.title)}</a>,
-              ${CT.escapeHtml(src.publisher)}, retrieved ${CT.escapeHtml(src.retrieved)} — compiled from the
+              ${CT.escapeHtml(src.publisher)}, retrieved ${CT.escapeHtml(src.retrieved)} · compiled from the
               counties' own truth-in-taxation notices and reported by
               <a href="${src.reported_by.url}" rel="nofollow noopener">${CT.escapeHtml(src.reported_by.publisher)}</a>.
               Eagle Mountain's adopted rate comes from the meeting itself:
@@ -3118,8 +3107,7 @@
           <p class="panel-intro st-adopted-note">
             Eagle Mountain's is the one settled row: its council voted on
             <strong>${CT.escapeHtml(dayOf(ad.date).label)}</strong>. Everything else here is still a
-            proposal, with hearings running to ${CT.escapeHtml(dayOf(T.hearings_to).label)} — and any
-            of them can end lower than the notice that announced it.
+            proposal, with hearings running to ${CT.escapeHtml(dayOf(T.hearings_to).label)}, and any of them can end lower than the notice that announced it.
           </p>
 
           <div class="sw-tools">
@@ -3149,7 +3137,7 @@
 
           <p class="chart-foot">
             Every percentage is measured against that entity's own certified rate, and every dollar
-            against that entity's own average home — so the columns rank like with like, but the
+            against that entity's own average home, so the columns rank like with like, but the
             homes underneath them differ. Hearings run
             ${CT.escapeHtml(dayOf(T.hearings_from).label)}–${CT.escapeHtml(dayOf(T.hearings_to).label)};
             a hearing can end in less than was noticed, as Eagle Mountain's did, so the rows below it
@@ -3159,7 +3147,7 @@
 
         return panel(
           "Every tax increase proposed in Utah this year",
-          `All ${N} truth-in-taxation notices, ranked — and where Eagle Mountain lands on the list`,
+          `All ${N} truth-in-taxation notices, ranked, and where Eagle Mountain lands on the list`,
           body, false, "p-state-proposals"
         );
       }
@@ -3338,8 +3326,7 @@
         const stripHtml = (rd) => `
           <p class="qsum">
             The middle Utah city levies <b>${rate6(rd.median)}</b>. Eagle Mountain's
-            <b>${rate6(rd.em.rate)}</b> is higher than <b>${rd.emPct}%</b> of the ${N}
-            cities — putting it in <b class="q-in q${rd.emQ}">${QBAND[rd.emQ]}</b> by rate.
+            <b>${rate6(rd.em.rate)}</b> is higher than <b>${rd.emPct}%</b> of the ${N} cities, putting it in <b class="q-in q${rd.emQ}">${QBAND[rd.emQ]}</b> by rate.
           </p>
           <div class="qstrip" role="group" aria-label="Percentile groups. Choosing one filters the table below.">
             ${rd.bands
@@ -3371,8 +3358,7 @@
         const body = `
           <p class="panel-intro">
             All ${N} Utah cities by their own levy, highest first, split into four
-            equal groups by percentile. Eagle Mountain is <strong>${ordinal(emCur)}</strong>
-            today — in ${QBAND[readCur.emQ]} — and is
+            equal groups by percentile. Eagle Mountain is <strong>${ordinal(emCur)}</strong> today (in ${QBAND[readCur.emQ]}) and is
             <strong>${ordinal(emProp)}</strong> at the ${rate6(emNew)} it
             ${ad ? `adopted on ${adDay}` : "has proposed"}, a climb of ${climbed} places${
               readProp.emQ === readCur.emQ
@@ -3419,7 +3405,7 @@
                 ? `Eagle Mountain is at the <b>${rate6(emNew)}</b> its council adopted on
                    <b>${adDay}</b>${
                      swAd
-                       ? ` — ${pctStr(swAd.pct)}% over the certified rate${
+                       ? `, ${pctStr(swAd.pct)}% over the certified rate${
                            swAd.vote ? `, ${CT.escapeHtml(swAd.vote.split("—")[0].trim().toLowerCase())}` : ""
                          }`
                        : ""
@@ -3433,17 +3419,16 @@
           </div>
 
           <p class="chart-foot">
-            The four groups are percentiles — where a city sits among the ${N}, not a time of
-            year. They are cut by position in the ranking, so each holds about ${Math.round(N / 4)}
+            The four groups are percentiles: where a city sits among the ${N}, not a time of year. They are cut by position in the ranking, so each holds about ${Math.round(N / 4)}
             cities; two cities on the same rate can fall either side of a boundary. The three
             lines through the table are the 75th percentile, the median and the 25th percentile.
             They show while the table is in rank order and unfiltered.
-            City levy only — not your total bill. Source:
+            City levy only. Not your total bill. Source:
             <a href="${src.url}" rel="nofollow noopener">${CT.escapeHtml(src.title)}</a>.
           </p>`;
         return panel(
           "Where Eagle Mountain ranks statewide",
-          `Its current rate — and the ${ad ? `rate it adopted on ${adDay}` : "rate it has proposed"} — against all ${N} Utah cities, by percentile`,
+          `Its current rate, and the ${ad ? `rate it adopted on ${adDay}` : "rate it has proposed"}, against all ${N} Utah cities, by percentile`,
           body, false, "p-statewide"
         );
       }

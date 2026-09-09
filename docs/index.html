@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Eagle Mountain City Council Votes — Civic Roll Call</title>
-    <meta name="description" content="Every Eagle Mountain City Council decision on the record — roll-call votes, budgets, tax rates and full meeting transcripts, each traced back to the city's own documents." />
+    <meta name="description" content="Every Eagle Mountain City Council decision on the record: roll-call votes, budgets, tax rates and full meeting transcripts, each traced back to the city's own documents." />
     <link rel="canonical" href="https://civicrollcall.com/" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
@@ -13,11 +13,11 @@
     <meta property="og:site_name" content="Civic Roll Call" />
     <meta property="og:url" content="https://civicrollcall.com/" />
     <meta property="og:title" content="Eagle Mountain City Council Votes — Civic Roll Call" />
-    <meta property="og:description" content="Every Eagle Mountain City Council decision on the record — roll-call votes, budgets, tax rates and full meeting transcripts, each traced back to the city's own documents." />
+    <meta property="og:description" content="Every Eagle Mountain City Council decision on the record: roll-call votes, budgets, tax rates and full meeting transcripts, each traced back to the city's own documents." />
     <meta property="og:image" content="https://civicrollcall.com/icons/icon-512.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Eagle Mountain City Council Votes — Civic Roll Call" />
-    <meta name="twitter:description" content="Every Eagle Mountain City Council decision on the record — roll-call votes, budgets, tax rates and full meeting transcripts, each traced back to the city's own documents." />
+    <meta name="twitter:description" content="Every Eagle Mountain City Council decision on the record: roll-call votes, budgets, tax rates and full meeting transcripts, each traced back to the city's own documents." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
@@ -41,7 +41,7 @@
           "@id": "https://civicrollcall.com/#website",
           "url": "https://civicrollcall.com/",
           "name": "Civic Roll Call",
-          "description": "Every Eagle Mountain City Council decision on the record — votes, budgets, tax rates and meeting transcripts.",
+          "description": "Every Eagle Mountain City Council decision on the record: votes, budgets, tax rates and meeting transcripts.",
           "inLanguage": "en-US",
           "publisher": { "@id": "https://civicrollcall.com/#publisher" },
           "potentialAction": {
@@ -159,7 +159,7 @@
           Every decision the <span data-body-noun>council</span> makes, <span class="mark">on the record</span>.
         </h1>
         <p class="hero-sub reveal" style="--i:2">
-          Votes, budgets, tax rates and whole meetings transcribed — each one read
+          Votes, budgets, tax rates and whole meetings transcribed, each one read
           back to the document the city published it in.
         </p>
 
@@ -236,7 +236,7 @@
       <span>Data from the Eagle Mountain CivicClerk public portal · last refreshed <span id="generated-at">—</span> · <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span>
     </footer>
 
-    <script src="site.js?v=20260820a"></script>
+    <script src="site.js?v=20260826a"></script>
     <script>
       // The money pages are the city council's; a Planning Commission visitor has
       // no tax rate and no budget of its own, so the cards that carry them are
@@ -348,7 +348,7 @@
             adopted ? "raised" : "has proposed raising"
           } the city's property tax rate</span>
           <span class="lt-figure"><b>+${CT.escapeHtml(money(home.increase))}</b> a year</span>
-          <span class="lt-note">on the average Eagle Mountain home — the city's own
+          <span class="lt-note">on the average Eagle Mountain home, the city's own
             example, a ${CT.escapeHtml(money(home.market_value).replace(/\.00$/, ""))}
             primary residence.</span>
           <span class="lt-cta">What it costs you <span aria-hidden="true">→</span></span>`;
@@ -635,7 +635,7 @@
             glyph: "--ico-calendar",
             name: "Meetings",
             figure: transcripts.length ? `${transcripts.length} transcribed in full` : "",
-            blurb: "Agendas, minutes and summaries — and for recent meetings, every word said.",
+            blurb: "Agendas, minutes and summaries. For recent meetings, every word said.",
             href: "meetings.html",
           },
           {
@@ -681,7 +681,7 @@
             glyph: "--ico-flow",
             name: "The other bodies",
             figure: "",
-            blurb: others.map(b => b.label).join(" · ") + " — the same record, kept the same way.",
+            blurb: others.map(b => b.label).join(" · ") + ": the same record, kept the same way.",
             href: CT.linkBody("meetings.html", others[0].id),
           },
         ].filter(Boolean);

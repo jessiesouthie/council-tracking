@@ -5,7 +5,7 @@
     <script>document.documentElement.classList.remove("no-js");</script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Eagle Mountain General Fund Projections to FY2031–32</title>
-    <meta name="description" content="A planning estimate to FY2031–32. At the certified rate — legally “no increase” — the model estimates $35.4M of recurring revenue against $42.7M of interim-budget spending, a projected gap of $7.3M in the first year." />
+    <meta name="description" content="A planning estimate to FY2031–32. At the certified rate (legally “no increase”) the model estimates $35.4M of recurring revenue against $42.7M of interim-budget spending, a projected gap of $7.3M in the first year." />
     <link rel="canonical" href="https://civicrollcall.com/projections.html" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
@@ -159,9 +159,9 @@
       </div>
     </main>
 
-    <footer class="footer"><span>Planning estimates built from Eagle Mountain's published budget and its own meeting recordings — not a city forecast &middot; <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span></footer>
+    <footer class="footer"><span>Planning estimates built from Eagle Mountain's published budget and its own meeting recordings, not a city forecast &middot; <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span></footer>
 
-    <script src="site.js?v=20260820a"></script>
+    <script src="site.js?v=20260826a"></script>
     <script src="projections.js?v=20260816a"></script>
     <script>
       /* =======================================================================
@@ -415,8 +415,7 @@
         const drift = widensThroughout
           ? `<p class="proj-why-drift"><strong>It is a level, not a drift.</strong>
                ${esc(((y1.gap / lastRow.gap) * 100).toFixed(0))}% of the ${esc(lastRow.label)} gap is already
-               there in the first year, and that opening ${esc(usd0(Math.abs(y1.gap)))} was set when the
-               budget was adopted — not by anything the model assumes about the future.</p>`
+               there in the first year, and that opening ${esc(usd0(Math.abs(y1.gap)))} was set when the budget was adopted, not by anything the model assumes about the future.</p>`
           : "";
 
         const heading =
@@ -487,8 +486,7 @@
         const scale =
           y1 && safety
             ? `<p class="proj-hero-scale">
-                 Property tax is <strong>${esc(usd0(y1.propertyTax))}</strong> of that —
-                 <strong>${((y1.propertyTax / y1.expenditures) * 100).toFixed(0)}%</strong> of the budget, and
+                 Property tax is <strong>${esc(usd0(y1.propertyTax))}</strong> of that, <strong>${((y1.propertyTax / y1.expenditures) * 100).toFixed(0)}%</strong> of the budget, and
                  <strong>${((y1.propertyTax / safety.amount) * 100).toFixed(0)}%</strong> of the
                  ${esc(usd0(safety.amount))} policing contract the increase was meant to cover.
                </p>`
@@ -603,7 +601,7 @@
         const rateList = c.scenarios
           .map(
             (s) => `
-            <li><strong>${esc(rate6(s.start_rate))} — ${esc(s.rate_label)}:</strong> ${esc(s.blurb)}</li>`
+            <li><strong>${esc(rate6(s.start_rate))}, ${esc(s.rate_label)}:</strong> ${esc(s.blurb)}</li>`
           )
           .join("");
         const buttons = c.scenarios
@@ -673,8 +671,7 @@
           <p>General Fund only, one fiscal year at a time. Transfers from savings or fund balance are
             not counted as recurring revenue: reserves cover a shortfall once, but cannot be drawn
             again the year after. That single exclusion is why the interim budget can balance to the
-            cent while this page still shows a gap. The six-year figure is the sum of the annual gaps —
-            a measure of scale, not a debt or a year-end balance.</p>
+            cent while this page still shows a gap. The six-year figure is the sum of the annual gaps, a measure of scale, not a debt or a year-end balance.</p>
 
           <h4 class="proj-sub-h">How spending is compared</h4>
           <p>All three scenarios use the same spending projection: the council's <strong>interim</strong>
@@ -700,8 +697,7 @@
         return `
           <h4 class="proj-sub-h">How far this departs from the statute</h4>
           <p>The real certified-rate formula averages: it smooths property values over three years and the
-            collection rate over five, and it subtracts project-area increment before it divides. This page
-            does none of that — it is a one-year, one-rate reading of a formula that averages, which is why
+            collection rate over five, and it subtracts project-area increment before it divides. This page does none of that. It is a one-year, one-rate reading of a formula that averages, which is why
             every figure on it is a planning estimate rather than a legal quantity.</p>
           ${finePrint(`The full comparison against ${s.cite || "the statute"}`, `<p>${esc(s.confirm)}</p>`)}`;
       }
@@ -805,7 +801,7 @@
         // second way — so those two branches are gone and the count carries it.
         const cross = r.crossings.length
           ? " The two lines cross " +
-            (r.crossings.length === 1 ? "" : r.crossings.length === 2 ? "twice — " : `${esc(numWord(r.crossings.length))} times — `) +
+            (r.crossings.length === 1 ? "" : r.crossings.length === 2 ? "twice: " : `${esc(numWord(r.crossings.length))} times: `) +
             r.crossings
               .map((c) => `into ${esc(c.into)} during <strong>${esc(r.rows[c.toIndex].label)}</strong>`)
               .join(", then ") +
@@ -842,8 +838,7 @@
         const dc =
           added > 0 && without.ok && without.summary
             ? ` The model counts all <strong>${esc(short(added))}</strong> of data-center value as taxable
-                from ${esc(r.rows[1] ? r.rows[1].label : "FY2027–28")}. If those parcels sit inside a project
-                area — as every data center already in the city does — the six-year total widens to
+                from ${esc(r.rows[1] ? r.rows[1].label : "FY2027–28")}. If those parcels sit inside a project area (as every data center already in the city does) the six-year total widens to
                 <strong>${esc(usd0(Math.abs(without.summary.cumulative)))}</strong>.
                 <a href="#s-assumptions">What the record shows</a>.`
             : "";
@@ -1258,7 +1253,7 @@
 
       function tipText(row, r) {
         return (
-          `${row.label} — money in ${usd0(row.totalRevenue)}, money out ${usd0(row.expenditures)}, ` +
+          `${row.label}: money in ${usd0(row.totalRevenue)}, money out ${usd0(row.expenditures)}, ` +
           `annual ${word(row.gap)} ${usd0(Math.abs(row.gap))}, cumulative ${word(row.cumulative)} ` +
           `${usd0(Math.abs(row.cumulative))}`
         );
@@ -1467,7 +1462,7 @@
         // change, so an opened table has to stay open across the rewrite.
         const wasOpen = !!(el.querySelector("details.panel") || {}).open;
 
-        el.innerHTML = panel("Year by year", "Every figure the two charts are drawn from — taxable value, rate charged, revenue, spending and the result, for each of the six years", `
+        el.innerHTML = panel("Year by year", "Every figure the two charts are drawn from: taxable value, rate charged, revenue, spending and the result, for each of the six years", `
           <div class="tablewrap">
             <table class="data proj-table" aria-label="Projected General Fund figures by fiscal year">
               <thead>
@@ -1489,9 +1484,8 @@
           </div>
           <p class="chart-foot">
             The ${esc(r.rows[0].label)} row is the city's own interim budget, not a projection. Only the rate
-            charged changes between the three scenarios. The running total is the sum of the annual results
-            to that year — not a debt, and not a balance the city would carry.
-            ${anyAdj ? '<span aria-hidden="true">†</span> Includes a named adjustment — listed under the numbers below.' : ""}
+            charged changes between the three scenarios. The running total is the sum of the annual results to that year, not a debt, and not a balance the city would carry.
+            ${anyAdj ? '<span aria-hidden="true">†</span> Includes a named adjustment, listed under the numbers below.' : ""}
           </p>
           <div class="table-export">
             <span class="tx-exp-label">Export</span>
@@ -1622,7 +1616,7 @@
           .map(
             (a) => `
             <li>
-              <b>${esc(a.label)}</b> — ${esc(short(a.amount))} of taxable value added in
+              <b>${esc(a.label)}</b>: ${esc(short(a.amount))} of taxable value added in
               ${esc(c.year_labels[String(a.year)] || a.year)}.
               <span class="proj-tag is-assumed">Assumption</span>
               ${confirmTag(a)}
@@ -1635,7 +1629,7 @@
           .map(
             (a) => `
             <li>
-              <b>${esc(a.label)}</b> — ${a.amount ? `${esc(usd0(a.amount))} ${a.recurring ? "a year, recurring" : "one-time"}, from ${esc(c.year_labels[String(a.year)] || a.year)}` : "held at zero"}.
+              <b>${esc(a.label)}</b>: ${a.amount ? `${esc(usd0(a.amount))} ${a.recurring ? "a year, recurring" : "one-time"}, from ${esc(c.year_labels[String(a.year)] || a.year)}` : "held at zero"}.
               ${a.illustrative ? `<span class="proj-tag is-assumed">Illustrative</span>` : ""}
               ${confirmTag(a)}
               <span class="proj-li-note">${esc(a.note || a.confirm || "")}</span>
@@ -1690,8 +1684,7 @@
             </div>
 
             <h3 class="proj-sub-h2">Estimated, because nobody has published them</h3>
-            <p class="proj-lede">These four are the projection. The gap opens because spending is assumed to
-              grow faster than income — ${esc(rateShort(b.expenditure_growth.value))} a year against
+            <p class="proj-lede">These four are the projection. The gap opens because spending is assumed to grow faster than income, ${esc(rateShort(b.expenditure_growth.value))} a year against
               ${esc(rateShort(b.other_revenue_growth.value))}. If that comparison is wrong, so is the chart,
               and the city has no multi-year plan that would settle it.</p>
             <div class="tablewrap">
@@ -1956,8 +1949,7 @@
           foot.innerHTML =
             `The marked bar is <strong>FY${esc(last.year)}</strong>, the year the 4.8% is derived from: ` +
             `<strong>${esc(last.permits.toLocaleString("en-US"))}</strong> permits. The highest year on this ` +
-            `record is FY${esc(peak.year)} at <strong>${esc(peak.permits.toLocaleString("en-US"))}</strong> — ` +
-            `below the 1,800 a year the council was told at the hearing.`;
+            `record is FY${esc(peak.year)} at <strong>${esc(peak.permits.toLocaleString("en-US"))}</strong>, ` + `below the 1,800 a year the council was told at the hearing.`;
       }
 
       function srcLine(s) {
@@ -2131,7 +2123,7 @@
           .map(
             (t) => `
             <span class="proj-seg proj-seg-${esc(t.key)}" style="width:${((tierAmt(t) / total) * 100).toFixed(3)}%"
-                  title="${esc(t.label)} — ${esc(usd0(tierAmt(t)))}"></span>`
+                  title="${esc(t.label)}: ${esc(usd0(tierAmt(t)))}"></span>`
           )
           .join("");
 
@@ -2166,8 +2158,7 @@
               <p>${esc(P.total_label)}: <strong>${esc(usd0(total))}</strong>${edited ? " (scaled to your edited baseline)" : ""}.
                  Take out what is contracted and what is restricted by law, and
                  <strong>${esc(usd0(reachable))}</strong> is more flexible${
-                   deferrable > 0
-                     ? ` — or <strong>${esc(usd0(withDeferrable))}</strong> counting the
+                   deferrable > 0 ? `, or <strong>${esc(usd0(withDeferrable))}</strong> counting the
                          ${esc(usd0(deferrable))} of transfers and planned capital, which the line items
                          suggest is mostly deferrable`
                      : ""
@@ -2216,10 +2207,9 @@
                 ? `<div class="proj-against">
                      <p class="proj-against-head">This scenario's projected gap, for scale</p>
                      <ul>
-                       <li><strong>${esc(first.label)}:</strong> ${esc(usd0(Math.abs(first.gap)))} — equivalent to
-                         <strong>${(shareOf(first.gap, reachable) * 100).toFixed(0)}%</strong> of the flexible money.</li>
+                       <li><strong>${esc(first.label)}:</strong> ${esc(usd0(Math.abs(first.gap)))}, equivalent to <strong>${(shareOf(first.gap, reachable) * 100).toFixed(0)}%</strong> of the flexible money.</li>
                        <li><strong>${esc(last.label)}:</strong> ${esc(usd0(Math.abs(last.gap)))} against about
-                         ${esc(usd0(reachableLast))} by then — <strong>${(shareOf(last.gap, reachableLast) * 100).toFixed(0)}%</strong>.</li>
+                         ${esc(usd0(reachableLast))} by then, <strong>${(shareOf(last.gap, reachableLast) * 100).toFixed(0)}%</strong>.</li>
                      </ul>
                      <p class="proj-input-note">A comparison of sizes, not a claim about what would be
                        reduced: a council could defer capital, find other revenue, or draw reserves
@@ -2301,7 +2291,7 @@
           .map(
             (x) => `
             <span class="proj-rung proj-rung-${esc(x.key)}" style="width:${((x.amount / total) * 100).toFixed(3)}%"
-                  title="${esc(x.label)} — ${esc(usd0(x.amount))}"></span>`
+                  title="${esc(x.label)}: ${esc(usd0(x.amount))}"></span>`
           )
           .join("");
 
@@ -2364,8 +2354,7 @@
 
         const composition =
           `The flexible pool of <strong>${esc(usd0(total))}</strong> is
-           <strong>${esc(share.toFixed(0))}%</strong> personnel. Everything else in it — maintenance,
-           equipment and fleet contribution — comes to ${esc(usd0(nonStaff))}.`;
+           <strong>${esc(share.toFixed(0))}%</strong> personnel. Everything else in it (maintenance, equipment and fleet contribution) comes to ${esc(usd0(nonStaff))}.`;
 
         if (first.gap >= 0)
           return `${composition} ${esc(first.label)} projects a surplus here, so there is nothing to set
@@ -2380,8 +2369,7 @@
             <strong>${esc(usd0(gap))}</strong> is ` +
           (over > 0
             ? `larger than that non-personnel total; the excess is equivalent to
-               <strong>${esc(((over / staff.amount) * 100).toFixed(0))}%</strong> of the modeled personnel
-               cost — a ratio between two dollar figures, not a share of staff or payroll that anyone has
+               <strong>${esc(((over / staff.amount) * 100).toFixed(0))}%</strong> of the modeled personnel cost, a ratio between two dollar figures, not a share of staff or payroll that anyone has
                proposed reducing.`
             : `smaller than it, so the size of the gap alone implies nothing about staffing.`)
         );
@@ -2459,13 +2447,12 @@
         // note states the relationship, and the road figure says on its face
         // that it is outside the category rather than only in the fine print.
         return `
-          <p class="proj-maint-note">What the last adopted budget actually did to maintenance — a record,
-            not a projection. ${esc(numWord(x.lines.length).replace(/^./, (ch) => ch.toUpperCase()))} named
+          <p class="proj-maint-note">What the last adopted budget actually did to maintenance: a record, not a projection. ${esc(numWord(x.lines.length).replace(/^./, (ch) => ch.toUpperCase()))} named
             accounts inside this category, and ${esc(numWord(x.road_lines.length))} more in Streets &amp;
             Roads that sit outside it.</p>
           <ul class="proj-maint-heads">
             ${head(x.lines_total, "Inside this category")}
-            ${head(x.road_total, "Streets & Roads — outside it")}
+            ${head(x.road_total, "Streets & Roads, outside it")}
           </ul>
           ${finePrint(`All ${numWord(count)} accounts, as the budget book prints them`, `
             <p>${esc(x.lines_note)}</p>
@@ -2547,9 +2534,7 @@
               <h3>What is published, and what this page assumes</h3>
               <p>Five of the nine numbers behind the projection come from the record and are cited below:
                 the taxable value, the certified rate, the collection rate, and both sides of the adopted
-                interim budget. The other four — how fast spending grows, how fast other revenue grows, how
-                much new construction adds, and how much existing property is revalued — are this project's
-                estimates. The city has published no multi-year financial plan, so there is no document to
+                interim budget. The other four (how fast spending grows, how fast other revenue grows, how much new construction adds, and how much existing property is revalued) are this project's estimates. The city has published no multi-year financial plan, so there is no document to
                 cite for them; each is tagged on the page and its basis is set out in
                 <a href="#s-assumptions">section 03</a>.</p>
               <p>Everything downstream of those four is a projection rather than a finding. The
