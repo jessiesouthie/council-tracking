@@ -1,0 +1,92 @@
+{
+ "A": {
+  "name": "Jared Gray",
+  "basis": "Voice match. This label's audio scores 0.88 cosine similarity against the voiceprint for Jared Gray, built from 70 sampled turns across 5 other meetings, versus 0.43 for the next-closest person, David Salazar. Sampled from 14 turns spread through this meeting. This is an acoustic match only — nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.876,
+  "runner_up": {
+   "name": "David Salazar",
+   "similarity": 0.427
+  }
+ },
+ "B": {
+  "name": "Brandon Larsen",
+  "basis": "Voice match. This label's audio scores 0.87 cosine similarity against the voiceprint for Brandon Larsen, built from 27 sampled turns across 3 other meetings, versus 0.26 for the next-closest person, Towns at Brylee Farms developer's representative. Sampled from 14 turns spread through this meeting. This is an acoustic match only — nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.871,
+  "runner_up": {
+   "name": "Towns at Brylee Farms developer's representative",
+   "similarity": 0.264
+  }
+ },
+ "C": {
+  "name": "Rich Wood",
+  "basis": "Voice match. This label's audio scores 0.51 cosine similarity against the voiceprint for Rich Wood, built from 70 sampled turns across 5 other meetings, versus 0.41 for the next-closest person, Brandon Larsen. Sampled from 14 turns spread through this meeting. This is an acoustic match only — nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.509,
+  "runner_up": {
+   "name": "Brandon Larsen",
+   "similarity": 0.409
+  }
+ },
+ "D": {
+  "name": "Brett Wright",
+  "basis": "Voice match. This label's audio scores 0.93 cosine similarity against the voiceprint for Brett Wright, built from 58 sampled turns across 5 other meetings, versus 0.28 for the next-closest person, Rich Wood. Sampled from 14 turns spread through this meeting. This is an acoustic match only — nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.934,
+  "runner_up": {
+   "name": "Rich Wood",
+   "similarity": 0.281
+  }
+ },
+ "E": {
+  "name": "Craig Whiting",
+  "basis": "Voice match. This label's audio scores 0.97 cosine similarity against the voiceprint for Craig Whiting, built from 68 sampled turns across 5 other meetings, versus 0.33 for the next-closest person, Zac Huish. Sampled from 14 turns spread through this meeting. This is an acoustic match only — nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.969,
+  "runner_up": {
+   "name": "Zac Huish",
+   "similarity": 0.33
+  }
+ },
+ "H": {
+  "name": "Melissa Clark",
+  "basis": "Voice match. This label's audio scores 0.97 cosine similarity against the voiceprint for Melissa Clark, built from 78 sampled turns across 6 other meetings, versus 0.26 for the next-closest person, Kimberly Ruesch. Sampled from 14 turns spread through this meeting. This is an acoustic match only — nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.97,
+  "runner_up": {
+   "name": "Kimberly Ruesch",
+   "similarity": 0.259
+  }
+ },
+ "I": {
+  "name": "Jessie Southworth",
+  "basis": "Voice match. This label's audio scores 0.83 cosine similarity against the voiceprint for Jessie Southworth, built from 25 sampled turns across 2 other meetings, versus 0.24 for the next-closest person, Melissa Clark. Sampled from 14 turns spread through this meeting. This is an acoustic match only — nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.831,
+  "runner_up": {
+   "name": "Melissa Clark",
+   "similarity": 0.242
+  }
+ },
+ "J": {
+  "name": "Ben Reeves",
+  "basis": "Voice match. This label's audio scores 0.94 cosine similarity against the voiceprint for Ben Reeves, built from 50 sampled turns across 5 other meetings, versus 0.41 for the next-closest person, Jared Gray. Sampled from 14 turns spread through this meeting. This is an acoustic match only — nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.94,
+  "runner_up": {
+   "name": "Jared Gray",
+   "similarity": 0.412
+  }
+ },
+ "L": {
+  "name": "Marcus Draper",
+  "basis": "Voice match. This label's audio scores 0.90 cosine similarity against the voiceprint for Marcus Draper, built from 23 sampled turns across 3 other meetings, versus 0.29 for the next-closest person, Eric Knutson. Sampled from 14 turns spread through this meeting. This is an acoustic match only — nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.897,
+  "runner_up": {
+   "name": "Eric Knutson",
+   "similarity": 0.287
+  }
+ }
+}
