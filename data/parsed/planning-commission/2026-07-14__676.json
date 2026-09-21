@@ -37,14 +37,12 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Abstain"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
         }
       ]
     },
@@ -79,14 +77,12 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
         }
       ]
     },
@@ -122,14 +118,12 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
         }
       ]
     },
@@ -165,14 +159,12 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
         }
       ]
     },
@@ -207,14 +199,12 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
         }
       ]
     },
@@ -249,14 +239,12 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
         }
       ]
     },
@@ -291,14 +279,12 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
         }
       ]
     }

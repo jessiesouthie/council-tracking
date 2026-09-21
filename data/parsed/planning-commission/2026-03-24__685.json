@@ -67,13 +67,11 @@
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
+          "member_id": "mandy-lane",
           "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
+        },
         {
-          "name": "Mandy Lance",
+          "member_id": "rod-hess",
           "vote": "Yes"
         }
       ]

@@ -31,21 +31,19 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Absent"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
+          "member_id": "robert-fox",
           "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Absent"
         },
         {
-          "name": "Robert Fox",
+          "member_id": "rod-hess",
           "vote": "Yes"
         }
       ]

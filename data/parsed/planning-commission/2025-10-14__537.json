@@ -29,21 +29,19 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Abstain"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
+          "member_id": "robert-fox",
           "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Abstain"
         },
         {
-          "name": "Robert Fox",
+          "member_id": "rod-hess",
           "vote": "Yes"
         }
       ]
@@ -69,22 +67,20 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
-          "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Yes"
+          "member_id": "robert-fox",
+          "vote": "Abstain"
         },
         {
-          "name": "Robert Fox",
-          "vote": "Abstain"
+          "member_id": "rod-hess",
+          "vote": "Yes"
         }
       ]
     },
@@ -109,21 +105,19 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Abstain"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
+          "member_id": "robert-fox",
           "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Abstain"
         },
         {
-          "name": "Robert Fox",
+          "member_id": "rod-hess",
           "vote": "Yes"
         }
       ]
@@ -153,21 +147,19 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
-          "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
+          "member_id": "robert-fox",
           "vote": "Yes"
         },
         {
-          "name": "Robert Fox",
+          "member_id": "rod-hess",
           "vote": "Yes"
         }
       ]
@@ -195,21 +187,19 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
-          "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
+          "member_id": "robert-fox",
           "vote": "Yes"
         },
         {
-          "name": "Robert Fox",
+          "member_id": "rod-hess",
           "vote": "Yes"
         }
       ]
@@ -237,21 +227,19 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
-          "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
+          "member_id": "robert-fox",
           "vote": "Yes"
         },
         {
-          "name": "Robert Fox",
+          "member_id": "rod-hess",
           "vote": "Yes"
         }
       ]
@@ -279,21 +267,19 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
-          "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
+          "member_id": "robert-fox",
           "vote": "Yes"
         },
         {
-          "name": "Robert Fox",
+          "member_id": "rod-hess",
           "vote": "Yes"
         }
       ]
@@ -321,21 +307,19 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "No"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
+          "member_id": "robert-fox",
           "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "No"
         },
         {
-          "name": "Robert Fox",
+          "member_id": "rod-hess",
           "vote": "Yes"
         }
       ]

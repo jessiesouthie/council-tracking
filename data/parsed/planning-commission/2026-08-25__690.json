@@ -1,0 +1,231 @@
+{
+  "meeting": {
+    "id": 690,
+    "date": "2026-08-25",
+    "source_file": "2026-08-25__690.pdf",
+    "motion_count": 6,
+    "ord_count": 0,
+    "res_count": 1
+  },
+  "motions": [
+    {
+      "id": 328,
+      "meeting_id": 690,
+      "date": "2026-08-25",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of August 11, 2026, Planning Commission meeting with the one correction of…",
+      "motion": "Commissioner Allen moved to approve the minutes of August 11, 2026, Planning Commission meeting with the one correction of the tally for the July 28 meeting minutes to show three abstentions instead of two. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 329,
+      "meeting_id": 690,
+      "date": "2026-08-25",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Brylee Farms Second Amendment Phase B Deve…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.A., Brylee Farms Second Amendment Phase B Development Agreement. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 330,
+      "meeting_id": 690,
+      "date": "2026-08-25",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of item 7.B., Preliminary Plat – Gateway Park Phase 3, w…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of item 7.B., Preliminary Plat – Gateway Park Phase 3, with the following conditions: 1. Unless the developer can find a reasonable way to construct internal streets on the proposed lots, that the lots be permitted to front onto the proposed arterial and collector streets. 2. Gateway Park Boulevard be renamed Wild Blossom Boulevard. Commissioner Allen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning",
+        "development",
+        "parks"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 331,
+      "meeting_id": 690,
+      "date": "2026-08-25",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.C., Site Plan Spring Run Plaza Lot 1. Commissi…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.C., Site Plan Spring Run Plaza Lot 1. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 332,
+      "meeting_id": 690,
+      "date": "2026-08-25",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.D., Site Plan Spring Run Plaza Lot 2 with the…",
+      "motion": "Commissioner Strong moved to recommend approval to the City Council of Item 7.D., Site Plan Spring Run Plaza Lot 2 with the following conditions: 1. The East elevation shall be clad with at least 60% high-quality natural material. 2. Shared parking and maintenance agreement to be filled with staff as part of the site plan application. Commissioner Hess seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 333,
+      "meeting_id": 690,
+      "date": "2026-08-25",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.E., Retaining Wall Construction Standards Chan…",
+      "motion": "Commissioner DeCoursey moved to recommend approval to the City Council of Item 7.E., Retaining Wall Construction Standards Changes. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2026-08-25__690.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "Presentation summary: City Planner, Stephen Lehmitz, presented a resolution for the second amendment to the"
+    }
+  ]
+}
