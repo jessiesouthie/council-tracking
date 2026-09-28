@@ -1,0 +1,118 @@
+{
+  "meeting": {
+    "id": 678,
+    "date": "2026-09-08",
+    "source_file": "2026-09-08__678.pdf",
+    "motion_count": 3,
+    "ord_count": 0,
+    "res_count": 0
+  },
+  "motions": [
+    {
+      "id": 334,
+      "meeting_id": 678,
+      "date": "2026-09-08",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of August 25, 2026, Planning Commission meeting. Commissioner Strong second…",
+      "motion": "Commissioner Allen moved to approve the minutes of August 25, 2026, Planning Commission meeting. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 335,
+      "meeting_id": 678,
+      "date": "2026-09-08",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Culinary Water Impact Fee Facility Plan (I…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.A., Culinary Water Impact Fee Facility Plan (IFFP). Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "development",
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 336,
+      "meeting_id": 678,
+      "date": "2026-09-08",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.B., Wastewater Master Plan and the Wastewater…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.B., Wastewater Master Plan and the Wastewater Impact Fee Facility Plan (IFFP). Commissioner DeCoursey seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [
+        "development",
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}
