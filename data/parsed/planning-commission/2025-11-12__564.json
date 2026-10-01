@@ -45,7 +45,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "October 28 minutes approved",
+      "summary": "The commission approved the minutes of its October 28, 2025 meeting.",
+      "impact": "This makes the commission's record of that meeting official. You will not notice it.",
+      "significance": "routine"
     },
     {
       "id": 249,
@@ -85,7 +89,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Moderate income housing section of the general plan",
+      "summary": "The commission recommended the council amend the moderate income housing section of the city's general plan, the long-range document that guides growth.",
+      "impact": "The motion does not say what the amendment changes. It takes effect only if the council approves it, and it changes no rule on your property by itself.",
+      "significance": "routine"
     },
     {
       "id": 250,
@@ -125,7 +133,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Revocable permits for alternative animal plans",
+      "summary": "The commission recommended the council adopt rules on alternative animal management plans and other zoning provisions, with the commission, not staff, able to revoke a plan.",
+      "impact": "If you keep animals under an alternative plan, the commission would decide whether you lose it, not the planning director or code enforcement officer. Nothing changes until the council votes.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

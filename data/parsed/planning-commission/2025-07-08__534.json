@@ -25,7 +25,11 @@
           "member_id": "jason-allen",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "June 24 commission minutes approved",
+      "summary": "The commission approved the minutes of its June 24, 2025 meeting.",
+      "impact": "This makes the written record of the last meeting official. You will not notice any change.",
+      "significance": "routine"
     },
     {
       "id": 203,
@@ -61,7 +65,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Rewrite of the site plan rules in city code",
+      "summary": "The commission recommended that the City Council adopt changes to the city's site plan rules in chapter 17 of the municipal code.",
+      "impact": "Developers and builders who file site plans would work under the revised rules if the council adopts them. The motion does not describe the changes.",
+      "significance": "routine"
     },
     {
       "id": 204,
@@ -97,7 +105,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Revised lot layout for Marketplace 4",
+      "summary": "The commission recommended that the City Council approve an amended preliminary plat for Marketplace 4, with minor map corrections to be made before the final plat.",
+      "impact": "This is a draft of how the land in Marketplace 4 is divided, and the council still has to approve it. The motion does not say what changed from the earlier version.",
+      "significance": "routine"
     },
     {
       "id": 205,
@@ -133,7 +145,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Animal and appeals code changes put off to July 22",
+      "summary": "The commission delayed until its July 22, 2025 meeting a decision on code changes covering animals, exceptions, public hearings and appeals.",
+      "impact": "The current rules stay as they are for now. The record does not say what the proposed changes would do.",
+      "significance": "routine"
     },
     {
       "id": 206,
@@ -169,7 +185,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Cell tower at Available Storage",
+      "summary": "The commission recommended that the City Council approve the site plan for a Meta cell tower at Available Storage.",
+      "impact": "Nothing is built on this vote. The City Council makes the final call on the tower, and neighbors of the storage site have the most at stake.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

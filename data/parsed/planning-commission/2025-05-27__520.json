@@ -45,7 +45,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Commission minutes approved",
+      "summary": "The commission approved the minutes of an earlier meeting; the record does not say which one.",
+      "impact": "This makes the commission's written record official. You will not notice it.",
+      "significance": "routine"
     },
     {
       "id": 187,
@@ -85,7 +89,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Temporary site plan for Sweetwater Stake Center",
+      "summary": "The commission recommended that the City Council approve an 18-month temporary site plan for the Sweetwater Stake Center.",
+      "impact": "Nothing takes effect yet: the council makes the final call. The motion does not say what the temporary plan covers, so whatever changes it brings would last 18 months at that one site.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

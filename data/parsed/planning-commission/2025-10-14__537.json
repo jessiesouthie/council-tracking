@@ -45,7 +45,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "September 2 minutes approved",
+      "summary": "The commission accepted the minutes of its September 2, 2025 meeting as the official record.",
+      "impact": "Housekeeping only. It changes nothing for residents.",
+      "significance": "routine"
     },
     {
       "id": 236,
@@ -83,7 +87,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "September 9 minutes approved",
+      "summary": "The commission signed off on the minutes from its September 9, 2025 meeting.",
+      "impact": "A record-keeping step for the commission's own files. No one outside the room is touched by it.",
+      "significance": "routine"
     },
     {
       "id": 237,
@@ -121,7 +129,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "September 23 minutes approved",
+      "summary": "The commission approved the minutes of its September 23, 2025 meeting.",
+      "impact": "This makes the written record of that meeting official. You will not see it anywhere.",
+      "significance": "routine"
     },
     {
       "id": 238,
@@ -163,7 +175,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Water plan update sent to council",
+      "summary": "The commission recommended changes to the city's water use and preservation plan, asking for new population figures and an account of water developers bring in.",
+      "impact": "The plan guides how the city pipes water to new growth and what impact fees pay for, so a weak plan reaches every tap. The council decides whether to adopt it.",
+      "significance": "notable"
     },
     {
       "id": 239,
@@ -203,7 +219,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "John Hancock Charter School campus plan",
+      "summary": "The commission recommended the City Council approve a master site plan for John Hancock Charter School, on condition the project follows the approved plans.",
+      "impact": "The council still has to vote before anything is built. Families with children at the school, and neighbors nearby, have the most reason to follow it.",
+      "significance": "notable"
     },
     {
       "id": 240,
@@ -243,7 +263,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Granite Credit Union's sign request denied",
+      "summary": "The commission refused to let Granite Credit Union break the city's sign rules, finding it knew the code and its building's visibility when it chose the site.",
+      "impact": "The credit union must keep its signs within the same limits every other business in the district follows. Only this one business is affected.",
+      "significance": "routine"
     },
     {
       "id": 241,
@@ -283,7 +307,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Meritage Homes privacy screening agreement",
+      "summary": "The commission recommended a development agreement with Meritage Homes covering privacy screening, and passed it to the City Council for a final vote.",
+      "impact": "If the council agrees, the deal sets privacy screening terms for a Meritage Homes project. The record does not say which neighborhood or what kind of screening.",
+      "significance": "notable"
     },
     {
       "id": 242,
@@ -323,7 +351,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Stadion LLC development agreement sent to council",
+      "summary": "The commission recommended that the City Council approve a development agreement with Stadion LLC.",
+      "impact": "Nothing is binding yet; the council makes the final call. The motion gives no detail on what Stadion plans to build or where.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

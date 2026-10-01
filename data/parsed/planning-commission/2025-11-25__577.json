@@ -45,7 +45,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "November 12 minutes approved with two fixes",
+      "summary": "The commission approved its November 12, 2025 minutes after correcting the policy session start time and recording Commissioner Fox as excused, not voting no, on Item 7.A.",
+      "impact": "This fixes the commission's own record. You will not notice it.",
+      "significance": "routine"
     },
     {
       "id": 252,
@@ -85,7 +89,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Firefly NPA 9 Phase A master site plan",
+      "summary": "The commission recommended the master site plan for Firefly NPA 9 Phase A to the City Council, with staff's recommendations included.",
+      "impact": "This plan goes to the City Council next. Until the council acts, it changes nothing on the ground in Firefly.",
+      "significance": "notable"
     },
     {
       "id": 253,
@@ -125,7 +133,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Firefly NPA 9 Phase A lot layout approved",
+      "summary": "The commission approved the preliminary plat for Firefly NPA 9 Phase A, the early lot-and-street layout, with staff's recommendations attached.",
+      "impact": "The developer can move this phase of Firefly toward a final plat. People living near Firefly are the ones who will see the result.",
+      "significance": "notable"
     },
     {
       "id": 254,
@@ -165,7 +177,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Spring Run Plaza development plan and zoning change",
+      "summary": "The commission recommended the Spring Run Plaza master development plan and zoning change, with the land under roads A and B zoned as agriculture.",
+      "impact": "This sets the outline for how Spring Run Plaza can be built. The City Council makes the final call, so nothing is built on the strength of this vote.",
+      "significance": "notable"
     },
     {
       "id": 255,
@@ -203,7 +219,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Change the rules for public notice of land-use items",
+      "summary": "The commission recommended an ordinance changing the notice requirements in three chapters of city code, 16.05, 16.55 and 17.05.",
+      "impact": "These rules govern how people hear about land-use proposals. The record does not say what changes, and the council still has to adopt it.",
+      "significance": "routine"
     },
     {
       "id": 256,
@@ -243,7 +263,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Rezone parcels in White Hills",
+      "summary": "The commission recommended the White Hills zoning change with staff's condition, moving White Hills County Estates A parcels to RA2 and J & J Ranches to agriculture.",
+      "impact": "If you own property in White Hills County Estates A or J & J Ranches, this changes your zoning label. Nothing takes effect until the City Council votes.",
+      "significance": "notable"
     },
     {
       "id": 257,
@@ -283,7 +307,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Extend the annexation map's Area 1 to Utah Lake",
+      "summary": "The commission recommended amending the general plan's annexation policy declaration so that Area 1 reaches Utah Lake.",
+      "impact": "The policy marks land the city might consider taking in later. It does not annex any land itself, and the City Council has not yet voted on the change.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

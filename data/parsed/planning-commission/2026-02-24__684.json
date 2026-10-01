@@ -45,7 +45,11 @@
           "member_id": "rod-hess",
           "vote": "Abstain"
         }
-      ]
+      ],
+      "headline": "February 10 minutes approved",
+      "summary": "The commission approved the minutes of its February 10, 2026 meeting after fixing a wrong date in the page footer.",
+      "impact": "Fixing a typo in the meeting record changes nothing for anyone outside the commission.",
+      "significance": "routine"
     },
     {
       "id": 277,
@@ -85,7 +89,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Williams development agreement sent to council",
+      "summary": "The commission recommended that the City Council approve the Williams Development Agreement.",
+      "impact": "Nothing takes effect yet: the council makes the final call later. The motion does not say where the land is or what would be built there.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

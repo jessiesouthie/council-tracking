@@ -41,7 +41,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "August 25 minutes approved",
+      "summary": "The commission approved the minutes of its August 25, 2026 meeting.",
+      "impact": "Approving the minutes makes the written record of the last meeting official. You will not notice any change.",
+      "significance": "routine"
     },
     {
       "id": 335,
@@ -78,7 +82,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Culinary water impact fee plan sent to council",
+      "summary": "The commission recommended that the City Council adopt the culinary water impact fee facility plan, which lists the drinking water projects new growth must help pay for.",
+      "impact": "This is still only advice to the council, which decides later. The plan mostly matters to developers, since it underpins the water fee charged on new construction.",
+      "significance": "notable"
     },
     {
       "id": 336,
@@ -111,7 +119,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Sewer master plan and impact fee plan sent to council",
+      "summary": "The commission recommended that the City Council adopt a wastewater master plan and the facility plan used to set sewer impact fees on new development.",
+      "impact": "Nothing takes effect yet; the council has the final vote. If adopted, these plans guide future sewer projects and what builders of new homes pay toward them.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

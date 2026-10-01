@@ -29,7 +29,11 @@
           "member_id": "robert-fox",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "October 14 minutes approved",
+      "summary": "Minutes from the commission's October 14, 2025 meeting got the commission's approval.",
+      "impact": "Housekeeping for the commission's own records. Nobody outside the room is touched by it.",
+      "significance": "routine"
     },
     {
       "id": 244,
@@ -65,7 +69,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Trails at Hidden Valley plan sent on with conditions",
+      "summary": "The commission recommended changes to the Lower Hidden Valley master development plan for Trails at Hidden Valley, asking for a closer look at a wildlife corridor and ridgeline protection.",
+      "impact": "If you live near Hidden Valley, watch the council vote. The commission wants the plats split into sections, phases one and two possibly swapped, and an answer on who fences the wildlife corridor.",
+      "significance": "notable"
     },
     {
       "id": 245,
@@ -101,7 +109,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Energy overlay zone, minus water-cooled gas plants",
+      "summary": "The commission recommended that the council adopt Chapter 17.64, the Alternative Energy Overlay Zone, with water-cooled natural gas power plants excluded from it.",
+      "impact": "The council has the final vote. If it agrees, no water-cooled natural gas power plant could be built under this overlay, wherever the overlay is applied.",
+      "significance": "notable"
     },
     {
       "id": 246,
@@ -135,7 +147,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Firefly NPA 6 phase approved",
+      "summary": "Firefly's NPA 6 phase won the commission's approval, on condition that its screening wall meets city code and the project's agreement.",
+      "impact": "The builder has to put up a screening wall that meets code. The record gives no unit count, acreage or location for this phase.",
+      "significance": "notable"
     },
     {
       "id": 247,
@@ -171,7 +187,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Interconnectivity code change limited to five zones",
+      "summary": "The commission recommended that the council adopt an interconnectivity amendment to city code, on condition that it apply to the CN, CC, CR, MEC and OP zones.",
+      "impact": "Nothing changes until the council votes. The record names the five zones the rule would cover but does not say what it would require of them.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

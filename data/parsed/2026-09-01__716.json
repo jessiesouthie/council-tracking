@@ -43,7 +43,11 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Consent agenda passed, Item 12.A pulled",
+      "summary": "The council approved its consent agenda in one vote after moving Item 12.A off it for separate discussion.",
+      "impact": "The record does not list what the batch contained, so its effect on residents cannot be judged from this motion. Item 12.A will get its own debate.",
+      "significance": "routine"
     },
     {
       "id": 1145,
@@ -81,7 +85,11 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Gateway Park Phase 3 layout approved",
+      "summary": "The council approved the preliminary layout for Gateway Park Phase 3 and dropped a proposal to rename Gateway Park Boulevard to Wild Blossom Boulevard.",
+      "impact": "Gateway Park Boulevard keeps its name. Unless the developer can find a reasonable way to build internal streets, some lots may face directly onto the larger roads through the area.",
+      "significance": "notable"
     },
     {
       "id": 1146,
@@ -96,7 +104,11 @@
       "tags": [
         "code"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "First version of retaining wall motion",
+      "summary": "Councilmember Wright first proposed the retaining wall rules with only \"multi-family\" removed from Item 5.B, and Councilmember Clark suggested adding \"or\" before \"institutional\".",
+      "impact": "This draft gave way to the amended motion above, which carries the final wording. On its own it changed nothing.",
+      "significance": "routine"
     },
     {
       "id": 1147,
@@ -132,7 +144,11 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "New rules for building retaining walls",
+      "summary": "The council replaced the city's retaining wall construction standards and edited Item 5.B, striking \"multi-family\" and adding \"or\" before \"institutional\".",
+      "impact": "If you plan to build a retaining wall, or a builder plans one near you, the new standards apply. The motion does not spell out the requirements, so check Section 17.60.130 before you build.",
+      "significance": "notable"
     },
     {
       "id": 1148,
@@ -169,7 +185,11 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Pinnacles zoning change and plan rejected",
+      "summary": "The council rejected a zoning change for the land known as Pinnacles, along with an amendment to its master development plan and agreement.",
+      "impact": "The current zoning and development agreement for Pinnacles stay as they are. The record does not say what the developer wanted to change, so nobody near the site should expect anything new from this request.",
+      "significance": "notable"
     },
     {
       "id": 1149,
@@ -205,7 +225,11 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "New city code chapter on property tax allocations",
+      "summary": "The council enacted Chapter 3.50 of the city code, which sets up property tax allocations, after changing one word in Section 3.50.110 B from \"adoption\" to \"acceptance\".",
+      "impact": "The motion does not say how the money is divided or whether any tax bill changes. Read the chapter itself to learn what it means for your property taxes.",
+      "significance": "notable"
     },
     {
       "id": 1150,
@@ -239,7 +263,11 @@
           "member_id": "zachory-huish",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Seek memorial name for wildlife migration corridor",
+      "summary": "The council added a request to its legislative priorities list: dedicate the Wildlife Migration Corridor and rename it the Todd A. Black Memorial Wildlife Migration Corridor.",
+      "impact": "Nothing is renamed yet. The item goes onto the list of requests the city takes to the state. Your daily routine does not change.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

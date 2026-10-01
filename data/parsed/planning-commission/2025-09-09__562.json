@@ -45,7 +45,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "August 26 minutes approved",
+      "summary": "The commission approved the minutes of its August 26, 2025 meeting.",
+      "impact": "Approving the minutes makes that meeting's written record official. It changes nothing for anyone in the city.",
+      "significance": "routine"
     },
     {
       "id": 225,
@@ -83,7 +87,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "Trails at Hidden Valley put on hold",
+      "summary": "The commission tabled Trails at Hidden Valley, putting off any recommendation on it to a later meeting.",
+      "impact": "For now, nothing has changed. The item can come back to the commission later.",
+      "significance": "routine"
     },
     {
       "id": 226,
@@ -123,7 +131,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "Lot map change at Rush Creek Industrial",
+      "summary": "The commission recommended that the City Council approve an amendment to the recorded lot map for the first plat of Rush Creek Industrial, Phase A.",
+      "impact": "This redraws paperwork for an industrial area and goes to the council next. Unless you own land there, you will not see it.",
+      "significance": "routine"
     },
     {
       "id": 227,
@@ -163,7 +175,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "Mountainland development agreement",
+      "summary": "The commission recommended that the City Council approve the Mountainland development agreement, a contract setting the terms for building on a piece of land.",
+      "impact": "The council has the final say. The motion gives no location, size or terms, so it is not yet clear who will live near this project or what will be built.",
+      "significance": "notable"
     },
     {
       "id": 228,
@@ -193,7 +209,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "Hansen retaining wall variance",
+      "summary": "The commission took up a motion to let the Hansen property keep a fence and retaining wall that breaks city rules, citing problems created by a neighbor.",
+      "impact": "The record does not show how the vote came out. Either way, it concerns one homeowner's wall, and the motion itself says the general public is not affected.",
+      "significance": "routine"
     },
     {
       "id": 229,
@@ -231,7 +251,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "Parkway Fields stake center sent to council",
+      "summary": "The commission recommended the Parkway Fields stake center to the City Council and left it to the council to decide whether to allow a different building setback.",
+      "impact": "Nothing is final until the council votes, including how far the building will sit from the property line. Neighbors of the site have the most reason to follow the council vote.",
+      "significance": "notable"
     },
     {
       "id": 230,
@@ -269,7 +293,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "New rules for how buildings must look",
+      "summary": "The commission recommended that the City Council adopt changes, revised during the meeting, to the city code's architectural standards for buildings.",
+      "impact": "None of this is in force yet. If the council adopts it, anyone designing a new building will work to the revised standards. The motion does not say what the changes are.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

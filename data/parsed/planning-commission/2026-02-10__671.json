@@ -45,7 +45,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "December 9 minutes approved",
+      "summary": "The commission approved the minutes of its December 9 meeting; the recorded motion lists the year as 2026.",
+      "impact": "This step files the earlier meeting into the official record. You will not notice it.",
+      "significance": "routine"
     },
     {
       "id": 269,
@@ -83,7 +87,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "January 13 minutes fixed and approved",
+      "summary": "The commission approved the minutes of its January 13, 2026 meeting after correcting who led the Pledge of Allegiance, from Commissioner Allen to Commissioner Hess.",
+      "impact": "A one-line correction to the record. It changes nothing for anyone outside the room.",
+      "significance": "routine"
     },
     {
       "id": 270,
@@ -123,7 +131,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "One Call Auto site plan forwarded",
+      "summary": "The commission recommended that the City Council approve the site plan for One Call Auto.",
+      "impact": "Construction cannot proceed on this recommendation alone, since the council decides. It concerns one business's property and nobody else's.",
+      "significance": "routine"
     },
     {
       "id": 271,
@@ -163,7 +175,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "New fee for site plan changes",
+      "summary": "The commission recommended that the City Council add a fee for site plan amendments to the city's consolidated fee schedule.",
+      "impact": "Developers and businesses that revise approved site plans would pay it, but the motion gives no amount. Homeowners would not see it, and the council still has to approve it.",
+      "significance": "routine"
     },
     {
       "id": 272,
@@ -203,7 +219,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "Commission opposes fence rule change",
+      "summary": "The commission advised the City Council to reject a proposed amendment to the city's fence code.",
+      "impact": "Your fence rules stay as they are for now. The council makes the final call and does not have to follow this advice. The motion does not say what the change would have done.",
+      "significance": "notable"
     },
     {
       "id": 273,
@@ -243,7 +263,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "Overland development deal advanced, lighting flagged",
+      "summary": "The commission recommended the Overland Master Development Agreement to the City Council and asked that its lighting requirements be brought closer to city code.",
+      "impact": "The agreement sets the ground rules for building out Overland, and the council still has to approve it. Neighbors may care how the outdoor lighting question gets settled.",
+      "significance": "notable"
     },
     {
       "id": 274,
@@ -283,7 +307,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "QTS SCL 2 zoning change backed",
+      "summary": "The commission recommended that the City Council approve a zoning change for the property known as QTS SCL 2.",
+      "impact": "The council has the final vote, so this land's zoning stays as it is for now. The motion gives no acreage, location or planned use.",
+      "significance": "notable"
     },
     {
       "id": 275,
@@ -323,7 +351,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "Wildfire-zone map sent to the council",
+      "summary": "The commission recommended that the City Council adopt a code change to the Wildland Urban Interface Area Map, which marks where homes border open wildland.",
+      "impact": "Nothing changes until the council votes. If it adopts the map, the map decides which properties fall inside the wildfire zone, though the motion does not say what rules apply there.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

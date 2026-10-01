@@ -45,7 +45,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "February 24 minutes approved",
+      "summary": "The commission approved the minutes of its February 24, 2026 meeting.",
+      "impact": "Paperwork for the commission's own files. You will not see it.",
+      "significance": "routine"
     },
     {
       "id": 279,
@@ -82,7 +86,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Firefly townhome site plan sent to council",
+      "summary": "The commission recommended the council approve the site plan for Plat 4 townhomes in Firefly NPA 8 Phase B, with one condition from the staff report.",
+      "impact": "No townhomes are approved yet. That vote belongs to the council, and the motion gives no unit count.",
+      "significance": "notable"
     },
     {
       "id": 280,
@@ -119,7 +127,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Overland Village 2 Phase B layout approved",
+      "summary": "The commission approved the preliminary layout for Overland Village 2 Phase B, on condition that street names are corrected and storm drain inlets are moved.",
+      "impact": "Builders can move on to the next round of plans for this phase. Neighbors near Overland Village may see construction once those plans clear.",
+      "significance": "notable"
     },
     {
       "id": 281,
@@ -155,7 +167,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Noise rules for land rezoned after a project is built",
+      "summary": "The commission recommended a noise ordinance change: when land next to an approved project is later rezoned for quieter use, the rezoned land pays for any noise fixes.",
+      "impact": "If a business near you was approved under the old noise limits, rezoning your side later would not force it to quiet down. The council still has to vote.",
+      "significance": "notable"
     },
     {
       "id": 282,
@@ -189,7 +205,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Rewrite of who does what in the zoning code",
+      "summary": "The commission recommended the council adopt changes to city code chapter 17.15, which sets out roles and duties, and asked for a look at how other cities handle appointments.",
+      "impact": "Nothing changes until the council votes. The record does not say whose roles shift, so it is unclear whether anyone outside city hall would notice.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

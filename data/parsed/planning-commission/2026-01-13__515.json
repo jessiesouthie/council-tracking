@@ -37,7 +37,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "December 9 minutes held for later",
+      "summary": "The commission put off approving the minutes of its December 9, 2025 meeting.",
+      "impact": "The record of that meeting stays unofficial for now. You will not notice the delay.",
+      "significance": "routine"
     },
     {
       "id": 266,
@@ -69,7 +73,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Rules for building on slopes",
+      "summary": "The commission recommended that the City Council approve changes to the city code covering development on sloped land.",
+      "impact": "If the council adopts it, people building on hillside lots would be affected. The motion does not say what the new rules require, and none of them apply until the council votes.",
+      "significance": "notable"
     },
     {
       "id": 267,
@@ -101,7 +109,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Citywide parks, trails and open space plan",
+      "summary": "The commission recommended that the City Council adopt a master plan for the city's parks, trails and open space.",
+      "impact": "Nothing changes yet: the council makes the decision. The motion does not say what the plan contains, so it gives no detail on which parks or trails it covers.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

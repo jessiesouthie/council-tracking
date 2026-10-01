@@ -45,7 +45,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "July 8 minutes approved",
+      "summary": "The commission approved the minutes of its July 8, 2025 meeting.",
+      "impact": "This is record-keeping only, and nobody outside the room is touched by it.",
+      "significance": "routine"
     },
     {
       "id": 208,
@@ -85,7 +89,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "City fee schedule update sent to council",
+      "summary": "The commission recommended the council adopt changes to the city's consolidated fee schedule, except the illegal dumping section, which it held for its next meeting.",
+      "impact": "The motion lists no fee amounts, so what you might pay is not in the record. The council decides, and the dumping section returns to the commission first.",
+      "significance": "notable"
     },
     {
       "id": 209,
@@ -125,7 +133,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Animal, ADU and home business rules held over",
+      "summary": "The commission tabled a code change on animals, exceptions, public hearings and appeals until its next meeting so staff could revisit tables for animals, ADUs and home businesses.",
+      "impact": "Nothing changed. If you keep animals, rent out an accessory apartment or run a business from home, watch for this item when it returns.",
+      "significance": "routine"
     },
     {
       "id": 210,
@@ -166,7 +178,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Change to preliminary plat rules recommended",
+      "summary": "A matching change for preliminary plats, the early lot layouts a developer submits, also won the commission's recommendation to the council.",
+      "impact": "This is for people applying to build subdivisions. Homeowners won't notice it, and the council still has to act.",
+      "significance": "routine"
     },
     {
       "id": 211,
@@ -207,7 +223,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Change to final plat rules recommended",
+      "summary": "The commission recommended a change to the city code on final plats, the recorded maps that divide land into lots, and sent it to the council.",
+      "impact": "Developers dividing land would follow the new rules if the council adopts them. The motion does not describe what changes.",
+      "significance": "routine"
     },
     {
       "id": 212,
@@ -247,7 +267,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Brylee Commercial Lot 3 site plan backed",
+      "summary": "The commission recommended the council approve the site plan for Lot 3 of Brylee Commercial and attached no conditions.",
+      "impact": "The record doesn't say what would be built on the lot. The council votes next.",
+      "significance": "routine"
     },
     {
       "id": 213,
@@ -285,7 +309,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Pony Express Medical plans sent to council",
+      "summary": "The commission recommended the council approve Pony Express Medical on two conditions: the landscape plan corrections get made, and the plans identify the building's exterior finishes.",
+      "impact": "The City Council has the final say. Until it votes, the project has no green light.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

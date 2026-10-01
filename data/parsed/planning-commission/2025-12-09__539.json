@@ -29,7 +29,11 @@
           "member_id": "robert-fox",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "November 25 minutes",
+      "summary": "The commission took up a motion to approve the minutes of its November 25, 2025 meeting, and the record doesn't show how the vote went.",
+      "impact": "Minutes are the commission's own record of an earlier meeting. Nobody outside the room is affected.",
+      "significance": "routine"
     },
     {
       "id": 259,
@@ -67,7 +71,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "2026 meeting calendar set",
+      "summary": "The commission adopted its 2026 meeting schedule and added one meeting on November 24, 2026.",
+      "impact": "If you follow land-use hearings, this tells you when the commission will meet next year. Beyond that, it doesn't touch anyone.",
+      "significance": "routine"
     },
     {
       "id": 260,
@@ -107,7 +115,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "Horizon development plan turned down",
+      "summary": "The commission denied the Horizon master development plan and preliminary plat, the first map showing how the land would be divided into lots.",
+      "impact": "The Horizon project can't move ahead on this version of its plan. The record doesn't say why it was denied or whether the developer can appeal or bring it back.",
+      "significance": "notable"
     },
     {
       "id": 261,
@@ -145,7 +157,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "Pool amenity for Hidden Hollow",
+      "summary": "The commission recommended the Hidden Hollow pool amenity to the City Council and asked that the clubhouse also get an added amenity.",
+      "impact": "This mainly concerns people who live or will live in Hidden Hollow. The council still has to vote, and the motion doesn't say what the clubhouse addition would be.",
+      "significance": "notable"
     },
     {
       "id": 262,
@@ -183,7 +199,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "Fixes to the city's fence rules",
+      "summary": "The commission sent the City Council a recommendation to approve a set of fixes to the city's fence code.",
+      "impact": "Homeowners planning a fence may eventually face different rules. The motion doesn't say what changes, and none of it takes effect unless the council adopts it.",
+      "significance": "notable"
     },
     {
       "id": 263,
@@ -223,7 +243,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "Pacific Springs development agreement",
+      "summary": "The commission recommended that the City Council approve the development agreement for Pacific Springs.",
+      "impact": "The council has the final vote and can still reject the agreement. The motion gives no acreage, home count or location, so the record doesn't say who would be affected or how.",
+      "significance": "notable"
     },
     {
       "id": 264,
@@ -263,7 +287,11 @@
           "member_id": "rod-hess",
           "vote": "Excused"
         }
-      ]
+      ],
+      "headline": "Directional signs for data centers",
+      "summary": "The commission recommended a code change on directional signs for data centers, and added a line so the rule also covers the Alternate Energy Overlay Zone.",
+      "impact": "Nothing changes until the City Council votes. If it passes, the rule applies to data center sites and to land in that energy overlay zone, not to homeowners.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

@@ -41,7 +41,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Earlier minutes approved",
+      "summary": "The commission approved the minutes of an earlier meeting, though the record does not say which one.",
+      "impact": "Approving minutes makes the written record of a past meeting official. You will not see any effect from it.",
+      "significance": "routine"
     },
     {
       "id": 180,
@@ -75,7 +79,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Accessory apartment exception for the Atkinson property",
+      "summary": "The commission approved an exception for an accessory dwelling unit, such as a basement or backyard apartment, on the Atkinson property.",
+      "impact": "One household is directly affected, plus perhaps its immediate neighbors. The record gives no address and does not say which rule was waived.",
+      "significance": "routine"
     },
     {
       "id": 181,
@@ -111,7 +119,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "New planned land use for Steeplechase South",
+      "summary": "The commission recommended changing the city's long-range land use map for the area known as Steeplechase South.",
+      "impact": "This map guides what kind of building the city will later allow there. The motion does not say what the new designation is, and the council makes the final call.",
+      "significance": "notable"
     },
     {
       "id": 182,
@@ -147,7 +159,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Site plan for Lot 3 at The District",
+      "summary": "The commission recommended that the City Council approve the site plan for Lot 3 at The District.",
+      "impact": "The motion does not describe what would be built on the lot. People near The District should watch for the council vote, which decides whether the plan goes ahead.",
+      "significance": "notable"
     },
     {
       "id": 183,
@@ -183,7 +199,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Update to diagrams in the subdivision code",
+      "summary": "The commission recommended amending the diagrams section of the city's subdivision code, chapter 16.35.140.",
+      "impact": "Engineers and developers drawing up new subdivisions are the ones who use these diagrams. A homeowner is unlikely to notice, and the council still has to vote on it.",
+      "significance": "routine"
     },
     {
       "id": 184,
@@ -220,7 +240,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Change to the city's table of allowed land uses",
+      "summary": "The commission recommended a change to the city code's land use table, which lists the uses allowed in each zone.",
+      "impact": "The record does not name the uses being added, removed or moved. Whatever the change is, it waits on a City Council vote before it applies to any property.",
+      "significance": "notable"
     },
     {
       "id": 185,
@@ -254,7 +278,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Harmony development agreement, sections 7 and 8",
+      "summary": "The commission recommended that the City Council approve sections 7 and 8 of the Harmony development agreement.",
+      "impact": "The motion does not say what those sections cover. The council has the final vote, so nothing changes for Harmony residents or builders until it acts.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

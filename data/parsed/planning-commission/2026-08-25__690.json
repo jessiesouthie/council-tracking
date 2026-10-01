@@ -29,7 +29,11 @@
           "member_id": "jason-allen",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "August 11 minutes approved with a fix",
+      "summary": "The commission approved its August 11 minutes after correcting one line to record three abstentions, not two, on an earlier vote.",
+      "impact": "A clerical fix to the commission's own records. Residents will not notice it.",
+      "significance": "routine"
     },
     {
       "id": 329,
@@ -69,7 +73,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Brylee Farms Phase B agreement change",
+      "summary": "The commission recommended the second amendment to the development agreement for Phase B of Brylee Farms, the contract setting what the developer may build there.",
+      "impact": "The council makes the final call. The motion does not say what the amendment changes, so its effect on the neighborhood cannot be told from this record.",
+      "significance": "notable"
     },
     {
       "id": 330,
@@ -111,7 +119,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Gateway Park Phase 3 lots, street renamed",
+      "summary": "The commission recommended the early layout of lots for Gateway Park Phase 3 and asked that Gateway Park Boulevard be renamed Wild Blossom Boulevard.",
+      "impact": "If the council agrees, homes in this phase could face directly onto the area's larger through streets unless the developer finds room for internal roads. Anyone giving directions will need the new street name.",
+      "significance": "notable"
     },
     {
       "id": 331,
@@ -151,7 +163,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Spring Run Plaza Lot 1 building plan",
+      "summary": "The commission recommended the building plan for Lot 1 of Spring Run Plaza, with no added conditions.",
+      "impact": "This one is a recommendation, so the City Council still decides. The motion gives no detail on what will be built on the lot.",
+      "significance": "notable"
     },
     {
       "id": 332,
@@ -191,7 +207,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Spring Run Plaza Lot 2 building plan",
+      "summary": "The commission recommended the plan for Lot 2 of Spring Run Plaza, on condition that at least 60% of the east wall is faced in high-quality natural material.",
+      "impact": "The council has the final vote. If it agrees, the building's east side will be mostly natural material, and the owners must file a shared parking and upkeep agreement with city staff.",
+      "significance": "notable"
     },
     {
       "id": 333,
@@ -217,7 +237,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "New construction standards for retaining walls",
+      "summary": "The commission recommended that the City Council adopt changes to the city's construction standards for retaining walls; the motion does not say what the changes are.",
+      "impact": "Nothing changes until the council votes. Once adopted, the new rules would apply to anyone building a retaining wall, and the record here does not spell out what they require.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

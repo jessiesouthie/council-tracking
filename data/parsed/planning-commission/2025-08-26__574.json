@@ -41,7 +41,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "August 12 commission minutes approved",
+      "summary": "The commission approved the minutes of its August 12, 2025 meeting.",
+      "impact": "This makes the written record of the last meeting official. You will not notice it.",
+      "significance": "routine"
     },
     {
       "id": 223,
@@ -77,7 +81,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Changes to the city fee schedule sent to council",
+      "summary": "The commission recommended that the City Council amend the city's consolidated fee schedule, the single list of what the city charges for its services and permits.",
+      "impact": "Nothing changes yet: the council makes the final call. The motion does not say which fees would move or by how much, so whether you would pay more is not stated.",
+      "significance": "notable"
     }
   ],
   "ordinances": [
