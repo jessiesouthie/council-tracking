@@ -1,0 +1,110 @@
+"""
+The redesign's page chrome: the "who runs this" strip, the header, the tab bar
+and the footer, as static markup for pages styled by docs/v2.css.
+
+Destinations still come from ingest/nav.py and nowhere else — this module only
+decides how the redesign draws them. A page built here needs no site.js to get
+its navigation: the bar and the menu are in the HTML, so they survive a load
+where no script runs, which is also what a link-preview crawler sees.
+
+The strip is the point of the module. Most readers arrive from a link someone
+sent them, on a page in the middle of the site, and the first thing they need
+to know is that this is not the city's own website.
+"""
+
+from __future__ import annotations
+
+import html
+
+from .nav import NAV, TABBAR, Item
+
+CONTACT = "civicrollcall@gmail.com"
+FONT_PRELOAD = "/fonts/public-sans-400-800-latin.woff2"
+
+
+def esc(text: object) -> str:
+    return html.escape(str(text if text is not None else ""), quote=True)
+
+
+# Stroke icons for the tab bar, keyed by the section's href. 24px box, drawn in
+# currentColor so the active colour comes from the link.
+_ICON = {
+    "index.html": '<path d="M4 11l8-6 8 6v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/>',
+    "meetings.html": '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',
+    "members.html": '<circle cx="9" cy="9" r="3.2"/><path d="M3.5 19c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5"/><circle cx="17" cy="8" r="2.5"/><path d="M16.5 13.5c2 .2 3.5 1.5 4 4"/>',
+    "claims.html": '<circle cx="12" cy="12" r="8"/><path d="M8.5 12.3l2.4 2.4 4.6-5"/>',
+    "finances.html": '<path d="M5 20V10M10 20V5M15 20v-8M20 20v-5"/>',
+    "about.html": '<circle cx="12" cy="12" r="8"/><path d="M12 11v5M12 8h0"/>',
+}
+_DEFAULT_ICON = '<circle cx="12" cy="12" r="8"/>'
+
+MARK = ('<span class="v2-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" '
+        'stroke="#fff" stroke-width="2.4" stroke-linecap="round">'
+        '<path d="M5 7h0M9 7h10M5 12h0M9 12h8M5 17h0M9 17h6"/></svg></span>')
+
+
+def icon(href: str) -> str:
+    return ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" '
+            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+            f'{_ICON.get(href, _DEFAULT_ICON)}</svg>')
+
+
+def _section_of(page: str) -> Item | None:
+    for item in NAV:
+        if item.href == page or page in item.aliases:
+            return item
+    return None
+
+
+def head_assets(css_version: str) -> str:
+    """The font preload and the one stylesheet. Nothing from site.css."""
+    return (f'<link rel="preload" href="{FONT_PRELOAD}" as="font" type="font/woff2" crossorigin />\n'
+            f'    <link rel="stylesheet" href="/fonts.css?v={esc(css_version)}" />\n'
+            f'    <link rel="stylesheet" href="/v2.css?v={esc(css_version)}" />')
+
+
+def strip() -> str:
+    return ('<div class="v2-strip"><div class="v2-wrap">'
+            '<span>An independent record of Eagle Mountain city government, kept by a resident. '
+            '<strong>Not run by the city.</strong></span>'
+            '<a href="/about.html">What is this?</a>'
+            '</div></div>')
+
+
+def header(section: str) -> str:
+    """Brand plus the desktop menu. `section` is the page whose section should
+    light up — a fact check passes "claims.html"."""
+    current = _section_of(section)
+    links = []
+    for item in NAV:
+        on = current is not None and item.href == current.href
+        cls = ' class="is-section"' if on else ""
+        links.append(f'<a href="/{item.href}"{cls}>{esc(item.label)}</a>')
+    return ('<header class="v2-header"><div class="v2-wrap">'
+            '<a class="v2-brand" href="/index.html">'
+            f'{MARK}<span><span class="v2-brand-name">Civic Roll Call</span>'
+            '<span class="v2-brand-place">Eagle Mountain, Utah</span></span></a>'
+            f'<nav class="v2-nav" aria-label="Main">{"".join(links)}</nav>'
+            '</div></header>')
+
+
+def tabbar(section: str) -> str:
+    current = _section_of(section)
+    links = []
+    for item in TABBAR:
+        on = current is not None and item.href == current.href
+        cls = ' class="is-section"' if on else ""
+        links.append(f'<a href="/{item.href}"{cls}>{icon(item.href)}'
+                     f'<span>{esc(item.label)}</span></a>')
+    return f'<nav class="v2-tabbar" aria-label="Main (mobile)">{"".join(links)}</nav>'
+
+
+def footer() -> str:
+    links = "".join(f'<a href="/{item.href}">{esc(item.label)}</a>' for item in NAV)
+    return ('<footer class="v2-footer"><div class="v2-wrap">'
+            f'<nav aria-label="Everything on this site">{links}'
+            '<a href="/definitions.html">Definitions</a></nav>'
+            '<p>Civic Roll Call is published independently by an Eagle Mountain resident, '
+            'with no affiliation to the city, any candidate or any campaign. '
+            f'Corrections and tips: <a href="mailto:{CONTACT}">{CONTACT}</a></p>'
+            '</div></footer>')

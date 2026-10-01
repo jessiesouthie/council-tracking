@@ -884,7 +884,7 @@ def _claim_docs() -> list[dict]:
                 "body": "city-council",
                 "title": _clean(c.get("summary") or c.get("claim", "")),
                 "date": c.get("checked", ""),
-                "url": f"claims.html#{c.get('id')}",
+                "url": f"/claims/{c.get('id')}.html",
                 "tags": ["claim"],
                 "text": _clean(" ".join(p for p in parts if p)),
             }

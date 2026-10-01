@@ -8,13 +8,13 @@
   </url>
   <url>
     <loc>https://civicrollcall.com/meetings.html</loc>
-    <lastmod>2026-10-01T19:21:57+00:00</lastmod>
+    <lastmod>2026-10-01T19:24:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://civicrollcall.com/members.html</loc>
-    <lastmod>2026-10-01T19:21:57+00:00</lastmod>
+    <lastmod>2026-10-01T19:24:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://civicrollcall.com/motions.html</loc>
-    <lastmod>2026-10-01T19:21:57+00:00</lastmod>
+    <lastmod>2026-10-01T19:24:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -128,19 +128,19 @@
   </url>
   <url>
     <loc>https://civicrollcall.com/meetings.html?body=planning-commission</loc>
-    <lastmod>2026-10-01T19:23:14+00:00</lastmod>
+    <lastmod>2026-10-01T19:24:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://civicrollcall.com/members.html?body=planning-commission</loc>
-    <lastmod>2026-10-01T19:23:14+00:00</lastmod>
+    <lastmod>2026-10-01T19:24:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://civicrollcall.com/motions.html?body=planning-commission</loc>
-    <lastmod>2026-10-01T19:23:14+00:00</lastmod>
+    <lastmod>2026-10-01T19:24:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -200,31 +200,31 @@
   </url>
   <url>
     <loc>https://civicrollcall.com/meetings.html?body=community-services-board</loc>
-    <lastmod>2026-10-01T19:23:17+00:00</lastmod>
+    <lastmod>2026-10-01T19:24:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://civicrollcall.com/motions.html?body=community-services-board</loc>
-    <lastmod>2026-10-01T19:23:17+00:00</lastmod>
+    <lastmod>2026-10-01T19:24:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://civicrollcall.com/meetings.html?body=redevelopment-agency-board</loc>
-    <lastmod>2026-10-01T19:23:22+00:00</lastmod>
+    <lastmod>2026-10-01T19:24:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://civicrollcall.com/members.html?body=redevelopment-agency-board</loc>
-    <lastmod>2026-10-01T19:23:22+00:00</lastmod>
+    <lastmod>2026-10-01T19:24:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://civicrollcall.com/motions.html?body=redevelopment-agency-board</loc>
-    <lastmod>2026-10-01T19:23:22+00:00</lastmod>
+    <lastmod>2026-10-01T19:24:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3065,5 +3065,131 @@
     <lastmod>2026-09-29T00:00:00+00:00</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/another-data-center.html</loc>
+    <lastmod>2026-08-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/big-tech-should-have-bonded.html</loc>
+    <lastmod>2026-08-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/build-a-jail-for-revenue.html</loc>
+    <lastmod>2026-08-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/city-police-department.html</loc>
+    <lastmod>2026-08-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/data-centers-150-million-tax-break.html</loc>
+    <lastmod>2026-08-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/developer-owed-the-rodeo-grounds.html</loc>
+    <lastmod>2026-08-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/developers-bond-for-roads.html</loc>
+    <lastmod>2026-08-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/every-dollar-public-safety.html</loc>
+    <lastmod>2026-08-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/free-offer-eagle-monument.html</loc>
+    <lastmod>2026-08-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/impact-fees-thirty-years.html</loc>
+    <lastmod>2026-08-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/largest-data-center.html</loc>
+    <lastmod>2026-08-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/mayor-road-construction-eight-years.html</loc>
+    <lastmod>2026-08-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/mayor-shopping-for-rodeo-grounds.html</loc>
+    <lastmod>2026-08-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/no-bond-for-pony-express.html</loc>
+    <lastmod>2026-08-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/own-utilities-own-police.html</loc>
+    <lastmod>2026-08-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/qts-gave-5-5-million.html</loc>
+    <lastmod>2026-08-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/referendum-repeals-it.html</loc>
+    <lastmod>2026-08-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/rushed-in-secret.html</loc>
+    <lastmod>2026-08-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/tax-220-percent.html</loc>
+    <lastmod>2026-08-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/tax-cover-for-rodeo.html</loc>
+    <lastmod>2026-08-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/wright-said-city-is-broke.html</loc>
+    <lastmod>2026-08-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

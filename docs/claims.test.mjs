@@ -228,9 +228,10 @@ test("every claim renders, and renders its citation", () => {
     assert.ok(out.includes(`id="${c.id}"`), `${c.id}: card lost its anchor`);
     assert.ok(out.includes(verdicts[c.verdict].label), `${c.id}: verdict label missing`);
     assert.ok(out.includes(`data-copy="${c.id}"`), `${c.id}: no copy-link button`);
-    // Both halves of the claim: this page's summary as the heading, the wording
-    // that circulates quoted underneath it.
-    assert.ok(out.includes(`${c.id}-h">${page.__esc(c.summary)}</h2>`), `${c.id}: heading is not the summary`);
+    // Both halves of the claim: this page's summary as the heading, linked to
+    // the claim's own page, and the wording that circulates quoted underneath.
+    assert.ok(out.includes(`${c.id}-h"><a href="/claims/${c.id}.html">${page.__esc(c.summary)}</a></h2>`),
+      `${c.id}: heading is not the summary, linked to its page`);
     assert.ok(out.includes(page.__esc(c.claim)), `${c.id}: the claim itself is not quoted on the card`);
     for (const s of c.sources || []) {
       if (s.motion != null) {
@@ -271,7 +272,9 @@ test("the whole page renders, and publishes one ClaimReview per claim", () => {
   const reviews = page.__schemas.filter((s) => s["@type"] === "ClaimReview");
   assert.equal(reviews.length, data.claims.length, "one ClaimReview per claim");
   for (const r of reviews) {
-    assert.match(r.url, /^https:\/\/civicrollcall\.com\/claims\.html#/);
+    // Each review points at the claim's own page, which is the address that
+    // carries the claim into a link preview.
+    assert.match(r.url, /^https:\/\/civicrollcall\.com\/claims\/[a-z0-9-]+\.html$/);
     assert.ok(r.reviewRating.ratingValue >= 1 && r.reviewRating.ratingValue <= 5);
     assert.ok(r.claimReviewed, "a ClaimReview with no claim");
   }
@@ -282,9 +285,25 @@ test("the docket lists every claim, verdict first", () => {
   page.render(data, root);
   const docket = root.innerHTML.match(/<nav class="cl-docket"[\s\S]*?<\/nav>/);
   assert.ok(docket, "the page has no docket");
-  const hrefs = [...docket[0].matchAll(/href="#([^"]+)"/g)].map((m) => m[1]);
+  const hrefs = [...docket[0].matchAll(/href="\/claims\/([^"]+)\.html"/g)].map((m) => m[1]);
   assert.deepEqual(hrefs, data.claims.map((c) => c.id),
     "the docket and the cards disagree about what is on the page");
+});
+
+// Every row links to /claims/<id>.html, so every claim needs that page and the
+// preview image it names. ingest/build_claim_pages.py writes both; this catches
+// a claim added to data.claims.json without running it.
+test("every claim has its own page and preview image", () => {
+  for (const c of data.claims) {
+    const pagePath = join(DOCS, "claims", `${c.id}.html`);
+    assert.ok(existsSync(pagePath), `docs/claims/${c.id}.html is missing: run python -m ingest.build_claim_pages`);
+    assert.ok(existsSync(join(DOCS, "claims", "og", `${c.id}.png`)), `docs/claims/og/${c.id}.png is missing`);
+    const own = readFileSync(pagePath, "utf8");
+    assert.ok(own.includes(`<link rel="canonical" href="https://civicrollcall.com/claims/${c.id}.html" />`),
+      `${c.id}: the page's canonical is not its own address`);
+    assert.ok(own.includes(`og:image" content="https://civicrollcall.com/claims/og/${c.id}.png?v=`),
+      `${c.id}: the page does not name its own preview image`);
+  }
 });
 
 test("the filter bar offers every topic, with its count", () => {
@@ -372,6 +391,6 @@ test("the corpus builder feeds the agent every claim", () => {
   assert.equal(chunks.length, data.claims.length,
     "agent-corpus.json is stale — re-run: python -m ingest.build_agent_corpus");
   for (const c of chunks) {
-    assert.match(c.url, /^claims\.html#/, "a claim chunk that doesn't deep-link to its card");
+    assert.match(c.url, /^\/claims\/[a-z0-9-]+\.html$/, "a claim chunk that doesn't link to the claim's own page");
   }
 });

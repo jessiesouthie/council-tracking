@@ -11485,6 +11485,10 @@ body.page-claims {
   color: var(--t-fg);
   text-wrap: pretty;
 }
+/* The headline links to the claim's own page (/claims/<id>.html), the address
+   worth sending someone. It stays a headline until it is pointed at. */
+.cl-claim a { color: inherit; text-decoration: none; }
+.cl-claim a:hover { text-decoration: underline; text-underline-offset: .15em; }
 /* The wording as it actually circulates, under the summary. Quoted, ruled and
    set smaller, because the distinction the whole page turns on is which
    sentences are theirs and which are ours — the summary above is ours. */
