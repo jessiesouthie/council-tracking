@@ -95,7 +95,7 @@ def tabbar(section: str) -> str:
         on = current is not None and item.href == current.href
         cls = ' class="is-section"' if on else ""
         links.append(f'<a href="/{item.href}"{cls}>{icon(item.href)}'
-                     f'<span>{esc(item.label)}</span></a>')
+                     f'<span>{esc(item.tab_label)}</span></a>')
     return f'<nav class="v2-tabbar" aria-label="Main (mobile)">{"".join(links)}</nav>'
 
 

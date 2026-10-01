@@ -55,6 +55,7 @@ function canonical() {
       .filter((h) => h !== href);
     items.push({
       label: field("label"),
+      tabLabel: field("short") || field("label"),
       href,
       children,
       alias,
@@ -72,7 +73,7 @@ test("the canonical list parsed, and is not empty", () => {
   assert.ok(NAV.length >= 5, `parsed only ${NAV.length} items from ingest/nav.py`);
   assert.deepEqual(
     NAV.map((i) => i.label),
-    ["Home", "Meetings", "Members", "Claims", "Finances", "Topics", "About"]
+    ["Home", "Meetings & Votes", "Members", "Fact Checks", "Taxes & Budget", "Topics", "About"]
   );
 });
 
@@ -168,7 +169,12 @@ test("the mobile tab bar matches, and fits", () => {
   const rows = [...block[1].matchAll(/\{\s*href:\s*"([^"]+)",\s*label:\s*"([^"]+)"([^}]*)\}/g)]
     .map((m) => ({ href: m[1], label: m[2], bodyScoped: /body:/.test(m[3]) }));
 
-  assert.deepEqual(rows.map((r) => r.label), TABBAR.map((i) => i.label));
+  assert.deepEqual(rows.map((r) => r.label), TABBAR.map((i) => i.tabLabel));
+  // Five tabs share a 390px phone, about 78px each at 11px type. Past a dozen
+  // characters a label wraps or clips; that is what Item.short is for.
+  for (const r of rows) {
+    assert.ok(r.label.length <= 12, `tab label "${r.label}" is too long for the bar; give the item a short=`);
+  }
   assert.deepEqual(rows.map((r) => r.bodyScoped), TABBAR.map((i) => i.bodyScoped));
 
   // A bottom bar past five items stops being readable, which is what the
@@ -273,7 +279,7 @@ test("each section page carries its section's sub-nav", () => {
 const WITH_MENUS = NAV.filter((i) => i.children.length);
 
 test("the definition has menus to test", () => {
-  assert.deepEqual(WITH_MENUS.map((i) => i.label), ["Meetings", "Finances", "Topics", "About"]);
+  assert.deepEqual(WITH_MENUS.map((i) => i.label), ["Meetings & Votes", "Taxes & Budget", "Topics", "About"]);
 });
 
 for (const page of PAGES) {

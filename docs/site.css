@@ -8400,6 +8400,53 @@ table.data.bx-lines .bx-tot td {
   .nav-group:last-child:focus-within .nav-menu { transform: translate(0, 4px); }
 }
 
+/* ---------- seven sections, longer names (Oct 2026) ----------
+   "Meetings & Votes", "Fact Checks", "Taxes & Budget" and a seventh item,
+   Topics, made the row about 100px wider than the bands above were cut for.
+   Measured at every 20px from 760 to 1440, for the council and for the
+   Planning Commission (the widest switcher label); these bands are what it
+   took to make every one of them fit on one row with no sideways scroll. */
+
+/* The brand never shrinks. All three of brand, switcher and nav are flex
+   0 1 auto, so a short row was split among them and the brand line lost its
+   last letters ("EAGLE MOUNTAIN, …") even at 1920px. The switcher is the one
+   built to give way: it truncates with an ellipsis and its open list shows the
+   name whole. */
+.topbar > .brand { flex-shrink: 0; }
+
+/* The last two menus open toward the left at every width, not only under
+   1000px. A hidden menu still takes up layout, and centred under a trigger near
+   the right edge it ran past the viewport and gave every page a sideways
+   scroll of up to 67px. */
+.nav-group:nth-last-child(-n+2) .nav-menu { left: auto; right: 0; transform: translate(0, -4px); }
+.nav-group:nth-last-child(-n+2):hover .nav-menu,
+.nav-group:nth-last-child(-n+2):focus-within .nav-menu { transform: translate(0, 4px); }
+
+@media (min-width: 1200px) and (max-width: 1319px) {
+  .nav { gap: 0; }
+  .nav a { --pill-x: 11px; }
+  .nav-group > a { --pill-xr: 7px; }
+}
+@media (min-width: 1000px) and (max-width: 1199px) {
+  .nav a { --pill-x: 7px; font-size: 13px; }
+  .nav-group > a { --pill-xr: 4px; }
+}
+/* Tablet width. About steps aside the way Home does across this band: it is
+   linked from the footer of every page, so nothing becomes unreachable. */
+@media (min-width: 760px) and (max-width: 999px) {
+  .nav > .nav-group:has(> a[data-nav="about.html"]) { display: none; }
+  .body-switch { max-width: 20vw; }
+  .nav a { --pill-x: 5px; font-size: 12.5px; }
+  .nav-group > a { --pill-xr: 2px; gap: 2px; }
+}
+/* The last 30px, under 860px: the switcher gives it up. "City Council" still
+   reads in full at 16vw; a longer board name truncates with an ellipsis, and
+   the open list shows it whole. */
+@media (min-width: 760px) and (max-width: 859px) {
+  .body-switch { max-width: 16vw; }
+  .nav a { --pill-x: 4px; font-size: 12px; }
+}
+
 /* ---------- section sub-nav ----------
    A few destinations, so a strip rather than a menu. It sits inside the reading
    column above the page's own hero, and reads as a level below the topbar:

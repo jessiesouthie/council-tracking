@@ -60,6 +60,14 @@ class Item:
     mobile: bool = True
     body_scoped: bool = False
     blurb: str = ""
+    # The tab bar's name for it. Five tabs share a 390px phone, about 78px
+    # each, so "Meetings & Votes" goes on the bar as "Meetings". Empty means
+    # the label already fits.
+    short: str = ""
+
+    @property
+    def tab_label(self) -> str:
+        return self.short or self.label
 
     @property
     def nav(self) -> str:
@@ -102,7 +110,8 @@ NAV: tuple[Item, ...] = (
     # it to no reader's benefit. "Votes" is what the page is; "motions" is what
     # the minutes call it, which is why definitions.html has an entry for it.
     Item(
-        label="Meetings",
+        label="Meetings & Votes",
+        short="Meetings",
         href="meetings.html",
         children=(
             Child("Meetings", "meetings.html"),
@@ -131,14 +140,18 @@ NAV: tuple[Item, ...] = (
     # opened under another body: every claim on file is about something the City
     # Council did. Offering it from the Planning Commission's bar would spend a
     # slot on a page that opens saying "not this body".
+    # Named for what a reader is checking, not for what the page holds: "Claims"
+    # read as the site making them.
     Item(
-        label="Claims",
+        label="Fact Checks",
+        short="Fact checks",
         href="claims.html",
         body_scoped=True,
         blurb="what is going around about the city, checked against the recordings and the notices.",
     ),
     Item(
-        label="Finances",
+        label="Taxes & Budget",
+        short="Taxes",
         href="finances.html",
         # In the order the money moves, which is the order the section page
         # walks them through: what is charged, what it is spent on, what a
@@ -291,7 +304,7 @@ def tabbar_js(indent: str = "  ") -> str:
     """
     rows = []
     for item in TABBAR:
-        parts = [f'href: "/{item.href}"', f'label: "{item.label}"']
+        parts = [f'href: "/{item.href}"', f'label: "{item.tab_label}"']
         if item.body_scoped:
             parts.append('body: "city-council"')
         rows.append(f"{indent}  {{ {', '.join(parts)} }},")
