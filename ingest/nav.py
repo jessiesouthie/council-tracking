@@ -153,6 +153,20 @@ NAV: tuple[Item, ...] = (
         body_scoped=True,
         blurb="the tax rate, the budget, the projections and the payroll behind them.",
     ),
+    # Subjects that run across years of meetings and every body on the site:
+    # one place for what a reader would otherwise piece together from forty
+    # motions. Not body-scoped, because the Planning Commission and the RDA
+    # board acted on these too. Off the mobile bar, which is full; the front
+    # page carries a card for it instead.
+    Item(
+        label="Topics",
+        href="data-centers.html",
+        children=(
+            Child("Data centers", "data-centers.html"),
+        ),
+        mobile=False,
+        blurb="subjects that run across years of meetings, starting with the data centers.",
+    ),
     # Reference, not a destination anyone arrives looking for. It stays off the
     # mobile bar — five is the most a bottom bar can hold before the labels stop
     # being readable — and every page already carries it in the footer.

@@ -92,6 +92,10 @@ PAGES: list[dict] = [
     # even though it changes only when a claim is checked or re-checked.
     {"path": "claims.html", "priority": "0.7", "changefreq": "weekly",
      "data": ["data.claims.json"]},
+    # Static prose, sourced line by line; it changes when the council acts on
+    # another data center, not on a schedule.
+    {"path": "data-centers.html", "priority": "0.7", "changefreq": "monthly",
+     "data": []},
     {"path": "motions.html", "priority": "0.7", "changefreq": "weekly",
      "data": ["data.json"], "body_scoped": "motions"},
     {"path": "definitions.html", "priority": "0.7", "changefreq": "monthly",

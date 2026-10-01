@@ -24,7 +24,7 @@
 // precache namespace. Bumping it is now only a way to force a one-time flush, which
 // is exactly what the bump below does for everyone still pinned to a stale v46.
 
-const SHELL_CACHE = "council-shell-v47";
+const SHELL_CACHE = "council-shell-v48";
 const PYODIDE_CACHE = "council-pyodide-v1";
 const DATA_CACHE = "council-data-v1";
 
@@ -50,6 +50,7 @@ const SHELL_ASSETS = [
   "budget.html",
   "staffing.html",
   "claims.html",
+  "data-centers.html",
   "definitions.html",
   "about.html",
   "site.css",
