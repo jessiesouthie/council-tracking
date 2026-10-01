@@ -23,7 +23,7 @@ Schema of each docs/data*.json:
                  terms:[{role,start,end}]}],   # terms newest-first; top-level
                                                # role/tenure_* mirror terms[0]
     "tags":    [{id,label}],
-    "meetings":[{id,date,name,source_file,motion_count,ord_count,res_count}],
+    "meetings":[{id,date,name,source_file,motion_count,ord_count,res_count,text_chars}],
     "motions": [
       {id,meeting_id,date,page,agenda_ref,business_type,item_title,
        motion,outcome,tags:[tag_id],votes:[{member_id,vote}],
@@ -221,6 +221,7 @@ def build_one(body: dict, only: str | None = None) -> int:
             "motion_count": len(r.get("motions", [])),
             "ord_count": len(r.get("ordinances", [])),
             "res_count": len(r.get("resolutions", [])),
+            "text_chars": r.get("text_chars", 0),
         }
         # Hand-written summary for meetings the parser couldn't read motions from.
         # Applied even when motions are non-empty so curated context survives a re-parse.

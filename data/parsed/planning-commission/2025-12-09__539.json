@@ -5,7 +5,8 @@
     "source_file": "2025-12-09__539.pdf",
     "motion_count": 7,
     "ord_count": 0,
-    "res_count": 0
+    "res_count": 0,
+    "text_chars": 12409
   },
   "motions": [
     {
@@ -23,11 +24,9 @@
         {
           "member_id": "jason-allen",
           "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
+        },
         {
-          "name": "Robert Fox",
+          "member_id": "robert-fox",
           "vote": "Yes"
         }
       ]
@@ -53,22 +52,20 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "robert-fox",
           "vote": "Yes"
         },
         {
           "member_id": "rod-hess",
           "vote": "Excused"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Yes"
-        },
-        {
-          "name": "Robert Fox",
-          "vote": "Yes"
         }
       ]
     },
@@ -95,22 +92,20 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "robert-fox",
           "vote": "Yes"
         },
         {
           "member_id": "rod-hess",
           "vote": "Excused"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Yes"
-        },
-        {
-          "name": "Robert Fox",
-          "vote": "Yes"
         }
       ]
     },
@@ -135,22 +130,20 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "robert-fox",
           "vote": "Yes"
         },
         {
           "member_id": "rod-hess",
           "vote": "Excused"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Yes"
-        },
-        {
-          "name": "Robert Fox",
-          "vote": "Yes"
         }
       ]
     },
@@ -175,22 +168,20 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "robert-fox",
           "vote": "Yes"
         },
         {
           "member_id": "rod-hess",
           "vote": "Excused"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Yes"
-        },
-        {
-          "name": "Robert Fox",
-          "vote": "Yes"
         }
       ]
     },
@@ -217,22 +208,20 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "robert-fox",
           "vote": "Yes"
         },
         {
           "member_id": "rod-hess",
           "vote": "Excused"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Yes"
-        },
-        {
-          "name": "Robert Fox",
-          "vote": "Yes"
         }
       ]
     },
@@ -259,22 +248,20 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "robert-fox",
           "vote": "Yes"
         },
         {
           "member_id": "rod-hess",
           "vote": "Excused"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Yes"
-        },
-        {
-          "name": "Robert Fox",
-          "vote": "Yes"
         }
       ]
     }

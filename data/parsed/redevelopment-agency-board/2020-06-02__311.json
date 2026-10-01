@@ -5,7 +5,8 @@
     "source_file": "2020-06-02__311.pdf",
     "motion_count": 2,
     "ord_count": 0,
-    "res_count": 1
+    "res_count": 1,
+    "text_chars": 2836
   },
   "motions": [
     {
@@ -21,7 +22,11 @@
       "tags": [
         "budget"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "April 21 minutes approved",
+      "summary": "The agency board signed off on the written record of its April 21, 2020 meeting.",
+      "impact": "This one touches the recorder's files and nobody else. It makes the April meeting's written account the official version.",
+      "significance": "routine"
     },
     {
       "id": 22,
@@ -34,7 +39,11 @@
       "motion": "Boørd Member Grøy moved to ødjourn the meeting øt 10:43 p.m. Boørd Member Burnham seconded the motìon. Those votíng øye: Jared Gray, Carolyn Love, Colby Curtß, Melíssø Clørk, and Donnø Burnhøm. The motíon passed wíth ø unanímous vote.",
       "outcome": "",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "Meeting adjourned at 10:43 p.m.",
+      "summary": "The agency board ended its June 2 meeting at 10:43 p.m.",
+      "impact": "Nothing here reaches a resident. It is the clock stopping on a meeting whose business was already finished.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

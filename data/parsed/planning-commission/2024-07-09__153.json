@@ -5,7 +5,8 @@
     "source_file": "2024-07-09__153.pdf",
     "motion_count": 3,
     "ord_count": 0,
-    "res_count": 0
+    "res_count": 0,
+    "text_chars": 6062
   },
   "motions": [
     {
@@ -29,22 +30,20 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
-          "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Yes"
+          "member_id": "robert-fox",
+          "vote": "Absent"
         },
         {
-          "name": "Robert Fox",
-          "vote": "Absent"
+          "member_id": "rod-hess",
+          "vote": "Yes"
         }
       ]
     },
@@ -71,22 +70,20 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
-          "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Yes"
+          "member_id": "robert-fox",
+          "vote": "Absent"
         },
         {
-          "name": "Robert Fox",
-          "vote": "Absent"
+          "member_id": "rod-hess",
+          "vote": "Yes"
         }
       ]
     },
@@ -113,22 +110,20 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
-          "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Yes"
+          "member_id": "robert-fox",
+          "vote": "Absent"
         },
         {
-          "name": "Robert Fox",
-          "vote": "Absent"
+          "member_id": "rod-hess",
+          "vote": "Yes"
         }
       ]
     }

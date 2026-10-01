@@ -5,7 +5,8 @@
     "source_file": "2026-05-26__687.pdf",
     "motion_count": 2,
     "ord_count": 0,
-    "res_count": 0
+    "res_count": 0,
+    "text_chars": 5837
   },
   "motions": [
     {
@@ -36,7 +37,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "May 12 minutes approved",
+      "summary": "The commission signed off on the written record of its May 12, 2026 meeting.",
+      "impact": "This one lives in the clerk's files. It makes the record of the last meeting official and asks nothing of you.",
+      "significance": "routine"
     },
     {
       "id": 297,
@@ -69,7 +74,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Variance denied for Pony Express Business Park",
+      "summary": "The commission refused to waive the wash setback, retaining wall and drive-through circulation rules for the Pony Express Business Park site.",
+      "impact": "Whoever builds there has to meet the standard setback, wall and drive-through rules or come back with a redesign. The commission found the lot still holds room for a workable commercial building. Nothing changes for anyone who does not build on that property.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

@@ -5,7 +5,8 @@
     "source_file": "2026-06-09__675.pdf",
     "motion_count": 4,
     "ord_count": 0,
-    "res_count": 0
+    "res_count": 0,
+    "text_chars": 11141
   },
   "motions": [
     {
@@ -37,16 +38,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
-        }
-      ]
+      "headline": "May 26 minutes approved",
+      "summary": "The commission approved its May 26 minutes after correcting the record to list Commissioner Jensen as the alternate commissioner.",
+      "impact": "A title fix in the meeting record, made by the commission itself. Nobody outside the room feels this one.",
+      "significance": "routine"
     },
     {
       "id": 299,
@@ -80,16 +83,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
-        }
-      ]
+      "headline": "Senior housing overlay zone recommended",
+      "summary": "The commission backed a new senior housing overlay zone, with accessory dwelling units barred inside it and five rural zones cut off from density bonuses.",
+      "impact": "If the council agrees, builders could add senior housing at higher density in some areas, though not in the RA1, RA2, RD1, RD2 or FR zones. Renting out a basement apartment would be off limits in these developments.",
+      "significance": "notable"
     },
     {
       "id": 300,
@@ -122,16 +127,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
-        }
-      ]
+      "headline": "Eagle Quest development agreement amendment",
+      "summary": "The commission asked the council to approve a second amendment to the Eagle Quest master development agreement.",
+      "impact": "Master development agreements set the terms a builder must follow on a large project. The record here gives no detail on what the amendment changes, and the council has not voted on it.",
+      "significance": "notable"
     },
     {
       "id": 301,
@@ -162,16 +169,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
-        }
-      ]
+      "headline": "Fee schedule sent to council with two fixes",
+      "summary": "The commission backed the city's consolidated fee schedule, asking that a 180-day deposit-holding line be struck and an unfinished footnote be completed.",
+      "impact": "The fee schedule sets what you pay the city for permits and inspections. Nothing changes yet: the council takes the final vote, and these two edits are cleanup rather than new charges.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

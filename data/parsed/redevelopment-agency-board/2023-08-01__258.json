@@ -5,7 +5,8 @@
     "source_file": "2023-08-01__258.pdf",
     "motion_count": 3,
     "ord_count": 0,
-    "res_count": 6
+    "res_count": 6,
+    "text_chars": 6521
   },
   "motions": [
     {
@@ -21,7 +22,11 @@
       "tags": [
         "parks"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Sweetwater Industrial Park plan amended",
+      "summary": "Alongside the budget, the agency board adopted an amended plan for the Sweetwater Industrial Park project area, the document describing what the agency intends to do there.",
+      "impact": "Residents living elsewhere in Eagle Mountain will not feel this. Anyone with land or a business in the Sweetwater area should read the amended plan, since it sets what the agency can do there.",
+      "significance": "notable"
     },
     {
       "id": 36,
@@ -37,7 +42,11 @@
         "budget",
         "parks"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Sweetwater Industrial Park budget amended",
+      "summary": "The agency board adopted an amended budget for its Sweetwater Industrial Park project area, the account that governs how property tax growth there is spent.",
+      "impact": "No figures were read into the motion, so the size of the change is not on the record. The land is industrial, not housing: businesses and developers building there are the ones affected.",
+      "significance": "notable"
     },
     {
       "id": 37,
@@ -52,7 +61,11 @@
       "tags": [
         "parks"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "How Sweetwater tax money reaches the agency",
+      "summary": "The agency board signed off on an updated agreement with the city covering how property tax growth inside the Sweetwater Industrial Park area is collected and handed over.",
+      "impact": "Your tax bill does not change. This is an accounting arrangement between the agency and the city for money already being collected in an industrial area, and you will not see it.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

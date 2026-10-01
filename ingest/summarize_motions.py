@@ -111,9 +111,14 @@ def save_cache(path: Path, summaries: dict[str, dict]) -> None:
 
 
 PROMPT = """\
-You are writing plain-English descriptions of decisions made by the Eagle Mountain,
-Utah City Council, for a public transparency site read by residents and local
-journalists. Assume the reader has no legal or municipal background.
+You are writing plain-English descriptions of what the {body_label} of Eagle Mountain,
+Utah did at one of its meetings, for a public transparency site read by residents and
+local journalists. Assume the reader has no legal or municipal background.
+
+WHO IS ACTING. Read this before you write a verb.
+{body_authority}
+Call the acting body "{body_actor}". Do not promote a recommendation into a decision,
+and do not attribute to "the city" an act by a body that cannot bind the city.
 
 For EACH numbered motion below, produce:
 
@@ -125,7 +130,7 @@ For EACH numbered motion below, produce:
                Bad:  "Ordinance 2026-14"  (means nothing to a resident)
                      "An Ordinance of Eagle Mountain City, Utah, amending…"  (legalese)
 
-  "summary"  — ONE sentence, at most 30 words, saying what the council actually did.
+  "summary"  — ONE sentence, at most 30 words, saying what the body actually did.
                Lead with the decision, not the procedure. Include the concrete figure
                (dollars, acres, percent, units) when the motion states one.
                Good: "The city approved $2.4M to add lanes on Pony Express Parkway,
@@ -172,6 +177,9 @@ a routine contract, appointing someone to a board. A resident feels nothing. Whe
 is the case, SAY SO plainly instead of manufacturing a consequence. A truthful "this one
 doesn't affect you" is more useful than an invented effect, and inventing effects would
 destroy the credibility of the whole site. Never inflate a small item into a big one.
+Where the body only recommends, the honest impact is usually that nothing has happened
+yet and the council decides later. Say that rather than describing the recommendation
+as though it were already in force.
 
 Say it a different way each time. These notes stack up the length of a page, and a
 reader who meets the same sentence five times stops reading the field. "No resident is
@@ -189,9 +197,10 @@ RULES
   X moved to…" or "seconded" or "the motion carried".
 - Do not state the vote count or the outcome: the page already shows those next to
   your text, and repeating them wastes the sentence.
-- Write in past tense for decided items ("The city approved…", "The council rejected…").
+- Write in past tense, with the verb the body's authority supports ("The city
+  approved…", "The commission recommended…", "The board asked the council to…").
   If the outcome is unclear or the item was continued/tabled, describe it neutrally
-  ("The council delayed a decision on…").
+  ("{body_actor_cap} delayed a decision on…").
 - Use plain words: "zoning change" not "rezone application"; "apartments" not
   "multi-family residential units"; "sewer plant" not "wastewater treatment facility".
 
@@ -212,8 +221,30 @@ PROMPT = PROMPT.replace(
     (ROOT / "ingest" / "house_style.txt").read_text(encoding="utf-8"))
 
 
-def build_prompt(meeting_date: str, motions: list[dict]) -> str:
-    lines = [PROMPT, f"\n=== MEETING: {meeting_date} ===\n"]
+def body_prompt(body: dict) -> str:
+    """PROMPT with this body's name and authority spliced in.
+
+    Only the City Council decides on its own account. The Planning Commission
+    recommends, the Community Services Board advises, and the Redevelopment
+    Agency Board acts for a separate legal entity, so a prompt that says
+    "the council approved" produces text that is plainly false on three of the
+    four bodies. The wording lives in ingest.bodies next to the body it
+    describes; same literal-replace trick as house_style above.
+    """
+    actor = body.get("actor") or "the body"
+    out = PROMPT
+    for token, value in (
+        ("{body_label}", body["label"]),
+        ("{body_authority}", (body.get("authority") or "").strip()),
+        ("{body_actor_cap}", actor[:1].upper() + actor[1:]),
+        ("{body_actor}", actor),
+    ):
+        out = out.replace(token, value)
+    return out
+
+
+def build_prompt(body: dict, meeting_date: str, motions: list[dict]) -> str:
+    lines = [body_prompt(body), f"\n=== MEETING: {meeting_date} ===\n"]
     for i, m in enumerate(motions, 1):
         lines.append(f"--- MOTION {i} ---")
         if m.get("business_type"):
@@ -271,9 +302,9 @@ def clean_significance(value: str) -> str:
     return v if v in SIGNIFICANCE else "routine"
 
 
-def summarize_meeting(meeting_date: str, motions: list[dict]) -> dict[str, dict]:
+def summarize_meeting(body: dict, meeting_date: str, motions: list[dict]) -> dict[str, dict]:
     """-> {motion_key: {headline, summary, impact, significance}} for one meeting."""
-    reply = call_claude(build_prompt(meeting_date, motions))
+    reply = call_claude(build_prompt(body, meeting_date, motions))
     out: dict[str, dict] = {}
     for i, m in enumerate(motions, 1):
         got = reply.get(str(i)) or {}
@@ -364,7 +395,7 @@ def run_body(body: dict, args: argparse.Namespace) -> int:
         for chunk_start in range(0, len(pending), MAX_MOTIONS_PER_CALL):
             chunk = pending[chunk_start : chunk_start + MAX_MOTIONS_PER_CALL]
             try:
-                got = summarize_meeting(meeting["date"], chunk)
+                got = summarize_meeting(body, meeting["date"], chunk)
             except Exception as exc:
                 print(f"  ! [{n}/{len(todo)}] {label}: {exc}", file=sys.stderr)
                 failures += 1

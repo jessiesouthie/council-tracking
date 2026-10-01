@@ -5,7 +5,8 @@
     "source_file": "2025-09-02__658.pdf",
     "motion_count": 1,
     "ord_count": 0,
-    "res_count": 3
+    "res_count": 3,
+    "text_chars": 2821
   },
   "motions": [
     {
@@ -43,7 +44,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Study started on Sweetwater Industrial Park tax district",
+      "summary": "The agency board designated a survey area and ordered a draft plan and budget for a proposed Sweetwater Industrial Park reinvestment project area.",
+      "impact": "Nothing is set yet: this only starts the study of whether to route future tax growth from that industrial land back into the site. The board votes on the actual plan and budget later.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

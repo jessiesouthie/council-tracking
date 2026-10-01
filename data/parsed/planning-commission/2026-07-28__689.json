@@ -5,7 +5,8 @@
     "source_file": "2026-07-28__689.pdf",
     "motion_count": 11,
     "ord_count": 0,
-    "res_count": 0
+    "res_count": 0,
+    "text_chars": 16092
   },
   "motions": [
     {
@@ -37,16 +38,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "July 14 minutes fixed and approved",
+      "summary": "The commission approved its July 14 minutes after correcting Commissioner Hess's recorded vote from yes to abstain.",
+      "impact": "The official record now shows how Commissioner Hess voted that night. Beyond that file, nobody's day changes.",
+      "significance": "routine"
     },
     {
       "id": 316,
@@ -80,16 +83,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Transportation plan and road impact fees",
+      "summary": "The commission recommended the council adopt the city's transportation master plan and the impact fee facilities plan that goes with it, with changes noted by David Salazar.",
+      "impact": "Impact fees are what builders pay toward new roads, so this plan sits behind those fee amounts. The council sets both, and until it votes, nothing changes for drivers or homebuyers.",
+      "significance": "notable"
     },
     {
       "id": 317,
@@ -120,16 +125,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Angel's Landing lot split approved",
+      "summary": "The commission approved the Angel's Landing lot split, dividing the property into separate lots; the motion records neither the acreage nor how many lots result.",
+      "impact": "This one the commission settled itself, with no council vote to follow. It redraws lot lines at Angel's Landing and touches the owner and immediate neighbors, not the wider city.",
+      "significance": "notable"
     },
     {
       "id": 318,
@@ -160,16 +167,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Change to the preliminary plat rules",
+      "summary": "Commissioners also sent up a change to the code section on preliminary plats, the earlier stage of the same subdivision review.",
+      "impact": "Another one aimed at the people who file subdivision plans. Nothing here reaches your street, and the council decides whether the wording changes at all.",
+      "significance": "routine"
     },
     {
       "id": 319,
@@ -200,16 +209,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Change to the final plat rules",
+      "summary": "The commission asked the council to change the city's code section governing final plats for subdivisions.",
+      "impact": "Surveyors and developers filing subdivision paperwork are the ones who work in this section. For everyone else it is invisible, and the council has yet to vote on it.",
+      "significance": "routine"
     },
     {
       "id": 320,
@@ -243,16 +254,18 @@
           "vote": "Excused"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Chapel and recreation development agreement",
+      "summary": "Ahead of the site plan, the commission recommended that the council approve the development agreement for the Eagle Mountain chapel and recreation building.",
+      "impact": "Nothing is signed until the council votes. The site plan the commission recommended the same night depends on this agreement clearing the council first.",
+      "significance": "notable"
     },
     {
       "id": 321,
@@ -286,16 +299,18 @@
           "vote": "Excused"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Chapel and recreation building site plan",
+      "summary": "The commission backed the site plan for the Eagle Mountain chapel and recreation building on two conditions: the development agreement passes first, and the lighting plan meets city standards.",
+      "impact": "Neighbors of the site will see no construction on the strength of this vote. The council still has to sign off, and the applicant has to bring its lighting plan into compliance.",
+      "significance": "notable"
     },
     {
       "id": 322,
@@ -328,16 +343,18 @@
           "vote": "Excused"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Barbed wire fence rules, numbering fixed",
+      "summary": "Commissioners sent the council a change to the barbed wire fencing rules, correcting the numbering so chain link fencing around industrial properties keeps its own subsection.",
+      "impact": "Fence rules stay as they are until the council acts. The correction matters most to industrial property owners and to anyone reading the code to work out which fence is allowed where.",
+      "significance": "notable"
     },
     {
       "id": 323,
@@ -368,16 +385,18 @@
           "vote": "Excused"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Change to the residential standards table",
+      "summary": "The commission recommended that the council amend the residential standards table in the zoning code, without stating in the motion what the change alters.",
+      "impact": "The motion does not say which standards move, so there is nothing yet to tell homeowners what they could build differently. The council decides whether it takes effect.",
+      "significance": "notable"
     },
     {
       "id": 324,
@@ -408,16 +427,18 @@
           "vote": "Excused"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Master site plan rules, result unrecorded",
+      "summary": "Commissioners took up a change to the city code section on master site plans and moved to recommend it to the council; the minutes do not record the result.",
+      "impact": "Master site plans are a developer's step, not yours. With no result written down, it is not clear this recommendation ever reached the council at all.",
+      "significance": "routine"
     },
     {
       "id": 325,
@@ -450,16 +471,18 @@
           "vote": "Excused"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Pinnacles rezoning sent to the council",
+      "summary": "The commission asked the City Council to approve a zoning change for the Pinnacles property, without recording the acreage or the new zone in the motion.",
+      "impact": "Nothing about the site changes yet: the council votes later and can decide otherwise. If you live near Pinnacles, that council meeting is the one to watch.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

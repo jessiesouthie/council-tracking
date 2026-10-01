@@ -5,7 +5,8 @@
     "source_file": "2025-11-12__564.pdf",
     "motion_count": 3,
     "ord_count": 2,
-    "res_count": 0
+    "res_count": 0,
+    "text_chars": 9318
   },
   "motions": [
     {
@@ -29,22 +30,20 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
-          "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Yes"
+          "member_id": "robert-fox",
+          "vote": "Excused"
         },
         {
-          "name": "Robert Fox",
-          "vote": "Excused"
+          "member_id": "rod-hess",
+          "vote": "Yes"
         }
       ]
     },
@@ -71,22 +70,20 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
-          "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Yes"
+          "member_id": "robert-fox",
+          "vote": "Excused"
         },
         {
-          "name": "Robert Fox",
-          "vote": "Excused"
+          "member_id": "rod-hess",
+          "vote": "Yes"
         }
       ]
     },
@@ -113,22 +110,20 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
-          "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Yes"
+          "member_id": "robert-fox",
+          "vote": "Excused"
         },
         {
-          "name": "Robert Fox",
-          "vote": "Excused"
+          "member_id": "rod-hess",
+          "vote": "Yes"
         }
       ]
     }

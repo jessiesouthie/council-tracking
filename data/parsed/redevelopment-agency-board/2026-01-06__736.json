@@ -5,7 +5,8 @@
     "source_file": "2026-01-06__736.pdf",
     "motion_count": 6,
     "ord_count": 0,
-    "res_count": 7
+    "res_count": 7,
+    "text_chars": 7647
   },
   "motions": [
     {
@@ -36,7 +37,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "December 16 minutes approved",
+      "summary": "The agency board approved the minutes of its December 16, 2025 meeting.",
+      "impact": "Signing off on the written record makes December's meeting official. Nobody outside the agency's own files feels this.",
+      "significance": "routine"
     },
     {
       "id": 66,
@@ -66,7 +71,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Melissa Clark elected agency vice chair",
+      "summary": "The agency board elected Board Member Melissa Clark as its vice chairperson.",
+      "impact": "Filling a presiding-officer seat is internal housekeeping for the board. It touches who runs a meeting when the chair is out, and nothing else.",
+      "significance": "routine"
     },
     {
       "id": 67,
@@ -96,7 +105,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Abby Ivory named agency executive director",
+      "summary": "Abby Ivory, the city's new economic development director, was appointed executive director of the redevelopment agency by the agency board.",
+      "impact": "Ivory now runs the agency's daily work and speaks for it with other taxing entities. Staff shuffle only: your services and bills are untouched.",
+      "significance": "routine"
     },
     {
       "id": 68,
@@ -126,7 +139,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Sweetwater #4 project area plan amended",
+      "summary": "Changes to the official project area plan for the Sweetwater #4 Community Reinvestment Area won the agency board's approval.",
+      "impact": "A project area plan sets the boundaries and purposes of redevelopment in Sweetwater #4. What was altered is not stated in the record, so residents there cannot tell from this motion alone what is different.",
+      "significance": "notable"
     },
     {
       "id": 69,
@@ -158,7 +175,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Sweetwater #4 project area budget amended",
+      "summary": "The agency board amended the official project area budget for the Sweetwater #4 Community Reinvestment Area. No figures were stated in the motion.",
+      "impact": "Project area budgets govern how much property tax growth inside Sweetwater #4 the agency can spend on that area. The record here does not say what changed, so no dollar effect can be described.",
+      "significance": "notable"
     },
     {
       "id": 70,
@@ -188,7 +209,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Meeting adjourned",
+      "summary": "The agency board closed its January 6 meeting at 8:43 p.m.",
+      "impact": "The gavel coming down is not a decision about anything. Nothing here reaches a resident.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

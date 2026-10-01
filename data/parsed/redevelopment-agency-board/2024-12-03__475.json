@@ -5,7 +5,8 @@
     "source_file": "2024-12-03__475.pdf",
     "motion_count": 7,
     "ord_count": 0,
-    "res_count": 12
+    "res_count": 12,
+    "text_chars": 8517
   },
   "motions": [
     {
@@ -40,7 +41,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "August 20 minutes approved",
+      "summary": "The agency board approved the minutes of its August 20, 2024 meeting.",
+      "impact": "Housekeeping for the agency's own file. Nobody outside the meeting room feels this one.",
+      "significance": "routine"
     },
     {
       "id": 45,
@@ -74,7 +79,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "City to pass Triple Tail tax growth to agency",
+      "summary": "Eagle Mountain City will collect property taxes in the Triple Tail area and send the growth to the agency, under an agreement the agency board approved.",
+      "impact": "Of the five collection agreements, this is the city's own: it passes its share of that area's tax growth to the agency. Residents elsewhere in Eagle Mountain see no change to bills or services.",
+      "significance": "notable"
     },
     {
       "id": 46,
@@ -108,7 +117,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Utah County to return Triple Tail tax growth",
+      "summary": "The agency board settled terms with Utah County for collecting property taxes inside the Triple Tail area and returning the increase to the agency.",
+      "impact": "This settles which government keeps the growth in property tax from one development area, and the answer is the agency. Your county rate and county services stay as they are.",
+      "significance": "notable"
     },
     {
       "id": 47,
@@ -130,7 +143,11 @@
           "member_id": "melissa-clark",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Alpine School District deal, result unrecorded",
+      "summary": "A matching agreement with the Alpine School District over Triple Tail's new property taxes came to a vote, but the minutes do not record the outcome.",
+      "impact": "Whether the school district's piece was locked in cannot be told from the record. Either way this is agency financing paperwork: no parent, student or homeowner does anything differently.",
+      "significance": "notable"
     },
     {
       "id": 48,
@@ -166,7 +183,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Fire service area to remit Triple Tail taxes",
+      "summary": "Unified Fire Service Area will hand the agency the growth in property taxes from the Triple Tail area, under a deal the agency board approved.",
+      "impact": "Fire coverage is not touched by this. The fire service area agreed to send its share of the growth in that area's property taxes to the agency for the project.",
+      "significance": "notable"
     },
     {
       "id": 49,
@@ -202,7 +223,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Water district signs Triple Tail tax deal",
+      "summary": "The agency board signed a collection deal with the Central Utah Water Conservancy District, which will pass the growth in Triple Tail property taxes to the agency.",
+      "impact": "Nothing on your water district bill changes. The agreement routes that district's share of new property tax from Triple Tail to the agency, which is how a project area gets paid for.",
+      "significance": "notable"
     },
     {
       "id": 50,
@@ -236,7 +261,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Triple Tail project deal with UTLCO approved",
+      "summary": "The agency board approved its participation agreement with UTLCO Eagle Mtn. Two, LLC, setting the company's terms inside the Triple Tail reinvestment project area.",
+      "impact": "The record gives no dollar figure and no timeline, so what the company receives is not stated. Nothing here changes your tax bill; it governs how future tax growth from that one area gets used.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

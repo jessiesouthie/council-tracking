@@ -5,7 +5,8 @@
     "source_file": "2025-09-16__659.pdf",
     "motion_count": 3,
     "ord_count": 0,
-    "res_count": 2
+    "res_count": 2,
+    "text_chars": 3803
   },
   "motions": [
     {
@@ -40,7 +41,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "June 17 minutes approved",
+      "summary": "The agency board approved the written record of its June 17, 2025 meeting.",
+      "impact": "A months-old record was made official. This touches the clerk's files and nobody else.",
+      "significance": "routine"
     },
     {
       "id": 56,
@@ -66,7 +71,11 @@
           "member_id": "melissa-clark",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "September 2 minutes approved",
+      "summary": "The agency board approved the written record of its September 2, 2025 meeting.",
+      "impact": "Filing paperwork, and nothing more. You will not see this one.",
+      "significance": "routine"
     },
     {
       "id": 57,
@@ -102,7 +111,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Study of a Mid-Valley commercial project area begins",
+      "summary": "The agency board designated a survey area for a proposed Mid-Valley commercial project area and ordered a draft plan and budget prepared for it.",
+      "impact": "Nothing changes on the ground yet. This starts the study that would later come back to the agency board with a plan and a budget, and only then could tax money be steered into the area.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

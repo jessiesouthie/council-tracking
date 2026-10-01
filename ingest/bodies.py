@@ -39,6 +39,12 @@ BODIES: list[dict] = [
     {
         "id": "city-council",
         "label": "City Council",
+        "authority": (
+            "The City Council is Eagle Mountain's elected governing body. It decides: "
+            "its votes enact ordinances, adopt budgets, set tax and utility rates, and "
+            "approve rezones and development agreements outright."
+        ),
+        "actor": "the council",
         "source": "civicclerk",
         "category": "City Council",
         "members": "councilmembers.json",
@@ -52,6 +58,15 @@ BODIES: list[dict] = [
     {
         "id": "planning-commission",
         "label": "Planning Commission",
+        "authority": (
+            "The Planning Commission is an appointed body. On most land-use items it "
+            "RECOMMENDS to the City Council rather than deciding: the council votes "
+            "later and can go the other way. Say \"recommended\", not \"approved\", "
+            "unless the motion itself shows the commission held the final say (site "
+            "plans and conditional use permits are the usual exceptions). Never write "
+            "that the city approved something the commission only recommended."
+        ),
+        "actor": "the commission",
         "source": "civicclerk",
         "category": "Planning Commission",
         "members": "members.planning-commission.json",
@@ -65,6 +80,14 @@ BODIES: list[dict] = [
     {
         "id": "community-services-board",
         "label": "Community Services Board",
+        "authority": (
+            "The Community Services Board is an appointed advisory board covering parks, "
+            "recreation, arts and community events. It ADVISES: its motions are "
+            "recommendations and requests to the City Council and to city staff, not "
+            "decisions the city is bound by. Never write that the city approved "
+            "something this board voted on."
+        ),
+        "actor": "the board",
         "source": "manual",                          # no CivicClerk category — PDFs dropped in
         "category": None,
         "members": "members.community-services-board.json",
@@ -78,6 +101,14 @@ BODIES: list[dict] = [
     {
         "id": "redevelopment-agency-board",
         "label": "Redevelopment Agency Board",
+        "authority": (
+            "The Redevelopment Agency Board is the City Council sitting as the board of "
+            "the city's redevelopment agency, a separate legal entity. It decides, but "
+            "what it decides is agency business: tax increment, project area budgets, "
+            "agency bonds and participation agreements. Write \"the agency\", not "
+            "\"the city\", and do not imply a change to general city services."
+        ),
+        "actor": "the agency board",
         "source": "civicclerk",
         "category": "Redevelopment Agency Board",
         "members": "members.redevelopment-agency-board.json",

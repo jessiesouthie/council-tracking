@@ -5,7 +5,8 @@
     "source_file": "2026-06-23__688.pdf",
     "motion_count": 6,
     "ord_count": 0,
-    "res_count": 0
+    "res_count": 0,
+    "text_chars": 11841
   },
   "motions": [
     {
@@ -37,16 +38,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Excused"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "June 9 minutes approved",
+      "summary": "The commission approved the written record of its June 9, 2026 meeting.",
+      "impact": "Housekeeping for the clerk's file, and nothing more.",
+      "significance": "routine"
     },
     {
       "id": 303,
@@ -70,7 +73,11 @@
           "member_id": "jason-allen",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Annexation policy plan",
+      "summary": "Commissioners took up the city's annexation policy plan, the document that sets which land Eagle Mountain may take in, and sent it toward the council.",
+      "impact": "The minutes do not record how the vote came out. Annexation shapes the city's future boundaries, so this one is worth watching when the council picks it up.",
+      "significance": "notable"
     },
     {
       "id": 304,
@@ -103,16 +110,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Excused"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Triumph development agreement change",
+      "summary": "The commission recommended a second amendment to the Triumph master development agreement, which sets the terms for that development.",
+      "impact": "The record does not say what the amendment changes. Neighbors of the Triumph project are the ones with a reason to follow it to the council.",
+      "significance": "notable"
     },
     {
       "id": 305,
@@ -145,16 +154,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Excused"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Backyard recreation buildings",
+      "summary": "Over one commissioner's objection, the commission recommended a new code section on accessory recreation buildings.",
+      "impact": "This governs what you may build on your own lot alongside your house, such as a detached recreation structure. The council has the final say.",
+      "significance": "notable"
     },
     {
       "id": 306,
@@ -185,16 +196,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Excused"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Seasonal political sign rules",
+      "summary": "Commissioners backed changes to the city's rules on seasonal political signs, with one clerical error corrected before it moves to the council.",
+      "impact": "If the council agrees, the rules for putting campaign signs on your property around an election would change. Nothing is in force yet.",
+      "significance": "notable"
     },
     {
       "id": 307,
@@ -225,16 +238,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Excused"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Cost estimate rules for subdivision work",
+      "summary": "The commission asked the council to update the code sections covering cost estimates for subdivision and development work.",
+      "impact": "The council makes the call at a later meeting. Engineers and developers pricing out required improvements would feel this; a homeowner would not.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

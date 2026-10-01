@@ -5,7 +5,8 @@
     "source_file": "2025-11-05__663.pdf",
     "motion_count": 7,
     "ord_count": 0,
-    "res_count": 12
+    "res_count": 12,
+    "text_chars": 8352
   },
   "motions": [
     {
@@ -40,7 +41,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "October 21 minutes approved",
+      "summary": "The board signed off on the written record of its October 21, 2025 meeting.",
+      "impact": "Housekeeping that makes the last meeting's record official. It touches the clerk's office and nobody else.",
+      "significance": "routine"
     },
     {
       "id": 59,
@@ -74,7 +79,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Plan adopted for the Sweetwater #4 project area",
+      "summary": "The board adopted the official plan for the Sweetwater #4 community reinvestment project area, the document setting out what the agency intends to do there.",
+      "impact": "Adopting a plan builds nothing on its own and asks nothing of you today. It is the agency's statement of intent for that area, and worth reading if you own land nearby.",
+      "significance": "notable"
     },
     {
       "id": 60,
@@ -94,7 +103,11 @@
           "member_id": "donna-burnham",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Budget for the Sweetwater #4 project area",
+      "summary": "The board took up the official budget for the Sweetwater #4 project area, and the minutes do not record how the vote finished.",
+      "impact": "Without a recorded result, this one is unfinished business. It covers the money side of the project area, so a later meeting is where the outcome will show up.",
+      "significance": "notable"
     },
     {
       "id": 61,
@@ -128,7 +141,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "City sends its Sweetwater #4 tax growth to agency",
+      "summary": "Eagle Mountain City itself will send its property tax growth from the Sweetwater #4 area to the agency, in an agreement the board approved.",
+      "impact": "The city and the agency are separate legal entities, so the city has to sign to hand over its own increment. Homeowners see nothing different on a bill.",
+      "significance": "notable"
     },
     {
       "id": 62,
@@ -162,7 +179,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Utah County agrees to Sweetwater #4 tax split",
+      "summary": "The board signed the county into the arrangement too: property tax growth Utah County collects inside Sweetwater #4 goes to the agency.",
+      "impact": "Property tax the county collects inside the project area funds work in that area. If you live elsewhere in the city, this one passes you by.",
+      "significance": "notable"
     },
     {
       "id": 63,
@@ -198,7 +219,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Water district to route Sweetwater #4 tax growth",
+      "summary": "Central Utah Water Conservancy District will hand its share of that same property tax growth to the agency, an agreement the board put in place.",
+      "impact": "Each taxing entity has to sign separately before the agency can use the money, and this is one of those signatures. You will not notice it anywhere.",
+      "significance": "notable"
     },
     {
       "id": 64,
@@ -234,7 +259,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Fire district signs on to Sweetwater #4 tax deal",
+      "summary": "The agency board approved an agreement with the Unified Fire Service Area to collect and pass along property tax growth from the Sweetwater #4 project area.",
+      "impact": "New property tax raised inside that one area goes to the agency rather than to the fire district. No tax rate is set by this, and no bill of yours changes.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

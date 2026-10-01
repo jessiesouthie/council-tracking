@@ -398,6 +398,35 @@ def vote_row(motion: dict, members: dict) -> str:
     return f'<ul class="mp-votes">{"".join(chips)}</ul>'
 
 
+PORTAL_EVENT_URL = "https://eaglemountainut.portal.civicclerk.com/event/{id}/overview"
+
+
+def no_motions_note(meeting: dict) -> str:
+    """What to say on a page whose minutes produced no motions.
+
+    "No motions were parsed from these minutes" was the old line, and it is the
+    wrong sentence twice over: it blames the parser for a meeting that may
+    genuinely have taken no votes, and it says nothing at all on the ~110
+    meetings whose minutes are scans with no text layer, where the honest answer
+    is that the record exists and this site cannot read it. text_chars tells the
+    two apart (see parser.parse_document), and either way the reader gets a link
+    to the record itself rather than a dead end.
+    """
+    chars = meeting.get("text_chars")
+    link = ""
+    if meeting.get("id"):
+        link = (' You can read them on '
+                f'<a href="{esc(PORTAL_EVENT_URL.format(id=meeting["id"]))}">'
+                'the city&rsquo;s portal</a>.')
+
+    if chars is not None and chars < 200:
+        return ('        <p class="muted">The city published minutes for this meeting, '
+                'but they are a scanned image with no readable text, so no motions or '
+                'roll-call votes could be pulled out of them.' + link + '</p>')
+    return ('        <p class="muted">These minutes record no motions or roll-call '
+            'votes. Work sessions and study meetings often take none.' + link + '</p>')
+
+
 def render_meeting(body: dict, meeting: dict, motions: list[dict],
                    members: dict, detail: dict, transcript: dict | None,
                    base: str, slug: str) -> tuple[str, str, str]:
@@ -479,7 +508,7 @@ def render_meeting(body: dict, meeting: dict, motions: list[dict],
     parts.append('      <section class="section">')
     parts.append('        <h2>Motions and roll-call votes</h2>')
     if not motions:
-        parts.append('        <p class="muted">No motions were parsed from these minutes.</p>')
+        parts.append(no_motions_note(meeting))
     for motion in motions:
         heading = motion.get("headline")
         parts.append('        <article class="mp-motion">')

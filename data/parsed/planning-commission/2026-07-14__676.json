@@ -5,7 +5,8 @@
     "source_file": "2026-07-14__676.pdf",
     "motion_count": 7,
     "ord_count": 0,
-    "res_count": 0
+    "res_count": 0,
+    "text_chars": 11391
   },
   "motions": [
     {
@@ -37,16 +38,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Abstain"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
-        }
-      ]
+      "headline": "June 23 minutes approved",
+      "summary": "The commission signed off on the minutes of its June 23, 2026 meeting.",
+      "impact": "This is the housekeeping that makes the written record of that meeting official. You will not feel it anywhere.",
+      "significance": "routine"
     },
     {
       "id": 309,
@@ -79,16 +82,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
-        }
-      ]
+      "headline": "Scenic Mountain zoning change recommended",
+      "summary": "The commission asked the City Council to approve the Scenic Mountain rezone; the motion names no acreage, location, or new zoning district.",
+      "impact": "Land use does not change until the council votes. Residents who care what gets built there should follow the item to that meeting.",
+      "significance": "notable"
     },
     {
       "id": 310,
@@ -122,16 +127,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
-        }
-      ]
+      "headline": "Chapel and rec building site plan shelved",
+      "summary": "The site plan for the Eagle Mountain Chapel and Recreation Building was set aside by the commission for a later meeting.",
+      "impact": "The plan sits where it is until the commission picks it up again. Nobody's property or paperwork changes in the meantime.",
+      "significance": "routine"
     },
     {
       "id": 311,
@@ -165,16 +172,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
-        }
-      ]
+      "headline": "Chapel development agreement put on hold",
+      "summary": "The commission postponed the development agreement for the Eagle Mountain Chapel and Recreation Building without acting on it.",
+      "impact": "No decision was reached about the chapel project. The motion sets no return date, so the record does not say when the item comes back.",
+      "significance": "routine"
     },
     {
       "id": 312,
@@ -207,16 +216,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
-        }
-      ]
+      "headline": "Retaining wall variance denied on Wright property",
+      "summary": "The commission turned down a request to bypass the city's retaining wall rules, finding the lot has room for a tiered wall meeting standards.",
+      "impact": "The owner must build to the city's tiered wall standard rather than the wall proposed. Sloped ground on its own will not win a variance, which matters to anyone with a hillside lot.",
+      "significance": "notable"
     },
     {
       "id": 313,
@@ -249,16 +260,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
-        }
-      ]
+      "headline": "Brylee Townhomes agreement change backed",
+      "summary": "A first amendment to the Brylee Townhomes development agreement won the commission's support, with the decision left to the City Council.",
+      "impact": "The council has the last word here, so the amendment is not in force. Neighbors of the townhome site will see no change from this step.",
+      "significance": "notable"
     },
     {
       "id": 314,
@@ -291,16 +304,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Laura Jensen",
-          "vote": "Excused"
-        }
-      ]
+      "headline": "Stadion development deal change sent to council",
+      "summary": "The commission backed a first amendment to the Stadion development agreement and passed it to the City Council for the final vote.",
+      "impact": "Nothing changes on the ground from this vote. The council takes it up later and can decide otherwise.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

@@ -5,7 +5,8 @@
     "source_file": "2019-05-07__340.pdf",
     "motion_count": 10,
     "ord_count": 0,
-    "res_count": 12
+    "res_count": 12,
+    "text_chars": 11260
   },
   "motions": [
     {
@@ -22,7 +23,11 @@
         "development",
         "infrastructure"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Two sets of old minutes approved",
+      "summary": "The agency board approved its minutes from May 15, 2018 and March 5, 2019.",
+      "impact": "Close to a year of unapproved records was cleared in one go. It touches the file cabinet and no household.",
+      "significance": "routine"
     },
     {
       "id": 4,
@@ -37,7 +42,11 @@
       "tags": [
         "budget"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Tax increment plan for 80 acres at Pole Canyon",
+      "summary": "The agency adopted the official plan for the Pole Canyon project area, 80 acres of industrial-planned land where tax increment can pay for development.",
+      "impact": "The site sits in the Pole Canyon master plan and is aimed at industry, with a food manufacturing business under discussion. A resident who spoke raised traffic and the two roads planned there.",
+      "significance": "notable"
     },
     {
       "id": 5,
@@ -52,7 +61,11 @@
       "tags": [
         "budget"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Pole Canyon project budget adopted",
+      "summary": "The agency adopted the spending plan for the Pole Canyon project area, setting where its tax increment revenue comes from and what it may be spent on.",
+      "impact": "This is the money side of the Pole Canyon deal, with a cost-benefit analysis putting the city's benefit at about $3 million. A tenth of the increment is set aside for affordable housing.",
+      "significance": "notable"
     },
     {
       "id": 6,
@@ -67,7 +80,11 @@
       "tags": [
         "budget"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Draft 2019-20 agency budget and May 21 hearing",
+      "summary": "The agency board adopted a tentative budget for the 2019-2020 year and set a May 21, 2019 public hearing before the final budget is adopted.",
+      "impact": "Nothing is locked in at this stage. If you wanted a say on the agency's spending, May 21 was the date to speak.",
+      "significance": "routine"
     },
     {
       "id": 7,
@@ -80,7 +97,11 @@
       "motion": "Board Member Burnham moved to approve ø resolution of the Redevelopment Agency oÍ Eugle Mountain City, Utøh, approving an interlocal cooperøtíon agreement between the Eøgle Moanta.ìn Redevelopment Agenqt and Eøgle Mountain Cíty for the collection and remìttønce of íncremental property taxes collected from property withín the Pole Cønyon Communìty ReínvestmentArea. Board Member Clørk seconded the motion. Those voting øye: Colby Curtís, Stephønie Gricius, Benjamin Eagle Mountain Redevelopment Agency Meeting - May 7,2019 Page 3 of5 Reøves, Donna Burnhøm, ønd Melìssø Clarlc The motíon pøssed wíth a unanímous vote. 8.C A Resolution of the Redevelopment Agency o1'Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Utah County for the Collection and Remittance of Incremental Property Taxes Collected from Property V/ithin the Pole Canyon Community Reinvestment Area.",
       "outcome": "",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "City signs its own Pole Canyon tax agreement",
+      "summary": "The agency and Eagle Mountain City agreed on how the city will collect and remit the property tax growth from land inside the Pole Canyon project area.",
+      "impact": "Both sides of this deal are the same five people, sitting once as the council and once as the agency board. Your city tax bill is untouched; the city's share of new Pole Canyon revenue is what moves.",
+      "significance": "notable"
     },
     {
       "id": 8,
@@ -93,7 +114,11 @@
       "motion": "Board Member Reaves moved to øpprove a resolution of the Redeveloprnent Agency of Eøgle Moantøín Cìty, Utah, øpproving øn ínterlocal cooperøtíon øgreement between the Eøgle Mountain Redeveloprnent Agency and Utah County for the collectìon snd remíttønce of íncremental property taxes collected from properQ wíthín the Pole Cønyon Communíty Reinvestment Areø. Board Member Clørk seconded the motion. Those votíng aye: Colby Curtis, Stephøníe Grícius, Benjømin Reøves, Donna Barnham, and Melissø CIørk The motion pøssed with a ananímous vote. 8.D A Resolution of the Redevelopment Agency of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Alpine School District for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Pole Canyon Community Reinvestment Area.",
       "outcome": "",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "Utah County signs Pole Canyon tax agreement",
+      "summary": "The agency board approved the Utah County version of the Pole Canyon agreement, covering collection and remittance of property tax growth from the project area.",
+      "impact": "County services carry on as before, and no household pays anything new. This is the county's signature on the tax sharing that funds the Pole Canyon project.",
+      "significance": "notable"
     },
     {
       "id": 9,
@@ -106,7 +131,11 @@
       "motion": "Board Member Curtis moved to approve a resolution of the Redevelopment Agency of Eagle Mountøin C¡ty, Utah, approvíng an interlocal cooperatíon agreement between the Eøgle Mountaìn Redevelopment Agency and Alpine School Dístrict for the collection and remittance of incremental propefi tøxes collected from property within the Pole Canyon Communíty Reínvestment Area- Board Member Clark seconded the motíon. Those voting øye: Colby Curtís, Stephanie Gricias, Benjømín Reaves, Donnø Burnham, and Melíssa Clørlc The motíon passed with ø unønimous vote. 8.E. A Resolution of the Redevelopment Agerrcy of Eagle Mountain City, Utah, Approving an Interlocal Cooperation Agreement between the Eagle Mountain Redevelopment Agency and Central Utah V/ater Conservancy District for the Collection and Remittance of Incremental Property Taxes Collected from Property Within the Fole Canyon Community Reinvestment Area.",
       "outcome": "",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "School district signs Pole Canyon tax agreement",
+      "summary": "The agency approved an agreement with Alpine School District for collecting and remitting the property tax growth generated inside the Pole Canyon project area.",
+      "impact": "Classrooms and school budgets keep running on the taxes already collected there. The share of future growth on that land is what this document commits, and it takes years to arrive.",
+      "significance": "notable"
     },
     {
       "id": 10,
@@ -122,7 +151,11 @@
         "infrastructure",
         "public_safety"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Water district signs on to Pole Canyon increment",
+      "summary": "The agency signed a matching agreement with the Central Utah Water Conservancy District covering collection and remittance of property tax growth inside the Pole Canyon project area.",
+      "impact": "Your water bill is not part of this arrangement. What the district signed governs how the tax growth from the Pole Canyon land is handed back for use in the project.",
+      "significance": "notable"
     },
     {
       "id": 11,
@@ -137,7 +170,11 @@
       "tags": [
         "public_safety"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Fire district joins Pole Canyon tax deal",
+      "summary": "The agency board signed an agreement with the Unified Fire Service Area to collect and pass on property tax growth from the Pole Canyon project area.",
+      "impact": "Fire coverage where you live is not altered by this. The agreement sets the route by which the fire district's share of new Pole Canyon tax revenue reaches the agency.",
+      "significance": "notable"
     },
     {
       "id": 12,
@@ -150,7 +187,11 @@
       "motion": "Boørd Member Grícíus moved to ødjourn the meeting at 7:38 p.m. Board Member Clark seconded the motíon, Those voting aye: Colhy Curtìs, Stephøníe Grícíus, Benjømìn Reaves, Donna Burnham, ønd Melissa Clark",
       "outcome": "passed with ø unønimous vote.",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "Meeting adjourned at 7:38 p.m.",
+      "summary": "The agency board closed its May 7 meeting at 7:38 p.m.",
+      "impact": "Nothing here reaches a resident. It is the timestamp that ends the record.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

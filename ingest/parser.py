@@ -627,7 +627,8 @@ def parse_document(filename: str, data: bytes) -> dict:
 
     mdate = meeting_date_from_text(_full_text_for_date(filename, data))
     ords, ress = _line_hits(filename, data, mdate)
-    motion_blocks = _parse_motions(filename, _all_lines_for(filename, data), mdate)
+    lines = _all_lines_for(filename, data)
+    motion_blocks = _parse_motions(filename, lines, mdate)
 
     motions = [b.to_summary_row() for b in motion_blocks]
     votes_by_member: list[dict] = []
@@ -637,6 +638,11 @@ def parse_document(filename: str, data: bytes) -> dict:
     return {
         "filename": filename,
         "meeting_date": mdate,
+        # How much text the file actually yielded. A good share of the archive's
+        # older minutes are scans with no text layer, and those come back at 0:
+        # nothing was parsed because nothing was readable, which is a different
+        # thing from a meeting that took no votes. The page says which.
+        "text_chars": sum(len(t) for _, t in lines),
         "motions": motions,
         "votes_by_member": votes_by_member,
         "ordinances": ords,

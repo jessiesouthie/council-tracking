@@ -5,7 +5,8 @@
     "source_file": "2023-07-18__268.pdf",
     "motion_count": 3,
     "ord_count": 0,
-    "res_count": 5
+    "res_count": 5,
+    "text_chars": 4572
   },
   "motions": [
     {
@@ -19,7 +20,11 @@
       "motion": "Board Member Wright moved to approve the June 20, 2023 mínutes. Board Member Love seconded the motion. Those Voting Yes Those Voting No Those Abstøíning Those Absent X n n tr DonnaBurnham Donnø Burnham DonnaBurnham Donna Burnhøm n n tl X Coby Curtis Coby Curtís Colby Curtís Colby Curtís X n tr n Jared Grøy Jared Grøy Jared Gray Jøred Gray X tr n tr Carolyn Love Carolyn Love Carolyn Love Cørolyn Love X n tr n Brett Wríght Brett ll/right Brett Wright Brett Wríght",
       "outcome": "pøssed with a unønímous vote.",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "June minutes approved",
+      "summary": "The agency board approved the written record of its June 20, 2023 meeting.",
+      "impact": "Housekeeping for the agency's own files. Nothing here reaches a resident.",
+      "significance": "routine"
     },
     {
       "id": 33,
@@ -34,7 +39,11 @@
       "tags": [
         "parks"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Sweetwater tax increment routed to the agency",
+      "summary": "The agency board signed an agreement with the city setting how property taxes from the Sweetwater Industrial Park reinvestment area are collected and passed to the agency.",
+      "impact": "Money already collected in that industrial area moves between two sets of books. Nobody pays a new amount, and nothing on the ground changes because of this vote.",
+      "significance": "routine"
     },
     {
       "id": 34,
@@ -47,7 +56,11 @@
       "motion": "Board Member Wright moved to approve a resolution of the Redevelopment Agency of Eagle Mountøin CiA, Utuh, approving ø CRA Participøtíon Agreement between the Redevelopment Agency of Eagle Mountøin City ønd QTS Eagle Mountain I, LLC. Board Member Love seconded the motion. Yes No Abstaining Those Voting Those Voting Those Those Absent tr tr D tr DonnøBurnham DonnøBurnham DonnaBurnhøm DonnaBurnhøm tr Curtis tr Curtis tr Curtis X Colby Colby Colby Colby Curtß X Gray tr Gray tr Grøy tr Jared Jored løred Jared Gray E Love tr Love tr Love ¡ Carolyn Carolyn Carolyn Carolyn Love tr Wright D Wright lJ Wright l) Brett Brett Brett Brett Wright",
       "outcome": "passed with ø unanímous vote.",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "Tax deal approved with QTS Eagle Mountain I",
+      "summary": "The agency board approved a participation agreement with QTS Eagle Mountain I, LLC, for a project inside one of the city's community reinvestment areas.",
+      "impact": "No terms or dollar figures were read into the record, so this vote alone does not show what the company gets. The deal binds the agency and that company, not city services or your tax bill.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

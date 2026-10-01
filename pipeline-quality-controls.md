@@ -104,6 +104,10 @@ A cached entry is never overwritten without an explicit `--force`. A separate st
 Fields are length-clamped, and the notable-or-routine flag falls back to "routine" for anything that is not one of those two words. A typo or an invented third tier cannot promote a housekeeping item onto the front of the site. A motion that comes back with no headline and no summary is dropped rather than stored blank.
 → `ingest/summarize_motions.py` · `clean_significance`
 
+**The prompt knows which body it is describing** · `code` `prompt`
+Only the City Council decides on its own account. The Planning Commission recommends to the council, the Community Services Board advises, and the Redevelopment Agency Board acts for a separate legal entity. One prompt that said "the council approved" would have produced text that was plainly false on three of the four bodies, so each body carries its own authority note and the summarizer splices in the one that fits. The note tells the model to write "recommended" where the record supports only a recommendation, and never to attribute to the city an act by a body that cannot bind it.
+→ `ingest/bodies.py` · `authority` · `ingest/summarize_motions.py` · `body_prompt`
+
 **Invented consequences are the named failure mode** · `prompt`
 Most motions are procedural and a resident feels nothing. The prompt requires the tool to say that plainly, in different words each time, instead of manufacturing an effect. It also forbids restating the vote, which the page already shows.
 
@@ -120,6 +124,10 @@ The controls that matter most are the ones that let a reader, or a critic, check
 **No model touches a vote** · `code`
 Motions, roll calls and outcomes come from a deterministic parser over the official minutes, with footer detection, an exclusion rule for adjournment and closed-session motions, and a plausibility test on roll-call lines that rejects a sentence like "Councilmember Wright seconded the motion". Where an outcome cannot be found the parser writes `(outcome not found)` instead of guessing.
 → `ingest/parser.py`
+
+**A page says why it is empty** · `code`
+A good share of the older minutes are scans with no text layer, so nothing can be parsed out of them. The parser records how much text a file actually yielded, and a meeting with no motions says which of the two things happened: the minutes are an image this site cannot read, or the meeting genuinely took no votes. Either way the page links to the record on the city's portal rather than ending on a line about the parser.
+→ `ingest/parser.py` · `text_chars` · `ingest/build_meeting_pages.py` · `no_motions_note`
 
 **The parsed fact and the generated prose never compete** · `prompt`
 The page renders the machine-parsed tally next to the plain-English text, and the summarizer is forbidden from restating either the vote or the outcome. One number, from one source.

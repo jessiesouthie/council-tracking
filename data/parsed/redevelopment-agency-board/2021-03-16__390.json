@@ -5,7 +5,8 @@
     "source_file": "2021-03-16__390.pdf",
     "motion_count": 6,
     "ord_count": 0,
-    "res_count": 6
+    "res_count": 6,
+    "text_chars": 9290
   },
   "motions": [
     {
@@ -21,7 +22,11 @@
       "tags": [
         "personnel"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "June 2020 minutes approved",
+      "summary": "The agency board approved the written record of its June 16, 2020 meeting.",
+      "impact": "Signing off on old minutes is bookkeeping for the recorder's office. Nothing in it touches you.",
+      "significance": "routine"
     },
     {
       "id": 27,
@@ -34,7 +39,11 @@
       "motion": "Boørd Member Grøy moved to appoínt Tom Westmoreland to serve øs Chøir of the Redevelopment Agency of Eagle Mountøin City. Boørd Member Burnham seconded the motìon. Those voting aye: Jared Gray, Carolyn Love, Colby Curtß, Melissø Clark, and Donna Burnhøm. The motion passed wíth ø unanimous vote.",
       "outcome": "passed wíth ø unanimous vote.",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "Mayor Westmoreland named agency chair",
+      "summary": "The board named Tom Westmoreland chair of the redevelopment agency, the seat the mayor holds by default under agency bylaws adopted in 2008.",
+      "impact": "Chairing the agency lets the mayor speak for the city on economic development. Residents feel none of it.",
+      "significance": "routine"
     },
     {
       "id": 28,
@@ -54,7 +63,11 @@
         "procurement",
         "code"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Carolyn Love named vice-chair",
+      "summary": "The agency board appointed Board Member Carolyn Love as vice-chair of the redevelopment agency for the year.",
+      "impact": "A vice-chair runs the meeting when the chair cannot. The choice stays inside the board and reaches no household.",
+      "significance": "routine"
     },
     {
       "id": 29,
@@ -70,7 +83,11 @@
         "budget",
         "parks"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Plan adopted for Sweetwater data center area",
+      "summary": "The agency adopted the project area plan for Sweetwater Industrial Park reinvestment area #2, the framework for an agreement to bring a data center to the city.",
+      "impact": "Consultants told the board the project will not raise property taxes on other properties. The development agreement still has to go to the City Council, so the deal itself is not settled yet.",
+      "significance": "notable"
     },
     {
       "id": 30,
@@ -86,7 +103,11 @@
         "budget",
         "parks"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Sweetwater industrial park budget set at 67.5%",
+      "summary": "The agency adopted the budget for the Sweetwater Industrial Park reinvestment area #2, counting 67.5% of the site's real property tax value instead of the 75% first proposed.",
+      "impact": "Nobody's tax bill moves because of this. The percentage sets how much of the site's future property tax growth the agency puts back into the project rather than passing on to the county, schools, fire and water districts.",
+      "significance": "notable"
     },
     {
       "id": 31,
@@ -99,7 +120,11 @@
       "motion": "Board Member Gray moved to ødjourn the meetíng øt 7:38 p.m. Board Member Love seconded the motion. Those votíng aye: Jøred Gray, Cørolyn Love, Colby Curtis, Melissø Clørk, ønd Donna Burnhøm. The motion pøssed wìth a unønimous vote.",
       "outcome": "",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "Meeting adjourned",
+      "summary": "The agency board ended its March 16 meeting at 7:38 p.m.",
+      "impact": "Closing the meeting is the last item on any agenda. There is nothing here for you.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

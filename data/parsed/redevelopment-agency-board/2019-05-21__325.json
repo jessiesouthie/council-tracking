@@ -5,7 +5,8 @@
     "source_file": "2019-05-21__325.pdf",
     "motion_count": 2,
     "ord_count": 2,
-    "res_count": 0
+    "res_count": 0,
+    "text_chars": 2107
   },
   "motions": [
     {
@@ -21,7 +22,11 @@
       "tags": [
         "budget"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "May 7 minutes approved",
+      "summary": "The agency board approved the minutes of its May 7 meeting; a hearing on the 2019-2020 city budget drew no comment and no vote.",
+      "impact": "Record-keeping for the agency's files, and nothing more. The budget item that night was listening time only, so no money moved and no rate changed.",
+      "significance": "routine"
     },
     {
       "id": 14,
@@ -34,7 +39,11 @@
       "motion": "Board Member Clark moved to ødjourn the meeting at 9:34 p.m. Boørd Memher Grícius seconded the motíon. Those voting aye: Colby Curtís, Eagle Mountain Redevelopment Agency Meeting -May 21,2019 Page I of2 Stephanie Gricius, Benjamin Reøves, Donna Burnhøm, ønd Melíssø Clark The motìon pøssed wìth a unønimous vote. Approved by the Redevelopment Agency on June 18, 2019 Aaron Sanborn Executive Director Eagle Mountain Redevelopment Agency Meeting - May 21, 2019 Page2 of2",
       "outcome": "",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "Meeting adjourned",
+      "summary": "The agency board closed its May 21 meeting at 9:34 p.m.",
+      "impact": "Adjournment is the clock stopping, not a decision. Nothing about it reaches a resident.",
+      "significance": "routine"
     }
   ],
   "ordinances": [

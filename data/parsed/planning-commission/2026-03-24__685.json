@@ -5,7 +5,8 @@
     "source_file": "2026-03-24__685.pdf",
     "motion_count": 2,
     "ord_count": 3,
-    "res_count": 0
+    "res_count": 0,
+    "text_chars": 6883
   },
   "motions": [
     {
@@ -40,7 +41,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "March 10 minutes approved",
+      "summary": "The commission signed off on the written record of its March 10, 2026 meeting.",
+      "impact": "Bookkeeping that makes the last meeting's record official. Nothing here reaches a resident.",
+      "significance": "routine"
     },
     {
       "id": 284,
@@ -67,16 +72,18 @@
           "vote": "Yes"
         },
         {
+          "member_id": "mandy-lane",
+          "vote": "Yes"
+        },
+        {
           "member_id": "rod-hess",
           "vote": "Yes"
         }
       ],
-      "raw_voters": [
-        {
-          "name": "Mandy Lance",
-          "vote": "Yes"
-        }
-      ]
+      "headline": "Stricter screening rules for HVAC equipment",
+      "summary": "The commission asked the council to change the city's HVAC screening rules: allow polyethylene, drop landscaping as an option, and require screens within 6 inches of the ground.",
+      "impact": "Nothing changes yet, the council votes on this later. If it passes, anyone installing air conditioning equipment would have to box it in rather than hide it behind plants, and paint the connecting lines to match the wall.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

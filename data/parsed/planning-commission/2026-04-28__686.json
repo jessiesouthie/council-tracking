@@ -5,7 +5,8 @@
     "source_file": "2026-04-28__686.pdf",
     "motion_count": 5,
     "ord_count": 0,
-    "res_count": 0
+    "res_count": 0,
+    "text_chars": 9998
   },
   "motions": [
     {
@@ -44,7 +45,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "April 14 minutes approved",
+      "summary": "The commission approved the minutes of its April 14 meeting.",
+      "impact": "Housekeeping for the record: it makes the account of that meeting official. Nothing here reaches your street.",
+      "significance": "routine"
     },
     {
       "id": 292,
@@ -84,7 +89,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Setback rules along the wildlife interface boundary",
+      "summary": "The commission backed a code change moving the setback from the rear lot line to the wildlife urban interface boundary, and applying it to homes and outbuildings.",
+      "impact": "Owners whose lots touch that boundary would measure the setback from the boundary, not the back property line, and outbuildings would count too. The council has the final say.",
+      "significance": "notable"
     },
     {
       "id": 293,
@@ -122,7 +131,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Concept plan rules put off to May",
+      "summary": "The commission delayed a decision on the city's concept plan rules until its May 12 meeting.",
+      "impact": "The existing rules stay in place until then. Only people filing concept plans have a reason to follow this one.",
+      "significance": "routine"
     },
     {
       "id": 294,
@@ -163,7 +176,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "First-stage plat for Spring Run Plaza",
+      "summary": "Backing the site's lot layout, the commission sent the Spring Run Plaza preliminary plat to the council, conditioned on a signed agreement and the extended turn lane.",
+      "impact": "This is the lot layout step, and it holds until the council acts and the agreement is signed. Builders on that site are watching; nobody else needs to.",
+      "significance": "notable"
     },
     {
       "id": 295,
@@ -203,7 +220,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Spring Run Plaza development deal sent to council",
+      "summary": "The commission recommended the Spring Run Plaza master development agreement, asking that the right turn lane be extended to the service drive.",
+      "impact": "Nothing is built on this yet: the council votes later. Neighbors of the site and drivers turning in are the ones who would notice, with a longer turn lane feeding the plaza's service drive.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

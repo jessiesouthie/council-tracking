@@ -5,7 +5,8 @@
     "source_file": "2019-06-18__295.pdf",
     "motion_count": 4,
     "ord_count": 0,
-    "res_count": 4
+    "res_count": 4,
+    "text_chars": 3615
   },
   "motions": [
     {
@@ -21,7 +22,11 @@
       "tags": [
         "budget"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "May minutes approved",
+      "summary": "The agency board approved the minutes of its May 21, 2019 meeting.",
+      "impact": "With this, the written record of that meeting becomes official. It is a step for the clerk, not for you.",
+      "significance": "routine"
     },
     {
       "id": 16,
@@ -36,7 +41,11 @@
       "tags": [
         "budget"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "2018-19 agency budget trued up at year end",
+      "summary": "The agency board made a final change to its 2018-2019 budget to reflect higher values in the 2012-1 economic development area and the Parkside project area.",
+      "impact": "Bookkeeping that catches the agency's accounts up to values already on the ground in those two project areas. You will not see it anywhere.",
+      "significance": "routine"
     },
     {
       "id": 17,
@@ -51,7 +60,11 @@
       "tags": [
         "budget"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Agency budget adopted for 2019-20",
+      "summary": "The agency board adopted its budget for the 2019-2020 fiscal year, which staff said was identical to the versions presented earlier.",
+      "impact": "This budget spends the redevelopment agency's own tax increment money, not city service dollars. Staff said the figures rest on projections and may be amended as parts of the city grow.",
+      "significance": "notable"
     },
     {
       "id": 18,
@@ -64,7 +77,11 @@
       "motion": "Board Member Clørk moved to ødjourn the meeting øt 8:29 p.m\" Board Member Resves seconded the motion. Those votíng aye: Colby Curtis, Melíssø Clark, Donnø Burnham, ønd Benjamin Reaves. The motíon pøssed with a unanímous vote.",
       "outcome": "",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "Meeting adjourned",
+      "summary": "The agency board ended its June 18 meeting at 8:29 p.m.",
+      "impact": "Nothing in this one reaches a resident; it marks the close of the evening's business.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

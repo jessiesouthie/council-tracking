@@ -5,7 +5,8 @@
     "source_file": "2026-04-14__673.pdf",
     "motion_count": 6,
     "ord_count": 2,
-    "res_count": 0
+    "res_count": 0,
+    "text_chars": 11737
   },
   "motions": [
     {
@@ -40,7 +41,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "March minutes fixed and approved",
+      "summary": "The commission approved its March 24, 2026 minutes after correcting the record to show Commissioner Hess led the Pledge of Allegiance.",
+      "impact": "Housekeeping that makes the last meeting's record official. Nobody outside the meeting room feels it.",
+      "significance": "routine"
     },
     {
       "id": 286,
@@ -76,7 +81,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Spring Run Plaza plat held to April 28",
+      "summary": "A decision on the preliminary plat for Spring Run Plaza was pushed to the commission's April 28, 2026 meeting.",
+      "impact": "Two more weeks before anything is decided about this project. If you want to weigh in, the item comes back at the end of the month.",
+      "significance": "routine"
     },
     {
       "id": 287,
@@ -101,7 +110,11 @@
           "member_id": "jason-allen",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Brandon Park zoning change moves to council",
+      "summary": "The commission recommended the council approve a zoning change for Brandon Park.",
+      "impact": "A zoning change decides what can be built on the land, so neighbors have reason to follow it. Acreage and the new zone are not in the record here, and the council still has to vote.",
+      "significance": "notable"
     },
     {
       "id": 288,
@@ -137,7 +150,11 @@
           "member_id": "rod-hess",
           "vote": "No"
         }
-      ]
+      ],
+      "headline": "Drive-through and parking garage rules advance",
+      "summary": "City code covering drive-throughs and structured parking would be rewritten under an amendment the commission sent to the council unchanged.",
+      "impact": "Anyone designing a drive-through restaurant or a parking structure would build to the new standards. The council has not voted, and the motion does not describe what the standards say.",
+      "significance": "notable"
     },
     {
       "id": 289,
@@ -173,7 +190,11 @@
           "member_id": "rod-hess",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Taller screening plants along parking lots",
+      "summary": "The commission backed new landscape and buffering rules, rewriting one line to require a continuous 3.5-foot-tall wall of plants to block headlights.",
+      "impact": "Developers planting new parking areas would have to put in trees, shrubs or grasses tall enough at planting to hide headlights from neighbors. The council decides whether it becomes law.",
+      "significance": "notable"
     },
     {
       "id": 290,
@@ -193,7 +214,11 @@
           "member_id": "jason-allen",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Flagship development agreement sent to council",
+      "summary": "The commission asked the City Council to approve a development agreement for Flagship, the terms of which the motion does not spell out.",
+      "impact": "Nothing is settled yet: the council takes the final vote. The record here gives no location, acreage or unit count, so what it would build is not something this motion tells you.",
+      "significance": "notable"
     }
   ],
   "ordinances": [

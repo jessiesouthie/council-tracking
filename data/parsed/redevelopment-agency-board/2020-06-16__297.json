@@ -5,7 +5,8 @@
     "source_file": "2020-06-16__297.pdf",
     "motion_count": 3,
     "ord_count": 0,
-    "res_count": 1
+    "res_count": 1,
+    "text_chars": 2847
   },
   "motions": [
     {
@@ -21,7 +22,11 @@
       "tags": [
         "budget"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "June 2 minutes approved",
+      "summary": "Written minutes of the agency board's June 2 meeting were approved as the official record.",
+      "impact": "Filing work for the agency's own records. It touches the clerk and nobody else.",
+      "significance": "routine"
     },
     {
       "id": 24,
@@ -36,7 +41,11 @@
       "tags": [
         "budget"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Agency budget adopted for 2020-21",
+      "summary": "The agency board adopted the redevelopment agency's budget for fiscal year 2020-2021, unchanged from the version presented two weeks earlier.",
+      "impact": "This sets the spending plan for the agency's redevelopment money, not for city services, and the motion names no dollar figures. Residents will see no change to what they pay or receive.",
+      "significance": "notable"
     },
     {
       "id": 25,
@@ -49,7 +58,11 @@
       "motion": "Board Member Gray moved to ødjourn the meetíng øt 8:44 p.m. Boørd Member Clørk seconded the motíon. Those voting aye: Jared Gray, Carolyn Love, Colby Cartìs, Melßsa Clørk, ønd Donnø Burnham. The motíon passed wÍth a unanimous vote.",
       "outcome": "",
       "tags": [],
-      "votes": []
+      "votes": [],
+      "headline": "Meeting adjourned at 8:44 p.m.",
+      "summary": "The agency board closed its June 16 meeting at 8:44 p.m.",
+      "impact": "Nothing here for residents: this is the line in the record marking when the board stopped for the night.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

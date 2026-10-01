@@ -5,7 +5,8 @@
     "source_file": "2026-06-24__3.pdf",
     "motion_count": 3,
     "ord_count": 0,
-    "res_count": 0
+    "res_count": 0,
+    "text_chars": 16759
   },
   "motions": [
     {
@@ -23,7 +24,11 @@
         "parks",
         "procurement"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Minutes from the last meeting approved",
+      "summary": "The board approved the minutes of its previous meeting as written.",
+      "impact": "Housekeeping, and nothing more: the minutes become the official record of what the board did last time. It reaches no one outside the board's own file.",
+      "significance": "routine"
     },
     {
       "id": 2,
@@ -40,7 +45,11 @@
         "parks",
         "personnel"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Citywide trails plan, with a bike park fix",
+      "summary": "The board backed the city's off-street trails plan and asked that the rotting wooden features at the bike park be repaired or torn out soon.",
+      "impact": "Bike park riders feel this one soonest: the decaying jumps and ramps are meant to come out in the short term. The plan itself goes to the council next, so nothing about the trails you ride changes on its own.",
+      "significance": "notable"
     },
     {
       "id": 3,
@@ -58,7 +67,11 @@
         "parks",
         "consent"
       ],
-      "votes": []
+      "votes": [],
+      "headline": "Benches, ADA ramps and disc golf recommended",
+      "summary": "The board sent the council a seven-item project list: benches at Smith Ranch Park, trail signs, ADA ramps, rodeo-grounds upkeep, a Nolan Park design, disc golf and utility-box art.",
+      "impact": "Nothing is built yet. The council decides which of these move ahead, and if it agrees, the pieces you would notice first are the benches, the trail signs and the roll-up ramps at parks you already use.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

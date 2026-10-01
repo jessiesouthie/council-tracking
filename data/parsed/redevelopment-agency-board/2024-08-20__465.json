@@ -5,7 +5,8 @@
     "source_file": "2024-08-20__465.pdf",
     "motion_count": 6,
     "ord_count": 0,
-    "res_count": 8
+    "res_count": 8,
+    "text_chars": 6138
   },
   "motions": [
     {
@@ -40,7 +41,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "June 18 minutes approved",
+      "summary": "The agency board approved the written record of its June 18, 2024 meeting.",
+      "impact": "Housekeeping that makes the earlier meeting's record official. It touches the clerk's file and nobody else.",
+      "significance": "routine"
     },
     {
       "id": 39,
@@ -74,7 +79,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Triple Tail project area plan adopted again",
+      "summary": "On a second vote, the agency adopted the official plan for the Triple Tail Community Reinvestment Project Area, this time with no acreage change attached.",
+      "impact": "This is the version of the plan that stands. Landowners and developers inside the Triple Tail area deal with it; the record says nothing that changes for people living outside it.",
+      "significance": "notable"
     },
     {
       "id": 40,
@@ -108,7 +117,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Vote on Triple Tail plan reopened",
+      "summary": "The agency board reopened its own vote on the Triple Tail project area plan so the plan could be taken up again.",
+      "impact": "Procedure only. This is the step the board needed before it could vote on the plan a second time, and nothing about it reaches a resident.",
+      "significance": "routine"
     },
     {
       "id": 41,
@@ -142,7 +155,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Triple Tail plan adopted with corrected acreage",
+      "summary": "Board members adopted the official plan for the Triple Tail reinvestment area, again replacing the 671.49-acre figure with 1,170.44 acres.",
+      "impact": "The board took this vote back later in the same meeting and voted on the plan a second time, so this is not the version that stands.",
+      "significance": "routine"
     },
     {
       "id": 42,
@@ -178,7 +195,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Triple Tail project area budget adopted",
+      "summary": "The agency adopted the spending plan for the Triple Tail reinvestment area, correcting the area's size from 671.49 acres to 1,170.44 acres.",
+      "impact": "The corrected figure covers about 499 more acres than the resolution first said. It matters to landowners and builders inside that area; if you live elsewhere in the city, this one passes you by.",
+      "significance": "notable"
     },
     {
       "id": 43,
@@ -212,7 +233,11 @@
           "member_id": "rich-wood",
           "vote": "Yes"
         }
-      ]
+      ],
+      "headline": "Second change to the QTS participation agreement",
+      "summary": "The agency approved a second amendment to its participation agreement with QTS, a deal between the agency and the company.",
+      "impact": "The record of this vote does not say what the amendment changes, so a resident reading it cannot tell what the agency and QTS agreed to.",
+      "significance": "notable"
     }
   ],
   "ordinances": [],

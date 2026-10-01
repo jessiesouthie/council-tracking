@@ -5,7 +5,8 @@
     "source_file": "2025-02-04__587.pdf",
     "motion_count": 1,
     "ord_count": 0,
-    "res_count": 2
+    "res_count": 2,
+    "text_chars": 2906
   },
   "motions": [
     {
@@ -42,7 +43,11 @@
           "member_id": "rich-wood",
           "vote": "Absent"
         }
-      ]
+      ],
+      "headline": "Fire tax deal for Triple Tail area redone",
+      "summary": "The agency updated its agreement with Unified Fire Service Area on how property tax growth from the Triple Tail Community Reinvestment Area is collected and passed along.",
+      "impact": "Nothing changes for your fire service or your tax bill. This one sorts out how two agencies move money between themselves inside a development area near Triple Tail.",
+      "significance": "routine"
     }
   ],
   "ordinances": [],

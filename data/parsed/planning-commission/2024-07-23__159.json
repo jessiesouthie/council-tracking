@@ -5,7 +5,8 @@
     "source_file": "2024-07-23__159.pdf",
     "motion_count": 1,
     "ord_count": 0,
-    "res_count": 0
+    "res_count": 0,
+    "text_chars": 4157
   },
   "motions": [
     {
@@ -31,21 +32,19 @@
           "vote": "Yes"
         },
         {
+          "member_id": "craig-whiting",
+          "vote": "Absent"
+        },
+        {
           "member_id": "jason-allen",
           "vote": "Yes"
         },
         {
-          "member_id": "rod-hess",
+          "member_id": "robert-fox",
           "vote": "Yes"
-        }
-      ],
-      "raw_voters": [
-        {
-          "name": "Craig Whiting",
-          "vote": "Absent"
         },
         {
-          "name": "Robert Fox",
+          "member_id": "rod-hess",
           "vote": "Yes"
         }
       ]
