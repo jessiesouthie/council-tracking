@@ -263,6 +263,19 @@
   ],
   "planning-commission": [
     {
+      "id": 691,
+      "date": "2026-09-22",
+      "stem": "2026-09-22__691",
+      "title": "Planning Commission Meeting",
+      "summary_file": "transcripts/planning-commission/2026-09-22__691.summary.md",
+      "text_file": "transcripts/planning-commission/2026-09-22__691.txt",
+      "speakers_file": "transcripts/planning-commission/2026-09-22__691.speakers.json",
+      "diarized": true,
+      "media_url": "https://eaglemountainut.portal.civicclerk.com/event/691/media",
+      "duration": "1h 38m",
+      "words": 17031
+    },
+    {
       "id": 678,
       "date": "2026-09-08",
       "stem": "2026-09-08__678",
