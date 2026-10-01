@@ -31,7 +31,7 @@
     <link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/newsreader-300-600-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20260821c" />
-    <link rel="stylesheet" href="site.css?v=20260821d" />
+    <link rel="stylesheet" href="site.css?v=20261001a" />
 
     <!-- The page-level graph is static; one ClaimReview per claim is added at
          render time from data.claims.json, because the claims are data and a
@@ -307,7 +307,7 @@
             </div>
 
             <div class="cl-body">
-              <h2 class="cl-claim" id="${esc(c.id)}-h">${esc(c.summary || c.claim)}</h2>
+              <h2 class="cl-claim" id="${esc(c.id)}-h"><a href="/claims/${esc(c.id)}.html">${esc(c.summary || c.claim)}</a></h2>
               ${c.summary
                 ? `<blockquote class="cl-quote"><p>&ldquo;${esc(c.claim)}&rdquo;</p></blockquote>`
                 : ""}
@@ -364,7 +364,7 @@
                   const primary = (c.topics || []).find((t) => cats[t]);
                   return `
                     <li data-topics="${esc((c.topics || []).join(" "))}">
-                      <a href="#${esc(c.id)}">
+                      <a href="/claims/${esc(c.id)}.html">
                         <span class="cl-docket-rail">
                           <span class="cl-verdict is-${TONE[c.verdict] || "cool"}">
                             <span class="cl-dot" aria-hidden="true"></span>${esc(v.label)}
@@ -504,7 +504,7 @@
           CT.addSchema({
             "@context": "https://schema.org",
             "@type": "ClaimReview",
-            url: `${location.origin}/claims.html#${c.id}`,
+            url: `${location.origin}/claims/${c.id}.html`,
             // Google asks for a short summary here, not the quotation, and the
             // wording that circulates is kept on the Claim itself below.
             claimReviewed: c.summary || c.claim,
@@ -597,7 +597,9 @@
 
           const copy = e.target.closest("[data-copy]");
           if (copy) {
-            const url = `${location.origin}${location.pathname}#${copy.dataset.copy}`;
+            // The claim's own page, not this page's fragment: link previews
+            // drop the fragment, so only the page shows the claim in the feed.
+            const url = `${location.origin}/claims/${copy.dataset.copy}.html`;
             const done = () => {
               copy.textContent = "Link copied";
               setTimeout(() => (copy.textContent = "Copy link"), 2200);
@@ -629,6 +631,13 @@
         // fragment scroll has already failed by the time we get here.
         if (location.hash.length > 1) {
           const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+          // claims.html#<id> was the permalink until every claim got a page of
+          // its own (ingest/build_claim_pages.py). Those links are all over
+          // Facebook and in people's texts; send them on to the page.
+          if (target && target.classList.contains("cl-card")) {
+            location.replace(`/claims/${target.id}.html`);
+            return;
+          }
           if (target) {
             // A permalink outranks a filter. Someone sent this card to this
             // reader; a filter that happens to exclude it would open the page on

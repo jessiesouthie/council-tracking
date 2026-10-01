@@ -92,6 +92,12 @@ jobs:
       - name: Refresh the prerendered record
         run: python -m ingest.build_prerender
 
+      # One page and one link-preview image per fact check. Claims are edited
+      # by hand, not by this run, but the pages link to meeting pages this run
+      # may have just written.
+      - name: Write the fact-check pages
+        run: python -m ingest.build_claim_pages --prune
+
       - name: Rebuild the sitemap
         run: python -m ingest.build_sitemap
 

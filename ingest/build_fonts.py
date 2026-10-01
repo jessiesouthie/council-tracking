@@ -60,6 +60,10 @@ SOURCES = [
     # every page — the site pair: text in Instrument Sans, figures in Plex Mono
     "https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700"
     "&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
+    # the redesign's one face, for text and figures alike. Variable across
+    # 400..800, so a page asks for one file per subset however many weights
+    # it sets.
+    "https://fonts.googleapis.com/css2?family=Public+Sans:wght@400..800&display=swap",
     # index, budget, finances — Fraunces pinned to one instance
     "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,700,0,1"
     "&display=swap",

@@ -284,8 +284,38 @@ def build_urls(base: str) -> list[dict]:
     # exist only as a recording, which are absent from every dataset because
     # build_dataset only ever sees approved minutes.
     urls.extend(meeting_page_urls(base))
+    urls.extend(claim_page_urls(base))
 
     return urls
+
+
+def claim_page_urls(base: str) -> list[dict]:
+    """/claims/<id>.html, one per fact check (ingest/build_claim_pages.py).
+
+    Read off the directory for the same reason the meeting pages are. lastmod
+    is the claim's own `checked` date, which is when its content last changed.
+    """
+    folder = DOCS / "claims"
+    pages = sorted(folder.glob("*.html")) if folder.is_dir() else []
+    checked = {}
+    try:
+        data = json.loads((DOCS / "data.claims.json").read_text(encoding="utf-8"))
+        checked = {c["id"]: c.get("checked") for c in data.get("claims", [])}
+    except (OSError, ValueError):
+        pass
+    rows: list[dict] = []
+    for path in pages:
+        stamp = _parse_iso(f"{checked.get(path.stem) or ''}T00:00:00+00:00") \
+            or git_committed_at(path)
+        if not stamp:
+            continue
+        rows.append({
+            "loc": f"{base}/claims/{path.name}",
+            "lastmod": stamp.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S+00:00"),
+            "changefreq": "monthly",
+            "priority": "0.6",
+        })
+    return rows
 
 
 # <date>-<body id>-<event id>[-transcript].html
