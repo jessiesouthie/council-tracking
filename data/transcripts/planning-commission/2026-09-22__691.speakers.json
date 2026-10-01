@@ -1,0 +1,12 @@
+{
+ "B": {
+  "name": "Marcus Draper",
+  "basis": "Voice match. This label's audio scores 0.78 cosine similarity against the voiceprint for Marcus Draper, built from 23 sampled turns across 3 other meetings, versus 0.40 for the next-closest person, Eric Knutson. Sampled from 14 turns spread through this meeting. This is an acoustic match only \u2014 nothing said in the transcript was read to reach it.",
+  "method": "voiceprint",
+  "confidence": 0.783,
+  "runner_up": {
+   "name": "Eric Knutson",
+   "similarity": 0.404
+  }
+ }
+}
