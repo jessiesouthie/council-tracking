@@ -1,339 +1,9 @@
 {
-  "generated_at": "2026-09-11T15:19:05Z",
+  "generated_at": "2026-10-01T17:49:59Z",
   "source": "Eagle Mountain CivicClerk portal",
   "timezone": "America/Denver",
   "bodies": {
     "city-council": [
-      {
-        "id": 729,
-        "title": "City Council Meeting",
-        "date": "2026-09-15",
-        "start": "16:00",
-        "start_label": "4:00 PM",
-        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
-        "url": "https://eaglemountainut.portal.civicclerk.com/event/729/overview",
-        "agenda_posted": true,
-        "agenda_posted_on": "2026-09-10",
-        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2959,plainText=false)",
-        "sessions": [
-          {
-            "start": "16:00",
-            "start_label": "4:00 PM",
-            "label": "Work Session",
-            "public_comment": false
-          },
-          {
-            "start": "19:00",
-            "start_label": "7:00 PM",
-            "label": "Policy Session",
-            "public_comment": true
-          }
-        ],
-        "agenda": [
-          {
-            "number": "1",
-            "title": "DISCUSSION AND INFORMATION ITEMS",
-            "note": "This is an opportunity to provide information to the City Council. These items are for information only and do not require action by the City Council.",
-            "session": "16:00",
-            "group": null,
-            "items": [
-              {
-                "number": "1.A",
-                "kind": "DISCUSSION",
-                "title": "Code for Transmission Lines, Utah Code Requirements",
-                "time": "15 minutes",
-                "background": "",
-                "plain": "Staff will brief the council on what Utah state law requires in the city's code for power transmission lines."
-              },
-              {
-                "number": "1.B",
-                "kind": "DISCUSSION",
-                "title": "RV Parking Code Amendment",
-                "time": "15 minutes",
-                "background": "",
-                "plain": "Staff will discuss a possible change to the city's rules on where RVs can be parked."
-              },
-              {
-                "number": "1.C",
-                "kind": "DISCUSSION",
-                "title": "Project Recommendations (Community Services Board)",
-                "time": "20 minutes",
-                "background": "",
-                "plain": "The Community Services Board will present its project recommendations to the council."
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "2",
-            "title": "CITY MANAGER INFORMATION ITEMS",
-            "note": "This is an opportunity for the City Manager to provide information to the City Council.",
-            "session": "16:00",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "3",
-            "title": "AGENDA REVIEW",
-            "note": "The City Council will review items on the Consent Agenda and Policy Session Agenda.",
-            "session": "16:00",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "4",
-            "title": "ADJOURN TO A CLOSED SESSION",
-            "note": "The City Council will adjourn into a Closed Session for the purpose of discussion of pending or reasonably imminent litigation; the character, professional competence, or physical or mental health of an individual; the purchase, lease, sale, or exchange of real property; a proposed development agreement, project proposal, or financing proposal related to the development of land owned by the state or a political subdivision; and/or the deployment of security personnel, devices, or systems, pursuant to Section 52-4-205(1) of the Utah Code, Annotated.",
-            "session": "16:00",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "5",
-            "title": "CALL TO ORDER",
-            "note": "",
-            "session": "19:00",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "6",
-            "title": "PLEDGE OF ALLEGIANCE",
-            "note": "",
-            "session": "19:00",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "7",
-            "title": "INFORMATION ITEMS/UPCOMING EVENTS",
-            "note": "",
-            "session": "19:00",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "8",
-            "title": "INTRODUCTION/RECOGNITION",
-            "note": "",
-            "session": "19:00",
-            "group": null,
-            "items": [
-              {
-                "number": "8.A",
-                "kind": "INTRODUCTION",
-                "title": "Utah County Sheriff's Office Deputy",
-                "time": "",
-                "background": "",
-                "plain": "A Utah County Sheriff's Office deputy will be introduced to the council."
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "9",
-            "title": "PUBLIC COMMENTS",
-            "note": "Time has been set aside for the public to express their ideas, concerns, and comments. (Please limit your comments to three minutes each.)",
-            "session": "19:00",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "10",
-            "title": "CITY COUNCIL/MAYOR ITEMS",
-            "note": "Time has been set aside for the City Council and Mayor to make comments.",
-            "session": "19:00",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "11",
-            "title": "CHANGE ORDERS",
-            "note": "",
-            "session": "19:00",
-            "group": "Consent Agenda",
-            "items": [
-              {
-                "number": "11.A",
-                "kind": "CHANGE ORDER",
-                "title": "2025 Midvalley Road Extension - Change Orders #6 and #7",
-                "time": "",
-                "background": "",
-                "plain": "The council will consider two change orders on the 2025 Midvalley Road extension project."
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "12",
-            "title": "MINUTES",
-            "note": "",
-            "session": "19:00",
-            "group": "Consent Agenda",
-            "items": [
-              {
-                "number": "12.A",
-                "kind": "",
-                "title": "September 1, 2026 Minutes - Regular City Council Meeting",
-                "time": "",
-                "background": "",
-                "plain": ""
-              }
-            ],
-            "procedural": true
-          },
-          {
-            "number": "13",
-            "title": "PRELIMINARY PLATS & SITE PLANS",
-            "note": "",
-            "session": "19:00",
-            "group": "Consent Agenda",
-            "items": [
-              {
-                "number": "13.A",
-                "kind": "SITE PLAN",
-                "title": "Spring Run Plaza Lot 1",
-                "time": "",
-                "background": "",
-                "plain": "The council will consider the site plan for Lot 1 of Spring Run Plaza."
-              },
-              {
-                "number": "13.B",
-                "kind": "SITE PLAN",
-                "title": "Spring Run Plaza Lot 2",
-                "time": "",
-                "background": "",
-                "plain": "The council will consider the site plan for Lot 2 of Spring Run Plaza."
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "14",
-            "title": "RESOLUTIONS",
-            "note": "",
-            "session": "19:00",
-            "group": "Consent Agenda",
-            "items": [
-              {
-                "number": "14.A",
-                "kind": "RESOLUTION",
-                "title": "A Resolution of Eagle Mountain City, Utah, Approving an Agreement with Utah Public Solutions LLC to Provide Lobbying Services",
-                "time": "",
-                "background": "",
-                "plain": "The council will decide whether to hire Utah Public Solutions LLC to lobby on the city's behalf."
-              },
-              {
-                "number": "14.B",
-                "kind": "RESOLUTION",
-                "title": "A Resolution of Eagle Mountain City, Utah, Approving a Reimbursement Agreement with Spring Run Parkway Partners II, LP",
-                "time": "",
-                "background": "",
-                "plain": "The council will decide whether to approve an agreement paying back Spring Run Parkway Partners II, LP for work it does."
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "15",
-            "title": "RESOLUTION/PUBLIC HEARING",
-            "note": "",
-            "session": "19:00",
-            "group": "Scheduled Items",
-            "items": [
-              {
-                "number": "15.A",
-                "kind": "RESOLUTION/PUBLIC HEARING",
-                "title": "A Resolution of Eagle Mountain City, Utah, Approving the First Amendment to the Fiscal Year 2026-2027 Annual Budget",
-                "time": "",
-                "background": "(Presented by Budget Manager Terrence Dela Peña) The proposed budget amendment includes changes to the General Fund, Capital Project Fund, Special Revenue Funds, Internal Service Funds, and Enterprise Funds.",
-                "plain": "The council will hold a public hearing on the first set of changes to this year's city budget, covering several city funds."
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "16",
-            "title": "TRAINING",
-            "note": "",
-            "session": "19:00",
-            "group": "Scheduled Items",
-            "items": [
-              {
-                "number": "16.A",
-                "kind": "TRAINING",
-                "title": "Open & Public Meetings Act (OPMA)",
-                "time": "",
-                "background": "",
-                "plain": "The council will receive training on Utah's Open and Public Meetings Act."
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "17",
-            "title": "LEGISLATIVE ITEMS",
-            "note": "",
-            "session": "19:00",
-            "group": "Scheduled Items",
-            "items": [
-              {
-                "number": "17.A",
-                "kind": "UPDATE",
-                "title": "Legislative Priorities List",
-                "time": "",
-                "background": "",
-                "plain": "The council will receive an update on its list of legislative priorities."
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "18",
-            "title": "CITY COUNCIL/MAYOR'S BUSINESS AND LIAISON REPORTS",
-            "note": "This time is set aside for the City Council's and Mayor's comments on City business, and for Councilmembers to report on the boards they are assigned to as liaisons to the City Council.",
-            "session": "19:00",
-            "group": "Scheduled Items",
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "19",
-            "title": "COMMUNICATION ITEMS",
-            "note": "",
-            "session": "19:00",
-            "group": "Scheduled Items",
-            "items": [
-              {
-                "number": "19.A",
-                "kind": "",
-                "title": "Upcoming Agenda Items",
-                "time": "",
-                "background": "",
-                "plain": ""
-              }
-            ],
-            "procedural": true
-          },
-          {
-            "number": "20",
-            "title": "ADJOURNMENT",
-            "note": "",
-            "session": "19:00",
-            "group": "Scheduled Items",
-            "items": [],
-            "procedural": true
-          }
-        ]
-      },
       {
         "id": 717,
         "title": "City Council Meeting",
@@ -350,10 +20,10 @@
       },
       {
         "id": 759,
-        "title": "City Council Meeting- Special Meeting",
-        "date": "2026-10-06",
-        "start": "17:00",
-        "start_label": "5:00 PM",
+        "title": "City Council - Budget Work Session",
+        "date": "2026-10-08",
+        "start": "18:00",
+        "start_label": "6:00 PM",
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/759/overview",
         "agenda_posted": false,
@@ -403,23 +73,23 @@
         "agenda_url": "",
         "sessions": [],
         "agenda": []
-      }
-    ],
-    "planning-commission": [
+      },
       {
-        "id": 691,
-        "title": "Planning Commission Meeting",
-        "date": "2026-09-22",
-        "start": "17:30",
-        "start_label": "5:30 PM",
+        "id": 731,
+        "title": "City Council Meeting",
+        "date": "2026-11-17",
+        "start": "16:00",
+        "start_label": "4:00 PM",
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
-        "url": "https://eaglemountainut.portal.civicclerk.com/event/691/overview",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/731/overview",
         "agenda_posted": false,
         "agenda_posted_on": "",
         "agenda_url": "",
         "sessions": [],
         "agenda": []
-      },
+      }
+    ],
+    "planning-commission": [
       {
         "id": 679,
         "title": "Planning Commission Meeting",
@@ -484,6 +154,20 @@
         "start_label": "5:30 PM",
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/681/overview",
+        "agenda_posted": false,
+        "agenda_posted_on": "",
+        "agenda_url": "",
+        "sessions": [],
+        "agenda": []
+      },
+      {
+        "id": 694,
+        "title": "Planning Commission Meeting",
+        "date": "2026-12-22",
+        "start": "17:30",
+        "start_label": "5:30 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/694/overview",
         "agenda_posted": false,
         "agenda_posted_on": "",
         "agenda_url": "",
