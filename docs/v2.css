@@ -1203,3 +1203,100 @@ html.has-modal { overflow: hidden; }
 .v2-meet .tag { display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border-radius: 16px; background: var(--surface); color: var(--ink-2); text-decoration: none; font-size: 0.8125rem; font-weight: 600; }
 .v2-meet .tag:hover { color: var(--blue); }
 .mt-meet-main #content:not(:has(.meeting-grid, #grid)) { max-width: 48rem; }
+
+/* =============================================================================
+   READING PAGES: a long, sourced article (data-centers.html first; about,
+   definitions and the tax pages are meant to reuse it). <main class="v2-wrap
+   v2-article">, a <header class="v2-art-head">, an optional "On this page"
+   row, then plain <section id> blocks of h2/h3/p. Prose holds to a reading
+   measure; grids and tables may use the full width.
+   ========================================================================== */
+.v2-article { display: flex; flex-direction: column; gap: 26px; padding-top: 22px; padding-bottom: 32px; }
+.v2-art-head { display: flex; flex-direction: column; gap: 12px; max-width: 46rem; }
+.v2-art-head h1 { font-size: clamp(1.75rem, 6vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.12; }
+.v2-lede { font-size: 1.0625rem; color: var(--ink-2); }
+.v2-who { font-size: 0.875rem; color: var(--muted); border-left: 3px solid var(--line); padding: 2px 0 2px 12px; }
+
+.v2-toc { display: flex; flex-direction: column; gap: 8px; }
+.v2-toc-lab { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.v2-toc ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.v2-toc a {
+  display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 20px;
+  border: 1px solid var(--line); background: var(--ground); color: var(--ink); font-size: 0.9375rem;
+  font-weight: 600; text-decoration: none;
+}
+.v2-toc a:hover { border-color: var(--blue); color: var(--blue); }
+
+.v2-article > section { display: flex; flex-direction: column; gap: 12px; scroll-margin-top: 16px; padding-top: 22px; border-top: 1px solid var(--line); }
+.v2-article > section > h2 { font-size: clamp(1.375rem, 4.5vw, 1.625rem); font-weight: 800; letter-spacing: -0.015em; }
+.v2-article > section h3 { font-size: 1.125rem; font-weight: 700; margin-top: 10px; }
+.v2-article > section > p, .v2-article > section > ul, .v2-article > section > ol,
+.v2-article > section > blockquote { max-width: 44rem; }
+.v2-article > section > p { font-size: 1.0625rem; }
+.v2-article > section > ul, .v2-article > section > ol { margin: 0; padding-left: 22px; font-size: 1.0625rem; }
+.v2-article > section > ul li, .v2-article > section > ol li { margin-bottom: 10px; }
+
+/* "Sources:" under a paragraph or table. Small and muted, but links stay
+   tappable and visibly links. */
+.v2-src { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+.v2-src a { color: var(--muted); text-decoration-color: var(--cool-edge); }
+.v2-src a:hover { color: var(--blue); }
+
+.v2-tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); }
+.v2-table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+.v2-table th, .v2-table td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line-soft); }
+.v2-table thead th { background: var(--surface); font-size: 0.8125rem; font-weight: 700; color: var(--ink-2); border-bottom-color: var(--line); }
+.v2-table tbody tr:last-child > * { border-bottom: 0; }
+.v2-table .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.v2-table caption { caption-side: bottom; text-align: left; font-size: 0.8125rem; color: var(--muted); padding: 10px 12px; border-top: 1px solid var(--line-soft); }
+
+/* =============================================================================
+   DATA CENTERS (data-centers.html)
+   ========================================================================== */
+.dc-projects, .dc-sides { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr)); }
+.dc-card, .dc-side { border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; background: var(--ground); display: flex; flex-direction: column; gap: 8px; }
+.dc-card h3, .dc-side h3 { margin: 0; font-size: 1.1875rem; font-weight: 800; }
+.dc-llc { font-size: 0.875rem; color: var(--muted); }
+.dc-status {
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; min-height: 28px; padding: 0 10px;
+  border-radius: 14px; font-size: 0.8125rem; font-weight: 700;
+  background: var(--warn-bg); color: var(--warn-fg); border: 1px solid var(--warn-edge);
+}
+.dc-status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--warn-solid); }
+.dc-status.is-running { background: var(--ok-bg); color: var(--ok-fg); border-color: var(--ok-edge); }
+.dc-status.is-running::before { background: var(--ok-solid); }
+.dc-status.is-held { background: var(--cool-bg); color: var(--cool-fg); border-color: var(--cool-edge); }
+.dc-status.is-held::before { background: var(--cool-solid); }
+.dc-card dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 6px 12px; font-size: 0.9375rem; }
+.dc-card dt { color: var(--muted); }
+.dc-card dd { margin: 0; }
+.dc-card p:not(.dc-llc) { font-size: 0.9375rem; }
+.dc-side ul { margin: 0; padding-left: 20px; font-size: 0.9375rem; }
+.dc-side li { margin-bottom: 10px; }
+
+blockquote.dc-quote { margin: 0; padding: 14px 16px; border-left: 4px solid var(--blue); background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0; display: flex; flex-direction: column; gap: 8px; }
+blockquote.dc-quote p { font-size: 1.0625rem; }
+blockquote.dc-quote footer { font-size: 0.875rem; color: var(--muted); }
+
+/* Every vote, folded by year. */
+.dc-year { border: 1px solid var(--line); border-radius: var(--radius); background: var(--ground); max-width: 52rem; }
+.dc-year > summary {
+  display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 16px; cursor: pointer; list-style: none;
+  font-size: 1.0625rem; font-weight: 800;
+}
+.dc-year > summary::-webkit-details-marker { display: none; }
+.dc-year > summary::after { content: "+"; font-size: 1.375rem; font-weight: 600; color: var(--blue); line-height: 1; }
+.dc-year[open] > summary::after { content: "\2013"; }
+.dc-count { margin-left: auto; font-size: 0.875rem; font-weight: 600; color: var(--muted); }
+.dc-events { list-style: none; margin: 0; padding: 0 16px 6px; }
+.dc-events li { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding: 12px 0; border-top: 1px solid var(--line-soft); font-size: 0.9375rem; }
+.dc-events time { font-size: 0.8125rem; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
+.dc-body {
+  display: inline-block; margin-right: 8px; padding: 1px 8px; border-radius: 10px; background: var(--blue-soft);
+  color: var(--blue); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;
+}
+@media (min-width: 640px) {
+  .dc-events li { grid-template-columns: 7.5rem minmax(0, 1fr); gap: 14px; }
+  .dc-events time { padding-top: 2px; }
+}
+.dc-open li strong { color: var(--ink); }
