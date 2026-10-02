@@ -202,7 +202,7 @@ def body_registry() -> tuple[list[dict], str]:
     """Bodies as the site sees them, plus the default body's id."""
     listed = []
     default_id = "city-council"
-    for body in bodies.all_bodies():
+    for body in bodies.public_bodies():
         data_file = ("data.json" if body.get("default")
                      else f"data.{body['id']}.json")
         # bodies.py owns the real path; docs/bodies.json is what the site reads.

@@ -386,7 +386,7 @@ def write_bodies_index() -> None:
             "data_file": Path(b["data_file"]).name,
             "default": bool(b.get("default")),
         }
-        for b in bodies.all_bodies()
+        for b in bodies.public_bodies()
     ]
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
     BODIES_INDEX.write_text(json.dumps(index, ensure_ascii=False, indent=2))

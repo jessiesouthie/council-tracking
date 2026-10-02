@@ -1199,7 +1199,7 @@ def _data_file_for(body: dict) -> Path:
 
 
 def build(body_ids: list[str] | None = None) -> dict:
-    all_bodies = bodies.all_bodies()
+    all_bodies = bodies.public_bodies()
     if body_ids:
         all_bodies = [b for b in all_bodies if b["id"] in body_ids]
 

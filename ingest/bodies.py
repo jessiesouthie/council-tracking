@@ -14,6 +14,7 @@ and get their own docs/data.<id>.json, loaded on demand by the site.
 
 Helpers:
   all_bodies()        -> list[dict]            every body config
+  public_bodies()     -> list[dict]            the ones the site shows (not "hidden")
   get_body(body_id)   -> dict                  one config (raises on unknown id)
   default_body()      -> dict                  the body served when none is chosen
   raw_dir(body)       -> Path                  resolved against the repo root
@@ -97,6 +98,9 @@ BODIES: list[dict] = [
         "parsed_dir": "data/parsed/community-services-board",
         "data_file": "docs/data.community-services-board.json",
         "default": False,
+        # Off the public site for now: still crawled and built, but left out of
+        # bodies.json, the meeting pages, the sitemap and the site agent.
+        "hidden": True,
     },
     {
         "id": "redevelopment-agency-board",
@@ -124,6 +128,11 @@ BODIES: list[dict] = [
 
 def all_bodies() -> list[dict]:
     return BODIES
+
+
+def public_bodies() -> list[dict]:
+    """The bodies the public site shows: every body not marked "hidden"."""
+    return [b for b in BODIES if not b.get("hidden")]
 
 
 def get_body(body_id: str) -> dict:

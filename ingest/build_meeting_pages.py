@@ -231,7 +231,7 @@ def first_sentence(text: str, limit: int = 300) -> str:
 
 def body_registry() -> list[dict]:
     listed = []
-    for body in bodies.all_bodies():
+    for body in bodies.public_bodies():
         try:
             data_file = Path(bodies.data_file(body)).name
         except (AttributeError, KeyError, TypeError):
