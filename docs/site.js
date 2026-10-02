@@ -480,95 +480,8 @@
       .join("");
   }
 
-  // A top-level nav item can own more than one page. `data-nav-alias` lists the
-  // extra filenames (space-separated) that should still light it up — that is
-  // how projections.html keeps "Tax" active while its own sub-nav says which
-  // page inside the section you are on. Only the top-level item gets
-  // aria-current; the sub-nav sets its own, and two "current page" markers in
-  // one document would be a lie to a screen reader.
-  function highlightActiveNav() {
-    const here = location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll("[data-nav]").forEach((a) => {
-      const own = a.dataset.nav === here || (here === "" && a.dataset.nav === "index.html");
-      const alias = (a.dataset.navAlias || "").split(/\s+/).filter(Boolean).includes(here);
-      if (!own && !alias) return;
-      a.classList.add("active");
-      if (own) a.setAttribute("aria-current", "page");
-    });
-
-    // Inside an open section menu, show which row is the page you are on. A
-    // class rather than aria-current: on these pages the sub-nav in the reading
-    // column already claims that, and it should stay the only one.
-    document.querySelectorAll(".nav-menu a").forEach((a) => {
-      const href = (a.getAttribute("href") || "").split("/").pop();
-      if (href === here) a.classList.add("here");
-    });
-  }
-
-  // The menus open on hover and on focus-within, both of which CSS handles on
-  // its own. The one thing it can't do is close one on demand: a keyboard user
-  // who has opened a menu by tabbing to its trigger needs a way out that isn't
-  // "tab through every item in it". Escape returns focus to the trigger, which
-  // is what closes the panel.
-  function wireMenuEscape() {
-    document.addEventListener("keydown", (e) => {
-      if (e.key !== "Escape") return;
-      const menu = e.target.closest && e.target.closest(".nav-menu");
-      if (!menu) return;
-      const trigger = menu.parentElement.querySelector("a");
-      if (trigger) trigger.focus();
-    });
-  }
-
-  // Inject the mobile bottom tab bar once per page. Hidden via CSS on desktop.
-  //
-  // Top-level sections only, no overflow sheet. The bar used to carry three
-  // items plus a "More" button covering five more, which meant the mobile
-  // taxonomy and the desktop one disagreed about what the site contains — and
-  // the sheet buried the money pages two taps down on the devices most people
-  // read this on. Both lists now come from ingest/nav.py. The sections not on
-  // the bar are reachable without it: About from the footer of every page,
-  // Claims from its card on the front page, and Votes from the Meetings
-  // section's own strip, which is where it now lives.
-  //
-  // Hrefs are root-absolute. This bar is injected into docs/meetings/*.html
-  // too, where a relative "meetings.html" resolved to /meetings/meetings.html
-  // and 404'd on every one of several hundred pages.
-  const TABBAR = [
-    // BEGIN generated:nav (ingest/build_nav.py)
-    { href: "/index.html", label: "Home" },
-    { href: "/meetings.html", label: "Meetings" },
-    { href: "/members.html", label: "Members" },
-    { href: "/claims.html", label: "Fact checks", body: "city-council" },
-    { href: "/finances.html", label: "Taxes", body: "city-council" },
-    // END generated:nav
-  ];
-
-  // A section some bodies don't have. The Planning Commission levies no tax and
-  // adopts no budget, so carrying Finances into that view would offer figures
-  // that aren't theirs. Everything unmarked belongs to every body.
-  function inThisBody(item) {
-    return !item.body || item.body === currentBody();
-  }
-
-  function row(t) {
-    // data-nav stays the bare filename: highlightActiveNav() compares it
-    // against the last path segment, and the CSS icon masks are keyed on it.
-    const nav = t.href.replace(/^\//, "");
-    return `<a href="${t.href}" data-nav="${nav}"><span class="tab-ico" aria-hidden="true"></span><span class="tab-lbl">${t.label}</span></a>`;
-  }
-
-  function mountTabbar() {
-    if (document.querySelector("nav.tabbar, nav.v2-tabbar")) return;
-    const nav = document.createElement("nav");
-    nav.className = "tabbar";
-    nav.setAttribute("aria-label", "Primary (mobile)");
-    nav.innerHTML = TABBAR.filter(inThisBody).map(row).join("");
-    document.body.appendChild(nav);
-  }
-
-  // Drop the body-scoped items from the desktop nav for a body that has no such
-  // section. applyBodyChrome() rewrites labels but never touched the nav, so a
+  // Drop the body-scoped items from the header and tab bar for a body that has
+  // no such section. applyBodyChrome() rewrites labels but not the nav, so a
   // Planning Commission visitor was offered a tax rate and a budget that belong
   // to the council. Marked in the markup with data-nav-body.
   function applyBodyNav() {
@@ -733,7 +646,7 @@
   }
 
   // When a non-default body is active, rewrite the static in-site links present
-  // at boot (topbar nav, mobile tabbar, brand) so navigation stays in-body even
+  // at boot (header nav, tab bar, brand) so navigation stays in-body even
   // if the link author didn't add ?body=. Dynamically-rendered links rely on the
   // localStorage fallback in currentBody() instead.
   function decorateBodyLinks() {
@@ -753,22 +666,18 @@
     });
   }
 
-  // Inject the body switcher into the topbar (between brand and primary nav).
-  // Hidden when there's only one body so the single-body site is unchanged.
-  // On a redesigned page (docs/v2.css) there is no topbar: the picker goes in
-  // the "not run by the city" strip, beside "What is this?". The header's nav
-  // already fills the row at desktop widths, and the strip is on every page.
+  // Put the body switcher in the "not run by the city" strip, beside "What is
+  // this?". The header's nav already fills its row at desktop widths, and the
+  // strip is on every page. Hidden when there's only one body.
   async function mountBodySwitch() {
-    const topbar = document.querySelector("header.topbar");
     const strip = document.querySelector(".v2-strip .v2-wrap");
-    if (!topbar && !strip) return;
+    if (!strip) return;
     if (document.querySelector(".body-switch")) return;
     const list = await loadBodies();
     if (!list || list.length <= 1) return;
     const cur = currentBody();
     const sel = document.createElement("select");
     sel.className = "body-switch";
-    sel.setAttribute("aria-label", "Choose government body");
     sel.innerHTML = list
       .map(
         (b) =>
@@ -783,26 +692,20 @@
       try { localStorage.setItem(BODY_KEY, id); } catch {}
       location.href = linkBody("index.html", id);
     });
-    if (!topbar) {
-      const end = document.createElement("span");
-      end.className = "v2-strip-end";
-      const what = strip.querySelector(":scope > a");
-      const lab = document.createElement("label");
-      lab.className = "v2-body-lab";
-      lab.textContent = "Viewing";
-      sel.id = "body-switch";
-      sel.removeAttribute("aria-label");
-      lab.htmlFor = sel.id;
-      const pick = document.createElement("span");
-      pick.className = "v2-body-pick";
-      pick.append(lab, sel);
-      end.appendChild(pick);
-      if (what) end.appendChild(what);
-      strip.appendChild(end);
-      return;
-    }
-    const nav = topbar.querySelector("nav.nav");
-    topbar.insertBefore(sel, nav || null);
+    const end = document.createElement("span");
+    end.className = "v2-strip-end";
+    const what = strip.querySelector(":scope > a");
+    const lab = document.createElement("label");
+    lab.className = "v2-body-lab";
+    lab.textContent = "Viewing";
+    sel.id = "body-switch";
+    lab.htmlFor = sel.id;
+    const pick = document.createElement("span");
+    pick.className = "v2-body-pick";
+    pick.append(lab, sel);
+    end.appendChild(pick);
+    if (what) end.appendChild(what);
+    strip.appendChild(end);
   }
 
   // The bare noun a body goes by in prose — "council", "commission", "board".
@@ -819,9 +722,6 @@
     try { data = await loadData(); } catch { return; }
     const label = data.body_label;
     if (!label) return;
-    document.querySelectorAll(".topbar .city").forEach((el) => {
-      el.textContent = `Eagle Mountain, UT · ${label}`;
-    });
     document.querySelectorAll(".v2-brand-place").forEach((el) => {
       el.textContent = `Eagle Mountain · ${label}`;
     });
@@ -840,18 +740,15 @@
     });
   }
 
-  // Boot every page: mount switcher + mobile nav, paint nav highlight, register SW.
+  // Boot every page: trim the nav for the body, mount the switcher, register SW.
   document.addEventListener("DOMContentLoaded", () => {
     setCanonical();
     // Before the highlight, so a removed item can't be the one lit up.
     applyBodyNav();
     mountBodySwitch();
-    mountTabbar();
-    highlightActiveNav();
     decorateBodyLinks();
     applyBodyChrome();
     wireSheetDismiss();
-    wireMenuEscape();
     registerServiceWorker();
     mountAgent();
   });

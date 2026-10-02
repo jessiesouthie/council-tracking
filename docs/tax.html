@@ -20,12 +20,6 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
-    <!-- The site pair: Instrument Sans for text, IBM Plex Mono for every rate,
-         share and dollar figure. It began as this page's own and is now every
-         page's, declared once on :root in site.css. fonts.css declares every
-         family the site owns, but @font-face is a declaration and not a fetch:
-         a browser downloads only the faces it actually paints with, so the two
-         preloaded below are the only ones this page costs. -->
     <meta name="theme-color" content="#14202e" />
     <link rel="preload" href="fonts/public-sans-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20261001a" />
@@ -87,7 +81,7 @@
            scroll position steady (no layout shift) and tells the reader what is
            coming. render() replaces the whole thing. -->
       <div id="content" aria-busy="true">
-        <!-- Without the .no-js rule in site.css hiding the skeleton, an
+        <!-- Without the .no-js rule in v2.css hiding the skeleton, an
              unscripted browser would get this explanation *and* a skeleton
              shimmering underneath it forever. -->
         <noscript>
@@ -136,7 +130,7 @@
     <!-- END generated:nav -->
     </div><!-- /chrome bottom -->
 
-    <script src="site.js?v=20261002a"></script>
+    <script src="site.js?v=20261002o"></script>
     <script>
       (async () => {
         const root = document.getElementById("content");

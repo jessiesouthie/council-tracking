@@ -1,13 +1,13 @@
 """
 Write ingest/nav.py's destination list into every place that carries a copy.
 
-There are four, and they drifted apart because each was hand-edited:
+There are two, and they drifted apart when each was hand-edited:
 
-  docs/*.html        the <nav class="nav"> block on twelve pages
+  docs/*.html        the chrome above and below <main>, from ingest/chrome_v2.py
   docs/404.html      "where to go instead", a second list on the same page
-  docs/site.js       the TABBAR array the mobile bottom bar mounts from
-  ingest/build_meeting_pages.py
-                     imports ingest.nav directly, so it needs nothing from here
+
+ingest/build_meeting_pages.py imports chrome_v2 directly, so it needs nothing
+from here.
 
 Same marker-and-splice arrangement as build_prerender.py: everything between
 BEGIN and END belongs to this script, everything outside them is hand-written
@@ -26,23 +26,16 @@ import sys
 from pathlib import Path
 
 from ingest import chrome_v2
-from ingest.nav import BEGIN, END, fallback_list, nav_links, tabbar_js
+from ingest.nav import BEGIN, END, fallback_list
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 
-NAV_CONTAINER = re.compile(r'(<nav class="nav" aria-label="Primary">)(.*?)(</nav>)', re.S)
 FALLBACK_CONTAINER = re.compile(r'(<ul id="fallback">)(.*?)(</ul>)', re.S)
-TABBAR_CONTAINER = re.compile(r'(const TABBAR = \[)(.*?)(\];)', re.S)
-# Pages on the redesign (docs/v2.css) carry their chrome in two wrappers, one
-# above <main> and one after it, filled from ingest/chrome_v2.py.
+# Every page carries its chrome in two wrappers, one above <main> and one
+# after it, filled from ingest/chrome_v2.py.
 V2_TOP = re.compile(r'(<div class="v2-chrome" data-chrome="top">)(.*?)(</div><!-- /chrome top -->)', re.S)
 V2_BOTTOM = re.compile(r'(<div class="v2-chrome" data-chrome="bottom">)(.*?)(</div><!-- /chrome bottom -->)', re.S)
-
-# 404.html is served for whatever path was missed, so it cannot use relative
-# hrefs. Everything else in docs/ sits at the site root and can.
-ROOT_ABSOLUTE = {"404.html"}
-
 
 def splice(source: str, container: re.Pattern[str], body: str,
            indent: str, comment: tuple[str, str]) -> str:
@@ -82,7 +75,6 @@ def splice(source: str, container: re.Pattern[str], body: str,
 
 
 HTML = ("<!-- ", " -->")
-JS = ("// ", "")
 
 
 def targets() -> dict[Path, list[tuple[re.Pattern[str], str, str, tuple[str, str]]]]:
@@ -90,19 +82,16 @@ def targets() -> dict[Path, list[tuple[re.Pattern[str], str, str, tuple[str, str
     out: dict[Path, list] = {}
 
     for page in sorted(DOCS.glob("*.html")):
-        root = page.name in ROOT_ABSOLUTE
-        if V2_TOP.search(page.read_text(encoding="utf-8")):
-            out[page] = [(V2_TOP, chrome_v2.top(page.name), "    ", HTML),
-                         (V2_BOTTOM, chrome_v2.bottom(page.name), "    ", HTML)]
-            if page.name == "404.html":
-                out[page].append((FALLBACK_CONTAINER, fallback_list(), "          ", HTML))
-            continue
-        jobs = [(NAV_CONTAINER, nav_links(root=root), "        ", HTML)]
+        if not V2_TOP.search(page.read_text(encoding="utf-8")):
+            raise SystemExit(
+                f"{page.name} has no chrome wrapper. Put "
+                '<div class="v2-chrome" data-chrome="top"></div><!-- /chrome top --> '
+                "before <main> and the data-chrome=\"bottom\" twin after it.")
+        out[page] = [(V2_TOP, chrome_v2.top(page.name), "    ", HTML),
+                     (V2_BOTTOM, chrome_v2.bottom(page.name), "    ", HTML)]
         if page.name == "404.html":
-            jobs.append((FALLBACK_CONTAINER, fallback_list(), "          ", HTML))
-        out[page] = jobs
+            out[page].append((FALLBACK_CONTAINER, fallback_list(), "          ", HTML))
 
-    out[DOCS / "site.js"] = [(TABBAR_CONTAINER, tabbar_js(), "    ", JS)]
     return out
 
 

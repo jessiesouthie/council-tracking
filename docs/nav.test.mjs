@@ -1,16 +1,15 @@
 /* =============================================================================
    Tests that the site tells one story about what is on it — node --test docs/nav.test.mjs
 
-   Before ingest/nav.py there were four copies of the destination list: the
-   <nav> block pasted into twelve pages, the NAV constant in
-   build_meeting_pages.py, the TABBAR array in site.js, and 404.html's "where to
-   go instead". No two agreed, because each was hand-edited at a different time
-   for a different reason. ingest/build_nav.py now writes all four from one
-   definition — and this is what notices if someone edits a copy by hand and the
-   splicer hasn't been re-run.
+   Before ingest/nav.py there were four copies of the destination list, and no
+   two agreed, because each was hand-edited at a different time for a different
+   reason. ingest/chrome_v2.py now draws the header, tab bar and footer from one
+   definition, and ingest/build_nav.py splices them into every page. This is
+   what notices if someone edits a copy by hand and the splicer hasn't been
+   re-run.
 
    What is covered:
-     · every generated block matches the canonical list, spliced or not
+     · every page's header and tab bar match the canonical list
      · the mobile bar stays inside the five items a bottom bar can hold
      · every nav href points at a file that exists
      · every listed page is in the sitemap and precached by the service worker
@@ -29,9 +28,8 @@ const ROOT = path.resolve(DOCS, "..");
 const read = (p) => readFileSync(path.join(ROOT, p), "utf8");
 
 const ALL_PAGES = readdirSync(DOCS).filter((f) => f.endsWith(".html"));
-// Pages on the redesign carry their chrome between two wrappers that
-// ingest/build_nav.py fills from ingest/chrome_v2.py. They have no old-style
-// <nav class="nav"> and no dropdown menus, so they get their own checks below.
+// Every page carries its chrome between two wrappers that ingest/build_nav.py
+// fills from ingest/chrome_v2.py.
 const isV2 = (page) => /<div class="v2-chrome" data-chrome="top">/.test(readFileSync(path.join(DOCS, page), "utf8"));
 const V2_PAGES = ALL_PAGES.filter(isV2);
 const PAGES = ALL_PAGES.filter((p) => !isV2(p));
@@ -93,12 +91,6 @@ test("the canonical list parsed, and is not empty", () => {
    The four copies
    --------------------------------------------------------------------------- */
 
-/* The raw contents of one <nav class="nav"> block. */
-function navBlock(html) {
-  const m = html.match(/<nav class="nav" aria-label="Primary">([\s\S]*?)\n\s*<\/nav>/);
-  return m ? m[1] : null;
-}
-
 const asLinks = (s) =>
   [...s.matchAll(/<a\s([^>]*)>([^<]*)<\/a>/g)].map((m) => ({
     attrs: m[1],
@@ -106,61 +98,6 @@ const asLinks = (s) =>
     href: (m[1].match(/href="([^"]*)"/) || [])[1],
     nav: (m[1].match(/data-nav="([^"]*)"/) || [])[1],
   }));
-
-/* The top-level row: the bar's own items, with each section menu's contents
-   taken out first so a menu link is never mistaken for a destination on the
-   bar. That distinction is the whole point of the structure. */
-function navLinks(html) {
-  const block = navBlock(html);
-  if (block === null) return null;
-  return asLinks(block.replace(/<div class="nav-menu"[\s\S]*?<\/div>/g, ""));
-}
-
-/* The menus, keyed by the section they hang under. */
-function navMenus(html) {
-  const block = navBlock(html) || "";
-  const out = {};
-  for (const g of block.matchAll(
-    /<div class="nav-group"([^>]*)>([\s\S]*?)<div class="nav-menu"([^>]*)>([\s\S]*?)<\/div>/g
-  )) {
-    const trigger = asLinks(g[2])[0];
-    out[trigger.nav] = {
-      groupAttrs: g[1],
-      menuAttrs: g[3],
-      links: asLinks(g[4]),
-    };
-  }
-  return out;
-}
-
-for (const page of PAGES) {
-  test(`${page} carries the canonical nav`, () => {
-    const links = navLinks(read(`docs/${page}`));
-    assert.ok(links, `${page} has no <nav class="nav"> block`);
-    assert.deepEqual(links.map((l) => l.label), NAV.map((i) => i.label));
-    assert.deepEqual(links.map((l) => l.nav), NAV.map((i) => i.href));
-
-    // 404.html is served for whatever path was missed, so it — and only it —
-    // uses root-absolute hrefs among the top-level pages.
-    const wantRoot = page === "404.html";
-    for (const l of links) {
-      assert.equal(l.href.startsWith("/"), wantRoot,
-        `${page}: ${l.label} href "${l.href}" should ${wantRoot ? "" : "not "}be root-absolute`);
-    }
-  });
-
-  test(`${page} keeps its accessibility contract`, () => {
-    const html = read(`docs/${page}`);
-    assert.match(html, /<a href="#main" class="skip-link">/, `${page}: no skip link`);
-    assert.match(html, /<main id="main"/, `${page}: no <main id="main"> for it to reach`);
-
-    // Two "you are here" markers in one document is a lie to a screen reader.
-    // The top-level item claims it; a sub-nav item claims it; never both, and
-    // never twice at the same level.
-    const inNav = (navLinks(html) || []).filter((l) => /aria-current/.test(l.attrs));
-    assert.ok(inNav.length <= 1, `${page}: ${inNav.length} aria-current in the primary nav`);
-  });
-}
 
 test("the meeting-page generator emits the same nav", () => {
   const src = read("ingest/build_meeting_pages.py");
@@ -177,33 +114,13 @@ test("the meeting-page generator emits the same nav", () => {
     "meeting pages and claim pages link different v2.css versions");
 });
 
-test("the mobile tab bar matches, and fits", () => {
+test("site.js no longer builds navigation", () => {
+  // The tab bar, the menus and the "you are here" marks are static markup from
+  // chrome_v2.py now. A second, script-built copy is how the four lists drifted.
   const src = read("docs/site.js");
-  const block = src.match(/const TABBAR = \[([\s\S]*?)\];/);
-  assert.ok(block, "site.js has no TABBAR array");
-
-  const rows = [...block[1].matchAll(/\{\s*href:\s*"([^"]+)",\s*label:\s*"([^"]+)"([^}]*)\}/g)]
-    .map((m) => ({ href: m[1], label: m[2], bodyScoped: /body:/.test(m[3]) }));
-
-  assert.deepEqual(rows.map((r) => r.label), TABBAR.map((i) => i.tabLabel));
-  // Five tabs share a 390px phone, about 78px each at 11px type. Past a dozen
-  // characters a label wraps or clips; that is what Item.short is for.
-  for (const r of rows) {
-    assert.ok(r.label.length <= 12, `tab label "${r.label}" is too long for the bar; give the item a short=`);
-  }
-  assert.deepEqual(rows.map((r) => r.bodyScoped), TABBAR.map((i) => i.bodyScoped));
-
-  // A bottom bar past five items stops being readable, which is what the
-  // retired "More" sheet was working around.
-  assert.ok(rows.length <= 5, `tab bar holds ${rows.length} items; five is the maximum`);
-
-  // The bar is injected into docs/meetings/*.html too, where a relative
-  // "meetings.html" resolves to /meetings/meetings.html and 404s. That was live.
-  for (const r of rows) {
-    assert.ok(r.href.startsWith("/"), `tab bar href "${r.href}" must be root-absolute`);
-  }
-
-  assert.doesNotMatch(src, /TABBAR_MORE|tab-more/, "the More sheet is retired");
+  assert.doesNotMatch(src, /const TABBAR|mountTabbar|highlightActiveNav/,
+    "site.js is building the tab bar or the highlight again");
+  assert.doesNotMatch(src, /topbar|nav-menu|nav-group/, "site.js still targets the old header");
 });
 
 test("404.html offers the same destinations", () => {
@@ -289,60 +206,6 @@ test("each section page carries its section's sub-nav", () => {
 });
 
 /* ---------------------------------------------------------------------------
-   The hover/focus menus
-   --------------------------------------------------------------------------- */
-
-const WITH_MENUS = NAV.filter((i) => i.children.length);
-
-test("the definition has menus to test", () => {
-  assert.deepEqual(WITH_MENUS.map((i) => i.label), ["Meetings & Votes", "Taxes & Budget", "Topics", "About"]);
-});
-
-for (const page of PAGES) {
-  test(`${page} carries the section menus`, () => {
-    const html = read(`docs/${page}`);
-    const menus = navMenus(html);
-    const wantRoot = page === "404.html";
-
-    assert.deepEqual(Object.keys(menus), WITH_MENUS.map((i) => i.href),
-      `${page}: wrong set of section menus`);
-
-    for (const item of WITH_MENUS) {
-      const menu = menus[item.href];
-      assert.deepEqual(menu.links.map((l) => l.label), item.children.map((c) => c.label),
-        `${page}: ${item.label} menu labels`);
-      assert.deepEqual(
-        menu.links.map((l) => l.href),
-        item.children.map((c) => (wantRoot ? `/${c.href}` : c.href)),
-        `${page}: ${item.label} menu hrefs`);
-
-      // The panel names itself for a screen reader, since it is a bare div.
-      assert.match(menu.menuAttrs, new RegExp(`aria-label="${item.label} section"`),
-        `${page}: ${item.label} menu has no accessible name`);
-
-      // A body-scoped section marks the wrapper, not the trigger — otherwise
-      // applyBodyNav() strips the link and leaves its menu behind.
-      const scoped = /data-nav-body=/.test(menu.groupAttrs);
-      assert.equal(scoped, item.bodyScoped,
-        `${page}: ${item.label} body scoping is on the wrong element`);
-    }
-  });
-}
-
-test("the menu is real markup, not built at runtime", () => {
-  // It has to be in the page for a crawler and for a reader with no JS, and
-  // revealing it must need no script — that is what makes focus-within the
-  // keyboard route rather than a keydown handler.
-  // site.js may read the menus — it marks which row is the current page — but
-  // it must not be the thing that puts them in the document.
-  const src = read("docs/site.js");
-  assert.doesNotMatch(src, /<a[^>]*>\$\{[^}]*\}<\/a>[\s\S]{0,80}nav-menu/,
-    "site.js is building the section menus");
-  assert.doesNotMatch(src, /class="nav-menu"/, "site.js is emitting menu markup");
-  assert.doesNotMatch(src, /nav-group/, "site.js is emitting menu wrappers");
-});
-
-/* ---------------------------------------------------------------------------
    Redesigned pages (docs/v2.css, ingest/chrome_v2.py)
    --------------------------------------------------------------------------- */
 
@@ -369,6 +232,13 @@ for (const page of V2_PAGES) {
     assert.ok(bar, `${page} has no v2 tab bar`);
     const labels = [...bar[1].matchAll(/<span>([^<]*)<\/span><\/a>/g)].map((m) => m[1]);
     assert.deepEqual(labels, TABBAR.map((i) => i.tabLabel));
+    // Five tabs share a 390px phone, about 78px each. Past a dozen characters
+    // a label wraps or clips; that is what Item.short is for. Past five tabs
+    // the bar stops being readable.
+    assert.ok(labels.length <= 5, `${page}: tab bar holds ${labels.length} items`);
+    for (const l of labels) {
+      assert.ok(l.length <= 12, `tab label "${l}" is too long for the bar; give the item a short=`);
+    }
     assert.match(html, /class="v2-strip"/, `${page}: no "not run by the city" strip`);
     assert.match(html, /<a class="v2-skip" href="#main">/, `${page}: no skip link`);
     assert.match(html, /<main id="main"/, `${page}: no <main id="main">`);

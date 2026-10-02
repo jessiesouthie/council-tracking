@@ -1,16 +1,12 @@
 """
 The site's destination list, written down once.
 
-Before this file the same list existed in four hand-maintained copies — the
-`<nav>` block pasted into twelve pages, the `NAV` constant in
-build_meeting_pages.py, the TABBAR arrays in site.js, and the "where to go
-instead" list in 404.html — and no two of them agreed. Each had been edited at
-a different time for a different reason, so the site gave four different answers
-to "what is on here".
-
-So the list lives here, and ingest/build_nav.py writes it into all four.
-Nothing below is rendered at runtime: every consumer gets static markup, because
-the nav has to survive a load where no JavaScript runs and no JSON arrives.
+Before this file the same list existed in four hand-maintained copies, and no
+two of them agreed. Now it lives here. ingest/chrome_v2.py draws the header,
+the phone tab bar and the footer from it, ingest/build_nav.py splices that
+chrome into every page plus 404.html's "where to go instead", and
+build_meeting_pages.py imports chrome_v2 directly. Nothing is rendered at
+runtime, because the nav has to survive a load where no JavaScript runs.
 
 The shape of the list is the argument the site is making. Meetings, Votes and
 Members are the record — republished, traceable to a document the city posted.
@@ -37,16 +33,15 @@ class Child:
 class Item:
     """One top-level destination.
 
-    `children` are the pages inside the section. They become the hover/focus
-    menu under the top-level item, and the section's own sub-nav strip lists the
-    same pages in the same order — one definition, so the two can't disagree.
-    An item with no children is a leaf and gets no menu.
+    `children` are the pages inside the section. The section's own sub-nav
+    strip lists them in this order, and docs/nav.test.mjs holds each page's
+    strip to it.
 
     `alias` names other pages that belong to this section but are not menu
     entries — member.html is a per-member detail page, not somewhere to send
     someone from the bar. Menu children are aliases too; `aliases` merges both.
-    Aliases light this item up without claiming aria-current for themselves.
-    site.js reads them from data-nav-alias; see highlightActiveNav().
+    Aliases light this item up without claiming aria-current for themselves;
+    see chrome_v2._attrs().
 
     `body_scoped` marks a section that only the City Council has. The Planning
     Commission levies no tax and adopts no budget, so carrying Finances into
@@ -68,11 +63,6 @@ class Item:
     @property
     def tab_label(self) -> str:
         return self.short or self.label
-
-    @property
-    def nav(self) -> str:
-        """The filename highlightActiveNav() matches location against."""
-        return self.href
 
     @property
     def aliases(self) -> tuple[str, ...]:
@@ -204,111 +194,6 @@ MOBILE_MAX = 5
 
 BEGIN = "BEGIN generated:nav (ingest/build_nav.py)"
 END = "END generated:nav"
-
-
-def _href(item: Item, root: bool) -> str:
-    """Root-absolute for pages that can be served from any depth.
-
-    docs/meetings/*.html and 404.html both need this: the rest of the site is
-    flat, so a relative href from inside /meetings/ would have to climb out on
-    every link, and 404.html is served for whatever path was missed.
-    """
-    return f"/{item.href}" if root else item.href
-
-
-def nav_links(root: bool = False, active: str | None = None,
-              indent: str = "        ") -> str:
-    """The contents of <nav class="nav">.
-
-    A leaf item is a bare <a>. An item with children is a <div class="nav-group">
-    holding the same <a> plus a menu of the section's pages, which site.css
-    reveals on hover and on focus-within.
-
-    The menu is real markup, not built at runtime: it costs a dozen elements,
-    it is in the page for a crawler and for a reader with no JavaScript, and
-    revealing it needs no script at all. Focus-within is what makes it keyboard
-    reachable — focusing the trigger shows the menu, and Tab then walks into it.
-
-    `active` is a filename to mark as the current page. The generated meeting
-    pages pass "meetings.html" so the highlight is painted before site.js runs;
-    every other page leaves it to highlightActiveNav().
-    """
-    out = []
-    for item in NAV:
-        attrs = [f'href="{_href(item, root)}"', f'data-nav="{item.nav}"']
-        if item.aliases:
-            attrs.append(f'data-nav-alias="{" ".join(item.aliases)}"')
-        # On a group the body marker goes on the wrapper, so applyBodyNav()
-        # takes the menu away with the item rather than leaving it orphaned.
-        if item.body_scoped and not item.children:
-            attrs.append('data-nav-body="city-council"')
-        if active and item.nav == active:
-            attrs.append('class="active"')
-            attrs.append('aria-current="page"')
-
-        if not item.children:
-            out.append(f"{indent}<a {' '.join(attrs)}>{item.label}</a>")
-            continue
-
-        group = ['class="nav-group"']
-        if item.body_scoped:
-            group.append('data-nav-body="city-council"')
-        out.append(f"{indent}<div {' '.join(group)}>")
-        out.append(f"{indent}  <a {' '.join(attrs)}>{item.label}</a>")
-        out.append(f'{indent}  <div class="nav-menu" role="group" '
-                   f'aria-label="{item.label} section">')
-        for child in item.children:
-            # No aria-current here, ever. On a section page the strip inside the
-            # reading column already claims it, and two "you are here" markers
-            # in one document is a lie to a screen reader. site.js marks the
-            # matching menu row with a class instead — see highlightActiveNav().
-            href = f"/{child.href}" if root else child.href
-            out.append(f'{indent}    <a href="{href}">{child.label}</a>')
-        out.append(f"{indent}  </div>")
-        out.append(f"{indent}</div>")
-    return "\n".join(out)
-
-
-def subnav(item: Item, current: str, root: bool = False,
-           indent: str = "      ") -> str:
-    """A section's own strip, from the same children as its menu.
-
-    Sits inside the reading column on every page of the section, and says which
-    page of it you are on — the menu is for getting into a section from
-    anywhere, this is for moving around once you are in one.
-    """
-    out = [f'{indent}<nav class="subnav" aria-label="{item.label} section">']
-    for child in item.children:
-        href = f"/{child.href}" if root else child.href
-        cur = ' aria-current="page"' if child.href == current else ""
-        out.append(f'{indent}  <a href="{href}"{cur}>{child.label}</a>')
-    out.append(f"{indent}</nav>")
-    return "\n".join(out)
-
-
-def item_for(href: str) -> Item | None:
-    """The section a page belongs to, by its own href or any of its children."""
-    for item in NAV:
-        if item.href == href or href in [c.href for c in item.children]:
-            return item
-    return None
-
-
-def tabbar_js(indent: str = "  ") -> str:
-    """The TABBAR array site.js mounts the bottom bar from.
-
-    Hrefs are root-absolute here for the same reason the meeting pages' are: the
-    bar is injected into docs/meetings/*.html too, and a relative "meetings.html"
-    resolved from there points at /meetings/meetings.html, which has never
-    existed. That was a live bug until this list became one list.
-    """
-    rows = []
-    for item in TABBAR:
-        parts = [f'href: "/{item.href}"', f'label: "{item.tab_label}"']
-        if item.body_scoped:
-            parts.append('body: "city-council"')
-        rows.append(f"{indent}  {{ {', '.join(parts)} }},")
-    return "\n".join(rows)
 
 
 def fallback_list(indent: str = "          ") -> str:
