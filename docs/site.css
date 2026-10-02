@@ -5669,6 +5669,54 @@ a.tax-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px;
   color: var(--t-fg);
   text-wrap: balance;
 }
+/* Each part of the argument is a <details>: the heading and its first
+   sentence are the summary, the rest opens on tap. Folded, the section went
+   from about 26,000px on a phone to a screen or two, with every part's claim
+   still readable without opening anything. */
+.arg-sum { display: block; list-style: none; cursor: pointer; border-radius: 6px; }
+.arg-sum::-webkit-details-marker { display: none; }
+.arg-sum .arg-lede, .arg-sum .arg-punch { display: block; }
+.arg-sum .arg-punch { margin-bottom: 14px; }
+details.arg-block:not([open]) .arg-sum .arg-lede { margin-bottom: 12px; }
+.arg-more {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px;
+  font-size: 14px; font-weight: 600; color: var(--t-gold);
+}
+.arg-more::before { content: "Read this part"; }
+.arg-more::after {
+  content: ""; width: 7px; height: 7px; margin-top: -3px;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: rotate(45deg); transition: transform 160ms ease;
+}
+details.arg-block[open] .arg-more::before { content: "Show less"; }
+details.arg-block[open] .arg-more::after { transform: rotate(-135deg); margin-top: 3px; }
+details.arg-block[open] .arg-more { margin-bottom: 8px; }
+.arg-sum:hover .arg-more { text-decoration: underline; text-underline-offset: .2em; }
+.arg-sum:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .arg-more::after { transition: none; } }
+
+/* "On this page", under the tax headline. */
+.tax-toc {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px;
+  margin: 4px 0 22px;
+}
+.tax-toc-lab {
+  font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--t-muted); margin-right: 4px; white-space: nowrap; flex: none;
+}
+.tax-toc a {
+  display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px;
+  border: 1px solid var(--t-line); border-radius: 999px;
+  font-size: 13.5px; font-weight: 600; color: var(--t-fg); text-decoration: none;
+}
+.tax-toc a:hover { border-color: var(--t-gold); color: var(--t-fg); }
+@media (max-width: 600px) {
+  /* One scrolling row on a phone, so the calculator stays near the top. */
+  .tax-toc { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: -16px; padding-right: 16px; }
+  .tax-toc::-webkit-scrollbar { display: none; }
+  .tax-toc a { flex: none; }
+}
+
 .arg-h4 {
   margin: 0 0 8px;
   font-size: 12px;
