@@ -630,3 +630,74 @@ p { margin: 0; }
   border-left: 2px dashed var(--ink); opacity: .55; z-index: 1;
 }
 .rc-avgkey { white-space: nowrap; }
+
+/* ---------- One member (member.html) ---------- */
+
+.mp-page .v2-crumbs { padding-top: 0; }
+.mp-page > #content { display: flex; flex-direction: column; gap: 32px; }
+.mp-head { display: flex; gap: 14px; align-items: flex-start; }
+.mp-ava { width: 56px; height: 56px; font-size: 1.125rem; }
+.mp-id { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.mp-id h1 { font-size: clamp(1.75rem, 6vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.12; }
+.mp-term { font-size: 1rem; color: var(--ink-2); }
+.mp-prior { font-size: 0.875rem; color: var(--muted); }
+.mp-yes { color: var(--ok-fg); }
+.mp-no { color: var(--bad-fg); }
+
+.mp-ag { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; max-width: 46rem; }
+.mp-ag li { display: grid; grid-template-columns: 1fr; gap: 6px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; }
+@media (min-width: 640px) { .mp-ag li { grid-template-columns: minmax(12rem, 1fr) minmax(12rem, 1.4fr); align-items: center; gap: 14px; } }
+.mp-ag-who { display: flex; align-items: center; gap: 10px; min-height: 40px; color: var(--ink); text-decoration: none; min-width: 0; }
+.mp-ag-who:hover .pair-name { color: var(--blue); text-decoration: underline; }
+.mp-ag-who .pair-name { display: block; }
+.mp-ag-role { display: block; font-size: 0.8125rem; color: var(--muted); }
+
+.mp-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.mp-tags a {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px;
+  border: 1px solid var(--cool-edge); border-radius: 22px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 0.9375rem;
+}
+.mp-tags a:hover { background: var(--surface); color: var(--ink); }
+
+/* ---------- A motion, folded (shared) ----------
+   Rows of votes that open to CT.motionDetail() from site.js. member.html
+   uses them now; motions.html and the meeting pages will when they move. */
+
+.mv-list { border-top: 1px solid var(--line); max-width: 46rem; }
+.mv-row { border-bottom: 1px solid var(--line-soft); }
+.mv-row > summary { display: flex; flex-direction: column; gap: 6px; padding: 14px 0; cursor: pointer; list-style: none; }
+.mv-row > summary::-webkit-details-marker { display: none; }
+.mv-row > summary:hover .mv-title { color: var(--blue); }
+.mv-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 0.8125rem; color: var(--muted); }
+.mv-title { font-size: 1.0625rem; font-weight: 700; line-height: 1.35; }
+.mv-title::after { content: " +"; color: var(--blue); font-weight: 800; }
+.mv-row[open] .mv-title::after { content: " \2212"; }
+.mv-sum { font-size: 0.9375rem; color: var(--ink-2); }
+.mv-row[open] .mv-sum { display: none; }
+
+.pill { display: inline-flex; align-items: center; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; text-transform: capitalize; color: var(--cool-fg); background: var(--cool-bg); }
+.pill.passed { color: var(--ok-fg); background: var(--ok-bg); }
+.pill.failed { color: var(--bad-fg); background: var(--bad-bg); }
+
+.motion-detail { display: flex; flex-direction: column; gap: 14px; padding: 0 0 18px; }
+.m-lead { font-size: 1rem; }
+.m-impact { border-left: 4px solid var(--warn-edge); background: var(--warn-bg); border-radius: 0 10px 10px 0; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; }
+.m-impact-label { font-size: 0.8125rem; font-weight: 800; color: var(--warn-fg); }
+.m-impact-text { font-size: 0.9375rem; }
+.m-impact-routine { font-size: 0.9375rem; color: var(--ink-2); }
+.m-impact-routine-label { font-weight: 700; color: var(--ink); }
+.m-pending, .motion-detail .muted { color: var(--muted); font-size: 0.875rem; }
+.m-block { display: flex; flex-direction: column; gap: 8px; }
+.m-block-label { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.m-outcome-line { font-weight: 600; }
+.m-votes { display: flex; flex-wrap: wrap; gap: 6px; }
+.vote-chip {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 6px 4px 10px; border-radius: 999px;
+  border: 1px solid var(--line); font-size: 0.8125rem; font-weight: 600;
+}
+.vote-chip.is-focus { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue); }
+.vote-chip .v { padding: 1px 8px; border-radius: 999px; font-weight: 700; text-transform: capitalize; color: var(--cool-fg); background: var(--cool-bg); }
+.vote-chip .v.yes, .vote-chip .v.aye { color: var(--ok-fg); background: var(--ok-bg); }
+.vote-chip .v.no, .vote-chip .v.nay { color: var(--bad-fg); background: var(--bad-bg); }
+.m-official > summary { display: inline-flex; align-items: center; min-height: 44px; cursor: pointer; font-weight: 600; font-size: 0.9375rem; color: var(--blue); }
+.m-text { font-size: 0.875rem; color: var(--ink-2); margin-top: 6px; }

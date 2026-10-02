@@ -10,8 +10,7 @@
          them at the bare URL and tell Google to drop thirteen. CT.setCanonical()
          in site.js writes the self-referencing one, params and all. -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
-    <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#14202e" />
     <meta property="og:type" content="profile" />
     <meta property="og:site_name" content="Civic Roll Call" />
     <meta property="og:title" content="Eagle Mountain City Council Member Voting Record" />
@@ -22,74 +21,35 @@
     <meta name="twitter:description" content="Roll-call voting record and agreement scores for an Eagle Mountain City Council member." />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" />
-    <!-- The site pair. Instrument Sans sets the text, IBM Plex Mono every
-         figure in the tables below — both on the first-paint path because
-         this page is text and numbers and nothing else. -->
-    <link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="fonts.css?v=20260821c" />
-    <link rel="stylesheet" href="site.css?v=20261001f" />
+    <link rel="preload" href="fonts/public-sans-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts.css?v=20261001a" />
+    <link rel="stylesheet" href="v2.css?v=20261002c" />
   </head>
   <body>
-    <a href="#main" class="skip-link">Skip to main content</a>
-    <header class="topbar">
-      <a class="brand" href="index.html">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 512 512" focusable="false">
-            <circle class="m-accent" cx="153" cy="153" r="33.5" />
-            <rect class="m-fg" x="220" y="133" width="175" height="41" rx="20.5" />
-            <circle class="m-fg" cx="153" cy="256" r="33.5" />
-            <rect class="m-dim" x="220" y="235" width="144" height="42" rx="21" />
-            <circle class="m-accent" cx="153" cy="358" r="33.5" />
-            <rect class="m-dim" x="220" y="338" width="113" height="41" rx="20.5" />
-          </svg>
-        </span>
-        <div><p class="brand-title">Roll Call</p><p class="city">Eagle Mountain, UT</p></div>
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <!-- BEGIN generated:nav (ingest/build_nav.py) -->
-        <a href="index.html" data-nav="index.html">Home</a>
-        <div class="nav-group">
-          <a href="meetings.html" data-nav="meetings.html" data-nav-alias="motions.html">Meetings & Votes</a>
-          <div class="nav-menu" role="group" aria-label="Meetings & Votes section">
-            <a href="meetings.html">Meetings</a>
-            <a href="motions.html">Votes</a>
-          </div>
-        </div>
-        <a href="members.html" data-nav="members.html" data-nav-alias="member.html">Members</a>
-        <a href="claims.html" data-nav="claims.html" data-nav-body="city-council">Fact Checks</a>
-        <div class="nav-group" data-nav-body="city-council">
-          <a href="finances.html" data-nav="finances.html" data-nav-alias="tax.html projections.html budget.html staffing.html">Taxes & Budget</a>
-          <div class="nav-menu" role="group" aria-label="Taxes & Budget section">
-            <a href="finances.html">Overview</a>
-            <a href="tax.html">Tax</a>
-            <a href="projections.html">Projections</a>
-            <a href="budget.html">Budget</a>
-            <a href="staffing.html">Staffing</a>
-          </div>
-        </div>
-        <div class="nav-group">
-          <a href="data-centers.html" data-nav="data-centers.html">Topics</a>
-          <div class="nav-menu" role="group" aria-label="Topics section">
-            <a href="data-centers.html">Data centers</a>
-          </div>
-        </div>
-        <div class="nav-group">
-          <a href="about.html" data-nav="about.html" data-nav-alias="definitions.html">About</a>
-          <div class="nav-menu" role="group" aria-label="About section">
-            <a href="about.html">How this site is built</a>
-            <a href="definitions.html">Definitions</a>
-          </div>
-        </div>
-        <!-- END generated:nav -->
-      </nav>
-    </header>
+    <a class="v2-skip" href="#main">Skip to main content</a>
+    <div class="v2-chrome" data-chrome="top">
+    <!-- BEGIN generated:nav (ingest/build_nav.py) -->
+<div class="v2-strip"><div class="v2-wrap"><span>An independent record of Eagle Mountain city government, kept by a resident. <strong>Not run by the city.</strong></span><a href="/about.html">What is this?</a></div></div>
+<header class="v2-header"><div class="v2-wrap"><a class="v2-brand" href="/index.html"><span class="v2-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M5 7h0M9 7h10M5 12h0M9 12h8M5 17h0M9 17h6"/></svg></span><span><span class="v2-brand-name">Civic Roll Call</span><span class="v2-brand-place">Eagle Mountain, Utah</span></span></a><nav class="v2-nav" aria-label="Main"><a href="/index.html">Home</a><a href="/meetings.html">Meetings &amp; Votes</a><a href="/members.html" class="is-section">Members</a><a href="/claims.html" data-nav-body="city-council">Fact Checks</a><a href="/finances.html" data-nav-body="city-council">Taxes &amp; Budget</a><a href="/data-centers.html">Topics</a><a href="/about.html">About</a></nav></div></header>
+    <!-- END generated:nav -->
+    </div><!-- /chrome top -->
 
-    <main id="main">
-      <div id="content"></div>
+    <main id="main" class="v2-wrap mb-page mp-page">
+      <div id="content" aria-busy="true">
+        <div class="v2-skel" aria-hidden="true">
+          <div class="v2-skel-line" style="width: 30%"></div>
+          <div class="v2-skel-line v2-skel-tall" style="width: 60%"></div>
+          <div class="v2-skel-block"></div>
+        </div>
+      </div>
     </main>
 
-    <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span></footer>
+    <div class="v2-chrome" data-chrome="bottom">
+    <!-- BEGIN generated:nav (ingest/build_nav.py) -->
+<footer class="v2-footer"><div class="v2-wrap"><nav aria-label="Everything on this site"><a href="/index.html">Home</a><a href="/meetings.html">Meetings &amp; Votes</a><a href="/members.html">Members</a><a href="/claims.html">Fact Checks</a><a href="/finances.html">Taxes &amp; Budget</a><a href="/data-centers.html">Topics</a><a href="/about.html">About</a><a href="/definitions.html">Definitions</a></nav><p>Civic Roll Call is published independently by an Eagle Mountain resident, with no affiliation to the city, any candidate or any campaign. Corrections and tips: <a href="mailto:civicrollcall@gmail.com">civicrollcall@gmail.com</a></p></div></footer>
+<nav class="v2-tabbar" aria-label="Main (mobile)"><a href="/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-6 8 6v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/></svg><span>Home</span></a><a href="/meetings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg><span>Meetings</span></a><a href="/members.html" class="is-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="3.2"/><path d="M3.5 19c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5"/><circle cx="17" cy="8" r="2.5"/><path d="M16.5 13.5c2 .2 3.5 1.5 4 4"/></svg><span>Members</span></a><a href="/claims.html" data-nav-body="city-council"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M8.5 12.3l2.4 2.4 4.6-5"/></svg><span>Fact checks</span></a><a href="/finances.html" data-nav-body="city-council"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M10 20V5M15 20v-8M20 20v-5"/></svg><span>Taxes</span></a></nav>
+    <!-- END generated:nav -->
+    </div><!-- /chrome bottom -->
 
     <script src="site.js?v=20261001f"></script>
     <script>
@@ -99,7 +59,9 @@
         const member = data._byMemberId[id];
         const root = document.getElementById("content");
         if (!member) {
-          root.innerHTML = `<div class="error-block">No member with id <code>${CT.escapeHtml(id||"")}</code>. <a href="members.html">Back to members.</a></div>`;
+          root.removeAttribute("aria-busy");
+          root.innerHTML = `<header class="mb-head"><p class="v2-label">Not found</p><h1>No member by that name on file</h1>
+            <p class="mb-sub">Nobody in this body&rsquo;s record has the id <code>${CT.escapeHtml(id||"")}</code>. <a href="members.html">See everyone who sits on it</a>.</p></header>`;
           return;
         }
         CT.setMeta({
@@ -145,14 +107,21 @@
         });
         const s = data.stats.by_member[id] || { total:0,yes:0,no:0,nay:0,abstain:0,excused:0,absent:0,yes_rate:0,by_tag:{} };
         const opposed = s.no + (s.nay || 0);
+        const notVoting = s.abstain + s.excused + s.absent;
         const myMotions = data.motions.filter(m => (m.votes||[]).some(v => v.member_id === id))
                                        .sort((a,b) => (b.date||"").localeCompare(a.date||""));
+        const esc = (x) => CT.escapeHtml(x);
+        const noun = (data.body_label || "council").trim().split(/\s+/).pop().toLowerCase();
 
-        // agreement with each other member
-        const others = data.members.filter(m => m.id !== id && (m.role === "Councilmember" || m.role === "Mayor"));
+        // Agreement with everyone they have sat beside. This used to keep only
+        // roles spelled "Councilmember" or "Mayor", which left every other
+        // board's members with an empty table; the shared-vote floor is the
+        // real test, and it already keeps out pairs that barely overlapped.
+        const others = data.members.filter(m => m.id !== id);
         const ag = others.map(o => {
           const pair = [id, o.id].sort().join("|");
-          return { id:o.id, name:o.name, role:o.role, frac:data.stats.agreement[pair], n:data.stats.agreement_n[pair]||0 };
+          return { id:o.id, name:o.name, role:o.role, current: CT.isCurrentMember(o),
+                   frac:data.stats.agreement[pair], n:data.stats.agreement_n[pair]||0 };
         }).filter(x => x.frac != null && x.n >= 10).sort((a,b) => b.frac - a.frac);
 
         const byTag = s.by_tag || {};
@@ -160,88 +129,121 @@
           .map(([tid,c]) => ({ tid, label: CT.tagLabel(data, tid), count: c }))
           .slice(0, 20);
 
+        const pct = (x) => s.total ? (x / s.total * 100).toFixed(2) : 0;
+        const SHOW = 15;
+        const VOTED = { yes: "Voted yes", aye: "Voted yes", no: "Voted no", nay: "Voted no",
+                        excused: "Excused", absent: "Absent", abstain: "Abstained" };
+
+        root.removeAttribute("aria-busy");
         root.innerHTML = `
-          <p style="margin-top:0"><a href="members.html">← All members</a></p>
-          <h1 class="page-title">${CT.escapeHtml(member.name)}</h1>
-          ${renderTerms(member)}
+          <nav class="v2-crumbs" aria-label="Breadcrumb"><a href="members.html">Members</a><span aria-hidden="true">›</span><span>${esc(member.name)}</span></nav>
 
-          <section class="section">
-            <div class="cards">
-              <div class="stat-card"><div class="label">Total votes</div><div class="value">${s.total}</div></div>
-              <div class="stat-card"><div class="label">Yes</div><div class="value" style="color:var(--ok)">${s.yes}</div></div>
-              <div class="stat-card"><div class="label">No</div><div class="value" style="color:var(--danger)">${opposed}</div></div>
-              <div class="stat-card"><div class="label">Yes rate</div><div class="value">${(s.yes_rate*100).toFixed(0)}%</div><div class="delta">of decisive votes</div></div>
-              <div class="stat-card"><div class="label">Abstain / excused / absent</div><div class="value muted" style="font-size:18px">${s.abstain} / ${s.excused} / ${s.absent}</div></div>
+          <header class="mp-head">
+            <span class="rc-ava mp-ava" aria-hidden="true">${esc(initials(member.name))}</span>
+            <div class="mp-id">
+              <p class="v2-label">Eagle Mountain &middot; ${esc(data.body_label || "City Council")}${CT.isCurrentMember(member) ? "" : " &middot; former member"}</p>
+              <h1>${esc(member.name)}</h1>
+              ${renderTerms(member)}
             </div>
+          </header>
+
+          <section class="mb-section" aria-labelledby="rec-h">
+            <h2 class="mb-h2" id="rec-h">Their roll-call record</h2>
+            <ul class="rc-keys">
+              <li class="rc-key"><span class="rc-keyfig">${s.total.toLocaleString()}</span><span class="rc-keylab">roll calls on file</span></li>
+              <li class="rc-key"><span class="rc-keyfig mp-yes">${s.yes.toLocaleString()}</span><span class="rc-keylab">voted yes</span></li>
+              <li class="rc-key"><span class="rc-keyfig mp-no">${opposed.toLocaleString()}</span><span class="rc-keylab">voted no</span></li>
+              <li class="rc-key"><span class="rc-keyfig">${notVoting.toLocaleString()}</span><span class="rc-keylab">didn&rsquo;t vote: ${s.abstain} abstained, ${s.excused} excused, ${s.absent} absent</span></li>
+            </ul>
+            ${s.total ? `
+              <span class="rc-spine" role="img" aria-label="${s.yes} yes, ${opposed} no, ${notVoting} not voting">
+                <span class="s-yes" style="width:${pct(s.yes)}%"></span><span class="s-no" style="width:${pct(opposed)}%"></span><span class="s-other" style="width:${pct(notVoting)}%"></span>
+              </span>
+              <p class="rc-note">When they voted one way or the other, they voted yes <b>${(s.yes_rate*100).toFixed(0)}%</b> of the time.
+                Most ${esc(noun)} business passes unanimously, so a high rate is normal here.
+                <a href="members.html">The members page</a> compares how often each member ends up on the losing side of a vote that split.</p>` : ""}
           </section>
 
-          <section class="section">
-            <h2>Agreement with colleagues</h2>
+          <section class="mb-section" aria-labelledby="ag-h">
+            <h2 class="mb-h2" id="ag-h">Who they vote with</h2>
             ${ag.length ? `
-              <div class="tablewrap"><table class="data" data-mobile="cards">
-                <thead><tr><th>Member</th><th class="text-right">Agreement</th><th class="text-right">Shared votes</th><th><span class="sr-only">Agreement bar</span></th></tr></thead>
-                <tbody>
-                  ${ag.map(x => `
-                    <tr>
-                      <td data-role="title" data-label="Member"><a href="member.html?id=${encodeURIComponent(x.id)}">${CT.escapeHtml(x.name)}</a> <span class="muted">· ${CT.escapeHtml(x.role)}</span></td>
-                      <td data-label="Agreement" class="text-right mono"><strong>${(x.frac*100).toFixed(0)}%</strong></td>
-                      <td data-label="Shared votes" class="text-right mono muted">${x.n}</td>
-                      <td data-label="Bar"><div class="agreement-bar" style="width:${(x.frac*100).toFixed(0)}%;background:var(--accent);height:6px;border-radius:3px;margin-top:6px"></div></td>
-                    </tr>
-                  `).join("")}
-                </tbody>
-              </table></div>` : '<p class="muted">Not enough overlapping votes to compute agreement yet.</p>'}
+              <p class="rc-note">How often they and each colleague voted the same way, yes or no, on the roll calls where both were recorded. Pairs with fewer than 10 shared votes are left out.</p>
+              <ul class="mp-ag">
+                ${ag.map(x => `
+                  <li>
+                    <a class="mp-ag-who" href="member.html?id=${encodeURIComponent(x.id)}">
+                      <span class="pair-avatar" aria-hidden="true">${esc(initials(x.name))}</span>
+                      <span><span class="pair-name">${esc(x.name)}</span>
+                        <span class="mp-ag-role">${esc(x.role || "Member")}${x.current ? "" : ", former"}</span></span>
+                    </a>
+                    <span class="pair-bar-wrap" title="Agreed on ${(x.frac*100).toFixed(0)}% of ${x.n} shared roll calls">
+                      <span class="pair-bar" style="width:${(x.frac*100).toFixed(0)}%;background:var(--blue)"></span>
+                      <span class="pair-meta"><span class="pair-pct">${(x.frac*100).toFixed(0)}%</span><span class="pair-n">of ${x.n} votes</span></span>
+                    </span>
+                  </li>`).join("")}
+              </ul>` : '<p class="rc-note">Not enough overlapping votes to work out agreement yet.</p>'}
           </section>
 
-          <section class="section">
-            <h2>By topic</h2>
+          <section class="mb-section" aria-labelledby="tag-h">
+            <h2 class="mb-h2" id="tag-h">What they voted on</h2>
             ${tagRows.length ? `
-              <div class="tablewrap"><table class="data">
-                <thead><tr><th>Topic</th><th class="text-right">Motions voted on</th></tr></thead>
-                <tbody>
-                  ${tagRows.map(r => `<tr><td><a href="motions.html?member=${encodeURIComponent(id)}&tag=${encodeURIComponent(r.tid)}">${CT.escapeHtml(r.label)}</a></td><td class="text-right mono">${r.count}</td></tr>`).join("")}
-                </tbody>
-              </table></div>` : '<p class="muted">No tagged motions in their record yet.</p>'}
+              <p class="rc-note">Their roll calls by topic. Each opens the votes list filtered to that topic and to them.</p>
+              <ul class="mp-tags">
+                ${tagRows.map(r => `<li><a href="motions.html?member=${encodeURIComponent(id)}&tag=${encodeURIComponent(r.tid)}">${esc(r.label)} <span class="cl-filter-n">${r.count}</span></a></li>`).join("")}
+              </ul>` : '<p class="rc-note">No tagged motions in their record yet.</p>'}
           </section>
 
-          <section class="section">
-            <h2>Recent votes <span class="muted" style="font-size:12px;font-weight:400">(showing 50; <a href="motions.html?member=${encodeURIComponent(id)}">filter all motions →</a>)</span></h2>
-            <div id="recent-votes"></div>
+          <section class="mb-section" aria-labelledby="recent-h">
+            <h2 class="mb-h2" id="recent-h">Their latest votes</h2>
+            <p class="rc-note">Newest first. Open one for what it did and how everyone voted, or
+              <a href="motions.html?member=${encodeURIComponent(id)}">search all ${myMotions.length.toLocaleString()} of their votes</a>.</p>
+            <div id="recent-votes" class="mv-list"></div>
+            ${myMotions.length > SHOW ? `<p><button type="button" class="v2-btn v2-btn--quiet" id="more-votes">Show ${Math.min(50, myMotions.length) - SHOW} more</button></p>` : ""}
           </section>
         `;
 
-        document.getElementById("recent-votes").innerHTML = myMotions.slice(0,50).map(m => {
+        document.getElementById("recent-votes").innerHTML = myMotions.slice(0,50).map((m, i) => {
           const my = (m.votes||[]).find(v => v.member_id === id);
           const v = (my?.vote || "").toLowerCase();
+          const tone = /^(yes|aye)$/.test(v) ? "ok" : /^(no|nay)$/.test(v) ? "bad" : "cool";
           return `
-            <details class="motion-row" id="m${m.id}">
+            <details class="mv-row" id="m${m.id}"${i >= SHOW ? " hidden" : ""}>
               <summary>
-                <div class="motion-row-head">
-                  <div class="motion-row-meta">
-                    <span class="nowrap mono muted">${CT.fmtDate(m.date)}</span>
-                    <span class="vote-chip">voted<span class="v ${v}">${CT.escapeHtml(my?.vote || "—")}</span></span>
-                  </div>
-                  <h3 class="motion-row-title">${CT.escapeHtml(CT.motionTitle(m))}</h3>
-                  ${m.summary ? `<p class="motion-row-sub">${CT.escapeHtml(m.summary)}</p>` : ""}
-                  <div class="motion-row-foot">${CT.outcomePill(m.outcome)}</div>
-                </div>
+                <span class="mv-meta">
+                  <span>${CT.fmtDate(m.date)}</span>
+                  <span class="v2-pill v2-tone-${tone}">${esc(VOTED[v] || (my?.vote ? `Voted ${v}` : "No vote recorded"))}</span>
+                  ${CT.outcomePill(m.outcome)}
+                </span>
+                <span class="mv-title">${esc(CT.motionTitle(m))}</span>
+                ${m.summary ? `<span class="mv-sum">${esc(m.summary)}</span>` : ""}
               </summary>
               ${CT.motionDetail(data, m, { highlightMember: id })}
             </details>
           `;
         }).join("");
 
+        const more = document.getElementById("more-votes");
+        if (more) more.addEventListener("click", () => {
+          document.querySelectorAll("#recent-votes .mv-row[hidden]").forEach((el) => (el.hidden = false));
+          more.parentElement.remove();
+        });
+
         function renderTerms(m) {
           const terms = m.terms || [];
           if (!terms.length) {
-            return `<p class="page-sub">${CT.escapeHtml(m.role || "")}</p>`;
+            return `<p class="mp-term">${esc(m.role || "")}</p>`;
           }
-          const fmt = (t) => `${CT.escapeHtml(t.role)} · ${CT.fmtDate(t.start)}${t.end ? " – " + CT.fmtDate(t.end) : " – present"}`;
+          const fmt = (t) => `${esc(t.role)} &middot; ${CT.fmtDate(t.start)}${t.end ? " – " + CT.fmtDate(t.end) : " – present"}`;
           const [head, ...rest] = terms;
           const prior = rest.length
-            ? `<p class="page-sub muted" style="margin-top:2px">Previously: ${rest.map(fmt).join(" · ")}</p>`
+            ? `<p class="mp-prior">Previously: ${rest.map(fmt).join("; ")}</p>`
             : "";
-          return `<p class="page-sub">${fmt(head)}</p>${prior}`;
+          return `<p class="mp-term">${fmt(head)}</p>${prior}`;
+        }
+
+        function initials(name) {
+          const p = (name || "").split(/\s+/).filter(Boolean);
+          return (((p[0] || "")[0] || "") + ((p[p.length - 1] || "")[0] || "")).toUpperCase() || "?";
         }
       })();
     </script>
