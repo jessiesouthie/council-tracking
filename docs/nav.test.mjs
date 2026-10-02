@@ -36,6 +36,12 @@ const isV2 = (page) => /<div class="v2-chrome" data-chrome="top">/.test(readFile
 const V2_PAGES = ALL_PAGES.filter(isV2);
 const PAGES = ALL_PAGES.filter((p) => !isV2(p));
 
+// site.css is gone (2026-10-02), so a page on the old chrome would render
+// unstyled. Every top-level page must carry the redesign's chrome.
+test("every page is on the redesign", () => {
+  assert.deepEqual(PAGES, [], "pages still on the old topbar chrome");
+});
+
 /* ---------------------------------------------------------------------------
    The canonical list, parsed out of ingest/nav.py rather than restated here.
    A test that keeps its own copy of the thing under test is a fifth copy, and
@@ -334,48 +340,6 @@ test("the menu is real markup, not built at runtime", () => {
     "site.js is building the section menus");
   assert.doesNotMatch(src, /class="nav-menu"/, "site.js is emitting menu markup");
   assert.doesNotMatch(src, /nav-group/, "site.js is emitting menu wrappers");
-
-  const css = read("docs/site.css");
-  assert.match(css, /\.nav-group:focus-within \.nav-menu/,
-    "the menus don't open on keyboard focus");
-  assert.match(css, /\.nav-group:hover \.nav-menu/, "the menus don't open on hover");
-});
-
-test(".nav is never a scroll container", () => {
-  // The invariant behind the whole layout. overflow-x:auto computes overflow-y
-  // to auto, not visible, so the moment .nav scrolls it clips its own menus off
-  // at the height of the bar. The menus were switched off under 1000px for
-  // exactly that reason once, which meant a browser window that wasn't
-  // maximized silently lost them. The width is found by tightening the row
-  // instead — see the 760–1199px band — and this is what stops the scroll from
-  // creeping back in.
-  // Comments stripped first — the rule below explains this very hazard in
-  // prose, and matching the explanation instead of a declaration would fail on
-  // its own documentation.
-  const css = read("docs/site.css").replace(/\/\*[\s\S]*?\*\//g, "");
-  const navRules = [...css.matchAll(/(^|\})\s*\.nav\s*\{([^}]*)\}/g)].map((m) => m[2]);
-  assert.ok(navRules.length, "no .nav rule found");
-  for (const rule of navRules) {
-    assert.doesNotMatch(rule, /overflow[^:]*:\s*(auto|scroll|hidden)/,
-      ".nav has been made a scroll container again; its section menus will be clipped");
-  }
-
-  // And nothing may hide the menus at a width — that was the old workaround.
-  assert.doesNotMatch(css, /\.nav-menu[^{]*\{[^}]*display:\s*none/,
-    "a breakpoint is hiding the section menus again");
-});
-
-test("the row fits without the Home pill under 1200px", () => {
-  // How the width is found. Measured: brand + body switcher + six full-size
-  // pills need about 500px of bar and there isn't that much until past 1200px
-  // on a non-default body, whose name is appended to the brand line and is the
-  // wider option in the switcher. The brand is a link to the same page, so the
-  // pill is the redundant one.
-  const css = read("docs/site.css");
-  assert.match(css, /@media \(min-width: 760px\) and \(max-width: 1199px\)/,
-    "the narrow-desktop band is gone");
-  assert.match(css, /\.nav > a\[data-nav="index\.html"\] \{ display: none; \}/,
-    "the Home pill no longer steps aside, so the row will overflow under 1200px");
 });
 
 /* ---------------------------------------------------------------------------
