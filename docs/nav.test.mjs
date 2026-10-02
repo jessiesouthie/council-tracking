@@ -407,3 +407,20 @@ for (const page of V2_PAGES) {
     assert.doesNotMatch(html, /href="site\.css/, `${page}: links site.css as well as v2.css`);
   });
 }
+
+// One v2.css, one cache-busting tag. A page left on an older ?v= can be served
+// the browser's cached copy of that older stylesheet, which lacks the rules the
+// page was moved onto v2 with — so every page, and the claim pages the
+// generator writes, must carry the same tag.
+test("every redesigned page links the same v2.css version", () => {
+  const tagOf = (html) => [...html.matchAll(/v2\.css\?v=([0-9a-z]+)/g)].map((m) => m[1]);
+  const claimDir = path.join(DOCS, "claims");
+  const files = [
+    ...V2_PAGES.map((p) => [p, read(`docs/${p}`)]),
+    ...readdirSync(claimDir).filter((f) => f.endsWith(".html")).map((f) => [`claims/${f}`, readFileSync(path.join(claimDir, f), "utf8")]),
+  ];
+  const generator = read("ingest/build_claim_pages.py").match(/^CSS_VERSION = "([0-9a-z]+)"/m)?.[1];
+  assert.ok(generator, "build_claim_pages.CSS_VERSION not found");
+  const stale = files.flatMap(([f, html]) => tagOf(html).filter((t) => t !== generator).map((t) => `${f} (${t})`));
+  assert.deepEqual(stale, [], `pages not on v2.css?v=${generator}`);
+});
