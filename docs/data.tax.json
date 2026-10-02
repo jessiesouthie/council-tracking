@@ -29,16 +29,13 @@
       "label": "Adopted 2026–27",
       "note": "Public safety · +69.81% over the certified rate",
       "pct": 69.81,
-      "pct_derived": true,
-      "pct_basis": "Derived here, not yet checked against the motion. It is what 0.000900 is over the 0.000530 certified rate, and — as with the 183.02% before it — the same number on either basis: the extra revenue the rate raises, $2,132,876, is 69.81% of the $3,055,201 the certified rate would raise. Whatever percentage the adopting resolution states, it is not a percentage of anyone's total bill; the city is one of seven lines on it.",
+      "pct_basis": "The figure stated in the motion: the increase in budgeted revenue over the prior year, exclusive of new growth, $2,132,876 against the $3,055,201 the certified rate would raise. It is also, to the second decimal, what 0.000900 is over the 0.000530 certified rate, as the 183.02% was before it, so it comes out the same read either way. Either way it is not a percentage of anyone's total bill; the city is one of seven lines on it.",
       "revenue": 5188077,
       "revenue_increase": 2132876,
       "meeting_id": 728,
       "date": "2026-08-18",
-      "provisional": true,
-      "unverified": "Reported the night of the vote, before the recording, the resolution or the minutes were available. What is certain is the rate: 0.000900. The vote, the mover, the wording of the motion and the figures the resolution recites are all still to be read off the record, and the fields below that would normally carry them are empty rather than guessed. Everything on this page priced at 0.000900 is this project's arithmetic on that rate, not the city's published figures.",
-      "vote": null,
-      "motion": null,
+      "vote": "Passed 4–1 on a roll call (from the meeting recording): moved by Clark, seconded by Whiting, who read in the figures; Whiting, Huish, Clark and Wright in favor, Wood against",
+      "motion": "Approve a resolution of Eagle Mountain City, Utah, approving a property tax increase above the certified tax rate for fiscal year 2026-2027 of 0.000900. This rate exceeds the certified tax rate of 0.000530 and will result in an increase in the city's ad valorem property tax budgeted revenue of approximately $2,132,876, or 69.81% above the city's property tax budgeted revenue for the prior year, exclusive of new growth.",
       "home_example": {
         "market_value": 488000,
         "taxable_value": 268400,
@@ -46,7 +43,7 @@
         "derived": true,
         "note": "The Truth-in-Taxation notice's own average home, priced the way the notice prices it: $268,400 of taxable value — 55% of $488,000 — times the 0.000370 the adopted rate sits above the certified rate. The same home was $260.35 under the 0.001500 adopted on August 6 and $314.03 under the 0.001700 noticed in June."
       },
-      "derivation": "Every figure here except the rate is derived. The $5,188,077 is the certified rate's own $3,055,201 scaled by 0.000900 ÷ 0.000530 — which is the same as taking 0.000900 × the $5,764,530,000 of citywide taxable value that the city's published rate-and-revenue pairs imply, and the same again as three fifths of the $8,646,795 the repealed 0.001500 would have raised. Three routes, one number, because they are all the same arithmetic on figures the city did publish. The $2,132,876 is that revenue less the $3,055,201 on the impact schedule.",
+      "derivation": "The rate, the $2,132,876 and the 69.81% are the motion's own figures, read into the record on August 18. The $5,188,077 total is derived: the $3,055,201 on the impact schedule plus that $2,132,876. It is also 0.000900 × the $5,764,530,000 of citywide taxable value that the city's published rate-and-revenue pairs imply, and three fifths of the $8,646,795 the repealed 0.001500 would have raised. Three routes, one number.",
       "supersedes": "repealed",
       "context": "A repeal and a re-adoption on one night: the council rescinded the 0.001500 it had set on August 6 and adopted 0.000900 in its place, then took up the FY2026–27 budget the rate has to fund. Utah's Truth-in-Taxation process fixes a ceiling, not a floor — the noticed 0.001700 is the most the council could levy without starting the notice and hearing over, and it can adopt anything at or below it. The referendum petition citizens began organizing in early August was aimed at the 0.001500."
     },
@@ -306,23 +303,22 @@
       "group": "hearing",
       "kind": "Action taken",
       "title": "Council repeals the 0.001500 and adopts 0.000900",
-      "note": "The budget-adoption hearing, set by resolution 17.A. back on May 5, and the night the rate changed again. The council took two resolutions in order — one repealing the property tax increase it had approved on August 6, one approving an increase above the certified rate in its place — and set the rate at 0.000900, a third of the way from the certified 0.000530 to the 0.001700 it had noticed. It then adopted the FY2026–27 budget the rate has to fund. Reported here the night it happened: the rate is certain, and the vote, the motions and the figures the resolutions recite are transcribed from the record as soon as it is published.",
-      "provisional": true,
+      "note": "The budget-adoption hearing, set by resolution 17.A. back on May 5, and the night the rate changed again. The council took two resolutions in order — one repealing the property tax increase it had approved on August 6, one approving an increase above the certified rate in its place — and set the rate at 0.000900, a third of the way from the certified 0.000530 to the 0.001700 it had noticed. It then adopted the FY2026–27 budget the rate has to fund. The votes below are from the meeting recording; the written resolutions were not yet published when it was read.",
       "items": [
         {
           "ref": "13.A.",
           "text": "Resolution repealing the property tax increase above the certified rate for FY2026–27 — the 0.001500 adopted on August 6",
-          "outcome": "Passed — vote not yet transcribed"
+          "outcome": "Passed 4–1 on a roll call, Wood opposed"
         },
         {
           "ref": "13.B.",
           "text": "Resolution approving a property tax increase above the certified rate for FY2026–27, at 0.000900",
-          "outcome": "Passed — vote not yet transcribed"
+          "outcome": "Passed 4–1 on a roll call, Wood opposed"
         },
         {
           "ref": "13.C.",
-          "text": "Public hearing and resolution adopting the FY2026–27 annual budget",
-          "outcome": "Vote not yet transcribed"
+          "text": "Public hearing and resolution adopting the FY2026–27 annual budget, amended to strike $1,000,000 for relocating the rodeo grounds and $2,500,000 for land acquisition and to cover the rest of the gap from reserves",
+          "outcome": "Passed 4–1 on a roll call, Huish opposed"
         }
       ]
     },

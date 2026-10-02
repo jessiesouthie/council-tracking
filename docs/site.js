@@ -217,7 +217,7 @@
     if (document.getElementById("ct-agent-js")) return;
     const s = document.createElement("script");
     s.id = "ct-agent-js";
-    s.src = siteUrl("agent.js?v=20261001a");
+    s.src = siteUrl("agent.js?v=20261002a");
     s.defer = true;
     document.body.appendChild(s);
   }

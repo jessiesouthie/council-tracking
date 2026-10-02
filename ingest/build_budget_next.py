@@ -546,14 +546,27 @@ def build(cache: Path | None = None):
         "final_adopted": {
             "date": "2026-08-18",
             "meeting_id": 728,
-            "total": 363992973,
+            # The agenda's figure, before the amendments below. The amended
+            # total was not read out and has not been published, so there is
+            # no adopted total to carry yet. Do not print agenda_total as one.
+            "agenda_total": 363992973,
+            "total": None,
+            "amendments": [
+                "Struck $1,000,000 budgeted for relocating the rodeo grounds",
+                "Struck $2,500,000 budgeted for land acquisition",
+                "Adjusted the property-tax line to the 0.000900 rate adopted the same night",
+                "Funded the remaining shortfall, about $1.1 million, from reserves",
+            ],
+            "vote": "Passed 4–1 on a roll call (from the meeting recording): moved by Wood, seconded by Clark; Clark, Wright, "
+                    "Whiting and Wood in favor, Huish against",
             "note": (
-                "The total in the adoption resolution as agendized — 'A Resolution … Adopting the "
-                "Fiscal Year 2026-2027 Annual Budget Totaling $363,992,973'. It is a different "
-                "number from the gross on this page because this page is the interim book; the "
-                "adopted line items are not published yet."
+                "The agenda put the resolution at $363,992,973: 'A Resolution … Adopting the "
+                "Fiscal Year 2026-2027 Annual Budget Totaling $363,992,973'. The council adopted "
+                "it with the amendments listed here, so that is not the adopted total, and the "
+                "amended total has not been published. It is also a different number from the "
+                "gross on this page, because this page is the interim book."
             ),
-            "source": "Agenda item 13.C, City Council meeting 18 August 2026",
+            "source": "Agenda item 13.C and the meeting recording, City Council meeting 18 August 2026",
             "provisional": True,
         },
         "as_of": "2026-07-16",

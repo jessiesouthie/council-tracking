@@ -362,8 +362,6 @@
       "method": "revenue_based",
       "start_rate": 0.0009,
       "years": {},
-      "provisional": true,
-      "provisional_note": "The rate is the council's; the figures this scenario produces from it are this page's arithmetic. The adopting resolution, the vote and the motion's own revenue figures were not yet published when the scenario was written, and this note comes off when they are read into `sources`.",
       "source": {
         "meeting": 728,
         "date": "2026-08-18",
@@ -445,8 +443,7 @@
       "publisher": "Eagle Mountain City Council",
       "meeting": 728,
       "date": "2026-08-18",
-      "provisional": true,
-      "note": "Items 13.A and 13.B at the budget-adoption meeting, taken in that order: the repeal of the increase approved on 6 August, then a new increase above the certified rate at 0.000900. The FY2026–27 budget was adopted at 13.C the same night. Recorded here from the meeting as it happened; the resolutions, the vote and the figures they recite are read in from the record when it is published, and until then every figure this page derives from 0.000900 is its own arithmetic."
+      "note": "Items 13.A and 13.B at the budget-adoption meeting, taken in that order: the repeal of the increase approved on 6 August, then a new increase above the certified rate at 0.000900. The FY2026–27 budget was adopted at 13.C the same night. The votes are from the meeting recording: 4–1 each, Wood against, and the motion read in the $2,132,876 and 69.81% this page uses."
     },
     {
       "title": "Resolution adopting a property tax rate of 0.001500 for FY2026–27, repealed 18 August",

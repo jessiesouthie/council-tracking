@@ -51,16 +51,15 @@
       "taxable_value": 268400,
       "date": "2026-08-18",
       "meeting_id": 728,
-      "provisional": true,
-      "vote": null,
-      "motion": null,
+      "vote": "Passed 4–1 on a roll call (from the meeting recording): moved by Clark, seconded by Whiting, who read in the figures; Whiting, Huish, Clark and Wright in favor, Wood against",
+      "motion": "Approve a resolution of Eagle Mountain City, Utah, approving a property tax increase above the certified tax rate for fiscal year 2026-2027 of 0.000900. This rate exceeds the certified tax rate of 0.000530 and will result in an increase in the city's ad valorem property tax budgeted revenue of approximately $2,132,876, or 69.81% above the city's property tax budgeted revenue for the prior year, exclusive of new growth.",
       "source": {
         "title": "City Council meeting, August 18, 2026 — budget adoption, items 13.A and 13.B",
         "publisher": "Eagle Mountain City",
         "url": "meetings.html?id=728",
         "retrieved": "2026-08-18"
       },
-      "derivation": "The rate is the council's; every other figure in this row is derived from it, because the adopting resolution and the recording were not yet published when it was written. The $2,132,876 is the certified rate's own $3,055,201 scaled by 0.000900 ÷ 0.000530, less that $3,055,201; the 69.81% is the same ratio as a percentage, and comes out identical whether it is read as a ratio of rates or of revenue. The $99.31 is this list's own arithmetic, the one it applies to every row: an average home's taxable value — $268,400, being 55% of the $488,000 on the city's notice — times the 0.000370 the rate rose over the certified rate.",
+      "derivation": "The rate is the council's; the $2,132,876 and the 69.81% are the motion's own figures, read into the record on August 18, and they check against the arithmetic: the $2,132,876 is the certified rate's own $3,055,201 scaled by 0.000900 ÷ 0.000530, less that $3,055,201; the 69.81% is the same ratio as a percentage, and comes out identical whether it is read as a ratio of rates or of revenue. The $99.31 is this list's own arithmetic, the one it applies to every row: an average home's taxable value — $268,400, being 55% of the $488,000 on the city's notice — times the 0.000370 the rate rose over the certified rate.",
       "repealed": {
         "rate": 0.0015,
         "rate_display": "0.001500",

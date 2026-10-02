@@ -217,9 +217,9 @@
       bubble(
         "bot",
         renderMarkdown(
-          "Hi — I can answer questions about Eagle Mountain's council: motions, " +
-            "how members voted, meetings, the budget, and the proposed tax change. " +
-            "Ask me anything on the site."
+          "Hi. I answer questions from this site's record of Eagle Mountain city " +
+            "government: votes, meetings, members, the budget, the tax rate and the " +
+            "fact checks. Ask me anything on the site."
         )
       );
     }

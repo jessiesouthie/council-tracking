@@ -85,7 +85,7 @@ NAV: tuple[Item, ...] = (
     Item(
         label="Home",
         href="index.html",
-        blurb="the front page — what changed most recently, and what is coming up.",
+        blurb="the front page: what changed most recently, and what is coming up.",
     ),
     # Votes is a tab of this section rather than a section of its own. Both
     # pages read the same record from the other end: meetings.html is the
@@ -204,7 +204,7 @@ def fallback_list(indent: str = "          ") -> str:
         if item.href == "index.html":
             continue
         out.append(
-            f'{indent}<li><a href="/{item.href}">{item.label}</a> '
-            f"&mdash; {item.blurb}</li>"
+            f'{indent}<li><a href="/{item.href}">{item.label}</a>: '
+            f"{item.blurb}</li>"
         )
     return "\n".join(out)
