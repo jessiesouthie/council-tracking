@@ -306,6 +306,19 @@ test("every claim has its own page and preview image", () => {
   }
 });
 
+test("every claim page offers the Ask widget, at the tag site.js loads", () => {
+  // The claim pages run without site.js, which mounts the widget everywhere
+  // else, so they link agent.js themselves. A different ?v= would serve a
+  // stale widget on exactly the pages people are sent.
+  const want = readFileSync(join(DOCS, "site.js"), "utf8").match(/agent\.js\?v=([0-9a-z]+)/)?.[1];
+  assert.ok(want, "site.js mountAgent() no longer names agent.js?v=");
+  for (const c of data.claims) {
+    const own = readFileSync(join(DOCS, "claims", `${c.id}.html`), "utf8");
+    assert.ok(own.includes(`<script src="/agent.js?v=${want}" defer></script>`),
+      `${c.id}: no agent.js at v=${want}; set AGENT_VERSION in build_claim_pages.py and rebuild`);
+  }
+});
+
 test("the filter bar offers every topic, with its count", () => {
   const cats = Object.fromEntries(data.categories.map((c) => [c.key, c]));
   const out = page.filters(data.claims, cats);
