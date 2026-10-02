@@ -143,6 +143,17 @@ p { margin: 0; }
 .v2-strip .v2-wrap { padding-top: 10px; padding-bottom: 10px; display: flex; flex-wrap: wrap; gap: 4px 12px; justify-content: space-between; }
 .v2-strip strong { font-weight: 700; }
 .v2-strip a { color: var(--on-dark-link); font-weight: 600; }
+.v2-strip-end { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; }
+.v2-body-pick { display: inline-flex; align-items: center; gap: 8px; }
+.v2-body-lab { color: var(--on-dark-muted); }
+.v2-strip .body-switch {
+  appearance: none; -webkit-appearance: none; min-height: 36px; max-width: 100%;
+  padding: 0 32px 0 12px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, .35);
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 11px center / 11px 8px;
+  color: var(--on-dark); font: inherit; font-size: 0.875rem; font-weight: 700; cursor: pointer;
+}
+.v2-strip .body-switch:hover { border-color: rgba(255, 255, 255, .7); }
+.v2-strip .body-switch option { color: #14202e; background: #ffffff; }
 
 /* ---------- Header ---------- */
 

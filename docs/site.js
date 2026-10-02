@@ -755,9 +755,14 @@
 
   // Inject the body switcher into the topbar (between brand and primary nav).
   // Hidden when there's only one body so the single-body site is unchanged.
+  // On a redesigned page (docs/v2.css) there is no topbar: the picker goes in
+  // the "not run by the city" strip, beside "What is this?". The header's nav
+  // already fills the row at desktop widths, and the strip is on every page.
   async function mountBodySwitch() {
     const topbar = document.querySelector("header.topbar");
-    if (!topbar || topbar.querySelector(".body-switch")) return;
+    const strip = document.querySelector(".v2-strip .v2-wrap");
+    if (!topbar && !strip) return;
+    if (document.querySelector(".body-switch")) return;
     const list = await loadBodies();
     if (!list || list.length <= 1) return;
     const cur = currentBody();
@@ -778,6 +783,24 @@
       try { localStorage.setItem(BODY_KEY, id); } catch {}
       location.href = linkBody("index.html", id);
     });
+    if (!topbar) {
+      const end = document.createElement("span");
+      end.className = "v2-strip-end";
+      const what = strip.querySelector(":scope > a");
+      const lab = document.createElement("label");
+      lab.className = "v2-body-lab";
+      lab.textContent = "Viewing";
+      sel.id = "body-switch";
+      sel.removeAttribute("aria-label");
+      lab.htmlFor = sel.id;
+      const pick = document.createElement("span");
+      pick.className = "v2-body-pick";
+      pick.append(lab, sel);
+      end.appendChild(pick);
+      if (what) end.appendChild(what);
+      strip.appendChild(end);
+      return;
+    }
     const nav = topbar.querySelector("nav.nav");
     topbar.insertBefore(sel, nav || null);
   }
@@ -798,6 +821,9 @@
     if (!label) return;
     document.querySelectorAll(".topbar .city").forEach((el) => {
       el.textContent = `Eagle Mountain, UT · ${label}`;
+    });
+    document.querySelectorAll(".v2-brand-place").forEach((el) => {
+      el.textContent = `Eagle Mountain · ${label}`;
     });
     // Copy written for the council calls it by its bare noun — the homepage
     // headline, the members section head. Swap the noun, not the sentence, so
