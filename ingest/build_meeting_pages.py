@@ -52,7 +52,7 @@ DOCS = ROOT / "docs"
 OUT_DIR = DOCS / "meetings"
 PARSED = ROOT / "data" / "parsed"
 TRANSCRIPTS = DOCS / "transcripts"
-CSS_VERSION = "20261001d"
+CSS_VERSION = "20261001e"
 
 CNAME = DOCS / "CNAME"
 DEFAULT_HOST = "civicrollcall.com"

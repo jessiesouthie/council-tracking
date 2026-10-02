@@ -2103,6 +2103,20 @@ body.home-paper {
   grid-template-columns: repeat(auto-fill, minmax(min(380px, 100%), 1fr));
   gap: 16px;
 }
+/* The archive in month runs, newest first, with the newest two dozen shown
+   and the rest behind a button (meetings.html, renderList). */
+.meeting-month + .meeting-month { margin-top: 28px; }
+.meeting-month-h {
+  margin: 0 0 12px; font-size: 15px; font-weight: 700; letter-spacing: .01em;
+  color: var(--fg-soft); padding-bottom: 6px; border-bottom: 1px solid var(--border);
+}
+.meeting-more { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 28px 0 8px; text-align: center; }
+.meeting-more:empty { display: none; }
+/* A one-decision night beside a fifteen-decision one was stretched to match,
+   a tall empty box. Each card is its own height. */
+.meeting-month .meeting-grid { align-items: start; }
+.meeting-more .btn { min-height: 44px; }
+
 .meeting-card {
   position: relative;
   background: var(--bg-elev);

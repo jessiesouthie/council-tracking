@@ -26,7 +26,7 @@
     <link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20260821c" />
-    <link rel="stylesheet" href="site.css?v=20261001d" />
+    <link rel="stylesheet" href="site.css?v=20261001e" />
 
     <!-- The list view. A single meeting (?id=) adds its own Event node from
          site.js once the record is in hand — see the foot of this page. -->
@@ -344,7 +344,7 @@
 
     <footer class="footer"><span>Data from Eagle Mountain CivicClerk portal &middot; <a href="about.html">How this site is built</a> &middot; <a href="definitions.html">Definitions</a></span></footer>
 
-    <script src="site.js?v=20261001d"></script>
+    <script src="site.js?v=20261001e"></script>
     <script src="vendor/marked.min.js"></script>
     <script>
       (async () => {
@@ -421,20 +421,27 @@
         const yearOpts = `<option value="">All years</option>` + years.map(y => `<option>${y}</option>`).join("");
         root.innerHTML = `
           <h1 class="page-title">Meetings</h1>
-          <p class="page-sub">${data.meetings.length} meetings on file. Each card lists the motions decided that night — click anywhere on a card to dig in.</p>
+          <p class="page-sub">${onFileLine(meetings)} Each card lists what was decided that night. Open one for the votes, the summary and the transcript.</p>
           <div id="next-agenda"></div>
           <div class="toolbar">
             <input id="q" class="input" type="search" placeholder="Search motion titles or date…" autocomplete="off" />
             <select id="year" class="select" aria-label="Filter by year">${yearOpts}</select>
             <span id="result-count" class="muted nowrap" style="font-size:13px" aria-live="polite"></span>
           </div>
-          <div id="grid" class="meeting-grid"></div>
+          <div id="grid"></div>
+          <div id="more" class="meeting-more"></div>
         `;
 
         const q = document.getElementById("q");
         const yearSel = document.getElementById("year");
         const grid = document.getElementById("grid");
         const rc = document.getElementById("result-count");
+        const more = document.getElementById("more");
+        // The whole archive is two hundred-odd cards, about 110 screens on a
+        // phone, and most readers want the last few months. The newest PAGE
+        // render first; a search or a year shows every match.
+        const PAGE = 24;
+        let shown = PAGE;
 
         // "July 2" is a substring of "July 27" but not the same day, so a digit
         // running straight on from the match makes it the weaker kind of hit.
@@ -469,11 +476,40 @@
           }
           rc.textContent = `${list.length} meeting${list.length===1?"":"s"}`;
 
-          grid.innerHTML = list.map(m => renderMeetingCard(data, m, motionsByMeeting.get(m.id) || [], filt, txById.get(m.id)))
-                               .join("") || `<p class="muted">No meetings match.</p>`;
+          const narrowed = !!(filt || yy);
+          const visible = narrowed ? list : list.slice(0, shown);
+          const card = (m) => renderMeetingCard(data, m, motionsByMeeting.get(m.id) || [], filt, txById.get(m.id));
+          if (!visible.length) {
+            grid.innerHTML = `<p class="muted">No meetings match.</p>`;
+          } else if (filt) {
+            // Ranked by how well each matches, so not in date order: no months.
+            grid.innerHTML = `<div class="meeting-grid">${visible.map(card).join("")}</div>`;
+          } else {
+            grid.innerHTML = byMonth(visible).map(([label, ms]) => `
+              <section class="meeting-month" aria-label="${label}">
+                <h2 class="meeting-month-h">${label}</h2>
+                <div class="meeting-grid">${ms.map(card).join("")}</div>
+              </section>`).join("");
+          }
+
+          const left = list.length - visible.length;
+          more.innerHTML = left > 0
+            ? `<p class="muted">Showing the ${visible.length} most recent of ${list.length} meetings.</p>
+               <button type="button" class="btn" id="more-btn">Show ${Math.min(PAGE, left)} earlier meetings</button>`
+            : "";
+          const btn = document.getElementById("more-btn");
+          if (btn) btn.addEventListener("click", () => {
+            const firstNew = visible.length;
+            shown += PAGE;
+            paint();
+            // Keyboard and screen-reader users land on the first card that
+            // just appeared, not back on a button that moved.
+            const link = grid.querySelectorAll(".card-link")[firstNew];
+            if (link) link.focus({ preventScroll: false });
+          });
         }
-        q.addEventListener("input", paint);
-        yearSel.addEventListener("change", paint);
+        q.addEventListener("input", () => { shown = PAGE; paint(); });
+        yearSel.addEventListener("change", () => { shown = PAGE; paint(); });
         paint();
 
         // Doesn't block the list: the record paints from data.json, the band
@@ -765,6 +801,32 @@
         return safe.slice(0, idx) + `<mark>${safe.slice(idx, end)}</mark>` + safe.slice(end);
       }
 
+      // "237 meetings on file", with what kind of record each has. The heading
+      // used to count only the meetings with approved minutes (207) while the
+      // filter beside it counted all of them, two numbers for one list.
+      function onFileLine(meetings) {
+        const minuted = meetings.filter(m => !m.transcript_only && !m.agenda_only).length;
+        const rec = meetings.filter(m => m.transcript_only).length;
+        const ag = meetings.filter(m => m.agenda_only).length;
+        const parts = [`${minuted} with approved minutes`];
+        if (rec) parts.push(`${rec} with a recording only, minutes still to come`);
+        if (ag) parts.push(`${ag} with only the agenda the city posted`);
+        return `${meetings.length} meetings on file: ${parts.join(", ")}.`;
+      }
+
+      // Newest-first meetings, cut into [label, meetings] runs by calendar month.
+      function byMonth(list) {
+        const out = [];
+        for (const m of list) {
+          const d = new Date(m.date.slice(0, 7) + "-15T12:00:00");
+          const name = d.toLocaleString("en-US", { month: "long", year: "numeric" });
+          const last = out[out.length - 1];
+          if (last && last[0] === name) last[1].push(m);
+          else out.push([name, [m]]);
+        }
+        return out;
+      }
+
       function renderMeetingCard(data, meeting, motions, query, txEntry) {
         // If the query matched a motion, surface those first. Absent a query, the
         // preview only has room for five of them, so spend that room on the
@@ -805,15 +867,15 @@
         const countsLine = meeting.transcript_only
           ? `<div class="muted" style="font-size:12px">Recording available · official minutes pending</div>`
           : meeting.agenda_only
-          ? `<div class="muted" style="font-size:12px">Agenda only · no minutes published${meeting.agenda_items ? ` · ${meeting.agenda_items} item${meeting.agenda_items===1?"":"s"}` : ""}</div>`
-          : `<div class="muted" style="font-size:12px">${meeting.motion_count} motion${meeting.motion_count===1?"":"s"} · ${meeting.ord_count} ord. lines · ${meeting.res_count} res. lines</div>`;
+          ? `<div class="muted" style="font-size:12px">Agenda only${meeting.agenda_items ? ` · ${meeting.agenda_items} item${meeting.agenda_items===1?"":"s"}` : ""}</div>`
+          : `<div class="muted" style="font-size:12px">${meeting.motion_count ? `${meeting.motion_count} decision${meeting.motion_count===1?"":"s"} on record` : "No votes on record"}</div>`;
         const emptyBody = meeting.transcript_only
-          ? '<p class="muted" style="margin:8px 0 0">Minutes not published yet — open to read the enriched summary generated from the recording.</p>'
+          ? '<p class="muted" style="margin:8px 0 0">The city has not published minutes yet. Open it for a summary written from the meeting recording.</p>'
           : meeting.agenda_only
-          ? `${typeLine}<p class="muted" style="margin:8px 0 0">The city never published minutes for this meeting — open to read the agenda it posted beforehand.</p>`
+          ? `${typeLine}<p class="muted" style="margin:8px 0 0">No minutes or recording are published for this meeting. Open it for the agenda the city posted beforehand.</p>`
           : (meeting.summary
               ? `${typeLine}<p class="meeting-summary">${CT.escapeHtml(meeting.summary)}</p>`
-              : '<p class="muted" style="margin:8px 0 0">No motions parsed.</p>');
+              : '<p class="muted" style="margin:8px 0 0">These minutes record no votes. Work sessions and study meetings often take none.</p>');
         return `
           <article class="meeting-card">
             <header class="meeting-card-head">
@@ -825,7 +887,7 @@
             </header>
             ${motions.length === 0 ? emptyBody : `
               <ul class="motion-line-list">${items}</ul>
-              ${remaining > 0 ? `<p class="muted" style="margin:8px 0 0;font-size:12px">+ ${remaining} more motion${remaining===1?"":"s"}</p>` : ""}
+              ${remaining > 0 ? `<p class="muted" style="margin:8px 0 0;font-size:12px">+ ${remaining} more decision${remaining===1?"":"s"}</p>` : ""}
             `}
           </article>
         `;
