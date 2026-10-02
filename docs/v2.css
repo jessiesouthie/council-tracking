@@ -1378,3 +1378,44 @@ blockquote.dc-quote footer { font-size: 0.875rem; color: var(--muted); }
 }
 .def-foot { font-size: 0.9375rem; color: var(--muted); max-width: 44rem; padding-top: 18px; border-top: 1px solid var(--line); }
 .df-page .def-group:first-of-type { border-top: 0; padding-top: 4px; }
+
+/* =============================================================================
+   TAXES & BUDGET OVERVIEW (finances.html): the four pages as a numbered chain
+   of cards, in the order the money moves. The page script fills the figure
+   slots ([data-when], [data-fig], [data-fig2]); an empty slot collapses.
+   ========================================================================== */
+.v2-article > section.fin-chain-sec { border-top: 0; padding-top: 0; }
+.v2-article > section > .fin-chain { list-style: none; margin: 0; padding: 0; max-width: 52rem; display: grid; gap: 12px; }
+.fin-chain > li { margin: 0; }
+@media (min-width: 760px) { .fin-chain { grid-template-columns: 1fr 1fr; } }
+.fin-step { position: relative; display: flex; }
+.fin-node {
+  position: absolute; top: 16px; left: 16px; width: 32px; height: 32px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--blue-soft); color: var(--blue);
+  font-size: 0.8125rem; font-weight: 800; font-variant-numeric: tabular-nums; pointer-events: none;
+}
+.fin-step-a {
+  flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 16px 16px 16px 60px;
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--ground);
+  color: var(--ink); text-decoration: none;
+}
+.fin-step-a:hover { border-color: var(--blue); color: var(--ink); }
+.fin-q { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); padding-top: 6px; }
+.fin-when { font-weight: 600; }
+.fin-line { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.fin-name { font-size: 1.375rem; font-weight: 800; letter-spacing: -0.01em; }
+.fin-lead { flex: 1 1 1rem; border-bottom: 2px dotted var(--line); min-width: 1rem; transform: translateY(-4px); }
+.fin-fig { font-size: 1.25rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.fin-fig:empty, .fin-fig2:empty { display: none; }
+.fin-line:has(.fin-fig:empty) .fin-lead { display: none; }
+.fin-sub { display: flex; flex-direction: column; gap: 4px; }
+.fin-blurb { font-size: 0.9375rem; color: var(--ink-2); }
+.fin-fig2 { font-size: 0.875rem; font-weight: 700; color: var(--ink); }
+.fin-go { margin-top: auto; padding-top: 4px; font-size: 0.9375rem; font-weight: 700; color: var(--blue); }
+/* The one page that is a model rather than a republication. */
+.fin-step.is-model .fin-step-a { border-style: dashed; border-color: var(--warn-edge); }
+.fin-step.is-model .fin-node { background: var(--warn-bg); color: var(--warn-fg); }
+.fin-step.is-model .fin-q::after { content: " · Model"; color: var(--warn-fg); }
+.fin-pull { padding: 14px 16px; border-left: 4px solid var(--blue); background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0; font-weight: 600; }
+.fin-more { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+.fin-more a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }
