@@ -45,14 +45,15 @@ from datetime import date
 from pathlib import Path
 
 from . import bodies
-from .nav import nav_links
+from . import chrome_v2 as chrome
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 OUT_DIR = DOCS / "meetings"
 PARSED = ROOT / "data" / "parsed"
 TRANSCRIPTS = DOCS / "transcripts"
-CSS_VERSION = "20261001f"
+# The v2.css tag; nav.test.mjs holds it equal to build_claim_pages.CSS_VERSION.
+CSS_VERSION = "20261002n"
 
 CNAME = DOCS / "CNAME"
 DEFAULT_HOST = "civicrollcall.com"
@@ -303,32 +304,6 @@ def detail_for(meeting: dict) -> dict:
 # the rest of the site is flat, so a relative href would have to climb out of
 # /meetings/ on every link. Same choice 404.html makes, for the same reason.
 
-NAV = """    <header class="topbar">
-      <a class="brand" href="/index.html">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 512 512" focusable="false">
-            <circle class="m-accent" cx="153" cy="153" r="33.5" />
-            <rect class="m-fg" x="220" y="133" width="175" height="41" rx="20.5" />
-            <circle class="m-fg" cx="153" cy="256" r="33.5" />
-            <rect class="m-dim" x="220" y="235" width="144" height="42" rx="21" />
-            <circle class="m-accent" cx="153" cy="358" r="33.5" />
-            <rect class="m-dim" x="220" y="338" width="113" height="41" rx="20.5" />
-          </svg>
-        </span>
-        <div><p class="brand-title">Roll Call</p><p class="city">Eagle Mountain, UT</p></div>
-      </a>
-      <nav class="nav" aria-label="Primary">
-""" + nav_links(root=True, active="meetings.html") + """
-      </nav>
-    </header>
-"""
-
-FOOTER = ('    <footer class="footer"><span>Data from Eagle Mountain CivicClerk '
-          'portal &middot; <a href="/about.html">How this site is built</a>'
-          ' &middot; <a href="/definitions.html">Definitions</a>'
-          "</span></footer>\n")
-
-
 def head(title: str, description: str, canonical: str, extra: str = "") -> str:
     """The <head> these pages share. `canonical` is marked data-fixed so
     site.js leaves it alone — see setCanonical() for why that matters here."""
@@ -341,8 +316,7 @@ def head(title: str, description: str, canonical: str, extra: str = "") -> str:
     <meta name="description" content="{esc(description)}" />
     <link rel="canonical" href="{esc(canonical)}" data-fixed />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
-    <meta name="theme-color" content="#FFFDF8" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#1F231C" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#14202e" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Civic Roll Call" />
     <meta property="og:url" content="{esc(canonical)}" />
@@ -355,19 +329,17 @@ def head(title: str, description: str, canonical: str, extra: str = "") -> str:
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
-    <link rel="preload" href="/fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/fonts.css?v={CSS_VERSION}" />
-    <link rel="stylesheet" href="/site.css?v={CSS_VERSION}" />
+    {chrome.head_assets(CSS_VERSION)}
 {extra}  </head>
-  <body>
-    <a href="#main" class="skip-link">Skip to main content</a>
-{NAV}
+  <body class="v2-legacy v2-mp">
+    <a class="v2-skip" href="#main">Skip to main content</a>
+    {chrome.top("meetings.html")}
 """
 
 
 def tail() -> str:
     return f"""
-{FOOTER}
+    {chrome.bottom("meetings.html")}
     <script src="/site.js?v={CSS_VERSION}"></script>
   </body>
 </html>
@@ -457,8 +429,8 @@ def render_meeting(body: dict, meeting: dict, motions: list[dict],
         description = (f"Motions and roll-call votes from the Eagle Mountain "
                        f"{label} meeting on {when}.")
 
-    parts: list[str] = ['    <main id="main">']
-    parts.append('      <nav class="crumbs" aria-label="Breadcrumb">'
+    parts: list[str] = ['    <main id="main" class="v2-wrap v2-legacy-main mp-main">']
+    parts.append('      <nav class="v2-crumbs" aria-label="Breadcrumb">'
                  '<a href="/meetings.html">All meetings</a>'
                  f'<span aria-hidden="true"> / </span><span>{esc(when)}</span></nav>')
     if meeting.get("type"):
@@ -623,8 +595,8 @@ def render_agenda_only(body: dict, meeting: dict, entry: dict,
         + " The city published no minutes for this meeting."
     )
 
-    parts: list[str] = ['    <main id="main">']
-    parts.append('      <nav class="crumbs" aria-label="Breadcrumb">'
+    parts: list[str] = ['    <main id="main" class="v2-wrap v2-legacy-main mp-main">']
+    parts.append('      <nav class="v2-crumbs" aria-label="Breadcrumb">'
                  '<a href="/meetings.html">All meetings</a>'
                  f'<span aria-hidden="true"> / </span><span>{esc(when)}</span></nav>')
     if entry.get("title"):
@@ -804,8 +776,8 @@ def render_transcript(body: dict, meeting: dict, transcript: dict,
         description = (f"Full transcript of the Eagle Mountain {label} meeting "
                        f"held on {when}.")
 
-    parts: list[str] = ['    <main id="main" class="main-reading">']
-    parts.append('      <nav class="crumbs" aria-label="Breadcrumb">'
+    parts: list[str] = ['    <main id="main" class="v2-wrap v2-legacy-main mp-main mp-read">']
+    parts.append('      <nav class="v2-crumbs" aria-label="Breadcrumb">'
                  '<a href="/meetings.html">All meetings</a>'
                  f'<span aria-hidden="true"> / </span>'
                  f'<a href="/meetings/{esc(slug)}.html">{esc(when)}</a>'

@@ -158,13 +158,17 @@ for (const page of PAGES) {
 
 test("the meeting-page generator emits the same nav", () => {
   const src = read("ingest/build_meeting_pages.py");
-  // It builds NAV by calling nav_links() rather than restating the list, which
-  // is the whole point — assert it still does, and hasn't been forked back into
-  // a literal that can drift.
-  assert.match(src, /from \.nav import nav_links/);
-  assert.match(src, /nav_links\(root=True, active="meetings\.html"\)/);
-  assert.doesNotMatch(src, /<a href="\/tax\.html" data-nav=/,
+  // It takes the redesign's chrome from chrome_v2 rather than restating the
+  // list, which is the whole point — assert it still does, and hasn't been
+  // forked back into a literal that can drift.
+  assert.match(src, /from \. import chrome_v2 as chrome/);
+  assert.match(src, /chrome\.top\("meetings\.html"\)/);
+  assert.match(src, /chrome\.bottom\("meetings\.html"\)/);
+  assert.doesNotMatch(src, /<a href="\/tax\.html"/,
     "build_meeting_pages.py has a hand-written nav link again");
+  const v = (f) => read(f).match(/^CSS_VERSION = "([0-9a-z]+)"/m)?.[1];
+  assert.equal(v("ingest/build_meeting_pages.py"), v("ingest/build_claim_pages.py"),
+    "meeting pages and claim pages link different v2.css versions");
 });
 
 test("the mobile tab bar matches, and fits", () => {
