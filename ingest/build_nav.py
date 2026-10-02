@@ -94,6 +94,8 @@ def targets() -> dict[Path, list[tuple[re.Pattern[str], str, str, tuple[str, str
         if V2_TOP.search(page.read_text(encoding="utf-8")):
             out[page] = [(V2_TOP, chrome_v2.top(page.name), "    ", HTML),
                          (V2_BOTTOM, chrome_v2.bottom(page.name), "    ", HTML)]
+            if page.name == "404.html":
+                out[page].append((FALLBACK_CONTAINER, fallback_list(), "          ", HTML))
             continue
         jobs = [(NAV_CONTAINER, nav_links(root=root), "        ", HTML)]
         if page.name == "404.html":

@@ -3147,3 +3147,8 @@ blockquote.dc-quote footer { font-size: 0.875rem; color: var(--muted); }
   --t-rust: var(--bad-solid); --t-rust-fg: #ffffff; --t-sage: var(--cool-solid); --t-pass: var(--ok-solid);
   --t-r: 8px;
 }
+
+/* ---------- 404 (404.html): the "where to go instead" list ---------- */
+.v2-article > section > #fallback { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; max-width: 46rem; }
+#fallback li { margin: 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius); font-size: 0.9375rem; color: var(--ink-2); }
+#fallback a { font-size: 1.0625rem; font-weight: 700; }
