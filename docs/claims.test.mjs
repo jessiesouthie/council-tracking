@@ -230,7 +230,7 @@ test("every claim renders, and renders its citation", () => {
     assert.ok(out.includes(`data-copy="${c.id}"`), `${c.id}: no copy-link button`);
     // Both halves of the claim: this page's summary as the heading, linked to
     // the claim's own page, and the wording that circulates quoted underneath.
-    assert.ok(out.includes(`${c.id}-h"><a href="/claims/${c.id}.html">${page.__esc(c.summary)}</a></h2>`),
+    assert.ok(out.includes(`${c.id}-h"><a href="/claims/${c.id}.html">${page.__esc(c.summary)}</a></h3>`),
       `${c.id}: heading is not the summary, linked to its page`);
     assert.ok(out.includes(page.__esc(c.claim)), `${c.id}: the claim itself is not quoted on the card`);
     for (const s of c.sources || []) {
@@ -343,18 +343,28 @@ test("every card and every docket row carries what the filter reads", () => {
 });
 
 test("the verdict colors are the ones that clear 4.5:1", () => {
-  // Sage measures 4.41 on white and rust 3.79 on the dark card — both below AA
-  // for text this size. The page defines deepened variants for exactly that
-  // reason, and a revert to the shared tokens would silently drop the verdict —
-  // the most load-bearing label here — under the contrast floor.
-  const css = readFileSync(join(DOCS, "site.css"), "utf8");
-  const block = css.slice(css.indexOf("/* =============================================================================\n   CLAIMS"));
-  assert.match(block, /--cl-sage:/, "the claims page no longer defines its own sage");
-  assert.match(block, /--cl-rust:/, "the claims page no longer defines its own rust");
-  assert.match(block, /\.cl-verdict\.is-bad\s*\{\s*color: var\(--cl-rust\)/,
-    "the 'bad' verdict is back on the low-contrast shared token");
-  assert.match(block, /\.cl-verdict\.is-cool\s*\{\s*color: var\(--cl-sage\)/,
-    "the 'cool' verdict is back on the low-contrast shared token");
+  // The verdict is the most load-bearing label on the page, set small, on its
+  // own tinted pill. Every tone's text has to clear AA on its own background,
+  // in both themes, or a finding drops under the contrast floor unnoticed.
+  assert.match(html, /href="v2\.css\?v=/, "claims.html is no longer on the redesign's stylesheet");
+  assert.doesNotMatch(html, /href="site\.css/, "claims.html links site.css as well");
+  const css = readFileSync(join(DOCS, "v2.css"), "utf8");
+  const lum = (hex) => {
+    const c = hex.match(/[0-9a-f]{2}/gi).map((h) => parseInt(h, 16) / 255)
+      .map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  };
+  const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
+  const light = css.slice(css.indexOf(":root {"));
+  const dark = css.slice(css.indexOf(':root[data-theme="dark"]'));
+  for (const [name, block] of [["light", light], ["dark", dark]]) {
+    for (const t of ["ok", "warn", "bad", "cool"]) {
+      const fg = block.match(new RegExp(`--${t}-fg:\\s*(#[0-9a-f]{6})`, "i"));
+      const bg = block.match(new RegExp(`--${t}-bg:\\s*(#[0-9a-f]{6})`, "i"));
+      assert.ok(fg && bg, `${name}: no --${t}-fg/--${t}-bg in v2.css`);
+      assert.ok(ratio(fg[1], bg[1]) >= 4.5, `${name} ${t}: ${fg[1]} on ${bg[1]} is under 4.5:1`);
+    }
+  }
 });
 
 /* ---------------------------------------------------------------------------
