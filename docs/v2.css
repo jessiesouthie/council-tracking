@@ -1235,6 +1235,9 @@ html.has-modal { overflow: hidden; }
 .v2-article > section > p { font-size: 1.0625rem; }
 .v2-article > section > ul, .v2-article > section > ol { margin: 0; padding-left: 22px; font-size: 1.0625rem; }
 .v2-article > section > ul li, .v2-article > section > ol li { margin-bottom: 10px; }
+.v2-article > section > dl { margin: 0; max-width: 44rem; display: flex; flex-direction: column; gap: 6px; }
+.v2-article > section > dl dt { font-size: 1.0625rem; margin-top: 10px; }
+.v2-article > section > dl dd { margin: 0 0 4px; padding-left: 14px; border-left: 3px solid var(--line); font-size: 1rem; color: var(--ink-2); }
 
 /* "Sources:" under a paragraph or table. Small and muted, but links stay
    tappable and visibly links. */
@@ -1300,3 +1303,78 @@ blockquote.dc-quote footer { font-size: 0.875rem; color: var(--muted); }
   .dc-events time { padding-top: 2px; }
 }
 .dc-open li strong { color: var(--ink); }
+
+/* =============================================================================
+   DEFINITIONS (definitions.html): a glossary built to be scanned. A sticky
+   filter bar (search, live count, a chip per group), numbered groups, and
+   entries with the headword in its own column from 900px up. The page's script
+   un-hides the tools, filters with [hidden] and marks a #term arrival with
+   .is-target.
+   ========================================================================== */
+.df-page { display: flex; flex-direction: column; gap: 24px; padding-top: 22px; padding-bottom: 32px; }
+.df-page [hidden] { display: none !important; }
+.def-hero { display: flex; flex-direction: column; gap: 12px; max-width: 46rem; }
+.def-h1 { font-size: clamp(1.75rem, 6vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.12; }
+.def-lede { font-size: 1.0625rem; color: var(--ink-2); }
+.def-meta { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.875rem; color: var(--muted); }
+.def-meta b { color: var(--ink); font-weight: 800; }
+
+.def-tools {
+  position: sticky; top: 0; z-index: 20; display: flex; flex-direction: column; gap: 8px;
+  margin: 0 calc(-1 * var(--gutter)); padding: 10px var(--gutter);
+  background: var(--ground); border-bottom: 1px solid var(--line);
+}
+.def-tools-row { display: flex; align-items: center; gap: 16px; }
+.def-search { position: relative; flex: 1 1 auto; max-width: 32rem; }
+.def-search-glyph { position: absolute; left: 14px; top: 50%; width: 20px; height: 20px; transform: translateY(-50%); fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; pointer-events: none; }
+.def-input {
+  width: 100%; height: 48px; padding: 0 14px 0 44px; border: 1px solid var(--cool-edge); border-radius: 10px;
+  background: var(--ground); color: var(--ink); font: inherit; font-size: 1rem;
+}
+.def-input:focus-visible { outline: 3px solid var(--blue); outline-offset: 1px; }
+.def-running { display: none; font-size: 0.875rem; font-weight: 700; color: var(--ink-2); white-space: nowrap; }
+.def-running-num { color: var(--muted); margin-right: 8px; font-variant-numeric: tabular-nums; }
+@media (min-width: 900px) { .def-running.is-on { display: block; } }
+.def-count { font-size: 0.8125rem; color: var(--muted); }
+.def-jump { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter); }
+.def-jump::-webkit-scrollbar { display: none; }
+.def-jump a {
+  flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border-radius: 18px;
+  background: var(--surface); color: var(--ink-2); font-size: 0.875rem; font-weight: 600; text-decoration: none; white-space: nowrap;
+}
+.def-jump a:hover { color: var(--blue); }
+.def-jump a b { font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
+.def-jump a.is-empty { opacity: 0.5; }
+.def-empty { font-size: 1.0625rem; padding: 18px; border-radius: var(--radius); background: var(--surface); max-width: 44rem; }
+
+/* Clear the sticky bar when a #group or #term link lands. */
+.def-group, .def { scroll-margin-top: 150px; }
+.def-group { display: flex; flex-direction: column; gap: 6px; padding-top: 22px; border-top: 1px solid var(--line); }
+.def-group-head { display: flex; gap: 14px; align-items: flex-start; max-width: 46rem; margin-bottom: 6px; }
+.def-group-num { font-size: 1.5rem; font-weight: 800; color: var(--cool-edge); line-height: 1.15; font-variant-numeric: tabular-nums; }
+.def-group-head > div { display: flex; flex-direction: column; gap: 6px; }
+.def-group-h { font-size: clamp(1.375rem, 4.5vw, 1.625rem); font-weight: 800; letter-spacing: -0.015em; }
+.def-group-count { display: inline-block; margin-left: 10px; font-size: 0.875rem; font-weight: 600; color: var(--muted); letter-spacing: 0; vertical-align: middle; }
+.def-group-sub { font-size: 1rem; color: var(--ink-2); }
+
+.def-list { margin: 0; }
+.def { display: flex; flex-direction: column; gap: 6px; padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+.def:last-child { border-bottom: 0; }
+.def dt { font-size: 1.125rem; font-weight: 800; line-height: 1.3; }
+.def dd { margin: 0; }
+.def-mark { margin-left: 8px; font-weight: 600; color: var(--muted); text-decoration: none; opacity: 0; }
+.def:hover .def-mark, .def-mark:focus-visible, .def.is-target .def-mark { opacity: 1; }
+.def-body { font-size: 1rem; line-height: 1.6; max-width: 44rem; }
+.def-local { display: block; margin-top: 8px; padding-left: 12px; border-left: 3px solid var(--blue); font-size: 0.9375rem; color: var(--ink-2); }
+.def-see { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; font-size: 0.875rem; }
+.def-see-lab { color: var(--muted); font-weight: 600; margin-right: 2px; }
+.def-see a { display: inline-flex; align-items: center; min-height: 32px; padding: 0 10px; border-radius: 16px; border: 1px solid var(--line); text-decoration: none; font-weight: 600; }
+.def-see a:hover { border-color: var(--blue); }
+.def.is-target { background: var(--blue-soft); margin: 0 calc(-1 * var(--gutter)); padding-left: var(--gutter); padding-right: var(--gutter); border-radius: 0; }
+@media (min-width: 900px) {
+  .def { display: grid; grid-template-columns: 15rem minmax(0, 44rem); column-gap: 32px; row-gap: 8px; }
+  .def dt { grid-row: 1 / span 3; }
+  .def.is-target { margin: 0 -14px; padding-left: 14px; padding-right: 14px; border-radius: var(--radius); }
+}
+.def-foot { font-size: 0.9375rem; color: var(--muted); max-width: 44rem; padding-top: 18px; border-top: 1px solid var(--line); }
+.df-page .def-group:first-of-type { border-top: 0; padding-top: 4px; }
