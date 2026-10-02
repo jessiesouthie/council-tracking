@@ -15,6 +15,24 @@
 
   const configured = !/YOUR-SUBDOMAIN/.test(ENDPOINT);
 
+  // The widget's own stylesheet, resolved beside this script so it works from
+  // /meetings/ and /claims/ as well as the root. The button stays hidden until
+  // the sheet has loaded (or failed), so it never paints as a bare <button>.
+  const SCRIPT_SRC = (document.currentScript && document.currentScript.src) || location.href;
+  let styled = false;
+  const whenStyled = [];
+  (() => {
+    if (document.querySelector("link[data-agent-css]")) { styled = true; return; }
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = new URL("agent.css?v=20261001a", SCRIPT_SRC).href;
+    link.setAttribute("data-agent-css", "");
+    const done = () => { styled = true; whenStyled.splice(0).forEach((f) => f()); };
+    link.addEventListener("load", done);
+    link.addEventListener("error", done);
+    document.head.appendChild(link);
+  })();
+
   // Which body the visitor is currently viewing, so answers can be scoped.
   function currentBody() {
     try {
@@ -96,6 +114,10 @@
         <button type="submit" class="agent-send" aria-label="Send">Send</button>
       </form>`;
 
+    if (!styled) {
+      launcher.hidden = true;
+      whenStyled.push(() => { launcher.hidden = false; });
+    }
     document.body.appendChild(launcher);
     document.body.appendChild(panel);
 

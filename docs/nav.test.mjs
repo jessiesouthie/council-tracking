@@ -28,7 +28,13 @@ const DOCS = fileURLToPath(new URL("./", import.meta.url));
 const ROOT = path.resolve(DOCS, "..");
 const read = (p) => readFileSync(path.join(ROOT, p), "utf8");
 
-const PAGES = readdirSync(DOCS).filter((f) => f.endsWith(".html"));
+const ALL_PAGES = readdirSync(DOCS).filter((f) => f.endsWith(".html"));
+// Pages on the redesign carry their chrome between two wrappers that
+// ingest/build_nav.py fills from ingest/chrome_v2.py. They have no old-style
+// <nav class="nav"> and no dropdown menus, so they get their own checks below.
+const isV2 = (page) => /<div class="v2-chrome" data-chrome="top">/.test(readFileSync(path.join(DOCS, page), "utf8"));
+const V2_PAGES = ALL_PAGES.filter(isV2);
+const PAGES = ALL_PAGES.filter((p) => !isV2(p));
 
 /* ---------------------------------------------------------------------------
    The canonical list, parsed out of ingest/nav.py rather than restated here.
@@ -367,3 +373,37 @@ test("the row fits without the Home pill under 1200px", () => {
   assert.match(css, /\.nav > a\[data-nav="index\.html"\] \{ display: none; \}/,
     "the Home pill no longer steps aside, so the row will overflow under 1200px");
 });
+
+/* ---------------------------------------------------------------------------
+   Redesigned pages (docs/v2.css, ingest/chrome_v2.py)
+   --------------------------------------------------------------------------- */
+
+for (const page of V2_PAGES) {
+  test(`${page} carries the canonical nav in the redesign's header`, () => {
+    const html = read(`docs/${page}`);
+    const head = html.match(/<nav class="v2-nav" aria-label="Main">([\s\S]*?)<\/nav>/);
+    assert.ok(head, `${page} has no v2 header nav: run python -m ingest.build_nav`);
+    const links = asLinks(head[1]);
+    assert.deepEqual(links.map((l) => l.label.replace(/&amp;/g, "&")), NAV.map((i) => i.label));
+    assert.deepEqual(links.map((l) => l.href), NAV.map((i) => `/${i.href}`));
+    assert.ok(links.filter((l) => /aria-current/.test(l.attrs)).length <= 1,
+      `${page}: more than one aria-current in the header`);
+    // A council-only section is marked so site.js can drop it for another body.
+    for (const [i, l] of links.entries()) {
+      assert.equal(/data-nav-body="city-council"/.test(l.attrs), NAV[i].bodyScoped,
+        `${page}: ${l.label} body scoping`);
+    }
+  });
+
+  test(`${page} carries the redesign's tab bar and strip`, () => {
+    const html = read(`docs/${page}`);
+    const bar = html.match(/<nav class="v2-tabbar"[^>]*>([\s\S]*?)<\/nav>/);
+    assert.ok(bar, `${page} has no v2 tab bar`);
+    const labels = [...bar[1].matchAll(/<span>([^<]*)<\/span><\/a>/g)].map((m) => m[1]);
+    assert.deepEqual(labels, TABBAR.map((i) => i.tabLabel));
+    assert.match(html, /class="v2-strip"/, `${page}: no "not run by the city" strip`);
+    assert.match(html, /<a class="v2-skip" href="#main">/, `${page}: no skip link`);
+    assert.match(html, /<main id="main"/, `${page}: no <main id="main">`);
+    assert.doesNotMatch(html, /href="site\.css/, `${page}: links site.css as well as v2.css`);
+  });
+}

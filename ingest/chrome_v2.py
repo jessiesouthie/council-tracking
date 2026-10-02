@@ -71,15 +71,27 @@ def strip() -> str:
             '</div></div>')
 
 
+def _attrs(item: Item, page: str, current: Item | None) -> str:
+    """aria-current on the page itself, a class on its section otherwise (one
+    "you are here" per list), and the body marker site.js reads to drop a
+    council-only section for another board (applyBodyNav)."""
+    out = []
+    if item.href == page:
+        out.append('aria-current="page" class="is-section"')
+    elif current is not None and item.href == current.href:
+        out.append('class="is-section"')
+    if item.body_scoped:
+        out.append('data-nav-body="city-council"')
+    return (" " + " ".join(out)) if out else ""
+
+
 def header(section: str) -> str:
-    """Brand plus the desktop menu. `section` is the page whose section should
-    light up — a fact check passes "claims.html"."""
+    """Brand plus the desktop menu. `section` is the page being built; a page
+    inside a section (a fact check passes "claims.html") lights that section."""
     current = _section_of(section)
     links = []
     for item in NAV:
-        on = current is not None and item.href == current.href
-        cls = ' class="is-section"' if on else ""
-        links.append(f'<a href="/{item.href}"{cls}>{esc(item.label)}</a>')
+        links.append(f'<a href="/{item.href}"{_attrs(item, section, current)}>{esc(item.label)}</a>')
     return ('<header class="v2-header"><div class="v2-wrap">'
             '<a class="v2-brand" href="/index.html">'
             f'{MARK}<span><span class="v2-brand-name">Civic Roll Call</span>'
@@ -92,11 +104,19 @@ def tabbar(section: str) -> str:
     current = _section_of(section)
     links = []
     for item in TABBAR:
-        on = current is not None and item.href == current.href
-        cls = ' class="is-section"' if on else ""
-        links.append(f'<a href="/{item.href}"{cls}>{icon(item.href)}'
+        links.append(f'<a href="/{item.href}"{_attrs(item, section, current)}>{icon(item.href)}'
                      f'<span>{esc(item.tab_label)}</span></a>')
     return f'<nav class="v2-tabbar" aria-label="Main (mobile)">{"".join(links)}</nav>'
+
+
+def top(page: str) -> str:
+    """Everything above <main> on a redesigned page."""
+    return f"{strip()}\n{header(page)}"
+
+
+def bottom(page: str) -> str:
+    """Everything after <main>: the footer, then the phone tab bar."""
+    return f"{footer()}\n{tabbar(page)}"
 
 
 def footer() -> str:

@@ -217,7 +217,7 @@
     if (document.getElementById("ct-agent-js")) return;
     const s = document.createElement("script");
     s.id = "ct-agent-js";
-    s.src = siteUrl("agent.js?v=20260817k");
+    s.src = siteUrl("agent.js?v=20261001a");
     s.defer = true;
     document.body.appendChild(s);
   }
@@ -559,7 +559,7 @@
   }
 
   function mountTabbar() {
-    if (document.querySelector("nav.tabbar")) return;
+    if (document.querySelector("nav.tabbar, nav.v2-tabbar")) return;
     const nav = document.createElement("nav");
     nav.className = "tabbar";
     nav.setAttribute("aria-label", "Primary (mobile)");

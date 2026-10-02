@@ -25,6 +25,7 @@ import re
 import sys
 from pathlib import Path
 
+from ingest import chrome_v2
 from ingest.nav import BEGIN, END, fallback_list, nav_links, tabbar_js
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -33,6 +34,10 @@ DOCS = ROOT / "docs"
 NAV_CONTAINER = re.compile(r'(<nav class="nav" aria-label="Primary">)(.*?)(</nav>)', re.S)
 FALLBACK_CONTAINER = re.compile(r'(<ul id="fallback">)(.*?)(</ul>)', re.S)
 TABBAR_CONTAINER = re.compile(r'(const TABBAR = \[)(.*?)(\];)', re.S)
+# Pages on the redesign (docs/v2.css) carry their chrome in two wrappers, one
+# above <main> and one after it, filled from ingest/chrome_v2.py.
+V2_TOP = re.compile(r'(<div class="v2-chrome" data-chrome="top">)(.*?)(</div><!-- /chrome top -->)', re.S)
+V2_BOTTOM = re.compile(r'(<div class="v2-chrome" data-chrome="bottom">)(.*?)(</div><!-- /chrome bottom -->)', re.S)
 
 # 404.html is served for whatever path was missed, so it cannot use relative
 # hrefs. Everything else in docs/ sits at the site root and can.
@@ -86,6 +91,10 @@ def targets() -> dict[Path, list[tuple[re.Pattern[str], str, str, tuple[str, str
 
     for page in sorted(DOCS.glob("*.html")):
         root = page.name in ROOT_ABSOLUTE
+        if V2_TOP.search(page.read_text(encoding="utf-8")):
+            out[page] = [(V2_TOP, chrome_v2.top(page.name), "    ", HTML),
+                         (V2_BOTTOM, chrome_v2.bottom(page.name), "    ", HTML)]
+            continue
         jobs = [(NAV_CONTAINER, nav_links(root=root), "        ", HTML)]
         if page.name == "404.html":
             jobs.append((FALLBACK_CONTAINER, fallback_list(), "          ", HTML))
