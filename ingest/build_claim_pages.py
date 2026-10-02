@@ -43,7 +43,7 @@ OUT_DIR = DOCS / "claims"
 OG_DIR = OUT_DIR / "og"
 MEETINGS = DOCS / "meetings"
 FONTS = Path(__file__).resolve().parent / "assets" / "fonts"
-CSS_VERSION = "20261002d"
+CSS_VERSION = "20261002e"
 BASE = "https://civicrollcall.com"
 
 MONTHS = ("January", "February", "March", "April", "May", "June", "July",

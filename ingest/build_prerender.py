@@ -393,7 +393,7 @@ CONTAINERS = {
     # The roster's cards are built from <span>s, not <div>s, precisely so this
     # non-greedy close lands on the container and not on the first card.
     "members.html": re.compile(r'(<ul id="roster" class="rc-roster">)(.*?)(</ul>)', re.S),
-    "motions.html": re.compile(r'(<div id="rows">)(.*?)(</div>)', re.S),
+    "motions.html": re.compile(r'(<div id="rows"[^>]*>)(.*?)(</div>)', re.S),
 }
 
 INDENTS = {"meetings.html": "      ", "members.html": "        ",

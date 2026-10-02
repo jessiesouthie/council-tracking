@@ -260,7 +260,7 @@ test("each section page carries its section's sub-nav", () => {
     for (const child of item.children) {
       const html = read(`docs/${child.href}`);
       const block = html.match(
-        new RegExp(`<nav class="subnav" aria-label="${item.label} section">([\\s\\S]*?)</nav>`)
+        new RegExp(`<nav class="(?:v2-)?subnav" aria-label="${item.label} section">([\\s\\S]*?)</nav>`)
       );
       assert.ok(block, `${child.href} has no "${item.label} section" sub-nav`);
 
