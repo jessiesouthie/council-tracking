@@ -25,7 +25,7 @@
     if (document.querySelector("link[data-agent-css]")) { styled = true; return; }
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = new URL("agent.css?v=20261001a", SCRIPT_SRC).href;
+    link.href = new URL("agent.css?v=20261003a", SCRIPT_SRC).href;
     link.setAttribute("data-agent-css", "");
     const done = () => { styled = true; whenStyled.splice(0).forEach((f) => f()); };
     link.addEventListener("load", done);
@@ -120,6 +120,18 @@
     }
     document.body.appendChild(launcher);
     document.body.appendChild(panel);
+
+    // Tuck the launcher away while the reader scrolls down; bring it back on
+    // the way up or at the end of the page. Only the phone layout (agent.css)
+    // moves it, so this is harmless on a wide screen.
+    let lastY = window.scrollY;
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY;
+      const atEnd = window.innerHeight + y >= document.documentElement.scrollHeight - 40;
+      if (Math.abs(y - lastY) < 8 && !atEnd) return;
+      launcher.classList.toggle("is-tucked", y > lastY && y > 120 && !atEnd);
+      lastY = y;
+    }, { passive: true });
 
     const log = panel.querySelector(".agent-log");
     const form = panel.querySelector(".agent-form");

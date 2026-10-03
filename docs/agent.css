@@ -205,6 +205,20 @@
   .agent-typing i { animation: none; }
 }
 
+/* On a phone the launcher is a round icon, not a pill, and it slides out of
+   the way while the reader scrolls down (agent.js sets .is-tucked), so it
+   doesn't sit on top of the text being read. It comes back on any scroll up. */
+@media (max-width: 899px) {
+  .agent-launcher { right: 12px; width: 52px; height: 52px; padding: 0; justify-content: center; }
+  .agent-launcher span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .agent-launcher svg { width: 22px; height: 22px; }
+  .agent-launcher.is-tucked { transform: translateY(calc(100% + 90px)); }
+}
+@media (max-width: 899px) and (prefers-reduced-motion: no-preference) {
+  .agent-launcher { transition: transform 200ms ease-out; }
+  .agent-launcher.is-tucked { transition-timing-function: ease-in; transition-duration: 140ms; }
+}
+
 /* A redesigned page (v2.css) shows its tab bar up to 899px, not 760px. */
 @media (min-width: 761px) and (max-width: 899px) {
   body:has(.v2-tabbar) .agent-launcher,

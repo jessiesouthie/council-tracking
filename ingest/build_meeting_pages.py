@@ -53,7 +53,7 @@ OUT_DIR = DOCS / "meetings"
 PARSED = ROOT / "data" / "parsed"
 TRANSCRIPTS = DOCS / "transcripts"
 # The v2.css tag; nav.test.mjs holds it equal to build_claim_pages.CSS_VERSION.
-CSS_VERSION = "20261002n"
+CSS_VERSION = "20261003a"
 
 CNAME = DOCS / "CNAME"
 DEFAULT_HOST = "civicrollcall.com"
@@ -531,6 +531,36 @@ def render_meeting(body: dict, meeting: dict, motions: list[dict],
     return "\n".join(parts), title, description
 
 
+_SMALL = {"a", "an", "and", "as", "at", "but", "by", "for", "from", "in", "into", "of",
+          "on", "or", "the", "to", "with", "vs", "via"}
+_KEEP_UPPER = {"rda", "cda", "cup", "hoa", "llc", "fy", "udot", "mag", "ii", "iii", "iv",
+               "usa", "ada", "ems", "pd", "pud", "sid", "cip", "gis", "hr", "rfp", "rfq",
+               "ccrs", "cc&rs", "mda", "ldc", "uia", "ucc"}
+
+
+def calm_caps(text: str) -> str:
+    """The city types many agenda headings in capitals. Shouting reads as
+    alarm on a phone and is slower to read, so an all-capitals heading is set
+    in title case; anything already in mixed case is the city's own and is
+    left alone. Short acronyms and anything with a digit keep their capitals."""
+    letters = [c for c in text if c.isalpha()]
+    if len(letters) < 4 or sum(c.isupper() for c in letters) / len(letters) < 0.85:
+        return text
+
+    def word(w: str, first: bool) -> str:
+        core = w.strip("()[]\"'.,:;")
+        low = core.lower()
+        if any(c.isdigit() for c in core) or low in _KEEP_UPPER:
+            return w
+        if low in _SMALL and not first:
+            return w.lower()
+        return "-".join("/".join(part[:1].upper() + part[1:].lower() for part in piece.split("/"))
+                        for piece in w.split("-")) if not w[:1] in "(\"'" else w[:1] + word(w[1:], first)
+
+    words = text.split(" ")
+    return " ".join(word(w, i == 0) if w else w for i, w in enumerate(words))
+
+
 def render_agenda(entry: dict) -> list[str]:
     """The posted agenda, as the only account of a meeting that has no other.
 
@@ -549,10 +579,10 @@ def render_agenda(entry: dict) -> list[str]:
         session = head.get("session")
         if session and session != current and session in sessions:
             s = sessions[session]
-            parts.append(f'        <h3 class="mp-session">{esc(s["label"])}'
+            parts.append(f'        <h3 class="mp-session">{esc(calm_caps(s["label"]))}'
                          f' &middot; {esc(s["start_label"])}</h3>')
             current = session
-        title = head.get("title") or ""
+        title = calm_caps(head.get("title") or "")
         cls = "mp-ag-head muted" if head.get("procedural") else "mp-ag-head"
         parts.append(f'        <h3 class="{cls}">'
                      f'<span class="mono muted">{esc(head.get("number"))}.</span> '
@@ -563,18 +593,22 @@ def render_agenda(entry: dict) -> list[str]:
             continue
         parts.append('        <ul class="mp-ag-items">')
         for item in head["items"]:
-            bits = [f'<span class="mono muted">{esc(item.get("number"))}</span>']
+            # Number in its own column; the kind of item (a hearing, a
+            # discussion with no vote) on a line of its own above the title,
+            # so a long tag never wraps into the middle of the title.
+            bits = []
             if item.get("kind"):
                 bits.append(f'<span class="ag-kind">{esc(item["kind"].title())}</span>')
             if item.get("plain"):
                 bits.append(f'<span class="mp-ag-plain">{esc(item["plain"])}</span>'
                             f'<span class="muted mp-ag-official">'
-                            f'{esc(item.get("title"))}</span>')
+                            f'{esc(calm_caps(item.get("title") or ""))}</span>')
             else:
-                bits.append(esc(item.get("title")))
+                bits.append(esc(calm_caps(item.get("title") or "")))
             if item.get("time"):
                 bits.append(f'<span class="muted">({esc(item["time"])})</span>')
-            parts.append("          <li>" + " ".join(bits) + "</li>")
+            parts.append(f'          <li><span class="mono muted mp-ag-num">{esc(item.get("number"))}</span>'
+                         f'<span class="mp-ag-body">{" ".join(bits)}</span></li>')
         parts.append("        </ul>")
     parts.append("      </section>")
     return parts
@@ -588,7 +622,7 @@ def render_agenda_only(body: dict, meeting: dict, entry: dict,
     label = body["label"]
     title = f"{label}, {when} — Eagle Mountain"
     heads = [h for h in (entry.get("agenda") or []) if not h.get("procedural")]
-    topics = "; ".join(h["title"].title() for h in heads[:3] if h.get("title"))
+    topics = "; ".join(calm_caps(h["title"]) for h in heads[:3] if h.get("title"))
     description = (
         f"The posted agenda for the Eagle Mountain {label} meeting on {when}"
         + (f": {topics}." if topics else ".")

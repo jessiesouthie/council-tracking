@@ -217,7 +217,7 @@
     if (document.getElementById("ct-agent-js")) return;
     const s = document.createElement("script");
     s.id = "ct-agent-js";
-    s.src = siteUrl("agent.js?v=20261002a");
+    s.src = siteUrl("agent.js?v=20261003a");
     s.defer = true;
     document.body.appendChild(s);
   }
@@ -703,9 +703,19 @@
     const pick = document.createElement("span");
     pick.className = "v2-body-pick";
     pick.append(lab, sel);
-    end.appendChild(pick);
     if (what) end.appendChild(what);
     strip.appendChild(end);
+    // Wide screens keep it in the strip (the header menu has no room at
+    // 900–1100px). A phone has no header menu, so it sits beside the brand
+    // there and the strip stays one line.
+    const header = document.querySelector(".v2-header .v2-wrap");
+    const wide = window.matchMedia("(min-width: 900px)");
+    const place = () => {
+      if (wide.matches || !header) end.prepend(pick);
+      else header.appendChild(pick);
+    };
+    place();
+    wide.addEventListener("change", place);
   }
 
   // The bare noun a body goes by in prose — "council", "commission", "board".

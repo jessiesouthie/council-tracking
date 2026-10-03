@@ -38,9 +38,11 @@ _ICON = {
 }
 _DEFAULT_ICON = '<circle cx="12" cy="12" r="8"/>'
 
+# A roll call: three names, each with its vote ticked off.
 MARK = ('<span class="v2-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" '
-        'stroke="#fff" stroke-width="2.4" stroke-linecap="round">'
-        '<path d="M5 7h0M9 7h10M5 12h0M9 12h8M5 17h0M9 17h6"/></svg></span>')
+        'stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'
+        '<path d="M4 6.5l1.6 1.6L8.5 5M4 12.5l1.6 1.6 2.9-3.1M4 18.5l1.6 1.6 2.9-3.1'
+        'M12 7h8M12 13h6M12 19h7"/></svg></span>')
 
 
 def icon(href: str) -> str:
@@ -65,8 +67,11 @@ def head_assets(css_version: str) -> str:
 
 def strip() -> str:
     return ('<div class="v2-strip"><div class="v2-wrap">'
-            '<span>An independent record of Eagle Mountain city government, kept by a resident. '
-            '<strong>Not run by the city.</strong></span>'
+            # The long sentence on wider screens; on a phone the strip keeps to
+            # one line so the page itself starts higher up.
+            '<span><span class="v2-strip-long">An independent record of Eagle Mountain city '
+            'government, kept by a resident. </span><span class="v2-strip-short">Kept by a '
+            'resident. </span><strong>Not run by the city.</strong></span>'
             '<a href="/about.html">What is this?</a>'
             '</div></div>')
 
