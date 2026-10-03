@@ -21,7 +21,7 @@
     <link rel="icon" href="icons/icon-192.png" />
     <link rel="preload" href="fonts/public-sans-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20261001a" />
-    <link rel="stylesheet" href="v2.css?v=20261003a" />
+    <link rel="stylesheet" href="v2.css?v=20261003b" />
 
     <!-- The list view. A single meeting (?id=) adds its own Event node from
          site.js once the record is in hand — see the foot of this page. -->
@@ -380,7 +380,7 @@
           <div class="toolbar">
             <label for="q" class="v2-sr">Search meetings</label><input id="q" class="input" type="search" placeholder="Search by date or what was decided" autocomplete="off" />
             <select id="year" class="select" aria-label="Filter by year">${yearOpts}</select>
-            <span id="result-count" class="muted nowrap" style="font-size:13px" aria-live="polite"></span>
+            <span id="result-count" class="muted nowrap" style="font-size:var(--fs-sm)" aria-live="polite"></span>
           </div>
           <div id="grid"></div>
           <div id="more" class="meeting-more"></div>
@@ -803,7 +803,7 @@
           const sp = voteSplit(mo);
           const splitTxt = (mo.votes||[]).length
             ? `<span class="mono muted" title="${sp.y} yes · ${sp.n} no${sp.o?` · ${sp.o} other`:''}">${sp.y}-${sp.n}${sp.o?`-${sp.o}`:''}</span>`
-            : '<span class="muted" style="font-size:11px">no roll call</span>';
+            : '<span class="muted" style="font-size:var(--fs-xs)">no roll call</span>';
           // (Tag chips removed from the preview list to keep rows scannable;
           // full tag set is on the meeting detail page.)
           return `
@@ -821,10 +821,10 @@
           ? `<span class="tx-badge" title="Full audio transcript + summary from the recording">🎙 Transcript</span>`
           : "";
         const countsLine = meeting.transcript_only
-          ? `<div class="muted" style="font-size:12px">Recording available · official minutes pending</div>`
+          ? `<div class="muted" style="font-size:var(--fs-xs)">Recording available · official minutes pending</div>`
           : meeting.agenda_only
-          ? `<div class="muted" style="font-size:12px">Agenda only${meeting.agenda_items ? ` · ${meeting.agenda_items} item${meeting.agenda_items===1?"":"s"}` : ""}</div>`
-          : `<div class="muted" style="font-size:12px">${meeting.motion_count ? `${meeting.motion_count} decision${meeting.motion_count===1?"":"s"} on record` : "No votes on record"}</div>`;
+          ? `<div class="muted" style="font-size:var(--fs-xs)">Agenda only${meeting.agenda_items ? ` · ${meeting.agenda_items} item${meeting.agenda_items===1?"":"s"}` : ""}</div>`
+          : `<div class="muted" style="font-size:var(--fs-xs)">${meeting.motion_count ? `${meeting.motion_count} decision${meeting.motion_count===1?"":"s"} on record` : "No votes on record"}</div>`;
         const emptyBody = meeting.transcript_only
           ? '<p class="muted" style="margin:8px 0 0">The city has not published minutes yet. Open it for a summary written from the meeting recording.</p>'
           : meeting.agenda_only
@@ -843,7 +843,7 @@
             </header>
             ${motions.length === 0 ? emptyBody : `
               <ul class="motion-line-list">${items}</ul>
-              ${remaining > 0 ? `<p class="muted" style="margin:8px 0 0;font-size:12px">+ ${remaining} more decision${remaining===1?"":"s"}</p>` : ""}
+              ${remaining > 0 ? `<p class="muted" style="margin:8px 0 0;font-size:var(--fs-xs)">+ ${remaining} more decision${remaining===1?"":"s"}</p>` : ""}
             `}
           </article>
         `;
@@ -965,7 +965,7 @@
             <section class="section">
               <h2>Ordinance mentions (${detail.ordinances.length})</h2>
               <details><summary class="muted" style="cursor:pointer">Show lines</summary>
-                <ul style="list-style:none;padding:0;margin-top:6px;font-size:13px">
+                <ul style="list-style:none;padding:0;margin-top:6px;font-size:var(--fs-sm)">
                 ${detail.ordinances.map(o => `<li style="padding:3px 0;border-bottom:1px dashed var(--border)"><span class="mono muted">p.${o.page}</span> ${CT.escapeHtml(o.line_text)}</li>`).join("")}
                 </ul>
               </details>
@@ -974,7 +974,7 @@
             <section class="section">
               <h2>Resolution mentions (${detail.resolutions.length})</h2>
               <details><summary class="muted" style="cursor:pointer">Show lines</summary>
-                <ul style="list-style:none;padding:0;margin-top:6px;font-size:13px">
+                <ul style="list-style:none;padding:0;margin-top:6px;font-size:var(--fs-sm)">
                 ${detail.resolutions.map(o => `<li style="padding:3px 0;border-bottom:1px dashed var(--border)"><span class="mono muted">p.${o.page}</span> ${CT.escapeHtml(o.line_text)}</li>`).join("")}
                 </ul>
               </details>
