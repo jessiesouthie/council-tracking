@@ -563,10 +563,10 @@
       "ruling": "The break is real and the council was a party to it, but the $150 million was granted by five taxing entities together and Eagle Mountain City's own line is about six cents of every dollar, roughly $9 million of it. What the claim leaves out cuts both ways: the deals struck since 2018 are worth several times $150 million, and the city's share of the newest one alone is larger than twenty years of the tax increase.",
       "seen": "Eagle Mountain City Tax Referendum Facebook group, August 2026; and twice in public comment at the 6 August hearing",
       "checked": "2026-08-21",
-      "true_part": "The 2018 deal is in the city's own minutes, in plain language. On 15 May 2018 the council adopted the Sweetwater Industrial Park Community Reinvestment Area #1 plan for a 487-acre data center, and staff told it exactly what the company had asked for: 80% of the real property taxes and 100% of the personal property taxes returned to it, against an investment of $750 million. The vote was unanimous (Burnham, Clark, Curtis, Gricius and Reaves), and the same evening the term in the interlocal agreement was changed from twenty years to forty. Melissa Clark, who voted for it, was on the dais for the 6 August hearing. Nor did it stop there: the council adopted Sweetwater #2 in March 2021, #3 in April 2023, and #4 on 5 November 2025 by four votes to one.",
+      "true_part": "The 2018 deal is in the city's own minutes, in plain language. On 15 May 2018 the council adopted the Sweetwater Industrial Park Community Reinvestment Area #1 plan for a 487-acre data center, and staff told it exactly what the company had asked for: 80% of the real property taxes and 100% of the personal property taxes returned to it, against an investment of $750 million. The vote was unanimous (Burnham, Clark, Curtis, Gricius and Reaves), and the same evening the council set the duration of the tax increment agreement at forty years. Melissa Clark, who voted for it, was on the dais for the 6 August hearing. Nor did it stop there: the council adopted Sweetwater #2 in March 2021, #3 in April 2023, and #4 on 5 November 2025 by four votes to one.",
       "wrong_part": "The $150 million was never the city's to spend. Five taxing entities signed those interlocals, and the only per-entity splits the city has ever published, the hearing notices for project areas #3 and #4, put Eagle Mountain City at 6.3% and 6.0% of the money, against 63% for Alpine School District. At that share the city's part of a $150 million break is about $9 million spread across the life of the agreement. And it is increment rather than cash: it is levied on value that did not exist before, on ground the 2018 minutes record as paying $66 a year in property tax across all entities, $6 of it Eagle Mountain's.",
       "detail": [
-        "Two details in the version spoken at the hearing are worth separating. The percentage is not the 77% quoted from the floor; the minutes state 80% of the real property tax and 100% of the personal property tax. The forty years is right, and it is the part most worth knowing: the request was presented to the council as a twenty-year incentive, and the interlocal was amended to forty the same night, which is the maximum state law allows.",
+        "Two details in the version spoken at the hearing are worth separating. The percentage is not the 77% quoted from the floor; the minutes state 80% of the real property tax and 100% of the personal property tax. The forty years is half right. Each phase of Meta's campus is rebated for twenty years: Utah County's report shows the first phase paid 2021 to 2040 and the second 2023 to 2042. What the council set at forty that night, the most state law allows, is how long the agreement can keep paying, so a phase that starts later still runs its own twenty years. Meta's 2025 expansion, project area #4, works the same way with its own forty-year clock that has not started yet, and its agreements set no limit on the number of phases.",
         "The counterweight is audited and sits in the city's own annual report. Stadion, LLC, the company known as Meta, is the largest property taxpayer in Eagle Mountain at $305,404,041 of taxable value, 15.63% of everything taxable in the city, and that is with 80% of its real property rebated. In the year to 30 June 2024 the Redevelopment Agency took in $9,746,126 of Sweetwater increment and paid $9,546,141 of it back out.",
         "The strongest version of this argument is bigger than the number it is usually made with, and the city published it itself. Eagle Mountain's own line on project area #4 (noticed in January at $778,540,678 across the five entities) is $46,857,489, which is about twenty-two years of what the new rate raises above the certified rate. Against that sits what the same notice says of the same money: it is generated “only if the Project Area is developed”. Whether these buildings would have gone up without the incentive is the argument, and it is not something the record can settle."
       ],
@@ -607,6 +607,24 @@
           "doc": {
             "title": "Eagle Mountain City Council minutes, 2018 (15 May, pp. 146–150 and 157–158 of the PDF)",
             "url": "https://eaglemountain.gov/wp-content/uploads/2026/04/cc-minutes-2018.pdf"
+          }
+        },
+        {
+          "date": "2024-03-07",
+          "speaker": "Utah County's year-end report on the agency's project areas, tax year 2023",
+          "note": "Lists two Meta phases in project area #1: “Sweetwater #1 Community Reinvestment Area”, trigger year 2021 and end year 2040, and “Sweetwater #1 - Phase 2 - Bldg Only”, trigger year 2023 and end year 2042. Twenty years each.",
+          "doc": {
+            "title": "Utah County Auditor, 2023 Report 700 for Eagle Mountain",
+            "url": "https://www.utahcounty.gov/Dept/auditor/TaxAdmin/Forms/2023%20Report%20700%20-%20Eagle%20Mountain.pdf"
+          }
+        },
+        {
+          "date": "2025-11-05",
+          "speaker": "The interlocal agreements for project area #4",
+          "note": "The city's, county's and fire district's agreements each pay the agency “for each Phase for an initial period of twenty (20) full calendar years”, and “the Agency will no longer be entitled to receive tax increment on any Phase after the fortieth year following the trigger year of the first Increment Period.” The city's share is capped at $7,773,762 per phase and $46,642,572 for all phases. The water district's agreement stops all payments twenty years after the first phase.",
+          "doc": {
+            "title": "Redevelopment Agency packet, 5 November 2025",
+            "url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1534,plainText=false)"
           }
         },
         {
