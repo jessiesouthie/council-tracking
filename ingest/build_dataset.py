@@ -31,6 +31,8 @@ Schema of each docs/data*.json:
        significance,               # "notable"|"routine" — drives how the site ranks
                                    # and de-emphasizes items. All absent for motions
                                    # not summarized yet.
+       lead,                       # true on a hand-picked main decision of the
+                                   # night; sorts first on the meeting card
        raw_voters:[{name,vote}]    # only names that failed to resolve
       }
     ],
@@ -252,7 +254,7 @@ def build_one(body: dict, only: str | None = None) -> int:
             # survives the motion-id renumbering a back-filled PDF would cause.
             plain = motion_plain.get(summarize_motions.motion_key(entry))
             if plain:
-                for field in ("headline", "summary", "impact", "significance"):
+                for field in ("headline", "summary", "impact", "significance", "lead"):
                     if plain.get(field):
                         entry[field] = plain[field]
             if unresolved:

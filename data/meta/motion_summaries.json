@@ -599,7 +599,8 @@
       "headline": "City property tax revenue up 69.81%",
       "summary": "The council set the property tax rate at 0.000900, above the certified rate of 0.000530, raising city property tax revenue about $2.13 million, or 69.81%, over last year.",
       "impact": "If you own property in Eagle Mountain, the city share of your next bill goes up. That 69.81% counts existing property only, so new homes being built does not explain it.",
-      "significance": "notable"
+      "significance": "notable",
+      "lead": true
     },
     "3301b51649590e11": {
       "headline": "Noise rule change pulled before a vote",
@@ -1400,9 +1401,9 @@
       "significance": "routine"
     },
     "72fde0ed6104cf51": {
-      "headline": "Vote on item 16.A property chart",
-      "summary": "Item 16.A came to a vote on the terms of a chart of affected properties; the record does not show what the item covers or how it ended.",
-      "impact": "Without a description or a result in the record, there is nothing here we can tell you about your own property. The chart in the meeting packet is the place to check.",
+      "headline": "Scenic Mountain rezone motion replaced before the vote",
+      "summary": "Councilmember Whiting moved to approve the Scenic Mountain rezone (item 16.A) according to the chart of affected properties. Before a vote he took up Councilmember Wright's substitute wording, which named the general plan change and the rezoning map separately, and that version passed 5-0.",
+      "impact": "No vote was taken on this wording. The decision that counts is the substitute motion, which moved about 200 Scenic Mountain parcels off zones that no longer exist in city code.",
       "significance": "routine"
     },
     "734dfd285cc9605e": {
@@ -1871,7 +1872,8 @@
       "headline": "Earlier tax increase repealed",
       "summary": "Eagle Mountain repealed the property tax increase above the certified rate that it had adopted for 2026-27, clearing the way for a replacement rate set the same night.",
       "impact": "This wipes the earlier increase off the books. Read it alongside the rate the council adopted afterward, which is the one that reaches your bill.",
-      "significance": "notable"
+      "significance": "notable",
+      "lead": true
     },
     "9a23406c979c5088": {
       "headline": "Adam Jacobs joins the library board",
@@ -1886,9 +1888,9 @@
       "significance": "notable"
     },
     "9a7ea80a7ff998ff": {
-      "headline": "Property tax raised to collect $5.6M more",
-      "summary": "The council set the city property tax rate at 0.001500 for the coming year, nearly triple the certified rate of 0.000530, raising about $5.6 million in added revenue.",
-      "impact": "Every property owner in Eagle Mountain pays more, with the city's share of the bill up 183% before new growth. The school and county lines on your tax notice are set by others and are untouched.",
+      "headline": "Property tax raised to collect $5.6M more (repealed Aug 18)",
+      "summary": "The council set the city property tax rate at 0.001500 for the coming year, nearly triple the certified rate of 0.000530, raising about $5.6 million in added revenue. On August 18 the council repealed this rate and adopted 0.000900 instead.",
+      "impact": "This rate never reached a tax bill: it was repealed twelve days later. The rate in force for 2026-27 is the 0.000900 set on August 18, which raises the city's property tax revenue 69.81% before new growth.",
       "significance": "notable"
     },
     "9ac9c33945e1ee9d": {
@@ -2404,7 +2406,7 @@
     "c91caf5c91462471": {
       "headline": "$3.5M cut from next year's city budget",
       "summary": "The council adopted the 2026-27 budget after stripping $1 million for the rodeo grounds and $2.5 million for buying land, covering the rest from reserves.",
-      "impact": "Rodeo grounds money and the land purchase are off the table for the year ahead. What remains gets paid out of the city's savings rather than from new revenue.",
+      "impact": "Rodeo grounds money and the land purchase are off the table for the year ahead. The gap left by the lower tax rate, about $1.1 million after those cuts, comes out of the city's reserves.",
       "significance": "notable"
     },
     "ca8575974ec16800": {
@@ -2930,9 +2932,9 @@
       "significance": "notable"
     },
     "f536bfdaf55667cd": {
-      "headline": "Zoning changed on a list of properties",
-      "summary": "The council approved general plan and zoning changes for the properties listed on a chart, with each parcel rezoned according to the proposed rezoning map.",
-      "impact": "Owners of the listed parcels, and their neighbors, are the people this reaches: what can be built there changes. The record names a chart rather than addresses, so check the meeting packet for your parcel.",
+      "headline": "Scenic Mountain parcels moved to current zones",
+      "summary": "The council rezoned about 200 parcels in the Scenic Mountain area that still carried zones no longer in the city code, and amended the general plan map to match. Staff said most of the area the map showed as commercial appears to be state road right-of-way.",
+      "impact": "If you own property in Scenic Mountain, your lot now falls under a current zone, so staff can answer setback and building questions from today's code. The chart of affected properties in the meeting packet lists each parcel's old and new zone.",
       "significance": "notable"
     },
     "f63342b5e7e2ce67": {

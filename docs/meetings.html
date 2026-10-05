@@ -71,9 +71,9 @@
       <ul class="pre-list">
         <li><a href="/meetings/2026-09-01-city-council-716.html">1 September 2026</a> <span class="muted">7 motions · 10 ordinance lines · 3 resolution lines</span><span class="pre-heads">New city code chapter on property tax allocations</span></li>
         <li><a href="/meetings/2026-08-26-city-council-900826.html">26 August 2026</a> <span class="muted">1 motion · 0 ordinance lines · 3 resolution lines</span><span class="pre-heads">City protests Cedar Fort annexation of Red Cedar land</span></li>
-        <li><a href="/meetings/2026-08-18-city-council-728.html">18 August 2026</a> <span class="muted">15 motions · 9 ordinance lines · 19 resolution lines</span><span class="pre-heads">Overland development agreement amended again</span></li>
+        <li><a href="/meetings/2026-08-18-city-council-728.html">18 August 2026</a> <span class="muted">15 motions · 9 ordinance lines · 19 resolution lines</span><span class="pre-heads">City property tax revenue up 69.81%</span></li>
         <li><a href="/meetings/2026-08-10-city-council-756.html">10 August 2026</a> <span class="muted">1 motion · 0 ordinance lines · 2 resolution lines</span><span class="pre-heads">Federal housing grant plan sent to Washington</span></li>
-        <li><a href="/meetings/2026-08-06-city-council-747.html">6 August 2026</a> <span class="muted">1 motion · 0 ordinance lines · 2 resolution lines</span><span class="pre-heads">Property tax raised to collect $5.6M more</span></li>
+        <li><a href="/meetings/2026-08-06-city-council-747.html">6 August 2026</a> <span class="muted">1 motion · 0 ordinance lines · 2 resolution lines</span><span class="pre-heads">Property tax raised to collect $5.6M more (repealed Aug 18)</span></li>
         <li><a href="/meetings/2026-08-04-city-council-715.html">4 August 2026</a> <span class="muted">6 motions · 5 ordinance lines · 0 resolution lines</span><span class="pre-heads">Road plan adds E 1000 N, drops Canyon Wash link</span></li>
         <li><a href="/meetings/2026-07-30-city-council-755.html">30 July 2026</a> <span class="muted">0 motions · 0 ordinance lines · 0 resolution lines</span></li>
         <li><a href="/meetings/2026-07-21-city-council-727.html">21 July 2026</a> <span class="muted">7 motions · 8 ordinance lines · 7 resolution lines</span><span class="pre-heads">Triumph subdivision deal adds 53 affordable homes</span></li>
@@ -793,7 +793,10 @@
             .filter(Boolean).join(" ").toLowerCase().includes(query) ? 0 : 1;
           ordered = [...motions].sort((a,b) => hit(a) - hit(b));
         } else {
-          ordered = [...motions].sort((a,b) => (CT.isNotable(b) ? 1 : 0) - (CT.isNotable(a) ? 1 : 0));
+          // A hand-set `lead` (the night's main decision) goes first, then the rest
+          // of the notable ones, so the preview can't crowd out a tax vote.
+          const rank = (m) => m.lead ? 0 : CT.isNotable(m) ? 1 : 2;
+          ordered = [...motions].sort((a,b) => rank(a) - rank(b));
         }
         const PREVIEW = 5;
         const preview = ordered.slice(0, PREVIEW);

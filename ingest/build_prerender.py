@@ -121,7 +121,8 @@ def render_meetings(data: dict, body_id: str = "city-council") -> str:
         motions = by_meeting.get(mid) or []
         # Decisions that reach residents first, the same ordering the card uses.
         motions = sorted(motions,
-                         key=lambda m: 0 if m.get("significance") == "notable" else 1)
+                         key=lambda m: 0 if m.get("lead") else
+                         1 if m.get("significance") == "notable" else 2)
         heads = [m["headline"] for m in motions
                  if m.get("headline")][:HEADLINES_PER_MEETING]
 

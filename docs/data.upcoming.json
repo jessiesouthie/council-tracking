@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T19:56:11Z",
+  "generated_at": "2026-10-05T17:49:35Z",
   "source": "Eagle Mountain CivicClerk portal",
   "timezone": "America/Denver",
   "bodies": {
@@ -12,11 +12,447 @@
         "start_label": "4:00 PM",
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/717/overview",
-        "agenda_posted": false,
-        "agenda_posted_on": "",
-        "agenda_url": "",
-        "sessions": [],
-        "agenda": []
+        "agenda_posted": true,
+        "agenda_posted_on": "2026-10-01",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2980,plainText=false)",
+        "sessions": [
+          {
+            "start": "16:00",
+            "start_label": "4:00 PM",
+            "label": "Work Session",
+            "public_comment": false
+          },
+          {
+            "start": "19:00",
+            "start_label": "7:00 PM",
+            "label": "Policy Session",
+            "public_comment": true
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "DISCUSSION AND INFORMATION ITEMS",
+            "note": "This is an opportunity to provide information to the City Council. These items are for information only and do not require action by the City Council.",
+            "session": "16:00",
+            "group": null,
+            "items": [
+              {
+                "number": "1.A",
+                "kind": "DISCUSSION",
+                "title": "RV Parking Code Amendment",
+                "time": "20 minutes",
+                "background": "",
+                "plain": "Staff will discuss a possible change to the city's rules on where RVs can be parked."
+              },
+              {
+                "number": "1.B",
+                "kind": "DISCUSSION",
+                "title": "Overview of UFA/UFSA",
+                "time": "30 minutes",
+                "background": "",
+                "plain": "The council will hear an overview of the Unified Fire Authority and Unified Fire Service Area, the fire agencies listed as UFA/UFSA on the agenda."
+              },
+              {
+                "number": "1.C",
+                "kind": "DISCUSSION",
+                "title": "Chaplain Services",
+                "time": "10 minutes",
+                "background": "",
+                "plain": "The council will discuss chaplain services."
+              },
+              {
+                "number": "1.D",
+                "kind": "PRESENTATION",
+                "title": "Investment Portfolio Update",
+                "time": "15 minutes",
+                "background": "",
+                "plain": "The council will hear an update on how the city's money is invested."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "CITY MANAGER INFORMATION ITEMS",
+            "note": "This is an opportunity for the City Manager to provide information to the City Council.",
+            "session": "16:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "AGENDA REVIEW",
+            "note": "The City Council will review items on the Consent Agenda and Policy Session Agenda.",
+            "session": "16:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "4",
+            "title": "ADJOURN TO A CLOSED SESSION",
+            "note": "The City Council will adjourn into a Closed Session for the purpose of discussion of pending or reasonably imminent litigation; the character, professional competence, or physical or mental health of an individual; the purchase, lease, sale, or exchange of real property; a proposed development agreement, project proposal, or financing proposal related to the development of land owned by the state or a political subdivision; and/or the deployment of security personnel, devices, or systems, pursuant to Section 52-4-205(1) of the Utah Code, Annotated.",
+            "session": "16:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "5",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "6",
+            "title": "PLEDGE OF ALLEGIANCE",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "7",
+            "title": "INFORMATION ITEMS/UPCOMING EVENTS",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "8",
+            "title": "PUBLIC COMMENTS",
+            "note": "Time has been set aside for the public to express their ideas, concerns, and comments. (Please limit your comments to three minutes each.)",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "9",
+            "title": "CITY COUNCIL/MAYOR ITEMS",
+            "note": "Time has been set aside for the City Council and Mayor to make comments.",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "10",
+            "title": "BOND RELEASES",
+            "note": "",
+            "session": "19:00",
+            "group": "Consent Agenda",
+            "items": [
+              {
+                "number": "10.A",
+                "kind": "",
+                "title": "Firefly NPA 8 Phase A, Plat 9 - Into Warranty",
+                "time": "",
+                "background": "",
+                "plain": "The council will decide whether to move the developer's bond for Firefly NPA 8 Phase A, Plat 9 into its warranty period."
+              },
+              {
+                "number": "10.B",
+                "kind": "",
+                "title": "Firefly NPA 8 Phase B, Plat 1 - Into Warranty",
+                "time": "",
+                "background": "",
+                "plain": "The council will decide whether to move the developer's bond for Firefly NPA 8 Phase B, Plat 1 into its warranty period."
+              },
+              {
+                "number": "10.C",
+                "kind": "",
+                "title": "Harmony Phase A, Plat 14 - Into Warranty",
+                "time": "",
+                "background": "",
+                "plain": "The council will decide whether to move the developer's bond for Harmony Phase A, Plat 14 into its warranty period."
+              },
+              {
+                "number": "10.D",
+                "kind": "",
+                "title": "Overland Village 2 Phase A, Plat 4 - Into Warranty",
+                "time": "",
+                "background": "",
+                "plain": "The council will decide whether to move the developer's bond for Overland Village 2 Phase A, Plat 4 into its warranty period."
+              },
+              {
+                "number": "10.E",
+                "kind": "",
+                "title": "Overland Village 2 Phase A, Plat 5 - Into Warranty",
+                "time": "",
+                "background": "",
+                "plain": "The council will decide whether to move the developer's bond for Overland Village 2 Phase A, Plat 5 into its warranty period."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "11",
+            "title": "MINUTES",
+            "note": "",
+            "session": "19:00",
+            "group": "Consent Agenda",
+            "items": [
+              {
+                "number": "11.A",
+                "kind": "",
+                "title": "September 15, 2026 Minutes - Regular City Council Meeting",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "11.B",
+                "kind": "",
+                "title": "September 24, 2026 Minutes - City Council Strategic Planning Session",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "12",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": "19:00",
+            "group": "Consent Agenda",
+            "items": [
+              {
+                "number": "12.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Approving the Ranches Parkway Improvement Interlocal Agreement between Eagle Mountain City and Utah County",
+                "time": "",
+                "background": "",
+                "plain": "The council will consider an agreement with Utah County on improvements to Ranches Parkway."
+              },
+              {
+                "number": "12.B",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah Approving a Purchase Agreement with Smith's Food & Drug Centers, Inc",
+                "time": "",
+                "background": "",
+                "plain": "The council will consider a purchase agreement with Smith's Food & Drug Centers, Inc."
+              },
+              {
+                "number": "12.C",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Approving the Purchase Agreements with various residents to purchase Utah County Parcel No. 49:601:0079 and No. 49:601:0080 following a Land Disposal application located in Pioneer Addition Phase II",
+                "time": "",
+                "background": "",
+                "plain": "The council will consider agreements to sell two city parcels in Pioneer Addition Phase II to residents who applied to buy them."
+              },
+              {
+                "number": "12.D",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Approving a Community Garden Policy",
+                "time": "",
+                "background": "",
+                "plain": "The council will consider a policy for community gardens."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "13",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "13.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Authorizing the Land Disposal Application to Proceed and Directing Staff to Begin the Notice and Public Hearing Process for a Portion of Utah County Parcel No. 66:828:2978, Designated as \"Significant Real Property\" Pursuant to Eagle Mountain Municipal Code 3.30.060",
+                "time": "",
+                "background": "(Presented by City Recorder Lacie A. Messerly) This item is a request to dispose of a portion of Utah County Parcel #66:828:2978 designated as “Significant Real Property” in accordance with EMMC 3.30.060. The application, submitted by Eric Schenk pertains to approximately 0.021 acre (~907.5 sq/ft) of property located at Silverlake, Plat 29.",
+                "plain": "The council will decide whether to start the notice and public hearing process on a resident's request to acquire about 907 square feet of city land in Silverlake."
+              },
+              {
+                "number": "13.B",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Authorizing the Land Disposal Application to Proceed and Directing Staff to Begin the Notice and Public Hearing Process for a Portion of Utah County Parcel #46:491:0332, and Entire Parcels #46:536:0430 and #46:865:0114, Designated as \"Significant Real Property\" Pursuant to Eagle Mountain Municipal Code 3.30.060",
+                "time": "",
+                "background": "(Presented by City Recorder Lacie A. Messerly) This item is a request to dispose of a portion of Utah County Parcel #46:491:0332, and Entire Parcels #46:536:0430 and #46:865:0114 designated as “Significant Real Property” in accordance with EMMC 3.30.060. The application, submitted by Chelsea Lindsay and neighboring residents pertains to approximately a total of 0.72 acres over three separate parcels located at Meadow Ranch V, Plat 1, Meadow Ranch, Plat 3 and Meadow Ranch, Plat 4.",
+                "plain": "The council will decide whether to start the notice and public hearing process on residents' request to acquire about 0.72 acres of city land in Meadow Ranch."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "14",
+            "title": "CORRIGAN FARMS REZONE",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "14.A",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as Corrigan Farms",
+                "time": "",
+                "background": "(Presented by Senior Planner, David Stroud) Corrigan Farms LLC is looking to rezone parcel number 59:068:0006 to add the RTI overlay zone to the property to allow it to potentially develop a data center project with a natural gas power plant.",
+                "plain": "The council will hold a public hearing on rezoning a Corrigan Farms property so it could be developed as a data center with a natural gas power plant."
+              },
+              {
+                "number": "14.B",
+                "kind": "ORDINANCE",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Approving the Corrigan Farms Development Agreement",
+                "time": "",
+                "background": "(Presented by City Attorney, Marcus Draper) The proposed agreement accompanies the rezone of a 41-acre parcel owned by Corrigan Farms LLC to the RTI Overlay Zone and establishes development and infrastructure requirements for the anticipated data center project.",
+                "plain": "The council will consider a development agreement setting building and infrastructure requirements for a planned data center on Corrigan Farms' 41-acre parcel."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "15",
+            "title": "ORDINANCES/PUBLIC HEARINGS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "15.A",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Updating the Culinary Water Impact Fee Facility Plan (IFFP)",
+                "time": "",
+                "background": "(Presented by City Engineer, Vince Hogge) Consideration of an update to the Culinary Water IFFP. This update adds the Spring Run/Talons Cove area to the IFFP which adds improvements needed to the culinary water system to handle water demand from this area. The IFFP also includes updated cost estimates adding the projects for the Spring Run/Talons Cove area and updating costs for future projects based on the rising costs of current construction projects.",
+                "plain": "The council will hold a public hearing on updating the drinking-water impact fee plan, adding projects for the Spring Run/Talons Cove area and raising future cost estimates."
+              },
+              {
+                "number": "15.B",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Updating the Wastewater Master Plan and the Wastewater Impact Fee Facility Plan (IFFP)",
+                "time": "",
+                "background": "(Presented by City Engineer, Vince Hogge) Consideration of an update to the Wastewater Master Plan and the Wastewater IFFP. This update adds the Spring Run/Talons Cove area to the Master Plan and IFFP which adds improvements needed to the wastewater system to handle sewer flows from this area. The IFFP also includes updated cost estimates adding the projects for the Spring Run/Talons Cove area and updating costs for future projects based on the rising costs of current construction projects.",
+                "plain": "The council will hold a public hearing on updating the sewer master plan and impact fee plan, adding the Spring Run/Talons Cove area and raising cost estimates."
+              },
+              {
+                "number": "15.C",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 9.10 and 17.47 Regarding Archery Use Within the City",
+                "time": "",
+                "background": "(Presented by Assistant to the City Manager, Natalie Winterton): The proposed amendment would allow outdoor archery ranges within the existing Outdoor Shooting Range Overlay Zone and indoor archery ranges as a special use, while establishing standards intended to discourage archery in backyards or other unsafe locations. Staff also reviewed USA Archery standards when developing the proposed regulations.",
+                "plain": "The council will hold a public hearing on archery rules that allow outdoor ranges in the shooting-range zone, indoor ranges with special approval, and discourage backyard archery."
+              },
+              {
+                "number": "15.D",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 17.60.120 General Fencing/Screening Provisions",
+                "time": "",
+                "background": "(Presented by Senior Planner, Robert Hobbs) The proposed amendment would allow barbed wire fencing in the RTI Overlay Zone and clarify that chain link fencing, where permitted in industrial areas, shall not be topped with barbed wire as it would only be allowed for the RTI Zone.",
+                "plain": "The council will hold a public hearing on allowing barbed wire fencing in the RTI overlay zone and banning it on chain link fences in industrial areas."
+              },
+              {
+                "number": "15.E",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code Section 17.25.040 Residential Standards Table",
+                "time": "",
+                "background": "(Presented by Senior Planner, Robert Hobbs) The proposed amendment would acknowledge as legally conforming existing lots smaller than 4,500 square feet that are rezoned to the RC Zone. The amendment would also recognize existing building setbacks that are smaller than the minimum setbacks otherwise required in the RC Zone.",
+                "plain": "The council will hold a public hearing on letting existing lots under 4,500 square feet, and existing buildings' shorter setbacks, stay legal when rezoned to the RC zone."
+              },
+              {
+                "number": "15.F",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code 17.100.040 Master Site Plans",
+                "time": "",
+                "background": "(Presented by Senior Planner, Robert Hobbs) The proposed amendment would clarify when a Master Site Plan or Standard Site Plan is required, establish the applicable review process, require a separate plat application for land proposed to be subdivided within a site plan, and require approval of a Master Site Plan before approval of a plat for land proposed to be subdivided within that Plan’s area.",
+                "plain": "The council will hold a public hearing on rules for when site plans are required, including approval of a master site plan before land in it is subdivided."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "16",
+            "title": "DISCUSSION ITEM ONLY/NO ACTION TAKEN",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "16.A",
+                "kind": "DISCUSSION",
+                "title": "Speed Study Results",
+                "time": "one hour",
+                "background": "",
+                "plain": "The council will hear the results of a speed study, with no vote taken."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "17",
+            "title": "LEGISLATIVE ITEMS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "17.A",
+                "kind": "UPDATE",
+                "title": "Legislative Priorities List",
+                "time": "",
+                "background": "",
+                "plain": "The council will receive an update on its list of legislative priorities."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "18",
+            "title": "CITY COUNCIL/MAYOR'S BUSINESS AND LIAISON REPORTS",
+            "note": "This time is set aside for the City Council's and Mayor's comments on City business, and for Councilmembers to report on the boards they are assigned to as liaisons to the City Council.",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "19",
+            "title": "COMMUNICATION ITEMS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "19.A",
+                "kind": "",
+                "title": "Upcoming Agenda Items",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "19.B",
+                "kind": "",
+                "title": "Budget Report - August 2026",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "20",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [],
+            "procedural": true
+          }
+        ]
       },
       {
         "id": 759,
