@@ -208,6 +208,52 @@ p { margin: 0; }
   }
   .v2-nav a:hover { background: var(--surface); color: var(--ink); }
   .v2-nav a[aria-current="page"], .v2-nav a.is-section { background: var(--surface); color: var(--ink); font-weight: 700; }
+
+  /* A section's pages, dropped under it on hover or keyboard focus. The menu
+     starts flush with the link (padding, not margin) so the pointer never
+     crosses a gap that would close it; a short delay on closing forgives a
+     diagonal move. On a touch screen with no hover the first tap opens it on
+     iPadOS; elsewhere the tap goes to the section page, whose sub-nav lists
+     the same pages. */
+  .v2-nav-item { position: relative; display: flex; }
+  .v2-nav-item > a::after {
+    content: ""; width: 7px; height: 7px; margin: -3px 0 0 8px; flex-shrink: 0;
+    border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
+    transform: rotate(45deg); opacity: .55;
+  }
+  .v2-nav-menu {
+    position: absolute; top: 100%; left: 0; z-index: 60; min-width: 13rem;
+    list-style: none; margin: 0; padding: 6px 0 0;
+    visibility: hidden; opacity: 0; transform: translateY(-4px);
+    transition: opacity .12s ease, transform .12s ease, visibility 0s linear .18s;
+  }
+  .v2-nav-item:last-child .v2-nav-menu, .v2-nav-item:nth-last-child(2) .v2-nav-menu { left: auto; right: 0; }
+  .v2-nav-menu::before {
+    content: ""; position: absolute; inset: 6px 0 0; z-index: -1;
+    background: var(--ground); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: 0 8px 24px rgba(20, 32, 46, .14);
+  }
+  .v2-nav-menu li { padding: 0 6px; }
+  .v2-nav-menu li:first-child { padding-top: 6px; }
+  .v2-nav-menu li:last-child { padding-bottom: 6px; }
+  .v2-nav-item:hover .v2-nav-menu, .v2-nav-item:focus-within .v2-nav-menu, .v2-nav-item.is-open .v2-nav-menu {
+    visibility: visible; opacity: 1; transform: none; transition-delay: 0s;
+  }
+  .v2-nav .v2-nav-menu a { display: flex; width: 100%; white-space: nowrap; font-weight: 500; }
+  .v2-nav .v2-nav-menu a.is-here { color: var(--blue); font-weight: 700; }
+}
+/* 900–1099px: seven sections and four menu arrows share the row, so the
+   links draw in rather than wrap "Meetings & Votes" onto two lines. */
+@media (min-width: 900px) and (max-width: 1099px) {
+  .v2-nav a { padding: 0 8px; white-space: nowrap; }
+  .v2-nav-item > a::after { margin-left: 6px; }
+  .v2-header .v2-wrap { gap: 8px; }
+}
+@media (min-width: 900px) and (max-width: 979px) {
+  .v2-nav a { padding: 0 5px; }
+}
+@media (min-width: 900px) and (prefers-reduced-motion: reduce) {
+  .v2-nav-menu { transition: none; transform: none; }
 }
 
 /* ---------- Mobile tab bar ---------- */

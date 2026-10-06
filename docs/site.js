@@ -750,6 +750,33 @@
     });
   }
 
+  // The header's section menus open on hover or focus (v2.css). A touch screen
+  // with no hover would follow the section link on the first tap and never show
+  // the menu, so there the first tap opens it and a second tap, or a pick from
+  // the menu, goes on. Tapping anywhere else closes it.
+  function wireNavMenus() {
+    if (!window.matchMedia("(hover: none)").matches) return;
+    const close = (except) => document.querySelectorAll(".v2-nav-item.is-open").forEach((it) => {
+      if (it === except) return;
+      it.classList.remove("is-open");
+      it.firstElementChild.setAttribute("aria-expanded", "false");
+    });
+    document.querySelectorAll(".v2-nav-item > a").forEach((a) => {
+      a.setAttribute("aria-expanded", "false");
+      a.addEventListener("click", (e) => {
+        const item = a.parentElement;
+        if (item.classList.contains("is-open")) return;
+        e.preventDefault();
+        close(item);
+        item.classList.add("is-open");
+        a.setAttribute("aria-expanded", "true");
+      });
+    });
+    document.addEventListener("click", (e) => {
+      close(e.target.closest(".v2-nav-item"));
+    });
+  }
+
   // Boot every page: trim the nav for the body, mount the switcher, register SW.
   document.addEventListener("DOMContentLoaded", () => {
     setCanonical();
@@ -759,6 +786,7 @@
     decorateBodyLinks();
     applyBodyChrome();
     wireSheetDismiss();
+    wireNavMenus();
     registerServiceWorker();
     mountAgent();
   });

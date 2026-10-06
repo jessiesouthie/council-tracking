@@ -90,13 +90,34 @@ def _attrs(item: Item, page: str, current: Item | None) -> str:
     return (" " + " ".join(out)) if out else ""
 
 
+def _dropdown(item: Item, top_link: str, page: str) -> str:
+    """A section with pages inside it opens a menu of them on hover or keyboard
+    focus, so a reader on a computer or tablet can go straight to Budget or
+    Votes without stopping at the section page first. Pure CSS (v2.css), so it
+    works where no script runs. The section link still goes to the section,
+    which keeps a tap on a touch screen that has no hover doing what it did.
+
+    The wrapper carries the body marker as well as the link, so site.js
+    removing a council-only section takes its menu with it. The menu's own
+    links are class="v2-nav-sub" and never take aria-current: the header has
+    one "you are here", and it belongs to the section."""
+    body = ' data-nav-body="city-council"' if item.body_scoped else ""
+    subs = "".join(
+        f'<li><a class="v2-nav-sub{" is-here" if c.href == page else ""}" href="/{c.href}">'
+        f'{esc(c.label)}</a></li>'
+        for c in item.children)
+    return (f'<div class="v2-nav-item"{body}>{top_link}'
+            f'<ul class="v2-nav-menu" aria-label="{esc(item.label)}">{subs}</ul></div>')
+
+
 def header(section: str) -> str:
     """Brand plus the desktop menu. `section` is the page being built; a page
     inside a section (a fact check passes "claims.html") lights that section."""
     current = _section_of(section)
     links = []
     for item in NAV:
-        links.append(f'<a href="/{item.href}"{_attrs(item, section, current)}>{esc(item.label)}</a>')
+        top_link = f'<a href="/{item.href}"{_attrs(item, section, current)}>{esc(item.label)}</a>'
+        links.append(_dropdown(item, top_link, section) if item.children else top_link)
     return ('<header class="v2-header"><div class="v2-wrap">'
             '<a class="v2-brand" href="/index.html">'
             f'{MARK}<span><span class="v2-brand-name">Civic Roll Call</span>'

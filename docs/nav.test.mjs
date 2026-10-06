@@ -214,7 +214,8 @@ for (const page of V2_PAGES) {
     const html = read(`docs/${page}`);
     const head = html.match(/<nav class="v2-nav" aria-label="Main">([\s\S]*?)<\/nav>/);
     assert.ok(head, `${page} has no v2 header nav: run python -m ingest.build_nav`);
-    const links = asLinks(head[1]);
+    // The section links only; the dropdown's own links are class="v2-nav-sub".
+    const links = asLinks(head[1]).filter((l) => !/v2-nav-sub/.test(l.attrs));
     assert.deepEqual(links.map((l) => l.label.replace(/&amp;/g, "&")), NAV.map((i) => i.label));
     assert.deepEqual(links.map((l) => l.href), NAV.map((i) => `/${i.href}`));
     assert.ok(links.filter((l) => /aria-current/.test(l.attrs)).length <= 1,
@@ -223,6 +224,17 @@ for (const page of V2_PAGES) {
     for (const [i, l] of links.entries()) {
       assert.equal(/data-nav-body="city-council"/.test(l.attrs), NAV[i].bodyScoped,
         `${page}: ${l.label} body scoping`);
+    }
+    // Each section with pages inside it opens a menu of exactly those pages.
+    const menus = [...head[1].matchAll(/<ul class="v2-nav-menu" aria-label="([^"]*)">([\s\S]*?)<\/ul>/g)];
+    const withKids = NAV.filter((i) => i.children.length);
+    assert.deepEqual(menus.map((m) => m[1].replace(/&amp;/g, "&")), withKids.map((i) => i.label),
+      `${page}: header dropdowns`);
+    for (const [i, m] of menus.entries()) {
+      const subs = asLinks(m[2]);
+      assert.deepEqual(subs.map((l) => l.href), withKids[i].children.map((c) => `/${c.href}`),
+        `${page}: ${withKids[i].label} dropdown destinations`);
+      assert.ok(subs.every((l) => !/aria-current/.test(l.attrs)), `${page}: aria-current in a dropdown`);
     }
   });
 
