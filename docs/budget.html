@@ -22,7 +22,7 @@
     <meta name="theme-color" content="#14202e" />
     <link rel="preload" href="fonts/public-sans-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20261001a" />
-    <link rel="stylesheet" href="v2.css?v=20261006e" />
+    <link rel="stylesheet" href="v2.css?v=20261006f" />
 
     <!-- Dataset rather than Article: the page is a searchable copy of the city's
          own budget book, not a piece written about it. -->
@@ -165,6 +165,11 @@
       // Six harmonized source hues (forest → ochre); greens vs oranges hold CVD
       // separation. Defined as tokens on :root in v2.css.
       const RAMP = ["--sk-c0", "--sk-c1", "--sk-c2", "--sk-c3", "--sk-c4", "--sk-c5"];
+      // Six hues only: a column with more entries than that keeps the hues for
+      // its five biggest and greys the small tail, rather than wrapping round and
+      // giving two different sources the same colour.
+      const rampColors = (n) => Array.from({ length: n }, (_, i) =>
+        cssv(n <= RAMP.length || i < RAMP.length - 1 ? RAMP[i] : "--sk-node"));
 
       function render(data, root, next, book) {
         const af = data.all_funds;
@@ -1313,7 +1318,7 @@
       }
       const el = (ctx, suffix) => document.getElementById(ctx.p + "-" + suffix);
 
-      const fundColorMap = (ctx) => new Map(ctx.AF.funds.map((n, i) => [n.name, cssv(RAMP[i % 6])]));
+      const fundColorMap = (ctx) => { const c = rampColors(ctx.AF.funds.length); return new Map(ctx.AF.funds.map((n, i) => [n.name, c[i]])); };
 
       function renderAF(ctx) {
         if (ctx.state.focus) drawAfFocus(ctx);
@@ -1404,7 +1409,7 @@
           const total = credit ? drawn : links.reduce((a, l) => a + l.value, 0);
           const cols = [
             links.map((l) => ({ id: "L:" + l.source, name: l.source, total: l.value, color: fc.get(l.source) })),
-            [{ id: "M", name: f.name, total, color: cssv("--accent") }],
+            [{ id: "M", name: f.name, total, color: cssv("--blue") }],
             shown.map((it, i) => ({ id: "I:" + i, name: it.name, total: it.value, color: itemColor(it) })),
           ];
           const edges = [
@@ -1494,17 +1499,17 @@
 
       function drawGeneralFund(gf, p = "gf", slug = "general fund") {
         const T = gf.total;
-        const revColors = gf.revenue.map((n, i) => cssv(RAMP[i % 6]));
+        const revColors = rampColors(gf.revenue.length);
         const cols = [
           gf.revenue.map((n, i) => ({ id: "REV:" + n.name, name: n.name, total: n.total, color: revColors[i] })),
-          [{ id: "GF", name: "General Fund", total: T, color: cssv("--accent") }],
+          [{ id: "GF", name: "General Fund", total: T, color: cssv("--blue") }],
           gf.departments.map((n) => ({ id: "DEP:" + n.name, name: n.name, total: n.total, color: cssv("--sk-node") })),
         ];
         const edges = [
           ...gf.revenue.map((n, i) => ({ source: "REV:" + n.name, target: "GF", value: n.total, color: revColors[i] })),
           // Money is fungible inside the fund, so outflows carry the fund's own
           // accent rather than implying a revenue source maps to a department.
-          ...gf.departments.map((n) => ({ source: "GF", target: "DEP:" + n.name, value: n.total, color: cssv("--accent") })),
+          ...gf.departments.map((n) => ({ source: "GF", target: "DEP:" + n.name, value: n.total, color: cssv("--blue") })),
         ];
         drawSankey(p + "-svg", cols, edges, T, {
           colCaptions: ["Revenue in", "", "Service out"],
@@ -1610,7 +1615,7 @@
           }
           const anchor = side === "end" ? "end" : "start";
           const lx = anchor === "end" ? -8 : nodeW + 8;         // relative to node x
-          const ly = spreadLabels(col, 27, topPad + 8, topPad + drawH - 8);
+          const ly = spreadLabels(col, 30, topPad + 8, topPad + drawH - 8);
           col.forEach((n) => {
             const cy = n.y + n.h / 2, y = ly.get(n);
             if (Math.abs(y - cy) > 2.5) {

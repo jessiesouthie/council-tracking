@@ -2055,7 +2055,6 @@ blockquote.dc-quote footer { font-size: var(--fs-sm); color: var(--muted); }
 .v2-budget .bn-notes { margin-top: 22px; }
 .v2-budget .bn-notes .b-note { border-left-color: var(--border-strong); }
 .v2-budget .bk { --bk-display: var(--font); --bk-paper: var(--surface); --bk-rule: var(--border-strong); --bk-figure: var(--ink); background: var(--bk-paper); border-top-color: var(--fg-soft); }
-}
 .v2-budget .bk .bn-head { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 12px 40px; padding-bottom: 20px; border-bottom: 1px solid var(--bk-rule); }
 .v2-budget .bk .bn-head h2 { font-family: var(--bk-display); font-weight: 700; font-size: clamp(29px, 4.1vw, 40px); line-height: 1.07; letter-spacing: -.014em; margin: 13px 0 0; }
 .v2-budget .bk .bn-flag { padding: 4px 10px 3px; border-radius: var(--r-xs); background: var(--fg-soft); color: var(--bg-elev); font-family: var(--mono); font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.06em; }
@@ -2280,6 +2279,66 @@ blockquote.dc-quote footer { font-size: var(--fs-sm); color: var(--muted); }
 @keyframes bk-set { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
 /* The old budget book's paper and display face give way to the redesign's. */
 .v2-budget .bk { --bk-display: var(--font); --bk-paper: var(--surface); --bk-rule: var(--line); --bk-figure: var(--ink); }
+
+/* Budget polish (2026-10-06): the picker's choice reads as a selection, the
+   council timeline is a panel with a rail, and the chart notes read in one
+   column (two columns split a sentence across the gutter). */
+@media (min-width: 720px) {
+  .v2-budget .b-years { margin-bottom: 30px; align-items: stretch; }
+  .v2-budget .b-year { background: var(--card); grid-template-rows: auto auto auto 1fr auto; }
+  .v2-budget .b-year[aria-selected="false"] { background: var(--card); box-shadow: none; border-color: var(--line); }
+  .v2-budget .b-year.is-open[aria-selected="false"] { border-top-color: var(--warn-edge); }
+  .v2-budget .b-year.is-set[aria-selected="false"] { border-top-color: var(--line); }
+  /* Selected = civic blue, as everywhere else on the site; the tone stays in the flag. */
+  .v2-budget .b-year[aria-selected="true"] { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue), var(--card-shadow); }
+  .v2-budget .b-year[aria-selected="true"]::after { display: none; }
+  .v2-budget .b-year-go { margin-top: auto; padding-top: 12px; display: inline-flex; align-items: center; gap: 6px; }
+  .v2-budget .b-year[aria-selected="true"] .b-year-go { color: var(--blue); }
+  .v2-budget .b-year[aria-selected="true"] .b-year-go::before {
+    content: ""; width: 16px; height: 16px; border-radius: 50%; flex: none;
+    background: var(--blue);
+    /* The tick is cut out of the dot, so it shows the card behind in both themes. */
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cmask id='m'%3E%3Crect width='16' height='16' fill='%23fff'/%3E%3Cpath d='M4.6 8.3l2.3 2.3 4.6-5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/mask%3E%3Ccircle cx='8' cy='8' r='8' fill='%23fff' mask='url(%23m)'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cmask id='m'%3E%3Crect width='16' height='16' fill='%23fff'/%3E%3Cpath d='M4.6 8.3l2.3 2.3 4.6-5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/mask%3E%3Ccircle cx='8' cy='8' r='8' fill='%23fff' mask='url(%23m)'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+  .v2-budget .b-year[aria-selected="false"] .b-year-go::after { content: "\2192"; transition: translate .15s ease; }
+  .v2-budget .b-year[aria-selected="false"]:hover .b-year-go::after { translate: 3px 0; }
+}
+@media (max-width: 719px) {
+  .v2-budget .b-year[aria-selected="true"], .v2-budget .b-year.is-open[aria-selected="true"], .v2-budget .b-year.is-set[aria-selected="true"] { border-color: var(--blue); box-shadow: inset 0 0 0 1px var(--blue); }
+  .v2-budget .b-year.is-open[aria-selected="true"]::after, .v2-budget .b-year.is-set[aria-selected="true"]::after { border-top-color: var(--blue); }
+}
+@media (min-width: 720px) and (prefers-reduced-motion: reduce) {
+  .v2-budget .b-year[aria-selected="false"]:hover .b-year-go::after { translate: none; }
+}
+
+/* Timeline: a white panel, one rail, a dot per meeting (the last one filled). */
+.v2-budget .bn-cal {
+  position: relative; gap: 0; padding: 10px 18px; background: var(--card);
+  border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--card-shadow);
+}
+.v2-budget .bn-cal li, .v2-budget .bn-cal li.is-ahead { position: relative; border-left: 0; padding: 12px 0 12px 26px; }
+.v2-budget .bn-cal li + li { border-top: 1px solid var(--line); }
+.v2-budget .bn-cal li::before { content: ""; position: absolute; left: 5px; top: 0; bottom: 0; width: 2px; background: color-mix(in oklab, var(--blue) 30%, transparent); }
+.v2-budget .bn-cal li:first-child::before { top: 22px; }
+.v2-budget .bn-cal li:last-child::before { bottom: calc(100% - 22px); }
+.v2-budget .bn-cal li::after { content: ""; position: absolute; left: 0; top: 17px; width: 12px; height: 12px; border-radius: 50%; background: var(--card); border: 2px solid var(--blue); box-sizing: border-box; }
+.v2-budget .bn-cal li:last-child::after { background: var(--blue); }
+.v2-budget .bn-cal li.is-ahead::after { border-color: var(--warn-edge); border-style: dashed; background: var(--card); }
+.v2-budget .bn-cal-date { font-size: var(--fs-sm); color: var(--ink-2); }
+.v2-budget .bn-cal-label { font-size: var(--fs-base); }
+.v2-budget .bn-cal-note { font-size: var(--fs-sm); color: var(--muted); }
+@media (max-width: 719px) {
+  .v2-budget .bn-cal { padding: 4px 14px; }
+  .v2-budget .bn-cal li, .v2-budget .bn-cal li.is-ahead { padding: 11px 0 11px 24px; }
+  .v2-budget .bn-cal-date, .v2-budget .bn-cal-note { font-size: var(--fs-sm); }
+}
+
+/* The FY2025-26 book: no grey tray on the canvas; its four figures sit on a card. */
+.v2-budget .bk { background: none; }
+.v2-budget .bk .bn-figs { background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--ink-2); border-radius: var(--radius); box-shadow: var(--card-shadow); overflow: hidden; }
+.v2-budget .bk .b-fig, .v2-budget .bk .b-fig + .b-fig, .v2-budget .bk .b-fig:nth-child(odd) { padding: 16px 20px 18px; }
+.v2-budget .bn-chartnote { columns: auto !important; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--warn-edge); box-shadow: var(--card-shadow); color: var(--ink-2); font-size: var(--fs-base); }
 
 /* ---------- TAX + PROJECTIONS (tax.html, projections.html) ----------
    The two pages share the tax-*, sec-* and proj-* components and the --t-*

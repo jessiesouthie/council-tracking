@@ -53,7 +53,7 @@ OUT_DIR = DOCS / "meetings"
 PARSED = ROOT / "data" / "parsed"
 TRANSCRIPTS = DOCS / "transcripts"
 # The v2.css tag; nav.test.mjs holds it equal to build_claim_pages.CSS_VERSION.
-CSS_VERSION = "20261006e"
+CSS_VERSION = "20261006f"
 
 CNAME = DOCS / "CNAME"
 DEFAULT_HOST = "civicrollcall.com"
