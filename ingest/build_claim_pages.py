@@ -283,7 +283,8 @@ def render_page(c: dict, data: dict, meetings: dict[int, tuple[str, bool]]) -> s
         quote = f'<blockquote class="v2-check-quote">&ldquo;{esc(c["claim"])}&rdquo;</blockquote>'
     seen_bits = [esc(c["claim_note"])] if c.get("claim_note") else []
     if c.get("seen"):
-        seen_bits.append(f"Seen: {esc(c['seen'])}.")
+        since = f" First seen {fmt_date(c['first_seen'])}." if c.get("first_seen") else ""
+        seen_bits.append(f"Seen: {esc(c['seen'])}.{since}")
     seen = f'<p class="v2-check-seen">{" ".join(seen_bits)}</p>' if seen_bits else ""
 
     crumb_topic = (f'<span aria-hidden="true">›</span><a href="/claims.html?topic={esc(first)}">{esc(topic)}</a>'
@@ -298,6 +299,7 @@ def render_page(c: dict, data: dict, meetings: dict[int, tuple[str, bool]]) -> s
                 "url": url,
                 "claimReviewed": summary,
                 "datePublished": c.get("checked"),
+                "dateModified": c.get("updated") or c.get("checked"),
                 "author": {"@id": f"{BASE}/#publisher"},
                 "itemReviewed": {
                     "@type": "Claim",
@@ -382,7 +384,7 @@ def render_page(c: dict, data: dict, meetings: dict[int, tuple[str, bool]]) -> s
         {share}
         {sections_more}
         {rel_html}
-        <p class="v2-note">Checked {fmt_date(c.get("checked", ""))}. Nothing goes on the fact-check list unless an open-meeting recording or a published document can settle it: <a href="/claims.html#cl-rules-h">the rules</a>. Spot a mistake? <a href="mailto:{chrome.CONTACT}?subject={esc("Correction: " + summary)}">{chrome.CONTACT}</a></p>
+        <p class="v2-note">Checked {fmt_date(c.get("checked", ""))}{f"; updated {fmt_date(c['updated'])}" if c.get("updated") else ""}. Nothing goes on the fact-check list unless an open-meeting recording or a published document can settle it: <a href="/claims.html#cl-rules-h">the rules</a>. Spot a mistake? <a href="mailto:{chrome.CONTACT}?subject={esc("Correction: " + summary)}">{chrome.CONTACT}</a></p>
       </main>
     </div>
     {chrome.footer()}

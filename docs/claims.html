@@ -284,7 +284,7 @@
                    aria-labelledby="${esc(c.id)}-h">
             <div class="cl-card-top">
               ${pill(c.verdict, v.label)}
-              <span class="cl-checked">Checked ${CT.fmtDate(c.checked)}</span>
+              <span class="cl-checked">Checked ${CT.fmtDate(c.checked)}${c.updated ? ` · updated ${CT.fmtDate(c.updated)}` : ""}</span>
             </div>
             <h3 class="cl-claim" id="${esc(c.id)}-h"><a href="/claims/${esc(c.id)}.html">${esc(c.summary || c.claim)}</a></h3>
             ${c.summary
@@ -321,7 +321,7 @@
               </div>
             </details>
 
-            ${topics || c.seen ? `<p class="cl-tags">${topics}${c.seen ? `<span class="cl-seen">Seen: ${esc(c.seen)}</span>` : ""}</p>` : ""}
+            ${topics || c.seen ? `<p class="cl-tags">${topics}${c.seen ? `<span class="cl-seen">Seen: ${esc(c.seen)}${c.first_seen ? ` (first seen ${CT.fmtDate(c.first_seen)})` : ""}</span>` : ""}</p>` : ""}
             <p class="cl-acts">
               <a class="v2-btn v2-btn--primary" href="/claims/${esc(c.id)}.html">Read the full check <span aria-hidden="true">→</span></a>
               <button type="button" class="v2-btn v2-btn--quiet" data-copy="${esc(c.id)}"
@@ -480,6 +480,7 @@
             // wording that circulates is kept on the Claim itself below.
             claimReviewed: c.summary || c.claim,
             datePublished: c.checked,
+            dateModified: c.updated || c.checked,
             author: { "@id": "https://civicrollcall.com/#publisher" },
             itemReviewed: {
               "@type": "Claim",

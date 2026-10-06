@@ -297,14 +297,15 @@ def claim_page_urls(base: str) -> list[dict]:
     """/claims/<id>.html, one per fact check (ingest/build_claim_pages.py).
 
     Read off the directory for the same reason the meeting pages are. lastmod
-    is the claim's own `checked` date, which is when its content last changed.
+    is the claim's own `updated` date, or `checked` when it has none, which is
+    when its content last changed.
     """
     folder = DOCS / "claims"
     pages = sorted(folder.glob("*.html")) if folder.is_dir() else []
     checked = {}
     try:
         data = json.loads((DOCS / "data.claims.json").read_text(encoding="utf-8"))
-        checked = {c["id"]: c.get("checked") for c in data.get("claims", [])}
+        checked = {c["id"]: c.get("updated") or c.get("checked") for c in data.get("claims", [])}
     except (OSError, ValueError):
         pass
     rows: list[dict] = []

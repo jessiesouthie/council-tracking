@@ -204,6 +204,14 @@ test("every claim has an id, a ruling and a checked date", () => {
     assert.ok(c.ruling && c.ruling.length > 20, `${c.id}: no ruling`);
     assert.match(c.checked, /^\d{4}-\d{2}-\d{2}$/, `${c.id}: checked date is not ISO`);
     assert.ok(c.checked <= data.updated, `${c.id}: checked after the page's own updated date`);
+    if (c.updated) {
+      assert.match(c.updated, /^\d{4}-\d{2}-\d{2}$/, `${c.id}: updated date is not ISO`);
+      assert.ok(c.updated > c.checked, `${c.id}: updated is not after checked`);
+      assert.ok(c.updated <= data.updated, `${c.id}: updated after the page's own updated date`);
+    }
+    // When it was first seen circulating; it can't postdate the check of it.
+    assert.match(c.first_seen || "", /^\d{4}-\d{2}-\d{2}$/, `${c.id}: no ISO first_seen date`);
+    assert.ok(c.first_seen <= c.checked, `${c.id}: first seen after it was checked`);
   }
 });
 
