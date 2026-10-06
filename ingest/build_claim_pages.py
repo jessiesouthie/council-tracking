@@ -43,7 +43,7 @@ OUT_DIR = DOCS / "claims"
 OG_DIR = OUT_DIR / "og"
 MEETINGS = DOCS / "meetings"
 FONTS = Path(__file__).resolve().parent / "assets" / "fonts"
-CSS_VERSION = "20261006f"
+CSS_VERSION = "20261006g"
 # The "Ask about this site" widget. These pages don't load site.js, which is
 # what mounts it everywhere else, so they link it themselves. Kept equal to
 # the tag in site.js mountAgent() by docs/claims.test.mjs.

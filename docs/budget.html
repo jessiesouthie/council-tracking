@@ -22,7 +22,7 @@
     <meta name="theme-color" content="#14202e" />
     <link rel="preload" href="fonts/public-sans-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20261001a" />
-    <link rel="stylesheet" href="v2.css?v=20261006f" />
+    <link rel="stylesheet" href="v2.css?v=20261006g" />
 
     <!-- Dataset rather than Article: the page is a searchable copy of the city's
          own budget book, not a piece written about it. -->
@@ -350,15 +350,7 @@
               <span class="b-year-flag"><span class="b-full">In effect now · interim line items</span><span class="b-min">Interim lines</span></span>
               <span class="b-year-fy"><span class="nowrap">${esc(n.fiscal_year_label)}</span><em>1 July 2026 – 30 June 2027</em></span>
               <span class="b-year-v">${short(t.fy2027.gross)}</span>
-              <span class="b-year-d">
-                The city has been spending against this budget since 1 July. The Council took its final vote
-                on <a href="meetings.html?id=728">18 August</a>, adopting the
-                ${short(n.final_adopted.agenda_total)} budget on the agenda after striking
-                $3.5M from it; the amended total has not been published. The line items below are still
-                the interim ones the city published in June. Only
-                ${short(t.fy2027.net)} of their ${short(t.fy2027.gross)} total is money planned to actually go out the door;
-                the rest is set aside.
-              </span>
+              <span class="b-year-d">The year now running. Final budget adopted 18 August; the line items are still June's interim ones.</span>
               <span class="b-year-go" data-on="Showing this budget" data-off="Show this budget">Showing this budget</span>
             </button>
             ${book ? `
@@ -367,12 +359,7 @@
               <span class="b-year-flag"><span class="b-full">Adopted · every line</span><span class="b-min">Every line</span></span>
               <span class="b-year-fy"><span class="nowrap">${esc(book.fiscal_year_label)}</span><em>ended 30 June 2026</em></span>
               <span class="b-year-v">${short(book.totals.adopted)}</span>
-              <span class="b-year-d">
-                The year just ended, published as a ${Number(book.totals.line_count).toLocaleString("en-US")}-line budget book.
-                This is the one you can read all the way down: every fund, every department, every account,
-                with what each was given the year before. It grew to ${short(book.totals.amended)} during
-                the year as unfinished building work rolled into it.
-              </span>
+              <span class="b-year-d">The year just ended, in a ${Number(book.totals.line_count).toLocaleString("en-US")}-line budget book you can read all the way down.</span>
               <span class="b-year-go" data-on="Showing this budget" data-off="Show this budget">Show this budget</span>
             </button>` : ""}
             <button class="b-year is-set" type="button" role="tab" id="tab-fy-charts"
@@ -380,11 +367,7 @@
               <span class="b-year-flag"><span class="b-full">Final · on the books</span><span class="b-min">Final</span></span>
               <span class="b-year-fy">FY${esc(data.fiscal_year)}<em>ended 30 June 2025</em></span>
               <span class="b-year-v">${short(data.total)}</span>
-              <span class="b-year-d">
-                The budget before that, and the year everything in ${book ? esc(book.fiscal_year_label) : "the year after it"}
-                is measured against. Its two diagrams follow a dollar from a fund all the way to a named
-                project.
-              </span>
+              <span class="b-year-d">The year before that, and the baseline ${book ? `<span class="nowrap">${esc(book.fiscal_year_label)}</span>` : "the year after it"} is measured against.</span>
               <span class="b-year-go" data-on="Showing this budget" data-off="Show this budget">Show this budget</span>
             </button>
           </div>
@@ -509,6 +492,7 @@
 
         return `
           <section class="bn" id="next-year" role="tabpanel" aria-labelledby="tab-next-year" tabindex="0">
+            <div class="bn-intro">
             <div class="bn-head">
               <div class="bn-head-t">
                 <p class="bn-flag">In effect now · interim line items</p>
@@ -523,6 +507,12 @@
                 the 0.001700 it had noticed. On <a href="meetings.html?id=728">18 August</a> it repealed that rate,
                 adopted <strong>0.000900</strong>, and adopted the final budget the same night.
               </p>
+              <p class="bn-lede">
+                That final budget was the ${short(n.final_adopted.agenda_total)} on the night's agenda, after
+                striking $3.5M from it. The amended total has not been published, so every line item below is
+                still the interim one the city published in June. Only ${short(t.fy2027.net)} of its
+                ${short(t.fy2027.gross)} is money planned to actually go out the door; the rest is set aside.
+              </p>
             </div>
 
             <ol class="bn-cal">
@@ -533,6 +523,7 @@
                   <span class="bn-cal-note">${esc(c.note)}</span>
                 </li>`).join("")}
             </ol>
+            </div>
 
             <div class="b-figures bn-figs">
               <div class="b-fig"><span class="k">The headline total</span><span class="v">${short(t.fy2027.gross)}</span><span class="d">${grossX}× the ${short(t.fy2026.gross)} last year ended on; includes money set aside</span></div>

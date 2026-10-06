@@ -2292,6 +2292,8 @@ blockquote.dc-quote footer { font-size: var(--fs-sm); color: var(--muted); }
   /* Selected = civic blue, as everywhere else on the site; the tone stays in the flag. */
   .v2-budget .b-year[aria-selected="true"] { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue), var(--card-shadow); }
   .v2-budget .b-year[aria-selected="true"]::after { display: none; }
+  .v2-budget .b-year-d { font-size: var(--fs-sm); color: var(--muted); }
+  .v2-budget .b-year[aria-selected="true"] .b-year-d { color: var(--ink-2); }
   .v2-budget .b-year-go { margin-top: auto; padding-top: 12px; display: inline-flex; align-items: center; gap: 6px; }
   .v2-budget .b-year[aria-selected="true"] .b-year-go { color: var(--blue); }
   .v2-budget .b-year[aria-selected="true"] .b-year-go::before {
@@ -2312,26 +2314,73 @@ blockquote.dc-quote footer { font-size: var(--fs-sm); color: var(--muted); }
   .v2-budget .b-year[aria-selected="false"]:hover .b-year-go::after { translate: none; }
 }
 
-/* Timeline: a white panel, one rail, a dot per meeting (the last one filled). */
-.v2-budget .bn-cal {
-  position: relative; gap: 0; padding: 10px 18px; background: var(--card);
-  border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--card-shadow);
+/* The year now running: heading + story on the left, the council's dates on a
+   rail on the right, all on one panel (stacked below 1020px). */
+.v2-budget .bn-intro {
+  display: grid; gap: 22px 44px; grid-template-columns: minmax(0, 1fr);
+  padding: 24px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--card-shadow);
 }
-.v2-budget .bn-cal li, .v2-budget .bn-cal li.is-ahead { position: relative; border-left: 0; padding: 12px 0 12px 26px; }
-.v2-budget .bn-cal li + li { border-top: 1px solid var(--line); }
-.v2-budget .bn-cal li::before { content: ""; position: absolute; left: 5px; top: 0; bottom: 0; width: 2px; background: color-mix(in oklab, var(--blue) 30%, transparent); }
-.v2-budget .bn-cal li:first-child::before { top: 22px; }
-.v2-budget .bn-cal li:last-child::before { bottom: calc(100% - 22px); }
-.v2-budget .bn-cal li::after { content: ""; position: absolute; left: 0; top: 17px; width: 12px; height: 12px; border-radius: 50%; background: var(--card); border: 2px solid var(--blue); box-sizing: border-box; }
+@media (min-width: 1020px) {
+  .v2-budget .bn-intro { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); padding: 28px 32px; }
+  .v2-budget .bn-intro .bn-cal { border-left: 1px solid var(--line); padding-left: 32px; }
+}
+.v2-budget .bn-intro .bn-head { display: block; }
+.v2-budget .bn-intro .bn-head h2 { font-family: var(--font); font-weight: 800; font-size: var(--fs-2xl); line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); margin: 12px 0 0; }
+.v2-budget .bn-intro .bn-lede { margin: 14px 0 0; max-width: 62ch; color: var(--ink-2); }
+.v2-budget .bn-intro .bn-lede + .bn-lede { margin-top: 12px; }
+
+/* Timeline: one rail, a dot per meeting (the last one filled). */
+.v2-budget .bn-cal { position: relative; gap: 0; margin: 0; padding: 0; align-self: start; }
+.v2-budget .bn-cal li, .v2-budget .bn-cal li.is-ahead {
+  position: relative; display: block; border-left: 0; padding: 0 0 18px 26px;
+}
+.v2-budget .bn-cal li:last-child { padding-bottom: 0; }
+.v2-budget .bn-cal li::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: -6px; width: 2px; background: color-mix(in oklab, var(--blue) 30%, transparent); }
+.v2-budget .bn-cal li:last-child::before { display: none; }
+.v2-budget .bn-cal li::after { content: ""; position: absolute; left: 0; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--card); border: 2px solid var(--blue); box-sizing: border-box; }
 .v2-budget .bn-cal li:last-child::after { background: var(--blue); }
-.v2-budget .bn-cal li.is-ahead::after { border-color: var(--warn-edge); border-style: dashed; background: var(--card); }
-.v2-budget .bn-cal-date { font-size: var(--fs-sm); color: var(--ink-2); }
-.v2-budget .bn-cal-label { font-size: var(--fs-base); }
-.v2-budget .bn-cal-note { font-size: var(--fs-sm); color: var(--muted); }
+.v2-budget .bn-cal li.is-ahead::after { border-color: var(--warn-edge); border-style: dashed; }
+.v2-budget .bn-cal-date { display: block; font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.v2-budget .bn-cal-label { display: block; margin-top: 2px; font-size: var(--fs-base); font-weight: 700; }
+.v2-budget .bn-cal-note { display: block; margin-top: 3px; font-size: var(--fs-sm); line-height: 1.5; color: var(--muted); }
+@media (max-width: 1019px) {
+  .v2-budget .bn-intro .bn-cal { border-top: 1px solid var(--line); padding-top: 22px; }
+}
 @media (max-width: 719px) {
-  .v2-budget .bn-cal { padding: 4px 14px; }
-  .v2-budget .bn-cal li, .v2-budget .bn-cal li.is-ahead { padding: 11px 0 11px 24px; }
-  .v2-budget .bn-cal-date, .v2-budget .bn-cal-note { font-size: var(--fs-sm); }
+  .v2-budget .bn-intro { padding: 18px 16px; margin-top: 16px; }
+  .v2-budget .bn-intro .bn-head h2 { font-size: var(--fs-xl); }
+}
+
+/* The other two years open the same way: their heading on one white panel.
+   FY2025-26 puts the book's colophon in a side column; FY2025 stacks. */
+.v2-budget .bk .bn-head, .v2-budget .bp-head {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 0;
+  padding: 24px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--card-shadow);
+}
+.v2-budget .bk .bn-head .bn-lede, .v2-budget .bp-head .bp-lede { margin: 14px 0 0; max-width: 74ch; color: var(--ink-2); font-size: var(--fs-base); }
+.v2-budget .bp-head h2 { font-family: var(--font); font-weight: 800; font-size: var(--fs-2xl); line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); margin: 12px 0 0; }
+@media (min-width: 1020px) {
+  .v2-budget .bk .bn-head, .v2-budget .bp-head { padding: 28px 32px; }
+  .v2-budget .bk .bn-head { grid-template-columns: minmax(0, 1fr) 15.5rem; grid-template-rows: auto 1fr; grid-template-areas: "t c" "l c"; column-gap: 44px; align-items: start; }
+  .v2-budget .bk .bn-head-t { grid-area: t; }
+  .v2-budget .bk .bn-head .bn-lede { grid-area: l; }
+  .v2-budget .bk .bk-colophon { grid-area: c; flex-direction: column; gap: 14px; margin: 0; padding: 4px 0 0 28px; border-top: 0; border-left: 1px solid var(--line); align-self: stretch; }
+  .v2-budget .bk .bk-colophon li { font-family: var(--font); font-size: var(--fs-base); font-weight: 700; color: var(--ink); }
+}
+@media (max-width: 719px) {
+  .v2-budget .bk .bn-head, .v2-budget .bp-head { padding: 18px 16px; }
+  .v2-budget .bp-head h2 { font-size: var(--fs-xl); }
+}
+
+/* The four headline figures: subgrid rows, so every value sits on one line
+   however many lines its label wraps to. */
+.v2-budget .bn-intro ~ .bn-figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 14px; }
+.v2-budget .bn-intro ~ .bn-figs .b-fig { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; align-content: start; background: var(--card); border-color: var(--line); box-shadow: var(--card-shadow); }
+.v2-budget .bn-intro ~ .bn-figs .b-fig .v { align-self: end; color: var(--ink); }
+@media (max-width: 719px) {
+  .v2-budget .bn-intro ~ .bn-figs { grid-template-columns: 1fr 1fr; gap: 8px; }
 }
 
 /* The FY2025-26 book: no grey tray on the canvas; its four figures sit on a card. */
