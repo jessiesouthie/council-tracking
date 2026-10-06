@@ -371,12 +371,12 @@
       "true_part": "A referendum can undo this increase. If the petition qualifies and a majority votes against it, the city's rate goes back to the 0.000530 certified rate (Utah Code § 20A-7-613(10)(b)), and the $2,132,876 a year it raises goes with it. That is $99.31 a year on the city's average $488,000 home, by the city's own impact statement. Even a losing vote delays it: state law keeps the certified rate for the year the petition was filed at the old figure and lets the increase start the following year (§ 20A-7-613(10)(a)).",
       "wrong_part": "Signing on its own changes nothing. Three things have to happen first: the signatures have to clear the threshold citywide and in at least three-quarters of the city's voter participation areas, Utah County has to verify them, and then there has to be a vote. As of October 6 none of that has started. On September 15 the mayor said from the dais that the signatures had not been counted, and on October 6 the sponsors said publicly that they had not begun collecting any (see below).",
       "detail": [
-        "There have been two referendums. The first targeted Resolution R-57-2026, the 0.001500 rate adopted on August 6. On August 18 the council repealed that resolution (R-61-2026) and adopted R-62-2026 at 0.000900 in its place, which left the first petition with nothing to overturn. A second application, against R-62-2026, is dated August 22 and was stamped received by the city on August 24. That is the petition in circulation now.",
+        "There have been two referendums. The first targeted Resolution R-57-2026, the 0.001500 rate adopted on August 6. On August 18 the council repealed that resolution (R-61-2026) and adopted R-62-2026 at 0.000900 in its place, which left the first petition with nothing to overturn. A second application, against R-62-2026, was signed by ten sponsors on August 22 and stamped received by the city on August 24, the last day the law allowed. That is the petition in circulation now.",
         "The sponsors' own account, posted publicly on October 6, is that they have not started gathering signatures. They say the petition packets the city issued contain significant errors, so signatures gathered on them could be thrown out, and that they are retaining an attorney to ask a court to order the city to issue corrected materials, which would restart the signature deadline. This is the sponsors' statement, not a record this page can check; it will be replaced with the court filing if one is made.",
-        "Where it gets messy is the date of the vote. The petition sheets ask for a special election on August 10, 2027. State law says a tax referendum goes on the earlier of the next regular general election or the next municipal general election unless a special election is called (§ 20A-7-613(7)). That would be November 3, 2026, and the law also has the county print a referendum on the ballot before it qualifies when the signature deadline falls after ballots are printed (§ 20A-7-613(13)). Residents told the council on September 15 that the August 2027 date was wrong. The mayor answered that the county was already printing ballots and the signatures were not in, and that the city would call a special election if the petition qualifies. Which reading holds is for the city recorder and the county clerk, not this page.",
+        "Where it gets messy is the date of the vote. The petition sheets ask for a special election on August 10, 2027. State law says a tax referendum goes on the earlier of the next regular general election or the next municipal general election unless a special election is called (§ 20A-7-613(7)). That would be November 3, 2026, and the law also has the county print a referendum on the ballot before it qualifies when the signature deadline falls after ballots are printed (§ 20A-7-613(13)). Residents told the council on September 15 that the August 2027 date was wrong. The mayor answered that the county was already printing ballots and the signatures were not in, and that the city would call a special election if the petition qualifies. Utah County's amended sample ballot for November 3, posted September 17, has no Eagle Mountain question, so it will not be on that ballot. Which reading of the law holds is for the city recorder, the county clerk and, if it comes to it, a court, not this page.",
         "That date matters for the money. The first bills at the new rate go out in November 2026. The city's impact statement says a repeal would reverse the decision “to collect an additional $2,132,876 annually in property taxes starting November 2026,” but neither it nor the petition says what happens to bills already paid if the vote comes the following August. The record does not answer that yet.",
         "The city's information pamphlet carries one argument, the mayor's case for keeping the rate. The sponsors' argument is listed but marked “not timely submitted,” so it was left out.",
-        "The signature threshold is 8.25% of active voters if Eagle Mountain is now a second-class city and 10% if it is still third class, measured both citywide and within each qualifying voter participation area. The class changes on the lieutenant governor's certificate, not on the population estimate."
+        "The signature threshold is 8.25% of active voters if Eagle Mountain is now a second-class city and 10% if it is still third class, measured both citywide and in at least three-quarters of its voter participation areas. The Census Bureau's 2025 estimate puts the city past the 65,000 line, but the class changes only on the lieutenant governor's certificate (§ 10-2-302), and no certificate has been found. ABC4's report gives the requirement as about 10%."
       ],
       "figures": [
         {
@@ -437,12 +437,21 @@
             "title": "Utah Code § 20A-7-613",
             "url": "https://le.utah.gov/xcode/Title20A/Chapter7/20A-7-S613.html"
           }
+        },
+        {
+          "date": "2026-09-17",
+          "speaker": "Utah County Clerk",
+          "note": "Amended sample ballot for the November 3, 2026 general election: no Eagle Mountain question.",
+          "doc": {
+            "title": "Utah County election notices",
+            "url": "https://vote.utahcounty.gov/public-notices"
+          }
         }
       ],
       "read_more": [
         {
-          "label": "The referendum route in full",
-          "href": "tax.html#s-argument"
+          "label": "The tax referendum, in full",
+          "href": "referendum.html"
         }
       ],
       "updated": "2026-10-06"

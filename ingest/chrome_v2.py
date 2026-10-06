@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import html
 
-from .nav import NAV, TABBAR, Item
+from .nav import HEADER, NAV, TABBAR, Item
 
 CONTACT = "civicrollcall@gmail.com"
 FONT_PRELOAD = "/fonts/public-sans-400-800-latin.woff2"
@@ -115,7 +115,7 @@ def header(section: str) -> str:
     inside a section (a fact check passes "claims.html") lights that section."""
     current = _section_of(section)
     links = []
-    for item in NAV:
+    for item in HEADER:
         top_link = f'<a href="/{item.href}"{_attrs(item, section, current)}>{esc(item.label)}</a>'
         links.append(_dropdown(item, top_link, section) if item.children else top_link)
     return ('<header class="v2-header"><div class="v2-wrap">'

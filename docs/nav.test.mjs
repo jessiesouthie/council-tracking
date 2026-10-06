@@ -70,6 +70,7 @@ function canonical() {
       children,
       alias,
       mobile: !/mobile=False/.test(body),
+      header: !/header=False/.test(body),
       bodyScoped: /body_scoped=True/.test(body),
     });
   }
@@ -78,6 +79,7 @@ function canonical() {
 
 const NAV = canonical();
 const TABBAR = NAV.filter((i) => i.mobile);
+const HEADER = NAV.filter((i) => i.header);
 
 test("the canonical list parsed, and is not empty", () => {
   assert.ok(NAV.length >= 5, `parsed only ${NAV.length} items from ingest/nav.py`);
@@ -216,18 +218,18 @@ for (const page of V2_PAGES) {
     assert.ok(head, `${page} has no v2 header nav: run python -m ingest.build_nav`);
     // The section links only; the dropdown's own links are class="v2-nav-sub".
     const links = asLinks(head[1]).filter((l) => !/v2-nav-sub/.test(l.attrs));
-    assert.deepEqual(links.map((l) => l.label.replace(/&amp;/g, "&")), NAV.map((i) => i.label));
-    assert.deepEqual(links.map((l) => l.href), NAV.map((i) => `/${i.href}`));
+    assert.deepEqual(links.map((l) => l.label.replace(/&amp;/g, "&")), HEADER.map((i) => i.label));
+    assert.deepEqual(links.map((l) => l.href), HEADER.map((i) => `/${i.href}`));
     assert.ok(links.filter((l) => /aria-current/.test(l.attrs)).length <= 1,
       `${page}: more than one aria-current in the header`);
     // A council-only section is marked so site.js can drop it for another body.
     for (const [i, l] of links.entries()) {
-      assert.equal(/data-nav-body="city-council"/.test(l.attrs), NAV[i].bodyScoped,
+      assert.equal(/data-nav-body="city-council"/.test(l.attrs), HEADER[i].bodyScoped,
         `${page}: ${l.label} body scoping`);
     }
     // Each section with pages inside it opens a menu of exactly those pages.
     const menus = [...head[1].matchAll(/<ul class="v2-nav-menu" aria-label="([^"]*)">([\s\S]*?)<\/ul>/g)];
-    const withKids = NAV.filter((i) => i.children.length);
+    const withKids = HEADER.filter((i) => i.children.length);
     assert.deepEqual(menus.map((m) => m[1].replace(/&amp;/g, "&")), withKids.map((i) => i.label),
       `${page}: header dropdowns`);
     for (const [i, m] of menus.entries()) {

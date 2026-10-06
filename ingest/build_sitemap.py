@@ -96,6 +96,9 @@ PAGES: list[dict] = [
     # another data center, not on a schedule.
     {"path": "data-centers.html", "priority": "0.7", "changefreq": "monthly",
      "data": []},
+    # Same kind of page; it moves when the petition, the clerk or a court does.
+    {"path": "referendum.html", "priority": "0.7", "changefreq": "weekly",
+     "data": []},
     {"path": "motions.html", "priority": "0.7", "changefreq": "weekly",
      "data": ["data.json"], "body_scoped": "motions"},
     {"path": "definitions.html", "priority": "0.7", "changefreq": "monthly",

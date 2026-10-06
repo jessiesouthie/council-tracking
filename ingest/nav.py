@@ -53,6 +53,8 @@ class Item:
     children: tuple[Child, ...] = ()
     alias: tuple[str, ...] = ()
     mobile: bool = True
+    # False keeps it out of the header bar; the footer still lists it.
+    header: bool = True
     body_scoped: bool = False
     blurb: str = ""
     # The tab bar's name for it. Five tabs share a 390px phone, about 78px
@@ -166,13 +168,15 @@ NAV: tuple[Item, ...] = (
         href="data-centers.html",
         children=(
             Child("Data centers", "data-centers.html"),
+            Child("Tax referendum", "referendum.html"),
         ),
         mobile=False,
-        blurb="subjects that run across years of meetings, starting with the data centers.",
+        blurb="subjects that run across years of meetings: the data centers and the tax referendum.",
     ),
     # Reference, not a destination anyone arrives looking for. It stays off the
     # mobile bar — five is the most a bottom bar can hold before the labels stop
-    # being readable — and every page already carries it in the footer.
+    # being readable — and off the header bar too: every page carries it in the
+    # footer, and the strip's "What is this?" link goes to it.
     Item(
         label="About",
         href="about.html",
@@ -181,6 +185,7 @@ NAV: tuple[Item, ...] = (
             Child("Definitions", "definitions.html"),
         ),
         mobile=False,
+        header=False,
         blurb="where the record comes from, and the words the city uses in plain English.",
     ),
 )
@@ -189,6 +194,9 @@ NAV: tuple[Item, ...] = (
 # section, and the sections that aren't on it live in the footer or on the front
 # page. Five is the ceiling, not the target — see MOBILE_MAX.
 TABBAR: tuple[Item, ...] = tuple(i for i in NAV if i.mobile)
+
+# The desktop and tablet header bar.
+HEADER: tuple[Item, ...] = tuple(i for i in NAV if i.header)
 
 MOBILE_MAX = 5
 
