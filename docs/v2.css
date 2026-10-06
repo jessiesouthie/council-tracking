@@ -1304,6 +1304,14 @@ html.has-modal { overflow: hidden; }
 .dc-card dt { color: var(--muted); }
 .dc-card dd { margin: 0; }
 .dc-card p:not(.dc-llc) { font-size: var(--fs-base); }
+.dc-plant { margin-top: 12px; border: 1px dashed var(--cool-edge); border-radius: var(--radius); padding: 16px; background: var(--surface); }
+.dc-plant-tag { margin: 0 0 10px; }
+.dc-plant-body { display: grid; gap: 12px 24px; grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr)); }
+.dc-plant-body > div { display: flex; flex-direction: column; gap: 8px; }
+.dc-plant h3 { margin: 0; font-size: var(--fs-md); font-weight: 800; }
+.dc-plant dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 6px 12px; font-size: var(--fs-base); }
+.dc-plant dt { color: var(--muted); }
+.dc-plant dd { margin: 0; }
 .dc-side ul { margin: 0; padding-left: 20px; font-size: var(--fs-base); }
 .dc-side li { margin-bottom: 10px; }
 
