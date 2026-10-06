@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
     <link rel="preload" href="fonts/public-sans-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20261001a" />
-    <link rel="stylesheet" href="v2.css?v=20261006b" />
+    <link rel="stylesheet" href="v2.css?v=20261006c" />
 
     <!-- Structured data, written inline rather than injected by site.js: the
          crawlers that most need it (Bing, and every AI answer engine) don't run
@@ -96,7 +96,7 @@
     }
     </script>
   </head>
-  <body>
+  <body class="v2-canvas">
     <a class="v2-skip" href="#main">Skip to main content</a>
     <div class="v2-chrome" data-chrome="top">
     <!-- BEGIN generated:nav (ingest/build_nav.py) -->
@@ -173,7 +173,7 @@
         </section>
 
         <div class="v2-home-cols">
-          <section class="v2-home-votes" aria-labelledby="votes-h">
+          <section class="v2-home-votes v2-panel" aria-labelledby="votes-h">
             <div class="v2-home-h">
               <h2 id="votes-h">Latest votes</h2>
               <a href="motions.html">All votes <span aria-hidden="true">→</span></a>
@@ -181,7 +181,7 @@
             <ol class="v2-votes" id="votes"><li class="v2-home-loading">Loading the record&hellip;</li></ol>
           </section>
 
-          <section class="v2-home-checks" id="checks-section" aria-labelledby="checks-h" data-nav-body="city-council" hidden>
+          <section class="v2-home-checks v2-panel" id="checks-section" aria-labelledby="checks-h" data-nav-body="city-council" hidden>
             <div class="v2-home-h">
               <h2 id="checks-h">Latest fact checks</h2>
               <a href="claims.html">All <span aria-hidden="true">→</span></a>
@@ -190,7 +190,7 @@
           </section>
         </div>
 
-        <section class="v2-home-council" aria-labelledby="council-h" hidden id="council-section">
+        <section class="v2-home-council v2-panel" aria-labelledby="council-h" hidden id="council-section">
           <div class="v2-home-h">
             <h2 id="council-h">Who sits on the <span data-body-noun>council</span></h2>
             <a href="members.html">Voting records <span aria-hidden="true">→</span></a>
@@ -210,7 +210,7 @@
             </ul>
           </section>
 
-          <section class="v2-home-more" aria-labelledby="more-h">
+          <section class="v2-home-more v2-panel" aria-labelledby="more-h">
             <h2 id="more-h">More on this site</h2>
             <ul class="v2-links">
               <li data-nav-body="city-council"><a href="budget.html">The city budget, line by line</a></li>

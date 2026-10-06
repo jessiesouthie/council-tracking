@@ -24,6 +24,12 @@
   --line-soft: #edf0f3;
   --ground: #ffffff;
   --surface: #f4f6f8;
+  /* A page that is all white leaves the eye nowhere to rest. Pages that opt in
+     (body.v2-canvas) sit on this tinted ground with their sections on --card
+     panels; see the front page. */
+  --canvas: #eef2f6;
+  --card: #ffffff;
+  --card-shadow: 0 1px 2px rgba(20, 32, 46, .05), 0 2px 8px rgba(20, 32, 46, .05);
   --blue: #1d4f91;
   --blue-hover: #123766;
   --blue-soft: #eaf1fa;
@@ -94,6 +100,9 @@
     --line-soft: #233040;
     --ground: #0f1923;
     --surface: #182533;
+    --canvas: #0b141c;
+    --card: #132030;
+    --card-shadow: none;
     --blue: #8fb8ee;
     --blue-hover: #b5d0f5;
     --blue-soft: #1b2d44;
@@ -109,7 +118,7 @@
 }
 :root[data-theme="dark"] {
   --ink: #e8edf2; --ink-2: #c5ced8; --muted: #9aa7b5; --line: #2c3a49; --line-soft: #233040;
-  --ground: #0f1923; --surface: #182533; --blue: #8fb8ee; --blue-hover: #b5d0f5; --blue-soft: #1b2d44;
+  --ground: #0f1923; --surface: #182533; --canvas: #0b141c; --card: #132030; --card-shadow: none; --blue: #8fb8ee; --blue-hover: #b5d0f5; --blue-soft: #1b2d44;
   --band: #060c12;
   --ok-fg: #9fd9b3; --ok-bg: #12301f; --ok-edge: #2f6b47; --ok-solid: #2f8a55;
   --warn-fg: #f2d38c; --warn-bg: #3a2b08; --warn-edge: #8a6a1f; --warn-solid: #a87412;
@@ -383,9 +392,23 @@ p { margin: 0; }
 .v2-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .v2-chrome { display: contents; }
 
+/* ---------- Tinted canvas (opt-in) ---------- */
+
+body.v2-canvas { background: var(--canvas); }
+.v2-panel {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--card-shadow); padding: 18px 16px 6px;
+}
+@media (min-width: 640px) { .v2-panel { padding: 20px 22px 8px; } }
+.v2-panel > :last-child > li:last-child { border-bottom: 0; }
+.v2-panel .v2-list { border-top: 0; }
+.v2-canvas .v2-footer { background: var(--card); margin-top: 32px; }
+
 /* ---------- Front page (index.html) ---------- */
 
-.v2-home-hero { background: var(--surface); border-bottom: 1px solid var(--line); }
+/* The hero's blue wash fades into the canvas, so the page reads as one ground
+   with panels on it rather than a grey box over a white sheet. */
+.v2-home-hero { background: linear-gradient(180deg, var(--blue-soft), var(--canvas)); }
 .v2-home-hero-in { display: grid; gap: 20px; padding: 28px 0 26px; }
 @media (min-width: 900px) {
   .v2-home-hero-in { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 48px; padding: 52px 0 48px; align-items: start; }
@@ -437,7 +460,7 @@ p { margin: 0; }
 
 .v2-home-meet {
   display: flex; gap: 14px; align-items: flex-start; padding: 16px; border-radius: var(--radius);
-  border: 1px solid var(--line); background: var(--ground); color: var(--ink); text-decoration: none;
+  border: 1px solid var(--line); background: var(--card); box-shadow: var(--card-shadow); color: var(--ink); text-decoration: none;
 }
 .v2-home-meet:hover { color: var(--ink); border-color: var(--cool-edge); }
 .v2-cal {
@@ -452,7 +475,10 @@ p { margin: 0; }
 
 .v2-home { display: flex; flex-direction: column; gap: 40px; padding-top: 32px; padding-bottom: 24px; }
 .v2-home h2 { font-size: var(--fs-lg); font-weight: 800; letter-spacing: -0.01em; }
-.v2-home-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
+.v2-home-h { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+/* A short civic-blue bar before each section heading: something for the eye to
+   land on when scanning down the page. */
+.v2-home h2::before { content: ""; display: inline-block; vertical-align: -0.15em; width: 4px; height: 1.05em; margin-right: 10px; border-radius: var(--r-xs); background: var(--blue); }
 .v2-home-h a { font-weight: 700; font-size: var(--fs-base); text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; min-height: 44px; }
 
 .v2-home-doors h2 { margin-bottom: 14px; }
@@ -462,9 +488,12 @@ p { margin: 0; }
 .v2-home-doors a {
   height: 100%; display: grid; grid-template-columns: 40px 1fr; grid-template-rows: auto auto; column-gap: 14px; row-gap: 2px;
   align-items: center; padding: 14px 16px; min-height: 72px;
-  border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; color: var(--ink); background: var(--ground);
+  border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; color: var(--ink);
+  background: var(--card); box-shadow: var(--card-shadow);
+  transition: border-color .15s, transform .15s;
 }
-.v2-home-doors a:hover { border-color: var(--blue); color: var(--ink); }
+.v2-home-doors a:hover { border-color: var(--blue); color: var(--ink); transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) { .v2-home-doors a { transition: none; } .v2-home-doors a:hover { transform: none; } }
 .v2-door-ico { grid-row: 1 / span 2; width: 40px; height: 40px; border-radius: var(--r-sm); background: var(--blue-soft); display: grid; place-items: center; }
 .v2-door-ico svg { width: 22px; height: 22px; fill: none; stroke: var(--blue); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 .v2-door-q { font-size: var(--fs-base); font-weight: 700; line-height: 1.3; }
@@ -475,28 +504,33 @@ p { margin: 0; }
 }
 
 .v2-home-cols { display: grid; gap: 40px; }
-@media (min-width: 900px) { .v2-home-cols { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); } }
+@media (min-width: 900px) { .v2-home-cols { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); align-items: start; } }
 .v2-home-cols > [hidden] { display: none; }
 
 .v2-votes { list-style: none; margin: 0; padding: 0; }
 .v2-votes li { border-bottom: 1px solid var(--line-soft); }
+.v2-votes li:last-child { border-bottom: 0; }
 .v2-votes a { display: flex; flex-direction: column; gap: 4px; padding: 14px 0; text-decoration: none; color: var(--ink); }
 .v2-votes a:hover .v2-vote-title { color: var(--blue); }
 .v2-vote-meta { display: flex; justify-content: space-between; gap: 12px; font-size: var(--fs-sm); color: var(--muted); }
-.v2-vote-out { font-weight: 700; color: var(--t-fg); font-variant-numeric: tabular-nums; }
+.v2-vote-meta { align-items: center; }
+.v2-vote-out { font-weight: 700; color: var(--t-fg); background: var(--t-bg); padding: 1px 10px; border-radius: 999px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .v2-vote-title { font-size: var(--fs-md); font-weight: 700; line-height: 1.35; }
 .v2-vote-sum { font-size: var(--fs-base); color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .v2-home-loading { padding: 14px 0; color: var(--muted); list-style: none; }
 
 .v2-people { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
 .v2-people a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; color: var(--ink); min-height: 56px; }
-.v2-people a:hover { border-color: var(--cool-edge); color: var(--ink); }
-.v2-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--surface); display: grid; place-items: center; font-weight: 800; font-size: var(--fs-sm); color: var(--ink-2); flex-shrink: 0; }
+.v2-people a:hover { border-color: var(--blue); color: var(--ink); }
+.v2-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--blue-soft); display: grid; place-items: center; font-weight: 800; font-size: var(--fs-sm); color: var(--blue); flex-shrink: 0; }
+.v2-home-council.v2-panel { padding-bottom: 18px; }
+@media (min-width: 640px) { .v2-home-council.v2-panel { padding-bottom: 22px; } }
 .v2-person-name { display: block; font-weight: 700; }
 .v2-person-role { display: block; font-size: var(--fs-sm); color: var(--muted); }
 
 .v2-home-boards, .v2-home-more { display: flex; flex-direction: column; gap: 10px; }
-.v2-home-boards { background: var(--surface); border-radius: var(--radius); padding: 18px; }
+.v2-home-boards { background: var(--blue-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.v2-home-more.v2-panel { padding-bottom: 12px; }
 .v2-home-boards h2, .v2-home-more h2 { font-size: var(--fs-md); }
 .v2-home-fresh { font-size: var(--fs-sm); color: var(--muted); }
 
