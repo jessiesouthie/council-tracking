@@ -1402,6 +1402,8 @@ html.has-modal { overflow: hidden; }
    DATA CENTERS (data-centers.html)
    ========================================================================== */
 .dc-projects, .dc-sides { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr)); }
+/* Four companies: two by two from tablet up, so no card sits alone on a row. */
+@media (min-width: 640px) { .dc-projects { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .dc-card, .dc-side { border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; background: var(--ground); display: flex; flex-direction: column; gap: 8px; }
 .dc-card h3, .dc-side h3 { margin: 0; font-size: var(--fs-md); font-weight: 800; }
 .dc-llc { font-size: var(--fs-sm); color: var(--muted); }
@@ -1533,42 +1535,83 @@ blockquote.dc-quote footer { font-size: var(--fs-sm); color: var(--muted); }
 .df-page .def-group:first-of-type { border-top: 0; padding-top: 4px; }
 
 /* =============================================================================
-   TAXES & BUDGET OVERVIEW (finances.html): the four pages as a numbered chain
-   of cards, in the order the money moves. The page script fills the figure
-   slots ([data-when], [data-fig], [data-fig2]); an empty slot collapses.
+   TAXES & BUDGET OVERVIEW (finances.html): the four pages as a chain of cards
+   on a rail, in the order the money moves. Each card is a ledger line: words on
+   the left, its figure in a tray on the right (below the name on a phone). The
+   page script fills the slots ([data-when], [data-fig], [data-fig2]); an empty
+   slot collapses, and a tray with both slots empty goes with it.
    ========================================================================== */
-.v2-article > section.fin-chain-sec { border-top: 0; padding-top: 0; }
-.v2-article > section > .fin-chain { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+/* The chain sits on the canvas itself, not inside a panel: cards on a card read
+   as one grey box. */
+.v2-article > section.fin-chain-sec { background: none; border: 0; box-shadow: none; padding: 0; }
+.v2-article > section > .fin-chain {
+  --fin-node: 32px; --fin-rail: 44px;
+  list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px;
+  position: relative;
+}
+@media (min-width: 640px) { .v2-article > section > .fin-chain { --fin-node: 40px; --fin-rail: 60px; gap: 16px; } }
 .fin-chain > li { margin: 0; }
-@media (min-width: 760px) { .fin-chain { grid-template-columns: 1fr 1fr; } }
-.fin-step { position: relative; display: flex; }
+/* The rail: one line through every node, from the first to the last. */
+.fin-chain::before {
+  content: ""; position: absolute; left: calc(var(--fin-node) / 2 - 1px); top: 22px; bottom: 22px;
+  width: 2px; border-radius: 2px; background: linear-gradient(var(--blue), var(--blue) 45%, var(--warn-edge) 55%, var(--blue) 75%);
+  opacity: .35;
+}
+.fin-step { position: relative; display: flex; padding-left: var(--fin-rail); }
 .fin-node {
-  position: absolute; top: 16px; left: 16px; width: 32px; height: 32px; border-radius: 50%;
-  display: grid; place-items: center; background: var(--blue-soft); color: var(--blue);
+  position: absolute; top: 18px; left: 0; width: var(--fin-node); height: var(--fin-node); border-radius: 50%;
+  display: grid; place-items: center; background: var(--blue); color: var(--ground);
+  box-shadow: 0 0 0 4px var(--canvas);
   font-size: var(--fs-sm); font-weight: 800; font-variant-numeric: tabular-nums; pointer-events: none;
 }
 .fin-step-a {
-  flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 16px 16px 16px 60px;
-  border: 1px solid var(--line); border-radius: var(--radius); background: var(--ground);
-  color: var(--ink); text-decoration: none;
+  flex: 1; min-width: 0; display: grid; gap: 6px 24px; padding: 18px 16px;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "q" "name" "figs" "blurb" "go";
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--card);
+  box-shadow: var(--card-shadow); color: var(--ink); text-decoration: none;
+}
+@media (min-width: 640px) {
+  .fin-step-a {
+    padding: 20px 22px; grid-template-columns: minmax(0, 1fr) minmax(14rem, 18rem);
+    grid-template-areas: "q figs" "name figs" "blurb figs" "go figs";
+    grid-template-rows: auto auto 1fr auto;
+  }
 }
 .fin-step-a:hover { border-color: var(--blue); color: var(--ink); }
-.fin-q { font-size: var(--fs-sm); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-top: 6px; }
-.fin-when { font-weight: 600; }
-.fin-line { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-.fin-name { font-size: var(--fs-lg); font-weight: 800; letter-spacing: -0.01em; }
-.fin-lead { flex: 1 1 1rem; border-bottom: 2px dotted var(--line); min-width: 1rem; transform: translateY(-4px); }
-.fin-fig { font-size: var(--fs-lg); font-weight: 800; font-variant-numeric: tabular-nums; }
-.fin-fig:empty, .fin-fig2:empty { display: none; }
-.fin-line:has(.fin-fig:empty) .fin-lead { display: none; }
-.fin-sub { display: flex; flex-direction: column; gap: 4px; }
-.fin-blurb { font-size: var(--fs-base); color: var(--ink-2); }
-.fin-fig2 { font-size: var(--fs-sm); font-weight: 700; color: var(--ink); }
-.fin-go { margin-top: auto; padding-top: 4px; font-size: var(--fs-base); font-weight: 700; color: var(--blue); }
+.fin-step-a:hover .fin-go { text-decoration: underline; text-underline-offset: 3px; }
+.fin-step-a:focus-visible { outline-offset: 3px; border-radius: var(--radius); }
+@media (prefers-reduced-motion: no-preference) {
+  .fin-step-a { transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+  .fin-step-a:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(20, 32, 46, .06), 0 8px 20px rgba(20, 32, 46, .08); }
+}
+.fin-q { grid-area: q; font-size: var(--fs-sm); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.fin-when { font-weight: 600; white-space: nowrap; }
+.fin-name { grid-area: name; font-size: var(--fs-xl); font-weight: 800; letter-spacing: -0.015em; line-height: 1.15; }
+.fin-blurb { grid-area: blurb; font-size: var(--fs-base); color: var(--ink-2); max-width: 36rem; }
+.fin-go { grid-area: go; padding-top: 4px; font-size: var(--fs-base); font-weight: 700; color: var(--blue); }
+/* The figure tray: a grey well inside the white card. */
+.fin-figs {
+  grid-area: figs; display: flex; flex-direction: column; justify-content: center; gap: 4px;
+  margin: 4px 0; padding: 12px 14px; border-radius: var(--r-sm); background: var(--surface);
+}
+@media (min-width: 640px) { .fin-figs { margin: 0; padding: 16px 18px; align-items: flex-end; text-align: right; } }
+.fin-fig { font-size: var(--fs-xl); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; font-variant-numeric: tabular-nums; color: var(--ink); }
+@media (min-width: 640px) { .fin-fig { font-size: var(--fs-2xl); } }
+.fin-fig2 { font-size: var(--fs-sm); font-weight: 600; color: var(--ink-2); }
+.fin-fig:empty, .fin-fig2:empty, .fin-figs:has(.fin-fig:empty):has(.fin-fig2:empty) { display: none; }
+@media (min-width: 640px) {
+  .fin-step-a:has(.fin-fig:empty):has(.fin-fig2:empty) { grid-template-columns: minmax(0, 1fr); }
+}
 /* The one page that is a model rather than a republication. */
 .fin-step.is-model .fin-step-a { border-style: dashed; border-color: var(--warn-edge); }
-.fin-step.is-model .fin-node { background: var(--warn-bg); color: var(--warn-fg); }
-.fin-step.is-model .fin-q::after { content: " · Model"; color: var(--warn-fg); }
+.fin-step.is-model .fin-node { background: var(--warn-bg); color: var(--warn-fg); box-shadow: 0 0 0 4px var(--canvas), inset 0 0 0 2px var(--warn-edge); }
+.fin-step.is-model .fin-figs { background: var(--warn-bg); }
+.fin-step.is-model .fin-q::after {
+  content: "Model"; display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 999px;
+  background: var(--warn-bg); color: var(--warn-fg); border: 1px solid var(--warn-edge);
+  font-size: var(--fs-xs); letter-spacing: 0.06em; vertical-align: 1px;
+}
 .fin-pull { padding: 14px 16px; border-left: 4px solid var(--blue); background: var(--blue-soft); border-radius: 0 var(--radius) var(--radius) 0; font-weight: 600; }
 .fin-more { display: flex; flex-wrap: wrap; gap: 4px 24px; }
 .fin-more a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }

@@ -22,7 +22,7 @@
     <meta name="theme-color" content="#14202e" />
     <link rel="preload" href="fonts/public-sans-400-800-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts.css?v=20261001a" />
-    <link rel="stylesheet" href="v2.css?v=20261006d" />
+    <link rel="stylesheet" href="v2.css?v=20261006e" />
   </head>
   <body class="page-finances">
     <a class="v2-skip" href="#main">Skip to main content</a>
@@ -67,15 +67,12 @@
             <span class="fin-node" aria-hidden="true">01</span>
             <a class="fin-step-a" href="tax.html">
               <span class="fin-q">What the city charges<span class="fin-when" data-when="tax"></span></span>
-              <span class="fin-line">
-                <span class="fin-name">Tax</span>
-                <span class="fin-lead" aria-hidden="true"></span>
+              <span class="fin-name">Tax</span>
+              <span class="fin-figs">
                 <span class="fin-fig" data-fig="tax"></span>
-              </span>
-              <span class="fin-sub">
-                <span class="fin-blurb">The rate the council adopted, the case the city made for it in public, and what it does to your bill.</span>
                 <span class="fin-fig2" data-fig2="tax"></span>
               </span>
+              <span class="fin-blurb">The rate the council adopted, the case the city made for it in public, and what it does to your bill.</span>
               <span class="fin-go" aria-hidden="true">The rate, and the vote &rarr;</span>
             </a>
           </li>
@@ -84,15 +81,12 @@
             <span class="fin-node" aria-hidden="true">02</span>
             <a class="fin-step-a" href="budget.html">
               <span class="fin-q">What it spends<span class="fin-when" data-when="budget"></span></span>
-              <span class="fin-line">
-                <span class="fin-name">Budget</span>
-                <span class="fin-lead" aria-hidden="true"></span>
+              <span class="fin-name">Budget</span>
+              <span class="fin-figs">
                 <span class="fin-fig" data-fig="budget"></span>
-              </span>
-              <span class="fin-sub">
-                <span class="fin-blurb">Every dollar the city appropriates, traced from the fund that holds it to what it buys.</span>
                 <span class="fin-fig2" data-fig2="budget"></span>
               </span>
+              <span class="fin-blurb">Every dollar the city appropriates, traced from the fund that holds it to what it buys.</span>
               <span class="fin-go" aria-hidden="true">Fund by fund &rarr;</span>
             </a>
           </li>
@@ -101,15 +95,12 @@
             <span class="fin-node" aria-hidden="true">03</span>
             <a class="fin-step-a" href="projections.html">
               <span class="fin-q">What a different rate would bring in<span class="fin-when" data-when="proj"></span></span>
-              <span class="fin-line">
-                <span class="fin-name">Projections</span>
-                <span class="fin-lead" aria-hidden="true"></span>
+              <span class="fin-name">Projections</span>
+              <span class="fin-figs">
                 <span class="fin-fig" data-fig="proj"></span>
-              </span>
-              <span class="fin-sub">
-                <span class="fin-blurb">A model, not a city forecast: what each property-tax rate would do to the General Fund, year by year.</span>
                 <span class="fin-fig2" data-fig2="proj"></span>
               </span>
+              <span class="fin-blurb">A model, not a city forecast: what each property-tax rate would do to the General Fund, year by year.</span>
               <span class="fin-go" aria-hidden="true">Run the scenarios &rarr;</span>
             </a>
           </li>
@@ -118,15 +109,12 @@
             <span class="fin-node" aria-hidden="true">04</span>
             <a class="fin-step-a" href="staffing.html">
               <span class="fin-q">What it pays people to do the work<span class="fin-when" data-when="staffing"></span></span>
-              <span class="fin-line">
-                <span class="fin-name">Staffing</span>
-                <span class="fin-lead" aria-hidden="true"></span>
+              <span class="fin-name">Staffing</span>
+              <span class="fin-figs">
                 <span class="fin-fig" data-fig="staffing"></span>
-              </span>
-              <span class="fin-sub">
-                <span class="fin-blurb">Who the city employs, how that compares with cities its size, and what it contracts out instead.</span>
                 <span class="fin-fig2" data-fig2="staffing"></span>
               </span>
+              <span class="fin-blurb">Who the city employs, how that compares with cities its size, and what it contracts out instead.</span>
               <span class="fin-go" aria-hidden="true">Headcount, checked &rarr;</span>
             </a>
           </li>
@@ -169,8 +157,8 @@
       // reads, so a stale build shows a stale number rather than a confident
       // wrong one. A station whose data didn't arrive keeps its static copy and
       // prints without a figure, rather than vanishing — the same rule the
-      // homepage grid uses. The dotted leader hides itself when the figure it
-      // was drawn to reach is empty, so a missing file leaves a clean line.
+      // homepage grid uses. The figure tray hides itself when both of its
+      // slots are empty, so a missing file leaves a clean card.
       const grab = (f) =>
         fetch(new URL(f, document.baseURI))
           .then((r) => (r.ok ? r.json() : null))
@@ -239,8 +227,13 @@
           },
           budget: {
             when: budget && budget.fiscal_year_label,
-            fig: gross ? `${millions(gross)} all funds` : null,
-            fig2: gf ? `${millions(gf)} of it is the General Fund` : null,
+            // The scope rides in the gloss so the figure stays one short line.
+            fig: gross ? millions(gross) : null,
+            fig2: gross
+              ? gf
+                ? `All funds · General Fund ${millions(gf)}`
+                : "All funds"
+              : gf ? `${millions(gf)} of it is the General Fund` : null,
           },
           // No fiscal-year stamp here: the span *is* the figure, and printing
           // FY2026–27 in the eyebrow next to FY2027–32 on the line reads as two

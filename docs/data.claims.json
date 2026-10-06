@@ -1,7 +1,7 @@
 {
   "_comment": "Claims that circulate about the city, checked against the record this site already publishes. Hand-authored, like data.tax-case.json — nothing here is generated, because deciding what a claim actually asserts is not a thing a script can do. The rules the page states in `how` are binding on this file: a claim is only listed when it can be answered out of an open-meeting recording, a document the city or the state published, or arithmetic on figures from one of those, and every entry carries the citation next to the sentence it supports. Claims are quoted as they circulate and never attributed to a private individual by name; officials speaking in an open meeting are named, because that is the record. `verdict` is one of the keys in `verdicts` below. `checked` is when the entry was last read against the record; a claim about a live dispute goes stale quickly, which is why every card prints that date. `updated` is set only when an entry's finding, figures or sources change after `checked` (not for copy edits) and is printed beside it. `first_seen` is the earliest date this project saw the claim circulating, carried over from the intake row in data/claims/inbox.jsonl. `summary` is this project's one-line description of what was claimed and is what the card heading and the docket row carry; `claim` stays the wording as it circulates and is printed under the heading, quoted, so the reader can always see which sentence is theirs and which is ours. `topics` are keys from `categories`, which is what the filter bar at the top of the page is built from: the first topic is the heading a claim files under and the rest are the other shelves it belongs on, because most of these claims are about two things at once.",
   "body": "city-council",
-  "updated": "2026-10-03",
+  "updated": "2026-10-06",
   "eyebrow": "Fact checks",
   "title": "What's going around, and what the record says",
   "sub": "Things residents are telling each other about the city: the tax increase, the staffing, the petition, all set against the meetings, the notices and the audited figures they can be checked against. Some are true, some are out of date, and the ones the city itself put into circulation get the same treatment as the ones aimed at it.",
@@ -359,41 +359,83 @@
       "id": "referendum-repeals-it",
       "summary": "Signing the petition repeals the tax",
       "claim": "Sign the petition and the tax goes away.",
-      "verdict": "unresolved",
+      "verdict": "incomplete",
       "topics": [
         "process",
         "tax"
       ],
-      "ruling": "A referendum on a property tax rate is legally available, and one ran in a Utah city as recently as last autumn. But the resolution a petition was organized against was repealed on August 18 and replaced, and the signature test is two thresholds rather than one.",
+      "ruling": "Signing doesn't repeal anything. It's the first of three steps: enough valid signatures put the increase to a public vote, and only a majority voting no repeals it. The petition going round now is the second one; the first was aimed at a rate the council has since repealed.",
       "seen": "Petition drives and organizing posts, August 2026",
       "first_seen": "2026-08-08",
       "checked": "2026-08-19",
-      "true_part": "Utah Code § 20A-7-613 exists for exactly this situation. Five sponsors file a notarized application with the resolution attached; the city's budget officer must then produce an unbiased fiscal and legal impact statement within days; then signatures are gathered against a statutory threshold.",
-      "wrong_part": "Nothing about it is automatic, and two things are unsettled. The first is what a petition aimed at the August 6 resolution does now that the resolution has been repealed and a smaller increase adopted in its place: that turns on what was filed and when, and the city recorder is the authority on it, not this page. The second is the threshold itself.",
+      "true_part": "A referendum can undo this increase. If the petition qualifies and a majority votes against it, the city's rate goes back to the 0.000530 certified rate (Utah Code § 20A-7-613(10)(b)), and the $2,132,876 a year it raises goes with it. That is $99.31 a year on the city's average $488,000 home, by the city's own impact statement. Even a losing vote delays it: state law keeps the certified rate for the year the petition was filed at the old figure and lets the increase start the following year (§ 20A-7-613(10)(a)).",
+      "wrong_part": "Signing on its own changes nothing. Three things have to happen first: the signatures have to clear the threshold citywide and in at least three-quarters of the city's voter participation areas, Utah County has to verify them, and then there has to be a vote. As of October 6 none of that has started. On September 15 the mayor said from the dais that the signatures had not been counted, and on October 6 the sponsors said publicly that they had not begun collecting any (see below).",
       "detail": [
-        "For a city of the second class it is 8.25% of active voters citywide and 8.25% within at least 75% of the city's voter participation areas. Both must be met, and the second is what decides these. It is the one almost nobody organizing a petition budgets for.",
-        "Whether Eagle Mountain is second class yet is itself open. The statutory line is 65,000 residents, the first statewide subcounty estimates put the city at 65,409 in 2025, and the class changes on the lieutenant governor's certificate rather than on the estimate. If that certificate has not issued, the thresholds are 10% rather than 8.25%."
+        "There have been two referendums. The first targeted Resolution R-57-2026, the 0.001500 rate adopted on August 6. On August 18 the council repealed that resolution (R-61-2026) and adopted R-62-2026 at 0.000900 in its place, which left the first petition with nothing to overturn. A second application, against R-62-2026, is dated August 22 and was stamped received by the city on August 24. That is the petition in circulation now.",
+        "The sponsors' own account, posted publicly on October 6, is that they have not started gathering signatures. They say the petition packets the city issued contain significant errors, so signatures gathered on them could be thrown out, and that they are retaining an attorney to ask a court to order the city to issue corrected materials, which would restart the signature deadline. This is the sponsors' statement, not a record this page can check; it will be replaced with the court filing if one is made.",
+        "Where it gets messy is the date of the vote. The petition sheets ask for a special election on August 10, 2027. State law says a tax referendum goes on the earlier of the next regular general election or the next municipal general election unless a special election is called (§ 20A-7-613(7)). That would be November 3, 2026, and the law also has the county print a referendum on the ballot before it qualifies when the signature deadline falls after ballots are printed (§ 20A-7-613(13)). Residents told the council on September 15 that the August 2027 date was wrong. The mayor answered that the county was already printing ballots and the signatures were not in, and that the city would call a special election if the petition qualifies. Which reading holds is for the city recorder and the county clerk, not this page.",
+        "That date matters for the money. The first bills at the new rate go out in November 2026. The city's impact statement says a repeal would reverse the decision “to collect an additional $2,132,876 annually in property taxes starting November 2026,” but neither it nor the petition says what happens to bills already paid if the vote comes the following August. The record does not answer that yet.",
+        "The city's information pamphlet carries one argument, the mayor's case for keeping the rate. The sponsors' argument is listed but marked “not timely submitted,” so it was left out.",
+        "The signature threshold is 8.25% of active voters if Eagle Mountain is now a second-class city and 10% if it is still third class, measured both citywide and within each qualifying voter participation area. The class changes on the lieutenant governor's certificate, not on the population estimate."
       ],
       "figures": [
         {
-          "label": "Citywide signatures",
-          "value": "8.25%",
-          "note": "of active voters, 10% if still third class"
+          "label": "On the ballot",
+          "value": "$2.13M",
+          "note": "a year of new property tax that R-62-2026 raises"
         },
         {
-          "label": "And by area",
-          "value": "75%",
-          "note": "of voter participation areas must each clear 8.25%"
+          "label": "Average home",
+          "value": "$99.31",
+          "note": "a year, on a $488,000 home, per the city"
+        },
+        {
+          "label": "Vote the petition asks for",
+          "value": "Aug 10, 2027",
+          "note": "a special election; state law points to an earlier one"
         }
       ],
       "sources": [
         {
-          "date": "2026-08-19",
-          "speaker": "Utah Code",
-          "note": "§ 20A-7-601 (thresholds and filing deadline), § 20A-7-602.5 (the city's impact statement), § 20A-7-613 (referendum on a tax), § 10-2-301 and § 67-1a-2(3)(d) (city class, and the certificate that changes it).",
+          "meeting": 728,
+          "date": "2026-08-18",
+          "speaker": "The repeal and re-adoption",
+          "note": "R-61-2026 repealed the August 6 resolution (R-57-2026); R-62-2026 adopted 0.000900 in its place, 4 to 1, Councilmember Rich Wood voting no.",
           "doc": {
-            "title": "Utah Code Title 20A, Chapter 7, Part 6",
-            "url": "https://le.utah.gov/xcode/Title20A/Chapter7/20A-7-P6.html"
+            "title": "Resolution R-62-2026",
+            "url": "https://eaglemountain.gov/res-62-2026-approving-a-property-tax-increase-above-the-certified-tax-rate-for-fy-2026-2027/"
+          }
+        },
+        {
+          "date": "2026-09-14",
+          "speaker": "Eagle Mountain City",
+          "note": "Proposition Information Pamphlet: the August 22 referendum application against R-62-2026 (received August 24), the mayor's argument against the referendum, the sponsors' argument marked “not timely submitted,” and the fiscal and legal impact statement.",
+          "doc": {
+            "title": "Proposition Information Pamphlet",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2026/09/Proposition-Information-Pamphlet.pdf"
+          }
+        },
+        {
+          "speaker": "Eagle Mountain City",
+          "note": "The petition packet being circulated, referring R-62-2026 to “a special election to be held on August 10, 2027.”",
+          "doc": {
+            "title": "Referendum petition",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2026/09/Eagle-Mountain-Referendum-Petition.pdf"
+          }
+        },
+        {
+          "meeting": 729,
+          "date": "2026-09-15",
+          "speaker": "Mayor Jared Gray, answering public comment",
+          "quote": "There's no way to get it on the ballot because we don't have the signatures yet, and it's already required to be into the county right now."
+        },
+        {
+          "date": "2026-10-06",
+          "speaker": "Utah Code",
+          "note": "§ 20A-7-613(7) (which election), (10) (what each outcome does to the rate), (13) (printing a referendum before it qualifies); § 20A-7-601 (thresholds); § 10-2-301 and § 67-1a-2(3)(d) (city class).",
+          "doc": {
+            "title": "Utah Code § 20A-7-613",
+            "url": "https://le.utah.gov/xcode/Title20A/Chapter7/20A-7-S613.html"
           }
         }
       ],
@@ -402,7 +444,8 @@
           "label": "The referendum route in full",
           "href": "tax.html#s-argument"
         }
-      ]
+      ],
+      "updated": "2026-10-06"
     },
     {
       "id": "another-data-center",

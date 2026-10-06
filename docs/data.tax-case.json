@@ -367,12 +367,12 @@
   },
   "referendum": {
     "heading": "If a referendum happens",
-    "update": "Read this against August 18. The resolution a petition would have targeted, the 0.001500 adopted on August 6, was repealed that night, and a new increase at 0.000900 adopted in its place. What that does to a referendum already being organized depends on what was filed and when, and this page will not guess at it: the sequence below is the statute as it reads, and the parts that turn on which resolution is the target are checked against the city recorder and Utah Code before anything here says otherwise.",
+    "update": "Read this against what has happened since August 6. The resolution the first petition targeted, R-57-2026 at 0.001500, was repealed on August 18 and R-62-2026 adopted at 0.000900 in its place. A second referendum application, against R-62-2026, is dated August 22 and was received by the city on August 24; that is the petition in circulation. The petition sheets ask for a special election on August 10, 2027, which residents disputed on September 15 (see the vote step below). At that meeting the mayor said the signatures had not yet been counted. On October 6 the sponsors said publicly that they have not started collecting any: they say the city's packets contain errors, and they are retaining an attorney to ask a court for corrected materials, which would restart the signature clock. That is their account; this page will cite the court filing if one is made.",
     "lede": "A referendum against this rate is legally available: Utah Code § 20A-7-613 exists for exactly this situation, and a Utah city property tax referendum ran as recently as last autumn. What follows is the sequence, then what it would cost the city, then what happened the last time someone tried it. None of it is an argument for or against signing; it is what the statute and the precedent say.",
     "steps": [
       {
         "label": "File the application",
-        "text": "Five sponsors, notarized, with a copy of the resolution attached. Due no later than the first business day at least five days after the law passed (§ 20A-7-601(6)). The council passed this on Thursday, August 6, 2026; the city recorder is the authority on what date that works out to, not this page."
+        "text": "Five sponsors, notarized, with a copy of the resolution attached. Due no later than the first business day at least five days after the law passed (§ 20A-7-601(6)). The council passed R-62-2026 on Tuesday, August 18, 2026; the application against it is dated August 22 and stamped received on August 24. The city recorder is the authority on whether that met the deadline, not this page."
       },
       {
         "label": "The city writes the impact statement",
@@ -391,12 +391,12 @@
         "text": "The county clerk has 10 business days to check the signatures, then the local clerk has two business days to act on the result and the city attorney two more to write the ballot title (§ 20A-7-613(4)–(6))."
       },
       {
-        "label": "If it qualifies, this year's rate reverts",
-        "text": "The certified tax rate for the fiscal year in which the petition was filed becomes the city's most recent certified rate (§ 20A-7-613(10)(a)(i)). FY2026–27 would be collected at the old rate, before anybody votes. This is the provision that matters, and it favors the sponsors."
+        "label": "Either way, this year's increase is lost",
+        "text": "If the vote does not reject the increase, the certified rate for the fiscal year the petition was filed in stays at the city's most recent certified rate, and the increase is set for the following year instead (§ 20A-7-613(10)(a)). If the vote does reject it, the rate goes back to the most recent certified rate (§ 20A-7-613(10)(b)). Read together, a referendum that reaches a vote costs the city FY2026–27's increase whatever the result. The statute does not say how that works if the vote comes after the November 2026 tax bills have gone out."
       },
       {
-        "label": "Then the vote, on November 3, 2026",
-        "text": "The next regular general election, unless a special election is called (§ 20A-7-613(7)). If the timing runs past the ballot printing deadline, the question is printed anyway and not counted if it never qualifies (§ 20A-7-613(13))."
+        "label": "Then the vote: November 2026 or August 2027",
+        "text": "The law says the earlier of the next regular general election or the next municipal general election, unless a special election is called (§ 20A-7-613(7)). That points to November 3, 2026, and a referendum still gathering signatures when ballots are printed is printed anyway and not counted if it never qualifies (§ 20A-7-613(13)). The petition the city issued asks for a special election on August 10, 2027 instead. Residents told the council on September 15 that the date was wrong; the mayor answered that the county was already printing ballots and the city would call a special election if the petition qualifies. The city recorder and the county clerk settle which holds, not this page."
       },
       {
         "label": "And the outcome is asymmetric",
@@ -405,17 +405,17 @@
     ],
     "cost": {
       "heading": "What it would cost Eagle Mountain",
-      "lede": "Two costs, and they are nothing like the same size. The one people talk about is the county reimbursement. The one that would reshape the year is the suspended levy.",
+      "lede": "Two costs, and they are nothing like the same size. The one people talk about is the county reimbursement. The one that would reshape the year is the suspended increase.",
       "items": [
         {
-          "figure": "≈ $5.59M",
-          "label": "A year of the levy, suspended",
-          "text": "If the petition qualifies, FY2026–27 is collected at the old certified rate whatever the voters later decide. That is the whole adopted increase, gone for a year, and the city cannot re-notice its way around it mid-year. Every figure below is downstream of this one."
+          "figure": "$2.13M",
+          "label": "A year of the increase, suspended",
+          "text": "The city's impact statement puts what R-62-2026 raises at $2,132,876 a year, $99.31 on the average $488,000 home. If the referendum reaches a vote, state law leaves FY2026–27 at the old certified rate whatever the result, so that is the year's increase gone. Every figure below is downstream of this one."
         },
         {
           "figure": "Not published",
           "label": "The county reimbursement",
-          "text": "§ 20A-7-613(12) makes the city repay Utah County the costs it would not have incurred but for the referendum: signature verification, ballot preparation, printing. Neither the city nor the county has published a figure, and the size depends on whether the question rides the already-scheduled November 3 general election or triggers a special one. It is a real bill, and next to the suspended levy it is a rounding error. This page will not invent a number for it."
+          "text": "§ 20A-7-613(12) makes the city repay Utah County the costs it would not have incurred but for the referendum: signature verification, ballot preparation, printing. Neither the city nor the county has published a figure, and the size depends on whether the question rides the already-scheduled November 3 general election or triggers a special one. It is a real bill, and next to the suspended increase it is a rounding error. This page will not invent a number for it."
         },
         {
           "figure": "28 positions",
