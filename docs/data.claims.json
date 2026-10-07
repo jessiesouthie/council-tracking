@@ -758,6 +758,96 @@
       ]
     },
     {
+      "id": "data-centers-raise-the-heat",
+      "summary": "Data centers will heat up the land and water around them",
+      "claim": "According to that professor, I think it's Utah State, it's going to rise the heat of the land around it and the water, and that's going to affect wildlife, the environment, and people.",
+      "verdict": "incomplete",
+      "topics": [
+        "growth"
+      ],
+      "ruling": "Data centers do warm the air next to them: the one direct measurement found about 1.5°F on average, up to 4°F, reaching about a third of a mile. The Utah State professor's much larger figures were for a 9-gigawatt project in Box Elder County, not Eagle Mountain, and no one has measured anything here.",
+      "seen": "Public comment at the 18 August 2026 budget hearing, asking the council to stop approving data centers",
+      "first_seen": "2026-08-18",
+      "checked": "2026-10-06",
+      "true_part": "The physics is sound. Nearly all the electricity a data center uses leaves it as heat, and the first study to measure it directly found it. Arizona State University researchers drove temperature sensors upwind and downwind of four Phoenix-area data centers, from 36 to 169 megawatts, in summer and autumn 2025. Downwind air averaged 1.3 to 1.6°F warmer than upwind air and reached 4°F warmer, and the effect could be detected about a third of a mile out. The study is peer-reviewed.",
+      "wrong_part": "The professor is Robert Davies, a physics professor at Utah State University, and his warning was about somewhere else. He was describing the Stratos project in Hansel Valley, Box Elder County: a planned 9 gigawatts with its own gas power plant in the same valley. The Salt Lake Tribune reported his back-of-the-envelope estimate of five degrees Fahrenheit warmer by day and up to 28 at night there. He has not published a figure for Eagle Mountain, and nothing in the record shows any data center warming water here.",
+      "detail": [
+        "The figure most often shared, a 2°C (3.6°F) average rise around data centers worldwide, comes from a Cambridge-led study of satellite readings. It measures the temperature of the ground surface, not the air, and it has not been peer-reviewed. Critics, including the Uptime Institute, say concrete roofs and parking lots on what used to be fields would warm the surface that much on their own, without the servers.",
+        "How a campus is cooled changes how the heat gets out. Meta's existing Eagle Mountain buildings cool with evaporated water, which carries much of the heat away as vapor; its new buildings will use dry cooling, closer to the Phoenix sites that were measured. QTS says its campus is not water-cooled. No temperature measurement near any Eagle Mountain campus has been published, and no council member or city staff member has raised the question in a meeting transcript this site holds."
+      ],
+      "figures": [
+        {
+          "label": "Measured downwind, Phoenix",
+          "value": "+1.3 to 1.6°F",
+          "note": "average; up to 4°F, about a third of a mile out"
+        },
+        {
+          "label": "Davies estimate, Hansel Valley",
+          "value": "up to +28°F",
+          "note": "at night, for a 9 GW project in Box Elder County"
+        },
+        {
+          "label": "Measured in Eagle Mountain",
+          "value": "None",
+          "note": "no published reading near any campus"
+        }
+      ],
+      "sources": [
+        {
+          "meeting": 728,
+          "date": "2026-08-18",
+          "speaker": "A resident, in public comment",
+          "quote": "According to that professor, I think it's Utah State, the heat— it's going to rise the heat of the land around it and the water, and that's going to affect wildlife, the environment, and people."
+        },
+        {
+          "date": "2026-05-07",
+          "speaker": "The Salt Lake Tribune, on Robert Davies of Utah State University",
+          "quote": "The professor predicts dumping that much heat and energy into Hansel Valley will raise local temperatures by five degrees Fahrenheit during the day and up to 28 degrees at night.",
+          "doc": {
+            "title": "Utah's data center could create a massive heat island (Salt Lake Tribune)",
+            "url": "https://sltrib.com/news/environment/2026/05/07/utahs-data-center-could-create"
+          }
+        },
+        {
+          "date": "2026-05-18",
+          "speaker": "Arizona State University, the Phoenix measurements",
+          "note": "Sailor, Samareh Abolhassani and Martin, published in the ASME Journal of Engineering for Sustainable Buildings and Cities. Downwind air averaged 1.3 to 1.6°F warmer than upwind, up to 4°F, detectable about a third of a mile away.",
+          "doc": {
+            "title": "Data center waste heat as an emerging urban thermal hazard (ASME)",
+            "url": "https://asmedigitalcollection.asme.org/sustainablebuildings/article/doi/10.1115/1.4071922/1233035/Data-center-waste-heat-as-an-emerging-urban"
+          }
+        },
+        {
+          "date": "2026-03-21",
+          "speaker": "The satellite study (preprint)",
+          "note": "Marinoni et al., University of Cambridge: land surface temperature up 2°C on average after a data center opens. Not peer-reviewed.",
+          "doc": {
+            "title": "The data heat island effect (arXiv 2603.20897)",
+            "url": "https://arxiv.org/abs/2603.20897"
+          }
+        },
+        {
+          "date": "2026-08-20",
+          "speaker": "Uptime Institute, critiquing the satellite study",
+          "note": "Argues that the roofs and parking lots of a data center alone can account for the reported rise, without waste heat.",
+          "doc": {
+            "title": "Data centers face new scrutiny over heat island effect",
+            "url": "https://journal.uptimeinstitute.com/?p=8352"
+          }
+        }
+      ],
+      "read_more": [
+        {
+          "label": "Heat, on the data centers page",
+          "href": "data-centers.html#heat"
+        },
+        {
+          "label": "How each campus is cooled",
+          "href": "data-centers.html#water"
+        }
+      ]
+    },
+    {
       "id": "tax-cover-for-rodeo",
       "summary": "The tax is really about the rodeo grounds",
       "claim": "The public safety reason was misleading — the tax increase is really to cover up his misdeeds on the rodeo grounds and build their new kingdom.",
