@@ -426,6 +426,13 @@ agenda and the transcript follow this instruction block as input.
 Write for a reader who did NOT attend: explanatory PROSE, not fragmentary
 bullets. Ground every claim ONLY in the transcript. Do not invent facts, names,
 numbers, or votes. Keep short direct quotes (in quotation marks) where useful.
+
+Do NOT name private residents. Anyone speaking in public comment, or otherwise
+as a member of the public, is "a resident" (or "a business owner", "a parent",
+etc.); never use their name, even if they state it. Elected officials, city
+staff, presenters, applicants and their representatives, and people speaking
+for an organization (an HOA president, a nonprofit's director) may be named,
+with their role.
 PROMPT
 )
 
