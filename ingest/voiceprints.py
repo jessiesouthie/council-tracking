@@ -86,6 +86,12 @@ LIBRARY = VOICEPRINTS / "library.json"
 IDENTITIES = VOICEPRINTS / "identities.json"
 
 API_BASE = "https://eaglemountainut.api.civicclerk.com/v1"
+# The API answers 403 to urllib's default User-Agent; same string as civicclerk.py
+# (not imported, since this runs in .venv-voice, which has no `requests`).
+API_HEADERS = {
+    "User-Agent": "council-tracking/0.1 (+https://github.com/jessiesouthie/Council-Tracking)",
+    "Accept": "application/json",
+}
 ENCODER = "speechbrain/spkrec-ecapa-voxceleb"
 
 # ---------------------------------------------------------------------------
@@ -277,9 +283,9 @@ def resolve_media(event_id: str) -> str:
     Newer events return a storage-relative path rather than a link, and only the
     media-summary endpoint knows how to turn it into something ffmpeg can open.
     """
-    with urllib.request.urlopen(
-        f"{API_BASE}/Events?$filter=id%20eq%20{event_id}", timeout=60
-    ) as r:
+    with urllib.request.urlopen(urllib.request.Request(
+        f"{API_BASE}/Events?$filter=id%20eq%20{event_id}", headers=API_HEADERS
+    ), timeout=60) as r:
         events = json.loads(r.read()).get("value") or []
     if not events:
         raise SystemExit(f"event {event_id} not found on the portal")
@@ -287,9 +293,10 @@ def resolve_media(event_id: str) -> str:
     mp4 = e.get("mediaSourcePathMp4") or e.get("mediaStreamPath") or ""
     if mp4.startswith("http"):
         return mp4
-    with urllib.request.urlopen(
-        f"{API_BASE}/EventsMedia/GetEventMediaSummary(eventId={event_id})", timeout=60
-    ) as r:
+    with urllib.request.urlopen(urllib.request.Request(
+        f"{API_BASE}/EventsMedia/GetEventMediaSummary(eventId={event_id})",
+        headers=API_HEADERS,
+    ), timeout=60) as r:
         url = json.loads(r.read()).get("videoUrl")
     if not url:
         raise SystemExit(f"event {event_id} has no playable recording")

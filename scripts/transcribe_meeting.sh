@@ -431,7 +431,7 @@ Do NOT name private residents. Anyone speaking in public comment, or otherwise
 as a member of the public, is "a resident" (or "a business owner", "a parent",
 etc.); never use their name, even if they state it. Elected officials, city
 staff, presenters, applicants and their representatives, and people speaking
-for an organization (an HOA president, a nonprofit's director) may be named,
+for an organization (an HOA president, the director of a nonprofit) may be named,
 with their role.
 PROMPT
 )
