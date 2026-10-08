@@ -1,7 +1,7 @@
 {
   "_comment": "Claims that circulate about the city, checked against the record this site already publishes. Hand-authored, like data.tax-case.json — nothing here is generated, because deciding what a claim actually asserts is not a thing a script can do. The rules the page states in `how` are binding on this file: a claim is only listed when it can be answered out of an open-meeting recording, a document the city or the state published, or arithmetic on figures from one of those, and every entry carries the citation next to the sentence it supports. Claims are quoted as they circulate and never attributed to a private individual by name; officials speaking in an open meeting are named, because that is the record. `verdict` is one of the keys in `verdicts` below. `checked` is when the entry was last read against the record; a claim about a live dispute goes stale quickly, which is why every card prints that date. `updated` is set only when an entry's finding, figures or sources change after `checked` (not for copy edits) and is printed beside it. `first_seen` is the earliest date this project saw the claim circulating, carried over from the intake row in data/claims/inbox.jsonl. `summary` is this project's one-line description of what was claimed and is what the card heading and the docket row carry; `claim` stays the wording as it circulates and is printed under the heading, quoted, so the reader can always see which sentence is theirs and which is ours. `topics` are keys from `categories`, which is what the filter bar at the top of the page is built from: the first topic is the heading a claim files under and the rest are the other shelves it belongs on, because most of these claims are about two things at once.",
   "body": "city-council",
-  "updated": "2026-10-06",
+  "updated": "2026-10-08",
   "eyebrow": "Fact checks",
   "title": "What's going around, and what the record says",
   "sub": "Things residents are telling each other about the city: the tax increase, the staffing, the petition, all set against the meetings, the notices and the audited figures they can be checked against. Some are true, some are out of date, and the ones the city itself put into circulation get the same treatment as the ones aimed at it.",
@@ -373,9 +373,9 @@
       "detail": [
         "There have been two referendums. The first targeted Resolution R-57-2026, the 0.001500 rate adopted on August 6. On August 18 the council repealed that resolution (R-61-2026) and adopted R-62-2026 at 0.000900 in its place, which left the first petition with nothing to overturn. A second application, against R-62-2026, was signed by ten sponsors on August 22 and stamped received by the city on August 24, the last day the law allowed. That is the petition in circulation now.",
         "The sponsors' own account, posted publicly on October 6, is that they have not started gathering signatures. They say the petition packets the city issued contain significant errors, so signatures gathered on them could be thrown out, and that they are retaining an attorney to ask a court to order the city to issue corrected materials, which would restart the signature deadline. This is the sponsors' statement, not a record this page can check; it will be replaced with the court filing if one is made.",
-        "Where it gets messy is the date of the vote. The petition sheets ask for a special election on August 10, 2027. State law says a tax referendum goes on the earlier of the next regular general election or the next municipal general election unless a special election is called (§ 20A-7-613(7)). That would be November 3, 2026, and the law also has the county print a referendum on the ballot before it qualifies when the signature deadline falls after ballots are printed (§ 20A-7-613(13)). Residents told the council on September 15 that the August 2027 date was wrong. The mayor answered that the county was already printing ballots and the signatures were not in, and that the city would call a special election if the petition qualifies. Utah County's amended sample ballot for November 3, posted September 17, has no Eagle Mountain question, so it will not be on that ballot. Which reading of the law holds is for the city recorder, the county clerk and, if it comes to it, a court, not this page.",
+        "Where it gets messy is the date of the vote. The petition sheets ask for a special election on August 10, 2027. State law says a tax referendum goes on the earlier of the next regular general election or the next municipal general election unless a special election is called (§ 20A-7-613(7)). That would be November 3, 2026, and the law also has the county print a referendum on the ballot before it qualifies when the signature deadline falls after ballots are printed (§ 20A-7-613(13)). Residents told the council on September 15 that the August 2027 date was wrong. The mayor answered that the county was already printing ballots and the signatures were not in, and that the city would call a special election if the petition qualifies. Utah County's amended sample ballot for November 3, posted September 17, has no Eagle Mountain question, so it will not be on that ballot. Two more sections complicate it: a referendum on a decision made after April 15 waits for an election the following year unless the city recorder, county clerk and city attorney agree in writing on an earlier one (§ 20A-7-607(7)), and a city may call a special election on a tax question only in November (§ 20A-1-204(1)(d)), which the August date does not meet. Which reading of the law holds is for the city recorder, the county clerk and, if it comes to it, a court, not this page.",
         "That date matters for the money. The first bills at the new rate go out in November 2026. The city's impact statement says a repeal would reverse the decision “to collect an additional $2,132,876 annually in property taxes starting November 2026,” but neither it nor the petition says what happens to bills already paid if the vote comes the following August. The record does not answer that yet.",
-        "The city's information pamphlet carries one argument, the mayor's case for keeping the rate. The sponsors' argument is listed but marked “not timely submitted,” so it was left out.",
+        "The city's information pamphlet carries one argument, the mayor's case for keeping the rate. The sponsors' argument is listed but marked “not timely submitted,” so it was left out. The mayor's argument is stamped received September 8, the fifteenth and last day the statute allows either side (§ 20A-7-401.5(1)).",
         "The signature threshold is 8.25% of active voters if Eagle Mountain is now a second-class city and 10% if it is still third class, measured both citywide and in at least three-quarters of its voter participation areas. The Census Bureau's 2025 estimate puts the city past the 65,000 line, but the class changes only on the lieutenant governor's certificate (§ 10-2-302), and no certificate has been found. ABC4's report gives the requirement as about 10%."
       ],
       "figures": [
@@ -446,6 +446,15 @@
             "title": "Utah County election notices",
             "url": "https://vote.utahcounty.gov/public-notices"
           }
+        },
+        {
+          "date": "2026-10-07",
+          "speaker": "Utah Code",
+          "note": "§ 20A-7-607(7) (referenda on decisions after April 15) and § 20A-1-204(1)(d) (tax special elections only in November).",
+          "doc": {
+            "title": "Utah Code § 20A-1-204",
+            "url": "https://le.utah.gov/xcode/Title20A/Chapter1/20A-1-S204.html"
+          }
         }
       ],
       "read_more": [
@@ -454,7 +463,7 @@
           "href": "referendum.html"
         }
       ],
-      "updated": "2026-10-06"
+      "updated": "2026-10-07"
     },
     {
       "id": "another-data-center",
@@ -1703,6 +1712,459 @@
         {
           "label": "How to ask for a record",
           "href": "about.html"
+        }
+      ]
+    },
+    {
+      "id": "mayor-argument-filed-late",
+      "summary": "The mayor's pamphlet argument was filed late",
+      "claim": "Your argument should have been excluded from the packet as it was a day late.",
+      "verdict": "inaccurate",
+      "topics": [
+        "process"
+      ],
+      "ruling": "The mayor's argument is stamped received on September 8, the fifteenth day after the referendum application was filed. State law gives the sponsors and the city fifteen days each, so it arrived on the last day allowed, not after it. The argument the city's pamphlet marks late is the sponsors' own.",
+      "seen": "Referendum organizing post, Eagle Mountain Facebook group, October 2026",
+      "first_seen": "2026-10-07",
+      "checked": "2026-10-07",
+      "true_part": "It came in at the last possible moment. September 8 was the final day of the window, and the only record of when it arrived is the city's own received stamp.",
+      "wrong_part": "It was not late. Utah Code § 20A-7-401.5(1)(a) lets the sponsors, and separately the city, submit a written argument “within 15 calendar days after the day on which” the application is filed. The application was stamped received on Monday, August 24, so the fifteenth day was Tuesday, September 8: the date on the stamp on the mayor's argument. Counting from August 22, the day the sponsors signed and notarized the application, would put the deadline on September 6, but the statute runs the clock from filing, not signing.",
+      "detail": [
+        "The same fifteen days applied to the sponsors. The pamphlet lists their argument as “not timely submitted” and leaves it out, which the statute requires of an argument that misses the deadline (§ 20A-7-401.5(2)(d)). Either side could then send a revised version of an argument it had already submitted on time, within twenty days of filing (§ 20A-7-401.5(1)(d) and (e)).",
+        "The statute has arguments submitted electronically, and the email the mayor's argument came in with is not published. If a record shows it arriving after September 8, this card is wrong and will say so."
+      ],
+      "figures": [
+        {
+          "label": "Application filed",
+          "value": "Aug 24",
+          "note": "stamped received by the city"
+        },
+        {
+          "label": "Deadline for arguments",
+          "value": "Sep 8",
+          "note": "15 calendar days after filing"
+        },
+        {
+          "label": "Mayor's argument",
+          "value": "Sep 8",
+          "note": "stamped received"
+        }
+      ],
+      "sources": [
+        {
+          "date": "2026-09-14",
+          "speaker": "Eagle Mountain City",
+          "note": "Proposition Information Pamphlet: the application stamped received August 24, the mayor's “Argument Against Referendum to Repeal Property Tax Increase” stamped received September 8, and the sponsors' argument listed as “not timely submitted.”",
+          "doc": {
+            "title": "Proposition Information Pamphlet",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2026/09/Proposition-Information-Pamphlet.pdf"
+          }
+        },
+        {
+          "date": "2026-10-07",
+          "speaker": "Utah Code",
+          "note": "§ 20A-7-401.5(1): fifteen calendar days after the application is filed for either side's argument, twenty for a revision; (2)(d): an argument not timely submitted is left out.",
+          "doc": {
+            "title": "Utah Code § 20A-7-401.5",
+            "url": "https://le.utah.gov/xcode/Title20A/Chapter7/20A-7-S401.5.html"
+          }
+        }
+      ],
+      "read_more": [
+        {
+          "label": "The tax referendum, in full",
+          "href": "referendum.html"
+        }
+      ]
+    },
+    {
+      "id": "police-fire-lose-budgets",
+      "summary": "Without the increase, police and fire lose funding",
+      "claim": "The lie that without the tax increases the firemen and police will suddenly lose their budgets they already have in place.",
+      "verdict": "incomplete",
+      "topics": [
+        "public-safety",
+        "tax"
+      ],
+      "ruling": "Right that neither budget vanishes, and the city's own impact statement says so: the Sheriff's contract would still be paid, from sales tax. Fire isn't on the city's levy at all this year. What it leaves out is where the money would come from instead, and that fire is due to move onto the city's books in 2028.",
+      "seen": "Referendum organizing post, Eagle Mountain Facebook group, October 2026",
+      "first_seen": "2026-10-07",
+      "checked": "2026-10-07",
+      "true_part": "The written record backs it. The fiscal impact statement in the city's pamphlet says that if R-62-2026 is repealed, “the City would have to pay an additional $2,132,876 to the Utah County Sheriff's Office from sales tax revenues.” The contract stays. Fire and ambulance come from Unified Fire Authority, paid for through the Unified Fire Service Area's own levy (0.001650 on the 2025 bill), a separate line that R-62-2026 does not touch. In the meetings this site has transcribed, no official said existing police or fire budgets would be cut if the referendum succeeds.",
+      "wrong_part": "A repeal moves the cost rather than removing it. The same statement says paying the Sheriff out of sales tax causes “a deficit in other areas of the budget,” to be met by cutting city services, drawing on reserves, or both; the mayor's argument names parks, trails, roads and recreation. And the case the city makes is about adding deputies, not keeping the ones it has: the mayor's argument says the rate “pays for a sergeant and additional deputies.”",
+      "detail": [
+        "Fire is changing too, on a later timetable. The city has given notice to leave the Unified Fire Service Area and contract with Unified Fire Authority directly. On September 1 Mayor Jared Gray said the exit is planned for January 1, 2028, with a Truth-in-Taxation process in 2027 to set the rate that pays for it; Councilmember Brett Wright added that the service area's own levy would come down when the city's goes up. On August 18 Councilmember Zac Huish defended 0.000900 partly as covering about 76% of the Sheriff and fire contracts together once that switch happens. So a fight over how fire is funded is coming, but over next year's rate, not this one.",
+        "Whether Eagle Mountain needs more deputies is an argument, and the Tax page sets out both sides of it. This card checks the narrower point: whether existing police and fire budgets disappear on repeal. On the city's own paperwork, they don't."
+      ],
+      "figures": [
+        {
+          "label": "Raised by the increase",
+          "value": "$2.13M",
+          "note": "a year, toward the Sheriff's contract"
+        },
+        {
+          "label": "If it is repealed",
+          "value": "Sales tax",
+          "note": "pays the Sheriff instead, per the city"
+        },
+        {
+          "label": "Fire levy",
+          "value": "0.001650",
+          "note": "Unified Fire Service Area, its own line"
+        }
+      ],
+      "sources": [
+        {
+          "date": "2026-09-14",
+          "speaker": "Eagle Mountain City",
+          "note": "The fiscal and legal impact statement (repeal means paying the Sheriff from sales tax and cutting services or using reserves) and the mayor's argument (“a sergeant and additional deputies”; the gap grows “at the expense of parks, trails, roads, and recreation”).",
+          "doc": {
+            "title": "Proposition Information Pamphlet",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2026/09/Proposition-Information-Pamphlet.pdf"
+          }
+        },
+        {
+          "date": "2026-01-05",
+          "speaker": "Utah State Tax Commission, Report 600",
+          "note": "The seven levies on an Eagle Mountain bill, including Unified Fire Service Area at 0.001650 and the city at 0.000534 for 2025.",
+          "doc": {
+            "title": "2025 Tax Rates by Tax Area, Report 600",
+            "url": "https://files.tax.utah.gov/propertytax/tax-rates/area-rates/taxarearates2025.pdf"
+          }
+        },
+        {
+          "meeting": 716,
+          "date": "2026-09-01",
+          "speaker": "Mayor Jared Gray",
+          "note": "The city has given notice to withdraw from the Unified Fire Service Area; the exit is planned for “January 1st, 2028,” with a Truth-in-Taxation process in 2027 to set the rate that replaces the service area's levy."
+        },
+        {
+          "meeting": 728,
+          "date": "2026-08-18",
+          "speaker": "Councilmember Zac Huish",
+          "note": "Before the vote on R-62-2026: 0.000900 would give “a 76% coverage ratio for both Sheriff and for fire” once the city contracts for fire directly."
+        }
+      ],
+      "read_more": [
+        {
+          "label": "The city has no police department",
+          "href": "claims/city-police-department.html"
+        },
+        {
+          "label": "The city's case, and the case against",
+          "href": "tax.html"
+        }
+      ]
+    },
+    {
+      "id": "pamphlet-published-sponsor-addresses",
+      "summary": "The city published sponsors' home addresses",
+      "claim": "You have printed out and mailed extremely expensive card stock covered packets to every city resident with our signatures and addresses that were not redacted as other cities have done.",
+      "verdict": "incomplete",
+      "topics": [
+        "process"
+      ],
+      "ruling": "The city's pamphlet does carry the sponsors' home addresses and signatures, and the liaison's phone number and email, unredacted. State law requires the pamphlet to include the application, and the application to contain those details, but Salt Lake County blacked them out of its own pamphlet in January. This page found no record that Eagle Mountain mailed printed copies to every household.",
+      "seen": "Referendum organizing post, Eagle Mountain Facebook group, October 2026",
+      "first_seen": "2026-10-07",
+      "checked": "2026-10-07",
+      "true_part": "The pamphlet the city posted on September 14 reproduces the referendum application page by page: each sponsor's name, home address and notarized signature, and the sponsor liaison's phone number and email address. Salt Lake County's pamphlet for its own property tax referendum, posted January 7, 2026, kept the sponsors' names and blacked out their addresses, phone numbers, emails and signatures. So redacting is something another Utah government has done.",
+      "wrong_part": "The law cuts against the motive alleged. Utah Code § 20A-7-401.5(3)(a) says the pamphlet shall include “a copy of the application,” and § 20A-7-602(2) says the application must contain each sponsor's name and residence address and the liaison's phone number and email address. Neither section mentions redacting them, and practice varies: Marriott-Slaterville's 2026 referendum pamphlet printed its sponsors' addresses in full. The comparison going round is to Salt Lake City; the redacted pamphlet this page found is Salt Lake County's.",
+      "detail": [
+        "On the mailing. For a city, the statute requires emailing the pamphlet to every resident whose email address it holds, posting it on Utah's public notice site and the city's home page, and, if the city regularly mails a newsletter or utility bill, printing the web address in the next one (§ 20A-7-401.5(5)). It does not require mailing printed copies. Whether Eagle Mountain mailed them, how many and at what cost is in no meeting or document this page has. A records request to the city recorder would settle it.",
+        "Whether any of this was meant to expose the sponsors is not something a document can show, and this card doesn't try to."
+      ],
+      "figures": [
+        {
+          "label": "Eagle Mountain",
+          "value": "Unredacted",
+          "note": "addresses, signatures, liaison's phone and email"
+        },
+        {
+          "label": "Salt Lake County",
+          "value": "Redacted",
+          "note": "names kept, all else blacked out"
+        },
+        {
+          "label": "Printed mailing",
+          "value": "Not required",
+          "note": "email, website, and a link in the next mailer"
+        }
+      ],
+      "sources": [
+        {
+          "date": "2026-09-14",
+          "speaker": "Eagle Mountain City",
+          "note": "Proposition Information Pamphlet, pages 2 to 13: the referendum application as filed, unredacted.",
+          "doc": {
+            "title": "Proposition Information Pamphlet",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2026/09/Proposition-Information-Pamphlet.pdf"
+          }
+        },
+        {
+          "date": "2026-10-07",
+          "speaker": "Utah Code",
+          "note": "§ 20A-7-401.5(3)(a): the pamphlet includes a copy of the application; (5): how a city must publish it.",
+          "doc": {
+            "title": "Utah Code § 20A-7-401.5",
+            "url": "https://le.utah.gov/xcode/Title20A/Chapter7/20A-7-S401.5.html"
+          }
+        },
+        {
+          "date": "2026-10-07",
+          "speaker": "Utah Code",
+          "note": "§ 20A-7-602(2): what a referendum application must contain, including sponsors' residence addresses and the liaison's phone number and email address.",
+          "doc": {
+            "title": "Utah Code § 20A-7-602",
+            "url": "https://le.utah.gov/xcode/Title20A/Chapter7/20A-7-S602.html"
+          }
+        },
+        {
+          "date": "2026-01-07",
+          "speaker": "Salt Lake County Clerk",
+          "note": "Notice of a countywide property tax referendum, attaching a Proposition Information Pamphlet filed as “_Redacted”: sponsors' addresses, phone numbers, emails and signatures blacked out.",
+          "doc": {
+            "title": "Salt Lake County notice of countywide referendum",
+            "url": "https://www.utah.gov/pmn/sitemap/notice/1050113.html"
+          }
+        },
+        {
+          "speaker": "Marriott-Slaterville City",
+          "note": "Proposition Information Pamphlet for a 2026 referendum on Ordinance 2026-05, printing sponsors' addresses unredacted.",
+          "doc": {
+            "title": "Marriott-Slaterville Proposition Information Pamphlet",
+            "url": "https://www.utah.gov/pmn/files/1447467.pdf"
+          }
+        }
+      ],
+      "read_more": [
+        {
+          "label": "The tax referendum, in full",
+          "href": "referendum.html"
+        }
+      ]
+    },
+    {
+      "id": "august-vote-low-turnout",
+      "summary": "The vote was pushed to August to keep turnout low",
+      "claim": "These delay tactics to push us into an August election that very few voters will turn out for shows your true colors.",
+      "verdict": "unresolved",
+      "topics": [
+        "process"
+      ],
+      "ruling": "The August date is real: the petition the city issued names a special election on August 10, 2027. Whether the law allows it is open, and one statute reads against it: a city may call a special election on a tax question only in November. Why the city chose August is not something the record shows.",
+      "seen": "Referendum organizing post, Eagle Mountain Facebook group, October 2026",
+      "first_seen": "2026-10-07",
+      "checked": "2026-10-07",
+      "true_part": "The petition the city issued refers R-62-2026 to “a special election to be held on August 10, 2027.” That is the date of the 2027 municipal primary (§ 20A-9-404). The statutory form for a referendum petition reads “at the regular/municipal general election to be held on” a date (§ 20A-7-603(2)); the city's version names a special election instead. On September 15 the mayor said the vote would come “at the appropriate time with the next election,” and city staff at the dais said the intent was to call a special election if the petition qualifies.",
+      "wrong_part": "Three statutes pull in different directions, and nobody with the authority to decide has applied them to this petition. § 20A-7-607(7)(a): a referendum on a decision made after April 15 cannot go on a ballot until an election the following year, unless the city recorder, the county clerk and the city attorney agree in writing on an earlier one. R-62-2026 passed on August 18, so 2027 is the default. § 20A-7-613(7): a property tax referendum goes on the earlier of the next regular general or municipal general election “unless a special election is called.” § 20A-1-204(1)(d): a local government “may only call a special election for a ballot proposition related to a bond, debt, leeway, levy, or tax on the first Tuesday after the first Monday in November,” and § 20A-1-203(5) routes a city's special election on a referendum through that section. No official has said how an August special election squares with it. The November dates it allows are November 3, 2026, whose ballot is already printed without this question, and November 2, 2027.",
+      "detail": [
+        "The motive in the claim, delay, can't be read off a document, and this page has not checked turnout figures for August elections. What the record does show is that the date was printed on the petition before any signatures existed, and that the sponsors say they are asking a court to order corrected packets, which could settle the date too.",
+        "The date matters beyond turnout. Bills at the new rate go out in November 2026, and neither the statute nor the city's impact statement says what happens to money already paid if the vote comes in 2027."
+      ],
+      "figures": [
+        {
+          "label": "Petition asks for",
+          "value": "Aug 10, 2027",
+          "note": "a special election, on the municipal primary date"
+        },
+        {
+          "label": "Tax special elections",
+          "value": "November",
+          "note": "only, under § 20A-1-204(1)(d)"
+        },
+        {
+          "label": "Next November election",
+          "value": "Nov 2, 2027",
+          "note": "the 2026 ballot went to print without it"
+        }
+      ],
+      "sources": [
+        {
+          "speaker": "Eagle Mountain City",
+          "note": "The petition packet being circulated, referring R-62-2026 to “a special election to be held on August 10, 2027.”",
+          "doc": {
+            "title": "Referendum petition",
+            "url": "https://eaglemountain.gov/wp-content/uploads/2026/09/Eagle-Mountain-Referendum-Petition.pdf"
+          }
+        },
+        {
+          "meeting": 729,
+          "date": "2026-09-15",
+          "speaker": "Mayor Jared Gray, answering public comment",
+          "quote": "There's no way to get it on the ballot because we don't have the signatures yet, and it's already required to be into the county right now."
+        },
+        {
+          "date": "2026-10-07",
+          "speaker": "Utah Code",
+          "note": "§ 20A-7-607(7): a referendum on legislative action after April 15 waits for an election the following year unless three officials agree in writing.",
+          "doc": {
+            "title": "Utah Code § 20A-7-607",
+            "url": "https://le.utah.gov/xcode/Title20A/Chapter7/20A-7-S607.html"
+          }
+        },
+        {
+          "date": "2026-10-07",
+          "speaker": "Utah Code",
+          "note": "§ 20A-7-613(7): the earlier of the next regular general or municipal general election, unless a special election is called.",
+          "doc": {
+            "title": "Utah Code § 20A-7-613",
+            "url": "https://le.utah.gov/xcode/Title20A/Chapter7/20A-7-S613.html"
+          }
+        },
+        {
+          "date": "2026-10-07",
+          "speaker": "Utah Code",
+          "note": "§ 20A-1-204(1)(d): a local special election on a ballot proposition related to a levy or tax only on the first Tuesday after the first Monday in November.",
+          "doc": {
+            "title": "Utah Code § 20A-1-204",
+            "url": "https://le.utah.gov/xcode/Title20A/Chapter1/20A-1-S204.html"
+          }
+        }
+      ],
+      "read_more": [
+        {
+          "label": "The fight over the date",
+          "href": "referendum.html"
+        }
+      ]
+    },
+    {
+      "id": "rate-negotiated-in-private",
+      "summary": "The lower rate was negotiated in private",
+      "claim": "When a mayor individually approaches citizens challenging a tax increase through a referendum, and a state senator helps negotiate a compromise with that group, which then withdraws its referendum, the public deserves to know how those negotiations occurred and whose interests were represented.",
+      "verdict": "misleading",
+      "topics": [
+        "process",
+        "tax"
+      ],
+      "ruling": "The mayor and some councilmembers did meet privately with sponsors of the first referendum before August 18, and one of those sponsors said so at the meeting. But the record shows no rate settled there: it was argued out and voted on in the open meeting. And the first petition wasn't withdrawn as part of a deal. State law voided it the moment the rate it targeted was repealed.",
+      "seen": "Referendum organizing posts, Eagle Mountain Facebook group, October 2026",
+      "first_seen": "2026-10-08",
+      "checked": "2026-10-08",
+      "true_part": "The meetings happened. At the August 18 hearing, one of the residents who co-sponsored the first referendum told the council that the mayor and several councilmembers had sat down with her and her husband the week before, and thanked them for it. Another resident said she had heard “a group of residents met and the city negotiated a new rate again.” Those conversations were not public meetings, and there is no record of what was said in them.",
+      "wrong_part": "The record does not show a rate agreed in private. The resolution in the published agenda packet left the rate, the percentage and the dollar amount blank, which a resident complained about from the podium. From the chair, the mayor said he had “no idea where this is going to land” and that “everything's on the table from 0 to 0.0017.” Councilmembers then argued for 0.0009, for 0.0011 and for keeping 0.0015, in front of the audience, before Councilmember Melissa Clark moved 0.000900, which passed 4 to 1. The co-sponsor who described the private meeting said in the same comment that she didn't know what the right number was. And the first referendum had nothing to withdraw: Utah Code § 20A-7-611(7) says that when a council repeals a law challenged by referendum, “the referendum petition is void and no further action on the referendum petition is required.” R-57-2026 was repealed that night.",
+      "detail": [
+        "The post says a state senator helped negotiate the compromise. Nothing in the public record shows what part, if any, Senator Emily Buss played in talks between the city and the first group of sponsors, so this page can't confirm it or rule it out.",
+        "A private conversation between an official and residents is not, by itself, a breach of Utah's open meetings law, which applies when a quorum of the council convenes (Utah Code § 52-4-103). Nothing on the record says a quorum of councilmembers met with the sponsors at once.",
+        "The second referendum, against the 0.000900 rate, is the one in progress now. See the referendum page for where it stands."
+      ],
+      "figures": [
+        {
+          "label": "Rate in the agenda packet",
+          "value": "Blank",
+          "note": "resolution published with the figures left empty"
+        },
+        {
+          "label": "Rates argued in the open",
+          "value": "0.0009–0.0015",
+          "note": "by councilmembers, August 18"
+        },
+        {
+          "label": "Vote on 0.000900",
+          "value": "4–1",
+          "note": "Councilmember Rich Wood against"
+        }
+      ],
+      "sources": [
+        {
+          "meeting": 728,
+          "date": "2026-08-18",
+          "speaker": "A co-sponsor of the first referendum, in public comment",
+          "quote": "I want to make note that multiple members of the council and Mayor Gray himself took the time to sit with us and talk with us and respond to the things that my husband and I had to say and questions that we had.",
+          "note": "In the same comment: “I don't know what the right number is.”"
+        },
+        {
+          "meeting": 728,
+          "date": "2026-08-18",
+          "speaker": "A resident, in public comment",
+          "quote": "I downloaded the agenda packet and I pulled the resolution, and there were blank spaces for the new tax rate and the percentage amount and the dollar amount."
+        },
+        {
+          "meeting": 728,
+          "date": "2026-08-18",
+          "speaker": "Mayor Jared Gray",
+          "quote": "I can tell you sitting right here, I have no idea where this is going to land. So anybody leaves here and says this was predetermined, I don't even know.",
+          "note": "Moments later: “everything's on the table from 0 to 0.0017.”"
+        },
+        {
+          "meeting": 728,
+          "date": "2026-08-18",
+          "speaker": "Councilmember Brett Wright",
+          "quote": "Our finance department sent this out to us earlier in an email and it just has a bunch of different rates to consider. That's it. So it doesn't say, here's the one you should pick. It doesn't say, here's the one you've decided."
+        },
+        {
+          "date": "2026-10-08",
+          "speaker": "Utah Code",
+          "note": "§ 20A-7-611(7): if the local legislative body repeals a law challenged by referendum petition, the petition is void.",
+          "doc": {
+            "title": "Utah Code § 20A-7-611",
+            "url": "https://le.utah.gov/xcode/Title20A/Chapter7/20A-7-S611.html"
+          }
+        }
+      ],
+      "read_more": [
+        {
+          "label": "The tax referendum, in full",
+          "href": "referendum.html"
+        }
+      ]
+    },
+    {
+      "id": "cannot-circulate-yet",
+      "summary": "Sponsors can't circulate until they sign a city agreement",
+      "claim": "We still cannot legally circulate this petition. The city is holding us hostage over a new statutory requirement that must be put into writing with the city.",
+      "verdict": "incomplete",
+      "topics": [
+        "process"
+      ],
+      "ruling": "The requirement is real: state law bars the sponsors from gathering signatures until they sign an agreement with the city recorder. But the law asks that agreement to settle two things only, the packet format and the packet numbers, and whether the city is the one holding it up isn't on the record.",
+      "seen": "Referendum organizing post, Eagle Mountain Facebook group, October 2026",
+      "first_seen": "2026-10-07",
+      "checked": "2026-10-08",
+      "true_part": "Utah Code § 20A-7-604(6)(a), as amended in the Legislature's 2026 session and in force since May 6, says the sponsors “shall, before gathering signatures” complete the state's online circulator training, get a range of packet numbers from the county clerk, and “sign an agreement with the local clerk.” Until that agreement is signed, signatures can't lawfully be gathered, and a packet numbered any other way can't be circulated or submitted (§ 20A-7-604(6)(b)).",
+      "wrong_part": "The agreement the statute describes is short. It specifies two things: whether the sponsors will circulate traditional packets (with a copy of the resolution bound in), condensed packets, or both; and the range of numbers they will use, which comes from the Utah County clerk, not the city (§ 20A-7-604(6)(a)(ii) and (iii)). Neither the city's draft nor any correspondence about it has been published, so whether the city has delayed it, or the two sides disagree over its terms, can't be checked. For now that is the sponsors' account.",
+      "detail": [
+        "The sponsors also say the city attorney's draft adds a waiver of the right to a jury trial and limits on legal remedies. Section 604(6) names the two terms above and provides for no others. Whether the draft contains anything more, this page can't say until it is public, through a court filing or a records request.",
+        "On October 7 the sponsors said they had hired a lawyer and expect to go to court. If a case is filed, this card will be updated from the filing."
+      ],
+      "figures": [
+        {
+          "label": "Terms the law requires",
+          "value": "2",
+          "note": "packet format and packet numbers"
+        },
+        {
+          "label": "Packet numbers issued by",
+          "value": "County",
+          "note": "the Utah County clerk, § 20A-7-604(6)(a)(ii)"
+        },
+        {
+          "label": "In force since",
+          "value": "May 6, 2026",
+          "note": "as amended in the 2026 session"
+        }
+      ],
+      "sources": [
+        {
+          "date": "2026-10-08",
+          "speaker": "Utah Code",
+          "note": "§ 20A-7-604(6): before gathering signatures, the sponsors take the circulator training, get packet numbers from the county clerk and sign an agreement with the local clerk on packet format and numbering; (6)(b) bars circulating a packet not numbered as the county clerk directs. Amended by Chapter 293, 2026 General Session.",
+          "doc": {
+            "title": "Utah Code § 20A-7-604",
+            "url": "https://le.utah.gov/xcode/Title20A/Chapter7/20A-7-S604.html"
+          }
+        },
+        {
+          "date": "2026-10-07",
+          "speaker": "The referendum's sponsors",
+          "note": "Public post in an Eagle Mountain Facebook group: no signatures can be gathered until the agreement is signed, the city's draft adds terms the sponsors object to, and they have hired counsel. The sponsors' account, not a record this page can check."
+        }
+      ],
+      "read_more": [
+        {
+          "label": "The tax referendum, in full",
+          "href": "referendum.html"
         }
       ]
     }
