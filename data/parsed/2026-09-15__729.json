@@ -1,0 +1,145 @@
+{
+  "meeting": {
+    "id": 729,
+    "date": "2026-09-15",
+    "source_file": "2026-09-15__729.pdf",
+    "motion_count": 2,
+    "ord_count": 0,
+    "res_count": 8,
+    "text_chars": 12967
+  },
+  "motions": [
+    {
+      "id": 1151,
+      "meeting_id": 729,
+      "date": "2026-09-15",
+      "page": 6,
+      "agenda_ref": "Consent",
+      "business_type": "Consent batch",
+      "item_title": "(see motion text for included items)",
+      "motion": "Councilmember Wright moved to approve the Consent Agenda with an amendment to Item 14.B. to include the Planning Commission ’s recommen ded Condition 2 . • Condition 2: The Shared Parking and Maintenance Agreement be filed with Staff as part of the Site Plan Application . Councilmember Whiting seconded the motion.",
+      "outcome": "passed with a 3:0 vote.",
+      "tags": [
+        "development",
+        "consent"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Excused"
+        }
+      ],
+      "headline": "Consent items passed with a shared parking condition",
+      "summary": "The council passed its consent items in one vote and added a Planning Commission condition: the project in item 14.B must file a shared parking and maintenance agreement with staff with its site plan.",
+      "impact": "The condition applies to the developer behind item 14.B, whom this record does not name. The motion does not list the other consent items, so it cannot say what they change.",
+      "significance": "routine"
+    },
+    {
+      "id": 1152,
+      "meeting_id": 729,
+      "date": "2026-09-15",
+      "page": 7,
+      "agenda_ref": "",
+      "business_type": "Resolution",
+      "item_title": "A Resolution of Eagle Mountain City, Utah, Approving the First Amendment to the Fiscal Year 2026 -2027 Annual Budget as presente d",
+      "motion": "Councilmember Wright moved to a pprove a Resolution of Eagle Mountain City, Utah, Approving the First Amendment to the Fiscal Year 2026 -2027 Annual Budget as presente d. Councilmember Clark seconded the motion.",
+      "outcome": "passed with a 3:0 vote.",
+      "tags": [
+        "budget"
+      ],
+      "votes": [
+        {
+          "member_id": "brett-wright",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "craig-whiting",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "melissa-clark",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rich-wood",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "zachory-huish",
+          "vote": "Excused"
+        }
+      ],
+      "headline": "First changes to the 2026-27 city budget",
+      "summary": "Eagle Mountain's 2026-27 budget got its first round of changes from the council; the motion does not list which lines moved or by how much.",
+      "impact": "The motion gives no figures, so it cannot show whether anything you pay or receive has changed. The amendment document itself would show that.",
+      "significance": "routine"
+    }
+  ],
+  "ordinances": [],
+  "resolutions": [
+    {
+      "source_file": "2026-09-15__729.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "15.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an"
+    },
+    {
+      "source_file": "2026-09-15__729.pdf",
+      "meeting_date": "",
+      "page": 2,
+      "line_text": "15.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving a"
+    },
+    {
+      "source_file": "2026-09-15__729.pdf",
+      "meeting_date": "",
+      "page": 3,
+      "line_text": "16.A. RESOLUTION /PUBLIC HEARING – A Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-09-15__729.pdf",
+      "meeting_date": "",
+      "page": 5,
+      "line_text": "15.A. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving an"
+    },
+    {
+      "source_file": "2026-09-15__729.pdf",
+      "meeting_date": "",
+      "page": 5,
+      "line_text": "15.B. RESOLUTION – A Resolution of Eagle Mountain City, Utah, Approving a"
+    },
+    {
+      "source_file": "2026-09-15__729.pdf",
+      "meeting_date": "",
+      "page": 6,
+      "line_text": "16. RESOLUTION/PUBLIC HEARING"
+    },
+    {
+      "source_file": "2026-09-15__729.pdf",
+      "meeting_date": "",
+      "page": 6,
+      "line_text": "16.A. RESOLUTION/ PUBLIC HEARING – A Resolution of Eagle Mountain City, Utah,"
+    },
+    {
+      "source_file": "2026-09-15__729.pdf",
+      "meeting_date": "",
+      "page": 7,
+      "line_text": "MOTION: Councilmember Wright moved to a pprove a Resolution of Eagle"
+    }
+  ]
+}

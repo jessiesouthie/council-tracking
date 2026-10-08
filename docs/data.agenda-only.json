@@ -1,9 +1,67 @@
 {
-  "generated_at": "2026-10-07T18:54:44Z",
+  "generated_at": "2026-10-08T22:12:01Z",
   "source": "Eagle Mountain CivicClerk portal",
   "timezone": "America/Denver",
   "bodies": {
     "city-council": [
+      {
+        "id": 759,
+        "title": "City Council - Budget Work Session",
+        "date": "2026-10-08",
+        "start": "18:00",
+        "start_label": "6:00 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/759/overview",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2989,plainText=false)",
+        "recording_url": "",
+        "agenda_posted_on": "2026-10-07",
+        "sessions": [
+          {
+            "start": "18:00",
+            "start_label": "6:00 PM",
+            "label": "City Council - Budget Work Session",
+            "public_comment": false
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "WELCOME",
+            "note": "",
+            "session": "18:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "DISCUSSION AND INFORMATION ITEMS",
+            "note": "",
+            "session": "18:00",
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "DISCUSSION/NO ACTION TAKEN",
+                "title": "Fiscal Year 2028 Budget Planning Kickoff The purpose of this meeting is to ensure that staff and elected officials are aligned on the budget planning process and expectations for the upcoming budget cycle.",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "3",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "18:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
+      },
       {
         "id": 773,
         "title": "City Council - Projects Planning Session",
@@ -56,64 +114,6 @@
             "title": "ADJOURNMENT",
             "note": "",
             "session": "15:00",
-            "group": null,
-            "items": [],
-            "procedural": true
-          }
-        ]
-      },
-      {
-        "id": 771,
-        "title": "City Council - Strategic Planning Session",
-        "date": "2026-09-24",
-        "start": "17:00",
-        "start_label": "5:00 PM",
-        "location": "1650 Stagecoach Run",
-        "url": "https://eaglemountainut.portal.civicclerk.com/event/771/overview",
-        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2972,plainText=false)",
-        "recording_url": "",
-        "agenda_posted_on": "2026-09-23",
-        "sessions": [
-          {
-            "start": "17:00",
-            "start_label": "5:00 PM",
-            "label": "Strategic Planning Session",
-            "public_comment": false
-          }
-        ],
-        "agenda": [
-          {
-            "number": "1",
-            "title": "WELCOME",
-            "note": "",
-            "session": "17:00",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "2",
-            "title": "DISCUSSION AND INFORMATION ITEMS",
-            "note": "",
-            "session": "17:00",
-            "group": null,
-            "items": [
-              {
-                "number": "2.A",
-                "kind": "DISCUSSION ONLY/NO ACTION",
-                "title": "Strategic Planning Discussion The purpose of this planning session is to begin crafting a new Vision for Eagle Mountain City that will shape the City's long -term direction, and to discuss the focus areas and priorities that will support that Vision. This is discussion only and no action will be taken.",
-                "time": "",
-                "background": "",
-                "plain": ""
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "3",
-            "title": "ADJOURNMENT",
-            "note": "",
-            "session": "17:00",
             "group": null,
             "items": [],
             "procedural": true
