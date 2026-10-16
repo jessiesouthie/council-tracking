@@ -186,7 +186,7 @@ NAV: tuple[Item, ...] = (
         ),
         mobile=False,
         header=False,
-        blurb="where the record comes from, and the words the city uses in plain English.",
+        blurb="where the record comes from, and what the city's words mean.",
     ),
 )
 
