@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T21:28:48Z",
+  "generated_at": "2026-10-16T16:59:40Z",
   "source": "Eagle Mountain CivicClerk portal",
   "timezone": "America/Denver",
   "bodies": {
@@ -12,11 +12,423 @@
         "start_label": "4:00 PM",
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/730/overview",
-        "agenda_posted": false,
-        "agenda_posted_on": "",
-        "agenda_url": "",
-        "sessions": [],
-        "agenda": []
+        "agenda_posted": true,
+        "agenda_posted_on": "2026-10-15",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3004,plainText=false)",
+        "sessions": [
+          {
+            "start": "16:00",
+            "start_label": "4:00 PM",
+            "label": "Work Session",
+            "public_comment": false
+          },
+          {
+            "start": "19:00",
+            "start_label": "7:00 PM",
+            "label": "Policy Session",
+            "public_comment": true
+          }
+        ],
+        "agenda": [
+          {
+            "number": "1",
+            "title": "DISCUSSION AND INFORMATION ITEMS",
+            "note": "This is an opportunity to provide information to the City Council. These items are for information only and do not require action by the City Council.",
+            "session": "16:00",
+            "group": null,
+            "items": [
+              {
+                "number": "1.A",
+                "kind": "DISCUSSION",
+                "title": "MAP Funding Capacity and Tier Prioritization",
+                "time": "15 minutes",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "1.B",
+                "kind": "DISCUSSION",
+                "title": "Alternative Energy Overlay Zone Revisions",
+                "time": "10 minutes",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "1.C",
+                "kind": "DISCUSSION",
+                "title": "Corrigan Farms Development Agreement",
+                "time": "30 minutes",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "2",
+            "title": "CITY MANAGER INFORMATION ITEMS",
+            "note": "This is an opportunity for the City Manager to provide information to the City Council.",
+            "session": "16:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "AGENDA REVIEW",
+            "note": "The City Council will review items on the Consent Agenda and Policy Session Agenda.",
+            "session": "16:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "4",
+            "title": "ADJOURN TO A CLOSED SESSION",
+            "note": "The City Council will adjourn into a Closed Session for the purpose of discussion of pending or reasonably imminent litigation; the character, professional competence, or physical or mental health of an individual; the purchase, lease, sale, or exchange of real property; a proposed development agreement, project proposal, or financing proposal related to the development of land owned by the state or a political subdivision; and/or the deployment of security personnel, devices, or systems, pursuant to Section 52-4-205(1) of the Utah Code, Annotated.",
+            "session": "16:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "5",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "6",
+            "title": "PLEDGE OF ALLEGIANCE",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "7",
+            "title": "INFORMATION ITEMS/UPCOMING EVENTS",
+            "note": "",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "8",
+            "title": "PUBLIC COMMENTS",
+            "note": "Time has been set aside for the public to express their ideas, concerns, and comments. (Please limit your comments to three minutes each.)",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": false
+          },
+          {
+            "number": "9",
+            "title": "CITY COUNCIL/MAYOR ITEMS",
+            "note": "Time has been set aside for the City Council and Mayor to make comments.",
+            "session": "19:00",
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "10",
+            "title": "BOND RELEASES",
+            "note": "",
+            "session": "19:00",
+            "group": "Consent Agenda",
+            "items": [
+              {
+                "number": "10.A",
+                "kind": "",
+                "title": "Harmony Phase A, Plat 15 - Fencing",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "10.B",
+                "kind": "",
+                "title": "Firefly NPA 8 Phase A, Plat 3 - Into Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "10.C",
+                "kind": "",
+                "title": "Firefly NPA 8 Phase A, Plat 4 - Into Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "10.D",
+                "kind": "",
+                "title": "Firefly NPA 8 Phase A, Plat 5 - Into Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "10.E",
+                "kind": "",
+                "title": "Overland Village 2 Phase A, Plat 11 - Into Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "10.F",
+                "kind": "",
+                "title": "Harmony Phase A, Plat 15 - Out of Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "10.G",
+                "kind": "",
+                "title": "Harmony Phase A, Rachel Way & Ira Hodges Roadway - Out of Warranty",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "11",
+            "title": "CHANGE ORDERS",
+            "note": "",
+            "session": "19:00",
+            "group": "Consent Agenda",
+            "items": [
+              {
+                "number": "11.A",
+                "kind": "CHANGE ORDER",
+                "title": "Airport Well #9 Drilling, Lang Equipment - Change Order #1",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "11.B",
+                "kind": "CHANGE ORDER",
+                "title": "Trailhead and Pony Express Traffic Signal - Change Orders #1 - #3",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "12",
+            "title": "MINUTES",
+            "note": "",
+            "session": "19:00",
+            "group": "Consent Agenda",
+            "items": [
+              {
+                "number": "12.A",
+                "kind": "",
+                "title": "September 29, 2026 Minutes - City Council Project Planning Session",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "12.B",
+                "kind": "",
+                "title": "October 6, 2026 Minutes - Regular City Council Meeting",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "12.C",
+                "kind": "",
+                "title": "October 8, 2026 Minutes - City Council Budget Work Session",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "13",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": "19:00",
+            "group": "Consent Agenda",
+            "items": [
+              {
+                "number": "13.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Recognizing the Eagle Mountain Community Chaplain Program",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "13.B",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Approving a License Agreement for Encroachment with Pony Express Land Development, Inc",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "13.C",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah Approving a Reimbursement Agreement with Will-Power UT, LLC",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "13.D",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Approving the Quicksilver Solar Community Reinvestment Project Area Interlocal Agreement between Eagle Mountain City and the Utah County Community Reinvestment Agency",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "14",
+            "title": "CORRIGAN FARMS REZONE",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "14.A",
+                "kind": "ORDINANCE",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Rezoning Certain Lands Known as Corrigan Farms",
+                "time": "",
+                "background": "(Presented by Senior Planner, David Stroud) Corrigan Farms LLC seeks to rezone parcel number 59:068:0006 to add the RTI overlay zone to the property to allow it to potentially develop a data center project with a natural gas power plant.",
+                "plain": ""
+              },
+              {
+                "number": "14.B",
+                "kind": "ORDINANCE",
+                "title": "An Ordinance of Eagle Mountain City, Utah Approving the Corrigan Farms Development Agreement",
+                "time": "",
+                "background": "(Presented by City Attorney, Marcus Draper) The proposed agreement accompanies the rezone of a 41-acre parcel owned by Corrigan Farms LLC to the RTI Overlay Zone and establishes development and infrastructure requirements for the anticipated data center project. Corrigan Farms LLC owns a 41 acre parcel in the southern portion of our City. The parcel abuts other data center properties, as well as ENYO Energy properties. This agreement was prepared in conjunction with the rezone application for the parcel to the RTI overlay zone. It is consistent with other data center development agreements, except that it is for 20 years instead of 40. It is anticipated that the applicant will construct 2 data centers with an on site natural gas power plant. Article V of the agreement governs the infrastructure requirements to insure success of the project. The language recognizes that there are still unknowns regarding the specifics and maintains flexibility while insuring that the City has the final say. The Development Agreement came before the Council for consideration on October 6th. The Council gave feedback related to concerns that it had for the development. Changes have been made to the agreement to account for the feedback. The matter is on for discussion to make sure that the changes address the previously raised concerns.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "15",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "15.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution of Eagle Mountain City, Utah, Authorizing the Land Disposal Application to Proceed and Directing Staff to Begin the Notice and Public Hearing Process for a Portion of Utah County Parcel No. 38:257:0108, Designated as \"Significant Real Property\" Pursuant to Eagle Mountain Municipal Code 3.30.060",
+                "time": "",
+                "background": "(Presented by City Recorder Lacie A. Messerly) This item is a request to dispose of a portion of Utah County Parcel No. 38:257:0108 designated as \u201cSignificant Real Property\u201d in accordance with EMMC 3.30.060. The application, submitted by Allen Barney and various residents pertains to approximately .85 acre (37,026 sq/ft) of property located at Eagle Park Phase I.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "16",
+            "title": "ORDINANCES/PUBLIC HEARINGS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "16.A",
+                "kind": "ORDINANCE/PUBLIC HEARING",
+                "title": "An Ordinance of Eagle Mountain City, Utah, Amending Eagle Mountain Municipal Code Section 16.25.040 Application, 17.10.030 Definitions, and 17.60.040 General Landscape Provisions",
+                "time": "",
+                "background": "(Presented by Long Range Planner, Elizabeth Fewkes) A proposal to identify wildland urban interface (WUI) lots on final plats, permit vegetation removal allowances required by Utah Code, and add associated definitions.",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "17",
+            "title": "LEGISLATIVE ITEMS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "17.A",
+                "kind": "UPDATE",
+                "title": "Legislative Priorities List",
+                "time": "",
+                "background": "",
+                "plain": "The council will receive an update on its list of legislative priorities."
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "18",
+            "title": "CITY COUNCIL/MAYOR'S BUSINESS AND LIAISON REPORTS",
+            "note": "This time is set aside for the City Council's and Mayor's comments on City business, and for Councilmembers to report on the boards they are assigned to as liaisons to the City Council.",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "19",
+            "title": "COMMUNICATION ITEMS",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [
+              {
+                "number": "19.A",
+                "kind": "",
+                "title": "Financial Report",
+                "time": "",
+                "background": "",
+                "plain": ""
+              },
+              {
+                "number": "19.B",
+                "kind": "",
+                "title": "Upcoming Agenda Items",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "20",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": "19:00",
+            "group": "Scheduled Items",
+            "items": [],
+            "procedural": true
+          }
+        ]
       },
       {
         "id": 760,
@@ -91,178 +503,6 @@
     ],
     "planning-commission": [
       {
-        "id": 679,
-        "title": "Planning Commission Meeting",
-        "date": "2026-10-13",
-        "start": "17:30",
-        "start_label": "5:30 PM",
-        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
-        "url": "https://eaglemountainut.portal.civicclerk.com/event/679/overview",
-        "agenda_posted": true,
-        "agenda_posted_on": "",
-        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2990,plainText=false)",
-        "sessions": [
-          {
-            "start": "18:30",
-            "start_label": "6:30 PM",
-            "label": "Planning Commission Policy Session",
-            "public_comment": false
-          }
-        ],
-        "agenda": [
-          {
-            "number": "1",
-            "title": "DISCUSSION ITEMS",
-            "note": "",
-            "session": null,
-            "group": null,
-            "items": [
-              {
-                "number": "1.A",
-                "kind": "",
-                "title": "DISCUSSION \u2014 Deer Run Concept Plan",
-                "time": "",
-                "background": "",
-                "plain": ""
-              },
-              {
-                "number": "1.B",
-                "kind": "",
-                "title": "AGENDA REVIEW",
-                "time": "",
-                "background": "",
-                "plain": ""
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "2",
-            "title": "CALL TO ORDER",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "3",
-            "title": "PLEDGE OF ALLEGIANCE",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "4",
-            "title": "DECLARATION OF CONFLICTS OF INTEREST",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "5",
-            "title": "MINUTES",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [
-              {
-                "number": "5.A",
-                "kind": "",
-                "title": "September 22, 2026 Planning Commission Minutes",
-                "time": "",
-                "background": "",
-                "plain": ""
-              }
-            ],
-            "procedural": true
-          },
-          {
-            "number": "6",
-            "title": "STATUS REPORT",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "7",
-            "title": "ACTION AND ADVISORY ITEMS",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [
-              {
-                "number": "7.A",
-                "kind": "",
-                "title": "PUBLIC HEARING / ACTION ITEM \u2014 UCCU Express Site Plan",
-                "time": "",
-                "background": "(Presented by Planner, Mickie Mills) A proposed site plan for UCCU Express, at 4314 N Pony Express Pkwy, Parcel 37:386:0001.",
-                "plain": ""
-              },
-              {
-                "number": "7.B",
-                "kind": "PUBLIC HEARING / ACTION ITEM",
-                "title": "An Ordinance of Eagle Mountain City, Utah, Amending the Official Zoning Map and Future Land Use Map to Assign Current Zoning Designations to the Oak Hollow and Parkway Crossroads areas.",
-                "time": "",
-                "background": "(Presented by Planner, Mickie Mills) The Eagle Mountain City Council will conduct a public hearing on the proposed Future Land Use Map and Zoning Map amendments. These properties are located within the Oak Hollow development and the Parkway Crossroads area near the Pony Express and Ranches intersection. Approximately 38 acres of land for Oak Hollow and 7 acres of land for Parkway Crossroads are included in this proposal.",
-                "plain": ""
-              },
-              {
-                "number": "7.C",
-                "kind": "",
-                "title": "PUBLIC HEARING / ACTION ITEM \u2014 An Ordinance of Eagle Mountain City, Utah, Amending the Eagle Mountain Municipal Code 17.60.085 regarding Artificial Turf and Eagle Mountain Municipal Code 17.60.100 regarding rear yard landscaping.",
-                "time": "",
-                "background": "(Presented by Senior Planner, David Stroud) Adopting EMMC 17.60.085 regarding standards for the use and installation of artificial turf and amending EMMC 17.60.100 regarding rear yard landscaping.",
-                "plain": ""
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "8",
-            "title": "DISCUSSION ITEMS",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "9",
-            "title": "AGENDA REVIEW",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "10",
-            "title": "NEXT SCHEDULED MEETING",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "11",
-            "title": "ADJOURNMENT",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          }
-        ]
-      },
-      {
         "id": 692,
         "title": "Planning Commission Meeting",
         "date": "2026-10-27",
@@ -326,6 +566,20 @@
         "start_label": "5:30 PM",
         "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/694/overview",
+        "agenda_posted": false,
+        "agenda_posted_on": "",
+        "agenda_url": "",
+        "sessions": [],
+        "agenda": []
+      },
+      {
+        "id": 682,
+        "title": "Planning Commission Meeting",
+        "date": "2027-01-12",
+        "start": "17:30",
+        "start_label": "5:30 PM",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
+        "url": "https://eaglemountainut.portal.civicclerk.com/event/682/overview",
         "agenda_posted": false,
         "agenda_posted_on": "",
         "agenda_url": "",
