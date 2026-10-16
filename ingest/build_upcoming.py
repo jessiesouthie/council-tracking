@@ -39,9 +39,10 @@ docs/data.upcoming.json:
     }
   }
 
-The "plain" line comes from ingest.summarize_agenda, an LLM step run by hand and
-cached in data/meta; this build merges whatever is cached and leaves the rest
-empty, so it never needs the model itself.
+The "plain" line comes from ingest.summarize_agenda, an LLM step cached in
+data/meta. This build merges whatever is cached, then runs the summarizer for
+anything new. Without the `claude` CLI (as in CI) that step skips and the new
+items keep the city's own wording; --no-summarize skips it on purpose.
 
 Times are Eagle Mountain wall-clock with no offset attached, matching how the
 API reports them and how the agenda prints them — see civicclerk.LOCAL_TZ.
@@ -49,6 +50,7 @@ API reports them and how the agenda prints them — see civicclerk.LOCAL_TZ.
 Run:  python -m ingest.build_upcoming                  # every CivicClerk body
       python -m ingest.build_upcoming --body city-council
       python -m ingest.build_upcoming --horizon 6      # keep 6 meetings ahead
+      python -m ingest.build_upcoming --no-summarize   # cached sentences only
 """
 
 from __future__ import annotations
@@ -65,7 +67,7 @@ from zoneinfo import ZoneInfo
 import pdfplumber
 import requests
 
-from . import agenda_summaries, bodies, civicclerk
+from . import agenda_summaries, bodies, civicclerk, summarize_agenda
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "data.upcoming.json"
@@ -485,6 +487,8 @@ def main() -> int:
     ap.add_argument("--horizon", type=int, default=DEFAULT_HORIZON,
                     help=f"meetings to publish per body (default {DEFAULT_HORIZON})")
     ap.add_argument("--since", help="keep meetings on/after this day (default: today)")
+    ap.add_argument("--no-summarize", action="store_true",
+                    help="don't write plain-English lines for new agenda items")
     args = ap.parse_args()
 
     since = args.since or local_today()
@@ -526,11 +530,21 @@ def main() -> int:
                 "bodies": manifest,
             },
             indent=2,
+            ensure_ascii=False,  # matches summarize_agenda, so neither rewrite churns the file
         )
         + "\n",
         encoding="utf-8",
     )
     print(f"\nwrote {OUT.relative_to(ROOT)}")
+
+    # The calendar is already written; a summarizer failure only costs the
+    # plain-English lines, so it never fails the build.
+    if not args.no_summarize:
+        print("\n== plain-English agenda lines ==", flush=True)
+        try:
+            summarize_agenda.run()
+        except Exception as exc:
+            print(f"  ! agenda summaries skipped: {exc}", file=sys.stderr)
     return 0
 
 

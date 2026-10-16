@@ -23,9 +23,10 @@ conventions:
 * Idempotent, keyed by a content hash of the item (see ingest.agenda_summaries),
   so a re-run costs nothing and an amended agenda re-summarizes only what
   changed.
-* Never called from CI. The weekly ingest rebuilds the calendar and re-merges
-  whatever is cached; run this locally when a new agenda is posted, and commit
-  data/meta/agenda_summaries.json alongside docs/data.upcoming.json.
+* ingest.build_upcoming calls run() after every rebuild, so running that is
+  enough when a new agenda is posted; commit data/meta/agenda_summaries.json
+  alongside docs/data.upcoming.json. CI has no `claude` CLI, so there the step
+  skips and the weekly ingest only re-merges whatever is cached.
 
 The one rule that matters: this describes what the council is being ASKED to do.
 Nothing on this page has happened yet, and a sentence that sounds like a decision
@@ -209,7 +210,16 @@ def main() -> int:
     ap.add_argument("--merge-only", action="store_true",
                     help="just re-merge the cache into docs/data.upcoming.json")
     args = ap.parse_args()
+    return run(force=args.force, dry_run=args.dry_run, merge_only=args.merge_only)
 
+
+def run(*, force: bool = False, dry_run: bool = False,
+        merge_only: bool = False) -> int:
+    """Summarize whatever is new and merge the cache into the feed.
+
+    Split out of main() so ingest.build_upcoming can call it straight after it
+    rewrites the feed.
+    """
     if not UPCOMING.exists():
         print(f"no {UPCOMING.relative_to(ROOT)} — run build_upcoming first",
               file=sys.stderr)
@@ -217,7 +227,7 @@ def main() -> int:
     feed = json.loads(UPCOMING.read_text())
     cache = agenda_summaries.load_cache()
 
-    if not args.merge_only:
+    if not merge_only:
         if not shutil.which("claude"):
             print("⚠ `claude` CLI not found — skipping agenda summaries. The site "
                   "still builds; items fall back to the city's own wording.",
@@ -228,7 +238,7 @@ def main() -> int:
         todo = [
             (body_id, date, [
                 it for it in items
-                if args.force or not (cache.get(agenda_summaries.item_key(it)) or {}).get("plain")
+                if force or not (cache.get(agenda_summaries.item_key(it)) or {}).get("plain")
             ])
             for body_id, date, items in agendas
         ]
@@ -238,7 +248,7 @@ def main() -> int:
         print(f"cache: {agenda_summaries.CACHE.relative_to(ROOT)} ({len(cache)} items)")
         print(f"{pending} items to summarize across {len(todo)} agendas ({cached} cached)")
 
-        if args.dry_run:
+        if dry_run:
             for body_id, date, items in todo:
                 print(f"  would summarize {body_id} {date}: {len(items)} items")
             return 0
