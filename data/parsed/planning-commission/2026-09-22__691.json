@@ -1,0 +1,231 @@
+{
+  "meeting": {
+    "id": 691,
+    "date": "2026-09-22",
+    "source_file": "2026-09-22__691.pdf",
+    "motion_count": 5,
+    "ord_count": 0,
+    "res_count": 0,
+    "text_chars": 9989
+  },
+  "motions": [
+    {
+      "id": 337,
+      "meeting_id": 691,
+      "date": "2026-09-22",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of September 8, 2026, Planning Commission meeting. Commissioner DeCoursey s…",
+      "motion": "Commissioner Allen moved to approve the minutes of September 8, 2026, Planning Commission meeting. Commissioner DeCoursey seconded the motion. Eagle Mountain Planning Commission Meeting – September 22, 2026 Page 1 of 5",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "September 8 minutes approved",
+      "summary": "Commissioners signed off on the minutes of their September 8, 2026 meeting.",
+      "impact": "This makes the record of the earlier meeting official. You will not notice any difference.",
+      "significance": "routine"
+    },
+    {
+      "id": 338,
+      "meeting_id": 691,
+      "date": "2026-09-22",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., Wildland Urban Interface Standards. Commis…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.A., Wildland Urban Interface Standards. Commissioner Free seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "Wildfire-zone landscaping rules go to council",
+      "summary": "The commission recommended new standards for the wildland urban interface, where homes meet open brush land. They cover landscaping and clearing vegetation, and they respond to a 2026 state law (HB 215) and setback advice from fire officials. Staff will tidy some technical wording first. No one spoke at the public hearing.",
+      "impact": "Nothing changes until the City Council adopts them. If it does, owners of property next to open land could face rules on what they plant and what brush they must clear.",
+      "significance": "notable"
+    },
+    {
+      "id": 339,
+      "meeting_id": 691,
+      "date": "2026-09-22",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.B., Creating Archery Zoning in Eagle Mountain…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.B., Creating Archery Zoning in Eagle Mountain City. Commissioner DeCoursey seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "Archery zoning rules go to council",
+      "summary": "Archery is banned everywhere in Eagle Mountain today. At the council's request, staff drafted rules that would allow it inside the city's existing shooting overlay zone, using USA Archery safety standards. The commission recommended them to the City Council. No one spoke at the public hearing.",
+      "impact": "Archery stays banned until the council adopts the change. If it does, ranges could be set up only within the shooting overlay zone and would have to meet the USA Archery standards.",
+      "significance": "notable"
+    },
+    {
+      "id": 340,
+      "meeting_id": 691,
+      "date": "2026-09-22",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.C., Corrigan Farms Rezone. Commissioner Hess s…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.C., Corrigan Farms Rezone. Commissioner Hess seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "Corrigan Farms rezone for data centers sent to council",
+      "summary": "The owners of Corrigan Farms, farmland that is now QTS's trailer lot, asked to add the RTI overlay zone that allows data centers and similar uses. RTI-zoned land already borders it on the north, east and south. The owners said they have no buyer yet. Commissioners said it would be hard to deny given the land around it, while noting residents' worries about long-term industrial growth. Two residents spoke and two sent emails.",
+      "impact": "The zoning stays as it is until the City Council votes. If approved, the land could be sold or built for data-center or other RTI uses, next to the ones already there.",
+      "significance": "notable"
+    },
+    {
+      "id": 341,
+      "meeting_id": 691,
+      "date": "2026-09-22",
+      "page": 4,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.D., Corrigan Farms Development Agreement. Comm…",
+      "motion": "Commissioner Allen moved to recommend approval to the City Council of Item 7.D., Corrigan Farms Development Agreement. Commissioner Hess seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "development"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ],
+      "headline": "Corrigan Farms data-center agreement sent to council",
+      "summary": "The commission recommended a development agreement for Corrigan Farms, the land just rezoned for RTI (data-center) use. The city attorney walked through its 20-year term, infrastructure duties, impact fees, road-maintenance repayment, vested rights and a clause shielding confidential business information. Commissioners noted the current draft carries no tax incentives. No one spoke at the public hearing.",
+      "impact": "Nothing is binding until the City Council votes. If approved, the agreement would set the terms for any future data-center or industrial project on this land, and its confidentiality clause covers trade secrets, not records the public can request under GRAMA.",
+      "significance": "notable"
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}
