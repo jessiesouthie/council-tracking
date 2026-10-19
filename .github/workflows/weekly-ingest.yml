@@ -89,6 +89,11 @@ jobs:
       - name: Write the per-meeting pages
         run: python -m ingest.build_meeting_pages --prune
 
+      # One page per member per body, made from docs/member.html. The sitemap
+      # lists only the ones that exist, so this runs before it.
+      - name: Write the per-member pages
+        run: python -m ingest.build_member_pages --prune
+
       - name: Refresh the prerendered record
         run: python -m ingest.build_prerender
 
@@ -109,8 +114,8 @@ jobs:
           # The pages the prerender writes into, the generated per-meeting pages,
           # and what build_sitemap emits. -A on docs/meetings so a pruned page is
           # staged as a deletion rather than left behind in the tree.
-          git add docs/meetings.html docs/members.html docs/motions.html docs/sitemap.xml docs/robots.txt
-          git add -A docs/meetings
+          git add docs/index.html docs/claims.html docs/meetings.html docs/members.html docs/motions.html docs/sitemap.xml docs/robots.txt
+          git add -A docs/meetings docs/members docs/claims
           if git diff --cached --quiet; then
             echo "No changes — nothing to commit."
             exit 0

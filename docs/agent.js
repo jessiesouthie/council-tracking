@@ -35,6 +35,8 @@
 
   // Which body the visitor is currently viewing, so answers can be scoped.
   function currentBody() {
+    // A page that belongs to one body pins it on <html>; see site.js.
+    if (document.documentElement.dataset.body) return document.documentElement.dataset.body;
     try {
       const p = new URL(location.href).searchParams.get("body");
       if (p) return p;

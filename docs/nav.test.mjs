@@ -26,6 +26,8 @@ import path from "node:path";
 const DOCS = fileURLToPath(new URL("./", import.meta.url));
 const ROOT = path.resolve(DOCS, "..");
 const read = (p) => readFileSync(path.join(ROOT, p), "utf8");
+// chrome_v2.link(): home is "/", everything else "/<file>".
+const url = (href) => (href === "index.html" ? "/" : `/${href}`);
 
 const ALL_PAGES = readdirSync(DOCS).filter((f) => f.endsWith(".html"));
 // Every page carries its chrome between two wrappers that ingest/build_nav.py
@@ -219,7 +221,7 @@ for (const page of V2_PAGES) {
     // The section links only; the dropdown's own links are class="v2-nav-sub".
     const links = asLinks(head[1]).filter((l) => !/v2-nav-sub/.test(l.attrs));
     assert.deepEqual(links.map((l) => l.label.replace(/&amp;/g, "&")), HEADER.map((i) => i.label));
-    assert.deepEqual(links.map((l) => l.href), HEADER.map((i) => `/${i.href}`));
+    assert.deepEqual(links.map((l) => l.href), HEADER.map((i) => url(i.href)));
     assert.ok(links.filter((l) => /aria-current/.test(l.attrs)).length <= 1,
       `${page}: more than one aria-current in the header`);
     // A council-only section is marked so site.js can drop it for another body.
@@ -234,7 +236,7 @@ for (const page of V2_PAGES) {
       `${page}: header dropdowns`);
     for (const [i, m] of menus.entries()) {
       const subs = asLinks(m[2]);
-      assert.deepEqual(subs.map((l) => l.href), withKids[i].children.map((c) => `/${c.href}`),
+      assert.deepEqual(subs.map((l) => l.href), withKids[i].children.map((c) => url(c.href)),
         `${page}: ${withKids[i].label} dropdown destinations`);
       assert.ok(subs.every((l) => !/aria-current/.test(l.attrs)), `${page}: aria-current in a dropdown`);
     }

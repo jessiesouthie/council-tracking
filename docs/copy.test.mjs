@@ -33,11 +33,14 @@ const next = json("data.budget-next.json");
 
 /* The text a reader sees without running a script: the <body> minus comments,
    scripts and styles. Page scripts render plenty more, but their source is code,
-   and the rendered output is the render tests' business. */
+   and the rendered output is the render tests' business. A <blockquote> is
+   somebody else's words, quoted as they were said, and the house style doesn't
+   reach into them: the prerendered fact checks quote each claim verbatim. */
 function staticText(html) {
   const body = html.slice(html.indexOf("<body"));
   return body
     .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/<blockquote[\s\S]*?<\/blockquote>/g, "")
     .replace(/<script[\s\S]*?<\/script>/g, "")
     .replace(/<style[\s\S]*?<\/style>/g, "")
     .replace(/<[^>]+>/g, " ")

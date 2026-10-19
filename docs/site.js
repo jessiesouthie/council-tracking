@@ -41,10 +41,16 @@
   const DATA_PROMISE = {}; // body id -> in-flight fetch promise
   let bodiesPromise = null;
 
-  // Which body is active: ?body= wins (and is remembered), else the stored
-  // preference, else the default. Writing the param through to localStorage
-  // keeps the selection sticky across links that drop the query string.
+  // Which body is active: a page that belongs to one body says so on <html
+  // data-body>, and that wins outright; otherwise ?body= wins (and is
+  // remembered), else the stored preference, else the default. Writing the param
+  // through to localStorage keeps the selection sticky across links that drop
+  // the query string. The pinned case is the generated member pages: a council
+  // member's page has to load the council's data even for a reader who last
+  // looked at the planning commission.
   function currentBody() {
+    const pinned = document.documentElement.dataset.body;
+    if (pinned) return pinned;
     try {
       const p = new URL(location.href).searchParams.get("body");
       if (p) {
@@ -217,7 +223,7 @@
     if (document.getElementById("ct-agent-js")) return;
     const s = document.createElement("script");
     s.id = "ct-agent-js";
-    s.src = siteUrl("agent.js?v=20261003a");
+    s.src = siteUrl("agent.js?v=20261016a");
     s.defer = true;
     document.body.appendChild(s);
   }
@@ -473,7 +479,7 @@
     return tagIds
       .map(
         (t) =>
-          `<a class="tag${accent ? " accent" : ""}" href="motions.html?tag=${encodeURIComponent(t)}">${escapeHtml(
+          `<a class="tag${accent ? " accent" : ""}" href="/motions.html?tag=${encodeURIComponent(t)}">${escapeHtml(
             tagLabel(data, t)
           )}</a>`
       )
@@ -617,6 +623,14 @@
   function meetingHref(meeting, bodyId = currentBody()) {
     if (!meeting || !meeting.date || meeting.id == null) return null;
     return `/meetings/${meeting.date}-${bodyId}-${meeting.id}.html`;
+  }
+
+  // Where a member's own page lives: /members/<body id>/<member id>.html,
+  // written by ingest/build_member_pages.py. Same rule as meetingHref, and for
+  // the same reason: the two sides have to agree byte for byte.
+  function memberHref(memberId, bodyId = currentBody()) {
+    if (!memberId) return null;
+    return `/members/${bodyId}/${encodeURIComponent(memberId)}.html`;
   }
 
   // Append a JSON-LD node to the document.
@@ -827,5 +841,6 @@
     canonicalUrl,
     addSchema,
     meetingHref,
+    memberHref,
   };
 })();

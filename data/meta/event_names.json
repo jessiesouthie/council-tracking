@@ -1,0 +1,27 @@
+{
+  "_note": "CivicClerk eventName for meetings that share a date with another meeting of the same body. Written by python -m ingest.build_meeting_pages --fetch-names; read by build_meeting_pages to tell the pages apart.",
+  "city-council": {
+    "167": "Special City Council Meeting",
+    "168": "Emergency City Council Meeting",
+    "236": "City Council Special Session",
+    "237": "City Council Regular Session",
+    "276": "City Council Regular Session",
+    "277": "Appeals Board",
+    "323": "City Council Special Session",
+    "324": "City Council Regular Session",
+    "459": "City Council Regular Session",
+    "460": "Appeals Board",
+    "238": "City Council Joint Session",
+    "477": "City Council Meeting",
+    "581": "Special City Council Meeting - Joint Work Session",
+    "582": "City Council-Budget Work Session",
+    "588": "City Council Meeting - Joint Work Session",
+    "607": "Joint City Council / Planning Commission Work Session w/VCBO",
+    "608": "City Council - Budget Work Session"
+  },
+  "planning-commission": {
+    "352": "Planning Commission Special Session",
+    "353": "Planning Commission Regular Session"
+  },
+  "redevelopment-agency-board": {}
+}

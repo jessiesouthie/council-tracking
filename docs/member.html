@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Eagle Mountain City Council Member Voting Record</title>
     <meta name="description" content="Roll-call voting record and agreement scores for an Eagle Mountain City Council member." />
-    <!-- No static <link rel="canonical"> here on purpose. One shell serves every
-         member behind ?id=, so a hard-coded canonical would point all fourteen of
-         them at the bare URL and tell Google to drop thirteen. CT.setCanonical()
-         in site.js writes the self-referencing one, params and all. -->
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <!-- This file is two things. Opened as member.html?id=, it is the old address
+         for a member, kept working for bookmarks and the assistant's links: it
+         loads the record, finds the member and moves on to their own page.
+         ingest/build_member_pages.py also uses it as the template for those
+         pages, /members/<body>/<id>.html, pinning the member on <html> and
+         writing the record into #content so it reads without this script.
+         The generated copies get their own canonical; this one gets none. -->
+    <meta name="robots" content="noindex, follow" />
     <meta name="theme-color" content="#14202e" />
     <meta property="og:type" content="profile" />
     <meta property="og:site_name" content="Civic Roll Call" />
@@ -30,7 +33,7 @@
     <div class="v2-chrome" data-chrome="top">
     <!-- BEGIN generated:nav (ingest/build_nav.py) -->
 <div class="v2-strip"><div class="v2-wrap"><span><span class="v2-strip-long">An independent record of Eagle Mountain city government, kept by a resident. </span><span class="v2-strip-short">Kept by a resident. </span><strong>Not run by the city.</strong></span><a href="/about.html">What is this?</a></div></div>
-<header class="v2-header"><div class="v2-wrap"><a class="v2-brand" href="/index.html"><span class="v2-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5l1.6 1.6L8.5 5M4 12.5l1.6 1.6 2.9-3.1M4 18.5l1.6 1.6 2.9-3.1M12 7h8M12 13h6M12 19h7"/></svg></span><span><span class="v2-brand-name">Civic Roll Call</span><span class="v2-brand-place">Eagle Mountain, Utah</span></span></a><nav class="v2-nav" aria-label="Main"><a href="/index.html">Home</a><div class="v2-nav-item"><a href="/meetings.html">Meetings &amp; Votes</a><ul class="v2-nav-menu" aria-label="Meetings &amp; Votes"><li><a class="v2-nav-sub" href="/meetings.html">Meetings</a></li><li><a class="v2-nav-sub" href="/motions.html">Votes</a></li></ul></div><a href="/members.html" class="is-section">Members</a><a href="/claims.html" data-nav-body="city-council">Fact Checks</a><div class="v2-nav-item" data-nav-body="city-council"><a href="/finances.html" data-nav-body="city-council">Taxes &amp; Budget</a><ul class="v2-nav-menu" aria-label="Taxes &amp; Budget"><li><a class="v2-nav-sub" href="/finances.html">Overview</a></li><li><a class="v2-nav-sub" href="/tax.html">Tax</a></li><li><a class="v2-nav-sub" href="/projections.html">Projections</a></li><li><a class="v2-nav-sub" href="/budget.html">Budget</a></li><li><a class="v2-nav-sub" href="/staffing.html">Staffing</a></li></ul></div><div class="v2-nav-item"><a href="/data-centers.html">Topics</a><ul class="v2-nav-menu" aria-label="Topics"><li><a class="v2-nav-sub" href="/data-centers.html">Data centers</a></li><li><a class="v2-nav-sub" href="/referendum.html">Tax referendum</a></li></ul></div></nav></div></header>
+<header class="v2-header"><div class="v2-wrap"><a class="v2-brand" href="/"><span class="v2-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5l1.6 1.6L8.5 5M4 12.5l1.6 1.6 2.9-3.1M4 18.5l1.6 1.6 2.9-3.1M12 7h8M12 13h6M12 19h7"/></svg></span><span><span class="v2-brand-name">Civic Roll Call</span><span class="v2-brand-place">Eagle Mountain, Utah</span></span></a><nav class="v2-nav" aria-label="Main"><a href="/">Home</a><div class="v2-nav-item"><a href="/meetings.html">Meetings &amp; Votes</a><ul class="v2-nav-menu" aria-label="Meetings &amp; Votes"><li><a class="v2-nav-sub" href="/meetings.html">Meetings</a></li><li><a class="v2-nav-sub" href="/motions.html">Votes</a></li></ul></div><a href="/members.html" class="is-section">Members</a><a href="/claims.html" data-nav-body="city-council">Fact Checks</a><div class="v2-nav-item" data-nav-body="city-council"><a href="/finances.html" data-nav-body="city-council">Taxes &amp; Budget</a><ul class="v2-nav-menu" aria-label="Taxes &amp; Budget"><li><a class="v2-nav-sub" href="/finances.html">Overview</a></li><li><a class="v2-nav-sub" href="/tax.html">Tax</a></li><li><a class="v2-nav-sub" href="/projections.html">Projections</a></li><li><a class="v2-nav-sub" href="/budget.html">Budget</a></li><li><a class="v2-nav-sub" href="/staffing.html">Staffing</a></li></ul></div><div class="v2-nav-item"><a href="/data-centers.html">Topics</a><ul class="v2-nav-menu" aria-label="Topics"><li><a class="v2-nav-sub" href="/data-centers.html">Data centers</a></li><li><a class="v2-nav-sub" href="/referendum.html">Tax referendum</a></li></ul></div></nav></div></header>
     <!-- END generated:nav -->
     </div><!-- /chrome top -->
 
@@ -46,34 +49,34 @@
 
     <div class="v2-chrome" data-chrome="bottom">
     <!-- BEGIN generated:nav (ingest/build_nav.py) -->
-<footer class="v2-footer"><div class="v2-wrap"><nav aria-label="Everything on this site"><a href="/index.html">Home</a><a href="/meetings.html">Meetings &amp; Votes</a><a href="/members.html">Members</a><a href="/claims.html">Fact Checks</a><a href="/finances.html">Taxes &amp; Budget</a><a href="/data-centers.html">Topics</a><a href="/about.html">About</a><a href="/definitions.html">Definitions</a></nav><p>Civic Roll Call is published independently by an Eagle Mountain resident, with no affiliation to the city, any candidate or any campaign. Corrections and tips: <a href="mailto:civicrollcall@gmail.com">civicrollcall@gmail.com</a></p></div></footer>
-<nav class="v2-tabbar" aria-label="Main (mobile)"><a href="/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-6 8 6v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/></svg><span>Home</span></a><a href="/meetings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg><span>Meetings</span></a><a href="/members.html" class="is-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="3.2"/><path d="M3.5 19c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5"/><circle cx="17" cy="8" r="2.5"/><path d="M16.5 13.5c2 .2 3.5 1.5 4 4"/></svg><span>Members</span></a><a href="/claims.html" data-nav-body="city-council"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M8.5 12.3l2.4 2.4 4.6-5"/></svg><span>Fact checks</span></a><a href="/finances.html" data-nav-body="city-council"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M10 20V5M15 20v-8M20 20v-5"/></svg><span>Taxes</span></a></nav>
+<footer class="v2-footer"><div class="v2-wrap"><nav aria-label="Everything on this site"><a href="/">Home</a><a href="/meetings.html">Meetings &amp; Votes</a><a href="/members.html">Members</a><a href="/claims.html">Fact Checks</a><a href="/finances.html">Taxes &amp; Budget</a><a href="/data-centers.html">Topics</a><a href="/about.html">About</a><a href="/definitions.html">Definitions</a></nav><p>Civic Roll Call is published independently by an Eagle Mountain resident, with no affiliation to the city, any candidate or any campaign. Corrections and tips: <a href="mailto:civicrollcall@gmail.com">civicrollcall@gmail.com</a></p></div></footer>
+<nav class="v2-tabbar" aria-label="Main (mobile)"><a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-6 8 6v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/></svg><span>Home</span></a><a href="/meetings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg><span>Meetings</span></a><a href="/members.html" class="is-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="3.2"/><path d="M3.5 19c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5"/><circle cx="17" cy="8" r="2.5"/><path d="M16.5 13.5c2 .2 3.5 1.5 4 4"/></svg><span>Members</span></a><a href="/claims.html" data-nav-body="city-council"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M8.5 12.3l2.4 2.4 4.6-5"/></svg><span>Fact checks</span></a><a href="/finances.html" data-nav-body="city-council"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M10 20V5M15 20v-8M20 20v-5"/></svg><span>Taxes</span></a></nav>
     <!-- END generated:nav -->
     </div><!-- /chrome bottom -->
 
-    <script src="site.js?v=20261006b"></script>
+    <script src="site.js?v=20261016a"></script>
     <script>
       (async () => {
         const data = await CT.loadData();
-        const id = CT.paramsFromUrl().id;
+        // Set on the generated pages; member.html?id= is the old address.
+        const pinned = document.documentElement.dataset.member;
+        const id = pinned || CT.paramsFromUrl().id;
         const member = data._byMemberId[id];
         const root = document.getElementById("content");
+        if (member && !pinned) {
+          location.replace(CT.memberHref(member.id));
+          return;
+        }
         if (!member) {
           root.removeAttribute("aria-busy");
           root.innerHTML = `<header class="mb-head"><p class="v2-label">Not found</p><h1>No member by that name on file</h1>
-            <p class="mb-sub">Nobody in this body&rsquo;s record has the id <code>${CT.escapeHtml(id||"")}</code>. <a href="members.html">See everyone who sits on it</a>.</p></header>`;
+            <p class="mb-sub">Nobody in this body&rsquo;s record has the id <code>${CT.escapeHtml(id||"")}</code>. <a href="/members.html">See everyone who sits on it</a>.</p></header>`;
           return;
         }
-        CT.setMeta({
-          title: `${member.name} — Voting Record, Eagle Mountain City Council`,
-          description: `Roll-call voting record, agreement scores, and vote history for ${member.name} on the Eagle Mountain City Council.`,
-        });
-        // The shell's static markup can't name whoever ?id= asked for, so the
-        // Person node is built here. Searches for a councilmember by name are
-        // the highest-intent queries this site gets; this is what ties the page
-        // to the human being searched for.
+        // The generated page's head already names the member and carries the
+        // Person node; this only runs if the page was opened some other way.
         const memberUrl = CT.canonicalUrl();
-        CT.addSchema({
+        if (!document.querySelector('script[type="application/ld+json"]')) CT.addSchema({
           "@context": "https://schema.org",
           "@graph": [
             {
@@ -136,7 +139,7 @@
 
         root.removeAttribute("aria-busy");
         root.innerHTML = `
-          <nav class="v2-crumbs" aria-label="Breadcrumb"><a href="members.html">Members</a><span aria-hidden="true">›</span><span>${esc(member.name)}</span></nav>
+          <nav class="v2-crumbs" aria-label="Breadcrumb"><a href="/members.html">Members</a><span aria-hidden="true">›</span><span>${esc(member.name)}</span></nav>
 
           <header class="mp-head">
             <span class="rc-ava mp-ava" aria-hidden="true">${esc(initials(member.name))}</span>
@@ -161,7 +164,7 @@
               </span>
               <p class="rc-note">When they voted one way or the other, they voted yes <b>${(s.yes_rate*100).toFixed(0)}%</b> of the time.
                 Most ${esc(noun)} business passes unanimously, so a high rate is normal here.
-                <a href="members.html">The members page</a> compares how often each member ends up on the losing side of a vote that split.</p>` : ""}
+                <a href="/members.html">The members page</a> compares how often each member ends up on the losing side of a vote that split.</p>` : ""}
           </section>
 
           <section class="mb-section" aria-labelledby="ag-h">
@@ -171,7 +174,7 @@
               <ul class="mp-ag">
                 ${ag.map(x => `
                   <li>
-                    <a class="mp-ag-who" href="member.html?id=${encodeURIComponent(x.id)}">
+                    <a class="mp-ag-who" href="${CT.memberHref(x.id)}">
                       <span class="pair-avatar" aria-hidden="true">${esc(initials(x.name))}</span>
                       <span><span class="pair-name">${esc(x.name)}</span>
                         <span class="mp-ag-role">${esc(x.role || "Member")}${x.current ? "" : ", former"}</span></span>
@@ -189,14 +192,14 @@
             ${tagRows.length ? `
               <p class="rc-note">Their roll calls by topic. Each opens the votes list filtered to that topic and to them.</p>
               <ul class="mp-tags">
-                ${tagRows.map(r => `<li><a href="motions.html?member=${encodeURIComponent(id)}&tag=${encodeURIComponent(r.tid)}">${esc(r.label)} <span class="cl-filter-n">${r.count}</span></a></li>`).join("")}
+                ${tagRows.map(r => `<li><a href="/motions.html?member=${encodeURIComponent(id)}&tag=${encodeURIComponent(r.tid)}">${esc(r.label)} <span class="cl-filter-n">${r.count}</span></a></li>`).join("")}
               </ul>` : '<p class="rc-note">No tagged motions in their record yet.</p>'}
           </section>
 
           <section class="mb-section" aria-labelledby="recent-h">
             <h2 class="mb-h2" id="recent-h">Their latest votes</h2>
             <p class="rc-note">Newest first. Open one for what it did and how everyone voted, or
-              <a href="motions.html?member=${encodeURIComponent(id)}">search all ${myMotions.length.toLocaleString()} of their votes</a>.</p>
+              <a href="/motions.html?member=${encodeURIComponent(id)}">search all ${myMotions.length.toLocaleString()} of their votes</a>.</p>
             <div id="recent-votes" class="mv-list"></div>
             ${myMotions.length > SHOW ? `<p><button type="button" class="v2-btn v2-btn--quiet" id="more-votes">Show ${Math.min(50, myMotions.length) - SHOW} more</button></p>` : ""}
           </section>

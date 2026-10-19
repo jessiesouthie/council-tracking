@@ -47,7 +47,7 @@ CSS_VERSION = "20261006g"
 # The "Ask about this site" widget. These pages don't load site.js, which is
 # what mounts it everywhere else, so they link it themselves. Kept equal to
 # the tag in site.js mountAgent() by docs/claims.test.mjs.
-AGENT_VERSION = "20261003a"
+AGENT_VERSION = "20261016a"
 BASE = "https://civicrollcall.com"
 
 MONTHS = ("January", "February", "March", "April", "May", "June", "July",
@@ -214,6 +214,10 @@ def render_page(c: dict, data: dict, meetings: dict[int, tuple[str, bool]]) -> s
     og = f"{BASE}/claims/og/{c['id']}.png?v={og_version(c, v['label'], topic)}"
 
     title = f"Fact check: {summary}"
+    # The search result's title leads with the place, which is what people type,
+    # and drops the site name: at 66 to 92 characters every one was cut off
+    # before the brand showed anyway. og:site_name still carries it.
+    page_title = f"Eagle Mountain fact check: {summary}"
     desc = f"{v['label']}. {c['ruling']}"
     if len(desc) > 300:
         desc = desc[:297].rsplit(" ", 1)[0] + "…"
@@ -332,7 +336,7 @@ def render_page(c: dict, data: dict, meetings: dict[int, tuple[str, bool]]) -> s
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>{esc(title)} | Civic Roll Call</title>
+    <title>{esc(page_title)}</title>
     <meta name="description" content="{esc(desc)}" />
     <link rel="canonical" href="{esc(url)}" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />

@@ -26,6 +26,14 @@ What gets written, and why it stops where it does:
   motions.html   the most recent MOTION_LIMIT motions. There are over a thousand
                  and they're addressed by fragment on this one page, so listing
                  all of them would add page weight without adding a single URL.
+  claims.html    every fact check's claim, finding and ruling, each linked to the
+                 page build_claim_pages writes for it. Before this the list was
+                 the only route to those pages and it existed only in script.
+  index.html     the latest votes, the latest fact checks, who sits on the
+                 council, the tax and next-meeting cards, and the doors that
+                 name the last meeting. The cards used to appear when the data
+                 landed and push the page down under the reader (a CLS of 0.13
+                 on a phone); written here, the script only confirms them.
 
 Run:  python -m ingest.build_prerender
       python -m ingest.build_prerender --check   # exit 1 if any page is stale
@@ -45,6 +53,7 @@ from pathlib import Path
 # way, so the string is built in one place and imported rather than written out
 # again here.
 from .build_meeting_pages import counts_line
+from .build_claim_pages import TONE as VERDICT_TONE, pill as verdict_pill
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
@@ -283,7 +292,8 @@ def render_members(data: dict, today: str) -> str:
         other = s.get("abstain", 0) + s.get("excused", 0) + s.get("absent", 0)
         total = s.get("total") or (yes + no + other)
         pct = (lambda x: f"{x / total * 100:.2f}" if total else "0")
-        href = f'member.html?id={esc(member.get("id"))}'
+        # The member's own page, which ingest/build_member_pages.py writes.
+        href = f'/members/city-council/{esc(member.get("id"))}.html'
         chair = bool(CHAIR.match(member.get("role") or ""))
         split = splits.get(member.get("id")) or {"seen": 0, "minority": 0}
         tag = (f'<span class="rc-tag">{esc(member.get("role"))}</span>' if chair else "")
@@ -351,6 +361,253 @@ def render_motions(data: dict) -> str:
     )
 
 
+MONTHS_SHORT = tuple(m[:3] for m in MONTHS)
+WEEKDAYS = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+
+
+def us_date(iso: str) -> str:
+    """CT.fmtDate as an en-US browser prints it: "Oct 8, 2026"."""
+    try:
+        d = date.fromisoformat((iso or "")[:10])
+    except ValueError:
+        return esc(iso)
+    return f"{MONTHS_SHORT[d.month - 1]} {d.day}, {d.year}"
+
+
+def load_optional(name: str) -> dict | None:
+    path = DOCS / name
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except ValueError:
+        return None
+
+
+def render_claims(d: dict) -> str:
+    """The fact checks, as the cards render() in docs/claims.html draws them,
+    minus the folded evidence and the filters, which are the script's."""
+    claims = d.get("claims") or []
+    if not claims:
+        return ""
+    verdicts = {v["key"]: v for v in d.get("verdicts") or []}
+    cards = []
+    for c in claims:
+        v = verdicts.get(c.get("verdict"), {"label": c.get("verdict")})
+        tone = VERDICT_TONE.get(c.get("verdict"), "cool")
+        cid = esc(c["id"])
+        updated = f" · updated {us_date(c['updated'])}" if c.get("updated") else ""
+        quote = (f'<blockquote class="cl-quote">&ldquo;{esc(c["claim"])}&rdquo;</blockquote>'
+                 if c.get("summary") else "")
+        cards.append(
+            f'          <article class="cl-card" id="{cid}" aria-labelledby="{cid}-h">'
+            f'<div class="cl-card-top">{verdict_pill(c.get("verdict"), v.get("label"))}'
+            f'<span class="cl-checked">Checked {us_date(c.get("checked"))}{updated}</span></div>'
+            f'<h3 class="cl-claim" id="{cid}-h"><a href="/claims/{cid}.html">'
+            f'{esc(c.get("summary") or c["claim"])}</a></h3>{quote}'
+            f'<p class="cl-ruling v2-tone-{tone}">{esc(c.get("ruling"))}</p>'
+            f'<p class="cl-acts"><a class="v2-btn v2-btn--primary" href="/claims/{cid}.html">'
+            'Read the full check <span aria-hidden="true">→</span></a></p></article>')
+    n = len(claims)
+    return (
+        '      <div class="cl-page">\n'
+        '        <header class="cl-masthead">\n'
+        f'          <p class="v2-label">Eagle Mountain &middot; {esc(d.get("eyebrow") or "Fact checks")}</p>\n'
+        f'          <h1>{esc(d.get("title"))}</h1>\n'
+        f'          <p class="cl-sub">{esc(d.get("sub"))}</p>\n'
+        f'          <p class="cl-standing"><b>{n} claim{"" if n == 1 else "s"} checked</b>'
+        f'<span>Last reviewed {us_date(d.get("updated"))}</span></p>\n'
+        '        </header>\n'
+        '        <section class="cl-list" aria-labelledby="cl-list-h">\n'
+        '          <h2 class="cl-h2" id="cl-list-h">Each check, with its sources</h2>\n'
+        + "\n".join(cards) + "\n        </section>\n      </div>")
+
+
+# ---------------------------------------------------------------------------
+# The home page. Each function mirrors the render function of the same name in
+# docs/index.html; change one, change the other.
+# ---------------------------------------------------------------------------
+
+def vote_split(motion: dict) -> tuple[int, int]:
+    yes = no = 0
+    for v in motion.get("votes") or []:
+        x = str(v.get("vote") or "").lower()
+        if x == "yes":
+            yes += 1
+        elif x in ("no", "nay"):
+            no += 1
+    return yes, no
+
+
+def classify_outcome(outcome: str) -> str:
+    o = (outcome or "").lower()
+    if re.search(r"passed|approved|carried", o):
+        return "passed"
+    if re.search(r"fail|denied|not pass", o):
+        return "failed"
+    return "other"
+
+
+def render_votes(data: dict, body_id: str = "city-council") -> str:
+    motions = sorted(data.get("motions") or [],
+                     key=lambda m: (m.get("date") or "", m.get("id") or 0), reverse=True)
+    notable = [m for m in motions if m.get("significance") == "notable"]
+    headed = [m for m in motions if m.get("headline") and m.get("significance") != "notable"]
+    rest = [m for m in motions if not m.get("headline")]
+    rows = []
+    for m in (notable + headed + rest)[:6]:
+        cls = classify_outcome(m.get("outcome"))
+        yes, no = vote_split(m)
+        word = {"passed": "Passed", "failed": "Failed"}.get(cls, "Recorded")
+        count = f" {yes}–{no}" if yes + no else ""
+        tone = {"passed": "ok", "failed": "bad"}.get(cls, "cool")
+        href = f'/meetings/{m.get("date")}-{body_id}-{m.get("meeting_id")}.html#m{m.get("id")}'
+        summary = f'<span class="v2-vote-sum">{esc(m["summary"])}</span>' if m.get("summary") else ""
+        rows.append(
+            f'            <li><a href="{esc(href)}"><span class="v2-vote-meta">'
+            f'<span>{us_date(m.get("date"))}</span>'
+            f'<span class="v2-vote-out v2-tone-{tone}">{word}{count}</span></span>'
+            f'<span class="v2-vote-title">{esc(m.get("headline") or "Motion as recorded")}</span>'
+            f"{summary}</a></li>")
+    return "\n".join(rows)
+
+
+def render_council(data: dict, today: str, body_id: str = "city-council") -> str:
+    current = [m for m in data.get("members") or [] if is_current_member(m, today)]
+    chair = next((m for m in current if re.search(r"mayor|chair", m.get("role") or "", re.I)), None)
+    ordered = ([chair] if chair else []) + [m for m in current if m is not chair]
+    return "\n".join(
+        f'          <li><a href="/members/{body_id}/{esc(m["id"])}.html">'
+        f'<span class="v2-avatar" aria-hidden="true">{esc(initials(m.get("name")))}</span>'
+        f'<span><span class="v2-person-name">{esc(m.get("name"))}</span>'
+        f'<span class="v2-person-role">{esc(m.get("role") or "Member")}</span></span></a></li>'
+        for m in ordered)
+
+
+def render_checks(d: dict | None) -> str:
+    claims = (d or {}).get("claims") or []
+    verdicts = {v["key"]: v for v in (d or {}).get("verdicts") or []}
+    recent = sorted(claims, key=lambda c: c.get("checked") or "", reverse=True)[:4]
+    return "\n".join(
+        f'              <li><a href="/claims/{esc(c["id"])}.html">'
+        f'<span class="v2-pill v2-tone-{VERDICT_TONE.get(c.get("verdict"), "cool")}">'
+        f'{esc(verdicts.get(c.get("verdict"), {}).get("label") or c.get("verdict"))}</span>'
+        f'<span class="v2-list-title">{esc(c.get("summary") or c.get("claim"))}</span></a></li>'
+        for c in recent)
+
+
+def money(n: float) -> str:
+    return f"${n:,.2f}"
+
+
+def render_tax(tax: dict | None) -> str:
+    rates = (tax or {}).get("rates") or {}
+    rate = rates.get("adopted") or rates.get("proposed")
+    home = (rate or {}).get("home_example") or {}
+    if not rate or not home.get("increase"):
+        return ""
+    adopted = bool(rates.get("adopted"))
+    when = f" {us_date(rate['date'])}" if rate.get("date") else ""
+    value = money(home["market_value"]).removesuffix(".00")
+    return (
+        f'<span class="v2-now-lab">Property tax &middot; {"adopted" if adopted else "proposed"}{when}</span>'
+        f'<span class="v2-now-head">The council {"raised" if adopted else "has proposed raising"} '
+        'the city&rsquo;s property tax rate</span>'
+        f'<span class="v2-now-fig num">+{esc(money(home["increase"]))} <small>a year</small></span>'
+        f'<span class="v2-now-note">on the city&rsquo;s own example home, a {esc(value)} '
+        'primary residence</span>'
+        '<span class="v2-now-cta">Work out your own home <span aria-hidden="true">→</span></span>')
+
+
+def render_meet(feed: dict | None, today: str, body_id: str = "city-council") -> str:
+    """The next meeting, without the "in N days", which only the script can
+    know on the day it is read."""
+    events = ((feed or {}).get("bodies") or {}).get(body_id) or []
+    ahead = sorted((e for e in events if (e.get("date") or "") >= today),
+                   key=lambda e: (e["date"], e.get("start") or ""))
+    if not ahead:
+        return ""
+    ev = ahead[0]
+    d = date.fromisoformat(ev["date"])
+    comment = next((s for s in ev.get("sessions") or [] if s.get("public_comment")), None)
+    when = f'{WEEKDAYS[d.weekday()]}, {MONTHS[d.month - 1]} {d.day}'
+    return (
+        f'<span class="v2-cal" aria-hidden="true"><span>{MONTHS_SHORT[d.month - 1]}</span>'
+        f'<b>{d.day}</b></span><span class="v2-meet-text">'
+        '<span class="v2-now-lab">Next meeting</span>'
+        f'<span class="v2-meet-when">{esc(when)}'
+        f'{", " + esc(ev["start_label"]) if ev.get("start_label") else ""}</span>'
+        + (f'<span class="v2-meet-place">Public comment at {esc(comment["start_label"])}</span>'
+           if comment and comment.get("start_label") else "")
+        + (f'<span class="v2-meet-place">{esc(ev["location"])}</span>' if ev.get("location") else "")
+        + f'<span class="v2-now-cta">{"See the agenda" if ev.get("agenda_posted") else "Meeting details"}'
+        ' <span aria-hidden="true">→</span></span></span>')
+
+
+def set_hidden(source: str, element_id: str, hidden: bool) -> str:
+    """Add or drop the `hidden` attribute on the one tag carrying this id."""
+    pattern = re.compile(rf'<[a-z]+\b[^>]*\bid="{re.escape(element_id)}"[^>]*>')
+    match = pattern.search(source)
+    if not match:
+        raise SystemExit(f"index.html: no element with id={element_id}")
+    tag = re.sub(r"\s+hidden(?=[\s>])", "", match.group(0))
+    if hidden:
+        tag = tag[:-1] + " hidden>"
+    return source[:match.start()] + tag + source[match.end():]
+
+
+def swap(source: str, pattern: str, replacement: str) -> str:
+    updated, n = re.subn(pattern, lambda _: replacement, source, count=1, flags=re.S)
+    if n != 1:
+        raise SystemExit(f"index.html: couldn't find {pattern}")
+    return updated
+
+
+def prerender_home(source: str, data: dict, today: str) -> str:
+    tax = load_optional("data.tax.json")
+    claims = load_optional("data.claims.json")
+    feed = load_optional("data.upcoming.json")
+
+    tax_html = render_tax(tax)
+    meet_html = render_meet(feed, today)
+    checks_html = render_checks(claims)
+    council_html = render_council(data, today)
+
+    for name, container, body, indent in (
+        ("votes", r'(<ol class="v2-votes" id="votes">)(.*?)(</ol>)', render_votes(data), "            "),
+        ("council", r'(<ul class="v2-people" id="council">)(.*?)(</ul>)', council_html, "          "),
+        ("checks", r'(<ul class="v2-list" id="checks">)(.*?)(</ul>)', checks_html, "              "),
+        ("tax", r'(<a class="v2-home-tax" id="now-tax"[^>]*>)(.*?)(</a>)', tax_html, "                "),
+        ("meet", r'(<a class="v2-home-meet" id="now-meet"[^>]*>)(.*?)(</a>)', meet_html, "                "),
+    ):
+        if body:
+            source = splice(source, re.compile(container, re.S), body, indent)
+
+    source = set_hidden(source, "now-tax", not tax_html)
+    source = set_hidden(source, "now-meet", not meet_html)
+    source = set_hidden(source, "now", not (tax_html or meet_html))
+    source = set_hidden(source, "checks-section", not checks_html)
+    source = set_hidden(source, "council-section", not council_html)
+
+    if claims and claims.get("claims"):
+        source = swap(source, r'(<span class="v2-door-where" id="door-claims">)[^<]*(</span>)',
+                      f'<span class="v2-door-where" id="door-claims">Fact Checks: '
+                      f'{len(claims["claims"])} checked so far</span>')
+    meetings = sorted(data.get("meetings") or [], key=lambda m: m.get("date") or "")
+    if meetings:
+        last = meetings[-1]
+        source = swap(source, r'<a href="[^"]*" id="door-meeting">',
+                      f'<a href="/meetings/{last["date"]}-city-council-{last["id"]}.html" '
+                      'id="door-meeting">')
+        source = swap(source, r'(<span class="v2-door-where" id="door-meeting-where">)[^<]*(</span>)',
+                      '<span class="v2-door-where" id="door-meeting-where">Latest minutes: '
+                      f'{us_date(last["date"])}</span>')
+    if data.get("generated_at"):
+        source = swap(source, r'<span id="generated-at">[^<]*</span>',
+                      f'<span id="generated-at">{us_date(data["generated_at"][:10])}</span>')
+    return source
+
+
 # ---------------------------------------------------------------------------
 # Splicing
 # ---------------------------------------------------------------------------
@@ -395,10 +652,13 @@ CONTAINERS = {
     # non-greedy close lands on the container and not on the first card.
     "members.html": re.compile(r'(<ul id="roster" class="rc-roster">)(.*?)(</ul>)', re.S),
     "motions.html": re.compile(r'(<div id="rows"[^>]*>)(.*?)(</div>)', re.S),
+    # Empty in the source but for the generated block, which is all <div>s and
+    # <section>s, so this closes on the </div> right before </main>.
+    "claims.html": re.compile(r'(<div id="content" aria-busy="true">)(.*?)(</div>)(?=\s*</main>)', re.S),
 }
 
 INDENTS = {"meetings.html": "      ", "members.html": "        ",
-           "motions.html": "      "}
+           "motions.html": "      ", "claims.html": "      "}
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -419,6 +679,7 @@ def main(argv: list[str] | None = None) -> int:
         "meetings.html": render_meetings(data),
         "members.html": render_members(data, today),
         "motions.html": render_motions(data),
+        "claims.html": render_claims(load_optional("data.claims.json") or {}),
     }
 
     stale = False
@@ -443,6 +704,19 @@ def main(argv: list[str] | None = None) -> int:
         path.write_text(updated, encoding="utf-8")
         added = len(updated) - len(source)
         print(f"wrote {name} ({added:+,d} bytes)")
+
+    # The home page isn't one container but several, plus a few attributes.
+    path = DOCS / "index.html"
+    source = path.read_text(encoding="utf-8")
+    updated = prerender_home(source, data, today)
+    if updated == source:
+        print("index.html already current")
+    elif args.check:
+        print("index.html is stale", file=sys.stderr)
+        stale = True
+    else:
+        path.write_text(updated, encoding="utf-8")
+        print(f"wrote index.html ({len(updated) - len(source):+,d} bytes)")
 
     return 1 if stale else 0
 

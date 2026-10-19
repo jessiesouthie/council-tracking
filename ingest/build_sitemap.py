@@ -12,7 +12,8 @@ this script, not them.
 What goes in:
   /                             index.html, canonical without the filename
   /<page>.html                  the seven other top-level pages
-  /member.html?id=<member>      one per member, per body
+  /members/<body>/<member>.html one per member, per body, read off
+                                docs/members/ (build_member_pages.py)
   /<page>.html?body=<body>      meetings, members and motions for the
                                 non-default bodies (city council is the
                                 default and needs no param)
@@ -240,6 +241,7 @@ def build_urls(base: str) -> list[dict]:
 
     member_shell = DOCS / "member.html"
     member_committed = git_committed_at(member_shell)
+    member_dir = DOCS / "members"
 
     for body in registry:
         data = load_body_data(body)
@@ -251,7 +253,6 @@ def build_urls(base: str) -> list[dict]:
         stamped = _parse_iso(data.get("generated_at") or "")
         body_changed = max([s for s in (stamped, member_committed) if s]
                            or [datetime.now(timezone.utc)])
-        suffix = "" if is_default else f"&body={body['id']}"
 
         # The pages that re-render per body. The default body already has these
         # at their bare URLs above, so only the others need a ?body= copy, and
@@ -270,11 +271,14 @@ def build_urls(base: str) -> list[dict]:
                 add(f"{base}/{page['path']}?body={body['id']}", changed,
                     page["changefreq"], lower_priority(page["priority"], drop))
 
+        # Each member's own page. member.html?id= now forwards there and is
+        # noindex, so only the generated files are listed, and only the ones
+        # that exist: run build_member_pages before this.
         for member in data.get("members") or []:
             member_id = member.get("id")
-            if not member_id:
+            if not member_id or not (member_dir / body["id"] / f"{member_id}.html").exists():
                 continue
-            add(f"{base}/member.html?id={member_id}{suffix}", body_changed,
+            add(f"{base}/members/{body['id']}/{member_id}.html", body_changed,
                 "monthly", lower_priority(MEMBER_PRIORITY, drop))
 
     # Every meeting's own static page, written by build_meeting_pages.py, plus the

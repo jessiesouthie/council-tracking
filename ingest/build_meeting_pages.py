@@ -52,6 +52,12 @@ DOCS = ROOT / "docs"
 OUT_DIR = DOCS / "meetings"
 PARSED = ROOT / "data" / "parsed"
 TRANSCRIPTS = DOCS / "transcripts"
+# CivicClerk's own name for each meeting that shares a date with another of the
+# same body's. Without it the two pages carry the same title and the same
+# description, and a search engine keeps one and drops the other. Kept as a
+# file rather than fetched on every build so the build stays offline;
+# --fetch-names fills in any collision the file doesn't cover yet.
+EVENT_NAMES = ROOT / "data" / "meta" / "event_names.json"
 # The v2.css tag; nav.test.mjs holds it equal to build_claim_pages.CSS_VERSION.
 CSS_VERSION = "20261006g"
 
@@ -216,6 +222,10 @@ def render_markdown(src: str) -> str:
     return '<div class="md-body">\n' + "\n".join(out) + "\n</div>"
 
 
+# The summarizer's stock line for minutes with no text layer.
+SCANNED = re.compile(r"^Minutes are available only as a scanned", re.I)
+
+
 def first_sentence(text: str, limit: int = 300) -> str:
     """The 'In short:' line off the front of a summary, for a description."""
     flat = re.sub(r"\s+", " ", re.sub(r"[*#|]", "", text or "")).strip()
@@ -275,6 +285,42 @@ def agenda_only_index() -> dict[str, dict[int, dict]]:
     manifest = (load_json(DOCS / "data.agenda-only.json") or {}).get("bodies") or {}
     return {bid: {e["id"]: e for e in entries if "id" in e}
             for bid, entries in manifest.items()}
+
+
+def event_names() -> dict[str, dict[int, str]]:
+    """body id -> event id -> CivicClerk eventName, from EVENT_NAMES."""
+    raw = load_json(EVENT_NAMES) or {}
+    return {bid: {int(k): v for k, v in names.items()}
+            for bid, names in raw.items() if isinstance(names, dict)}
+
+
+def same_day(meetings: list[dict]) -> set:
+    """Event ids that share their date with another meeting in the list."""
+    seen: dict[str, list] = {}
+    for m in meetings:
+        if m.get("date") and m.get("id") is not None:
+            seen.setdefault(m["date"], []).append(m["id"])
+    return {mid for ids in seen.values() if len(ids) > 1 for mid in ids}
+
+
+def fetch_names(wanted: dict[str, set]) -> int:
+    """Look up the CivicClerk name of every colliding meeting the file lacks."""
+    from . import civicclerk
+    raw = load_json(EVENT_NAMES) or {}
+    session = civicclerk._session()
+    added = 0
+    for body_id, ids in wanted.items():
+        have = raw.setdefault(body_id, {})
+        for mid in sorted(ids):
+            if str(mid) in have:
+                continue
+            r = session.get(f"{civicclerk.BASE}/Events/{mid}", timeout=30)
+            if r.ok and (r.json().get("eventName") or "").strip():
+                have[str(mid)] = r.json()["eventName"].strip()
+                added += 1
+    EVENT_NAMES.write_text(json.dumps(raw, indent=2, ensure_ascii=False) + "\n",
+                           encoding="utf-8")
+    return added
 
 
 def read_text(rel: str | None) -> str:
@@ -401,17 +447,26 @@ def no_motions_note(meeting: dict) -> str:
 
 def render_meeting(body: dict, meeting: dict, motions: list[dict],
                    members: dict, detail: dict, transcript: dict | None,
-                   base: str, slug: str) -> tuple[str, str, str]:
-    """Returns (html, title, description)."""
+                   base: str, slug: str, name: str | None = None) -> tuple[str, str, str]:
+    """Returns (html, title, description). `name` is set only when another
+    meeting of this body falls on the same date, to tell the two apart."""
     when = fmt_date(meeting.get("date", ""))
     label = body["label"]
     canonical = f"{base}/meetings/{slug}.html"
+    meeting_name = name or f"{label} meeting"
 
-    title = f"{label}, {when} — Eagle Mountain"
+    title = f"{name or label}, {when} — Eagle Mountain"
     written = [m for m in motions if m.get("headline")]
 
     if transcript and transcript.get("summary_md"):
         description = first_sentence(transcript["summary_md"].split("\n\n")[0], 300)
+    elif meeting.get("summary") and SCANNED.match(meeting["summary"]):
+        # The summarizer's stock line for a minutes PDF with no text layer. Used
+        # as-is it gave 24 pages one identical description; this one is true of
+        # the page and names the night it belongs to.
+        description = (f"The Eagle Mountain {meeting_name} on {when}. The city's "
+                       "minutes are a scanned image with no readable text, so this "
+                       "page links to the record on the city's portal.")
     elif meeting.get("summary"):
         description = first_sentence(meeting["summary"], 300)
     elif written:
@@ -427,14 +482,14 @@ def render_meeting(body: dict, meeting: dict, motions: list[dict],
                 + "; ".join(m["headline"] for m in written[:3]), 300)
     else:
         description = (f"Motions and roll-call votes from the Eagle Mountain "
-                       f"{label} meeting on {when}.")
+                       f"{meeting_name} on {when}.")
 
     parts: list[str] = ['    <main id="main" class="v2-wrap v2-legacy-main mp-main">']
     parts.append('      <nav class="v2-crumbs" aria-label="Breadcrumb">'
                  '<a href="/meetings.html">All meetings</a>'
                  f'<span aria-hidden="true"> / </span><span>{esc(when)}</span></nav>')
-    if meeting.get("type"):
-        parts.append(f'      <p class="meeting-type">{esc(meeting["type"])}</p>')
+    if meeting.get("type") or name:
+        parts.append(f'      <p class="meeting-type">{esc(meeting.get("type") or name)}</p>')
     parts.append(f'      <h1 class="page-title">Eagle Mountain {esc(label)}, {esc(when)}</h1>')
 
     counts = counts_line(len(motions),
@@ -483,7 +538,8 @@ def render_meeting(body: dict, meeting: dict, motions: list[dict],
         parts.append(no_motions_note(meeting))
     for motion in motions:
         heading = motion.get("headline")
-        parts.append('        <article class="mp-motion">')
+        # id="m<motion id>" so a link from a vote list lands on the motion.
+        parts.append(f'        <article class="mp-motion" id="m{esc(motion.get("id"))}">')
         if heading:
             parts.append(f'          <h3 class="mp-h3">{esc(heading)}</h3>')
         else:
@@ -615,16 +671,16 @@ def render_agenda(entry: dict) -> list[str]:
 
 
 def render_agenda_only(body: dict, meeting: dict, entry: dict,
-                       base: str, slug: str) -> tuple[str, str, str]:
+                       base: str, slug: str, name: str | None = None) -> tuple[str, str, str]:
     """A meeting whose only public record is the agenda. Returns (html, title,
     description)."""
     when = fmt_date(meeting.get("date", ""))
     label = body["label"]
-    title = f"{label}, {when} — Eagle Mountain"
+    title = f"{name or label}, {when} — Eagle Mountain"
     heads = [h for h in (entry.get("agenda") or []) if not h.get("procedural")]
     topics = "; ".join(calm_caps(h["title"]) for h in heads[:3] if h.get("title"))
     description = (
-        f"The posted agenda for the Eagle Mountain {label} meeting on {when}"
+        f"The posted agenda for the Eagle Mountain {name or label + ' meeting'} on {when}"
         + (f": {topics}." if topics else ".")
         + " The city published no minutes for this meeting."
     )
@@ -803,12 +859,14 @@ def render_transcript(body: dict, meeting: dict, transcript: dict,
     canonical = f"{base}/meetings/{tslug}.html"
     title = f"Transcript: {label}, {when} — Eagle Mountain"
 
+    # Led by what the page is, so it can't share a description with the meeting
+    # page, which opens with the same summary sentence.
     summary_md = transcript.get("summary_md") or ""
+    description = (f"Word-for-word transcript of the Eagle Mountain {label} "
+                   f"meeting on {when}, from the city's recording.")
     if summary_md:
-        description = first_sentence(summary_md.split("\n\n")[0], 300)
-    else:
-        description = (f"Full transcript of the Eagle Mountain {label} meeting "
-                       f"held on {when}.")
+        description += " " + first_sentence(summary_md.split("\n\n")[0],
+                                            300 - len(description) - 1)
 
     parts: list[str] = ['    <main id="main" class="v2-wrap v2-legacy-main mp-main mp-read">']
     parts.append('      <nav class="v2-crumbs" aria-label="Breadcrumb">'
@@ -948,13 +1006,15 @@ def slug_for(body: dict, meeting: dict) -> str:
     return f"{meeting.get('date')}-{body['id']}-{meeting.get('id')}"
 
 
-def build() -> tuple[dict[str, str], list[dict]]:
-    """Every page to write, plus the sitemap rows describing them."""
+def build(collisions: dict[str, set] | None = None) -> tuple[dict[str, str], list[dict]]:
+    """Every page to write, plus the sitemap rows describing them. Pass a dict
+    as `collisions` to have it filled with the same-day event ids per body."""
     base = site_base()
     pages: dict[str, str] = {}
     rows: list[dict] = []
     tx_index = transcript_index()
     ao_index = agenda_only_index()
+    names = event_names()
 
     for body in body_registry():
         data = load_json(DOCS / body["data_file"])
@@ -1009,10 +1069,17 @@ def build() -> tuple[dict[str, str], list[dict]]:
             for e in body_ao.values()
         ]
 
-        for meeting in (data.get("meetings") or []) + pending + agenda_only:
+        everything = (data.get("meetings") or []) + pending + agenda_only
+        clash = same_day(everything)
+        if collisions is not None:
+            collisions[body["id"]] = clash
+        body_names = names.get(body["id"], {})
+
+        for meeting in everything:
             mid = meeting.get("id")
             if mid is None or not meeting.get("date"):
                 continue
+            name = (body_names.get(mid) or meeting.get("type")) if mid in clash else None
             slug = slug_for(body, meeting)
             motions = sorted(by_meeting.get(mid) or [], key=lambda m: m.get("id") or 0)
 
@@ -1030,11 +1097,11 @@ def build() -> tuple[dict[str, str], list[dict]]:
 
             if meeting.get("agenda_only"):
                 page, title, description = render_agenda_only(
-                    body, meeting, body_ao[mid], base, slug)
+                    body, meeting, body_ao[mid], base, slug, name)
             else:
                 page, title, description = render_meeting(
                     body, meeting, motions, members, detail_for(meeting),
-                    transcript, base, slug)
+                    transcript, base, slug, name)
             schema = meeting_schema(body, meeting, motions, base, slug,
                                     title, description)
             canonical = f"{base}/meetings/{slug}.html"
@@ -1060,7 +1127,14 @@ def main(argv: list[str] | None = None) -> int:
                     help="don't write; exit 1 if any page would change")
     ap.add_argument("--prune", action="store_true",
                     help="delete pages in docs/meetings/ we no longer generate")
+    ap.add_argument("--fetch-names", action="store_true",
+                    help="look up CivicClerk names for same-day meetings first")
     args = ap.parse_args(argv)
+
+    if args.fetch_names:
+        collisions: dict[str, set] = {}
+        build(collisions)
+        print(f"added {fetch_names(collisions)} event name(s) to {EVENT_NAMES.name}")
 
     pages, rows = build()
     if not pages:

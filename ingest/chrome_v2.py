@@ -103,11 +103,18 @@ def _dropdown(item: Item, top_link: str, page: str) -> str:
     one "you are here", and it belongs to the section."""
     body = ' data-nav-body="city-council"' if item.body_scoped else ""
     subs = "".join(
-        f'<li><a class="v2-nav-sub{" is-here" if c.href == page else ""}" href="/{c.href}">'
+        f'<li><a class="v2-nav-sub{" is-here" if c.href == page else ""}" href="{link(c.href)}">'
         f'{esc(c.label)}</a></li>'
         for c in item.children)
     return (f'<div class="v2-nav-item"{body}>{top_link}'
             f'<ul class="v2-nav-menu" aria-label="{esc(item.label)}">{subs}</ul></div>')
+
+
+def link(href: str) -> str:
+    """The root-relative URL for a nav entry. Home is "/", not "/index.html":
+    the two serve the same file, and every link to the second was a vote for a
+    URL the canonical then had to overrule."""
+    return "/" if href == "index.html" else f"/{href}"
 
 
 def header(section: str) -> str:
@@ -116,10 +123,10 @@ def header(section: str) -> str:
     current = _section_of(section)
     links = []
     for item in HEADER:
-        top_link = f'<a href="/{item.href}"{_attrs(item, section, current)}>{esc(item.label)}</a>'
+        top_link = f'<a href="{link(item.href)}"{_attrs(item, section, current)}>{esc(item.label)}</a>'
         links.append(_dropdown(item, top_link, section) if item.children else top_link)
     return ('<header class="v2-header"><div class="v2-wrap">'
-            '<a class="v2-brand" href="/index.html">'
+            '<a class="v2-brand" href="/">'
             f'{MARK}<span><span class="v2-brand-name">Civic Roll Call</span>'
             '<span class="v2-brand-place">Eagle Mountain, Utah</span></span></a>'
             f'<nav class="v2-nav" aria-label="Main">{"".join(links)}</nav>'
@@ -130,7 +137,7 @@ def tabbar(section: str) -> str:
     current = _section_of(section)
     links = []
     for item in TABBAR:
-        links.append(f'<a href="/{item.href}"{_attrs(item, section, current)}>{icon(item.href)}'
+        links.append(f'<a href="{link(item.href)}"{_attrs(item, section, current)}>{icon(item.href)}'
                      f'<span>{esc(item.tab_label)}</span></a>')
     return f'<nav class="v2-tabbar" aria-label="Main (mobile)">{"".join(links)}</nav>'
 
@@ -146,7 +153,7 @@ def bottom(page: str) -> str:
 
 
 def footer() -> str:
-    links = "".join(f'<a href="/{item.href}">{esc(item.label)}</a>' for item in NAV)
+    links = "".join(f'<a href="{link(item.href)}">{esc(item.label)}</a>' for item in NAV)
     return ('<footer class="v2-footer"><div class="v2-wrap">'
             f'<nav aria-label="Everything on this site">{links}'
             '<a href="/definitions.html">Definitions</a></nav>'
