@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://civicrollcall.com/</loc>
-    <lastmod>2026-10-19T18:57:03+00:00</lastmod>
+    <lastmod>2026-10-19T18:57:33+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -3065,6 +3065,18 @@
     <lastmod>2026-10-13T00:00:00+00:00</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/meetings/2026-10-20-city-council-730-transcript.html</loc>
+    <lastmod>2026-10-20T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/meetings/2026-10-20-city-council-730.html</loc>
+    <lastmod>2026-10-20T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://civicrollcall.com/claims/another-data-center.html</loc>
