@@ -1,7 +1,7 @@
 {
   "_comment": "Claims that circulate about the city, checked against the record this site already publishes. Hand-authored, like data.tax-case.json — nothing here is generated, because deciding what a claim actually asserts is not a thing a script can do. The rules the page states in `how` are binding on this file: a claim is only listed when it can be answered out of an open-meeting recording, a document the city or the state published, or arithmetic on figures from one of those, and every entry carries the citation next to the sentence it supports. Claims are quoted as they circulate and never attributed to a private individual by name; officials speaking in an open meeting are named, because that is the record. `verdict` is one of the keys in `verdicts` below. `checked` is when the entry was last read against the record; a claim about a live dispute goes stale quickly, which is why every card prints that date. `updated` is set only when an entry's finding, figures or sources change after `checked` (not for copy edits) and is printed beside it. `first_seen` is the earliest date this project saw the claim circulating, carried over from the intake row in data/claims/inbox.jsonl. `summary` is this project's one-line description of what was claimed and is what the card heading and the docket row carry; `claim` stays the wording as it circulates and is printed under the heading, quoted, so the reader can always see which sentence is theirs and which is ours. `topics` are keys from `categories`, which is what the filter bar at the top of the page is built from: the first topic is the heading a claim files under and the rest are the other shelves it belongs on, because most of these claims are about two things at once.",
   "body": "city-council",
-  "updated": "2026-10-08",
+  "updated": "2026-10-23",
   "eyebrow": "Fact checks",
   "title": "What's going around, and what the record says",
   "sub": "Things residents are telling each other about the city: the tax increase, the staffing, the petition, all set against the meetings, the notices and the audited figures they can be checked against. Some are true, some are out of date, and the ones the city itself put into circulation get the same treatment as the ones aimed at it.",
@@ -2118,15 +2118,15 @@
       "topics": [
         "process"
       ],
-      "ruling": "The requirement is real: state law bars the sponsors from gathering signatures until they sign an agreement with the city recorder. But the law asks that agreement to settle two things only, the packet format and the packet numbers, and whether the city is the one holding it up isn't on the record.",
+      "ruling": "The requirement is real: state law bars the sponsors from gathering signatures until they sign an agreement with the city recorder. The city’s draft, now public, covers the two things the law asks for and adds several terms the law doesn’t mention. Whether the city is refusing to drop them, and so holding up the petition, is still only the sponsors’ account.",
       "seen": "Referendum organizing post, Eagle Mountain Facebook group, October 2026",
       "first_seen": "2026-10-07",
-      "checked": "2026-10-08",
+      "checked": "2026-10-23",
       "true_part": "Utah Code § 20A-7-604(6)(a), as amended in the Legislature's 2026 session and in force since May 6, says the sponsors “shall, before gathering signatures” complete the state's online circulator training, get a range of packet numbers from the county clerk, and “sign an agreement with the local clerk.” Until that agreement is signed, signatures can't lawfully be gathered, and a packet numbered any other way can't be circulated or submitted (§ 20A-7-604(6)(b)).",
-      "wrong_part": "The agreement the statute describes is short. It specifies two things: whether the sponsors will circulate traditional packets (with a copy of the resolution bound in), condensed packets, or both; and the range of numbers they will use, which comes from the Utah County clerk, not the city (§ 20A-7-604(6)(a)(ii) and (iii)). Neither the city's draft nor any correspondence about it has been published, so whether the city has delayed it, or the two sides disagree over its terms, can't be checked. For now that is the sponsors' account.",
+      "wrong_part": "The agreement the statute describes is short. It specifies two things: whether the sponsors will circulate traditional packets (with a copy of the resolution bound in), condensed packets, or both; and the range of numbers they will use, which comes from the Utah County clerk, not the city (§ 20A-7-604(6)(a)(ii) and (iii)). The city’s draft, published by the sponsors on October 22, does settle both: traditional packets, numbered 30,000 to 39,999. Its other terms are what the sponsors object to, and a separate check reads them. No correspondence about the draft has been published, so whether the city has refused to change it can’t be checked.",
       "detail": [
-        "The sponsors also say the city attorney's draft adds a waiver of the right to a jury trial and limits on legal remedies. Section 604(6) names the two terms above and provides for no others. Whether the draft contains anything more, this page can't say until it is public, through a court filing or a records request.",
-        "On October 7 the sponsors said they had hired a lawyer and expect to go to court. If a case is filed, this card will be updated from the filing."
+        "The statute sets no deadline for the city recorder to sign, and names no remedy if the two sides can’t agree. The signature clock in § 20A-7-613(3) runs from when the clerk handed over the petition materials, not from when the agreement is signed, so time spent negotiating comes out of the sponsors’ 40 days.",
+        "On October 7 the sponsors said they had hired a lawyer and expected to go to court. On October 22 they said they had contacted more than 20 attorneys and none could take the case, citing conflicts of interest and caseloads. No court filing has been made public. If one is, this card will be updated from it."
       ],
       "figures": [
         {
@@ -2159,9 +2159,100 @@
           "date": "2026-10-07",
           "speaker": "The referendum's sponsors",
           "note": "Public post in an Eagle Mountain Facebook group: no signatures can be gathered until the agreement is signed, the city's draft adds terms the sponsors object to, and they have hired counsel. The sponsors' account, not a record this page can check."
+        },
+        {
+          "date": "2026-10-22",
+          "speaker": "City of Eagle Mountain",
+          "note": "The city’s draft Referendum Agreement between the city recorder and a sponsor, approved as to form by the city attorney, as published by the sponsors in a public post on October 22. Unsigned and undated. § 2 sets traditional packets and the number range 30,000 to 39,999."
+        },
+        {
+          "date": "2026-10-22",
+          "speaker": "The referendum’s sponsors",
+          "note": "Public post: the city has refused to remove the extra terms with less than a week left, and more than 20 attorneys contacted could not take the case. The sponsors’ account, not a record this page can check."
         }
       ],
       "read_more": [
+        {
+          "label": "What else the city’s draft says",
+          "href": "claims/circulation-agreement-terms.html"
+        },
+        {
+          "label": "The tax referendum, in full",
+          "href": "referendum.html"
+        }
+      ]
+    },
+    {
+      "id": "circulation-agreement-terms",
+      "summary": "The city’s petition agreement strips sponsors’ rights",
+      "claim": "To print our packets we have to sign a contract that waives our constitutional right to a jury trial, grants the city total governmental immunity, and severely limits our legal remedies while shifting liability onto citizens.",
+      "verdict": "misleading",
+      "topics": [
+        "process"
+      ],
+      "ruling": "The draft does have a jury-trial waiver and a cap on what the sponsor can recover, but the post describes them as more than they are. The jury waiver binds the city too, the immunity clause only says the city keeps the immunity state law already gives it, and nothing in the draft makes a sponsor liable for anything. Adding terms beyond the two the law lists isn’t barred by the statute.",
+      "seen": "Referendum organizing post, Eagle Mountain Facebook group, October 2026",
+      "first_seen": "2026-10-07",
+      "checked": "2026-10-23",
+      "true_part": "State law asks the circulation agreement to settle two things, packet format and packet numbers (§ 20A-7-604(6)(a)(iii)). The city’s draft settles those in two lines and then adds more. The statute lists what the agreement must specify; it doesn’t say the agreement can’t contain anything else. Section 6 makes specific performance the sponsor’s “sole and exclusive remedy” and says the clerk and the city are never liable to the sponsor for “indirect, special, punitive, incidental or consequential damages,” including “costs of delay.” Section 7(h) sends any dispute to the Fourth District Court in Utah County and has both parties waive “any right to trial by jury” to the extent the law allows. The sponsor’s signature must also be notarized.",
+      "wrong_part": "The jury waiver is mutual: the city gives up a jury too, and it covers only disputes arising out of the agreement. The immunity clause, section 7(a), grants nothing new; it says the agreement isn’t a waiver of the defenses and liability limits the city recorder already has under the Governmental Immunity Act of Utah. And no term makes the sponsor answerable to the city or anyone else: there is no indemnity clause, and the damages limit in section 6 runs one way, protecting the city. The remedy limit is real and one-sided, since only the sponsor’s remedies are capped, but it limits what a sponsor can recover for a breach of the agreement; it is not a waiver of the sponsors’ rights under the election code.",
+      "detail": [
+        "The remedy limit applies to claims “under this Agreement.” It doesn’t mention the election code’s own route to court: if the recorder declares the petition insufficient, § 20A-7-607(5) lets any voter, not only a sponsor, ask a court within 10 days to find it sufficient. Whether a court would read section 6 to reach further than its words is a question for a lawyer, not this page.",
+        "The rest of section 7 is standard contract language: no waiver unless in writing, amendments only in writing, Utah law governs, neither side is presumed to have drafted it, no third-party rights, no partnership, and the document is the whole agreement.",
+        "The draft is the version the sponsors published. Whether the city has offered a different one since isn’t on the record."
+      ],
+      "figures": [
+        {
+          "label": "Terms the law requires",
+          "value": "2",
+          "note": "packet format and numbers, § 20A-7-604(6)"
+        },
+        {
+          "label": "Sections in the draft",
+          "value": "7",
+          "note": "with 12 general provisions under section 7"
+        },
+        {
+          "label": "Jury waiver",
+          "value": "Mutual",
+          "note": "both parties, § 7(h) of the draft"
+        }
+      ],
+      "sources": [
+        {
+          "date": "2026-10-22",
+          "speaker": "City of Eagle Mountain",
+          "note": "The city’s draft Referendum Agreement between the city recorder and a sponsor, approved as to form by the city attorney, as published by the sponsors in a public post on October 22. Unsigned and undated. § 6 (remedies), § 7(a) (immunity), § 7(h) (venue and jury waiver)."
+        },
+        {
+          "date": "2026-10-23",
+          "speaker": "Utah Code",
+          "note": "§ 20A-7-604(6)(a)(iii): the agreement specifies packet format and the range of packet numbers. Amended by Chapter 293, 2026 General Session.",
+          "doc": {
+            "title": "Utah Code § 20A-7-604",
+            "url": "https://le.utah.gov/xcode/Title20A/Chapter7/20A-7-S604.html"
+          }
+        },
+        {
+          "date": "2026-10-23",
+          "speaker": "Utah Code",
+          "note": "§ 20A-7-607(5): any voter may apply to court within 10 days of the local clerk declaring a referendum petition insufficient.",
+          "doc": {
+            "title": "Utah Code § 20A-7-607",
+            "url": "https://le.utah.gov/xcode/Title20A/Chapter7/20A-7-S607.html"
+          }
+        },
+        {
+          "date": "2026-10-22",
+          "speaker": "The referendum’s sponsors",
+          "note": "Public post describing the draft’s terms and publishing it. The descriptions are the sponsors’; the terms quoted above are the draft’s own words."
+        }
+      ],
+      "read_more": [
+        {
+          "label": "Why sponsors can’t circulate yet",
+          "href": "claims/cannot-circulate-yet.html"
+        },
         {
           "label": "The tax referendum, in full",
           "href": "referendum.html"

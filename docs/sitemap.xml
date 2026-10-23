@@ -3104,7 +3104,13 @@
   </url>
   <url>
     <loc>https://civicrollcall.com/claims/cannot-circulate-yet.html</loc>
-    <lastmod>2026-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-23T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://civicrollcall.com/claims/circulation-agreement-terms.html</loc>
+    <lastmod>2026-10-23T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
