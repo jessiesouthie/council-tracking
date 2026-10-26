@@ -1,67 +1,9 @@
 {
-  "generated_at": "2026-10-19T18:57:27Z",
+  "generated_at": "2026-10-26T18:46:17Z",
   "source": "Eagle Mountain CivicClerk portal",
   "timezone": "America/Denver",
   "bodies": {
     "city-council": [
-      {
-        "id": 773,
-        "title": "City Council - Projects Planning Session",
-        "date": "2026-09-29",
-        "start": "15:00",
-        "start_label": "3:00 PM",
-        "location": "1650 Stagecoach Run",
-        "url": "https://eaglemountainut.portal.civicclerk.com/event/773/overview",
-        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2975,plainText=false)",
-        "recording_url": "",
-        "agenda_posted_on": "2026-09-28",
-        "sessions": [
-          {
-            "start": "15:00",
-            "start_label": "3:00 PM",
-            "label": "Planning Session",
-            "public_comment": false
-          }
-        ],
-        "agenda": [
-          {
-            "number": "1",
-            "title": "WELCOME",
-            "note": "",
-            "session": "15:00",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "2",
-            "title": "DISCUSSION AND INFORMATION ITEMS",
-            "note": "",
-            "session": "15:00",
-            "group": null,
-            "items": [
-              {
-                "number": "2.A",
-                "kind": "DISCUSSION ONLY/NO ACTION",
-                "title": "City Hall Feasibility Study and Capital Projects Discussion MHTN Architects will present an overview of the City Hall feasibility study. Staff and the City Council will also discuss long-term General Fund capital project needs, with a focus on parks, recreation, and transportation. This is discussion only and no action will be taken.",
-                "time": "",
-                "background": "",
-                "plain": ""
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "3",
-            "title": "ADJOURNMENT",
-            "note": "",
-            "session": "15:00",
-            "group": null,
-            "items": [],
-            "procedural": true
-          }
-        ]
-      },
       {
         "id": 664,
         "title": "Special Session - Joint Multi-City Work Session",
