@@ -160,6 +160,8 @@ jobs:
         run: |
           # Non-fatal by design. Speaker names are an enrichment; a night where
           # this install breaks should still publish transcripts and summaries.
+          # ffmpeg cuts the per-speaker audio samples; runners don't ship it.
+          command -v ffmpeg >/dev/null || sudo apt-get install -y -qq ffmpeg
           if [ -x .venv-voice/bin/python ]; then
             echo "Restored from cache."
           else

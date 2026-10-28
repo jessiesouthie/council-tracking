@@ -530,8 +530,15 @@ PY
         SUMMARY_FRESH=1
         say "Summary written: $SUMMARY"
     else
+        rc=$?
+        # Whatever claude printed is usually the reason (auth, rate limit), and
+        # unattended runs have no other way to see it.
+        if [ -s "$SUMMARY.tmp" ]; then
+          echo "--- claude output (exit $rc) ---" >&2
+          tail -n 40 "$SUMMARY.tmp" >&2
+        fi
         rm -f "$SUMMARY.tmp"
-        die "claude summary generation failed"
+        die "claude summary generation failed (exit $rc)"
     fi
   fi
 else
