@@ -1,7 +1,7 @@
 name: Publish meeting transcripts
 
-# Publishes the transcript and enriched summary for a council meeting the
-# morning after it happens — no laptop involved.
+# Publishes the transcript and enriched summary for a city council or planning
+# commission meeting the morning after it happens — no laptop involved.
 #
 # Each run asks the CivicClerk portal which recent meetings have a recording
 # posted but no summary in data/transcripts/, then hands each one to the same
@@ -42,9 +42,9 @@ on:
         required: false
         type: string
       body:
-        description: "Body id for event_id / discovery"
+        description: "Body id for event_id / discovery (blank = every body in SCHEDULED_BODIES; event_id assumes city-council)"
         required: false
-        default: "city-council"
+        default: ""
         type: string
       days:
         description: "How many days back to look for untranscribed meetings"
@@ -115,7 +115,9 @@ jobs:
         id: find
         env:
           EVENT_ID: ${{ inputs.event_id }}
-          BODY: ${{ inputs.body || 'city-council' }}
+          BODY: ${{ inputs.body }}
+          # Bodies checked when no body is given — scheduled runs included.
+          SCHEDULED_BODIES: "city-council planning-commission"
           DAYS: ${{ inputs.days || '6' }}
           LIMIT: ${{ inputs.limit || '3' }}
         run: |
@@ -123,9 +125,13 @@ jobs:
             # Manual override: trust the operator, skip the window checks.
             # Every column is filled in — `read` folds runs of tabs together, so
             # an empty field would shift the rest of the row along.
-            printf '%s\t%s\t%s\t%s\t%s\n' "$BODY" "$EVENT_ID" "(manual)" "manual" "requested by hand" > work.tsv
+            printf '%s\t%s\t%s\t%s\t%s\n' "${BODY:-city-council}" "$EVENT_ID" "(manual)" "manual" "requested by hand" > work.tsv
           else
-            python -m ingest.pending_transcripts --body "$BODY" --days "$DAYS" --limit "$LIMIT" > work.tsv
+            : > work.tsv
+            # LIMIT applies per body.
+            for b in ${BODY:-$SCHEDULED_BODIES}; do
+              python -m ingest.pending_transcripts --body "$b" --days "$DAYS" --limit "$LIMIT" >> work.tsv
+            done
           fi
           count=$(wc -l < work.tsv | tr -d ' ')
           echo "count=$count" >> "$GITHUB_OUTPUT"
