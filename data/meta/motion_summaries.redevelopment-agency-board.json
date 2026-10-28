@@ -13,10 +13,58 @@
       "impact": "Nothing changes for your fire service or your tax bill. This one sorts out how two agencies move money between themselves inside a development area near Triple Tail.",
       "significance": "routine"
     },
+    "041d5401967dbd33": {
+      "headline": "Mayor Westmoreland named agency chair",
+      "summary": "The board named Tom Westmoreland chair of the redevelopment agency, the seat the mayor holds by default under agency bylaws adopted in 2008.",
+      "impact": "Chairing the agency lets the mayor speak for the city on economic development. Residents feel none of it.",
+      "significance": "routine"
+    },
+    "04b4f38388a23705": {
+      "headline": "Draft 2019-20 agency budget and May 21 hearing",
+      "summary": "The agency board adopted a tentative budget for the 2019-2020 year and set a May 21, 2019 public hearing before the final budget is adopted.",
+      "impact": "Nothing is locked in at this stage. If you wanted a say on the agency's spending, May 21 was the date to speak.",
+      "significance": "routine"
+    },
+    "0567ed3296a9aea5": {
+      "headline": "Agency budget adopted for 2019-20",
+      "summary": "The agency board adopted its budget for the 2019-2020 fiscal year, which staff said was identical to the versions presented earlier.",
+      "impact": "This budget spends the redevelopment agency's own tax increment money, not city service dollars. Staff said the figures rest on projections and may be amended as parts of the city grow.",
+      "significance": "notable"
+    },
+    "088157e713318db2": {
+      "headline": "Sweetwater Industrial Park plan amended",
+      "summary": "Alongside the budget, the agency board adopted an amended plan for the Sweetwater Industrial Park project area, the document describing what the agency intends to do there.",
+      "impact": "Residents living elsewhere in Eagle Mountain will not feel this. Anyone with land or a business in the Sweetwater area should read the amended plan, since it sets what the agency can do there.",
+      "significance": "notable"
+    },
+    "0918a2ed9d2b812b": {
+      "headline": "Tax deal approved with QTS Eagle Mountain I",
+      "summary": "The agency board approved a participation agreement with QTS Eagle Mountain I, LLC, for a project inside one of the city's community reinvestment areas.",
+      "impact": "No terms or dollar figures were read into the record, so this vote alone does not show what the company gets. The deal binds the agency and that company, not city services or your tax bill.",
+      "significance": "notable"
+    },
+    "0af0bdca4adad07b": {
+      "headline": "Meeting adjourned",
+      "summary": "The agency board ended its June 18 meeting at 8:29 p.m.",
+      "impact": "Nothing in this one reaches a resident; it marks the close of the evening's business.",
+      "significance": "routine"
+    },
     "0b6b814e84a30ec1": {
       "headline": "Mayor Westmoreland named agency chair",
       "summary": "The board named Tom Westmoreland chair of the redevelopment agency, the seat the mayor holds by default under agency bylaws adopted in 2008.",
       "impact": "Chairing the agency lets the mayor speak for the city on economic development. Residents feel none of it.",
+      "significance": "routine"
+    },
+    "0be10db3efe0d792": {
+      "headline": "Agency budget adopted for 2020-21",
+      "summary": "The agency board adopted the redevelopment agency's budget for fiscal year 2020-2021, unchanged from the version presented two weeks earlier.",
+      "impact": "This sets the spending plan for the agency's redevelopment money, not for city services, and the motion names no dollar figures. Residents will see no change to what they pay or receive.",
+      "significance": "notable"
+    },
+    "0c25bd3cf2b16ffb": {
+      "headline": "June 2 minutes approved",
+      "summary": "Written minutes of the agency board's June 2 meeting were approved as the official record.",
+      "impact": "Filing work for the agency's own records. It touches the clerk and nobody else.",
       "significance": "routine"
     },
     "0cdfefc63d7b5d0c": {
@@ -37,6 +85,18 @@
       "impact": "Of the five collection agreements, this is the city's own: it passes its share of that area's tax growth to the agency. Residents elsewhere in Eagle Mountain see no change to bills or services.",
       "significance": "notable"
     },
+    "19514585bf5f1091": {
+      "headline": "Meeting adjourned",
+      "summary": "The agency board ended its March 16 meeting at 7:38 p.m.",
+      "impact": "Closing the meeting is the last item on any agenda. There is nothing here for you.",
+      "significance": "routine"
+    },
+    "1cd50a29444a9e21": {
+      "headline": "Fire district joins Pole Canyon tax deal",
+      "summary": "The agency board signed an agreement with the Unified Fire Service Area to collect and pass on property tax growth from the Pole Canyon project area.",
+      "impact": "Fire coverage where you live is not altered by this. The agreement sets the route by which the fire district's share of new Pole Canyon tax revenue reaches the agency.",
+      "significance": "notable"
+    },
     "1dcc24954f704e3b": {
       "headline": "May 7 minutes approved",
       "summary": "The agency board approved the minutes of its May 7 meeting; a hearing on the 2019-2020 city budget drew no comment and no vote.",
@@ -49,10 +109,22 @@
       "impact": "County services carry on as before, and no household pays anything new. This is the county's signature on the tax sharing that funds the Pole Canyon project.",
       "significance": "notable"
     },
+    "1eeaf22f506260e8": {
+      "headline": "2018-19 agency budget trued up at year end",
+      "summary": "The agency board made a final change to its 2018-2019 budget to reflect higher values in the 2012-1 economic development area and the Parkside project area.",
+      "impact": "Bookkeeping that catches the agency's accounts up to values already on the ground in those two project areas. You will not see it anywhere.",
+      "significance": "routine"
+    },
     "20c5a698f7408902": {
       "headline": "Fire service area to remit Triple Tail taxes",
       "summary": "Unified Fire Service Area will hand the agency the growth in property taxes from the Triple Tail area, under a deal the agency board approved.",
       "impact": "Fire coverage is not touched by this. The fire service area agreed to send its share of the growth in that area's property taxes to the agency for the project.",
+      "significance": "notable"
+    },
+    "21d6249cf423d477": {
+      "headline": "Sweetwater industrial park budget set at 67.5%",
+      "summary": "The agency adopted the budget for the Sweetwater Industrial Park reinvestment area #2, counting 67.5% of the site's real property tax value instead of the 75% first proposed.",
+      "impact": "Nobody's tax bill moves because of this. The percentage sets how much of the site's future property tax growth the agency puts back into the project rather than passing on to the county, schools, fire and water districts.",
       "significance": "notable"
     },
     "24392d0bd2b7e57a": {
@@ -83,6 +155,12 @@
       "headline": "Sweetwater tax increment routed to the agency",
       "summary": "The agency board signed an agreement with the city setting how property taxes from the Sweetwater Industrial Park reinvestment area are collected and passed to the agency.",
       "impact": "Money already collected in that industrial area moves between two sets of books. Nobody pays a new amount, and nothing on the ground changes because of this vote.",
+      "significance": "routine"
+    },
+    "347faa86fa1a7470": {
+      "headline": "Meeting adjourned at 7:38 p.m.",
+      "summary": "The agency board closed its May 7 meeting at 7:38 p.m.",
+      "impact": "Nothing here reaches a resident. It is the timestamp that ends the record.",
       "significance": "routine"
     },
     "34c5baaa36922598": {
@@ -121,10 +199,28 @@
       "impact": "Nothing changes on the ground yet. This starts the study that would later come back to the agency board with a plan and a budget, and only then could tax money be steered into the area.",
       "significance": "notable"
     },
+    "47780574e1c72d24": {
+      "headline": "Pole Canyon project budget adopted",
+      "summary": "The agency adopted the spending plan for the Pole Canyon project area, setting where its tax increment revenue comes from and what it may be spent on.",
+      "impact": "This is the money side of the Pole Canyon deal, with a cost-benefit analysis putting the city's benefit at about $3 million. A tenth of the increment is set aside for affordable housing.",
+      "significance": "notable"
+    },
+    "4ac48c5f31924f52": {
+      "headline": "Meeting adjourned at 8:44 p.m.",
+      "summary": "The agency board closed its June 16 meeting at 8:44 p.m.",
+      "impact": "Nothing here for residents: this is the line in the record marking when the board stopped for the night.",
+      "significance": "routine"
+    },
     "4f5da9c3499c4e94": {
       "headline": "Triple Tail project area plan adopted again",
       "summary": "On a second vote, the agency adopted the official plan for the Triple Tail Community Reinvestment Project Area, this time with no acreage change attached.",
       "impact": "This is the version of the plan that stands. Landowners and developers inside the Triple Tail area deal with it; the record says nothing that changes for people living outside it.",
+      "significance": "notable"
+    },
+    "50821560fa722ac5": {
+      "headline": "Utah County signs Pole Canyon tax agreement",
+      "summary": "The agency board approved the Utah County version of the Pole Canyon agreement, covering collection and remittance of property tax growth from the project area.",
+      "impact": "County services carry on as before, and no household pays anything new. This is the county's signature on the tax sharing that funds the Pole Canyon project.",
       "significance": "notable"
     },
     "50a6d0da1c04f13d": {
@@ -144,6 +240,12 @@
       "summary": "The agency board amended the official project area budget for the Sweetwater #4 Community Reinvestment Area. No figures were stated in the motion.",
       "impact": "Project area budgets govern how much property tax growth inside Sweetwater #4 the agency can spend on that area. The record here does not say what changed, so no dollar effect can be described.",
       "significance": "notable"
+    },
+    "54f9c4eea2913c05": {
+      "headline": "Sweetwater tax increment routed to the agency",
+      "summary": "The agency board signed an agreement with the city setting how property taxes from the Sweetwater Industrial Park reinvestment area are collected and passed to the agency.",
+      "impact": "Money already collected in that industrial area moves between two sets of books. Nobody pays a new amount, and nothing on the ground changes because of this vote.",
+      "significance": "routine"
     },
     "571f310b5ac74f07": {
       "headline": "September 2 minutes approved",
@@ -223,6 +325,12 @@
       "impact": "This is the money side of the Pole Canyon deal, with a cost-benefit analysis putting the city's benefit at about $3 million. A tenth of the increment is set aside for affordable housing.",
       "significance": "notable"
     },
+    "716c1b1c27afd00a": {
+      "headline": "May 7 minutes approved",
+      "summary": "The agency board approved the minutes of its May 7 meeting; a hearing on the 2019-2020 city budget drew no comment and no vote.",
+      "impact": "Record-keeping for the agency's files, and nothing more. The budget item that night was listening time only, so no money moved and no rate changed.",
+      "significance": "routine"
+    },
     "7353de4f1c4248a1": {
       "headline": "August 20 minutes approved",
       "summary": "The agency board approved the minutes of its August 20, 2024 meeting.",
@@ -241,11 +349,23 @@
       "impact": "Nobody outside the agency's record book feels this one. It makes the written account of the June meeting official.",
       "significance": "routine"
     },
+    "791c210b81a406ae": {
+      "headline": "April 21 minutes approved",
+      "summary": "The agency board signed off on the written record of its April 21, 2020 meeting.",
+      "impact": "This one touches the recorder's files and nobody else. It makes the April meeting's written account the official version.",
+      "significance": "routine"
+    },
     "7ccf19a8981dd0fd": {
       "headline": "Budget for the Sweetwater #4 project area",
       "summary": "The board took up the official budget for the Sweetwater #4 project area, and the minutes do not record how the vote finished.",
       "impact": "Without a recorded result, this one is unfinished business. It covers the money side of the project area, so a later meeting is where the outcome will show up.",
       "significance": "notable"
+    },
+    "7fb06c3222bf1236": {
+      "headline": "June minutes approved",
+      "summary": "The agency board approved the written record of its June 20, 2023 meeting.",
+      "impact": "Housekeeping for the agency's own files. Nothing here reaches a resident.",
+      "significance": "routine"
     },
     "8ca13e1ae00b1ccc": {
       "headline": "Plan adopted for Sweetwater data center area",
@@ -259,11 +379,23 @@
       "impact": "Housekeeping that makes the last meeting's record official. It touches the clerk's office and nobody else.",
       "significance": "routine"
     },
+    "95c6c5dd705cb322": {
+      "headline": "School district signs Pole Canyon tax agreement",
+      "summary": "The agency approved an agreement with Alpine School District for collecting and remitting the property tax growth generated inside the Pole Canyon project area.",
+      "impact": "Classrooms and school budgets keep running on the taxes already collected there. The share of future growth on that land is what this document commits, and it takes years to arrive.",
+      "significance": "notable"
+    },
     "9740298897570f95": {
       "headline": "June 17 minutes approved",
       "summary": "The agency board approved the written record of its June 17, 2025 meeting.",
       "impact": "A months-old record was made official. This touches the clerk's files and nobody else.",
       "significance": "routine"
+    },
+    "98b1e35bd3a0791c": {
+      "headline": "Plan adopted for Sweetwater data center area",
+      "summary": "The agency adopted the project area plan for Sweetwater Industrial Park reinvestment area #2, the framework for an agreement to bring a data center to the city.",
+      "impact": "Consultants told the board the project will not raise property taxes on other properties. The development agreement still has to go to the City Council, so the deal itself is not settled yet.",
+      "significance": "notable"
     },
     "99faba6f2eb804bb": {
       "headline": "Melissa Clark elected agency vice chair",
@@ -271,10 +403,28 @@
       "impact": "Filling a presiding-officer seat is internal housekeeping for the board. It touches who runs a meeting when the chair is out, and nothing else.",
       "significance": "routine"
     },
+    "9a53c1f321e88a3c": {
+      "headline": "How Sweetwater tax money reaches the agency",
+      "summary": "The agency board signed off on an updated agreement with the city covering how property tax growth inside the Sweetwater Industrial Park area is collected and handed over.",
+      "impact": "Your tax bill does not change. This is an accounting arrangement between the agency and the city for money already being collected in an industrial area, and you will not see it.",
+      "significance": "routine"
+    },
     "a334ad4ee4c426f9": {
       "headline": "Agency budget adopted for 2019-20",
       "summary": "The agency board adopted its budget for the 2019-2020 fiscal year, which staff said was identical to the versions presented earlier.",
       "impact": "This budget spends the redevelopment agency's own tax increment money, not city service dollars. Staff said the figures rest on projections and may be amended as parts of the city grow.",
+      "significance": "notable"
+    },
+    "a3b763f0d4b1edd1": {
+      "headline": "Tax deal with Tyson and Oquirrh Wood Ranch",
+      "summary": "The agency board approved a community reinvestment area participation agreement with Eagle Mountain City, Oquirrh Wood Ranch, Utah County and Tyson Fresh Meats, letting staff make minor wording changes.",
+      "impact": "The agreement binds the agency, the city, Utah County and two companies, but the motion states no dollar figures or term. Nothing on your tax bill changes today, and the city attorney can still adjust the wording before every party signs.",
+      "significance": "notable"
+    },
+    "a8cf3880985a991a": {
+      "headline": "City signs its own Pole Canyon tax agreement",
+      "summary": "The agency and Eagle Mountain City agreed on how the city will collect and remit the property tax growth from land inside the Pole Canyon project area.",
+      "impact": "Both sides of this deal are the same five people, sitting once as the council and once as the agency board. Your city tax bill is untouched; the city's share of new Pole Canyon revenue is what moves.",
       "significance": "notable"
     },
     "ad2dad01b3b1efd9": {
@@ -299,6 +449,18 @@
       "headline": "Utah County agrees to Sweetwater #4 tax split",
       "summary": "The board signed the county into the arrangement too: property tax growth Utah County collects inside Sweetwater #4 goes to the agency.",
       "impact": "Property tax the county collects inside the project area funds work in that area. If you live elsewhere in the city, this one passes you by.",
+      "significance": "notable"
+    },
+    "b6f7edd335122208": {
+      "headline": "May minutes approved",
+      "summary": "The agency board approved the minutes of its May 21, 2019 meeting.",
+      "impact": "With this, the written record of that meeting becomes official. It is a step for the clerk, not for you.",
+      "significance": "routine"
+    },
+    "b7dd1da3d0756d3c": {
+      "headline": "Tax increment plan for 80 acres at Pole Canyon",
+      "summary": "The agency adopted the official plan for the Pole Canyon project area, 80 acres of industrial-planned land where tax increment can pay for development.",
+      "impact": "The site sits in the Pole Canyon master plan and is aimed at industry, with a food manufacturing business under discussion. A resident who spoke raised traffic and the two roads planned there.",
       "significance": "notable"
     },
     "b89d032db7c59615": {
@@ -337,6 +499,18 @@
       "impact": "Each taxing entity has to sign separately before the agency can use the money, and this is one of those signatures. You will not notice it anywhere.",
       "significance": "notable"
     },
+    "cb95829510eb0df4": {
+      "headline": "Water district signs on to Pole Canyon increment",
+      "summary": "The agency signed a matching agreement with the Central Utah Water Conservancy District covering collection and remittance of property tax growth inside the Pole Canyon project area.",
+      "impact": "Your water bill is not part of this arrangement. What the district signed governs how the tax growth from the Pole Canyon land is handed back for use in the project.",
+      "significance": "notable"
+    },
+    "d02d402959b8c169": {
+      "headline": "Two sets of old minutes approved",
+      "summary": "The agency board approved its minutes from May 15, 2018 and March 5, 2019.",
+      "impact": "Close to a year of unapproved records was cleared in one go. It touches the file cabinet and no household.",
+      "significance": "routine"
+    },
     "d1febc9d22b9963d": {
       "headline": "City signs its own Pole Canyon tax agreement",
       "summary": "The agency and Eagle Mountain City agreed on how the city will collect and remit the property tax growth from land inside the Pole Canyon project area.",
@@ -348,6 +522,12 @@
       "summary": "Eagle Mountain City itself will send its property tax growth from the Sweetwater #4 area to the agency, in an agreement the board approved.",
       "impact": "The city and the agency are separate legal entities, so the city has to sign to hand over its own increment. Homeowners see nothing different on a bill.",
       "significance": "notable"
+    },
+    "d5d093a040475954": {
+      "headline": "June 2020 minutes approved",
+      "summary": "The agency board approved the written record of its June 16, 2020 meeting.",
+      "impact": "Signing off on old minutes is bookkeeping for the recorder's office. Nothing in it touches you.",
+      "significance": "routine"
     },
     "d73498ce2d1965a5": {
       "headline": "Triple Tail project deal with UTLCO approved",
@@ -379,10 +559,28 @@
       "impact": "This one touches the recorder's files and nobody else. It makes the April meeting's written account the official version.",
       "significance": "routine"
     },
+    "e084cba7856e10ff": {
+      "headline": "Meeting adjourned",
+      "summary": "The agency board closed its May 21 meeting at 9:34 p.m.",
+      "impact": "Adjournment is the clock stopping, not a decision. Nothing about it reaches a resident.",
+      "significance": "routine"
+    },
+    "ee268710eaf4ea16": {
+      "headline": "Carolyn Love named vice-chair",
+      "summary": "The agency board appointed Board Member Carolyn Love as vice-chair of the redevelopment agency for the year.",
+      "impact": "A vice-chair runs the meeting when the chair cannot. The choice stays inside the board and reaches no household.",
+      "significance": "routine"
+    },
     "f0643c69f8b2659a": {
       "headline": "December 16 minutes approved",
       "summary": "The agency board approved the minutes of its December 16, 2025 meeting.",
       "impact": "Signing off on the written record makes December's meeting official. Nobody outside the agency's own files feels this.",
+      "significance": "routine"
+    },
+    "f3b5f724558c56e6": {
+      "headline": "Meeting adjourned at 10:43 p.m.",
+      "summary": "The agency board ended its June 2 meeting at 10:43 p.m.",
+      "impact": "Nothing here reaches a resident. It is the clock stopping on a meeting whose business was already finished.",
       "significance": "routine"
     },
     "f40624f7006880a5": {
@@ -390,6 +588,18 @@
       "summary": "The agency board ended its March 16 meeting at 7:38 p.m.",
       "impact": "Closing the meeting is the last item on any agenda. There is nothing here for you.",
       "significance": "routine"
+    },
+    "f4f47cd3e271a164": {
+      "headline": "June 18 minutes approved",
+      "summary": "The agency board approved the minutes of its June 18, 2019 meeting.",
+      "impact": "Nobody outside the agency's record book feels this one. It makes the written account of the June meeting official.",
+      "significance": "routine"
+    },
+    "f93a6961bf272933": {
+      "headline": "Sweetwater Industrial Park budget amended",
+      "summary": "The agency board adopted an amended budget for its Sweetwater Industrial Park project area, the account that governs how property tax growth there is spent.",
+      "impact": "No figures were read into the motion, so the size of the change is not on the record. The land is industrial, not housing: businesses and developers building there are the ones affected.",
+      "significance": "notable"
     },
     "f97d018dae2c7cff": {
       "headline": "How Sweetwater tax money reaches the agency",

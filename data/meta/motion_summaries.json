@@ -127,6 +127,12 @@
       "impact": "Olsen now keeps the city's official records and handles public records requests, so hers is the office you deal with when you ask for a document. The audit change is bookkeeping.",
       "significance": "routine"
     },
+    "08c8282dc7d72419": {
+      "headline": "Less water required from builders per lot",
+      "summary": "The council cut the water a builder must hand the city per lot, dropping the indoor share from 0.53 to 0.34 acre-feet, and ordered a study of apartment water use.",
+      "impact": "Builders dedicating water rights for new subdivisions now hand over less, matching the smaller lawns the city already requires. Your own bill and service stay the same. The apartment study may bring the question back.",
+      "significance": "notable"
+    },
     "08e94283a45399db": {
       "headline": "Building and construction rules updated",
       "summary": "The council changed the city's building and construction rules in Title 15 of the municipal code; the record does not spell out what changed.",
@@ -222,6 +228,12 @@
       "summary": "The council appointed Steve Conger to a three-year term on the Community Services Board, April 2026 through March 2029.",
       "impact": "Another advisory seat filled for three years. Day to day, you will notice nothing.",
       "significance": "routine"
+    },
+    "1072c1e5a0e07a33": {
+      "headline": "Fence and buffer rules rewritten",
+      "summary": "The city rewrote its fencing rules, declaring broken, flammable or spite fences unlawful nuisances, adding a split-rail definition, and barring berms or hedges where a wall is required.",
+      "impact": "A fence that is falling apart, or one put up to needle a neighbor, can now be treated as a nuisance and ordered fixed. Staff will bring back separate changes on commercial buffers and fences where the ground drops away.",
+      "significance": "notable"
     },
     "1085e33ad2393a03": {
       "headline": "Cedar Valley Holbrook zoning change put on hold",
@@ -373,6 +385,12 @@
       "impact": "Nothing changes yet: this only flags the idea for a future code change. Developers swapping one promised amenity for another would eventually have to ask sooner.",
       "significance": "routine"
     },
+    "1a4072e0ed340b43": {
+      "headline": "Consent agenda approved, four items pulled",
+      "summary": "The council approved its consent agenda after pulling four items, moving three of them onto the scheduled list for discussion.",
+      "impact": "This is the sorting step that decides which items get talked through and which pass in a batch. No decision on the merits happened here.",
+      "significance": "routine"
+    },
     "1aeb19e33a0fd005": {
       "headline": "Rezone Eagle Mountain Properties land, mostly to farm",
       "summary": "The council rezoned 27 parcels in the Eagle Mountain Properties plan area: most to agriculture, seven to neighborhood commercial, two to low-to-medium density housing.",
@@ -384,6 +402,18 @@
       "summary": "The council wrote a new chapter into city code, Chapter 2.20, setting the compensation schedule for Eagle Mountain's statutory officers.",
       "impact": "No dollar figures appear in the motion, so it does not tell you what any officer will be paid. Nothing you pay or receive changes.",
       "significance": "routine"
+    },
+    "1b751b174c65fd97": {
+      "headline": "New city website, $35,000 contract",
+      "summary": "The city hired Web Development Group Platforms to build a new city website for $35,000, leaving staff to settle a payment schedule.",
+      "impact": "Anyone who uses the city site to find an agenda, a form or a meeting date will eventually land on a rebuilt version. No launch date was set.",
+      "significance": "notable"
+    },
+    "1b90738ae4734dcd": {
+      "headline": "Site plan approved for Firefly plats 4 and 5",
+      "summary": "The city approved the site plan for Firefly NPA 1A, plats 4 and 5, in the southwest part of the city near Cory B. Wride Memorial Highway and Pole Canyon Boulevard.",
+      "impact": "If you live in the southwest end of the city, expect building on this parcel to move ahead. The motion does not say how many homes or lots are involved.",
+      "significance": "notable"
     },
     "1bcd71f6b39c0618": {
       "headline": "Final zoning set for the White Hills area",
@@ -413,6 +443,12 @@
       "headline": "$20,000 added for a special events UTV",
       "summary": "The council moved $20,000 into the Special Events budget line so staff could have more choice in which utility task vehicle to buy.",
       "impact": "A small equipment purchase for the crews who run city events. You may see the vehicle at a city event; otherwise this passes you by.",
+      "significance": "routine"
+    },
+    "1d62e1d8c24a455c": {
+      "headline": "City Center commercial lot split approved",
+      "summary": "The council signed off on amending the recorded plat for Lot 1 of City Center Commercial Phase A, letting the owners carve out another commercial lot.",
+      "impact": "Owners of the site can now divide it and build on or sell the new piece. Homes backing onto the property get the partial screening wall finished once the site is developed.",
       "significance": "routine"
     },
     "1dc55f3b8940cb04": {
@@ -505,6 +541,12 @@
       "impact": "Nothing follows from this item on its own: the council adopted the version that converts the full 73 acres, so no commercial land was carved out near the SR-73 and Airport Road intersection.",
       "significance": "routine"
     },
+    "25fcf8a8fb4e81c8": {
+      "headline": "School district agreement restated a third time",
+      "summary": "The council ran the same three-city school district agreement through a third resolution, again acknowledging the central district being formed by Alpine, Highland, Cedar Hills, Lehi and American Fork.",
+      "impact": "Duplicate paperwork on a decision that matters: the schools your children attend are what is at stake, but this particular item adds nothing to it.",
+      "significance": "routine"
+    },
     "2775ed0d599459dc": {
       "headline": "Consent agenda approved",
       "summary": "The council approved its consent agenda in a single vote, covering the routine items grouped there.",
@@ -515,6 +557,12 @@
       "headline": "Four items pulled off the consent list",
       "summary": "The council approved its batch of routine items, dropping one from the agenda and pulling three others out for discussion instead.",
       "impact": "A scheduling move that decided which items got debated in the open rather than passed in a block. The items themselves were decided separately.",
+      "significance": "routine"
+    },
+    "2802f2a0174c1b0d": {
+      "headline": "Consent agenda passed, one item pulled",
+      "summary": "The council cleared its batch of routine items in one vote, holding item 12.C for a later meeting and attaching an annual review to item 12.E.",
+      "impact": "The held item returns to a future agenda. For residents this is bookkeeping, though item 12.E will now come back for a look once a year.",
       "significance": "routine"
     },
     "2895e8e0ec99fd85": {
@@ -620,6 +668,12 @@
       "impact": "This is a boundary change on paper in an industrial area. It affects the property owner and what can be built on those two lots, not the average resident.",
       "significance": "routine"
     },
+    "34957fef3f774752": {
+      "headline": "Lot size rules sent back to staff",
+      "summary": "The council delayed changes to lot size mixture and residential development standards, sending staff to collect councilmember feedback before a March 6 return.",
+      "impact": "Builders waiting on the new lot rules wait another month. Anyone with an opinion on lot sizes gets another chance to speak when the item comes back March 6.",
+      "significance": "routine"
+    },
     "3523e2a88ea7f0a0": {
       "headline": "Job offer made to a new city manager",
       "summary": "The council voted to offer the city manager job to its chosen candidate and sent the mayor and Councilmember Wright to negotiate the employment contract.",
@@ -630,6 +684,12 @@
       "headline": "Pacific Springs development agreement approved",
       "summary": "The council approved a development agreement for Pacific Springs, the contract setting the terms under which that project can be built.",
       "impact": "The motion itself does not spell out the size, location, or number of homes, so the specifics are in the agreement rather than the vote. It clears the way for the Pacific Springs project to move forward.",
+      "significance": "notable"
+    },
+    "3672ec90e308910d": {
+      "headline": "Casitas and garage apartments allowed",
+      "summary": "The city approved rules allowing a second dwelling inside a house, over a detached garage, or in a standalone casita, with parking for two vehicles required.",
+      "impact": "If you want a rental casita or a unit above your garage, this sets where it may go and requires two off-street spaces. Your lot's zoning still has to permit it.",
       "significance": "notable"
     },
     "3789dc39e9e73310": {
@@ -686,6 +746,12 @@
       "impact": "Year-end budget cleanup at city hall. The motion names no project or dollar figure, so there is nothing here you would notice.",
       "significance": "routine"
     },
+    "3c6a8df9d1b87e74": {
+      "headline": "Timpanogos district reorganization held",
+      "summary": "The council held the resolution reorganizing the Timpanogos Special Service District and told staff to keep working with district representatives at the Legislature.",
+      "impact": "Nothing takes effect until state lawmakers act. The council said it will take the item back up once the Legislature and Governor approve the change.",
+      "significance": "routine"
+    },
     "3c6cb58d5286dd0d": {
       "headline": "Rose Ranch development agreement fails",
       "summary": "A master development agreement for the Rose Ranch subdivision was put forward but never taken up by the council.",
@@ -722,6 +788,12 @@
       "impact": "The motion doesn't say what was moved or added, so no change to your bills or services is stated. This is the city squaring its books before the year closes.",
       "significance": "routine"
     },
+    "40ec29bf53bad288": {
+      "headline": "Height limits reset for apartments and halls",
+      "summary": "The council changed the zoning code's height rules for apartment buildings and religious or cultural meeting halls, and barred rooftop amenities from earning open space or amenity points.",
+      "impact": "Developers planning apartments feel this one: a rooftop deck no longer counts as open space credit. If you live near a site being planned, it shapes how tall the building may go.",
+      "significance": "notable"
+    },
     "413db5ca042fc3c5": {
       "headline": "Ivory Homes agreement approved, water break cut",
       "summary": "The city approved an agreement with builder Ivory Homes but removed a proposed break on per-lot water requirements and downgraded promised city benefits to something it \"may\" consider.",
@@ -746,6 +818,12 @@
       "impact": "The city manager runs day-to-day operations, so this shapes who answers when you call about a permit or a pothole. Nothing changes for you until a contract is signed.",
       "significance": "notable"
     },
+    "42374236476acf63": {
+      "headline": "Council rules rewrite pushed to February",
+      "summary": "The council put off an ordinance spelling out its six-member form of government and how a mayor pro tempore is chosen, sending it back for rewording.",
+      "impact": "Nothing changes for you yet. The rules govern how councilmembers, staff and the mayor may speak for the city, and the reworked version was set to return on February 6.",
+      "significance": "routine"
+    },
     "4306735e032f07e3": {
       "headline": "Porter's Crossing development deal amended",
       "summary": "The council approved a fourth amendment to the master development agreement governing the Porter's Crossing project.",
@@ -762,6 +840,12 @@
       "headline": "Update road right-of-way drawings in city code",
       "summary": "The council amended the city's code section covering the illustrations that show how streets and the land beside them must be laid out.",
       "impact": "Engineers and developers drawing up new streets work from these diagrams. For everyone else it is a technical drawing swap with nothing to see.",
+      "significance": "routine"
+    },
+    "437dfdd3852a7592": {
+      "headline": "Golf course agreement change put off",
+      "summary": "Rather than decide the amended agreement with Vanguard Ranches Golf Course, the council held it for a future meeting.",
+      "impact": "Whatever the golf course asked for stays unresolved until the council takes the item back up. Play, fees and the land itself are unchanged.",
       "significance": "routine"
     },
     "43a6c4ed57a84083": {
@@ -793,6 +877,12 @@
       "summary": "The council named Heather Jackson to the Cemetery Advisory Board for a three-year term ending December 2026.",
       "impact": "The board offers advice on the city cemetery. Unless you plan to serve on it, this one passes you by.",
       "significance": "routine"
+    },
+    "46dcc8dfd8128944": {
+      "headline": "Tentative 2024-25 budget adopted, hearing June 4",
+      "summary": "The council tentatively adopted the city's 2024-2025 budget and set a June 4, 2024 public hearing before the final budget is adopted.",
+      "impact": "The June 4 hearing is your chance to speak on next year's city spending before the council locks it in.",
+      "significance": "notable"
     },
     "4718a702504a2186": {
       "headline": "City to study accepting bitcoin for payments",
@@ -872,6 +962,12 @@
       "impact": "This advances the proposal rather than settling it; a final council vote is still to come. If a new district is created, it would change which school district Eagle Mountain belongs to.",
       "significance": "notable"
     },
+    "4ca1b78389808c01": {
+      "headline": "Golf course deal with a Comcast payment offered",
+      "summary": "The council took up a version of the golf course agreement that would have added a Comcast payment to the city as a parks and open space fee in lieu.",
+      "impact": "No money changed hands and the agreement stayed as written. Parks funding from this source is not on the city's books.",
+      "significance": "routine"
+    },
     "4ccee4d22e0cbf66": {
       "headline": "City brand and marketing playbook adopted",
       "summary": "The council adopted the city's brand and market playbook and asked for it to return at a later meeting once the additions raised in discussion are written in.",
@@ -895,6 +991,12 @@
       "summary": "The council amended the city code rule governing how far a structure may project into a required yard setback.",
       "impact": "If you are planning to build near your property line, the limits on how far a structure can extend into the setback have changed. The motion itself does not state the new limits, so check with the city first.",
       "significance": "notable"
+    },
+    "4deb597b05731fd1": {
+      "headline": "Official city zoning map adopted",
+      "summary": "The council adopted an official zoning map for Eagle Mountain, letting staff fix colors, labels, links to development plans and code, and minor boundary or zone-name errors.",
+      "impact": "The map becomes the single reference for which zone your lot sits in, but adopting it does not change anyone's zoning. Staff can correct a mislabeled boundary without another council vote.",
+      "significance": "routine"
     },
     "4f091bf6f56af544": {
       "headline": "178 acres proposed for Pole Canyon district",
@@ -954,6 +1056,12 @@
       "headline": "Property tax increase heads to a hearing",
       "summary": "The council took up a resolution declaring the city's intent to raise property tax revenue, give public notice, and set the required Truth-in-Taxation hearing date.",
       "impact": "If the increase goes ahead, homeowners would pay more. The Truth-in-Taxation hearing is the point where you can speak before the council settles on a final rate.",
+      "significance": "notable"
+    },
+    "52342c73ded5efc4": {
+      "headline": "Building and construction rules updated",
+      "summary": "The council changed the city's building and construction rules in Title 15 of the municipal code; the record does not spell out what changed.",
+      "impact": "If you are building or remodeling, the rules you have to follow have shifted, though the meeting record does not say how. Most residents will notice nothing.",
       "significance": "notable"
     },
     "524eaaf50b91ac01": {
@@ -1040,6 +1148,12 @@
       "impact": "Nothing takes effect until state lawmakers act. The council said it will take the item back up once the Legislature and Governor approve the change.",
       "significance": "routine"
     },
+    "57ee5ce9a36a839f": {
+      "headline": "Nathan Washburn joins Youth Council advisors",
+      "summary": "The council appointed Nathan Washburn to the Youth Council Committee of Advisors for a one-year term through June 2024.",
+      "impact": "One volunteer seat filled. Families with teens in the Youth Council program are about the only people who will notice.",
+      "significance": "routine"
+    },
     "57f21752fea7182a": {
       "headline": "Mid-year budget adjustment",
       "summary": "The city made its fourth round of adjustments to the 2024-2025 budget.",
@@ -1051,6 +1165,12 @@
       "summary": "The council rezoned the land for Alpine School District's Elementary 133 so the school can be built there.",
       "impact": "Paired with the site plan approval, this lets the school district move ahead. Neighbors will get a school on that land instead of whatever the previous zoning allowed.",
       "significance": "notable"
+    },
+    "5979795fb6e36db5": {
+      "headline": "Meeting recessed at 10:57 p.m.",
+      "summary": "The council recessed for the night at 10:57 p.m.",
+      "impact": "This is the clock stopping on a long agenda. Nobody outside the council chamber is touched by it.",
+      "significance": "routine"
     },
     "59b6a42a3fe950c7": {
       "headline": "Less water required from builders per lot",
@@ -1124,6 +1244,12 @@
       "impact": "Nothing changes for now. When it returns, it will matter to anyone drawing up a site plan for a commercial or residential project, and to nobody else.",
       "significance": "routine"
     },
+    "5e1cfb6832e91077": {
+      "headline": "Consent agenda passed, two items pulled",
+      "summary": "The council passed its consent agenda covering a right-of-way land purchase, arena equipment, two bond releases, February minutes and two treasurer appointments, pulling two items out.",
+      "impact": "Housekeeping cleared in a single vote. The two items lifted out, including the recruitment consultants' contract, went to open discussion later in the evening.",
+      "significance": "routine"
+    },
     "5e74fce9df30e88f": {
       "headline": "Zayo Group gets a city franchise agreement",
       "summary": "Eagle Mountain approved a franchise agreement with Zayo Group, LLC, the second telecom deal the council passed that night.",
@@ -1153,6 +1279,12 @@
       "summary": "The council delayed a decision on a minor change to the amenities planned for the Hidden Hollow development.",
       "impact": "If you live in or are buying into Hidden Hollow, the proposed change to the development's amenities is still unsettled and will come back to the council later.",
       "significance": "routine"
+    },
+    "5fd9f92e240187f1": {
+      "headline": "City Center lot rezoned to neighborhood commercial",
+      "summary": "The council rezoned Plat 1 of City Center Commercial Phase A from Commercial C-1 to Commercial Neighborhood, picked over a broader zone after concerns about allowed uses.",
+      "impact": "What can open on that ground is now governed by the Commercial Neighborhood list, which councilmembers preferred to the wider Commercial Community zone. Households next to the site have the stake here.",
+      "significance": "notable"
     },
     "6015205d292e2355": {
       "headline": "Push for a youth court and justice court",
@@ -1184,6 +1316,12 @@
       "impact": "This one rearranged the evening's running order. Both pulled items got their own discussion; no resident is touched by the shuffle itself.",
       "significance": "routine"
     },
+    "60fa4f675fee744d": {
+      "headline": "Stadion landscaping and administrator deal held",
+      "summary": "The council pushed two items to a later meeting: a landscaping change to the Stadion LLC development agreement and a contract with Paul Jerome for city administrator services.",
+      "impact": "Both sit untouched until the council brings them back. No yard, bill or city service is affected in the meantime.",
+      "significance": "routine"
+    },
     "610608cbb6ff22dc": {
       "headline": "Parking rule changes rejected",
       "summary": "The council moved to reject proposed changes to the city's parking rules.",
@@ -1202,11 +1340,23 @@
       "impact": "Neighbors of the site are the people this touches. The motion names no address, no acreage and no use, so what will be built there is not in the record.",
       "significance": "notable"
     },
+    "62110d3995427013": {
+      "headline": "Election results certified, three seats declared",
+      "summary": "Sitting as the Board of Canvassers, the council certified the election results and declared Melissa Clark, Rich Wood and Jared R. Gray elected to the city council.",
+      "impact": "The count is now official and the three winners can take their seats. If you voted, this is the step that finalizes the result you already saw reported.",
+      "significance": "routine"
+    },
     "62e0b763f54dc1c3": {
       "headline": "New affordable housing fund created",
       "summary": "Eagle Mountain set up a separate city account, the Affordable Housing Fund, to hold and track money for affordable housing.",
       "impact": "The account is a container: the motion does not put any dollars in it or name a project. Watch for later votes that decide what goes in and what it pays for.",
       "significance": "notable"
+    },
+    "6323362e6d34eb20": {
+      "headline": "Consent agenda approved",
+      "summary": "Everything grouped on the consent agenda passed in a single vote, with the record here not listing the individual items it held.",
+      "impact": "Consent items are the ones no councilmember pulled out for debate. Nothing on this list reaches you.",
+      "significance": "routine"
     },
     "639bc4a985b55efa": {
       "headline": "Consent items changed: trees, $40,000 for parks",
@@ -1219,6 +1369,18 @@
       "summary": "Councilmember Wood moved to adopt the 2026-27 budget adjusted to the 0.000900 tax rate set earlier that night, and the city attorney asked for the motion to be spelled out. The minutes call 0.000900 the \"new certified rate\"; the certified rate is 0.000530.",
       "impact": "No outcome is recorded for this version of the motion. The spending plan itself was settled elsewhere in the same meeting.",
       "significance": "routine"
+    },
+    "63c92214907dcd33": {
+      "headline": "Building and construction standards updated",
+      "summary": "The council adopted an updated Title 15, the city's building and construction standards, which now carries truck route approval requirements.",
+      "impact": "Contractors and engineers filing plans build to the new standards from here. For everyone else this is a technical manual you will never open.",
+      "significance": "routine"
+    },
+    "6445aa3ae8f4cb70": {
+      "headline": "Parkway Fields phases and layout redrawn",
+      "summary": "The council approved a redrawn Parkway Fields plan that splits the townhome phase in two and adds about four townhomes, offset by fewer lots in a later phase.",
+      "impact": "The number of homes on the site does not go up. If you are buying there, phase and plat labels changed, and the developer told the council it will dedicate land along Old Airport Road for a trail and trailhead.",
+      "significance": "notable"
     },
     "64d01d1c7d363b27": {
       "headline": "Rose Ranch farmland-to-housing rezone",
@@ -1250,16 +1412,34 @@
       "impact": "The city now has land set aside for future civic buildings. Nothing is built yet: the motion doesn't say what will go there, what it cost, or when.",
       "significance": "notable"
     },
+    "6756cd86311f3ae2": {
+      "headline": "Wildlife corridor rules held for rewrites",
+      "summary": "A vote on updated wildlife corridor overlay rules was put off by the council until staff makes the changes members asked for.",
+      "impact": "Landowners inside the corridor keep building under today's rules until the item returns. Questions raised about fencing around livestock and setbacks from washes stay unsettled.",
+      "significance": "routine"
+    },
     "6777498a8c4a84b0": {
       "headline": "Move to reject the fence rules got no second",
       "summary": "A motion to turn down the fencing code changes outright failed when no other councilmember seconded it.",
       "impact": "The rejection never came to a vote, so nothing was settled here. The fencing question moved forward under a different motion the same night.",
       "significance": "routine"
     },
+    "67f8dd77c7c24b57": {
+      "headline": "General plan change for the same land denied",
+      "summary": "Alongside the zoning refusal, the council declined to change the general plan for the same parcels from community commercial and civic uses to neighborhood residential.",
+      "impact": "The city's long-range map still shows commercial and civic use for this ground. A housing-only project there would need a fresh application and a fresh argument.",
+      "significance": "notable"
+    },
     "6820f051bcd1f4fd": {
       "headline": "Brett Wright named mayor pro tem for 2025",
       "summary": "Councilmember Brett Wright was chosen as mayor pro tempore for 2025.",
       "impact": "Wright runs council meetings when the mayor cannot attend. It decides who holds the gavel on a given night and nothing more.",
+      "significance": "routine"
+    },
+    "684d902ba4301145": {
+      "headline": "Parking lot island dimensions adjusted",
+      "summary": "The council adjusted the code that sets the size of landscaped islands in parking lots so they line up with parking stall depth.",
+      "impact": "This lands on whoever draws the parking lot for a new store or office. Drivers and neighbors will not see the difference.",
       "significance": "routine"
     },
     "69540fc766428341": {
@@ -1278,6 +1458,12 @@
       "headline": "Jennifer Webb joins the cemetery board",
       "summary": "The council appointed Jennifer Webb to the Cemetery Advisory Board for a three-year term through December 2026, a second seat filled that night.",
       "impact": "Volunteer seats, filled. Burial fees, cemetery hours and plots are untouched by it.",
+      "significance": "routine"
+    },
+    "6a3a238fe4de0b6a": {
+      "headline": "Same school district deal, second resolution",
+      "summary": "The council handled the same April 29 agreement with Saratoga Springs and Fairfield Town under a second resolution number, with the same nod to the five-city district to the north.",
+      "impact": "The substance is the school district agreement recorded again under another number. Nothing here reaches you beyond what that agreement already does.",
       "significance": "routine"
     },
     "6a82f26c55489d7a": {
@@ -1334,6 +1520,12 @@
       "impact": "This mostly matters to landowners and developers: it opens a path to shift allowed homes off one parcel and onto another, which means density can land in different places than the base zoning suggests.",
       "significance": "notable"
     },
+    "6e03f9771a827c55": {
+      "headline": "New code chapter covers city officer pay",
+      "summary": "The council wrote a new chapter into city code, Chapter 2.20, setting the compensation schedule for Eagle Mountain's statutory officers.",
+      "impact": "No dollar figures appear in the motion, so it does not tell you what any officer will be paid. Nothing you pay or receive changes.",
+      "significance": "routine"
+    },
     "6e456e4d7c5e00b5": {
       "headline": "Consent agenda approved, with trails added",
       "summary": "The council approved its consent agenda, adding \"trails\" to the scope of review in one of the items it covered.",
@@ -1364,6 +1556,12 @@
       "impact": "The effect was to give two items a real airing instead of a bundled vote. Nothing lands on residents here.",
       "significance": "routine"
     },
+    "6fe9bb6a0d030bbe": {
+      "headline": "Kevin Courtright added to parks board",
+      "summary": "The council placed Kevin Courtright on the Parks and Recreation Advisory Board for a three-year term through December 2026.",
+      "impact": "That board advises; it does not decide. Your parks and fields stay as they are.",
+      "significance": "routine"
+    },
     "7057ff3826d426d1": {
       "headline": "Hidden Hollow keeps its pool",
       "summary": "The council rejected Cadence Homes' request to swap the planned swimming pool at the Hidden Hollow clubhouse for a gym and lawn games.",
@@ -1381,6 +1579,12 @@
       "summary": "The council placed Kevin Courtright on the Parks and Recreation Advisory Board for a three-year term through December 2026.",
       "impact": "That board advises; it does not decide. Your parks and fields stay as they are.",
       "significance": "routine"
+    },
+    "716eca726bc8375d": {
+      "headline": "Walmart plat and site plan approved",
+      "summary": "The council signed off on the preliminary plat and site plan for a Walmart, leaving staff to review the fencing exhibit on the council's behalf.",
+      "impact": "The store clears its plan stage and can move toward construction, bringing a new shopping option and the traffic with it. The fence details get settled by staff, not at another public meeting.",
+      "significance": "notable"
     },
     "724181ab2d215bdd": {
       "headline": "Youth Council vote retaken to include mayor",
@@ -1412,6 +1616,12 @@
       "impact": "No rule exists yet, so nothing changes for phone or internet customers. Whatever staff draft would have to come back to the council before it means anything.",
       "significance": "routine"
     },
+    "72d8af6f729c0534": {
+      "headline": "Dillon Boss joins the Library Advisory Board",
+      "summary": "Dillon Boss was appointed to the Library Advisory Board for a one-year term through December 2024 and sworn in at the meeting.",
+      "impact": "An advisory seat is filled. Library users will see the same hours, books and staff as before.",
+      "significance": "routine"
+    },
     "72fde0ed6104cf51": {
       "headline": "Scenic Mountain rezone motion replaced before the vote",
       "summary": "Councilmember Whiting moved to approve the Scenic Mountain rezone (item 16.A) according to the chart of affected properties. Before a vote he took up Councilmember Wright's substitute wording, which named the general plan change and the rezoning map separately, and that version passed 5-0.",
@@ -1436,11 +1646,23 @@
       "impact": "Housekeeping items cleared together, with two held back for their own hearing. Nothing lands on a resident at this step.",
       "significance": "routine"
     },
+    "7648ca65d351c71b": {
+      "headline": "Jennifer Webb joins the cemetery board",
+      "summary": "The council appointed Jennifer Webb to the Cemetery Advisory Board for a three-year term through December 2026, a second seat filled that night.",
+      "impact": "Volunteer seats, filled. Burial fees, cemetery hours and plots are untouched by it.",
+      "significance": "routine"
+    },
     "768e3c2ad0e8b9ef": {
       "headline": "Consent agenda approved",
       "summary": "The council cleared its consent agenda, the batch of routine items handled in one vote; the record does not list what was in it.",
       "impact": "Consent items are the ones nobody flagged for discussion. Nothing here lands on your street or your bill.",
       "significance": "routine"
+    },
+    "76f73eb25541520c": {
+      "headline": "Rec center funding pulled, $1M pooled for parks",
+      "summary": "The council reworked how proceeds from the utility sale are spent, moving $2.6 million earmarked for a recreation center into unallocated funds and pooling $1 million for parks.",
+      "impact": "A recreation center is off the funding list for now: council members said it could be revisited later, possibly starting with buying land. The $1 million park fund still covers Silver Lake amphitheater, bike park, and Nolan Park improvements.",
+      "significance": "notable"
     },
     "77b630b74967d885": {
       "headline": "Emily Hoehne joins Library Advisory Board",
@@ -1452,6 +1674,12 @@
       "headline": "Golf course agreement change put off",
       "summary": "Rather than decide the amended agreement with Vanguard Ranches Golf Course, the council held it for a future meeting.",
       "impact": "Whatever the golf course asked for stays unresolved until the council takes the item back up. Play, fees and the land itself are unchanged.",
+      "significance": "routine"
+    },
+    "78f782569acf0637": {
+      "headline": "City's asks of the state legislature set",
+      "summary": "The council adopted its list of priorities to push at the state legislature, adding a matching grant program to be taken up later.",
+      "impact": "This one shapes what the city asks lawmakers for, nothing more. No resident feels it.",
       "significance": "routine"
     },
     "79609f4529811ca5": {
@@ -1490,6 +1718,24 @@
       "impact": "One volunteer seat filled on a board that advises on the city cemetery. No effect on daily life here.",
       "significance": "routine"
     },
+    "7c3f8f4f4e4e5e6b": {
+      "headline": "Walden Park Road money moved to Mid Valley Road",
+      "summary": "The council amended its 2023-24 budget to take Capital Fund money set aside for Walden Park Road and put it toward widening Mid Valley Road.",
+      "impact": "Drivers on Mid Valley Road are the ones who stand to gain. Walden Park Road loses the money it was holding this budget year, with no replacement named in the motion.",
+      "significance": "notable"
+    },
+    "7c5ad3cee008944b": {
+      "headline": "Forester and branding money pulled from budget",
+      "summary": "The council amended the 2023-24 budget to strip out the city forester position, its vehicle and IT equipment, and branding work, with those items due back in January.",
+      "impact": "No forester is being hired and no branding money is being spent for now. Both come back to the council in January, which is when the spending question gets settled.",
+      "significance": "notable"
+    },
+    "7c6bdec91e2ca248": {
+      "headline": "Hiring process set for a new city administrator",
+      "summary": "Council members adopted a process for hiring a permanent city administrator, following the recruitment handbook of the national city and county managers' association.",
+      "impact": "This sets the rules the city follows while it recruits. Nothing here reaches a resident.",
+      "significance": "routine"
+    },
     "7c86c8b984ecdcee": {
       "headline": "Change order on the sewer plant upgrade",
       "summary": "The council approved a change order with engineering firm Advanced Engineering and Environmental Services for the wastewater treatment plant upgrade.",
@@ -1513,6 +1759,12 @@
       "summary": "The council approved its consent agenda, the batch of items handled together without separate discussion.",
       "impact": "The record here does not list what was in the batch, so there is nothing specific to point you to. Consent items are the ones the council did not consider worth debating.",
       "significance": "routine"
+    },
+    "7e2f15abf62b00a0": {
+      "headline": "Consent items changed: trees, $40,000 for parks",
+      "summary": "Approval of the consent agenda came with conditions: trees or their cash value from Stadion LLC, a $40,000 park donation from Comcast, and a revised meeting calendar.",
+      "impact": "The tree and park money comes out of development deals, not your utility bill, so nothing changes at home. If you attend meetings, the March 5 date is gone and March 6 and November 6 were added.",
+      "significance": "notable"
     },
     "7ebb1a9627558b14": {
       "headline": "City backs an inland port area in Eagle Mountain",
@@ -1640,6 +1892,12 @@
       "impact": "A recreation center is off the funding list for now: council members said it could be revisited later, possibly starting with buying land. The $1 million park fund still covers Silver Lake amphitheater, bike park, and Nolan Park improvements.",
       "significance": "notable"
     },
+    "87ed5861730d0f48": {
+      "headline": "Senior advisory seat filled through 2027",
+      "summary": "The council appointed Karan Heffelfinger to the Senior Citizens Advisory Council for a four-year term ending in December 2027.",
+      "impact": "Seniors who use city programs gain one more voice advising the council. For everyone else, nothing shifts.",
+      "significance": "routine"
+    },
     "884b312d354f5469": {
       "headline": "Hillside building rules held back",
       "summary": "The council delayed a set of changes to the city's slope development rules, which govern building on steep ground.",
@@ -1650,6 +1908,12 @@
       "headline": "Development deal set for Spring Run Plaza",
       "summary": "The council approved the master development agreement for Spring Run Plaza, capping the required landscaping width at 10 feet and allowing engineered retaining walls taller than 6 feet without tiering.",
       "impact": "This sets the rules the developer must build to at that corner. You may see tall, untiered retaining walls there, though stacked boulder and rock walls are not allowed.",
+      "significance": "notable"
+    },
+    "89491cc6ea008ac1": {
+      "headline": "Wendy's approved at 4302 Pony Express Parkway",
+      "summary": "A site plan for a Wendy's at 4302 Pony Express Parkway was approved, with conditions covering two trees on the north side, crosswalk lighting and building lights.",
+      "impact": "Drivers and neighbors near that stretch of Pony Express Parkway get a new restaurant, with a lit crosswalk on the site. Elsewhere in the city, no difference.",
       "significance": "notable"
     },
     "89860402b8caa537": {
@@ -1687,6 +1951,12 @@
       "summary": "The council signed off on Eagle Mountain's spending plan for its 2026 federal Community Development Block Grant money and sent it to HUD for approval.",
       "impact": "HUD requires this plan before the city can draw its block grant funds. The motion names no projects or amounts, so nothing here tells you what the money will buy.",
       "significance": "routine"
+    },
+    "8c2da3d5d37611b6": {
+      "headline": "Site plan approved for LKL Associates",
+      "summary": "The council signed off on the site plan for LKL Associates, letting the project proceed on the layout submitted.",
+      "impact": "Neighbors of the site are the people this touches. The motion names no address, no acreage and no use, so what will be built there is not in the record.",
+      "significance": "notable"
     },
     "8ca676754311bed6": {
       "headline": "Residential zoning rules queued for review",
@@ -1748,6 +2018,12 @@
       "impact": "This touches people who serve on city boards, not the public. If you sit on one, your term now starts in April rather than January.",
       "significance": "routine"
     },
+    "8f3d849a8929b32d": {
+      "headline": "Heather Jackson joins the cemetery board",
+      "summary": "The council named Heather Jackson to the Cemetery Advisory Board for a three-year term ending December 2026.",
+      "impact": "The board offers advice on the city cemetery. Unless you plan to serve on it, this one passes you by.",
+      "significance": "routine"
+    },
     "8f8a3cb4ba0a391e": {
       "headline": "Building and construction standards updated",
       "summary": "The council adopted an updated Title 15, the city's building and construction standards, which now carries truck route approval requirements.",
@@ -1794,6 +2070,12 @@
       "headline": "Vote to deny the Harmony 14 subdivision plan",
       "summary": "The council considered rejecting the preliminary plat, the proposed lot layout, for the Harmony 14 subdivision.",
       "impact": "This is the step where the city signs off on how a subdivision is laid out, so it affects the Harmony 14 developer and anyone living near the site. The record here gives no reasons.",
+      "significance": "notable"
+    },
+    "91217f567121ea20": {
+      "headline": "Parkway Fields development agreement amended",
+      "summary": "The council updated the master development agreement behind Parkway Fields, the Ault Farms project, so the contract matches the site's revised plan.",
+      "impact": "This is the contract that fixes what the builder owes the city there. Buyers and neighbors in Parkway Fields are the ones it reaches; the rest of the city will not notice.",
       "significance": "notable"
     },
     "913e8b0a8982e106": {
@@ -1856,6 +2138,12 @@
       "impact": "Housekeeping for how the night's business was handled. Item 13.A. got its own debate later in the meeting and 14.C. was not decided at all.",
       "significance": "routine"
     },
+    "97f594739e829e2f": {
+      "headline": "Third change to this year's budget",
+      "summary": "For the third time this budget year, the council changed the city's 2023-2024 spending plan, though the motion lists no dollar amounts.",
+      "impact": "What moved, and by how much, is not stated in the record of this vote. You would need the amendment document itself to see which accounts changed.",
+      "significance": "notable"
+    },
     "986d5d7fead215c5": {
       "headline": "Storm water rules updated",
       "summary": "The council amended the city's storm water ordinance, the rules covering runoff and drainage.",
@@ -1880,12 +2168,24 @@
       "impact": "This draft gave way to the amended motion above, which carries the final wording. On its own it changed nothing.",
       "significance": "routine"
     },
+    "9973f3a7c8d1cb85": {
+      "headline": "Move to reject golf course agreement",
+      "summary": "The council weighed rejecting the amended agreement with Vanguard Ranches Golf Course, with members saying they wanted the existing agreements pinned down first.",
+      "impact": "Nothing about the golf course shifted here. Members who wanted more clarity said they would rather hold the request than kill it outright.",
+      "significance": "routine"
+    },
     "9a1c4f90aa3672d6": {
       "headline": "Earlier tax increase repealed",
       "summary": "Eagle Mountain repealed the property tax increase above the certified rate that it had adopted for 2026-27, clearing the way for a replacement rate set the same night.",
       "impact": "This wipes the earlier increase off the books. Read it alongside the rate the council adopted afterward, which is the one that reaches your bill.",
       "significance": "notable",
       "lead": true
+    },
+    "9a206d1325cc7dbb": {
+      "headline": "Council limits mayor's power to set policy",
+      "summary": "The council wrote into code that neither the mayor nor staff may enact city policy without a majority council vote, and that no member may speak for the full body.",
+      "impact": "City policy now has to clear a public council vote before it takes effect, so more of it happens in front of you at a meeting. Liaison assignments also go to a council vote rather than the mayor alone.",
+      "significance": "notable"
     },
     "9a23406c979c5088": {
       "headline": "Adam Jacobs joins the library board",
@@ -2019,6 +2319,24 @@
       "impact": "This touches builders and businesses that want to change an already-approved site plan, not ordinary homeowners. The record does not say what the fee now costs.",
       "significance": "notable"
     },
+    "a1c2f4db945d6b53": {
+      "headline": "Updated transportation impact fee adopted",
+      "summary": "An updated transportation impact fee on new development was adopted, along with rules for calculating it, collecting it and appealing it.",
+      "impact": "Whoever builds pays this at the permit counter, though the motion does not state the amount. If you are not developing land, nothing on your own bills moves.",
+      "significance": "notable"
+    },
+    "a2ff9704b2a49243": {
+      "headline": "Recycling use sent back for a rewrite",
+      "summary": "The council turned down changes to zoning definitions, conditional uses and land use tables, and asked staff to return with the recycling piece as a special use.",
+      "impact": "Nothing in the zoning code changed today. The recycling part comes back to the council later as a special use; the rest of the proposal is off the table.",
+      "significance": "routine"
+    },
+    "a40672aadb78e3d7": {
+      "headline": "Angeline Washburn appointed to youth advisors",
+      "summary": "The council seated Angeline Washburn on the Youth Council Committee of Advisors for a one-year term through June 2024.",
+      "impact": "A second advisor seat filled the same night. It touches the youth program and nobody else.",
+      "significance": "routine"
+    },
     "a4a986704789d041": {
       "headline": "Two foot setback floated for side yard parking",
       "summary": "The council also weighed a version allowing parking on the driveway, garage side and side yard on hard surface, kept two feet back from the sidewalk.",
@@ -2071,6 +2389,18 @@
       "headline": "Melissa Clark named Mayor Pro Tempore",
       "summary": "The council appointed Melissa Clark as Mayor Pro Tempore, the member who runs meetings when the mayor is absent.",
       "impact": "A standing-in arrangement for council meetings. Nothing about city services or your bills changes.",
+      "significance": "routine"
+    },
+    "a77987d3bf31aaa0": {
+      "headline": "Residential development standards amended",
+      "summary": "The council amended its residential development standards, section 17.25.040, though the minutes do not record what the amendment changed.",
+      "impact": "Rules for what goes into new subdivisions moved here, but the record is too thin to say how it lands on any particular street.",
+      "significance": "notable"
+    },
+    "a7cab80a75af4ca3": {
+      "headline": "Consent agenda passed, two items pulled",
+      "summary": "The council pulled two items off its consent agenda for separate discussion and approved everything else in a single vote.",
+      "impact": "Housekeeping items cleared together, with two held back for their own hearing. Nothing lands on a resident at this step.",
       "significance": "routine"
     },
     "a8258678df50b0fb": {
@@ -2133,6 +2463,12 @@
       "impact": "The change resets what can legally be built on that property. The record here does not say where the land is or what the new zoning allows.",
       "significance": "notable"
     },
+    "aac9e0f95f0a7a7a": {
+      "headline": "Recruiting consultants' contract put off",
+      "summary": "The council set aside a professional service agreement with recruitment consultants Jason Walker and David Kitchen rather than voting it up or down.",
+      "impact": "Hiring help for the city waits for a later meeting. Nothing here reaches a resident.",
+      "significance": "routine"
+    },
     "aba14ae8632717df": {
       "headline": "Development deal with Mountainland Supply approved",
       "summary": "The city approved a development agreement with Mountainland Supply; the motion itself does not state the site, the size, or the terms.",
@@ -2163,6 +2499,12 @@
       "impact": "Nothing changes for you today. The agreement comes back to the council before Zayo gets permission to build in city streets.",
       "significance": "routine"
     },
+    "adc42f25da2b4e75": {
+      "headline": "New school district with Saratoga Springs and Fairfield",
+      "summary": "The council took up an agreement with Saratoga Springs and Fairfield Town to create their own school district, and backed five neighboring cities forming a central district.",
+      "impact": "If you have school-age children, this points toward a district shared with Saratoga Springs and Fairfield rather than the one your schools sit in now. What changes in classrooms and on tax bills was not settled here.",
+      "significance": "notable"
+    },
     "ae222e0b73e9e106": {
       "headline": "Consultant renewal tightened, one item pulled",
       "summary": "The council approved the consent agenda after naming David Stewart in a consultant renewal, adding a two meeting a year attendance requirement, and pulling item 15.D for debate.",
@@ -2186,6 +2528,12 @@
       "summary": "The council adopted the Downtown Master Plan, the city's guiding document for how its downtown area develops.",
       "impact": "The plan shapes what gets built downtown in the years ahead, so builders and property owners there will work from it. The motion names no specific project, acreage, or cost.",
       "significance": "notable"
+    },
+    "af00127b9009f4b0": {
+      "headline": "Adelle Curtis joins the Library Board",
+      "summary": "The council filled a Library Board seat with Adelle Curtis, a two-year term running through December 2025.",
+      "impact": "A volunteer seat gets an occupant. Library hours, cards and programs carry on unchanged.",
+      "significance": "routine"
     },
     "afe724f7d5fcaf5e": {
       "headline": "New rules for keeping animals on your property",
@@ -2235,10 +2583,28 @@
       "impact": "Only the applicant is affected. He pays the full $1,350. The city's rezone application fee is unchanged for everyone else.",
       "significance": "routine"
     },
+    "b10929248d35fd68": {
+      "headline": "New rules for hiring a city manager",
+      "summary": "The city rewrote the code covering its top appointed job, renaming it city manager and setting how a vacancy is filled and candidates recruited.",
+      "impact": "Candidate interviews stay closed to the public, so when the job next opens you will see the appointment rather than the choosing. Nothing about city services changes.",
+      "significance": "routine"
+    },
+    "b12aa66707303aff": {
+      "headline": "Liquor license rules amended",
+      "summary": "Council members approved an amendment to section 5.15, the city's liquor license code, without the minutes describing what the change does.",
+      "impact": "Businesses that sell alcohol are the ones who deal with this section. The record is too thin to say what is different for them.",
+      "significance": "routine"
+    },
     "b16156fdb7ced2b2": {
       "headline": "Updated transportation impact fee adopted",
       "summary": "An updated transportation impact fee on new development was adopted, along with rules for calculating it, collecting it and appealing it.",
       "impact": "Whoever builds pays this at the permit counter, though the motion does not state the amount. If you are not developing land, nothing on your own bills moves.",
+      "significance": "notable"
+    },
+    "b1decbf0bc0f3b01": {
+      "headline": "Rezoning of two parcels for houses denied",
+      "summary": "The council rejected a request to rezone one parcel and part of another from village core commercial and community open space to the RC residential zone.",
+      "impact": "That ground keeps its commercial and open space zoning, so the 59 houses the applicant proposed will not go ahead under this application. Nothing changes on the land itself.",
       "significance": "notable"
     },
     "b23b3f296f36ccb8": {
@@ -2259,10 +2625,28 @@
       "impact": "Zoning rules govern what can be built on a property and where. The motion itself doesn't spell out what changed, so the effect on any given property isn't clear from the record.",
       "significance": "notable"
     },
+    "b4b217400a5d265b": {
+      "headline": "Jared Gray named mayor pro tempore",
+      "summary": "The council picked Councilmember Jared Gray as mayor pro tempore, the member who steps in when the mayor cannot preside.",
+      "impact": "Nothing changes for households. The title matters only on the rare night the mayor is away from the dais.",
+      "significance": "routine"
+    },
+    "b4e15e3b4977d093": {
+      "headline": "2024 board liaison assignments set",
+      "summary": "The council handed each member board assignments for the year, from the cemetery and arts boards to the Planning Commission and the Utah League of Cities and Towns.",
+      "impact": "If you sit on one of those boards, you now know which councilmember will be in the room with you. For everyone else this is an internal calendar.",
+      "significance": "routine"
+    },
     "b54bb29920f9654d": {
       "headline": "Election results certified, three seats declared",
       "summary": "Sitting as the Board of Canvassers, the council certified the election results and declared Melissa Clark, Rich Wood and Jared R. Gray elected to the city council.",
       "impact": "The count is now official and the three winners can take their seats. If you voted, this is the step that finalizes the result you already saw reported.",
+      "significance": "routine"
+    },
+    "b56f3fd49f70bb13": {
+      "headline": "Steve Mumford named interim city administrator",
+      "summary": "Steve Mumford was appointed interim city administrator, the staff job that runs the city's day-to-day operations, on a temporary basis.",
+      "impact": "City Hall has someone in charge again. You deal with the same offices and the same counter staff as before.",
       "significance": "routine"
     },
     "b72f2754e043b54c": {
@@ -2295,6 +2679,12 @@
       "impact": "Nothing was decided here: the motion was taken back before any vote, so it changes nothing for residents.",
       "significance": "routine"
     },
+    "ba99cfe185d5bac3": {
+      "headline": "Spencer Dalton added to parks board",
+      "summary": "The council added Spencer Dalton to the Parks and Recreation Advisory Board for a three-year term through December 2026.",
+      "impact": "Another volunteer seat on the same board. Park hours, fees and projects do not turn on it.",
+      "significance": "routine"
+    },
     "bb0ce9a5a41a5692": {
       "headline": "Rewrite of city government rules put on hold",
       "summary": "The council shelved a rewrite of Title 2, the chapter of city code that sets out how Eagle Mountain governs itself.",
@@ -2318,6 +2708,12 @@
       "summary": "The council approved its consent agenda after moving the WDG website change order off it for separate discussion.",
       "impact": "A batch of pre-cleared items cleared in one vote, with one held back for debate. This is meeting mechanics only.",
       "significance": "routine"
+    },
+    "bd3d86d8ae33580d": {
+      "headline": "Transportation Master Plan updated",
+      "summary": "The council adopted an updated Transportation Master Plan, the document that maps which roads the city expects to build or widen.",
+      "impact": "No dirt moves because of this. The plan is what the city points to when a developer lays out a street or a road project comes up for funding.",
+      "significance": "notable"
     },
     "be20c0b2d31eb434": {
       "headline": "Angeline Washburn appointed to youth advisors",
@@ -2360,6 +2756,12 @@
       "summary": "The council approved its consent agenda after narrowing how sponsorship money may be spent, updating the city fee schedule, and setting a Youth City Council quorum.",
       "impact": "Mostly housekeeping. The one piece that could reach you is the updated fee schedule, but the motion doesn't say which fees changed or by how much.",
       "significance": "routine"
+    },
+    "c2c14820a4fd4ed3": {
+      "headline": "Taller fences where businesses sit above homes",
+      "summary": "Fence height gets measured differently now: where a commercial or industrial pad sits above neighboring homes, the council set the taller screen as the standard.",
+      "impact": "If a business lot beside your yard is built up higher than your property, the screening fence is measured from that higher pad and blocks more. Only homes on those boundaries, and the builders next door, are touched.",
+      "significance": "notable"
     },
     "c2ef848260675e4a": {
       "headline": "Youth Council code adopted with mayor voting",
@@ -2461,6 +2863,12 @@
       "headline": "Screening rules for apartment buildings sent back",
       "summary": "The council held off on a change to screening rules for multi-family buildings, asking staff to rework the heat pump and equipment spacing provisions first.",
       "impact": "Nothing takes effect yet. Apartment builders and their architects are the ones waiting on this; the rules they design to stay as they are until the rewrite comes back.",
+      "significance": "routine"
+    },
+    "cdd498d94d24ad18": {
+      "headline": "Consent items approved, two pulled out",
+      "summary": "The council approved a consent agenda of bond releases, minutes and site plans, pulling one item out for separate discussion and sending a school site plan back over an easement.",
+      "impact": "Bundled housekeeping: warranty releases on finished subdivisions, past meeting minutes, and site plans staff already reviewed. The Alpine School District middle school plan returns later so the council can discuss vacating an easement.",
       "significance": "routine"
     },
     "ce234a07251ede47": {
@@ -2589,6 +2997,12 @@
       "impact": "Which councilmember sits in on which board stays as it was last year. Nothing here changes a city service or a bill.",
       "significance": "routine"
     },
+    "d732a1ef48673c43": {
+      "headline": "Bid for a new city website put on hold",
+      "summary": "The council set aside the contract award to Web Development Group Platforms for a new city website.",
+      "impact": "The city's current website stays as it is. Nothing moves until the council picks the item back up.",
+      "significance": "routine"
+    },
     "d79e0336ab37cba8": {
       "headline": "Staff credit card rules put on hold",
       "summary": "The council delayed changes to the rules governing city employee credit cards and sent the item back to a work session for more discussion.",
@@ -2637,6 +3051,12 @@
       "impact": "This is taxpayer money going to the city's elected officials. The new amounts take effect January 1, 2025; there is no direct change to your bills or services.",
       "significance": "notable"
     },
+    "da3fa19e0de35678": {
+      "headline": "Bryan Free added as planning commission alternate",
+      "summary": "Bryan Free was appointed an alternate on the planning commission, finishing a two-year term that runs through December 2025.",
+      "impact": "Alternates fill in when a regular commissioner cannot attend a zoning or development hearing. Filling the seat changes no rule you live under.",
+      "significance": "routine"
+    },
     "da91557fd8eb9772": {
       "headline": "City's asks of the state legislature set",
       "summary": "The council adopted its list of priorities to push at the state legislature, adding a matching grant program to be taken up later.",
@@ -2661,6 +3081,12 @@
       "impact": "Builders and surveyors filing subdivision paperwork will notice. The motion does not spell out what the new language says, and nobody outside that process is touched by it.",
       "significance": "routine"
     },
+    "db147d71206b4774": {
+      "headline": "Storm water code matched to state permit",
+      "summary": "The council amended the storm water code to add ground water infiltration, street wash water, irrigation water and lawn watering runoff to allowed discharges.",
+      "impact": "State auditors asked for this wording after reviewing the city's storm sewer permit, and the city supplied it. You will see nothing at the curb or in your yard.",
+      "significance": "routine"
+    },
     "db9159fdf786a630": {
       "headline": "Parkway Fields phases and layout redrawn",
       "summary": "The council approved a redrawn Parkway Fields plan that splits the townhome phase in two and adds about four townhomes, offset by fewer lots in a later phase.",
@@ -2678,6 +3104,12 @@
       "summary": "The council adopted an updated water conservation and management plan for Eagle Mountain, replacing the city's earlier version.",
       "impact": "The plan sets how the city manages and conserves its water supply. Nothing in the motion changes your rates or watering rules today, but it steers future water decisions citywide.",
       "significance": "notable"
+    },
+    "dd08521a812637fd": {
+      "headline": "Rod Hess appointed to Planning Commission",
+      "summary": "The council seated Rod Hess on the Planning Commission for a three-year term through December 2026.",
+      "impact": "That seat reviews zoning changes and subdivision plans before they reach the council, so anyone building or living beside new development eventually meets its recommendations.",
+      "significance": "routine"
     },
     "deb37438d3401890": {
       "headline": "Draft 2026-27 budget accepted, hearings set",
@@ -2702,6 +3134,12 @@
       "summary": "The council delayed changes that would let hotels rise above the city's 50-foot limit and provide fewer parking stalls, waiting until the hotel feasibility study is finished.",
       "impact": "No hotel was approved or blocked here. The current rules stand, so a developer wanting a four-story hotel still runs into the height cap and the stall-per-bed count until the study comes back.",
       "significance": "routine"
+    },
+    "e0d41847b3427dfc": {
+      "headline": "Public comment set on new school district",
+      "summary": "The council formally accepted a feasibility study on creating a new school district and scheduled public comment for June 13 and June 18, 2024, ahead of a final decision.",
+      "impact": "If you have kids in school or pay property taxes here, those two dates are your chance to weigh in before the council decides whether to create the district.",
+      "significance": "notable"
     },
     "e135c6867636244a": {
       "headline": "Recruiting consultants' contract put off",
@@ -2853,6 +3291,12 @@
       "impact": "The Planning Commission reviews zoning and development proposals, so an alternate fills in when a regular member is absent. Filling the seat affects nothing you pay or do.",
       "significance": "routine"
     },
+    "ed30c897ac8d4071": {
+      "headline": "Grass capped at half of a new home's yard",
+      "summary": "The council rewrote its parks, subdivision and zoning chapters to allow turf on half a residential yard, and told staff to define side yards and fencing.",
+      "impact": "Buyers and builders of new homes meet this first: half a yard may be lawn, the rest something else. Staff still has to write the definitions, so the details are unsettled.",
+      "significance": "notable"
+    },
     "ed5174ede43e72a8": {
       "headline": "Franchise deal approved for SummitIG Fiber",
       "summary": "The council approved a franchise agreement with SummitIG Fiber, LLC, the arrangement a telecom company needs before it can operate in Eagle Mountain.",
@@ -2937,6 +3381,12 @@
       "impact": "The recorder keeps the city's official records and meeting minutes. If you request a public document, this is the office you deal with.",
       "significance": "routine"
     },
+    "f4da0192e36d0d6b": {
+      "headline": "City brand and marketing playbook adopted",
+      "summary": "The council adopted the city's brand and market playbook and asked for it to return at a later meeting once the additions raised in discussion are written in.",
+      "impact": "Signs, letterhead and city messaging follow from this document. No resident is asked to do anything.",
+      "significance": "routine"
+    },
     "f51421a986885893": {
       "headline": "Residential zoning rewrite rejected",
       "summary": "The council turned down proposed changes to the city's definitions and residential zone rules.",
@@ -2972,6 +3422,12 @@
       "summary": "The council rewrote the sign rules covering political and temporary signs, dropped the proposed seasonal sign language, and told staff to draft temporary sign terms for business licenses.",
       "impact": "Both the sign you stake in your yard at election time and the banner outside a shop fall under this. Business owners face one more temporary sign requirement once staff bring the licensing language back.",
       "significance": "notable"
+    },
+    "f85a2716cf13c736": {
+      "headline": "Plat review deadline tied to state law",
+      "summary": "The council changed the subdivision approval section of city code so review timelines point to state code Chapter 10-9a rather than being spelled out separately.",
+      "impact": "Wording cleanup inside the development code. Builders filing preliminary plats deal with it; nobody else will notice.",
+      "significance": "routine"
     },
     "f8c69fd69739e785": {
       "headline": "Consent agenda approved in one vote",
@@ -3021,6 +3477,12 @@
       "impact": "This is a scheduling move: those three items get talked through in the open rather than passing in a bundle. Nothing about the decisions themselves changed here.",
       "significance": "routine"
     },
+    "fafeb78bd2748221": {
+      "headline": "Hotel height and parking rules put on hold",
+      "summary": "The council delayed changes that would let hotels rise above the city's 50-foot limit and provide fewer parking stalls, waiting until the hotel feasibility study is finished.",
+      "impact": "No hotel was approved or blocked here. The current rules stand, so a developer wanting a four-story hotel still runs into the height cap and the stall-per-bed count until the study comes back.",
+      "significance": "routine"
+    },
     "fb214cd216ff5000": {
       "headline": "Animal shelter alternatives added to lobbying list",
       "summary": "The council added work with Best Friends Animal Society, and the resources that group presented, to the city's list of legislative priorities.",
@@ -3039,6 +3501,12 @@
       "impact": "The tank work waits on a later meeting for this piece. Nothing about your water service changes in the meantime.",
       "significance": "routine"
     },
+    "fc325b3f9bb72d18": {
+      "headline": "Public art chapter added to city code",
+      "summary": "The council enacted Chapter 12.35 of the municipal code, setting up how Eagle Mountain will handle public art.",
+      "impact": "Nothing about your property or your bill changes. The chapter lays down the ground rules the city will follow when a public art proposal comes up later.",
+      "significance": "routine"
+    },
     "fe9f6b250ca5fcce": {
       "headline": "Enyo battery site rezoned to agriculture",
       "summary": "The council changed the zoning on the Enyo battery property from airpark to agriculture.",
@@ -3049,6 +3517,18 @@
       "headline": "Eagle Square commercial plans put off",
       "summary": "The council delayed a decision on the preliminary plat for the Eagle Square commercial project.",
       "impact": "Neither approved nor refused, the project sits where it is until the council takes the item back up. Nothing changes at the site in the meantime.",
+      "significance": "routine"
+    },
+    "ff43d7ae2dc3670e": {
+      "headline": "Lot line changes allowed by survey, not a plat",
+      "summary": "The council changed city code so a property line between a subdivision and an outlying parcel can be adjusted by survey instead of a plat amendment.",
+      "impact": "Shifting a boundary with a neighboring parcel now takes a survey rather than a full plat amendment. Staff will also record a zoning notice on the property, so future buyers can see when land sits in more than one zone.",
+      "significance": "notable"
+    },
+    "ff5ccdf157dfcebc": {
+      "headline": "Annette Arndt seated on senior advisory council",
+      "summary": "The council put Annette Arndt on the Senior Citizens Advisory Council for a three-year term through December 2026.",
+      "impact": "Seniors who use the city's programs gain another voice at the advisory table. For everyone else the appointment passes without effect.",
       "significance": "routine"
     },
     "ffb8d6cc826597a7": {

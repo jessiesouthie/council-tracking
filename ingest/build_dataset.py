@@ -57,6 +57,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 from . import bodies, parser, summarize_motions  # noqa: E402
+from .ocr_cleanup import clean_text, is_garbled, trim_motion  # noqa: E402
 
 from .normalize import (  # noqa: E402
     load_members,
@@ -136,9 +137,17 @@ def normalize_motion(raw_motion: dict, resolve, tag, is_ignored) -> tuple[dict, 
         elif name and not is_ignored(name):
             unresolved.append({"name": name, "vote": vote})
 
+    # Scanned minutes carry a misread OCR layer ("Councílmember … Citg"); repair
+    # it, then cut the motion back to itself — no roll-call grid, no next item.
+    raw_text = raw_motion.get("motion") or ""
+    motion_text = trim_motion(
+        clean_text(raw_text), drop_grid=bool(votes) or is_garbled(raw_text)
+    )
+    item_title = clean_text(raw_motion.get("item_title") or "")
+
     text = " ".join([
-        raw_motion.get("item_title") or "",
-        raw_motion.get("motion") or "",
+        item_title,
+        motion_text,
         raw_motion.get("business_type") or "",
     ])
     tags = tag(text)
@@ -148,9 +157,9 @@ def normalize_motion(raw_motion: dict, resolve, tag, is_ignored) -> tuple[dict, 
             "page": raw_motion.get("page"),
             "agenda_ref": raw_motion.get("agenda_ref") or "",
             "business_type": raw_motion.get("business_type") or "",
-            "item_title": raw_motion.get("item_title") or "",
-            "motion": raw_motion.get("motion") or "",
-            "outcome": raw_motion.get("outcome") or "",
+            "item_title": item_title,
+            "motion": motion_text,
+            "outcome": clean_text(raw_motion.get("outcome") or ""),
             "tags": tags,
             "votes": votes,
         },

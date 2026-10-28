@@ -17,7 +17,7 @@
       "agenda_ref": "Consent",
       "business_type": "Consent batch",
       "item_title": "(see motion text for included items)",
-      "motion": "CouncÍlmemþer Grag moved to approve the consent agenda removing Ítem 12.C. for future conslderatÍon and addÍng an annual reuÍew to Ítem l2.E CouncÍlmember Burnham seconded the motÍon.",
+      "motion": "Councilmember Gray moved to approve the consent agenda removing Item 12.C. for future consideration and adding an annual reuiew to Item l2.E Councilmember Burnham seconded the motion.",
       "outcome": "(outcome not found)",
       "tags": [
         "consent"
@@ -40,8 +40,8 @@
       "page": 11,
       "agenda_ref": "",
       "business_type": "Other / consent / misc.",
-      "item_title": "Approve a resolutÍon of Eagle MountaÍn CÍþ, Utah, tentatÍvelg adoptÍng the Eagle MountaÍn CÍtg…",
-      "motion": "Councìlmember Burnham moved to approve a resolutÍon of Eagle MountaÍn CÍþ, Utah, tentatÍvelg adoptÍng the Eagle MountaÍn CÍtg TentatÍve Budget for Fiscal Year 2024-2025 and settÍng a publlc hearÍng for adoption of the final budget on June 4, 2024. CouncÍlmember Grag seconded the motÍon. Councilmember Wright requested that the public record reflect that although he will vote upon the budget as a whole, he will recuse himself from ang discussion and vote upon the public art element approval in the future should his compang desire to submit a proposal for the project.",
+      "item_title": "Approve a resolution of Eagle Mountain City, Utah, tentatively adopting the Eagle Mountain City…",
+      "motion": "Councilmember Burnham moved to approve a resolution of Eagle Mountain City, Utah, tentatively adopting the Eagle Mountain City Tentative Budget for Fiscal Year 2024-2025 and setting a public hearing for adoption of the final budget on June 4, 2024. Councilmember Gray seconded the motion. Councilmember Wright requested that the public record reflect that although he will vote upon the budget as a whole, he will recuse himself from any discussion and vote upon the public art element approval in the future should his company desire to submit a proposal for the project.",
       "outcome": "(outcome not found)",
       "tags": [
         "budget"
@@ -80,10 +80,13 @@
       "page": 13,
       "agenda_ref": "",
       "business_type": "Other / consent / misc.",
-      "item_title": "Approve an ordinance of Eagle MountaÍn Cltg Utah, enact¡ng Eagle Mountaln MunÍclpal Code Chapte…",
-      "motion": "Councílmember Wrlght moved to approve an ordinance of Eagle MountaÍn Cltg Utah, enact¡ng Eagle Mountaln MunÍclpal Code Chapter 2.2O CompensatÍon Schedule of Statutorg Offfcers. CouncÍlmember Grag seconded the motÍon.",
+      "item_title": "Approve an ordinance of Eagle Mountain Cltg Utah, enacting Eagle Mountain Municipal Code Chapte…",
+      "motion": "Councilmember Wright moved to approve an ordinance of Eagle Mountain Cltg Utah, enacting Eagle Mountain Municipal Code Chapter 2.20 Compensation Schedule of Statutory Offfcers. Councilmember Gray seconded the motion.",
       "outcome": "(outcome not found)",
-      "tags": [],
+      "tags": [
+        "personnel",
+        "code"
+      ],
       "votes": [
         {
           "member_id": "donna-burnham",
@@ -102,8 +105,8 @@
       "page": 14,
       "agenda_ref": "",
       "business_type": "Other / consent / misc.",
-      "item_title": "Approve an ordìnance of Eagle MountaÍn CÍtg, lltah, amending Eagle MountaÍn MunÍcipal Code Titl…",
-      "motion": "Councilmember Grag moved to approve an ordìnance of Eagle MountaÍn CÍtg, lltah, amending Eagle MountaÍn MunÍcipal Code Title 15, BuÍldÍng and ConstructÍon. CouncÍlmember Wrþht seconded the motÍon. Burnham",
+      "item_title": "Approve an ordinance of Eagle Mountain City, Utah, amending Eagle Mountain Municipal Code Titl…",
+      "motion": "Councilmember Gray moved to approve an ordinance of Eagle Mountain City, Utah, amending Eagle Mountain Municipal Code Title 15, Building and Construction. Councilmember Wright seconded the motion. Burnham",
       "outcome": "(outcome not found)",
       "tags": [
         "code"
