@@ -1,0 +1,159 @@
+{
+  "meeting": {
+    "id": 679,
+    "date": "2026-10-13",
+    "source_file": "2026-10-13__679.pdf",
+    "motion_count": 4,
+    "ord_count": 0,
+    "res_count": 0,
+    "text_chars": 8469
+  },
+  "motions": [
+    {
+      "id": 342,
+      "meeting_id": 679,
+      "date": "2026-10-13",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of September 22, 2026, Planning Commission meeting. Commissioner Strong sec…",
+      "motion": "Commissioner Free moved to approve the minutes of September 22, 2026, Planning Commission meeting. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 343,
+      "meeting_id": 679,
+      "date": "2026-10-13",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., UCCU Express with the following conditions…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.A., UCCU Express with the following conditions: 1. Along Pony Express Parkway street trees are selected from the Class II list in the Street Tree Guide. 2. Added signage directing larger vehicles to the outside lane. Commissioner Jensen seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "infrastructure"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 344,
+      "meeting_id": 679,
+      "date": "2026-10-13",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.B., Oak Hollow and Parkway Crossroads Rezone.…",
+      "motion": "Commissioner Strong moved to recommend approval to the City Council of Item 7.B., Oak Hollow and Parkway Crossroads Rezone. Commissioner Free seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [
+        "zoning"
+      ],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "laura-jensen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 345,
+      "meeting_id": 679,
+      "date": "2026-10-13",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.C., Artificial Turf and rear yard Landscaping,…",
+      "motion": "Commissioner DeCoursey moved to recommend approval to the City Council of Item 7.C., Artificial Turf and rear yard Landscaping, clarifying that artificial turf must remain at least 2.5 feet from the outer edge of an existing tree trunk. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "bryan-free",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}
