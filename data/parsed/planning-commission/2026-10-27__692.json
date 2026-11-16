@@ -1,0 +1,109 @@
+{
+  "meeting": {
+    "id": 692,
+    "date": "2026-10-27",
+    "source_file": "2026-10-27__692.pdf",
+    "motion_count": 3,
+    "ord_count": 0,
+    "res_count": 0,
+    "text_chars": 6026
+  },
+  "motions": [
+    {
+      "id": 346,
+      "meeting_id": 692,
+      "date": "2026-10-27",
+      "page": 1,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Approve the minutes of October 13, 2026, Planning Commission meeting. Commissioner Strong secon…",
+      "motion": "Commissioner Hess moved to approve the minutes of October 13, 2026, Planning Commission meeting. Commissioner Strong seconded the motion.",
+      "outcome": "(outcome not found)",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 347,
+      "meeting_id": 692,
+      "date": "2026-10-27",
+      "page": 2,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.A., EMMC 17.20 and 17.10 - Public/Private Util…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.A., EMMC 17.20 and 17.10 - Public/Private Utilities in the Agricultural Zone. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 348,
+      "meeting_id": 692,
+      "date": "2026-10-27",
+      "page": 3,
+      "agenda_ref": "",
+      "business_type": "Other / consent / misc.",
+      "item_title": "Recommend approval to the City Council of Item 7.B., EMMC 17.65.080 – Greenhouse/Farm Products…",
+      "motion": "Commissioner Hess moved to recommend approval to the City Council of Item 7.B., EMMC 17.65.080 – Greenhouse/Farm Products Home Business. Commissioner Strong seconded the motion.",
+      "outcome": "passed with a unanimous vote.",
+      "tags": [],
+      "votes": [
+        {
+          "member_id": "brent-strong",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "bryan-free",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "chad-decoursey",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "jason-allen",
+          "vote": "Yes"
+        },
+        {
+          "member_id": "laura-jensen",
+          "vote": "Excused"
+        },
+        {
+          "member_id": "rod-hess",
+          "vote": "Yes"
+        }
+      ]
+    }
+  ],
+  "ordinances": [],
+  "resolutions": []
+}

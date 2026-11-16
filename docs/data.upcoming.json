@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T22:26:49Z",
+  "generated_at": "2026-11-16T22:07:22Z",
   "source": "Eagle Mountain CivicClerk portal",
   "timezone": "America/Denver",
   "bodies": {
@@ -91,192 +91,6 @@
     ],
     "planning-commission": [
       {
-        "id": 680,
-        "title": "Planning Commission Meeting",
-        "date": "2026-11-10",
-        "start": "17:30",
-        "start_label": "5:30 PM",
-        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
-        "url": "https://eaglemountainut.portal.civicclerk.com/event/680/overview",
-        "agenda_posted": true,
-        "agenda_posted_on": "",
-        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3035,plainText=false)",
-        "sessions": [
-          {
-            "start": "18:30",
-            "start_label": "6:30 PM",
-            "label": "Planning Commission Policy Session",
-            "public_comment": false
-          }
-        ],
-        "agenda": [
-          {
-            "number": "1",
-            "title": "DISCUSSION ITEMS",
-            "note": "",
-            "session": null,
-            "group": null,
-            "items": [
-              {
-                "number": "1.A",
-                "kind": "CONCEPT PLAN",
-                "title": "The Bench",
-                "time": "",
-                "background": "",
-                "plain": ""
-              },
-              {
-                "number": "1.B",
-                "kind": "",
-                "title": "AGENDA REVIEW",
-                "time": "",
-                "background": "",
-                "plain": ""
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "2",
-            "title": "CALL TO ORDER",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "3",
-            "title": "PLEDGE OF ALLEGIANCE",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "4",
-            "title": "DECLARATION OF CONFLICTS OF INTEREST",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "5",
-            "title": "MINUTES",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [
-              {
-                "number": "5.A",
-                "kind": "",
-                "title": "October 27, 2026 Planning Commission Minutes",
-                "time": "",
-                "background": "",
-                "plain": ""
-              }
-            ],
-            "procedural": true
-          },
-          {
-            "number": "6",
-            "title": "STATUS REPORT",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "7",
-            "title": "ACTION AND ADVISORY ITEMS",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [
-              {
-                "number": "7.A",
-                "kind": "",
-                "title": "ORDINANCE/PUBLIC HEARING — An Ordinance of Eagle Mountain City, Utah, Amending the Official Zoning Map and Future Land Use Map to Commercial Storage and Business Park/Light Industrial.",
-                "time": "",
-                "background": "(Presented by Planner, Mickie Mills) The Eagle Mountain Planning Commission will conduct public hearings for proposed Future Land Use Map and Zoning Map amendments. This property is located on Pole Canyon Blvd. between N 0 St. and N. Virtual Dr., parcel number 59:055:0026. Approximately 10 acres of land are included in this proposal.",
-                "plain": ""
-              },
-              {
-                "number": "7.B",
-                "kind": "ORDINANCE/PUBLIC HEARING",
-                "title": "An Ordinance of Eagle Mountain City, Utah Approving a Development Agreement with Ranch House Storage LLC",
-                "time": "",
-                "background": "",
-                "plain": ""
-              },
-              {
-                "number": "7.C",
-                "kind": "",
-                "title": "ALTERNATIVE ANIMAL MANAGEMENT PLAN — Wilson Residence",
-                "time": "",
-                "background": "(Presented by Planning Manager, Steven Lehmitz) Planning Commission review of a proposed alternative animal management plan to allow up to two horses at 9022 N. Alexis Lane (Parcel No. 55:673:0027).",
-                "plain": ""
-              }
-            ],
-            "procedural": false
-          },
-          {
-            "number": "8",
-            "title": "DISCUSSION ITEMS",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "9",
-            "title": "AGENDA REVIEW",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          },
-          {
-            "number": "10",
-            "title": "NEXT SCHEDULED MEETING",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": false
-          },
-          {
-            "number": "11",
-            "title": "ADJOURNMENT",
-            "note": "",
-            "session": "18:30",
-            "group": null,
-            "items": [],
-            "procedural": true
-          }
-        ]
-      },
-      {
-        "id": 693,
-        "title": "Planning Commission Meeting",
-        "date": "2026-11-24",
-        "start": "17:30",
-        "start_label": "5:30 PM",
-        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
-        "url": "https://eaglemountainut.portal.civicclerk.com/event/693/overview",
-        "agenda_posted": false,
-        "agenda_posted_on": "",
-        "agenda_url": "",
-        "sessions": [],
-        "agenda": []
-      },
-      {
         "id": 681,
         "title": "Planning Commission Meeting",
         "date": "2026-12-08",
@@ -336,17 +150,72 @@
     "redevelopment-agency-board": [
       {
         "id": 776,
-        "title": "11/17/2026 8:00PM, Redevelopment Agency Board Meeting",
+        "title": "Redevelopment Agency Board Meeting",
         "date": "2026-11-17",
         "start": "20:00",
         "start_label": "8:00 PM",
-        "location": "1650 Stagecoach Run",
+        "location": "Eagle Mountain City Council Chambers, 1650 E Stagecoach Run",
         "url": "https://eaglemountainut.portal.civicclerk.com/event/776/overview",
-        "agenda_posted": false,
-        "agenda_posted_on": "",
-        "agenda_url": "",
+        "agenda_posted": true,
+        "agenda_posted_on": "2026-11-12",
+        "agenda_url": "https://eaglemountainut.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3043,plainText=false)",
         "sessions": [],
-        "agenda": []
+        "agenda": [
+          {
+            "number": "1",
+            "title": "CALL TO ORDER",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          },
+          {
+            "number": "2",
+            "title": "MINUTES",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "2.A",
+                "kind": "",
+                "title": "August 18, 2026 Minutes - Regular Redevelopment Agency Board Meeting",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": true
+          },
+          {
+            "number": "3",
+            "title": "RESOLUTIONS",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [
+              {
+                "number": "3.A",
+                "kind": "RESOLUTION",
+                "title": "A Resolution Of The Board Of Directors (The “Board”) Of The Redevelopment Agency Of Eagle Mountain City, Utah (The “Agency”), Ratifying The Use Of A Preliminary Official Statement And Authorizing An Official Statement In Connection With The Issuance And Sale Of The Agency’s Sales Tax And Tax Increment Revenue Bonds, Series 2026; And Authorizing The Taking Of All Other Actions Necessary To The Consummation Of The Transactions Contemplated By This Resolution; And Related Matters",
+                "time": "",
+                "background": "",
+                "plain": ""
+              }
+            ],
+            "procedural": false
+          },
+          {
+            "number": "4",
+            "title": "ADJOURNMENT",
+            "note": "",
+            "session": null,
+            "group": null,
+            "items": [],
+            "procedural": true
+          }
+        ]
       }
     ]
   }
